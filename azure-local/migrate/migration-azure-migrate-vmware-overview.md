@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Local
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Local instance.
 author: alkohli
 ms.topic: overview
-ms.date: 09/03/2025
+ms.date: 04/02/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -39,7 +39,7 @@ Here are the key phases of the migration process:
 
 |#  |Phase  |Description  |
 |---------|---------|---------|
-|1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-vmware-prerequisites.md).         |
+|1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-vmware-prerequisites.md).         |
 |2.     |**Discover**       |Create and configure an Azure Migrate source appliance on VMware. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover VMware VMs](migrate-vmware-replicate.md).          |
 |3.     |**Replicate**      |Create and configure the target appliance on your Azure Local. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate VMware VMs](migrate-vmware-replicate.md).         |
 |4.     |**Migrate, verify**|Once the replication is complete, select and migrate VMware VMs to your Azure Local. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMware VMs. <br><br> For more information, see [Migrate and verify VMware VMs](./migrate-vmware-migrate.md).         |

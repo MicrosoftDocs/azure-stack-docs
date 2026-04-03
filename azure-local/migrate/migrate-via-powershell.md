@@ -1,30 +1,42 @@
 --- 
-title: Migrate VMs to Azure Local with Azure Migrate using PowerShell
-description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
+title: Migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure CLI
+description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure CLI. This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/14/2026
+ms.date: 04/02/2026
 ms.author: alkohli
 ms.subservice: hyperconverged
 ---
 
-# Migrate VMs to Azure Local with Azure Migrate using PowerShell
+# Migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure CLI
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell. This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
+This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell or Azure CLI. This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
 
 ## Prerequisites
+
+Before you begin, ensure that the following prerequisites are met:
 
 1. Complete the following prerequisites for the Azure Migrate project:
     - For a Hyper-V source environment, complete the [Hyper-V prerequisites](migrate-hyperv-prerequisites.md) and [configure the source and target appliances](migrate-hyperv-replicate.md#step-1-create-and-configure-the-source-appliance).
     - For a VMware source environment, complete the [VMware prerequisites](migrate-vmware-prerequisites.md) and [configure the source and target appliances](migrate-vmware-replicate.md#step-1-create-and-configure-the-source-vmware-appliance).
 
-2. Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell). Ensure you are running [PowerShell version 7 or higher](/powershell/scripting/install/install-powershell).
+2. An Azure subscription with **Contributor**, **Storage Contributor**, and **User Access Administrator** roles.
 
-<!-- Update version to 2.X.X  in this paragraph-->
-3. Verify the Azure Migrate PowerShell module is installed and **version is 2.9.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.9.0 or later:  
+3. A configured Azure Migrate project with source appliance (VMware or Hyper-V) and target Azure Local appliance registered.
+
+4. Arc Resource Bridge running on your Azure Local instance.
+
+5. Network connectivity between the source and target environments.
+
+# [Azure PowerShell](#tab/powershell)
+
+- Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell). Ensure you are running [PowerShell version 7 or higher](/powershell/scripting/install/install-powershell).
+
+<!-- Update version to 2.X.X in this paragraph-->
+- Verify the Azure Migrate PowerShell module is installed and **version is 2.9.0 or later**. Azure Migrate PowerShell is available as part of the Azure PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.9.0 or later:
 
     ```powershell
     Get-InstalledModule -Name Az.Migrate
@@ -36,32 +48,62 @@ This article describes how to migrate virtual machines (VMs) to Azure Local with
     Update-Module -Name Az.Migrate
     ```
 
-4. Sign in to your Azure subscription using the following cmdlet:
+# [Azure CLI](#tab/azurecli)
 
-    ```powershell
-    Connect-AzAccount
+- Install [Azure CLI version 2.75.0 or later](/cli/azure/install-azure-cli).
+
+- Install the Azure CLI migrate extension by running the following command:
+
+    ```azurecli
+    az extension add --name migrate --allow-preview true
     ```
 
-5. Select your Azure subscription.
-Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Migrate project using the `Set-AzContext` cmdlet as follows:
+---
 
-    ```powershell
-    Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
-    ```
+## Sign in and set subscription
+
+# [Azure PowerShell](#tab/powershell)
+
+Sign in to your Azure subscription using the following cmdlet:
+
+```powershell
+Connect-AzAccount
+```
+
+Select your Azure subscription. Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Migrate project using the `Set-AzContext` cmdlet:
+
+```powershell
+Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
+```
 
 You can view the full list of Azure Migrate PowerShell cmdlets by visiting the [Azure Migrate PowerShell reference](/powershell/module/az.migrate) or by running the command:
 
 ```powershell
- `Get-Command -Module Az.Migrate`
- ```
+Get-Command -Module Az.Migrate
+```
 
 ### Sample Azure Migrate PowerShell script
 
 You can view a sample script that demonstrates how to use Azure Migrate PowerShell cmdlets to migrate VMs to Azure Local in the [Migrate VMs to Azure Local with Azure Migrate using PowerShell sample script](https://aka.ms/azlocal-migrate-ps-script).
 
+# [Azure CLI](#tab/azurecli)
+
+Authenticate with your Azure account and set the subscription:
+
+```azurecli
+az login
+az account set --subscription "<subscriptionId>"
+```
+
+---
+
 ## Retrieve discovered VMs
 
-You can retrieve the discovered VMs in your Azure Migrate project using the `Get-AzMigrateDiscoveredServer` cmdlet. This cmdlet retrieves the list of VMs discovered by the source appliance in your Azure Migrate project. `SourceMachineType` can be either `HyperV` or `VMware`, depending on your source VM environment.
+Retrieve the discovered VMs in your Azure Migrate project.
+
+# [Azure PowerShell](#tab/powershell)
+
+Use the `Get-AzMigrateDiscoveredServer` cmdlet to retrieve the list of VMs discovered by the source appliance. `SourceMachineType` can be either `HyperV` or `VMware`, depending on your source VM environment.
 For more information, see the [`Get-AzMigrateDiscoveredServer`](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet.
 
 **Example 1**: Get all VMs discovered by an Azure Migrate source appliance in an Azure Migrate project:
@@ -87,14 +129,29 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer `
 Write-Output $DiscoveredServers | Format-List *
 ```
 
-## Initialize VM replications
+# [Azure CLI](#tab/azurecli)
 
-You can initialize the replication infrastructure for your Azure Migrate project using the `Initialize-AzMigrateLocalReplicationInfrastructure` cmdlet. This cmdlet sets up the necessary infrastructure and metadata storage account needed to eventually replicate VMs from the source appliance to the target appliance. Running this cmdlet multiple times will not cause any issues, as it checks if the replication infrastructure is already initialized.
-For more information, see the [`Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure) cmdlet.
+Use the `az migrate get-discovered-server` command to identify servers available for migration:
 
-You can use a default created storage account or a custom-created storage account that will store the replication metadata. You will need the source and target appliance names from the Azure portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
+```azurecli
+az migrate get-discovered-server \
+    --project-name <projectName> \
+    --resource-group <resourceGroup>
+```
+
+---
+
+## Initialize replication infrastructure
+
+Initialize the replication infrastructure for your Azure Migrate project. This sets up the necessary infrastructure and metadata storage account needed to replicate VMs from the source appliance to the target appliance. Running this command multiple times doesn't cause any issues, as it checks if the replication infrastructure is already initialized.
+
+You can use a default-created storage account or a custom-created storage account to store the replication metadata. You need the source and target appliance names from the Azure portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
 
 :::image type="content" source="./media/migrate-via-powershell/migrate-appliances.png" alt-text="Screenshot showing Appliances in Azure Migrate project page." lightbox="./media/migrate-via-powershell/migrate-appliances.png":::
+
+# [Azure PowerShell](#tab/powershell)
+
+For more information, see the [`Initialize-AzMigrateLocalReplicationInfrastructure`](/powershell/module/az.migrate/initialize-azmigratelocalreplicationinfrastructure) cmdlet.
 
 **Option 1**: Initialize replication infrastructure with the default storage account:
 
@@ -118,6 +175,8 @@ $CustomStorageAccount = Get-AzStorageAccount `
     -Name $CustomStorageAccountName
 ```
 
+Ensure that the storage account is Standard tier and using blob storage kind, as these are the supported types for Azure Migrate metadata storage accounts. The storage account must also have **Public network access** enabled. If public network access is disabled, replication fails.
+
 Next, initialize replication infrastructure with custom-created storage account:
 
 ```powershell
@@ -133,8 +192,6 @@ Initialize-AzMigrateLocalReplicationInfrastructure `
 
 Verify the creation of the storage account if using the default storage account with `Get-AzStorageAccount` cmdlet. If you used a custom storage account, you can skip this step as you already have the storage account information.
 
-**Example**:
-
 ```powershell
 $StorageAccountName = <default_storage_account_name_from_previous_step>
 Get-AzStorageAccount `
@@ -142,7 +199,26 @@ Get-AzStorageAccount `
     -Name $StorageAccountName
 ```
 
+# [Azure CLI](#tab/azurecli)
+
+```azurecli
+az migrate local replication init \
+    --resource-group <resourceGroup> \
+    --project-name <projectName> \
+    --source-appliance-name <sourceAppliance> \
+    --target-appliance-name <targetAppliance>
+```
+
+> [!NOTE]
+> The storage account used for metadata must be **Standard Performance** tier and use Azure Blob storage. The storage account must also have **Public network access** enabled. If public network access is disabled, replication fails.
+
+---
+
 ## Replicate a VM
+
+Start replication for a discovered VM by specifying the target logical network, storage path, resource group, VM name, and other target VM settings.
+
+# [Azure PowerShell](#tab/powershell)
 
 You can replicate a VM using the `New-AzMigrateLocalServerReplication` cmdlet. This cmdlet allows you to create a replication job for a discovered VM.
 You can specify the target logical network, storage path, resource group, VM name, and target VM settings like OS disk, CPU, memory, and more. For more information, see the [`New-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/new-azmigratelocalserverreplication) cmdlet.
@@ -337,6 +413,29 @@ foreach ($DiscoveredServer in $DiscoveredServers)
 }
 ```
 
+# [Azure CLI](#tab/azurecli)
+
+Create a new replication for a selected machine by specifying the machine ID, storage path, resource group, VM name, source and target appliances, OS disk, and target virtual switch. You can use the output of `az migrate get-discovered-server` to get the machine ID and OS disk ID that correspond to the server you want to replicate.
+
+```azurecli
+az migrate local replication new \
+    --machine-id "<machineARMID>" \
+    --target-storage-path-id "<storagePathARMID>" \
+    --target-resource-group-id "<resourceGroupARMID>" \
+    --target-vm-name "<targetVMName>" \
+    --source-appliance-name <sourceAppliance> \
+    --target-appliance-name <targetAppliance> \
+    --os-disk-id "<osDiskID>" \
+    --target-virtual-switch-id "<logicalNetworkARMID>"
+```
+
+---
+
+## Monitor replications
+
+View active replications to monitor their status.
+
+# [Azure PowerShell](#tab/powershell)
 
 ### Retrieve replication jobs
 
@@ -349,7 +448,6 @@ $ReplicationJob = Get-AzMigrateLocalJob `
     -InputObject $ReplicationJob
 $ReplicationJob.Property | Format-List *
 ```
-
 
 To retrieve more information about any error messages or job details, you can examine the `$ReplicationJob.Property` output and specifically look for the `Error` property, which contains detailed error messages if any issues occurred during the replication job.
 
@@ -397,7 +495,42 @@ Remove-AzMigrateLocalServerReplication `
 Write-Output "Protected item removed successfully."
 ```
 
+# [Azure CLI](#tab/azurecli)
+
+### List all replications
+
+List all ongoing replications for your Azure Migrate project:
+
+```azurecli
+az migrate local replication list \
+    --resource-group <resourceGroup> \
+    --project-name <projectName>
+```
+
+### Get details for a specific replication
+
+```azurecli
+az migrate local replication get \
+    --id "<protectedItemARMID>"
+```
+
+### Monitor migration jobs
+
+Track the progress and status of migration jobs for your project:
+
+```azurecli
+az migrate local replication get-job \
+    --resource-group <resourceGroup> \
+    --project-name <projectName>
+```
+
+---
+
 ## Migrate a VM 
+
+Start the migration (planned failover) for a protected item that has completed replication.
+
+# [Azure PowerShell](#tab/powershell)
 
 Use the `Start-AzMigrateLocalServerMigration` cmdlet to migrate a replication as part of planned failover.
 You can use the `-TurnOffSourceServer` parameter to turn off the source VM after migration. This is useful for scenarios where you want to ensure that the source VM is no longer running after migration.
@@ -422,7 +555,22 @@ $MigrationJob = Start-AzMigrateLocalServerMigration `
 $MigrationJob.Property | Format-List *
 ```
 
-## Complete migration (remove a protected item)
+# [Azure CLI](#tab/azurecli)
+
+Use the `az migrate local start-migration` command to initiate the migration (planned failover) for a protected item:
+
+```azurecli
+az migrate local start-migration \
+    --protected-item-id "<protectedItemARMID>"
+```
+
+---
+
+## Complete migration (clean up)
+
+After migration succeeds, remove the replication to clean up resources.
+
+# [Azure PowerShell](#tab/powershell)
 
 Use the `Remove-AzMigrateLocalServerReplication` cmdlet to remove a protected item to complete migration. 
 Do not use this cmdlet until you have verified that the migration is successful and you no longer need the protected item in Azure Migrate.
@@ -437,6 +585,26 @@ $RemoveJob = Remove-AzMigrateLocalServerReplication `
 $RemoveJob.Property | Format-List *
 ```
 
+# [Azure CLI](#tab/azurecli)
+
+Remove completed replications by specifying the protected item ID:
+
+```azurecli
+az migrate local replication remove \
+    --target-object-id "<protectedItemARMID>"
+```
+
+---
+
+## Troubleshooting
+
+| Issue | Resolution |
+|---|---|
+| No Data Replication Service | Run the replication init command to initialize the replication infrastructure. |
+| Arc Resource Bridge not running | Verify status in the Azure portal. |
+| Protected item can't be migrated | Check replication health and state. |
+| Failed to grant storage permissions | Verify **User Access Administrator** role is assigned. |
+
 ## Next steps
 
-- Alternatively, you can [replicate and migrate using Azure portal](migration-options-overview.md).
+- Alternatively, you can [replicate and migrate using the Azure portal](migration-options-overview.md).

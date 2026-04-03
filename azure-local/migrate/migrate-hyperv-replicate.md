@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 04/02/2026
 ms.author: alkohli
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -57,11 +57,13 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 ### Configure the appliance and discover VMs
 
-1. Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance). If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
+Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
+1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
+After the appliance is configured, you start the VM discovery process.
 
-1. After the appliance is configured, you start the VM discovery process. Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
+Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
 
-1. Ensure that all VMs you want to migrate are powered on and have [Hyper-V integration services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) installed before or during the discovery process.
+Ensure that all VMs you want to migrate are powered on and have [Hyper-V integration services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) installed before or during the discovery process.
 
 ## Step 2: Create and configure the target appliance
 
@@ -231,20 +233,15 @@ This step applies to using a .zip file.
 
 1. On the **Target settings** tab, complete these tasks:
 
-    1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.
-        
-        > [!NOTE]
-        > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure migrate project.
+    1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.  
 
     1. Select the **Resource group** to associate with your storage account.
-    
-    1. The VM subscription is automatically populated.
-    
+
     1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
 
         > [!NOTE]
         > If you are using an existing storage account, ensure the following:
-        > - The storage account is **Standard Performance** tier. Premium storage accounts aren't supported.
+        > - The storage account is **Standard Performance** tier and is using Azure Blob storage. Premium storage accounts aren't supported.
         > - The storage account has **Public network access** enabled. If public network access is disabled, replication fails.
     1. Select a resource group to associate with your migrated VMs.
    
