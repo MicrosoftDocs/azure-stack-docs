@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.date: 3/31/2026
 ---
 
+
 # Use certificate rotation in Azure Operator Nexus
 
-This article explains how to rotate certificates for a network fabric.
+This article explains the prerequisites for rotating certificates for a network fabric.
 
 ## Prerequisites
 
-* Enable the environment on supported NF version with supported API.
+* Enable the environment on supported NF version with supported API. 
 * Install and authenticate the Azure CLI to the correct subscription.
 * Ensure that Nexus Network Fabric is in a healthy state, the configuration state is provisioned, and the administrative state is Enabled.
 * Run outside commit/upgrade workflows. Ensure that the administrative state for the targeted devices is Enabled.
@@ -76,15 +77,7 @@ Sample response while rotation is happening:
 Sample response once rotation has completed:
 
 ```Azure CLI
-{
-  "endTime": "2026-03-19T16:36:21.0453827Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "23d4460f...",
-  "properties": null,
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/MyFabric",
-  "startTime": "2026-03-19T16:25:01.6370816Z",
-  "status": "Succeeded"
-}
+TODO
 ```
 
 ### 2. Resync failed devices (fabric scope)
@@ -136,20 +129,12 @@ Sample response while resync is happening:
 Sample response once resync has completed:
 
 ```Azure CLI
-{
-  "endTime": "2026-03-19T17:21:38.8649384Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}}/operationStatuses/...",
-  "name": "...",
-  "properties": null,
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric",
-  "startTime": "2026-03-19T17:14:16.6026953Z",
-  "status": "Succeeded"
-}
+TODO
 ```
 
 ### 3. Resync a single device (device scope)
 
-Retry syncing the new certificates on a single device:
+Retry syncing the new certificates on all devices:
 
 ```Azure CLI
 az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice/resyncCertificates?api-version=2025-07-15" --verbose
@@ -193,17 +178,28 @@ Sample response while resync is happening:
 }
 ```
 
-Sample response once resync has completed:
+Sample response once resync has completed: *TODO replace with successful output*
 
 ```Azure CLI
 {
-  "endTime": "2026-03-19T16:53:51.3739074Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "...",
-  "properties": null,
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice",
-  "startTime": "2026-03-19T16:48:16.6660348Z",
-  "status": "Succeeded"
+  "endTime": "2026-03-17T12:32:12.8626707Z",
+  "error": {
+    "code": "ResyncFailed",
+    "details": [
+      {
+        "code": "FabricRotatedGNMIProfileCreationFailed",
+        "details": [],
+        "message": "Failed executing OC raw config command to apply SSL profile for: CR1-TOR2. Response: Failure / Unknown",
+        "target": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2"
+      }
+    ],
+    "message": "Apply GNMI profile to devices failed for: /subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2"
+  },
+  "id": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/UKSOUTH/operationStatuses/e7c426d7-aa3e-415a-9bf4-2ef845f043ec*DDE1CF80DC541EE3DCA3B0EA9F9358E1BC3F96C837B353ADF01A88F1B9B58FAB",
+  "name": "e7c426d7-aa3e-415a-9bf4-2ef845f043ec*DDE1CF80DC541EE3DCA3B0EA9F9358E1BC3F96C837B353ADF01A88F1B9B58FAB",
+  "resourceId": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2",
+  "startTime": "2026-03-17T12:29:13.601236Z",
+  "status": "Failed"
 }
 ```
 
@@ -223,8 +219,8 @@ Sample output:
     "certificateArchiveReference": {
       "certificateName": "azcert-MyFabric-20260206-client-20260206",
       "certificateVersion": "00000000000000000000000000000000",
-      "keyVaultId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nfc000000-HostedResources-000000/providers/Microsoft.KeyVault/vaults/nfcd00000000000000kv",
-      "keyVaultUri": "https://nfcd00000000000000kv.vault.azure.net/certificates/azcert-MyFabric-20260206-client-20260206/00000000000000000000000000000000"
+      "keyVaultId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nfcdd4383-HostedResources-66492796/providers/Microsoft.KeyVault/vaults/nfcd43830206150742kv",
+      "keyVaultUri": "https://nfcd43830206150742kv.vault.azure.net/certificates/azcert-MyFabric-20260206-client-20260206/00000000000000000000000000000000"
     },
     "certificateType": "ClientCertificate",
     "expireTime": "2027-02-27T12:40:55Z",
@@ -235,8 +231,8 @@ Sample output:
     "certificateArchiveReference": {
       "certificateName": "azcert-MyFabric-20260206-server-20260206",
       "certificateVersion": "00000000000000000000000000000000",
-      "keyVaultId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nfc000000-HostedResources-000000/providers/Microsoft.KeyVault/vaults/nfcd00000000000000kv",
-      "keyVaultUri": "https://nfcd00000000000000kv.vault.azure.net/certificates/azcert-MyFabric-20260206-server-20260206/00000000000000000000000000000000"
+      "keyVaultId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/nfcdd4383-HostedResources-66492796/providers/Microsoft.KeyVault/vaults/nfcd43830206150742kv",
+      "keyVaultUri": "https://nfcd43830206150742kv.vault.azure.net/certificates/azcert-MyFabric-20260206-server-20260206/00000000000000000000000000000000"
     },
     "certificateType": "ServerCertificate",
     "expireTime": "2027-02-27T12:40:55Z",
@@ -244,6 +240,54 @@ Sample output:
     "synchronizationStatus": "InSync"
   }
 ]
+```
+
+## Monitoring
+It's possible to set up queries to show certificates that are nearing expiry.
+
+For example, this query finds the 10 certificates closest to expiry, limited to those expiring within the next 30 days.
+Change `30d` from the `expireTime` filter to expand the time range.  Change or remove the `| take 10` filter to display more results.
+
+```Powershell
+$KQL = @'
+resources
+| where type =~ 'microsoft.managednetworkfabric/networkdevices'
+| where isnotempty(properties.certificateRotationStatus)
+| mv-expand certEntry = properties.certificateRotationStatus
+| extend expireTime = todatetime(certEntry.expireTime)
+| where expireTime < now() + 30d
+| summarize earliestExpiry = min(expireTime) by resourceGroup, name
+| project earliestExpiry, resourceGroup, name
+| sort by earliestExpiry asc, resourceGroup asc, name asc
+| take 10
+'@
+
+$KQL = $KQL -replace "`r`n", " " -replace "`n", " "
+
+az graph query --graph-query "$KQL" --query "data[]" --output table
+```
+
+```Azure Linux
+#!/bin/bash
+set -u
+
+read -r -d '' KQL << EOF
+resources
+  | where type =~ "microsoft.managednetworkfabric/networkdevices"
+  | where isnotempty(properties.certificateRotationStatus)
+  | mv-expand certEntry = properties.certificateRotationStatus
+  | extend expireTime = todatetime(certEntry.expireTime)
+  | where expireTime < now() + 30d
+  | summarize earliestExpiry = min(expireTime) by resourceGroup, name
+  | project earliestExpiry, resourceGroup, name
+  | sort by earliestExpiry asc, resourceGroup asc, name asc
+  | take 10
+EOF
+
+az graph query \
+  --graph-query "${KQL}" \
+  --query "data[]" \
+  --output table
 ```
 
 ## Troubleshooting
