@@ -10,6 +10,8 @@ items:
     href: ./scalability-deployments.md
   - name: FAQ
     href: faq.yml
+  - name: AI workloads on Azure Local
+    href: concepts/ai-workloads-overview.md
 
 - name: Hyperconverged deployments
   items: 
