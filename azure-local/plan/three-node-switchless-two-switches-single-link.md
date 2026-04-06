@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 05/15/2025
+ms.date: 04/05/2026
 ms.custom:
   - devx-track-arm-template
   - sfi-image-nochange
@@ -20,7 +20,7 @@ ms.subservice: hyperconverged
 In this article, learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Local solution.
 
 > [!NOTE]
-> The three-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
+> Microsoft has tested and validated the three-node switchless network reference patterns described in this article. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
@@ -37,8 +37,8 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 As illustrated in the diagram, this pattern has the following physical network components:
 
 - For northbound and southbound communication, the Azure Local instance requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
-- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
-- Two RDMA NICs on each node in a full-mesh single link configuration for East-West traffic for the storage.
+- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each network interface card (NIC) is connected to a different TOR.
+- Two remote direct memory access (RDMA) NICs on each node in a full-mesh single link configuration for East-West traffic for the storage.
     > [!NOTE]
     > For this configuration, there's no redundant network connection between the nodes.
 
@@ -60,7 +60,7 @@ The Storage intent-based traffic consists of three individual subnets supporting
 
 Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor.
 
-When deploying a three-node switchless configuration, Network ATC has the following requirements:
+When you deploy a three-node switchless configuration, Network ATC has the following requirements:
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
@@ -68,7 +68,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - For Azure Local cloud deployments:
 
-    - Scale out storage switchless systems aren't supported.
+    - Scaling out storage switchless systems isn't supported.
 
     - It's only possible to deploy this three-node scenario using ARM templates.
     
@@ -98,7 +98,7 @@ For more information, see [Management VLAN network considerations](cloud-deploym
 
 ### Compute VLANs
 
-In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, you can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When connecting new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
+In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, you can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When you connect new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
 
 ### HNV Provider Address (PA) network
 
@@ -137,7 +137,7 @@ For more information, see [Deploy host networking with Network ATC](../deploy/ne
 
 ## ARM template Storage intent network configuration example
 
-You can use the [ARM template for three-node storage switchless, dual TOR and single link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-SingleLink).
+You can use the [ARM template for three-node storage switchless, dual TOR, and single link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-SingleLink).
 
 Here's a snippet from the template:
 
