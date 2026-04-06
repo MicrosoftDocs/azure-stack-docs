@@ -13,13 +13,18 @@ ai-usage: ai-assisted
 
 Azure Local brings Azure AI capabilities directly to your infrastructure so you don't have to move that data to the cloud. This article covers the AI workloads available on Azure Local and helps you pick the right one for your needs. Each workload runs on Azure Arc-enabled Kubernetes, so you get cloud-consistent management and security while keeping data processing local.
 
+> [!IMPORTANT]
+> Some AI workloads described in this article are currently in preview, including Foundry Local on Azure Local and Edge RAG. See the linked workload documentation and the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
 ## Run AI model inference on your infrastructure
 
-Foundry Local on Azure Local runs AI model inference on an Arc-enabled Kubernetes cluster. Use it to deploy and serve generative or predictive models from the Foundry model catalog.
+Foundry Local on Azure Local, currently in preview, runs AI model inference on an Arc-enabled Kubernetes cluster. Use it to deploy and serve generative or predictive models from the Foundry model catalog.
 
 Foundry Local uses a Kubernetes inference operator to handle the model lifecycle. The operator syncs metadata from the Foundry model catalog, deploys models through declarative custom resources (`Model` and `ModelDeployment` CRDs), and serves requests through OpenAI-compatible API endpoints. Azure Arc provides the management connection, and the operator runs natively in Kubernetes.
 
 ### Capabilities
+
+Foundry Local includes the core capabilities you need to run AI model inference on Azure Local.
 
 | Capability | Description |
 |-----------|-------------|
@@ -30,6 +35,8 @@ Foundry Local uses a Kubernetes inference operator to handle the model lifecycle
 | **Security** | Use API keys for authentication, TLS for encryption, and ingress for access control. |
 
 ### Use cases
+
+Use Foundry Local when you need low-latency AI inference on local infrastructure for sensitive or operational workloads.
 
 - Deploy chat and content generation models for internal applications that handle sensitive data.
 - Serve predictive models for classification, scoring, or real-time decisions on the factory floor.
@@ -48,6 +55,8 @@ Edge RAG includes a data ingestion pipeline, embedding and vector storage, langu
 
 ### Capabilities
 
+Edge RAG provides the core capabilities you need to build grounded AI experiences over local data.
+
 | Capability | Description |
 |-----------|-------------|
 | **RAG pipeline** | Ingest, chunk, embed, store, and retrieve your documents and images in a single integrated pipeline. |
@@ -57,6 +66,8 @@ Edge RAG includes a data ingestion pipeline, embedding and vector storage, langu
 | **Azure RBAC** | Control access with Microsoft Entra integration and role-based permissions. |
 
 ### Use cases
+
+Use Edge RAG when you need to search, summarize, and reason over private content that must stay on-premises.
 
 - Query regulatory and compliance documents by using natural language to support permitting, zoning, and environmental review workflows.
 - Run compliance checks and customer assistance workflows against financial data that must stay on-premises.
@@ -71,11 +82,13 @@ For more information, see:
 
 ## Analyze video and audio at the edge
 
-Azure AI Video Indexer enabled by Arc runs video and audio analysis on edge devices. It supports transcription in more than 35 languages, object and scene detection, and summarization. The solution includes the Phi language model for generative AI tasks such as text summaries.
+Azure AI Video Indexer enabled by Azure Arc runs video and audio analysis on edge devices. It supports transcription in more than 35 languages, object and scene detection, and summarization. The solution includes the Phi language model for generative AI tasks such as text summaries.
 
 Video Indexer also supports live video analysis. Prebuilt agents handle tasks such as retail operations monitoring, safety detection, and queue tracking. You use a conversational interface (AI Video Assistant) to route your questions to the right agent.
 
 ### Capabilities
+
+Azure AI Video Indexer enabled by Azure Arc provides capabilities for video and audio analysis on edge infrastructure.
 
 | Capability | Description |
 |-----------|-------------|
@@ -87,14 +100,16 @@ Video Indexer also supports live video analysis. Prebuilt agents handle tasks su
 
 ### Use cases
 
+Use Azure AI Video Indexer enabled by Azure Arc when you need to analyze live or recorded media locally for operational, safety, or compliance scenarios.
+
 - Monitor retail store conditions with live video feeds. Detect shelf conditions, safety hazards, and queue lengths, then generate end-of-shift summaries.
 - Run quality control and worker safety analysis on manufacturing floor video.
 - Index an on-premises video archive for search and retrieval before selectively uploading content to the cloud.
 
 For more information, see:
 
-- [Azure AI Video Indexer enabled by Arc overview](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
-- [Quickstart: Deploy Azure AI Video Indexer enabled by Arc](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-quickstart) 
+- [Azure AI Video Indexer enabled by Azure Arc overview](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
+- [Quickstart: Deploy Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-quickstart) 
 
 ## Operate AI in disconnected and sovereign environments
 
@@ -123,11 +138,13 @@ Each workload has its own hardware and software prerequisites. See the individua
 
 ## Choose the right workload
 
+Use the following table to match each AI scenario to the best-fit workload on Azure Local, and plan to combine workloads when your environment has multiple data and application needs.
+
 | If you need to... | Consider |
 |-------------------|----------|
-| Serve AI models for chat, generation, or prediction | Foundry Local on Azure Local |
+| Serve AI models for chat, generation, or prediction | Foundry Local on Azure Local (preview) |
 | Build a chat assistant over on-premises documents | Edge RAG Preview |
-| Analyze video or audio content in real time or from archives | Azure AI Video Indexer enabled by Arc |
+| Analyze video or audio content in real time or from archives | Azure AI Video Indexer enabled by Azure Arc |
 | Process sensitive data that can't leave your premises | Any of the three, depending on your data type |
 | Operate fully disconnected or air-gapped | Not available. |
 
@@ -136,4 +153,4 @@ Each workload has its own hardware and software prerequisites. See the individua
 - [Azure Arc-enabled Kubernetes overview](/azure/azure-arc/kubernetes/overview)
 - [What is Foundry Local on Azure Local?](/azure/azure-sovereign-clouds/private/foundry-local/what-is-foundry-local-on-azure-local)
 - [What is Edge RAG Preview?](/azure/azure-arc/edge-rag/overview)
-- [What is Azure AI Video Indexer enabled by Arc?](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
+- [What is Azure AI Video Indexer enabled by Azure Arc?](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
