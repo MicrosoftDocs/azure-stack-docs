@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 05/15/2025
+ms.date: 04/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -28,13 +28,13 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 ## Physical connectivity components
 
-As illustrated in the diagram below, this pattern has the following physical network components:
+As illustrated in the following diagram, this pattern has the following physical network components:
 
-- For northbound/southbound traffic, the system requires two TOR switches in MLAG configuration.
+- For northbound/southbound traffic, the system requires two TOR switches in multi-chassis link aggregation (MLAG) configuration.
 
-- Two teamed network cards to handle management and compute traffic, and connected to the TOR switches. Each NIC is connected to a different TOR switch.
+- Two teamed network cards to handle management and compute traffic, and connected to the TOR switches. Each network interface card (NIC) is connected to a different TOR switch.
 
-- Two RDMA NICs in a full-mesh configuration for East-West storage traffic. Each node in the system has a redundant connection to the other node in the system.
+- Two remote direct memory access (RDMA) NICs in a full-mesh configuration for East-West storage traffic. Each node in the system has a redundant connection to the other node in the system.
 
 - As an option, some solutions might use a headless configuration without a BMC card for security purposes.
 
@@ -86,13 +86,13 @@ Follow these steps to create network intents for this reference pattern:
 
 ## Logical connectivity components
 
-As illustrated in the diagram below, this pattern has the following logical network components:
+As illustrated in the following diagram, this pattern has the following logical network components:
 
 :::image type="content" source="media/two-node-switchless-two-switches/logical-components-layout.png" alt-text="Diagram showing single-node switchless physical connectivity layout." lightbox="media/two-node-switchless-two-switches/logical-components-layout.png":::
 
 ### Storage Network VLANs
 
-The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both may share the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
+The storage intent-based traffic consists of two individual networks supporting RDMA traffic. Each interface is dedicated to a separate storage network, and both might share the same VLAN tag. This traffic is only intended to travel between the two nodes. Storage traffic is a private network without connectivity to other resources.
 
 The storage adapters operate in different IP subnets. To enable a switchless configuration, each connected node a matching subnet of its neighbor. Each storage network uses the Network ATC predefined VLANs by default (711 and 712). These VLANs can be customized if necessary. In addition, if the default subnet defined by ATC isn't usable, you're responsible for assigning all storage IP addresses in the system.
 

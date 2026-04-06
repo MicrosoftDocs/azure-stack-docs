@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
-ms.date: 05/15/2025
+ms.date: 04/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -18,13 +18,13 @@ ms.subservice: hyperconverged
 In this article, learn about the three-node storage switchless with two TOR L3 switches and two full-mesh links network reference pattern that you can use to deploy your Azure Local solution.
 
 > [!NOTE]
-> The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
+> Microsoft has tested and validated the three-node switchless network reference patterns described in this article. For information on two-node switchless network patterns, see [Azure Local network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenters.
 
-Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. SDN L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
+Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. Software defined networking (SDN) L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
 [!INCLUDE [includes](../includes/switchless-scale-out.md)]
 
@@ -32,13 +32,13 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 :::image type="content" source="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, two link physical connectivity layout." lightbox="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png":::
 
-As illustrated in the diagram above, this pattern has the following physical network components:
+As illustrated in the previous diagram, this pattern has the following physical network components:
 
 - For northbound and southbound communication, the Azure Local instance requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 
-- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to a different TOR.
+- Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each network interface card (NIC) is connected to a different TOR.
 
-- Four RDMA NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage. Each node in the system has a redundant connection with two paths to the other node in the system.
+- Four remote direct memory access (RDMA) NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage. Each node in the system has a redundant connection with two paths to the other node in the system.
 
 |Networks|Management and compute|Storage|
 |--|--|--|
@@ -48,7 +48,7 @@ As illustrated in the diagram above, this pattern has the following physical net
 
 ## Logical networks
 
-As illustrated in the diagram below, this pattern has the following logical network components:
+As illustrated in the following diagram, this pattern has the following logical network components:
 
 :::image type="content" source="media/three-node-switchless-two-switches-dual-link/logical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, dual link logical connectivity layout." lightbox="media/three-node-switchless-two-switches-dual-link/logical-components-layout.png":::
 
@@ -58,7 +58,7 @@ The Storage intent-based traffic consists of six individual subnets supporting R
 
 Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor.
 
-When deploying three nodes in a switchless configuration, Network ATC has the following requirements:
+When you deploy three nodes in a switchless configuration, Network ATC has the following requirements:
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
@@ -66,7 +66,7 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
 
 - For Azure Local cloud deployments:
 
-    - Scale out storage switchless systems aren't supported.
+    - Scaling out storage switchless systems isn't supported.
 
     - It's only possible to deploy this three-node scenario using ARM templates.
 
@@ -96,7 +96,7 @@ For more information, see [Management VLAN network considerations](cloud-deploym
 
 ### Compute VLANs
 
-In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, you can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When connecting new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
+In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, you can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When you connect new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
 
 ### HNV Provider Address (PA) network
 
@@ -138,7 +138,7 @@ For more information, see [Deploy host networking with Network ATC](../deploy/ne
 
 ## ARM template Storage intent networks configuration example
 
-You can use the [ARM template for 3-node storage switchless, dual TOR and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-DualLink).
+You can use the [ARM template for three-node storage switchless, dual TOR, and dual link](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-3Nodes-Switchless-DualLink).
 
 ```powershell
 "storageNetworkList": {

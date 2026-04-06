@@ -4,7 +4,7 @@ description: Learn how to use the Configurator app to bootstrap and quickly regi
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2025
+ms.date: 04/05/2026
 ms.service: azure-local
 #CustomerIntent: As an IT Pro, I want to bootstrap and Arc register Azure Local machines via the Arc registration script.
 ---
@@ -38,7 +38,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 [!INCLUDE [hci-registration-azure-prerequisites](../includes/hci-registration-azure-prerequisites.md)]
 
-- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+- **Get Arc gateway ID**. Skip this step if you didn't set up Azure Arc gateway. If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This ID is also referred to as the `ArcGatewayID`.
 
    1. To get the `ArcGatewayID`, run the following command:  
 
@@ -122,7 +122,7 @@ Follow these steps to configure network settings and connect the machines to Azu
 
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
 
-   1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
+   1. If you set up an Azure Arc gateway, specify the Arc gateway ID. This ID is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
    > [!IMPORTANT]
    > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
@@ -190,7 +190,7 @@ Here's a table that describes the diagnostic tests:
 | Web proxy (if configured)        | This test validates the web proxy configuration of the machine.  |
 | Time sync                        | This test validates the machine time settings and checks that the time server configured on the machine is valid and accessible.                   |
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the machine. |
-| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool). |
+| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Local deployment including tests for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Local](../manage/use-environment-checker.md#about-the-environment-checker-tool). |
 
 ### Collect a Support log package from the app
 
