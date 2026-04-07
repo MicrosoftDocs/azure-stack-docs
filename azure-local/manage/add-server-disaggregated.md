@@ -56,7 +56,7 @@ For adding a node, the following scale-out scenarios are supported:
 
 When adding a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the system.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server -disaggregated.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server-disaggregated.md)]
 
 ## Prerequisites
 
