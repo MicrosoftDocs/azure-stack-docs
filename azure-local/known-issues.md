@@ -28,10 +28,10 @@ For the 2603 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2603.1002.15 | 26100.32522 |
+| 12.2603.1002.500 | 26100.32522 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2603.1002.15** build.
+> The new deployments of this software use the **12.2603.1002.500** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -43,6 +43,9 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
+| Deployment <!--37166210--> | Fixed issue in environment validator that blocked deployment when an overlapping IP space with Arc resource bridge was found. | |
+| Update <!--37292238--> | Fixed issue that caused update to fail in some scenarios because of a timeout when updating Microsoft Defender Antivirus. | |
+| Update <!--37151259--> | Fixed issue with an update health check related to storage health that would incorrectly prevent update to start. | | 
 | Azure Local VMs <!--36356595--> | Fixed issue where infrastructure logical network details didn't display DNS server and VM switch information.  | |
 | Azure Local VMs <!--36958790--> | Fixed issue where the L4* GPU wasn't functional.  | |
 | Deployment <!--35378770--> | Fixed issue in deployment wizard where key vault creation during extension installation was blocking forward navigation.  | |
