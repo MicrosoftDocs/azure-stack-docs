@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/30/2025
+ms.date: 04/01/2026
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -89,8 +89,10 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 To create a VM on your Azure Local instance, follow these steps.
 
 > [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after you successfully create the VM. However, you might see the empty drives visible for the VM.
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux that you use, you can also delete them for Linux VMs.
+>
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after you successfully create the VM. However, you might see the empty drives visible for the VM. To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux that you use, you can also delete them for Linux VMs.
+>
+> - When creating a VM resource that requires referring to another resource (disk, NIC, image, storage path), you need to pass the full resource ID if that resource is in a different resource group than the targeted one.
 
 # [Azure CLI](#tab/azurecli)
 
