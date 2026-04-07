@@ -13,8 +13,6 @@ ms.subservice: hyperconverged
 ## Overview
 Azure Local supports attaching external Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This capability enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
 
-This guide covers eight preview test scenarios with steps that are common across all SAN solutions, and vendor-specific steps clearly called out per solution.
-
 ## Supported SAN Solutions
 
 > [!NOTE]
