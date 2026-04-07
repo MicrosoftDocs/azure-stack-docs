@@ -121,7 +121,7 @@ The following prerequisites apply to use this document:
     ```
 5. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. Launch PowerStore WebUI: https://(PowerStoreClusterIP)
+6. [Launch PowerStore WebUI](https://{PowerStoreManagementIPorFQDN})
 
 7. Compute → Host Information → Hosts & Host Groups → '+Add Host.'
 
@@ -167,7 +167,7 @@ The following prerequisites apply to use this document:
 
 6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. Sign in to the Purity WebUI: https://{FlashArrayManagementIPorFQDN}
+6. [Launch the Purity WebUI](https://{FlashArrayManagementIPorFQDN})
 
 7. Navigate to Storage → Hosts → select '+' to create a new host for each cluster node. Don't select a Personality. 
 
@@ -416,5 +416,5 @@ If creating a Storage Path fails in the Azure portal, verify that the specified 
 ## Next Articles: 
 
 - [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
-- Using External Storage in AKS clusters on Azure Local 
-- Deploying AVD on Azure Local 
+- [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
+- [Deploying AVD on Azure Local](https://learn.microsoft.com/azure/virtual-desktop/azure-local-overview) 
