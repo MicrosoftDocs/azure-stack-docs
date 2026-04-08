@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: release-notes
-ms.date: 03/25/2026
+ms.date: 04/08/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -23,7 +23,7 @@ To learn more about Windows update terminology, see [Types of Windows updates](/
 
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5078740](https://support.microsoft.com/en-us/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd) (released March 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
+This security update contains fixes and quality improvements from [KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e) (released February 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
 
 - This update makes miscellaneous security improvements to internal OS functionality.
 

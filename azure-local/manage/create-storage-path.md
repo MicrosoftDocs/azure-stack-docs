@@ -162,6 +162,19 @@ To delete a volume, first remove the associated workloads, then remove the stora
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](/windows-server/storage/storage-spaces/manage-volumes#expand-volumes).
 
+### Storage path allocation methods
+
+When creating Azure Local virtual machines, VM images, or data disks, you can choose how these resources are placed across the storage paths on the cluster. 
+
+When using the Azure CLI, storage path selection is controlled by whether a storage path is explicitly provided when creating an Azure Local virtual machine, image, or data disk.
+
+To manually select a storage path, include the `--storage-path-id` parameter. When this parameter is specified, the resource is placed under the selected storage path.
+
+To automatically select a storage path, omit the `--storage-path-id` parameter. In this case, the system automatically chooses a storage path on which to place the resource from the storage paths available on the cluster using a round-robin placement approach.
+> [!NOTE]
+> When you select a storage path when creating an Azure Local virtual machine, that storage path is used to place the VM's OS disk and configuration files. This selection does not imply that all data disks attached to the VM are placed under the same storage path. Data disks are placed based on their own storage path selection at creation time. 
+
+
 # [Azure portal](#tab/azureportal)
 
 You can use the Azure portal to create, show, and list the storage paths on your Azure Local instance.
@@ -211,7 +224,19 @@ Follow these steps in Azure portal of your Azure Local.
 
 1. You'll see a notification that the storage path deletion job has started. Once the storage path is deleted, the list refreshes to display the remaining storage paths.
 
-    :::image type="content" source="./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/delete-storage-path-3.png":::  
+    :::image type="content" source="./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/delete-storage-path-3.png":::
+
+### Storage path allocation methods
+
+When creating Azure Local virtual machines, VM images, or data disks, you can choose how these resources are placed across the storage paths on the cluster. 
+
+When using the Azure portal, you can select **Choose manually** or **Choose automatically** options when creating an Azure Local virtual machine, image, or data disk. 
+
+To manually select a storage path, select the **Choose manually** option for **Storage path**. Choose from the dropdown which storage path and the resource will be created under the selected storage path.
+
+To automatically select a storage path, select the **Choose automatically** option for **Storage path**. In this case, the system automatically chooses a storage path on which to place the resource from the storage paths available on the cluster using a round-robin placement approach.
+> [!NOTE]
+> When you select a storage path when creating an Azure Local virtual machine, that storage path is used to place the VM's OS disk and configuration files. This selection does not imply that all data disks attached to the VM are placed under the same storage path. Data disks are placed based on their own storage path selection at creation time. 
 ---
 
 ## Next steps
