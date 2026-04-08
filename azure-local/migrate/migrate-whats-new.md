@@ -15,6 +15,19 @@ This article lists the various features and improvements that are available in v
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
+## March 2026
+
+This release includes these features and improvements:
+
+- **Azure CLI support for replication and migration (Preview)** – You can now use the Azure CLI to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell or Azure CLI (Preview)](migrate-via-powershell.md).
+- **Linux static IP migration script improvements** - Fixed several issues with the Linux static IP migration script:
+    - Resolved an issue where static IP addresses weren't applied when a DHCP server was active on the Azure Local cluster.
+    - Fixed a bug where DNS server entries were incorrectly formatted after migration, causing DNS resolution failures and blocking guest management enablement.
+    - Fixed an issue where the script attempted to set a default gateway on interfaces that didn't have one configured.
+- **Windows static IP migration script improvements** - Fixed an issue where network interface ordering was nondeterministic, which could cause network configuration failures after migration. Interfaces with a default gateway are now prioritized.
+- **Improved cleanup for failed prerequisite checks** - Fixed an issue where cleanup after a failed prerequisite check attempted to delete resources that hadn't been created yet. Cleanup now verifies resource existence before attempting deletion.
+- **Azure portal UX improvements and bug fixes** - Fixed a set of minor issues across Azure Migrate blades for Azure Local to improve clarity and reliability of replication and migration workflows.
+
 ## February 2026
 
 This release includes these features and improvements:
