@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/01/2026
+ms.date: 04/07/2026
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -204,9 +204,9 @@ If the flag isn't specified, the workload (VM, VM image, and non-OS data disk) i
 
 ### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
-When you create a VM by using Windows Server 2012 and Windows Server 2012 R2 images, specify the following parameters to create the VM:
+Windows Server 2012 and Windows Server 2012 R2 do not support enabling guest management as this operating system lacks support for Hyper-V sockets which is required for enabling guest management. Therefore, when you create a VM using Windows Server 2012 and Windows Server 2012 R2 images, set both the following parameters to false:
 
-- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine Agent on VMs.
+- `--enable-agent`: Set this parameter to `false` to disable onboarding of the Azure Connected Machine Agent on VMs.
 - `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via the Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine Agent on VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM
