@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/11/2026
+ms.date: 04/07/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -41,6 +41,9 @@ Before you begin, make sure to complete the following prerequisites:
 1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
 1. Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
+
+    > [!IMPORTANT]
+    > We recommend using the same Azure subscription for Azure Local infrastructure and workloads, including Azure Local VMs enabled by Azure Arc. While RBAC supports cross-subscription role assignments, there are known limitations when using the Azure CLI to create or manage Azure Local resources across subscriptions.
 
 ## Assign RBAC roles to users
 
