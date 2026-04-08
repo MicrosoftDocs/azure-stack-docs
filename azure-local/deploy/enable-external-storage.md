@@ -417,4 +417,4 @@ If creating a Storage Path fails in the Azure portal, verify that the specified 
 
 - [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
 - [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
-- [Deploying AVD on Azure Local](https://learn.microsoft.com/azure/virtual-desktop/azure-local-overview) 
+- [Deploying AVD on Azure Local](/azure/virtual-desktop/azure-local-overview) 
