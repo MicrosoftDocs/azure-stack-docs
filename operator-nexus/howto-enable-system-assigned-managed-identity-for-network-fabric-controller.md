@@ -1,6 +1,6 @@
 ---
-title: How to enable System-Assigned Managed Identity (SAMI) for the Network Fabric Controller in Azure Operator Nexus
-description: Learn about how to enable System Assigned Managed Identity (SAMI) for the Network Fabric Controller in Azure Operator Nexus
+title: Enable SAMI for the Network Fabric Controller in Azure Operator Nexus
+description: This article describes how to enable and validate SAMI for the Network Fabric Controller in Azure Operator Nexus.
 author: RaghvendraMandawale
 ms.author: rmandawale
 ms.date: 03/30/2026
@@ -9,10 +9,9 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ---
 
-# How to enable System-Assigned Managed Identity (SAMI) for the Network Fabric Controller in Azure Operator Nexus
+# Enable SAMI for the Network Fabric Controller in Azure Operator Nexus
 
-This guide describes how to enable and validate System Assigned Managed Identity (SAMI) for the Network Fabric Controller resource for both new resources and existing resources.
-
+This article describes how to enable and validate System Assigned Managed Identity (SAMI) for the Network Fabric Controller resource for both new resources and existing resources.
 
 ## Scope and identity rules
 
