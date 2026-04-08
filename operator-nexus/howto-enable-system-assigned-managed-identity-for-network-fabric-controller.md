@@ -15,24 +15,21 @@ This article describes how to enable and validate System Assigned Managed Identi
 
 ## Scope and identity rules
 
-### Supported identity on Network Fabric Controller resource
-- Supported: `SystemAssigned`
-- Not supported: `UserAssigned`, `None`
+On the Network Fabric Controller resource, you can use `SystemAssigned` for your identity. You can't use `UserAssigned` or `None`. These identities aren't supported.
 
-### Why SAMI on Network Fabric Controller resource
-- Network Fabric Controller resource managed flows access platform resources (for example storage and key vault in managed resource groups).
-- SAMI is the required baseline identity for trusted service access patterns in these workflows.
+Network Fabric Controller resource managed flows access platform resources (for example, storage and key vault in managed resource groups). SAMI is the required baseline identity for trusted service access patterns in these workflows.
 
 ## Prerequisites
 
-- Azure CLI logged in to the target subscription.
-- `managednetworkfabric` CLI extension installed and up to date.
-- Network Fabric Controller resource is in a healthy state before update operations:
+- Azure CLI is signed in to the target subscription.
+- The `managednetworkfabric` CLI extension is installed and up to date.
+- The Network Fabric Controller resource is in a healthy state before update operations:
   - `provisioningState = Succeeded`
-- API version guidance:
-  - Use `2025-07-15` or newer when you need latest identity visibility and action payload compatibility.
+- The API version is `2025-07-15` or newer when you need latest identity visibility and action payload compatibility.
 
-## For New Resources: Create Network Fabric Controller Resource with SAMI
+## Create a Network Fabric Controller resource with SAMI
+
+This section pertains to new resources.
 
 ### Command
 
@@ -44,26 +41,27 @@ az networkfabric controller create \
   --mi-system-assigned
 ```
 
-For the full create command argument set, refer to the public documentation:
-> See [Create a Network Fabric Controller](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric-controller#create-a-network-fabric-controller) for the complete create-command arguments.
+For the full create command argument set, see [Create a Network Fabric Controller](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric-controller#create-a-network-fabric-controller).
 
-This guide shows the minimum arguments relevant to SAMI enablement, not the complete set of arguments for resource creation.
+This article shows only the minimum arguments relevant to SAMI enablement, not the complete set of arguments for resource creation.
 
 ### Argument-by-argument explanation
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--resource-group` | Resource group containing the Network Fabric Controller resource. | `my-nfc-rg` |
-| `--resource-name` | Network Fabric Controller resource ARM name. | `my-nfc` |
-| `--location` | Azure region for the Network Fabric Controller resource. | `eastus2euap` |
-| `--mi-system-assigned` | Enables SAMI on create. No value required. | flag only |
+| Argument               | Purpose                                                           | Example       |
+|------------------------|-------------------------------------------------------------------|---------------|
+| `--resource-group`     | Resource group containing the Network Fabric Controller resource. | `my-nfc-rg`   |
+| `--resource-name`      | Network Fabric Controller resource Azure Resource Manager name.   | `my-nfc`      |
+| `--location`           | Azure region for the Network Fabric Controller resource.          | `eastus2euap` |
+| `--mi-system-assigned` | Enables SAMI on create. No value required.                        | flag only     |
 
 ### Expected result
-- `identity.type` should be `SystemAssigned`.
-- Provisioning should complete as `Succeeded`.
 
+- `identity.type` is `SystemAssigned`.
 
-**Expected identity in response:**
+- Provisioning status is `Succeeded`.
+
+Here's the expected identity in response.
+
 ```json
 {
   "identity": {
@@ -74,9 +72,11 @@ This guide shows the minimum arguments relevant to SAMI enablement, not the comp
 }
 ```
 
-## For existing resources: Add SAMI to an existing Network Fabric Controller resource
+## Add SAMI to an existing Network Fabric Controller resource
 
-### Option A: Direct CLI update
+This section pertains to existing resources.
+
+### Option A: Direct Azure CLI update
 
 ```bash
 az networkfabric controller update \
@@ -87,22 +87,24 @@ az networkfabric controller update \
 
 ### Argument-by-argument explanation
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--resource-group` | Resource group containing the existing Network Fabric Controller resource. | `my-nfc-rg` |
-| `--resource-name` | Existing Network Fabric Controller resource name. | `my-nfc` |
-| `--mi-system-assigned` | Adds or retains SAMI on the resource identity. | flag only |
+| Argument               | Purpose                                                                    | Example     |
+|------------------------|----------------------------------------------------------------------------|-------------|
+| `--resource-group`     | Resource group containing the existing Network Fabric Controller resource. | `my-nfc-rg` |
+| `--resource-name`      | Existing Network Fabric Controller resource name.                          | `my-nfc`    |
+| `--mi-system-assigned` | Adds or retains SAMI on the resource identity.                             | flag only   |
 
-
-**Identity payload transformation:**
+This option transforms the identity payload.
 
 Before (resource has no identity):
+
 ```json
 {
   // no identity present
 }
 ```
+
 After:
+
 ```json
 {
   "identity": {
