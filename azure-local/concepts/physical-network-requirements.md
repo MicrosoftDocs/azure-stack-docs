@@ -330,8 +330,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
 | [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
 | [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
-| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/i/214442/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
-| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/i/214442/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -343,8 +343,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
 | [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
 | [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
-| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/i/214442/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
-| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/i/214442/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
