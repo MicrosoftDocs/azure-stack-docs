@@ -121,7 +121,7 @@ The following prerequisites apply to use this document:
     ```
 5. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. [Launch PowerStore WebUI](https://{PowerStoreManagementIPorFQDN})
+6. [Launch PowerStore WebUI](`https://<PowerStoreManagementIPorFQDN>`)
 
 7. Compute → Host Information → Hosts & Host Groups → '+Add Host.'
 
@@ -167,7 +167,7 @@ The following prerequisites apply to use this document:
 
 6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
-6. [Launch the Purity WebUI](https://{FlashArrayManagementIPorFQDN})
+6. [Launch the Purity WebUI](`https://<FlashArrayManagementIPorFQDN>`)
 
 7. Navigate to Storage → Hosts → select '+' to create a new host for each cluster node. Don't select a Personality. 
 
