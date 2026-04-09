@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 03/16/2026
+ms.date: 04/09/2026
 ms.subservice: hyperconverged
 ---
 
@@ -496,7 +496,7 @@ This release includes the following features and improvements:
 
 - **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
-- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
+- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./manage/troubleshoot-deployment-configurator-app.md#upload-the-support-log-package).
 
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
@@ -575,7 +575,7 @@ This release includes the following features and improvements:
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the machine validation step during the Azure Local instance deployment installs the extensions. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
-  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
+  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy).
     - Composed image is now supported for Original Equipment Manufacturers (OEMs).
     - Several security enhancements were made for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.
