@@ -355,6 +355,18 @@ To configure observability, follow these steps:
 On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane.
 
 ```powershell
+# Check if Az.Resources 8.1.1 is installed, if not install it (2603)
+$requiredModule = "Az.Resources"
+$requiredVersion = "8.1.1"
+$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
+
+# Note if operating air-gaped, you need to download and copy this module manually
+if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
+    Write-Host "Installing $requiredModule version $requiredVersion..."
+    Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
+}
+
+# Make sure you have the following module installed - if not install it Az.Resources 8.1.1
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
