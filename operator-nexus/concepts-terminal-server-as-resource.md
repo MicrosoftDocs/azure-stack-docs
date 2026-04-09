@@ -22,10 +22,10 @@ Each Terminal Server is represented by two resource types:
 
 The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources.
 
-These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They are also available in the Azure Resource Graph.
+These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They're also available in the Azure Resource Graph.
 
 > [!NOTE]
-> The Terminal Server (`NetworkBootstrapDevice`) does not support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the `2604.1` release. Observability — including reachability checks and file server availability metrics — is provided from the `NetworkFabric` resource in the portal.
+> The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the `2604.1` release. Observability—including reachability checks and file server availability metrics—is provided from the `NetworkFabric` resource in the portal.
 
 ---
 
@@ -37,7 +37,7 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using the `2026-01-15-preview` API version, the Terminal Server ARM resources are created using the `2026-01-15-preview` API version.
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using the `2025-07-15` GA API version, the Terminal Server ARM resources are created using the `2025-07-15` GA API version.
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using ≤ `2025-07-15`, the Terminal Server ARM resources are created with the `2025-07-15` API version.
-> - The same behaviour applies during Greenfield deployments where the Network Fabric is created with NF RT version `8.0.0`.
+> - The same behavior applies during Greenfield deployments where the Network Fabric is created with NF RT version `8.0.0`.
 
 ---
 
@@ -45,7 +45,7 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 
 ### Greenfield Deployments
 
-1. Initiate Network Fabric (NF) creation using the standard API or CLI; no additional pre-steps are required.
+1. Initiate Network Fabric (NF) creation using the standard API or CLI; no additional presteps are required.
 2. Provide basic Terminal Server device details (IP address, password) in the NF create payload. No changes to the existing workflow are required.
 3. The service provisions resources, hydrates properties, and updates device state to `Succeeded` or `Failed` based on reachability checks.
 
@@ -81,7 +81,7 @@ The `NetworkBootstrapDevice` resource captures device-level metadata for each Te
 
 ### NetworkBootstrapInterface
 
-The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It is exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources. All properties listed below are **read-only** and are hydrated by the service during creation.
+The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It's exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources. All properties listed below are **read-only** and are hydrated by the service during creation.
 
 | Property | Type | Description |
 |---|---|---|
@@ -120,7 +120,7 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 
 **Request Body:** None.
 
-#### Sample Response — 200 OK
+#### Sample Response—200 OK
 
 ```json
 {
@@ -198,7 +198,7 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 
 ### GET NetworkBootstrapInterface
 
-Retrieves the interface-level details for a specific Terminal Server interface. The `NetworkBootstrapInterface` is a sub-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources.
+Retrieves the interface-level details for a specific Terminal Server interface. The `NetworkBootstrapInterface` is a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources.
 
 #### Request
 
@@ -215,7 +215,7 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 
 **Request Body:** None.
 
-#### Sample Response — 200 OK
+#### Sample Response—200 OK
 
 ```json
 {
@@ -252,4 +252,4 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 |---|---|
 | `200 OK` | The request succeeded. The response body contains the NetworkBootstrapInterface resource. |
 | `400 Bad Request` | The request was malformed or contained invalid parameters. |
-| `404 Not Found` | The specified resource does not exist. |
+| `404 Not Found` | The specified resource doesn't exist. |
