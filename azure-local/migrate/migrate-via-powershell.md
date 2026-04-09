@@ -203,12 +203,25 @@ Get-AzStorageAccount `
 
 # [Azure CLI (Preview)](#tab/azurecli)
 
+**Option 1**: Initialize replication infrastructure with the default storage account:
+
 ```azurecli
 az migrate local replication init \
     --resource-group <resourceGroup> \
     --project-name <projectName> \
     --source-appliance-name <sourceAppliance> \
     --target-appliance-name <targetAppliance>
+```
+
+**Option 2**: Initialize replication infrastructure with a custom storage account by providing the storage account ARM ID using the `--cache-storage-account-id` parameter. The custom storage account only needs to be specified during the first initialization. Subsequent runs of the command detect the existing storage account and don't require it to be specified again:
+
+```azurecli
+az migrate local replication init \
+    --resource-group <resourceGroup> \
+    --project-name <projectName> \
+    --source-appliance-name <sourceAppliance> \
+    --target-appliance-name <targetAppliance> \
+    --cache-storage-account-id "<storageAccountARMID>"
 ```
 
 For more information, see the [`az migrate local replication init`](/cli/azure/migrate/local/replication#az-migrate-local-replication-init) command.
