@@ -139,6 +139,8 @@ az migrate get-discovered-server \
     --resource-group <resourceGroup>
 ```
 
+For more information, see the [`az migrate get-discovered-server`](/cli/azure/migrate#az-migrate-get-discovered-server) command.
+
 ---
 
 ## Initialize replication infrastructure
@@ -208,6 +210,8 @@ az migrate local replication init \
     --source-appliance-name <sourceAppliance> \
     --target-appliance-name <targetAppliance>
 ```
+
+For more information, see the [`az migrate local replication init`](/cli/azure/migrate/local/replication#az-migrate-local-replication-init) command.
 
 > [!NOTE]
 > The storage account used for metadata must be **Standard Performance** tier and use Azure Blob storage. The storage account must also have **Public network access** enabled. If public network access is disabled, replication fails.
@@ -429,6 +433,8 @@ az migrate local replication new \
     --target-virtual-switch-id "<logicalNetworkARMID>"
 ```
 
+For more information, see the [`az migrate local replication new`](/cli/azure/migrate/local/replication#az-migrate-local-replication-new) command.
+
 ---
 
 ## Monitor replications
@@ -507,12 +513,16 @@ az migrate local replication list \
     --project-name <projectName>
 ```
 
+For more information, see the [`az migrate local replication list`](/cli/azure/migrate/local/replication#az-migrate-local-replication-list) command.
+
 ### Get details for a specific replication
 
 ```azurecli
 az migrate local replication get \
     --id "<protectedItemARMID>"
 ```
+
+For more information, see the [`az migrate local replication get`](/cli/azure/migrate/local/replication#az-migrate-local-replication-get) command.
 
 ### Monitor migration jobs
 
@@ -523,6 +533,8 @@ az migrate local replication get-job \
     --resource-group <resourceGroup> \
     --project-name <projectName>
 ```
+
+For more information, see the [`az migrate local replication get-job`](/cli/azure/migrate/local/replication#az-migrate-local-replication-get-job) command.
 
 ---
 
@@ -557,12 +569,15 @@ $MigrationJob.Property | Format-List *
 
 # [Azure CLI (Preview)](#tab/azurecli)
 
-Use the `az migrate local start-migration` command to initiate the migration (planned failover) for a protected item:
+Use the `az migrate local start-migration` command to initiate the migration (planned failover) for a protected item. You can use the `--turn-off-source-server` parameter to turn off the source server after migration completes:
 
 ```azurecli
 az migrate local start-migration \
-    --protected-item-id "<protectedItemARMID>"
+    --protected-item-id "<protectedItemARMID>" \
+    --turn-off-source-server
 ```
+
+For more information, see the [`az migrate local start-migration`](/cli/azure/migrate/local#az-migrate-local-start-migration) command.
 
 ---
 
@@ -587,12 +602,22 @@ $RemoveJob.Property | Format-List *
 
 # [Azure CLI (Preview)](#tab/azurecli)
 
-Remove completed replications by specifying the protected item ID:
+Remove completed replications by specifying the protected item ID. You can use the `--force-remove` parameter to force remove a replication if the standard removal fails:
 
 ```azurecli
 az migrate local replication remove \
     --target-object-id "<protectedItemARMID>"
 ```
+
+To force remove a replication:
+
+```azurecli
+az migrate local replication remove \
+    --target-object-id "<protectedItemARMID>" \
+    --force-remove
+```
+
+For more information, see the [`az migrate local replication remove`](/cli/azure/migrate/local/replication#az-migrate-local-replication-remove) command.
 
 ---
 
