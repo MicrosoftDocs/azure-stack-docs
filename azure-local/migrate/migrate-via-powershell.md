@@ -621,14 +621,6 @@ For more information, see the [`az migrate local replication remove`](/cli/azure
 
 ---
 
-## Troubleshooting
-
-| Issue | Resolution |
-|---|---|
-| No Data Replication Service | Run the replication init command to initialize the replication infrastructure. |
-| Arc Resource Bridge not running | Verify status in the Azure portal. |
-| Protected item can't be migrated | Check replication health and state. |
-| Failed to grant storage permissions | Verify **User Access Administrator** role is assigned. |
 
 ## Next steps
 
