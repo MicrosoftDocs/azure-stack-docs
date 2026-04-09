@@ -52,6 +52,8 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
+        - name: Terminal Server as an Azure Operator Nexus Resource
+          href: concepts-terminal-server-as-resource.md 
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
