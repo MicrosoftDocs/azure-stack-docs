@@ -117,15 +117,17 @@ After:
 
 ### Option B: SAMI association via support personnel
 
-If you are unable to use the direct CLI update (Option A) or require SAMI association to be performed through an automated support channel, contact support personnel. Provide the following details:
+If you're unable to use the direct Azure CLI update, or you require an automated support channel to perform SAMI association, contact support personnel. Provide the following details:
+
 - Network Fabric Controller resource subscription ID
-- Network Fabric Controller resource ID (ARM resource ID)
+
+- Network Fabric Controller resource ID (Azure Resource Manager resource ID)
 
 Support personnel can perform the SAMI association operation on your behalf.
 
 ## Verification
 
-### Verify identity and state
+Here's how to verify the identity and state of your SAMI.
 
 ```bash
 az networkfabric controller show \
@@ -135,65 +137,80 @@ az networkfabric controller show \
   -o json
 ```
 
-### What to check
+Here's what to check:
+
 - `identity.type == "SystemAssigned"`
-- `identity.principalId` is populated
+
+- `identity.principalId` is populated.
+
 - `provisioningState == "Succeeded"`
 
-## Quick decision table
+## Decision table
 
-| Current identity | Requested operation | Valid | Result |
-|---|---|---|---|
-| no identity | add SAMI | Yes | `SystemAssigned` |
-| SystemAssigned | add SAMI | Yes | no-op / retained |
-| SystemAssigned | add UAMI | No | rejected |
-| any | set `None` | No | rejected |
+For your quick reference, this table shows the various identities and operations possible, and the outcomes to expect.
+
+| Current identity | Requested operation | Valid | Result           |
+|------------------|---------------------|-------|------------------|
+| no identity      | add SAMI            | Yes   | `SystemAssigned` |
+| SystemAssigned   | add SAMI            | Yes   | retained         |
+| SystemAssigned   | add UAMI            | No    | rejected         |
+| any              | set `None`          | No    | rejected         |
 
 ## Common errors and fixes
 
-### Error: identity type is invalid
-- Symptom: update fails when `UserAssigned` or `None` semantics are attempted for the Network Fabric Controller resource.
-- Fix: rerun with `--mi-system-assigned` only.
+You might encounter these errors. Here's how to fix them.
 
+- Identity type is invalid.
+  - Symptom: The update fails when `UserAssigned` or `None` semantics are attempted for the Network Fabric Controller resource.
+  - Fix: Rerun with `--mi-system-assigned` only.
 
 > [!IMPORTANT]
-> If identity type `None` is submitted, the Managed Service Identity Resource Provider may remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Re-associate SAMI as soon as possible if this occurs.
+> If identity type `None` is submitted, the Managed Service Identity Resource Provider might remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Re-associate SAMI as soon as possible if this occurs.
 
-### Error: resource not in a safe state
-- Symptom: update/action fails due to lifecycle state checks.
-- Fix: ensure the Network Fabric Controller resource is fully provisioned (`Succeeded`) before identity association.
+- Resource not in a safe state.
+  - Symptom: The update fails due to lifecycle state checks.
+  - Fix: Ensure the Network Fabric Controller resource is fully provisioned (`Succeeded`) before identity association.
 
 ## Supplementary operational notes
 
-- For existing-resource execution at scale, capture existing external connectivity details before actions. Specifically, record all ER circuit details and the ER circuit-to-connection map. Ensure ER Circuit Auth Key Hashes are populated before triggering the identity operation to avoid unintended ER circuit recreation.
-- If your internal runbook includes pre-check actions (for example ER-related metadata stabilization), complete those first.
-- Use latest API versions to reduce payload and visibility mismatches.
+- When you run existing resources at scale, capture existing external connectivity details before taking actions. Specifically, record all Azure ExpressRoute circuit details, and the ExpressRoute circuit-to-connection map. Ensure that the ExpressRoute circuit auth key hashes are populated before triggering the identity operation. This precaution helps you avoid unintended ExpressRoute circuit re-creation.
 
-## Post-change checklist
+- If your internal runbook includes pre-check actions (such as metadata stabilization in ExpressRoute), complete those first.
+
+- Use the latest API versions to reduce payload and visibility mismatches.
+
+After the SAMI change, check the following points:
 
 - GET confirms `identity.type = SystemAssigned`.
+
 - `principalId` exists.
+
 - The Network Fabric Controller resource remains `Succeeded`.
+
 - Downstream flows that require trusted identity access continue to function.
 
 ## Frequently asked questions
 
-**Q: Why is UAMI not supported for the Network Fabric Controller resource?**
-A: The Network Fabric Controller resource uses SAMI as the required identity bound to its resource lifecycle. UAMI is not in scope for these managed flows.
+*Why is UAMI not supported for the Network Fabric Controller resource?*
 
-**Q: Can I remove SAMI from the Network Fabric Controller resource?**
-A: No. SAMI removal is not allowed; it must persist to maintain trusted service access to Network Fabric Controller resource managed platform resources (Key Vault and Storage Account in its managed resource group).
+The Network Fabric Controller resource uses SAMI as the required identity bound to its resource lifecycle. UAMI isn't in scope for these managed flows.
 
-**Q: What happens if I specify identity type `None` for the Network Fabric Controller resource?**
-A: The Managed Service Identity Resource Provider may remove the SAMI context, leading to token acquisition failures. Recover by re-associating SAMI immediately using Option A or Option B.
+*Can I remove SAMI from the Network Fabric Controller resource?*
 
-**Q: How do I verify SAMI is properly active on the Network Fabric Controller resource?**
-A: GET the Network Fabric Controller resource and confirm `identity.type == "SystemAssigned"` and `identity.principalId` is populated.
+No. SAMI must persist to maintain trusted service access to Network Fabric Controller resources (such as Azure Key Vault and Azure Storage in its managed resource group).
 
-**Q: What identity does the Network Fabric Controller resource use for Key Vault and Storage Account access?**
-A: The Network Fabric Controller resource uses SAMI for secure access to the Key Vault and Storage Account in its managed resource group as part of the trusted services configuration.
+*What happens if I specify identity type `None` for the Network Fabric Controller resource?*
 
-**Q: What happens to Network Fabric Controller resource identity if a non-identity PATCH is performed?**
-A: Existing SAMI configuration is unchanged unless identity fields are explicitly included in the payload.
+The Managed Service Identity Resource Provider might remove the SAMI context, leading to token acquisition failures. Recover by re-associating SAMI immediately.
 
+*How do I verify that SAMI is properly active on the Network Fabric Controller resource?*
 
+Get the Network Fabric Controller resource, and confirm that `identity.type == "SystemAssigned"`. Also confirm that `identity.principalId` is populated.
+
+*What identity does the Network Fabric Controller resource use for Key Vault and Storage account access?*
+
+The Network Fabric Controller resource uses SAMI for secure access to Key Vault and Storage account in its managed resource group. This use is part of the trusted services configuration.
+
+*What happens to Network Fabric Controller resource identity if a non-identity patch is performed?*
+
+Existing SAMI configuration is unchanged unless identity fields are explicitly included in the payload.
