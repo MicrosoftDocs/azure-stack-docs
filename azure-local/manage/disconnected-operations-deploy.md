@@ -554,16 +554,18 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 ## Appendix
 
-### Lock down management cluster (using Azure Policy)
+### Lock down management cluster 
 
 ```powershell
-$operatorSubscriptionId = ''
-$resourceGroup = ''
-$customLocationId = 'my-cluster'
-cd "$applianceConfigBasePath\OperationsModule\AzureLocalOrchestration" 
-.\Set-MgmtClusterDenyPolicy.ps1 `
-        -SubscriptionId "$operatorSubscriptionId" `
-        -MgmtClusterCustomLocationId "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($customLocationId)"
+$operatorSubscriptionId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+$resourceGroup = 'azurelocal-management-cluster'
+$managementClusterLocationName = 'managementcluster-location'
+$customLocationId = "/subscriptions/$($operatorSubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($managementClusterLocationName)"
+Import-Module "$applianceConfigBasePath\OperationsModule\AzureLocal.Orchestration.psm1" 
+Set-ManagementClusterLock `
+        -Enabled $true `
+        -SubscriptionId $operatorSubscriptionId `
+        -MgmtClusterCustomLocationId $customLocationId
 ```
 
 ### Clean up data disks used for bootstrap

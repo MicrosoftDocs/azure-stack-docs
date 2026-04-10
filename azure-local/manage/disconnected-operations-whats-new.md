@@ -11,9 +11,19 @@ ai-usage: ai-assisted
 
 # What's new in disconnected operations for Azure Local
 
-::: moniker range=">=azloc-2602"
-
 This article describes new features and improvements in disconnected operations for Azure Local. Before you deploy disconnected operations with Azure Local, review the [Known issues](./disconnected-operations-known-issues.md) to understand current limitations and available workarounds.
+
+::: moniker range=">=azloc-2603"
+## Features and improvements in 2603
+- Added support for the Azure Local 2603 ISO and its associated capabilities.
+- Standardized Powershell cmdlet naming
+- Implemented client certificate rotation
+- Added restore cmdlets and logic as part of BCDR
+- Added cmdlet to lock down management cluster
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602"
 
 ## Features and improvements in 2602
 
