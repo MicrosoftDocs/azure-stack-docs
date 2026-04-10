@@ -107,7 +107,9 @@ The following script shows you how to use the OperationsModule to generate certi
   $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
   $fqdn = "autonomous.cloud.private" 
   $IngressEndpointsCertsFolder = 'C:\Certs\IngressEndpointsCerts'
-  $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+  $certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+  ## Alternative you can use for automation
+  ## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
   $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
   
   Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
@@ -129,7 +131,9 @@ $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
 $fqdn = "autonomous.cloud.private" 
 $managementEndpointIp = '192.168.100.25'
 $managementEndpointCertsFolder = 'C:\Certs\ManagementEndpointsCerts'
-$certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+$certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+## Alternative you can use for automation
+## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
 $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
