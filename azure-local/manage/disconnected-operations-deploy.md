@@ -290,7 +290,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > You can also specify the -clean switch to start installation from scratch. This switch resets any existing installation state and starts from the beginning
 >
-> DisableChecksum = $true skips validating the signature of the Appliance. Use this when deploying an air-gapped environment. If checksum validation is enabled, the node needs to reach and validate the Microsoft cert signing certificates used for signing this build.  
+
 
 ## Configure observability for diagnostics and support
 
