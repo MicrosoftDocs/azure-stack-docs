@@ -505,6 +505,7 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
     # Bootstrap each node
     Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+    # If bootstrap fails/timesouts after 45:00:00 - see known-issues with CRL. 
     ```
 
 > [!NOTE]

@@ -17,11 +17,13 @@ This article identifies critical known issues and their workarounds in disconnec
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-## Known issues for version 2602
+## Known issues for version 2602 and 2603
 
 ### Bootstrap or deployment fails due certificates being invalid (exception)
 
-In cases where the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation will fail.
+In cases where the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation will fail. 
+
+**Error nessage:** Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
 
 **Mitigation**: 
 
@@ -67,28 +69,6 @@ Start-Sleep -Seconds 60
 Write-Host "Successfully started BootstrapManagementService"  
 ```
 
-### Cloud deployment fails and transitions into a failed state
-
-In version 2602, a known issue in disconnected operations for Azure Local causes the Hybrid Instance Metadata Service (HIMDS) to stop functioning because the control plane services take longer than expected to start. This timing issue can result in failed deployments accompanied by unclear or non-descriptive error messages.
-
-**Workaround**:
-
-Perform the following steps on all nodes:
-
-1. Download and copy the attached [Zip file](https://aka.ms/aldo-fix2/1) to the `C:\AzureLocal` folder.
-1. Extract the Zip file to the path: `C:\AzureLocal\HimdsWatchDog`.
-1. Run the `Install-HIMDS-Watchdog.ps1` command.
-1. Verify if the scheduled task is created by running:
-
-   ```powershell
-   Get-ScheduledTask -TaskName HIMDS 
-   ```
-
-1. After the cloud deployment is complete, delete the task on each node by running:
-
-    ```powershell
-   Unregister-ScheduledTask -TaskName HIMDSWatchdog
-   ```
 ### Portal issues
 
 #### Policy
