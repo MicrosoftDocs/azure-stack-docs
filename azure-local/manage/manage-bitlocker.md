@@ -33,25 +33,51 @@ You can view, enable, and disable volume encryption settings on your Azure Local
 
 ### PowerShell cmdlet properties
 
-The following cmdlet properties are for volume encryption with BitLocker module: *AzureStackBitLockerAgent*.
+The following cmdlets are part of the *AzureStackBitLockerAgent* module:
 
-- ```powershell
-    Get-ASBitLocker -<Local | PerNode>
-    ```
+#### Get-ASBitLocker
 
-  Where `Local` and`PerNode` define the scope at which the cmdlet is run.
-  - **Local** - Can be run in a regular remote PowerShell session and provides BitLocker volume details for the local node.
-  - **PerNode** - Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP). Provides BitLocker volume details per node.
+Retrieves the current BitLocker encryption status for volumes on your Azure Local instance.
 
-- ```powershell
-    Enable-ASBitLocker -<Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
-    ```
+```powershell
+Get-ASBitLocker -VolumeType <BootVolume | ClusterSharedVolume> -<Local | PerNode>
+```
 
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `-VolumeType` | Yes | The type of volume to query. Valid values: `BootVolume`, `ClusterSharedVolume`. |
+| `-Local` | No | Retrieves BitLocker details for volumes on the local node. Can be run in a regular remote PowerShell session. This is the default scope. |
+| `-PerNode` | No | Retrieves BitLocker details for each node in the cluster. Requires CredSSP authentication (remote PowerShell) or a Remote Desktop (RDP) session. |
 
-- ```powershell
-    Disable-ASBitLocker -<Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
-    ```
+#### Enable-ASBitLocker
 
+Enables BitLocker encryption on the specified volume type.
+
+```powershell
+Enable-ASBitLocker -VolumeType <BootVolume | ClusterSharedVolume> -<Local | Cluster> [-MountPoint <path>]
+```
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `-VolumeType` | Yes | The type of volume to encrypt. Valid values: `BootVolume`, `ClusterSharedVolume`. |
+| `-Local` | No | Encrypts volumes owned by the local node. This is the default scope. |
+| `-Cluster` | No | Encrypts volumes across all nodes in the cluster. Requires CredSSP authentication. |
+| `-MountPoint` | No | Targets a specific CSV by mount point path (for example, `C:\ClusterStorage\Volume1`). Only available with `-Local` scope. If omitted, all CSVs owned by the local node are encrypted. |
+
+#### Disable-ASBitLocker
+
+Disables BitLocker encryption on the specified volume type.
+
+```powershell
+Disable-ASBitLocker -VolumeType <BootVolume | ClusterSharedVolume> -<Local | Cluster> [-MountPoint <path>]
+```
+
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `-VolumeType` | Yes | The type of volume to decrypt. Valid values: `BootVolume`, `ClusterSharedVolume`. |
+| `-Local` | No | Decrypts volumes owned by the local node. This is the default scope. |
+| `-Cluster` | No | Decrypts volumes across all nodes in the cluster. Requires CredSSP authentication. |
+| `-MountPoint` | No | Targets a specific CSV by mount point path (for example, `C:\ClusterStorage\Volume1`). Only available with `-Local` scope. If omitted, all CSVs owned by the local node are decrypted. |
 
 ### View encryption settings for volume encryption with BitLocker
 
@@ -61,35 +87,114 @@ Follow these steps to view encryption settings:
 
 1. Run the following PowerShell cmdlet using local administrator credentials:
 
-    ```PowerShell
-    Get-ASBitLocker
+    ```powershell
+    Get-ASBitLocker -VolumeType BootVolume -Local
     ```
 
-### Enable, disable volume encryption with BitLocker
+   To view encryption status for Cluster Shared Volumes:
+
+    ```powershell
+    Get-ASBitLocker -VolumeType ClusterSharedVolume -Local
+    ```
+
+   To view encryption status across all nodes in the cluster (requires CredSSP or RDP):
+
+    ```powershell
+    Get-ASBitLocker -VolumeType ClusterSharedVolume -PerNode
+    ```
+
+### Enable volume encryption with BitLocker
+
+> [!IMPORTANT]
+> - Enabling volume encryption on volume type `BootVolume` requires TPM 2.0.
+> - All CSVs owned by the target node must be in the **Online** state before you begin.
+
+#### What happens during CSV encryption
+
+When you enable BitLocker on a `ClusterSharedVolume`, the volume goes through the following lifecycle:
+
+| Phase | Volume state | Volume accessible? | VM impact |
+|-------|-------------|---------------------|-----------|
+| **1. Maintenance mode** | CSV is suspended via `Suspend-ClusterResource`. | **No** — I/O to the volume is paused. | Workload VMs with virtual disks on this CSV are **paused**. |
+| **2. Encryption initiated** | BitLocker encryption starts. Key protectors are created. | **No** — volume remains in maintenance mode. | VMs remain paused. |
+| **3. Resume** | CSV is brought back online via `Resume-ClusterResource`. | **Yes** — volume is accessible again. | VMs resume. |
+| **4. Redirected I/O** | While encryption completes in the background, the CSV enters **redirected I/O mode**. All I/O from non-owner nodes routes through the coordinator (owner) node. | **Yes** — volume is fully accessible. | VMs are running. I/O performance may be reduced on non-owner nodes until encryption completes. |
+| **5. Direct I/O** | Once encryption finishes, the CSV returns to normal **direct I/O mode**. | **Yes** | No impact. |
+
+**Plan for the maintenance window.** The duration of the maintenance phase (phases 1–2) depends on volume size and system load. During this time, workload VMs are paused and the volume is inaccessible. Perform this operation during a planned maintenance window.
+
+> [!NOTE]
+> **Key protectors:** During encryption, two key protectors are created automatically:
+> - A **recovery password** — backed up to Active Directory for disaster recovery.
+> - An **external key** — stored at `C:\Windows\Cluster` on the owner node, used for automatic CSV unlock during failover.
+>
+> To save your recovery keys to an external location such as Azure Key Vault, see [Get BitLocker recovery keys](#get-bitlocker-recovery-keys).
+
+> [!WARNING]
+> If encryption fails, the system attempts to disable BitLocker and fully decrypt the volume before resuming. If cleanup also fails, the CSV may remain in **maintenance mode** and require manual investigation. Check the encryption logs at `C:\MASLogs\ASEncryptionLogs` for details.
 
 Follow these steps to enable volume encryption with BitLocker:
 
 1. Connect to your Azure Local machine.
 
-1. Run the following PowerShell cmdlet using local administrator credentials:
+1. Run the following PowerShell cmdlet using local administrator credentials.
 
-   > [!IMPORTANT]
-   > - Enabling volume encryption with BitLocker on volume type BootVolume requires TPM 2.0.
-   >
-   > - While enabling volume encryption with BitLocker on volume type `ClusterSharedVolume` (CSV), the volume will be put in redirected mode and any workload VMs will be paused for a short time. This operation is disruptive; plan accordingly. For more information, see [How to configure BitLocker encrypted clustered disks in Windows Server 2012](https://techcommunity.microsoft.com/t5/failover-clustering/how-to-configure-bitlocker-encrypted-clustered-disks-in-windows/ba-p/371825).
+   To encrypt boot volumes on the local node:
 
-    ```PowerShell
-    Enable-ASBitLocker
+    ```powershell
+    Enable-ASBitLocker -VolumeType BootVolume -Local
     ```
+
+   To encrypt all Cluster Shared Volumes owned by the local node:
+
+    ```powershell
+    Enable-ASBitLocker -VolumeType ClusterSharedVolume -Local
+    ```
+
+   To encrypt a specific CSV by mount point:
+
+    ```powershell
+    Enable-ASBitLocker -VolumeType ClusterSharedVolume -Local -MountPoint "C:\ClusterStorage\Volume1"
+    ```
+
+   To encrypt all CSVs across the cluster (requires CredSSP):
+
+    ```powershell
+    Enable-ASBitLocker -VolumeType ClusterSharedVolume -Cluster
+    ```
+
+### Disable volume encryption with BitLocker
+
+Disabling BitLocker follows the same maintenance mode lifecycle as enabling: the CSV is suspended, decryption is initiated, and then the CSV is resumed. Decryption continues in the background while the volume is accessible in redirected I/O mode.
 
 Follow these steps to disable volume encryption with BitLocker:
 
 1. Connect to your Azure Local machine.
 
-1. Run the following PowerShell cmdlet using local administrator credentials:
+1. Run the following PowerShell cmdlet using local administrator credentials.
 
-    ```PowerShell
-    Disable-ASBitLocker
+   To decrypt boot volumes on the local node:
+
+    ```powershell
+    Disable-ASBitLocker -VolumeType BootVolume -Local
+    ```
+
+   To decrypt all Cluster Shared Volumes owned by the local node:
+
+    ```powershell
+    Disable-ASBitLocker -VolumeType ClusterSharedVolume -Local
+    ```
+
+   To decrypt a specific CSV by mount point:
+
+    ```powershell
+    Disable-ASBitLocker -VolumeType ClusterSharedVolume -Local -MountPoint "C:\ClusterStorage\Volume1"
+    ```
+
+   To decrypt all CSVs across the cluster (requires CredSSP):
+
+    ```powershell
+    Disable-ASBitLocker -VolumeType ClusterSharedVolume -Cluster
     ```
 
 ## Get BitLocker recovery keys
