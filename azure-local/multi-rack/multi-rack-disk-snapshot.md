@@ -129,6 +129,7 @@ Here is an example output:
   },
   "type": "microsoft.azurestackhci/snapshots"
 }
+```
 
 ## Update snapshot tags
 

@@ -44,7 +44,7 @@ VMs store and manipulate data on virtual disks. Each VM starts with an OS disk, 
 **Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend that you use unmanaged disks only for VMs that need to be compatible with third-party tools, which only support Azure unmanaged disks.
 
 > [!NOTE]
-> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+> Unmanaged disks are no longer supported, migrate to managed disks. For details, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 

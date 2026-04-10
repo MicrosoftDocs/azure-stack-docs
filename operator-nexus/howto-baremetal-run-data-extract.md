@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 2/13/2025
+ms.date: 03/12/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -88,20 +88,20 @@ az networkcloud baremetalmachine run-data-extract --name "<machine-name>"  \
 
 You can specify multiple commands by using JSON format in the `--commands` option. Each `command` value specifies the command and arguments. For a command with multiple arguments, provide the arguments as a list in the `arguments` parameter. For instructions on how to construct the `--commands` structure, see [Azure CLI shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md).
 
-These commands can take a long time to run, so we recommend that you set the `--limit-time-seconds` value to at least 600 seconds (10 minutes). When you use the `Debug` option or run multiple extracts, it might take longer than 10 minutes.
+These commands can take a long time to run, so we recommend that you set the `--limit-time-seconds` value to at least 1000 seconds (15+ minutes).
 
 In the response, the operation performs asynchronously and returns an HTTP status code of `202`. To learn how to track command completion and view the output file, go to [How to view the full output of a command in the associated storage account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account).
 
 ### <a name = "hardware-support-data-collection"></a> The hardware-support-data-collection command
 
-The following example runs the `hardware-support-data-collection` command and gets `SysInfo` and `TTYLog` logs from the Dell server. The script runs a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the file outputs of the extract command in the ZIP file `hardware-support-data-<timestamp>.zip`.
+The following example runs the `hardware-support-data-collection` command and gets `SysInfo`, `TTYLog`, and `Debug` logs from the Dell server. The script runs a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the file outputs of the extract command in the ZIP file `hardware-support-data-<timestamp>.zip`.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
   --resource-group "cluster_MRG" \
   --subscription "subscription" \
-  --commands '[{"arguments":["SysInfo", "TTYLog"],"command":"hardware-support-data-collection"}]' \
-  --limit-time-seconds 600
+  --commands '[{"arguments":["SysInfo", "TTYLog","Debug"],"command":"hardware-support-data-collection"}]' \
+  --limit-time-seconds 1000
 ```
 
 #### Output from the `hardware-support-data-collection` command
@@ -109,7 +109,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
 ```azurecli
 ====Action Command Output====
 Executing hardware-support-data-collection command
-Getting following hardware support logs: SysInfo,TTYLog
+Getting following hardware support logs: SysInfo,TTYLog,Debug
 Job JID_814372800396 is running, waiting for it to complete ...
 Job JID_814372800396 Completed.
 ---------------------------- JOB -------------------------
@@ -782,6 +782,69 @@ Script execution result can be downloaded from storage account using the command
  az storage blob download --blob-url https://simdev4003469vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --file runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --auth-mode login  > /dev/null 2>&1
 ```
 
+### <a name = "list-crashdump-files"></a> List kernel crashdump files
+
+Bare metal machines (BMM) support the collection of kernel crash dumps. The latest two crash dumps are stored on the BMM. 
+To list the available kernel crash dumps on a bare metal machine, run the following command:
+
+```azurecli
+az networkcloud baremetalmachine run-data-extracts-restricted \
+  --name <bmm-name> \
+  --resource-group <resource-group-name> \
+  --limit-time-seconds 1200 \
+  --commands '[{"command":"list-kernel-crashdump"}]' \
+  --subscription <sub-id>
+```
+
+#### Output of the `list-kernel-crashdump` command
+
+```azurecli
+====Action Command Output====
+Available Kernel Crashdump files for rack1compute01:
+*rack1compute01-20260211042134.tar.gz*
+Kernel Crashdump file listing is complete for rack1compute01
+ 
+cli.azext_networkcloud.operations.custom_properties:
+================================
+cli.azext_networkcloud.operations.custom_properties: Script execution result can be downloaded from storage account using the command:
+az storage blob download --blob-url https://simdev4704108vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-0c305f1f-22fe-4c3a-8757-2225c3a1f9d0.tar.gz --file runcommand-output-0c305f1f-22fe-4c3a-8757-2225c3a1f9d0.tar.gz --auth-mode login  > /dev/null 2>&1
+```
+
+The output lists the kernel crashdump files on the BMM. The output of the command is also stored in the customer-provided storage account.
+Note that this command only lists the kernel crashdump file names. To download the full crashdump, use the `get-kernel-crashdump` command.
+
+  > [!WARNING]
+  > To run `list-kernel-crashdump`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command). The minimum requirements for executing this command are NC4.10 and the `v20250701preview` API version.
+
+### <a name = "get-crashdump-file"></a> Get kernel crashdump file
+
+You can use the `get-kernel-crashdump` command to download the kernel crashdump file from the BMM to a storage account. The argument to the command is a list of one or more crashdump file names that you want to download.
+
+```azurecli
+az networkcloud baremetalmachine run-data-extracts-restricted \
+  --name <bmm-name> \
+  --resource-group <resource-group-name> \
+  --limit-time-seconds 1200 \
+  --commands '[{"command":"get-kernel-crashdump", "arguments":["<crashdump-filename-1>", "<crashdump-filename-2>"]}]' \
+  --subscription <sub-id>
+```
+
+#### Output of the `get-kernel-crashdump` command
+
+```azurecli
+====Action Command Output====
+Extracting Kernel Crashdump file rack1compute01-20260211042134.tar.gz for rack1compute01 to /hostfs/tmp/runcommand/d85c6e2a-1bfe-4957-9ee0-43bffc33b2b3-action-bmmdataextrstrcmd
+Kernel Crashdump file rack1compute01-20260211042134.tar.gz successfully copied to /hostfs/tmp/runcommand/d85c6e2a-1bfe-4957-9ee0-43bffc33b2b3-action-bmmdataextrstrcmd
+ 
+cli.azext_networkcloud.operations.custom_properties:
+================================
+cli.azext_networkcloud.operations.custom_properties: Script execution result can be downloaded from storage account using the command:
+az storage blob download --blob-url https://simdev4704108vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-00ac21c2-209e-4108-96ec-a3760501be38.tar.gz --file runcommand-output-00ac21c2-209e-4108-96ec-a3760501be38.tar.gz --auth-mode login  > /dev/null 2>&1
+```
+
+  > [!WARNING]
+  > To run `get-kernel-crashdump`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command). The minimum requirements for executing this command are NC4.10 and the `v20250701preview` API version.
+
 [!INCLUDE [command-output-view](./includes/run-commands/command-output-view.md)]
 
 The downloaded tar.gz file contains the full output and the file outputs of the extract command in ZIP format.
@@ -818,6 +881,14 @@ You can run the `run-data-extracts-restricted` command as a new and separate API
 - [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
   Command name: `cluster-cve-report`\
   Arguments: None
+
+- [Get the list of kernel crashdump files on the machine](#list-crashdump-files)\
+  Command name: `list-kernel-crashdump`\
+  Arguments: None
+
+- [Collect the kernel crashdump files from the machine](#get-crashdump-file)\
+  Command name: `get-kernel-crashdump`\
+  Arguments: List of crashdump file names
 
 You can run the command by using `az networkcloud baremetalmachine run-data-extracts-restricted`. It accepts arguments similar to the `run-data-extract` command.
 

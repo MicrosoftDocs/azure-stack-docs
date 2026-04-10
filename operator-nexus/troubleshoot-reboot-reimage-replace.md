@@ -340,6 +340,26 @@ A hardware validation process is invoked to ensure the integrity of the physical
 
 ### Replace workflow
 
+Before committing to a Replace action, it's important to diagnose the root cause of the failure. In many cases, a Troubleshooting Report (TSR) should be collected and reviewed first to confirm that Replace is the correct corrective action and to identify any mitigations that should be applied before or during the replace operation.
+
+#### Collect a Troubleshooting Report (TSR)
+
+A TSR (also known as a Dell SupportAssist collection) gathers detailed hardware diagnostic data from the BMM, including system information, hardware inventory, lifecycle controller logs, and storage controller status. Reviewing a TSR before performing a Replace helps you:
+
+- **Confirm the root cause** of a provisioning or hardware failure
+- **Identify which components** need physical repair or replacement
+- **Determine if Replace is necessary** or if a less disruptive action (restart, reimage) would resolve the issue
+- **Inform your storage policy choice** by understanding the state of disks and RAID controllers
+
+To collect a TSR, use the `hardware-support-data-collection` command as described in [SupportAssist or TSR collection for Dell troubleshooting](howto-baremetal-run-data-extract.md#hardware-support-data-collection).
+
+> [!NOTE]
+> The `run-data-extract` command requires the BMM to be powered on and reachable. If the BMM is unresponsive, collect the TSR directly from the Baseboard Management Controller (BMC/iDRAC) using the Dell iDRAC web interface or racadm CLI. See the Dell Knowledge Base article [Export a SupportAssist Collection Using an iDRAC](https://www.dell.com/support/kbdoc/en-us/000126308/export-a-supportassist-collection-via-idrac9) for instructions.
+
+After reviewing the TSR findings and completing any physical repairs or mitigations, proceed with the replace workflow below.
+
+#### Replace workflow steps
+
 Follow these steps to safely replace a BMM after hardware repairs:
 
 1. **Identify hardware replaced** - Determine which components were repaired (see [Hardware Component Replacement Guide](#hardware-component-replacement-guide))

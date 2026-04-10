@@ -168,12 +168,13 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Get-VmNetworkAdapter -VmName "Node1" | Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
     ```
 
-1. Create a new key protector and assign it to `Node1`. This is typically done in the context of setting up a guarded fabric in Hyper-V, a security feature that protects VMs from unauthorized access or tampering.
-
-    After the following script is executed, `Node1` will have a new key protector assigned to it. This key protector protects the VM's keys, helping to secure the VM against unauthorized access or tampering:
+1. Create a new key protector and assign it to Node1. This step uses a local “untrusted” guardian, which is appropriate for lab and test environments.
 
     ```PowerShell
-    $owner = Get-HgsGuardian UntrustedGuardian
+    # Create a local guardian for lab/testing if one doesn't already exist
+    New-HgsGuardian -Name "UntrustedGuardian" -GenerateCertificates
+
+    $owner = Get-HgsGuardian -Name "UntrustedGuardian"
     $kp = New-HgsKeyProtector -Owner $owner -AllowUntrustedRoot
     Set-VMKeyProtector -VMName "Node1" -KeyProtector $kp.RawData
     ```
@@ -184,10 +185,10 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     Enable-VmTpm -VMName "Node1"
     ```
 
-1. Change virtual processors to `8`:
+1. Change virtual processors to `4`:
 
    ```PowerShell
-    Set-VmProcessor -VMName "Node1" -Count 8
+    Set-VmProcessor -VMName "Node1" -Count 4
     ```
 
 1. Create extra drives to be used as one for boot disk and two hard disks for Storage Spaces Direct. After these commands are executed, three new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:

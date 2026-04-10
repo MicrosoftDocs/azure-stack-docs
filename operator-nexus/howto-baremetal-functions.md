@@ -321,6 +321,8 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 > 2. The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine cannot be brought up using normal operations.
 >
 > If local path storage decryption failures occur and the motherboard was **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
+>
+> If local path storage decryption failures persist after a Replace with `DiscardAll`, perform an iDRAC reset before retrying.
 
 For detailed troubleshooting workflows including pre/post-checks and hardware replacement guidance, see [Troubleshoot server problems with Restart, Reimage, and Replace](./troubleshoot-reboot-reimage-replace.md#troubleshoot-with-a-replace-action).
 

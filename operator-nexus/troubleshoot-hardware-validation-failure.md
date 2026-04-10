@@ -349,7 +349,7 @@ To check a specific NIC with `racadm`, provide the fully qualified device descri
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD hwinventory NIC.Embedded.1-1-1
 ```
 
-To troubleshoot, ensure that servers are cabled correctly and that ports are linked up. Bounce the port on the fabric. Perform a flea drain. If the problem persists, contact the vendor.
+To troubleshoot, ensure that servers are cabled correctly, and that ports are linked up. Bounce the port on the fabric. Perform a flea drain. If the problem persists, contact the vendor.
 
 #### NIC check Layer 2 switch information
 
@@ -664,7 +664,7 @@ Reseating the power supply might fix the problem. If alarms persist, contact the
 }
 ```
 
-To update the boot device state in the BMC web UI, set the checkmark on the first UEFI Boot Device and then select **Apply\*#### > **Apply and reboot\*\*:
+To update the boot device state in the BMC web UI, set the checkmark on the first Unified Extensible Firmware Interface (UEFI) Boot Device and then select **Apply\*#### > **Apply and reboot\*\*:
 
 - `BMC` -> `Configuration` -> `BIOS Settings` -> `UEFI Boot Settings` -> `UEFI Boot Sequence` -> `Checked`
 

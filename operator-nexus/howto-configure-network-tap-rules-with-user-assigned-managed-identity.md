@@ -56,8 +56,8 @@ Output
     "type": "UserAssigned", 
     "userAssignedIdentities": { 
       "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/identityRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/tapRuleIdentity": { 
-        "clientId": "e4382d3c-40c7-4836-9811-ad0f929a1c83", 
-        "principalId": "92f5f45c-bf76-428d-a396-d74d01eab20d" 
+        "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444", 
+        "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222" 
       } } }, 
 
   "identitySelector": { 
@@ -245,7 +245,7 @@ Error Output:
 {
   "error": {
     "code": "LinkedAuthorizationFailed",
-    "message": "The client 'user@domain.com' with object id '84ecf60c-f987-4b80-bdb2-c045055da868' has permission to perform action 'Microsoft.ManagedNetworkFabric/networkTapRules/write' on scope '/subscriptions/.../networkTapRules/myTapRule'; however, it does not have permission to perform action(s) 'Microsoft.ManagedIdentity/userAssignedIdentities/assign/action' on the linked scope(s) '/subscriptions/.../userAssignedIdentities/tapRuleIdentity'."
+    "message": "The client 'user@domain.com' with object id 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb' has permission to perform action 'Microsoft.ManagedNetworkFabric/networkTapRules/write' on scope '/subscriptions/.../networkTapRules/myTapRule'; however, it does not have permission to perform action(s) 'Microsoft.ManagedIdentity/userAssignedIdentities/assign/action' on the linked scope(s) '/subscriptions/.../userAssignedIdentities/tapRuleIdentity'."
   }
 }
 ```

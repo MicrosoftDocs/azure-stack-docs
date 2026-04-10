@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/01/2025
+ms.date: 03/25/2026
 ms.author: alkohli
 ms.subservice: hyperconverged
 ---
@@ -25,6 +25,7 @@ The following list contains the prerequisites and considerations that must be me
 |Open required firewall ports.|source, target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **5985, 5986** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance.|
 |Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
 |Configure SAN/disks policy on VMs. |source|[Configure SAN/disks policy](migrate-troubleshoot.md#disks-on-migrated-vms-are-offline).|
+| Verify secure boot status of guest VMs | source | Secure Boot settings are preserved for UEFI (Generation 2) VMs during migration. Configure Secure Boot as intended on the source VM before migration. If Secure Boot settings are modified, allow up to 30 minutes for the Azure Migrate discovery service to detect the change before you initiate migration. |
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
 | Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
 | Shared disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
