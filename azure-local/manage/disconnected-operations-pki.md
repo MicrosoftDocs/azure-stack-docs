@@ -168,6 +168,10 @@ certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
 
+ [!NOTE]
+> **Root cert is required.** Make sure you have the explicit root and not an intermediate certificate. Deployment can fail if it does not have the full trust chain used for the ingress endpoint certificates. 
+
+
 ## Obtain certificate information for identity integration
 
 To secure your identity integration, pass these two parameters:
