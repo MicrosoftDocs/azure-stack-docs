@@ -169,7 +169,7 @@ For detailed analysis, view the HTML report at:
 Do you have an issue? Would you like to share feedback with us about the Azure Local Support Diagnostic Tool?
 To submit feedback, contact [azlocaldiagfeedback@microsoft.com](mailto:azlocaldiagfeedback@microsoft.com).
 
-Release notes: [AzureLocal-Supportability-GH](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG/CSSTools/ReleaseNotes)
+Release notes: [AzureLocal-Supportability-GH](https://github.com/Azure/AzureLocal-Supportability/blob/main/tools/CSSTools/1.2602.24.1845/ReleaseNotes.md)
 
 ## Next steps
 
