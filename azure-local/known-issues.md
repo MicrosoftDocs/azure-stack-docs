@@ -58,6 +58,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| WAC <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 
 

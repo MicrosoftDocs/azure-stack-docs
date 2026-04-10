@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 03/26/2026
+ms.date: 04/09/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -209,7 +209,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -488,7 +488,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -575,7 +575,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -774,7 +774,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -1048,7 +1048,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -1135,7 +1135,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
