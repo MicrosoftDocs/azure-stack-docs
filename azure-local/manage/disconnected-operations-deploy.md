@@ -355,18 +355,7 @@ To configure observability, follow these steps:
 On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane.
 
 ```powershell
-# Check if Az.Resources 8.1.1 is installed, if not install it (2603)
-$requiredModule = "Az.Resources"
-$requiredVersion = "8.1.1"
-$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
 
-# Note if operating air-gaped, you need to download and copy this module manually
-if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
-    Write-Host "Installing $requiredModule version $requiredVersion..."
-    Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
-}
-
-# Make sure you have the following module installed - if not install it Az.Resources 8.1.1
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
@@ -409,11 +398,28 @@ Ensure you limit access to the operator subscription to only required personnel.
 
 Make sure you register the required resource providers before deployment. 
 
-Here's an example of how to automate the resource providers registration from Azure PowerShell.
+Here's an example of how to automate the resource providers registration from Azure PowerShell. 
+
+
+> [!NOTE]
+> **Run this on a client machine and not the Azure Local nodes**  itself. If you do run it on an Azure Local node - please pay attention to the Az.Resources version as this will cause a conflict for deployment.
 
 ```powershell
 $applianceCloudName = "azure.local"
 $subscriptionName = "Operator subscription"
+
+# Example added if running this from an Azure Local node - 
+# Check if Az.Resources 8.1.1 is installed, if not install it (2603)
+# $requiredModule = "Az.Resources"
+# $requiredVersion = "8.1.1"
+# $installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
+
+# # Note if operating air-gaped, you need to download and copy this module manually
+# if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
+#     Write-Host "Installing $requiredModule version $requiredVersion..."
+#     Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
+#     Write-Information "Make sure Az.Resources is the correct version if you are running this script on an Azure Local node rather than a client"
+# }
 
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication

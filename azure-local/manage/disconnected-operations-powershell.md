@@ -29,17 +29,6 @@ Before you begin, make sure your client computer trusts the public key used to s
 To add your private cloud, run the following command:
 
 ```powershell
-# Check if Az.Resources 8.1.1 is installed, if not install it (2603)
-$requiredModule = "Az.Resources"
-$requiredVersion = "8.1.1"
-$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
-
-# Note if operating air-gaped, you need to download and copy this module manually
-if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
-    Write-Host "Installing $requiredModule version $requiredVersion..."
-    Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
-}
-
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
