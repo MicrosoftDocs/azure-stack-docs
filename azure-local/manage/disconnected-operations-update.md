@@ -66,14 +66,6 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 > [!NOTE]
 > Keep your BitLocker keys in a secure location.
 
-## Create appliance snapshot
-
-To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
-
-```powershell
-Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
-```
-
 ## Trigger an update
 
 > [!CAUTION]  
