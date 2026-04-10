@@ -439,10 +439,15 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguratio
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ExtendedLocation" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ResourceConnector" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
+
 # Not required on disconnected operations
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
+
+# Needed for automating Keyvault creation - not for Azure Local itself
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
+
 ```
 
 Wait until all resource providers are in the state **Registered**.
