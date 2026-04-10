@@ -161,7 +161,7 @@ A `replace` **must** be executed after each hardware maintenance operation, read
 As of the 2506.2 release, the password value for iDRAC can be provided as a Key Vault Uniform Resource Identifier (URI) or password value. See [Key Vault Credential Reference](reference-key-vault-credential.md). Using a URI instead of a plaintext password provides extra security.
 
 > [!IMPORTANT]
-> If the Bare Metal Machine was originally created with [sentinel values](./howto-configure-cluster.md#automatic-discovery-with-sentinel-values) for `bmcMacAddress` (`00:00:00:00:00:00`), `bootMacAddress` (`00:00:00:00:00:00`), or `serialNumber` (`000000`), the `replace` command does **not** automatically discover these values. You must provide the actual hardware values for `--bmc-mac-address`, `--boot-mac-address`, and `--serial-number` when executing the `replace` command. Sentinel values are only used for automatic discovery during initial cluster provisioning and aren't supported for `replace` operations.
+> If the cluster resource still shows [sentinel values](./howto-configure-cluster.md#automatic-discovery-with-sentinel-values) for a Bare Metal Machine's `bmcMacAddress` (`00:00:00:00:00:00`), `bootMacAddress` (`00:00:00:00:00:00`), or `serialNumber` (`000000`), you must provide the actual hardware values for `--bmc-mac-address`, `--boot-mac-address`, and `--serial-number` when executing the `replace` command. Automatic discovery of sentinel values is only supported during initial cluster provisioning and is **not** supported for `replace` operations.
 
 [!INCLUDE [warning-do-not-run-multiple-actions](./includes/baremetal-machines/warning-do-not-run-multiple-actions.md)]
 
