@@ -112,7 +112,7 @@ The following script shows you how to use the OperationsModule to generate certi
   
   Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-  New-AldoCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
+  New-ApplianceExternalCertificatesFromCA  -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
   ```
 
 ### Management endpoint
@@ -134,7 +134,7 @@ $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server 
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-New-AldoManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
+New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
 ```
 
 ## Export root CA certificate
