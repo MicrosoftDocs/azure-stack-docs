@@ -26,7 +26,7 @@ Parts that support hot swap typically don't require you to reimage the node unli
 
 The following flow diagram shows the overall process to repair a node.
 
-:::image type="content" source="./media/repair-server/repair-server-workflow-2-disaggregated.png.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
+:::image type="content" source="./media/repair-server/repair-server-workflow-2-disaggregated.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
 
 \*Node may not be in a state where shutdown is possible or necessary*
 
