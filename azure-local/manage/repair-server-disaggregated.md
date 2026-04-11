@@ -1,14 +1,14 @@
 ---
-title: Repair a Node on Azure Local for Disaggregated Deployments
-description: Learn how to repair a node on your Azure Local disaggregated deployments.
+title: Repair a node on Azure Local, version 23H2
+description: Learn how to repair a node on your Azure Local, version 23H2 system.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.date: 03/31/2026
+ms.date: 08/26/2025
 ms.subservice: hyperconverged
 ---
 
-# Repair a node on Azure Local for Disaggregated Deployments
+# Repair a node on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -16,7 +16,7 @@ This article describes how to repair a node on your Azure Local instance. In thi
 
 ## About repair nodes
 
-Azure Local is a hyperconverged system that allows you to repair nodes from existing systems. You may need to repair a node in a system if there's a hardware failure.
+Azure Local can be deployed using hyperconverged or disaggregated architecture that allows you to repair nodes from existing systems. You may need to repair a node in a system if there's a hardware failure.
 
 Before you repair a node, make sure to check with your solution provider, which components on the node are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace.
 
@@ -26,7 +26,7 @@ Parts that support hot swap typically don't require you to reimage the node unli
 
 The following flow diagram shows the overall process to repair a node.
 
-:::image type="content" source="./media/repair-server/repair-server-workflow-2.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
+:::image type="content" source="./media/repair-server/repair-server-workflow-2-disaggregated.png.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
 
 \*Node may not be in a state where shutdown is possible or necessary*
 
@@ -34,24 +34,13 @@ To repair an existing node, follow these high-level steps:
 
 1. If possible, shut down the node that you want to repair. Depending on the state of the node, a shutdown may not be possible or necessary.
 1. Reimage the node that needs to be repaired.
+1. Connect the node to the SAN
 1. Run the repair node operation. The Azure Stack HCI Operating System, drivers, and firmware are updated as part of the repair operation.
 
-    The storage is automatically rebalanced on the reimaged node. Storage rebalance is a low priority task that can run for multiple days depending on the number of nodes and the storage used.
 
 ## Supported scenarios
 
 Repairing a node reimages a node and brings it back to the system with the previous name and configuration.
-
-Repairing a single node results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
-
-> [!IMPORTANT]
-> Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-node scenarios.
-
-### Resiliency settings
-
-In this release, for a repair node operation, specific tasks aren't performed on the workload volumes that you created after the deployment. For a repair node operation, only the required infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs).
-
-The other workload volumes that you created after the deployment are still retained and you can discover these volumes by running the `Get-VirtualDisk` cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
 
 ### Hardware requirements
 
@@ -66,19 +55,6 @@ You may replace the entire node:
 - With a new node that has a different serial number compared to the old node.
 - With the current node after you reimage it.
 
-The following scenarios are supported during node replacement:
-
-| **Node** | **Disk** | **Supported** |
-|--|--|--|
-| New node | New disks | Yes |
-| New node | Current disks | Yes |
-| Current node (reimaged) | New disks | Yes |
-| Current node (reimaged) | Current disks | Yes |
-| Current node (reimaged) | Current data disks reformatted | No |
-
-> [!IMPORTANT]
-> If you replace a component during node repair, you don't need to replace or reset data drives. If you replace a drive or reset it, then the drive won't be recognized once the node joins the system.
-
 ### Component replacement
 
 On your Azure Local instance, non hot-swappable components include the following items:
@@ -87,7 +63,6 @@ On your Azure Local instance, non hot-swappable components include the following
 - Disk controller/host bus adapter (HBA)/backplace
 - Network adapter
 - Graphics processing unit
-- Data drives (drives that don't support hot swap, for example PCI-e add-in cards)
 
 The actual replacement steps for non hot-swappable components vary based on your original equipment manufacturer (OEM) hardware vendor. See your OEM vendor's documentation if a node repair is required for non hot-swappable components.
 
@@ -121,12 +96,13 @@ Follow these steps on the node you're trying to repair.
 
         :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
-1. Install the operating system and required drivers on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+1. Install the operating system,required drivers and connect your SAN on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os-disaggregated.md).
 
     >[!NOTE]
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
     > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
     > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - Ensure that the management network adapter name matches the name used on the other nodes (commonly Management). For example, `Rename-NetAdapter -Name "<current-adapter-name>" -NewName "Management"`.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 

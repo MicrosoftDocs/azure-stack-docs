@@ -86,7 +86,7 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 
 On the new node that you plan to add, follow these steps.
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os-disaggregated.md).
 
     >[!NOTE]
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
