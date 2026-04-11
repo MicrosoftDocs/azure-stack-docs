@@ -803,6 +803,8 @@ items:
       items:
       - name: System requirements
         href: concepts/system-requirements-disaggregated.md
+      - name: SAN requirements
+        href: concepts/san-requirements.md
       - name: Physical network requirements
         href: concepts/physical-network-requirements-disaggregated.md
       - name: Host network requirements
