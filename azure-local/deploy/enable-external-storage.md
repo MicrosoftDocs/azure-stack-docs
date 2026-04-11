@@ -1,8 +1,8 @@
 ---
 title: Enable External Storage (SAN) on Azure Local
 description: Describes how to enable integration of external Storage from various SAN vendors to Azure Local.
-author: thoroet
-ms.author: troettinger
+author: troettinger
+ms.author: thoroet
 ms.reviewer: ronmiab
 ms.topic: how-to
 ms.date: 03/27/2026
