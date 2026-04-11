@@ -225,6 +225,10 @@ items:
           href: concepts/route-reflector-overview.md
         - name: SDN Multisite overview
           href: concepts/sdn-multisite-overview.md
+
+       - name: Enable External Storage (SAN)
+         href: deploy/enable-external-storage.md
+          
       - name: Plan 
         items:
         - name: Network Controller
@@ -564,7 +568,9 @@ items:
       - name: Use ReFS deduplication and compression
         href: manage/refs-deduplication-and-compression.md
       - name: External storage support
-        href: concepts/external-storage-support.md  
+        href: concepts/external-storage-support.md
+      - name: External Storage support with AKS
+        href: manage/use-external-storage-for-containerized-workloads.md‎
 
     - name: Billing
       items:
@@ -934,6 +940,11 @@ items:
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
 
+  -name: Enable
+   items:
+       - name: Enable External Storage (SAN)
+         href: deploy/enable-external-storage.md
+
   - name: Update 
     items:
     - name: About Updates
@@ -1138,7 +1149,7 @@ items:
       - name: Telemetry and diagnostics extension
         href: concepts/telemetry-and-diagnostics-overview.md
       - name: Remote support extension
-        href: manage/remote-support-arc-extension.md  
+        href: manage/remote-support-arc-extension.md
 
     - name: Billing
       items:
