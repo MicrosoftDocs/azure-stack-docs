@@ -293,6 +293,9 @@ items:
         - name: Troubleshoot Software Load Balancer for SDN
           href: manage/troubleshoot-software-load-balancer.md
 
+    - name: Connect External Storage (SAN)
+      href: deploy/enable-external-storage.md
+
   - name: Update 
     items:
     - name: About Updates
@@ -567,7 +570,7 @@ items:
       - name: External storage support
         href: concepts/external-storage-support.md
       - name: External Storage support with AKS
-        href: manage/use-external-storage-for-containerized-workloads.md‎
+        href: manage/use-external-storage-for-containerized-workloads.md
 
     - name: Billing
       items:
@@ -937,10 +940,10 @@ items:
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
 
-  -name: Enable
-   items:
-       - name: Enable External Storage (SAN)
-         href: deploy/enable-external-storage.md
+  - name: Enable
+    items:
+    - name: Connect External Storage (SAN)
+      href: deploy/enable-external-storage.md
 
   - name: Update 
     items:
@@ -1148,6 +1151,11 @@ items:
       - name: Remote support extension
         href: manage/remote-support-arc-extension.md
 
+    - name: Storage
+      items:
+      - name: External Storage support with AKS
+        href: manage/use-external-storage-for-containerized-workloads.md
+        
     - name: Billing
       items:
       - name: Azure Hybrid Benefit
