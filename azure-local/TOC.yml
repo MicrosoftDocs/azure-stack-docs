@@ -306,6 +306,8 @@ items:
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
+    - name: Update settings
+      href: update/update-settings.md
     - name: Review best practices 
       href: update/update-best-practices.md
     - name: Troubleshoot updates
@@ -950,6 +952,8 @@ items:
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
+    - name: Update settings
+      href: update/update-settings.md
     - name: Review best practices 
       href: update/update-best-practices.md
     - name: Troubleshoot updates
