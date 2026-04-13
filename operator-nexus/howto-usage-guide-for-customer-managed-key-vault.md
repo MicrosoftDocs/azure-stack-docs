@@ -48,109 +48,66 @@ For these examples, let's assume that you've created a customer managed key vaul
 
 ```
 {
-
     ...,
-
     "identity": {
-
         "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
-
         "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
-
         "type": "SystemAssigned, UserAssigned",
-
         "userAssignedIdentities": {
-
             "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
-
                 "principalId": "12345678-1234-1234-1234-1234567890ab",
-
                 "clientId": "87654321-4321-4321-4321-ba0987654321"
-
             }
-
         }
-
     },
 
     "properties": {
-
         ...
-
     }
-
 }
-
 ```
 
 1. Now use the following `az` command to associate the new User Assigned Managed Identity with Network Fabric.
 
 ```bash
-
 $ # Note that the User Assigned Managed Identities are an array of strings.
-
 $ az networkfabric fabric update \
-
 --resource-group <my-nf-rg> \
-
 --resource-name <my-nf> \
-
 --mi-system-assigned 11223344-5566-7788-99aa-bbccddeeff00 \
-
 --mi-user-assigned [ \
-
 "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>", \
-
 "/subscriptions/<my-subscription>/resourcegroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-identity>", \
-
 ]
-
 ```
 
 1. Configure the key vault to Network Fabric by first creating a configuration JSON body. Your code looks like this.
 
 ```json
-
 {
-
   "properties": {
-
     "secretArchiveSettings": {
-
       "vaultUri": "https://mykeyvaultname.vault.azure.net/",
-
       "associatedIdentity": {
-
         "identityType": "UserAssignedIdentity",
-
         "userAssignedIdentityResourceId": "/subscriptions/<my-subscription>/resourceGroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-managed-identity>"
-
       }
-
     }
-
   }
-
 }
-
 ```
 
 1. Now use an `az rest` request to update the Network Fabric configuration:
 
 ```bash
-
 $ az rest --method patch --uri https://management.azure.com//subscriptions/<my-subscription>/resourceGroups/<my-nf-rg>/providers/microsoft.managednetworkfabric/NetworkFabrics/<my-nf>?api-version=2026-01-15-preview --body @<config.json>
-
 ```
 
 1. Use the normal _lock and commit_ process to make the new configuration active.
 
 ```bash
-
 $ az networkfabric fabric lock-fabric --lock-type Configuration --resource-group <my-nf-rg> --resource-name <my-nf>
-
 $ az networkfabric fabric commit-configuration --resource-group <my-nf-rg> --resource-name <my-nf>
-
 ```
 
 1. The next password rotation causes the new secrets to be duplicated to the key vault.
