@@ -23,13 +23,13 @@ Use the following table to directly go to a pattern and its content.
 
 **Go to [Disaggregated with FC SAN without in guest backup network](single-server-deployment.md)**
 
-:::image type="content" source="media/plan-deployment/disaggregated-fiber-channel-san-no-backup-hostnetworking.svg" alt-text="Diagram showing disaggregated FC SAN deployment without guest backup host networking pattern." lightbox="media/plan-deployment/disaggregated-fiber-channel-san-no-backup-hostnetworking.svg":::
+:::image type="content" source="media/plan-deployment/disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Diagram showing disaggregated FC SAN deployment without guest backup host networking pattern." lightbox="media/plan-deployment/disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
 
 ### Disaggregated with FC SAN with in guest backup network
 
 **Go to [Disaggregated with FC SAN with in guest backup network](three-node-switchless-two-switches-single-link.md)**
 
-:::image type="content" source="media/plan-deployment/disaggregated-fiber-channel-san-with-backup-hostnetworking.svg" alt-text="Diagram showing disaggregated FC SAN deployment with guest backup host networking pattern." lightbox="media/plan-deployment/disaggregated-fiber-channel-san-with-backup-hostnetworking.svg":::
+:::image type="content" source="media/plan-deployment/disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Diagram showing disaggregated FC SAN deployment with guest backup host networking pattern." lightbox="media/plan-deployment/disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
 ## Next steps
 

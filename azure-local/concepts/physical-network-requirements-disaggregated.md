@@ -382,7 +382,6 @@ This section lists industry standards that are mandatory for the specific roles 
 Here are the mandatory IEEE standards and specifications:
 
 # [24H2](#tab/24H2reqs)
-
 ### 24H2 role requirements
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -474,7 +473,7 @@ North-South traffic has the following characteristics:
 East-West traffic has the following characteristics:
 
 - Traffic remains within the ToR switches and Layer-2 boundary (VLAN) on single rack configuration, but can span to other ToR switches in a different rack if the cluster machines are distributed across multiple racks.
-- Includes CSV storage traffic or Live Migration traffic between nodes in the same clsuter.
+- Includes CSV storage traffic or Live Migration traffic between nodes in the same cluster.
 
 ### QoS policy for Azure Local
 

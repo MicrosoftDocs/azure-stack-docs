@@ -20,11 +20,11 @@ A deployment consists of single-node or multiple node systems (up to 64 machines
 
 - At least four network adapter ports, where two ports are dedicated for the management and compute intent, and two more ports are used for the cluster networks. In disaggregated deployments, the cluster networks use standalone ports without a Network ATC intent and are automatically configured on behalf of the user during the Azure Local deployment for disaggregated architectures.
 
-- Two additional network ports can be used for an additional compute intent to carry over the in guest backup traffic if the deployment requires to backup application data inside the virtual machines over the network.
+- Two additional network ports can be used for an additional compute intent for the virtual machines backup traffic if the deployment requires to backup application data inside the virtual machines over the network.
 
 - In a disaggregated SAN Fiber Channel configuration, storage traffic runs entirely on the FC fabric, separate from the Ethernet network.
 
-:::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Screenshot shows Azure Local disaggregated rack layout with 64 nodes across four racks" lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
+:::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Screenshot shows Azure Local disaggregated rack layout with 64 nodes across four racks." lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
 
 ## Firewall requirements
 
