@@ -24,11 +24,11 @@ Azure Local disaggregated deployments network traffic types:
 
 The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. No network adapters required for in-guest backup network.
 
-:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network.":::
 
 The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. Additional network adapters required for in-guest backup network
 
-:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network.":::
 
 ## Select a network adapter
 
