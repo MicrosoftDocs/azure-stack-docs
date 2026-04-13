@@ -3,7 +3,7 @@ title: Migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure C
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure CLI (Preview). This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 author: trumanbrown
 ms.topic: how-to
-ms.date: 04/08/2026
+ms.date: 04/09/2026
 ms.author: trumanbrown
 ms.subservice: hyperconverged
 ---
@@ -591,6 +591,9 @@ az migrate local start-migration \
 ```
 
 For more information, see the [`az migrate local start-migration`](/cli/azure/migrate/local#az-migrate-local-start-migration) command.
+
+> [!NOTE]
+> **Known bug:** When running `az migrate local start-migration`, you may see the warning *"Could not verify Arc Resource Bridge status via Resource Graph query."* This warning displays incorrectly even when the Arc Resource Bridge status is healthy. Migration is not affected and can still succeed even if the warning is shown.
 
 ---
 
