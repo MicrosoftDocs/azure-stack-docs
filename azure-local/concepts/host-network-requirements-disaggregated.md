@@ -24,11 +24,11 @@ Azure Local disaggregated deployments network traffic can be classified by its i
 
 The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on FC SAN, with the required network traffic types when there is no requirement for an in-guest backup network.
 
-:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fcsan-nobackup-hostnetworking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network" lightbox="media/host-network-requirements/azure-local-disaggregated-fcsan-nobackup-hostnetworking.svg":::
+:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fiberchannelsan-nobackup-hostnetworking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network" lightbox="media/host-network-requirements/azure-local-disaggregated-fcsan-nobackup-hostnetworking.svg":::
 
 The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on FC SAN, with the required network traffic types when there is a requirement for an in-guest backup network.
 
-:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fcsan-withbackup-hostnetworking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network" lightbox="media/host-network-requirements/azure-local-disaggregated-fcsan-withbackup-hostnetworking.svg":::
+:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fiberchannelsan-withbackup-hostnetworking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network" lightbox="media/host-network-requirements/azure-local-disaggregated-fcsan-withbackup-hostnetworking.svg":::
 
 ## Select a network adapter
 
