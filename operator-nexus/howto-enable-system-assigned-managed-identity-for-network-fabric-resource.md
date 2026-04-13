@@ -11,7 +11,7 @@ ms.custom: template-how-to
 
 # Enable SAMI for the Network Fabric resource in Azure Operator Nexus
 
-This article explains how to enable System Assigned Managed Identity (SAMI) for the Network Fabric resource. You can enable SAMI for both new and existing resource paths. The article also covers identity transition rules, lock and commit considerations, and role requirements.
+This article explains how to enable system assigned managed identity (SAMI) for the Network Fabric resource. You can enable SAMI for both new and existing resource paths. The article also covers identity transition rules, lock and commit considerations, and role requirements.
 
 The Network Fabric resource supports the following identity modes: `SystemAssigned`, `UserAssigned`, and `SystemAssigned,UserAssigned`. `None` isn't supported.
 
@@ -21,7 +21,7 @@ Be aware of the following constraints:
 
 - If SAMI is accidentally disassociated (for example, because of an incorrect `None` patch), reassociate SAMI as soon as possible.
 
-- For updates where UAMI already exists and you must add SAMI, provide both identities (`SystemAssigned,UserAssigned`) in effective payload terms.
+- For updates where user assigned managed identity (UAMI) already exists and you must add SAMI, provide both identities (`SystemAssigned,UserAssigned`) in effective payload terms.
 
 > [!IMPORTANT]
 > Preserving SAMI is required to prevent token acquisition failures in Network Fabric operational flows. If SAMI is removed or the identity is set to `None`, reassociate SAMI immediately.
@@ -33,7 +33,7 @@ Be aware of the following constraints:
 - The Network Fabric resource lifecycle checks show the following conditions before the identity updates:
   - `provisioningState = Succeeded`
   - The resource isn't locked for the intended operation.
-- Commit workflow capabilities require Network Fabric resource version and API support. For example, you need `2024-06-15-preview` or newer APIs for lock and commit flows.
+- Commit Workflow capabilities require Network Fabric resource version and API support. For example, you need `2024-06-15-preview` or newer APIs for lock and commit flows.
 - For the latest identity visibility in your environment, use `2025-07-15` when available.
 
 ## Create a new resource

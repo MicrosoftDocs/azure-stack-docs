@@ -11,13 +11,13 @@ ms.custom: template-how-to
 
 # Enable SAMI for the Network Fabric Controller in Azure Operator Nexus
 
-This article describes how to enable and validate System Assigned Managed Identity (SAMI) for the Network Fabric Controller resource for both new resources and existing resources.
+This article describes how to enable and validate system assigned managed identity (SAMI) for the Network Fabric Controller resource for both new resources and existing resources.
 
 ## Scope and identity rules
 
 On the Network Fabric Controller resource, you can use `SystemAssigned` for your identity. You can't use `UserAssigned` or `None`. These identities aren't supported.
 
-Network Fabric Controller resource managed flows access platform resources (for example, storage and key vault in managed resource groups). SAMI is the required baseline identity for trusted service access patterns in these workflows.
+Network Fabric Controller resource managed flows access platform resources (for example, Azure Storage and Azure Key Vault in managed resource groups). SAMI is the required baseline identity for trusted service access patterns in these workflows.
 
 ## Prerequisites
 
@@ -191,13 +191,13 @@ After the SAMI change, check the following points:
 
 ## Frequently asked questions
 
-*Why is UAMI not supported for the Network Fabric Controller resource?*
+*Why is user assigned managed identity (UAMI) not supported for the Network Fabric Controller resource?*
 
 The Network Fabric Controller resource uses SAMI as the required identity bound to its resource lifecycle. UAMI isn't in scope for these managed flows.
 
 *Can I remove SAMI from the Network Fabric Controller resource?*
 
-No. SAMI must persist to maintain trusted service access to Network Fabric Controller resources (such as Azure Key Vault and Azure Storage in its managed resource group).
+No. SAMI must persist to maintain trusted service access to Network Fabric Controller resources (such as Key Vault and Storage in its managed resource group).
 
 *What happens if I specify identity type `None` for the Network Fabric Controller resource?*
 
