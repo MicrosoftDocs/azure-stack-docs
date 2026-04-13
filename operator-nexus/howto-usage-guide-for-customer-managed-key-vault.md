@@ -43,8 +43,8 @@ For these examples, let's assume that you create a customer managed key vault. Y
 
 1. Associate the User Assigned Managed Identity with Network Fabric.
 
-  > [!Note]
-  > You must retain the existing System Assigned Managed Identity and any pre-existing User Assigned Managed Identities. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
+    > [!Note]
+    > You must retain the existing System Assigned Managed Identity and any pre-existing User Assigned Managed Identities. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
 
   ```
   {
@@ -118,7 +118,7 @@ For these examples, let's assume that you create a customer managed key vault. Y
     
     ```
 
-### Remove secret archive settings configuration
+## Remove secret archive settings configuration
 
 You can remove the secret archive settings configuration. If you do so, future password rotations don't copy secrets to the key vault. After a password rotation, all secret references in the Network Fabric and Network Device configuration reference the key vault in the Network Fabric Controller managed resource group.
 
