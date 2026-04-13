@@ -1,12 +1,12 @@
 ---
-title: Network reference patterns overview for Azure Local
-description: Learn about the different supported network reference patterns for Azure Local.
+title: Network reference patterns overview for Azure Local disaggregated deployments
+description: Learn about the different supported network reference patterns for Azure Local disaggregated deployments.
 ms.topic: concept-article
 author: alkohli
 ms.author: cedward
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 13/04/2026
+ms.date: 04/13/2026
 ms.subservice: hyperconverged
 ---
 
