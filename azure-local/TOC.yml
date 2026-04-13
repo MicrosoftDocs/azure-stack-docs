@@ -60,9 +60,9 @@ items:
         href: concepts/firewall-requirements.md
     - name: Review network reference patterns
       items:
-      - name: Network reference patterns overview
-        href: plan/network-patterns-overview.md
-      - name: Choose network reference pattern
+      - name: Disaggregated network reference patterns overview
+        href: plan/network-patterns-overview-disaggregated.md
+      - name: Choose disaggregated network reference pattern
         href: plan/choose-network-pattern.md
       - name: Single-node deployment
         items:
