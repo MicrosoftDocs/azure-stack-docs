@@ -40,4 +40,4 @@ For more information, see [Firewall requirements](/azure-stack/hci/concepts/fire
 
 ## Next steps
 
-- [Choose a network pattern ](choose-network-pattern.md) to review.
+- [Choose a disaggregated network pattern ](choose-network-pattern-disaggregated.md) to review.
