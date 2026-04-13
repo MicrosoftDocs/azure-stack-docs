@@ -1,4 +1,3 @@
----
 title: Terminal Server as an Azure Operator Nexus Resource
 description: Learn how Terminal Servers (Bootstrap Devices) are modeled as ARM resources in Azure Operator Nexus for observability, automation, and lifecycle management.
 author: RaghvendraMandawale
@@ -7,11 +6,8 @@ ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 04/09/2026
 ms.custom: template-concept
----
 
 # Terminal Server as an Azure Operator Nexus Resource
-
-## Overview
 
 Terminal Servers (Bootstrap Devices) are modeled as Azure Resource Manager (ARM) resources within the Azure Operator Nexus (AON) platform to enable observability, automation, and lifecycle management.
 
@@ -27,8 +23,6 @@ These resources are defined within the AON Managed Network Fabric API specificat
 > [!NOTE]
 > The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
 
----
-
 ## Prerequisites
 
 The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabric Runtime version `8.0.0`, and API `2026-01-15-preview` to enable complete support for Terminal Server as an AON resource.
@@ -38,8 +32,6 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using the `2025-07-15` GA API version, the Terminal Server ARM resources are created using the `2025-07-15` GA API version.
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using ≤ `2025-07-15`, the Terminal Server ARM resources are created with the `2025-07-15` API version.
 > - The same behavior applies during Greenfield deployments where the Network Fabric is created with NF RT version `8.0.0`.
-
----
 
 ## Customer Actions
 
@@ -56,8 +48,6 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 1. Verify that the fabric version meets the prerequisites listed above; perform a runtime upgrade if needed.
 2. The service identifies existing Bootstrap Devices, creates and associates the corresponding NetworkBootstrapDevice and NetworkBootstrapInterface resources.
 3. The Service hydrates Bootstrap Device properties, and updates Bootstrap Device state based on validation results.
-
----
 
 ## Resource Properties
 
@@ -98,8 +88,6 @@ The `NetworkBootstrapInterface` resource captures interface-level details for ea
 | `description` | string | An optional description of the interface. |
 | `additionalDescription` | string | Supplementary description for the interface, used for operational context. |
 | `provisioningState` | string | The provisioning state of the interface resource. |
-
----
 
 ## API Reference
 
@@ -196,8 +184,6 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
   }
 }
 ```
-
----
 
 ### GET NetworkBootstrapInterface
 
