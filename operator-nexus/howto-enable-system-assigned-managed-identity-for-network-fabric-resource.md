@@ -50,7 +50,7 @@ az networkfabric fabric create \
   --mi-system-assigned
 ```
 
-For the full create command argument set, see [Create a Network Fabric](./howto-configure-network-fabric#create-a-network-fabric).
+For the full create command argument set, see [Create a Network Fabric](/azure/operator-nexus/howto-configure-network-fabric#create-a-network-fabric).
 
 This article shows only the minimum arguments relevant to SAMI enablement, not the complete set of arguments for resource creation.
 
@@ -81,7 +81,7 @@ When you use UAMI for storage access, also include `--storage-account-config` to
 --storage-account-config "{storageAccountId:'<storage-account-resource-id>',storageAccountIdentity:{identityType:'UserAssignedIdentity',userAssignedIdentityResourceId:'<uami-resource-id>'}}"
 ```
 
-For more information, see [Bring Your Own Storage for Network Fabric](./howto-configure-bring-your-own-storage-network-fabric).
+For more information, see [Bring Your Own Storage for Network Fabric](/azure/operator-nexus/howto-configure-bring-your-own-storage-network-fabric).
 
 ### Create Network Fabric resource with SAMI and UAMI
 
