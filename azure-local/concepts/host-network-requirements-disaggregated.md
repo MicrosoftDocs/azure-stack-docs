@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 This topic discusses host networking considerations and requirements for Azure Local disaggregated architectures. For information on disaggregated architectures and the physical connections between machines, see [Physical network requirements Azure Local disaggregated deployments](physical-network-requirements-disaggregated.md).
 
-## Network traffic types for Azure Local disaggregated deployments using FC SAN storage
+## Network traffic types for Azure Local disaggregated deployments using Fiber Channel SAN storage
 
 Azure Local disaggregated deployments network traffic can be classified by its intended purpose:
 
@@ -34,7 +34,7 @@ The following diagram represents the host networking configuration for a 64 node
 
 Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* four adapters that are qualified for management, compute and cluster, as these traffic types are required on Azure Local. 
 
-For more information about this role-based NIC qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
+For more information about this role-based network adapter qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
@@ -106,7 +106,7 @@ Not all network adapters from vendors support RDMA. The following table lists th
 > [!NOTE]
 > InfiniBand (IB) is not supported with Azure Local.
 
-|NIC vendor|iWARP|RoCE|
+|Network adapter vendor|iWARP|RoCE|
 |----|----|----|
 |Broadcom|No|Yes|
 |Intel|Yes|Yes (some models)|
@@ -132,7 +132,7 @@ RoCE uses User Datagram Protocol (UDP), and requires PFC and ETS to provide reli
 Use RoCE if:
 
 - You already have deployments with RoCE in your datacenter.
-- You're comfortable managing the DCB network requirements.
+- You're comfortable managing the Data Center Bridging (DCB) network requirements.
 
 ### Guest RDMA
 
@@ -140,7 +140,7 @@ Guest RDMA is not supported on Azure Local.
 
 ### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other NIC teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other network adapters teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
 
 In Azure Local disaggregated deployments, Network ATC automatically configures both the SET and the vSwitch for the management and compute intent. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the supported approach for Azure Local is to use Network ATC with intents for management and compute traffics
 
@@ -162,15 +162,15 @@ SET requires the use of symmetric (identical) adapters. Symmetric network adapte
 - configuration
 
 > [!NOTE]
-> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10 Gbps. Network ATC makes all the required configurations for SET.
+> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all network adapters that operate at or above 10 Gbps. Network ATC makes all the required configurations for SET.
 
 ### RDMA traffic considerations
 
-If you implement DCB, you must ensure that the PFC and ETS configuration is implemented properly across every network port, including network switches. DCB is required for RoCE and optional for iWARP.
+If you implement Data Center Bridging (DCB), you must ensure that the PFC and ETS configuration is implemented properly across every network port, including network switches. DCB is required for RoCE and optional for iWARP.
 
 RoCE-based Azure Local implementations require the configuration of three PFC traffic classes, including the default traffic class, across the fabric and all hosts.
 
-#### QoS settings for Azure Local disaggregated deployments using FC SAN
+#### QoS settings for Azure Local disaggregated deployments using Fiber Channel SAN
 
 Because all traffic — CSV/Live Migration, and Cluster Heartbeat — runs over TCP, there is no requirement for lossless Ethernet. PFC is disabled on all priorities with no pause frames. Traffic is classified using 802.1p CoS tags and each class is assigned to a dedicated queue with explicit ETS bandwidth reservations enforced through Weighted Round-Robin (WRR) scheduling. CSV/Live Migration (Priority 3) receives a 20% reservation to ensure adequate throughput during VM migrations. Cluster Heartbeat (Priority 7) reserves 1% or 2% — sufficient for lightweight keepalive traffic. Default traffic (Priority 0) absorbs the remaining 79% or 78% of link bandwidth. Under normal conditions all classes can burst to full line rate; the bandwidth guarantees only apply during congestion. Note that in a SAN Fibre Channel configuration, storage traffic runs entirely on the FC fabric, separate from the Ethernet network.
 
