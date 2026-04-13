@@ -1,6 +1,6 @@
 --- 
-title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
-description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
+title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault 
+description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment .
 author: alkohli
 ms.topic: how-to
 ms.date: 12/17/2025
@@ -273,6 +273,26 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 ### Mixed compatibility
 
 - **Microsoft Management Consoles (MMCs).** Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
+
+### Supported & Compatible Services
+Local Identity with Azure Key Vault is compatible with the following Azure Local services and capabilities, enabling secure AD less deployments while maintaining core functionality and operational parity:
+- **Generally Available / Supported Services.**
+•	Rack Aware (RAC) Clustering (Overview of Azure Local rack aware clustering - Azure Local | Microsoft Learn)
+Supports fault domain awareness and improved resiliency for Azure Local clusters configured with Local Identity and Azure Key Vault.
+•	Azure Virtual Desktop (AVD) (Deploy Azure Virtual Desktop - Azure Virtual Desktop | Microsoft Learn
+Azure Virtual Desktop workloads are supported on Azure Local clusters using Local Identity with Azure Key Vault, enabling secure VDI deployments without a dependency on Active Directory
+
+### Third Party Compatibility
+•	Commvault
+Commvault is a third party data protection and backup solution that is known to be compatible with AD less (Local Identity) Azure Local deployments. It can be used alongside Local Identity with Azure Key Vault in supported scenarios. 
+
+###  Private Preview Features
+The following capabilities are currently available in private preview for environments using Local Identity with Azure Key Vault:
+•	Internal DNS is a built in DNS capability for Azure Local AD less deployments that enables clusters to operate independently of Active Directory or customer managed DNS, while still supporting required name resolution and forwarding.
+•	Management Toolkit includes additional tools to assist with deployment, configuration, and operational management of Azure Local clusters running with Local Identity.
+To request access to these private preview features, please contact:
+ LocalIdentitywithAzureKeyVault@microsoft.com
+
 
 ## FAQ
 
