@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
 ms.date: 04/09/2026
-ms.subservice: disaggregated
+ms.subservice: hyperconverged
 ---
 
 # System requirements for Azure Local disaggregated deployments

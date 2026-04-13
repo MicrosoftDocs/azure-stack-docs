@@ -6,7 +6,7 @@ ms.topic: concept-article
 ms.date: 04/09/2026
 ms.author: cedward
 ms.reviewer: cedward
-ms.subservice: disaggregated
+ms.subservice: hyperconverged
 ---
 
 # Physical network requirements for Azure Local disaggregated deployments
