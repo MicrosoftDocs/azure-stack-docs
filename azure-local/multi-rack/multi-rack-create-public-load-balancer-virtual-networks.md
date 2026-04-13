@@ -17,8 +17,6 @@ ms.subservice: multi-rack
 
 This article describes how to create a public load balancer on a multi-rack deployment of Azure Local using the Azure Command-line Interface (CLI).
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 ## About public load balancer
 
 Load balancer on Azure Local for multi-rack deployments is a fully managed load balancing service that distributes incoming traffic across backend virtual machines (VMs). A public load balancer on virtual networks provides inbound connectivity from external networks (Internet or enterprise WAN) to VMs (network interfaces) and distributes traffic flows directed to a public frontend IP across a backend pool consisting of VMs in the virtual network.

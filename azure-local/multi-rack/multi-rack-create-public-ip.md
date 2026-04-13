@@ -1,6 +1,6 @@
 ---
-title: Create Public IP Addresses on Multi-rack Deployments of Azure Local (preview)
-description: Learn how to create public IP resources on multi-rack deployments of Azure Local (preview).
+title: Create Public IP Addresses on Multi-rack Deployments of Azure Local
+description: Learn how to create public IP resources on multi-rack deployments of Azure Local.
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 11/18/2025
 ms.subservice: multi-rack
 ---
 
-# Create public IP addresses on multi-rack deployments of Azure Local (preview)
+# Create public IP addresses on multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -18,8 +18,6 @@ This article describes how to create public IP resources on multi-rack deploymen
 A public IP in a multi-rack deployment of Azure Local represents an externally routable IP address resource.
 
 Unlike Azure public IP addresses, which are always internet-routable, a public IP on multi-rack deployments can be configured with any IP address that's routable within your network or, optionally, internet-facing. This resource can be attached to software defined networking (SDN) services, such as NAT Gateways and Software Load Balancers (SLB), to expose them to external networks (on-premises or the internet).  
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Key characteristics of public IPs on multi-rack deployments
 

@@ -1,6 +1,6 @@
 ---
-title: What are multi-rack deployments of Azure Local? (preview)
-description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started (preview).
+title: What are multi-rack deployments of Azure Local?
+description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started.
 #customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
 author: alkohli
 ms.author: alkohli
@@ -11,15 +11,13 @@ ms.custom: references_regions
 ms.subservice: multi-rack
 ---
 
-# What are multi-rack deployments of Azure Local? (preview)
+# What are multi-rack deployments of Azure Local?
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article provides an overview of multi-rack deployments of Azure Local. The overview also details the benefits, key features, use cases, and how to get started with the preview release.
+This article provides an overview of multi-rack deployments of Azure Local. The overview details the benefits, key features, use cases, and how to get started with multi-rack deployments.
 
-Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance. Microsoft currently offers multi-rack deployments in preview for qualified opportunities.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance.
 
 ## Overview
 
@@ -77,7 +75,7 @@ The important points about this architecture are as follows:
 
 ## Get started
 
-To get started with Azure Local multi-rack deployments (Preview), contact your account team.
+To get started with Azure Local multi-rack deployments, contact your account team.
 
 ## Next steps
 

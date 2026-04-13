@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Azure Local VMs for multi-rack deployments (preview)
-description: Learn how to create logical networks on Azure Local VMs for multi-rack deployments (preview).
+title: Create logical networks for Azure Local VMs for multi-rack deployments
+description: Learn how to create logical networks on Azure Local VMs for multi-rack deployments.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 11/18/2025
 ms.subservice: multi-rack
 ---
 
-# Create logical networks for Azure Local VMs for multi-rack deployments (preview)
+# Create logical networks for Azure Local VMs for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -17,8 +17,6 @@ This article describes how to create or add logical networks for Azure Local vir
 
 > [!NOTE]
 > Azure Local VMs support only IPv4 addresses. IPv6 addresses aren't supported.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 

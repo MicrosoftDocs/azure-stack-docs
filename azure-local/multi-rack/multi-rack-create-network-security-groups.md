@@ -1,6 +1,6 @@
 ---
-title: Create network security groups on Azure Local VMs on multi-rack deployments (preview) 
-description: Learn how to create network security groups on Azure Local VMs on multi-rack deployments using the Azure CLI (preview).
+title: Create network security groups on Azure Local VMs on multi-rack deployments 
+description: Learn how to create network security groups on Azure Local VMs on multi-rack deployments using the Azure CLI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,13 +9,11 @@ ms.service: azure-local
 ms.subservice: multi-rack
 ---
 
-# Create network security groups on Azure Local VMs on multi-rack deployments (preview)
+# Create network security groups on Azure Local VMs on multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article explains how to create and configure network security groups (NSGs) to manage data traffic flow on a multi-rack deployment of your Azure Local.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## About NSGs on Azure Local VMs on multi-rack deployments
 

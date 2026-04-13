@@ -1,6 +1,6 @@
 ---
-title: Overview of Azure Local Monitoring for Multi-rack Deployments (preview)
-description: This article provides an overview of the Azure Local monitoring solution for multi-rack deployments (preview).
+title: Overview of Azure Local Monitoring for Multi-rack Deployments
+description: This article provides an overview of the Azure Local monitoring solution for multi-rack deployments.
 ms.author: alkohli
 ms.topic: overview
 author: alkohli
@@ -8,7 +8,7 @@ ms.date: 01/20/2026
 ms.subservice: multi-rack
 ---
 
-# What is monitoring for multi-rack deployments of Azure Local? (preview)
+# What is monitoring for multi-rack deployments of Azure Local?
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -17,8 +17,6 @@ This article provides an overview of monitoring for multi-rack deployments of Az
 Monitoring multi-rack deployments of Azure Local involves regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your system.
 
 To understand current performance patterns, identify performance anomalies, and develop methods to address issues, it's important to set baseline performance metrics for your system under different times and load conditions.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## High-level architecture
 

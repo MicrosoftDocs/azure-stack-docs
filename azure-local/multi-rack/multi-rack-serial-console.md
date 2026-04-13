@@ -56,10 +56,9 @@ Serial console provides access to a text-based console for VMs running Linux or 
    3. Replace `$ARM_ID_CLUSTER` with the ARM resource ID of your Azure Local multi-rack cluster's Arc-connected Kubernetes resource (for example, `/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>`).
 
     > [!IMPORTANT]
-    > You must have access to the VM serial console. Serial console access requires your Microsoft Entra identity to be explicitly granted permission on the VM serial console. 
-   To get access, open a support ticket with Microsoft Support and provide:
-    - The VM name.
-    - Your Microsoft Entra group ID (recommended, so you can manage access by changing group membership) or your user Microsoft Entra object ID.
+    > You must have access to the VM serial console. Serial console access requires your Microsoft Entra identity to be explicitly granted permission on the VM serial console. To get access, open a support ticket with Microsoft Support and provide:
+        - The VM name.
+        - Your Microsoft Entra group ID (recommended, so you can manage access by changing group membership) or your user Microsoft Entra object ID.
 
 ## Install or verify Azure CLI extensions
 

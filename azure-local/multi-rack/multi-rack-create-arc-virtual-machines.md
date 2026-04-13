@@ -1,6 +1,6 @@
 ---
-title: Create Azure Local Virtual Machines Enabled by Azure Arc on Multi-rack Deployments (preview)
-description: Learn how to view your Azure Local multi-rack deployment in the Azure portal and create Azure Local virtual machines enabled by Azure Arc (preview).
+title: Create Azure Local Virtual Machines Enabled by Azure Arc on Multi-rack Deployments
+description: Learn how to view your Azure Local multi-rack deployment in the Azure portal and create Azure Local virtual machines enabled by Azure Arc.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -10,7 +10,7 @@ ms.date: 02/17/2026
 ms.subservice: multi-rack
 ---
 
-# Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments (preview)
+# Create Azure Local virtual machines enabled by Azure Arc for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -18,8 +18,6 @@ This article describes how to create Azure Local virtual machines (VMs) enabled 
 
 > [!NOTE]
 > Arc gateway isn't supported on Azure Local VMs.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -94,7 +92,7 @@ Follow these steps on the client running az CLI that is connected to Azure Local
 ### Create a Windows VM
 
 > [!NOTE]
-> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version.
+> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version. <!--update preview info-->
 
 Here we create a VM that uses specific memory and processor counts.
 

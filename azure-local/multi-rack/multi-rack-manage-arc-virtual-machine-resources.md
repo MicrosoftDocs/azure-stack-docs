@@ -1,6 +1,6 @@
 ---
-title: Manage resources for Azure Local VMs for multi-rack deployments (preview)
-description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM for multi-rack deployments (preview).
+title: Manage resources for Azure Local VMs for multi-rack deployments
+description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM for multi-rack deployments.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 01/16/2026
 ms.subservice: multi-rack
 ---
 
-# Manage resources for Azure Local VMs for multi-rack deployments (preview)
+# Manage resources for Azure Local VMs for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -19,8 +19,6 @@ After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you ma
 
 > [!NOTE]
 > You can't add or delete network interfaces after the VM is created. If more than one network interface is needed, make sure to add them during VM creation.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 

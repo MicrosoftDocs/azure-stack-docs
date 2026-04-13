@@ -1,6 +1,6 @@
 ---
-title: Security Overview for Multi-rack Deployments of Azure Local (preview)
-description: Read an overview of security features for multi-rack deployments of Azure Local (preview).
+title: Security Overview for Multi-rack Deployments of Azure Local
+description: Read an overview of security features for multi-rack deployments of Azure Local.
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
@@ -9,7 +9,7 @@ ms.date: 12/19/2025
 ms.subservice: multi-rack
 ---
 
-# Security concepts for multi-rack deployments of Azure Local (preview)
+# Security concepts for multi-rack deployments of Azure Local
 
 This article provides an overview of security for multi-rack deployments of Azure Local.
 
@@ -19,8 +19,6 @@ Multi-rack deployments of Azure Local are designed and built to detect and defen
 * **Assume breach**: Assume that any system can be compromised. Minimize the impact if a security breach occurs.
 
 Use Microsoft cloud-native security tools to improve your cloud security posture and protect your workloads.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Platform-wide protection via Microsoft Defender for Cloud
 

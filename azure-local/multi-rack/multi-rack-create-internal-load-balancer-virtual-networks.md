@@ -1,6 +1,6 @@
 ---
-title: Create and Manage an Internal Load Balancer on Multi-Rack Deployments for Azure Local (Preview)
-description: Learn to create and configure internal load balancers for Azure Local multi-rack deployments (preview).
+title: Create and Manage an Internal Load Balancer on Multi-Rack Deployments for Azure Local
+description: Learn to create and configure internal load balancers for Azure Local multi-rack deployments.
 #customer intent: As a network administrator, I want to understand the internal load balancers on Azure Local so that I can have the correct setup for my deployment.
 author: ronmiab
 ms.author: robess
@@ -11,13 +11,11 @@ ms.service: azure-local
 ms.subservice: multi-rack
 ---
 
-# Create and manage an internal load balancer in multi-rack deployments of Azure Local (preview)
+# Create and manage an internal load balancer in multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article described how to create an internal load balancer on multi-rack deployments for Azure Local using Azure CLI.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+This article describes how to create an internal load balancer on multi-rack deployments for Azure Local.
 
 ## Prerequisites  
 
@@ -25,7 +23,7 @@ Before you begin, complete the following prerequisites:
 
 - Review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).  
 
-- Access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC to manage Azure Local virtual machines (VMs) for multi-rack deployments (preview)](../multi-rack/multi-rack-assign-vm-rbac-roles.md).
+- Access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC to manage Azure Local virtual machines (VMs) for multi-rack deployments](../multi-rack/multi-rack-assign-vm-rbac-roles.md).
 
 - Access to a resource group where you want to provision the public IP address.
 

@@ -1,6 +1,6 @@
 ---
-title: About Load Balancers in Multi-Rack Deployments of Azure Local (preview)
-description: Learn about the types of load balancers you can use in multi-rack deployments of Azure Local (preview).
+title: About Load Balancers in Multi-Rack Deployments of Azure Local
+description: Learn about the types of load balancers you can use in multi-rack deployments of Azure Local.
 ms.topic: concept-article
 ms.date: 11/24/2025
 author: alkohli
@@ -8,13 +8,11 @@ ms.author: alkohli
 ms.subservice: multi-rack
 ---
 
-# About load balancers in multi-rack deployments of Azure Local (preview)
+# About load balancers in multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes the different types of load balancers you can use in multi-rack deployments of Azure Local.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## About load balancers
 
