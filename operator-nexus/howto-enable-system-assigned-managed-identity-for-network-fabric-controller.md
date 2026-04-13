@@ -164,8 +164,8 @@ You might encounter these errors. Here's how to fix them.
   - Symptom: The update fails when `UserAssigned` or `None` semantics are attempted for the Network Fabric Controller resource.
   - Fix: Rerun with `--mi-system-assigned` only.
 
-> [!IMPORTANT]
-> If identity type `None` is submitted, the Managed Service Identity Resource Provider might remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This condition leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Reassociate SAMI as soon as possible if this condition occurs.
+    > [!IMPORTANT]
+    > If identity type `None` is submitted, the Managed Service Identity Resource Provider might remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This condition leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Reassociate SAMI as soon as possible if this condition occurs.
 
 - Resource not in a safe state.
   - Symptom: The update fails due to lifecycle state checks.

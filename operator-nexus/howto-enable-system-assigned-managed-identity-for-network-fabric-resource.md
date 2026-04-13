@@ -34,7 +34,7 @@ Be aware of the following constraints:
   - `provisioningState = Succeeded`
   - The resource isn't locked for the intended operation.
 - Commit workflow capabilities require Network Fabric resource version and API support. For example, you need `2024-06-15-preview` or newer APIs for lock and commit flows.
-- For the latest identity visibility in your environment. Use `2025-07-15` when available.
+- For the latest identity visibility in your environment, use `2025-07-15` when available.
 
 ## Create a new resource
 
@@ -114,7 +114,7 @@ az networkfabric fabric update \
   --mi-system-assigned
 ```
 
-Here's what the identity payload transformation looks like:
+Here's what the identity payload transformation looks like.
 
 Before (resource has no identity):
 
@@ -146,7 +146,7 @@ az networkfabric fabric update \
   --mi-user-assigned <uami-resource-id>
 ```
 
-Here's what the identity payload transformation looks like:
+Here's what the identity payload transformation looks like.
 
 Before (resource has `UserAssigned` identity):
 
@@ -186,7 +186,7 @@ az networkfabric fabric update \
   --mi-user-assigned <uami-resource-id>
 ```
 
-Here's what the identity payload transformation looks like:
+Here's what the identity payload transformation looks like.
 
 Before (resource has `SystemAssigned` identity):
 
