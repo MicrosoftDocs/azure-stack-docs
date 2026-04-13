@@ -22,11 +22,11 @@ Azure Local disaggregated deployments network traffic can be classified by its i
 - **Cluster networks traffic:** these two networks carry the cluster traffic for SMB-based live migration, the cluster heartbeat and the CSV metadata and redirection. This traffic is layer-2 traffic and is not routable.
 - **(Optional) In guest Backup network:** Some customers might require to have a dedicated network for traffic originated inside the VMs to backup application data over the network.
 
-The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN, with the required network traffic types when there is no requirement for an in-guest backup network.
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. No network adapters required for in-guest backup network.
 
 :::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
 
-The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN, with the required network traffic types when there is a requirement for an in-guest backup network.
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. Additional network adapters required for in-guest backup network
 
 :::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
@@ -172,7 +172,7 @@ RoCE-based Azure Local implementations require the configuration of three PFC tr
 
 #### QoS settings for Azure Local disaggregated deployments using Fiber Channel SAN
 
-Because all traffic — CSV/Live Migration, and Cluster Heartbeat — runs over TCP, there is no requirement for lossless Ethernet. PFC is disabled on all priorities with no pause frames. Traffic is classified using 802.1p CoS tags and each class is assigned to a dedicated queue with explicit ETS bandwidth reservations enforced through Weighted Round-Robin (WRR) scheduling. CSV/Live Migration (Priority 3) receives a 20% reservation to ensure adequate throughput during VM migrations. Cluster Heartbeat (Priority 7) reserves 1% or 2% — sufficient for lightweight keepalive traffic. Default traffic (Priority 0) absorbs the remaining 79% or 78% of link bandwidth. Under normal conditions all classes can burst to full line rate; the bandwidth guarantees only apply during congestion. Note that in a SAN Fibre Channel configuration, storage traffic runs entirely on the FC fabric, separate from the Ethernet network.
+Because all traffic — CSV/Live Migration, and Cluster Heartbeat — runs over TCP, there is no requirement for lossless Ethernet. PFC is disabled on all priorities with no pause frames. Traffic is classified using 802.1p CoS tags and each class is assigned to a dedicated queue with explicit ETS bandwidth reservations enforced through Weighted Round-Robin (WRR) scheduling. CSV/Live Migration (Priority 3) receives a 20% reservation to ensure adequate throughput during VM migrations. Cluster Heartbeat (Priority 7) reserves 1% or 2% — sufficient for lightweight keepalive traffic. Default traffic (Priority 0) absorbs the remaining 79% or 78% of link bandwidth. Under normal conditions all classes can burst to full line rate; the bandwidth guarantees only apply during congestion. Note that in a SAN Fibre Channel configuration, storage traffic runs entirely on the Fiber Channel fabric, separate from the Ethernet network.
 
 |Priority 802.1p|Description|PFC enabled PauseFrame|ETS Bandwidth (25GbE)|ETS Bandwidth (10GbE)
 |----|----|----|----|----|
