@@ -16,7 +16,7 @@ This topic discusses host networking considerations and requirements for Azure L
 
 ## Network traffic types for Azure Local disaggregated deployments using Fiber Channel SAN storage
 
-Azure Local disaggregated deployments network traffic can be classified by its intended purpose:
+Azure Local disaggregated deployments network traffic types:
 
 - **Management and compute traffic:** Traffic to or from outside the local system. For example, traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc. It also includes traffic originating from or destined to the compute workloads such as virtual machines (VMs) or AKS clusters.
 - **Cluster networks traffic:** these two networks carry the cluster traffic for SMB-based live migration, the cluster heartbeat and the CSV metadata and redirection. This traffic is layer-2 traffic and is not routable.
@@ -32,7 +32,7 @@ The following diagram represents the host networking configuration for a 64 node
 
 ## Select a network adapter
 
-Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* four adapters that are qualified for management, compute and cluster, as these traffic types are required on Azure Local. 
+Network adapters are qualified by the **network traffic types** they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* four adapters that are qualified for management, compute and cluster, as these traffic types are required on Azure Local. 
 
 For more information about this role-based network adapter qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
@@ -45,7 +45,7 @@ For more information about this role-based network adapter qualification, see th
 |Maximum Award|Not Applicable|Compute Premium|cluster SMB Premium|
 
 > [!NOTE]
-> The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **cluster Premium** qualifications.
+> The highest qualification for any adapter in our ecosystem contains the **Management**, **Compute Premium**, and **cluster Premium** qualifications.
 
 :::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot shows 'Certified for Windows' qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
@@ -101,7 +101,7 @@ Azure Local supports RDMA with either the Internet Wide Area RDMA Protocol (iWAR
 > [!IMPORTANT]
 > RDMA adapters only work with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
 
-Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification which require RDMA support.
+Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification, which require RDMA support.
 
 > [!NOTE]
 > InfiniBand (IB) is not supported with Azure Local.
@@ -140,7 +140,7 @@ Guest RDMA is not supported on Azure Local.
 
 ### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other network adapters teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
+SET is a software-based teaming technology that is included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other network adapters teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
 
 In Azure Local disaggregated deployments, Network ATC automatically configures both the SET and the vSwitch for the management and compute intent. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the supported approach for Azure Local is to use Network ATC with intents for management and compute traffics
 
