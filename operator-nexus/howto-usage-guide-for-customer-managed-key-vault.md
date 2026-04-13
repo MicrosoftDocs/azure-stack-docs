@@ -46,26 +46,26 @@ For these examples, let's assume that you create a customer managed key vault. Y
   > [!Note]
   > You must retain the existing System Assigned Managed Identity and any pre-existing User Assigned Managed Identities. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
 
-    ```
-    {
-        ...,
-        "identity": {
-            "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
-            "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
-            "type": "SystemAssigned, UserAssigned",
-            "userAssignedIdentities": {
-                "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
-                    "principalId": "12345678-1234-1234-1234-1234567890ab",
-                    "clientId": "87654321-4321-4321-4321-ba0987654321"
-                }
-            }
-        },
+  ```
+  {
+      ...,
+      "identity": {
+          "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
+          "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
+          "type": "SystemAssigned, UserAssigned",
+          "userAssignedIdentities": {
+              "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
+                  "principalId": "12345678-1234-1234-1234-1234567890ab",
+                  "clientId": "87654321-4321-4321-4321-ba0987654321"
+              }
+          }
+      },
     
-        "properties": {
-            ...
-        }
-    }
-    ```
+      "properties": {
+          ...
+      }
+  }
+  ```
 
 1. Now use the following `az` command to associate the new User Assigned Managed Identity with Network Fabric.
 
