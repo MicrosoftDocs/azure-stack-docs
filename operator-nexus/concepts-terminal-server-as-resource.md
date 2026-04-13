@@ -20,12 +20,12 @@ Each Terminal Server is represented by two resource types:
 - `NetworkBootstrapDevice` – captures device-level metadata such as hostname, serial number, SKU, version, administrative state, and provisioning status.
 - `NetworkBootstrapInterface` – captures interface-level details such as interface type, administrative state, physical identifier, connected device, IP addresses, and description.
 
-The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources.
+The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBootstrapDevice`. The physical interfaces on the terminal server such as `Net1`, `Net2`, and `Net3` are each modeled as ARM resources.
 
 These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They're also available in the Azure Resource Graph.
 
 > [!NOTE]
-> The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the `2604.1` release. Observability—including reachability checks and file server availability metrics—is provided from the `NetworkFabric` resource in the portal.
+> The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
 
 ---
 
@@ -47,12 +47,15 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 
 1. Initiate Network Fabric (NF) creation using the standard API or CLI; no additional presteps are required.
 2. Provide basic Terminal Server device details (IP address, password) in the NF create payload. No changes to the existing workflow are required.
-3. The service provisions resources, hydrates properties, and updates device state to `Succeeded` or `Failed` based on reachability checks.
+3. The service provisions NetworkBootstrapDevice and NetworkBootstrapInterface resources.
+4. Service hydrates Bootstrap Device properties.
+5. Service updates Bootstrap Device state to Succeeded or Failed based on reachability outcomes.
 
 ### Brownfield Deployments
 
 1. Verify that the fabric version meets the prerequisites listed above; perform a runtime upgrade if needed.
-2. The service identifies existing Bootstrap Devices, creates and associates the corresponding resources, hydrates properties, and updates state based on validation results.
+2. The service identifies existing Bootstrap Devices, creates and associates the corresponding NetworkBootstrapDevice and NetworkBootstrapInterface resources.
+3. The Service hydrates Bootstrap Device properties, and updates Bootstrap Device state based on validation results.
 
 ---
 
@@ -81,7 +84,7 @@ The `NetworkBootstrapDevice` resource captures device-level metadata for each Te
 
 ### NetworkBootstrapInterface
 
-The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It's exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources. All properties listed below are **read-only** and are hydrated by the service during creation.
+The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It's exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as ARM resources. All properties listed below are **read-only** and are hydrated by the service during creation.
 
 | Property | Type | Description |
 |---|---|---|
@@ -198,7 +201,7 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 
 ### GET NetworkBootstrapInterface
 
-Retrieves the interface-level details for a specific Terminal Server interface. The `NetworkBootstrapInterface` is a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as individual interface resources.
+Retrieves the interface-level details for a specific Terminal Server interface.
 
 #### Request
 
