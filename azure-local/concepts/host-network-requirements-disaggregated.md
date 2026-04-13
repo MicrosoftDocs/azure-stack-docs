@@ -22,13 +22,13 @@ Azure Local disaggregated deployments network traffic can be classified by its i
 - **Cluster networks traffic:** these two networks carry the cluster traffic for SMB-based live migration, the cluster heartbeat and the CSV metadata and redirection. This traffic is layer-2 traffic and is not routable.
 - **(Optional) In guest Backup network:** Some customers might require to have a dedicated network for traffic originated inside the VMs to backup application data over the network.
 
-The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on FC SAN, with the required network traffic types when there is no requirement for an in-guest backup network.
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN, with the required network traffic types when there is no requirement for an in-guest backup network.
 
-:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
 
-The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on FC SAN, with the required network traffic types when there is a requirement for an in-guest backup network.
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN, with the required network traffic types when there is a requirement for an in-guest backup network.
 
-:::image type="content" source="media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network" lightbox="media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
 ## Select a network adapter
 
@@ -88,7 +88,7 @@ For more information on Dynamic VMMQ, see the blog post [Synthetic accelerations
 
 RDMA is a network stack offload to the network adapter. It allows SMB traffic to bypass the operating system for processing.
 
-RDMA enables high-throughput, low-latency networking, using minimal host CPU resources. These host CPU resources can then be used to run additional VMs or containers.
+RDMA enables high-throughput, low-latency networking, using minimal host CPU resources. These host CPU resources can then be used to run more VMs or containers.
 
 **Applicable traffic types:** host cluster SMB traffic
 
