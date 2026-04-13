@@ -19,12 +19,12 @@ Be aware of the following constraints:
 
 - After SAMI is associated for trusted access scenarios, you can't remove SAMI.
 
-- If SAMI is accidentally disassociated (for example, because of an incorrect `None` patch), re-associate SAMI as soon as possible.
+- If SAMI is accidentally disassociated (for example, because of an incorrect `None` patch), reassociate SAMI as soon as possible.
 
 - For updates where UAMI already exists and you must add SAMI, provide both identities (`SystemAssigned,UserAssigned`) in effective payload terms.
 
 > [!IMPORTANT]
-> Preserving SAMI is required to prevent token acquisition failures in Network Fabric operational flows. If SAMI is removed or the identity is set to `None`, re-associate SAMI immediately.
+> Preserving SAMI is required to prevent token acquisition failures in Network Fabric operational flows. If SAMI is removed or the identity is set to `None`, reassociate SAMI immediately.
 
 ## Prerequisites
 
@@ -334,13 +334,13 @@ After you change the identity, confirm the following points:
 
 `SystemAssigned`, `UserAssigned`, and `SystemAssigned,UserAssigned`. Identity type `None` isn't supported.
 
-*Can I remove SAMI from the Network Fabric resource after it is associated?*  
+*Can I remove SAMI from the Network Fabric resource after it's associated?*  
 
-No. Removing SAMI isn't permitted. If SAMI is accidentally removed (for example, with a `None` patch), re-associate SAMI immediately. Use a manual Azure CLI update or support-assisted patch.
+No. Removing SAMI isn't permitted. If SAMI is accidentally removed (for example, with a `None` patch), reassociate SAMI immediately. Use a manual Azure CLI update or support-assisted patch.
 
 *What happens if I specify identity type `None`?*  
 
-The Managed Service Identity Resource Provider might remove the SAMI context, leading to token acquisition failures. Recover by re-associating SAMI immediately.
+The Managed Service Identity Resource Provider might remove the SAMI context, leading to token acquisition failures. Recover by reassociating SAMI immediately.
 
 *How do I add SAMI to a Network Fabric resource that already has UAMI?*  
 

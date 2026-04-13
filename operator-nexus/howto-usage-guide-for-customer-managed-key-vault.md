@@ -13,7 +13,7 @@ ms.author: rmandawale
 
 Network Fabric uses secrets (passwords) to access the terminal server and network devices. These secrets are stored in Azure Key Vault in the Network Fabric Controller managed resource group.
 
-In some regions (currently `West US3` and `Brazil South`), key vaults don't have automatic cross‑region (paired‑region) replication. As a workaround to protect against a region outage, you can define a _customer managed key vault_. After you configure this type of key vault, secrets that are exposed to customers are duplicated to this key vault each time a password rotation occurs.
+In some regions (currently `West US3` and `Brazil South`), key vaults don't have automatic cross‑region (paired‑region) replication. As a workaround to protect against a region outage, you can define a _customer managed key vault_. After you configure this type of key vault, each time a password rotation occurs, you duplicate secrets that are exposed to customers to this key vault.
 
 ## Secret archive settings configuration
 
@@ -39,7 +39,7 @@ After you complete these steps, future password rotation operations duplicate cu
 
 ### Examples
 
-For these examples, let's assume that you've created a customer managed key vault. You've also created a User Assigned Managed Identity, and you've given the User Assigned Managed Identity the `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the key vault.
+For these examples, let's assume that you create a customer managed key vault. You also create a User Assigned Managed Identity, and you give the User Assigned Managed Identity the `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the key vault.
 
 1. Associate the User Assigned Managed Identity with Network Fabric.
 

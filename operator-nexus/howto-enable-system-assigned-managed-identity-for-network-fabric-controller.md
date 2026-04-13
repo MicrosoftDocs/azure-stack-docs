@@ -165,7 +165,7 @@ You might encounter these errors. Here's how to fix them.
   - Fix: Rerun with `--mi-system-assigned` only.
 
 > [!IMPORTANT]
-> If identity type `None` is submitted, the Managed Service Identity Resource Provider might remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Re-associate SAMI as soon as possible if this occurs.
+> If identity type `None` is submitted, the Managed Service Identity Resource Provider might remove the SAMI context before the Nexus Network Fabric Resource Provider can block the request. This condition leads to token acquisition failures in Network Fabric Controller resource managed platform flows. Reassociate SAMI as soon as possible if this condition occurs.
 
 - Resource not in a safe state.
   - Symptom: The update fails due to lifecycle state checks.
@@ -175,7 +175,7 @@ You might encounter these errors. Here's how to fix them.
 
 - When you run existing resources at scale, capture existing external connectivity details before taking actions. Specifically, record all Azure ExpressRoute circuit details, and the ExpressRoute circuit-to-connection map. Ensure that the ExpressRoute circuit auth key hashes are populated before triggering the identity operation. This precaution helps you avoid unintended ExpressRoute circuit re-creation.
 
-- If your internal runbook includes pre-check actions (such as metadata stabilization in ExpressRoute), complete those first.
+- If your internal runbook includes precheck actions (such as metadata stabilization in ExpressRoute), complete those actions first.
 
 - Use the latest API versions to reduce payload and visibility mismatches.
 
@@ -201,7 +201,7 @@ No. SAMI must persist to maintain trusted service access to Network Fabric Contr
 
 *What happens if I specify identity type `None` for the Network Fabric Controller resource?*
 
-The Managed Service Identity Resource Provider might remove the SAMI context, leading to token acquisition failures. Recover by re-associating SAMI immediately.
+The Managed Service Identity Resource Provider might remove the SAMI context, leading to token acquisition failures. Recover by reassociating SAMI immediately.
 
 *How do I verify that SAMI is properly active on the Network Fabric Controller resource?*
 
