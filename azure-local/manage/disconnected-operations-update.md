@@ -98,29 +98,27 @@ Get-ApplianceUpdateHistory
 
 ## Update Azure Local (disconnected)
 
-For Azure Local systems on version 2603, complete the steps below to exclude a test that requires internet connectivity. This workaround is required only for version 2603, and these steps will no longer be required starting with version 2604.
+> [!IMPORTANT]
+> **Azure Local, version 2603 only.** If your Azure Local system is on version 2603, complete steps 1–3 before running the update script to exclude a test that requires internet connectivity. If you're on version 2604 or later, skip this section and continue with the script.
 
 1. Identify the Azure Local node running the orchestrator service.
 
-   1. Log in to any Azure Local node and run the following command: 
-   
-      ```powershell
+   1. Sign in to any Azure Local node and run the following command:
+
+      ```PowerShell
       Get-ClusterGroup
       ```
-      
-   1. From the output, identify the node that owns the **Azure Stack HCI Orchestrator Service Cluster Group**.
-   
-1. Exclude the internet-dependent test
 
-   1. Log in to the node identified in Step 1.
-   
-   1. Navigate to: `C:\Program Files\WindowsPowerShell\Modules\AzStackHci.EnvironmentChecker`
-   
-   1. Create a new file named: `ExcludeTests.txt`
-   
-   1. Add the following line to the file and save it: `Test-ARBStackBandwidth`
-   
-1. Once the file is created and saved, you can proceed with triggering the update on Azure Local.
+   1. From the output, identify the node that owns the **Azure Stack HCI Orchestrator Service Cluster Group**.
+
+1. Exclude the internet-dependent test.
+
+   1. Sign in to the node identified in the previous step.
+   1. Go to `C:\Program Files\WindowsPowerShell\Modules\AzStackHci.EnvironmentChecker`.
+   1. Create a new file named `ExcludeTests.txt`.
+   1. Add the following line to the file and save it: ` Test-ARBStackBandwidth`
+
+1. After saving the file, proceed to trigger the update on Azure Local.
 
 Use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
 
