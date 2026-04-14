@@ -241,6 +241,9 @@ items:
         items:
         - name: Update SDN infrastructure
           href: manage/update-sdn.md
+          items:
+          - name: Update SDN gateways
+            
         - name: Upgrade SDN infrastructure
           href: manage/upgrade-sdn.md
         - name: Manage tenant logical networks

@@ -2,8 +2,8 @@
 title: Update gateways in SDN managed by on-premises tools for Azure Local
 description: Learn how to update SDN gateways managed by on-premises tools.
 ms.topic: how-to
-ms.author: ronmiab
-author: robess
+ms.author: robess
+author: ronmiab
 ms.date: 04/14/2026
 ms.subservice: hyperconverged
 ---
