@@ -53,11 +53,3 @@ To confirm the feature is disabled, run the following command:
 - Learn more about [Understanding update phases](./update-phases-23h2.md)
 
 - Review [Troubleshooting updates](./update-troubleshooting-23h2.md)
-
-::: moniker-end
-
-::: moniker range="<=azloc-2604"
-
-This feature is available in Azure Local 2604 and later.
-
-::: moniker-end
