@@ -4,14 +4,14 @@ description: Learn how Azure Local enables AI inference, document intelligence, 
 author: cwatson-cat
 ms.author: cwatson
 ms.topic: concept-article
-ms.date: 04/06/2026
+ms.date: 04/14/2026
 ai-usage: ai-assisted
 #CustomerIntent: As an IT admin or AI developer, I want to understand how Azure Local enables AI workloads on my own infrastructure so that I can process data locally while meeting latency, sovereignty, and compliance requirements.
 ---
 
 # AI workloads on Azure Local
 
-Azure Local brings Azure AI capabilities directly to your infrastructure so you don't have to move that data to the cloud. This article covers the AI workloads available on Azure Local and helps you pick the right one for your needs. Each workload runs on Azure Arc-enabled Kubernetes, so you get cloud-consistent management and security while keeping data processing local.
+Azure Local brings Azure AI capabilities directly to your infrastructure so you can process data locally without sending it to the cloud. This article covers the AI workloads available on Azure Local and helps you pick the right one for your needs. Each workload runs on Azure Arc-enabled Kubernetes, so you get cloud-consistent management and security while keeping data processing local.
 
 > [!IMPORTANT]
 > Some AI workloads described in this article are currently in preview, including Foundry Local on Azure Local and Edge RAG. See the linked workload documentation and the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
@@ -20,7 +20,7 @@ Azure Local brings Azure AI capabilities directly to your infrastructure so you 
 
 Foundry Local on Azure Local, currently in preview, runs AI model inference on an Arc-enabled Kubernetes cluster. Use it to deploy and serve generative or predictive models from the Foundry model catalog.
 
-Foundry Local uses a Kubernetes inference operator to handle the model lifecycle. The operator syncs metadata from the Foundry model catalog, deploys models through declarative custom resources (`Model` and `ModelDeployment` CRDs), and serves requests through OpenAI-compatible API endpoints. Azure Arc provides the management connection, and the operator runs natively in Kubernetes.
+Foundry Local uses a Kubernetes inference operator to manage the model lifecycle. The operator syncs metadata from the Foundry model catalog, deploys models through declarative custom resources, and serves requests through OpenAI-compatible API endpoints. Azure Arc provides the management connection, and the operator runs natively in Kubernetes.
 
 ### Capabilities
 
@@ -109,13 +109,13 @@ Use Azure AI Video Indexer enabled by Azure Arc when you need to analyze live or
 For more information, see:
 
 - [Azure AI Video Indexer enabled by Azure Arc overview](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
-- [Quickstart: Deploy Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-quickstart) 
+- [Quickstart: Deploy Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-quickstart)
 
 ## Operate AI in disconnected and sovereign environments
 
 Azure Local supports disconnected operations in environments with limited or no cloud connectivity. Your clusters can run without continuous Azure connectivity and then sync after connectivity returns.
 
-Confirm which AI workloads support fully disconnected mode before you finalize deployment design.
+Before your production rollout, confirm which AI workloads support fully disconnected mode.
 
 All three AI workloads process data on-premises:
 
@@ -127,14 +127,12 @@ All three AI workloads process data on-premises:
 
 All three AI workloads require:
 
-- **Azure subscription**: Register and manage resources.
-- **Azure Arc-enabled Kubernetes cluster**: Run on Azure Local and connect to Azure through Azure Arc.
-- **Azure CLI**: Manage deployments and extensions.
-- **Network connectivity**: Use outbound connectivity to Azure for control plane operations, billing, and monitoring (except during disconnected operations).
+- **Azure subscription**: Used to register and manage your resources.
+- **Azure Arc-enabled Kubernetes cluster**: Runs on Azure Local and connects to Azure through Azure Arc.
+- **Azure CLI**: Used to manage deployments and extensions.
+- **Network connectivity**: Outbound connectivity to Azure for control plane operations, billing, and monitoring (except during disconnected operations).
 
-Confirm network and connectivity requirements for each workload before production rollout.
-
-Each workload has its own hardware and software prerequisites. See the individual workload documentation for details.
+Before your production rollout, verify the network and connectivity requirements for each workload. Each workload has its own hardware and software prerequisites. See the individual workload documentation for more information.
 
 ## Choose the right workload
 
@@ -146,7 +144,7 @@ Use the following table to match each AI scenario to the best-fit workload on Az
 | Build a chat assistant over on-premises documents | Edge RAG Preview |
 | Analyze video or audio content in real time or from archives | Azure AI Video Indexer enabled by Azure Arc |
 | Process sensitive data that can't leave your premises | Any of the three, depending on your data type |
-| Operate fully disconnected or air-gapped | Not available. |
+| Operate fully disconnected or air-gapped | Not supported. |
 
 ## Related content
 
