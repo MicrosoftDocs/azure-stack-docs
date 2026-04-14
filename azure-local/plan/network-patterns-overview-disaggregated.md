@@ -85,6 +85,8 @@ Ethernet Virtual Private Network (EVPN) is the BGP-based control plane that tell
 
 Virtual Routing and Forwarding (VRF) instances create isolated routing domains on each switch — like having multiple invisible switches sharing the same hardware. Different traffic types — management, compute/cluster, tenant workloads — are placed into separate VRFs so that a routing mistake in one domain doesn't affect the others.
 
+:::image type="content" source="./media/plan-deployment/leaf-spine-packet-flow-example.svg" alt-text="Diagram showing packet flow between racks example." lightbox="./media/plan-deployment/leaf-spine-packet-flow-example.svg":::
+
 > [!NOTE]
 > Each cluster can be placed in its own VRF, depending on your isolation requirements. This enables multi-tenancy without additional hardware.
 
