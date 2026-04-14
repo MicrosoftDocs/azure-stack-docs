@@ -16,73 +16,43 @@ This article explains how to update Software Defined Networking (SDN) gateway vi
 
 The SDN gateway update process follows a three-phase approach:
 
-1. **Phase 1: Identify gateway roles**
+1. **Phase 1: Identify gateway roles.**
    - Query the Network Controller to retrieve all gateway VMs.
     - Identify each gateway's role:
        - Redundant gateways (standby)
        - Active gateways (hosting live connections)
    - Record the original role of each gateway before starting the update process.
-
-1. **Phase 2: Update redundant gateways**
-    Redundant gateways do not host active connections and can be updated with minimal impact.
+1. **Phase 2: Update redundant gateways.** Redundant gateways do not host active connections and can be updated with minimal impact.
     - Remove each redundant gateway from the Network Controller. Removing the gateway prevents Gateway Manager from interfering with the VM during the update process (for example, triggering unexpected reboots).
     - Install the required Windows updates on the gateway VM.
     - Re‑add the updated gateway to the Network Controller pool.
-
-1. **Phase 3: Update active gateways**
-   Active gateways host live network connections and virtual gateways.
+1. **Phase 3: Update active gateways.** Active gateways host live network connections and virtual gateways.
    - Reboot the active gateway to trigger tunnel failover to a redundant gateway.
    - After the reboot, check that the gateway transitions to a redundant state.
    - Remove the gateway from the Network Controller. This removal prevents Gateway Manager from interfering during the Windows update process.
    - Install the required Windows updates.
    - Re‑add the gateway to the Network Controller pool as a redundant gateway.
 
-> [!NOTE]
-> This article uses the `SdnDiagnostics` PowerShell module to interact with the Network Controller REST API for adding or removing gateways.
-
-## Key considerations
-
-- Always remove a gateway from the Network Controller before applying Windows updates. This prevents SDN Gateway Manager from interfering with the VM (for example, triggering unexpected reboots).
-
-- Never update or remove an active gateway directly. Ensure the active gateway first transitions to a redundant state before proceeding.
-
-- Remove only one gateway at a time from the pool to maintain redundancy.
-
-- Wait for each gateway to fully stabilize and rejoin the pool before moving to the next gateway.
-
-- Document the original roles of all gateways before starting the update process.
-
-- Schedule gateway updates during planned maintenance windows to reduce service impact.
-
 ## Prerequisites
 
 - Run all steps in this procedure from a physical host in the cluster that can use:
   - The Network Controller REST API.
   - The gateway VMs via WinRM.
-
 - **Network Controller update**
   - All Network Controller VMs must have the same Windows updates installed.
   - The Network Controller application update must be completed before updating gateways.
-
 - **Infrastructure health**
   - The SDN infrastructure must be healthy.
   - Existing gateway connections must be operational and in a healthy state.
-
 - Admin credentials for the gateway VMs.
-
-- At least one redundant gateway available in the gateway pool.
-  > [!WARNING]
-    > If no redundant gateway is set up, updating active gateways can cause longer traffic disruptions because tunnels might not fail over during the update process.
-
+- At least one redundant gateway available in the gateway pool. If no redundant gateway is set up, updating active gateways can cause longer traffic disruptions because tunnels might not fail over during the update process.
 - Windows update packages (MSU files) downloaded and staged.
-
-- Monitoring tools to check tunnel connectivity and Border Gateway Protocol (BGP) status *(optional but strongly recommended)*. These tools are user-provided and specific to your environment, and are used to check app connectivity.
-
+- *Optional but strongly recommended.* Monitoring tools to check tunnel connectivity and Border Gateway Protocol (BGP) status. These tools are user-provided and specific to your environment, and are used to check app connectivity.
 - **SdnDiagnostics PowerShell module**. The code snippets in this article use cmdlets from the `SdnDiagnostics` module.
 
 ### Install SdnDiagnostics module
 
-Install the latest version of `SdnDiagnostics` from the PowerShell Gallery. For more information, see the [SdnDiagnostics wiki page](https://github.com/microsoft/SdnDiagnostics).
+Install the latest version of [`SdnDiagnostics`](https://github.com/microsoft/SdnDiagnostics) from the PowerShell Gallery.
 
 ```powershell
 # Install SdnDiagnostics module from PowerShell Gallery
@@ -95,6 +65,16 @@ Get-Module -Name SdnDiagnostics -ListAvailable
 Import-Module SdnDiagnostics
 ```
 
+## Key considerations
+
+- Always remove a gateway from the Network Controller before applying Windows updates. This prevents SDN Gateway Manager from interfering with the VM (for example, triggering unexpected reboots).
+
+- Never update or remove an active gateway directly. Ensure the active gateway first transitions to a redundant state before proceeding.
+- Remove only one gateway at a time from the pool to maintain redundancy.
+- Wait for each gateway to fully stabilize and rejoin the pool before moving to the next gateway.
+- Document the original roles of all gateways before starting the update process.
+- Schedule gateway updates during planned maintenance windows to reduce service impact.
+
 ## Update process
 
 > [!IMPORTANT]
@@ -103,10 +83,10 @@ Import-Module SdnDiagnostics
 ### Phase 1: Identify gateway roles
 
 1. **Get the list of current gateways**
-    - Query the Network Controller to retrieve all gateway VMs.
-    - Note which gateways are **Redundant** and which are **Active**.
-        - Active gateways host active network connections/tunnels.
-        - Redundant gateways are standby and do not host active connections.
+- Query the Network Controller to retrieve all gateway VMs.
+- Note which gateways are **Redundant** and which are **Active**.
+  - Active gateways host active network connections/tunnels.
+  - Redundant gateways are standby and do not host active connections.
 
     ```powershell
     # Set up variables
@@ -130,7 +110,7 @@ Import-Module SdnDiagnostics
 
 ### Phase 2: Update redundant gateways
 
-Start with redundant gateways as they do not host active connections, minimizing service disruption.
+Start with redundant gateways as they don't host active connections, minimizing service disruption.
 
 #### Example walkthrough to update redundant gateways
 
@@ -151,9 +131,9 @@ Complete the following steps for each redundant gateway.
 
 1. **Remove the gateway from the gateway pool.**
 
-    - Back up the gateway configuration to a JSON file so you can restore it later.
-    - Capture the last boot time before removal so you can detect when the reboot completes.
-    - Remove the gateway resource from the Network Controller. Removing the gateway triggers a reboot of the gateway VM.
+- Back up the gateway configuration to a JSON file so you can restore it later.
+- Capture the last boot time before removal so you can detect when the reboot completes.
+- Remove the gateway resource from the Network Controller. Removing the gateway triggers a reboot of the gateway VM.
 
     ```powershell
     # Select a redundant gateway to update from the list captured in Phase 1
@@ -189,8 +169,9 @@ Complete the following steps for each redundant gateway.
     ```
 
 1. **Verify the gateway is removed.**
-    - Wait for the VM to reboot (the boot time should change).
-    - Confirm the gateway resource no longer exists in the Network Controller.
+
+- Wait for the VM to reboot (the boot time should change).
+- Confirm the gateway resource no longer exists in the Network Controller.
 
     ```powershell
     # Wait for reboot (boot time should change)
@@ -237,12 +218,14 @@ Complete the following steps for each redundant gateway.
     ```
 
 1. **Perform Windows updates.**
-    - Install the required Windows updates on the gateway VM using your standard process.
-    - Reboot if required by the updates.
+
+- Install the required Windows updates on the gateway VM using your standard process.
+- Reboot if required by the updates.
 
 1. **Add the gateway back to the gateway pool.**
-    - Re-register the gateway with the Network Controller.
-    - The gateway typically rejoins the pool in a passive/unmonitored state first.
+
+- Re-register the gateway with the Network Controller.
+- The gateway typically rejoins the pool in a passive/unmonitored state first.
 
     ```powershell
     # Read the backup configuration
@@ -260,8 +243,9 @@ Complete the following steps for each redundant gateway.
     ```
 
 1. **Wait for the gateway to return to a healthy redundant state.**
-   - Verify the gateway has successfully transitioned to the redundant state.
-   - Ensure health checks pass before proceeding.
+
+- Verify the gateway has successfully transitioned to the redundant state.
+- Ensure health checks pass before proceeding.
 
     ```powershell
     # Wait for gateway to become healthy
@@ -294,7 +278,8 @@ Complete the following steps for each redundant gateway.
     ```
 
 1. **Proceed to the next redundant gateway.**
-   - Repeat steps 1 through 5 for each remaining redundant gateway.
+
+- Repeat steps 1 through 5 for each remaining redundant gateway.
 
 ### Phase 3: Update active gateways
 
@@ -327,8 +312,8 @@ The following example illustrates the update process for an active gateway, wher
 Complete the following steps for each active gateway (based on the *original* active gateway list captured in Phase 1).
 
 1. **Get the list of tunnels hosted on the gateway VM.**
-    - Document all active network connections and virtual gateways.
-    - Note the tunnel states and BGP peer information.
+- Document all active network connections and virtual gateways.
+- Note the tunnel states and BGP peer information.
 
     ```powershell
     # Select an active gateway to update from the list captured in Phase 1.
@@ -376,9 +361,10 @@ Complete the following steps for each active gateway (based on the *original* ac
     ```
 
 1. **Reboot the gateway VM to trigger failover.**
-    - This triggers a tunnel failure for all connections on this gateway.
-    - Gateway Manager automatically promotes one of the redundant gateways to active.
-    - All tunnels from the rebooted gateway move to the newly promoted active gateway.
+    
+- This triggers a tunnel failure for all connections on this gateway.
+- Gateway Manager automatically promotes one of the redundant gateways to active.
+- All tunnels from the rebooted gateway move to the newly promoted active gateway.
 
     ```powershell
     # Reboot the active gateway
@@ -390,10 +376,11 @@ Complete the following steps for each active gateway (based on the *original* ac
     ```
 
 1. **Verify tunnel failover.**
-    - Ensure all tunnels are now active and connected on the new gateway.
-    - Verify the BGP peering is re-established.
-    - Confirm connectivity is restored for all affected connections.
-    - Verify that the rebooted gateway transitions to a **Redundant** state.
+    
+- Ensure all tunnels are now active and connected on the new gateway.
+- Verify the BGP peering is re-established.
+- Confirm connectivity is restored for all affected connections.
+- Verify that the rebooted gateway transitions to a **Redundant** state.
 
     ```powershell
     # Wait for the gateway to come back online and check its state
@@ -476,13 +463,15 @@ Complete the following steps for each active gateway (based on the *original* ac
     ```
 
 1. **Test connectivity to workload endpoints.**
-    - Use your existing monitoring tools to validate traffic flow to critical workload endpoints.
-    - Ensure tunnels are operational before proceeding to the next steps.
-    - Focus on testing connectivity for the tunnels that were moved from the rebooted gateway to the new active gateway.
+
+- Use your existing monitoring tools to validate traffic flow to critical workload endpoints.
+- Ensure tunnels are operational before proceeding to the next steps.
+- Focus on testing connectivity for the tunnels that were moved from the rebooted gateway to the new active gateway.
 
 1. **Update the now-redundant gateway.**
-    - Follow the redundant gateway update procedure (Phase 2, steps 1-5).
-    - Remove the gateway from the pool, install Windows updates, re‑add it to the pool, and verify that it returns to a healthy redundant state.
+    
+- Follow the redundant gateway update procedure (Phase 2, steps 1-5).
+- Remove the gateway from the pool, install Windows updates, re‑add it to the pool, and verify that it returns to a healthy redundant state.
 
     > [!NOTE]
     > When using the scripts from Phase 2, ensure that `gatewayToUpdate` is set to this now-redundant gateway (the one that was previously active and has just transitioned to redundant state).
@@ -498,15 +487,17 @@ Complete the following steps for each active gateway (based on the *original* ac
     ```
 
 1. **Proceed to the next active gateway.**
-    - Repeat steps 1 through 6 for each remaining gateway that was originally identified as active in Phase 1.
+
+- Repeat steps 1 through 6 for each remaining gateway that was originally identified as active in Phase 1.
 
 ## Post-update verification
 
 After all gateways are updated, complete the following validation steps.
 
 1. **Verify that all gateways are online.**
-    - Check that all gateway VMs are registered with the Network Controller.
-    - Confirm proper distribution of redundant and active gateways.
+
+- Check that all gateway VMs are registered with the Network Controller.
+- Confirm proper distribution of redundant and active gateways.
 
     ```powershell
     # Get all gateways and display their status
@@ -526,8 +517,9 @@ After all gateways are updated, complete the following validation steps.
     ```
 
 1. **Verify connectivity.**
-    - Test all network connections and virtual gateways.
-    - Confirm BGP peering is stable across all connections.
+   
+- Test all network connections and virtual gateways.
+- Confirm BGP peering is stable across all connections.
 
     ```powershell
     # Get all virtual gateways and check connection states
@@ -599,8 +591,9 @@ After all gateways are updated, complete the following validation steps.
     ```
 
 1. **Test connectivity to workload endpoints.**
-    - Use your existing monitoring or validation tools to test traffic flow to critical workload endpoints.
-    - Confirm that applications are functioning correctly through the gateway connections.
+
+- Use your existing monitoring or validation tools to test traffic flow to critical workload endpoints.
+- Confirm that applications are functioning correctly through the gateway connections.
 
 ## Next steps
 
