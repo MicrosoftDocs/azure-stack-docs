@@ -25,7 +25,7 @@ This article describes new features and improvements in disconnected operations 
 
 ::: moniker-end
 
-::: moniker range=">=azloc-2602"
+::: moniker range="=azloc-2602"
 
 ## Features and improvements in 2602
 
