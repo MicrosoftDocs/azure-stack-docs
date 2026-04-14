@@ -124,6 +124,8 @@ Centralizing external connectivity at the service leaf provides the following be
 - **Simple changes** — You can add or remove external connectivity without modifying the spine configuration.
 - **Reduced blast radius** — A routing or policy misconfiguration on the service leaf only affects external connectivity, not the internal fabric.
 
+:::image type="content" source="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg" alt-text="Diagram showing service leaf firewall, load balancers and network controller integration on leaf and spine architecture." lightbox="./media/firewall-load-balancer-network-controller-service-leafs.svg":::
+
 ## Leaf and spine fabric requirements
 
 This section covers the additional switch capabilities required for medium (17-32 node) and large (33-64 node) deployments that use a leaf-spine Clos fabric with Virtual Extensible LAN (VXLAN) Ethernet Virtual Private Network (EVPN) overlay, multi-tenant Virtual Routing and Forwarding (VRF) isolation, and service integration through firewall or load balancer appliances. These requirements are additive — all base Azure Local switch requirements still apply.
