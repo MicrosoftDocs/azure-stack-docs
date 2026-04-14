@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 
 # Update SDN gateways
 
-This article describes how to update Software Defined Networking (SDN) gateway virtual machines (VMs) with minimal disruption to network connectivity. The procedure updates redundant and active gateways in a controlled sequence to maintain service availability.
+This article explains how to update Software Defined Networking (SDN) gateway virtual machines (VMs) with minimal disruption to network connectivity. The process updates redundant and active gateways in a controlled sequence to keep services available.
 
 ## SDN gateway update process workflow
 
@@ -18,7 +18,7 @@ The SDN gateway update process follows a three-phase approach:
 
 1. **Phase 1: Identify gateway roles**
    - Query the Network Controller to retrieve all gateway VMs.
-   - Identify each gateway’s role:
+    - Identify each gateway's role:
        - Redundant gateways (standby)
        - Active gateways (hosting live connections)
    - Record the original role of each gateway before starting the update process.
@@ -32,13 +32,13 @@ The SDN gateway update process follows a three-phase approach:
 1. **Phase 3: Update active gateways**
    Active gateways host live network connections and virtual gateways.
    - Reboot the active gateway to trigger tunnel failover to a redundant gateway.
-   - After the reboot, verify that the gateway transitions to a redundant state.
+   - After the reboot, check that the gateway transitions to a redundant state.
    - Remove the gateway from the Network Controller. This removal prevents Gateway Manager from interfering during the Windows update process.
    - Install the required Windows updates.
    - Re‑add the gateway to the Network Controller pool as a redundant gateway.
 
 > [!NOTE]
-> This article uses the `SdnDiagnostics` PowerShell module to interact with the Network Controller REST API for adding or removing gateways throughout this procedure.
+> This article uses the `SdnDiagnostics` PowerShell module to interact with the Network Controller REST API for adding or removing gateways.
 
 ## Key considerations
 
@@ -52,13 +52,13 @@ The SDN gateway update process follows a three-phase approach:
 
 - Document the original roles of all gateways before starting the update process.
 
-- Schedule gateway updates during planned maintenance windows to minimize service impact.
+- Schedule gateway updates during planned maintenance windows to reduce service impact.
 
 ## Prerequisites
 
-- Run all steps in this procedure from a physical host in the cluster that has network access to:
-  - The Network Controller REST API
-  - The gateway VMs via WinRM
+- Run all steps in this procedure from a physical host in the cluster that can use:
+  - The Network Controller REST API.
+  - The gateway VMs via WinRM.
 
 - **Network Controller update**
   - All Network Controller VMs must have the same Windows updates installed.
@@ -68,15 +68,15 @@ The SDN gateway update process follows a three-phase approach:
   - The SDN infrastructure must be healthy.
   - Existing gateway connections must be operational and in a healthy state.
 
-- Administrative credentials for the gateway VMs.
+- Admin credentials for the gateway VMs.
 
 - At least one redundant gateway available in the gateway pool.
   > [!WARNING]
-  > If no redundant gateway is configured, updating active gateways can cause extended traffic disruptions as tunnels might not failover during the update process.
+    > If no redundant gateway is set up, updating active gateways can cause longer traffic disruptions because tunnels might not fail over during the update process.
 
 - Windows update packages (MSU files) downloaded and staged.
 
-- Monitoring tools to verify tunnel connectivity and Border Gateway Protocol (BGP) status *(optional but strongly recommended)*. These tools are user-provided and specific to your environment, and are used to validate workload connectivity.
+- Monitoring tools to check tunnel connectivity and Border Gateway Protocol (BGP) status *(optional but strongly recommended)*. These tools are user-provided and specific to your environment, and are used to check app connectivity.
 
 - **SdnDiagnostics PowerShell module**. The code snippets in this article use cmdlets from the `SdnDiagnostics` module.
 
@@ -104,7 +104,7 @@ Import-Module SdnDiagnostics
 
 1. **Get the list of current gateways**
     - Query the Network Controller to retrieve all gateway VMs.
-    - Note down which gateways are **redundant** and which are **active**.
+    - Note which gateways are **Redundant** and which are **Active**.
         - Active gateways host active network connections/tunnels.
         - Redundant gateways are standby and do not host active connections.
 
@@ -303,7 +303,7 @@ After all redundant gateways are updated, proceed with the active gateways. This
 > [!IMPORTANT]
 > When an active gateway is rebooted during this process, it transitions to a **redundant** state. As a result, gateway roles can change dynamically during the update.
 >
-> Always reference the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Don’t rely on the current gateway state, as it might have changed during previous updates. This approach ensures that all gateways that were originally active are updated in a predictable and controlled order.
+> Always use the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Do not rely on the current gateway state, because it might have changed during previous updates. This approach makes sure all gateways that were originally active are updated in a predictable and controlled order.
 
 #### Example walkthrough for active gateways
 
