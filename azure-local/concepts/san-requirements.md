@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 
 
 # Overview
-Azure Local supports using Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This article details the support SAN solutions from our storage partners.
+Azure Local supports using Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This article details the supported SAN solutions from our storage partners.
 
 ## Supported SAN Solutions
 
@@ -27,10 +27,10 @@ Azure Local supports using Fibre Channel (FC) storage area network (SAN) storage
 Select one of the partners below to view their support statements:
 
 # [Dell](#tab/Dell-PowerStore-support)
-The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local. .
+The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local.
 
 # [EverPure](#tab/EverPure-support)
-Supported versions of Purity on FlashArray models (FA//X, FA//XL, FA//C, FA//E). Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html)
+Supported versions of Purity on FlashArray models (FA//X, FA//XL, FA//C, FA//E). Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html).
 
 # [Hitachi](#tab/Hitachi-Vantara-support)
 Hitachi VSP One storage family is supported for use with Azure Local.
