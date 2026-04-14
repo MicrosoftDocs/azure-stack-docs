@@ -2,11 +2,11 @@
 title: System Requirements for Azure Local Disaggregated Deployments
 description: Learn how to choose machines, storage, and networking components for Azure Local disaggregated deployments.
 author: alkohli
-ms.author: alkohli
+ms.author: cedward
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 01/30/2026
+ms.date: 04/09/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article discusses Azure, machine and storage, networking, and other requirements for hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). If you purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
+This article discusses Azure, machine, storage, networking, and other requirements for disaggregated deployments of Azure Local. To acquire the machines and SAN that supports Azure Local disaggregated architectures, you can purchase validated hardware from a Microsoft hardware partner with the operating system preinstalled [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Azure requirements
 
@@ -62,58 +62,17 @@ Before you begin, make sure that the physical machine and storage hardware used 
 
 |Component|Minimum|
 |--|--|
-|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
+|Number of Racks per Cluster|At least 1 rack and up to 8 racks per for the same cluster|
+|Number of machines| 1 to 64 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives for the OS installation.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
-|Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
+|Host network adapters| At least four network adapters listed in the Windows Server Catalog. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
-|Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
+|Data drives| Data drives to store the infrastructure volume and the workloads are provided via SAN |
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
-
-
-### Extra requirements for drives
-
-> [!NOTE]
-> These drive requirements supercede those for Windows Server.
-
-The machines should also meet these extra requirements for drives:
-
-- Have direct-attached drives that are physically attached to one machine each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
-
-    > [!NOTE]
-    > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
-
-- **Drive Support**
-   - Supported drives: SATA, SAS, and NVMe (M.2, U.2, and add-in card).
-
-   - Supported formats: 512n, 512e, and 4K native.
-
-- **Deployment-specific requirements**
-
-   - **Single-node**: Use one drive type (NVMe or SSD) with uniform performance characteristics across drives.
-
-   - **Multi-node cluster**: Strongly recommend all-flash, single drive type (NVMe or SSD) with uniform performance.
-
-- **Hybrid two-tier requirements for HDD + flash**
-
-   - Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
-
-   - Cache devices must be ≥ 32 GB.
-
-   - Cache-to-capacity ratio must be ≥ 15%.
-
-   - Cache drives recommended to have high endurance: ≥ 3 DWPD or ≥ 4 TBW/day.
-
-   - Number of capacity drives recommended to be whole multiple of cache drives.
-
-- NVMe driver is the Microsoft-provided one included in Windows (driver filename is stornvme.sys).
-
-- Flash (NVMe or SSD) must have power-loss protection.
-
-For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
 ## Networking requirements
 
@@ -123,7 +82,7 @@ Verify that physical switches in your network are configured to allow traffic on
 
 ## Bandwidth requirements
 
-For hyperconverged clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+For disaggregated clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
 ## Maximum supported hardware specifications
 
@@ -131,7 +90,7 @@ Azure Local deployments that exceed the following specifications are not support
 
 | Resource | Maximum |
 | --- | --- |
-| Physical machines per system |16 |
+| Physical machines per system |64 |
 | Storage per system | 4 PB |
 | Storage per machine | 400 TB |
 | Volumes per system | 64 |
@@ -299,5 +258,5 @@ You should always follow the OEM's recommended installation steps. With Azure Lo
 Review firewall, physical network, and host network requirements:
 
 - [Firewall requirements](./firewall-requirements.md).
-- [Physical network requirements](./physical-network-requirements.md).
-- [Host network requirements](./host-network-requirements.md).
+- [Physical network requirements](./physical-network-requirements-disaggregated.md).
+- [Host network requirements](./host-network-requirements-disaggregated.md).

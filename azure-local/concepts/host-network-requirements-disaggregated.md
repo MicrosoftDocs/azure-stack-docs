@@ -3,8 +3,8 @@ title: Host Network Requirements for Azure Local Disaggregated Deployments
 description: Learn the host network requirements for Azure Local disaggregated deployments.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/31/2026
-ms.author: alkohli
+ms.date: 04/09/2026
+ms.author: cedward
 ms.subservice: hyperconverged
 ---
 
@@ -12,34 +12,40 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between machines, see [Physical network requirements](physical-network-requirements.md).
+This topic discusses host networking considerations and requirements for Azure Local disaggregated architectures. For information on disaggregated architectures and the physical connections between machines, see [Physical network requirements Azure Local disaggregated deployments](physical-network-requirements-disaggregated.md).
 
-For information on how to simplify host networking using Network ATC, see [Simplify host networking with Network ATC](../deploy/network-atc.md).
+## Network traffic types for Azure Local disaggregated deployments using Fiber Channel SAN storage
 
-## Network traffic types
+Azure Local disaggregated deployments network traffic types:
 
-Azure Local network traffic can be classified by its intended purpose:
+- **Management and compute traffic:** Traffic to or from outside the local system. For example, traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc. It also includes traffic originating from or destined to the compute workloads such as virtual machines (VMs) or AKS clusters.
+- **Cluster networks traffic:** these two networks carry the cluster traffic for SMB-based live migration, the cluster heartbeat and the CSV metadata and redirection. This traffic is layer-2 traffic and is not routable.
+- **(Optional) In guest Backup network:** Some customers might require to have a dedicated network for traffic originated inside the VMs to backup application data over the network.
 
-- **Management traffic:** Traffic to or from outside the local system. For example, traffic used by the administrator for management of the system like Remote Desktop, Windows Admin Center, Active Directory, etc.
-- **Compute traffic:** Traffic originating from or destined to a virtual machine (VM).
-- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration. This traffic is layer-2 traffic and is not routable.
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. No network adapters required for in-guest backup network.
+
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
+
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. Additional network adapters required for in-guest backup network.
+
+:::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
 ## Select a network adapter
 
-Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
+Network adapters are qualified by the **network traffic types** they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a machine for Azure Local, you must minimally have *at least* four adapters that are qualified for management, compute and cluster, as these traffic types are required on Azure Local. 
 
-For more information about this role-based NIC qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
+For more information about this role-based network adapter qualification, see this [Windows Server blog post](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
 
 |Level|Management Role|Compute Role|Storage Role|
 |----|----|----|----|
-|Role-based distinction|Management|Compute Standard|Storage Standard|
-|Maximum Award|Not Applicable|Compute Premium|Storage Premium|
+|Role-based distinction|Management|Compute Standard| cluster SMB Standard|
+|Maximum Award|Not Applicable|Compute Premium|cluster SMB Premium|
 
 > [!NOTE]
-> The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
+> The highest qualification for any adapter in our ecosystem contains the **Management**, **Compute Premium**, and **cluster Premium** qualifications.
 
 :::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot shows 'Certified for Windows' qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
@@ -58,7 +64,7 @@ If inbox driver is being used, download and install the latest driver from your 
 Important network adapter capabilities used by Azure Local include:
 
 - Dynamic Virtual Machine Multi-Queue (Dynamic VMMQ or d.VMMQ)
-- Remote Direct Memory Access (RDMA)
+- Remote Direct Memory Access (RDMA) for SMB traffic
 - Guest RDMA
 - Switch Embedded Teaming (SET)
 
@@ -80,34 +86,32 @@ For more information on Dynamic VMMQ, see the blog post [Synthetic accelerations
 
 ### RDMA
 
-RDMA is a network stack offload to the network adapter. It allows SMB storage traffic to bypass the operating system for processing.
+RDMA is a network stack offload to the network adapter. It allows SMB traffic to bypass the operating system for processing.
 
-RDMA enables high-throughput, low-latency networking, using minimal host CPU resources. These host CPU resources can then be used to run additional VMs or containers.
+RDMA enables high-throughput, low-latency networking, using minimal host CPU resources. These host CPU resources can then be used to run more VMs or containers.
 
-**Applicable traffic types:** host storage
+**Applicable traffic types:** host cluster SMB traffic
 
-**Certifications required:** Storage (Standard)
+**Certifications required:** Cluster SMB (Standard)
 
-All adapters with Storage (Standard) or Storage (Premium) qualification support host-side RDMA. For more information on using RDMA with guest workloads, see the "Guest RDMA" section later in this article.
+All adapters with SMB (Standard) or (Premium) qualification support host-side RDMA. For more information on using RDMA with guest workloads, see the "Guest RDMA" section later in this article.
 
 Azure Local supports RDMA with either the Internet Wide Area RDMA Protocol (iWARP) or RDMA over Converged Ethernet (RoCE) protocol implementations.
 
 > [!IMPORTANT]
 > RDMA adapters only work with other RDMA adapters that implement the same RDMA protocol (iWARP or RoCE).
 
-Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification which require RDMA support.
+Not all network adapters from vendors support RDMA. The following table lists those vendors (in alphabetical order) that offer certified RDMA adapters. However, there are hardware vendors not included in this list that also support RDMA. See the [Windows Server Catalog](https://www.windowsservercatalog.com/) to find adapters with the Storage (Standard) or Storage (Premium) qualification, which require RDMA support.
 
 > [!NOTE]
 > InfiniBand (IB) is not supported with Azure Local.
 
-|NIC vendor|iWARP|RoCE|
+|Network adapter vendor|iWARP|RoCE|
 |----|----|----|
 |Broadcom|No|Yes|
 |Intel|Yes|Yes (some models)|
 |Marvell (Qlogic)|Yes|Yes|
 |Nvidia|No|Yes|
-
-For more information on deploying RDMA for the host, we highly recommend you use Network ATC. For information on manual deployment see the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
 #### iWARP
 
@@ -128,7 +132,7 @@ RoCE uses User Datagram Protocol (UDP), and requires PFC and ETS to provide reli
 Use RoCE if:
 
 - You already have deployments with RoCE in your datacenter.
-- You're comfortable managing the DCB network requirements.
+- You're comfortable managing the Data Center Bridging (DCB) network requirements.
 
 ### Guest RDMA
 
@@ -136,18 +140,17 @@ Guest RDMA is not supported on Azure Local.
 
 ### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other NIC teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
+SET is a software-based teaming technology that is included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Local and works well with compute, storage, and management traffic. SET supports up to eight adapters in a single team. Other network adapters teaming methods, such as [Load Balancing/Failover (LBFO)](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642), aren't supported.
 
-In Azure Local, Network ATC automatically configures both the SET and the vSwitch. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the recommended approach is to use Network ATC with intents.
+In Azure Local disaggregated deployments, Network ATC automatically configures both the SET and the vSwitch for the management and compute intent. You shouldn't manually deploy SET using PowerShell, such as with the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) cmdlet. While this command enables Embedded Teaming by default when multiple adapters are listed, the supported approach for Azure Local is to use Network ATC with intents for management and compute traffics
 
-**Applicable traffic types:** compute, storage, and management
+**Applicable traffic types:** compute, cluster SMB traffic , and management
 
 **Certifications required:** Compute (Standard) or Compute (Premium)
 
 SET is important for Azure Local because it's the only teaming technology that enables:
 
 - Teaming of RDMA adapters (if needed).
-- Guest RDMA.
 - Dynamic VMMQ.
 - Other key Azure Local features (see [Teaming in Azure Local](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642)).
 
@@ -158,136 +161,46 @@ SET requires the use of symmetric (identical) adapters. Symmetric network adapte
 - speed (throughput)
 - configuration
 
-In 22H2, Network ATC will automatically detect and inform you if the adapters you've chosen are asymmetric. The easiest way to manually identify if adapters are symmetric is if the speeds and interface descriptions are **exact** matches. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
-
-See the following table for an example of the interface descriptions deviating only by numeral (#):
-
-|Name|Interface description|Link speed|
-|----|----|----|
-|NIC1|Network Adapter #1|25 Gbps|
-|NIC2|Network Adapter #2|25 Gbps|
-|NIC3|Network Adapter #3|25 Gbps|
-|NIC4|Network Adapter #4|25 Gbps|
-
 > [!NOTE]
-> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10 Gbps. Network ATC makes all the required configurations for SET.
+> SET supports only switch-independent configuration by using either Dynamic or Hyper-V Port load-balancing algorithms. For best performance, Hyper-V Port is recommended for use on all network adapters that operate at or above 10 Gbps. Network ATC makes all the required configurations for SET.
 
 ### RDMA traffic considerations
 
-If you implement DCB, you must ensure that the PFC and ETS configuration is implemented properly across every network port, including network switches. DCB is required for RoCE and optional for iWARP.
-
-For detailed information on how to deploy RDMA, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
+If you implement Data Center Bridging (DCB), you must ensure that the PFC and ETS configuration is implemented properly across every network port, including network switches. DCB is required for RoCE and optional for iWARP.
 
 RoCE-based Azure Local implementations require the configuration of three PFC traffic classes, including the default traffic class, across the fabric and all hosts.
 
-#### System traffic class
+#### QoS settings for Azure Local disaggregated deployments using Fiber Channel SAN
 
-This traffic class ensures that there's enough bandwidth reserved for system heartbeats:
+Because all traffic — CSV/Live Migration, and Cluster Heartbeat — runs over TCP, there is no requirement for lossless Ethernet. PFC is disabled on all priorities with no pause frames. Traffic is classified using 802.1p CoS tags and each class is assigned to a dedicated queue with explicit ETS bandwidth reservations enforced through Weighted Round-Robin (WRR) scheduling. CSV/Live Migration (Priority 3) receives a 20% reservation to ensure adequate throughput during VM migrations. Cluster Heartbeat (Priority 7) reserves 1% or 2% — sufficient for lightweight keepalive traffic. Default traffic (Priority 0) absorbs the remaining 79% or 78% of link bandwidth. Under normal conditions all classes can burst to full line rate; the bandwidth guarantees only apply during congestion. Note that in a SAN Fibre Channel configuration, storage traffic runs entirely on the Fiber Channel fabric, separate from the Ethernet network.
 
-- Required: Yes
-- PFC-enabled: No
-- Recommended traffic priority: Priority 7
-- Recommended bandwidth reservation:
-    - 10 GbE or lower RDMA networks = 2 percent
-    - 25 GbE or higher RDMA networks = 1 percent
+|Priority 802.1p|Description|PFC enabled PauseFrame|ETS Bandwidth (25GbE)|ETS Bandwidth (10GbE)
+|----|----|----|----|----|
+|0|Default Traffic|❌ No|79%|78%|
+|1-2|NA|NA|NA|NA|
+|3|CSV/Live Migration|❌ No|20%|20%|
+|5-6|NA|NA|NA|NA|
+|7|Cluster heartbeat|❌ No|1%|2%|
 
-#### RDMA traffic class
+## Cluster networks SMB traffic models
 
-This traffic class ensures that there's enough bandwidth reserved for lossless RDMA communications by using SMB Direct:
-
-- Required: Yes
-- PFC-enabled: Yes
-- Recommended traffic priority: Priority 3 or 4
-- Recommended bandwidth reservation: 50 percent
-
-#### Default traffic class
-
-This traffic class carries all other traffic not defined in the system or RDMA traffic classes, including VM traffic and management traffic:
-
-- Required: By default (no configuration necessary on the host)
-- Flow control (PFC)-enabled: No
-- Recommended traffic class: By default (Priority 0)
-- Recommended bandwidth reservation: By default (no host configuration required)
-
-## Storage traffic models
-
-SMB provides many benefits as the storage protocol for Azure Local, including SMB Multichannel. SMB Multichannel isn't covered in this article, but it's important to understand that traffic is multiplexed across every possible link that SMB Multichannel can use.
+SMB provides many benefits as the cluster networks protocol for Azure Local disaggregated deployments, including SMB Multichannel. SMB Multichannel isn't covered in this article, but it's important to understand that traffic is multiplexed across every possible link that SMB Multichannel can use.
 
 > [!NOTE]
->We recommend using multiple subnets and VLANs to separate storage traffic in Azure Local.
+>We only support using multiple subnets and VLANs to separate cluster SMB traffic in Azure Local disaggregated deployments.
 
-Consider the following example of a four node system. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
+Consider the following example of a four node system. Each machine has two cluster networks ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
 :::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node system on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
 
-The recommended approach is to use separate subnets and VLANs for each set of adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
+The approach used for Azure Local disaggregated deployments is to use separate subnets and VLANs for each adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
 
 :::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node system on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
 
-## Traffic bandwidth allocation
-
-The following table shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Local. Note that this is an example of a *converged solution*, where all traffic types (compute, storage, and management) run over the same physical adapters, and are teamed by using SET.
-
-Because this use case poses the most constraints, it represents a good baseline. However, considering the permutations for the number of adapters and speeds, this should be considered an example and not a support requirement.
-
-The following assumptions are made for this example:
-
-- There are two adapters per team.
-- Storage Bus Layer (SBL), Cluster Shared Volume (CSV), and Hyper-V (Live Migration) traffic:
-
-    - Use the same physical adapters.
-    - Use SMB.
-- SMB is given a 50 percent bandwidth allocation by using DCB.
-    - SBL/CSV is the highest priority traffic, and receives 70 percent of the SMB bandwidth reservation.
-    - Live Migration (LM) is limited by using the `Set-SMBBandwidthLimit` cmdlet, and receives 29 percent of the remaining bandwidth.
-        - If the available bandwidth for Live Migration is >= 5 Gbps, and the network adapters are capable, use RDMA. Use the following cmdlet to do so:
-
-            ```Powershell
-            Set-VMHost -VirtualMachineMigrationPerformanceOption SMB
-            ```
-
-        - If the available bandwidth for Live Migration is < 5 Gbps, use compression to reduce blackout times. Use the following cmdlet to do so:
-
-            ```Powershell
-            Set-VMHost -VirtualMachineMigrationPerformanceOption Compression
-            ```
-
- - If you're using RDMA for Live Migration traffic, ensure that Live Migration traffic can't consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful, because this cmdlet takes entry in bytes per second (Bps), whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps, for example:
-
-    ```Powershell
-    Set-SMBBandwidthLimit -Category LiveMigration -BytesPerSecond 750MB
-    ```
-
-    > [!NOTE]
-    >750 MBps in this example equates to 6 Gbps.
-
-Here is the example bandwidth allocation table:
-
-|NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
-|---------|-----------------|--------------------------|---------|-----------------|----------------|-----------------------------|----------|-------------------|
-|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |\*            |200 Mbps                     |          |
-|25 Gbps  |50 Gbps          |25 Gbps                   |70%       |17.5 Gbps        |29%            |7.25 Gbps                    |1%        |250 Mbps               |
-|40 Gbps  |80 Gbps          |40 Gbps                   |70%       |28 Gbps          |29%            |11.6 Gbps                    |1%        |400 Mbps|
-|50 Gbps  |100 Gbps         |50 Gbps                   |70%       |35 Gbps          |29%            |14.5 Gbps                    |1%        |500 Mbps|
-|100 Gbps |200 Gbps        |100 Gbps                    |70%      |70 Gbps          |29%            |29 Gbps                      |1%        |1 Gbps|
-|200 Gbps |400 Gbps        |200 Gbps                    |70%      |140 Gbps         |29%            |58 Gbps                      |1%        |2 Gbps|
-
-\* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
-
-\** 50 percent is an example bandwidth reservation.
-
-## Rack aware clustering
-
-Rack aware clustering improves fault tolerance and data distribution in an Azure Local instance. This architecture allows you to cluster nodes that are strategically placed across two physical racks in separate rooms or buildings, connected by high bandwidth and low latency networking. For an overview of this feature, see [Azure Local rack aware clustering overview](./rack-aware-cluster-overview.md).
-
-For network requirements and architecture, see [Azure Local rack aware cluster reference architecture](./rack-aware-cluster-reference-architecture.md).
-
 ## Next steps
 
-- Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
-- Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
 - Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
 - See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
 - See [Deploy using Azure Resource Manager template](../deploy/deployment-azure-resource-manager-template.md).
