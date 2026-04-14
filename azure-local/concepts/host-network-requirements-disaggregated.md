@@ -26,7 +26,7 @@ The following diagram represents the host networking configuration for a 64 node
 
 :::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking without in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-no-backup-host-networking.svg":::
 
-The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. Additional network adapters required for in-guest backup network
+The following diagram represents the host networking configuration for a 64 nodes Azure Local disaggregated deployment based on Fiber Channel SAN. Additional network adapters required for in-guest backup network.
 
 :::image type="content" source="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Screenshot shows Azure Local disaggregated host networking with in guest backup network." lightbox="./media/host-network-requirements/azure-local-disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
@@ -198,7 +198,6 @@ However, this creates unnecessary connections and causes congestion at the inter
 The approach used for Azure Local disaggregated deployments is to use separate subnets and VLANs for each adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
 
 :::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node system on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
-            ```
 
 ## Next steps
 

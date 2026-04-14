@@ -31,6 +31,6 @@ Use the following table to directly go to a pattern and its content.
 
 :::image type="content" source="./media/plan-deployment/disaggregated-fiber-channel-san-with-backup-host-networking.svg" alt-text="Diagram showing disaggregated FC SAN deployment with guest backup host networking pattern." lightbox="./media/plan-deployment/disaggregated-fiber-channel-san-with-backup-host-networking.svg":::
 
-## Next st
+## Next steps
 
 - [Download Azure Local](../deploy/download-software.md).
