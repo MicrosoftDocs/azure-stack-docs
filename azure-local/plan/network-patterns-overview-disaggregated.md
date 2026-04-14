@@ -124,7 +124,7 @@ Centralizing external connectivity at the service leaf provides the following be
 - **Simple changes** — You can add or remove external connectivity without modifying the spine configuration.
 - **Reduced blast radius** — A routing or policy misconfiguration on the service leaf only affects external connectivity, not the internal fabric.
 
-:::image type="content" source="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg" alt-text="Diagram showing service leaf firewall, load balancers and network controller integration on leaf and spine architecture." lightbox="./media/firewall-load-balancer-network-controller-service-leafs.svg":::
+:::image type="content" source="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg" alt-text="Diagram showing service leaf firewall, load balancers and network controller integration on leaf and spine architecture." lightbox="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg":::
 
 ## Leaf and spine fabric requirements
 
