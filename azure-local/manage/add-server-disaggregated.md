@@ -24,50 +24,39 @@ You can dynamically scale your Azure Local instance from 1 to 16 nodes. In respo
 
 > [!IMPORTANT]
 >
-> - In this release, you can only add one node at any given time. You can however add multiple nodes sequentially so that the storage pool is rebalanced only once.
+> - In this release, you can only add one node at any given time. You can however add multiple nodes sequentially.
 > - It is not possible to permanently remove a node from a system.
 
 ## Add node workflow
 
 The following flow diagram shows the overall process to add a node:
 
-:::image type="content" source="./media/add-server/add-server-workflow.png" alt-text="Diagram illustrating process to add a node." lightbox="./media/add-server/add-server-workflow.png":::
+:::image type="content" source="./media/add-server/add-server-workflow-disaggregated.png" alt-text="Diagram illustrating process to add a node." lightbox="./media/add-server/add-server-workflow.png":::
 
 To add a node, follow these high-level steps:
 
-1. Install the operating system, drivers, and firmware on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
+1. Install the operating system, drivers, firmware and connect your SAN on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os-disaggregated.md).
 1. Add the prepared node via the `Add-server` PowerShell cmdlet.
-1. When adding a node to the system, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
-1. Once the node is added, the system is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
+1. When adding a node to the system, the system validates that the new incoming node meets the CPU and memory requirements before it actually adds the node.
+1. Once the node is added, the system is also validated to ensure that it's functioning normally.
 
-> [!NOTE]
-> If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is added.
 
 ## Supported scenarios
 
 For adding a node, the following scale-out scenarios are supported:
 
-| **Start scenario** | **Target scenario** | **Resiliency settings** | **Storage network architecture** | **Witness settings** |
-|--|--|--|--|--|
-| Single-node | Two-node system | Two-way mirror | Configured with and without a switch | Witness required for target scenario. |
-| Two-node system | Three-node system | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
-| Three-node system | N-node system | Three-way mirror | Switch only | Witness optional for target scenario. |
+| **Start scenario** | **Target scenario** | **Witness settings** |
+|--|--|--|
+| Single-node | Two-node system | Witness required for target scenario. |
+| Two-node system | Three-node system | Witness optional for target scenario. |
+| Three-node system | N-node system | Witness optional for target scenario. |
 
-When upgrading a system from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
-
-### Resiliency settings
-
-In this release, for add node operation, specific tasks aren't performed on the workload volumes created after the deployment.
-
-For add node operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you may just want a 2-way mirror volume regardless of the system scale).
-
-However, the default resiliency settings are updated at the storage pool level and so any new workload volumes that you created after the deployment will inherit the resiliency settings.
 
 ### Hardware requirements
 
 When adding a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the system.
 
-[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server.md)]
+[!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server-disaggregated.md)]
 
 ## Prerequisites
 
@@ -119,11 +108,6 @@ If you're scaling out from a single-node, follow these steps first:
 
 1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
 
-1. Configure a storage intent if you didn't do this during the initial deployment of your Azure Local instance. Modify the parameters to match your environment.
-
-    ```powershell
-    Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"
-    ```
 
 On a node that already exists on your system, follow these steps:
 
