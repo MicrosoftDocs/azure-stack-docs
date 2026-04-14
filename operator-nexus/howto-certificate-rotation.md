@@ -35,11 +35,9 @@ Start a fabric-scoped rotation across all supported devices:
 ```Azure CLI
 az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/rotateCertificates?api-version=2025-07-15" --verbose
 ```
-
 Note: you must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
 
 Sample response, containing `Location` parameter which is needed to query status:
-
 ```Azure CLI
 Request URL: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/rotateCertificates?api-version=2025-07-15'
 Request method: 'POST'
@@ -75,62 +73,18 @@ Sample response while rotation is happening:
 ```
 
 Sample response once rotation has completed:
-
-```Azure CLI
-TODO
-```
-
-### 2. Resync failed devices (fabric scope)
-
-Retry syncing the new certificates on all devices:
-
-```Azure CLI
-az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/resyncCertificates?api-version=2025-07-15" --verbose
-```
-
-Note: you must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
-
-Sample response, containing `Location` parameter which is needed to query status:
-
-```Azure CLI
-Request URL: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/resyncCertificates?api-version=2025-07-15'
-Request method: 'POST'
-Request headers:
-    ...
-Request body:
-None
-Response status: 202
-Response headers:
-    ...
-    'Location': 'https://management.azure.com/subscriptions/...'
-    ...
-Response content:
-null
-```
-
-Result of the operation can be queried using `az rest`:
-
-```Azure CLI
-az rest --url '{Location}'
-```
-
-Sample response while resync is happening:
-
 ```Azure CLI
 {
+  "endTime": "2026-03-19T16:36:21.0453827Z",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "...",
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric",
-  "startTime": "...",
-  "status": "Accepted"
+  "name": "23d4460f...",
+  "properties": null,
+  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/MyFabric",
+  "startTime": "2026-03-19T16:25:01.6370816Z",
+  "status": "Succeeded"
 }
 ```
 
-Sample response once resync has completed:
-
-```Azure CLI
-TODO
-```
 
 ### 3. Resync a single device (device scope)
 
@@ -178,30 +132,20 @@ Sample response while resync is happening:
 }
 ```
 
-Sample response once resync has completed: *TODO replace with successful output*
+Sample response once resync has completed:
 
 ```Azure CLI
 {
-  "endTime": "2026-03-17T12:32:12.8626707Z",
-  "error": {
-    "code": "ResyncFailed",
-    "details": [
-      {
-        "code": "FabricRotatedGNMIProfileCreationFailed",
-        "details": [],
-        "message": "Failed executing OC raw config command to apply SSL profile for: CR1-TOR2. Response: Failure / Unknown",
-        "target": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2"
-      }
-    ],
-    "message": "Apply GNMI profile to devices failed for: /subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2"
-  },
-  "id": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/UKSOUTH/operationStatuses/e7c426d7-aa3e-415a-9bf4-2ef845f043ec*DDE1CF80DC541EE3DCA3B0EA9F9358E1BC3F96C837B353ADF01A88F1B9B58FAB",
-  "name": "e7c426d7-aa3e-415a-9bf4-2ef845f043ec*DDE1CF80DC541EE3DCA3B0EA9F9358E1BC3F96C837B353ADF01A88F1B9B58FAB",
-  "resourceId": "/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/samdavies/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabrica6526f-CompRack1-TOR2",
-  "startTime": "2026-03-17T12:29:13.601236Z",
-  "status": "Failed"
+  "endTime": "2026-03-19T16:53:51.3739074Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
+  "name": "...",
+  "properties": null,
+  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice",
+  "startTime": "2026-03-19T16:48:16.6660348Z",
+  "status": "Succeeded"
 }
 ```
+
 
 ### 4. Get device certificate rotation status
 
