@@ -34,7 +34,7 @@ To repair an existing node, follow these high-level steps:
 
 1. If possible, shut down the node that you want to repair. Depending on the state of the node, a shutdown may not be possible or necessary.
 1. Reimage the node that needs to be repaired.
-1. Connect the node to the SAN
+1. Connect the node to the SAN.
 1. Run the repair node operation. The Azure Stack HCI Operating System, drivers, and firmware are updated as part of the repair operation.
 
 
@@ -96,7 +96,7 @@ Follow these steps on the node you're trying to repair.
 
         :::image type="content" source="./media/repair-server/delete-machine-node-resource-1.png" alt-text="Screenshot of deletion of faulty Azure Arc machine node." lightbox="./media/repair-server/delete-machine-node-resource-1.png":::
 
-1. Install the operating system,required drivers and connect your SAN on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os-disaggregated.md).
+1. Install the operating system, required drivers, and connect your SAN on the node you wish to repair. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os-disaggregated.md).
 
     >[!NOTE]
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
@@ -125,7 +125,7 @@ Follow these steps on another node that is a member of the same Azure Local inst
     ```
 
     > [!NOTE]
-    > The node name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names). The parameter `LocalAdminCredential` by default, is the builtin Administrator account created by the Windows OS installation.
+    > The node name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names). The parameter `LocalAdminCredential` , by default, is the builtin Administrator account created by the Windows OS installation.
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
