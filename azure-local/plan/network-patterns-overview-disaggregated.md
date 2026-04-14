@@ -26,7 +26,7 @@ A disaggregated deployment consists of single-node or multi-node systems (up to 
 - At least four network adapter ports per server — two ports for the management and compute intent, and two ports for the cluster networks. In disaggregated deployments, the cluster networks use standalone ports without a Network ATC intent and are automatically configured during deployment.
 - In Fiber Channel (FC) SAN configurations, storage traffic runs entirely on the FC fabric, separate from the Ethernet network.
 
-:::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Diagram showing Azure Local disaggregated rack layout with 64 nodes across four racks." lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
+:::image type="content" source="./media/plan-deployment/leaf-spine-topology-four-racks.svg" alt-text="Diagram showing leaf and spine topology for 64 nodes." lightbox="./media/plan-deployment/leaf-spine-topology-four-racks.svg":::
 
 ## Why leaf-spine (Clos) topology?
 

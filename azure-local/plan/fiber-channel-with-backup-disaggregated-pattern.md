@@ -35,7 +35,7 @@ This pattern uses a leaf-spine (Clos) topology with the following components:
 - **Service leaf's** for data center core peering, route leaking, and service appliance integration.
 - **Fiber Channel switches** for storage fabric connectivity (separate from the Ethernet fabric).
 
-:::image type="content" source="./media/plan-deployment/clos-topology-four-racks-two-spines.svg" alt-text="Diagram showing leaf and spine topology for 64 nodes." lightbox="./media/plan-deployment/clos-topology-four-racks-two-spines.svg":::
+:::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Diagram showing Azure Local disaggregated rack layout with 64 nodes across four racks." lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
 
 For detailed information about how the underlay, overlay, and Virtual Routing and Forwarding (VRF) segmentation work together, see [How the fabric works](network-patterns-overview-disaggregated.md#how-the-fabric-works).
 
