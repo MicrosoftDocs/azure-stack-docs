@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 This article describes the network reference pattern for disaggregated Azure Local clusters that use Fiber Channel (FC) Storage Area Network (SAN) external storage **with** a dedicated backup network for virtual machine backup traffic. Cluster sizes can range from a single node up to 64 nodes across multiple racks.
 
-For an overview of the leaf-spine fabric architecture, traffic flow, and key concepts such as Virtual Routing and Forwarding (VRF), Virtual Extensible LAN (VXLAN), and the role of compute leaves vs. service leaves, see [Network reference patterns overview for disaggregated deployments](network-patterns-overview-disaggregated.md).
+For an overview of the leaf-spine fabric architecture, traffic flow, and key concepts such as Virtual Routing and Forwarding (VRF), Virtual Extensible LAN (VXLAN), and the role of compute leaf switches vs. service leaf switches, see [Network reference patterns overview for disaggregated deployments](network-patterns-overview-disaggregated.md).
 
 ## When to use this pattern
 
@@ -32,7 +32,7 @@ This pattern uses a leaf-spine (Clos) topology with the following components:
 
 - **Leaf switches** (Top of Rack) in each rack for server connectivity.
 - **Spine switches** for cross-rack transit.
-- **Service leaves** for data center core peering, route leaking, and service appliance integration.
+- **Service leaf switches** for data center core peering, route leaking, and service appliance integration.
 - **Fiber Channel switches** for storage fabric connectivity (separate from the Ethernet fabric).
 
 :::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Diagram showing Azure Local disaggregated rack layout with 64 nodes across four racks." lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
