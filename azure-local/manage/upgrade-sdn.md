@@ -77,7 +77,7 @@ Your SDN deployment consists of several roles and machines, each providing essen
 
 - Do not upgrade the gateway until the Network Controller completes cleanup and reboots the gateway.
 
-- Workloads that use Load Balancer Multiplexers (Internal Load Balancers, Load Balancers, Public IPs) or Gateways (Layer 3, Generic Routing Encapsulation (GRE), Site-to-Site connections) might experience temporary disruption while services fail over. Schedule the upgrade during a maintenance window and notify users in advance.
+- Workloads that use Load Balancer Multiplexers (Internal Load Balancers, Load Balancers, Public IPs) or gateways (Layer 3, Generic Routing Encapsulation (GRE), Site-to-Site connections) might experience temporary disruption while services fail over. Schedule the upgrade during a maintenance window and notify users in advance.
 
 ## Perform in-place upgrade
 
@@ -208,7 +208,7 @@ This command initiates an application upgrade if it was not automatically initia
 
 You can upgrade Load Balancer Multiplexers without any additional requirements. To upgrade, proceed directly with [Perform in-place upgrade](#perform-in-place-upgrade) on each Load Balancer Multiplexer, one at a time.
 
-## Upgrade Gateway VMs
+## Upgrade gateway VMs
 
 For instructions on how to upgrade gateway VMs, see [Upgrade SDN gateway VMs](./upgrade-sdn-gateways.md).
 
