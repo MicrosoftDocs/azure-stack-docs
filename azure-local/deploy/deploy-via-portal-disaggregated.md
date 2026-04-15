@@ -208,28 +208,17 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Optionally change advanced settings and apply tags
 
-1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
-    * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
+1. Select the only option available for disaggregated deployments, which is for selecting two LUNs that are used for infrastructure and cluster performance history volumes. Workload LUNs will be configured post deployment.   
+The infrastructure LUN selection field only shows volumes with a minimum size of 250GB, and the cluster performance history volume requires at least 20GB.  
 
-        To use this option, use a single machine and have a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
-
-    :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
     
-    > [!IMPORTANT]
-    > - Don't delete the infrastructure volumes created during deployment.
-    > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
-    
-    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
-    
-    |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-    |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
-    |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
-    |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
-
-1. Select **Next: Tags**.
+   
+   ![Screenshot 2026-04-14 165343](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png)
+   
+   > [!IMPORTANT]
+   > - Don't delete the infrastructure volumes created during deployment.
+   
+   
 1. Optionally add a tag to the Azure Local resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
@@ -238,7 +227,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     :::image type="content" source="./media/deploy-via-portal/validation-tab-1.png" alt-text="Screenshot of the Start validation selected in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-1.png":::
 
 
-1. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
+1. The validation takes about 20 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-2.png" alt-text="Screenshot of the validation in progress in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-2.png":::
 
@@ -274,8 +263,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
     ```
 
-- **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
-
+- 
 ## Verify a successful deployment
 
 To confirm that the system and all of its Azure resources were successfully deployed
