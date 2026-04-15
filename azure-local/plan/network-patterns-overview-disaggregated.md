@@ -36,7 +36,7 @@ A traditional two-switch design (one pair of Top of Rack switches) works for sma
 - **Failure blast radius** — If one switch fails, half your cluster loses connectivity.
 - **Bandwidth bottleneck** — All cross-rack traffic funnels through a single pair of uplinks.
 
-A leaf-spine (Clos) topology solves these problems by adding a dedicated spine layer that interconnects all racks. Every rack gets its own pair of leaf switches. All leaf's connect to the shared spine switches. Traffic between racks follows: **Leaf → Spine → Leaf** — never more than three hops.
+A leaf-spine (Clos) topology solves these problems by adding a dedicated spine layer that interconnects all racks. Every rack gets its own pair of leaf switches. All leaves connect to the shared spine switches. Traffic between racks follows: **Leaf → Spine → Leaf** — never more than three hops.
 
 Think of it like a highway system:
 
@@ -88,11 +88,11 @@ Virtual Routing and Forwarding (VRF) instances create isolated routing domains o
 :::image type="content" source="./media/plan-deployment/leaf-spine-packet-flow-example.svg" alt-text="Diagram showing packet flow between racks example." lightbox="./media/plan-deployment/leaf-spine-packet-flow-example.svg":::
 
 > [!NOTE]
-> Each cluster can be placed in its own VRF, depending on your isolation requirements. This enables multi-tenancy without additional hardware.
+> Each cluster can be placed in its own VRF, depending on your isolation requirements. This enables multitenancy without additional hardware.
 
 ## Compute leaf vs. service leaf
 
-Not all leaf switches have the same role. The fabric has two types of leaf's with distinct responsibilities:
+Not all leaf switches have the same role. The fabric has two types of leaves with distinct responsibilities:
 
 | Function | Compute leaf | Service leaf |
 |---|---|---|
@@ -103,11 +103,11 @@ Not all leaf switches have the same role. The fabric has two types of leaf's wit
 | Route leaking between VRFs | **No** | **Yes** |
 | Firewall / load balancer attachment | **No** | **Yes** |
 
-### Compute leaf's
+### Compute leaves
 
-Compute leaf's are the host edge. They terminate Virtual Extensible LAN (VXLAN) for locally attached servers, provide anycast gateways for the cluster's workload Virtual Routing and Forwarding (VRF) instances, and participate in the fabric underlay. They **do not** connect to the data center core and **do not** perform route leaking to external networks.
+Compute leaves are the host edge. They terminate Virtual Extensible LAN (VXLAN) for locally attached servers, provide anycast gateways for the cluster's workload Virtual Routing and Forwarding (VRF) instances, and participate in the fabric underlay. They **do not** connect to the data center core and **do not** perform route leaking to external networks.
 
-### Service leaf's
+### Service leaves
 
 The service leaf pair is the dedicated boundary between the cluster fabric and the data center core network. Because the service leaf pair participates in multiple Virtual Routing and Forwarding (VRF) instances, it is the natural integration point for:
 
@@ -128,7 +128,7 @@ Centralizing external connectivity at the service leaf provides the following be
 
 ## Leaf and spine fabric requirements
 
-This section covers the additional switch capabilities required for medium (17-32 node) and large (33-64 node) deployments that use a leaf-spine Clos fabric with Virtual Extensible LAN (VXLAN) Ethernet Virtual Private Network (EVPN) overlay, multi-tenant Virtual Routing and Forwarding (VRF) isolation, and service integration through firewall or load balancer appliances. These requirements are additive — all base Azure Local switch requirements still apply.
+This section covers the additional switch capabilities required for medium (17-32 node) and large (33-64 node) deployments that use a leaf-spine Clos fabric with Virtual Extensible LAN (VXLAN) Ethernet Virtual Private Network (EVPN) overlay, multitenant Virtual Routing and Forwarding (VRF) isolation, and service integration through firewall or load balancer appliances. These requirements are additive — all base Azure Local switch requirements still apply.
 
 | Category | Requirements |
 |---|---|

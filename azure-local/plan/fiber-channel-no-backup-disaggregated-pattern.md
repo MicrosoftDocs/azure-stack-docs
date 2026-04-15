@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 This article describes the network reference pattern for disaggregated Azure Local clusters that use Fiber Channel (FC) Storage Area Network (SAN) external storage **without** a dedicated backup network. Cluster sizes can range from a single node up to 64 nodes across multiple racks.
 
-For an overview of the leaf-spine fabric architecture, traffic flow, and key concepts such as Virtual Routing and Forwarding (VRF), Virtual Extensible LAN (VXLAN), and the role of compute leaf's vs. service leaf's, see [Network reference patterns overview for disaggregated deployments](network-patterns-overview-disaggregated.md).
+For an overview of the leaf-spine fabric architecture, traffic flow, and key concepts such as Virtual Routing and Forwarding (VRF), Virtual Extensible LAN (VXLAN), and the role of compute leaves vs. service leaves, see [Network reference patterns overview for disaggregated deployments](network-patterns-overview-disaggregated.md).
 
 ## When to use this pattern
 
@@ -32,7 +32,7 @@ This pattern uses a leaf-spine (Clos) topology with the following components:
 
 - **Leaf switches** (Top of Rack) in each rack for server connectivity.
 - **Spine switches** for cross-rack transit.
-- **Service leaf's** for data center core peering, route leaking, and service appliance integration.
+- **Service leaves** for data center core peering, route leaking, and service appliance integration.
 - **Fiber Channel switches** for storage fabric connectivity (separate from the Ethernet fabric).
 
 :::image type="content" source="media/plan-deployment/disaggregated-rack-layout-overview.svg" alt-text="Diagram showing Azure Local disaggregated rack layout with 64 nodes across four racks." lightbox="media/plan-deployment/disaggregated-rack-layout-overview.svg":::
@@ -41,7 +41,7 @@ For detailed information about how the underlay, overlay, and Virtual Routing an
 
 ## VLAN to VXLAN Network Identifier (VNI) mapping
 
-All VXLAN Network Identifier's (VNI's) are placed inside the cluster Virtual Routing and Forwarding (VRF) to maintain traffic isolation. Each VLAN maps to a unique VNI, and this mapping is consistent across all racks. The following table shows an example configuration for disaggregated deployments spanning multiple racks.
+All VXLAN Network Identifiers (VNIs) are placed inside the cluster Virtual Routing and Forwarding (VRF) to maintain traffic isolation. Each VLAN maps to a unique VNI, and this mapping is consistent across all racks. The following table shows an example configuration for disaggregated deployments spanning multiple racks.
 
 | VLAN | Name | VNI | Purpose |
 |---|---|---|---|
