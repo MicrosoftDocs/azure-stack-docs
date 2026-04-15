@@ -67,6 +67,8 @@ Supported ONTAP versions are governed by the [NetApp Interoperability Matrix Too
 - Multipathing and host utilities
 - Switch and fabric components 
 
+---
+
 ## Next steps
 
 Review firewall, physical network, and host network requirements:
