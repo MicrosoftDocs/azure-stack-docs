@@ -261,8 +261,7 @@ The infrastructure LUN selection field only shows volumes with a minimum size of
   Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
   ```
     
-##   
-Verify a successful deployment
+## Verify a successful deployment
 
 To confirm that the system and all of its Azure resources were successfully deployed
 1. In the Azure portal, navigate to the resource group into which you deployed the system.
