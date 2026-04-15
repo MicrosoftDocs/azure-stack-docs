@@ -1,3 +1,4 @@
+---
 title: Terminal Server as an Azure Operator Nexus Resource
 description: Learn how Terminal Servers (Bootstrap Devices) are modeled as ARM resources in Azure Operator Nexus for observability, automation, and lifecycle management.
 author: RaghvendraMandawale
@@ -6,6 +7,7 @@ ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 04/09/2026
 ms.custom: template-concept
+---
 
 # Terminal Server as an Azure Operator Nexus Resource
 
@@ -33,21 +35,7 @@ The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabr
 > - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using ≤ `2025-07-15`, the Terminal Server ARM resources are created with the `2025-07-15` API version.
 > - The same behavior applies during Greenfield deployments where the Network Fabric is created with NF RT version `8.0.0`.
 
-## Customer Actions
-
-### Greenfield Deployments
-
-1. Initiate Network Fabric (NF) creation using the standard API or CLI; no additional presteps are required.
-2. Provide basic Terminal Server device details (IP address, password) in the NF create payload. No changes to the existing workflow are required.
-3. The service provisions NetworkBootstrapDevice and NetworkBootstrapInterface resources.
-4. Service hydrates Bootstrap Device properties.
-5. Service updates Bootstrap Device state to Succeeded or Failed based on reachability outcomes.
-
-### Brownfield Deployments
-
-1. Verify that the fabric version meets the prerequisites listed above; perform a runtime upgrade if needed.
-2. The service identifies existing Bootstrap Devices, creates and associates the corresponding NetworkBootstrapDevice and NetworkBootstrapInterface resources.
-3. The Service hydrates Bootstrap Device properties, and updates Bootstrap Device state based on validation results.
+After performing the runtime upgrade to NF Runtime version `8.0.0`, the service identifies existing Bootstrap Devices, creates and associates the corresponding `NetworkBootstrapDevice` and `NetworkBootstrapInterface` resources, hydrates Bootstrap Device properties, and updates the Bootstrap Device state based on reachability checks.
 
 ## Resource Properties
 
