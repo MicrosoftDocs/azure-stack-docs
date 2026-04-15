@@ -181,7 +181,7 @@ Following steps connecting to the SAN must be done on every machine.
 
 1. Connect with your SAN administrator and share the HBA addresses to get the LUNs unmasked to the HBAs.
 
-1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuraton](./enable-external-storage.md)
+1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuration](./enable-external-storage.md)
 
 1. Confirm you can see the LUNs before you proceed with Arc Registration
 
