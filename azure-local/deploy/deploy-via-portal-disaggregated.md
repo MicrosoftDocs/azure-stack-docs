@@ -118,61 +118,35 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Specify network settings
 
-1. For multi-node systems, select whether the cluster is cabled to use a network switch for the storage network traffic:
-    * **No switch for storage** - For systems with storage network adapters that connect all the machines directly without going through a switch.
-    * **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This also applies to systems that use converged network adapters that carry all traffic types including storage.
-2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
+1. Choose the only storage configuration option available for a disaggregated cluster as **SAN based storage**. 
 
-    There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure.
-    * **Compute** traffic to or from VMs and containers on this system.
-    * **Storage** (SMB) traffic between machines in a multi-node system.
+1. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
-    If you selected **No switch** for storage, the following networking patterns are available:
-
-    - Group management and compute traffic
-    - Custom configuration
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the No switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
-
-    If you selected a **Network switch** for storage, more patterns are available based on how you intend to group the traffic:
-
-    - **Group all traffic** - If you're using network switches for storage traffic you can group all traffic types together on a set of network adapters.
-    - **Group management and compute traffic** - This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
-        - Management and compute intent.
-        - Storage intent.
-    - **Group compute and storage traffic** - If you're using network switches for storage traffic, you can group compute and storage traffic together on your high-speed adapters while keeping management traffic isolated on another set of adapters. You create two network intents:
-        - Management intent.
-        - Compute and storage intent.
-
-    - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
-    <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
-
-   > [!TIP]
-   > If you're deploying a single machine to which you plan to add machines later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
-
+    There are two types of traffic we configure:
+   
+   * **Management** traffic between this system, your management PC, and Azure.
+   * **Compute** traffic to or from VMs and containers on this system.
+    The following networking patterns are available:
+   
+   - Group management and compute traffic
+   - Separate management and compute traffic
+      
+    
+   
+   ![Screenshot 2026-04-14 163448](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png)
+   
+   
+   
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
-1. Here's an example where we created one Compute and management intent and one storage intent.
+1. Here's an example where we created one Compute and management intent.
 
-    - For *Compute_Management* intent, provide an intent name.
-        - In this case, we added two network adapters.
-    - For *Storage* intent, provide an intent name.
-	    - In this case, we added network adapters, ethernet 3, and ethernet 4.
-        - Accept the default VLAN ID, or enter the value that you set on the network switches used for each storage network.
+   - For *Compute_Management* intent, provide an intent name.
+      - In this case, we added two network adapters.
+1. For each cluster network, specify the cluster network name, network adapter, VLAN ID, and subnet.
 
-    > [!NOTE]
-    > Make sure to use high-speed adapters for the intent that includes storage traffic.
-
-1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
-
-     > [!IMPORTANT]
-     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information, check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage).
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-3.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-3.png":::
-
+   ![Screenshot 2026-04-14 164114](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-164114.png)
+   
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Customized network settings on the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
@@ -180,22 +154,21 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **System traffic priority** - Choose from 5, 6 or 7.
     - **Storage traffic bandwidth reservation** - Define the bandwidth allocation in % for the storage traffic.
-    - **Adapter properties** such as **Jumbo frame size** (in bytes), you can select from 1514, 4088, or 9014. For RDMA protocol, choose from iWARP, RoCE, RoCEv2, or you can disable the RDMA protocol.
-
-    > [!NOTE]
-    > These settings don’t apply to low capacity class devices. For more information, see [System requirements for low capacity deployments of Azure Local](../concepts/system-requirements-small-23h2.md).
-
+   - **Adapter properties** such as **Jumbo frame size** (in bytes), , you can select from 1514, 4088, or 9014. RDMA protocol is disabled for cluster networks.
+      
 1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
 
 1. If you picked static IP, provide the following values:
-    1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
-
-        These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
-    1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
-    1. Validate subnet.
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-4.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-4.png":::
-
+   1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
+   
+       These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
+   1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
+   1. Validate subnet.
+      
+    
+   
+   ![Screenshot 2026-04-14 164524](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-164524.png)
+   
 1. Select **Next: Management**.
 
 ## Specify management settings
