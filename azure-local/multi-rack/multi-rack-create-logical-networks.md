@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
@@ -31,7 +31,7 @@ Before you begin, complete these prerequisites:
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin, and get the address prefix for this IP range.
 
 > [!NOTE]
-> Dynamic IP allocation is not supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
+> Dynamic IP allocation isn't supported on Azure Local for multi-rack deployments. Only static logical networks are supported.
 >
 > When you create logical networks for Azure Local for multi-rack deployments, specify the IP pool with IP pool type `vm`. This action restricts the logical network to those IP addresses.
 > If you don't specify an IP pool during logical network creation, the entire subnet address space in the Layer 3 internal network is dedicated to this logical network. No other logical network can be created on this Layer 3 internal network.
@@ -90,7 +90,6 @@ Create a static logical network when you want to create Azure Local VMs with net
     $addressPrefixes = "100.68.180.0/28"
     $ipPoolEnd = "100.68.180.20"
     $ipPoolStart = "100.68.180.10"
-    $gateway = "192.168.200.1"
     $dnsServers = "192.168.200.222"
     $vlan = "201"
     ```
@@ -112,16 +111,17 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **ip-pool-start** | Start of the IP pool. For example: “192.168.0.0”. |
     | **ip-pool-end** | End of the IP pool. For example: “192.168.0.20”. |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" Use the `--no-dns-server` flag instead if you choose not to provide this parameter.|
-    | **gateway** | IPv4 address of the default gateway. Use the `--no-gateway` flag instead if you choose not to provide this parameter. |
+    | **gateway** | Use the `--no-gateway` flag. Customer-provided default gateway isn't currently supported. |
     | **fabric-network-configuration-id** |ARM resource ID of the Layer 3 Internal network. |
 
     > [!NOTE]
-    > The `dns-server` and `gateway` parameters are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
+    >- The `dns-server` parameter is optional. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter. and `gateway` parameters are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
+    >- Customer-provided default gateway isn't currently supported. You must use the `--no-gateway` flag to bypass passing the gateway parameter.
 
 1. Create a static logical network. Run the following command:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --no-gateway
     --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --ip-pool-type "vm" --dns-servers $dnsServers --fabric-network-configuration-id $fabricResourceID --vlan $vlan
     ```
 

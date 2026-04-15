@@ -3,7 +3,7 @@ title: Connect to VM Serial Console Using Azure CLI on Azure Local
 description: Learn how to connect to the serial console of an Azure Local Multi Rack VM using Azure Command-line Interface (CLI).
 author: alkohli
 ms.author: alkohli
-ms.date: 03/12/2026
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.service: azure-local
 #customer intent: As an Azure Local administrator, I want to connect to a VM serial console using Azure CLI so that I can troubleshoot and manage VM boot and console issues.

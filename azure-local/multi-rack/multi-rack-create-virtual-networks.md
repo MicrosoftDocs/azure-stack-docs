@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
@@ -180,7 +180,6 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     $subscription = "<Subscription ID>"  
     $resourceGroup = "mylocal-rg"  
     $nsg = “mylocal-nsg” --- Optional 
-    $routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'”  
     ```
 
     The required parameters:  
@@ -206,7 +205,6 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     --custom-location $customLocationID \ 
     --address-prefix $addressPrefix \ 
     --network-security-group $nsg\ 
-    --routes $routes 
     ```
 
     Here's a sample output:  

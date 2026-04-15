@@ -4,7 +4,7 @@ description: Learn how to create snapshots from a data disk and restore a new di
 author: alkohli
 ms.author: alkohli
 ms.reviewer: dramasamy
-ms.date: 03/11/2026
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.subservice: multi-rack
 #customer intent: As an Azure Local administrator for multi-rack deployments, I want to create and restore data disk snapshots so that I can back up and recover data disks.

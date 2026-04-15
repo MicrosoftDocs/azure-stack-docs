@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/30/2026
+ms.date: 04/15/2026
 ---
 
 # Manage Layer 3 isolation domains for multi-rack deployments of Azure Local

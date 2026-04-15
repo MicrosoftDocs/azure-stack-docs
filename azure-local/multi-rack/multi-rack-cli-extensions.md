@@ -5,7 +5,7 @@ author: sipastak
 ms.author: sipastak
 ms.service: azure-local
 ms.topic: how-to
-ms.date: 01/20/2026
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 

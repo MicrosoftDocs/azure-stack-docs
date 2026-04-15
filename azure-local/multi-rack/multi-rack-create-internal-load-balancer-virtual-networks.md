@@ -5,7 +5,7 @@ description: Learn to create and configure internal load balancers for Azure Loc
 author: ronmiab
 ms.author: robess
 ms.reviewer: alkohli
-ms.date: 11/24/2025
+ms.date: 04/15/2026
 ms.topic: concept-article
 ms.service: azure-local
 ms.subservice: multi-rack

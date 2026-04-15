@@ -5,7 +5,7 @@ description: Learn how to create and manage a public Load Balancer on Azure Loca
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/24/2025
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: multi-rack

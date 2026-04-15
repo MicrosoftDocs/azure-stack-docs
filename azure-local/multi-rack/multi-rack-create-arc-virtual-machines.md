@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/17/2026
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 

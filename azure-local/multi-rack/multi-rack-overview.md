@@ -5,7 +5,7 @@ description: Discover Azure Local multi-rack deployments, a new capability for d
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 11/18/2025
+ms.date: 04/15/2026
 ms.topic: overview
 ms.custom: references_regions
 ms.subservice: multi-rack

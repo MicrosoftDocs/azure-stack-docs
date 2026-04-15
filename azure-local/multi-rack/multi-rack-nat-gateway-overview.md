@@ -4,7 +4,7 @@ description: Learn about NAT gateway on multi-rack deployments of Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 11/25/2025
+ms.date: 04/15/2026
 ms.topic: overview
 ms.subservice: multi-rack
 ---
