@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 # Deploy Azure Local using the Azure portal for disaggregated deployments
 
-This article helps you deploy an Azure Local instance using the Azure portal.
+This article helps you deploy a disaggregated Azure Local instance using the Azure portal.
 
 ## Prerequisites
 
@@ -42,9 +42,11 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    We don't transfer much data so it's OK if the region isn't close.
 
-1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance.
+1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance. **For disaggregated deployments, you cannot select the Rack aware cluster option.**
 
     For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
+   
+1. Select **Storage options**. Choose the **Storage Spaces Direct (S2D)** or **Storage Area Network (SAN)** storage option for this Azure Local instance. For disaggregated deployments, select the Storage Area Network option.
 
 1. Select the **Identity provider** for this Azure Local instance.
 
@@ -66,15 +68,18 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they're added. This process may take several minutes. To check the installation status, refresh the page.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Install extensions on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
-    
-    After the extensions are installed successfully, the status of the machine updates to **Ready**.
-
+   ![Screenshot 2026-04-14 152216](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png)
+   
+   
+    After the extensions are installed successfully, the status of the machine updates to **Ready**.  
+   Note, if extension installations fail, you can select failed machines and retry the installation.
+   
 1. Select **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
-
-    If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
+   ![Screenshot 2026-04-14 152525](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png)
+   
+   
+       If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
 
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
@@ -83,18 +88,19 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Create a new Key Vault (optional). You can use an existing Key Vault and skip this step.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
+      :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
-	On the **Create a new Key Vault** page, provide information for the specified parameters:
-    1. Accept the suggested name or provide a name for the Key Vault you create.
+   	On the **Create a new Key Vault** page, provide information for the specified parameters:
+   1. Accept the suggested name or provide a name for the Key Vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
 	1. Select **Create**.
      
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of Key Vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
-
-    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
+   ![Screenshot 2026-04-14 153006](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png)
+   
+   
+       The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
 
 1. Select **Next: Configuration**.
 
