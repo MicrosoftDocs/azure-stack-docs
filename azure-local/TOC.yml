@@ -800,6 +800,8 @@ items:
         href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
       - name: Create Azure Local VM images
         href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
+      - name: Download managed disks from Azure
+        href: ./multi-rack/multi-rack-manage-data-disks.md
       - name: Create network interfaces
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
