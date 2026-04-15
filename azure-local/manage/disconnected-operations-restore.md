@@ -89,13 +89,13 @@ To trigger and monitor the restore, follow these steps:
 
 
 ## Important – Post restore Environment Mismatch
-Between the backup state and the current environment state before restore is initiated, there can be difference in the Workload state of the Control plane data. The restore operation can cause a drift in the resource metadata. 
-- **Lost resources:** Cloud-only resources created after backup are irrecoverable and must be recreated.
-- **Untracked Arc resources:** Resources created after backup and exist on cluster but missing in restored ALDO metadata → require rehydration/re-registration.
-- **Phantom / Resurrected resources:** Resources deleted after backup but reappear as metadata after restoring → cleanup required.
-- **Drifted resources:** Resources updated after backup; restored ALDO reflects old state; may break auth/management until remediated.
-- **Azure Local cluster infra drift:** Membership changes or new clusters registered after backup require repair registration and re-Arc actions.
-- **Certificate expiry / rotation:** Older backups may contain expired certs or mismatched client auth cert expectations; manual remediation and policy required.
+Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata. 
+- **Lost resources:** You cannot recover cloud-only resources that are created after the backup. You must recreate these resources.
+- **Untracked Arc resources:** You need to rehydrate or re-register resources that are created after the backup and exist on the cluster but are missing in restored metadata.
+- **Phantom / Resurrected resources:** You need to clean up resources that are deleted after the backup but reappear as metadata after restoring.
+- **Drifted resources:** Restored environment reflects old state for resources that are updated after backup. This state might break authentication or management until remediated.
+- **Azure Local cluster infra drift:** You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup.
+- **Certificate expiry / rotation:** Older backups might contain expired certificates or mismatched client authentication certificate. You need manual remediation and rotation.
 
 ::: moniker-end
 
