@@ -821,44 +821,10 @@ items:
         href: plan/network-patterns-overview-disaggregated.md
       - name: Choose disaggregated network reference pattern
         href: plan/choose-network-pattern-disaggregated.md
-      - name: Single-node deployment
-        items:
-        - name: Single-node deployment
-          href: plan/single-server-deployment.md
-        - name: Pattern components
-          href: plan/single-server-components.md
-        - name: Pattern IP requirements
-          href: plan/single-server-ip-requirements.md
-      - name: Two-node deployments
-        items:
-        - name: Storage switchless, single switch
-          href: plan/two-node-switchless-single-switch.md
-        - name: Storage switchless, two switches
-          href: plan/two-node-switchless-two-switches.md
-        - name: Storage switched, non-converged
-          href: plan/two-node-switched-non-converged.md
-        - name: Storage switched, fully converged
-          href: plan/two-node-switched-converged.md
-        - name: Pattern components
-          href: plan/two-node-components.md
-        - name: Pattern IP requirements
-          href: plan/two-node-ip-requirements.md
-      - name: Three-node switchless deployments
-        items:
-        - name: Storage switchless, dual TOR, single link
-          href: plan/three-node-switchless-two-switches-single-link.md
-        - name: Storage switchless, dual TOR, dual link
-          href: plan/three-node-switchless-two-switches-two-links.md
-        - name: Pattern components
-          href: plan/three-node-components.md
-        - name: Pattern IP requirements
-          href: plan/three-node-ip-requirements.md
-      - name: Four-node switchless deployments
-        items:
-        - name: Storage switchless, dual TOR, dual link
-          href: plan/four-node-switchless-two-switches-two-links.md
-      - name: SDN considerations
-        href: plan/network-patterns-sdn-considerations.md
+      - name: Fiber Channel disaggregated pattern without backup network
+        href: plan/fiber-channel-no-backup-disaggregated-pattern.md
+      - name: Fiber Channel disaggregated pattern with backup network
+        href: plan/fiber-channel-with-backup-disaggregated-pattern.md
     - name: Review Azure Arc gateway for Azure Local
       href: deploy/deployment-azure-arc-gateway-overview.md
     - name: Review Azure Private Endpoints for Azure Local
