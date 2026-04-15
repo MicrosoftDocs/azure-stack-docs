@@ -181,20 +181,8 @@ Following steps connecting to the SAN must be done on every machine.
 
 1. Connect with your SAN administrator and share the HBA addresses to get the LUNs unmasked to the HBAs.
 
-1. Configure MPIO using the following command.
+1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuraton](./enable-external-storage.md)
 
-    ```cmd
-    mpclaim -s -d
-    ```
-
-   > [!NOTE]
-   > Consult your SAN vendor for the best MPIO settings with Azure Local.
-
-1. Confirm MPIO settings are set correct.
-
-    ```powershell
-    Get-MPIOSetting
-    ```
 1. Confirm you can see the LUNs before you proceed with Arc Registration
 
     ```powershell
