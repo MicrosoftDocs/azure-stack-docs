@@ -1,20 +1,22 @@
 ---
-title: Update gateways in SDN managed by on-premises tools for Azure Local
-description: Learn how to update SDN gateways managed by on-premises tools.
+title: Upgrade gateway VMs in SDN managed by on-premises tools
+description: Learn how to upgrade gateway VMs in SDN managed by on-premises tools.
 ms.topic: how-to
 ms.author: robess
 author: ronmiab
-ms.date: 04/14/2026
+ms.date: 04/15/2026
 ms.subservice: hyperconverged
 ---
 
-# Update SDN gateways
+# Upgrade SDN gateway VMs
 
-This article explains how to update Software Defined Networking (SDN) gateway virtual machines (VMs) with minimal disruption to network connectivity. The process updates redundant and active gateways in a controlled sequence to keep services available.
+> Applies to: Hyperconverged deployments of Azure Local running 2311.2 and later; Windows Server 2025, Windows Server 2022
 
-## SDN gateway update process workflow
+This article explains how to upgrade Software Defined Networking (SDN) gateway virtual machines (VMs) with minimal disruption to network connectivity. The process updates redundant and active gateways in a controlled sequence to keep services available.
 
-The SDN gateway update process follows a three-phase approach:
+## SDN gateway upgrade process workflow
+
+The SDN gateway upgrade process follows a three-phase approach:
 
 1. **Phase 1: Identify gateway roles.**
    - Query the Network Controller to retrieve all gateway VMs.
@@ -79,10 +81,8 @@ Import-Module SdnDiagnostics
 
 ### Phase 1: Identify gateway roles
 
-1. **Get the list of current gateways.**
-
-    - Query the Network Controller to retrieve all gateway VMs.
-    - Note which gateways are **Redundant** and which are **Active**.
+1. **Get the list of current gateways.** Query the Network Controller to retrieve all gateway VMs.
+    - Identify which gateways are **Active** and which are **Redundant**.
       - **Active** gateways host active network connections/tunnels.
       - **Redundant** gateways are standby and do not host active connections.
 
