@@ -115,7 +115,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **fabric-network-configuration-id** |ARM resource ID of the Layer 3 Internal network. |
 
     > [!NOTE]
-    >- The `dns-server` parameter is optional. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter. and `gateway` parameters are optional. Use the `--no-gateway` flag to bypass passing the gateway parameter. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
+    >- The `dns-server` parameter is optional. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
     >- Customer-provided default gateway isn't currently supported. You must use the `--no-gateway` flag to bypass passing the gateway parameter.
 
 1. Create a static logical network. Run the following command:
