@@ -1,6 +1,6 @@
 ---
-title: Create and Manage an Internal Load Balancer on Multi-Rack Deployments for Azure Local
-description: Learn to create and configure internal load balancers for Azure Local multi-rack deployments.
+title: Create and Manage an Internal Load Balancer on Multi-Rack Deployments for Azure Local (Preview)
+description: Learn to create and configure internal load balancers for Azure Local multi-rack deployments (preview).
 #customer intent: As a network administrator, I want to understand the internal load balancers on Azure Local so that I can have the correct setup for my deployment.
 author: ronmiab
 ms.author: robess
@@ -11,11 +11,13 @@ ms.service: azure-local
 ms.subservice: multi-rack
 ---
 
-# Create and manage an internal load balancer in multi-rack deployments of Azure Local
+# Create and manage an internal load balancer in multi-rack deployments of Azure Local (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to create an internal load balancer on multi-rack deployments for Azure Local.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites  
 

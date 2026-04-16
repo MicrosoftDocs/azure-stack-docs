@@ -1,19 +1,21 @@
 ---
-title: Create virtual networks for multi-rack deployments of Azure Local
-description: Learn how to create virtual networks for multi-rack deployments of Azure Local.
+title: Create virtual networks for multi-rack deployments of Azure Local (preview)
+description: Learn how to create virtual networks for multi-rack deployments of Azure Local (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/15/2026
+ms.date: 11/17/2025
 ms.subservice: multi-rack
 ---
 
-# Create virtual networks for multi-rack deployments of Azure Local
+# Create virtual networks for multi-rack deployments of Azure Local (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article provides an overview of virtual networks (VNets) for multi-rack deployments of Azure Local and shows how to create one.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## What are virtual networks?
 
