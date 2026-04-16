@@ -173,7 +173,7 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 For more information, see [Original Equipment Manufacturer (OEM) pages for Secure Boot](https://support.microsoft.com/topic/original-equipment-manufacturer-oem-pages-for-secure-boot-9ecc3ba4-fb50-4bd3-9e9b-f16b35b8fb68).
 
-For step-by-step troubleshooting instrucitons, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-UEFI-2023-Secure-Boot-Update.md).
+For step-by-step troubleshooting instructions, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-UEFI-2023-Secure-Boot-Update.md).
 
 ## What if I can't update before July 2026?
 
