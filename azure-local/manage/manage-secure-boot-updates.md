@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 
 # Manage Secure Boot updates
 
-::: moniker range="=azloc-2603"
+::: moniker range=">=azloc-2603"
 
 This article describes how Azure Local manages the transition from the 2011 Secure Boot certificates, which expire in June 2026, to the 2023 Secure Boot certificates, including how it mitigates [CVE-2023-24932](https://github.com/advisories/GHSA-cgcm-2v5q-v3w9) and why the changes are delivered through a phased rollout.
 
@@ -229,6 +229,6 @@ For detailed troubleshooting, see the [Troubleshooting guide](https://github.com
 
 ::: moniker range="<azloc-2603"
 
-This feature applies only to Azure Local 2603.
+This feature applies only to Azure Local 2603 or later.
 
 ::: moniker-end
