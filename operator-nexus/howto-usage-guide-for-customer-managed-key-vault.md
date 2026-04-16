@@ -21,21 +21,21 @@ The following steps are required to enable a customer-managed key vault.
 
 1. Create a key vault in a different region.
 
-1. Use the `Settings, Networkworking` menu to ensure that `Enable trusted Microsoft services to bypass this firewall` is enabled for the key vault. This step is required to ensure that Network Fabric has a route to the key vault when the service makes password write requests.
+1. Use the **Settings** > **Networkworking** menu to ensure that **Enable trusted Microsoft services to bypass this firewall** is enabled for the key vault. This step is required to ensure that Network Fabric has a route to the key vault when the service makes password write requests.
 
-1. Associate the user assigned managed identity (UAMI) with Network Fabric.
+1. Associate the user-assigned managed identity (UAMI) with Network Fabric.
 
-1. Assign the UAMI `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the key vault.
+1. Assign the UAMI **Operator Nexus Key Vault Writer Service Role (Preview)** permission for the key vault.
 
-1. Use the `2026-01-15-preview` Azure Resource Manager API to configure key vault settings. These settings are known as the `Secret Archive Settings`. You must configure:
+1. Use the **2026-01-15-preview** Azure Resource Manager API to configure key vault settings. These settings are known as the _secret archive settings_. You must configure:
 
     - The URI of the customer-managed key vault.  
     - The type of managed identity (`UserAssignedIdentity` is preferred, but `SystemAssignedIdentity` is possible).  
     - The resource ID of the UAMI. Don't provide a resource ID if you're using `SystemAssignedIdentity`.
 
-1. Lock the Network Fabric and commit the `Secret Archive Settings` configuration.
+1. Lock the Network Fabric and commit the secret archive settings configuration.
 
-After you complete these steps, future password rotation operations duplicate customer accessible secrets to the key vault. Customer visible secret references in the Network Fabric and Network Device configuration indicate the secret and secret version in the customer-managed key vault.
+After you complete these steps, future password rotation operations duplicate customer accessible secrets to the key vault. Customer visible secret references in the Network Fabric and network device configuration indicate the secret and secret version in the customer-managed key vault.
 
 ### Examples
 
@@ -44,7 +44,7 @@ For these examples, let's assume that you create a customer-managed key vault. Y
 1. Associate the UAMI with Network Fabric.
 
     > [!Note]
-    > You must retain the existing system assigned managed identity and any pre-existing UAMIs. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
+    > You must retain the existing system-assigned managed identity and any pre-existing UAMIs. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
 
    ```
     {
@@ -81,7 +81,7 @@ For these examples, let's assume that you create a customer-managed key vault. Y
     ]
     ```
 
-1. Configure the key vault to Network Fabric by first creating a configuration JSON body. Your code looks like this.
+1. Configure the key vault to Network Fabric by first creating a configuration JSON body. Your code looks like this example.
 
     ```json
     {
@@ -120,7 +120,7 @@ For these examples, let's assume that you create a customer-managed key vault. Y
 
 ## Remove secret archive settings configuration
 
-You can remove the secret archive settings configuration. If you do so, future password rotations don't copy secrets to the key vault. After a password rotation, all secret references in the Network Fabric and Network Device configuration reference the key vault in the Network Fabric Controller managed resource group.
+You can remove the secret archive settings configuration. If you do so, future password rotations don't copy secrets to the key vault. After a password rotation, all secret references in the Network Fabric and network device configuration reference the key vault in the Network Fabric Controller managed resource group.
 
 1. Use `az rest...` and the `2026-01-15-preview` Azure Resource Manager API to remove key vault settings. In the Azure Resource Manager API, these settings are known as the `Secret Archive Settings`. Set `Secret Archive Settings` to `null`.
 
