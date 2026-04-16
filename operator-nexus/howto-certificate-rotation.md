@@ -10,6 +10,16 @@ ms.date: 3/31/2026
 
 
 # Use certificate rotation in Azure Operator Nexus
+API-driven Certificate Rotation enables customers to self-serve certificate rotation and resynchronization for Nexus Network Fabric. This capability allows customers to manage certificate lifecycle operations directly, while preserving existing operational safeguards. 
+
+## Key capabilities
+
+* **Fabric-wide certificate rotation:** Creates new client and server (leaf) certificates and applies them across supported devices in a network fabric.
+* **Asynchronous execution with status tracking:** Rotation and resync operations run as ARM async actions; use the `Location` header and operation status endpoint to track progress to completion.
+* **Device-scoped certificate resynchronization:** Re-syncs the latest certificates on an individual device, especially for devices that were missed or temporarily disabled.
+* **Device-level certificate visibility:** Exposes certificateRotationStatus on each network device, including certificate type, last rotation time, expiry time, and sync state.
+* **Expiry monitoring at scale:** Supports Azure Resource Graph queries to identify certificates nearing expiration across devices.
+* **Partial-success remediation path:** If some devices fail during fabric operations, failures are surfaced for remediation by enabling affected devices and rerunning targeted resync.
 
 This article explains the prerequisites for rotating certificates for a network fabric.
 
