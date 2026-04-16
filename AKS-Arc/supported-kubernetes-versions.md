@@ -57,9 +57,9 @@ You should install the latest patch release of the minor version you're running.
 
 |  K8s minor version | Supported Azure Local versions | Current status |
 |--------------|-------------------|--------------|
-| 1.33 | [2602](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
-| 1.32 | [2602, 2601, 2512, 2511, 2510](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
-| 1.31 | [2602, 2601, 2512, 2511, 2510, 2509, 2508](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
+| 1.33 | [2603, 2602](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
+| 1.32 | [2603, 2602, 2601, 2512, 2511, 2510](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
+| 1.31 | [2603, 2602, 2601, 2512, 2511, 2510, 2509, 2508](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
 | 1.30 | [2601, 2512, 2511, 2510, 2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | No more patch versions/CVE updates |
 | 1.29 | [2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408) | No more patch versions/CVE updates |
 | 1.28 | [2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates |

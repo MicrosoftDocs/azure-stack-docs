@@ -3,7 +3,7 @@ title: Troubleshoot Azure Local upgrade
 description: Learn how to troubleshoot upgrades on your Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 05/28/2025
+ms.date: 04/05/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -18,11 +18,11 @@ This article describes how to identify and troubleshoot common Azure Local upgra
 
 ## Operating system upgrade
 
-When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
+When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you might encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
 
 ## Live migration failures
  
-You may encounter a failed Cluster-Aware Updating (CAU) run as live migrations start to fail. When the live migrations do not complete, they may hang at a certain percentage or stay queued. CAU may fail due to the node failing to drain.
+You might encounter a failed Cluster-Aware Updating (CAU) run as live migrations start to fail. When the live migrations don't complete, they might hang at a certain percentage or stay queued. CAU might fail due to the node failing to drain.
 
 In these cases, follow the troubleshooting steps in the [Azure Local Supportability repository](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Upgrade/Known%252Dissue-%252D-Live-migrations-may-fail-when-upgrading-OS-from-22H2-to-23H2.md).
 
@@ -138,7 +138,7 @@ Set-NetIntentRetryState -Name "YourIntentName"
 
 ## Solution upgrade
 
-When you [Install the solution upgrade](./install-solution-upgrade.md), you may encounter issues. This section describes the location of the solution upgrade and solution validation logs that you can use to troubleshoot upgrade-related issues.
+When you [Install the solution upgrade](./install-solution-upgrade.md), you might encounter issues. This section describes the location of the solution upgrade and solution validation logs that you can use to troubleshoot upgrade-related issues.
 
 ### Solution upgrade logs
 

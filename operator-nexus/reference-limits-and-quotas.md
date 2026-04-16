@@ -43,6 +43,24 @@ The creation of the Network Fabric related resources is subject to the following
 | Route policies              | 400 route policies per Nexus instance |
 | Isolation domain MTU | 1500 - 9200 |
 
+#### Resource Requirements for the NFC Deployment
+This section provides a detailed breakdown of the compute resources required for a complete NFC (Network Fabric Controller) deployment.  Below is the detailed breakdown of the total vCPU capacity of **228 vCPUs** needed to support [NFC zone‑redundant operations](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric-controller#virtual-machine-vm-sku-information-for-network-fabric-controller) and to ensure seamless AKS cluster upgrade cycles.
+-   **NFC AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **144**
+-   **Infrastructure (Infra) AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **40**
+-   **Tenant AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **40**
+-   **Infrastructure VM**
+    -   VM SKU: _Standard D2s v3_
+    -   vCPUs: **2**
+-   **Tenant VM**
+    -   VM SKU: _Standard D2s v3_
+    -   vCPUs: **2**
+
 
 ### Network Cloud
 The creation of the Network Cloud specific resources is subject to the following resource limits:
@@ -65,10 +83,13 @@ The creation of the Network Cloud specific resources is subject to the following
 
 There are several Azure resources that are required to build up Network Fabric Controllers and Cluster Manager. The table here outlines the Azure services that Operators must ensure that they have adequate capacity available for creation for each Network Fabric Controller and Cluster Manager pair.
 
-| Resource Type	              | # of vCPUs |
-| --------------------------- | -------------------------|
-| Virtual Machine             |	32 (one of D4_v2, D8s_v3, D8s_v4, D8s_v5, D8s_v6), 120 (DS4_v2), 4 (D2s_v3) |
-| Standard DSv2 Family vCPUs  | quota limit 200; distributed across zones 1, 2, and 3 |
+|  | per CM* | per NFC** | Total # cores |
+| --- | --- | --- | --- |
+| Default VM family SKU | Standard_D4_v2  | Standard_D8s_v3 |  |
+| # cores needed (at steady-state) | 32 | 228 | 260 |
+| # cores needed (during upgrade) | up to 64 | 228 | 292 |
+| Alternative SKUs | Standard_D8s_v3, Standard_D8s_v4, Standard_D8s_v5, Standard_D8s_v6 | None |  |
+| Availability Zones within region | 3 AZs  <br> | 3 AZs (min) |  |
 
 > [!NOTE]
 > The number of vCPUs and the family SKUs required are subject to change.

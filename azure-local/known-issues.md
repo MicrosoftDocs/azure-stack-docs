@@ -28,10 +28,10 @@ For the 2603 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2603.1002.15 | 26100.32522 |
+| 12.2603.1002.500 | 26100.32522 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2603.1002.15** build.
+> The new deployments of this software use the **12.2603.1002.500** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -43,6 +43,9 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
+| Deployment <!--37166210--> | Fixed issue in environment validator that blocked deployment when an overlapping IP space with Arc resource bridge was found. | |
+| Update <!--37292238--> | Fixed issue that caused update to fail in some scenarios because of a timeout when updating Microsoft Defender Antivirus. | |
+| Update <!--37151259--> | Fixed issue with an update health check related to storage health that would incorrectly prevent update to start. | | 
 | Azure Local VMs <!--36356595--> | Fixed issue where infrastructure logical network details didn't display DNS server and VM switch information.  | |
 | Azure Local VMs <!--36958790--> | Fixed issue where the L4* GPU wasn't functional.  | |
 | Deployment <!--35378770--> | Fixed issue in deployment wizard where key vault creation during extension installation was blocking forward navigation.  | |
@@ -55,6 +58,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| WAC <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 
 
@@ -64,7 +68,6 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Deployment | If an IP address conflict is detected with the default AKS Arc IP ranges `10.244.0.0/16` or `10.96.0.0/12`, a new validator in version 2602 blocks the deployment or solution upgrade. | - Deployment: If the IP address conflict can't be resolved, you must deploy Azure Local using version 2601. Once deployed, you can update to version 2602 using the solution update process.<br>- Solution upgrade: There's no workaround available for solution upgrade. |
 | Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
