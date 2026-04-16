@@ -291,11 +291,11 @@ The following table shows the various identity transitions possible.
 
 | Current         | Requested outcome | CLI shape                                      |
 |-----------------|-------------------|------------------------------------------------|
-| no identity     | a SAMI            | `--mi-system-assigned`                         |
-| a UAMI          | a SAMI + a UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
-| a SAMI          | a SAMI + a UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
-| a SAMI + a UAMI | retain both       | include both flags as needed                   |
-| any             | None              | invalid                                        |
+| No identity     | SAMI            | `--mi-system-assigned`                         |
+| UAMI          | SAMI + UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
+| SAMI          | SAMI + UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
+| SAMI + UAMI | Retain both       | Include both flags as needed                   |
+| Any             | None              | Invalid                                        |
 
 ## Common errors and fixes
 
