@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-2604"
 
 ## Features and improvements in 2604
 
