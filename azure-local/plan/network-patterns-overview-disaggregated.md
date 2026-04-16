@@ -126,6 +126,61 @@ Centralizing external connectivity at the service leaf provides the following be
 
 :::image type="content" source="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg" alt-text="Diagram showing service leaf firewall, load balancers and network controller integration on leaf and spine architecture." lightbox="./media/plan-deployment/firewall-load-balancer-network-controller-service-leafs.svg":::
 
+## SDN considerations for disaggregated deployments
+
+Software Defined Networking (SDN) support varies depending on the Azure Local architecture and deployment type. In disaggregated deployments, SDN logical networks (LNETs) are supported through external SDN infrastructure rather than the Microsoft SDN stack. Network Security Group (NSG) support for disaggregated deployments is planned for a future release.
+
+The following table summarizes SDN support across Azure Local architectures as of version 2604:
+
+| Azure Local architecture | Azure Local version | Number of nodes | SDN supported configuration |
+|---|---|---|---|
+| Hyperconverged | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
+| Hyperconverged hybrid (S2D + SAN attach) | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
+| Disaggregated | 2604 | 1 to 64 | External SDN LNETs supported. NSG support coming soon |
+
+> [!NOTE]
+> For disaggregated deployments, SDN logical networks must be configured on the external network fabric (leaf-spine switches) rather than through the Microsoft SDN Network Controller. Plan your VXLAN EVPN overlay design accordingly to support the required logical networks.
+
+### AKS logical network routing and VRF design
+
+When you create logical networks (LNETs) for Azure Kubernetes Service (AKS) on Azure Local, the AKS LNET must have Layer 3 reachability (line of sight) to the cluster nodes running on the management LNET. AKS uses this path to communicate with the Kubernetes API server and other infrastructure services hosted on the management network. If the AKS LNET can't reach the management LNET, AKS deployment and operations fail. This requirement is specific to AKS — virtual machine (VM) LNETs don't require reachability to the management network.
+
+#### Option 1: Single VRF (recommended)
+
+For Azure Local version 2604, the recommended approach is to place both the infrastructure LNETs (management, compute) and the AKS LNETs in a **single VRF** on the leaf-spine fabric. A single VRF ensures that all LNETs share the same routing table, so reachability between management and AKS networks is automatic — no additional configuration is needed.
+
+With VXLAN EVPN symmetric IRB, inter-subnet traffic between AKS and management LNETs in the same VRF is routed locally at the compute leaf (VTEP) level. Packets traverse **Compute Leaf → Spine → Compute Leaf (3 hops)**. The service leaf switches aren't involved in this east-west traffic, which results in optimal latency and avoids creating a bottleneck at the service leaf tier.
+
+:::image type="content" source="./media/plan-deployment/aks-lnet-single-vrf.svg" alt-text="Diagram showing AKS and management LNETs in a single VRF with automatic Layer 3 reachability. Traffic flows through compute leaf and spine switches only — service leaf switches aren't involved." lightbox="./media/plan-deployment/aks-lnet-single-vrf.svg":::
+
+#### Option 2: Separate VRFs with route leaking
+
+If your environment requires **separate VRFs** for different workloads or tenants — for example, to meet regulatory isolation requirements — you must configure **route leaking on the service leaf switches** to allow the necessary traffic between VRFs. At a minimum, the VRF hosting the AKS LNET must import the management LNET prefixes, and the management VRF must import the AKS LNET prefixes. Without these leaked routes, cross-VRF communication fails and AKS can't reach infrastructure services.
+
+Because route leaking is configured on the service leaf switches, cross-VRF traffic must **hairpin through the service leaf tier**. The packet path becomes **Compute Leaf → Spine → Service Leaf → Spine → Compute Leaf (5 hops)** instead of the 3-hop path in a single VRF. This extra traversal adds latency and makes the service leaf switches a potential throughput bottleneck for all AKS-to-management communication.
+
+:::image type="content" source="./media/plan-deployment/aks-lnet-multi-vrf-route-leaking.svg" alt-text="Diagram showing AKS and management LNETs in separate VRFs with route leaking configured on the service leaf switches. Traffic hairpins through the service leaf tier, resulting in a 5-hop path." lightbox="./media/plan-deployment/aks-lnet-multi-vrf-route-leaking.svg":::
+
+> [!IMPORTANT]
+> Route leaking introduces shared reachability between otherwise isolated VRFs. Only leak the specific prefixes required for AKS-to-management communication. Avoid leaking default routes or broad summaries, as this undermines the isolation benefits of separate VRFs.
+
+#### Same-rack traffic optimization
+
+The hop counts described in Option 1 (3 hops) and Option 2 (5 hops) represent the **cross-rack worst-case scenario** — when the AKS workload and the management node it needs to reach are on different compute leafs (different racks).
+
+When both the AKS workload and its target management node are on the **same rack** (connected to the same compute leaf switch pair), the compute leaf performs local Integrated Routing and Bridging (IRB) routing. The traffic **doesn't traverse the spine** and completes in a single hop. This is a property of VXLAN EVPN symmetric IRB: each leaf switch is a fully functional VTEP that can route between any subnets within its locally instantiated VRFs.
+
+The following table summarizes the effective hop count for each scenario:
+
+| Scenario | Routing path | Hop count |
+|---|---|---|
+| Same rack, same VRF | Local IRB on compute leaf | 1 hop |
+| Cross rack, same VRF (Option 1) | Compute Leaf → Spine → Compute Leaf | 3 hops |
+| Cross rack, separate VRFs (Option 2) | Compute Leaf → Spine → Service Leaf → Spine → Compute Leaf | 5 hops |
+
+> [!TIP]
+> If most of your AKS workloads communicate primarily with management services on the same rack, the effective latency is lower than the cross-rack worst case. Consider workload placement and rack affinity when evaluating the performance impact of your VRF design.
+
 ## Leaf and spine fabric requirements
 
 This section covers the additional switch capabilities required for medium (17-32 node) and large (33-64 node) deployments that use a leaf-spine Clos fabric with Virtual Extensible LAN (VXLAN) Ethernet Virtual Private Network (EVPN) overlay, multitenant Virtual Routing and Forwarding (VRF) isolation, and service integration through firewall or load balancer appliances. These requirements are additive — all base Azure Local switch requirements still apply.
