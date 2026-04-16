@@ -1,5 +1,5 @@
 --- 
-title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault
+title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
@@ -275,12 +275,12 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 ###  Generally available or supported services
 
-- [Rack aware clustering](../concepts/rack-aware-cluster-overview.md). Supports fault domain awareness and improved resiliency for Azure Local clusters configured with Local Identity and Azure Key Vault.
-- [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal-standard%2Cportal-session-host-configuration%2Cportal&pivots=host-pool-standard). AVD workloads are supported on Azure Local clusters using Local Identity with Azure Key Vault, enabling secure virtual desktop deployments without a dependency on Active Directory.
+- [Rack aware clustering](../concepts/rack-aware-cluster-overview.md). Supports fault domain awareness and improved resiliency for Azure Local clusters configured with local identity and Azure Key Vault.
+- [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal-standard%2Cportal-session-host-configuration%2Cportal&pivots=host-pool-standard). AVD workloads are supported on Azure Local clusters using local identity with Azure Key Vault, enabling secure virtual desktop deployments without a dependency on Active Directory.
 
 ###  Third-party compatibility
 
-Commvault is a third‑party data protection and backup solution that is compatible with Azure Local deployments using Local Identity and Azure Key Vault. In supported scenarios, Commvault can be used for backup and recovery without requiring a dependency on Active Directory.
+Commvault is a third‑party data protection and backup solution that is compatible with Azure Local deployments using local identity and Azure Key Vault. In supported scenarios, Commvault can be used for backup and recovery without requiring a dependency on Active Directory.
 
 ## FAQ
 
