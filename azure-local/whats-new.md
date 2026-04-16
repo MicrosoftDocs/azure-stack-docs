@@ -38,6 +38,20 @@ This release includes various reliability improvements and bug fixes.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
+- **Disaggregated deployments for Azure Local**:Starting with this release, you can now deploy Azure Local using SAN storage only. Using this new arhitecture you can scale storage and compute independent and scale beyond 16 nodes. Learn more about [Disaggregated deployment](./deploy/deploy-via-portal-disaggregated.md).
+
+- **SAN support for Azure Local**: Attaching SAN storage to Azure Local is now general available with this release. You can now attach SAN storage to Azure Local and it will coexist with Storage Spaces Direct. Learn more about [attaching SAN storage](./deploy/enable-external-storage.md).
+
+- **Local Identity with Key Vault**: Starting with this release, Local Identity with Key Vault is general available. Learn more about [Local Identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. Learn more about [update setting](./update/update-settings.md).
+
+- **Domain join prior deployment** is supported starting with this release. Learn more about [domain join prior deployment](./deploy/deployment-install-os-disaggregated.md).
+
+- **Validation improvements** across deployment and update that reduce the duration, up to 50% during deployment. Validation now resumes from the step it failed rather starting from scratch within a time window od three hours. 
+
+- **Deployment performance improvements** consistent duration up to 8 nodes and overall reduction in time by 40%.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2603"
