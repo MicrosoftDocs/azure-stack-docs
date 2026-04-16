@@ -79,6 +79,9 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    - Limited connectivity update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
 
+> [!IMPORTANT]
+> Azure Local systems with more than 16 nodes may experience longer update runtimes. To help ensure updates complete within planned maintenance windows, consider performing the Solution Builder Extension update separately from the solution update for systems of this size.
+
 ## Don’ts for Azure Local updates
 
 Avoid the following practices when managing Azure Local updates, as they can lead to errors, downtime, or unsupported states.
