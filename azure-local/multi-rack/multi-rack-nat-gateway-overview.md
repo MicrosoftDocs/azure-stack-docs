@@ -47,7 +47,7 @@ The following table summarizes how long NAT gateway keeps connections open based
 
 - Multiple subnets within the same virtual network can share a single NAT gateway
 - You can attach only one NAT gateway to a virtual network and its subnets, but any number of subnets within that virtual network can share the same NAT gateway.
-- A NAT gateway can’t span multiple virtual networks. In the preview version, a NAT gateway can use only one public IP address. Additionally, the virtual network's address space must not overlap with the logical network from which the public IP address is allocated. <!--update preview info-->
+- A NAT gateway can’t span multiple virtual networks. In the preview version, a NAT gateway can use only one public IP address. Additionally, the virtual network's address space must not overlap with the logical network from which the public IP address is allocated.
 - The NAT gateway must have at least one virtual network subnet configured for the entire lifetime of the load balancer.
 - To delete a NAT gateway, first delete any load balancer configured on the same virtual network. Then, delete each virtual network subnet or update each subnet to remove its NAT gateway association.
 
