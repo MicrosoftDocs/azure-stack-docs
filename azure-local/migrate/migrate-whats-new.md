@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 04/16/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
