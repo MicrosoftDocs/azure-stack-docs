@@ -36,7 +36,9 @@ Before you begin the download of the software from Azure portal, if your OEM doe
 
 > [!IMPORTANT]
 > English is the only supported language for the deployment.
+> 
 > Make sure you have satisfied the permissions and resource provider registration, otherwise you may not be able to select a download of the Azure Stack HCI OS.
+> 
 > OEM providers, especially for Integrated and Premier solutions do provide custom images.
 > When deploying or re-deploying, make sure using the latest the OEM image from your OEM, which contain modifications and drivers to comply with the best-practices and supportability of your OEM. See section where to obtain OEM golden images.
 
