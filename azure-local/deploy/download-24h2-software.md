@@ -16,11 +16,16 @@ ms.subservice: hyperconverged
 This article describes how to download the operating system (OS) software from the Azure portal to deploy an Azure Local instance.
 
 The first step in deploying Azure Local is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner (OEM), the Azure Stack HCI OS should be preinstalled. 
+
+>[!IMPORTANT]
+> OEM providers, especially for Integrated and Premier solutions do provide custom images.
+> When deploying or re-deploying, make sure using the latest the OEM image from your OEM, which contain modifications and drivers to comply with the best-practices and supportability of your OEM. See section where to obtain OEM golden images.
+
 In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
 
 ## Prerequisites
 
-Before you begin the download of the software from Azure portal, ensure that you have the following prerequisites:
+Before you begin the download of the software from Azure portal, if your OEM does not provide any image, or you are deploying in lab environments, ensure that you have the following prerequisites:
 
 | **Prerequisite** | **Instructions** |
 |--------------|------------------|
@@ -64,6 +69,15 @@ Follow these steps to download the software:
 
     > [!NOTE]
     > This action begins the download. Use the downloaded ISO file to install the software on each machine that you want to cluster.
+
+
+## Where to obtain OEM golden images
+
+| **OEM name** | **Download location** |
+|--------------|------------------|
+| DELL EMC | https://dell.github.io/azurestack-docs/docs/hci/supportmatrix/2509/goldenimages/ |
+| HPE | |
+| Lenovo | |
 
 ## Next steps
 
