@@ -15,11 +15,7 @@ ms.subservice: hyperconverged
 
 This article describes how to download the operating system (OS) software from the Azure portal to deploy an Azure Local instance.
 
-The first step in deploying Azure Local is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner (OEM), the Azure Stack HCI OS should be preinstalled. 
-
->[!IMPORTANT]
-> OEM providers, especially for Integrated and Premier solutions do provide custom images.
-> When deploying or re-deploying, make sure using the latest the OEM image from your OEM, which contain modifications and drivers to comply with the best-practices and supportability of your OEM. See section where to obtain OEM golden images.
+The first step in deploying Azure Local is to download the OS from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner (OEM), the Azure Stack HCI OS should be preinstalled, or the latest OEM golden image should be used, instead of the image provided in the Azure Portal.
 
 In that case, you can skip this step and move on to [Register your machines and assign permissions for Azure Local deployment](./deployment-arc-register-server-permissions.md).
 
@@ -41,6 +37,8 @@ Before you begin the download of the software from Azure portal, if your OEM doe
 > [!IMPORTANT]
 > English is the only supported language for the deployment.
 > Make sure you have satisfied the permissions and resource provider registration, otherwise you may not be able to select a download of the Azure Stack HCI OS.
+> OEM providers, especially for Integrated and Premier solutions do provide custom images.
+> When deploying or re-deploying, make sure using the latest the OEM image from your OEM, which contain modifications and drivers to comply with the best-practices and supportability of your OEM. See section where to obtain OEM golden images.
 
 Follow these steps to download the software:
 
