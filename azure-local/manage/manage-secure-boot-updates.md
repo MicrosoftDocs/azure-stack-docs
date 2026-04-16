@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/25/2026
+ms.date: 04/16/2026
 ms.subservice: hyperconverged
 ---
 
@@ -173,7 +173,7 @@ Windows records Secure Boot DB and DBX update successes and failure reasons in t
 
 For more information, see [Original Equipment Manufacturer (OEM) pages for Secure Boot](https://support.microsoft.com/topic/original-equipment-manufacturer-oem-pages-for-secure-boot-9ecc3ba4-fb50-4bd3-9e9b-f16b35b8fb68).
 
-<!-- Link to the Public TSG (for troubleshooting) is needed!-->
+For step-by-step troubleshooting instrucitons, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-UEFI-2023-Secure-Boot-Update.md).
 
 ## What if I can't update before July 2026?
 
@@ -206,14 +206,6 @@ Azure Local clusters might host VMs that are affected by Secure Boot certificate
 ## Support and escalation guidance
 
 If you have issues while planning, orchestrating, or verifying Secure Boot updates, contact Microsoft Support before proceeding with other firmware (BIOS or UEFI) changes or enabling revocations in production environments.
-
-### Severity mapping for Azure Local Secure Boot scenarios
-
-| Severity | When to use it | Examples | What to include |
-|---|---|---|---|
-| Severity A (Critical) | Production outage or imminent business-critical impact. One or more nodes can't boot, or the cluster is down or can't provide service. | - Host fails to boot after Secure Boot update or revocation. <br>- Repeated boot loops. <br>- Cluster unavailable because nodes are stuck during boot.<br>- Recovery, WinRE, or installation media can't boot and recovery is blocked. | - Exact failure point and recent changes. <br>- Firmware (BIOS or UEFI) version and OEM model. <br>- Secure Boot-related event logs and last reboot time. <br>- BitLocker state or recovery prompt details (if applicable). |
-| Severity B (High) | Production functionality is degraded or at-risk, but the cluster remains operational. Requires timely investigation. | - Secure Boot update stuck in a pending or scheduled state across reboots, <br>- Repeated Secure Boot DB or DBX update failure in event logs. <br>- Azure Local health shows persistent out-of-policy related to Secure Boot servicing. <br>- Planned firmware update must proceed but Secure Boot mitigation is mid-flight. | - Current mitigation stage (DB, Boot Manager, DBX). <br>- Relevant Secure Boot event IDs and messages. <br>- Evidence of pending reboot requirements. <br>-  Planned maintenance window details. |
-| Severity C (Normal) | Questions, guidance requests, or non-production and testing issues with no service impact. | - Planning and validation questions. <br>- Confirming firmware readiness for certificate updates. <br>-  Updating boot media or WinPE and validating compatibility. <br>- Interpreting Secure Boot events and expected timing. | - Environment inventory (OEM models, firmware versions). <br>- Pilot or test results. <br>- Relevant KB references and completed steps. |
 
 ### When to contact support versus when to wait
 
