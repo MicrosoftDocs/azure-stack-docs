@@ -52,6 +52,8 @@ This release includes various reliability improvements and bug fixes.
 
 - **Deployment performance improvements** having consistent duration up to 8 nodes and overall reduction in time by 40%.
 
+- **Rack aware cluster** now supports deployments using Local Identity with Key Vault.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2603"
