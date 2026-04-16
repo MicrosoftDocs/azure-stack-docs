@@ -36,7 +36,7 @@ This article explains the prerequisites for rotating certificates for a network 
 * Enable disabled devices before rotation or resync.
 * Treat rotation as mutually exclusive with other fabric-wide operations.
 
-## Azure CLI procedures (GA, Az CLI only)
+## Azure CLI procedures
 
 ### 1. Rotate certificates across the fabric
 
@@ -96,7 +96,7 @@ Sample response once rotation has completed:
 ```
 
 
-### 3. Resync a single device (device scope)
+### 3. Resync a single device 
 
 Retry syncing the new certificates on all devices:
 
