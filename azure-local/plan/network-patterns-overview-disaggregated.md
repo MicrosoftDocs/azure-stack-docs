@@ -16,9 +16,12 @@ This article provides an overview of network reference patterns for disaggregate
 
 ## What is a disaggregated deployment?
 
-In a disaggregated deployment, compute and storage are separated. Storage is provided by an external Storage Area Network (SAN), such as Fiber Channel (FC) or iSCSI, instead of local disks inside each server node. This separation allows compute and storage to scale independently.
+In a disaggregated deployment, compute and storage are separated. Storage is provided by an external Storage Area Network (SAN), such as Fiber Channel (FC) or iSCSI, instead of local disks inside each server node. This separation allows compute, storage, and network to scale independently—add racks with their own leaf switch pairs for more compute, expand the SAN for more storage, or add spine switches for more cross-rack bandwidth.
 
 A disaggregated deployment consists of single-node or multi-node systems (up to 64 nodes per cluster) with the following characteristics:
+
+> [!NOTE]
+> Not all disaggregated deployments span multiple racks. If the disaggregated cluster remains single-rack and does not require SDN at scale, it is possible to use the simpler single-rack topology with a two-switch HSRP pair.
 
 - At least two **service leaf** network switches for external connectivity.
 - At least two **spine** network switches for cross-rack transit.
@@ -145,9 +148,9 @@ The following table summarizes SDN support across Azure Local architectures as o
 
 When you create logical networks (LNETs) for Azure Kubernetes Service (AKS) on Azure Local, the AKS LNET must have Layer 3 reachability (line of sight) to the cluster nodes running on the management LNET. AKS uses this path to communicate with the Kubernetes API server and other infrastructure services hosted on the management network. If the AKS LNET can't reach the management LNET, AKS deployment and operations fail. This requirement is specific to AKS—virtual machine (VM) LNETs don't require reachability to the management network.
 
-#### Option 1: Single VRF (recommended)
+#### Option 1: Single VRF
 
-For Azure Local version 2604, the recommended approach is to place both the infrastructure LNETs (management, compute) and the AKS LNETs in a **single VRF** on the leaf-spine fabric. A single VRF ensures that all LNETs share the same routing table, so reachability between management and AKS networks is automatic—no additional configuration is needed.
+For Azure Local version 2604, one approach is to place both the infrastructure LNETs (management, compute) and the AKS LNETs in a **single VRF** on the leaf-spine fabric. A single VRF ensures that all LNETs share the same routing table, so reachability between management and AKS networks is automatic—no additional configuration is needed.
 
 With VXLAN EVPN symmetric IRB, inter-subnet traffic between AKS and management LNETs in the same VRF is routed locally at the compute leaf (VTEP) level. Packets traverse **Compute Leaf → Spine → Compute Leaf (3 hops)**. The service leaf switches aren't involved in this east-west traffic, which results in optimal latency and avoids creating a bottleneck at the service leaf tier.
 
