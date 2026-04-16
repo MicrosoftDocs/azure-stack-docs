@@ -173,7 +173,7 @@ You might encounter these errors. Here's how to fix them.
 
 ## Supplementary operational notes
 
-- When you run existing resources at scale, capture existing external connectivity details before taking actions. Specifically, record all Azure ExpressRoute circuit details, and the ExpressRoute circuit-to-connection map. Ensure that the ExpressRoute circuit auth key hashes are populated before triggering the identity operation. This precaution helps you avoid unintended ExpressRoute circuit re-creation.
+- When you run existing resources at scale, capture existing external connectivity details before taking actions. Specifically, record all Azure ExpressRoute circuit details, and the ExpressRoute circuit-to-connection map. Ensure that the ExpressRoute circuit authentication key hashes are populated before triggering the identity operation. This precaution helps you avoid unintended ExpressRoute circuit re-creation.
 
 - If your internal runbook includes precheck actions (such as metadata stabilization in ExpressRoute), complete those actions first.
 
@@ -207,9 +207,9 @@ The managed identity resource provider might remove the SAMI context, leading to
 
 Get the Network Fabric Controller resource, and confirm that `identity.type == "SystemAssigned"`. Also confirm that `identity.principalId` is populated.
 
-*What identity does the Network Fabric Controller resource use for Key Vault and Storage account access?*
+*What identity does the Network Fabric Controller resource use for Key Vault and storage account access?*
 
-The Network Fabric Controller resource uses a SAMI for secure access to Key Vault and Storage account in its managed resource group. This use is part of the trusted services configuration.
+The Network Fabric Controller resource uses a SAMI for secure access to Key Vault and storage accounts in its managed resource group. This use is part of the trusted services configuration.
 
 *What happens to Network Fabric Controller resource identity if a non-identity patch is performed?*
 
