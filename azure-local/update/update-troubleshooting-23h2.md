@@ -20,7 +20,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 If your system was created via a new deployment of Azure Local, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services.
 
-The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry will resolve the issue.
+The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the issue.
 
 ## Troubleshoot readiness checks
 
@@ -36,7 +36,7 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
 1. In the system list, view the **Critical** state of **Update readiness**.
 
-    :::image type="content" source="./media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="./media/troubleshoot-updates/update-manager.png":::
+    :::image type="content" source="media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="media/troubleshoot-updates/update-manager.png":::
 
 1. Select one or more systems from the list, then select **Install now**.  
 
@@ -46,12 +46,12 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
     1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
-    :::image type="content" source="./media/troubleshoot-updates/install-updates.png" alt-text="Screenshot of Install updates page." lightbox="./media/troubleshoot-updates/install-updates.png":::
+    :::image type="content" source="media/troubleshoot-updates/install-updates.png" alt-text="Screenshot of Install updates page." lightbox="media/troubleshoot-updates/install-updates.png":::
 
-    Follow the remediation instructions to resolve the failures.
+    To resolve the failures, follow the remediation instructions provided.
 
     > [!NOTE]
-    > The system health checks run every 24 hours, so it may take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](#using-powershell) section.
+    > The system health checks run every 24 hours, so it might take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](#using-powershell) section.
 
 ### Using Azure portal, scenario 2: Update readiness checks
 
@@ -65,9 +65,9 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
     1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
-    :::image type="content" source="./media/troubleshoot-updates/update-progress.png" alt-text="Screenshot of Update progress page." lightbox="./media/troubleshoot-updates/update-progress.png":::
+    :::image type="content" source="media/troubleshoot-updates/update-progress.png" alt-text="Screenshot of Update progress page." lightbox="media/troubleshoot-updates/update-progress.png":::
 
-    Follow the remediation instructions to resolve the failures and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
+    To resolve the failures, follow the remediation instructions, and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
 
     To further troubleshoot, see the [PowerShell](#using-powershell) section.
 
@@ -146,7 +146,7 @@ To troubleshoot system health checks via PowerShell:
 
 1. Review the `Remediation` property for the failed tests and take action as appropriate to resolve the failures.
 
-1. If you require additional diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
+1. If you require more diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
 
     ```powershell
     $FullResults = Get-SolutionUpdateEnvironment -FullHealthCheckDetails
@@ -164,7 +164,7 @@ To troubleshoot system health checks via PowerShell:
     Invoke-SolutionUpdatePrecheck -SystemHealth
     ```
 
-1. Use `Get-SolutionUpdateEnvironment` to confirm the failing health check failures have been resolved. It may take a few minutes for the system health checks to run.
+1. Use `Get-SolutionUpdateEnvironment` to confirm the failing health check failures are resolved. It might take a few minutes for the system health checks to run.
 
     Here's a sample output:
 
@@ -252,9 +252,9 @@ When update readiness checks fail, this causes the update to fail on the system.
               tests-for-cluster-updating-readiness
      ```
 
-1. Use the link shown in the `Remediation` property of the failed test, review the article using a device with a web-browser to determine appropriate actions to resolve the failures.
+1. Use the link shown in the `Remediation` property of the failed test. Review the article using a device with a web-browser to determine appropriate actions to resolve the failures.
 
-1. If you require additional diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
+1. If you require more diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
 
     ```powershell
     $FullResults = Get-SolutionUpdate -Id <Resource ID> -FullHealthCheckDetails
@@ -274,23 +274,23 @@ When update readiness checks fail, this causes the update to fail on the system.
 
 ## Troubleshoot update failures
 
-If there's an issue that causes an update to fail, reviewing the detailed step progress to identify where it failed is often the best way to determine if the issue is something that can be remediated through a simple repair (and resume) or a support engagement is required to resolve the issue. Key items to note for the failing step include:
+When an update fails, review the detailed step progress to identify where it failed. This helps determine whether the issue can be fixed with a simple repair and resume, or requires a support engagement to resolve the issue. Key items to note for the failing step include:
 
 - Failing step name and description.
 
-- Which machine or server the step failed on (in case of a machine-specific issue).
+- Which machine or server the step failed on (if there's a machine-specific issue).
 
-- Failure message string (may pinpoint the issue to a specific known issue with documented remediation).
+- Failure message string (might pinpoint the issue to a specific known issue with documented remediation).
 
 Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](#the-azure-portal). Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
 
-See the table below for update failure scenarios and remediation guidelines.
+The following table lists update failure scenarios and remediation guidelines.
 
 | Step names | Type of issue | Remediation |
 | --- | --- | --- |
 | Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
-| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If there's an indication that multiple CAU attempts have been made and that they have all failed, it is often best to investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
-| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>Once the node has been repaired the update can be resumed. |
+| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If multiple CAU attempts fail, investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
+| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>After the node is repaired, the update can be resumed. |
 
 ## Collect update logs
 
@@ -367,22 +367,22 @@ To resume a previously failed update run, you can retry the update run via the A
 
 We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Validate that the system is ready, and Install updates stages of an update run.
 
-:::image type="content" source="./media/troubleshoot-updates/try-again-update.png" alt-text="Screenshot of the retry failed update button." lightbox="./media/troubleshoot-updates/try-again-update.png":::
+:::image type="content" source="media/troubleshoot-updates/try-again-update.png" alt-text="Screenshot of the retry failed update button." lightbox="media/troubleshoot-updates/try-again-update.png":::
 
 If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
 
 1. Select the **View details** of an error.
 
-2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, you can click on the **How to collect logs** link near the Open a support ticket button.
+2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, you can select the **How to collect logs** link near the Open a support ticket button.
 
-    [:::image type="content" source="./media/troubleshoot-updates/download-error-logs.png" alt-text="Screenshot to download error logs.":::](media/troubleshoot-updates/download-error-logs.png#lightbox)
+    [:::image type="content" source="media/troubleshoot-updates/download-error-logs.png" alt-text="Screenshot to download error logs.":::](media/troubleshoot-updates/download-error-logs.png#lightbox)
 
 
     For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
 3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your logs so that they're available to Microsoft Support.
 
-    [:::image type="content" source="./media/troubleshoot-updates/open-support-ticket.png" alt-text="Screenshot to open a support ticket.":::](media/troubleshoot-updates/open-support-ticket.png#lightbox)
+    [:::image type="content" source="media/troubleshoot-updates/open-support-ticket.png" alt-text="Screenshot to open a support ticket.":::](media/troubleshoot-updates/open-support-ticket.png#lightbox)
 
 
 For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).

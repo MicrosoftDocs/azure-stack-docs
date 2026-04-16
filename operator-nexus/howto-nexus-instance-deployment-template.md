@@ -49,12 +49,12 @@ This template is designed to assist users in managing a reproducible end-to-end 
 - <NC_VERSION>: Network Cloud (NC) release version (for example, 4.2.5)
 - <NFC_NAME>: Associated Network Fabric Controller (NFC) name
 - <NFC_RG>: NFC Resource Group
-- <NFC_RID>: NFC ARM ID
+- <NFC_RID>: NFC Azure Resource Manager (ARM) ID
 - <NFC_MRG>: NFC Managed Resource Group
 - <NFC_SUBNET>: Subnet range for the NFC
 - <NF_NAME>: NF name
 - <NF_RG>: NF Resource Group
-- <NF_RID>: NF ARM ID
+- <NF_RID>: NF Azure Resource Manager (ARM) ID
 - <NF_MGMT_SUBNET>: NF management subnet range
 - <NF_IDRAC_SUBNET>: NF IDRAC subnet range
 - <NF_DEVICE_NAME>: NF Device name
@@ -66,7 +66,7 @@ This template is designed to assist users in managing a reproducible end-to-end 
 - <CM_RG>: CM Resource Group
 - <CLUSTER_NAME>: Associated Cluster name
 - <CLUSTER_RG>: Cluster Resource Group (RG)
-- <CLUSTER_RID>: Cluster ARM ID
+- <CLUSTER_RID>: Cluster Azure Resource Manager (ARM) ID
 - <CLUSTER_MRG>: Cluster Managed Resource Group
 - <CLUSTER_CONTROL_BMM>: Cluster Control plane Bare Metal Machine (BMM)
 - <CLUSTER_DEPLOY_GROUPING>: Cluster deployment grouping
@@ -213,7 +213,7 @@ If any failures occur, report the <MISE_CID>, <CORRELATION_ID>, status code, and
    > [!IMPORTANT]
    > Don't continue if a CM already exists for <CM_NAME>.
 
-3. Create CM from Telco Input template (skip for existing CM) with ARM Deployment from Azure CLI:
+3. Create CM from Telco Input template (skip for existing CM) with Azure Resource Manager (ARM) Deployment from Azure CLI:
    ```
    az deployment sub create --name <CM_NAME>-deployment --subscription <CUSTOMER_SUB_ID> --location <AZURE_REGION> --template-file "clusterManager.jsonc" \
      --parameters "clusterManager.parameters.jsonc" --debug --no-wait
@@ -283,7 +283,7 @@ If any failures occur, report the <MISE_CID>, <CORRELATION_ID>, status code, and
    az rest  --subscription <CUSTOMER_SUB_ID> -m put --url /subscriptions/<CUSTOMER_SUB_ID>/resourceGroups/<NF_RG>/providers/Microsoft.ManagedNetworkFabric/accessControlLists/<NNI_1_INGRESS_ACL_1_NAME>?api-version=2023-06-15 --body @<NNI_1_INGRESS_ACL_1_NAME>.json
    az rest  --subscription <CUSTOMER_SUB_ID> -m put --url /subscriptions/<CUSTOMER_SUB_ID>/resourceGroups/<NF_RG>/providers/Microsoft.ManagedNetworkFabric/accessControlLists/<NNI_1_EGRESS_ACL_1_NAME>?api-version=2023-06-15 --body @<NNI_1_EGRESS_ACL_1_NAME>.json
    ```
-   For more information on creating ACLs, see [how to create ACL for NNI](howto-create-access-control-list-for-network-to-network-interconnects.md).
+   For more information on creating ACLs, see [how to create ACL for NNI](howto-create-access-control-list.md).
    
 7. Create Network-to-Network Interface (NNI) resource with Azure CLI:
    ```
@@ -352,7 +352,7 @@ If any failures occur, report the <MISE_CID>, <CORRELATION_ID>, status code, and
    > [!IMPORTANT]
    > Don't continue if a Cluster already exists for <CLUSTER_NAME>.
    
-3. Create Cluster from Telco Input template with ARM Deployment from Azure CLI:
+3. Create Cluster from Telco Input template with Azure Resource Manager Deployment from Azure CLI:
    ```
    az deployment sub create --name <CLUSTER_NAME>-deployment --subscription <CUSTOMER_SUB_ID> --location <REGION> --template-file "cluster.jsonc" --parameters "cluster.parameters.jsonc" --debug --no-wait
    ```
@@ -424,7 +424,7 @@ Follow link to troubleshoot all [BMM that fail hardware validation](troubleshoot
 - BMMs that fail hardware validation cause Cluster deployment to fail if not enough BMMs are available to pass the deployment threshold.
 
 > [!IMPORTANT]
-> If the Cluster deployment reaches the time out threshold, the status moves to `Failed`. Failure can occur if any KCP or NMP BMM fail hardware validation, or too many compute BMM fail hardware validations.
+> If the Cluster deployment reaches the timeout threshold, the status moves to `Failed`. Failure can occur if any KCP or NMP BMM fail hardware validation, or too many compute BMM fail hardware validations.
 > Once hardware issues are fixed, delete the Cluster, re-create, and then retry the Cluster deploy action.
 
 ### Monitor provisioning of BMM
@@ -504,5 +504,5 @@ Reference links for deploying a Nexus Instance:
 - [Troubleshoot BMM warning](troubleshoot-bare-metal-machine-warning.md)
 - Reference the [Nexus Telco Input Template](concepts-telco-input-template.md)
 - Reference the [Nexus Platform Prerequisites](howto-platform-prerequisites.md)
-- Create a [Network Fabric ACL](howto-create-access-control-list-for-network-to-network-interconnects.md)
+- Create a [Network Fabric ACL](howto-create-access-control-list.md)
 </details>
