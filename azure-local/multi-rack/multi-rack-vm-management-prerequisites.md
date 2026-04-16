@@ -27,6 +27,10 @@ Azure requirements include:
 
   The entities included with your Azure Local for multi-rack deployments include Network Fabric Controller, Cluster Manager, Custom Location, VM resources (disks, NICs, images), and VMs created from Azure Arc. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
+## Firewall requirements
+
+Make sure the requirements as listed in [Required firewall URLs for Azure Local deployments](../concepts/firewall-requirements.md#required-firewall-urls-for-azure-local-deployments) are satisfied to allow communication between the Arc VMs running on Azure Local and Azure Arc.
+
 ## Azure Local requirements
 
 Ensure you have:
