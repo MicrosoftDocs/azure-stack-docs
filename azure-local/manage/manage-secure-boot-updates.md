@@ -207,29 +207,9 @@ Azure Local clusters might host VMs that are affected by Secure Boot certificate
 
 If you have issues while planning, orchestrating, or verifying Secure Boot updates, contact Microsoft Support before proceeding with other firmware (BIOS or UEFI) changes or enabling revocations in production environments.
 
-### When to contact support versus when to wait
-
-1. Is any Azure Local node unable to boot, or is the cluster down or unavailable?  
-    - Yes: Open a **Severity A** support request immediately.  
-    - No: Continue.
-
-2. Did you recently apply a Secure Boot update step that requires one or more reboots?  
-    - Yes: Allow the required reboots to complete, then re-check Secure Boot event logs.  
-    - No or not sure: Continue.
-
-3. Do Secure Boot event logs show a blocking condition, such as BitLocker recovery risk, customized keys, or firmware not supporting the update?
-    - Yes: Don't proceed with other steps or firmware updates. Open a **Severity B** request.  
-    - No: Continue.
-
-4. Is a firmware (BIOS or UEFI) update, including SBE-driven firmware updates, scheduled while a certificate update step is pending or scheduled?  
-    - Yes: Pause or defer the firmware update if possible, and open a **Severity B** request for coordination guidance.  
-    - No: Continue.
-
-5. Are you validating the process in a test or lab environment with no service impact?  
-    - Yes: Use **Severity C** for guidance and best practices.  
-    - No: If production risk exists, use **Severity B**.
-
 For more information about how to get support, see [Get support for Azure Local](./get-support.md).
+
+For detailed troubleshooting, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Security/TSG-Azure-Local-UEFI-2023-Secure-Boot-Update.md).
 
 ## Appendix: Reference links
 
