@@ -151,7 +151,7 @@ For Azure Local version 2604, the recommended approach is to place both the infr
 
 With VXLAN EVPN symmetric IRB, inter-subnet traffic between AKS and management LNETs in the same VRF is routed locally at the compute leaf (VTEP) level. Packets traverse **Compute Leaf → Spine → Compute Leaf (3 hops)**. The service leaf switches aren't involved in this east-west traffic, which results in optimal latency and avoids creating a bottleneck at the service leaf tier.
 
-:::image type="content" source="./media/plan-deployment/aks-lnet-single-vrf.svg" alt-text="Diagram showing AKS and management LNETs in a single VRF with automatic Layer 3 reachability. Traffic flows through compute leaf and spine switches only — service leaf switches aren't involved." lightbox="./media/plan-deployment/aks-lnet-single-vrf.svg":::
+:::image type="content" source="./media/plan-deployment/aks-logical-network-single-routing-domain.svg" alt-text="Diagram showing AKS and management LNETs in a single VRF with automatic Layer 3 reachability. Traffic flows through compute leaf and spine switches only — service leaf switches aren't involved." lightbox="./media/plan-deployment/aks-logical-network-single-routing-domain.svg":::
 
 #### Option 2: Separate VRFs with route leaking
 
@@ -159,7 +159,7 @@ If your environment requires **separate VRFs** for different workloads or tenant
 
 Because route leaking is configured on the service leaf switches, cross-VRF traffic must **hairpin through the service leaf tier**. The packet path becomes **Compute Leaf → Spine → Service Leaf → Spine → Compute Leaf (5 hops)** instead of the 3-hop path in a single VRF. This extra traversal adds latency and makes the service leaf switches a potential throughput bottleneck for all AKS-to-management communication.
 
-:::image type="content" source="./media/plan-deployment/aks-lnet-multi-vrf-route-leaking.svg" alt-text="Diagram showing AKS and management LNETs in separate VRFs with route leaking configured on the service leaf switches. Traffic hairpins through the service leaf tier, resulting in a 5-hop path." lightbox="./media/plan-deployment/aks-lnet-multi-vrf-route-leaking.svg":::
+:::image type="content" source="./media/plan-deployment/aks-logical-network-separate-routing-domains-route-leaking.svg" alt-text="Diagram showing AKS and management LNETs in separate VRFs with route leaking configured on the service leaf switches. Traffic hairpins through the service leaf tier, resulting in a 5-hop path." lightbox="./media/plan-deployment/aks-logical-network-separate-routing-domains-route-leaking.svg":::
 
 > [!IMPORTANT]
 > Route leaking introduces shared reachability between otherwise isolated VRFs. Only leak the specific prefixes required for AKS-to-management communication. Avoid leaking default routes or broad summaries, as this undermines the isolation benefits of separate VRFs.

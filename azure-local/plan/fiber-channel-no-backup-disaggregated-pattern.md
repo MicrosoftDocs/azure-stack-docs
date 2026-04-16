@@ -144,4 +144,4 @@ Key considerations:
 ## Next steps
 
 - Learn about the [Fiber Channel disaggregated pattern with backup network](fiber-channel-with-backup-disaggregated-pattern.md).
-- [Install the Azure Local operating system for disaggregated deployments](/azure-local/deploy/deployment-install-os-disaggregated.md)
+- [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md)
