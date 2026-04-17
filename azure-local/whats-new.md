@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 04/16/2026
+ms.date: 04/17/2026
 ms.subservice: hyperconverged
 ---
 
@@ -33,7 +33,7 @@ This release includes various reliability improvements and bug fixes.
 
     - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-    - THis build uses .NET version **10.0.6" for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+    - This build uses .NET version **10.0.6" for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **AKS enabled by Azure Arc changes**:
 
@@ -57,6 +57,22 @@ This release includes various reliability improvements and bug fixes.
 - **Deployment performance improvements** having consistent duration up to 8 nodes and overall reduction in time by 40%.
 
 - **Rack aware cluster** now supports deployments using Local Identity with Key Vault.
+
+- **GPU acceleration for Azure Local VMs General availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Portal. Learn more about how to [manage GPUs](./manage/gpu-manage-via-device.md).
+
+- **Enhanced data disk management experience in Azure Portal**: You can now create new data disks at the cluster level with a richer disk overview experience, along with overall visual and usability improvements across disk management workflows. Additionally, from the Azure Local VM view, you can now attach existing disks to your VM.
+
+- **Enhanced Azure Marketplace image navigation in Azure Portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images. 
+
+- **Enhanced Azure Marketplace image navigation in Azure Portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images. 
+
+> [!NOTE]
+> To access the below two updates via the Azure CLI, you will need to update the stack-hci-vm extension to the latest version:
+> az extension update --name "stack-hci-vm"
+
+- **Graceful restart by default for Azure Local VMs**: Azure Local VM restart operation now performs a graceful shutdown by default. Customers who need to bypass the shutdown can still do so by specifying the --skip-shutdown flag when restarting the VM via the Azure CLI.
+
+- **Enable or disable SDN management per network interface**: Azure Local supports selectively toggling SDN management on or off for individual network interfaces. This can be configured using the --bypass-sdn-policies flag.
 
 ::: moniker-end
 
