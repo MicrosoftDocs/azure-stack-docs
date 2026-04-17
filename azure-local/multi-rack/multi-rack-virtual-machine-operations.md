@@ -14,9 +14,9 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 This article discusses the most common operations for Azure Local multi-rack virtual machines (VMs) enabled by Azure Arc. The article identifies the operations that are supported on Azure Local multi-rack VMs, along with the operations that you need to avoid to prevent complications.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -55,7 +55,7 @@ Perform the following VM operations only via the Azure CLI:
 - Rename the computer name of your Azure Local VM.
 
     > [!NOTE]
-    > This operation will automatically restart your Azure Local VM.
+    > This operation automatically restarts your Azure Local VM.
 
 - Expand a data disk
 

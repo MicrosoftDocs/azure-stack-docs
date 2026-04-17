@@ -13,20 +13,20 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
+To deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to create logical networks. Once these networks are provisioned, you might need to manage them. This article describes how to manage these logical networks for Azure Local VMs deployed on your multi-rack instance.
+
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
-To deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you need to create logical networks. Once these networks are provisioned, you may need to manage them. This article describes how to manage these logical networks for Azure Local VMs deployed on your multi-rack instance.
-
 
 ## About logical networks
 
 A logical network is a logical representation of a physical network where Azure Local VMs can be provisioned. It defines how VM network interfaces connect to the underlying network. Logical networks allow you to configure networking settings like address prefix, subnet, IP pools, gateways, DNS servers, and VLANs used for VM connectivity.
 
 Once a logical network is created, you can't update the following:
-  - Default gateway
-  - IP pools
-  - IP address space
-  - VLAN ID
+
+- Default gateway
+- IP pools
+- IP address space
+- VLAN ID
 
 You can manage logical networks as needed. For example, you can update the DNS server configuration for a logical network.
 
@@ -36,7 +36,7 @@ You can manage logical networks as needed. For example, you can update the DNS s
 
 ## Prerequisites
 
-- Access to a deployed and registered Azure Local multi-rack instance with one or more running Azure Local VMs.
+- You must have access to a deployed and registered Azure Local multi-rack instance with one or more running Azure Local VMs.
   For more information, see [Create an Azure Local VM enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).
 
 ::: moniker range=">=azloc-2508"

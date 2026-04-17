@@ -13,27 +13,27 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 This article describes how to manage network security groups (NSGs) on your Azure Local multi-rack deployment. Once you create network security groups, you can then list, show details, associate, dissociate, update, and delete these resources.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
 # [Azure CLI](#tab/azurecli)
 
-- You have access to a multi-rack deployment.
+- You must have access to a multi-rack deployment.
 
-    - This instance has a custom location.
-    - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
-    - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](./multi-rack-create-network-security-groups.md).
-    - If using a client to connect to your instance, ensure you've installed the latest Azure CLI and the `stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
+  - This instance has a custom location.
+  - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
+  - This instance has at least one network security group created and configured with a network security rule. For more information, see [Create a network security group](./multi-rack-create-network-security-groups.md).
+  - If using a client to connect to your instance, ensure you've installed the latest Azure CLI and the `stack-hci-vm` extension. For more information, see [Azure Local VM management prerequisites](./multi-rack-vm-management-prerequisites.md).
 
 # [Azure portal](#tab/azureportal)
 
-- You have access to a multi-rack deployment.
+- You must have access to a multi-rack deployment.
 
-    - This instance has a custom location.
-    - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
+  - This instance has a custom location.
+  - You have access to an Azure subscription with the appropriate Role-based access control (RBAC) role and permissions assigned. For more information, see [Assign Azure Local RBAC roles](./multi-rack-assign-vm-rbac-roles.md#custom-roles).
 
 ---
 
@@ -44,7 +44,6 @@ This article describes how to manage network security groups (NSGs) on your Azur
 ## Sign in and set subscription
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../includes/hci-vm-sign-in-set-subscription.md)]
-
 
 ## Manage network security groups
 
@@ -315,7 +314,7 @@ In this example, we create a network interface with an existing network security
 
 ## Associate network security group with logical network
 
-In this example, we associate a static logical network with an existing network security group. No IP pools are passed in this example as they are optional.
+In this example, we associate a static logical network with an existing network security group. No IP pools are passed in this example as they're optional.
 
 1. Set the following parameters in your Azure CLI session.
 
@@ -829,7 +828,7 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
 You may need to delete a network security rule if you no longer need it. You can delete a network security rule from a network security group (NSG).
 
 > [!WARNING]
-> NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG won't be reachable.
+> NSGs must have a network security rule associated with them. An empty NSG that doesn't have a security rule configured, denies all inbound traffic by default. A VM or a logical network associated with this NSG isn't reachable.
 
 1. Set the following parameters in your Azure CLI session.
 

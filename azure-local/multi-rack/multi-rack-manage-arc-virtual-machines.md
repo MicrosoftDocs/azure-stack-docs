@@ -292,7 +292,7 @@ The following operating systems (OS) support guest management enablement:
 
 ### Linux OS
 
-- 
+- <!--update-->
 
 ## Related content
 

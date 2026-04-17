@@ -15,16 +15,16 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 This article describes how to download an Azure managed disk from Azure to your Azure Local multi-rack instance. You can then use the disk to create an image or to attach it to your Azure Local virtual machines (VMs) enabled by Arc, as needed.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites:
 
 - You have access to an Azure Local multi-rack instance that is deployed and registered.
-- There is already a managed disk in Azure.
+- There's already a managed disk in Azure.
 
 ## Sign in and set subscription
 

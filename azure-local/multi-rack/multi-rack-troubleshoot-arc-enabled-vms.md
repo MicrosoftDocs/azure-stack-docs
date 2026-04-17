@@ -15,9 +15,9 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 This article describes how to troubleshoot problems with Azure Local Virtual Machines enabled by Azure Arc on multi-rack deployments. It also lists the current limitations and known problems with Azure Local VM management, along with recommended resolutions.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Cluster extension doesn't support resource type
 
@@ -49,11 +49,11 @@ Follow these steps to verify that the managed identity doesn't exist for this VM
 
     :::image type="content" source="../manage/media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="../manage/media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
 
-1. Under `Identity` parameter, the `type` shows as `None`.
+1. Under the `Identity` parameter, the `type` shows as `None`.
 
     :::image type="content" source="../manage/media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="../manage/media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, ensure the `connectedmachine` Azure CLI extension is installed. Run the following command:
+1. To create a managed identity, ensure the `connectedmachine` Azure CLI extension is installed. Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
