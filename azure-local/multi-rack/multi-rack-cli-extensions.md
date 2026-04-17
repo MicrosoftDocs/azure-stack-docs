@@ -29,7 +29,6 @@ See the following sections to install the required Azure CLI extensions:
 
 > [!NOTE]
 > Any upgrade of the Azure CLI downloads the latest stable version of the installed extension.
-> To install the preview version of the extensions, you must explicitly set the `--allow-preview=True` parameter. <!--update preview info-->
 
 ### Install the `networkcloud` CLI extension
 
