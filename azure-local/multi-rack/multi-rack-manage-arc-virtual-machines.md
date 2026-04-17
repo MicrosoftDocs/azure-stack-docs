@@ -277,23 +277,6 @@ To change cores and memory, follow these steps in Azure portal for your Azure Lo
 
     :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of Size settings associated with a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machines/change-cores-memory.png":::
 
-## Guest management enablement support
-
-The following operating systems (OS) support guest management enablement:
-
-### Windows OS
-
-- Windows Server 2025
-- Windows Server 2022
-- Windows Server 2019
-- Windows Server 2016
-- Windows 10
-- Windows 11
-
-### Linux OS
-
-- <!--update-->
-
 ## Related content
 
 - [Manage Azure Local VM resources such as data disks and network interfaces](./multi-rack-manage-arc-virtual-machine-resources.md).
