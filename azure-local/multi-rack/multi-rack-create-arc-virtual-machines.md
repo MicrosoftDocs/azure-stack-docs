@@ -92,7 +92,7 @@ Follow these steps on the client running az CLI that is connected to Azure Local
 ### Create a Windows VM
 
 > [!NOTE]
-> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version. <!--update preview info-->
+> Adding a network interface is supported when the VM is stopped. If you add a network interface with a static IP after the VM is provisioned, the IP isn't automatically configured inside the guest OS. You need to manually configure the IP address within the VM.
 
 Here we create a VM that uses specific memory and processor counts.
 
