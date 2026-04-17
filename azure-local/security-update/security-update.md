@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: alkohli
 ms.topic: release-notes
-ms.date: 04/13/2026
+ms.date: 04/17/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -17,7 +17,7 @@ This article lists the various security updates that are available for Azure Loc
 
 ## April OS security update (KB5082063) for Azure Local
 
-This section provides the 2604 security updates associated with OS build **26100.32678** released on April 14, 2026 ([KB5082063]()).
+This section provides the 2604 security updates associated with OS build **26100.32690** released on April 14, 2026 ([KB5082063](https://support.microsoft.com/help/5082063)).
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544). For an overview, see the update history page for Azure Stack HCI, version 24H2.  
 
@@ -71,7 +71,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Local](../upd
 
 ## File Information
 
-For a list of the files provided in this update, download the file information for [cumulative update 5082063]().
+For a list of the files provided in this update, download the file information for [cumulative update 5082063](https://go.microsoft.com/fwlink/?linkid=2359591).
 
 ::: moniker-end
 
