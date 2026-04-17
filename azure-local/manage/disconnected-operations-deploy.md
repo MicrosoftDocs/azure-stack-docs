@@ -402,25 +402,25 @@ Here's an example of how to automate the resource providers registration from Az
 
 
 > [!NOTE]
-> **Run this on a client machine and not the Azure Local nodes**  itself. If you do run it on an Azure Local node - please pay attention to the Az.Resources version as this will cause a conflict for deployment.
+> **Run this script on a client machine, not on the Azure Local nodes**. If you run it on an Azure Local node, verify the `Az.Resources` version to avoid deployment conflicts.
 
 ```powershell
 $applianceCloudName = "azure.local"
 $subscriptionName = "Operator subscription"
 
-# Example added if running this from an Azure Local node - 
-# Check if Az.Resources 8.1.1 is installed, if not install it (2603)
-# $requiredModule = "Az.Resources"
-# $requiredVersion = "8.1.1"
-# $installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
+<# Use this block only when running this script from an Azure Local node. Check whether Az.Resources 8.1.1 is installed and install it if needed (2603).
+$requiredModule = "Az.Resources"
+$requiredVersion = "8.1.1"
+$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
 
-# # Note if operating air-gaped, you need to download and copy this module manually
-# if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
-#     Write-Host "Installing $requiredModule version $requiredVersion..."
-#     Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
-#     Write-Information "Make sure Az.Resources is the correct version if you are running this script on an Azure Local node rather than a client"
-# }
+# Note if operating air-gaped, you need to download and copy this module manually
+if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
+     Write-Host "Installing $requiredModule version $requiredVersion..."
+     Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
+     Write-Information "Make sure Az.Resources is the correct version if you are running this script on an Azure Local node rather than a client"
+}#>
 
+# Register resource providers
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Selecting a different subscription than the operator subscription.."
@@ -445,7 +445,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
 
-# Needed for automating Keyvault creation - not for Azure Local itself
+# Required for automating Key Vault creation, not for Azure Local.
 Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 
 ```

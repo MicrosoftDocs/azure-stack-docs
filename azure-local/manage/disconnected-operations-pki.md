@@ -108,13 +108,13 @@ The following script shows you how to use the OperationsModule to generate certi
   $fqdn = "autonomous.cloud.private" 
   $IngressEndpointsCertsFolder = 'C:\Certs\IngressEndpointsCerts'
   $certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
-  ## Alternative you can use for automation
+  ## Automation alternative
   ## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
   $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
   
   Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-  New-ApplianceExternalCertificatesFromCA  -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
+  New-ApplianceExternalCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
   ```
 
 ### Management endpoint
@@ -132,7 +132,7 @@ $fqdn = "autonomous.cloud.private"
 $managementEndpointIp = '192.168.100.25'
 $managementEndpointCertsFolder = 'C:\Certs\ManagementEndpointsCerts'
 $certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
-## Alternative you can use for automation
+## Automation alternative
 ## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
 $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
@@ -172,8 +172,8 @@ certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
 
- [!NOTE]
-> **Root cert is required.** Make sure you have the explicit root and not an intermediate certificate. Deployment can fail if it does not have the full trust chain used for the ingress endpoint certificates. 
+>[!NOTE]
+> **Root cert is required.** Use the explicit root certificate, not an intermediate certificate. Deployment fails if the full trust chain for the ingress endpoint certificates is missing.
 
 
 ## Obtain certificate information for identity integration
