@@ -75,7 +75,7 @@ To trigger and monitor the restore, follow these steps:
 
     Here's an example output:
 
-    :::image type="content" source="media/disconnected-operations/back-up-restore/wait-appliancerestore.png" alt-text="Screenshot of Wait-ApplianceRestore command output." lightbox=" ./media/disconnected-operations/back-up-restore/wait-appliancerestore.png":::
+    :::image type="content" source="media/disconnected-operations/back-up-restore/wait-appliance-restore.png" alt-text="Screenshot of Wait-ApplianceRestore command output." lightbox=" ./media/disconnected-operations/back-up-restore/wait-appliance-restore.png":::
 
 1. Restore Completion - After a few hours, the restore operation completes. You can check the status by using the following command:
    
@@ -85,11 +85,12 @@ To trigger and monitor the restore, follow these steps:
 
     Here's an example output:
 
-    :::image type="content" source="media/disconnected-operations/back-up-restore/get-appliancerestore.png" alt-text="Screenshot of the Get-ApplianceRestore command output." lightbox=" ./media/disconnected-operations/back-up-restore/get-appliancerestore.png":::
+    :::image type="content" source="media/disconnected-operations/back-up-restore/get-appliance-restore.png" alt-text="Screenshot of the Get-ApplianceRestore command output." lightbox=" ./media/disconnected-operations/back-up-restore/get-appliance-restore.png":::
 
 
-## Important – Post restore Environment Mismatch
-Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata. 
+## Important – Post restore environment mismatch
+> [!IMPORTANT]
+> Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata. 
 - **Lost resources:** You cannot recover cloud-only resources that are created after the backup. You must recreate these resources.
 - **Untracked Arc resources:** You need to rehydrate or re-register resources that are created after the backup and exist on the cluster but are missing in restored metadata.
 - **Phantom / Resurrected resources:** You need to clean up resources that are deleted after the backup but reappear as metadata after restoring.
