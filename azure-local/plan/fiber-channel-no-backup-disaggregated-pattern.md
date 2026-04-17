@@ -87,6 +87,10 @@ The following table shows the host network port allocation per leaf physical swi
 In disaggregated deployments, Network ATC manages only the management and compute intent. The cluster networks use standalone Peripheral Component Interconnect Express (PCIe) ports (not managed by Network ATC) to maximize Server Message Block (SMB) Multichannel for Cluster Shared Volume (CSV) and live migration traffic without requiring a storage intent.
 
 - **Management and compute intent** — Switch Embedded Teaming (SET) switch with the management virtual network interface.
+
+> [!NOTE]
+> In disaggregated deployments, the cluster networks use standalone network ports and are not managed by any Network ATC intent. The configuration of these cluster networks is done automatically once the subnets and VLANs information are provided by the user, either through the Azure portal or via ARM template.
+
 - **Cluster network 1** — Standalone network adapter (PCIe port 1).
 - **Cluster network 2** — Standalone network adapter (PCIe port 2).
 
@@ -140,3 +144,4 @@ Key considerations:
 ## Next steps
 
 - Learn about the [Fiber Channel disaggregated pattern with backup network](fiber-channel-with-backup-disaggregated-pattern.md).
+- [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md)

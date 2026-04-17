@@ -90,6 +90,10 @@ In disaggregated deployments, Network ATC manages two intents: the management an
 
 - **Management and compute intent** — Switch Embedded Teaming (SET) switch with the management virtual network interface (OCP adapter).
 - **Backup compute intent** — Switch Embedded Teaming (SET) switch dedicated to backup network traffic (PCIe adapter 2).
+
+> [!NOTE]
+> In disaggregated deployments, the cluster networks use standalone network ports and are not managed by any Network ATC intent. The configuration of these cluster networks is done automatically once the subnets and VLANs information are provided by the user, either through the Azure portal or via ARM template.
+
 - **Cluster network 1** — Standalone network adapter (PCIe adapter 1, port 1).
 - **Cluster network 2** — Standalone network adapter (PCIe adapter 1, port 2).
 
@@ -144,3 +148,4 @@ Key considerations:
 ## Next steps
 
 - Learn about the [Fiber Channel disaggregated pattern without backup network](fiber-channel-no-backup-disaggregated-pattern.md).
+- [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md)
