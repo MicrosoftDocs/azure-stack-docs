@@ -131,7 +131,7 @@ Centralizing external connectivity at the service leaf provides the following be
 
 ## SDN considerations for disaggregated deployments
 
-Software Defined Networking (SDN) support varies depending on the Azure Local architecture and deployment type. In disaggregated deployments, SDN logical networks (LNETs) are supported through external SDN infrastructure rather than the Microsoft SDN stack. Network Security Group (NSG) support for disaggregated deployments is planned for a future release.
+Software Defined Networking (SDN) support varies depending on the Azure Local architecture and deployment type. In disaggregated deployments, SDN logical networks (LNETs) are supported through external SDN infrastructure rather than the Microsoft SDN stack.
 
 The following table summarizes SDN support across Azure Local architectures as of version 2604:
 
@@ -139,7 +139,7 @@ The following table summarizes SDN support across Azure Local architectures as o
 |---|---|---|---|
 | Hyperconverged | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
 | Hyperconverged hybrid (S2D + SAN attach) | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
-| Disaggregated | 2604 | 1 to 64 | External SDN LNETs supported. NSG support coming soon |
+| Disaggregated | 2604 | 1 to 64 | External SDN LNETs supported.|
 
 > [!NOTE]
 > For disaggregated deployments, SDN logical networks must be configured on the external network fabric (leaf-spine switches) rather than through the Microsoft SDN Network Controller. Plan your VXLAN EVPN overlay design accordingly to support the required logical networks.
@@ -169,7 +169,7 @@ Because route leaking is configured on the service leaf switches, cross-VRF traf
 
 #### Same-rack traffic optimization
 
-The hop counts described in Option 1 (3 hops) and Option 2 (5 hops) represent the **cross-rack worst-case scenario**—when the AKS workload and the management node it needs to reach are on different compute leafs (different racks).
+The hop counts described in Option 1 (3 hops) and Option 2 (5 hops) represent the **cross-rack worst-case scenario**—when the AKS workload and the management node it needs to reach are on different compute leaf switches (different racks).
 
 When both the AKS workload and its target management node are on the **same rack** (connected to the same compute leaf switch pair), the compute leaf performs local Integrated Routing and Bridging (IRB) routing. The traffic **doesn't traverse the spine** and completes in a single hop. This is a property of VXLAN EVPN symmetric IRB: each leaf switch is a fully functional VTEP that can route between any subnets within its locally instantiated VRFs.
 
