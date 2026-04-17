@@ -88,13 +88,13 @@ Before you collect logs in a disconnected operations scenario, make sure you:
 1. Install the operations module if it's not installed. Use the `Import-Module` cmdlet and change the path to match your folder structure.
 
     ```PowerShell
-    Import-Module "<disconnected operations module folder path>\Azure.Local.DisconnectedOperations.psd1" -Force
+    Import-Module "Q:\AzureLocalVHD\OperationsModule\ApplianceFallbackLogging.psm1" -Force
     ```
 
     Example output:
 
     ```console
-    PS C:\Users\administrator.s46r2004\Documents> Import-Module "Q:\AzureLocalVHD\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force  
+    PS C:\Users\administrator.s46r2004\Documents> Import-Module "Q:\AzureLocalVHD\OperationsModule\ApplianceFallbackLogging.psm1" -Force
     VERBOSE: [2025-03-26 19:49:12Z][Test-RunningRequirements] PSVersionTable:  
       
     Name                           Value  
@@ -110,6 +110,15 @@ Before you collect logs in a disconnected operations scenario, make sure you:
       
     VERBOSE: See Readme.md for directions on how to use this module.
     ```
+
+1. After you copy the Disconnected Operations module to the folder path, unblock the files.
+
+    ```PowerShell
+    Get-ChildItem <disconnected operations module folder path> -Recurse | Unblock-File
+    ```
+
+    > [!NOTE]
+    > Use Windows PowerShell with Administrator permission to perform the log upload. PowerShell 7 and Windows PowerShell ISE aren't supported for log uploads.
 
 1. Install the Azure Local module required for log collection.
 
