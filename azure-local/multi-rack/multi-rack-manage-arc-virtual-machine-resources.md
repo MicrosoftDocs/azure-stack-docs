@@ -18,7 +18,7 @@ This article describes how to manage the VM resources for an Azure Local VM for 
 After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you may need to add or delete resources like data disks.
 
 > [!NOTE]
-> You can't add or delete network interfaces after the VM is created. If more than one network interface is needed, make sure to add them during VM creation.
+> You can add network interfaces when the VM is stopped. If you add a network interface with a static IP after the VM is provisioned, the IP isn't automatically configured inside the guest OS. You need to manually configure the IP address within the VM.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
-description: Learn about the prerequisites for deploying Azure Local VMs for multi-rack deployments (preview).
+title: Review prerequisites for Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview)
+description: Learn about the prerequisites for deploying Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.date: 02/05/2026
 ms.subservice: multi-rack
 ---
 
-# Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
+# Review prerequisites for Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
