@@ -4,7 +4,7 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: limits-and-quotas
-ms.date: 10/24/2025
+ms.date: 04/17/2026
 ms.custom: template-concept
 ---
 
