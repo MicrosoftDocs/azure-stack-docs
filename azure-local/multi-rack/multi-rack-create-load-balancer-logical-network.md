@@ -18,6 +18,7 @@ This article describes how to create load balancers on logical networks using Az
 
 ## Prerequisites
 
+- The `stack-hci-vm` Azure CLI extension version 1.13.0 or later. To check your version, run `az extension show --name stack-hci-vm`. To install or upgrade, see [Install CLI extensions for multi-rack](multi-rack-cli-extensions.md).
 - Review and complete the [prerequisites](./multi-rack-prerequisites.md).  
 - Access to an Azure subscription with the appropriate RBAC role and permissions. For more information, see [Use Role-based Access Control to manage Azure Local VMs for multi-rack deployments](./multi-rack-assign-vm-rbac-roles.md).
 - Access to a resource group where you want to provision the load balancer.

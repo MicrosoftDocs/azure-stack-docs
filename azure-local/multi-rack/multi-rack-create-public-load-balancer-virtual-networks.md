@@ -27,6 +27,7 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
 
 ## Prerequisites  
 
+- The `stack-hci-vm` Azure CLI extension version 1.13.0 or later. To check your version, run `az extension show --name stack-hci-vm`. To install or upgrade, see [Install CLI extensions for multi-rack](multi-rack-cli-extensions.md).
 - Review and [Complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
 - Get access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for multi-rack deployments of Azure Local](./multi-rack-assign-vm-rbac-roles.md).
 - Access to a resource group where you want to provision the load balancer.
