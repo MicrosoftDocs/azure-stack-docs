@@ -149,7 +149,11 @@ Follow these steps to create a network interface on your static logical network.
 
 You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
 
-## Network interface with static IP using virtual network
+## Network interface with static IP using virtual network (preview)
+
+> [!IMPORTANT]
+> Creating a network interface with static IP using virtual network is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 Follow these steps to create a network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
 

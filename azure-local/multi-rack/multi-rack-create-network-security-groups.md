@@ -24,10 +24,11 @@ Use a network security group to filter network traffic between logical networks,
 - Protocols (TCP/UDP).
 - Direction (inbound or outbound).
 
-The following diagrams show how you attach network security groups to logical networks, virtual network subnets, and VM network interfaces on a multi-rack deployment:
+The following diagrams show how you attach network security groups to logical networks, virtual network subnets, and VM network interfaces on a multi-rack deployment.
+
+### NSGs on logical networks
 
 :::image type="content" source="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-logical-networks.png" alt-text="Screenshot of conceptual diagram for network security groups attached to logical networks." lightbox="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-logical-networks.png":::
-
 
 Scenario-1 diagram shows a network setup with two logical networks:
 
@@ -46,6 +47,12 @@ Scenario-1 diagram shows a network setup with two logical networks:
     - VM SQL runs SQL Server locally and isn't exposed to the internet.
 
 In this example, the NSG controls traffic flow between logical networks A and B, and between VM Web and VM SQL.
+
+### NSGs on virtual networks (preview)
+
+> [!IMPORTANT]
+> Configuring network security groups on virtual networks is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 :::image type="content" source="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-virtual-networks.png" alt-text="Screenshot of conceptual diagram for network security groups attached to virtual network subnets and network interfaces." lightbox="./media/multi-rack-create-network-security-groups/multi-rack-create-network-security-groups-virtual-networks.png":::
 
@@ -306,7 +313,7 @@ az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname -
 Run the following command to block all outbound traffic:
 
 ```azurecli
-Set --source-address-prefixes "" --source-port-ranges "" --destination-address-prefixes "" --destination-port-ranges "" --protocol "*"
+az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --destination-port-ranges '*' --description $description
 ```
   
 <!--## Next steps
