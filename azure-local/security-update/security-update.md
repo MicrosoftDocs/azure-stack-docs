@@ -19,7 +19,7 @@ This article lists the various security updates that are available for Azure Loc
 
 This section provides the 2604 security updates associated with OS build **26100.32690** released on April 14, 2026 ([KB5082063](https://support.microsoft.com/help/5082063)).
 
-To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544). For an overview, see the update history page for Azure Stack HCI, version 24H2.  
+To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
 ## Improvements
 
@@ -81,7 +81,7 @@ For a list of the files provided in this update, download the file information f
 
 This section provides the 2603 security updates associated with OS build **26100.32522** released on March 10, 2026 ([KB5078740](https://support.microsoft.com/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd)). It also includes key notifications, announcements, change logs, and end-of-support notices.
 
-To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544). For an overview, see the update history page for Azure Stack HCI, version 24H2.  
+To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
 ## Improvements
 
