@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-2604"
 
 ## Features and improvements in 2604
 
@@ -29,7 +29,11 @@ This release includes various reliability improvements and bug fixes.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
-- **.NET updates**: This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+- **.NET updates**: 
+
+    - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+    - THis build uses .NET version **10.0.6" for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **AKS enabled by Azure Arc changes**:
 
@@ -37,6 +41,22 @@ This release includes various reliability improvements and bug fixes.
     - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
+
+- **Disaggregated deployments for Azure Local**: Starting with this release, you can now deploy Azure Local using SAN storage only. Using this new arhitecture you can scale storage and compute independent and scale beyond 16 nodes. Learn more about [Disaggregated deployment](./whats-new.md).
+
+- **SAN support for Azure Local**: Attaching SAN storage to Azure Local is now general available with this release. You can now attach SAN storage to Azure Local and it will coexist with Storage Spaces Direct. Learn more about [attaching SAN storage](./whats-new.md).
+
+- **Local Identity with Key Vault**: Starting with this release, Local Identity with Key Vault is general available. Learn more about [Local Identity with Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. Learn more about [update setting](./whats-new.md).
+
+- **Domain join prior deployment** is supported starting with this release. Learn more about [domain join prior deployment](./whats-new.md).
+
+- **Validation improvements** across deployment and update that reduce the duration, up to 50% during deployment. Validation now resumes from the step it failed rather starting from scratch within a time window od three hours. 
+
+- **Deployment performance improvements** having consistent duration up to 8 nodes and overall reduction in time by 40%.
+
+- **Rack aware cluster** now supports deployments using Local Identity with Key Vault.
 
 ::: moniker-end
 
