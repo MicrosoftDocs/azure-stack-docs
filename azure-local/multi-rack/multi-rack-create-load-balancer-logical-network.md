@@ -54,47 +54,50 @@ Before you begin, review the required parameters:
 | name | Name for the load balancer. Follow the [naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a load balancer after it's created. |
 | resource-group | Name of the managed resource group of the custom location. |
 | custom-location | ARM ID of the custom location associated with your Azure Local instance where you're creating this load balancer. |
-| location | Azure region as specified by `az locations`. |
+| location | (Optional) Azure region as specified by `az locations`. If not specified, the location of the resource group is used. |
 | frontend-ip | Configuration for a single frontend IP as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple frontend IPs. |
 | backend-pool | Configuration for a single backend pool as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple backend pools. |
 | probe | Configuration for a single backend health probe as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple probes. |
 | lb-rule | Configuration for a single load balancing rule as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple load balancing rules. |
 
-#### Required keys for frontend-ip
+#### Keys for frontend-ip
 
-| Key | Description |
-|--|--|
-| name | Name for the frontend IP configuration. |
-| public-ip-id | Required for load balancer on logical network. Azure Resource Manager ID of the Public IP resource you want to assign to your load balancer. Each frontend IP configuration can have only one public IP address, but multiple frontend IP configurations are supported. The logical network that the public IP belongs to should be the logical network you wish to deploy your load balancer on. |
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the frontend IP configuration. |
+| public-ip-id | Yes | Azure Resource Manager ID of the Public IP resource you want to assign to your load balancer. Each frontend IP configuration can have only one public IP address, but multiple frontend IP configurations are supported. The logical network that the public IP belongs to should be the logical network you wish to deploy your load balancer on. |
 
-#### Required keys for backend-pool
+#### Keys for backend-pool
 
-| Key | Description |
-|--|--|
-| name | Name for the backend pool. |
-| addresses | A comma-separated list of Azure Resource Manager IDs of the network interface's IP configuration, for each network interface you wish to include in the backend pool. |
-| lnet-id | Azure Resource Manager ID of the Logical Network where the backend pool resources reside. NOTE: All backend resources should be in the same logical network as the load balancer. |
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the backend pool. |
+| addresses | Yes | A comma-separated list of Azure Resource Manager IDs of the network interface's IP configuration, for each network interface you wish to include in the backend pool. |
+| lnet-id | No | Azure Resource Manager ID of the Logical Network where the backend pool resources reside. NOTE: All backend resources should be in the same logical network as the load balancer. |
 
-#### Required keys for probes
+#### Keys for probes
 
-| Key | Description |
-|--|--|
-| name | Name for the probe you want to create for this load balancer. |
-| protocol | Transport protocol used by this probe. |
-| port | Port for communicating with the probe. |
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the probe you want to create for this load balancer. |
+| protocol | Yes | Transport protocol used by this probe. Allowed values: Tcp, Http. |
+| port | Yes | Port for communicating with the probe. |
+| path | Required for Http | URL path for Http probes to use when checking backend health. |
+| interval | No | Interval in seconds between probe attempts. |
+| threshold | No | Number of consecutive probe failures before the backend is considered unhealthy. |
 
-#### Required keys for load balancing rules
+#### Keys for load balancing rules
 
-| Key | Description |
-|--|--|
-| name | Name for the load balancing rule. |
-| frontend-ip | Name of the frontend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a frontend IP configuration also supplied in a `--frontend-ip` parameter. |
-| backend-pool | Name of the backend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a backend pool also supplied in a `--backend-pool` parameter. |
-| frontend-port | The port for the external endpoint. Port numbers for each rule must be unique within the load balancer. |
-| backend-port | The port for internal connections on the endpoint. |
-| protocol | Reference to the transport protocol used by the load balancing rule (All, Tcp, Udp). |
-| probe | Reference to the probe to associate with this rule. This must correspond to a probe supplied with a `--probe` parameter. |
-| load-distribution | Load distribution policy for this rule. Allowed values:<br>- **Default**: 5-tuple hash (source IP, source port, destination IP, destination port, protocol) distributes connections evenly.<br>- **SourceIP**: 2-tuple hash (source IP, destination IP) ensures requests from same client IP go to same backend.<br>- **SourceIPProtocol**: 3-tuple hash (source IP, destination IP, protocol) balances between client affinity and distribution. |
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the load balancing rule. |
+| frontend-ip | Yes | Name of the frontend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a frontend IP configuration also supplied in a `--frontend-ip` parameter. |
+| backend-pool | Yes | Name of the backend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a backend pool also supplied in a `--backend-pool` parameter. |
+| frontend-port | Yes | The port for the external endpoint. Port numbers for each rule must be unique within the load balancer. |
+| backend-port | Yes | The port for internal connections on the endpoint. |
+| protocol | Yes | Reference to the transport protocol used by the load balancing rule. Allowed values: Tcp, Udp. |
+| probe | No | Reference to the probe to associate with this rule. This must correspond to a probe supplied with a `--probe` parameter. |
+| load-distribution | No | Load distribution policy for this rule. Allowed values:<br>- **Default**: 5-tuple hash (source IP, source port, destination IP, destination port, protocol) distributes connections evenly.<br>- **SourceIP**: 2-tuple hash (source IP, destination IP) ensures requests from same client IP go to same backend.<br>- **SourceIPProtocol**: 3-tuple hash (source IP, destination IP, protocol) balances between client affinity and distribution. |
 
 ### Steps to create a load balancer on a logical network
 
