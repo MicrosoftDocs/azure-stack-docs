@@ -82,4 +82,10 @@ az networkcloud cluster inspect \
 
 Cluster Inspection results are logged to the Cluster Log Analytics Workspace.
 
+> [!IMPORTANT]
+>
+> Cluster Inspect Action runs Hardware Validation (HWV) using the serial number, boot MAC address, and BMC MAC address stored in the Cluster Manager (CM) Cluster CR. If those hardware identity values later change on the server, for example after a system board replacement or server swap, Cluster Inspect Action might use original values.
+>
+> As a result, some inspection failures can be false positives. If HWV reports a mismatch for the serial number, boot MAC address, or BMC MAC address, compare the reported values with the current BareMetalMachine (BMM) values. If they match the BMM values, treat the inspection failure as a false positive and ignore it.
+
 If hardware validation fails during cluster inspection, see [Troubleshoot hardware validation failure](./troubleshoot-hardware-validation-failure.md) for detailed troubleshooting procedures organized by validation category.
