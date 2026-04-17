@@ -39,7 +39,7 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 ## Guest operating system images
 
-All Windows images from Azure Marketplace supported by Azure Local VMs are supported. For more information, see [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image) for a list of all supported Windows 11 images.
+All Windows images from Azure Marketplace supported by Azure Local VMs are supported. For more information, see [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image) for a list of all supported Windows 11 images. Linux images are also supported through bringing your own custom image - to get started see Using Ubuntu VM Image, Using CentOS VM Image, Red Hat Enterprise VM image, and using SUSE Linux VM image.
 
 > [!NOTE]
 > You can bring your own customized image and use it with Trusted launch VMs. However, since those images have not been validated, they are not guaranteed to work with Trusted launch VMs.
