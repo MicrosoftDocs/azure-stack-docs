@@ -50,7 +50,7 @@ The following table summarizes how long NAT gateway keeps connections open based
 - A NAT gateway can’t span multiple virtual networks. In the preview version, a NAT gateway can use only one public IP address. Additionally, the virtual network's address space must not overlap with the logical network from which the public IP address is allocated.
 - The NAT gateway must have at least one virtual network subnet configured for the entire lifetime of the NAT gateway.
 - After the NAT gateway is created, its public IP addresses can't be added, removed, or changed.
-- To delete a NAT gateway, first delete any inbound NAT rules and load balancers configured on the same virtual network. Then, delete each virtual network subnet or update each subnet to remove its NAT gateway association.
+- To delete a NAT gateway, first delete any inbound NAT rules configured on it. Then, delete each virtual network subnet or update each subnet to remove its NAT gateway association.
 
 > [!NOTE]
-> You must set up a NAT gateway with a subnet in the same virtual network before you can configure a load balancer.
+> NAT gateway and load balancer are independent resources. You can deploy and delete them in any order without dependency on each other.

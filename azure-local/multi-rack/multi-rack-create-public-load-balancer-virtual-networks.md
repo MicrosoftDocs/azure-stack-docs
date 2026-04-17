@@ -30,7 +30,6 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
 - Review and [Complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
 - Get access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for multi-rack deployments of Azure Local](./multi-rack-assign-vm-rbac-roles.md).
 - Access to a resource group where you want to provision the load balancer.
-- Configure a NAT gateway on the virtual network where you’re creating the load balancer. For more information, see [Create a NAT gateway on virtual networks in multi-rack deployments of Azure Local](multi-rack-nat-gateway-overview.md).
 - Get access to Azure Resource Manager ID of the custom location associated with your Azure Local instance where you want to provision the load balancer resource.
 - To add backend pools to your load balancer instance, get access to the Azure Resource Manager IDs of the network interfaces you want to add to the backend pool and the associated virtual network.
 - Get access to Azure Resource Manager ID of the VNet subnet where you want to create the load balancer.
@@ -41,7 +40,7 @@ You can create a load balancer on multi-rack deployments using Azure CLI, Azure 
     > You need separate subnets for different types of load balancers.
 
 - If using a client to connect to your Azure Local instance, see [Connect to the system remotely](./multi-rack-vm-management-prerequisites.md#connect-to-the-system-remotely).
-- Get access to Azure Resource Manager ID of the public IP resource you wish to use for the frontend IP configuration. The public IP resource must come from the same logical network as the public IP used in the NAT Gateway.
+- Get access to Azure Resource Manager ID of the public IP resource you wish to use for the frontend IP configuration.
 
 ## Create public load balancer on virtual networks using Azure CLI
 

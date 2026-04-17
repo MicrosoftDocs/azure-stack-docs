@@ -65,6 +65,6 @@ The following table shows the configuration keys for the `--frontend-ip` and `--
 | Key | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
 |--|--|--|--|
 | `subnet-id` (in `--frontend-ip`) | Required | Required | Omit |
-| `public-ip-id` (in `--frontend-ip`) | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
+| `public-ip-id` (in `--frontend-ip`) | Required | Omit | Required<br><br>Must be from the same logical network. |
 | `vnet-id` (in `--backend-pool`) | Required | Required | Omit |
 | `lnet-id` (in `--backend-pool`) | Omit | Omit | Required |
