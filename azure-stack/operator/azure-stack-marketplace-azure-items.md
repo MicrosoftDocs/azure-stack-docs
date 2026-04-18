@@ -46,7 +46,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | Image | Item name | Description | Publisher |
 | --- | --- | --- | --- |
 | ![Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Windows Server 2016. | Microsoft |
-| ![Microsoft Machine Learning Server 9.3.0 on Ubuntu 20.04](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Ubuntu 20.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-2004?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Ubuntu 20.04. | Microsoft + Canonical |
+| ![Microsoft Machine Learning Server 9.3.0 on Ubuntu 22.04](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Ubuntu 22.04](https://marketplace.microsoft.com/product/microsoft-dsvm.ubuntu-2204?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Ubuntu 22.04. | Microsoft + Canonical |
 | ![Windows Server Virtual Machine Images](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server Virtual Machine Images](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver) | Windows Server Virtual Machine Images | Microsoft |
 
 ## Linux distributions
