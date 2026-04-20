@@ -5,7 +5,7 @@ ms.topic: product-comparison
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 01/26/2026
+ms.date: 03/02/2026
 ---
 
 # Compare Azure Local to Windows Server
@@ -73,12 +73,14 @@ The following table compares the workloads and benefits of Azure Local and Windo
 | ------------- | ------------------- | ----------------------- |
 | Directly hosted server roles and apps | No | Yes |
 | Hyper-V virtual machines | Yes | Yes |
-| Azure Kubernetes Service (AKS)| Built-in | Installable |
+| Azure Kubernetes Service (AKS)| Built-in | Installable <sup>1</sup> |
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
 | Windows Server Datacenter: Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Extended Security Updates (ESUs) for Windows Server | Included | Purchased separately and applied via Azure Arc or  Multiple Activation Keys (MAKs) manually applied to every server |
+| Extended Security Updates (ESUs) for Windows Server | Included | Purchased separately and applied via Azure Arc or Multiple Activation Keys (MAKs) manually applied to every server |
 | VMware migration method | [Azure Migrate](../migrate/migrate-vmware-migrate.md) | - [System Center VMM](/system-center/vmm/vm-convert-vmware)<br> - [VM Conversion (preview)](/windows-server/manage/windows-admin-center/use/migrate-vmware-to-hyper-v) |
+
+<sup>1</sup>AKS enabled by Azure Arc architecture on Windows Server is being retired in stages between March 2026 and March 2028. For more information, see [Announcing the retirement of AKS enabled by Azure Arc on Windows Server](/azure/aks/aksarc/aks-windows-server-retirement).
 
 ## Compare technical features
 

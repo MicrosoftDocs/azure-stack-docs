@@ -96,7 +96,9 @@ This release includes the following features and improvements:
 
     For more information, see [System requirements for Azure Local](../concepts/system-requirements-23h2.md).
 
-- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
+
+    For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2411).
 
 ## Features and improvements in 2408.2
 
@@ -158,6 +160,17 @@ This release includes the following changes for SBE:
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces run more efficiently, so Azure Local deployment times are shorter.
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing problems with drivers that are newer than those in the SBE. This plugin update gives hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends that you install host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
+
+### Azure Kubernetes Service on Azure Local
+
+This release supports the following component versions:
+
+|Component|Version|
+|---|---|
+|AKS enabled by Azure Arc|1.3.218|
+|Kubernetes versions|1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4|
+
+Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2408).
 
 ## Features and improvements in 2405.3
 
@@ -291,9 +304,14 @@ This release includes the following updates to the security documentation:
 
 ### Azure Kubernetes Service on Azure Local
 
-For a list of the changes and improvements in AKS on Azure Local, see [What's new in Azure Kubernetes on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
+This release supports the following component versions:
 
+|Component|Version|
+|---|---|
+|AKS enabled by Azure Arc|1.0.23.10605|
+|Kubernetes versions|1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5|
 
+Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2405).
 
 ## Features and improvements in 2402.4
 
@@ -348,6 +366,10 @@ This release includes the following updates to the security documentation:
 - Updates to the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
 - Updates to the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
 - The [Azure Local security book](../security-book/overview.md).
+
+### AKS enabled by Azure Arc changes
+
+For a list of the changes and improvements in AKS on Azure Local, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2402).
 
 ## Next steps
 

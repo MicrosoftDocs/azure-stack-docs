@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/30/2025
+ms.date: 04/07/2026
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -89,8 +89,10 @@ Before you create an Azure Local VM, make sure that you meet the following prere
 To create a VM on your Azure Local instance, follow these steps.
 
 > [!NOTE]
-> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after you successfully create the VM. However, you might see the empty drives visible for the VM.
-> - To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux that you use, you can also delete them for Linux VMs.
+>
+> - Two DVD drives are created and used in Azure Local VMs during VM provisioning. The ISO files used during provisioning are removed after you successfully create the VM. However, you might see the empty drives visible for the VM. To delete these drives in a Windows VM, use Device Manager to uninstall the drives. Depending on the flavor of Linux that you use, you can also delete them for Linux VMs.
+>
+> - When creating a VM resource that requires referring to another resource (disk, NIC, image, storage path), you need to pass the full resource ID if that resource is in a different resource group than the targeted one.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -202,9 +204,9 @@ If the flag isn't specified, the workload (VM, VM image, and non-OS data disk) i
 
 ### Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images
 
-When you create a VM by using Windows Server 2012 and Windows Server 2012 R2 images, specify the following parameters to create the VM:
+Windows Server 2012 and Windows Server 2012 R2 do not support enabling guest management as this operating system lacks support for Hyper-V sockets which is required for enabling guest management. Therefore, when you create a VM using Windows Server 2012 and Windows Server 2012 R2 images, set both the following parameters to false:
 
-- `--enable-agent`: Set this parameter to `true` to onboard the Azure Connected Machine Agent on VMs.
+- `--enable-agent`: Set this parameter to `false` to disable onboarding of the Azure Connected Machine Agent on VMs.
 - `--enable-vm-config-agent`: Set this parameter to `false` to prevent the onboarding of the VM agent on the VM from the host via the Hyper-V sockets channel. Windows Server 2012 and Windows Server 2012 R2 don't support Hyper-V sockets. In the newer image versions that support Hyper-V sockets, the VM agent is used to onboard the Azure Connected Machine Agent on VMs. For more information on Hyper-V sockets, see [Make your own integration services](/virtualization/hyper-v-on-windows/user-guide/make-integration-service).
 
 ### Create a Linux VM

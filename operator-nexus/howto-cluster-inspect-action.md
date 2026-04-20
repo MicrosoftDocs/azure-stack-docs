@@ -25,10 +25,12 @@ The time required to complete cluster inspect depends on the number of nodes and
 - The cluster inspect action requires 2026-01-01-preview API
 
 > [!IMPORTANT]
+>
 > Cluster inspect action is rejected if there's another running cluster inspection or HWV on the cluster.
 >
 > `ResetHardware` is only supported on clusters in `Pending Deployment` state
-
+>
+> The BMM names specified in `bareMetalMachineNames` and rack names specified in `rackNames` are case sensitive. Multiple bare metal machines can be listed in `bareMetalMachineNames` and multiple rack names can be listed in `rackNames`. Both `bareMetalMachineNames` and `rackNames` can be used together in the same command; the resulting filter is additive.
 
 ## Cluster Inspect Command Arguments
 
@@ -47,7 +49,7 @@ The `az networkcloud cluster inspect` command triggers an inspection of the clus
 ## Running Cluster Inspect Action
 
 
-**The following Azure CLI command will run a read only, non-disruptive Cluster Inspect Action against all BMMs in a cluster:**
+**The following Azure CLI command will run a read only, non-disruptive Cluster Inspect Action against all BMMs in a cluster**
 
 ```azurecli
 az networkcloud cluster inspect \
@@ -73,7 +75,8 @@ az networkcloud cluster inspect \
 ```
 
 > [!NOTE]
-> The BMM names specified in `bareMetalMachineNames` and rack names specified in `rackNames` are case sensitive. Multiple bare metal machines can be listed in `bareMetalMachineNames` and multiple rack names can be listed in `rackNames`. Both `bareMetalMachineNames` and `rackNames` can be used together in the same command; the resulting filter is additive.
+>
+> Cluster inspection runs all standard HWV checks. When used with ResetHardware option, the cluster inspection HWV cleans up the iDRAC users/TLS certificates and server RAID; it also updates any necessary firmware components and BIOS settings as needed.
 
 ## Cluster Inspect Action Results
 

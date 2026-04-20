@@ -5,7 +5,7 @@ author: matternst7258
 ms.author: matthewernst
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 02/11/2026
+ms.date: 03/11/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -40,10 +40,10 @@ The following table summarizes each action to help you select the appropriate op
 | Start     | Power on a machine                              | None      | Recovery | No              | 30 minutes  |
 | Restart   | Reboot the machine while preserving OS and data | None      | Minutes  | No              | 40 minutes  |
 | Reimage   | Reinstall the OS image on existing hardware     | OS disk only | Hours    | No              | 3 hours     |
-| Replace   | Swap physical hardware with new machine         | Full*     | Hours    | Yes             | 4 hours     |
+| Replace   | Swap physical hardware with new machine         | Depends on storage policy | Hours    | Yes             | 4 hours     |
 
 > [!NOTE]
-> \* Replace: By default, the RAID controller is reset during replace, wiping all data. Use `--storage-policy Preserve` to retain tenant data (available in API version 2025-07-01-preview and later).
+> Replace data impact depends on the `--storage-policy` parameter: `DiscardAll` (default) resets the RAID controller and wipes all data; `Preserve` retains tenant data on virtual disks. See [Choose the right storage policy](#choose-the-right-storage-policy) for guidance on which value to use. The `Preserve` option is available in API version 2025-07-01-preview and later.
 
 ## Choose the right action
 
@@ -298,6 +298,34 @@ Use replace when:
 - BMC credentials need to be updated along with hardware
 - Hardware components replaced and need firmware reconciled with platform
 
+### Choose the right storage policy
+
+The `--storage-policy` parameter controls whether tenant data on the BMM's virtual disks is preserved or wiped during a replace operation. Choosing the wrong value can result in unnecessary data loss or a failed replace. Use the following decision table to determine the correct value:
+
+| Scenario | Storage policy | Reason |
+|----------|---------------|--------|
+| **New deployment** with no existing workloads on the BMM | `DiscardAll` | Clean slate; no tenant data to preserve |
+| **Existing instance**: BMM motherboard was replaced | `DiscardAll` | `Preserve` is known to cause replace failures after motherboard swap |
+| **Existing instance**: BMM has been offline and unavailable for 30+ days | `DiscardAll` | Machine cannot be brought up using normal operations; storage encryption keys may no longer be valid |
+| **Existing instance**: BMM has no workloads running | `DiscardAll` | No tenant data at risk |
+| **Existing instance**: BMM has running workloads and none of the above conditions apply | `Preserve` | Retains tenant data on virtual disks |
+| **Existing instance**: Unsure of workload status and none of the above conditions apply | `Preserve` | Cautious approach to avoid unnecessary data loss |
+
+> [!CAUTION]
+> Always verify which scenario applies before choosing a storage policy. If you select `DiscardAll`, **all data on the virtual disks is permanently deleted**. If you're uncertain and none of the `DiscardAll` conditions above apply, use `Preserve`.
+
+> [!IMPORTANT]
+> Do **not** use `--storage-policy Preserve` when:
+>
+> 1. The BMM **motherboard has been replaced** — this is known to cause replace failures.
+> 2. The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine cannot be brought up using normal operations.
+>
+> If local path storage decryption failures occur and the motherboard was **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
+>
+> If local path storage decryption failures persist after a Replace with `DiscardAll`, perform an iDRAC reset before retrying.
+
+For detailed troubleshooting workflows including pre/post-checks and hardware replacement guidance, see [Troubleshoot server problems with Restart, Reimage, and Replace](./troubleshoot-reboot-reimage-replace.md#troubleshoot-with-a-replace-action).
+
 During a replace operation, the system progresses through the following phases:
 
 1. **Hardware Validation**: Validates replacement hardware meets requirements (BMC credentials, serial number, MAC addresses)
@@ -318,7 +346,7 @@ az networkcloud baremetalmachine replace \
   --boot-mac-address <PXE_MAC> \
   --machine-name <OS_HOSTNAME> \
   --serial-number <SERIAL_NUMBER> \
-  --storage-policy <"Preserve" or "Delete"> \
+  --storage-policy <"Preserve" or "DiscardAll"> \
   --subscription <subscriptionID> \
   --safeguard-mode <"All" or "None">
 ```

@@ -117,7 +117,7 @@ To add a hosting server, follow these steps:
 
    * For **MySQL Hosting Server Name**, provide the fully qualified domain name (FQDN) or a valid IPv4 address. Don't use the short VM name.
    * The default admin **Username** for the Bitnami MySQL images available in Azure Stack Hub Marketplace is *root*.
-   * If you don't know the root **Password**, see the [Bitnami documentation](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) to learn how to get it.
+   * If you don't know the root **Password**, see the [Bitnami documentation](https://docs.bitnami.com/general/infrastructure/mysql/get-started/find-credentials-link-mysql/) to learn how to get it.
    * A default MySQL instance isn't provided, so you have to specify the **Size of Hosting Server in GB**. Enter a size that's close to the capacity of the database server.
    * Keep the default setting for **Subscription**.
    * For **Resource group**, create a new one, or use an existing group.

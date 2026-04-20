@@ -33,18 +33,16 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 ## Guidance
 
-- Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
-
 - As part of Trusted launch for Azure Local VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 
 - VM live migration network traffic isn't encrypted. We strongly recommend that you enable a network layer encryption technology such as IPsec to protect live migration network traffic.
 
 ## Guest operating system images
 
-Only a select set of Windows images and Windows Server images from Azure Marketplace are supported. This set of images is supported by Azure Local VMs. See [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image) for a list of all supported Windows 11 images.
+All Windows images from Azure Marketplace supported by Azure Local VMs are supported. In addition, you can bring your own Windows custom image. For more information, see [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image) for a list of all supported Windows 11 images. Linux images are also supported through bringing your own custom image — to get started see [Using Ubuntu VM Image](virtual-machine-image-linux-sysprep.md), [CentOS VM Image](virtual-machine-image-centos.md), [Red Hat Enterprise VM image](virtual-machine-image-red-hat-enterprise.md), and [SUSE Linux VM image](virtual-machine-image-suse.md).
 
 > [!NOTE]
-> VM guest images obtained outside of Azure Marketplace aren't supported.
+> You can bring your own customized image and use it with Trusted launch VMs. However, since those images have not been validated, guest attestation will be disabled for custom images. For more information see, [Enable guest attestation](trusted-launch-guest-attestation.md).
 
 ## Backup and disaster recovery considerations
 

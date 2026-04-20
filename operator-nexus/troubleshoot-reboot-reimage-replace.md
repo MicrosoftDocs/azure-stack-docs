@@ -4,7 +4,7 @@ description: Troubleshoot cluster bare metal machines with Restart, Reimage, Rep
 ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
-ms.date: 02/11/2026
+ms.date: 03/11/2026
 author: gregoberfield
 ms.author: goberfield
 ---
@@ -38,7 +38,9 @@ When troubleshooting a BMM for failures and determining the most appropriate cor
 
 - **Restart** - Least invasive method, best for temporary glitches or unresponsive Virtual Machines (VMs). Preserves OS and data.
 - **Reimage** - Intermediate solution, restores OS to known-good state without hardware changes. Wipes OS disk but tenant data preserved.
-- **Replace** - Most comprehensive action, required after hardware component repairs (RAM, disk, NIC, etc.). Includes hardware validation before provisioning. Use `--storage-policy="Preserve"` to retain tenant data.
+- **Replace** - Most comprehensive action, required after hardware component repairs (RAM, disk, NIC, etc.). Includes hardware validation before provisioning. Choose storage policy based on your scenario:
+  - Use `--storage-policy DiscardAll` for new deployments, motherboard replacements, BMMs offline 30+ days, or BMMs with no workloads
+  - Use `--storage-policy Preserve` to retain tenant data when none of the above conditions apply
 
 > [!TIP]
 > **Quick guidance**: If you're unsure which action to use, start with the **Troubleshooting decision tree** below, then refer to the **Workflow sections** for detailed pre-checks and execution steps.
@@ -322,7 +324,7 @@ kubectl get nodes -o custom-columns="NODE:.metadata.name,READY:.status.condition
 
 ## Troubleshoot with a Replace action
 
-Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The Tenant data isn't modified during replacement as long as `storage-policy="Preserve"` flag is used.
+Servers contain many physical components that can fail over time. It's important to understand which physical repairs require BMM replacement and when BMM replacement is recommended. The impact on tenant data depends on the `--storage-policy` value you choose — see the [Storage policy decision guide](#storage-policy-decision-guide) below to determine the correct value for your scenario.
 
 A hardware validation process is invoked to ensure the integrity of the physical host in advance of deploying the OS image.
 
@@ -334,21 +336,61 @@ A hardware validation process is invoked to ensure the integrity of the physical
 - [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md) - Check and troubleshoot hardware validation results
 
 > [!IMPORTANT]
-> When run with default options, the RAID controller is reset during BMM replace, wiping all data from the server's virtual disks. Baseboard Management Controller (BMC) virtual disk alerts triggered during BMM replace can be ignored unless there are other physical disk and/or RAID controllers alerts. Starting with the `2025-07-01-preview` version of the NetworkCloud API, and generally available with the `2025-09-01` GA version, use `replace` with `storage-policy="Preserve"` to retain virtual disk data.
+> When run with `--storage-policy DiscardAll` (the default), the RAID controller is reset during BMM replace, **permanently wiping all data** from the server's virtual disks. Baseboard Management Controller (BMC) virtual disk alerts triggered during BMM replace can be ignored unless there are other physical disk and/or RAID controllers alerts. Starting with the `2025-07-01-preview` version of the NetworkCloud API, and generally available with the `2025-09-01` GA version, use `--storage-policy Preserve` to retain virtual disk data. See the [Storage policy decision guide](#storage-policy-decision-guide) to determine which value to use.
 
 ### Replace workflow
+
+Before committing to a Replace action, it's important to diagnose the root cause of the failure. In many cases, a Troubleshooting Report (TSR) should be collected and reviewed first to confirm that Replace is the correct corrective action and to identify any mitigations that should be applied before or during the replace operation.
+
+#### Collect a Troubleshooting Report (TSR)
+
+A TSR (also known as a Dell SupportAssist collection) gathers detailed hardware diagnostic data from the BMM, including system information, hardware inventory, lifecycle controller logs, and storage controller status. Reviewing a TSR before performing a Replace helps you:
+
+- **Confirm the root cause** of a provisioning or hardware failure
+- **Identify which components** need physical repair or replacement
+- **Determine if Replace is necessary** or if a less disruptive action (restart, reimage) would resolve the issue
+- **Inform your storage policy choice** by understanding the state of disks and RAID controllers
+
+To collect a TSR, use the `hardware-support-data-collection` command as described in [SupportAssist or TSR collection for Dell troubleshooting](howto-baremetal-run-data-extract.md#hardware-support-data-collection).
+
+> [!NOTE]
+> The `run-data-extract` command requires the BMM to be powered on and reachable. If the BMM is unresponsive, collect the TSR directly from the Baseboard Management Controller (BMC/iDRAC) using the Dell iDRAC web interface or racadm CLI. See the Dell Knowledge Base article [Export a SupportAssist Collection Using an iDRAC](https://www.dell.com/support/kbdoc/en-us/000126308/export-a-supportassist-collection-via-idrac9) for instructions.
+
+After reviewing the TSR findings and completing any physical repairs or mitigations, proceed with the replace workflow below.
+
+#### Replace workflow steps
 
 Follow these steps to safely replace a BMM after hardware repairs:
 
 1. **Identify hardware replaced** - Determine which components were repaired (see [Hardware Component Replacement Guide](#hardware-component-replacement-guide))
 2. **Assess data impact** - If storage components were replaced (SSD/PERC/System board/Backplane), VM data may be lost; migrate VMs before replace
-3. **Check BMM health** - Determine if BMM is healthy or unresponsive using [pre-check commands](#infrastructure-pre-check-1)
-4. **Cordon and evacuate** - If BMM is healthy, run `cordon --evacuate "True"`; if failed, skip to replace command
-5. **Verify firmware** - Ensure all replaced components meet minimum firmware requirements
-6. **Execute replace** - Run replace command with required parameters (includes hardware validation phase)
-7. **Monitor progress** - Replace includes hardware validation, deprovisioning, provisioning, and cloud init phases (up to 4 hours)
-8. **Uncordon** - Make the BMM schedulable again after replacement completes
-9. **Verify status** - Use [post-check commands](#infrastructure-post-check-1) to confirm BMM, VMs, and NAKS nodes are healthy
+3. **Choose storage policy** - Select the correct `--storage-policy` value based on your scenario (see [Storage policy decision guide](#storage-policy-decision-guide) below)
+4. **Check BMM health** - Determine if BMM is healthy or unresponsive using [pre-check commands](#infrastructure-pre-check-1)
+5. **Cordon and evacuate** - If BMM is unhealthy or unresponsive, skip to step 7. If BMM is healthy, run `cordon --evacuate "True"` to drain workloads, or use `--safeguard-mode None` in step 7 which handles evacuation automatically
+6. **Verify firmware** - Ensure all replaced components meet minimum firmware requirements
+7. **Execute replace** - Run replace command with required parameters (includes hardware validation phase)
+8. **Monitor progress** - Replace includes hardware validation, deprovisioning, provisioning, and cloud init phases (up to 4 hours)
+9. **Uncordon** - Make the BMM schedulable again after replacement completes
+10. **Verify status** - Use [post-check commands](#infrastructure-post-check-1) to confirm BMM, VMs, and NAKS nodes are healthy
+
+#### Storage policy decision guide
+
+Choosing the correct `--storage-policy` value is critical. The wrong choice can result in unnecessary data loss or a failed replace operation. Use the following table to determine which value to use. For the full reference, see [Choose the right storage policy](howto-baremetal-functions.md#choose-the-right-storage-policy).
+
+| Scenario | Storage policy | Reason |
+|----------|---------------|--------|
+| **New deployment** with no existing workloads on the BMM | `DiscardAll` | Clean slate; no tenant data to preserve |
+| **Existing instance**: BMM motherboard was replaced | `DiscardAll` | `Preserve` causes replace failures after motherboard swap |
+| **Existing instance**: BMM offline and unavailable for 30+ days | `DiscardAll` | Storage encryption keys may no longer be valid |
+| **Existing instance**: BMM has no workloads running | `DiscardAll` | No tenant data at risk |
+| **Existing instance**: BMM has running workloads and none of the above apply | `Preserve` | Retains tenant data on virtual disks |
+| **Existing instance**: Unsure of workload status and none of the above apply | `Preserve` | Cautious approach to avoid unnecessary data loss |
+
+> [!CAUTION]
+> Always verify which scenario applies **before** running replace. If you select `DiscardAll`, all data on the virtual disks is permanently deleted. If you're uncertain and none of the `DiscardAll` conditions apply, use `Preserve`.
+
+> [!WARNING]
+> If local path storage decryption failures occur and the motherboard was **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding — `DiscardAll` won't resolve the underlying problem and will result in unnecessary data loss.
 
 > [!IMPORTANT]
 > Hardware validation runs before provisioning to verify BMC connectivity, credentials, network links, and component health. If validation fails, the replace action is rejected with detailed error messages. See [Troubleshoot Hardware Validation](troubleshoot-hardware-validation-failure.md).
@@ -475,6 +517,11 @@ Once the firmware checks are complete, proceed with the replace action.
 **Example replace command** (see [Replace a Bare Metal Machine](howto-baremetal-functions.md#replace-a-bare-metal-machine) for all parameters and safeguard-mode details):
 
 ```azurecli
+# Choose storage-policy based on your scenario:
+#   DiscardAll — new deployment, motherboard replaced, offline 30+ days, or no workloads
+#   Preserve  — existing instance with workloads and none of the above conditions apply
+# See the storage policy decision guide above for full guidance.
+
 az networkcloud baremetalmachine replace \
   --name <bareMetalMachineName> \
   --resource-group "<resourceGroup>" \
@@ -484,7 +531,7 @@ az networkcloud baremetalmachine replace \
   --machine-name <OS_HOSTNAME> \
   --serial-number <SERIAL_NUM> \
   --subscription <subscriptionID> \
-  --storage-policy <STORAGE_POLICY>
+  --storage-policy <"Preserve" or "DiscardAll">
 
 # Uncordon to allow scheduling
 az networkcloud baremetalmachine uncordon --name <bareMetalMachineName> --resource-group "<resourceGroup>" --subscription <subscriptionID>
@@ -540,13 +587,14 @@ Restarting, reimaging, and replacing are effective troubleshooting methods for a
 | ----------- | ------------------------------------ | -------------------------------- | ---------------------------------------------------------- |
 | **Restart** | Temporary glitches, unresponsive VMs | Brief downtime                   | None, fastest option                                       |
 | **Reimage** | OS corruption, security concerns     | Longer downtime, preserves tenant data  | Workload evacuation recommended                            |
-| **Replace** | Hardware component failures          | Longest downtime, removes tenant data unless option `--storage-policy="Preserve"` is used | Hardware component replacement, specific parameters needed |
+| **Replace** | Hardware component failures          | Longest downtime; `DiscardAll` permanently wipes data, `Preserve` retains tenant data | Hardware component replacement, correct [storage-policy selection](#storage-policy-decision-guide), specific parameters needed |
 
 ### Best practices
 
 - **Always follow the escalation path**: Start with restart, then reimage, then replace unless the issue clearly indicates otherwise.
 - **Verify virtual machines and NAKS nodes before action**: Use the provided commands to identify running virtual machines and NAKS nodes before any disruptive action.
 - **Cordon with evacuation**: When performing reimage or replace actions, always use `cordon` with `evacuate="True"`.
+- **Choose the correct storage policy for replace**: Use the [storage policy decision guide](#storage-policy-decision-guide) to determine whether to use `DiscardAll` or `Preserve`. Choosing the wrong value can result in unnecessary data loss or a failed replace.
 - **Never run multiple operations simultaneously**: Ensure one operation completes before starting another to prevent server issues.
 - **Verify resolution**: After performing any action, verify the BMM status and that the original issue is resolved.
 

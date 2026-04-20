@@ -25,6 +25,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
    - Resource group (`CLUSTER_RG`)
 1. Cluster Detailed status must be ``Running``.
 1. Cluster to Cluster Manager connectivity must be ``Connected``.
+1. Azure prerequisites (Log Analytics Workspace, Storage Account, Key Vault) must be validated. These resources are checked before upgrade begins. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 1. Under Cluster > Workload > Compute Servers
     - Three of four control plane nodes must be Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
         - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
@@ -331,3 +332,7 @@ If a hardware failure during an upgrade occurs, the runtime upgrade continues as
 ### After a runtime upgrade, the Cluster shows "Failed" Provisioning State
 
 During a runtime upgrade, the Cluster enters a state of `Upgrading`. If the runtime upgrade fails, the Cluster goes into a `Failed` provisioning state. Infrastructure components (e.g the Storage Appliance) may cause failures during the upgrade. In some scenarios, it may be necessary to diagnose the failure with Microsoft support.
+
+### Bare Metal Machine shows Degraded after Runtime Update
+
+Certain situations can result in a node returning in a `Degraded` state.  This can happen if any of the conditions found in [Troubleshoot Degraded Status Errors](./troubleshoot-bare-metal-machine-degraded.md) are met.  Degraded status means the node is automatically cordoned to prevent new workloads from being scheduled on the node until the underlying problem is resolved.

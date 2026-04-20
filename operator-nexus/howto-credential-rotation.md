@@ -99,6 +99,16 @@ Example `secretRotationStatus` for BMC credential. Use the `secretName` and `sec
 },
 ```
 
+## Credential rotation and machine health
+
+Credential rotation for a Bare Metal Machine is paused when any of the following conditions are true:
+
+- The machine is unhealthy.
+- The machine is customer-cordoned.
+- The machine provisioning status isn't `Succeeded`.
+
+Rotation resumes automatically when these conditions are cleared and the machine returns to a healthy, uncordoned state with provisioning status `Succeeded`.
+
 ## Create a support request
 
 Users raise credential rotation requests by [contacting support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). These details are required in order to perform the credential rotation on the requested target instance:

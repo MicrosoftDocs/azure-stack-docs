@@ -104,6 +104,18 @@ items:
         href: plan/network-patterns-sdn-considerations.md
     - name: Review Azure Arc gateway for Azure Local
       href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: Review Azure Private Endpoints for Azure Local
+      items:
+      - name: About private endpoint scenarios
+        href: deploy/about-private-endpoints.md
+      - name: Private endpoints - no proxy, no gateway
+        href: deploy/deploy-private-endpoints-no-proxy-no-gateway.md
+      - name: Private endpoints - no proxy, with gateway
+        href: deploy/deploy-private-endpoints-no-proxy-with-gateway.md
+      - name: Private endpoints - with proxy, no gateway
+        href: deploy/deploy-private-endpoints-with-proxy-no-gateway.md
+      - name: Private endpoints - with proxy, with gateway
+        href: deploy/deploy-private-endpoints-with-proxy-with-gateway.md
     - name: Review cloud deployment network considerations
       href: plan/cloud-deployment-network-considerations.md
     - name: Review security
@@ -153,14 +165,14 @@ items:
         href: deploy/deployment-without-azure-arc-gateway.md
       - name: With Arc gateway
         href: deploy/deployment-with-azure-arc-gateway.md
+      - name: Unregister and reregister machines
+        href: manage/unregister-register-machine.md
     - name: 6. Choose a deployment method
       items:
       - name: 6A. Deploy via Azure portal
         href: deploy/deploy-via-portal.md
       - name: 6B. Deploy via ARM template
         href: deploy/deployment-azure-resource-manager-template.md
-
-
     - name: Deploy using local identity with Key Vault
       items:
       - name: Deploy via Azure portal
@@ -290,8 +302,6 @@ items:
       href: update/update-phases-23h2.md
     - name: Update via PowerShell
       href: update/update-via-powershell-23h2.md
-    - name: Opt in to update to 12.25xx from 11.xxxx
-      href: update/update-opt-enable.md
     - name: Update via PowerShell with limited connectivity
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
@@ -510,7 +520,8 @@ items:
         href: manage/manage-security-with-defender-for-cloud.md
       - name: Manage security post upgrade
         href: manage/manage-security-post-upgrade.md
-        
+      - name: Manage Secure Boot updates
+        href: manage/manage-secure-boot-updates.md
     - name: Systems
       items:
       - name: Repair a node 
@@ -519,8 +530,6 @@ items:
         href: manage/configure-proxy-settings-23h2.md
       - name: Suspend and resume
         href: manage/suspend-resume-cluster-maintenance.md
-      - name: Unregister and reregister machines
-        href: manage/unregister-register-machine.md
       - name: Use dashboard to manage at-scale
         href: manage/manage-at-scale-dashboard.md
 
@@ -616,6 +625,8 @@ items:
       href: manage/troubleshoot-deployment-configurator-app.md
     - name: Troubleshoot deployment validation issues
       href: manage/troubleshoot-deployment.md
+    - name: Troubleshoot simplified machine provisioning
+      href: deploy/troubleshoot-simplified-machine-provisioning.md
     - name: Use the Support tool for infrastructure issues
       href: manage/remediate-support-tool-infrastructure.md
     - name: Use the Diagnostic Support tool
@@ -796,12 +807,16 @@ items:
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
       - name: Connect to Azure Local VMs via SSH
         href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
+      - name: Connect to Azure Local VMs via serial console
+        href: ./multi-rack/multi-rack-serial-console.md
       - name: Manage Azure Local VMs
         href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
       - name: Manage Azure Local VM extensions
         href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
+      - name: Create and restore data disk snapshots
+        href: ./multi-rack/multi-rack-disk-snapshot.md
     - name: Deploy SDN infrastructure
       items:
       - name: Create NSGs

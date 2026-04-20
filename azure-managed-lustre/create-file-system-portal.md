@@ -2,9 +2,9 @@
 title: Create an Azure Managed Lustre file system by using the Azure portal
 description: Learn how to create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: how-to
-author: pauljewellmsft
-ms.author: pauljewell
-ms.date: 05/02/2025
+author: barbisch
+ms.author: akashdubey
+ms.date: 03/12/2026
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
 ms.custom: sfi-image-nochange
@@ -73,9 +73,9 @@ Currently, the following throughput configurations are available:
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
-> Azure Managed Lustre can support larger storage capacities up to 12.5 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+> Azure Managed Lustre can support larger storage capacities up to 25 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 >
-> If you need cluster sizes greater than 12.5 PiB, you can open a support ticket to discuss additional options.
+> If you need cluster sizes greater than 25 PiB, you can open a support ticket to discuss additional options.
 
 ### Maintenance window
 
@@ -87,7 +87,7 @@ During the maintenance window, user workloads that access the file system will t
 
 For containerized or orchestrated workloads (for example, Kubernetes/AKS), the impact may vary, depending on workload design, health checks, and restart policies. Some workloads may restart or be unable to start if they require storage access during this brief window.
 
-You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/service-health-overview#configure-service-health-alerts).
+You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/overview#using-azure-service-health).
 
 ## Advanced tab
 

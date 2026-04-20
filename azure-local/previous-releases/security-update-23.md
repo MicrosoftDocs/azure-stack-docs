@@ -3,7 +3,7 @@ title:  Security updates for Azure Local 23xx releases
 description: Security updates for Azure Local 23xx releases.
 author: alkohli
 ms.topic: release-notes
-ms.date: 02/11/2026
+ms.date: 03/25/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
@@ -34,8 +34,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update affects the Netherlands time zone. It adds the recent artificial landmass outside of Rotterdam to the shape files.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [December 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Dec).
-
 <!--## Servicing stack update - 25398.521
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -47,6 +45,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [December 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Dec).
 
 <!--To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
@@ -95,8 +95,6 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects a COM+ component. It might stop responding. This occurs because of a deadlock during COM+ Just-in-Time (JIT) activation. However, this part of this update is off by default for this version of Windows. If you have this issue, you must contact Microsoft support to turn it on.
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [November 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Nov).
-
 <!--## Servicing stack update - 25398.521
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.-->
@@ -108,6 +106,8 @@ Microsoft isn't currently aware of any issues with this update.
 ### Install the update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [November 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Nov).
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 

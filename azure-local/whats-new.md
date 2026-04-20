@@ -5,7 +5,7 @@ ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 02/17/2026
+ms.date: 04/09/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,11 +13,45 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2603"
+
+## Features and improvements in 2603
+
+The March 2026 release of hyperconverged deployments of Azure Local is version **12.2603.1002.500**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+
+    - In 2603 release, all the new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.32522** or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**: This build uses .NET version **8.0.25** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
+
+- **Support for NVIDIA RTX PRO 6000 Blackwell Server Edition GPU on Azure Local**: Starting with this release, NVIDIA RTX PRO 6000 GPU is supported on Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc. This feature allows you to run GPU-accelerated workloads on Azure Local using NVIDIA RTX PRO 6000 GPUs. For more information, see [Prepare GPUs for Azure Local instance](./manage/gpu-preparation.md).
+
+- **Improved Secure Boot Certificate readiness**: Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](./manage/manage-secure-boot-updates.md).
+
+- **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
+
+::: moniker-end
+
 ::: moniker range="=azloc-2602"
 
 ## Features and improvements in 2602
 
-The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1002.7**. For more information, see [Release information summary](./release-information-23h2.md).
+The February 2026 release of hyperconverged deployments of Azure Local is version **12.2602.1002.501**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and other bug fixes.
 
@@ -31,10 +65,19 @@ This release includes various reliability improvements and other bug fixes.
 
 - **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
+
 - **Enhanced update workflow from the Azure portal**: Starting with this release, the update workflow from the Azure portal now provides richer, more detailed information.
 
 - **End of Windows Server Subscription and Extended Security Updates (ESU) purchases for OS version 20349.xxxx (22H2)**: If running OS version 20349.xxxx (version 22H2), you can no longer purchase Windows Server Subscription or ESU.
 
+- **Drift detection**: Starting with this release, the drift detection framework identifies configuration deviations, improves troubleshooting, and helps reduce configuration-related issues in your Azure Local environment. For more information, see [Drift detection](./manage/drift-detection.md).
 
 ::: moniker-end
 
@@ -83,6 +126,14 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Pre-upgrade CredSSP validation**: To ensure successful upgrades, a new pre-upgrade check is added that validates that CredSSP isn't disabled on existing Azure Local instances.
 
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2512"
@@ -114,6 +165,14 @@ This release includes various reliability improvements and other bug fixes.
     - [SDN upgrade infrastructure](./manage/upgrade-sdn.md) guidance is released.
     - Azure Stack HCI renaming banners added to the top of the feature overview articles were removed. This change was consistent with Azure portal updates that removed the renaming banners.
 
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2511"
@@ -135,6 +194,14 @@ This release includes the following features and improvements:
 - Build **12.2511.1002.502** improves the reliability of deploy and update admin actions. If you already deployed or updated to **12.2511.1002.5**, no further action is needed. Both **12.2511.1002.5** and **12.2511.1002.502** are supported builds.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 - This release includes various reliability improvements and other bug fixes.
 
@@ -196,12 +263,20 @@ This release includes the following features and improvements:
 
 - **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
 
+- **AKS enabled by Azure Arc changes**:
+    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+    - Support for Kubernetes version 1.32 is introduced. Kubernetes version 1.29 is no longer supported.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
+
 <!--- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:-->
 
 ::: moniker-end
 
 
-::: moniker range="=azloc-2509"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2509
 
@@ -235,10 +310,16 @@ This release includes the following features and improvements:
     - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
     - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart might be required only if the guest OS doesn't support live memory updates.
 
-- **AKS enabled by Azure Arc changes**
+- **AKS enabled by Azure Arc changes**:
     - The default OS disk size for the AKS VM is increased from 100 GB to 200 GB. A larger OS disk size offers flexibility on the size of the containerized workloads.
     - Starting with this release, the download of Windows VHD images is disabled by default.
-    
+    - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+    - Support for Kubernetes minor version 1.29 ends with this 2509 release.
+    - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
+
+    For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2509).
     
 - **Azure Local deployment using local identity** include zone name for both external and internal DNS servers.
 
@@ -255,11 +336,6 @@ This release includes the following features and improvements:
         - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
         - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
     - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2508
 
@@ -286,7 +362,7 @@ This release includes the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-**Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
+- **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Deployment and upgrade changes**:
     - Starting with this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
@@ -310,6 +386,14 @@ This release includes the following features and improvements:
     - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
     - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
     - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
+
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+    - Support for Kubernetes minor version 1.29 ends with the 2509 release.
+    - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2508).
 
 ## Features and improvements in 2507
 
@@ -336,6 +420,7 @@ This release includes the following features and improvements:
     
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2507).
  
 ## Features and improvements in 2506
 
@@ -382,6 +467,8 @@ This release includes the following features and improvements:
 
 - **Azure Government cloud**: The solution update isn't supported for Azure Local instances deployment in Azure Government cloud.
 
+- **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
+
 ## Features and improvements in 2505
 
 There are two 2505 releases for May. Here are the details of each release:
@@ -409,9 +496,11 @@ This release includes the following features and improvements:
 
 - **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
-- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
+- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./manage/troubleshoot-deployment-configurator-app.md#upload-the-support-log-package).
 
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
+
+- **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
 
 ## Features and improvements in 2504
 
@@ -469,6 +558,8 @@ This release includes the following features and improvements:
 
 - **Observability changes**: You can now automatically collect, analyze, and debug Azure services crashes with the crash dump collection feature in Azure Local. For more information, see [Crash dump collection](./concepts/observability.md#crash-dump-collection).
 
+- **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
+
 ## Features and improvements in 2503
 
 This release includes the following features and improvements:
@@ -484,7 +575,7 @@ This release includes the following features and improvements:
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the machine validation step during the Azure Local instance deployment installs the extensions. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
-  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
+  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy).
     - Composed image is now supported for Original Equipment Manufacturers (OEMs).
     - Several security enhancements were made for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.
@@ -510,6 +601,10 @@ This release includes the following features and improvements:
 - **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as the version running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md). 
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
+
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
+
+    For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
 
 ::: moniker-end
 

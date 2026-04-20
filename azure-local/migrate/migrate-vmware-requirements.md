@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2025
+ms.date: 03/26/2026
 ms.author: alkohli
 ms.custom: references_regions
 ms.subservice: hyperconverged
@@ -13,16 +13,16 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Local using Azure Migrate.
+This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Local by using Azure Migrate.
 
 ## Supported configurations
 
-The following operating systems (OSs) are supported for the VMware source appliance, target appliance, and for the guest VMs that you are migrating.
+The following operating systems (OSs) are supported for the VMware source appliance, target appliance, and for the guest VMs that you're migrating.
 
 
 |Component  |Supported configurations |
 |---------|---------|
-|Source environment     |Both the vCenter and ESXi hosts in the source environment must be running one of the following supported versions:<br>- VMware vCenter Server and ESXi 8.0<br>- VMware vCenter Server and ESXi 7<br>- VMware vCenter Server and ESXi 6.7<br>- VMware vCenter Server and ESXi 6.5    |
+|Source environment     |Both the vCenter and ESXi hosts in the source environment must run one of the following supported versions:<br>- VMware vCenter Server and ESXi 8.0<br>- VMware vCenter Server and ESXi 7<br>- VMware vCenter Server and ESXi 6.7<br>- VMware vCenter Server and ESXi 6.5    |
 |Source appliance     |Windows Server 2022          |
 |Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
@@ -41,11 +41,11 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 |Europe|North Europe, West Europe|
 |United States|Central US, West US2|
 
-Keep in mind the following information as you create a project:
+Keep the following information in mind as you create a project:
 
-- The project geography is only used to store the discovered metadata. Your VMware source environment and Azure Local target environment do not need to be located in the same geography/region as your Azure migrate project.
-- When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate doesn't move or store customer data outside of the region allocated.
-- Your Azure Migrate project must be in the same tenant as your Azure Local instance. The project can recognize Azure Local instances across subscriptions, but it will not work with an Azure Local instance registered in a separate Azure tenant.
+- The project geography only stores the discovered metadata. Your VMware source environment and Azure Local target environment don't need to be in the same geography or region as your Azure Migrate project.
+- When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. Azure Migrate allocates the region. Azure Migrate doesn't move or store customer data outside of the region allocated.
+- Your Azure Migrate project must be in the same tenant as your Azure Local instance. The project can recognize Azure Local instances across subscriptions, but it doesn't work with an Azure Local instance registered in a separate Azure tenant.
 
 ## Azure portal requirements
 
@@ -53,20 +53,20 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 |Level|Permissions|
 |-|-|
-|Tenant|Application administrator|
+|Tenant|[Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer)|
 |Subscription|Contributor, User Access Administrator|
 
-For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
+For any subscriptions that host resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, register the **Microsoft.DataReplication** resource provider. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 :::image type="content" source="./media/migrate-vmware-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-vmware-requirements/migrate-resource-providers.png":::
 
 ## Source VMware server requirements
 
-- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source VMware server you use for migration should have enough resources to create a Windows Server 2022 VM with at least 16 GB memory, 80 GB disk, and 8 vCPUs.
 
 - Ensure that vCenter Server permission requirements are met. For more information, see [VMware vSphere requirements (agentless)](/azure/migrate/migrate-support-matrix-vmware-migration#agentless-migration).
 
-- Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
+- Before you begin, bring all the disks online and persist the drive letter for all VMware VMs. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
 - The VMware source environment must be able to initiate a network connection with the target Azure Local instance, either by being on the same on-premises network or by using a VPN.
 
@@ -88,11 +88,17 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 - If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Local. You can't use existing Azure Migrate projects for migration.
 
-- You must have only one source appliance per Azure Migrate project for Azure Local migrations. This means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
+- You must have only one source appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
 
-- You must have only one target appliance per Azure Migrate project for Azure Local migrations. This means you can't use the same Azure Migrate project for a single source appliance to migrate to multiple target appliances across different Azure Local instances.
+- You must have only one target appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for a single source appliance to migrate to multiple target appliances across different Azure Local instances.
 
-- In general, Azure Migrate projects must have a 1:1 pairing of only 1 source appliance and 1 target appliance per project.
+- In general, Azure Migrate projects must have a 1:1 pairing of only one source appliance and one target appliance per project.
+
+## Considerations for migrating VMware VMs to Azure Local 
+
+- Azure Migrate retains the boot type of the VM during migration. If the source VMware VM uses BIOS, the migrated VM on Azure Local also uses BIOS. If the source VMware VM uses UEFI, the migrated VM on Azure Local also uses UEFI.
+
+- This behavior means that the migration process creates BIOS VMs as Hyper-V Generation 1 VMs on Azure Local, and UEFI VMs as Hyper-V Generation 2 VMs on Azure Local. For more information on Generation 1 VM limitations, see [Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
 
 ## Next steps
 

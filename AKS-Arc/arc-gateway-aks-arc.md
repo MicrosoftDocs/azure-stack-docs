@@ -1,6 +1,6 @@
 ---
 title: Simplify network configuration requirements with Azure Arc gateway
-description: Learn how to enable Arc gateway on AKS Arc clusters to simplify network configuration requirements
+description: Learn how to enable Arc gateway on AKS on Azure Local clusters to simplify network configuration requirements
 ms.topic: how-to
 ms.date: 07/15/2025
 author: davidsmatlak
@@ -11,7 +11,7 @@ ms.lastreviewed: 04/20/2026
 
 # Simplify network configuration requirements with Azure Arc gateway
 
-If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity.
+If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity. Before using Arc gateway with AKS on Azure Local, ensure you complete the [prerequisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md).
 
 The AKS Arc gateway lets you:
 
@@ -20,74 +20,17 @@ The AKS Arc gateway lets you:
 
 ## How the Azure Arc gateway works
 
-The Arc gateway works by introducing two new components:
+The Arc gateway works by introducing an Azure resource that serves as a common front end for Azure traffic. The gateway resource is served on a specific domain/URL that simplifies network configuration requirements.
 
-- The **Arc gateway resource** is an Azure resource that serves as a common front end for Azure traffic. The gateway resource is served on a specific domain/URL. You must create this resource by following the steps described in this article. After you successfully create the gateway resource, this domain/URL is included in the success response.
-- The **Arc Proxy** is a new component that runs as its own pod (called _Azure Arc Proxy_). This component acts as a forward proxy used by Azure Arc agents and extensions. There is no configuration required on your part for the Azure Arc Proxy.
+For more information, see [how the Azure Arc gateway works](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview).
 
-For more information, see [how the Azure Arc gateway works](/azure/azure-arc/kubernetes/arc-gateway-simplify-networking?tabs=azure-cli).
+## Required network endpoints
 
-> [!IMPORTANT]
-> Azure Local and AKS do not support TLS terminating proxies, ExpressRoute/site-to-site VPN or private endpoints. Also, there is a limit of five Arc gateway resources per Azure subscription.
+For the complete list of required URLs and endpoints that must be allowed through your enterprise firewall when using Arc gateway with AKS on Azure Local, see [Azure Local endpoints not redirected through Arc gateway](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview#azure-local-endpoints-not-redirected).
 
-## Before you begin
+## Using Arc gateway with AKS clusters
 
-- Ensure you complete the [prerequisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md).
-- This article requires version 1.4.23 or later of Azure CLI. If you use Azure CloudShell, the latest version is already installed.
-- The following Azure permissions are required to create Arc gateway resources and manage their association with AKS Arc clusters:
-  - `Microsoft.Kubernetes/connectedClusters/settings/default/write`
-  - `Microsoft.hybridcompute/gateways/read`
-  - `Microsoft.hybridcompute/gateways/write`
-- You can create an Arc gateway resource using Azure CLI or the Azure portal. For more information about how to create an Arc gateway resource for your AKS clusters and Azure Local, see [create the Arc gateway resource in Azure](/azure/azure-local/deploy/deployment-azure-arc-gateway-overview?tabs=portal#create-the-arc-gateway-resource-in-azure). When you create the Arc gateway resource, get the gateway resource ID by running the following command:
-
-  ```azurecli
-  $gatewayId = "(az arcgateway show --name <gateway's name> --resource-group <resource group> --query id -o tsv)"
-  ```
-
-## Confirm access to required URLs
-
-Ensure your Arc gateway URL and all of the following URLs are allowed through your enterprise firewall:
-
-| URL                                                         | Purpose                                                                                                        |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `[Your URL prefix].gw.arc.azure.com`                        | Your gateway URL. You can obtain this URL by running `az arcgateway list` after you create the resource.       |
-| `management.azure.com`                                      | Azure Resource Manager endpoint, required for the Azure Resource Manager control channel.                      |
-| `<region>.obo.arc.azure.com`                                | Required when `az connectedk8s proxy` is used.                                                                 |
-| `login.microsoftonline.com`, `<region>.login.microsoft.com` | Microsoft Entra ID endpoint, used for acquiring identity access tokens.                                        |
-| `gbl.his.arc.azure.com`, `<region>.his.arc.azure.com`       | The cloud service endpoint for communicating with Arc Agents. Uses short names; for example, `eus` for East US. |
-| `mcr.microsoft.com`, `*.data.mcr.microsoft.com`             | Required to pull container images for Azure Arc agents.                                                        |
-
-## Create an AKS Arc cluster with AKS Arc gateway enabled
-
-Run the following command to create an AKS Arc cluster with the AKS Arc gateway enabled:
-
-```azurecli
-az aksarc create -n $clusterName -g $resourceGroup --custom-location $customlocationID --vnet-ids $arcVmLogNetId --aad-admin-group-object-ids $aadGroupID --gateway-id $gatewayId --generate-ssh-keys
-```
-
-## Update an AKS Arc cluster and enable the AKS Arc gateway
-
-Run the following command to update an AKS Arc cluster to enable the AKS Arc gateway:
-
-```azurecli
-az aksarc update -n $clusterName -g $resourceGroup --gateway-id $gatewayId
-```
-
-## Disable the AKS Arc gateway on an AKS Arc cluster
-
-Run the following command to disable the AKS Arc gateway:
-
-```azurecli
-az aksarc update -n $clusterName -g $resourceGroup --disable-gateway
-```
-
-## Monitor traffic
-
-To audit your gateway traffic, view the gateway router logs:
-
-1. Run `kubectl get pods -n azure-arc`.
-1. Identify the Arc Proxy pod (its name begins with `arc-proxy-`).
-1. Run `kubectl logs -n azure-arc <Arc Proxy pod name>`.
+If Arc gateway is enabled in your environment, newly created AKS Arc clusters automatically utilize it to simplify network connectivity.
 
 ## Other scenarios
 

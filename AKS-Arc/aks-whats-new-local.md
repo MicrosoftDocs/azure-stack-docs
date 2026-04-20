@@ -28,12 +28,16 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The Kubernetes versions included in the 2602 release are: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5.
 
+#### Announcements for 2602
+
+- Kubernetes version 1.30 is no longer supported.
+
 ### Release 2510
 
 #### Announcements for 2510
 
 - Kubernetes version 1.29 is no longer supported.
-- KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+- KMS v2 is now used to encrypt the Kubernetes secret store for all new clusters created on Azure Local 2510 and later. KMS v1 continues to be used by existing clusters. For more information, see [secrets encryption](encrypt-etcd-secrets.md).
 - Support for [Windows Server 2019 SKU](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) for node pools ends in March 2026.
 
 #### Kubernetes versions in 2510
