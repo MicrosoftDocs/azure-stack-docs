@@ -119,6 +119,26 @@
       "source_path": "howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md",
       "redirect_url": "howto-use-ab-staged-commit-configuration-update-commit-workflow",
       "redirect_document_id": false
+    },
+        {
+      "source_path": "howto-apply-access-control-list-to-network-to-network-interconnects.md",
+      "redirect_url": "howto-apply-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-create-access-control-list-for-network-to-network-interconnects.md",
+      "redirect_url": "howto-create-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-delete-access-control-list-network-to-network-interconnect.md",
+      "redirect_url": "howto-delete-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-update-access-control-list-for-network-to-network-interconnects.md",
+      "redirect_url": "howto-update-access-control-list",
+      "redirect_document_id": true
     }
   ]
 }

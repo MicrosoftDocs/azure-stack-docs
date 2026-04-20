@@ -11,7 +11,7 @@ ms.custom: template-concept
 
 # Access control lists in Azure Operator Nexus - Network Fabric
 
-Access control lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure Nexus Operator - Network Fabric offers an API-based mechanism to configure ACLs for network-to-network interconnects (NNIs) and layer 3 isolation domain (ISD) external networks. These APIs enable the specification of traffic classes and performance actions based on defined rules and actions within the ACLs. ACL rules define the data against which packet contents are compared for filtering purposes.
+Access control lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure Nexus Operator - Network Fabric offers an API-based mechanism to configure ACLs for network-to-network interconnects (NNIs), layer 3 isolation domain (ISD) external networks, and network fabrics. These APIs enable the specification of traffic classes and performance actions based on defined rules and actions within the ACLs. ACL rules define the data against which packet contents are compared for filtering purposes.
 
 ## Objective
 
@@ -32,6 +32,7 @@ You can apply both types of ACLs to NNIs or external network resources to filter
 |--------------------------------|-----------|-------------|
 | NNI                            | Yes       | All         |
 | ISD external network | Yes, on external network with option A | All         |
+| Network Fabric | Yes, for CP-TPs | All |
 
 ## Match configuration
 
@@ -68,4 +69,4 @@ To implement the functionality for CP-TP ACL:
 
 ## Related content
 
-- [Create ACL management for NNI and layer 3 isolation domain external networks](howto-create-access-control-list-for-network-to-network-interconnects.md)
+- [Create ACL management for NNI, layer 3 isolation domain external networks, and network fabrics](howto-create-access-control-list.md)

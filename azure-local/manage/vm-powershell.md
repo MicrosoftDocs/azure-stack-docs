@@ -3,7 +3,7 @@ title: Manage VMs using Windows PowerShell on Azure Local
 description: How to manage virtual machines on Azure Local using Windows PowerShell
 author: alkohli
 ms.topic: how-to 
-ms.date: 03/26/2025
+ms.date: 04/05/2026
 ms.author: alkohli
 ms.reviewer: stevenek
 ms.service: azure-local
@@ -34,10 +34,10 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Name** is the name that you provide for the virtual machine that you're creating.
 
-- **-MemoryStartupBytes** is the amount of memory that is available to the virtual machine at startup.
+- **-MemoryStartupBytes** is the amount of memory that's available to the virtual machine at startup.
 
 - **-BootDevice** is the device that the virtual machine boots to when it starts.
- Typically this is a virtual hard disk (VHD), an .iso file for DVD-based boot, or a network adapter (NetworkAdapter) for network boot.
+ Typically this device is a virtual hard disk (VHD), an .iso file for DVD-based boot, or a network adapter (NetworkAdapter) for network boot.
 
 - **-VHDPath** is the path to the virtual machine disk that you want to use.
 
@@ -53,7 +53,7 @@ The full command as follows for creating a VM called VM1:
  New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -SwitchName <Switch name>
  ```
 
-The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.
+The next example creates a Generation 2 virtual machine with 4 GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.
 
 ``` powershell
 New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -SwitchName ExternalSwitch
@@ -61,7 +61,7 @@ New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -
 
 The following parameters are used to specify virtual hard disks.
 
-To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:
+To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the previous example with **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:
 
 ``` powershell
 New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -SwitchName ExternalSwitch
@@ -181,7 +181,7 @@ Add-VMNetworkAdapter -ComputerName Server1 -VMName VM1 -SwitchName Network
 
 The `New-VMSwitch` cmdlet is used to new virtual switch on a VM host. For detailed information on how to use it, see the [New-VMSwitch](/powershell/module/hyper-v/new-vmswitch) reference documentation.
 
-The following example creates a new switch called "QoS switch", which binds to a network adapter called Wired Ethernet Connection 3 and supports weight-based minimum bandwidth.
+The following example creates a new switch named `QoS switch`, which binds to a network adapter called Wired Ethernet Connection 3 and supports weight-based minimum bandwidth.
 
 ```powershell
 New-VMSwitch "QoS Switch" -NetAdapterName "Wired Ethernet Connection 3" -MinimumBandwidthMode Weight

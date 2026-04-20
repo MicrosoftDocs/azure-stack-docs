@@ -52,8 +52,6 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
-        - name: Network-to-Network Interconnect
-          href: concepts-network-to-network-interconnect.md
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
@@ -71,9 +69,9 @@
             - name: Disable internal/external networks in an enabled layer 3 isolation domain
               href: concepts-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
             - name: A / B staged configuration update - commit workflow in Azure Operator Nexus
-              href: concepts-ab-staged-commit-configuration-update-commit-workflow.md
-        - name: Network Fabric Quality of Service (QoS) in Azure Operator Nexus
-          href: concepts-network-fabric-quality-of-service.md
+              href: concepts-ab-staged-commit-configuration-update-commit-workflow.md     
+        - name: Network Fabric Quality of Service (QoS) in Azure Operator Nexus 
+          href: concepts-network-fabric-quality-of-service.md        
         - name: Isolation Domains
           expanded: false
           items:
@@ -166,8 +164,6 @@
               href: howto-configure-network-fabric-controller.md
             - name: Cluster Manager
               href: howto-cluster-manager.md
-            - name: Cluster Manager Relay Private Endpoint
-              href: howto-cluster-manager-relay-private-endpoint.md
             - name: Cluster Manager Template JSON Example
               href: clustermanager-jsonc-example.md
             - name: Cluster Manager Parameters JSON Example
@@ -219,13 +215,13 @@
         - name: Validate cables for Nexus Network Fabric
           href: how-to-validate-cables.md
         - name: Creating Access Control Lists (ACLs)
-          href: howto-create-access-control-list-for-network-to-network-interconnects.md
-        - name: Apply ACLs to Network-to-Network Interconnects (NNI)
-          href: howto-apply-access-control-list-to-network-to-network-interconnects.md
-        - name: Updating ACL on Network-for-Network Interconnects (NNI)
-          href: howto-update-access-control-list-for-network-to-network-interconnects.md
-        - name: Delete ACLs associated with Network-to-Network Interconnects (NNI)
-          href: howto-delete-access-control-list-network-to-network-interconnect.md
+          href: howto-create-access-control-list.md
+        - name: Apply ACLs to resources
+          href: howto-apply-access-control-list.md
+        - name: Updating ACL on resources
+          href: howto-update-access-control-list.md
+        - name: Delete ACLs associated with resources
+          href: howto-delete-access-control-list.md
         - name: How to Configure Diagnostic Settings and Monitor Configuration Differences in Nexus Network Fabric
           href: howto-configure-diagnostic-settings-monitor-configuration-differences.md
         - name: How to Delete L3 Isolation Domains in Azure Nexus Network Fabric
@@ -314,8 +310,6 @@
               href: howto-baremetal-run-data-extract.md
             - name: Running BareMetal actions directly with nexusctl
               href: howto-baremetal-nexusctl.md
-        - name: Cluster Inspect Action
-          href: howto-cluster-inspect-action.md
     - name: Nexus Kubernetes cluster
       expanded: false
       items:
@@ -329,8 +323,6 @@
           href: howto-kubernetes-cluster-aad-rbac.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
-        - name: Rotate NAKS certificates
-          href: howto-rotate-naks-certificates.md
         - name: Configure huge-pages for cluster virtual machines
           href: howto-kubernetes-cluster-huge-pages.md
         - name: Configure service load balancer
@@ -351,8 +343,6 @@
           href: howto-kubernetes-cluster-install-microsoft-defender.md
         - name: Kubernetes cluster features
           href: howto-kubernetes-cluster-features.md
-        - name: Managing ETCD Health in Nexus Kubernetes Cluster
-          href: howto-kubernetes-cluster-manage-data-store-health.md
     - name: Nexus Virtual Machine
       expanded: false
       items:
@@ -368,8 +358,6 @@
           href: howto-virtual-machines-authenticate-with-managed-identities.md
         - name: Arc enroll virtual machines with managed identities for authentication and access token
           href: howto-virtual-machines-arc-enroll-with-managed-identities.md
-        - name: Assign network traffic to Private Relay and Arc enroll virtual machines using managed identities
-          href: howto-virtual-machines-arc-enroll-using-private-relay-with-managed-identities.md
     - name: Observability
       expanded: false
       items:
@@ -436,8 +424,6 @@
       items:
         - name: Troubleshoot Accepted Cluster Resource
           href: troubleshoot-accepted-cluster-hydration.md
-        - name: Troubleshoot Azure Prerequisites Validation
-          href: troubleshoot-azure-prerequisites-validation.md
         - name: Troubleshoot Control Plane Quorum
           href: troubleshoot-control-plane-quorum.md
         - name: Troubleshoot Cluster heartbeat connection status disconnected
@@ -455,7 +441,6 @@
           href: troubleshoot-dns-issues.md
         - name: Troubleshoot TWAMP (UDP) not working
           href: troubleshoot-twamp-udp-not-working.md
-
     - name: Resource Health
       expanded: false
       items:
@@ -509,8 +494,6 @@
               href: troubleshoot-kubernetes-cluster-stuck-workloads-due-to-power-failure.md
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
-        - name: Troubleshoot Nexus Kubernetes VM scheduling failures due to topology spread constraints
-          href: troubleshoot-kubernetes-cluster-vm-scheduling-topology-spread.md
         - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
           href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
 - name: FAQ
