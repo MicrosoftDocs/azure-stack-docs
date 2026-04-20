@@ -66,7 +66,7 @@ Once your AKS Edge Essentials cluster is connected to Azure Arc, it extends the 
 
 ### Key Management Service (KMS) provider for secret encryption
 
-AKS Edge Essentials supports the *Key Management Service (KMS) provider*, which provides encryption at rest for Kubernetes secrets stored in the etcd key-value store. KMS proider is enabled by default on version 1.12.xxxx and later, clusters can securely encrypt secrets using a *Key Encryption Key (KEK)* that's automatically rotated every 30 days. For more information, see [Add secret encryption to an AKS Edge Essentials cluster](aks-edge-howto-secret-encryption.md).
+AKS Edge Essentials supports the *Key Management Service (KMS) provider*, which provides encryption at rest for Kubernetes secrets stored in the etcd key-value store. KMS provider is enabled by default on version 1.12.269.0 and later. For more information, see [Validate and Troubleshoot encryption to an AKS Edge Essentials cluster](aks-edge-howto-secret-encryption.md).
 
 ## Next steps
 
