@@ -58,12 +58,39 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 ### Configure the appliance and discover VMs
 
 Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
-1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
-After the appliance is configured, you start the VM discovery process.
+1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.**
 
-Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
+
+### Onboard to Azure Local
+
+1. After the discovery sources are added, onboard to the target Azure Local instance. This is required to validate the connectivity between the source appliance and the target Azure Local instance, and to provide necessary information about the target system for migration.
+1. Toggle the slider to "**Enable credentials for Azure Local**".
+
+:::image type="content" source="media/migrate-vmware-replicate/enable-azlocal-credentials.png" alt-text="enable credentials for azlocal appliance":::
+
+1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
+1. Select **Save**".
+
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+
+1. The information table is updated and the status changes to **Validated**.
+
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
+
+### Start discovery
+
+1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of Hyper-V VMs.
+1. Select **Start Discovery**. The discovery may take several minutes to finish.
+
+:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="start discovery source appliance":::
+
+### Start discovery
+
+Wait until you have a green checkmark indicating that the discovery is finished. The migration readiness checks are also completed successfully. After the discovery is complete, go to the Azure portal to review the VM inventory.
 
 Ensure that all VMs you want to migrate are powered on and have [Hyper-V integration services](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) installed before or during the discovery process.
+
+:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png":::
 
 ## Step 2: Create and configure the target appliance
 
@@ -136,7 +163,7 @@ Now you can install the appliance using the .VHD file.
 This step applies to using a .zip file.
 
 1. Create a VM in Azure Local with the following configuration: 
-    - Operating system: Windows Server 2022 
+    - Operating system: Windows Server 2022 or Windows Server 2025
     - vCPU: 8 
     - Disk: >80 GB 
     - Memory: 16 GB 
@@ -151,7 +178,7 @@ This step applies to using a .zip file.
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
-    .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
+    .\AzureMigrateInstaller.ps1 -Scenario AzureLocalTarget -Cloud Public -PrivateEndpoint:$false
     ``` 
 
 1. Restart the VM after the installation is complete. Sign in to the VM. 
@@ -164,8 +191,8 @@ This step applies to using a .zip file.
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
-1. Once the verification is complete, select **Log in** and sign in to your Azure account.
-    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
+1. After the verification is complete, select **Log in** and sign in to your Azure account.
+    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.**
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 

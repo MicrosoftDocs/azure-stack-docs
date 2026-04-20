@@ -60,7 +60,7 @@ This step applies only if you downloaded the .zip file. You use the `AzureMigrat
 
 1. Create a VM in the VMware vCenter with the following configuration:
 
-    - Operating system: Windows Server 2022
+    - Operating system: Windows Server 2022 or Windows Server 2025
     - vCPU: 8
     - Disk: >80 GB
     - Memory: 16 GB
@@ -91,7 +91,7 @@ Once the source appliance is installed, follow these steps:
     1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
         :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
-        1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
+        1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.**
 
     1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, hence the new deployments are unable to use this version. 
 
@@ -117,24 +117,29 @@ Once the source appliance is installed, follow these steps:
         :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
 
     1. Disable the slider under the **Applications discovery and agentless dependency analysis** section, as this is currently not supported in VMware to Azure Local migrations.
-    1. Select **Start Discovery**. The discovery may take several minutes to finish.
-
-You'll next onboard to the target Azure Local instance.
 
 ### Onboard to Azure Local
 
-You now add information to onboard the discovered VMs.
+1. After the discovery sources are added, onboard to the target Azure Local instance. This is required to validate the connectivity between the source appliance and the target Azure Local instance, and to provide necessary information about the target system for migration.
+1. Toggle the slider to "**Enable credentials for Azure Local**".
 
-1. Select **Add information**.
-1. Enter the **Domain** for your target Azure Local system.
-1. Provide the **Username** and the **Password** for the target Azure Local system.
-1. Select **Save**.
+:::image type="content" source="media/migrate-vmware-replicate/enable-azlocal-credentials.png" alt-text="enable credentials for azlocal appliance":::
+
+1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
+1. Select **Save**".
 
 :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
-The information table is updated and the status changes to **Validated**.
+1. The information table is updated and the status changes to **Validated**.
 
 :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
+
+### Start discovery
+
+1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of VMware VMs.
+1. Select **Start Discovery**. The discovery may take several minutes to finish.
+
+:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="start discovery source appliance":::
 
 ### Wait for the discovery to complete
 
@@ -177,8 +182,6 @@ Complete the following tasks to generate the target appliance key:
 
 ### Create the target appliance
 
-:::image type="content" source="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png" alt-text="Screenshot showing the Download using zip option." lightbox="./media/migrate-vmware-replicate/deploy-target-appliance-zip.png":::
-
 #### Install using a template (.VHD file)
 
 This step applies only if you downloaded the .VHD zipped file. 
@@ -212,7 +215,7 @@ Now you can install the appliance using the .VHD file.
 This step applies to using a .zip file.
 
 1. Create a VM in Azure Local with the following configuration: 
-    - Operating system: Windows Server 2022 
+    - Operating system: Windows Server 2022 or Windows Server 2025
     - vCPU: 8 
     - Disk: >80 GB 
     - Memory: 16 GB 
@@ -227,7 +230,7 @@ This step applies to using a .zip file.
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
-    .\AzureMigrateInstaller.ps1 -Scenario AzureStackHCI -Cloud Public -PrivateEndpoint:$false
+    .\AzureMigrateInstaller.ps1 -Scenario AzureLocalTarget -Cloud Public -PrivateEndpoint:$false
     ``` 
 
 1. Restart the VM after the installation is complete. Sign in to the VM.
@@ -246,7 +249,7 @@ This step applies to using a .zip file.
 
 
 1. After the verification is complete, select **Log in** and sign in to your Azure account.
-    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions on how to set this up.
+    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.**
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
     :::image type="content" source="./media/migrate-vmware-replicate/enter-code-1.png" alt-text="Screenshot showing the Authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
