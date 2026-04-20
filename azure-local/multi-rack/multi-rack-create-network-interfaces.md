@@ -47,6 +47,9 @@ To create a VM, you first need to create a network interface on your logical net
 > [!NOTE]
 > Only static logical networks are supported in Azure Local for multi-rack deployments. Each network interface supports exactly one IP configuration.
 
+> [!NOTE]
+> When creating a resource that requires referring to another resource (for example, creating a NIC needs to refer to LNET), you need to pass the full resource ID if that resource is in a different resource group than the targeted one.
+
 # [Azure CLI](#tab/azurecli)
 
 ### Sign in and set subscription
