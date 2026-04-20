@@ -88,7 +88,7 @@ To trigger and monitor the restore, follow these steps:
     :::image type="content" source="media/disconnected-operations/back-up-restore/get-appliance-restore.png" alt-text="Screenshot of the Get-ApplianceRestore command output." lightbox=" ./media/disconnected-operations/back-up-restore/get-appliance-restore.png":::
 
 
-## Important – Post restore environment mismatch
+## Post restore environment mismatch
 > [!IMPORTANT]
 > Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata. 
 - **Lost resources:** You cannot recover cloud-only resources that are created after the backup. You must recreate these resources.
