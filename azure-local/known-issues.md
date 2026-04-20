@@ -28,7 +28,7 @@ For the 2604 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2604.103.208 | 26100.7462 |
+| 12.2604.103.208 | 26100.32690 |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2604.103.208** build.
@@ -53,18 +53,12 @@ The following table lists the fixed issues in this release:
 | Update <!--34603698--> | Fixed an issue that could prevent to resume an SBE update run. | |
 | Update <!--36009293--> | Fixed an issue that could cause the update service to crash when sideloading an update. | |
 | Update <!--36305565--> | Fixed an issue that prevents installing an update when prior one failed in health check step.  | |
-| Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error:`Cluster Build ID matches node to add's Build ID`. | |
-
-
+| Repair server <!--32447442--> | Fixed an issue for `Add-server` and `Repair-server` cmdlets may fail with the error:`Cluster Build ID matches node to add's Build ID`. | |
+| Azure Local VMs <!--37095551--> | Fixed an issue where VMs created from images that were deleted could fail to recover after ARB recovery. | If you have VMs created from images that were later deleted and performed an ARB recovery prior to version 2604, contact Microsoft Support to repair Azure Local VM management. |
 
 ## Known issues
 
-The following table lists the known issues in this release:
-
-|Feature  |Issue    |Workaround  |
-|---------|---------|------------|
-| Azure Local VMs <!--37095551--> | VMs whose source images were deleted are not manageable from Azure after ARB recovery. | This issue has been fixed in 2604. If you had VMs created from images that were later deleted and performed an ARB recovery prior to version 2604, please contact Microsoft Support to repair Azure Local VM management. |
-
+There are no known issues for this release
 
 ## Known issues from previous releases
 
