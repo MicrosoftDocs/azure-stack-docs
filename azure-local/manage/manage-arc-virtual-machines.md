@@ -972,23 +972,6 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 > [!NOTE]
 > When updating only the memory of a VM, the VM remains running. A restart may be required only if the guest OS doesn't support live memory updates.
 
-## Guest management enablement support
-
-The following operating systems (OS) support guest management enablement:
-
-### Windows OS
-
-- Windows Server 2025
-- Windows Server 2022
-- Windows Server2019
-- Windows Server 2016
-- Windows 10
-- Windows 11
-
-### Linux OS
-
-- 
-
 ## Related content
 
 - [Manage Azure Local VM resources such as data disks and network interfaces](./manage-arc-virtual-machine-resources.md).
