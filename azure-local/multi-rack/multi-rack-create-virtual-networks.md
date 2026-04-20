@@ -61,13 +61,13 @@ Complete the following steps to create a virtual network using Azure CLI. 
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code  
     ```
 
 1. Set your subscription.
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID>  
     ```
 
@@ -82,7 +82,7 @@ Complete these steps in Azure CLI to configure a virtual network: 
 
 1. Set the parameters. Here's an example:  
 
-    ```azurecli
+    ```powershell
     $vnetName = "mylocal-vnet"  
     $location = "eastus"  
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
@@ -172,7 +172,7 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
 
 1. Set the parameters. Here's an example:
 
-    ```azurecli
+    ```powershell
     $subnetName = "mylocal-subnet"  
     $vnetName = “mylocal-vnet” 
     $location = "eastus"  

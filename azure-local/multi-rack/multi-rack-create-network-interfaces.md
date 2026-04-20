@@ -55,13 +55,13 @@ To create a VM, you first need to create a network interface on your logical net
 
 1. Sign in and type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code 
     ```
 
 1. Set your subscription:
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID>
     ```
 
@@ -71,7 +71,7 @@ Follow these steps to create a network interface on your static logical network.
 
 1. Set the required parameters.
 
-    ```azurecli
+    ```powershell
     $lnetName = "mylocal-lnet-static"
     $ipAddress ="100.68.180.6" 
     $nicName ="mylocal-nic-static"
@@ -96,7 +96,7 @@ Follow these steps to create a network interface on your static logical network.
 
 1. To create a network interface with a static IP address, run the following command:
 
-    ```azurecli
+    ```powershell
     az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $lnetName --ip-address $ipAddress
     ```
 
@@ -185,7 +185,7 @@ Follow these steps to create a network interface on your static virtual network.
 
 1. To create a network interface with static IP address, run the following command:
 
-    ```azurecli
+    ```powershell
     az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $vnetSubnet --ip-address $ipAddress 
     ```
 
