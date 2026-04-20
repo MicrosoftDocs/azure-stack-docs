@@ -58,10 +58,6 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-The following table lists the known issues in this release:
-
-|Feature  |Issue    |Workaround  |
-|---------|---------|------------|
 There are no known issues for this release
 
 ## Known issues from previous releases
