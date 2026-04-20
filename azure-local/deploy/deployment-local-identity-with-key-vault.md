@@ -1,4 +1,4 @@
---- 
+---
 title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
@@ -15,8 +15,6 @@ ms.subservice: hyperconverged
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
