@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 # Deploy Azure Local using the Azure portal for disaggregated deployments
 
-This article helps you deploy an Azure Local instance using the Azure portal.
+This article helps you deploy a disaggregated Azure Local instance using the Azure portal.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Go to the Azure portal. Search for and select **Azure Local**. On the **Azure Arc | Azure Local** page, go to the **Get started** tab. On the **Deploy Azure Local** tile, select **Create instance**.
 
-   :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
+      :::image type="content" source="./media/deploy-via-portal/get-started-1.png" alt-text="Screenshot of the Get started tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/get-started-1.png":::
 
 1. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
@@ -42,40 +42,43 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    We don't transfer much data so it's OK if the region isn't close.
 
-1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance.
+1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance. **For disaggregated deployments, you cannot select the Rack aware cluster option.**
 
     For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
+   
+1. Select **Storage options**. Choose the **Storage Spaces Direct (S2D)** or **Storage Area Network (SAN)** storage option for this Azure Local instance. For disaggregated deployments, select the Storage Area Network option.
 
 1. Select the **Identity provider** for this Azure Local instance.
 
     For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
 
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
-   
+
    > [!IMPORTANT]
    > Machines must not be joined to Active Directory before deployment.
-
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
-
+   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png" alt-text="Screenshot of the deploy Azure Local Basics tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png":::
+   
    On the **Add machines** page:
-    1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
-    1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
-    1. Select **Add**. The machines show up on the **Basics** tab.
-
+   1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
+   1. Select one or more machines that make up this Azure Local instance. These machines could show as **Ready** or as **Not validated**.
+   1. Select **Add**. The machines show up on the **Basics** tab.
+      
    :::image type="content" source="./media/deploy-via-portal/basics-tab-2.png" alt-text="Screenshot of Add machines through the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-2.png":::
-
+   
 1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they're added. This process may take several minutes. To check the installation status, refresh the page.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-3.png" alt-text="Screenshot of the Install extensions on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-3.png":::
-    
-    After the extensions are installed successfully, the status of the machine updates to **Ready**.
-
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png" alt-text="Screenshot deploy Azure Local Basics tab showing status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png":::
+   
+    After the extensions are installed successfully, the status of the machine updates to **Ready**.  
+   Note, if extension installations fail, you can select failed machines and retry the installation.
+   
 1. Select **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-5.png" alt-text="Screenshot of successful validation on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-5.png":::
-
-    If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
-
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png" alt-text="Screenshot deploy Azure Local Basics tab showing ready status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png":::
+   
+   If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
+   
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
     > [!IMPORTANT]
@@ -83,19 +86,18 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Create a new Key Vault (optional). You can use an existing Key Vault and skip this step.
 
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
+      :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
-	On the **Create a new Key Vault** page, provide information for the specified parameters:
-    1. Accept the suggested name or provide a name for the Key Vault you create.
+   	On the **Create a new Key Vault** page, provide information for the specified parameters:
+1. Accept the suggested name or provide a name for the Key Vault you create.
     1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
 	1. Select **Create**.
      
-
-   :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of Key Vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
-
-    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
-
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png" alt-text="Screenshot of the deploy Azure Local Basics tab showing more status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png":::
+   
+   The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
+   
 1. Select **Next: Configuration**.
 
 ## Specify the deployment settings
@@ -112,84 +114,52 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Specify network settings
 
-1. For multi-node systems, select whether the cluster is cabled to use a network switch for the storage network traffic:
-    * **No switch for storage** - For systems with storage network adapters that connect all the machines directly without going through a switch.
-    * **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This also applies to systems that use converged network adapters that carry all traffic types including storage.
-2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
+1. Choose the only storage configuration option available for a disaggregated cluster as **SAN based storage**. 
 
-    There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure.
-    * **Compute** traffic to or from VMs and containers on this system.
-    * **Storage** (SMB) traffic between machines in a multi-node system.
+1. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
 
-    If you selected **No switch** for storage, the following networking patterns are available:
-
-    - Group management and compute traffic
-    - Custom configuration
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the No switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
-
-    If you selected a **Network switch** for storage, more patterns are available based on how you intend to group the traffic:
-
-    - **Group all traffic** - If you're using network switches for storage traffic you can group all traffic types together on a set of network adapters.
-    - **Group management and compute traffic** - This groups management and compute traffic together on one set of adapters while keeping storage traffic isolated on dedicated high-speed adapters. You create two network intents:
-        - Management and compute intent.
-        - Storage intent.
-    - **Group compute and storage traffic** - If you're using network switches for storage traffic, you can group compute and storage traffic together on your high-speed adapters while keeping management traffic isolated on another set of adapters. You create two network intents:
-        - Management intent.
-        - Compute and storage intent.
-
-    - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
-    <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the networking patterns available for Network switch option selected on the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
-
-   > [!TIP]
-   > If you're deploying a single machine to which you plan to add machines later, select the network traffic groupings you want for the eventual cluster. Then when you add machines they automatically get the appropriate settings.
-
+    There are two types of traffic we configure:
+   
+   - **Management** traffic between this system, your management PC, and Azure.
+   - **Compute** traffic to or from VMs and containers on this system.
+      
+   The following networking patterns are available:
+   
+   - Group management and compute traffic
+   - Separate management and compute traffic
+      
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png" alt-text="Screenshot of the deploy Azure Local Networking tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png":::   
+   
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
-1. Here's an example where we created one Compute and management intent and one storage intent.
+1. Here's an example where we created one Compute and management intent.
 
-    - For *Compute_Management* intent, provide an intent name.
-        - In this case, we added two network adapters.
-    - For *Storage* intent, provide an intent name.
-	    - In this case, we added network adapters, ethernet 3, and ethernet 4.
-        - Accept the default VLAN ID, or enter the value that you set on the network switches used for each storage network.
+   - For *Compute_Management* intent, provide an intent name.
+      - In this case, we added two network adapters.
+1. For each cluster network, specify the cluster network name, network adapter, VLAN ID, and subnet.
 
-    > [!NOTE]
-    > Make sure to use high-speed adapters for the intent that includes storage traffic.
-
-1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
-
-     > [!IMPORTANT]
-     > Portal deployment doesn't allow you to specify your own IPs for the storage intent. However, you can use ARM template deployment if you require to specify the IPs for storage and you can't use the default values from Network ATC. For more information, check this page: [Custom IPs for storage intent](../plan/cloud-deployment-network-considerations.md#custom-ips-for-storage).
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-3.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-3.png":::
-
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png" alt-text="Screenshot of the deploy Azure Local parameters tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png":::      
+   
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Customized network settings on the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
-
-    - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
-    - **System traffic priority** - Choose from 5, 6 or 7.
-    - **Storage traffic bandwidth reservation** - Define the bandwidth allocation in % for the storage traffic.
-    - **Adapter properties** such as **Jumbo frame size** (in bytes), you can select from 1514, 4088, or 9014. For RDMA protocol, choose from iWARP, RoCE, RoCEv2, or you can disable the RDMA protocol.
-
-    > [!NOTE]
-    > These settings don’t apply to low capacity class devices. For more information, see [System requirements for low capacity deployments of Azure Local](../concepts/system-requirements-small-23h2.md).
-
+   :::image type="content" source="./media/deploy-via-portal/networking-tab-5.png" alt-text="Screenshot of the Customized network settings on the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-5.png":::
+   
+   - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
+   - **System traffic priority** - Choose from 5, 6 or 7.
+   - **Storage traffic bandwidth reservation** - Define the bandwidth allocation in % for the storage traffic.
+   - **Adapter properties** such as **Jumbo frame size** (in bytes), you can select from 1514, 4088, or 9014. The RDMA protocol is disabled for cluster networks.
+      
 1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
 
 1. If you picked static IP, provide the following values:
-    1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
-
-        These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
-    1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
-    1. Validate subnet.
-
-    :::image type="content" source="./media/deploy-via-portal/networking-tab-4.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-4.png":::
-
+   1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the machines.
+   
+       These IPs are used by Azure Local to create an infrastructure logical network. The Azure Arc resource bridge, a component of Azure Local VM management, uses this infrastructure logical network.
+   1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
+   1. Validate subnet.
+      
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing IP addresses." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png":::   
+   
 1. Select **Next: Management**.
 
 ## Specify management settings
@@ -229,28 +199,17 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
 ## Optionally change advanced settings and apply tags
 
-1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
-    * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
+1. Select the only option available for disaggregated deployments, which is for selecting two LUNs that are used for infrastructure and cluster performance history volumes. Workload LUNs will be configured post deployment.   
+The infrastructure LUN selection field only shows volumes with a minimum size of 250GB, and the cluster performance history volume requires at least 20GB.  
 
-        To use this option, use a single machine and have a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
-
-    :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
     
-    > [!IMPORTANT]
-    > - Don't delete the infrastructure volumes created during deployment.
-    > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
-    
-    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
-    
-    |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-    |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
-    |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
-    |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
-
-1. Select **Next: Tags**.
+   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing cluster options." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png":::   
+   
+   > [!IMPORTANT]
+   > - Don't delete the infrastructure volumes created during deployment.
+   
+   
 1. Optionally add a tag to the Azure Local resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
@@ -259,7 +218,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     :::image type="content" source="./media/deploy-via-portal/validation-tab-1.png" alt-text="Screenshot of the Start validation selected in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-1.png":::
 
 
-1. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
+1. The validation takes about 20 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-2.png" alt-text="Screenshot of the validation in progress in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-2.png":::
 
@@ -284,19 +243,17 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 - **Authentication changes.** During deployment, the system performs several steps, including cluster registration. In earlier versions of software, during this process, Azure Local created and set up a Microsoft Entra ID application (service principal) along with a self-signed certificate to authenticate the cluster in Azure.
 
     Starting with software version 12.2512, new deployments no longer create an Entra ID application. Instead, the cluster uses system-assigned managed identity for authentication with Azure.
-
+  
     For existing deployments, the Entra ID application is also no longer used for authentication. The cluster automatically switches to system-assigned managed identity for authentication without requiring any manual intervention. Because the app is no longer used, you can delete it from the Entra ID portal.
-
+  
     To delete the app, make sure that the registration context is updated to v4 and there's a corresponding event in the Azure Local event log.
-
+  
     To verify the event, connect to one of the machines on the Azure Local instance and run the following PowerShell command:
-
-    ```powershell
-    Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
-    ```
-
-- **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
-
+  
+  ```powershell
+  Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+  ```
+    
 ## Verify a successful deployment
 
 To confirm that the system and all of its Azure resources were successfully deployed
