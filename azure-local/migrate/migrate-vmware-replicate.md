@@ -123,7 +123,7 @@ Once the source appliance is installed, follow these steps:
 1. After the discovery sources are added, onboard to the target Azure Local instance. This is required to validate the connectivity between the source appliance and the target Azure Local instance, and to provide necessary information about the target system for migration.
 1. Toggle the slider to "**Enable credentials for Azure Local**".
 
-:::image type="content" source="media/migrate-vmware-replicate/enable-azlocal-credentials.png" alt-text="enable credentials for azlocal appliance":::
+:::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="enable credentials for azure local appliance":::
 
 1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
 1. Select **Save**".
@@ -268,7 +268,7 @@ This step applies to using a .zip file.
 
 1. For your target Azure Local instance, enter the system FQDN (example format is *systemname.domain.com*), domain name, username, and password, and then select **Save**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-22.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-22.png":::
 
 1. After the credentials are accepted, the status changes to **Validated**. Select **Configure**.
 
