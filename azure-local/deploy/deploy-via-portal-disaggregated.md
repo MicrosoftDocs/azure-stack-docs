@@ -151,7 +151,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    - **Storage traffic priority** - Specify the Priority Flow Control where Data Center Bridging (DCB) is used.
    - **System traffic priority** - Choose from 5, 6 or 7.
    - **Storage traffic bandwidth reservation** - Define the bandwidth allocation in % for the storage traffic.
-   - **Adapter properties** such as **Jumbo frame size** (in bytes), , you can select from 1514, 4088, or 9014. RDMA protocol is disabled for cluster networks.
+   - **Adapter properties** such as **Jumbo frame size** (in bytes), you can select from 1514, 4088, or 9014. The RDMA protocol is disabled for cluster networks.
       
 1. Choose the IP allocation as **Manual** or **Automatic**. Use **Automatic** if you use a DHCP server for IP assignments in your network.
 
