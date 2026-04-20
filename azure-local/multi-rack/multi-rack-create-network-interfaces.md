@@ -77,7 +77,7 @@ Follow these steps to create a network interface on your static logical network.
     $nicName ="mylocal-nic-static"
     $subscription =  "<Subscription ID>"
     $resource_group = "mylocal-rg"
-    $customLocationName = "mylocal-cl" 
+    $customLocationName = "mylocal-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
@@ -165,7 +165,8 @@ Follow these steps to create a network interface on your static virtual network.
     $nicName ="mylocal-nic-static" 
     $subscription =  "<Subscription ID>" 
     $resource_group = "mylocal-rg" 
-    $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
+    $customLocationName = "mylocal-cl"
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus" 
     ```
 

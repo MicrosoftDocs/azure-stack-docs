@@ -86,8 +86,9 @@ Follow these steps in Azure CLI to create a load balancer:  
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
     $resourceGroup = "my-mrg"  
+    $clusterResourceGroup = "<Cluster Resource Group>"
     $customLocationName = "<Custom Location Name>"
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$clusterResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $name = "mylocal-VNET-PublicLB"
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
@@ -119,7 +120,7 @@ Follow these steps in Azure CLI to create a load balancer:  
     | **Parameters** | **Description** |
     |---|---|
     | **name** | Name for the Load Balancer on the Azure Local instance. Make sure to provide a name that follows the [Naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a Load Balancer after it's created. |
-    | **resource-group** | Name of the managed resource group for your custom location. |
+    | **resource-group** | Name of the resource group where you create the load balancer. |
     | **custom-location** | Use this parameter to provide the fully qualified Azure Resource Manager (ARM) ID of the custom location associated with your Azure Local instance where you're creating this Load Balancer. |
     | **location** | (Optional) Azure regions as specified by az locations. If not specified, the location of the resource group is used. |
     | **frontend-ip** | Configuration for a single frontend IP as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple frontend IPs. |

@@ -21,7 +21,7 @@ This article provides an overview of Network Address Translation (NAT) gateway o
 
 NAT gateway in multi-rack deployments of Azure Local is a managed egress service that provides outbound connectivity for resources within virtual networks. It's a critical component that enables resources in a virtual network to communicate with external networks, whether that's customer's enterprise network or the internet.
 
-When a subnet is associated with a NAT gateway, Source Network Address Translation (SNAT) is applied to outbound internet traffic from resources in that subnet, translating their source IP addresses to the NAT gateway’s public IP address. The NAT gateway blocks unsolicited inbound connections; only responses to established outbound flows are allowed. To allow specific inbound traffic, you can configure inbound NAT rules on the NAT gateway.
+When a subnet is associated with a NAT gateway, Source Network Address Translation (SNAT) is applied to outbound internet traffic from resources in that subnet, translating their source IP addresses to the NAT gateway’s public IP address. The NAT gateway blocks unsolicited inbound connections; only responses to established outbound flows are allowed. To allow specific inbound traffic, you can create Inbound Rule resources as children of the NAT Gateway.
 
 ## Key characteristics of NAT gateway
 
@@ -47,10 +47,10 @@ The following table summarizes how long NAT gateway keeps connections open based
 
 - Multiple subnets within the same virtual network can share a single NAT gateway
 - You can attach only one NAT gateway to a virtual network and its subnets, but any number of subnets within that virtual network can share the same NAT gateway.
-- A NAT gateway can’t span multiple virtual networks. A NAT gateway requires at least one public IP address and can be associated with multiple public IP addresses. The virtual network's address space must not overlap with the logical network from which the public IP addresses are allocated.
+- A NAT gateway can’t span multiple virtual networks. A NAT gateway requires exactly one public IP address. The virtual network's address space must not overlap with the logical network from which the public IP address is allocated.
 - The NAT gateway must have at least one virtual network subnet configured for the entire lifetime of the NAT gateway.
-- After the NAT gateway is created, its public IP addresses can't be added, removed, or changed.
-- To delete a NAT gateway, first delete any inbound NAT rules configured on it. Then, delete each virtual network subnet or update each subnet to remove its NAT gateway association.
+- After the NAT gateway is created, its public IP address can't be changed.
+- To delete a NAT gateway, delete each virtual network subnet or update each subnet to remove its NAT gateway association.
 
 > [!NOTE]
 > NAT gateway and load balancer are independent resources. You can deploy and delete them in any order without dependency on each other.
