@@ -9,9 +9,9 @@ ms.date: 04/18/2024
 ms.custom: template-how-to
 ---
 
-# Creating Access Control List (ACL) management for NNI and layer 3 isolation domain external networks
+# Creating Access Control List (ACL) management for NNI, layer 3 isolation domain external networks, and network fabric
 
-Access Control Lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure's Nexus Network Fabric service offers an API-based mechanism to configure ACLs for network-to-network interconnects and layer 3 isolation domain external networks. This guide outlines the steps to create ACLs.
+Access Control Lists (ACLs) are a set of rules that regulate inbound and outbound packet flow within a network. Azure's Nexus Network Fabric service offers an API-based mechanism to configure ACLs for network-to-network interconnects, layer 3 isolation domain external networks, and network fabric. This guide outlines the steps to create ACLs.
 
 ## Creating Access Control Lists (ACLs)
 
@@ -43,6 +43,7 @@ az account set --subscription <subscription-id>
 | Default Action       | Define the default action to be taken if no match is found.          |
 | Match Configurations| Define the conditions and actions for traffic matching.              |
 | Actions              | Specify the action to be taken based on match conditions.            |
+| ACL Type | Optionally, specify a type for the ACL. |
 
 
 ## Parameters usage guidance
@@ -70,6 +71,7 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 | ipCondition            | IP condition that needs to be matched                      |                                 |
 | actions                | Action to be taken based on match condition                | Possible Actions: PoliceRate, Drop, Count, Log, Remark </br> The PoliceRate action is explained in detail later on this page. |
 | configuration-type     | Configuration type (inline or file)                        | Example: inline                 |
+| aclType | Optional Access Control List (ACL) type | Options: ControlPlaneTraffic, Tenant, Management |
 
 > [!NOTE]
 > - Inline ports and inline VLANs are statically defined using azcli.<br>
@@ -80,8 +82,9 @@ The table below provides guidance on the usage of parameters when creating ACLs:
 > - Ingress ACLs don't support the following options: etherType.<br>
 > - Ports inputs can be `port-number` or `range-of-ports`.<br>
 > - Fragments inputs can be `port-number` or `range-of-ports`.<br>
-> - For matchConditions, when ipAddressType is set to `IPv6`, the fragments field is not supported.<br>
 > - ACL with dynamic match configuration on eternal networks isn't supported.<br> 
+> - AclType is mandatory and must be of type "ControlPlaneTrafficPolicy" to apply to the network fabric.<br> 
+> - AclType is optional if applied to NNI or L3 isolation domain external network, but if used, must be of type "Management" for NNI or type "Tenant" for the L3 isolation domain external network.<br> 
 
 ### Example payload for ACL creation
 
@@ -210,4 +213,4 @@ police rate 1000 kbps burst-size 10 kbytes
 > Burst size is mandatory when a Police Rate is defined on NNI ACLs.
 ## Next Steps
 
-[Applying Access Control Lists (ACLs) to NNI in Azure Fabric](howto-apply-access-control-list-to-network-to-network-interconnects.md)
+[Applying Access Control Lists (ACLs) to NNI in Azure Fabric](howto-apply-access-control-list.md)

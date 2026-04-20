@@ -1,16 +1,16 @@
 ---
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 02/11/2026
-ms.reviewer: alkohli
+ms.date: 04/20/2026
+ms.reviewer: ronmiab
 ---
 
-During Azure Arc registration, Azure Local verifies whether the OS image is current for its release baseline. If the image is outdated or unsupported, the system automatically updates it during registration. You can optionally specify a target solution version using the `TargetSolutionVersion` parameter.
+During Azure Arc registration, Azure Local verifies whether the OS image is current for its release baseline. If the image is outdated or unsupported, the system automatically detects it during initialization and provides a list of available update versions to select from. You can proactively specify a target solution version using the optional `TargetSolutionVersion` parameter.
 
-- The update typically takes 40-45 minutes.
-- A system reboot is required.
+- The update typically takes 40-45 minutes followed by a reboot.
+- Rerun `Invoke-AzStackHciArcInitialization` cmdlet post reboot.
 - During the update, the registration status appears as **Update: InProgress**.
 
    :::image type="content" source="media/azure-local-handle-os-image-update-during-arc-registration/operating-system-image-update-registration.png" alt-text="Screenshot of the console window with the registration in progress." lightbox="media/azure-local-handle-os-image-update-during-arc-registration/operating-system-image-update-registration.png":::

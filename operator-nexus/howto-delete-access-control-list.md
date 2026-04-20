@@ -1,17 +1,17 @@
 ---
-title: Delete ACLs associated with Network-to-Network Interconnects (NNI)
-description: Process of deleting ACLs associated with Network-to-Network Interconnects (NNI)
-author: sushantjrao 
-ms.author: sushrao
+title: Delete ACLs associated with Network-to-Network Interconnects (NNI), L3 External Networks, and Network Fabrics
+description: Process of deleting ACLs associated with resources
+author: rbhupatiraju 
+ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/18/2024
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# Deleting ACLs associated with Network-to-Network Interconnects (NNI)
+# Deleting ACLs associated with resources
 
-This document outlines the process of deleting Access Control Lists (ACLs) associated with Network-to-Network Interconnects (NNIs) within a Nexus Network Fabric.
+This document outlines the process of deleting Access Control Lists (ACLs) associated with Network-to-Network Interconnects (NNIs), layer 3 isolation domain (ISD) external networks, and network fabrics.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/../reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
@@ -23,13 +23,15 @@ If you have multiple subscriptions and need to set one as the default, you can d
 az account set --subscription <subscription-id>
 ```
 
-2. **Delete ACLs associated with NNI:**
+2. **Delete ACLs associated with resource:**
    
 To delete ACLs applied on NNI or External Network resources, pass a null value to `--ingress-acl-id` and `--egress-acl-id`.
 
 ```Azure CLI
 az networkfabric nni update --resource-group "<resource-group-name>" --resource-name "<nni-name>" --fabric "<fabric-name>" --ingress-acl-id null --egress-acl-id null
 ```
+
+To delete ACLs applied on the network fabric, pass a null value to `--control-plabe-acls`.
 
 | Parameter            | Description                                                                                      |
 |----------------------|--------------------------------------------------------------------------------------------------|
@@ -38,6 +40,7 @@ az networkfabric nni update --resource-group "<resource-group-name>" --resource-
 | `--fabric`           | Name of the fabric where the NNI is provisioned.                                                     |
 | `--ingress-acl-id`   | Resource ID of the ingress access control list (ACL) for inbound traffic (null for no specific ACL). |
 | `--egress-acl-id`    | Resource ID of the egress access control list (ACL) for outbound traffic (null for no specific ACL). |
+| `--control-plane-acls` | Resource ID of the control plane access control list, only associated with network fabrics. |
 
 > [!NOTE]
 > Based on requirements, either the Ingress, Egress, or both can be updated.

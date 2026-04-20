@@ -369,7 +369,7 @@ You can download the update and run checks to verify your cluster's update readi
 
     </details>
 
-1. After the package is downloaded, the system performs readiness checks to assess the update readiness of your system. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+1. After the package is downloaded, the system performs readiness checks to assess the update readiness of your system. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md). During this phase, the **State** of the update shows as `HealthChecking`.
 
     <details>
     <summary>Expand this section to see an example output.</summary>
@@ -436,7 +436,7 @@ Follow these steps to track update progress by using PowerShell.
     Get-SolutionUpdate -Id <ResourceId> | ft Version,State,UpdateStateProperties,HealthState
     ```
 
-    The update progresses through several states as described in [Review update phases](./update-phases-23h2.md#review-update-phases-of-azure-local).
+    The update progresses through several states as described in [Understand update phases](./update-phases-23h2.md#understand-update-phases-of-azure-local).
 
     The following examples show how to monitor the update as it progresses through those phases by using the `State` and `UpdateStateProperties` properties.
 
@@ -482,7 +482,7 @@ Follow these steps to track update progress by using PowerShell.
 
     - **HealthChecking state**
     
-        Once the updates are prepared, readiness checks run to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging).
+        Once the updates are prepared, readiness checks run to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md).
 
         During this phase, the `State` of the update shows as `HealthChecking`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](./update-troubleshooting-23h2.md) before you proceed.
         
@@ -522,7 +522,7 @@ Follow these steps to track update progress by using PowerShell.
         </details>
 
  
-When the installation finishes, the **State** changes to `Installed`. For more information about the different states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
+When the installation finishes, the **State** changes to `Installed`. For more information about the different states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md).
 
 ## Step 7: Resume the update (if needed)
 
@@ -538,7 +538,7 @@ To resume an update that failed earlier because update readiness checks are in a
 Get-SolutionUpdate -Id <ResourceId>  | Start-SolutionUpdate -IgnoreWarnings    
 ```
 
-For help troubleshooting other update run problems, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+For help with troubleshooting other update run problems, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
 
 ## Step 8: Verify the installation
 

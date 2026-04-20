@@ -4,7 +4,7 @@ description: This article provides guidance on the Support Diagnostic Tool for A
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/08/2025
+ms.date: 04/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -55,7 +55,7 @@ Update-Module -Name Microsoft.AzLocal.CSSTools
 ```
 
 >[!NOTE]
->When you import the module, it attempts to automatically update from PowerShell gallery. You can also update manually using methods below.
+>When you import the module, it attempts to automatically update from PowerShell gallery. You can also update manually using the following methods.
 
 Ensure that you have the latest module loaded into the current runspace by removing and importing the module.
 
@@ -65,7 +65,7 @@ Import-Module -Name Microsoft.AzLocal.CSSTools
 ```
 
 >[!NOTE]
->Ensure all machines within Azure Local have been updated to use the same version. Remove existing PSSessions to ensure the correct module version is loaded into the remote runspace.
+>Ensure all machines within Azure Local are updated to use the same version. Remove existing PSSessions to ensure the correct module version is loaded into the remote runspace.
 
 ## Use the Azure Local Support Diagnostic Tool
 
