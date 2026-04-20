@@ -127,13 +127,13 @@ The example in this section shows how to create an internal load balancer on a v
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code
     ```
 
 1. Set your subscription. Type:
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID> 
     ```
 
@@ -144,7 +144,7 @@ The example in this section shows how to create an internal load balancer on a v
     > [!NOTE]
     > When no Public IP resource is provided in the frontend configuration, the load balancer becomes an internal load balancer.
 
-    ```azurecli
+    ```powershell
     $location = "eastus"
     $subscriptionID = "<subscription-ID>"
     $resourceGroup = "mylocal-rg"
@@ -176,7 +176,7 @@ The example in this section shows how to create an internal load balancer on a v
 
 1. Set backend pool addresses.
 
-    ```azurecli
+    ```powershell
     $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
@@ -184,7 +184,7 @@ The example in this section shows how to create an internal load balancer on a v
 
 Create a load balancer. Run the following cmdlet:  
 
-```azurecli
+```powershell
 az stack-hci-vm network lb create `
     --subscription $subscriptionID `
     --resource-group $resourceGroup `

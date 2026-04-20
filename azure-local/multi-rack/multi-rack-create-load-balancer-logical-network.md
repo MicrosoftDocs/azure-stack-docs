@@ -110,13 +110,13 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code
     ```
 
 1. Set your subscription.
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID>
     ```
   
@@ -124,7 +124,7 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Set the parameters.
 
-    ```azurecli
+    ```powershell
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
     $resourceGroup = "my-mrg"  
@@ -154,7 +154,7 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Set backend pool addresses.
 
-    ```azurecli
+    ```powershell
     $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
@@ -162,7 +162,7 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 Create a load balancer. Run the following cmdlet:  
 
-```azurecli
+```powershell
 az stack-hci-vm network lb create `
 --subscription $subscriptionID `
 --resource-group $resourceGroup `

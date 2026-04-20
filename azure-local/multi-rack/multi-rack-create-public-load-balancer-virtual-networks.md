@@ -55,14 +55,14 @@ Follow these steps to sign in and set your subscription.
 
 1. Sign in. Type:  
 
-    ```azurecli
+    ```powershell
       
     az login --use-device-code
     ```
 
 1. Set your subscription.  
 
-    ```azurecli
+    ```powershell
       
     az account set --subscription <Subscription ID>  
     ```
@@ -82,7 +82,7 @@ Follow these steps in Azure CLI to create a load balancer:  
 
 1. Set the parameters. Here's an example:  
 
-    ```azurecli    
+    ```powershell    
     $location = "eastus"  
     $subscriptionID = "<subscription ID>"
     $resourceGroup = "my-mrg"  
@@ -172,7 +172,7 @@ Follow these steps in Azure CLI to create a load balancer:  
 
 1. Create a load balancer. Run the following cmdlet:  
 
-    ```azurecli        
+    ```powershell        
     az stack-hci-vm network lb create `
     --subscription $subscriptionID `
     --resource-group $resourceGroup `
