@@ -57,7 +57,7 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
    > [!IMPORTANT]
    > Machines must not be joined to Active Directory before deployment.
    
-   ![Screenshot 2026-04-14 151738](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png)
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png" alt-text="Screenshot of the deploy Azure Local Basics tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png":::
    
    On the **Add machines** page:
    1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
@@ -68,15 +68,15 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
    
 1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they're added. This process may take several minutes. To check the installation status, refresh the page.
 
-   ![Screenshot 2026-04-14 152216](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png)
-   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png" alt-text="Screenshot deploy Azure Local Basics tab showing status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png":::
    
     After the extensions are installed successfully, the status of the machine updates to **Ready**.  
    Note, if extension installations fail, you can select failed machines and retry the installation.
    
 1. Select **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-   ![Screenshot 2026-04-14 152525](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png)  
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png" alt-text="Screenshot deploy Azure Local Basics tab showing ready status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png":::
+   
    If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
    
 1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
@@ -94,8 +94,8 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
 	1. Select **Create**.
      
-
-   ![Screenshot 2026-04-14 153006](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png)  
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png" alt-text="Screenshot of the deploy Azure Local Basics tab showing more status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png":::
+   
    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
    
 1. Select **Next: Configuration**.
@@ -128,9 +128,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    - Group management and compute traffic
    - Separate management and compute traffic
       
-   ![Screenshot 2026-04-14 163448](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png)
-   
-   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png" alt-text="Screenshot of the deploy Azure Local Networking tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png":::   
    
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
@@ -140,9 +138,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
       - In this case, we added two network adapters.
 1. For each cluster network, specify the cluster network name, network adapter, VLAN ID, and subnet.
 
-   ![Screenshot 2026-04-14 172057](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png)
-   
-   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png" alt-text="Screenshot of the deploy Azure Local parameters tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png":::      
    
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
@@ -162,11 +158,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
    1. Validate subnet.
       
-      
-      
-   ![Screenshot 2026-04-14 172135](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png)
-   
-   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing IP addresses." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png":::   
    
 1. Select **Next: Management**.
 
@@ -212,7 +204,7 @@ The infrastructure LUN selection field only shows volumes with a minimum size of
 
     
    
-   ![Screenshot 2026-04-14 165343](media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png)
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing cluster options." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png":::   
    
    > [!IMPORTANT]
    > - Don't delete the infrastructure volumes created during deployment.
