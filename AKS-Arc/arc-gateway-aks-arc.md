@@ -1,27 +1,22 @@
 ---
-title: Simplify network configuration requirements with Azure Arc gateway (preview)
+title: Simplify network configuration requirements with Azure Arc gateway
 description: Learn how to enable Arc gateway on AKS Arc clusters to simplify network configuration requirements
 ms.topic: how-to
 ms.date: 07/15/2025
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
-ms.lastreviewed: 07/15/2025
+ms.lastreviewed: 04/20/2026
 ---
 
-# Simplify network configuration requirements with Azure Arc gateway (preview)
+# Simplify network configuration requirements with Azure Arc gateway
 
 If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity.
 
-The AKS Arc gateway (currently in preview) lets you:
+The AKS Arc gateway lets you:
 
 - Connect to Azure Arc by opening public network access to only seven fully qualified domain names (FQDNs).
 - View and audit all traffic that the Arc agents send to Azure via the Arc gateway.
-
-> [!IMPORTANT]
-> AKS Arc gateway is currently in preview.
->
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## How the Azure Arc gateway works
 
@@ -96,7 +91,7 @@ To audit your gateway traffic, view the gateway router logs:
 
 ## Other scenarios
 
-During the public preview, Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for additional Arc-enabled scenarios. Based on the scenarios you adopt, additional endpoints must still be allowed in your proxy.
+Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for additional Arc-enabled scenarios. Based on the scenarios you adopt, additional endpoints must still be allowed in your proxy.
 
 All endpoints listed for the following scenarios must be allowed in your enterprise proxy when Arc gateway is in use:
 
