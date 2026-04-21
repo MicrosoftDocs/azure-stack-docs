@@ -55,7 +55,7 @@ Perform the following VM operations only via the Azure CLI:
 - Rename the computer name of your Azure Local VM.
 
     > [!NOTE]
-    > This operation automatically restarts your Azure Local VM.
+    > This operation can only be performed when the VM is powered off.
 
 - Expand a data disk
 
