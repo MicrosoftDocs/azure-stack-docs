@@ -44,40 +44,6 @@ You can update the network security group (NSG) association for a logical networ
 - You must have access to a deployed and registered Azure Local multi-rack instance with one or more running Azure Local VMs.
   For more information, see [Create an Azure Local VM enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).
 
-::: moniker range=">=azloc-2508"
-
-## Manage DNS server configuration for logical networks (preview)
-
-### Key considerations
-
-Before you update the DNS server configuration for a logical network, be aware of the following caveats:
-
-- This feature is in preview and shouldn't be used on production logical networks.
-- The updated DNS server configuration only applies to new Azure Local VMs created on the logical network after the update. For all the existing Azure Local VMs, manually update the DNS server entries within the VM.
-
-### Update DNS server configuration
-
-> [!IMPORTANT]
-> Make sure to enter all the relevant DNS server IP entries in your `update` command and not just the entry you want to change. Running a DNS server `update` command replaces the existing configuration.
-
-Follow these steps to manage DNS server configuration for logical networks.
-
-#### Set parameters
-
-```PowerShell
-$logicalNetwork = "your-logical-network"
-$resourceGroup = "your-resource-group"
-$dnsServers = "IP-address1", "IP-address2"
-```
-
-#### Update configuration
-
-```azurecli
-az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
-```
-
-::: moniker-end
-
 ## Related content
 
 - [Create logical networks for Azure Local multi-rack VMs](./multi-rack-create-logical-networks.md).

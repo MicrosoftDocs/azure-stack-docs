@@ -28,7 +28,7 @@ After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you ma
 
 ## Add a data disk
 
-After you create a VM, you might want to add a data disk to it.
+After you create a VM, you might want to add a data disk to it. Data disks can be added and removed while the VM is running (hot-plug); you don't need to stop the VM first.
 
 ### [Azure CLI](#tab/azurecli)
 
