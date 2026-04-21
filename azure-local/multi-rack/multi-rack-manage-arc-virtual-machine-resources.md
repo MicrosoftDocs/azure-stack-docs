@@ -1,8 +1,8 @@
 ---
 title: Manage resources for Azure Local VMs for multi-rack deployments (preview)
 description: Learn how to manage resources like data disks and network interfaces on an Azure Local VM for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/16/2026

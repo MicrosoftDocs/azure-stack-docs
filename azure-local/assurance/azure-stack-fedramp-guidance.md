@@ -4,8 +4,8 @@ description: Learn about FedRAMP compliance using Azure Local.
 ms.date: 12/27/2024
 ms.topic: concept-article
 ms.service: azure-local
-ms.author: nguyenhung
-author: dv00000
+ms.author: robess
+author: ronmiab
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---

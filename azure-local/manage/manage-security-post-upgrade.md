@@ -1,8 +1,8 @@
 ---
 title: Manage security after upgrading your Azure Local from an Azure Stack HCI, version 22H2.
 description: Learn how to manage security posture after you upgrade Azure Local from an Azure Stack HCI, version 22H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/12/2025

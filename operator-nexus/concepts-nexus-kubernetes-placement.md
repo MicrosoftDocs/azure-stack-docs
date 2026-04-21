@@ -1,8 +1,8 @@
 ---
 title: "Resource Placement in Azure Operator Nexus Kubernetes"
 description: An explanation of how Operator Nexus schedules Nexus Kubernetes resources.
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 08/07/2024

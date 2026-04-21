@@ -1,8 +1,8 @@
 ---
 title: Connect to an Azure Local Virtual Machine using SSH or Remote Desktop Protocol over SSH or VM Connect (Preview)
 description: Learn how to use SSH or RDP over SSH or VM Connect feature (preview) to connect to an Azure Local VM enabled by Azure Arc.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/22/2026

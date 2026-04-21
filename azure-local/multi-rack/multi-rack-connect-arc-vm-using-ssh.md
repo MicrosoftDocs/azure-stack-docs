@@ -1,8 +1,8 @@
 ---
 title: Connect to an Azure Local virtual machine (VM) via SSH for multi-rack deployments (preview)
 description: Learn how to use SSH to connect to an Azure Local VM for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/18/2026

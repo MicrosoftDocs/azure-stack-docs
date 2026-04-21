@@ -1,8 +1,8 @@
 ---
 title: Create logical networks for Azure Local virtual machines enabled by Azure Arc
 description: Learn how to create logical networks on Azure Local. The Azure Local VMs enabled by Azure Arc running on your system use this logical network.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/14/2026

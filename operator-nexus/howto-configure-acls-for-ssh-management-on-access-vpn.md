@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/07/2024
-author: sushantjrao
-ms.author: sushrao
+author: ronmiab
+ms.author: robess
 ---
 
 # Create ACLs on an NNI in Azure Operator Nexus

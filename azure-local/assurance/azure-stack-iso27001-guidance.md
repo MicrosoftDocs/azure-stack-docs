@@ -4,8 +4,8 @@ description: Learn about ISO 27001 compliance using Azure Local.
 ms.date: 04/09/2025
 ms.topic: concept-article
 ms.service: azure-local
-ms.author: nguyenhung
-author: dv00000
+ms.author: robess
+author: ronmiab
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---

@@ -1,8 +1,8 @@
 ---
 title: Update switch credentials
 description: Learn how to update switch credentials on a ruggedized Azure Stack Hub from an HLH using Remote Desktop.
-author: troettinger
-ms.author: thoroet
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 05/27/2022

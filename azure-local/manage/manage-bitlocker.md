@@ -1,8 +1,8 @@
 ---
 title: Manage BitLocker encryption on Azure Local, version 23H2
 description: Learn how to manage BitLocker encryption on your Azure Local, version 23H2 system.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/30/2025

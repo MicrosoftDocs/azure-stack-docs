@@ -1,10 +1,10 @@
 ---
 title: Prerequisites to deploy Azure Local, version 23H2
 description: Learn about the prerequisites to deploy Azure Local, version 23H2.
-author: alkohli
+author: ronmiab
 ms.topic: install-set-up-deploy
 ms.date: 11/19/2025
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.subservice: hyperconverged
