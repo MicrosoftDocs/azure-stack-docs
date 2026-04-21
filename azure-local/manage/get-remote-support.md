@@ -223,11 +223,20 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, WinRM restarts twice, which can disrupt the PowerShell session to the node.
 
-**Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
+v: You can choose one of the following options to resolve this error and enable remote support:
 
 - Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
     - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
 - Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
+
+## Remote Support User Experience Overview
+This section provides an overview of the Remote Support experience in the Azure Local portal, including how customers enable it, what to expect when it is active, and how to monitor support sessions.
+
+<img width="1000" height="515" alt="Screenshot 2026-04-20 171944" src="https://github.com/user-attachments/assets/b000d4ac-79fe-4e84-a03b-6327124771ad" />
+
+In the Diagnostics and Remote Support settings, you’ll see a new Remote Support tab. You can select this tab or click Grant access directly to enable remote support.
+
+
 
 ## Next steps
 
