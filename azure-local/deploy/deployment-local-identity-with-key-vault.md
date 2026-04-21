@@ -1,23 +1,20 @@
---- 
-title: Deploy Azure Local, version 23H2 using local identity with Azure Key Vault (preview)
-description: Learn how to use local identity with Azure Key Vault for Azure Local, version 23H2 deployment (preview).
-author: alkohli
+---
+title: Deploy Azure Local Using Local Identity with Azure Key Vault
+description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
+author: ronmiab
 ms.topic: how-to
-ms.date: 12/17/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.date: 04/20/2026
+ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Deploy Azure Local using local identity with Azure Key Vault (preview)
+# Deploy Azure Local using local identity with Azure Key Vault
 
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -274,6 +271,15 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 - **Microsoft Management Consoles (MMCs).** Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
 
+###  Generally available or supported services
+
+- [Rack aware clustering](../concepts/rack-aware-cluster-overview.md). Supports fault domain awareness and improved resiliency for Azure Local clusters configured with local identity and Azure Key Vault.
+- [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal-standard%2Cportal-session-host-configuration%2Cportal&pivots=host-pool-standard). AVD workloads are supported on Azure Local clusters using local identity with Azure Key Vault, enabling secure virtual desktop deployments without a dependency on Active Directory.
+
+###  Third-party compatibility
+
+Commvault is a third‑party data protection and backup solution that is compatible with Azure Local deployments using local identity and Azure Key Vault. In supported scenarios, Commvault can be used for backup and recovery without requiring a dependency on Active Directory.
+
 ## FAQ
 
 This section provides answers to some frequently asked questions about using local identity with Key Vault.
@@ -320,7 +326,7 @@ If the extension wasn't installed during deployment, you can manually install it
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
-- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end
 

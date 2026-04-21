@@ -236,7 +236,9 @@ To manually select a storage path, select the **Choose manually** option for **S
 
 To automatically select a storage path, select the **Choose automatically** option for **Storage path**. In this case, the system automatically chooses a storage path on which to place the resource from the storage paths available on the cluster using a round-robin placement approach.
 > [!NOTE]
-> When you select a storage path when creating an Azure Local virtual machine, that storage path is used to place the VM's OS disk and configuration files. This selection does not imply that all data disks attached to the VM are placed under the same storage path. Data disks are placed based on their own storage path selection at creation time. 
+> When you select a storage path when creating an Azure Local virtual machine, that storage path is used to place the VM's OS disk and configuration files. This selection does not imply that all data disks attached to the VM are placed under the same storage path. Data disks are placed based on their own storage path selection at creation time.
+
+
 ---
 
 ## Next steps
