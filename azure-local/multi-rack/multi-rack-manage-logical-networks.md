@@ -72,7 +72,7 @@ $dnsServers = "IP-address1", "IP-address2"
 
 #### Update configuration
 
-```azure cli
+```azurecli
 az stack-hci-vm network lnet update --name $logicalNetwork --resource-group $resourceGroup --dns-servers $dnsServers
 ```
 
