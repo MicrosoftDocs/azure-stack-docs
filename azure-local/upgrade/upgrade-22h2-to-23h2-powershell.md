@@ -314,24 +314,26 @@ To install the new OS using PowerShell, follow these steps:
    Dismount-DiskImage -ImagePath $isoFilePath
    ```
 
-1. Check for the available updates:
+Depending on whether your system is connected to Windows Update, complete **either** step 5 or step 6 — not both.
+
+1. **(Connected to Windows Update)** Check for available updates:
 
    ```PowerShell
    Invoke-CauScan -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
    ```
 
-   Inspect the output of the above cmdlet and verify that each machine is offered the same Feature Update, which should be the case. <!--ASK-->
+   Review the output and verify that each machine is offered the same Feature Update.
 
-1. You need a separate machine or VM outside the system to run the `Invoke-CauRun` cmdlet from. A separate machine ensures that orchestration isn't interrupted when the machines are rebooted.
+   Run `Invoke-CauRun` from a separate machine or VM outside the system. Using a separate machine ensures that orchestration isn't interrupted when machines are rebooted.
 
-    > [!IMPORTANT]
-    > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
+   > [!IMPORTANT]
+   > The machine from which you run `Invoke-CauRun` must be running Windows Server 2022.
 
    ```PowerShell
    Invoke-CauRun -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the system isn't connected to Windows Update and the Azure Local install media is available on a local share, CAU can also be used to upgrade the system. Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
+1. **(Not connected to Windows Update)** If Azure Local install media is available on a local share, you can use CAU to upgrade the system. Update the `PathToSetupMedia` parameter with the share path to the ISO image.
 
    ```powershell
    Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
@@ -339,7 +341,7 @@ To install the new OS using PowerShell, follow these steps:
 
 1. Check for any further updates and install them.
 
-Wait for the update to complete and check the status of the update.
+1. Wait for the update to complete and check the status of the update.
 
 ::: zone-end
 
