@@ -607,13 +607,13 @@ Follow these steps to dissociate a network security group from a network interfa
           }
         }
       ],
-      "macAddress": "<Mac Address>",
+      "macAddress": "{Mac Address}",
       "networkSecurityGroup": {
         "id": null
       },
       "provisioningState": "Succeeded"
     },
-    "resourceGroup": "<Resource Group Name>",
+    "resourceGroup": "{Resource Group Name}",
     "systemData": {
       "createdAt": "2025-06-08T17:01:05.701432+00:00",
       "createdBy": "gus@contoso.com",
@@ -659,7 +659,7 @@ This section describes the manage operations supported for network security rule
     
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "name": "/subscriptions/{Subscription ID}/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
@@ -725,7 +725,7 @@ This section describes the manage operations supported for network security rule
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "name": "/subscriptions/{Subscription ID}/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
@@ -782,10 +782,10 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
 ```output
 {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft.extendedlocation/customlocations/examplecl",
+      "name": "/subscriptions/{Subscription ID}/resourcegroups/{Resource Group Name}/providers/microsoft.extendedlocation/customlocations/examplecl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/contoso-retail-any-any-rule",
+    "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/contoso-retail-any-any-rule",
     "name": "contoso-retail-any-any-rule",
     "properties": {
       "access": "Allow",
@@ -807,7 +807,7 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
         "*"
       ]
     },
-    "resourceGroup": "<Resource Group Name>",
+    "resourceGroup": "{Resource Group Name}",
     "systemData": {
       "createdAt": "2025-04-24T17:37:24.766786+00:00",
       "createdBy": "gus@contoso.com",
@@ -835,7 +835,7 @@ You may need to delete a network security rule if you no longer need it. You can
     ```azurecli
     $resource_group = "examplerg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationId = "/subscriptions/{Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
     $nsgname = "examplensg"
     $securityrulename = "examplensr"
     ```
