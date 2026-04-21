@@ -308,7 +308,7 @@
         href: aks-edge-workload-identity.md
       - name: Access TPM secrets
         href: aks-edge-howto-access-tpm.md
-      - name: Enable secret encryption with the KMS plugin
+      - name: Validate and Troubleshoot secret encryption
         href: aks-edge-howto-secret-encryption.md
       - name: Use the Key Manager for Kubernetes extension
         href: aks-edge-howto-key-manager.md

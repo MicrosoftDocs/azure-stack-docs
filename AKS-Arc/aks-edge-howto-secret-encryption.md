@@ -21,6 +21,9 @@ For more detailed information about using KMS, see the official [KMS provider do
 ## Prerequisites
 
 The KMS provider is supported for all AKS Edge Essentials clusters, version 1.10.868.0 and later. 
+
+For more information about deploying a new AKS Edge Essentials cluster, please see the official [documentation](aks-edge-howto-single-node-deployment.md)
+
 > [!NOTE]
 > The KMS provider can only be used for single node clusters. The provider can't be used with [experimental features, such as multi-node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
 
@@ -72,8 +75,6 @@ The following output is displayed during deployment, showing that the KMS provid
 ```output
 Preparing to install kms-plugin as encryption provider...
 ```
-
-For deployment instructions, see [Single machine deployment](aks-edge-howto-single-node-deployment.md).
 
 > [!NOTE]
 > You can only enable or disable the KMS provider when you create a new deployment. Once you set the flag, it can't be changed.
