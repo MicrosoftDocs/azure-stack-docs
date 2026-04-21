@@ -66,6 +66,7 @@ The following VM operations aren't supported for Azure Local multi-rack VMs. Per
 > [!IMPORTANT]
 > You can't perform these operations by using the Azure portal or the Azure CLI.
 
+- Enable guest management post VM creation (day-2 operation). Guest management can only be enabled at the time of VM creation. Enabling guest management after VM creation isn't currently supported on multi-rack deployments.
 - Change the type of disk (static, dynamic, VHD, or VHDX)
 - Cloning or copying a VM. This can result in corruption, management errors, or failure to start.
 
