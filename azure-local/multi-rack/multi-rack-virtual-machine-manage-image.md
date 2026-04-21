@@ -226,7 +226,7 @@ To delete a VM image using Azure CLI, follow these steps:
 1. Remove an existing VM image. Run the following command:
 
     ```azurecli
-    az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $imageName --yes
+    az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $imageName
     ```
 
 You can delete images using either:
