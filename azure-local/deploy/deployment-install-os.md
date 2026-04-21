@@ -146,11 +146,11 @@ Follow these steps to configure the operating system using SConfig:
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
-<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ### Domain join before deployment
 
-Starting with version 2510, you can domain join machines before deployment:
+Starting with version 2604, you can domain join machines before deployment:
 
 1. Use `SConfig option 1 Domain/workgroup` to join the machine to your domain.
 1. Add the deployment user to the local Administrators group on each machine, using the following command:
