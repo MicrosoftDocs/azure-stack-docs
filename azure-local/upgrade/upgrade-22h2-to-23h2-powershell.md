@@ -290,6 +290,9 @@ To install the new OS using PowerShell, follow these steps:
    Test-CauSetup -ClusterName <System name>
    ```
 
+   > [!NOTE]
+   > Some warnings reported by `Test-CauSetup` are expected and can be ignored. Review the output and proceed if no critical errors are reported.
+
 1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
 
    ```PowerShell
@@ -364,6 +367,9 @@ To install the new OS using PowerShell, follow these steps:
    ```PowerShell
    Test-CauSetup -ClusterName <System name>
    ```
+
+   > [!NOTE]
+   > Some warnings reported by `Test-CauSetup` are expected and can be ignored. Review the output and proceed if no critical errors are reported.
 
 1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
 
