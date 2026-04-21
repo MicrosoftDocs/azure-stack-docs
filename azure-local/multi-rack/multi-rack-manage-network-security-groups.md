@@ -602,7 +602,7 @@ Follow these steps to dissociate a network security group from a network interfa
             "privateIpAddress": "100.69.174.96",
             "subnet": {
               "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/microsoft.azurestackhci/logicalNetworks/static-lnet2",
-              "resourceGroup": "<Resource Group Name>"
+              "resourceGroup": "{Resource Group Name}"
             }
           }
         }
