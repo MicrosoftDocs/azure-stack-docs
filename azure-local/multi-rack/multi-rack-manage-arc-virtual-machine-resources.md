@@ -30,9 +30,6 @@ After you deploy Azure Local virtual machines (VMs) enabled by Azure Arc, you ma
 
 After you create a VM, you might want to add a data disk to it.
 
-> [!NOTE]
-> You must turn off your VM before adding or removing a data disk. After the update completes, you need to restart your VM.
-
 ### [Azure CLI](#tab/azurecli)
 
 To add a data disk to a VM, complete the following steps using Azure CLI from the computer that you use to connect to Azure Local.
@@ -43,22 +40,10 @@ To add a data disk to a VM, complete the following steps using Azure CLI from th
    az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
    ```
 
-1. Stop the VM:
-
-    ```azurecli
-    az stack-hci-vm stop --resource-group $resource_group --name $vmName
-    ```
-
 1. Attach the disk to the VM:
 
    ```azurecli
    az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
-   ```
-
-1. Start the VM:
-
-    ```azurecli
-   az stack-hci-vm start --resource-group $resource_group --name $vmName
    ```
 
 ### [Azure portal](#tab/azureportal)
@@ -96,7 +81,7 @@ You can expand an existing data disk to your desired size using Azure CLI.
 > - The size you're changing the data disk to can't be the same or less than the original size of the data disk.
 >
 > - The maximum size of the disk can expand depending on the storage capacity of the cluster. Disk size maximum is 20 TB.
->
+
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
@@ -127,30 +112,16 @@ Here's a sample output that indicates successful resizing of the data disk:
 
 When you delete a data disk, you get a notification that the job for disk deletion started. After the disk deletion completes, the list refreshes to display the remaining data disks.
 
-> [!NOTE]
-> You must turn off your VM before adding or removing a data disk. After it updates, you need to restart your VM.
-
 ### [Azure CLI](#tab/azurecli)
 
 To delete a data disk from a VM, complete the following steps using Azure CLI from the computer that you're using to connect to Azure Local.
 
-1. Stop the VM:
-
-    ```azurecli
-    az stack-hci-vm stop --resource-group $resource_group --name $vmName
-    ```
 
 1. Detach disk from the VM:
 
     ```azurecli
     az stack-hci-vm disk detach --resource-group $resource_group --vm-name $vmName --name $diskName
     ```
-
-1. Start the VM:
-
-   ```azurecli
-    az stack-hci-vm start --resource-group $resource_group --name $vmName
-   ```
 
 1. Delete the disk (optional):
 
