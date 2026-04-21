@@ -27,8 +27,13 @@ Once a logical network is created, you can't update the following:
 - IP pools
 - IP address space
 - VLAN ID
+- DNS servers
+- Subnet name
+- IP allocation method
+- Network type
+- Number of subnets
 
-You can manage logical networks as needed. For example, you can update the DNS server configuration for a logical network.
+You can update the network security group (NSG) association for a logical network.
 
 > [!NOTE]
 > Only static IP allocation is supported on Azure Local for multi-rack deployments. For more information on creating logical networks, see [Create logical networks for Azure Local multi-rack VMs](./multi-rack-create-logical-networks.md).
