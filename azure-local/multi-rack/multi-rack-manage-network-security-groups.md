@@ -584,7 +584,7 @@ Follow these steps to dissociate a network security group from a network interfa
   ```output
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.ExtendedLocation/customLocations/examplecl",
+      "name": "/subscriptions/<SubscriptionID>/resourceGroups/<Resource Group Name>/providers/Microsoft.ExtendedLocation/customLocations/examplecl",
       "type": "CustomLocation"
     },
     "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-01",
