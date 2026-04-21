@@ -1,9 +1,9 @@
---- 
+---
 title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 04/16/2026
+ms.date: 04/20/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -15,8 +15,6 @@ ms.subservice: hyperconverged
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -328,7 +326,7 @@ If the extension wasn't installed during deployment, you can manually install it
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
-- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end
 
