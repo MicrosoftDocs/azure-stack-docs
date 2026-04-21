@@ -91,7 +91,9 @@ Once the source appliance is installed, follow these steps:
     1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
         :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
-        1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.**
+        1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    > [!NOTE]
+    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
 
     1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, hence the new deployments are unable to use this version. 
 
@@ -120,19 +122,19 @@ Once the source appliance is installed, follow these steps:
 
 ### Onboard to Azure Local
 
-1. After the discovery sources are added, onboard to the target Azure Local instance. This is required to validate the connectivity between the source appliance and the target Azure Local instance, and to provide necessary information about the target system for migration.
+1. After you add the discovery sources, onboard to the target Azure Local instance. This step validates connectivity between the source appliance and the target Azure Local instance, and provides the information needed about the target system for migration.
 1. Toggle the slider to "**Enable credentials for Azure Local**".
 
-:::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="enable credentials for azure local appliance":::
+    :::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="Screenshot of how to enable credentials for Azure Local appliance.":::
 
 1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
 1. Select **Save**".
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
-1. The information table is updated and the status changes to **Validated**.
+1. The information table is updated and the status changes to **Validated**.   
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
 
 ### Start discovery
 
@@ -141,7 +143,7 @@ Once the source appliance is installed, follow these steps:
 
 :::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="start discovery source appliance":::
 
-### Wait for the discovery to complete
+### Start discovery
 
 Wait until you have a green checkmark indicating that the discovery is finished. The migration readiness checks are also completed successfully. After the discovery is complete, go to the Azure portal to review the VM inventory.
 
@@ -249,7 +251,9 @@ This step applies to using a .zip file.
 
 
 1. After the verification is complete, select **Log in** and sign in to your Azure account.
-    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.**
+    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    > [!NOTE]
+    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
     :::image type="content" source="./media/migrate-vmware-replicate/enter-code-1.png" alt-text="Screenshot showing the Authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
@@ -318,11 +322,11 @@ This step applies to using a .zip file.
 
 1. On the **Target settings** tab, complete these tasks:
 
-    1. The **Storage account subscription** is automatically populated. If this isn't the subscription where you want to create the storage account, choose another subscription.  
+    1. The Storage account subscription populates automatically. If this isn't the subscription where you want to create the storage account, select a different subscription.
 
     1. Select the **Resource group** to associate with your storage account.
 
-    2. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
+    2. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises.
 
         > [!NOTE]
         > If you are using an existing storage account, ensure the following:

@@ -58,24 +58,26 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 ### Configure the appliance and discover VMs
 
 Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
-1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.**
+1. If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    > [!NOTE]
+    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
 
 
 ### Onboard to Azure Local
 
-1. After the discovery sources are added, onboard to the target Azure Local instance. This is required to validate the connectivity between the source appliance and the target Azure Local instance, and to provide necessary information about the target system for migration.
+1. After you add the discovery sources, onboard to the target Azure Local instance. This step validates connectivity between the source appliance and the target Azure Local instance, and provides the information needed about the target system for migration.
 1. Toggle the slider to "**Enable credentials for Azure Local**".
 
-:::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="enable credentials for azure local appliance":::
+    :::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="Screenshot of how to enable credentials for Azure Local appliance.":::
 
 1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
 1. Select **Save**".
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
 1. The information table is updated and the status changes to **Validated**.
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add system information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
 
 ### Start discovery
 
@@ -192,7 +194,9 @@ This step applies to using a .zip file.
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
 1. After the verification is complete, select **Log in** and sign in to your Azure account.
-    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. **Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.**
+    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    > [!NOTE]
+    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
@@ -260,11 +264,11 @@ This step applies to using a .zip file.
 
 1. On the **Target settings** tab, complete these tasks:
 
-    1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.  
+    1. The Storage account subscription populates automatically. If this isn't the subscription where you want to create the storage account, select a different subscription.
 
     1. Select the **Resource group** to associate with your storage account.
 
-    1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises. We recommend that you create a new storage account.
+    1. For your **storage account**, you can select an existing storage account from the dropdown list or create a new one by selecting **Create new**. The storage account is only used for storing metadata during replication and migration. All migrated VM data and disks remain completely on-premises.
 
         > [!NOTE]
         > If you are using an existing storage account, ensure the following:

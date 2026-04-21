@@ -33,10 +33,10 @@ Before you begin, ensure that the following prerequisites are met:
 
 # [PowerShell](#tab/powershell)
 
-- Install the [PowerShell Az module](/powershell/azure/install-azure-powershell). Ensure you are running [PowerShell version 7 or higher](/powershell/scripting/install/install-powershell).
+1. Install the [PowerShell Az module](/powershell/azure/install-azure-powershell). Ensure you are running [PowerShell version 7 or higher](/powershell/scripting/install/install-powershell).
 
 <!-- Update version to 2.X.X in this paragraph-->
-- Verify the Azure Migrate PowerShell module is installed and **version is 2.9.0 or later**. Azure Migrate PowerShell is available as part of the PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.9.0 or later:
+2. Verify the Azure Migrate PowerShell module is installed and **version is 2.9.0 or later**. Azure Migrate PowerShell is available as part of the PowerShell `Az` module. Run the following command to check if Azure Migrate PowerShell is installed on your computer and verify the version is 2.9.0 or later:
 
     ```powershell
     Get-InstalledModule -Name Az.Migrate
@@ -50,9 +50,9 @@ Before you begin, ensure that the following prerequisites are met:
 
 # [Azure CLI (Preview)](#tab/azurecli)
 
-- Install [Azure CLI version 2.75.0 or later](/cli/azure/install-azure-cli).
+1. Install [Azure CLI version 2.75.0 or later](/cli/azure/install-azure-cli).
 
-- Install the Azure CLI migrate extension by running the following command:
+2. Install the Azure CLI migrate extension by running the following command:
 
     ```azurecli
     az extension add --name migrate --allow-preview true
@@ -64,13 +64,13 @@ Before you begin, ensure that the following prerequisites are met:
 
 # [PowerShell](#tab/powershell)
 
-Sign in to your Azure subscription using the following cmdlet:
+1. Sign in to your Azure subscription using the following cmdlet:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Select your Azure subscription. Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Migrate project using the `Set-AzContext` cmdlet:
+2. Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Migrate project using the `Set-AzContext` cmdlet:
 
 ```powershell
 Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
@@ -145,9 +145,9 @@ For more information, see the [`az migrate get-discovered-server`](/cli/azure/mi
 
 ## Initialize replication infrastructure
 
-Initialize the replication infrastructure for your Azure Migrate project. This sets up the necessary infrastructure and metadata storage account needed to replicate VMs from the source appliance to the target appliance. Running this command multiple times doesn't cause any issues, as it checks if the replication infrastructure is already initialized.
+Initialize the replication infrastructure for your Azure Migrate project. This sets up the infrastructure and metadata storage account needed to replicate VMs from the source appliance to the target appliance. You can safely run this command multiple times, it checks whether the replication infrastructure is already initialized before running again.
 
-You can use a default-created storage account or a custom-created storage account to store the replication metadata. You need the source and target appliance names from the Azure portal by going to your Azure Migrate project, then navigating to **Appliances > Registered appliances**.
+You can use a default or custom storage account to store the replication metadata. To find the source and target appliance names, go to your Azure Migrate project in the Azure portal, then select Appliances > Registered appliances.
 
 :::image type="content" source="./media/migrate-via-powershell/migrate-appliances.png" alt-text="Screenshot showing Appliances in Azure Migrate project page." lightbox="./media/migrate-via-powershell/migrate-appliances.png":::
 
@@ -177,7 +177,7 @@ $CustomStorageAccount = Get-AzStorageAccount `
     -Name $CustomStorageAccountName
 ```
 
-Ensure that the storage account is Standard tier and using blob storage kind, as these are the supported types for Azure Migrate metadata storage accounts. The storage account must also have **Public network access** enabled. If public network access is disabled, replication fails.
+Ensure that the storage account uses Standard tier and blob storage kind, these are the only supported types for Azure Migrate metadata storage accounts. Also ensure that Public network access is enabled on the storage account. If you disable public network access, replication fails.
 
 Next, initialize replication infrastructure with custom-created storage account:
 
