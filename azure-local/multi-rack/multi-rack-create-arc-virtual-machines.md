@@ -130,7 +130,7 @@ Here we create a VM that uses specific memory and processor counts.
     | **custom-location** |Use this to provide the custom location associated with Azure Local where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
-+   | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used. The value must be a multiple of 1024 (that is, specified in whole GB increments such as 1024, 2048, 4096, 8192).|
+    | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used. The value must be a multiple of 1024 (that is, specified in whole GB increments such as 1024, 2048, 4096, 8192).|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
     | **proxy-configuration** |Use this parameter to configure a proxy server for your VM. It is required to enable guest management on your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
     | **zone** | (Optional) Name of the availability zone (rack) where you want the VM to be placed.|
