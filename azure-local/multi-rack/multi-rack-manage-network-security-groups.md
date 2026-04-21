@@ -584,10 +584,10 @@ Follow these steps to dissociate a network security group from a network interfa
   ```output
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.ExtendedLocation/customLocations/examplecl",
+      "name": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ExtendedLocation/customLocations/examplecl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-01",
+    "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-01",
     "location": "eastus",
     "name": "sdnbbnic-01",
     "properties": {
@@ -601,7 +601,7 @@ Follow these steps to dissociate a network security group from a network interfa
             "prefixLength": "24",
             "privateIpAddress": "100.69.174.96",
             "subnet": {
-              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/microsoft.azurestackhci/logicalNetworks/static-lnet2",
+              "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/microsoft.azurestackhci/logicalNetworks/static-lnet2",
               "resourceGroup": "<Resource Group Name>"
             }
           }
