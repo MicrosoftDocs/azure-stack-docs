@@ -843,7 +843,7 @@ You may need to delete a network security rule if you no longer need it. You can
 1. Run this command to delete a network security rule:
 
     ```azurecli
-    az stack-hci-vm network nsg rule delete --resource-group $resource_group --name $securityrulename --yes
+    az stack-hci-vm network nsg rule delete --resource-group $resource_group --nsg-name $nsgname --name $securityrulename --yes
     ```
 
     Use the `list` command to verify that the network security rule is deleted.
