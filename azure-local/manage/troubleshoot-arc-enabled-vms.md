@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 01/08/2026
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.custom: sfi-image-nochange

@@ -6,13 +6,40 @@ ms.date: 10/24/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.reviewer: sumsmith
-ms.lastreviewed: 09/15/2025
+ms.lastreviewed: 04/17/2026
 
 ---
 
 # What's new in AKS Edge Essentials
 
 AKS Edge Essentials is a lightweight on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. This article describes the latest features, enhancements, and updates in AKS Edge Essentials releases.
+
+## Release 1.12.269.0 (April 2026)
+The following features and improvements were added in this release:
+
+- **Cross-distribution upgrades supported.** With this release, you can upgrade Kubernetes versions within the same release version. See the upgrade paths table below for supported combinations. In accordance with the upstream Kubernetes lifecycle, we recommend upgrading to or installing K8s/K3s version 1.33.
+
+- **KMS enabled by default on new deployments.** The [KMS provider](aks-edge-howto-secret-encryption.md), generally available since version 1.11.247.0, is now enabled by default when deploying a new cluster on version 1.12.269.0 and later. No additional configuration is required.
+
+### Supported versions for 1.12.269.0
+- AKS Edge Essentials Version: 1.12.269.0
+- Azure Linux Version: 3.0.20260401
+- K8s (upstream Kubernetes) distribution: 1.31.5 (only available as upgrade from 1.11.247.0), 1.32.9 (available as upgrade from 1.11.247.0 or 1.12.267.0), 1.33.5 (available as upgrade from 1.12.268.0 or fresh install)
+- K3s distribution: 1.31.6 (only available as upgrade from 1.11.230.0), 1.32.9 (available as upgrade from 1.11.230.0 or 1.12.267.0), 1.33.5 (available as upgrade from 1.12.268.0 or fresh install)
+- Json version schema: 1.16
+
+### Available upgrade paths
+| Current version | Upgrade path |
+| --- | --- |
+| 1.11.230.0 k8s/k3s 1.30 | 1.12.267 k8s/k3s 1.31 |
+| 1.11.230.0 k8s/k3s 1.31 | 1.12.268 k8s/k3s 1.32 |
+| 1.12.267 k8s/k3s 1.31 | 1.12.268 k8s/k3s 1.32 |
+| 1.12.268 k8s/k3s 1.32 | 1.12.269 k8s/k3s 1.33 |
+
+Please note that, unlike prior releases, in this release, upgrading from one Kubernetes distribution to another within the same release version **is** supported. To support this, we have released multiple upgrade versions of this release, as noted above.
+
+> [!NOTE]  
+> Please ensure 19GB of free disk space before attempting to upgrade to or fresh install an AKS Edge Essentials 1.12 release.
 
 ## Release 1.11.247.0 (September 2025)
 

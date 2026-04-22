@@ -1,10 +1,9 @@
 ---
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.topic: include
 ms.date: 06/09/2025
-ms.reviewer: alkohli
 ms.lastreviewed: 03/20/2025
 ---
 

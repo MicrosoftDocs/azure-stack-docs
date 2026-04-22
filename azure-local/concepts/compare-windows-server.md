@@ -2,8 +2,8 @@
 title: Compare Azure Local to Windows Server - Key Differences and Benefits
 description: Learn the key differences between Azure Local and Windows Server to choose the best solution for your organization. Compare features, benefits, and scenarios.
 ms.topic: product-comparison
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 03/02/2026
 ---

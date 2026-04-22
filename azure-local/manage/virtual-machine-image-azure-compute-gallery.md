@@ -1,8 +1,8 @@
 ---
 title: Create Azure Local VM from Azure Compute Gallery Images via Azure CLI
 description: Learn how to create Azure Local VM images using Azure Compute Gallery images.
-author: sipastak
-ms.author: sipastak
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom:

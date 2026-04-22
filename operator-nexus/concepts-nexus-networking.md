@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus - Networking concepts
 description: Get an overview of networking in Azure Operator Nexus.
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 09/17/2025

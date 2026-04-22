@@ -1,8 +1,8 @@
 ---
 title: Manage GPUs using partitioning for Azure Local (preview)
 description: Learn how to manage GPUs using partitioning Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 08/27/2025

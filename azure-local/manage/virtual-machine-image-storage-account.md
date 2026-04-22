@@ -1,8 +1,8 @@
 ---
 title: Create Azure Local VMs enabled by Azure Arc in Azure Storage account
 description: Learn how to create Azure Local VMs enabled by Azure Arc using source images from Azure Storage account via Azure portal and Azure CLI.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 12/18/2025

@@ -1,11 +1,10 @@
 ---
 title: Best Practices for managing Azure Local Updates
 description: Learn the best practices for managing Azure Local updates.
-author: alkohli
+author: ronmiab
 ms.topic: overview
 ms.date: 09/10/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

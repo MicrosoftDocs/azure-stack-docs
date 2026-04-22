@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot storage control plane connectivity issues.
 description: Troubleshooting Azure Resource Health alerts about control plane connectivity issues.
-author: jensheasby
-ms.author: jensheasby
+author: ronmiab
+ms.author: robess
 ms.date: 07/21/2025
 ms.topic: troubleshooting
 ms.service: azure-operator-nexus

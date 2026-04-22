@@ -1,8 +1,8 @@
 ---
 title: How to Convert Network Fabric Cable Validation Report to HTML
 description: Learn how to convert Nexus Network Fabric Cable Validation Report to HTML.
-author: bpinto
-ms.author: bpinto
+author: ronmiab
+ms.author: robess
 titleSuffix: Azure Operator Nexus
 ms.service: azure-operator-nexus
 ms.topic: how-to #Required; leave this attribute/value as-is

@@ -1,8 +1,8 @@
 ---
 title: Monitor Multi-rack Deployments of Azure Local with Azure Monitor Metrics (preview)
 description: Learn how to monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/14/2025

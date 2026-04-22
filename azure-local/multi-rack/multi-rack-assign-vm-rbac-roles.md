@@ -1,8 +1,8 @@
 ---
 title: Use built-in RBAC roles to manage Azure Local VMs for multi-rack deployments (preview)
 description: Learn how to use RBAC built-in roles to manage Azure Local VMs for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/17/2025

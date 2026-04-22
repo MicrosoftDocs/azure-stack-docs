@@ -1,8 +1,8 @@
 ---
 title: Manage VM Extensions on Azure Local VMs enabled by Azure Arc on Azure Local 
 description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via the Azure portal.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/05/2026
