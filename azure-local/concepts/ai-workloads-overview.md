@@ -32,6 +32,7 @@ Foundry Local includes the core capabilities you need to run AI model inference 
 | **CPU and GPU inference** | Deploy models on CPU-only or GPU-enabled nodes based on your workload needs. |
 | **OpenAI-compatible API** | Send requests through `/v1/chat/completions` for generative tasks and `/v1/predict` for predictive tasks. |
 | **Multi-model support** | Run multiple model deployments in one cluster with declarative configuration. |
+| **Bring your own model** | Deploy your own models alongside catalog models for specialized or fine-tuned inference scenarios. |
 | **Security** | Use API keys for authentication, TLS for encryption, and ingress for access control. |
 
 ### Use cases
@@ -80,30 +81,28 @@ For more information, see:
 - [Complete the prerequisites](/azure/azure-arc/edge-rag/complete-prerequisites)
 - [Deploy Edge RAG](/azure/azure-arc/edge-rag/deploy-overview)
 
-## Analyze video and audio at the edge
+## Analyze live video at the edge
 
-Azure AI Video Indexer enabled by Azure Arc runs video and audio analysis on edge devices. It supports transcription in more than 35 languages, object and scene detection, and summarization. The solution includes the Phi language model for generative AI tasks such as text summaries.
-
-Azure AI Video Indexer enabled by Azure Arc also supports live video analysis. Prebuilt agents handle tasks such as retail operations monitoring, safety detection, and queue tracking. 
+Azure AI Video Indexer enabled by Azure Arc runs live video analysis on edge devices with low-latency processing. Prebuilt and custom video agents, powered by vision language models, handle tasks such as retail operations monitoring, safety detection, and queue tracking. You can also define custom detection logic by using natural language to monitor specific objects or conditions without writing code.
 
 ### Capabilities
 
-Azure AI Video Indexer enabled by Azure Arc provides capabilities for video and audio analysis on edge infrastructure.
+Azure AI Video Indexer enabled by Azure Arc provides capabilities for live video analysis on edge infrastructure.
 
 | Capability | Description |
 |-----------|-------------|
-| **Live video analysis** | Analyze live video feeds in real time by using prebuilt agents for retail, safety, and operational monitoring. |
-| **Custom AI models** | Define detection logic by using natural language to monitor specific objects or conditions. |
-| **Bring your own model** | Extend built-in capabilities with custom models for specialized detection tasks. |
+| **Live video analysis** | Analyze live video feeds in real time with low-latency edge processing for retail, safety, and operational monitoring. |
+| **Custom AI models** | Define detection logic by using natural language to monitor specific objects or conditions without writing code. |
+| **Video agents** | Deploy prebuilt and custom video agents powered by vision language models to automate monitoring and analysis tasks. |
 | **Data governance** | All video data stays on-premises. Only system metadata is sent to Microsoft. |
 
 ### Use cases
 
-Use Azure AI Video Indexer enabled by Azure Arc when you need to analyze live or recorded media locally for operational, safety, or compliance scenarios.
+Use Azure AI Video Indexer enabled by Azure Arc when you need to analyze live video locally for operational, safety, or compliance scenarios.
 
 - Monitor retail store conditions with live video feeds. Detect shelf conditions, safety hazards, and queue lengths, then generate end-of-shift summaries.
 - Run quality control and worker safety analysis on manufacturing floor video.
-- Index an on-premises video archive for search and retrieval before selectively uploading content to the cloud.
+- Deploy custom video agents with natural language-defined detection logic for site-specific monitoring needs.
 
 For more information, see:
 
