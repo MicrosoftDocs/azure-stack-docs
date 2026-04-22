@@ -125,7 +125,7 @@ When you enable BitLocker on a `ClusterSharedVolume`, the volume goes through th
 
 > [!NOTE]
 > **Key protectors:** During encryption, two key protectors are created automatically:
-> - A **recovery password** — backed up to Active Directory for disaster recovery.
+> - A **recovery password** — backed up to Active Directory (domain joined deployment type) and Azure Key Vault (non-domain joined deployment type) for disaster recovery.
 > - An **external key** — stored at `C:\Windows\Cluster` on the owner node, used for automatic CSV unlock during failover.
 >
 > To save your recovery keys to an external location such as Azure Key Vault, see [Get BitLocker recovery keys](#get-bitlocker-recovery-keys).
