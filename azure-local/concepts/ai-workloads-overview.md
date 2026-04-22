@@ -84,7 +84,7 @@ For more information, see:
 
 Azure AI Video Indexer enabled by Azure Arc runs video and audio analysis on edge devices. It supports transcription in more than 35 languages, object and scene detection, and summarization. The solution includes the Phi language model for generative AI tasks such as text summaries.
 
-Azure AI Video Indexer enabled by Azure Arc also supports live video analysis. Prebuilt agents handle tasks such as retail operations monitoring, safety detection, and queue tracking. You use a conversational interface (AI Video Assistant) to route your questions to the right agent.
+Azure AI Video Indexer enabled by Azure Arc also supports live video analysis. Prebuilt agents handle tasks such as retail operations monitoring, safety detection, and queue tracking. 
 
 ### Capabilities
 
