@@ -2,12 +2,12 @@
 title: Create an Azure Managed Lustre file system by using Terraform
 description: Learn how to create an Azure Managed Lustre file system by using Terraform.
 services: azure-stack
-author: sethmanheim
+author: pauljewellmsft
 ms.service: azure-stack
 ms.topic: how-to
 ms.custom: devx-track-terraform
 ms.date: 11/11/2024
-ms.author: sethm
+ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted

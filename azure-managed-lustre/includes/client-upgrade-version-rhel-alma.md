@@ -1,6 +1,6 @@
 ---
-author: sethmanheim
-ms.author: sethm
+author: pauljewellmsft
+ms.author: pauljewell
 ms.service: azure-stack
 ms.topic: include
 ms.date: 10/24/2024
