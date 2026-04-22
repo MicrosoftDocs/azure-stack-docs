@@ -68,6 +68,9 @@ The next sections provide an overview of components, along with methods and inte
 
 ## What's in the update package?
 
+> [!IMPORTANT]
+> Azure Local systems with more than 16 nodes may experience longer update runtimes. To help ensure updates complete within planned maintenance windows, consider performing the Solution Builder Extension update separately from the solution update for systems of this size.
+
 Solution updates managed by this feature contain new versions of the Azure Stack HCI OS, core agents and services, and the solution extension (depending on your system's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
 - Operating System: These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.

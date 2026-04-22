@@ -1,20 +1,20 @@
 ---
-title: System requirements for Azure Local, version 23H2
-description: How to choose machines, storage, and networking components for Azure Local, version 23H2.
-author: ronmiab
-ms.author: robess
+title: System Requirements for Azure Local Disaggregated Deployments
+description: Learn how to choose machines, storage, and networking components for Azure Local disaggregated deployments.
+author: alkohli
+ms.author: cedward
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 01/30/2026
+ms.date: 04/09/2026
 ms.subservice: hyperconverged
 ---
 
-# System requirements for Azure Local
+# System requirements for Azure Local disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article discusses Azure, machine and storage, networking, and other requirements for hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*). If you purchased Integrated System solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to machine and storage requirements.
+This article discusses Azure, machine, storage, networking, and other requirements for disaggregated deployments of Azure Local. To acquire the machines and SAN that supports Azure Local disaggregated architectures, you can purchase validated hardware from a Microsoft hardware partner with the operating system preinstalled [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Azure requirements
 
@@ -58,20 +58,20 @@ Here are the Azure requirements for your Azure Local instance:
 
 Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
-Before you begin, make sure that the physical machine and storage hardware used to deploy disaggregated Azure Local meets the following requirements:
+Before you begin, make sure that the physical machine and storage hardware used to deploy Azure Local meets the following requirements:
 
 |Component|Minimum|
 |--|--|
-|Number of machines| 1 to 64 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
+|Number of Racks per Cluster|At least 1 rack and up to 8 racks per for the same cluster|
+|Number of machines| 1 to 64 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives for the OS installation.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
-|Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
+|Host network adapters| At least four network adapters listed in the Windows Server Catalog. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB.<br>400 GB or more recommended for large memory Azure Local instances for [support and diagnosability](#support-and-diagnosability).|
-|Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
+|Data drives| Data drives to store the infrastructure volume and the workloads are provided via SAN |
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
-|SAN | At minimum one LUN with 250GB for infrastructure services and one with 20GB used for performance history data |
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
 ## Networking requirements
@@ -82,15 +82,19 @@ Verify that physical switches in your network are configured to allow traffic on
 
 ## Bandwidth requirements
 
-For hyperconverged clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
+For disaggregated clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
 ## Maximum supported hardware specifications
 
-Azure Local disaggregated deployments that exceed the following specifications are not supported:
+Azure Local deployments that exceed the following specifications are not supported:
 
 | Resource | Maximum |
 | --- | --- |
 | Physical machines per system |64 |
+| Storage per system | 4 PB |
+| Storage per machine | 400 TB |
+| Volumes per system | 64 |
+| Volume size | 64 TB |
 | Logical processors per host | 512 |
 | RAM per host | 24 TB |
 | Virtual processors per host | 2,048 |
@@ -254,5 +258,5 @@ You should always follow the OEM's recommended installation steps. With Azure Lo
 Review firewall, physical network, and host network requirements:
 
 - [Firewall requirements](./firewall-requirements.md).
-- [Physical network requirements](./physical-network-requirements.md).
-- [Host network requirements](./host-network-requirements.md).
+- [Physical network requirements](./physical-network-requirements-disaggregated.md).
+- [Host network requirements](./host-network-requirements-disaggregated.md).
