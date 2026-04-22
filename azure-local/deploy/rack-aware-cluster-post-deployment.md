@@ -1,11 +1,10 @@
 ---
 title: Perform post deployment tasks on rack aware clusters
 description: Learn about the post deployment tasks that you need to perform on your newly deployed rack aware cluster.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/21/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ---
 

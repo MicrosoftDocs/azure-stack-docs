@@ -1,8 +1,8 @@
 ---
 title: Manage SDN Multisite for Azure Local and Windows Server
 description: Learn how to manage a multisite SDN solution for Azure Local and Windows Server.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 zone_pivot_groups: windows-os
 ms.date: 06/03/2025

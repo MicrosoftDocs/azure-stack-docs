@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 02/16/2026
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ---
 
 # Troubleshoot packet drops, discards, and errors for Azure Operator Nexus

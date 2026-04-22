@@ -1,8 +1,8 @@
 ---
 title: Support Tool for Azure Local Hyperconverged Deployments
 description: This article provides guidance on the Support Diagnostic Tool for Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 04/05/2026
 ms.subservice: hyperconverged

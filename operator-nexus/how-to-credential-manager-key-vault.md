@@ -1,8 +1,8 @@
 ---
 title: Set up customer provided Key Vault for Managed Credential rotation
 description: Step by step guide on setting up a key vault for managing and rotating credentials used within Azure Operator Nexus Cluster resource.
-author: eak13
-ms.author: ekarandjeff
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/5/2025

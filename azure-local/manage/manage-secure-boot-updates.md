@@ -1,8 +1,8 @@
 ---
 title: Manage Secure Boot Updates
 description: Manage Secure Boot updates, including 2023 certificate rollout and CVE-2023-24932 mitigations, for Azure Local clusters.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/16/2026

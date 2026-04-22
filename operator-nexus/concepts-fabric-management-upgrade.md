@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Network Fabric management upgrade overview
 description: Get an overview of Network Fabric management upgrade for Azure Operator Nexus.
-author: bartpinto
-ms.author: bpinto
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: feature-availability
 ms.date: 01/16/2026

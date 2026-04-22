@@ -2,9 +2,8 @@
 title: Azure Local two-node storage switched, fully converged deployment network reference pattern
 description: Plan to deploy an Azure Local two-node storage switched, fully converged network reference pattern.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 12/30/2025
 ms.subservice: hyperconverged

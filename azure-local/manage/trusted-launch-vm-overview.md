@@ -2,8 +2,8 @@
 title: Overview for Trusted launch for Azure Local VMs enabled by Azure Arc
 description: Learn about Trusted launch for Azure Local VMs enabled by Azure Arc.
 ms.topic: concept-article
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 01/23/2026
 ---

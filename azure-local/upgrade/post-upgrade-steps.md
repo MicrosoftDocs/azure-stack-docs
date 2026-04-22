@@ -1,11 +1,10 @@
 ---
 title: Post-upgrade steps on Azure Local via PowerShell
 description: Learn how to perform the post-upgrade tasks for Azure Local using PowerShell.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/02/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

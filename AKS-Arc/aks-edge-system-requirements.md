@@ -4,7 +4,7 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: limits-and-quotas
-ms.date: 10/24/2025
+ms.date: 04/17/2026
 ms.custom: template-concept
 ---
 
@@ -19,7 +19,7 @@ This article describes the requirements for the host machine that runs AKS Edge 
   | Host OS | Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022||
   | Total physical memory | 4 GB with at least 2.5 GB free | 8 GB with at least 4.5 GB free  |
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
-  | Disk space | At least 14 GB free |At least 14 GB free |
+  | Disk space | At least 14 GB free |At least 19 GB free |
   | Disk type| SSD | SSD |
 
 To better understand the concept of vCPUs, [see this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).

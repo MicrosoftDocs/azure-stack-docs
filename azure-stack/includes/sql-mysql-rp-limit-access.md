@@ -1,6 +1,6 @@
 ---
-author: YangCao
-ms.author: caoyang
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
 ms.date: 05/27/2021

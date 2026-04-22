@@ -1,8 +1,8 @@
 ---
 title: Network Fabric read-only commands
 description: Learn about troubleshooting network devices using read-only commands.
-author: HollyCl
-ms.author: HollyCl
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article #Required; leave this attribute/value as-is.
 ms.date: 04/15/2024

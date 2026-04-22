@@ -1,8 +1,8 @@
 ---
 title: Integrated Dell Remote Access Controller credentials
 description: Learn how to update user credentials on an iDRAC from an Azure Stack Hub ruggedized appliance using Remote Desktop.
-author: troettinger
-ms.author: thoroet
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 05/27/2022
