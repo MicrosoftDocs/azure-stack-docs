@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/30/2025
+ms.date: 4/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -21,7 +21,7 @@ Before you begin, make sure that you have access to an Azure Local instance that
 
 ## View BitLocker settings via Azure portal
 
-To view the BitLocker settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+To view the BitLocker settings in the Azure portal, make sure that you apply the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
 BitLocker offers two types of protection: encryption for OS volumes and encryption for data volumes. You can only view BitLocker settings in the Azure portal. To manage the settings, see [Manage BitLocker settings with PowerShell](#manage-bitlocker-settings-with-powershell).
 
@@ -85,7 +85,7 @@ Follow these steps to view encryption settings:
 
 1. Connect to your Azure Local machine.
 
-1. Run the following PowerShell cmdlet using local administrator credentials:
+1. Run the following PowerShell cmdlet by using local administrator credentials:
 
     ```powershell
     Get-ASBitLocker -VolumeType BootVolume -Local
@@ -137,7 +137,7 @@ Follow these steps to enable volume encryption with BitLocker:
 
 1. Connect to your Azure Local machine.
 
-1. Run the following PowerShell cmdlet using local administrator credentials.
+1. Run the following PowerShell cmdlet by using local administrator credentials.
 
    To encrypt boot volumes on the local node:
 
@@ -219,10 +219,10 @@ Follow these steps to export the recovery keys for your cluster:
 
     ComputerName    PasswordId    RecoveryKey
     -------         ----------    -----------
-    ASB88RR1OU19    {Password1}   Key1
-    ASB88RR1OU20    {Password2}   Key2
-    ASB88RR1OU21    {Password3}   Key3
-    ASB88RR1OU22    {Password4}   Key4
+    NODE01    {Password1}   Key1
+    NODE02    {Password2}   Key2
+    NODE03    {Password3}   Key3
+    NODE04    {Password4}   Key4
     ```
 
 ## Next steps
