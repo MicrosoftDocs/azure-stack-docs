@@ -97,7 +97,7 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 
 > [!IMPORTANT]
 > - Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
-> - Machines must not be joined to Active Directory before deployment.
+
 
 Follow these steps to configure the operating system using SConfig:
 
