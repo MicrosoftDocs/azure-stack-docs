@@ -19,7 +19,7 @@ The following features and improvements were added in this release:
 
 - **Cross-distribution upgrades supported.** With this release, you can upgrade Kubernetes versions within the same release version. See the upgrade paths table below for supported combinations. In accordance with the upstream Kubernetes lifecycle, we recommend upgrading to or installing K8s/K3s version 1.33.
 
-- **KMS enabled by default on new deployments.** The [KMS provider](https://learn.microsoft.com/en-us/azure/aks/aksarc/aks-edge-howto-secret-encryption), generally available since version 1.11.247.0, is now enabled by default when deploying a new cluster on version 1.12.269.0 and later. No additional configuration is required.
+- **KMS enabled by default on new deployments.** The [KMS provider](aks-edge-howto-secret-encryption.md), generally available since version 1.11.247.0, is now enabled by default when deploying a new cluster on version 1.12.269.0 and later. No additional configuration is required.
 
 ### Supported versions for 1.12.269.0
 - AKS Edge Essentials Version: 1.12.269.0
