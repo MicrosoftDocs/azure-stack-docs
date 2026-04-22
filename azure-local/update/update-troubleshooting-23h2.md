@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot solution updates for Azure Local, version 23H2
 description: Learn how to troubleshoot solution updates applied to Azure Local, version 23H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 03/25/2026
 ms.custom: sfi-image-nochange

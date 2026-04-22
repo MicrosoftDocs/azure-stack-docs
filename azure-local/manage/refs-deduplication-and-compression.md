@@ -1,8 +1,8 @@
 ---
 title: Optimize storage with ReFS deduplication and compression in Azure Local
 description: Learn how to use ReFS deduplication and compression in Azure Local to optimize storage.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 11/04/2025
 ms.subservice: hyperconverged

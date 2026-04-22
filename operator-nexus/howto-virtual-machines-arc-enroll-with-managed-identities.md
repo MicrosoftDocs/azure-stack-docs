@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: how-to
 ms.date: 10/23/2025
-ms.author: omarrivera
-author: g0r1v3r4
+ms.author: robess
+author: ronmiab
 ---
 
 # How to Azure Arc enroll virtual machines using managed identities through the public relay

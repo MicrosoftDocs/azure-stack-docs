@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 05/22/2024
-ms.author: peterwhiting
-author: pjw711
+ms.author: robess
+author: ronmiab
 ---
 
 # Troubleshooting common issues with multiple Storage Appliances

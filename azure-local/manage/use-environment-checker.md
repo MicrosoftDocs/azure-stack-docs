@@ -1,8 +1,8 @@
 ---
 title: Use Azure Local Environment Checker to assess deployment readiness for Azure Local, version 23H2.
 description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Local, version 23H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/26/2026

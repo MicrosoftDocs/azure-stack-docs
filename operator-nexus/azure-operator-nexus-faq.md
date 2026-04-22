@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus FAQ
 description: Answers to the most frequently asked questions about Azure Operator Nexus.
-author: mukesh-dua
-ms.author: mukeshdua
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: faq
 ms.date: 06/28/2023

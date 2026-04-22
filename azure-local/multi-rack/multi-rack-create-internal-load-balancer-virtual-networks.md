@@ -4,7 +4,6 @@ description: Learn to create and configure internal load balancers for Azure Loc
 #customer intent: As a network administrator, I want to understand the internal load balancers on Azure Local so that I can have the correct setup for my deployment.
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.date: 11/24/2025
 ms.topic: how-to
 ms.service: azure-local

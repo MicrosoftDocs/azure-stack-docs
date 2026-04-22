@@ -1,8 +1,8 @@
 ---
 title: Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc
 description: Learn about the supported virtual machine (VM) operations for Azure Local VMs enabled by Azure Arc.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 02/24/2026

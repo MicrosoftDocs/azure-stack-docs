@@ -6,7 +6,6 @@ contributors:
 ms.topic: concept-article
 ms.date: 09/05/2025
 ms.author: alkohli
-ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 

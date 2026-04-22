@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Monitoring of  Nexus Kubernetes cluster"
 description: How-to guide for setting up monitoring of Nexus Kubernetes cluster on Operator Nexus.
-author: mukesh-dua
-ms.author: mukeshdua
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 01/26/2023

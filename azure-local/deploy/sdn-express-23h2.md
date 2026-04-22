@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to 
 ms.date: 10/16/2025
 ms.author: alkohli 
-ms.reviewer: alkohli
 ms.subservice: hyperconverged 
 ---
 
