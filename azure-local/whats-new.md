@@ -64,12 +64,6 @@ This release includes various reliability improvements and bug fixes.
 
 - **Enhanced Azure Marketplace image navigation in the Azure portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images.
 
-    To access these updates via the Azure CLI, update the `stack-hci-vm` extension to the latest version:
-
-    ```azurecli
-    az extension update --name "stack-hci-vm"
-    ```
-
 - **Graceful restart by default for Azure Local VMs**: Azure Local VM restart operation now performs a graceful shutdown by default. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM.
 
 - **Enable or disable SDN management per network interface**: Azure Local now supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).
