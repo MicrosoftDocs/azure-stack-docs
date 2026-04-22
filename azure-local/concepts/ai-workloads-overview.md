@@ -92,7 +92,6 @@ Azure AI Video Indexer enabled by Azure Arc provides capabilities for video and 
 
 | Capability | Description |
 |-----------|-------------|
-| **Comprehensive AI presets** | Transcription, translation, captioning, key frame detection, object detection, scene and shot detection, and summarization. |
 | **Live video analysis** | Analyze live video feeds in real time by using prebuilt agents for retail, safety, and operational monitoring. |
 | **Custom AI models** | Define detection logic by using natural language to monitor specific objects or conditions. |
 | **Bring your own model** | Extend built-in capabilities with custom models for specialized detection tasks. |
