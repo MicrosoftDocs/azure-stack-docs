@@ -4,7 +4,6 @@ description: Learn how to create and manage a public Load Balancer on Azure Loca
 #customer intent: As a network administrator, I want to learn how to create a public Load Balancer on Azure Local so that I can distribute traffic across virtual machines in a multi-rack deployment.
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.date: 11/24/2025
 ms.topic: how-to
 ms.service: azure-local

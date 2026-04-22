@@ -4,7 +4,6 @@ description: Plan to deploy an Azure Local single-server storage network referen
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 12/30/2025
 ms.subservice: hyperconverged

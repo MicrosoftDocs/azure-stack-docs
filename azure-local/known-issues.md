@@ -2,10 +2,9 @@
 title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
+ms.author: robess
 ms.topic: troubleshooting-general
 ms.date: 04/22/2026
-ms.author: robess
-ms.reviewer: robess
 ms.subservice: hyperconverged
 ---
 

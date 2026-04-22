@@ -5,7 +5,6 @@ author: ronmiab
 ms.topic: overview
 ms.date: 02/11/2026
 ms.author: robess
-ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

@@ -2,9 +2,8 @@
 title: Manage Azure Local gateway connections using Windows Admin Center
 description: Learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN) managed by on-premises tools.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 09/17/2025
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged

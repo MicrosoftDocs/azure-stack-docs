@@ -5,7 +5,6 @@ author: ronmiab
 ms.topic: how-to
 ms.date: 02/03/2026
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged

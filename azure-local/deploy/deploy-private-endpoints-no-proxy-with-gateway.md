@@ -1,9 +1,8 @@
 ---
 title: Use Private Endpoints with Azure Local for No Proxy with Arc Gateway
 description: Review how Azure Private Endpoints can be used when deploying Azure Local, without an enterprise proxy but with an Arc gateway.
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 03/09/2026
 ms.topic: concept-article
 ---

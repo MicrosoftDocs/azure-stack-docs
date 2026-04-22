@@ -4,7 +4,6 @@ description: Learn about two-node storage reference pattern components for Azure
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025
 ms.subservice: hyperconverged
