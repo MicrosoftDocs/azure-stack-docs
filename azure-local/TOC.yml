@@ -1348,10 +1348,10 @@ items:
     items:
     - name: Complete deployment prerequisites
       href: ./multi-rack/multi-rack-prerequisites.md
-    - name: Create and manage L3 isolation domains
-      href: ./multi-rack/multi-rack-configure-layer-3-isolation-domain.md
     - name: Install Azure CLI extensions
       href: ./multi-rack/multi-rack-cli-extensions.md
+    - name: Create and manage L3 isolation domains
+      href: ./multi-rack/multi-rack-configure-layer-3-isolation-domain.md
     - name: Complete networking prerequisites
       items: 
       - name: Create logical network
@@ -1366,10 +1366,16 @@ items:
         href: ./multi-rack/multi-rack-assign-vm-rbac-roles.md
       - name: Create Azure Local VM images
         href: ./multi-rack/multi-rack-virtual-machine-image-storage-account.md
+      - name: Download managed disks from Azure
+        href: ./multi-rack/multi-rack-manage-data-disks.md
       - name: Create network interfaces
         href: ./multi-rack/multi-rack-create-network-interfaces.md
       - name: Create Azure Local VMs
         href: ./multi-rack/multi-rack-create-arc-virtual-machines.md
+    - name: Manage Azure Local VM workloads
+      items:
+      - name: Supported VM operations
+        href: ./multi-rack/multi-rack-virtual-machine-operations.md
       - name: Connect to Azure Local VMs via SSH
         href: ./multi-rack/multi-rack-connect-arc-vm-using-ssh.md
       - name: Connect to Azure Local VMs via serial console
@@ -1378,10 +1384,16 @@ items:
         href: ./multi-rack/multi-rack-manage-arc-virtual-machines.md
       - name: Manage Azure Local VM resources
         href: ./multi-rack/multi-rack-manage-arc-virtual-machine-resources.md
+      - name: Manage Azure Local VM images
+        href: ./multi-rack/multi-rack-virtual-machine-manage-image.md
       - name: Manage Azure Local VM extensions
         href: ./multi-rack/multi-rack-virtual-machine-manage-extension.md
+      - name: Manage logical networks
+        href: ./multi-rack/multi-rack-manage-logical-networks.md
       - name: Create and restore data disk snapshots
         href: ./multi-rack/multi-rack-disk-snapshot.md
+      - name: Troubleshoot Azure Local VMs
+        href: ./multi-rack/multi-rack-troubleshoot-arc-enabled-vms.md
     - name: Deploy SDN infrastructure
       items:
       - name: Create NSGs
@@ -1394,6 +1406,10 @@ items:
         href: ./multi-rack/multi-rack-create-load-balancer-logical-network.md
       - name: Create public IP addresses
         href: ./multi-rack/multi-rack-create-public-ip.md
+    - name: Manage SDN infrastructure
+      items:
+      - name: Manage NSGs
+        href: ./multi-rack/multi-rack-manage-network-security-groups.md
 
 
   - name: Monitor
