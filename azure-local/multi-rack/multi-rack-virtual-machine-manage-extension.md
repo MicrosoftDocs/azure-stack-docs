@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 04/17/2026
 ms.subservice: multi-rack
 ---
 
@@ -37,7 +37,7 @@ To manage VMs on Azure Local, you must enable guest management on the VMs. When 
 Verify that guest management is enabled on your virtual machines before you install VM extensions.
 
 > [!NOTE]
-> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [update link URL after release branch merge](../index.yml)<!--update link-->.
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Create Azure Local VMs for multi-rack deployments](./multi-rack-create-arc-virtual-machines.md).
 
 To verify that guest management is enabled:
 
