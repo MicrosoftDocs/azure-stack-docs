@@ -149,10 +149,11 @@ Here's an example of how to export your root certificate public key:
 
 ```powershell
 $applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
-$caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
+$dcName = "corp.contoso.com"
+$caName = "$($dcname)$\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 # Option 1) Get the Root CA certificate by its name:
-$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($dcname)*" } | Select-Object -First 1
 
 # # Option 2) Get the Root CA certificate by its thumbprint:
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" } | Select-Object -First 1

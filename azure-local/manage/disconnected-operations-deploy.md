@@ -106,6 +106,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ThirdPartyNotices.txt
 
    ```powershell  
    Get-ChildItem $applianceConfigBasePath  
