@@ -1,8 +1,8 @@
 ---
 title: Microsoft Software License Terms for AKS Edge Essentials
 description: Microsoft Software License Terms for AKS Edge Essentials.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/03/2024
 ms.custom: template-how-to

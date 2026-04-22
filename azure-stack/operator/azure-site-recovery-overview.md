@@ -4,7 +4,7 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 01/24/2025
+ms.date: 12/30/2025
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/18/2024
 
@@ -49,14 +49,16 @@ Azure Site Recovery on Azure Stack Hub is intended to protect a specified number
 
 When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
 
-[Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multi-tenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
+[Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multitenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
 
 ## What can I replicate?
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
 
 > [!NOTE]
-> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
+> Azure Site Recovery on Azure Stack Hub can only protect VMs that use managed disks. To convert a currently provisioned VM that uses unmanaged disks to managed disks, you can use the process described in [Convert to managed disks](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks). 
+>
+>Unmanaged disks are no longer supported, migrate to managed disks. For details, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
@@ -84,7 +86,7 @@ The following VM OSs were tested and validated, and each has respective Azure St
 |Ubuntu 16.04 LTS Server | Includes support for all 16.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 18.04 LTS Server | Includes support for all 18.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 20.04 LTS server | Includes support for all 20.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines).|
-|Debian 7 | Includes support for versions starting with 7.4 and later (7.2 and earlier are not supported due to a limitation in that version).|
+|Debian 7 | Includes support for versions starting with 7.4 and later (7.2 and earlier aren't supported due to a limitation in that version).|
 |Debian 8 | Includes support for all 8. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|

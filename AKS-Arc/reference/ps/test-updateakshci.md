@@ -1,10 +1,10 @@
 ---
 title: Test-UpdateAksHci for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Test-UpdateAksHci PowerShell command checks whether any target clusters are outside the support window for the latest version of AKS hybrid.
 ms.topic: reference
 ms.date: 05/16/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 05/16/2023
 ms.reviewer: rbaziwane
 

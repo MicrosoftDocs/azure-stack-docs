@@ -1,10 +1,10 @@
 ---
 title: Restrict SSH access to virtual machines in AKS enabled by Azure Arc on Azure Local
 description: Learn how to restrict SSH access in AKS enabled by Arc on Azure Local.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/29/2024
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
 

@@ -4,7 +4,7 @@ description: Get an overview of available storage classes for Kubernetes on Azur
 author: pjw711
 ms.author: peterwhiting
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/22/2025
 ms.custom: template-concept
 ---

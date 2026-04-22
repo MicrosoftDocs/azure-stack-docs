@@ -1,8 +1,8 @@
 ---
 title: AKS Edge Essentials update (offline)
 description: Learn how to update disconnected AKS Edge Essentials clusters.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/30/2023
 ms.custom: template-how-to

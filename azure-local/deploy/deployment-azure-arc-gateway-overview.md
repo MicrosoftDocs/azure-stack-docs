@@ -3,9 +3,10 @@ title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: alkohli
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 12/15/2025
 ms.author: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # About Azure Arc gateway for Azure Local
@@ -15,6 +16,9 @@ ms.service: azure-local
 This article provides an overview of the Azure Arc gateway for Azure Local (formerly known as Azure Stack HCI). You can enable the Arc gateway on new deployments of Azure Local running software version 2506 and later. This article also describes how to create and delete the Arc gateway resource in Azure.
 
 Use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Local instances. When you create the Arc gateway, connect to and use it for new deployments of Azure Local.
+
+> [!NOTE]
+> Although Arc gateway for Azure Local infrastructure and Azure Local VMs is generally available, Arc gateway for AKS on Azure Local is still in preview.
 
 ## How it works
 
@@ -34,7 +38,7 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 ### Traffic flows 1-3 for Azure Local host OS
 
-- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?view=azloc-2509&tabs=script&pivots=register-proxy&preserve-view=true#step-2-set-parameters) for any endpoint that you don't want to send over Arc gateway.
+- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?tabs=register-proxy#step-3-set-parameters) for any endpoint that you don't want to send over Arc gateway.
 
 - Arc gateway doesn't support HTTP traffic. Configure your proxy or firewall to allow the required HTTP endpoints for Azure Local.
 
@@ -63,23 +67,27 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 - The system forwards all Arc HTTPS traffic to the Arc gateway configured for the Azure Local VM.
 - If you want to forward all the HTTP and HTTPS traffic from the Azure Local VM to the Arc gateway, you must configure the OS WinInet and WinHTTP proxy settings to use the Arc proxy that's running on http://\<localhost\>:\<port40343\>.
-- If the Arc gateway doesn't allow endpoints from reaching inside the Azure Local VM, the system sends the traffic to the enterprise proxy or firewall.
+- Traffic intended for endpoints not managed by the Arc gateway is routed through the enterprise proxy or firewall.
 
 For more information about the traffic flows, see [Deep dive into Azure Arc gateway outbound traffic mode for Azure Local](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Arc-Gateway-Outbound-Connectivity/DeepDive-ArcGateway-Outbound-Traffic.md).
-
 
 ## Supported and unsupported scenarios
 
 Use the Arc gateway in the following scenarios for Azure Local:
 
 - Enable Arc gateway during deployment of new Azure Local instances running versions 2506 or later.
-- The Arc gateway resource must be created on the same subscription where you're planning to deploy your Azure Local instance.
+- When a single Arc gateway is shared between an Azure Local instance and its workloads, the Arc gateway resource must reside in the same subscription as the Azure Local instance. If separate Arc gateways are used for the Azure Local instance and its workloads, the gateway associated with the workloads may be created in any subscription within the same tenant that hosts the virtual machines and the gateway.
 
 Unsupported scenarios for Azure Local include:
 
 - You can't enable Arc gateway after deployment.
 
+
 ## Azure Local endpoints not redirected
+
+> [!NOTE]
+> Endpoint requirements may vary by Azure region. For region-specific endpoint lists (for example, Japan East), refer to the [AzureStack-Tools GitHub repository](https://github.com/Azure/AzureStack-Tools/tree/master/HCI) for the latest endpoint mapping.
+> The table in this article represents global defaults.
 
 The endpoints from the following table are required. Add these endpoints to the allowlist in your proxy or firewall to deploy the Azure Local instance:
 
@@ -114,9 +122,11 @@ The endpoints from the following table are required. Add these endpoints to the 
 Arc gateway has the following limitations in this release:
 
 - Arc gateway doesn't support Transport Layer Security (TLS) terminating proxies.
-- Arc gateway doesn't support using ExpressRoute, Site-to-Site VPN, or Private Endpoints together with the Arc gateway.
 
 ## Create the Arc gateway resource in Azure
+
+> [!NOTE]
+> Arc gateway creation is currently impacted by temporary Azure Front Door changes. Resource creation may take up to two 2 hours and can time out, causing failures. If resource creation fails, please try Arc gateway resource creation again.
 
 You can create an Arc gateway resource using the Azure portal, Azure CLI, or Azure PowerShell.
 

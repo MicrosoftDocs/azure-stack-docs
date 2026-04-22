@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-local
 ms.topic: include
-ms.date: 05/13/2024
+ms.date: 01/12/2026
 ---
 
 1. To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
@@ -44,7 +44,7 @@ ms.date: 05/13/2024
     To check if the registry key exists:
    
     ```powershell
-    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" 
+    Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" 
     ```
    
     To reapply the registry keys if needed and reboot each machine for the changes to take effect:

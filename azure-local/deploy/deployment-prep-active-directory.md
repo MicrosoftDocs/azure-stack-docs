@@ -3,10 +3,11 @@ title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/04/2025
+ms.date: 03/25/2026
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Prepare Active Directory for Azure Local deployment
@@ -45,6 +46,13 @@ To manually assign the required permissions for Active Directory, create an OU, 
 
 - If you have a firewall between your Azure Local system and Active Directory, ensure that the proper firewall rules are configured. For specific guidance, see [Firewall requirements for Active Directory Web Services and Active Directory Gateway Management Service](../concepts/firewall-requirements.md). See also [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts#windows-server-2008-and-later-versions).
 
+### Deployment user requirements
+
+The Lifecycle Manager (LCM) deployment user account must meet the following Active Directory requirements for Azure Local deployment and lifecycle management.
+
+- Interactive logon. The deployment user must be allowed to sign in interactively.
+- Log on as a batch job. The deployment user must have the [*Log on as a batch job*](/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/log-on-as-a-batch-job) user rights. Ensure that the default domain policy doesn't deny this right, or explicitly grant it to the deployment user account.
+
 ## Active Directory preparation module
 
 The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory for Azure Local deployments. Here are the required parameters associated with the cmdlet:
@@ -73,14 +81,14 @@ To create a dedicated OU, follow these steps:
 
 1. When prompted, provide the username and password for the deployment.
 
-    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
+    1. Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`. **The username must be 1–20 characters long, contain only letters, numbers, hyphens, and underscores, and can't start with a hyphen or number.**
     1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 14 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.**
 
     Here's a sample output from a successful completion of the script:
 
     ```powershell
     PS C:\work> $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
-    PS C:\work> $user = "ms309deployuser"
+    PS C:\work> $user = "lcmuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
     PS C:\work> New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com"    
     PS C:\work>
@@ -88,7 +96,7 @@ To create a dedicated OU, follow these steps:
 
 1. Verify that the OU is created. If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
 
-1. An OU with the specified name is created. This OU contains the new Lifecycle Manager (LCM) deployment user account.
+1. An OU with the specified name is created. This OU contains the new LCM deployment user account.
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
@@ -109,7 +117,7 @@ We recommend that you follow these best practices for OU creation. These recomme
   - Enable the **Block Inheritance** option at both the parent OU and sub OU levels.
   - To apply a GPO to all Azure Local instances, such as for nesting a domain group in the local administrators group, link the GPO to the parent OU and enable the **Enforced** option. By doing this, you apply the configuration to all sub OUs, even with **Block Inheritance** enabled.
 
-If your organization's processes and procedures require deviations from these recommendations, they are allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
+If your organization's processes and procedures require deviations from these recommendations, they're allowed. However, it's important to consider the security and manageability implications of your design taking these factors into consideration.
 
 ## Next steps
 

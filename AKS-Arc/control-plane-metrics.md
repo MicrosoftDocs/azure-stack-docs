@@ -3,8 +3,8 @@ title: Monitor control plane metrics
 description: Learn how to enable and query control plane metrics from AKS on Azure Local.
 ms.date: 03/26/2025
 ms.topic: how-to
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.reviewer: haojiehang
 
 ---

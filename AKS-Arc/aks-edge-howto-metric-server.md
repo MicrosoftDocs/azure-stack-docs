@@ -1,8 +1,8 @@
 ---
 title: Deploy metrics server on an AKS Edge Essentials cluster
 description: Learn about the steps to deploy a metrics server on an AKS Edge Essentials cluster.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/11/2024
 ms.custom: template-how-to

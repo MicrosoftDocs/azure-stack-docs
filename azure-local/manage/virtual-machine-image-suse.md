@@ -7,7 +7,8 @@ ms.topic: how-to
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/21/2025
+ms.date: 02/11/2026
+ms.subservice: hyperconverged
 ---
 
 # Prepare SUSE Linux image for Azure Local VMs enabled by Azure Arc (preview)
@@ -34,7 +35,7 @@ To convert the QCOW2 image to a virtual hard disk v2 (VHDX) and create an Azure 
 2. [Create a SUSE VM image](#step-2-create-a-suse-vm-image).
 
 > [!IMPORTANT]
-> Do not use an Azure VM VHD disk to prepare the Azure Local VM image.
+> Don't use an Azure VM VHD disk to prepare the Azure Local VM image.
 
 The following sections provide detailed instructions for each step in the workflow.
 

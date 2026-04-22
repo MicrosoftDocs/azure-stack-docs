@@ -1,21 +1,20 @@
 ---
-title: Migrate VMware VMs to Azure Local using Azure Migrate (preview)
-description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate  (preview).
+title: Migrate VMware VMs to Azure Local using Azure Migrate
+description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate.
 author: alkohli
 ms.topic: how-to
-ms.date: 10/31/2024
+ms.date: 10/10/2025
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
-# Migrate VMware VMs to Azure Local using Azure Migrate (preview)
+# Migrate VMware VMs to Azure Local using Azure Migrate
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article describes how to migrate the VMware virtual machines (VMs) to Azure Local using Azure Migrate and includes the steps to verify the migration.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Before you begin
 
@@ -108,7 +107,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations aren't completed, these files will continue to occupy space on the target system.
 
-    After the migrated resource is deleted, it's also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
+    After the migrated resource is deleted, it's also removed from the **Replications** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png":::
 
@@ -122,7 +121,7 @@ Once you have verified that migration is complete and no more machines need to b
 
 ## Enable guest management
 
-After migrating a VM, you may want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
+After migrating a VM, you might want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
 Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Supported Guest OS](/virtualization/hyper-v-on-windows/user-guide/make-integration-service#supported-guest-os).
 

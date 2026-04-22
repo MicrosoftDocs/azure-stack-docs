@@ -1,10 +1,10 @@
 ---
 title: New-AksHciSSHConfiguration for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The New-AksHciSSHConfiguration PowerShell command creates an object for a new SSH configuration.
 ms.topic: reference
 ms.date: 04/26/2023
-ms.author: sethm
+ms.author: davidsmatlak
 ---
 
 # New-AksHciSSHConfiguration

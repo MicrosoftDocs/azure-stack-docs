@@ -1,8 +1,8 @@
 ---
 title: Azure IoT Operations with AKS Edge Essentials
 description: Learn how to run the quickstart script that creates an Arc-enabled AKS Edge Essentials Kubernetes cluster that can run Azure IoT Operations.
-author: rcheeran
-ms.author: rcheeran
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 09/25/2025
 ms.custom: template-how-to
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) Edge Essentials is one of the supported cluster p
 
 To run the script, you need the following prerequisites:
 
-- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- An Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. If you don't have an Azure subscription, [create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - Azure CLI version 2.64.0 or newer installed on your development machine. Use `az --version` to check your version and `az upgrade` to update if necessary. For more information, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the **connectedk8s** extensions for Azure CLI:
 

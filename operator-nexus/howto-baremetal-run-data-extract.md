@@ -1,73 +1,79 @@
 ---
-title: Troubleshoot bare metal machine issues using the `az networkcloud baremetalmachine run-data-extract` command for Azure Operator Nexus
-description: Step by step guide on using the `az networkcloud baremetalmachine run-data-extract` to extract data from a bare metal machine for troubleshooting and diagnostic purposes.
+title: Troubleshoot Bare-Metal Machines with the run-data-extract Command
+description: Learn how to extract data from a bare-metal machine for troubleshooting and diagnostic purposes by using the run-data-extract command.
 author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 2/13/2025
+ms.date: 03/12/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
-# Troubleshoot bare metal machine issues using the `az networkcloud baremetalmachine run-data-extract` command
+# Troubleshoot bare-metal machine issues by using the run-data-extract command
 
-There might be situations where a user needs to investigate and resolve issues with an on-premises bare metal machine. Azure Operator Nexus provides a prescribed set of data extract commands via `az networkcloud baremetalmachine run-data-extract`. These commands enable users to get diagnostic data from a bare metal machine.
-
-The command produces an output file containing the results of the data extract. By default, the data is sent to the Cluster Manager storage account. There's also a preview method where users can configure the Cluster resource with a storage account and identity that has access to the storage account to receive the output.
+Azure Operator Nexus provides a prescribed set of data extract commands via `az networkcloud baremetalmachine run-data-extract` that help users investigate and resolve issues with on-premises bare-metal machines. Users can employ these commands to get diagnostic data from a bare-metal machine.
 
 ## Prerequisites
 
-- This article assumes that the Azure command line interface and the `networkcloud` command line interface extension are installed. For more information, see [How to Install CLI Extensions](./howto-install-cli-extensions.md).
-- The target bare metal machine is on and ready.
+- The Azure CLI and the `networkcloud` CLI extension must be installed. For more information, see [How to install CLI extensions](./howto-install-cli-extensions.md).
+- The target bare-metal machine is on and ready.
 - The syntax for these commands is based on the 0.3.0+ version of the `az networkcloud` CLI.
-- Get the Cluster Managed Resource group name (cluster_MRG) that you created for Cluster resource.
+- The name of the cluster managed resource group (`cluster_MRG`) that you created for the cluster resource.
 
 [!INCLUDE [command-output-settings](./includes/run-commands/command-output-settings.md)]
 
-## Execute a run-data-extract command
+## <a name = "executing-a-run-data-extracts-command"></a> Run a run-data-extract command
 
-The run data extract command executes one or more predefined scripts to extract data from a bare metal machine.
+The `run-data-extract` command runs one or more predefined scripts to extract data from a bare-metal machine.
 
 > [!WARNING]
-> Microsoft doesn't provide or support any Operator Nexus API calls that expect plaintext username and/or password to be supplied. Note any values sent are logged and are considered exposed secrets, which should be rotated and revoked. The Microsoft documented method for securely using secrets is to store them in an Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
+> Microsoft doesn't provide or support any Azure Operator Nexus API calls that require users to supply plaintext usernames or passwords. Values sent are logged and considered exposed secrets, and should be rotated and revoked. We recommend that you securely use secrets by storing them in Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
 
-The current list of supported commands are
+The following commands are currently supported:
 
-- [SupportAssist/TSR collection for Dell troubleshooting](#hardware-support-data-collection)\
-  Command Name: `hardware-support-data-collection`\
+- [SupportAssist or TSR collection for Dell troubleshooting](#hardware-support-data-collection)\
+  Command name: `hardware-support-data-collection`\
   Arguments: Type of logs requested
 
-  - `SysInfo` - System Information
-  - `TTYLog` - Storage TTYLog data
-  - `Debug` - debug logs
+  - `SysInfo`: System information
+  - `TTYLog`: Storage `TTYLog` data
+  - `Debug`: Debug logs
 
-> [!WARNING]
-> As of the `v20250701preview` API version and above, this command will no longer be supported by the non-restricted `run-data-extract` command. To run `mde-agent-information`, See [Executing a run-data-extracts-restricted Command](#executing-a-run-data-extracts-restricted-command).
+  > [!WARNING]
+  > As of the `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `mde-agent-information`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
 
-- [Collect Microsoft Defender for Endpoints (MDE) agent information](#collect-mde-agent-information)\
-  Command Name: `mde-agent-information`\
+- [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
+  Command name: `mde-agent-information`\
   Arguments: None
 
-- [Collect MDE diagnostic support logs](#collect-mde-support-diagnostics)\
-  Command Name: `mde-support-diagnostics`\
+  > [!WARNING]
+  > As of NC4.10 and the `v20250701preview` API version, this command isn't supported by the nonrestricted `run-data-extract` command. To run `mde-support-diagnostics`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
+
+- [Collect Microsoft Defender for Endpoint diagnostic support logs](#collect-mde-support-diagnostics)\
+  Command name: `mde-support-diagnostics`\
   Arguments: None
 
-- [Collect Dell Hardware Rollup Status](#hardware-rollup-status)\
-  Command Name: `hardware-rollup-status`\
+- [Collect Dell hardware rollup status information](#hardware-rollup-status)\
+  Command name: `hardware-rollup-status`\
   Arguments: None
 
-> [!WARNING]
-> As of the `v20250701preview` API version and above, this command will no longer be supported by the non-restricted `run-data-extract` command. To run `cluster-cve-report`, See [Executing a run-data-extracts-restricted Command](#executing-a-run-data-extracts-restricted-command).
+  > [!WARNING]
+  > As of the `v20250701preview` API version and later, this command isn't supported by the nonrestricted `run-data-extract` command. To run `cluster-cve-report`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command).
 
-- [Generate Cluster Common Vulnerabilities and Exposures (CVE) Report](#generate-cluster-cve-report)\
-  Command Name: `cluster-cve-report`\
+- [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
+  Command name: `cluster-cve-report`\
   Arguments: None
 
-- [Collect Helm Releases](#collect-helm-releases)\
-  Command Name: `collect-helm-releases`\
+- [Collect Helm releases](#collect-helm-releases)\
+  Command name: `collect-helm-releases`\
   Arguments: None
-- [Collect `systemctl status` Output](#collect-systemctl-status-output)\
-  Command Name: `platform-services-status`\
+
+- [Collect `systemctl status` output](#collect-systemctl-status-output)\
+  Command name: `platform-services-status`\
+  Arguments: None
+
+- [Collect system diagnostics](#collect-system-diagnostics)\
+  Command name: `collect-system-diagnostics`\
   Arguments: None
 
 The command syntax is:
@@ -80,30 +86,30 @@ az networkcloud baremetalmachine run-data-extract --name "<machine-name>"  \
   --limit-time-seconds "<timeout>"
 ```
 
-Specify multiple commands using json format in `--commands` option. Each `command` specifies command and arguments. For a command with multiple arguments, provide as a list to the `arguments` parameter. See [Azure CLI Shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md) for instructions on constructing the `--commands` structure.
+You can specify multiple commands by using JSON format in the `--commands` option. Each `command` value specifies the command and arguments. For a command with multiple arguments, provide the arguments as a list in the `arguments` parameter. For instructions on how to construct the `--commands` structure, see [Azure CLI shorthand](https://github.com/Azure/azure-cli/blob/dev/doc/shorthand_syntax.md).
 
-These commands can be long running so the recommendation is to set `--limit-time-seconds` to at least 600 seconds (10 minutes). The `Debug` option or running multiple extracts might take longer than 10 minutes.
+These commands can take a long time to run, so we recommend that you set the `--limit-time-seconds` value to at least 1000 seconds (15+ minutes).
 
-In the response, the operation performs asynchronously and returns an HTTP status code of 202. See the [How to view the full output of a command in the associated Storage Account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account) section for details on how to track command completion and view the output file.
+In the response, the operation performs asynchronously and returns an HTTP status code of `202`. To learn how to track command completion and view the output file, go to [How to view the full output of a command in the associated storage account](#how-to-view-the-full-output-of-a-command-in-the-associated-storage-account).
 
-### Hardware Support Data Collection
+### <a name = "hardware-support-data-collection"></a> The hardware-support-data-collection command
 
-This example executes the `hardware-support-data-collection` command and get `SysInfo` and `TTYLog` logs from the Dell Server. The script executes a `racadm supportassist collect` command on the designated bare metal machine. The resulting tar.gz file contains the zipped extract command file outputs in `hardware-support-data-<timestamp>.zip`.
+The following example runs the `hardware-support-data-collection` command and gets `SysInfo`, `TTYLog`, and `Debug` logs from the Dell server. The script runs a `racadm supportassist collect` command on the designated bare-metal machine. The resulting tar.gz file contains the file outputs of the extract command in the ZIP file `hardware-support-data-<timestamp>.zip`.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
   --resource-group "cluster_MRG" \
   --subscription "subscription" \
-  --commands '[{"arguments":["SysInfo", "TTYLog"],"command":"hardware-support-data-collection"}]' \
-  --limit-time-seconds 600
+  --commands '[{"arguments":["SysInfo", "TTYLog","Debug"],"command":"hardware-support-data-collection"}]' \
+  --limit-time-seconds 1000
 ```
 
-**`hardware-support-data-collection` Output**
+#### Output from the `hardware-support-data-collection` command
 
 ```azurecli
 ====Action Command Output====
 Executing hardware-support-data-collection command
-Getting following hardware support logs: SysInfo,TTYLog
+Getting following hardware support logs: SysInfo,TTYLog,Debug
 Job JID_814372800396 is running, waiting for it to complete ...
 Job JID_814372800396 Completed.
 ---------------------------- JOB -------------------------
@@ -125,7 +131,7 @@ Script execution result can be found in storage account:
 https://cm2p9bctvhxnst.blob.core.windows.net/bmm-run-command-output/dd84df50-7b02-4d10-a2be-46782cbf4eef-action-bmmdataextcmd.tar.gz?se=2023-04-14T01%3A00%3A15Zandsig=ZJcsNoBzvOkUNL0IQ3XGtbJSaZxYqmtd%2BM6rmxDFqXE%3Dandsp=randspr=httpsandsr=bandst=2023-04-13T21%3A00%3A15Zandsv=2019-12-12
 ```
 
-**Example list of hardware support files collected**
+#### Example of hardware support files that are collected
 
 ```
 Archive:  TSR20240227164024_FM56PK3.pl.zip
@@ -149,14 +155,11 @@ Archive:  TSR20240227164024_FM56PK3.pl.zip
 [..snip..]
 ```
 
-### Collect MDE Agent Information
+### <a name = "collect-mde-agent-information"></a> Collect Microsoft Defender for Endpoint agent information
 
-Data is collected with the `mde-agent-information` command and formatted as JSON
-to `/hostfs/tmp/runcommand/mde-agent-information.json`. The JSON file is found
-in the data extract zip file located in the storage account. The script executes a
-sequence of `mdatp` commands on the designated bare metal machine.
+You can use the `mde-agent-information` command to run a sequence of `mdatp` commands on the designated bare-metal machine. The collected data is delivered in JSON format to `/hostfs/tmp/runcommand/mde-agent-information.json`. You can find the JSON file in the ZIP file that contains the data extract in the storage account.
 
-This example executes the `mde-agent-information` command without arguments.
+This example runs the `mde-agent-information` command without arguments.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -166,7 +169,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --limit-time-seconds 600
 ```
 
-**`mde-agent-information` Output**
+#### Output from the `mde-agent-information` command
 
 ```azurecli
 ====Action Command Output====
@@ -180,7 +183,7 @@ Script execution result can be found in storage account:
  https://cmzhnh6bdsfsdwpbst.blob.core.windows.net/bmm-run-command-output/f5962f18-2228-450b-8cf7-cb8344fdss63b0-action-bmmdataextcmd.tar.gz?se=2023-07-26T19%3A07%3A22Z&sig=X9K3VoNWRFP78OKqFjvYoxubp65BbNTq%2BGnlHclI9Og%3D&sp=r&spr=https&sr=b&st=2023-07-26T15%3A07%3A22Z&sv=2019-12-12
 ```
 
-**Example JSON object collected**
+#### Example that shows a collected JSON object
 
 ```
 {
@@ -199,11 +202,11 @@ Script execution result can be found in storage account:
 }
 ```
 
-### Collect MDE Support Diagnostics
+### <a name = "collect-mde-support-diagnostics"></a> Collect Microsoft Defender for Endpoint support diagnostics
 
-Data collected from the `mde-support-diagnostics` command uses the MDE Client Analyzer tool to bundle information from `mdatp` commands and relevant log files. The storage account `tgz` file contains a `zip` file named `mde-support-diagnostics-<hostname>.zip`. The `zip` should be sent along with any support requests to ensure the supporting teams can use the logs for troubleshooting and root cause analysis, if needed.
+The data that you collect by using the `mde-support-diagnostics` command employs the Microsoft Defender for Endpoint Client Analyzer tool to bundle information from the `mdatp` commands and relevant log files. The storage account TGZ file contains a ZIP file named `mde-support-diagnostics-<hostname>.zip`. You should send the ZIP file with any support requests so that support teams can use the logs for troubleshooting and root cause analysis.
 
-This example executes the `mde-support-diagnostics` command without arguments.
+This example runs the `mde-support-diagnostics` command without arguments.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -213,7 +216,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --limit-time-seconds 600
 ```
 
-**`mde-support-diagnostics` Output**
+#### Output from the `mde-support-diagnostics` command
 
 ```azurecli
 ====Action Command Output====
@@ -236,9 +239,9 @@ Script execution result can be found in storage account:
  https://cmmj627vvrzkst.blob.core.windows.net/bmm-run-command-output/7c5557b9-b6b6-a4a4-97ea-752c38918ded-action-bmmdataextcmd.tar.gz?se=2024-01-23T20%3A11%3A32Z&sig=9h20XlZO87J7fCr0S1234xcyu%2Fl%2BVuaDh1BE0J6Yfl8%3D&sp=r&spr=https&sr=b&st=2024-01-23T16%3A11%3A32Z&sv=2019-12-12
 ```
 
-After you download the execution result file, the support files can be unzipped for analysis.
+After you download the execution result file, you can unzip the support files for analysis.
 
-**Example list of information collected by the MDE Client Analyzer**
+#### Example list of information collected by the Microsoft Defender for Endpoint Client Analyzer
 
 ```azurecli
 Archive:  mde-support-diagnostics-rack1compute02.zip
@@ -256,12 +259,11 @@ Archive:  mde-support-diagnostics-rack1compute02.zip
 [...snip...]
 ```
 
-### Hardware Rollup Status
+### Hardware rollup status
 
-Data is collected with the `hardware-rollup-status` command and formatted as JSON to `/hostfs/tmp/runcommand/rollupStatus.json`. The JSON file is found
-in the data extract zip file located in the storage account. The data collected shows the health of the machine subsystems.
+The `hardware-rollup-status` command collects data that reflects the health of the machine subsystems. The command writes the JSON-formatted output file to `/hostfs/tmp/runcommand/rollupStatus.json`. You can find the file in the ZIP file that contains the data extract in the storage account.
 
-This example executes the `hardware-rollup-status` command without arguments.
+This example runs the `hardware-rollup-status` command without arguments.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -271,7 +273,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --limit-time-seconds 600
 ```
 
-**`hardware-rollup-status` Output**
+#### Output of the `hardware-rollup-status` command
 
 ```azurecli
 ====Action Command Output====
@@ -284,7 +286,7 @@ Script execution result can be found in storage account:
 https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea38-4394-9db1-21a0d392eff0-action-bmmdataextcmd.tar.gz?se=2023-09-19T18%3A47%3A17Z&sig=ZJcsNoBzvOkUNL0IQ3XGtbJSaZxYqmtd%3D&sp=r&spr=https&sr=b&st=2023-09-19T14%3A47%3A17Z&sv=2019-12-12
 ```
 
-**Example JSON Collected**
+#### Example of collected JSON data
 
 ```
 {
@@ -321,14 +323,14 @@ https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea3
 [..snip..]
 ```
 
-### Generate Cluster CVE Report
+### <a name = "generate-cluster-cve-report"></a> Generate a cluster CVE report
 
-Vulnerability data is collected with the `cluster-cve-report` command and formatted as JSON to `{year}-{month}-{day}-nexus-cluster-vulnerability-report.json`. The JSON file is found in the data extract zip file located in the storage account. The data collected includes vulnerability data per container image in the cluster.
+You can use the `cluster-cve-report` command to collect vulnerability data, which is delivered in JSON format to `{year}-{month}-{day}-nexus-cluster-vulnerability-report.json`. You can find the JSON file in the ZIP file that contains the data extract in the storage account. The data includes vulnerability data per container image in the cluster.
 
-This example executes the `cluster-cve-report` command without arguments.
+This example runs the `cluster-cve-report` command without arguments.
 
 > [!NOTE]
-> The target machine must be a control-plane node or the action doesn't execute.
+> The target machine must be a control-plane node or the action doesn't run.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -338,7 +340,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --limit-time-seconds 600
 ```
 
-**`cluster-cve-report` Output**
+#### Output of the `cluster-cve-report` command
 
 ```azurecli
 ====Action Command Output====
@@ -350,7 +352,7 @@ Script execution result can be found in storage account:
 https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea38-4394-9db1-21a0d392eff0-action-bmmdataextcmd.tar.gz?se=2023-09-19T18%3A47%3A17Z&sig=ZJcsNoBzvOkUNL0IQ3XGtbJSaZxYqmtd%3D&sp=r&spr=https&sr=b&st=2023-09-19T14%3A47%3A17Z&sv=2019-12-12
 ```
 
-**CVE Report Schema**
+#### CVE report schema
 
 ```JSON
 {
@@ -503,18 +505,18 @@ https://cmkfjft8twwpst.blob.core.windows.net/bmm-run-command-output/20b217b5-ea3
 }
 ```
 
-**CVE Data Details**
+#### CVE data details
 
-The CVE data is refreshed per container image every 24 hours or when there's a change to the Kubernetes resource referencing the image.
+The CVE data is refreshed per container image every 24 hours or when there's a change to the Kubernetes resource that references the image.
 
-### Collect Helm Releases
+### Collect Helm releases
 
-Helm release data is collected with the `collect-helm-releases` command and formatted as json to `{year}-{month}-{day}-helm-releases.json`. The JSON file is found in the data extract zip file located in the storage account. The data collected includes all helm release information from the Cluster, which consists of the standard data returned when running the command `helm list`.
+You can use the `collect-helm-releases` command to collect Helm release data, which is delivered in JSON format to `{year}-{month}-{day}-helm-releases.json`. You can find the JSON file in the ZIP file that contains the data extract in the storage account. The data contains all Helm release information from the cluster, which includes the standard data that's returned from a `helm list` command.
 
-This example executes the `collect-helm-releases` command without arguments.
+This example runs the `collect-helm-releases` command without arguments.
 
 > [!NOTE]
-> The target machine must be a control-plane node or the action doesn't execute.
+> The target machine must be a control-plane node, or the action doesn't run.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -524,7 +526,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --limit-time-seconds 600
 ```
 
-**`collect-helm-releases` Output**
+#### Output of the `collect-helm-releases` command
 
 ```azurecli
 ====Action Command Output====
@@ -536,7 +538,7 @@ Script execution result can be found in storage account:
 https://cmcr5xp3mbn7st.blob.core.windows.net/bmm-run-command-output/a29dcbdb-5524-4172-8b55-88e0e5ec93ff-action-bmmdataextcmd.tar.gz?se=2024-10-30T02%3A09%3A54Z&sig=v6cjiIDBP9viEijs%2B%2BwJDrHIAbLEmuiVmCEEDHEi%2FEc%3D&sp=r&spr=https&sr=b&st=2024-10-29T22%3A09%3A54Z&sv=2023-11-03
 ```
 
-**Helm Release Schema**
+#### Helm release schema
 
 ```JSON
 {
@@ -620,12 +622,11 @@ https://cmcr5xp3mbn7st.blob.core.windows.net/bmm-run-command-output/a29dcbdb-552
 }
 ```
 
-### Collect Systemctl Status Output
+#### Collect systemctl status output
 
-Service status is collected with the `platform-services-status` command. The output is in plain text format and
-returns an overview of the status of the services on the host and the `systemctl status` for each found service.
+You can use the `platform-services-status` command to collect service status information. The output is in plaintext format and returns an overview of the status of the services on the host and the `systemctl status` value for each found service.
 
-This example executes the `platform-services-status` command without arguments.
+This example runs the `platform-services-status` command without arguments.
 
 ```azurecli
 az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
@@ -636,7 +637,7 @@ az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" 
   --output-directory "/path/to/local/directory"
 ```
 
-**`platform-services-status` Output**
+#### Output of the `platform-services-status` command
 
 ```azurecli
 ====Action Command Output====
@@ -675,42 +676,223 @@ TriggeredBy: ● atop-rotate.timer
 
 ```
 
+### Collect system diagnostics
+
+You can use the `collect-system-diagnostics` command to collect system diagnostics logs. The command retrieves all necessary logs, which gives you deeper visibility within the bare-metal machine. It collects the following types of diagnostics data:
+
+- System and kernel diagnostics:
+  - **Kernel information**: Logs, human-readable messages, version, and architecture, for in-depth kernel diagnostics.
+  - **Operating system Logs**: Essential logs that detail system activity and container logs for system services.
+
+- Hardware and resource usage:
+  - **CPU and IO throttled processes**: Identifies throttling issues, providing insights into performance bottlenecks.
+  - **Network interface statistics**: Detailed statistics for network interfaces to diagnose errors and drops.
+
+- Software and services:
+  - **Installed packages**: A list of all installed packages, vital for understanding the system's software environment.
+  - **Active system services**: Information on active services, process snapshots, and detailed system and process statistics.
+  - **Container runtime and Kubernetes components logs**: Logs for Kubernetes components and other vital services for cluster diagnostics.
+
+- Networking and connectivity:
+  - **Network connection tracking information**: Connection tracking (Conntrack) statistics and connection lists for firewall diagnostics.
+  - **Network configuration and interface details**: Interface configurations, IP routing, addresses, and neighbor information.
+  - **Any additional interface configuration and logs**: Logs related to the configuration of all interfaces inside the node.
+  - **Network connectivity tests**: Tests external network connectivity and Kubernetes API server communication.
+  - **DNS resolution configuration**: DNS resolver configuration for diagnosing resolution issues with domain names.
+  - **Networking configuration and logs**: Comprehensive networking data, including connection tracking and interface configurations.
+  - **CNI configuration**: Container Network Interface (CNI) configuration for container networking diagnostics.
+
+- Security and compliance:
+  - **SELinux status**: Reports the Security-Enhanced Linux (SELinux) mode to understand access control and security contexts.
+  - **iptables rules**: Configuration of `iptables` rule sets for insights into firewall settings.
+
+- Storage and file systems:
+  - **Mount points and volume information**: Detailed information on mount points, volumes, disk usage, and file system specifics.
+
+- Azure Arc `azcmagent` logs:
+  - Collects log files for the Azure-connected machine agent and extensions and puts them in a ZIP archive.
+
+- **Configuration and management**:
+  - **System configuration**: `Sysctl` parameters for a comprehensive view of kernel runtime configuration.
+  - **Kubernetes configuration and health**: Kubernetes setup details, including configurations and service listings.
+  - **Container runtime information**: Configuration, version information, and details on running containers.
+  - **CRI information**: Operations data for the Container Runtime Interface (CRI), which aids in container orchestration diagnostics.
+
+This example runs the `collect-system-diagnostics` command without arguments.
+
+```azurecli
+az networkcloud baremetalmachine run-data-extract --name "bareMetalMachineName" \
+  --resource-group "cluster_MRG" \
+  --subscription "subscription" \
+  --commands '[{"command":"collect-system-diagnostics"}]' \
+  --limit-time-seconds 900
+```
+
+#### Output of the `collect-system-diagnostics` command
+
+```azurecli
+====Action Command Output====
+Trying to check for root... 
+Trying to check for required utilities... 
+Trying to create required directories... 
+Trying to check for disk space... 
+Trying to start collecting logs... Trying to collect common operating system logs... 
+Trying to collect mount points and volume information... 
+Trying to collect SELinux status... 
+Trying to collect Containerd daemon information... 
+Trying to collect Containerd running information... 
+Trying to collect Container Runtime Interface (CRI) information... Trying to collect CRI information... 
+Trying to collect kubelet information... 
+Trying to collect Multus logs if they exist... 
+Trying to collect azcmagent logs... time="2025-09-09T15:21:55Z" level=info msg="Adding directory /var/opt/azcmagent/log to zip"
+time="2025-09-09T15:21:55Z" level=info msg="Adding directory /var/lib/GuestConfig/arc_policy_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/ext_mgr_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/extension_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/extension_reports to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Adding directory /var/lib/GuestConfig/gc_agent_logs to zip"
+time="2025-09-09T15:21:57Z" level=info msg="Diagnostic logs have been saved to /tmp/azcmagent-logs-3765466.zip."
+
+
+Collecting System logs
+Trying to collect kernel logs... 
+Trying to collect installed packages... 
+Trying to collect active system services... 
+Trying to collect sysctls information... 
+Trying to collect CPU Throttled Process Information... 
+Trying to collect IO Throttled Process Information... 
+Trying to collect conntrack information... conntrack v1.4.8 (conntrack-tools): 1917 flow entries have been shown.
+
+Trying to collect ipvsadm information... 
+Trying to collect kernel command line... 
+Trying to collect configuration files... Collecting Networking logs
+Trying to collect networking information... conntrack v1.4.8 (conntrack-tools): 1916 flow entries have been shown.
+
+Trying to collect CNI configuration information... 
+Trying to collect iptables information... 
+
+Trying to archive gathered information... 
+Finishing up...
+
+	Done... your bundled logs are located in /hostfs/tmp/runcommand/system_diagnostics_bareMetalMachineName_2025-09-09_1519-UTC.tar.gz
+
+
+
+================================
+Script execution result can be downloaded from storage account using the command: 
+ az storage blob download --blob-url https://simdev4003469vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --file runcommand-output-7d601db8-75b7-4af2-94dd-f4f49ee0b0b7.tar.gz --auth-mode login  > /dev/null 2>&1
+```
+
+### <a name = "list-crashdump-files"></a> List kernel crashdump files
+
+Bare metal machines (BMM) support the collection of kernel crash dumps. The latest two crash dumps are stored on the BMM. 
+To list the available kernel crash dumps on a bare metal machine, run the following command:
+
+```azurecli
+az networkcloud baremetalmachine run-data-extracts-restricted \
+  --name <bmm-name> \
+  --resource-group <resource-group-name> \
+  --limit-time-seconds 1200 \
+  --commands '[{"command":"list-kernel-crashdump"}]' \
+  --subscription <sub-id>
+```
+
+#### Output of the `list-kernel-crashdump` command
+
+```azurecli
+====Action Command Output====
+Available Kernel Crashdump files for rack1compute01:
+*rack1compute01-20260211042134.tar.gz*
+Kernel Crashdump file listing is complete for rack1compute01
+ 
+cli.azext_networkcloud.operations.custom_properties:
+================================
+cli.azext_networkcloud.operations.custom_properties: Script execution result can be downloaded from storage account using the command:
+az storage blob download --blob-url https://simdev4704108vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-0c305f1f-22fe-4c3a-8757-2225c3a1f9d0.tar.gz --file runcommand-output-0c305f1f-22fe-4c3a-8757-2225c3a1f9d0.tar.gz --auth-mode login  > /dev/null 2>&1
+```
+
+The output lists the kernel crashdump files on the BMM. The output of the command is also stored in the customer-provided storage account.
+Note that this command only lists the kernel crashdump file names. To download the full crashdump, use the `get-kernel-crashdump` command.
+
+  > [!WARNING]
+  > To run `list-kernel-crashdump`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command). The minimum requirements for executing this command are NC4.10 and the `v20250701preview` API version.
+
+### <a name = "get-crashdump-file"></a> Get kernel crashdump file
+
+You can use the `get-kernel-crashdump` command to download the kernel crashdump file from the BMM to a storage account. The argument to the command is a list of one or more crashdump file names that you want to download.
+
+```azurecli
+az networkcloud baremetalmachine run-data-extracts-restricted \
+  --name <bmm-name> \
+  --resource-group <resource-group-name> \
+  --limit-time-seconds 1200 \
+  --commands '[{"command":"get-kernel-crashdump", "arguments":["<crashdump-filename-1>", "<crashdump-filename-2>"]}]' \
+  --subscription <sub-id>
+```
+
+#### Output of the `get-kernel-crashdump` command
+
+```azurecli
+====Action Command Output====
+Extracting Kernel Crashdump file rack1compute01-20260211042134.tar.gz for rack1compute01 to /hostfs/tmp/runcommand/d85c6e2a-1bfe-4957-9ee0-43bffc33b2b3-action-bmmdataextrstrcmd
+Kernel Crashdump file rack1compute01-20260211042134.tar.gz successfully copied to /hostfs/tmp/runcommand/d85c6e2a-1bfe-4957-9ee0-43bffc33b2b3-action-bmmdataextrstrcmd
+ 
+cli.azext_networkcloud.operations.custom_properties:
+================================
+cli.azext_networkcloud.operations.custom_properties: Script execution result can be downloaded from storage account using the command:
+az storage blob download --blob-url https://simdev4704108vm1sa.blob.core.windows.net/command-output-blob/runcommand-output-00ac21c2-209e-4108-96ec-a3760501be38.tar.gz --file runcommand-output-00ac21c2-209e-4108-96ec-a3760501be38.tar.gz --auth-mode login  > /dev/null 2>&1
+```
+
+  > [!WARNING]
+  > To run `get-kernel-crashdump`, go to [Run a run-data-extracts-restricted command](#executing-a-run-data-extracts-restricted-command). The minimum requirements for executing this command are NC4.10 and the `v20250701preview` API version.
+
 [!INCLUDE [command-output-view](./includes/run-commands/command-output-view.md)]
 
-The downloaded tar.gz file contains the full output and the zipped extract command file outputs.
+The downloaded tar.gz file contains the full output and the file outputs of the extract command in ZIP format.
 
-The command provides a link (if using cluster manager storage) or another command (if using user provided storage) to download the full output. The tar.gz file also contains the zipped extract command file outputs. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
+The command output provides a prompt to download the full output from the user-provided storage account. The tar.gz file also contains the file outputs of the extract command in ZIP format. Download the output file from the storage blob to a local directory by specifying the directory path in the optional argument `--output-directory`.
 
 > [!WARNING]
-> Using the `--output-directory` argument overwrites any files in the local directory that have the same name as the new files being created.
+> The `--output-directory` argument overwrites any files in the local directory that have the same name as the new files you create.
 
-> [!NOTE]
-> Storage Account could be locked resulting in `403 This request is not authorized to perform this operation.` due to networking or firewall restrictions. Refer to the [user managed storage](#send-command-output-to-a-user-specified-storage-account) sections for procedures to verify access.
+The storage account might be locked, and you might receive the error message: "403 This request is not authorized to perform this operation." This error is triggered by networking or firewall restrictions. For procedures that you can use to verify access, go to the [user-managed storage](#send-command-output-to-a-user-specified-storage-account) section.
 
-## Executing a run-data-extracts-restricted Command
+## <a name = "executing-a-run-data-extracts-restricted-command"></a> Run a run-data-extracts-restricted command
 
 ### Prerequisites
-* minimum supported API of `v20250701preview` or `v20250901` and above
-* Storage Blob Container has been configured
-* The target bare metal machine is on and ready.
-* Required `az networkcloud` CLI extension version 4.0.0b1+ version .
-* Get the Cluster Managed Resource group name (cluster_MRG) that you created for Cluster resource.
 
-The `run-data-extracts-restricted` command functionality mirrors non-restricted run-data-extracts command and includes fine-grained access control via RBAC (Role-Based Access Control). It allows customers to run sensitive data extraction operations on BareMetalMachines with elevated privileges.
+- Minimum supported API of `v20250701preview` or `v20250901` and later
+- A configured storage blob container
+- The target bare-metal machine is on and ready.
+- Required `az networkcloud` CLI extension version 4.0.0b1 or later
+- The cluster managed resource group name (`cluster_MRG`) that you created for the cluster resource.
 
-The `run-data-extracts-restricted` is implemented as a new and separate API action. The action is to be introduced in the `v20250701preview` and `v20250901` GA API, and is designed to mirror the behavior of the original command but with restricted access to specific sub-commands. The following list contains the allowed sub commands for`run-data-extracts-restricted`:
+The functionality of the `run-data-extracts-restricted` command mirrors the nonrestricted `run-data-extracts` command and includes fine-grained access control via role-based access control (RBAC). It allows customers to run sensitive data extraction operations on bare-metal machines with elevated privileges.
 
-- [Collect Microsoft Defender for Endpoints (MDE) agent information](#collect-mde-agent-information)\
-  Command Name: `mde-agent-information`\
+You can run the `run-data-extracts-restricted` command as a new and separate API action. The action will be introduced in the `v20250701preview` and `v20250901` versions of the GA API, and will mirror the behavior of the original command but with restricted access to specific subcommands. The following list contains the allowed subcommands for `run-data-extracts-restricted`:
+
+- [Collect Microsoft Defender for Endpoint agent information](#collect-mde-agent-information)\
+  Command name: `mde-agent-information`\
   Arguments: None
 
-- [Generate Cluster Common Vulnerabilities and Exposures (CVE) Report](#generate-cluster-cve-report)\
-  Command Name: `cluster-cve-report`\
+- [Collect Microsoft Defender for Endpoint support diagnostics](#collect-mde-support-diagnostics)\
+  Command name: `mde-support-diagnostics`\
   Arguments: None
 
-Command execution can be performed using `az networkcloud baremetalmachine run-data-extracts-restricted` and it accepts arguments similarly to the `run-data-extract`.
+- [Generate a cluster Common Vulnerabilities and Exposures (CVE) report](#generate-cluster-cve-report)\
+  Command name: `cluster-cve-report`\
+  Arguments: None
 
-**Example**
+- [Get the list of kernel crashdump files on the machine](#list-crashdump-files)\
+  Command name: `list-kernel-crashdump`\
+  Arguments: None
+
+- [Collect the kernel crashdump files from the machine](#get-crashdump-file)\
+  Command name: `get-kernel-crashdump`\
+  Arguments: List of crashdump file names
+
+You can run the command by using `az networkcloud baremetalmachine run-data-extracts-restricted`. It accepts arguments similar to the `run-data-extract` command.
+
+### Example
 
 ```azurecli-interactive
 az networkcloud baremetalmachine run-data-extracts-restricted --name "<machine-name>"  \
@@ -721,6 +903,6 @@ az networkcloud baremetalmachine run-data-extracts-restricted --name "<machine-n
   --output-directory ~/path/to/my/output/directory
 ```
 
+### Storage and output
 
-### Storage and Output
-Output from run command executions are by default stored in the blob container defined by the `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (i.e.BareMetalMachineRunDataExtractsRestricted). For how to specify the commandOutputSettings override for runcommand see [Azure Operator Nexus Cluster support for managed identities and user provided resources](./howto-cluster-managed-identity-user-provided-resources.md).
+The output from `run` command executions is, by default, stored in the blob container defined by `commandOutputSettings`. Override of the `commandOutputSettings` value is supported per command output type (like `BareMetalMachineRunDataExtractsRestricted`). To learn how to specify the `commandOutputSettings` override for the run command, see [Azure Operator Nexus cluster support for managed identities and user-provided resources](./howto-cluster-managed-identity-user-provided-resources.md).

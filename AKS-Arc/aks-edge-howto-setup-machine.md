@@ -1,8 +1,8 @@
 ---
 title: Steps to prepare your machine for AKS Edge Essentials
 description: Learn how to prepare your machines for AKS Edge Essentials clusters. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 09/24/2025
 ms.custom: template-how-to
@@ -32,7 +32,7 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
    | K3s installer (1.31.6) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
    | K8s installer (1.30.5) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi-1.30)  |
    | K3s installer (1.30.6) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi-1.30) |
-   | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
+   | Windows node files | [aka.ms/aks-edge/windows-node-files](https://aka.ms/aks-edge/windows-node-files) |
 
 1. In addition to the MSI, Microsoft provides samples and tools that you can download from the [AKS Edge GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a local folder.
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.

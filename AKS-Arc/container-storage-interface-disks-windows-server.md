@@ -1,10 +1,10 @@
 ---
 title: Use Container Storage Interface (CSI) disk drivers in AKS on Windows Server
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
-ms.author: sethm
+ms.author: davidsmatlak
 
 ---
 

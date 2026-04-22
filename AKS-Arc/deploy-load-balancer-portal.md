@@ -3,8 +3,8 @@ title: Deploy extension for MetalLB for Azure Arc enabled Kubernetes using the A
 description: Learn how to deploy extension for MetalLB for Azure Arc enabled Kubernetes using the Azure portal
 ms.topic: how-to
 ms.date: 07/03/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: abha
 ms.lastreviewed: 04/02/2024
 

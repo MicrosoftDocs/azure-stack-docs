@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/09/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Enable Insights for Azure Local at scale using Azure policies

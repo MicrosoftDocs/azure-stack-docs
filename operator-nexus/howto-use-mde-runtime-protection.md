@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: MDE Runtime Protection"
 description: Learn how to use the MDE Runtime Protection.
-author: sshiba
-ms.author: sidneyshiba
+author: nstone-ms
+ms.author: nathanstone
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/13/2025
@@ -13,7 +13,7 @@ ms.custom: template-how-to
 
 The Microsoft Defender for Endpoint (MDE) runtime protection service provides the tools to configure and manage runtime protection for a Nexus cluster.
 
-The Azure CLI allows you to configure runtime protection **_Enforcement Level_** and the ability to trigger **_MDE Scan_** on all nodes.
+The Azure CLI allows you to configure runtime protection **_Enforcement Level_**, configure **_Definition Update Mode_**, and trigger **_MDE Scan_** on all nodes.
 This document provides the steps to execute those tasks.
 
 > [!NOTE]
@@ -44,10 +44,11 @@ export CLUSTER_NAME="contoso-cluster"
 
 ## Defaults for MDE Runtime Protection
 
-The runtime protection sets to following default values when you deploy a cluster
+The runtime protection sets the following default values when you deploy a cluster
 
 - Enforcement Level: `Disabled` if not specified when creating the cluster
 - MDE Service: `Disabled`
+- Definition Update Mode: `None`
 
 > [!NOTE]
 > The argument `--runtime-protection enforcement-level="<enforcement level>"` serves two purposes: enabling/disabling MDE service and updating the enforcement level.
@@ -56,7 +57,7 @@ If you want to disable the MDE service across your Cluster, use an `<enforcement
 
 ## Configuring enforcement level
 
-The `az networkcloud cluster update` command allows you to update of the settings for Cluster runtime protection _enforcement level_ by using the argument `--runtime-protection enforcement-level="<enforcement level>"`.
+The `az networkcloud cluster update` command allows you to update the settings for Cluster runtime protection _enforcement level_ by using the argument `--runtime-protection enforcement-level="<enforcement level>"`.
 
 The following command configures the `enforcement level` for your Cluster.
 
@@ -87,6 +88,35 @@ You can confirm that enforcement level was updated by inspecting the output for 
     "enforcementLevel": "<enforcement level>"
   }
 ```
+
+## Configuring Definition Update Mode
+The `az networkcloud cluster update` command allows you to update the settings for Cluster runtime protection _definition update mode_ by using the argument `--runtime-protection definition-update-mode="<definition update mode>"`.
+
+The following command configures the `definition update mode` for your Cluster.
+
+```bash
+az networkcloud cluster update \
+--subscription ${SUBSCRIPTION_ID} \
+--resource-group ${RESOURCE_GROUP} \
+--cluster-name ${CLUSTER_NAME} \
+--runtime-protection definition-update-mode="<definition update mode>"
+```
+
+Allowed values for `<definition update mode>`: `None`, `Automatic`.
+
+- `None`: Disables MDE from automatically updating the security intelligence definitions.
+- `Automatic`: Enables MDE to automatically update the security intelligence definitions.
+
+You can confirm that definition update mode was updated by inspecting the output for the following json snippet:
+
+```json
+  "runtimeProtectionConfiguration": {
+    "definitionUpdateMode": "<definition update mode>"
+  }
+```
+
+### Definition Update Behavior by Enforcement Level
+The Enforcement Level determines when definition updates are applied. With Definition Update Mode set to Automatic, updates occur immediately in RealTime and Audit modes. However, in OnDemand or Passive modes, definitions are only updated at scan time, immediately before the scan runs.
 
 ## Triggering MDE scan on all nodes
 

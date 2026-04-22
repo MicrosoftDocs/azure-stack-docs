@@ -1,15 +1,16 @@
 ---
-title: Collect diagnostic logs for Azure Local (preview)
-description: Learn how to collect diagnostic logs and share them with Microsoft (preview).
+title: Collect diagnostic logs for Azure Local
+description: Learn how to collect diagnostic logs and share them with Microsoft.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/08/2025
+ms.date: 02/08/2026
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
-# Collect diagnostic logs for Azure Local (preview)
+# Collect diagnostic logs for Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -39,7 +40,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 - You must have access to an Azure Local instance that is deployed and registered.
 - You must have the necessary permissions to trigger logs. You need to be assigned the **Azure Stack HCI Administrator** role. For more information about assigning roles, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal) or [Assign Azure roles using PowerShell](/azure/role-based-access-control/role-assignments-powershell).
-- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have the `AzureEdgeTelemetryAndDiagnostics` extension installed to collect system-generated logs and metrics information from your Azure Local instance. For information about the extension, see [Azure Local telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Local
 
@@ -47,22 +48,16 @@ You can perform on-demand log collection using any of the following methods:
 
 - **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the system level.
 
-- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
+- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You can save logs to an SMB share, send supplementary logs, or send logs for specific roles only.
 
 Keep in mind the following information before you start log collection:
 
-- The time required for log collection depends on the time range you specify. The longer the time range, the more time it'll take for log collection. Therefore, we recommend limiting the time range to only the logs you need.
+- The time required for log collection depends on the time range you specify. The longer the time range, the more time it takes for log collection. Therefore, we recommend limiting the time range to only the logs you need.
 - Log collections longer than 24 hours aren't supported.
-- Attempting multiple log collections simultaneously will result in a failure.
-- Make sure the `DeviceManagementExtension` version is **1.2510.0.3012 and later**. If it's not, update the connected machine extension on all nodes to ensure compatibility, consistency, and successful log collection. Use the following command.
+- Multiple log collections can't be initiated simultaneously. When a log collection is in progress, the **Send Logs** button is disabled (greyed out).
+- If your cluster runs a build earlier than 2510, the portal shows a banner that says *Device Management Extension is outdated and unsupported*. In this state, the **Send Logs** button is disabled. To collect logs, upgrade your cluster to build 2510 or later.
 
-  - Make sure you replace the extension name and version with the appropriate values for your environment.
-
-      ```powershell
-      $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.12"}} Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
-      ```
-
-  For more information about updating the connected machine extension, see [Update-AzConnectedExtension](/powershell/module/az.connectedmachine/update-azconnectedextension?view=azps-12.5.0&preserve-view=true).
+   :::image type="content" source="./media/collect-logs/device-management-extension-disabled-logs.png" alt-text="Screenshot that shows the banner message and disabled send logs button." lightbox="./media/collect-logs/device-management-extension-disabled-logs.png" :::
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
@@ -85,6 +80,9 @@ Follow these steps to collect diagnostic logs for your Azure Local instance via 
 1. The **Log activity** table shows the status of log collections. For more details on a specific log collection, select the link under **Time collected** and review the details in the **Log detail** pane. If you encounter an issue and need help from Microsoft Support, they might request the **Correlation ID** to locate the logs.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
+
+> [!NOTE]
+> In the Portal, after you start log collection, status updates can take up to five minutes to appear. This is expected behavior.
 
 ## [PowerShell](#tab/powershell)
 
@@ -141,13 +139,13 @@ PS C:\CloudDeployment\logs>
 In this example, you send diagnostic data with role filtering for BareMetal and ECE:
 
 ```powershell
-Send-DiagnosticData -FilterByRole BareMetal, ECE –CollectSddc $false
+Send-DiagnosticData -FilterByRole BareMetal, ECE -CollectSddc $false
 ```
 
 Here's a sample output of this command:
 
 ```output
-PS C:\Users\docsuser> Send-DiagnosticData -FilterByRole BareMetal, ECE –CollectSddc $false
+PS C:\Users\docsuser> Send-DiagnosticData -FilterByRole BareMetal, ECE -CollectSddc $false
 FromDate parameter not specified. Setting to default value 12/04/2023 20:41:21
 ToDate parameter not specified. Setting to default value 12/04/2023 21:41:21
 Converting FromDate and ToDate to UTC
@@ -169,7 +167,7 @@ PS C:\Users\docsuser>
 
 ### Get a history of log collection
 
-You can get a history of all the log collections that you've performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
+You can get a history of all the log collections that you performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
 
 To get a history of log collections for the last 90 days, enter:
 
@@ -215,13 +213,13 @@ You can store diagnostic logs on a local Server Message Block (SMB) share if you
 
 Follow these steps to save logs to a local share:
 
-1. Run the following command to create a share:
+1. To create a share, run the following command:
 
    ```powershell
    New-SMBShare -Name <share-name> -Path <path-to-share> -FullAccess Users -ChangeAccess 'Server Operators'
    ```
 
-1. Run the following commands to create PSCredentials to the share:
+1. To create PSCredential to the share, run the following commands:
 
    ```powershell
    $user = "<username>"
@@ -230,16 +228,16 @@ Follow these steps to save logs to a local share:
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
 
-1. Run the following command on each node of the system to collect logs and save them locally:
+1. To collect logs and save them locally, run the following command on each node of the system:
 
    ```powershell
-   Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
+   Send-DiagnosticData -SaveToPath <path-to-share> -ShareCredential $shareCredential
    ```
 
    If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
 
    ```powershell
-   Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
+   Send-DiagnosticData -NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredential $shareCredential
    ```
 
 ## `Send-DiagnosticData` command reference
@@ -261,7 +259,7 @@ Send-DiagnosticData [[-FilterByRole] <string[]>] [[-FromDate] <datetime>] [[-ToD
 ```powershell
 $fromDate = Get-Date -Date "11/30/2023 18:35:00"
 $toDate = Get-Date -Date "11/30/2023 19:35:00"
-Send-DiagnosticData –FromDate $fromDate –ToDate $toDate
+Send-DiagnosticData -FromDate $fromDate -ToDate $toDate
 ```
 
 **Extension version**
@@ -281,7 +279,7 @@ Send-DiagnosticData [[-FilterByRole] <string[]>]
 **Example**
 
 ```powershell
-Send-DiagnosticData –FilterByRole “ALM” -CollectSddc $false
+Send-DiagnosticData -FilterByRole "ALM" -CollectSddc $false
 ```
 
 **Extension version**
@@ -301,7 +299,7 @@ Send-DiagnosticData [-CollectSddc <bool>]
 **Example**
 
 ```powershell
-Send-DiagnosticData –CollectSddc $false
+Send-DiagnosticData -CollectSddc $false
 ```
 
 **Extension version**
@@ -310,7 +308,7 @@ All
 
 ### BypassObsAgent
 
-When bypassing the observability agent, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
+When the observability agent is bypassed, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
 
 **Syntax**
 ```powershell
@@ -320,7 +318,7 @@ Send-DiagnosticData [-BypassObsAgent]
 **Example**
 
 ```powershell
-Send-DiagnosticData –BypassObsAgent
+Send-DiagnosticData -BypassObsAgent
 ```
 
 **Extension version**
@@ -342,23 +340,23 @@ Send-DiagnosticData -SaveToPath <string> [-FilterByRole <string[]>] [-FromDate <
 You can provide either a share path or an output path on the host to the `SaveToPath` parameter.
 
 ```powershell
-Send-DiagnosticData –SaveToPath <output path>
+Send-DiagnosticData -SaveToPath <output path>
 ```
 
 ```powershell
-Send-DiagnosticData –SaveToPath <share path>
+Send-DiagnosticData -SaveToPath <share path>
 ```
 
-If you’re using a share path that isn't mapped, you must also use the `-ShareCredential` parameter.
+If you're using a share path that isn't mapped, you must also use the `-ShareCredential` parameter.
 
 ```powershell
-Send-DiagnosticData –SaveToPath <share path> -ShareCredential <credentials for share path>
+Send-DiagnosticData -SaveToPath <share path> -ShareCredential <credentials for share path>
 ```
 
 You can use `SaveToPath` with other parameters, such as `FilterByRole`, `FromDate`, `ToDate`, `CollectSddc`, `SupplementaryLogs`, `ShareCredential`, and `BypassObsAgent`.
 
 ```powershell
-Send-DiagnosticData –SaveToPath <output path> -FIlterByRole <role>
+Send-DiagnosticData -SaveToPath <output path> -FilterByRole <role>
 ```
 
 **Extension version**
@@ -371,26 +369,26 @@ The `NoLogCollection` switch parameter allows you to send an ad-hoc set of logs 
 
 - You can combine the `SupplementaryLogs`, `ShareCredential`, and `BypassObsAgent` parameters with the `NoLogCollection` parameter.
 - The `SupplementaryLogs` parameter is mandatory when using `NoLogCollection`. It specifies the path to the logs that need to be sent to Microsoft.
-- You have the flexibility to pass either a share path or an output path on the host to the `SupplementaryLogs` parameter. If you’re using an unmapped share path, you must also use the `-ShareCredential` parameter.
+- You have the flexibility to pass either a share path or an output path on the host to the `SupplementaryLogs` parameter. If you're using an unmapped share path, you must also use the `-ShareCredential` parameter.
 
 **Syntax**
 
 ```powershell
-Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection [-ShareCredential <pscredential>] [-BypassObsAgent]  [<CommonParameters>]
+Send-DiagnosticData [-SupplementaryLogs <string>] -NoLogCollection [-ShareCredential <pscredential>] [-BypassObsAgent]  [<CommonParameters>]
 ```
 
 **Examples**
 
-Use `–NoLogCollection` with the mandatory `SupplementaryLogs` parameter:
+Use `-NoLogCollection` with the mandatory `SupplementaryLogs` parameter:
 
 ```powershell
-Send-DiagnosticData –NoLogCollection –SupplementaryPath <output path>
+Send-DiagnosticData -NoLogCollection -SupplementaryLogs <output path>
 ```
 
-Use `–NoLogCollection` with unmapped share path:
+Use `-NoLogCollection` with unmapped share path:
 
 ```powershell
-Send-DiagnosticData –NoLogCollection –SupplementaryPath <share path>
+Send-DiagnosticData -NoLogCollection -SupplementaryLogs <share path>
 -ShareCredential <credential to share path>
 ```
 
@@ -400,7 +398,7 @@ Versions 1.0.2.0 and above
 
 ### SupplementaryLogs
 
-The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
+The `SupplementaryLogs` parameter allows you to send ad-hoc logs to Microsoft.
 
 **Syntax**
 
@@ -431,19 +429,19 @@ When collecting both diagnostic and ad-hoc logs, you can use the `SupplementaryL
 Without `SaveToPath` or `NoLogCollection`:
 
 ```powershell
-Send-DiagnosticData –SupplementaryLogs <path to adhoc logs to collect>
+Send-DiagnosticData -SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 With `SaveToPath`:
 
 ```powershell
-Send-DiagnosticData –SaveToPath <path> -SupplementaryLogs <path to adhoc logs to collect>
+Send-DiagnosticData -SaveToPath <path> -SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 With `NoLogCollection`:
 
 ```powershell
-Send-DiagnosticData –NoLogCollection –SupplementaryLogs <path to adhoc logs to collect>
+Send-DiagnosticData -NoLogCollection -SupplementaryLogs <path to adhoc logs to collect>
 ```
 
 **Extension version**
@@ -459,7 +457,7 @@ This parameter provides the flexibility to either collect logs and save them to 
 Save logs to a path:
 
 ```powershell
-Send-DiagnosticData [-ShareCredential <pscredential>] -SaveToPath <path>
+Send–DiagnosticData [-ShareCredential <pscredential>] -SaveToPath <path>
 ```
 
 Send logs on a share path to Microsoft:
@@ -473,13 +471,13 @@ Send-DiagnosticData [-ShareCredential <pscredential>] -SupplementaryLogs <path> 
 Save logs to a path:
 
 ```powershell
-Send-DiagnosticData –SaveToPath <share path> -ShareCredential <credential to share path>
+Send-DiagnosticData -SaveToPath <share path> -ShareCredential <credential to share path>
 ```
 
 Send logs on a share path to Microsoft:
 
 ```powershell
-Send-DiagnosticData –NoLogCollection –SupplementaryLogs <share path> –ShareCredential <credential to the share path>
+Send-DiagnosticData -NoLogCollection -SupplementaryLogs <share path> -ShareCredential <credential to the share path>
 ```
 
 **Extension version**
@@ -488,12 +486,12 @@ All
 
 ### (Plan to deprecate) ToSMBShare
 
-This parameter allows you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `-SaveToPath` parameter instead.
+This parameter allows you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `—SaveToPath` parameter instead.
 
 **Syntax**
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <path> [-ShareCredential <pscredential>]
+Send-DiagnosticData -ToSMBShare -SharePath <path> [-ShareCredential <pscredential>]
 ```
 
 **Examples**
@@ -501,42 +499,42 @@ Send-DiagnosticData –ToSMBShare –SharePath <path> [-ShareCredential <pscrede
 Save logs to an output path or share path:
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <output path or share path>
+Send-DiagnosticData -ToSMBShare -SharePath <output path or share path>
 ```
 
-Save logs to a share path that's not mapped:
+Save logs to a share path that isn't mapped:
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <credential for the share path>
+Send-DiagnosticData -ToSMBShare -SharePath <share path> -ShareCredential <credential for the share path>
 ```
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions.
 
 ### (Plan to deprecate) FromSMBShare
 
-This parameter allows you to send logs from an output path or share path directly to Microsoft. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `-NoLogCollection` parameter instead.
+This parameter allows you to send logs from an output path or share path directly to Microsoft. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `—NoLogCollection` parameter instead.
 
 **Syntax**
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <path> [-ShareCredential <pscredential>]
+Send-DiagnosticData -FromSMBShare -SharePath <path> [-ShareCredential <pscredential>]
 ```
 
 **Examples**
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <output path or share path>
+Send-DiagnosticData -FromSMBShare -SharePath <output path or share path>
 ```
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <share path>
+Send-DiagnosticData -FromSMBShare -SharePath <share path>
 ```
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions
 
 ### (Plan to deprecate) SharePath
 
@@ -545,39 +543,39 @@ The SharePath parameter can be used for one of the following purposes:
 - Save diagnostic logs to a share path or output path.
 - Send logs to Microsoft from a share path or output path. If you're using a share path and the share path isn't mapped, then the `ShareCredential` parameter must also be used.
 
-Since this parameter will be removed in future versions of the extension, use the `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft instead.
+Since this parameter will be removed in future versions of the extension, use the `-SaveToPath` parameter instead.
 
 **Syntax**
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <path> [-ShareCredential <pscredential>];
+Send-DiagnosticData -ToSMBShare -SharePath <path> [-ShareCredential <pscredential>];
 ```
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <path> [-ShareCredential <pscredential>];
+Send-DiagnosticData -FromSMBShare -SharePath <path> [-ShareCredential <pscredential>];
 ```
 
 **Examples**
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <output path or share path>
+Send-DiagnosticData -ToSMBShare -SharePath <output path or share path>
 ```
 
 ```powershell
-Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <credential for the share path>
+Send-DiagnosticData -ToSMBShare -SharePath <share path> -ShareCredential <credential for the share path>
 ```
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <output path or share path>
+Send-DiagnosticData -FromSMBShare -SharePath <output path or share path>
 ```
 
 ```powershell
-Send-DiagnosticData –FromSMBShare –SharePath <share path>
+Send-DiagnosticData -FromSMBShare -SharePath <share path>
 ```
 
 **Extension version**
 
-Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
+Currently supported in versions up to 0.1.42; deprecated in later versions.
 
 ### Roles available for filtering logs
 
@@ -635,6 +633,7 @@ When requested, share the following information with Microsoft Support. Get this
 - `CorrelationId`: A unique identifier to locate the logs.
 
 ---
+
 
 ## Next steps
 

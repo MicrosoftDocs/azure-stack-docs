@@ -1,10 +1,10 @@
 ---
 title: Update certificates in AKS on Windows Server
 description: Learn how to update certificates in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: leslielin
 

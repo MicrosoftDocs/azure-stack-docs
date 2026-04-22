@@ -6,6 +6,7 @@ ms.author:  alkohli
 ms.topic: how-to
 ms.date: 06/16/2025
 ms.service: azure-local
+ms.subservice: hyperconverged
 ---
 
 # Rotate secrets on Azure Local

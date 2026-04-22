@@ -3,8 +3,8 @@ title: AKS enabled by Azure Arc on VMware overview (preview)
 description: Learn about AKS enabled by Azure Arc deployment options on VMware.
 ms.topic: overview
 ms.date: 09/15/2025
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: leslielin
 ms.lastreviewed: 09/15/2025
 

@@ -4,16 +4,14 @@ description: This article provides an overview of the Azure Local monitoring sol
 ms.author: alkohli
 ms.topic: concept-article
 author: alkohli
-ms.date: 12/26/2024
+ms.date: 12/09/2025
 ---
 
 # What is Azure Local monitoring?
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [azure-local-banner-23h2](../includes/azure-local-banner-23h2.md)]
-
-This article provides an overview of Azure Local monitoring.
+This article provides an overview of monitoring in hyperconvered deployments of Azure Local (*formerly Azure Stack HCI*).
 
 Monitoring Azure Local involves the regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your Azure Local system.
 
@@ -51,9 +49,9 @@ The following table provides a brief description and setup instructions for each
 
 | Alert type | Description | How to configure |
 | --- | --- | --- |
-| Health alerts | The OS health service monitors for more than 80 health issues, including storage volume capacity, storage QoS, physical disk and network adapter hardware issues, server CPU and memory usage, and cluster configuration. <br>These are system-generated alerts and have no extra cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-local). |
-| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. <br> Predefined templates are available to get you started with Log alerts.| See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
-| Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
+| Health alerts | The OS health service monitors for more than 80 health issues, including storage volume capacity, storage QoS, physical disk and network adapter hardware issues, server CPU and memory usage, and cluster configuration. <br>These alerts are system-generated and have no extra cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Local](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-local). |
+| Log based alerts | These alerts are customer-defined and are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. <br> Predefined templates are available to get you started with Log alerts.| See [Set up log alerts for Azure Local](../manage/setup-system-alerts.md).  |
+| Metric based alerts | These alerts are customer-defined and are used to evaluate metrics of your Azure Local system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Local](../manage/setup-metric-alerts.md). |
 | Recommended alerts | These are predefined metric-based alerts for your Azure Local system resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory. | See [Enable recommended alert rules for Azure Local](../manage/set-up-recommended-alert-rules.md). |
 
 ## High-level architecture

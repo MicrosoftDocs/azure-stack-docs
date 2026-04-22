@@ -2,10 +2,11 @@
 title:  Azure Local security book conclusion
 description: Conclusion for the Azure Local security book.
 author: alkohli
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/11/2025
 ms.author: alkohli
 ms.reviewer: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Azure Local security book conclusion

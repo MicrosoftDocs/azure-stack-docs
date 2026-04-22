@@ -1,10 +1,10 @@
 ---
 title: How to deploy AKS target clusters on different SDN virtual networks
 description: Learn how to deploy AKS Kubernetes target clusters on different software defined networking (SDN) virtual networks.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 12/28/2023
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 06/07/2023
 ms.reviewer: kybisnet
 

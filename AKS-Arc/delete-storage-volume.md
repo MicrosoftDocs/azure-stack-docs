@@ -1,8 +1,8 @@
 ---
 title: AKS on Azure Local issues after deleting storage volumes
 description: Learn how to mitigate issues after deleting storage volumes.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 07/18/2025
 ms.reviewer: guanghu

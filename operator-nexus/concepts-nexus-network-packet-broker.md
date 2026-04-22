@@ -4,7 +4,7 @@ description: Overview of Network Packet Broker for Azure Operator Nexus.
 author: scottsteinbrueck
 ms.author: ssteinbrueck
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 02/16/2024
 ms.custom: template-concept
 ---

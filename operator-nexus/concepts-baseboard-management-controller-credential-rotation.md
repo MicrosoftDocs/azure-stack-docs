@@ -35,3 +35,17 @@ For iDRAC credential rotation to occur, a machine must meet specific criteria wh
 As per these guidelines, a machine doesn't perform automatic rotation if it's `Cordoned`. Likewise, rotation doesn't occur on any machine that isn't `Provision Status: Succeeded`.
 
 For more information on BMM/BMC rotation, see [Credential Rotation](./howto-credential-rotation.md).
+
+## Related content
+
+BMC credential rotation is part of a comprehensive security framework.
+
+- [Azure Operator Nexus security](concepts-security.md)
+- [PKI implementation](concepts-pki-implementation.md)
+- [Access and identity management](concepts-security-access-identity.md)
+- [Network Fabric password rotation](concepts-password-rotation-v1.md)
+- [Credential rotation management](howto-credential-rotation.md)
+- [Use password rotation v1](howto-use-password-rotation-v1.md)
+
+> [!NOTE]
+> BMC credential rotation is automated and managed separately from Network Fabric password rotation. Both systems work together to maintain comprehensive credential security across the platform.

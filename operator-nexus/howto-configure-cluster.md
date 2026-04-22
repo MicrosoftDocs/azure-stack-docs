@@ -17,6 +17,7 @@ This article describes how to create a Cluster by using the Azure Command Line I
 
 - Verify that Network Fabric Controller and Cluster Manager exist in your Azure region
 - Verify that Network Fabric is successfully provisioned
+- Configure managed identities and user-provided resources (Log Analytics Workspace, Storage Account, Key Vault) with correct role assignments. These resources are validated before deployment proceeds. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 
 ## API guide and metrics
 
@@ -121,7 +122,7 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
 | CLUSTER_RG                | The Cluster resource group name                                                                                                                                                                                                                           |
 | ID_TYPE                   | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md) for details on managed identities for user-provided resources                                                                                   |
 | CLUSTER_UAMI              | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md) for details on managed identities for user-provided resources                                                                                   |
-| LAW_ID                    | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md#log-analytics-workspaces-setup) for details on analytics-output-settings                                                                         |
+| LAW_ID                    | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md) for details on analytics-output-settings                                                                                                        |
 | CLUSTER_LOCATION          | The local name of the Cluster                                                                                                                                                                                                                             |
 | AGGR_RACK_RESOURCE_ID     | RackID for Aggregator Rack                                                                                                                                                                                                                                |
 | AGGR_RACK_SKU             | The Rack Stock Keeping Unit (SKU) for Aggregator Rack \*See [Operator Nexus Network Cloud SKUs](./reference-operator-nexus-skus.md)                                                                                                                       |
@@ -156,8 +157,8 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
 | TAG_VALUE1                | Optional tag1 value to pass to Cluster Create                                                                                                                                                                                                             |
 | TAG_KEY2                  | Optional tag2 to pass to Cluster Create                                                                                                                                                                                                                   |
 | TAG_VALUE2                | Optional tag2 value to pass to Cluster Create                                                                                                                                                                                                             |
-| VAULT_URI                 | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md#key-vault-settings) for details on secret-archive-settings                                                                                       |
-| CONTAINER_URI             | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md#storage-accounts-setup) for details on command-output-settings                                                                                   |
+| VAULT_URI                 | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md) for details on secret-archive-settings                                                                                                          |
+| CONTAINER_URI             | See [Cluster Support for Managed Identities](./howto-cluster-managed-identity-user-provided-resources.md) for details on command-output-settings                                                                                                          |
 
 ## Cluster Identity
 
@@ -310,7 +311,7 @@ Example `JSON View` output for the Cluster (Operator Nexus) resource:
     "actionStates": [
       {
         "actionType": "Microsoft.NetworkCloud/clusters/deploy",
-        "correlationId": "196157eb-0c9f-47df-8428-ac2f86cfc816",
+        "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "endTime": "2025-07-28T23:33:27Z",
         "message": "Deploy action completed successfully; cluster deployment initiated and proceeding automatically - monitor progress via cluster detailed status",
         "startTime": "2025-07-28T17:32:50Z",

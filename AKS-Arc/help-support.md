@@ -1,11 +1,11 @@
 ---
 title: Get support for AKS on Azure Local
 description: Learn about how to get support and open a support request for AKS on Azure Local.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/30/2025
 ms.custom: fasttrack-edit
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.reviewer: abha
 ms.lastreviewed: 06/30/2025
 

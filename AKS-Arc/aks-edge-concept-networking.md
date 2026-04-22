@@ -1,9 +1,9 @@
 ---
 title: AKS Edge Essentials networking 
 description: Basic networking concepts for AKS Edge Essentials 
-author: sethmanheim
-ms.author: sethm
-ms.topic: article
+author: davidsmatlak
+ms.author: davidsmatlak
+ms.topic: concept-article
 ms.date: 03/10/2025
 ms.custom: template-concept
 ---

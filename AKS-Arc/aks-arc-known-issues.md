@@ -2,11 +2,10 @@
 title: Troubleshoot known issues in AKS enabled by Azure Arc
 description: Learn about known issues and workarounds in AKS enabled by Arc.
 ms.topic: how-to
-author: sethmanheim
+author: davidsmatlak
 ms.date: 09/30/2025
-ms.author: sethm
-ms.lastreviewed: 07/29/2025
-ms.reviewer: rcheeran
+ms.author: davidsmatlak
+ms.lastreviewed: 02/11/2026
 
 ---
 
@@ -22,6 +21,9 @@ The following section describes known issues for AKS enabled by Azure Arc:
 
 | AKS Arc CRUD operation | Issue | Fix status |
 |------------------------|-------|------------|
+| AKS cluster upgrade    | [Cluster with Azure Policy or Gatekeeper unhealthy after upgrade](cluster-unhealthy-after-kubernetes-upgrade.md)|Active|
+| AKS cluster create     | [Cluster create fails after Azure Local update from 2510](cluster-create-fails-after-azure-local-upgrade.md)|Active|
+| AKS cluster create     | [Can't create AKS cluster with GPU-enabled default node pool](gpu-enabled-cluster-issue.md)|Active|
 | AKS steady state       | [Storage provisioning issue impacting cluster and node pool creation](storage-provision-issue.md)|Active|
 | AKS cluster delete     | [Deleted AKS Arc cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
 | AKS steady state       | [AKS Arc telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Fixed in 2507 release  |

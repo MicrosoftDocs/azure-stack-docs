@@ -6,7 +6,8 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 12/30/2025
+ms.subservice: hyperconverged
 ---
 
 # Review two-node storage switched, fully converged deployment network reference pattern for Azure Local
@@ -21,7 +22,7 @@ For information on other network patterns, see [Azure Local network deployment p
 
 Scenarios for this network pattern include laboratories, branch offices, and datacenter facilities.
 
-Consider this pattern if you plan to add additional nodes and your bandwidth requirements for north-south traffic don't require dedicated adapters. This solution might be a good option when physical switch ports are scarce and you're looking for cost reductions for your solution. This pattern requires additional operational costs to fine-tune the shared host network adapters QoS policies to protect storage traffic from workload and management traffic. SDN L3 services are fully supported on this pattern.
+Consider this pattern if you plan to add additional nodes and your bandwidth requirements for north-south traffic don't require dedicated adapters. This solution might be a good option when physical switch ports are scarce and you're looking for cost reductions for your solution. This pattern requires more operational costs to fine-tune the shared host network adapters QoS policies to protect storage traffic from workload and management traffic. SDN L3 services are fully supported on this pattern.
 
 Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device as they're implemented at the virtual network adapter layer.
 

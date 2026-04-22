@@ -18,9 +18,11 @@ This article provides instructions on how to upgrade an Operator Nexus Kubernete
 * The cluster default upgrade process is a scale-out approach, meaning that at least one extra node is added (or as many nodes as configured in [max surge](#customize-node-surge-or-unavailability-upgrade)). If there isn't sufficient capacity available, the upgrade fails to succeed.
 * When new Kubernetes versions become available, tenant clusters won't undergo automatic upgrades. Users should initiate the upgrade when all network functions in the cluster are ready to support the new Kubernetes version. For more information, see [Upgrade the cluster](#upgrade-the-cluster).
 * Operator Nexus offers cluster-wide upgrades, ensuring consistency across all node pools. Upgrading a single node pool isn't supported. Also, the node image is upgraded as part of the cluster upgrade when a new version is available.
-* Customizations made to agent nodes will be lost during cluster upgrades. It's recommended to place these customizations in `DaemonSet` rather than making manual changes to node configuration in order to preserve them after the upgrade.
+* Customizations made to agent nodes are lost during cluster upgrades. Place these customizations in `DaemonSet` rather than making manual changes to node configuration in order to preserve them after the upgrade.
 * Modifications made to core addon configurations are restored to the default addon configuration as part of the cluster upgrade process. Avoid customizing addon configuration (for example, Calico, etc.) to prevent potential upgrade failures. If the addon configuration restoration encounters issues, it might lead to upgrade failures.
-* When you upgrade the Operator Nexus Kubernetes cluster, Kubernetes minor versions can't be skipped. You must perform all upgrades sequentially by major version number. For example, upgrades between *1.14.x* -> *1.15.x* or *1.15.x* -> *1.16.x* are allowed, however *1.14.x* -> *1.16.x* isn't allowed. If your version is behind by more than one major version, you should perform multiple sequential upgrades.
+* Modifications to etcd configuration are restored to the default configuration as part of the cluster upgrade process. Avoid customizing etcd configuration to prevent potential upgrade failures. If the etcd configuration restoration encounters issues, it might lead to upgrade failures.
+* When you upgrade the Operator Nexus Kubernetes cluster, Kubernetes minor versions can't be skipped. You must perform all upgrades sequentially by minor version number. For example, upgrades between *1.14.x* -> *1.15.x* or *1.15.x* -> *1.16.x* are allowed, however *1.14.x* -> *1.16.x* isn't allowed. If your version is behind by more than one minor version, you should perform multiple sequential upgrades.
+* Some upgrade paths across minor versions can be blocked due to unsupported component upgrade paths nested within the version bundle. Users should ensure that their application supports the upgrade path including all upgrades in the version bundle. Larger jumps across version bundle upgrades increase risk. Update clusters frequently to stay close to the latest version to minimize risk of upgrade failure.
 * The max surge and/or max unavailable values must be set during the cluster creation. You can't change these values after the cluster is created. For more information, see `upgradeSettings` in [Create an Azure Operator Nexus Kubernetes cluster](./quickstarts-kubernetes-cluster-deployment-bicep.md).
 
 ## Prerequisites
@@ -76,14 +78,14 @@ The available upgrade output indicates that there are multiple versions to choos
 You have the flexibility to upgrade to any of the available versions. However, the recommended course of action is to perform the upgrade to the most recent available `major-minor-patch-versionbundle` version.
 
 > [!NOTE]
-> The input format for the version is `major.minor.patch` or `major.minor.patch-versionbundle`. The version input must be one of the available upgrade versions. For example, if the current version of the cluster is `1.1.1-1`, valid version inputs are `1.1.1-2` or `1.1.1-x`. While `1.1.1` is a valid format, it won't trigger any update because the current version is already `1.1.1`. To initiate an update, you can specify the complete version with the version bundle, such as `1.1.1-2`. However, `1.1.2` and `1.2.x` are a valid input and will use the latest version bundle available for `1.1.2` or `1.2.x`.
+> The input format for the version is `major.minor.patch` or `major.minor.patch-versionbundle`. The version input must be one of the available upgrade versions. For example, if the current version of the cluster is `1.1.1-1`, valid version inputs are `1.1.1-2` or `1.1.1-x`. While `1.1.1` is a valid format, it won't trigger any update because the current version is already `1.1.1`. To initiate an update, you can specify the complete version with the version bundle, such as `1.1.1-2`. However, `1.1.2` and `1.2.x` are a valid input and use the latest version bundle available for `1.1.2` or `1.2.x`.
 
 ## Upgrade the cluster
 
 During the cluster upgrade process, Operator Nexus performs the following operations:
 
 * Add a new control plane node with the specified Kubernetes version to the cluster.
-* After the new node has been added, cordon and drain one of the old control plane nodes, ensuring that the workloads running on it are gracefully moved to other healthy control plane nodes.
+* After the new node is added, cordon and drain one of the old control plane nodes. Ensure that the workloads running on it are gracefully moved to other healthy control plane nodes.
 * After the old control plane node has been drained, it's removed, and a new control plane node is added to the cluster.
 * This process repeats until all control plane nodes in the cluster have been upgraded.
 * If upgrading worker nodes via surge (default):

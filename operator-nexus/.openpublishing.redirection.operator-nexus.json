@@ -76,6 +76,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "howto-arc-enroll-virtual-machine-using-managed-identities.md",
+      "redirect_url": "howto-virtual-machines-arc-enroll-using-managed-identities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "troubleshoot-virtual-machine-arc-enroll-with-managed-identity.md",
+      "redirect_url": "troubleshoot-virtual-machines-arc-enroll-with-managed-identities",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "howto-replace-a-terminal-server.md",
       "redirect_url": "howto-replace-terminal-server",
       "redirect_document_id": false
@@ -92,13 +102,43 @@
     },
     {
       "source_path": "release-note-2404.2.md",
-      "redirect_url": "/azure/operator-nexus/release-notes-2404-2",
+      "redirect_url": "/azure/operator-nexus",
       "redirect_document_id": false
     },
     {
       "source_path": "howto-service-principal.md",
       "redirect_url": "/azure/operator-nexus",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "concepts-ab-staged-commit-configuration-update-commit-workflow-v3.md",
+      "redirect_url": "concepts-ab-staged-commit-configuration-update-commit-workflow",
+      "redirect_document_id": false
+    },   
+    {
+      "source_path": "howto-use-ab-staged-commit-configuration-update-commit-workflow-v3.md",
+      "redirect_url": "howto-use-ab-staged-commit-configuration-update-commit-workflow",
+      "redirect_document_id": false
+    },
+        {
+      "source_path": "howto-apply-access-control-list-to-network-to-network-interconnects.md",
+      "redirect_url": "howto-apply-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-create-access-control-list-for-network-to-network-interconnects.md",
+      "redirect_url": "howto-create-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-delete-access-control-list-network-to-network-interconnect.md",
+      "redirect_url": "howto-delete-access-control-list",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "howto-update-access-control-list-for-network-to-network-interconnects.md",
+      "redirect_url": "howto-update-access-control-list",
+      "redirect_document_id": true
     }
   ]
 }

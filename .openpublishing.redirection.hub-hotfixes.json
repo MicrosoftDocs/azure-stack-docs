@@ -379,6 +379,26 @@
       "source_path": "azure-stack/operator/hotfix-1-2406-1-20.md",
       "redirect_url": "/azure-stack/operator/hotfix-1-2406-1-23",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2408-1-38.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2408-1-50",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2408-1-39.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2408-1-50",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2408-1-44.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2408-1-50",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/hotfix-1-2408-1-46.md",
+      "redirect_url": "/azure-stack/operator/hotfix-1-2408-1-50",
+      "redirect_document_id": false
     }
   ]
 }

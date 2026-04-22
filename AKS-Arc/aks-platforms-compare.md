@@ -1,10 +1,10 @@
 ---
 title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Learn about Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: concept-article
 ms.date: 06/16/2025
-ms.author: sethm
+ms.author: davidsmatlak
 ms.reviewer: rmody
 ---
 
@@ -51,7 +51,7 @@ This article describes how AKS extends features across multiple platforms and hi
 |   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Windows node pool support      | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter | - Yes<br>- Windows Server 2022 Datacenter (Core) | - Yes<br>- Windows Server 2019 Datacenter<br>- Windows Server 2022 Datacenter |
-| Linux OS offerings            | - Ubuntu 18.04<br>- Azure Linux | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) | [CBL-Mariner](https://github.com/microsoft/CBL-Mariner) |
+| Linux OS offerings            | - Ubuntu 18.04<br>- Azure Linux | [Azure Linux](https://github.com/microsoft/azurelinux) | [Azure Linux](https://github.com/microsoft/azurelinux) | [Azure Linux](https://github.com/microsoft/azurelinux) |
 | Container runtime             | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes | Containerd for Linux and Windows nodes |
 | Node pool auto-scaler         | - Manual<br>- Auto-scaler<br>- Horizontal pod scaler | - Manual<br>- Auto-scaler | Manual | - Manual<br>- Auto-scaler<br>- Horizontal pod scaler |
 |     Azure Container Registry    |     Yes    |     Yes    |     Yes    |     Yes    |

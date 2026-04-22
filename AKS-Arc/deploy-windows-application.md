@@ -1,10 +1,10 @@
 ---
 title: Deploy Windows .NET applications
 description: Learn how to deploy a Windows.NET application to your Kubernetes cluster using a custom image stored in Azure Container Registry in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: tutorial
 ms.date: 07/03/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

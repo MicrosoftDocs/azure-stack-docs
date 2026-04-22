@@ -1,10 +1,10 @@
 ---
 title: AKS enabled by Azure Arc blogs and announcements
 description: Learn about the latest blogs and announcements for Azure Kubernetes Service (AKS) enabled by Azure Arc.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 07/21/2025
-ms.topic: article
+ms.topic: release-notes
 ms.reviewer: rcheeran
 ms.lastreviewed: 07/21/2025
 

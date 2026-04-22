@@ -4,7 +4,7 @@ description: Cross-subscription deployments and required permissions for Network
 author: sushantjrao
 ms.author: sushrao
 ms.service: azure-operator-nexus
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/17/2024
 ms.custom: template-concept
 ---

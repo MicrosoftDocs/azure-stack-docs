@@ -1,8 +1,8 @@
 ---
 title: GitOps with AKS Edge Essentials
 description: Learn how to use GitOps with AKS Edge Essentials.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/12/2024
 ms.custom: template-how-to

@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot network validation errors
 description: Learn how to troubleshoot general network validation errors in AKS Arc.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 07/17/2025
 ms.reviewer: srikantsarwa

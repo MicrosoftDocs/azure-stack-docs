@@ -1,25 +1,28 @@
 --- 
-title: Register Azure Local with Azure Arc.
+title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: alkohli
 ms.topic: how-to
-ms.date: 09/08/2025
+ms.date: 04/09/2026
 ms.author: alkohli
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
+ms.subservice: hyperconverged
 ---
 
-# Register Azure Local with Azure Arc
+# Register Azure Local with Azure Arc without using Arc gateway
 
-::: moniker range=">=azloc-2506"
+::: moniker range=">=azloc-2505"
 
 ::: zone pivot="register-proxy"
 
-This article details how to register Azure Local machines with Azure Arc and with proxy configuration. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
+This article details how to register Azure Local machines with Azure Arc without using an Arc gateway and with proxy configuration enabled. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
 - **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
+
+For instructions on registering Azure Local machines with Azure Arc using an Arc gateway and with proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-proxy).
 
 # [Via Arc script](#tab/script)
 
@@ -27,8 +30,9 @@ This article details how to register Azure Local machines with Azure Arc and wit
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2506 or later. 
+- You have access to Azure Local machines running release 2505 or later.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 
 > [!IMPORTANT]
@@ -38,21 +42,22 @@ Make sure the following prerequisites are met before proceeding:
 
 Review the parameters used in the script:
 
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-|`ProxyServer`       |Optional parameter. Proxy Server address when required for outbound connectivity. |
-
-
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ProxyServer` | Optional. Proxy Server address when required for outbound connectivity. |
+| `ProxyBypass` | Optional. Define the bypass list for the proxy. Use comma to separate each item from the list. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an Azure Resource Manager (ARM) access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
 
 Set the parameters required for the registration script.
 
-Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+The following example shows how to set the parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
 ```powershell
 #Define the tenant you will use to register your machine as Arc device
@@ -85,6 +90,18 @@ $ProxyServer = "http://proxyaddress:port"
 # NetBIOS name of the Azure Local cluster.
 
 $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
+
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>"
 ```
 
 <details>
@@ -97,57 +114,76 @@ PS C:\Users\SetupUser> $Region = "eastus"
 PS C:\Users\SetupUser> $Tenant = "Tenant ID"
 PS C:\Users\SetupUser> $ProxyServer = "http://192.168.10.10:8080"
 PS C:\Users\SetupUser> $ProxyBypassList = "localhost,127.0.0.1,*.contoso.com,machine1,machine2,machine3,machine4,machine5,192.168.*.*,AzureLocal-1"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 
 </details>
 
-
-
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer -ProxyBypass $ProxyBypassList 
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   # Optional
+   -Proxy $ProxyServer
+   # Optional
+   -ProxyBypass $ProxyBypassList
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
 
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
 
-    <details>
-    <summary>Expand this section to see an example output.</summary>
+   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
-    Here's a sample output of a successful registration of your machines:
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
+   Here's a sample output of a successful registration of your machines:
+
+   ```output
+   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
+   >>
+   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+   Triggering bootstrap on the device...
+   Waiting for bootstrap to complete... Current Status: InProgress
+   =========SNIPPED=========SNIPPED=============
+   Waiting for bootstrap to complete... Current Status: InProgress
+   Waiting for bootstrap to complete... Current Status: Succeeded
+   Bootstrap succeeded.
     
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   Triggering bootstrap log collection as a best effort.
+   Version Response                                                    
+   ------- --------                                                    
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
 
-    PS C:\Users\Administrator>
-    ```
-    </details>
-
+   PS C:\Users\Administrator>
+   ```
+   </details>
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-    :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
 Once the registration is complete, the Azure Local machines are registered in Azure Arc.
+
+### Handle preinstalled or outdated OS images during Azure Arc registration
+
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the setup is successful
 
@@ -159,7 +195,7 @@ After the script completes successfully on all the machines, verify that your ma
    :::image type="content" source="media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Local machines in the resource group after the successful registration." lightbox="./media/deployment-without-azure-arc-gateway/arc-servers-registered-1.png":::
 
 > [!NOTE]
-> Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
+> If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
 
 # [Via Configurator app (Preview)](#tab/app)
 
@@ -173,7 +209,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -289,11 +325,13 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ::: zone pivot="register-without-proxy"
 
-This article details how to register using Azure Arc gateway on Azure Local without the proxy configuration. You can register via the Arc script or the Configurator app.
+This article describes how to register Azure Local machines with Azure Arc without using an Arc gateway and without proxy configuration enabled. You can register via the Arc script or the Configurator app.
 
 - **Configure with a script**: Using this method, configure the registration settings via a script.
 
 - **Set up via the Configurator app**: Configure Azure Arc gateway via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the registration settings interactively.
+
+For instructions on registering Azure Local machines with Azure Arc using an Arc gateway without proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-without-proxy).
 
 # [Via Arc script](#tab/script)
 
@@ -301,9 +339,9 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 Make sure the following prerequisites are met before proceeding:
 
-- You have access to Azure Local machines running release 2506 or later. 
+- You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -313,17 +351,16 @@ Make sure the following prerequisites are met before proceeding:
 
 Review the parameters used in the script:
 
-|Parameters  |Description  |
-|------------|-------------|
-|`TenantID`          |The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.         |
-|`SubscriptionID`    |The ID of the subscription used to register your machines with Azure Arc.         |
-|`ResourceGroup`     |The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist.         |
-|`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-
-
+| Parameters | Description |
+|--|--|
+| `TenantID` | The tenant ID used to register your machines with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property. |
+| `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
+| `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
+| `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate using an ARM access token. If omitted, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
 
 ## Step 2: Set parameters
-
 
 Set the parameters.
 
@@ -341,6 +378,17 @@ $RG = "YourResourceGroupName"
 #Do not use spaces or capital letters when defining region
 $Region = "eastus"
 
+#Optional: Define the Azure Resource Manager access token.
+# Required only if you want to use token-based authentication instead of device code authentication.
+$armTokenResponse = Get-AzAccessToken
+    
+# Convert token to string for use in initialization
+# Required because Get-AzAccessToken returns SecureString
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
+
+# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Example: "12.2602.1002.10"
+$TargetSolutionVersion = "<solution-version>"
 ```
 
 <details>
@@ -351,6 +399,7 @@ PS C:\Users\SetupUser> $Tenant = "Your tenant ID"
 PS C:\Users\SetupUser> $Subscription = "Subscription ID"
 PS C:\Users\SetupUser> $RG = "myashcirg"
 PS C:\Users\SetupUser> $Region = "eastus"
+PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ```
 </details>
 
@@ -358,48 +407,63 @@ PS C:\Users\SetupUser> $Region = "eastus"
 
 ## Step 3: Run registration script
 
+> [!NOTE]
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
-    ```powershell
-    #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-    ```
+   ```powershell
+   Invoke-AzStackHciArcInitialization
+   -TenantId $Tenant
+   -SubscriptionID $Subscription
+   -ResourceGroup $RG
+   -Region $Region
+   -Cloud "AzureCloud"
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
+   ```
 
-    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-
-    ```output
-    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-    >>
-    Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-    Triggering bootstrap on the device...
-    Waiting for bootstrap to complete... Current Status: InProgress
-    =========SNIPPED=========SNIPPED=============
-    Waiting for bootstrap to complete... Current Status: InProgress
-    Waiting for bootstrap to complete... Current Status: Succeeded
-    Bootstrap succeeded.
+   > [!NOTE]
+   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
     
-    Triggering bootstrap log collection as a best effort.
-    Version Response                                                    
-    ------- --------                                                    
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
 
-    PS C:\Users\Administrator>
-    ```
+   ```output
+   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
+   >>
+   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
+   Triggering bootstrap on the device...
+   Waiting for bootstrap to complete... Current Status: InProgress
+   =========SNIPPED=========SNIPPED=============
+   Waiting for bootstrap to complete... Current Status: InProgress
+   Waiting for bootstrap to complete... Current Status: Succeeded
+   Bootstrap succeeded.
+   
+   Triggering bootstrap log collection as a best effort.
+   Version Response                                                    
+   ------- --------                                                    
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
 
-    </details>
+
+   PS C:\Users\Administrator>
+   ```
+
+   </details>
 
 1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-     :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
 
+### Handle preinstalled or outdated OS images during Azure Arc registration
 
+[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
 
 ## Step 4: Verify the setup is successful
 
@@ -424,7 +488,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -511,7 +575,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -533,10 +597,12 @@ Before you begin, make sure that you complete the following prerequisites:
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-    
+
 ::: moniker-end
 
-::: moniker range="azloc-2504||azloc-2503"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2503 or later. The following content applies specifically to release 2503 or 2504.
 
 ::: zone pivot="register-proxy"
 
@@ -580,7 +646,7 @@ Review the parameters used in the script:
 
 1. Set the parameters required for the registration script.
 
-    Here's an example of how you should change these parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
+    The following example shows how to set the parameters for the `Invoke-AzStackHciArcInitialization` initialization script. Once the registration is complete, the Azure Local machines are registered in Azure Arc:
 
     ```PowerShell
     #Define the tenant you will use to register your machine as Arc device
@@ -597,6 +663,7 @@ Review the parameters used in the script:
     
     #Define the proxy address if your Azure Local deployment accesses the internet via proxy
     $ProxyServer = "http://proxyaddress:port"
+
     ```
 
     <details>
@@ -707,7 +774,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -981,7 +1048,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ### Azure Local machine prerequisites
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines..
+- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
 
 - Note down:
 
@@ -991,7 +1058,7 @@ Before you begin, make sure that you complete the following prerequisites:
 ### Azure prerequisites
 
 - Make sure you have the required permissions to register Azure Local machines with Azure Arc. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-   
+
 ## Configure the network and connect to Azure
 
 [!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
@@ -1039,7 +1106,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 
    1. The **Cloud type** is populated automatically as `Azure`.
-   
+
    1. Enter a **Subscription ID** to register the machine.
 
    1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
@@ -1068,7 +1135,7 @@ Before you begin, make sure that you complete the following prerequisites:
 
 1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-arc-register-configurator-app/setup-configuration-authentication.png":::
+   :::image type="content" source="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-without-azure-arc-gateway/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
 
@@ -1082,7 +1149,6 @@ Before you begin, make sure that you complete the following prerequisites:
 
 ::: zone-end
 
-
 ## Related steps
 
 - [Troubleshoot registration issues with Configurator app](../manage/troubleshoot-deployment-configurator-app.md)
@@ -1090,13 +1156,5 @@ Before you begin, make sure that you complete the following prerequisites:
 - After your machines are registered with Azure Arc, proceed to deploy your Azure Local instance via one of the following options:
     - [Deploy via Azure portal](./deploy-via-portal.md)
     - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-
-
-
-::: moniker-end
-
-::: moniker range="<=azloc-2505"
-
-This feature is available only in Azure Local 2506 or later.
 
 ::: moniker-end

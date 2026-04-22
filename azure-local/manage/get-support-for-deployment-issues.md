@@ -5,7 +5,8 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/17/2024
+ms.date: 10/10/2025
+ms.subservice: hyperconverged
 ---
 
 # Get support for Azure Local deployment issues
@@ -20,7 +21,7 @@ The following table outlines potential issues you might encounter during deploym
 
 | Issues | Recommended troubleshooting actions |
 |--|--|
-| - Active directory preparation issues. <br> - Azure Stack HCI Operating System installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| - Active Directory preparation issues. <br> - Azure Stack HCI Operating System installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | - Environment validation issues. <br> - Initialization and registration issues. <br> - Deployment validation issues. <br> - Deployment failure issues. | 1. [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). <br> 2. [Perform standalone log collection](#perform-standalone-log-collection). |
 
 ## Perform standalone log collection
@@ -59,10 +60,9 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 You can use the following commands to get SPN credentials:
 
 ```powershell
-$SPNAppID = "<Your App ID>"  
-$SPNSecret= "<Your SPN Secret>"  
-$SPNsecStringPassword = ConvertTo-SecureString  
-$SPNSecret -AsPlainText -Force  
+$SPNAppID = "<SpnAppId>"  
+$SPNSecret= "<SpnSecret>"  
+$SPNsecStringPassword = ConvertTo-SecureString $SPNSecret -AsPlainText -Force  
 $SPNCred = New-Object System.Management.Automation.PSCredential ($SPNAppID, $SPNsecStringPassword)
 ```
 
@@ -74,9 +74,9 @@ Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -Subscripti
 
 ## Get remote support
 
-In the pre-deployment or pre-registration scenarios, you're prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the system, see [Get remote support for Azure Local](./get-remote-support.md).
+In the predeployment or preregistration scenarios, you're prompted to install and enable remote support via the Environment Checker to evaluate the readiness for deployment. If you enable remote support, Microsoft Support can connect to your device remotely and offer assistance. If you want to get remote support post-deployment of the system, see [Get remote support for Azure Local](./get-remote-support.md).
 
-The high-level workflow to get remote support in the pre-deployment or pre-registration scenario is as follows:
+The high-level workflow to get remote support in the predeployment or preregistration scenario is as follows:
 
 - [Submit a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 - Enable remote support via PowerShell. This is a one-time configuration.
@@ -94,7 +94,7 @@ To enable remote support, follow these steps:
 1. To enable remote support, run the following command. The sample Shared Access Signature (SAS) is provided by the Microsoft support team.
 
    ```powershell
-   Enable-AzStackHciRemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440> -SasCredential <Sample SAS> -PassThru
+   Enable-AzStackHciRemoteSupport -AccessLevel <AccessLevel> -ExpireInMinutes <ExpirationTime> -SasCredential <SasCredential> -PassThru #Access level can be Diagnostics or DiagnosticsRepair
    ```
 
    > [!NOTE]

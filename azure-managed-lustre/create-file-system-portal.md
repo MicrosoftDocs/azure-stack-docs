@@ -2,9 +2,9 @@
 title: Create an Azure Managed Lustre file system by using the Azure portal
 description: Learn how to create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: how-to
-author: pauljewellmsft
-ms.author: pauljewell
-ms.date: 05/02/2025
+author: barbisch
+ms.author: akashdubey
+ms.date: 03/12/2026
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
 ms.custom: sfi-image-nochange
@@ -73,17 +73,21 @@ Currently, the following throughput configurations are available:
 | 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
-> Azure Managed Lustre can support larger storage capacities up to 12.5 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+> Azure Managed Lustre can support larger storage capacities up to 25 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 >
-> If you need cluster sizes greater than 12.5 PiB, you can open a support ticket to discuss additional options.
+> If you need cluster sizes greater than 25 PiB, you can open a support ticket to discuss additional options.
 
 ### Maintenance window
 
 Use the **Maintenance window** setting to control the day and time when system updates can occur.
 
-System updates are typically applied to the service once every two months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
+System updates are typically applied to the service once every three months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
 
-During the maintenance window, user workloads that access the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
+During the maintenance window, user workloads that access the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. New mount attempts may timeout until maintenance completes. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
+
+For containerized or orchestrated workloads (for example, Kubernetes/AKS), the impact may vary, depending on workload design, health checks, and restart policies. Some workloads may restart or be unable to start if they require storage access during this brief window.
+
+You can use service health alerts to receive notification of a pending system update, which includes a date range of when it will be applied. To configure service health alerts for Azure Managed Lustre Filesystem Service, see [Configure Health Alerts](/azure/service-health/overview#using-azure-service-health).
 
 ## Advanced tab
 
@@ -97,7 +101,7 @@ Configuring blob integration during cluster creation is optional, but it's the o
 
 To configure blob integration, follow these steps:
 
-1. Create or configure a storage account and blob containers for integration with the file system. To learn more about the requirements for these resources, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional). The storage account doesn't need to be in the same subscription as the Azure Managed Lustre file system.
+1. Create or configure a storage account and blob containers for integration with the file system. To learn more about the requirements for these resources, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites). The storage account doesn't need to be in the same subscription as the Azure Managed Lustre file system.
 1. Select the **Import/export data from blob** checkbox.
 1. Specify the **Subscription**, **Storage account**, and **Container** values to use with your Lustre file system.
 1. In the **Logging container** box, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.

@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: alkohli
 ms.author: alkohli
 ms.service: azure-local
-ms.date: 07/18/2025
+ms.date: 01/23/2026
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -28,15 +28,10 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 | vTPM | Virtualized version of a hardware TPM that serves as a dedicated vault for keys, certificates, and secrets.  |
 | vTPM state transfer| Preserves vTPM when the VM migrates or fails over within a cluster. |
 | Virtualization-based security (VBS) | Guest in the VM can create isolated regions of memory using VBS support. |
+| Boot integrity verification | Verifies whether the VM started in a known good state (preview). See [Guest attestation](./trusted-launch-guest-attestation.md). |
 
-> [!NOTE]
-> VM guest boot integrity verification isn't available.
 
 ## Guidance
-
-- IgvmAgent is a component that is installed on all machines in the Azure Local system. It enables support for isolated VMs like Trusted launch for Azure Local VMs, for example.
-
-- Trusted launch for Azure Local VMs currently supports only a select set of Azure Marketplace images. For a list of supported images, see [Guest operating system images](#guest-operating-system-images). When you create a Trusted launch VM in the Azure portal, the Image dropdown list shows only the images supported by Trusted launch. The Image dropdown appears blank if you select an unsupported image, including a custom image. The list also appears blank if none of the images available on your Azure Local system are supported by Trusted launch.
 
 - As part of Trusted launch for Azure Local VM creation, Hyper-V creates VM files at a default location on disk to store the VM state. By default, access to those VM files is restricted to host server administrators only. If you store those VM files in a different location, you must ensure that the location is access restricted to host server administrators only.
 
@@ -44,10 +39,10 @@ Trusted launch is a security type that can be specified when you create Azure Lo
 
 ## Guest operating system images
 
-All Windows 11 images (excluding 24H2 Windows 11 SKUs) and Windows Server 2022 images from Azure Marketplace supported by Azure Local VMs are supported. See [Create Azure Local VM image using Azure Marketplace images](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli) for a list of all supported Windows 11 images.
+All Windows images from Azure Marketplace supported by Azure Local VMs are supported. In addition, you can bring your own Windows custom image. For more information, see [Create Azure Local VM image using Azure Marketplace images](./virtual-machine-image-azure-marketplace.md#create-vm-image-from-marketplace-image) for a list of all supported Windows 11 images. Linux images are also supported through bringing your own custom image — to get started see [Using Ubuntu VM Image](virtual-machine-image-linux-sysprep.md), [CentOS VM Image](virtual-machine-image-centos.md), [Red Hat Enterprise VM image](virtual-machine-image-red-hat-enterprise.md), and [SUSE Linux VM image](virtual-machine-image-suse.md).
 
 > [!NOTE]
-> VM guest images obtained outside of Azure Marketplace aren't supported.
+> You can bring your own customized image and use it with Trusted launch VMs. However, since those images have not been validated, guest attestation will be disabled for custom images. For more information see, [Enable guest attestation](trusted-launch-guest-attestation.md).
 
 ## Backup and disaster recovery considerations
 
@@ -55,9 +50,9 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 ### VM backup
 
-- Backup all VM files. You can use any backup solution or tool to backup all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
+- Back up all VM files. You can use any backup solution or tool to back up all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
 
-- Backup VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually backup the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
+- Back up VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually back up the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
 
 ### VM recovery
 
@@ -72,6 +67,17 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 **Restoring to different Azure Local instance**
 
 - In some situations, the VM may be restored to a different Azure Local instance, different from the Azure Local instance where the VM resided before failure. When a Trusted launch VM is successfully restored to a different Azure Local instance, the VM can no longer be managed via the Azure Arc control plane, but it can be managed using local VM management tools.
+
+### VM replication
+
+Azure Site Recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
+
+## Supported operations
+
+See [Supported Operations for Azure Local Virtual Machines (VMs) Enabled by Azure Arc](virtual-machine-operations.md) for a list of supported and unsupported VM operations.
+
+> [!NOTE]
+> VM cloning or VM copying isn't supported currently as it can result in corruption, management errors, or failure to start.
 
 ## Next steps
 

@@ -1,8 +1,8 @@
 ---
 title: Local Path Provisioner on AKS Edge
 description: Learn how to use the Local Path Provisioner tool on AKS Edge Essentials.
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/17/2023
 ms.custom: template-how-to

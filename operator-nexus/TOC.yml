@@ -52,8 +52,6 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
-        - name: Commit Workflow v2
-          href: concepts-commit-workflow-v2.md
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
@@ -63,8 +61,17 @@
               href: concepts-nexus-route-policies-overview.md
             - name: IP Prefixes Overview
               href: concepts-nexus-ip-prefix.md
-        - name: Azure Firewall outbound rules for Azure Operator Nexus
-          href: concepts-azure-firewall-outbound-rules-nexus.md
+        - name: Commit Workflow
+          expanded: false
+          items:
+            - name: Commit Workflow v2
+              href: concepts-commit-workflow-v2.md
+            - name: Disable internal/external networks in an enabled layer 3 isolation domain
+              href: concepts-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
+            - name: A / B staged configuration update - commit workflow in Azure Operator Nexus
+              href: concepts-ab-staged-commit-configuration-update-commit-workflow.md     
+        - name: Network Fabric Quality of Service (QoS) in Azure Operator Nexus 
+          href: concepts-network-fabric-quality-of-service.md        
         - name: Isolation Domains
           expanded: false
           items:
@@ -102,12 +109,16 @@
           href: concepts-internal-network-bgp-metrics.md
     - name: Security
       href: concepts-security.md
+    - name: PKI implementation
+      href: concepts-pki-implementation.md
     - name: Control Plane Resiliency
       href: concepts-rack-resiliency.md
     - name: Access and Identity
       href: concepts-security-access-identity.md
     - name: Availability
       href: concepts-nexus-availability.md
+    - name: Hardware Validation
+      href: concepts-hardware-validation-overview.md
     - name: Credential
       expanded: false
       items:
@@ -172,8 +183,6 @@
               href: cluster-jsonc-example.md
             - name: Cluster Parameters JSON Example
               href: cluster-parameters-jsonc-example.md
-            - name: Instance Readiness Testing
-              href: howto-run-instance-readiness-testing.md
             - name: Cluster Upgrades
               href: howto-cluster-runtime-upgrade.md
             - name: Cluster Upgrades With PauseAfterRack Strategy
@@ -186,6 +195,8 @@
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Certificate Rotation
+              href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault
               href: how-to-credential-manager-key-vault.md
             - name: Updating ExpressRoute Gateway Authorization Key in Azure Operator Nexus
@@ -206,13 +217,13 @@
         - name: Validate cables for Nexus Network Fabric
           href: how-to-validate-cables.md
         - name: Creating Access Control Lists (ACLs)
-          href: howto-create-access-control-list-for-network-to-network-interconnects.md
-        - name: Apply ACLs to Network-to-Network Interconnects (NNI)
-          href: howto-apply-access-control-list-to-network-to-network-interconnects.md
-        - name: Updating ACL on Network-for-Network Interconnects (NNI)
-          href: howto-update-access-control-list-for-network-to-network-interconnects.md
-        - name: Delete ACLs associated with Network-to-Network Interconnects (NNI)
-          href: howto-delete-access-control-list-network-to-network-interconnect.md
+          href: howto-create-access-control-list.md
+        - name: Apply ACLs to resources
+          href: howto-apply-access-control-list.md
+        - name: Updating ACL on resources
+          href: howto-update-access-control-list.md
+        - name: Delete ACLs associated with resources
+          href: howto-delete-access-control-list.md
         - name: How to Configure Diagnostic Settings and Monitor Configuration Differences in Nexus Network Fabric
           href: howto-configure-diagnostic-settings-monitor-configuration-differences.md
         - name: How to Delete L3 Isolation Domains in Azure Nexus Network Fabric
@@ -265,6 +276,22 @@
           href: howto-use-password-rotation-v1.md
         - name: How to set administrative lock or unlock for Network fabric
           href: howto-set-administrative-lock-or-unlock-for-network-fabric.md
+        - name: How to perform A / B staged configuration update - commit workflow in Azure Operator Nexus
+          href: howto-use-ab-staged-commit-configuration-update-commit-workflow.md
+        - name: How to disable internal/external networks in an enabled layer 3 isolation domain
+          href: howto-disable-internal-external-networks-enabled-layer-3-isolation-domain.md
+        - name: How to Configure Quality of Service (QoS) in Azure Operator Nexus
+          href: howto-network-fabric-quality-of-service.md
+        - name: How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus
+          href: howto-configure-network-tap-rules-with-user-assigned-managed-identity.md
+        - name: How to disable or enable network interface
+          href: howto-disable-enable-network-interface.md
+        - name: How to enable System Assigned Managed Identity (SAMI) for the Network Fabric Controller
+          href: howto-enable-system-assigned-managed-identity-for-network-fabric-controller.md
+        - name: How to enable System Assigned Managed Identity (SAMI) for the Network Fabric resource
+          href: howto-enable-system-assigned-managed-identity-for-network-fabric-resource.md                   
+        - name: How-to usage guide for Customer Managed Key Vault
+          href: howto-usage-guide-for-customer-managed-key-vault.md
     - name: Cluster
       expanded: false
       items:
@@ -329,6 +356,10 @@
           href: howto-virtual-machine-placement-hints.md
         - name: Gather VM Console Data
           href: howto-gather-vm-console-data.md
+        - name: Create virtual machines with managed identities and authentication steps
+          href: howto-virtual-machines-authenticate-with-managed-identities.md
+        - name: Arc enroll virtual machines with managed identities for authentication and access token
+          href: howto-virtual-machines-arc-enroll-with-managed-identities.md
     - name: Observability
       expanded: false
       items:
@@ -358,6 +389,8 @@
       items:
         - name: Storage Appliance Run-Read Commands
           href: howto-storage-run-read.md
+        - name: Storage Appliance Component Repair
+          href: howto-storage-device-repair.md
     - name: Install CLI Extension
       href: howto-install-cli-extensions.md
     - name: General
@@ -463,6 +496,8 @@
               href: troubleshoot-kubernetes-cluster-stuck-workloads-due-to-power-failure.md
         - name: Troubleshoot a Kubernetes Cluster Node in NotReady,Scheduling Disabled after Runtime Upgrade
           href: troubleshoot-kubernetes-cluster-node-cordoned.md
+        - name: Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities
+          href: troubleshoot-virtual-machines-arc-enroll-with-managed-identities.md
 - name: FAQ
   href: azure-operator-nexus-faq.md
 - name: Reference
@@ -519,10 +554,4 @@
       href: reference-operator-nexus-skus.md
     - name: Password By Key Vault Reference
       href: reference-key-vault-credential.md
-- name: Release Notes
-  items:
-    - name: 2024
-      expanded: false
-      items:
-        - name: 2404.2
-          href: release-notes-2404-2.md
+

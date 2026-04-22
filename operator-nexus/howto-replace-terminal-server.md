@@ -51,7 +51,7 @@ Set up the terminal server device with the same password and username as before.
 
 ### Microsoft engineering support
 
-After the new Terminal Server is installed and configured, open a support ticket with Microsoft to complete the setup. Microsoft engineers will trigger a lockbox action for *Reprovisioning Terminal Server Device*.
+After the new Terminal Server is installed and configured, open a support ticket with Microsoft to complete the setup. When creating the support ticket, ensure that the new Terminal Server serial number is provided. Microsoft engineers will trigger a lockbox action for *Reprovisioning Terminal Server Device*.
 
 >[!Note]
 >The user is expected to setup the terminal server with the same username and password as stored in customer NFC key vault.

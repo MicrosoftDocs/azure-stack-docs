@@ -1,10 +1,10 @@
 ---
 title: Create and use a custom load balancer with Azure Kubernetes Service on Windows Server
 description: Learn how to create and use a custom load balancer with Azure Kubernetes Service on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 

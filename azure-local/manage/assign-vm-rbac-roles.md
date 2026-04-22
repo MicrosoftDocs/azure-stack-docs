@@ -5,8 +5,9 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/29/2025
+ms.date: 04/07/2026
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc 
@@ -15,14 +16,14 @@ ms.custom: sfi-image-nochange
 
 This article describes how to use the Role-based Access Control (RBAC) to control access to Azure Local virtual machines (VMs) enabled by Azure Arc.
 
-You can use the built-in RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
+You can use the built-in RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks, and storage paths. You can assign these roles to users, groups, service principals, and managed identities.
 
 ## About built-in RBAC roles
 
 To control access to VMs and VM resources on Azure Local, you can use the following RBAC roles:
 
-- **Azure Stack HCI Administrator** - This role grants full access to your Azure Local instance and its resources. An Azure Stack HCI administrator can register the system as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. They can also create shared resources such as logical networks, VM images, and storage paths.
-- **Azure Stack HCI VM Contributor** - This role grants permissions to perform all VM actions such as start, stop, restart the VMs. An Azure Stack HCI VM Contributor can create and delete VMs, as well as the resources and extensions attached to VMs. An Azure Stack HCI VM Contributor can't register the system or assign roles to other users, nor create system-shared resources such as logical networks, VM images, and storage paths.
+- **Azure Stack HCI Administrator** - This role grants full access to your Azure Local instance and its resources. An Azure Stack HCI administrator can register the system and assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users. They can also create shared resources such as logical networks, VM images, and storage paths.
+- **Azure Stack HCI VM Contributor** - This role grants permissions to perform all VM actions such as start, stop, restart the VMs. An Azure Stack HCI VM Contributor can create and delete VMs and the resources and extensions attached to VMs. An Azure Stack HCI VM Contributor can't register the system, assign roles to other users, or create system-shared resources such as logical networks, VM images, and storage paths.
 - **Azure Stack HCI VM Reader** - This role grants permissions to only view the VMs. A VM reader can't perform any actions on the VMs or VM resources and extensions.
 
 Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources. The VM resources are referred to resources required to create a VM and include virtual disks, network interfaces, VM images, logical networks, and storage paths:
@@ -40,6 +41,9 @@ Before you begin, make sure to complete the following prerequisites:
 1. Make sure that complete the [Azure Local requirements](./azure-arc-vm-management-prerequisites.md).
 
 1. Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
+
+    > [!IMPORTANT]
+    > We recommend using the same Azure subscription for Azure Local infrastructure and workloads, including Azure Local VMs enabled by Azure Arc. While RBAC supports cross-subscription role assignments, there are known limitations when using the Azure CLI to create or manage Azure Local resources across subscriptions.
 
 ## Assign RBAC roles to users
 

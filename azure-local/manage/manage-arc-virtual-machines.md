@@ -5,8 +5,9 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 08/27/2025
+ms.date: 04/07/2026
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # Manage Azure Local VMs enabled by Azure Arc
@@ -23,6 +24,8 @@ This article describes how to manage Azure Local virtual machines (VMs) enabled 
 
 - One or more Azure Local VMs running on your Azure Local instance. For more information, see [Create Azure Local virtual machines](./create-arc-virtual-machines.md).
 
+- The Azure Local VM must have access to public network connectivity to enable guest management.
+
 ## Enable guest management
 
 It's important to understand two agents in the context of guest management: a VM guest agent and an Azure Connected Machine agent. Every Azure Local VM created via the Azure portal or the Azure CLI is provisioned with a guest agent (also called `mocguestagent`) on it.
@@ -32,7 +35,7 @@ When you enable guest management on an Azure Local VM, the guest agent installs 
 Here are some key considerations for enabling guest management on a VM after you provision it:
 
 - Make sure that your Azure Local instance is running 2311.2 or later.
-- Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
+- Enabling guest management isn't supported for Windows Server 2012 and Windows Server 2012 R2 or any guest operating system that does not have support for Hyper-V sockets. For more information, see [Make your own integration services](/windows-server/virtualization/hyper-v/make-integration-service).
 - The steps to enable guest management differ based on whether a guest agent is running on your Azure Local VM.
 
 ### Verify that the guest agent is running
@@ -151,7 +154,7 @@ Follow these steps:
 
 #### Status displayed as null
 
-The following sample output snippet shows a null status. This status indicates that the required `iso` for the guest agent is missing.
+The following example output snippet shows a null status. This status indicates that the required `iso` for the guest agent is missing.
 
 ```output
 "instanceView": {
@@ -966,19 +969,8 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
    :::image type="content" source="./media/manage-arc-virtual-machines/change-cores-memory.png" alt-text="Screenshot of the pane for changing cores and memory size of a VM." lightbox="./media/manage-arc-virtual-machines/change-cores-memory.png":::
 
-## Change dynamic memory
-
-You can change the dynamic memory of a VM using CLI to specify these parameters:
-
-`--hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20`
-
-Note that `minimum-memory-mb` is less than or equal to `memory-mb` and `maximum-memory-mb` is greater than or equal to `memory-mb`.
-
-Here is a sample script:
-
-```azurecli
-az stack-hci-vm create --name "my_dynmemory" -g my_registration" --admin-username "admin" --admin-password "" --custom-location "/subscriptions/my_subscription/resourceGroups/my_registration/providers/Microsoft.ExtendedLocation/customLocations/my_customlocation" --location "eastus2euap" --image "/subscriptions/my_subscription/resourceGroups/my_registration/microsoft.azurestackhci/marketplacegalleryimages/2022-datacenter-azure-edition-core-01" --hardware-profile vm-size="Custom" processors=1 memory-mb=1024 maximum-memory-mb=2048 minimum-memory-mb=1024 target-memory-buffer=20 --enable-agent true --nics "dynnic"
-```
+> [!NOTE]
+> When updating only the memory of a VM, the VM remains running. A restart may be required only if the guest OS doesn't support live memory updates.
 
 ## Related content
 

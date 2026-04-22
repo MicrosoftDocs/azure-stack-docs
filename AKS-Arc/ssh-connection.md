@@ -1,11 +1,11 @@
 ---
 title: Connect with SSH to Azure Kubernetes Service nodes
 description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS on Windows Server.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 07/03/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

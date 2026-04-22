@@ -1,10 +1,10 @@
 ---
 title: Set-AksHciRegistration for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Set-AksHciRegistration PowerShell command registers Azure Kubernetes Service on AKS hybrid with Azure.
 ms.topic: reference
 ms.date: 04/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

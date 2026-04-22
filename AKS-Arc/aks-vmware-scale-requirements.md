@@ -1,10 +1,10 @@
 ---
 title: Scale requirements for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about scale requirements for AKS Arc on VMware.
-ms.topic: article
+ms.topic: limits-and-quotas
 ms.date: 03/26/2024
-author: sethmanheim
-ms.author: sethm 
+author: davidsmatlak
+ms.author: davidsmatlak 
 ms.reviewer: leslielin
 ms.lastreviewed: 03/26/2024
 

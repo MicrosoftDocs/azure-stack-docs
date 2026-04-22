@@ -1,8 +1,8 @@
 ---
 title: Deploy an application
 description: Describes how to deploy a containerized application to a Kubernetes cluster. 
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 05/01/2024
 ms.custom: template-how-to, linux-related-content

@@ -1,10 +1,10 @@
 ---
 title: Use PowerShell to set up Kubernetes on Windows Server clusters 
 description: Learn how to set up an AKS host and create Kubernetes clusters using Windows PowerShell.
-author: sethmanheim
+author: davidsmatlak
 ms.topic: quickstart
 ms.date: 06/16/2025
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: abha
 ms.custom:

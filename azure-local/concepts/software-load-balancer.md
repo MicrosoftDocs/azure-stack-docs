@@ -1,12 +1,13 @@
 ---
-title: Software Load Balancer (SLB) for SDN in Azure Local and Windows Server
-description: Use this article to learn about Software Load Balancer for Software Defined Networking in Azure Local and Windows Server.
-author: AnirbanPaul
-ms.author: anpaul
+title: Software Load Balancer (SLB) for SDN managed by on-premises tools in Azure Local and Windows Server
+description: Use this article to learn about Software Load Balancer for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
+author: alkohli
+ms.author: alkohli
 ms.topic: overview
 ms.service: azure-local
-ms.date: 10/25/2024
+ms.date: 10/10/2025
 ms.custom: sfi-image-nochange
+ms.subservice: hyperconverged
 ---
 
 # What is Software Load Balancer (SLB) for SDN?
@@ -100,7 +101,7 @@ With internal traffic load balancing, the first request is sent to and processed
 
 ### Health probes
 
-Software Load Balancer includes health probes to validate the health of the network infrastructure, including the following:
+Software Load Balancer includes the following health probes to validate the health of the network infrastructure:
 
 - TCP probe to port
 

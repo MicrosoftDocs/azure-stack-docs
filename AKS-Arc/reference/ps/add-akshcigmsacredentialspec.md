@@ -1,10 +1,10 @@
 ---
 title: Add-AksHciGmsaCredentialSpec for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Add-AksHciGmsaCredentialSpec PowerShell command adds a credentials spec for gMSA deployments on a cluster.
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

@@ -16,10 +16,15 @@ HWV is run as part of a cluster deploy action and a bare metal `replace` action.
 HWV validates a Bare Metal Machine (BMM) by executing test cases against the baseboard management controller (BMC).
 The Azure Operator Nexus platform is deployed on Dell servers. Dell servers use the integrated Dell remote access controller (iDRAC), which is the equivalent of a BMC.
 
+For background information about hardware validation, when it runs, and what it checks, see [Azure Operator Nexus hardware validation overview](./concepts-hardware-validation-overview.md).
+
 [!INCLUDE [prerequisites-azure-cli-bare-metal-machine-actions](./includes/baremetal-machines/prerequisites-azure-cli-bare-metal-machine-actions.md)]
 
 1. Request access to the cluster's Log Analytics workspace (LAW).
 1. Access to the BMC web UI or a jumpbox that allows the `racadm` utility to run.
+
+> [!TIP]
+> If you arrived here from a failed Replace action, see [Replace a Bare Metal Machine](./howto-baremetal-functions.md#replace-a-bare-metal-machine) for context on the Replace workflow.
 
 ## Locate hardware validation results
 
@@ -231,7 +236,7 @@ The HWV framework identifies problematic firmware versions and attempts to fix t
 ```
 
 > [!NOTE]
-> The HWV firmware auto fix framework was expanded to include BIOS for Ice Lake models in release 2509.1 (NC4.6.0).
+> The HWV firmware auto fix framework was expanded to include CPLD for Ice Lake models in release 2510.1 (NC4.7.0).
 
 ### Drive info category
 
@@ -344,7 +349,7 @@ To check a specific NIC with `racadm`, provide the fully qualified device descri
 racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD hwinventory NIC.Embedded.1-1-1
 ```
 
-To troubleshoot, ensure that servers are cabled correctly and that ports are linked up. Bounce the port on the fabric. Perform a flea drain. If the problem persists, contact the vendor.
+To troubleshoot, ensure that servers are cabled correctly, and that ports are linked up. Bounce the port on the fabric. Perform a flea drain. If the problem persists, contact the vendor.
 
 #### NIC check Layer 2 switch information
 
@@ -634,7 +639,7 @@ Reseating the power supply might fix the problem. If alarms persist, contact the
 
 ### Boot info category
 
-#### Boot device name check considerations
+#### Boot device check considerations
 
 - The `boot_device_name` check is currently informational.
 - A mismatched boot device name shouldn't trigger a device failure.
@@ -648,10 +653,33 @@ Reseating the power supply might fix the problem. If alarms persist, contact the
 }
 ```
 
+- The `boot_device_state` check validates boot device state.
+
+```json
+{
+  "field_name": "boot_device_state",
+  "comparison_result": "Fail",
+  "expected": "Enabled",
+  "fetched": "Disabled"
+}
+```
+
+To update the boot device state in the BMC web UI, set the checkmark on the first Unified Extensible Firmware Interface (UEFI) Boot Device and then select **Apply\*#### > **Apply and reboot\*\*:
+
+- `BMC` -> `Configuration` -> `BIOS Settings` -> `UEFI Boot Settings` -> `UEFI Boot Sequence` -> `Checked`
+
+To update the PXE device state with `racadm`, run the following commands:
+
+```shell
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD racadm set BIOS.BiosBootSettings.SetBootOrderEn NIC.PxeDevice.1-1
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD jobqueue create BIOS.Setup.1-1
+racadm --nocertwarn -r $IP -u $BMC_USR -p $BMC_PWD serveraction powercycle
+```
+
 #### PXE device checks considerations
 
 - This check validates the PXE device settings.
-- Since the `2024-07-01` GA API version, HWV attempts to automatically fix the BIOS boot configuration.
+- HWV attempts to automatically fix the PXE boot configuration.
 - Failed `pxe_device_1_name` or `pxe_device_1_state` checks indicate a problem with the PXE configuration.
 - Failed settings must be fixed to enable system boot during deployment.
 

@@ -2,8 +2,8 @@
 title: Troubleshoot deleted cluster still visible in portal
 description: Learn how to troubleshoot deleted cluster still visible in portal, shows "Not found."
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 10/02/2024
 ms.reviewer: sumsmith
 

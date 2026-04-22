@@ -3,13 +3,14 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/08/2025
+ms.date: 09/25/2025
 ms.author: alkohli
+ms.subservice: hyperconverged
 ---
 
 # Review requirements for Hyper-V VM migration to Azure Local using Azure Migrate (preview)
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
 This article lists the system requirements for migrating Hyper-V virtual machines (VMs) to Azure Local using Azure Migrate.
 
@@ -17,7 +18,7 @@ This article lists the system requirements for migrating Hyper-V virtual machine
 
 ## Supported configurations
 
-The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that your'e migrating.
+The following operating systems (OS) are supported for the source appliance, target appliance, and for the guest VMs that you are migrating.
 
 
 |Component  |Supported configurations |
@@ -26,8 +27,7 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Source appliance     |Windows Server 2022        |
 |Target environment     |Azure Local 2311.2 or later         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM (Windows)    |Windows Server 2025<br>Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM (Linux) | Red Hat Linux 6.x, 7.x, 8.x, 9.x<br>Ubuntu Server and Pro. 18.x, 20.x<br>CentOS 7.x, 8.x, 9.x<br>SUSE Linux Enterprise<br>Debian 9.x, 10.x, 11.x, 12.x |
+|Guest operating systems    | [Supported Guest Operating Systems on Azure Local](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) |
 
 *To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
 
@@ -44,8 +44,8 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 
 Keep in mind the following information as you create a project:
 
-- Project geography is only used to store the discovered metadata.
-- When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate doesn't move or store customer data outside of the region allocated.
+- Project geography only stores the discovered metadata.
+- When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. The service allocates the region. Azure Migrate doesn't move or store customer data outside of the allocated region.
 
 ## Azure portal requirements
 
@@ -53,24 +53,24 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 |Level|Permissions|
 |-|-|
-|Tenant|Application administrator|
+|Tenant|[Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer)|
 |Subscription|Contributor, User Access Administrator|
 
-For any subscriptions hosting resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, the **Microsoft.DataReplication** resource provider must be registered. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
+For any subscriptions that host resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, register the **Microsoft.DataReplication** resource provider. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
 
 :::image type="content" source="./media/migrate-hyperv-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-hyperv-requirements/migrate-resource-providers.png":::
 
 ## Source Hyper-V requirements
 
-- Hyper-V Server is supported for both standalone server and cluster configuration.
+- Hyper-V Server supports both standalone server and cluster configurations.
 
-    You can discover and migrate standalone (non highly available) VMs on standalone Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts can't be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
+    You can discover and migrate standalone (non-highly available) VMs on standalone Hyper-V hosts. However, you can't discover or migrate standalone VMs hosted on clustered Hyper-V hosts. To migrate these VMs, you need to [make them highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
 
-- The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
-- In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can't be migrated.
+- In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, you can't migrate the disks.
 
-- DAS and SMB shares on source system are not supported for migrations to Azure Stack HCI.
+- DAS and SMB shares on source system aren't supported for migrations to Azure Local.
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
@@ -88,8 +88,18 @@ For any subscriptions hosting resources used in migration, such as Azure Migrate
 
 ## Azure Migrate project requirements
 
-Existing Azure Migrate customers that have done VM discovery need to [create a new Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Local. You can't use existing Azure Migrate projects for migration.
+- If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Local. You can't use existing Azure Migrate projects for migration.
+
+- You must have only one source appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
+
+- You must have only one target appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for a single source appliance to migrate to multiple target appliances across different Azure Local instances.
+
+- In general, Azure Migrate projects must have a 1:1 pairing of only one source appliance and one target appliance per project.
+
+## Considerations for migrating Hyper-V VMs to Azure Local
+
+- Azure Migrate retains the Hyper-V generation of the VM during migration. If the source Hyper-V VM is a Generation 1 VM, the migrated VM on Azure Local is also a Generation 1 VM. If the source Hyper-V VM is a Generation 2 VM, the migrated VM on Azure Local is also a Generation 2 VM. For more information on Generation 1 VM limitations, see [Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
 
 ## Next steps
 
-- [Complete the prerequisites](migrate-hyperv-prerequisites.md).
+- [Complete the prerequisites](./migrate-hyperv-prerequisites.md).

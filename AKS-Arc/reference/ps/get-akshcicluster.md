@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciCluster for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciCluster PowerShell command lists Kubernetes managed clusters including the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 03/16/2022
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

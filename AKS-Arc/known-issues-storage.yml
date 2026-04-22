@@ -2,8 +2,8 @@
 metadata:
   title: Troubleshoot storage issues and errors in AKS on Windows Server
   description: Get help to troubleshoot storage issues and errors in AKS on Windows Server.
-  author: sethmanheim
-  ms.author: sethm
+  author: davidsmatlak
+  ms.author: davidsmatlak
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: faq
   ms.date: 07/11/2024

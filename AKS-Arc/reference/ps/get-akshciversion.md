@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciVersion for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The Get-AksHciVersion PowerShell command gets the current Kubernetes version of AKS hybrid.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

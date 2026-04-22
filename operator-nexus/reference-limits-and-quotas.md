@@ -1,11 +1,11 @@
 ---
 title: Azure Operator Nexus - Limits and Quotas
 description: Limits and quotas that apply to Azure Operator Nexus.
-author: mukeshdua
-ms.author: mukeshdua
+author: jac0bsmith
+ms.author: jacobsmith
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 01/28/2026
 ms.custom: template-reference
 ---
 
@@ -35,7 +35,7 @@ The creation of the Network Fabric related resources is subject to the following
 | Resource Type               | Notes |
 | --------------------------- | -------------------------|
 | Network Fabric Controllers  | Today, its creation depends on underlying Azure components as mentioned in the supporting table under section "Other Azure Resources" |
-| Network Fabrics             | Up to 20 Network Fabric resources per Network Fabric Controller [To be updated] |
+| Network Fabrics             | Up to 10 Network Fabric resources per Network Fabric Controller |
 | Network Devices             | Up to BOM-specified Network devices per Network Fabric |
 | Network Racks               | Up to BOM-specified racks per Network Fabric |
 | Layer 2 Isolation domains   | 3500 isolation domains per Nexus instance |
@@ -43,9 +43,24 @@ The creation of the Network Fabric related resources is subject to the following
 | Route policies              | 400 route policies per Nexus instance |
 | Isolation domain MTU | 1500 - 9200 |
 
-> [!NOTE]
-> * The number of Nexus instances a pair of NFC + CM can handle has been set to 20 based on some theoretical study for ExpressRoute. These numbers will be refined after more testing. 
-> * Some of these limits are yet to be introduced and are not applied by default today.
+#### Resource Requirements for the NFC Deployment
+This section provides a detailed breakdown of the compute resources required for a complete NFC (Network Fabric Controller) deployment.  Below is the detailed breakdown of the total vCPU capacity of **228 vCPUs** needed to support [NFC zone‑redundant operations](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric-controller#virtual-machine-vm-sku-information-for-network-fabric-controller) and to ensure seamless AKS cluster upgrade cycles.
+-   **NFC AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **144**
+-   **Infrastructure (Infra) AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **40**
+-   **Tenant AKS Cluster**
+    -   VM SKU: _Standard D8s v3_
+    -   Total vCPUs Required: **40**
+-   **Infrastructure VM**
+    -   VM SKU: _Standard D2s v3_
+    -   vCPUs: **2**
+-   **Tenant VM**
+    -   VM SKU: _Standard D2s v3_
+    -   vCPUs: **2**
+
 
 ### Network Cloud
 The creation of the Network Cloud specific resources is subject to the following resource limits:
@@ -53,7 +68,7 @@ The creation of the Network Cloud specific resources is subject to the following
 | Resource Type               | Notes |
 | --------------------------- | -------------------------|
 | Cluster Manager             |	1:1 mapping with Network Fabric Controller |
-| Cluster                     |	Up to 20 Nexus Cluster instances per Cluster Manager (within same region) |
+| Cluster                     |	Up to 10 Nexus Cluster instances per Cluster Manager (within same region) |
 | Racks                       |	Up to BOM-specified Compute Racks per Nexus Cluster |
 | Bare Metal Machines         |	Up to BOM-specified BareMetal machines per Rack |
 | Storage Appliances          |	Up to BOM-specified Storage appliances per Nexus Cluster instance |
@@ -63,17 +78,18 @@ The creation of the Network Cloud specific resources is subject to the following
 | Trunked Networks            | 3500 per Nexus instance |
 | Cloud Service Networks      |	100 per Nexus instance |
 
-> [!NOTE]
-> * The number of Nexus instances a pair of NFC + CM can handle has been set to 20 based on some theoretical study for ExpressRoute. These numbers will be refined post GA after some further testing. 
-> * Some of these limits are yet to be introduced and are not applied by default today.
 
 ### Other Azure resources
+
 There are several Azure resources that are required to build up Network Fabric Controllers and Cluster Manager. The table here outlines the Azure services that Operators must ensure that they have adequate capacity available for creation for each Network Fabric Controller and Cluster Manager pair.
 
-| Resource Type	              | # of vCPUs |
-| --------------------------- | -------------------------|
-| Virtual Machine             |	32 (D4_v2), 120 (DS4_v2), 4 (D2s_v3) |
-| Standard DSv2 Family vCPUs  | quota limit 200; distributed across zones 1, 2, and 3 |
+|  | per CM* | per NFC** | Total # cores |
+| --- | --- | --- | --- |
+| Default VM family SKU | Standard_D4_v2  | Standard_D8s_v3 |  |
+| # cores needed (at steady-state) | 32 | 228 | 260 |
+| # cores needed (during upgrade) | up to 64 | 228 | 292 |
+| Alternative SKUs | Standard_D8s_v3, Standard_D8s_v4, Standard_D8s_v5, Standard_D8s_v6 | None |  |
+| Availability Zones within region | 3 AZs  <br> | 3 AZs (min) |  |
 
 > [!NOTE]
 > The number of vCPUs and the family SKUs required are subject to change.

@@ -1,10 +1,10 @@
 ---
 title: New-AksHciStorageContainer for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The New-AksHciStorageContainer PowerShell command creates a new storage container.
 ms.topic: reference
 ms.date: 04/12/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

@@ -2,8 +2,8 @@
 title: Troubleshoot deleted workload cluster resources can't be deleted
 description: Learn how to troubleshoot when deleted workload cluster resources can't be deleted.
 ms.topic: troubleshooting
-author: sethmanheim
-ms.author: sethm
+author: davidsmatlak
+ms.author: davidsmatlak
 ms.date: 04/01/2025
 ms.reviewer: leslielin
 

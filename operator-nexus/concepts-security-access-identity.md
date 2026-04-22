@@ -1,7 +1,7 @@
 ---
 title: Azure Operator Nexus access and identity
 description: Learn about access and identity in Azure Operator Nexus.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/25/2024
 author: graymark
 ms.author: graymark
@@ -68,6 +68,7 @@ including creating, modifying, and deleting resources related to Nexus infrastru
 | Microsoft.NetworkCloud/bareMetalMachines/write                              | Create a new bare metal machine or update the properties of the existing one. All customer initiated requests will be rejected while life cycling the resource.          |
 | Microsoft.NetworkCloud/clusterManagers/delete                               | Delete the provided cluster manager                                                                                                                                      |
 | Microsoft.NetworkCloud/clusterManagers/read                                 | Get the properties of the provided cluster manager                                                                                                                       |
+| Microsoft.NetworkCloud/clusterManagers/updateRelayPrivateEndpointConnection/action | Approve or reject a private endpoint connection for the Azure Relay namespace managed by the cluster manager                                                      |
 | Microsoft.NetworkCloud/clusterManagers/write                                | Create a new cluster manager or update properties of the cluster manager if it exists                                                                                    |
 | Microsoft.NetworkCloud/clusters/bareMetalMachineKeySets/read                | Get bare metal machine key set of the provided cluster                                                                                                                   |
 | Microsoft.NetworkCloud/clusters/bmcKeySets/read                             | Get baseboard management controller key set of the provided cluster                                                                                                      |
@@ -111,7 +112,7 @@ including creating, modifying, and deleting resources related to Nexus infrastru
 ### Operator Nexus Keyset Administrator Role (Preview)
 
 Manage interactive access to Azure Operator Nexus Compute resources by adding, removing,
-and updating baremetal machine (BMM) and baseboard management (BMC) keysets.        |
+and updating bare-metal machine (BMM) and baseboard management (BMC) keysets.        |
 
 | Actions                                                        | Description                                                                                        |
 |----------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -130,3 +131,13 @@ The user with this role has access to perform all actions on any Microsoft.Netwo
 | Actions                  | Description                                             |
 |--------------------------|---------------------------------------------------------|
 | Microsoft.NetworkCloud/* | Perform any action on a Microsoft.NetworkCloud resource |
+
+## Related content
+
+- [Azure Operator Nexus security](concepts-security.md)
+- [PKI implementation](concepts-pki-implementation.md)
+- [Baseboard Management Controller credential rotation](concepts-baseboard-management-controller-credential-rotation.md)
+- [Network Fabric password rotation](concepts-password-rotation-v1.md)
+- [Role-based access control in Kubernetes clusters](howto-kubernetes-cluster-aad-rbac.md)
+- [Credential rotation management](howto-credential-rotation.md)
+- [Set up Defender for Cloud security](howto-set-up-defender-for-cloud-security.md)

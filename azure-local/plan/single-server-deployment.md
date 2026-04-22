@@ -6,7 +6,8 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-local
-ms.date: 02/15/2025
+ms.date: 12/30/2025
+ms.subservice: hyperconverged
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Local
@@ -44,7 +45,7 @@ As illustrated in the diagram below, this pattern has the following physical net
 
 - For northbound/southbound traffic, the Azure Local instance is implemented using a single TOR L2 or L3 switch.
 - Two teamed network ports to handle the management and compute traffic connected to the switch.
-- Two disconnected RDMA NICs that are only used if add a second server to your system for scale-out. This means no increased costs for cabling or physical switch ports.
+- Two disconnected RDMA NICs that are only used if adding a second server to your system for scale-out. This means no increased costs for cabling or physical switch ports.
 - (Optional) A BMC card can be used to enable remote management of your environment. For security purposes, some solutions might use a headless configuration without the BMC card.
 
 :::image type="content" source="media/single-server/physical-connectivity-layout.png" alt-text="Diagram showing single-server physical connectivity layout." lightbox="media/single-server/physical-connectivity-layout.png":::

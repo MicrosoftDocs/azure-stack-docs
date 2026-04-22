@@ -1,10 +1,10 @@
 ---
 title: New-AksHciClusterNetwork for AKS hybrid
-author: sethmanheim
+author: davidsmatlak
 description: The New-AksHciClusterNetwork PowerShell command creates an object for a new virtual network used by a workload cluster.
 ms.topic: reference
 ms.date: 09/07/2021
-ms.author: sethm 
+ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 

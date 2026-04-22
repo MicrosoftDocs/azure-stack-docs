@@ -2,7 +2,7 @@
 title: Plan App Service server roles capacity - Azure Stack Hub 
 description: Learn about capacity planning for App Service server roles in Azure Stack Hub.
 author: sethmanheim
-ms.topic: article
+ms.topic: best-practice
 ms.date: 03/06/2025
 ms.author: sethm
 ms.reviewer: anwestg

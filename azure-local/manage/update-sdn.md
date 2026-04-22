@@ -1,11 +1,12 @@
 ---
-title: Update SDN infrastructure for Azure Local
-description: Learn to update SDN infrastructure for Azure Local.
+title: Update infrastructure for SDN managed by on-premises tools for Azure Local
+description: Learn to update infrastructure for SDN managed by on-premises tools.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
-ms.reviewer: anpaul
-ms.date: 01/16/2025
+ms.reviewer: alkohli
+ms.date: 09/05/2025
+ms.subservice: hyperconverged
 ---
 
 # Update SDN infrastructure for Azure Local
