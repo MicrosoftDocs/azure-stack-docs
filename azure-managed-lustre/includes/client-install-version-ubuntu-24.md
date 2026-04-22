@@ -1,6 +1,6 @@
 ---
-author: t-mialve
-ms.author: normesta
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
 ms.date: 04/29/2025

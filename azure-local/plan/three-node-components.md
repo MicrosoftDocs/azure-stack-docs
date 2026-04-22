@@ -2,8 +2,8 @@
 title: Review three-node storage reference pattern components for Azure Local
 description: Learn about three-node storage reference pattern components for Azure Local.
 ms.topic: concept-article
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025

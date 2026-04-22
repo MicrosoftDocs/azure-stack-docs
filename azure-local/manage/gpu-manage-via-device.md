@@ -1,8 +1,8 @@
 ---
-title: Manage GPUs via Discrete Device Assignment for Azure Local
-description: Learn how to manage GPUs via Discrete Device Assignment for Azure Local.
-author: alkohli
-ms.author: alkohli
+title: Manage GPUs via Discrete Device Assignment for Azure Local (preview)
+description: Learn how to manage GPUs via Discrete Device Assignment for Azure Local (preview).
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 08/27/2025
@@ -45,13 +45,13 @@ After attaching the GPU, the output shows the full VM details. You can confirm t
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[
-			{
-				"assignmentType": "GpuDDA",
-				"gpuName": "NVIDIA A2",
-				"partitionSizeMb": null
-			}
+    "hardwareProfile":{
+        "virtualMachineGPUs":[
+            {
+                "assignmentType": "GpuDDA",
+                "gpuName": "NVIDIA A2",
+                "partitionSizeMb": null
+            }
          ],
 ```
 
@@ -69,8 +69,8 @@ After detaching the GPU, the output shows the full VM details. You can confirm t
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[],
+    "hardwareProfile":{
+        "virtualMachineGPUs":[],
 ```
 
 For details on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).

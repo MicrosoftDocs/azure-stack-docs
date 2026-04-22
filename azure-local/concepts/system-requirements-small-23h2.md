@@ -1,8 +1,8 @@
 ---
 title: System requirements for low capacity deployments of Azure Local (preview)
 description: How to choose machines, storage, and networking components for low capacity deployments of Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions

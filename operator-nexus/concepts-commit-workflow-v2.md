@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Network Fabric - Commit Workflow v2
 description: Learn about the commit workflow v2 process in Azure Operator Nexus - Network Fabric.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 05/16/2025

@@ -1,10 +1,10 @@
 ---
 title: Azure Resource Manager template deployment for Azure Local, version 23H2
 description: Learn how to prepare and then deploy Azure Local instance, version 23H2 using the Azure Resource Manager template.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/16/2025
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:

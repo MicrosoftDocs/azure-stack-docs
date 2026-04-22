@@ -1,8 +1,8 @@
 ---
 title: Manage logical networks for Azure Local VMs enabled by Azure Arc
 description: Learn how to manage logical networks for Azure Local VMs enabled by Azure Arc.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/20/2026

@@ -1,8 +1,8 @@
 ---
-title: Manage GPUs using partitioning for Azure Local
-description: Learn how to manage GPUs using partitioning Azure Local.
-author: alkohli
-ms.author: alkohli
+title: Manage GPUs using partitioning for Azure Local (preview)
+description: Learn how to manage GPUs using partitioning Azure Local (preview).
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 08/27/2025
@@ -69,13 +69,13 @@ After attaching the GPU partition, the output shows the full VM details. You can
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[
-			{
-				"assignmentType": "GpuP",
-				"gpuName": null,
-				"partitionSizeMb": 3648
-			}
+    "hardwareProfile":{
+        "virtualMachineGPUs":[
+            {
+                "assignmentType": "GpuP",
+                "gpuName": null,
+                "partitionSizeMb": 3648
+            }
          ],
 ```
 
@@ -93,8 +93,8 @@ After detaching the GPU partition, the output shows the full VM details. You can
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[],
+    "hardwareProfile":{
+        "virtualMachineGPUs":[],
 ```
 
 For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).

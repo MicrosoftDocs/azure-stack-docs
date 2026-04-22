@@ -1,8 +1,8 @@
 ---
 title: Create Public IP Addresses on Multi-rack Deployments of Azure Local (preview)
 description: Learn how to create public IP resources on multi-rack deployments of Azure Local (preview).
-author: sipastak
-ms.author: sipastak
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/18/2025

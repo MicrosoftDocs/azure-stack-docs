@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Nexus Kubernetes Cluster Service"
 description: Introduction to Nexus Kubernetes Cluster Service.
-author: scottsteinbrueck
-ms.author: ssteinbrueck
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 06/28/2023

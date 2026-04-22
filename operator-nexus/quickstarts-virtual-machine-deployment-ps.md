@@ -1,8 +1,8 @@
 ---
 title: Create an Azure Operator Nexus virtual machine by using Azure PowerShell
 description: Learn how to create an Azure Operator Nexus virtual machine (VM) for virtual network function (VNF) workloads using PowerShell
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 09/20/2023
