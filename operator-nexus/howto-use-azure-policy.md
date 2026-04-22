@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to use Azure Policy with Operator Nexus Resources"
 description: Learn how to assign Azure built-in policies or create custom policies to secure your Operator Nexus resources.
-author: graymark
-ms.author: graymark
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 11/30/2023

@@ -1,7 +1,7 @@
 ---
 ms.topic: include
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 12/26/2022

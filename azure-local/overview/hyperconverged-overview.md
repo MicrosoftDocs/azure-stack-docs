@@ -2,8 +2,8 @@
 title: Overview of Hyperconverged Deployments for Azure Local
 description: Learn the benefits, features, and use cases of Azure Local hyperconverged deployments, designed to accelerate cloud and AI innovation from edge to core.
 #customer intent: As an IT admin, I want to understand the benefits and features of Azure Local hyperconverged deployments so that I can evaluate its suitability for my organization.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: alkohli
 ms.date: 11/17/2025
 ms.topic: overview

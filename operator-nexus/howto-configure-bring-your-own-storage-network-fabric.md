@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Configure Bring-Your-Own (BYO) Storage for Network Fabric"
 description: Learn how to configure a customer-managed storage account and user-assigned managed identity (UAMI) for Network Fabric in Azure Operator Nexus.
-author: sushantjrao
-ms.author: sushrao
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/26/2025

@@ -2,8 +2,8 @@
 title: Enable recommended alert rules for Azure Local
 description: How to enable recommended alert rules for Azure Local.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 10/15/2024
 ms.custom: sfi-image-nochange
