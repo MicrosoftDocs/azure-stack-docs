@@ -2,8 +2,8 @@
 title: What's new in Hyperconverged Deployments of Azure Local latest release
 description: Find out about the new features and enhancements in the latest Azure Local release for hyperconverged deployments.
 ms.topic: overview
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 04/09/2026
 ms.subservice: hyperconverged

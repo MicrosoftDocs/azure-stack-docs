@@ -5,7 +5,7 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 10/31/2024
-ms.author: v-saambe
+ms.author: ronmiab
 author: v-saambe
 ---
 

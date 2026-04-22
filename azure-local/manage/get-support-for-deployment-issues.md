@@ -1,8 +1,8 @@
 ---
 title: Get support for Azure Local deployment issues
 description: Learn how to get Microsoft support for Azure Local deployment issues, including log collection and remote support.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/10/2025

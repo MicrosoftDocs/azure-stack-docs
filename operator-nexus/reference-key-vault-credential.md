@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Password By Key Vault Reference"
 description: Reference for using a key vault secret reference instead of a plaintext password
-author: ghugo
-ms.author: gagehugo
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/20/2025

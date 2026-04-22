@@ -1,8 +1,8 @@
 ---
 title: Create Azure Local VM image from an existing Azure Local VM enabled by Azure Arc
 description: Learn how to create Azure Local VM images using an existing Azure Local VM enabled by Azure Arc via Azure CLI.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli

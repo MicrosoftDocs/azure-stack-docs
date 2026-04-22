@@ -1,8 +1,8 @@
 ---
 title: Azure Local, version 23H2 and 24H2 release information
 description: Learn about Azure Local releases, including OS builds, supported update paths, and key considerations for staying in a supported state.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
 ms.date: 03/17/2026
