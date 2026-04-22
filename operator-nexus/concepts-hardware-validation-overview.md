@@ -47,7 +47,7 @@ If disruptive or update actions aren't successful, user intervention is required
 
 ## Firmware component update
 
-HWV verifies that firmware on 15G (Ice Lake) and 16G (Sapphire Rapids) Dell servers meets the minimum recommended version (N-2). If any firmware is below this minimum, HWV automatically updates it to a supported, stable version. For 15G servers, HWV checks and updates the BIOS, iDRAC, NIC, and CPLD components. For 16G servers, it checks and updates the iDRAC and NIC. If HWV can't update a component automatically, manual intervention is required to bring the firmware up to the minimum recommended version.
+HWV verifies that firmware on 15G (Ice Lake) and 16G (Sapphire Rapids) Dell servers meets the minimum recommended version (N-2). If any firmware is below this minimum, HWV automatically updates it to a supported, stable version. For 15G servers, HWV checks and updates the BIOS, iDRAC, NIC, and CPLD components. For 16G servers, it checks and updates the iDRAC and NIC. HWV firmware updates are best effort. Very old firmware and firmware incompatibility edge cases can prevent automatic remediation. If HWV can't update a component automatically, manual intervention is required to bring the firmware up to the minimum recommended version.
 
 Firmware component versions and successful/failed update attempts are logged in the System information results.
 
