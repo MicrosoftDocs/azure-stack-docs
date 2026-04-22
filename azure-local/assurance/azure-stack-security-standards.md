@@ -4,8 +4,8 @@ description: Learn about Azure Local, security standards, and security assurance
 ms.date: 02/27/2026
 ms.topic: concept-article
 ms.service: azure-local
-ms.author: nguyenhung
-author: dv00000
+ms.author: robess
+author: ronmiab
 ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---

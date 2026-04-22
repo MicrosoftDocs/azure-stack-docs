@@ -1,210 +1,143 @@
 ---
-title: How-to usage guide for Customer Managed Key Vault
-description: How-to usage guide for Customer Managed Key Vault
+title: Usage Guide for Customer-Managed Key Vault
+description: This article lists steps you need to take to enable a customer-managed key vault. The article includes examples to help you use a customer-managed key vault.
 ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ms.topic: how-to
 ms.date: 03/30/2026
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ---
 
-# How to usage guide for Customer Managed Key Vault
+# Enable and use a customer-managed key vault
 
-Network Fabrics use secrets (passwords) to access the Terminal Server and Network Devices and these secrets are stored in a Key Vault in the Network Fabric Controller Managed Resource Group.
+Network Fabric uses secrets (passwords) to access the terminal server and network devices. These secrets are stored in Azure Key Vault in the Network Fabric Controller managed resource group.
 
-In some regions (currently `West US3` and `Brazil South`), Key Vaults don't have automatic cross‑region (paired‑region) replication. As a workaround to protect against a region outage, a customer may define a _Customer Managed Key Vault_. Once configured, secrets that are exposed to customers are duplicated to this Customer Managed Key Vault each time a password rotation occurs.
+In some regions (currently `West US3` and `Brazil South`), key vaults don't have automatic cross‑region (paired‑region) replication. As a workaround to protect against a region outage, you can define a _customer-managed key vault_. After you configure this type of key vault, each time a password rotation occurs, you duplicate secrets that are exposed to customers to this key vault.
 
- 
-## Secret Archive Settings Configuration
+## Secret archive settings configuration
 
-The following steps are required to enable a Customer Managed Key Vault.
+The following steps are required to enable a customer-managed key vault.
 
-1. The customer creates a Key Vault in a different region
-2. The customer uses the `Settings, Networkworking` menu to ensure that `Enable trusted Microsoft services to bypass this firewall` is enabled for the Customer Managed Key Vault. This is required to ensure that Network Fabric has a route to the Customer Key Vault when making password write requests.
-3. The customer associates the User Assigned Managed Identity with the Network Fabric
-4. The customer assigns the User Assigned Managed Identity `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the Customer Managed Key Vault.
-5. The customer uses the `2026-01-15-preview` ARM API to configure Customer Key Vault settings; in the ARM API these settings are known as the `Secret Archive Settings`.  The customer must configure:
+1. Create a key vault in a different region.
 
-   - The URI of the Customer Managed Key Vault
-   - The type of Managed Identity (`UserAssignedIdentity` is preferred but `SystemAssignedIdentity` is possible)
-   - The resource ID of the User Assigned Managed Identity (don't provide a resource ID if using `SystemAssignedIdentity`).
-6. The `Secret Archive Settings` configuration must then be committed by locking the Network Fabric and committing the configuration.
+1. Use the **Settings** > **Networkworking** menu to ensure that **Enable trusted Microsoft services to bypass this firewall** is enabled for the key vault. This step is required to ensure that Network Fabric has a route to the key vault when the service makes password write requests.
 
-Once this has been achieved, future Password Rotation operations duplicate customer accessible secrets to the Customer Managed Key Vault and customer visible secret references in the Network Fabric and Network Device configuration will indicate the secret and secret version in the Customer Managed Key Vault.
+1. Associate the user-assigned managed identity (UAMI) with Network Fabric.
 
- 
+1. Assign the UAMI **Operator Nexus Key Vault Writer Service Role (Preview)** permission for the key vault.
+
+1. Use the **2026-01-15-preview** Azure Resource Manager API to configure key vault settings. These settings are known as the _secret archive settings_. You must configure:
+
+    - The URI of the customer-managed key vault.  
+    - The type of managed identity (`UserAssignedIdentity` is preferred, but `SystemAssignedIdentity` is possible).  
+    - The resource ID of the UAMI. Don't provide a resource ID if you're using `SystemAssignedIdentity`.
+
+1. Lock the Network Fabric and commit the secret archive settings configuration.
+
+After you complete these steps, future password rotation operations duplicate customer accessible secrets to the key vault. Customer visible secret references in the Network Fabric and network device configuration indicate the secret and secret version in the customer-managed key vault.
 
 ### Examples
 
-It's assumed that the customer has created a Customer Managed Key Vault, a User Assigned Managed Identity, and has given the User Assigned Managed Identity the `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the Customer Managed Key Vault
+For these examples, let's assume that you create a customer-managed key vault. You also create a UAMI, and you give the UAMI the `Operator Nexus Key Vault Writer Service Role (Preview)` permission for the key vault.
 
-1. Associate the User assigned Managed Identity with the Network Fabric.
+1. Associate the UAMI with Network Fabric.
 
-> [!Note]
-> Note that you must retain the existing System Assigned Managed Identity and any pre-existing User Assigned Managed Identities.  These may be identified by using the `JSON View` link for the Network Fabric from the Azure portal and selecting the `2026-01-15-preview` ARM API version from the dropdown.  The existing configuration will look something like this:
- 
+    > [!Note]
+    > You must retain the existing system-assigned managed identity and any pre-existing UAMIs. You can identify these by using the `JSON View` link for Network Fabric from the Azure portal. Select the `2026-01-15-preview` Azure Resource Manager API version from the dropdown list. The existing configuration looks something like the following code.
 
-```
-
-{
-
-    ...,
-
-    "identity": {
-
-        "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
-
-        "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
-
-        "type": "SystemAssigned, UserAssigned",
-
-        "userAssignedIdentities": {
-
-            "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
-
-                "principalId": "12345678-1234-1234-1234-1234567890ab",
-
-                "clientId": "87654321-4321-4321-4321-ba0987654321"
-
+   ```
+    {
+        ...,
+        "identity": {
+            "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
+            "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
+            "type": "SystemAssigned, UserAssigned",
+            "userAssignedIdentities": {
+                "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
+                    "principalId": "12345678-1234-1234-1234-1234567890ab",
+                    "clientId": "87654321-4321-4321-4321-ba0987654321"
+                }
             }
-
+        },
+    
+        "properties": {
+            ...
         }
-
-    },
-
-    "properties": {
-
-        ...
-
     }
+    ```
 
-}
+1. Now use the following `az` command to associate the new UAMI with Network Fabric.
 
-```
+    ```bash
+    $ # Note that the UAMIs are an array of strings.
+    $ az networkfabric fabric update \
+    --resource-group <my-nf-rg> \
+    --resource-name <my-nf> \
+    --mi-system-assigned 11223344-5566-7788-99aa-bbccddeeff00 \
+    --mi-user-assigned [ \
+    "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>", \
+    "/subscriptions/<my-subscription>/resourcegroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-identity>", \
+    ]
+    ```
 
-2. Now use the following `az` command to associate the new User Assigned Managed Identity with the Network Fabric.
+1. Configure the key vault to Network Fabric by first creating a configuration JSON body. Your code looks like this example.
 
-```bash
-
-$ # Note that the User Assigned Managed Identities are an array of strings.
-
-$ az networkfabric fabric update \
-
---resource-group <my-nf-rg> \
-
---resource-name <my-nf> \
-
---mi-system-assigned 11223344-5566-7788-99aa-bbccddeeff00 \
-
---mi-user-assigned [ \
-
-"/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>", \
-
-"/subscriptions/<my-subscription>/resourcegroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-identity>", \
-
-]
-
-```
-
- 
-
-3. Configure the Customer Key Vault to the Network Fabric by first creating a configuration JSON body that looks like this:
-
-```json
-
-{
-
-  "properties": {
-
-    "secretArchiveSettings": {
-
-      "vaultUri": "https://mykeyvaultname.vault.azure.net/",
-
-      "associatedIdentity": {
-
-        "identityType": "UserAssignedIdentity",
-
-        "userAssignedIdentityResourceId": "/subscriptions/<my-subscription>/resourceGroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-managed-identity>"
-
+    ```json
+    {
+      "properties": {
+        "secretArchiveSettings": {
+          "vaultUri": "https://mykeyvaultname.vault.azure.net/",
+          "associatedIdentity": {
+            "identityType": "UserAssignedIdentity",
+            "userAssignedIdentityResourceId": "/subscriptions/<my-subscription>/resourceGroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-managed-identity>"
+          }
+        }
       }
-
     }
+    ```
 
-  }
+1. Now use an `az rest` request to update the Network Fabric configuration:
 
-}
+    ```bash
+    $ az rest --method patch --uri https://management.azure.com//subscriptions/<my-subscription>/resourceGroups/<my-nf-rg>/providers/microsoft.managednetworkfabric/NetworkFabrics/<my-nf>?api-version=2026-01-15-preview --body @<config.json>
+    ```
 
-```
+1. Use the normal _lock and commit_ process to make the new configuration active.
 
- 
+    ```bash
+    $ az networkfabric fabric lock-fabric --lock-type Configuration --resource-group <my-nf-rg> --resource-name <my-nf>
+    $ az networkfabric fabric commit-configuration --resource-group <my-nf-rg> --resource-name <my-nf>
+    ```
 
-4. Now use an `az rest` request to update the Network Fabric configuration:
+1. The next password rotation causes the new secrets to be duplicated to the key vault.
 
- 
+    ```bash
+    
+    $ az networkfabric fabric rotate-password --resource-group <my-nf-rg> --resource-name <my-nf>
+    
+    ```
 
-```bash
+## Remove secret archive settings configuration
 
-$ az rest --method patch --uri https://management.azure.com//subscriptions/<my-subscription>/resourceGroups/<my-nf-rg>/providers/microsoft.managednetworkfabric/NetworkFabrics/<my-nf>?api-version=2026-01-15-preview --body @<config.json>
+You can remove the secret archive settings configuration. If you do so, future password rotations don't copy secrets to the key vault. After a password rotation, all secret references in the Network Fabric and network device configuration reference the key vault in the Network Fabric Controller managed resource group.
 
-```
+1. Use `az rest...` and the `2026-01-15-preview` Azure Resource Manager API to remove key vault settings. In the Azure Resource Manager API, these settings are known as the `Secret Archive Settings`. Set `Secret Archive Settings` to `null`.
 
- 
-> [!Note]
-> A future update to the `az` CLI will allow this update to be used using syntax similar to:
+     ```json
+      {
+        "properties": {
+         "secretArchiveSettings": null
+        }
+       }
+     ```
 
-> 
+1. Lock the Network Fabric and commit the `Secret Archive Settings` removal configuration.
 
-> `az networkfabric fabric update -secret-archive-settings...`
+1. Remove the `Operator Nexus Key Vault Writer Service Role (Preview)` permissions for the key vault from the UAMI.
 
- 
+1. Disassociate the UAMI from Network Fabric by using the `az network fabric update...` command.
 
-5. Now use the normal _lock and commit_ process to make the new configuration active
+1. (Optional) Delete the UAMI.
 
- 
-
-```bash
-
-$ az networkfabric fabric lock-fabric --lock-type Configuration --resource-group <my-nf-rg> --resource-name <my-nf>
-
-$ az networkfabric fabric commit-configuration --resource-group <my-nf-rg> --resource-name <my-nf>
-
-```
-
- 
-
-6. The next password rotation will cause the new secrets to be duplicated to the Customer Managed Key Vault:
-
- 
-
-```bash
-
-$ az networkfabric fabric rotate-password --resource-group <my-nf-rg> --resource-name <my-nf>
-
-```
-
- 
-
-### Remove Secret Archive Settings Configuration
-
-Removing Secret Archive Settings configuration will mean that future Password Rotations **do not** copy secrets to the Customer Managed Key Vault and after a Password Rotation, **all** secret references in the Network Fabric and Network Device configuration will reference the Key Vault in the NetworkFabric Controller Managed Resource Group.
-
- 
-
-1. The customer should use `az rest...` and the `2026-01-15-preview` ARM API to remove Customer Key Vault settings; in the ARM API these settings are known as the `Secret Archive Settings`.The customer should set the `Secret Archive Settings` to `null`.
-
- 
- ```json
-  {
-    "properties": {
-     "secretArchiveSettings": null
-    }
-   }
- ```
-
-
-2. The `Secret Archive Settings` removal must then be committed by locking the Network Fabric and committing the configuration.
-3. The customer removes the `Operator Nexus Key Vault Writer Service Role (Preview)` permissions for the Customer Managed Key Vault from the User Assigned Managed Identity.
-4. The customer disassociates the User assigned Managed Identity from the Network Fabric using the `az network fabric update...` command as above
-5. (Optional) The customer deletes the User Assigned Managed Identity
-6. (Optional) The customer deletes the Customer Managed Key Vault.
+1. (Optional) Delete the key vault.

@@ -1,8 +1,8 @@
 ---
 title: Manage Application Control for Azure Local, version 23H2
 description: This article describes how to use Application Control on Azure Local, version 23H2.
-author:  alkohli
-ms.author:  alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 11/04/2025
 ms.service: azure-local

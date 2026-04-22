@@ -1,8 +1,8 @@
 ---
 title: How to use Commit Workflow v2 in Azure Operator Nexus
 description: Learn the process for using Commit Workflow v2 in Nexus Network Fabric
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ms.date: 05/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus

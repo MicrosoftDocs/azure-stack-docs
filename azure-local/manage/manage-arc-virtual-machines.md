@@ -1,8 +1,8 @@
 ---
 title: Manage including restart, start, stop or delete Azure Local VMs enabled by Azure Arc 
 description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/07/2026
@@ -971,23 +971,6 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
 > [!NOTE]
 > When updating only the memory of a VM, the VM remains running. A restart may be required only if the guest OS doesn't support live memory updates.
-
-## Guest management enablement support
-
-The following operating systems (OS) support guest management enablement:
-
-### Windows OS
-
-- Windows Server 2025
-- Windows Server 2022
-- Windows Server2019
-- Windows Server 2016
-- Windows 10
-- Windows 11
-
-### Linux OS
-
-- 
 
 ## Related content
 

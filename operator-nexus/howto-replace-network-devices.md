@@ -1,8 +1,8 @@
 ---
 title: How to replace network devices in Azure Operator Nexus Network Fabric
 description: Process of replacing network devices in Azure Operator Nexus Network Fabric.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/12/2024

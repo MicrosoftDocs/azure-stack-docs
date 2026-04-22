@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Network Fabric Runtime Upgrade Template"
 description: Learn how to upgrade Network Fabric for Azure Operator Nexus with a step-by-step parameterized template.
-author: jeffreymason 
-ms.author: jeffreymason
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.date: 11/25/2025
 ms.topic: how-to

@@ -1,6 +1,6 @@
 ---
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.topic: include
 ms.date: 06/09/2025
@@ -26,6 +26,7 @@ ms.lastreviewed: 03/20/2025
    Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
    Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
    Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
+   Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
    ```
 
     > [!NOTE]

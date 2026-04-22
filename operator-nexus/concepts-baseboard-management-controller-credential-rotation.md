@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Baseboard Management Controller Credential Rotation Overview"
 description: An overview of how credential rotation occurs for Baseboard Management Controller Credential
-author: ghugo
-ms.author: gagehugo
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 06/09/2025

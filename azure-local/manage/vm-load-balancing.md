@@ -1,8 +1,8 @@
 ---
 title: Virtual machine load balancing
 description: Use this article to learn how to configure the VM load balancing feature in Azure Local and Windows Server.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/28/2025
