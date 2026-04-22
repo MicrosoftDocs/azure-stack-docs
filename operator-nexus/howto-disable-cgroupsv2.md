@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Disable cgroupsv2 on a Nexus Kubernetes Node"
 description: How-to guide for disabling support for cgroupsv2 on a Nexus Kubernetes Node
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 09/18/2023

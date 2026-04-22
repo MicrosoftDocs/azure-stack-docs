@@ -1,8 +1,8 @@
 ---
 title: Security Overview for Multi-rack Deployments of Azure Local (preview)
 description: Read an overview of security features for multi-rack deployments of Azure Local (preview).
-author: sipastak
-ms.author: sipastak
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.topic: concept-article
 ms.date: 12/19/2025

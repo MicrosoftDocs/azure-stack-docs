@@ -1,8 +1,8 @@
 ---
 title: Overview of NAT Gateway on Multi-Rack Deployments of Azure Local (preview)
 description: Learn about NAT gateway on multi-rack deployments of Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 11/25/2025
 ms.topic: overview

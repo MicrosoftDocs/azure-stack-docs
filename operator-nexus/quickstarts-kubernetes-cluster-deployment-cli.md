@@ -2,8 +2,8 @@
 title: Create an Azure Nexus Kubernetes cluster by using Azure CLI
 description: Learn how to create an Azure Nexus Kubernetes cluster by using Azure CLI.
 ms.service: azure-operator-nexus
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 09/15/2025

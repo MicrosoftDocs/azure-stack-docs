@@ -1,8 +1,8 @@
 ---
 title: Collect diagnostic logs for Azure Local
 description: Learn how to collect diagnostic logs and share them with Microsoft.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/08/2026

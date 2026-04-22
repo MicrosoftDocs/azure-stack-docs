@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric
 description: Learn how to lock or unlock a fabric resource using the Administrative Lock feature in Nexus Network Fabric.
-author: jac0bsmith
-ms.author: jacosmith
+author: ronmiab
+ms.author: robess
 ms.date: 10/08/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus

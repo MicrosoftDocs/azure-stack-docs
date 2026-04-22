@@ -1,8 +1,8 @@
 ---
 title: Azure Local billing and payment
 description: How billing and payment works in Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: overview
 ms.service: azure-local
 ms.date: 12/16/2025

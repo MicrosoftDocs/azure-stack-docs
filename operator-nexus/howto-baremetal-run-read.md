@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot Bare-Metal Machines by Using the run-read Command
 description: This article teaches you how to run diagnostics on a bare-metal machine by using the run-read command for Azure Operator Nexus.
-author: eak13
-ms.author: ekarandjeff
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 4/17/2025

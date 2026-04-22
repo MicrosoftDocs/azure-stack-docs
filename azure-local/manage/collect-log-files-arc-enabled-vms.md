@@ -1,10 +1,10 @@
 ---
 title: Collect log files for Azure Local VMs enabled by Azure Arc
 description: Learn how to collect log files for an Azure Local VM enabled by Azure Arc. 
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 03/20/2025
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.subservice: hyperconverged

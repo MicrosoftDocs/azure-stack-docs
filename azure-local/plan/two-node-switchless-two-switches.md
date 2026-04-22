@@ -2,8 +2,8 @@
 title: Azure Local two-node storage switchless, two switches deployment network reference pattern
 description: Plan to deploy an Azure Local two-node storage switchless, two switches network reference pattern.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 04/05/2026
