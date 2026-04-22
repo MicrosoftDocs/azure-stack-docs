@@ -34,7 +34,7 @@ If Arc gateway is enabled in your environment, newly created AKS Arc clusters au
 
 ## Other scenarios
 
-Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for additional Arc-enabled scenarios. Based on the scenarios you adopt, additional endpoints must still be allowed in your proxy.
+Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for more Arc-enabled scenarios. Based on the scenarios you adopt, more endpoints must still be allowed in your proxy.
 
 All endpoints listed for the following scenarios must be allowed in your enterprise proxy when Arc gateway is in use:
 
