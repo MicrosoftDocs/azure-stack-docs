@@ -9,7 +9,10 @@ ms.date: 11/05/2025
 
 - Make sure to review and [complete the prerequisites](../manage/azure-arc-vm-management-prerequisites.md).
 
-- For custom images in a local share on your Azure Local, you'll have the following extra prerequisites:
+- For custom images in a local share on your Azure Local, you have the following extra prerequisites:
+  - Your image uses an operating system that the [Azure Arc connected machine agent](/azure/azure-arc/servers/prerequisites#supported-operating-systems) supports.
+    > [!NOTE]
+    > Not all operating systems listed on the Azure Arc-enabled servers supported OS page are supported for Arc enablement (guest management) on Azure Local. Guest management requires Hyper-V socket (HV socket) support, which limits the supported OS set further.
   - You should have a VHD/VHDX uploaded to a local share on your system.
   - The VHDX image must be Gen 2 type and secure boot enabled.
   - The VHDX image OS must be activated, including but not limited to [KMS](/windows-server/get-started/kms-client-activation-keys?tabs=windows1110ltsc%2Cwindows81%2Cserver2025%2Cversion1803) or [AVMA](/windows-server/get-started/automatic-vm-activation?tabs=server2025).

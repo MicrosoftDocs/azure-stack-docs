@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 05/08/2025
+ms.date: 04/05/2026
 ms.custom:
   - devx-track-azurepowershell
   - sfi-image-nochange
@@ -17,16 +17,16 @@ ms.custom:
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Local.
 
-[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that helps you reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Local, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Local at no additional cost.
+[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that helps you reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Local, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Local at no extra cost.
 
 ## What is Azure Hybrid Benefit for Azure Local?
 
-If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you are eligible to activate Azure Hybrid Benefit for Azure Local. To activate this benefit, you'll need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Local. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-azure-stack-hci).
+If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licensing/product-licensing/windows-server?rtc=2) with active [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), you're eligible to activate Azure Hybrid Benefit for Azure Local. To activate this benefit, you need to exchange 1-core license of Software Assurance-enabled Windows Server Datacenter for 1-physical core of Azure Local. For detailed licensing requirements, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-azure-stack-hci).
 
 This benefit waives the Azure Local host service fee and Windows Server guest subscription on your system. Other costs associated with Azure Local, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Local pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for AKS. For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
+> You can maximize cost savings by also using Azure Hybrid Benefit for Azure Kubernetes Service (AKS). For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
 
 ## Activate Azure Hybrid Benefit for Azure Local
 
@@ -45,7 +45,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
 
 - Make sure that your system has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1).
 
-- Make sure you have permission to write to the Azure Local resource. This is included if you're assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription.
+- Make sure you have permission to write to the Azure Local resource. This permission is included if you're assigned the [contributor or owner role](/azure/role-based-access-control/role-assignments-portal) on your subscription.
 
 ### Activate Azure Hybrid Benefit
 
@@ -60,18 +60,18 @@ Follow these steps to activate Azure Hybrid Benefit for Azure Local via the Azur
 1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, confirm the designated system and the number of core licenses you wish to allocate, and select **Activate** again to confirm.
 
     > [!NOTE]
-    > You can't deactivate Azure Hybrid Benefit for your system after activation. Proceed after you have confirmed the changes.
+    > You can't deactivate Azure Hybrid Benefit for your system after activation. Proceed after you confirm the changes.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png":::
 
 1. When Azure Hybrid Benefit successfully activates for your system, the Azure Local host fee is waived for the system.
 
     > [!IMPORTANT]
-    > [Windows Server subscription](../manage/vm-activate.md) is a way to get unlimited virtualization rights on your system through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no additional cost.
+    > [Windows Server subscription](../manage/vm-activate.md) is a way to get unlimited virtualization rights on your system through Azure. Now that you have Azure Hybrid Benefit enabled, you have the option of turning on Windows Server subscription at no extra cost.
 
-1. To enable Windows Server subscription at no additional cost, under the Windows Server subscription add-on feature in the same **Configuration** pane, select **Activate benefit**.
+1. To enable Windows Server subscription at no extra cost, under the Windows Server subscription add-on feature in the same **Configuration** pane, select **Activate benefit**.
 
-1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the system.
+1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details, and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the system.
 
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
@@ -106,7 +106,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
 
 # [Azure CLI](#tab/azure-cli)
 
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in Azure Cloud Shell. This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
 
@@ -142,7 +142,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 ## Maintain compliance for Azure Hybrid Benefit
 
-After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiration, you must either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or de-provision the systems that are using Azure Hybrid Benefit.
+After you activate Azure Local with Azure Hybrid Benefit, you must regularly check status and maintain compliance for Azure Hybrid Benefit. An Azure Local instance using Azure Hybrid Benefit can run only during the Software Assurance term. When the Software Assurance term is nearing expiration, you must either renew your agreement with Software Assurance, disable the Azure Hybrid Benefit functionality, or deprovision the systems that are using Azure Hybrid Benefit.
 
 You can perform an inventory of your systems through the Azure portal and [Azure Resource Graph](/azure/governance/resource-graph/first-query-azurecli) as described in the following section.
 
@@ -214,7 +214,7 @@ This error can occur if you have a new Software Assurance contract or if you set
 
 - Customer/organization name - the name registered on your Software Assurance contract.
 - Azure subscription ID – to which your Azure Local instance is registered.
-- Agreement number for Software Assurance – this can be found on your purchase order, and is the number you use to install software from the Volume Licensing Service Center (VLSC).
+- Agreement number for Software Assurance – this number can be found on your purchase order, and is the number you use to install software from the Volume Licensing Service Center (VLSC).
 
 ## FAQs
 
@@ -228,9 +228,9 @@ For more information about licensing, see [Azure Hybrid Benefit for Windows Serv
 
 Yes.
 
-### Is there any additional cost incurred by opting in to Azure Hybrid Benefit for Azure Local?
+### Is there any extra cost incurred by opting in to Azure Hybrid Benefit for Azure Local?
 
-No additional costs are incurred, as Azure Hybrid Benefit is included as part of your Software Assurance benefit.
+No extra costs are incurred, as Azure Hybrid Benefit is included as part of your Software Assurance benefit.
 
 ### How do I find out if my organization has Software Assurance?
 

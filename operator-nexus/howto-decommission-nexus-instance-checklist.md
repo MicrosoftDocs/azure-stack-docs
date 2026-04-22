@@ -30,7 +30,7 @@ ms.date: 12/03/2024
 
 7. [Deprovision Fabric](./howto-configure-network-fabric.md#deleting-fabric)
 
-8. [Clean up ACL (Access Control List) resources](./howto-delete-access-control-list-network-to-network-interconnect.md)
+8. [Clean up ACL (Access Control List) resources](./howto-delete-access-control-list.md)
 
 9. [Clean up RoutePolicy resources (if present)](./how-to-route-policy.md#delete-route-policy)
 
