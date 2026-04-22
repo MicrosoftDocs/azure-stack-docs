@@ -5,7 +5,6 @@ author: ronmiab
 ms.topic: how-to
 ms.date: 10/16/2025
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:
   - devx-track-arm-template

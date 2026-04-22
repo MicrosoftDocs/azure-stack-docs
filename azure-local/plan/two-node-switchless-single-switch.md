@@ -4,7 +4,6 @@ description: Plan to deploy an Azure Local two-node storage switchless network r
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 04/05/2026
 ms.subservice: hyperconverged

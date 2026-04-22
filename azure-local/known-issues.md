@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: troubleshooting-general
 ms.date: 03/16/2026
 ms.author: alkohli
-ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 

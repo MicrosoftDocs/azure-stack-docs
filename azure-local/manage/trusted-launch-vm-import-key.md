@@ -5,7 +5,6 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.reviewer: alkohli
 ms.date: 09/22/2025
 ms.subservice: hyperconverged
 ---

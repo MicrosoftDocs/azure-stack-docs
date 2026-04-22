@@ -4,7 +4,6 @@ ms.author: robess
 ms.service: azure-local
 ms.topic: include
 ms.date: 10/26/2022
-ms.reviewer: alkohli
 ms.lastreviewed: 10/26/2022
 ---
 

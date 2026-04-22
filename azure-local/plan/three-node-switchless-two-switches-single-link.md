@@ -4,7 +4,6 @@ description: Plan to deploy an Azure Local three-node storage switchless, dual T
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 04/05/2026
 ms.custom:

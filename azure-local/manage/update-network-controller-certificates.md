@@ -1,8 +1,8 @@
 ---
 title: Renew certificates for Network Controller
 description: This article describes how to renew Network Controller certificates.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/17/2025
 ms.custom: sfi-image-nochange

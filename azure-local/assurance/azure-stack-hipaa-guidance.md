@@ -6,7 +6,6 @@ ms.topic: concept-article
 ms.service: azure-local
 ms.author: robess
 author: ronmiab
-ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 

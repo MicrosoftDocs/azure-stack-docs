@@ -4,7 +4,6 @@ description: Learn the benefits, features, and use cases of Azure Local hypercon
 #customer intent: As an IT admin, I want to understand the benefits and features of Azure Local hyperconverged deployments so that I can evaluate its suitability for my organization.
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.date: 11/17/2025
 ms.topic: overview
 ai-usage: ai-assisted
