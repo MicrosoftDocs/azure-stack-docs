@@ -163,15 +163,15 @@ Follow these steps to enable volume encryption with BitLocker:
     Enable-ASBitLocker -VolumeType ClusterSharedVolume -Cluster
     ```
 
-### Disable volume encryption with BitLocker
+### Disable volume encryption by using BitLocker
 
-Disabling BitLocker follows the same maintenance mode lifecycle as enabling: the CSV is suspended, decryption is initiated, and then the CSV is resumed. Decryption continues in the background while the volume is accessible in redirected I/O mode.
+Disabling BitLocker follows the same maintenance mode lifecycle as enabling it: the process suspends the CSV, initiates decryption, and then resumes the CSV. Decryption continues in the background while the volume is accessible in redirected I/O mode.
 
-Follow these steps to disable volume encryption with BitLocker:
+Follow these steps to disable volume encryption by using BitLocker:
 
 1. Connect to your Azure Local machine.
 
-1. Run the following PowerShell cmdlet using local administrator credentials.
+1. Run the following PowerShell cmdlet by using local administrator credentials.
 
    To decrypt boot volumes on the local node:
 
@@ -200,11 +200,11 @@ Follow these steps to disable volume encryption with BitLocker:
 ## Get BitLocker recovery keys
 
 > [!NOTE]
-> BitLocker keys can be retrieved at any time from your local Active Directory. If the cluster is down and you don't have the keys, you might be unable to access the encrypted data on the cluster. To save your BitLocker recovery keys, we recommend that you export and store them in a secure external location such as Azure Key Vault.
+> You can retrieve BitLocker keys at any time from your local Active Directory. If the cluster is down and you don't have the keys, you might be unable to access the encrypted data on the cluster. To save your BitLocker recovery keys, we recommend that you export and store them in a secure external location such as Azure Key Vault.
 
-Follow these steps to export the recovery keys for your cluster:
+To export the recovery keys for your cluster, follow these steps:
 
-1. Connect to your Azure Local instance as local administrator. Run the following command in a local console session or local Remote Desktop Protocol (RDP) session or a Remote PowerShell session with CredSSP authentication:
+1. Connect to your Azure Local instance as local administrator. Run the following command in a local console session, local Remote Desktop Protocol (RDP) session, or a Remote PowerShell session with CredSSP authentication:
 
 1. To get the recovery key information, run the following command in PowerShell:
 
