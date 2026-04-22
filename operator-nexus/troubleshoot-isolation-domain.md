@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 10/31/2024
-ms.author: ronmiab
-author: v-saambe
+author: ronmiab
+ms.author: robess
 ---
 
 # Troubleshoot isolation domain provisioning failures
