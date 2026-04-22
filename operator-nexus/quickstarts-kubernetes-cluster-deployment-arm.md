@@ -2,8 +2,8 @@
 title: Create an Azure Nexus Kubernetes cluster by using Azure Resource Manager template (ARM template)
 description: Learn how to create an Azure Nexus Kubernetes cluster by using Azure Resource Manager template (ARM template).
 ms.service: azure-operator-nexus
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.topic: quickstart-arm
 ms.custom: subject-armqs, devx-track-arm-template, devx-track-azurecli
 ms.date: 05/14/2023

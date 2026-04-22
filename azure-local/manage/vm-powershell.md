@@ -1,10 +1,10 @@
 --- 
 title: Manage VMs using Windows PowerShell on Azure Local
 description: How to manage virtual machines on Azure Local using Windows PowerShell
-author: alkohli
+author: ronmiab
 ms.topic: how-to 
 ms.date: 04/05/2026
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: stevenek
 ms.service: azure-local
 ms.subservice: hyperconverged

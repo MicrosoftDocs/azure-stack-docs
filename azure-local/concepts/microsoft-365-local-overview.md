@@ -1,10 +1,10 @@
 ---
 title: Overview of Microsoft 365 Local on Azure Local Infrastructure
 description: Learn how Microsoft 365 Local enables private cloud productivity with Exchange, SharePoint, and Skype for Business on customer-managed Azure Local infrastructure.
-author: alkohli
+author: ronmiab
 ms.topic: concept-article
 ms.date: 02/17/2026
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ---
@@ -25,10 +25,12 @@ The solution includes a validated reference architecture with certified hardware
 
 Organizations choose Microsoft 365 Local for several key reasons:
 
-- Gain the agility and simplicity of cloud management within your own data center by implementing a sovereign private cloud with Azure-consistent management.
-- Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk, and accelerating time to value.
+- Modernize existing on-premises Exchange Server, SharePoint Server, or Skype for Business Server deployments by migrating to a Sovereign Private Cloud that enhances security posture and operational consistency while retaining full data residency.
+- Support disaster recovery and business continuity by using Microsoft 365 Local as a fallback environment, enabling organizations to operate in the public cloud with the option to continue locally during crisis scenarios.
+- Gain the agility and simplicity of cloud management within your own data center by implementing Sovereign Private Cloud with Azure-consistent management.
 - Choose between seamless integration with cloud services or a fully disconnected environment based on your sovereignty requirements.
 - Keep sensitive workloads and data entirely on-premises to meet the strictest jurisdictional and sovereignty mandates.
+- Plan and deploy with confidence through a Microsoft-authorized partner, reducing risk and accelerating time to value.
 
 ## Microsoft 365 Local capabilities
 

@@ -18,6 +18,7 @@ This article describes how to create load balancers on logical networks using Az
 
 ## Prerequisites
 
+- The `stack-hci-vm` Azure CLI extension version 1.13.0 or later. To check your version, run `az extension show --name stack-hci-vm`. To install or upgrade, see [Install CLI extensions for multi-rack](multi-rack-cli-extensions.md).
 - Review and complete the [prerequisites](./multi-rack-prerequisites.md).  
 - Access to an Azure subscription with the appropriate RBAC role and permissions. For more information, see [Use Role-based Access Control to manage Azure Local VMs for multi-rack deployments](./multi-rack-assign-vm-rbac-roles.md).
 - Access to a resource group where you want to provision the load balancer.
@@ -36,7 +37,14 @@ Key things to consider before you create a load balancer on logical networks:
 
 - After creating the load balancer, you can't update the frontend IP configuration or change the logical network. The `az stack-hci-vm network lb update` command can only be used to update tags.
 
-- If you need to add more backend pools, rules, or probes, you must use the `az stack-hci-vm network lb create` command again, using the exact same variables you provided during the initial creation.
+- To add multiple backend pools, rules, frontend IP configs, or probes, either:
+
+  - Repeat the `--frontend-ip`, `--backend-pool`, `--lb-rule`, or `--probe` parameters with key values for each additional configuration within the `az stack-hci-vm network lb create` command.
+  - Or run the relevant subgroup command to add, delete, or update specific items for these configuration types. For example:
+    - `az stack-hci-vm network lb frontend-ip add/delete`
+    - `az stack-hci-vm network lb backend-pool add/update/delete`
+    - `az stack-hci-vm network lb probe add/update/delete`
+    - `az stack-hci-vm network lb lb-rule add/update/delete`
 
 ### Required parameters
 
@@ -45,26 +53,52 @@ Before you begin, review the required parameters:
 | Parameter | Description |
 |--|--|
 | name | Name for the load balancer. Follow the [naming rules for Azure network resources](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a load balancer after it's created. |
-| resource-group | Name of the managed resource group of the custom location. |
+| resource-group | Name of the resource group where you create the load balancer. |
 | custom-location | ARM ID of the custom location associated with your Azure Local instance where you're creating this load balancer. |
-| location | Azure region as specified by `az locations`. |
-| frontend-ip-config-names | Name for the frontend IP configuration. Your load balancer can have multiple frontend IP configurations. |
-| frontend-ip-public-ip-ids | Required for load balancer on logical network. ARM IDs of the public IP resource you want to assign to your load balancer. The public IP resource should come from the same logical network where the load balancer is being created. |
-| backend-pool-names | Names for the backend pools. |
-| backend-pool-backend-addresses | Array of backend addresses. Each entry takes three inputs:<br>- **name**: Name of the specific backend server/resource.<br>- **network_interface_ip_configuration**: ARM ID of the network interface’s IP configuration.<br>- **admin_state**: Administrative state (Up, Down, or None). |
-| backend-pool-logical-network-ids | ARM ID of the logical network where the backend pool resources reside. All backend resources should be in the same logical network as the load balancer. |
-| lb-rule-names | Names for the load balancing rules. |
-| lb-rule-frontend-ip-config-names | Names of the frontend IP configurations you want to include in the scope of this load balancing rule. |
-| lb-rule-backend-pool-names | Names of the backend IP configurations you want to include in the scope of this load balancing rule. |
-| lb-rule-frontend-ports | External endpoint port. Port numbers for each rule must be unique within the load balancer. |
-| lb-rule-backend-ports | The port for internal connections on the endpoint. |
-| lb-rule-protocols | Transport protocol used by the load balancing rule. Allowed values:<br> All, Tcp, Udp. |
-| lb-rule-probe-names | Reference to the probe to associate with this rule. |
-| lb-rule-load-distributions | Load distribution policy for this rule. Allowed values:<br>- **Default**: 5-tuple hash (source IP, source port, destination IP, destination port, protocol) distributes connections evenly.<br>- **SourceIP**: 2-tuple hash (source IP, destination IP) ensures requests from same client IP go to same backend.<br>- **SourceIPProtocol**: 3-tuple hash (source IP, destination IP, protocol) balances between client affinity and distribution. |
-| lb-rule-idle-timeouts | Timeout for the TCP idle connection. Used only when protocol is set to Tcp. |
-| probe-names | Names for the probes you want to create for this load balancer. |
-| probe-protocols | Transport protocol used by this probe. |
-| probe-ports | Ports for communicating the probe. |
+| location | (Optional) Azure region as specified by `az locations`. If not specified, the location of the resource group is used. |
+| frontend-ip | Configuration for a single frontend IP as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple frontend IPs. |
+| backend-pool | Configuration for a single backend pool as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple backend pools. |
+| probe | Configuration for a single backend health probe as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple probes. |
+| lb-rule | Configuration for a single load balancing rule as space-separated key=value pairs. See below for details of the required keys. Can be repeated to configure multiple load balancing rules. |
+
+#### Keys for frontend-ip
+
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the frontend IP configuration. |
+| public-ip-id | Yes | Azure Resource Manager ID of the Public IP resource you want to assign to your load balancer. Each frontend IP configuration can have only one public IP address, but multiple frontend IP configurations are supported. The logical network that the public IP belongs to should be the logical network you wish to deploy your load balancer on. |
+
+#### Keys for backend-pool
+
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the backend pool. |
+| addresses | Yes | A comma-separated list of Azure Resource Manager IDs of the network interface's IP configuration, for each network interface you wish to include in the backend pool. |
+| lnet-id | No | Azure Resource Manager ID of the Logical Network where the backend pool resources reside. NOTE: All backend resources should be in the same logical network as the load balancer. |
+
+#### Keys for probes
+
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the probe you want to create for this load balancer. |
+| protocol | Yes | Transport protocol used by this probe. Allowed values: Tcp, Http. |
+| port | Yes | Port for communicating with the probe. |
+| path | Required for Http | URL path for Http probes to use when checking backend health. |
+| interval | No | Interval in seconds between probe attempts. |
+| threshold | No | Number of consecutive probe failures before the backend is considered unhealthy. |
+
+#### Keys for load balancing rules
+
+| Key | Required | Description |
+|--|--|--|
+| name | Yes | Name for the load balancing rule. |
+| frontend-ip | Yes | Name of the frontend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a frontend IP configuration also supplied in a `--frontend-ip` parameter. |
+| backend-pool | Yes | Name of the backend IP configuration you want to include in the scope of this load balancing rule. This must correspond to a backend pool also supplied in a `--backend-pool` parameter. |
+| frontend-port | Yes | The port for the external endpoint. Port numbers for each rule must be unique within the load balancer. |
+| backend-port | Yes | The port for internal connections on the endpoint. |
+| protocol | Yes | Reference to the transport protocol used by the load balancing rule. Allowed values: Tcp, Udp. |
+| probe | No | Reference to the probe to associate with this rule. This must correspond to a probe supplied with a `--probe` parameter. |
+| load-distribution | No | Load distribution policy for this rule. Allowed values:<br>- **Default**: 5-tuple hash (source IP, source port, destination IP, destination port, protocol) distributes connections evenly.<br>- **SourceIP**: 2-tuple hash (source IP, destination IP) ensures requests from same client IP go to same backend.<br>- **SourceIPProtocol**: 3-tuple hash (source IP, destination IP, protocol) balances between client affinity and distribution. |
 
 ### Steps to create a load balancer on a logical network
 
@@ -76,13 +110,13 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code
     ```
 
 1. Set your subscription.
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID>
     ```
   
@@ -90,12 +124,13 @@ The example in this section demonstrates how to create a load balancer on a logi
 
 1. Set the parameters.
 
-    ```azurecli
-    $location = "eastus"  
+    ```powershell
+    $location = "eastus"  
     $subscriptionID = "<subscription ID>"
-    $resourceGroup = "my-mrg"  
+    $resourceGroup = "my-mrg"  
+    $clusterResourceGroup = "<Cluster Resource Group>"
     $customLocationName = "mylocal-cl"
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$clusterResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $name = "mylocal-LNET-LB" 
     $frontendIPConfigName= "fe1"
     $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
@@ -106,51 +141,36 @@ The example in this section demonstrates how to create a load balancer on a logi
     $lbRuleBackendPort = 8080
     $lbRuleProtocol = "Tcp"
     $lbRuleProbeName = "probe1"
-    $lbRuleLoadDistributions = "Default"
+    $lbRuleLoadDistribution = "Default"
     $probePort = 80
     $probeName = "probe1"
     $probeProtocol = "Http"
-    $probeIntervals = 5
-    $probeRequestPaths = "/"
-    $probeNumProbes = 2
+    $probeInterval = 5
+    $probeRequestPath = "/"
+    $probeNumProbe = 2
     $backendPoolName = "web-backend"
     $backendLNetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/logicalNetworks/mylocal-lnet"
     ```
 
 1. Set backend pool addresses.
 
-    ```azurecli
-    $backendPoolBEAddresses = '[{\"name\": \"nic1\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig\"}, {\"name\": \"nic2\", \"admin_state\": \"Up\", \"network_interface_ip_configuration\": \"/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig\"}]' 
+    ```powershell
+    $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
 #### Create the load balancer
 
-Create a load balancer. Run the following cmdlet:  
+Create a load balancer. Run the following cmdlet:  
 
-```PowerShell
+```powershell
 az stack-hci-vm network lb create `
 --subscription $subscriptionID `
 --resource-group $resourceGroup `
 --name $name `
 --location $location `
---frontend-ip-config-names $frontendIPConfigName `
---frontend-ip-public-ip-ids $frontendIPPublicIP `
---backend-pool-names $backendPoolName `
---backend-pool-backend-addresses $backendPoolBEAddresses `
---backend-pool-logical-network-ids $backendLNetID `
---lb-rule-names $lbRuleName `
---lb-rule-frontend-ip-config-names $lbRuleFrontendIPConfigName `
---lb-rule-backend-pool-names $lbRuleBackendPoolName `
---lb-rule-frontend-ports $lbRuleFrontendPort `
---lb-rule-backend-ports $lbRuleBackendPort `
---lb-rule-protocols $lbRuleProtocol `
---lb-rule-probe-names $lbRuleProbeName `
---lb-rule-load-distributions $lbRuleLoadDistributions `
---probe-names $lbRuleProbeName `
---probe-protocols $lbRuleProtocol `
---probe-ports $probePort `
---lb-rule-idle-timeouts 4 `
---probe-intervals $probeIntervals `
---probe-num-probes $probeNumProbes `
+--frontend-ip name=$frontendIPConfigName public-ip-id=$frontendIPPublicIP `
+--backend-pool name=$backendPoolName addresses=$backendPoolBEAddresses lnet-id=$backendLNetID `
+--lb-rule name=$lbRuleName frontend-ip=$lbRuleFrontendIPConfigName backend-pool=$lbRuleBackendPoolName frontend-port=$lbRuleFrontendPort backend-port=$lbRuleBackendPort protocol=$lbRuleProtocol probe=$lbRuleProbeName load-distribution=$lbRuleLoadDistribution `
+--probe name=$lbRuleProbeName protocol=$probeProtocol port=$probePort path=$probeRequestPath interval=$probeInterval threshold=$probeNumProbe `
 --custom-location $customLocationID
 ```

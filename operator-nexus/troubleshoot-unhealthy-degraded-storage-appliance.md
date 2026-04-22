@@ -1,8 +1,8 @@
 ---
 title: Troubleshooting an Unhealthy or Degraded Storage Appliance
 description: Troubleshooting a Storage Appliance that has Azure Resource Health alerts
-author: jensheasby
-ms.author: jensheasby
+author: ronmiab
+ms.author: robess
 ms.date: 06/10/2025
 ms.topic: troubleshooting
 ms.service: azure-operator-nexus

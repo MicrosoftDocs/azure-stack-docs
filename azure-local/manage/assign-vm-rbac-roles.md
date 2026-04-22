@@ -1,8 +1,8 @@
 ---
 title: Use built-in RBAC roles for Azure Local VM to manage Azure Local VMs enabled by Azure Arc
 description: Learn how to use RBAC built-in roles to manage Azure Local VMs enabled by Azure Arc.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/07/2026

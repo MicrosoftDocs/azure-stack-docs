@@ -1,10 +1,10 @@
 ---
 title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 02/27/2026
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.subservice: hyperconverged

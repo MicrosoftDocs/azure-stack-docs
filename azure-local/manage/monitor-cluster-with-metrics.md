@@ -1,8 +1,8 @@
 ---
 title: Monitor Azure Local with Azure Monitor Metrics
 description: Learn how to monitor Azure Local with Azure Monitor Metrics.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local

@@ -1,8 +1,8 @@
 ---
 title: System requirements for Azure Local, version 23H2
 description: How to choose machines, storage, and networking components for Azure Local, version 23H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions

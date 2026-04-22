@@ -1,8 +1,8 @@
 ---
 title: Use Azure Monitor alerts for Azure Local health alerts
 description: Learn how to use the Azure Monitor alerts to respond to Azure Local health alerts.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/04/2025

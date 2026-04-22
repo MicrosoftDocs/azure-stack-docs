@@ -1,8 +1,8 @@
 ---
 title: How to put a network device in maintenance mode within Nexus Network Fabric
 description: Process of configuring network device in maintenance mode
-author: sushantjrao 
-ms.author: sushrao
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/17/2024
