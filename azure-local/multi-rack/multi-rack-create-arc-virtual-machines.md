@@ -94,7 +94,7 @@ Follow these steps on the client running az CLI that is connected to Azure Local
 ### Create a Windows VM
 
 > [!NOTE]
-> If you need more than one network interface for your VM, create one or more interfaces now before you create the VM. Adding a network interface after the VM is provisioned isn't supported in the preview version.
+> Adding a network interface is supported when the VM is stopped. If you add a network interface with a static IP after the VM is provisioned, the IP isn't automatically configured inside the guest OS. You need to manually configure the IP address within the VM.
 
 Here we create a VM that uses specific memory and processor counts.
 
@@ -130,24 +130,22 @@ Here we create a VM that uses specific memory and processor counts.
     | **custom-location** |Use this to provide the custom location associated with Azure Local where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
-    | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
+    | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used. The value must be a multiple of 1024 (that is, specified in whole GB increments such as 1024, 2048, 4096, 8192).|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
-    | **proxy-configuration** |Use this parameter to configure a proxy server for your VM. It is required to enable guest management on your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
+    | **proxy-configuration** |Configure a proxy server for your VM. Required for guest management. Accepts the following sub-parameters: `http_proxy` — HTTP URL of proxy server (for example, `http://proxy.example.com:3128`). `https_proxy` — HTTPS URL of proxy server (for example, `http://proxy.example.com:3128`). `no_proxy` — URLs that bypass proxy (for example, `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`). `cert_file_path` — Certificate file path to establish trust with your proxy server. For proxy authentication, pass the username and password in the URL: `http://username:password@proxyserver.contoso.com:3128`. |
     | **zone** | (Optional) Name of the availability zone (rack) where you want the VM to be placed.|
     | **strict-placement** | (Optional) Choose strict placement if you have specified a zone and want the VM to only be scheduled on the specified availability zone. If the specified zone doesn’t have capacity or is unavailable, VM creation will fail. If you specify no for this parameter, the VM will be scheduled on the specified zone on a best-effort basis. |
 
-1. Run the following commands to create the applicable VM.
-
-    **To create a standard Azure Local VM for multi-rack deployments:**
+1. Run the following command to create the VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="" cert_file_path="" 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone --strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8" cert_file_path=""
    ```
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
+   The VM is successfully created when the `provisioningState` shows as `succeeded` in the output.
 
-> [!NOTE]
-> The VM created has guest management enabled by default. It is required to provide HTTP proxy to enable guest management properly.
+   > [!NOTE]
+   > The VM created has guest management enabled by default. It is required to provide HTTP proxy to enable guest management properly. Proxy configuration is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. You may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM. For proxy authentication, you can pass the username and password combined in the URL: `http://username:password@proxyserver.contoso.com:3128`.
 
 ### Create a Linux VM
 
@@ -159,37 +157,6 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 > [!IMPORTANT]
 > The VM created has guest management enabled by default. It is required to provide HTTP proxy to enable guest management properly.
-
-### Create a VM with proxy configured
-
-Use this parameter **proxy-configuration** to configure a proxy server for your VM.
-
-Proxy configuration for VMs is applied only to the onboarding of the Azure connected machine agent and set as environment variables within the guest VM operating system. Browsers and applications on the VM aren't necessarily all enabled with this proxy configuration.
-
-As such, you may need to specifically set the proxy configuration for your applications if they don't reference the environment variables set within the VM.
-
-If creating a VM behind a proxy server, run the following command:
-
-```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone –-strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your machine>"
-```
-
-You can input the following parameters for `proxy-server-configuration`:
-
-| Parameters | Description |
-|------------|-------------|
-| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
-| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
-| **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-| **cert_file_path**  |Select the certificate file used to establish trust with your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
-
-Here's a sample command:
-
-```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
-```
-
-For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
 # [Azure portal](#tab/azureportal)
 
