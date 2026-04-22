@@ -1,16 +1,17 @@
 ---
-title: Install Azure Stack HCI operating system, version 23H2 using SConfig
-description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
-author: ronmiab
+title: Install the Azure Local Operating System for Disaggregated Deployments
+description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
+author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2025
-ms.author: robess
+ms.date: 03/31/2026
+ms.author: alkohli
+ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Install the Azure Stack HCI operating system manually using SConfig
+# Install the Azure Local operating system for disaggregated deployments
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -23,6 +24,8 @@ Before you begin, make sure you do the following steps:
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+- Create LUN with minimum size of 250 GB for infrastructure volume.
+- Create LUN with minimum size of 20 GB for performance history.
 
 ## Boot and install the operating system
 
@@ -143,7 +146,7 @@ Follow these steps to configure the operating system using SConfig:
 1. Set the local administrator credentials to be identical across all machines.
 
     > [!NOTE]
-    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
 Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
@@ -159,6 +162,34 @@ Starting with version 2604, you can domain join machines before deployment:
     ```
 
 If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
+
+## Connect to SAN
+
+Following steps connecting to the SAN must be done on every machine.
+
+1. Install the drivers for your fibre channel (FC) HBA vendor/model. Here is a generic example using pnputil to install the driver. Consult your hardware partner's documentation for details regarding driver installation.
+
+    ```cmd
+    PNPUTIL /add-driver c:\driver\myhbadriver.inf /install
+    ```
+
+1. Retrieve the HBA Address (WWPN)
+
+    ```powershell
+    Get-InitiatorPort
+    ```
+
+1. Connect with your SAN administrator and share the HBA addresses to get the LUNs unmasked to the HBAs.
+
+1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuration](./enable-external-storage.md)
+
+1. Confirm you can see the LUNs before you proceed with Arc Registration
+
+    ```powershell
+    Get-PhysicalDisk
+    ```
+   > [!IMPORTANT]
+   > Do not initialize the drives, as the deployment expects the drive type to be RAW!
 
 ## Next steps
 

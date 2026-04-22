@@ -9,14 +9,11 @@ ms.date: 08/27/2025
 ms.subservice: hyperconverged
 ---
 
-# Manage GPUs using partitioning (preview)
+# Manage GPUs using partitioning
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage GPUs using partitioning (GPU-P) for Azure Local virtual machines (VMs) enabled by Azure Arc. GPU-P allows you to share a GPU with multiple workloads by splitting the GPU into dedicated fractional partitions.
-
-> [!IMPORTANT]
-> This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Limitations
 
@@ -72,13 +69,13 @@ After attaching the GPU partition, the output shows the full VM details. You can
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[
-			{
-				"assignmentType": "GpuP",
-				"gpuName": null,
-				"partitionSizeMb": 3648
-			}
+    "hardwareProfile":{
+        "virtualMachineGPUs":[
+            {
+                "assignmentType": "GpuP",
+                "gpuName": null,
+                "partitionSizeMb": 3648
+            }
          ],
 ```
 
@@ -96,8 +93,8 @@ After detaching the GPU partition, the output shows the full VM details. You can
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[],
+    "hardwareProfile":{
+        "virtualMachineGPUs":[],
 ```
 
 For more information on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
