@@ -44,13 +44,13 @@ This release includes various reliability improvements and bug fixes.
 
 - **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./whats-new.md). <!--update link-->
 
-- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. Learn more about [attaching SAN storage](./whats-new.md). <!--update link-->
+- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./whats-new.md). <!--update link-->
 
-- **Local Identity with Key Vault**: Starting with this release, Local Identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+- **Local identity with Key Vault**: Starting with this release, local identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. Learn more about [update setting](./whats-new.md). <!--update link-->
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./whats-new.md). <!--update link-->
 
-- **Domain join prior deployment**: Starting with this release, domain join prior to deployment is supported. Learn more about [domain join prior deployment](./whats-new.md). <!--update link-->
+- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./whats-new.md). <!--update link-->
 
 - **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over.
 
@@ -64,17 +64,15 @@ This release includes various reliability improvements and bug fixes.
 
 - **Enhanced Azure Marketplace image navigation in the Azure portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images.
 
-- **Azure CLI updates for Azure Local VMs**: The following updates apply when using the Azure CLI.
-
     To access these updates via the Azure CLI, update the `stack-hci-vm` extension to the latest version:
 
     ```azurecli
     az extension update --name "stack-hci-vm"
     ```
 
-    - **Graceful restart by default for Azure Local VMs**: Azure Local VM restart operation now performs a graceful shutdown by default. To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM via the Azure CLI.
+- **Graceful restart by default for Azure Local VMs**: Azure Local VM restart operation now performs a graceful shutdown by default. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM.
 
-    - **Enable or disable SDN management per network interface**: Azure Local supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior.
+- **Enable or disable SDN management per network interface**: Azure Local now supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).
 
 ::: moniker-end
 
