@@ -45,7 +45,8 @@ Start a fabric-scoped rotation across all supported devices:
 ```Azure CLI
 az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/rotateCertificates?api-version=2025-07-15" --verbose
 ```
-Note: you must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
+>[!Note]
+>You must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
 
 Sample response, containing `Location` parameter which is needed to query status:
 ```Azure CLI
@@ -104,7 +105,8 @@ Retry syncing the new certificates on all devices:
 az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice/resyncCertificates?api-version=2025-07-15" --verbose
 ```
 
-Note: you must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
+>[!Note]
+>You must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
 
 Sample response, containing `Location` parameter which is needed to query status:
 
