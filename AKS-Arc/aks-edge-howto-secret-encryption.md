@@ -22,7 +22,7 @@ For more detailed information about using KMS, see the official [KMS provider do
 
 The KMS provider is supported for all AKS Edge Essentials clusters, version 1.10.868.0 and later. 
 
-For more information about deploying a new AKS Edge Essentials cluster, please see the official [documentation](aks-edge-howto-single-node-deployment.md)
+For more information about deploying a new AKS Edge Essentials cluster, see the official [documentation](aks-edge-howto-single-node-deployment.md)
 
 > [!NOTE]
 > The KMS provider can only be used for single node clusters. The provider can't be used with [experimental features, such as multi-node](aks-edge-system-requirements.md#experimental-or-prerelease-features).
