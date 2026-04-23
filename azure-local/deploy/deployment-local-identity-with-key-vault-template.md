@@ -1,15 +1,15 @@
 ---
-title: Deploy Azure Local using local identity with Azure Key Vault via an Azure Resource Manager Template (preview)
-description: Learn how to prepare and then deploy Azure Local using local identity with Azure Key Vault using an Azure Resource Manager (ARM) template (preview).
+title: Deploy Azure Local using local identity with Azure Key Vault via an Azure Resource Manager Template
+description: Learn how to prepare and then deploy Azure Local using local identity with Azure Key Vault using an Azure Resource Manager (ARM) template.
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/25/2026
+ms.date: 04/23/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Deploy Azure Local using local identity with Azure Key Vault via Azure Resource Manager deployment template (preview)
+# Deploy Azure Local using local identity with Azure Key Vault via Azure Resource Manager deployment template
 
 ::: moniker range=">=azloc-2510"
 
@@ -17,8 +17,6 @@ This article describes how to deploy Azure Local using local identity with Azure
 
 > [!IMPORTANT]
 > Use ARM template deployment for Azure Local systems at scale. This approach is intended for experienced IT administrators. Deploy a [system via the Azure portal](./deployment-local-identity-with-key-vault.md) first, then use the ARM template for subsequent deployments.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
