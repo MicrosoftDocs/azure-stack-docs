@@ -2,10 +2,10 @@
 title: Create and Manage an Internal Load Balancer on Multi-Rack Deployments for Azure Local (Preview)
 description: Learn to create and configure internal load balancers for Azure Local multi-rack deployments (preview).
 #customer intent: As a network administrator, I want to understand the internal load balancers on Azure Local so that I can have the correct setup for my deployment.
-author: ronmiab
-ms.author: robess
-ms.date: 11/24/2025
-ms.topic: how-to
+author: sipastak
+ms.author: sipastak
+ms.date: 04/15/2026
+ms.topic: concept-article
 ms.service: azure-local
 ms.subservice: multi-rack
 ---
@@ -14,7 +14,7 @@ ms.subservice: multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
-This article describes how to create an internal load balancer on multi-rack deployments for Azure Local using Azure CLI.
+This article describes how to create an internal load balancer on multi-rack deployments for Azure Local.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -25,7 +25,7 @@ Before you begin, complete the following prerequisites:
 - Review and [complete the prerequisites](./multi-rack-vm-management-prerequisites.md).  
 - The `stack-hci-vm` Azure CLI extension version 1.13.0 or later. To check your version, run `az extension show --name stack-hci-vm`. To install or upgrade, see [Install CLI extensions for multi-rack](multi-rack-cli-extensions.md).
 
-- Access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC to manage Azure Local virtual machines (VMs) for multi-rack deployments (preview)](../multi-rack/multi-rack-assign-vm-rbac-roles.md).
+- Access to an Azure subscription with the appropriate role-based access control (RBAC) role and permissions assigned. For more information, see [RBAC to manage Azure Local virtual machines (VMs) for multi-rack deployments](../multi-rack/multi-rack-assign-vm-rbac-roles.md).
 
 - Access to a resource group where you want to provision the load balancer.
 

@@ -1,5 +1,5 @@
 ---
-title: Download Azure managed disk to Azure Local multi-rack (preview)
+title: Download Azure managed disk to Azure Local multi-rack
 description: Learn how to download an Azure managed disk to Azure Local multi-rack deployments.
 author: dramasamy
 ms.topic: how-to
@@ -11,13 +11,11 @@ ms.custom: sfi-image-nochange
 ms.subservice: multi-rack
 ---
 
-# Download managed data disks to Azure Local multi-rack (preview)
+# Download managed data disks to Azure Local multi-rack
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to download an Azure managed disk from Azure to your Azure Local multi-rack instance. You can then use the disk to create an image or to attach it to your Azure Local virtual machines (VMs) enabled by Arc, as needed.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
