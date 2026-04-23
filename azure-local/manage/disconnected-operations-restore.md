@@ -33,17 +33,17 @@ Backup capability is critical because the Azure Local with disconnected operatio
 
 Before you restore your system, complete these prerequisites:
 
-- **Operator access:** Ensure your identity has the required OperatorRP RBAC role in the Operator subscription.
+- **Operator access**: Ensure your identity has the required OperatorRP RBAC role in the Operator subscription.
 
-- **Environment Setup:** Ensure that you have a fresh Azure local Disconnected environment that you set up and that the version matches the backup version. Cross version restores aren't supported.
+- **Environment Setup**: Ensure that you have a fresh Azure Local Disconnected environment that you set up and that the version matches the backup version. Cross version restores aren't supported.
 
-- **Root Certificate:** For the Restore VM, ensure that the same Root Certificate - Certificate Authority is used for the new VM Creation to ensure the trust.
+- **Root Certificate**: For the restore VM, ensure that the same Root Certificate - Certificate Authority is used for the new VM Creation to ensure the trust.
 
-- **Server Message Block (SMB) share:** The SMB share where the backup file to restore is stored is accessible from the new environment.
+- **Server Message Block (SMB) share**: The SMB share where the backup file to restore is stored is accessible from the new environment.
 
-- **Decryption key:** The decryption key that you stored externally is available and you need to provide it during the restore process. 
+- **Decryption key**: The decryption key that you stored externally is available and you need to provide it during the restore process. 
 
-- **Import restore module (required):** Before running any restore cmdlets, import the restore module from your Operations Module by using its full path:
+- **Import restore module (required)**: Before you run any restore cmdlets, import the restore module from your Operations Module by using its full path:
 
   ```powershell
   # Import the restore cmdlets from the Operations Module (use the full path on your system)
@@ -90,13 +90,14 @@ To trigger and monitor the restore, follow these steps:
 
 ## Post restore environment mismatch
 > [!IMPORTANT]
-> Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata. 
-- **Lost resources:** You cannot recover cloud-only resources that are created after the backup. You must recreate these resources.
-- **Untracked Arc resources:** You need to rehydrate or re-register resources that are created after the backup and exist on the cluster but are missing in restored metadata.
-- **Phantom / Resurrected resources:** You need to clean up resources that are deleted after the backup but reappear as metadata after restoring.
-- **Drifted resources:** Restored environment reflects old state for resources that are updated after backup. This state might break authentication or management until remediated.
-- **Azure Local cluster infra drift:** You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup.
-- **Certificate expiry / rotation:** Older backups might contain expired certificates or mismatched client authentication certificate. You need manual remediation and rotation.
+> Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata.
+
+- **Lost resources**: You cannot recover cloud-only resources that are created after the backup. You must recreate these resources.
+- **Untracked Arc resources**: You need to rehydrate or re-register resources that are created after the backup and exist on the cluster but are missing in restored metadata.
+- **Phantom / Resurrected resources**: You need to clean up resources that are deleted after the backup but reappear as metadata after restoring.
+- **Drifted resources**: Restored environment reflects old state for resources that are updated after backup. This state might break authentication or management until remediated.
+- **Azure Local cluster infra drift**: You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup.
+- **Certificate expiry / rotation**: Older backups might contain expired certificates or mismatched client authentication certificate. You need manual remediation and rotation.
 
 ::: moniker-end
 
