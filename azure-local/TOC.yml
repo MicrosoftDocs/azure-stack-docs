@@ -563,9 +563,9 @@ items:
     - name: Networking
       items:
       - name: Add NICs to a Network ATC intent
-        href: manage/add-nics-network-atc.md
+        href: manage/add-network-adapters-network-atc.md
       - name: Replace a failed NIC in a Network ATC intent
-        href: manage/replace-nics-network-atc.md
+        href: manage/replace-network-adapter-network-atc.md
 
     - name: Storage
       items:
@@ -1139,9 +1139,9 @@ items:
     - name: Networking
       items:
       - name: Add NICs to a Network ATC intent
-        href: manage/add-nics-network-atc.md
+        href: manage/add-network-adapters-network-atc.md
       - name: Replace a failed NIC in a Network ATC intent
-        href: manage/replace-nics-network-atc.md
+        href: manage/replace-network-adapter-network-atc.md
 
     - name: Storage
       items:

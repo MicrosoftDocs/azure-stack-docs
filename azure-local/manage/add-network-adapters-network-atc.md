@@ -15,7 +15,7 @@ ms.subservice: hyperconverged
 
 This article describes how to add new physical network adapters (NICs) to an existing Network ATC intent on an Azure Local instance. Use this procedure when you need to expand an intent to increase bandwidth, improve redundancy, or align with updated hardware standards across your cluster.
 
-For the related repair workflow, see [Replace a failed NIC in an existing Network ATC intent](replace-nics-network-atc.md).
+For the related repair workflow, see [Replace a failed NIC in an existing Network ATC intent](replace-network-adapter-network-atc.md).
 
 ## Key principle
 
@@ -132,7 +132,7 @@ Get-ClusterNode | Format-Table Name, State -AutoSize
 Get-NetAdapter | Format-Table Name, Status, LinkSpeed, InterfaceDescription -AutoSize
 ```
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-before-current-state.png" alt-text="Diagram showing the cluster state before adding new NICs, with the existing Management and Compute intent and Storage intent." lightbox="media/add-nics-network-atc/nic-add-before-current-state.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-before-current-state.png" alt-text="Diagram showing the cluster state before adding new NICs, with the existing Management and Compute intent and Storage intent." lightbox="media/add-network-adapters-network-atc/add-before-current-state.png":::
 
 #### Step 2: Suspend (drain) the cluster node
 
@@ -166,7 +166,7 @@ With the node suspended (and powered down if required by your hardware vendor), 
 - Ensure proper PCIe slot seating and cabling.
 - If the server was powered down, power it back up and wait for it to rejoin the cluster.
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-phase-a-rolling-install.png" alt-text="Diagram showing the per-node rolling install in Phase A, with one node paused for hardware installation while other nodes remain Up." lightbox="media/add-nics-network-atc/nic-add-phase-a-rolling-install.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-phase-a-rolling-install.png" alt-text="Diagram showing the per-node rolling install in Phase A, with one node paused for hardware installation while other nodes remain Up." lightbox="media/add-network-adapters-network-atc/add-phase-a-rolling-install.png":::
 
 #### Step 4: Verify the new NIC is visible and properly configured
 
@@ -216,7 +216,7 @@ Get-ClusterNode | Format-Table Name, State -AutoSize
 
 Go back to step 2 and repeat the **Suspend → Install → Verify → Resume** cycle for the next node. Continue until all nodes have the new NICs installed.
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-phase-a-complete.png" alt-text="Diagram showing all cluster nodes have completed the Phase A rolling installation and now have the new NIC hardware." lightbox="media/add-nics-network-atc/nic-add-phase-a-complete.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-phase-a-complete.png" alt-text="Diagram showing all cluster nodes have completed the Phase A rolling installation and now have the new NIC hardware." lightbox="media/add-network-adapters-network-atc/add-phase-a-complete.png":::
 
 > [!WARNING]
 > **Don't skip nodes.** Network ATC expects the same set of adapters on every node that participates in the intent. The intent update in Phase B fails or produces inconsistent results if any node is missing the new adapter. Ensure all nodes have the new NIC installed and verified before proceeding to Phase B.
@@ -282,7 +282,7 @@ $adapterList = @("Ethernet1", "Ethernet2")  # <-- existing + new
 Update-NetIntentAdapter -Name $intentName -AdapterName $adapterList
 ```
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-phase-b-intent-update.png" alt-text="Diagram showing the cluster-wide intent update in Phase B, with Update-NetIntentAdapter adding the new NIC to the intent." lightbox="media/add-nics-network-atc/nic-add-phase-b-intent-update.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-phase-b-intent-update.png" alt-text="Diagram showing the cluster-wide intent update in Phase B, with Update-NetIntentAdapter adding the new NIC to the intent." lightbox="media/add-network-adapters-network-atc/add-phase-b-intent-update.png":::
 
 #### Step 9: Wait for Network ATC convergence
 
@@ -335,7 +335,7 @@ Invoke-Command -ComputerName $nextNode -ScriptBlock {
 
 See [Post-change validation checklist](#post-change-validation-checklist) for the full validation steps.
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-after-three-nics-healthy.png" alt-text="Diagram showing the cluster after the add operation completes, with all three NICs healthy in the Management and Compute intent." lightbox="media/add-nics-network-atc/nic-add-after-three-nics-healthy.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-after-three-adapters-healthy.png" alt-text="Diagram showing the cluster after the add operation completes, with all three NICs healthy in the Management and Compute intent." lightbox="media/add-network-adapters-network-atc/add-after-three-adapters-healthy.png":::
 
 > [!NOTE]
 > **Expected impact.** Adding adapters to an existing intent is generally non-disruptive when done with a controlled rollout. Network ATC reconciles the updated adapter list and applies configuration automatically. However, always plan a maintenance window as a precaution.
@@ -344,7 +344,7 @@ See [Post-change validation checklist](#post-change-validation-checklist) for th
 
 Not all Network ATC intents use a Hyper-V Virtual Switch (vSwitch). Specifically, Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
 
-:::image type="content" source="media/add-nics-network-atc/nic-add-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/add-nics-network-atc/nic-add-storage-only-intent-reference.png":::
+:::image type="content" source="media/add-network-adapters-network-atc/add-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/add-network-adapters-network-atc/add-storage-only-intent-reference.png":::
 
 When adding NICs to a storage-only intent (one that doesn't have a vSwitch):
 
@@ -406,5 +406,5 @@ After adding the NICs, run through all of the following checks:
 
 ## Next steps
 
-- [Replace a failed NIC in an existing Network ATC intent](replace-nics-network-atc.md)
+- [Replace a failed NIC in an existing Network ATC intent](replace-network-adapter-network-atc.md)
 - [Network ATC overview](../concepts/network-atc-overview.md?pivots=azure-local)
