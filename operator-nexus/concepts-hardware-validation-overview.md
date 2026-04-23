@@ -35,7 +35,7 @@ Disruptive actions against BMM are run as needed during HWV:
 - BMC/iDRAC reset
 - Virtual flea drain
 - Server power up/down
-- TLS certificate cleanup
+- Transport Layer Security (TLS) certificate cleanup
 - RAID reset
 
 Update/Auto-Fix actions:
@@ -47,7 +47,7 @@ If disruptive or update actions aren't successful, user intervention is required
 
 ## Firmware component update
 
-HWV verifies that firmware on 15G (Ice Lake) and 16G (Sapphire Rapids) Dell servers meets the minimum recommended version (N-2). If any firmware is below this minimum, HWV automatically updates it to a supported, stable version. For 15G servers, HWV checks and updates the BIOS, iDRAC, NIC, and CPLD components. For 16G servers, it checks and updates the iDRAC and NIC. If HWV can't update a component automatically, manual intervention is required to bring the firmware up to the minimum recommended version.
+HWV verifies that firmware on 15G (Ice Lake) and 16G (Sapphire Rapids) Dell servers meets the minimum recommended version (N-2). If any firmware is below this minimum, HWV automatically updates it to a supported, stable version. For 15G servers, HWV checks and updates the BIOS, iDRAC, NIC, and CPLD components. For 16G servers, it checks and updates the iDRAC and NIC. HWV firmware updates are best effort. Very old firmware and firmware incompatibility edge cases can prevent automatic remediation. If HWV can't update a component automatically, manual intervention is required to bring the firmware up to the minimum recommended version.
 
 Firmware component versions and successful/failed update attempts are logged in the System information results.
 
@@ -67,6 +67,6 @@ Hardware validation is automatically triggered during:
 - Initial cluster deployment
 - [BMM Replace actions](./howto-baremetal-functions.md#replace-a-bare-metal-machine)
 
-After hardware repairs are completed, you must run a Replace action to re-validate and provision the BMM.
+After hardware repairs are completed, you must run a Replace action to revalidate and provision the BMM.
 
 Hardware validation can be triggered AD-HOC by invoking the [Cluster Inspect action](./howto-cluster-inspect-action.md)
