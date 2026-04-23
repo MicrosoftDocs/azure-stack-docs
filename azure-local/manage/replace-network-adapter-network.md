@@ -15,7 +15,7 @@ ms.subservice: hyperconverged
 
 This article shows you how to replace a failed physical network adapter (NIC) that belongs to an existing Network ATC intent on an Azure Local instance, without rebuilding the node or recreating the intent.
 
-For the related expansion workflow, see [Add NICs to an existing Network ATC intent](add-network-adapters-network-atc.md).
+For the related expansion workflow, see [Add NICs to an existing Network ATC intent](add-network-adapters-network.md).
 
 ## Key principle
 
@@ -95,7 +95,7 @@ Get-NetAdapter | Format-Table Name, Status, LinkSpeed, InterfaceDescription -Aut
 Get-VMSwitch | Format-List Name, Id
 ```
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-before-failed-adapter.png" alt-text="Diagram showing the cluster state before the replacement, with a failed NIC in the Management and Compute intent." lightbox="media/replace-network-adapter-network-atc/replace-before-failed-adapter.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-before-failed-adapter.png" alt-text="Diagram showing the cluster state before the replacement, with a failed NIC in the Management and Compute intent." lightbox="media/replace-network-adapter-network/replace-before-failed-adapter.png":::
 
 ### Step 2: Suspend (drain) the cluster node
 
@@ -165,7 +165,7 @@ Update-NetIntentAdapter -Name $intentName -AdapterName $adapterList
 Get-NetIntentStatus | Format-List Host, IntentName, ConfigurationStatus, ProvisioningStatus
 ```
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-phase-1-suspend-and-remove.png" alt-text="Diagram showing Phase 1 of the replacement: the target node is suspended and the failed NIC is removed from the intent." lightbox="media/replace-network-adapter-network-atc/replace-phase-1-suspend-and-remove.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-phase-1-suspend-and-remove.png" alt-text="Diagram showing Phase 1 of the replacement: the target node is suspended and the failed NIC is removed from the intent." lightbox="media/replace-network-adapter-network/replace-phase-1-suspend-and-remove.png":::
 
 ### Step 5: Physically replace the failed NIC
 
@@ -196,7 +196,7 @@ Install the same driver and firmware version that the other nodes run.
 Get-NetAdapter | Select-Object Name, DriverVersion, InterfaceDescription
 ```
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-phase-2-physical-swap.png" alt-text="Diagram showing Phase 2 of the replacement: the physical NIC is replaced, renamed, and drivers are updated." lightbox="media/replace-network-adapter-network-atc/replace-phase-2-physical-swap.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-phase-2-physical-swap.png" alt-text="Diagram showing Phase 2 of the replacement: the physical NIC is replaced, renamed, and drivers are updated." lightbox="media/replace-network-adapter-network/replace-phase-2-physical-swap.png":::
 
 ### Step 8: Add the replacement adapter back into the intent
 
@@ -211,7 +211,7 @@ $adapterList = @("Ethernet1", "Ethernet2")  # <-- ALL intended adapters
 Update-NetIntentAdapter -Name $intentName -AdapterName $adapterList
 ```
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-phase-3-add-replacement.png" alt-text="Diagram showing Phase 3 of the replacement: the replacement NIC is added back into the intent." lightbox="media/replace-network-adapter-network-atc/replace-phase-3-add-replacement.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-phase-3-add-replacement.png" alt-text="Diagram showing Phase 3 of the replacement: the replacement NIC is added back into the intent." lightbox="media/replace-network-adapter-network/replace-phase-3-add-replacement.png":::
 
 ### Step 9: Wait for Network ATC convergence
 
@@ -258,7 +258,7 @@ Get-ClusterNode -Name $nodeName | Select-Object Name, State
 Get-ClusterGroup | Format-Table Name, State, OwnerNode -AutoSize
 ```
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-after-complete.png" alt-text="Diagram showing the cluster after the replacement is complete, with the node resumed and all NICs healthy in the intent." lightbox="media/replace-network-adapter-network-atc/replace-after-complete.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-after-complete.png" alt-text="Diagram showing the cluster after the replacement is complete, with the node resumed and all NICs healthy in the intent." lightbox="media/replace-network-adapter-network/replace-after-complete.png":::
 
 > [!IMPORTANT]
 > **Don't forget to restart the service.** Confirm `NetworkATC` is running on every node before you finish.
@@ -281,7 +281,7 @@ See [Post-change validation checklist](#post-change-validation-checklist) for th
 
 Not every Network ATC intent uses a Hyper-V Virtual Switch (vSwitch). Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
 
-:::image type="content" source="media/replace-network-adapter-network-atc/replace-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/replace-network-adapter-network-atc/replace-storage-only-intent-reference.png":::
+:::image type="content" source="media/replace-network-adapter-network/replace-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/replace-network-adapter-network/replace-storage-only-intent-reference.png":::
 
 When you replace a NIC in a storage-only intent (one without a vSwitch):
 
@@ -343,5 +343,5 @@ After you replace the NIC, run all the following checks:
 
 ## Next steps
 
-- [Add NICs to an existing Network ATC intent](add-network-adapters-network-atc.md)
+- [Add NICs to an existing Network ATC intent](add-network-adapters-network.md)
 - [Network ATC overview](../concepts/network-atc-overview.md?pivots=azure-local)
