@@ -2,8 +2,8 @@
 title: Upgrade Infrastructure for Software Defined Networking (SDN) Managed by On-Premises Tools
 description: Learn how to upgrade infrastructure for SDN managed by on-premises tools.
 ms.topic: how-to
-ms.author: alkohli
-author: alkohli
+ms.author: robess
+author: ronmiab
 ms.date: 04/15/2026
 ms.subservice: hyperconverged
 ---
