@@ -1,8 +1,8 @@
 ---
 title: Create network security groups on Azure Local VMs on multi-rack deployments 
 description: Learn how to create network security groups on Azure Local VMs on multi-rack deployments using the Azure CLI.
-author: alkohli
-ms.author: alkohli
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.date: 04/15/2026
 ms.service: azure-local

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Nexus Instance Deployment Template"
 description: Learn the process for deploying a Nexus instance with a step-by-step parameterized template.
-author: bartpinto 
-ms.author: bpinto
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.date: 04/25/2025
 ms.topic: how-to

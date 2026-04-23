@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 10/10/2025
 ms.author: alkohli
-ms.reviewer: alkohli
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

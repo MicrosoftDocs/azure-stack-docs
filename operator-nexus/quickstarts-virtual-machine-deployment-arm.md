@@ -1,8 +1,8 @@
 ---
 title: Create an Azure Operator Nexus virtual machine by using Azure Resource Manager template (ARM template)
 description: Learn how to create an Azure Operator Nexus virtual machine (VM) for virtual network function (VNF) workloads by using Azure Resource Manager template (ARM template).
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 09/30/2025

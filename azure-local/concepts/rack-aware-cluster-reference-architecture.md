@@ -1,8 +1,8 @@
 ---
 title: Azure Local rack aware cluster reference architecture
 description: Learn about the network design and configuration of an Azure Local rack aware cluster
-author: sipastak
-ms.author: sipastak
+author: ronmiab
+ms.author: robess
 ms.date: 10/03/2025
 ms.service: azure-local
 ms.topic: concept-article

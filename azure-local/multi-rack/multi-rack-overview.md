@@ -2,9 +2,9 @@
 title: What are multi-rack deployments of Azure Local?
 description: Discover Azure Local multi-rack deployments, a new capability for deploying large on-premises datacenters with over 100 machines and 8,000 cores. Learn how to get started.
 #customer intent: As an IT admin, I want to understand Azure Local multi-rack deployments so that I can evaluate its suitability for my datacenter modernization needs.
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: sipastak
+ms.author: sipastak
+ms.reviewer: robess
 ms.date: 04/15/2026
 ms.topic: overview
 ms.custom: references_regions

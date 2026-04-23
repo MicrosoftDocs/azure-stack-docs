@@ -2,8 +2,8 @@
 title: Create an Azure Nexus Kubernetes cluster by using Azure PowerShell
 description: Learn how to create an Azure Nexus Kubernetes cluster by using Azure PowerShell.
 ms.service: azure-operator-nexus
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 09/26/2023

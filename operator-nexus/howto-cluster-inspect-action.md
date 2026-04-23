@@ -1,8 +1,8 @@
 ---
 title: Cluster Inspect Action Hardware Validation
 description: Overview of Cluster Inspect Action Hardware Validation
-author: vanjams
-ms.author: vanjanikolin
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/03/2026

@@ -1,8 +1,8 @@
 ---
 title: Extended Security Updates (ESU) on Azure Local
 description: Learn how to get free extended security updates (ESUs) with Azure VM verification on Azure Local.
-author: sethmanheim
-ms.author: sethm
+author: ronmiab
+ms.author: robess
 ms.topic: overview
 ms.reviewer: jlei
 ms.date: 12/12/2025
