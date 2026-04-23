@@ -35,7 +35,7 @@ Disruptive actions against BMM are run as needed during HWV:
 - BMC/iDRAC reset
 - Virtual flea drain
 - Server power up/down
-- TLS certificate cleanup
+- Transport Layer Security (TLS) certificate cleanup
 - RAID reset
 
 Update/Auto-Fix actions:
@@ -67,6 +67,6 @@ Hardware validation is automatically triggered during:
 - Initial cluster deployment
 - [BMM Replace actions](./howto-baremetal-functions.md#replace-a-bare-metal-machine)
 
-After hardware repairs are completed, you must run a Replace action to re-validate and provision the BMM.
+After hardware repairs are completed, you must run a Replace action to revalidate and provision the BMM.
 
 Hardware validation can be triggered AD-HOC by invoking the [Cluster Inspect action](./howto-cluster-inspect-action.md)
