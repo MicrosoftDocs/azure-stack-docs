@@ -155,6 +155,66 @@ For information about access levels, see [List of Microsoft support operations](
 
 For information on other available operations, see [Other remote support operations](#other-remote-support-operations).
 
+## Remote Support User Experience Overview
+
+This section provides an overview of the Remote Support experience in Azure Local, including how customers enable it, what to expect when it is active, and how to monitor support sessions.
+
+<img width="1000" height="515" alt="Screenshot 2026-04-20 171944" src="https://github.com/user-attachments/assets/1456e342-e6c2-4c7f-b64e-4f062b38642d" />
+
+In the Diagnostics and Remote Support settings, you’ll see a new Remote Support tab. You can select this tab or click Grant access directly to enable remote support.
+
+### How to Enable Remote Support
+
+This section explains the steps and prerequisites required to enable Remote Support on an Azure Local cluster. It covers where the option is exposed in the management experience, any required permissions, and how customers explicitly opt in to allow remote access for support purposes.
+
+<img width="989" height="496" alt="Screenshot grant access 3" src="https://github.com/user-attachments/assets/15d209b3-1a1f-4472-9b39-09b6f009a9f4" />
+
+Select Grant access to enable remote support.
+
+To grant access, you’ll need to select the appropriate access level—either Diagnostics or Diagnostics and Repair—and specify the access period, which defines how long support can access your device.
+You’ll also need to review and approve the terms and conditions to complete the process.
+
+<img width="1045" height="595" alt="Screenshot approval for remote support" src="https://github.com/user-attachments/assets/47d61d9e-8802-49c9-9648-85ab95689382" />
+
+### What the Experience Looks Like When Remote Support Is Enabled
+
+When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active. This section describes: What is the access status and what is the access level granted
+
+<img width="1162" height="561" alt="Screenshot microsoft access level" src="https://github.com/user-attachments/assets/dd423861-8fb2-42b1-9a2c-e449fab57a74" />
+
+The screen above shows that the access level diagnostics has been assigned 
+
+### What Experience Looks Like When Remote Support Is Not Enabled on All Nodes
+
+This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster. You will see the informational banner which will indicate on which machines remote support has been enabled 
+
+<img width="1213" height="615" alt="Screenshot remote support could only be enabled on these machines " src="https://github.com/user-attachments/assets/6fa464e5-c83a-4a54-b426-717184a64bff" />
+
+<img width="1208" height="610" alt="Screenshot remote support could only be enabled on these machines 2 " src="https://github.com/user-attachments/assets/73e5281a-7eb8-4118-b3b8-2fcccfec2c54" />
+
+### DME Extension Version Required for Remote Support
+
+Remote Support depends on a minimum version of the DME (Device Management Extension). This section documents:
+The minimum required DME extension version: "1.2510.0.3012"
+How customers can check the installed version:
+Go to Extensions:
+
+<img width="1009" height="512" alt="Screenshot DME extension version" src="https://github.com/user-attachments/assets/5979b3f8-3872-4e80-85ce-75378703a370" />
+
+
+What happens if the required version is not present:
+- A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more”
+- Learn more link will redirect to [Azure Local Remote Support Arc extension overview](/https://learn.microsoft.com/azure/azure-local/manage/remote-support-arc-extension?view=azloc-2602)
+
+<img width="1069" height="586" alt="Screenshot DME extension version warning banner " src="https://github.com/user-attachments/assets/6aec8919-eb88-4e2f-8bbe-1146071c5b12" />
+
+Guidance on updating the extension if needed
+Go to the “Updates” tab:
+
+<img width="986" height="520" alt="Screenshot Updates tab" src="https://github.com/user-attachments/assets/f9f60c63-038a-41dc-ab37-801849a6ec76" />
+
+Select the latest eligible update version and click on “Install now” command
+
 ## Submit a support request
 
 Microsoft support can access your device only after you submit a support request. To learn how to create and manage support requests, see [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
