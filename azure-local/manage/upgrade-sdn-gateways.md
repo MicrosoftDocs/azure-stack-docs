@@ -49,7 +49,7 @@ The SDN gateway upgrade process follows a three-phase approach:
 - Admin credentials for the gateway VMs.
 - At least one redundant gateway available in the gateway pool. If no redundant gateway is set up, updating active gateways can cause longer traffic disruptions because tunnels might not fail over during the update process.
 - Windows update packages (MSU files) downloaded and staged.
-- *Optional but strongly recommended.* Monitoring tools to check tunnel connectivity and Border Gateway Protocol (BGP) status. These tools are user-provided and specific to your environment, and are used to check app connectivity.
+- *Optional but recommended.* Monitoring tools to check tunnel connectivity and Border Gateway Protocol (BGP) status. These tools are user-provided and specific to your environment, and are used to check app connectivity.
 - **SdnDiagnostics PowerShell module**. The code snippets in this article use cmdlets from the `SdnDiagnostics` module.
 
 ### Install SdnDiagnostics module
@@ -116,7 +116,7 @@ The following example illustrates the update process for a redundant gateway (GW
 
 | Step | Action | GW01 state | Description |
 |--|--|--|--|
-| 1 | Backup and remove from Network Controller | **Redundant → (Not in Network Controller)** | Back up the GW01 configuration and remove it from the Network Controller. Removing the gateway triggers a reboot and deletes the GW01 resource from the Network Controller. |
+| 1 | Back up and remove from Network Controller | **Redundant → (Not in Network Controller)** | Back up the GW01 configuration and remove it from the Network Controller. Removing the gateway triggers a reboot and deletes the GW01 resource from the Network Controller. |
 | 2 | Verify removal | **(Not in Network Controller)** | Wait for the reboot to complete and confirm that GW01 no longer appears in the Network Controller. |
 | 3 | Install updates | **(Not in Network Controller)** | Install the required Windows updates on GW01. |
 | 4 | Add back to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | Add GW01 back to the gateway pool. The gateway initially joins in a passive (unmonitored) state. |
@@ -286,7 +286,7 @@ After updating all redundant gateways, update the active gateways. This phase re
 > [!IMPORTANT]
 > When you reboot an active gateway during this process, it transitions to a **redundant** state. As a result, gateway roles can change dynamically during the update.
 >
-> Always use the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Don't rely on the current gateway state, because it might have changed during previous updates. This approach makes sure you update all gateways that were originally active in a predictable and controlled order.
+> Always use the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Don't rely on the current gateway state, because it might change during previous updates. This approach makes sure you update all gateways that were originally active in a predictable and controlled order.
 
 #### Example walkthrough for active gateways
 
@@ -298,7 +298,7 @@ The following example illustrates the update process for an active gateway, wher
 | 2 | Reboot GW01 | **Active → Rebooting** | Redundant → **Active** | Rebooting GW01 triggers tunnel failover; GW05 is promoted to active and takes over all tunnels.  |
 | 3 | Verify failover | **Redundant** | **Active** | GW01 comes back online as redundant; all tunnels are now hosted on GW05. |
 | 4 | Test connectivity | **Redundant** | **Active** | Verify tunnels are connected on GW05. |
-| 5 | Backup and remove GW01 from Network Controller | **Redundant → (Not in Network Controller)** | **Active** | Back up GW01 configuration and remove it from Network Controller. Removal triggers a reboot and deletes the GW01 resource. |
+| 5 | Back up and remove GW01 from Network Controller | **Redundant → (Not in Network Controller)** | **Active** | Back up GW01 configuration and remove it from Network Controller. Removal triggers a reboot and deletes the GW01 resource. |
 | 6 | Verify removal | **(Not in Network Controller)** | **Active** | Wait for GW01 to reboot and verify it no longer exists in Network Controller. |
 | 7 | Install updates | **(Not in Network Controller)** | **Active** |  Install required Windows updates on GW01. |
 | 8 | Add back to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | **Active** | Re‑add GW01 to the gateway pool. It initially joins in a passive (unmonitored) state. |
