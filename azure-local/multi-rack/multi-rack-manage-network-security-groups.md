@@ -1,6 +1,6 @@
 ---
-title: Manage network security groups on Azure Local multi-rack deployments (preview)
-description: Learn how to manage network security groups and network security rules on Azure Local multi-rack deployments (preview).
+title: Manage network security groups on Azure Local multi-rack deployments
+description: Learn how to manage network security groups and network security rules on Azure Local multi-rack deployments.
 author: dramasamy
 ms.author: dramasamy
 ms.topic: how-to
@@ -9,13 +9,11 @@ ms.service: azure-local
 ms.subservice: multi-rack
 ---
 
-# Manage network security groups on Azure Local multi-rack deployments (preview)
+# Manage network security groups on Azure Local multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to manage network security groups (NSGs) on your Azure Local multi-rack deployment. Once you create network security groups, you can then list, show details, associate, dissociate, update, and delete these resources.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 

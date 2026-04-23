@@ -560,6 +560,13 @@ items:
       - name: Remote support extension
         href: manage/remote-support-arc-extension.md
 
+    - name: Networking
+      items:
+      - name: Add NICs to a Network ATC intent
+        href: manage/add-network-adapters-to-network-intents.md
+      - name: Replace a failed NIC in a Network ATC intent
+        href: manage/replace-network-adapter-to-network-intents.md
+
     - name: Storage
       items:
       - name: Replace failed drives
@@ -1128,6 +1135,13 @@ items:
         href: concepts/telemetry-and-diagnostics-overview.md
       - name: Remote support extension
         href: manage/remote-support-arc-extension.md
+
+    - name: Networking
+      items:
+      - name: Add NICs to a Network ATC intent
+        href: manage/add-network-adapters-to-network-intents.md
+      - name: Replace a failed NIC in a Network ATC intent
+        href: manage/replace-network-adapter-to-network-intents.md
 
     - name: Storage
       items:

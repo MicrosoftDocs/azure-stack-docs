@@ -1,21 +1,19 @@
 ---
-title: Create network interfaces for Azure Local VMs for multi-rack deployments (preview)
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces (preview).
-author: ronmiab
-ms.author: robess
+title: Create network interfaces for Azure Local VMs for multi-rack deployments
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces.
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/16/2026
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Create network interfaces for Azure Local VMs for multi-rack deployments (preview)
+# Create network interfaces for Azure Local VMs for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to create network interfaces that you can associate with an Azure Local virtual machine (VM) for multi-rack deployments. You can create network interfaces using the Azure portal or Azure Command-Line Interface (CLI).
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## About network interfaces
 
@@ -153,7 +151,11 @@ Follow these steps to create a network interface on your static logical network.
 
 You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
 
-## Network interface with static IP using virtual network
+## Network interface with static IP using virtual network (preview)
+
+> [!IMPORTANT]
+> Creating a network interface with static IP using virtual network is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 Follow these steps to create a network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
 
