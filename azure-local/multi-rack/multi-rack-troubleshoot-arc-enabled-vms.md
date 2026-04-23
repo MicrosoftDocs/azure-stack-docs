@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Local Multi-rack Virtual Machines Enabled by Azure Arc (preview)
+title: Troubleshoot Azure Local Multi-rack Virtual Machines Enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local multi-rack Virtual Machines (VMs) enabled by Azure Arc.
 author: dramasamy
 ms.topic: how-to
@@ -11,13 +11,11 @@ ms.custom: sfi-image-nochange
 ms.subservice: multi-rack
 ---
 
-# Troubleshoot Azure Local multi-rack virtual machines enabled by Azure Arc (preview)
+# Troubleshoot Azure Local multi-rack virtual machines enabled by Azure Arc
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to troubleshoot problems with Azure Local Virtual Machines enabled by Azure Arc on multi-rack deployments. It also lists the current limitations and known problems with Azure Local VM management, along with recommended resolutions.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Cluster extension doesn't support resource type
 

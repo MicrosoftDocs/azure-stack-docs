@@ -4,7 +4,6 @@ description: Review two-node storage reference pattern IP requirements for Azure
 ms.topic: feature-availability
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025
 ms.subservice: hyperconverged

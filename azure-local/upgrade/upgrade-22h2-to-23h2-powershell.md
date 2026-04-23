@@ -5,7 +5,6 @@ author: ronmiab
 ms.topic: how-to
 ms.date: 12/02/2025
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
 ms.subservice: hyperconverged

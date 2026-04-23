@@ -4,7 +4,6 @@ description: Review three-node storage reference pattern IP requirements for Azu
 ms.topic: article
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.date: 02/14/2025
 ms.subservice: hyperconverged

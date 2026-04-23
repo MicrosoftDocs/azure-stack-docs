@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: release-notes
 ms.date: 04/17/2026
 ms.author: alkohli
-ms.reviewer: alkohli
 ms.subservice: hyperconverged
 ---
 

@@ -3,7 +3,6 @@ title: Create Azure Local Virtual Machines Enabled by Azure Arc
 description: Learn how to view your Azure Local instance in the Azure portal and create Azure Local VMs enabled by Azure Arc.
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/07/2026

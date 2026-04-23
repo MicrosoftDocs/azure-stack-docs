@@ -5,7 +5,6 @@ author: ronmiab
 ms.topic: concept-article
 ms.date: 02/17/2026
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ---
 

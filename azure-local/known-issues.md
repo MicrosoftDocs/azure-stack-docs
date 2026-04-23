@@ -2,10 +2,9 @@
 title: Release notes with fixed and known issues in Azure Local
 description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
+ms.author: robess
 ms.topic: troubleshooting-general
 ms.date: 04/22/2026
-ms.author: robess
-ms.reviewer: robess
 ms.subservice: hyperconverged
 ---
 
@@ -58,7 +57,7 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-There are no known issues for this release
+There are no known issues for this release.
 
 ## Known issues from previous releases
 
@@ -66,7 +65,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| WAC <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
+| Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 | Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM will function, but the watermark will persist. | There's no known workaround in this release. |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
@@ -129,7 +128,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| WAC <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
+| Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you’re using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 
 

@@ -4,7 +4,6 @@ description: Learn how to deploy Windows Server Azure Edition VMs on Azure Local
 ms.topic: install-set-up-deploy
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:
   - devx-track-azurecli

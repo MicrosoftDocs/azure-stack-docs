@@ -5,7 +5,6 @@ author: alkohli
 ms.topic: how-to
 ms.date: 06/12/2025
 ms.author: alkohli
-ms.reviewer: alkohli
 ms.custom:
   - linux-related-content
   - sfi-image-nochange

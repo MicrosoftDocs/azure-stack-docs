@@ -42,15 +42,15 @@ This release includes various reliability improvements and bug fixes.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
-- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./whats-new.md). <!--update link-->
+- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md). <!--update link-->
 
-- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./whats-new.md). <!--update link-->
+- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md). <!--update link-->
 
 - **Local identity with Key Vault**: Starting with this release, local identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./whats-new.md). <!--update link-->
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md). <!--update link-->
 
-- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./whats-new.md). <!--update link-->
+- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md). <!--update link-->
 
 - **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over.
 
