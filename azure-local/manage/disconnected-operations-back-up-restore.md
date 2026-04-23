@@ -1,6 +1,6 @@
 ---
 title: Back up Azure Local Disconnected Environments
-description: Learn how to backup Azure Local environments running disconnected. Configure parameters and trigger backups.
+description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
 ms.date: 02/23/2026
@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Back up for disconnected operations for Azure Local
+# Backup for disconnected operations for Azure Local
 
 ::: moniker range=">=azloc-2602"
 
