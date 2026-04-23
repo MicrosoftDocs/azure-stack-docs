@@ -1491,6 +1491,8 @@ items:
       href: manage/disconnected-operations-update.md
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
+    - name: Restore disconnected operations
+      href: manage/disconnected-operations-restore.md
     - name: Billing
       href: manage/disconnected-operations-billing.md
 
