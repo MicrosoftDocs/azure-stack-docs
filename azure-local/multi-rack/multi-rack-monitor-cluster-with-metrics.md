@@ -1,23 +1,21 @@
 ---
-title: Monitor Multi-rack Deployments of Azure Local with Azure Monitor Metrics (preview)
-description: Learn how to monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (preview).
-author: ronmiab
-ms.author: robess
+title: Monitor Multi-rack Deployments of Azure Local with Azure Monitor Metrics
+description: Learn how to monitor multi-rack deployments of Azure Local with Azure Monitor Metrics.
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/14/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Monitor multi-rack deployments of Azure Local with Azure Monitor Metrics (preview)
+# Monitor multi-rack deployments of Azure Local with Azure Monitor Metrics
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to monitor your multi-rack deployments of Azure Local with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also describes the Performance Metrics dashboard and lists metrics collected for compute, storage, and network resources in multi-rack deployments of Azure Local.
 
 When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Local enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your system and assess its health and utilization.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Benefits
 

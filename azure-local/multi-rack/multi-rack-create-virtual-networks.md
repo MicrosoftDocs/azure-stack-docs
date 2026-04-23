@@ -206,7 +206,7 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     --location $location \ 
     --custom-location $customLocationID \ 
     --address-prefix $addressPrefix \ 
-    --network-security-group $nsg 
+    --network-security-group $nsg\ 
     ```
 
     Here's a sample output:  
