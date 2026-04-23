@@ -81,7 +81,7 @@ Import-Module SdnDiagnostics
 
 ### Phase 1: Identify gateway roles
 
-1. **Get the list of current gateways.** Query the Network Controller to retrieve all gateway VMs.
+- **Get the list of current gateways.** Query the Network Controller to retrieve all gateway VMs.
     - Identify which gateways are **Active** and which are **Redundant**.
       - **Active** gateways host active network connections or tunnels.
       - **Redundant** gateways are standby and don't host active connections.
