@@ -13,38 +13,38 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to add new physical network adapters (NICs) to an existing Network ATC intent on an Azure Local instance. Use this procedure when you need to expand an intent to increase bandwidth, improve redundancy, or align with updated hardware standards across your cluster.
+This article shows you how to add new physical network adapters (NICs) to an existing Network ATC intent on an Azure Local instance. Use this procedure to expand an intent for more bandwidth, better redundancy, or to match new hardware standards in your cluster.
 
 For the related repair workflow, see [Replace a failed NIC in an existing Network ATC intent](replace-network-adapter-network-atc.md).
 
 ## Key principle
 
-Network ATC must remain the single source of truth for all host networking configuration. All adapter changes are performed through the `Update-NetIntentAdapter` cmdlet. Don't manually modify vSwitch, VMSwitch, or team configurations outside of Network ATC.
+Network ATC owns all host networking configuration. Make all adapter changes with the `Update-NetIntentAdapter` cmdlet. Don't change vSwitch, VMSwitch, or team configurations outside Network ATC.
 
 ## Critical warning: SDN-enabled environments and the virtual switch
 
 > [!WARNING]
 > **Don't remove or recreate the vSwitch when SDN is enabled.**
 >
-> If your Azure Local instance has Software Defined Networking (SDN) enabled, the Hyper-V Virtual Switch (vSwitch) has Virtual Filtering Platform (VFP) extensions attached to it. The vSwitch is identified by a unique vSwitch ID.
+> When your Azure Local instance has Software Defined Networking (SDN) enabled, Virtual Filtering Platform (VFP) extensions attach to the Hyper-V Virtual Switch (vSwitch). Each vSwitch has a unique vSwitch ID.
 >
-> If you remove and recreate the vSwitch (for example, by manually running `Remove-VMSwitch`), the new vSwitch receives a new vSwitch ID. This breaks your SDN implementation because:
+> If you remove and recreate the vSwitch (for example, by running `Remove-VMSwitch`), the new vSwitch gets a new ID. This breaks SDN because:
 >
-> - The SDN Network Controller has recorded the original vSwitch ID.
-> - VFP policies (load balancing rules, access control lists (ACLs), virtual network policies) are bound to the original vSwitch ID.
-> - A new vSwitch ID means the Network Controller can no longer apply policies to the switch.
-> - All SDN-managed workloads (virtual networks, load balancers, gateways) stop functioning correctly.
+> - The SDN Network Controller still uses the original vSwitch ID.
+> - VFP policies (load balancing rules, access control lists (ACLs), virtual network policies) bind to the original ID.
+> - A new ID prevents the Network Controller from applying policies to the switch.
+> - All SDN-managed workloads (virtual networks, load balancers, gateways) stop working.
 >
-> Never run `Remove-VMSwitch`, or any operation that directly destroys the vSwitch, in an SDN-enabled environment.
+> In an SDN-enabled environment, never run `Remove-VMSwitch` or any command that destroys the vSwitch.
 
 > [!NOTE]
-> `Remove-NetIntent` removes the intent definition but doesn't remove the vSwitch or change any existing switch settings. However, without an intent managing the adapters, Network ATC no longer reconciles configuration drift. For this reason, use `Update-NetIntentAdapter` to modify adapter membership within the existing intent rather than removing and recreating it.
+> `Remove-NetIntent` removes the intent definition but doesn't touch the vSwitch or its settings. However, without an intent, Network ATC no longer reconciles configuration drift. Use `Update-NetIntentAdapter` to change adapter membership inside the existing intent instead of removing and recreating it.
 
 ## Check if SDN is enabled on your cluster
 
-Before performing any NIC changes, determine whether SDN is enabled. If SDN is active, take extra care to preserve the vSwitch.
+Check SDN status before you change any NICs. If SDN is active, take extra care to preserve the vSwitch.
 
-On Azure Local, SDN is enabled when the VFP extension is active on the Hyper-V Virtual Switch. The following command checks for this directly:
+On Azure Local, SDN is active when the VFP extension is enabled on the Hyper-V Virtual Switch. The following command checks for this directly:
 
 ```powershell
 # Check if SDN is enabled by querying for the VFP extension specifically
@@ -60,15 +60,15 @@ if ($vfp -and $vfp.Enabled) {
 ```
 
 > [!IMPORTANT]
-> If the VFP extension is enabled on the vSwitch, SDN is active and you must not remove or recreate the vSwitch (`Remove-VMSwitch`) under any circumstances.
+> When the VFP extension is enabled on the vSwitch, SDN is active. Don't remove or recreate the vSwitch (`Remove-VMSwitch`) for any reason.
 
 ## When to add NICs to an intent
 
-Common reasons to add additional physical network adapters to an existing Network ATC intent include:
+Add more physical network adapters to an existing Network ATC intent when you need to:
 
-- Increasing available bandwidth (for example, adding a second 25 GbE port).
-- Improving redundancy (for example, going from a single NIC to a teamed pair).
-- Aligning with updated hardware standards across the cluster.
+- Increase bandwidth (for example, add a second 25 GbE port).
+- Improve redundancy (for example, move from a single NIC to a teamed pair).
+- Match updated hardware standards across the cluster.
 
 ## Prerequisites
 
@@ -76,37 +76,37 @@ Complete all of the following before you begin:
 
 | # | Prerequisite | How to verify |
 |---|---|---|
-| 1 | New NICs are physically installed and visible to the operating system on all relevant cluster nodes. | Run `Get-NetAdapter` on each node; confirm the new adapter appears. |
-| 2 | NIC drivers and firmware are installed and version-consistent across all nodes. | `Get-NetAdapter \| Select Name, DriverVersion` on each node. |
-| 3 | New NICs are the **identical hardware model** as the existing adapters in the intent (same manufacturer, model, speed, and Remote Direct Memory Access (RDMA) type). Mixing different NIC models within an intent isn't supported. | `Get-NetAdapter \| Select Name, InterfaceDescription, DriverVersion`; compare with existing adapters. |
-| 4 | You know the exact adapter names on each node. Names must be consistent across nodes for the same intent. | `Get-NetAdapter \| Select Name, InterfaceDescription`. |
-| 5 | You know the intent name to modify. | `Get-NetIntent \| Select Name, NetAdapterName`. |
-| 6 | SDN status has been checked. | See [Check if SDN is enabled on your cluster](#check-if-sdn-is-enabled-on-your-cluster). |
-| 7 | A maintenance window is scheduled and operations team is notified. | Coordinate change window with stakeholders. |
-| 8 | Cluster health is confirmed before starting. | `Get-ClusterNode` (all nodes Up); `Get-ClusterGroup` (no failed critical resources). |
+| 1 | Install the new NICs and confirm the operating system sees them on all cluster nodes. | Run `Get-NetAdapter` on each node and confirm the new adapter appears. |
+| 2 | Install matching driver and firmware versions on every node. | `Get-NetAdapter \| Select Name, DriverVersion` on each node. |
+| 3 | Use the **identical hardware model** as the existing adapters in the intent (same manufacturer, model, speed, and Remote Direct Memory Access (RDMA) type). An intent doesn't support mixed NIC models. | `Get-NetAdapter \| Select Name, InterfaceDescription, DriverVersion`; compare with existing adapters. |
+| 4 | Know the exact adapter names on each node. Names must match across nodes for the same intent. | `Get-NetAdapter \| Select Name, InterfaceDescription`. |
+| 5 | Know the intent name to modify. | `Get-NetIntent \| Select Name, NetAdapterName`. |
+| 6 | Check SDN status. | See [Check if SDN is enabled on your cluster](#check-if-sdn-is-enabled-on-your-cluster). |
+| 7 | Schedule a maintenance window and notify the operations team. | Coordinate the change window with stakeholders. |
+| 8 | Confirm cluster health. | `Get-ClusterNode` (all nodes Up); `Get-ClusterGroup` (no failed critical resources). |
 
 > [!IMPORTANT]
-> **Hardware model requirement.** All NICs within the same Network ATC intent must be the identical hardware model (same manufacturer, model number, speed, and RDMA type). Network ATC expects uniform adapter capabilities across all members of an intent. Mixing different NIC models (for example, Intel X710 with Mellanox ConnectX-5) causes intent convergence failures or unpredictable behavior.
+> **Hardware model requirement.** Every NIC in the same Network ATC intent must be the same hardware model (same manufacturer, model number, speed, and RDMA type). Network ATC expects every member of an intent to have the same capabilities. A mixed-model intent (for example, Intel X710 with Mellanox ConnectX-5) fails to converge or behaves unpredictably.
 
 ## Step-by-step procedure
 
 This procedure has two phases:
 
-- **Phase A** installs the physical NICs on each node in a rolling fashion (one node at a time).
-- **Phase B** updates the Network ATC intent cluster-wide after all nodes have the new hardware.
+- **Phase A** installs the physical NICs on each node, one node at a time.
+- **Phase B** updates the Network ATC intent across the cluster after all nodes have the new hardware.
 
-### Orchestration overview
+### Phase overview
 
 **Phase A — Rolling hardware installation** (repeat for each node, one at a time):
 
 1. Record current state.
 1. Suspend (drain) the cluster node.
 1. Install the new physical NICs.
-1. Verify NIC visibility, naming, and drivers.
+1. Check NIC visibility, naming, and drivers.
 1. Resume the cluster node.
 1. Repeat steps 2–5 for the next node.
 
-**Phase B — Intent update** (performed once, after all nodes have the new hardware):
+**Phase B — Intent update** (run once, after all nodes have the new hardware):
 
 1. (Optional) Stop Network ATC on non-target nodes for a controlled rollout.
 1. Update the Network ATC intent to include the new adapters.
@@ -115,11 +115,11 @@ This procedure has two phases:
 
 ### Phase A: Rolling hardware installation (per node)
 
-Perform the following steps on each cluster node, one at a time. Don't proceed to the next node until the current node is fully resumed and healthy.
+Run the following steps on each cluster node, one at a time. Wait until the current node is fully resumed and healthy before you start the next node.
 
 #### Step 1: Record current cluster and intent state
 
-Before making any changes, document the current state for rollback reference. This step only needs to be done once, before starting the first node.
+Document the current state for rollback reference before you make any changes. Run this step once, before you start the first node.
 
 ```powershell
 # Record intent configuration
@@ -136,7 +136,7 @@ Get-NetAdapter | Format-Table Name, Status, LinkSpeed, InterfaceDescription -Aut
 
 #### Step 2: Suspend (drain) the cluster node
 
-Suspend the target node to gracefully move all clustered roles (virtual machines (VMs), cluster groups) to other nodes before any hardware work.
+Suspend the target node to move all clustered roles (virtual machines (VMs), cluster groups) to other nodes before you do any hardware work.
 
 ```powershell
 # Replace with the actual node name being modified
@@ -151,26 +151,26 @@ Get-ClusterNode -Name $nodeName | Select-Object Name, State
 ```
 
 > [!NOTE]
-> **Why suspend before hardware installation?** NIC installation may require powering down the server (depending on whether your hardware supports hot-plug Peripheral Component Interconnect Express (PCIe)). Even if hot-plug is supported, suspending (draining) the node ensures:
+> **Why suspend before hardware installation?** NIC installation might require you to power down the server, depending on whether your hardware supports hot-plug Peripheral Component Interconnect Express (PCIe). Even with hot-plug support, suspending (draining) the node:
 >
-> - All VMs and cluster roles are live-migrated to other healthy nodes first.
-> - No workloads are affected if the node is powered down or rebooted.
-> - Storage Spaces Direct (S2D) marks the node as in maintenance.
+> - Live-migrates all VMs and cluster roles to other healthy nodes first.
+> - Protects workloads if you power down or reboot the node.
+> - Marks the node as in maintenance for Storage Spaces Direct (S2D).
 >
-> The `-Drain` flag moves all roles. The `-Wait` flag blocks until the drain is complete.
+> The `-Drain` flag moves all roles. The `-Wait` flag blocks until the drain finishes.
 
 #### Step 3: Install the new physical NICs
 
-With the node suspended (and powered down if required by your hardware vendor), physically install the new network adapters.
+With the node suspended (and powered down if your hardware vendor requires it), install the new network adapters.
 
-- Ensure proper PCIe slot seating and cabling.
-- If the server was powered down, power it back up and wait for it to rejoin the cluster.
+- Seat the adapter in its PCIe slot and check the cabling.
+- If you powered the server down, power it back up and wait for it to rejoin the cluster.
 
 :::image type="content" source="media/add-network-adapters-network-atc/add-phase-a-rolling-install.png" alt-text="Diagram showing the per-node rolling install in Phase A, with one node paused for hardware installation while other nodes remain Up." lightbox="media/add-network-adapters-network-atc/add-phase-a-rolling-install.png":::
 
 #### Step 4: Verify the new NIC is visible and properly configured
 
-After the node is back online, verify the NIC before resuming:
+After the node comes back online, check the NIC before you resume it:
 
 ```powershell
 # Confirm the new NIC is present and link is up
@@ -187,17 +187,17 @@ Get-NetAdapter | Select-Object Name, DriverVersion, InterfaceDescription
 ```
 
 > [!IMPORTANT]
-> **Adapter naming.** The new NIC name must be consistent across all cluster nodes. If the operating system assigns a name like `Ethernet 5` but you need `Ethernet3`, rename it now:
+> **Adapter naming.** The new NIC name must match across all cluster nodes. If the operating system assigns a name like `Ethernet 5` but you need `Ethernet3`, rename it now:
 >
 > ```powershell
 > Rename-NetAdapter -Name 'Ethernet 5' -NewName 'Ethernet3'
 > ```
 >
-> Do this on each node as you go, ensuring all nodes use the same name for the same adapter.
+> Do this on each node as you go, so every node uses the same name for the same adapter.
 
 #### Step 5: Resume the cluster node
 
-After the NIC is verified, resume the node to bring it back into active cluster participation.
+After you verify the NIC, resume the node to bring it back into the active cluster.
 
 ```powershell
 # Resume the node
@@ -214,27 +214,27 @@ Get-ClusterNode | Format-Table Name, State -AutoSize
 
 #### Step 6: Repeat for each remaining node
 
-Go back to step 2 and repeat the **Suspend → Install → Verify → Resume** cycle for the next node. Continue until all nodes have the new NICs installed.
+Go back to step 2 and repeat the **Suspend → Install → Verify → Resume** cycle for the next node. Continue until every node has the new NICs installed.
 
 :::image type="content" source="media/add-network-adapters-network-atc/add-phase-a-complete.png" alt-text="Diagram showing all cluster nodes have completed the Phase A rolling installation and now have the new NIC hardware." lightbox="media/add-network-adapters-network-atc/add-phase-a-complete.png":::
 
 > [!WARNING]
-> **Don't skip nodes.** Network ATC expects the same set of adapters on every node that participates in the intent. The intent update in Phase B fails or produces inconsistent results if any node is missing the new adapter. Ensure all nodes have the new NIC installed and verified before proceeding to Phase B.
+> **Don't skip nodes.** Network ATC expects the same set of adapters on every node in the intent. If any node is missing the new adapter, the intent update in Phase B fails or produces inconsistent results. Install and verify the new NIC on every node before you start Phase B.
 
 ### Phase B: Intent update (cluster-wide)
 
-After all nodes have the new NICs installed, verified, and resumed, update the Network ATC intent. By default, Network ATC converges the intent on all nodes simultaneously. If you want to control the rollout and converge one node at a time, follow step 7 first. Otherwise, skip directly to step 8.
+After every node has the new NICs installed, verified, and resumed, update the Network ATC intent. By default, Network ATC converges the intent on all nodes at the same time. To control the rollout and converge one node at a time, run step 7 first. Otherwise, skip to step 8.
 
 > [!NOTE]
-> **Why control the rollout?** When you run `Update-NetIntentAdapter`, the Network ATC service (`NetworkATC`) on every node detects the intent change and begins converging simultaneously. This means the Switch Embedded Teaming (SET) team on every node reconfigures at the same time, which could cause a brief disruption to all nodes.
+> **Why control the rollout?** When you run `Update-NetIntentAdapter`, the Network ATC service (`NetworkATC`) on every node detects the change and starts to converge at the same time. The Switch Embedded Teaming (SET) team on every node reconfigures at once, which can briefly disrupt all nodes.
 >
-> By stopping the Network ATC service on the nodes you aren't targeting first, you ensure only one node converges at a time. This limits the impact of any issues to a single node.
+> If you stop the Network ATC service on the other nodes first, only one node converges at a time. This limits the impact of any issues to a single node.
 >
-> If your environment can tolerate a brief cluster-wide disruption, you can skip step 7 and proceed directly to step 8 for a faster (but less controlled) rollout.
+> If your environment can tolerate a brief cluster-wide disruption, skip step 7 and go straight to step 8 for a faster, but less controlled, rollout.
 
 #### Step 7: (Optional) Stop Network ATC on non-target nodes for controlled rollout
 
-To converge one node at a time, stop the Network ATC service on all nodes except the first node you want to converge. This prevents those nodes from picking up the intent change until you're ready.
+To converge one node at a time, stop the Network ATC service on every node except the first one you want to converge. This stops those nodes from picking up the intent change until you're ready.
 
 ```powershell
 # Choose which node will converge first
@@ -261,14 +261,14 @@ foreach ($node in $otherNodes) {
 ```
 
 > [!IMPORTANT]
-> The service name on Azure Local is `NetworkATC`. Don't leave the service stopped indefinitely — it must be restarted after convergence (step 9). While the service is stopped, those nodes don't process any intent changes.
+> The service name on Azure Local is `NetworkATC`. Don't leave the service stopped — restart it after convergence (step 9). While the service is stopped, those nodes don't process any intent changes.
 
 #### Step 8: Update the intent to include the new adapters
 
-Use `Update-NetIntentAdapter` to add the new NICs. You must specify all adapters that should be in the intent (existing and new).
+Use `Update-NetIntentAdapter` to add the new NICs. You must list every adapter that belongs in the intent (existing and new).
 
 > [!WARNING]
-> **Why all adapters?** The `-AdapterName` parameter is a complete list of all adapters for the intent, not just the new ones. If you only specify the new adapter, the existing adapters are removed from the intent.
+> **Why list all adapters?** The `-AdapterName` parameter is the complete list of adapters for the intent, not just the new ones. If you list only the new adapter, Network ATC removes the existing adapters from the intent.
 
 ```powershell
 # Example: Intent 'MgmtCompute' currently has 'Ethernet1'.
@@ -286,7 +286,7 @@ Update-NetIntentAdapter -Name $intentName -AdapterName $adapterList
 
 #### Step 9: Wait for Network ATC convergence
 
-Network ATC applies the configuration (teaming, RDMA, Quality of Service (QoS), and so on) to the new adapter. If you stopped Network ATC on other nodes in step 7, only the target node converges now.
+Network ATC applies the configuration (teaming, RDMA, Quality of Service (QoS), and so on) to the new adapter. If you stopped Network ATC on the other nodes in step 7, only the target node converges now.
 
 ```powershell
 # Monitor intent status on the target node
@@ -295,7 +295,7 @@ Get-NetIntentStatus | Format-List Host, IntentName, ConfigurationStatus, Provisi
 # This may take several minutes
 ```
 
-If you're doing a controlled rollout (step 7), restart the Network ATC service on the next node, wait for it to converge, and repeat until all nodes are done:
+For a controlled rollout (step 7), restart the Network ATC service on the next node, wait for it to converge, and repeat until every node is done:
 
 ```powershell
 # Start ATC on the next node
@@ -319,7 +319,7 @@ Invoke-Command -ComputerName $nextNode -ScriptBlock {
 ```
 
 > [!IMPORTANT]
-> **Don't forget to restart the service.** If you stopped `NetworkATC` in step 7, ensure it's restarted on all nodes before finishing.
+> **Don't forget to restart the service.** If you stopped `NetworkATC` in step 7, restart it on every node before you finish.
 >
 > Verify with:
 >
@@ -338,29 +338,29 @@ See [Post-change validation checklist](#post-change-validation-checklist) for th
 :::image type="content" source="media/add-network-adapters-network-atc/add-after-three-adapters-healthy.png" alt-text="Diagram showing the cluster after the add operation completes, with all three NICs healthy in the Management and Compute intent." lightbox="media/add-network-adapters-network-atc/add-after-three-adapters-healthy.png":::
 
 > [!NOTE]
-> **Expected impact.** Adding adapters to an existing intent is generally non-disruptive when done with a controlled rollout. Network ATC reconciles the updated adapter list and applies configuration automatically. However, always plan a maintenance window as a precaution.
+> **Expected impact.** A controlled rollout to add adapters to an intent rarely disrupts traffic. Network ATC reads the updated adapter list and applies configuration automatically. Always plan a maintenance window as a precaution.
 
 ## Storage-only intents (no vSwitch)
 
-Not all Network ATC intents use a Hyper-V Virtual Switch (vSwitch). Specifically, Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
+Not every Network ATC intent uses a Hyper-V Virtual Switch (vSwitch). Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
 
 :::image type="content" source="media/add-network-adapters-network-atc/add-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/add-network-adapters-network-atc/add-storage-only-intent-reference.png":::
 
-When adding NICs to a storage-only intent (one that doesn't have a vSwitch):
+When you add NICs to a storage-only intent (one without a vSwitch):
 
-- The SDN / vSwitch concerns described in [Critical warning](#critical-warning-sdn-enabled-environments-and-the-virtual-switch) don't apply to this intent. There's no vSwitch to protect, no vSwitch ID to preserve, and no VFP extension.
-- You still use `Update-NetIntentAdapter` to add adapters to the storage intent, exactly as described in the procedure above.
-- You can skip the vSwitch ID and VFP extension validation steps in the post-change checklist for the storage intent specifically.
-- All other prerequisites still apply: identical hardware model, matching drivers/firmware, and consistent adapter naming across nodes.
+- The SDN and vSwitch concerns in [Critical warning](#critical-warning-sdn-enabled-environments-and-the-virtual-switch) don't apply. There's no vSwitch to protect, no vSwitch ID to preserve, and no VFP extension.
+- Use `Update-NetIntentAdapter` to add adapters to the storage intent, just as the procedure describes.
+- For the storage intent, you can skip the vSwitch ID and VFP extension checks in the post-change checklist.
+- All other prerequisites still apply: same hardware model, matching drivers and firmware, and matching adapter names across nodes.
 
 > [!NOTE]
-> **When does the SDN / vSwitch warning apply?** The SDN / vSwitch critical warning applies only to intents that create a Hyper-V Virtual Switch. Typically these are:
+> **When does the SDN and vSwitch warning apply?** This warning applies only to intents that create a Hyper-V Virtual Switch. Those are typically:
 >
-> - Management & Compute intents
+> - Management and Compute intents
 > - Compute-only intents
 > - Any intent that includes a Compute or Management role
 >
-> Storage-only intents don't create a vSwitch and aren't affected by the SDN warning. However, if your environment has a fully converged intent (for example, Management + Compute + Storage on the same adapters), then the vSwitch is involved and the SDN warning applies.
+> Storage-only intents don't create a vSwitch, so the SDN warning doesn't apply. However, a fully converged intent (for example, Management + Compute + Storage on the same adapters) does include the vSwitch, so the SDN warning applies.
 
 ### How to determine if an intent has a vSwitch
 
@@ -376,18 +376,18 @@ Get-VMSwitch | Format-List Name, Id
 
 ## What this procedure does NOT do
 
-This procedure deliberately avoids the following actions to preserve the existing infrastructure:
+This procedure avoids the following actions to preserve the existing infrastructure:
 
 | Action not taken | Why it's avoided |
 |---|---|
-| `Remove-VMSwitch` | Directly removing the VMSwitch destroys the vSwitch. In SDN environments the new vSwitch gets a new ID, breaking all SDN policies, VFP bindings, and virtual networking. Never do this manually. |
-| `Remove-NetIntent` (unnecessarily) | While `Remove-NetIntent` doesn't remove the vSwitch or change switch settings, it does stop Network ATC from managing adapter configuration and reconciling drift. Prefer `Update-NetIntentAdapter` to modify adapter membership within the existing intent. |
-| Full node repair / reinstall | Unnecessary for a simple NIC addition. `Update-NetIntentAdapter` handles adapter membership changes gracefully. |
-| Recreate the vSwitch | A new vSwitch gets a new ID. The SDN Network Controller, VFP policies, and all virtual network configurations are bound to the original ID. |
+| `Remove-VMSwitch` | Removing the VMSwitch destroys the vSwitch. In SDN environments, the new vSwitch gets a new ID, which breaks all SDN policies, VFP bindings, and virtual networking. Never do this manually. |
+| `Remove-NetIntent` (when not needed) | `Remove-NetIntent` doesn't remove the vSwitch or change switch settings, but it does stop Network ATC from managing adapter configuration and reconciling drift. Use `Update-NetIntentAdapter` to change adapter membership inside the existing intent. |
+| Full node repair or reinstall | Not needed for a simple NIC addition. `Update-NetIntentAdapter` handles adapter membership changes. |
+| Recreate the vSwitch | A new vSwitch gets a new ID. The SDN Network Controller, VFP policies, and all virtual network configurations bind to the original ID. |
 
 ## Post-change validation checklist
 
-After adding the NICs, run through all of the following checks:
+After you add the NICs, run all the following checks:
 
 | # | Check | Command / method | Expected result |
 |---|---|---|---|

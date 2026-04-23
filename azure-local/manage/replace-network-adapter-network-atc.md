@@ -13,36 +13,36 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to replace a failed physical network adapter (NIC) that's a member of an existing Network ATC intent on an Azure Local instance, without rebuilding the node or recreating the intent.
+This article shows you how to replace a failed physical network adapter (NIC) that belongs to an existing Network ATC intent on an Azure Local instance, without rebuilding the node or recreating the intent.
 
 For the related expansion workflow, see [Add NICs to an existing Network ATC intent](add-network-adapters-network-atc.md).
 
 ## Key principle
 
-Network ATC must remain the single source of truth for all host networking configuration. All adapter changes are performed through the `Update-NetIntentAdapter` cmdlet. Don't manually modify vSwitch, VMSwitch, or team configurations outside of Network ATC.
+Network ATC owns all host networking configuration. Make all adapter changes with the `Update-NetIntentAdapter` cmdlet. Don't change vSwitch, VMSwitch, or team configurations outside Network ATC.
 
 ## Critical warning: SDN-enabled environments and the virtual switch
 
 > [!WARNING]
 > **Don't remove or recreate the vSwitch when SDN is enabled.**
 >
-> If your Azure Local instance has Software Defined Networking (SDN) enabled, the Hyper-V Virtual Switch (vSwitch) has Virtual Filtering Platform (VFP) extensions attached to it. The vSwitch is identified by a unique vSwitch ID.
+> When your Azure Local instance has Software Defined Networking (SDN) enabled, Virtual Filtering Platform (VFP) extensions attach to the Hyper-V Virtual Switch (vSwitch). Each vSwitch has a unique vSwitch ID.
 >
-> If you remove and recreate the vSwitch (for example, by manually running `Remove-VMSwitch`), the new vSwitch receives a new vSwitch ID. This breaks your SDN implementation because:
+> If you remove and recreate the vSwitch (for example, by running `Remove-VMSwitch`), the new vSwitch gets a new ID. This breaks SDN because:
 >
-> - The SDN Network Controller has recorded the original vSwitch ID.
-> - VFP policies (load balancing rules, access control lists (ACLs), virtual network policies) are bound to the original vSwitch ID.
-> - A new vSwitch ID means the Network Controller can no longer apply policies to the switch.
-> - All SDN-managed workloads (virtual networks, load balancers, gateways) stop functioning correctly.
+> - The SDN Network Controller still uses the original vSwitch ID.
+> - VFP policies (load balancing rules, access control lists (ACLs), virtual network policies) bind to the original ID.
+> - A new ID prevents the Network Controller from applying policies to the switch.
+> - All SDN-managed workloads (virtual networks, load balancers, gateways) stop working.
 >
-> Never run `Remove-VMSwitch`, or any operation that directly destroys the vSwitch, in an SDN-enabled environment.
+> In an SDN-enabled environment, never run `Remove-VMSwitch` or any command that destroys the vSwitch.
 
 > [!NOTE]
-> `Remove-NetIntent` removes the intent definition but doesn't remove the vSwitch or change any existing switch settings. The procedure below modifies adapter membership within the existing intent, preserving the vSwitch and its ID.
+> `Remove-NetIntent` removes the intent definition but doesn't touch the vSwitch or its settings. The procedure below changes adapter membership inside the existing intent and preserves the vSwitch and its ID.
 
 ## Check if SDN is enabled on your cluster
 
-Before performing any NIC changes, determine whether SDN is enabled. If SDN is active, take extra care to preserve the vSwitch.
+Check SDN status before you change any NICs. If SDN is active, take extra care to preserve the vSwitch.
 
 ```powershell
 # Check if SDN is enabled by querying for the VFP extension specifically
@@ -58,11 +58,11 @@ if ($vfp -and $vfp.Enabled) {
 ```
 
 > [!IMPORTANT]
-> If the VFP extension is enabled on the vSwitch, SDN is active and you must not remove or recreate the vSwitch (`Remove-VMSwitch`) under any circumstances.
+> When the VFP extension is enabled on the vSwitch, SDN is active. Don't remove or recreate the vSwitch (`Remove-VMSwitch`) for any reason.
 
 ## When to replace a NIC in an intent
 
-Use this procedure when a physical network adapter that's part of an existing Network ATC intent has failed or is degraded, and you need to replace it without rebuilding the node or recreating the intent.
+Use this procedure when a physical network adapter in an existing Network ATC intent fails or is degraded, and you need to replace it without rebuilding the node or recreating the intent.
 
 ## Prerequisites
 
@@ -70,19 +70,19 @@ Complete all of the following before you begin:
 
 | # | Prerequisite | How to verify |
 |---|---|---|
-| 1 | Identify the failed NIC and its adapter name. | `Get-NetAdapter` — the failed adapter may show `Status = Disconnected` or `Not Present`. |
+| 1 | Identify the failed NIC and its adapter name. | `Get-NetAdapter` — the failed adapter shows `Status = Disconnected` or `Not Present`. |
 | 2 | Know the intent name that contains the failed NIC. | `Get-NetIntent \| Select Name, NetAdapterName`. |
-| 3 | Have the replacement NIC ready. It must be the **identical hardware model** as the original (same manufacturer, model number, speed, Remote Direct Memory Access (RDMA) type). Mixing different NIC models within an intent isn't supported. | `Get-NetAdapter \| Select InterfaceDescription` on a healthy node to confirm the exact model; match with the replacement. |
-| 4 | Have out-of-band management access (baseboard management controller (BMC), such as Integrated Dell Remote Access Controller (iDRAC) or HPE Integrated Lights-Out (iLO)) in case connectivity is lost. | Verify BMC connectivity before starting. |
-| 5 | A maintenance window is planned. Removing an adapter from the intent can be disruptive. | Coordinate with operations team. |
-| 6 | SDN status has been checked. | See [Check if SDN is enabled on your cluster](#check-if-sdn-is-enabled-on-your-cluster). |
-| 7 | Cluster health is confirmed before starting. | `Get-ClusterNode` (all nodes Up); `Get-ClusterGroup` (no failed critical resources). |
+| 3 | Have the replacement NIC ready. It must be the **identical hardware model** as the original (same manufacturer, model number, speed, Remote Direct Memory Access (RDMA) type). An intent doesn't support mixed NIC models. | `Get-NetAdapter \| Select InterfaceDescription` on a healthy node to confirm the exact model; match it with the replacement. |
+| 4 | Have out-of-band management access (baseboard management controller (BMC), such as Integrated Dell Remote Access Controller (iDRAC) or HPE Integrated Lights-Out (iLO)) ready in case you lose connectivity. | Test BMC connectivity before you start. |
+| 5 | Plan a maintenance window. Removing an adapter from the intent can disrupt traffic. | Coordinate with the operations team. |
+| 6 | Check SDN status. | See [Check if SDN is enabled on your cluster](#check-if-sdn-is-enabled-on-your-cluster). |
+| 7 | Confirm cluster health. | `Get-ClusterNode` (all nodes Up); `Get-ClusterGroup` (no failed critical resources). |
 
 ## Step-by-step procedure
 
 ### Step 1: Record current state
 
-Document everything before making changes.
+Document everything before you make changes.
 
 ```powershell
 # Record current intent configuration
@@ -99,7 +99,7 @@ Get-VMSwitch | Format-List Name, Id
 
 ### Step 2: Suspend (drain) the cluster node
 
-Before modifying the intent, suspend the node to gracefully move all clustered roles (virtual machines (VMs), cluster groups) to other nodes. This step protects workloads from any network disruption during the NIC replacement.
+Before you change the intent, suspend the node to move all clustered roles (virtual machines (VMs), cluster groups) to other nodes. This step protects workloads from network disruption during the NIC replacement.
 
 ```powershell
 # Replace Node01 with the actual node name
@@ -115,7 +115,7 @@ Get-ClusterNode -Name $nodeName | Select-Object Name, State
 
 ### Step 3: Stop Network ATC on non-paused nodes
 
-Removing an adapter from the intent through `Update-NetIntentAdapter` is a cluster-wide operation. The Network ATC service (`NetworkATC`) on every node detects the intent change and attempts to converge, which could disrupt active traffic on healthy nodes. To prevent this disruption, stop the service on all nodes that aren't being drained.
+`Update-NetIntentAdapter` is a cluster-wide operation. The Network ATC service (`NetworkATC`) on every node detects the change and tries to converge, which can disrupt active traffic on healthy nodes. To prevent this, stop the service on every node that you aren't draining.
 
 ```powershell
 # The paused/drained node where we are working
@@ -142,14 +142,14 @@ foreach ($node in $otherNodes) {
 ```
 
 > [!IMPORTANT]
-> The service name on Azure Local is `NetworkATC`. Don't leave the service stopped indefinitely — it must be restarted after convergence (step 10). While the service is stopped, those nodes don't process any intent changes.
+> The service name on Azure Local is `NetworkATC`. Don't leave the service stopped — restart it after convergence (step 10). While the service is stopped, those nodes don't process any intent changes.
 
 ### Step 4: Remove the failed adapter from the intent
 
 Update the intent to include only the healthy adapters. This change tells Network ATC to stop managing the failed NIC. Because you stopped Network ATC on the other nodes in step 3, only the paused node processes this change.
 
 > [!WARNING]
-> **Disruption warning.** This step may cause temporary loss of network connectivity on the paused node. If this is the only management NIC, the node may become unreachable over the network. Ensure you have out-of-band access (BMC, such as iDRAC or iLO) before proceeding.
+> **Disruption warning.** This step can briefly drop network connectivity on the paused node. If this NIC is the only management NIC, you might lose network access to the node. Confirm that out-of-band access (BMC, such as iDRAC or iLO) works before you continue.
 
 ```powershell
 # Example: Intent 'MgmtCompute' currently has 'Ethernet1' (failed) and 'Ethernet2' (healthy)
@@ -169,7 +169,7 @@ Get-NetIntentStatus | Format-List Host, IntentName, ConfigurationStatus, Provisi
 
 ### Step 5: Physically replace the failed NIC
 
-Power down the node if required by your hardware vendor's replacement procedure, then replace the physical adapter.
+If your hardware vendor's replacement procedure requires it, power down the node. Then replace the physical adapter.
 
 ### Step 6: Ensure the replacement adapter has the same name as the original
 
@@ -189,7 +189,7 @@ Get-NetAdapter | Format-Table Name, Status -AutoSize
 
 ### Step 7: Ensure drivers and firmware are up to date
 
-Install the same driver and firmware version that the other nodes are running.
+Install the same driver and firmware version that the other nodes run.
 
 ```powershell
 # Compare driver version with other healthy nodes
@@ -200,7 +200,7 @@ Get-NetAdapter | Select-Object Name, DriverVersion, InterfaceDescription
 
 ### Step 8: Add the replacement adapter back into the intent
 
-Now specify all adapters (the healthy ones plus the replacement) to restore the intent to its full configuration.
+List every adapter (the healthy ones plus the replacement) to restore the intent to its full configuration.
 
 ```powershell
 # Example: Add 'Ethernet1' (replacement) back alongside 'Ethernet2' (was healthy)
@@ -222,7 +222,7 @@ Get-NetIntentStatus | Format-List Host, IntentName, ConfigurationStatus, Provisi
 
 ### Step 10: Restart Network ATC on non-paused nodes and resume the cluster node
 
-Now that the intent has converged on the target node, restart the Network ATC service on the other nodes, one by one, so they pick up the restored intent. Then resume the paused node where you replaced the failed NIC.
+Now that the intent has converged on the target node, restart the Network ATC service on the other nodes one by one so each picks up the restored intent. Then resume the paused node where you replaced the failed NIC.
 
 ```powershell
 # Start ATC on the next node
@@ -261,7 +261,7 @@ Get-ClusterGroup | Format-Table Name, State, OwnerNode -AutoSize
 :::image type="content" source="media/replace-network-adapter-network-atc/replace-after-complete.png" alt-text="Diagram showing the cluster after the replacement is complete, with the node resumed and all NICs healthy in the intent." lightbox="media/replace-network-adapter-network-atc/replace-after-complete.png":::
 
 > [!IMPORTANT]
-> **Don't forget to restart the service.** Ensure `NetworkATC` is running on all nodes before finishing.
+> **Don't forget to restart the service.** Confirm `NetworkATC` is running on every node before you finish.
 >
 > Verify with:
 >
@@ -279,25 +279,25 @@ See [Post-change validation checklist](#post-change-validation-checklist) for th
 
 ## Storage-only intents (no vSwitch)
 
-Not all Network ATC intents use a Hyper-V Virtual Switch (vSwitch). Specifically, Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
+Not every Network ATC intent uses a Hyper-V Virtual Switch (vSwitch). Storage intents typically use dedicated RDMA NICs that connect directly without a vSwitch or SET team.
 
 :::image type="content" source="media/replace-network-adapter-network-atc/replace-storage-only-intent-reference.png" alt-text="Reference diagram showing a storage-only intent with dedicated RDMA NICs and no vSwitch." lightbox="media/replace-network-adapter-network-atc/replace-storage-only-intent-reference.png":::
 
-When replacing a NIC in a storage-only intent (one that doesn't have a vSwitch):
+When you replace a NIC in a storage-only intent (one without a vSwitch):
 
-- The SDN / vSwitch concerns described in [Critical warning](#critical-warning-sdn-enabled-environments-and-the-virtual-switch) don't apply to this intent. There's no vSwitch to protect, no vSwitch ID to preserve, and no VFP extension.
-- You still use `Update-NetIntentAdapter` to remove and re-add adapters in the storage intent, exactly as described in the procedure above.
-- You can skip the vSwitch ID and VFP extension validation steps in the post-change checklist for the storage intent specifically.
-- All other prerequisites still apply: identical hardware model, matching drivers/firmware, and same adapter name for replacements.
+- The SDN and vSwitch concerns in [Critical warning](#critical-warning-sdn-enabled-environments-and-the-virtual-switch) don't apply. There's no vSwitch to protect, no vSwitch ID to preserve, and no VFP extension.
+- Use `Update-NetIntentAdapter` to remove and re-add adapters in the storage intent, just as the procedure describes.
+- For the storage intent, you can skip the vSwitch ID and VFP extension checks in the post-change checklist.
+- All other prerequisites still apply: same hardware model, matching drivers and firmware, and the same adapter name for replacements.
 
 > [!NOTE]
-> **When does the SDN / vSwitch warning apply?** The SDN / vSwitch critical warning applies only to intents that create a Hyper-V Virtual Switch. Typically these are:
+> **When does the SDN and vSwitch warning apply?** This warning applies only to intents that create a Hyper-V Virtual Switch. Those are typically:
 >
-> - Management & Compute intents
+> - Management and Compute intents
 > - Compute-only intents
 > - Any intent that includes a Compute or Management role
 >
-> Storage-only intents don't create a vSwitch and aren't affected by the SDN warning. However, if your environment has a fully converged intent (for example, Management + Compute + Storage on the same adapters), then the vSwitch is involved and the SDN warning applies.
+> Storage-only intents don't create a vSwitch, so the SDN warning doesn't apply. However, a fully converged intent (for example, Management + Compute + Storage on the same adapters) does include the vSwitch, so the SDN warning applies.
 
 ### How to determine if an intent has a vSwitch
 
@@ -313,18 +313,18 @@ Get-VMSwitch | Format-List Name, Id
 
 ## What this procedure does NOT do
 
-This procedure deliberately avoids the following actions to preserve the existing infrastructure:
+This procedure avoids the following actions to preserve the existing infrastructure:
 
 | Action not taken | Why it's avoided |
 |---|---|
-| `Remove-VMSwitch` | Directly removing the VMSwitch destroys the vSwitch. In SDN environments the new vSwitch gets a new ID, breaking all SDN policies, VFP bindings, and virtual networking. Never do this manually. |
-| `Remove-NetIntent` (unnecessarily) | While `Remove-NetIntent` doesn't remove the vSwitch or change switch settings, it does stop Network ATC from managing adapter configuration and reconciling drift. Prefer `Update-NetIntentAdapter` to modify adapter membership within the existing intent. |
-| Full node repair / reinstall | Unnecessary for a simple NIC replacement. `Update-NetIntentAdapter` handles adapter membership changes gracefully. |
-| Recreate the vSwitch | A new vSwitch gets a new ID. The SDN Network Controller, VFP policies, and all virtual network configurations are bound to the original ID. |
+| `Remove-VMSwitch` | Removing the VMSwitch destroys the vSwitch. In SDN environments, the new vSwitch gets a new ID, which breaks all SDN policies, VFP bindings, and virtual networking. Never do this manually. |
+| `Remove-NetIntent` (when not needed) | `Remove-NetIntent` doesn't remove the vSwitch or change switch settings, but it does stop Network ATC from managing adapter configuration and reconciling drift. Use `Update-NetIntentAdapter` to change adapter membership inside the existing intent. |
+| Full node repair or reinstall | Not needed for a simple NIC replacement. `Update-NetIntentAdapter` handles adapter membership changes. |
+| Recreate the vSwitch | A new vSwitch gets a new ID. The SDN Network Controller, VFP policies, and all virtual network configurations bind to the original ID. |
 
 ## Post-change validation checklist
 
-After replacing the NIC, run through all of the following checks:
+After you replace the NIC, run all the following checks:
 
 | # | Check | Command / method | Expected result |
 |---|---|---|---|
