@@ -9,7 +9,7 @@ ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Connect to an Azure Local VM via SSH for multi-rack deployments
+# Connect to an Azure Local VM using SSH or RDP over SSH for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -18,7 +18,7 @@ This article describes how to connect to an Azure Local virtual machine (VM) usi
 - **SSH** is supported for both Windows and Linux VMs.
 - **RDP over SSH** is supported for Windows VMs only.
 
-## About SSH Server extension
+## About SSH and RDP over SSH
 
 Azure Arc uses the SSH service (sshd) running inside the VM, but you establish connections through Azure Arc rather than directly over the network. You don't need to open any public IP address or inbound SSH ports on the VM for connectivity. For more information, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
