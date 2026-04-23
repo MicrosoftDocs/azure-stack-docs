@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 08/12/2024
-ms.author: hbusipalle
-author: hem2
+ms.author: robess
+author: ronmiab
 ---
 # Troubleshooting Nexus Kubernetes Cluster pods stuck in ContainerCreating status
 This guide provides detailed steps for troubleshooting Nexus Kubernetes Cluster pods stuck in `ContainerCreating` status

@@ -1,8 +1,8 @@
 ---
 title: Manage syslog forwarding for Azure Local
 description: Learn how to configure syslog forwarding for Azure Local security information and event management (SIEM).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/03/2025

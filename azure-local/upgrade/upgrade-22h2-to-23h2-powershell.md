@@ -1,11 +1,10 @@
 ---
 title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/02/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
 ms.subservice: hyperconverged

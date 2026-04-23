@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Runtime upgrade"
 description: Learn to execute a Cluster runtime upgrade for Operator Nexus
-author: bartpinto
-ms.author: bpinto
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus, devx-track-azurecli
 ms.topic: how-to

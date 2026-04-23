@@ -2,8 +2,8 @@
 title: Automatic virtual TPM state transfer for Azure Local
 description: Learn how automatic virtual TPM state transfer works for Azure Local.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 04/04/2025
 ms.subservice: hyperconverged

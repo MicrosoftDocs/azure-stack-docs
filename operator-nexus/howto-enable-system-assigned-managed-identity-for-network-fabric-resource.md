@@ -1,49 +1,46 @@
 ---
-title: How to enable system-assigned managed identity (SAMI) for the Network Fabric resource in Azure Operator Nexus
-description: Learn about how to enable system-assigned managed identity (SAMI) for the Network Fabric resource in Azure Operator Nexus
-author: RaghvendraMandawale
-ms.author: rmandawale
+title: Enable a SAMI for the Network Fabric Resource in Azure Operator Nexus
+description: This article describes how to enable a SAMI for the Network Fabric resource in Azure Operator Nexus. You can enable a SAMI for new and existing resource paths.
+author: ronmiab
+ms.author: robess
 ms.date: 03/30/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ---
 
-# How to enable system-assigned managed identity (SAMI) for the Network Fabric resource in Azure Operator Nexus
+# Enable a SAMI for the Network Fabric resource in Azure Operator Nexus
 
-This guide explains how to enable System Assigned Managed Identity (SAMI) for the Network Fabric resource, including new-resource and existing-resource paths, identity transition rules, lock/commit considerations, and role requirements.
+This article explains how to enable a system-assigned managed identity (SAMI) for the Network Fabric resource. You can enable a SAMI for both new and existing resource paths. The article also covers identity transition rules, lock and commit considerations, and role requirements.
 
+The Network Fabric resource supports the following identity modes: `SystemAssigned`, `UserAssigned`, and `SystemAssigned,UserAssigned`. `None` isn't supported.
 
-## Identity model and constraints
+Be aware of the following constraints:
 
-### Supported identity modes on Network Fabric resource
-- `SystemAssigned`
-- `UserAssigned`
-- `SystemAssigned,UserAssigned`
+- After a SAMI is associated for trusted access scenarios, you can't remove a SAMI.
 
-### Important constraints
-- `None` is not supported.
-- SAMI removal is not supported once associated for trusted-access scenarios.
-- If SAMI is accidentally disassociated (for example via an incorrect `None` PATCH), re-associate SAMI as soon as possible.
-- For updates where UAMI already exists and SAMI must be added, provide both identities (`SystemAssigned,UserAssigned`) in effective payload terms.
+- If a SAMI is accidentally disassociated (for example, because of an incorrect `None` patch), reassociate the SAMI as soon as possible.
+
+- For updates where a user-assigned managed identity (UAMI) already exists and you must add a SAMI, provide both identities (`SystemAssigned,UserAssigned`) in effective payload terms.
 
 > [!IMPORTANT]
-> Preserving SAMI is required to prevent token acquisition failures in Network Fabric operational flows. If SAMI is removed or identity is set to `None`, re-associate SAMI immediately.
+> Preserving a SAMI is required to prevent token acquisition failures in Network Fabric operational flows. If a SAMI is removed or the identity is set to `None`, reassociate the SAMI immediately.
 
 ## Prerequisites
 
-- Azure CLI logged in to correct subscription/tenant.
-- `managednetworkfabric` extension installed and current.
-- Network Fabric resource lifecycle checks before identity updates:
+- The Azure CLI is signed in to the correct subscription and tenant.
+- The `managednetworkfabric` extension is installed and current.
+- The Network Fabric resource lifecycle checks show the following conditions before the identity updates:
   - `provisioningState = Succeeded`
-  - resource is not locked for the intended operation
-- Version guidance:
-  - Commit v2 workflow capabilities require Network Fabric resource version and API support (for example `2024-06-15-preview` or newer APIs for lock and commit v2 flows).
-- For latest identity visibility in your environment, use `2025-07-15` when available.
+  - The resource isn't locked for the intended operation.
+- Commit Workflow capabilities require Network Fabric resource version and API support. For example, you need `2024-06-15-preview` or newer APIs for lock and commit flows.
+- For the latest identity visibility in your environment, use `2025-07-15` when available.
 
-## For new resources
+## Create a new resource
 
-### 1. Create Network Fabric Resource with SAMI only
+The following sections show you various ways to create a new resource.
+
+### Create a Network Fabric resource with a SAMI only
 
 ```bash
 az networkfabric fabric create \
@@ -53,19 +50,18 @@ az networkfabric fabric create \
   --mi-system-assigned
 ```
 
-> [!NOTE]
-> For the full create command argument set, refer to the public documentation: [Create a Network Fabric](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric#create-a-network-fabric) 
+For the full create command argument set, see [Create a Network Fabric](/azure/operator-nexus/howto-configure-network-fabric#create-a-network-fabric).
 
-This guide shows the minimum arguments relevant to SAMI enablement, not the complete set of arguments for resource creation.
+This article shows only the minimum arguments relevant to a SAMI enablement, not the complete set of arguments for resource creation.
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--resource-group` | Resource group for the Network Fabric resource. | `my-nf-rg` |
-| `--resource-name` | Network Fabric resource ARM name. | `my-nf` |
-| `--location` | Deployment region. | `eastus2euap` |
-| `--mi-system-assigned` | Enables SAMI. | flag only |
+| Argument               | Purpose                                              | Example       |
+|------------------------|------------------------------------------------------|---------------|
+| `--resource-group`     | Resource group for the Network Fabric resource.      | `my-nf-rg`    |
+| `--resource-name`      | Network Fabric resource Azure Resource Manager name. | `my-nf`       |
+| `--location`           | Deployment region.                                   | `eastus2euap` |
+| `--mi-system-assigned` | Enables a SAMI.                                        | flag only     |
 
-### 2. Create Network Fabric Resource with UAMI only
+### Create Network Fabric resource with a UAMI only
 
 ```bash
 az networkfabric fabric create \
@@ -75,19 +71,19 @@ az networkfabric fabric create \
   --mi-user-assigned <uami-resource-id>
 ```
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--mi-user-assigned` | Attach UAMI resource ID(s). | `/subscriptions/.../userAssignedIdentities/uami1` |
+| Argument             | Purpose                       | Example                                           |
+|----------------------|-------------------------------|---------------------------------------------------|
+| `--mi-user-assigned` | Attach a UAMI resource ID(s). | `/subscriptions/.../userAssignedIdentities/uami1` |
 
+When you use a UAMI for storage access, also include `--storage-account-config` to link the UAMI to the storage account identity:
 
-> [!NOTE]
-> When UAMI is used for storage access (Bring Your Own Storage), also include `--storage-account-config` to link the UAMI to the storage account identity:
-> ```bash
-> --storage-account-config "{storageAccountId:'<storage-account-resource-id>',storageAccountIdentity:{identityType:'UserAssignedIdentity',userAssignedIdentityResourceId:'<uami-resource-id>'}}"
-> ```
-> See [Bring Your Own Storage for Network Fabric](https://learn.microsoft.com/azure/operator-nexus/howto-configure-bring-your-own-storage-network-fabric) for full BYoS guidance.
+```bash
+--storage-account-config "{storageAccountId:'<storage-account-resource-id>',storageAccountIdentity:{identityType:'UserAssignedIdentity',userAssignedIdentityResourceId:'<uami-resource-id>'}}"
+```
 
-### 3. Create Network Fabric Resource with SAMI + UAMI
+For more information, see [Bring your own storage for Network Fabric](/azure/operator-nexus/howto-configure-bring-your-own-storage-network-fabric).
+
+### Create Network Fabric resource with a SAMI and a UAMI
 
 ```bash
 az networkfabric fabric create \
@@ -98,18 +94,18 @@ az networkfabric fabric create \
   --mi-user-assigned <uami-resource-id>
 ```
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--mi-system-assigned` | Enable SAMI. | flag only |
-| `--mi-user-assigned` | Attach UAMI with SAMI retained. | `/subscriptions/.../uami1` |
+| Argument               | Purpose                             | Example                    |
+|------------------------|-------------------------------------|----------------------------|
+| `--mi-system-assigned` | Enable a SAMI.                      | flag only                  |
+| `--mi-user-assigned`   | Attach a UAMI with a SAMI retained. | `/subscriptions/.../uami1` |
 
+When you configure a UAMI for storage access in a SAMI and a UAMI topology, include `--storage-account-config` to link the UAMI to the storage account identity. See the preceding section for details.
 
-> [!NOTE]
-> When UAMI is configured for storage access in a SAMI+UAMI topology, include `--storage-account-config` as described in the UAMI-only new-resource section above.
+## Use an existing resource
 
-## For existing resources
+The following sections show you various ways to work with an existing resource.
 
-### 1. Add SAMI when Network Fabric Resource has no identity
+### Add a SAMI when the Network Fabric resource has no identity
 
 ```bash
 az networkfabric fabric update \
@@ -118,16 +114,18 @@ az networkfabric fabric update \
   --mi-system-assigned
 ```
 
-
-**Identity payload transformation:**
+Here's what the identity payload transformation looks like.
 
 Before (resource has no identity):
+
 ```json
 {
   // no identity present
 }
 ```
+
 After:
+
 ```json
 {
   "identity": {
@@ -138,7 +136,7 @@ After:
 }
 ```
 
-### 2. Add SAMI when Network Fabric Resource already has UAMI
+### Add a SAMI when the Network Fabric resource already has a UAMI
 
 ```bash
 az networkfabric fabric update \
@@ -148,10 +146,10 @@ az networkfabric fabric update \
   --mi-user-assigned <uami-resource-id>
 ```
 
-
-**Identity payload transformation:**
+Here's what the identity payload transformation looks like.
 
 Before (resource has `UserAssigned` identity):
+
 ```json
 {
   "identity": {
@@ -162,7 +160,9 @@ Before (resource has `UserAssigned` identity):
   }
 }
 ```
+
 After:
+
 ```json
 {
   "identity": {
@@ -176,7 +176,7 @@ After:
 }
 ```
 
-### 3. Add UAMI when Network Fabric Resource already has SAMI
+### Add a UAMI when the Network Fabric resource already has a SAMI
 
 ```bash
 az networkfabric fabric update \
@@ -186,10 +186,10 @@ az networkfabric fabric update \
   --mi-user-assigned <uami-resource-id>
 ```
 
-
-**Identity payload transformation:**
+Here's what the identity payload transformation looks like.
 
 Before (resource has `SystemAssigned` identity):
+
 ```json
 {
   "identity": {
@@ -199,7 +199,9 @@ Before (resource has `SystemAssigned` identity):
   }
 }
 ```
+
 After:
+
 ```json
 {
   "identity": {
@@ -215,57 +217,55 @@ After:
 
 ### Shared argument explanations for update commands
 
-| Argument | Purpose | Example |
-|---|---|---|
-| `--resource-group` | Existing Network Fabric resource group. | `my-nf-rg` |
-| `--resource-name` | Existing Network Fabric resource name. | `my-nf` |
-| `--mi-system-assigned` | Ensures SAMI exists post-update. | flag only |
-| `--mi-user-assigned` | Keeps or adds UAMI as required. | `/subscriptions/.../uami1` |
+| Argument               | Purpose                                 | Example                    |
+|------------------------|-----------------------------------------|----------------------------|
+| `--resource-group`     | Existing Network Fabric resource group. | `my-nf-rg`                 |
+| `--resource-name`      | Existing Network Fabric resource name.  | `my-nf`                    |
+| `--mi-system-assigned` | Ensures a SAMI exists post-update.      | flag only                  |
+| `--mi-user-assigned`   | Keeps or adds a UAMI as required.       | `/subscriptions/.../uami1` |
 
-## Existing-Resource Support-Assisted SAMI Association
+## Support option for existing resources
 
-If direct CLI update is not possible, reach out to support personnel to perform the SAMI PATCH on the Network Fabric resource.
+If the direct Azure CLI update isn't possible in your context, reach out to support personnel to perform the SAMI patch on the Network Fabric resource.
 
 Provide the following details to support personnel:
+
 - Subscription ID
+
 - Network Fabric resource ID
 
 > [!NOTE]
-> Managed Identity Operator role assignment might be required during this operation when identity assignment requires `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` on attached user-assigned managed identities.
+> The Managed Identity Operator role assignment might be required during this operation. When the identity assignment requires `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` on attached user-assigned managed identities, you might need this role assignment.
 
-## Managed Identity Operator (MIO) permission matrix
+## Managed Identity Operator permission matrix
 
 This requirement is actor-based.
 
-| Path | Who performs identity assign/action | Who needs MIO role on UAMI |
-|---|---|---|
-| Support-assisted patch path | Support personnel | Nexus Network Fabric resource-provider |
-| Manual CLI/ARM path | Human user or service principal executes PATCH | Acting caller identity |
+| Path                                                  | Who performs identity assign or action     | Who needs Managed Identity Operator role on a UAMI |
+|-------------------------------------------------------|--------------------------------------------|----------------------------------------------------|
+| Support-assisted patch path                           | Support personnel                          | Network Fabric resource provider                   |
+| Manual path (the Azure CLI or Azure Resource Manager) | Human user or service principal runs patch | Acting caller identity                             |
 
-### Why MIO role is required
-When a Network Fabric identity operation attaches or preserves user-assigned managed identities, Azure authorization checks the `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` permission on each referenced user-assigned managed identity. The actor issuing the PATCH must have that permission. This is why either support personnel (support-assisted path) or the direct caller (manual CLI/ARM path) needs Managed Identity Operator.
+When a Network Fabric identity operation attaches or preserves user-assigned managed identities, Azure authorization checks the `Microsoft.ManagedIdentity/userAssignedIdentities/assign/action` permission on each referenced user-assigned managed identity. The actor issuing the patch must have that permission. This is why either support personnel (support-assisted path) or the direct caller (manual path) needs the Managed Identity Operator role.
 
-### Typical remediation
-Grant `Managed Identity Operator` on each configured user-assigned managed identity to the actor that issues the PATCH (support personnel for support-assisted path, caller principal for manual path).
+Grant `Managed Identity Operator` on each configured user-assigned managed identity to the actor that issues the patch (support personnel for the support-assisted path, or the caller principal for the manual path).
 
-## Lock and commit notes (Commit workflow v2 alignment)
+## Lock and commit notes
 
-Lock and commit version 2 are needed to safely apply pending configuration changes.
+To safely apply pending configuration changes, you need lock and commit in Commit Workflow version 2.
 
-After a successful Network Fabric identity PATCH, the Network Fabric resource moves to `PendingCommit` state. At that point, the required flow is to lock the fabric and then commit the fabric.
+After a successful Network Fabric identity patch, the Network Fabric resource moves to the `PendingCommit` state. At that point, the required flow is to lock the fabric and then commit the fabric.
 
-- **Why lock is needed:** lock prevents conflicting updates while configuration is being committed.
-- **Why commit is needed:** commit applies pending changes and transitions configuration toward a stable `Provisioned` state.
-- **Required execution order:**
-  - First, perform identity PATCH and confirm the Network Fabric resource is in `PendingCommit`.
-  - Second, acquire lock.
-  - Third, trigger commit.
-  - Fourth, verify commit completion and resulting state.
-  - Fifth, unlock if lock remains set after a failed or interrupted flow.
+- Why lock is needed: Lock prevents conflicting updates while the configuration is being committed.
+- Why commit is needed: Commit applies pending changes and transitions the configuration toward a stable `Provisioned` state.
+- Required order:
+  1. Perform the identity patch and confirm the Network Fabric resource is in `PendingCommit`.
+  1. Acquire a lock.
+  1. Trigger a commit.
+  1. Verify a commit completion and the resulting state.
+  1. Unlock if the lock remains set after a failed or interrupted flow.
 
-## Verification
-
-### Verify identity and operational state
+## Verify identity and operational state
 
 ```bash
 az networkfabric fabric show \
@@ -275,67 +275,89 @@ az networkfabric fabric show \
   -o json
 ```
 
-### What to check
-- `identity.type` matches intended mode.
-- `principalId` exists when SAMI is enabled.
-- lifecycle states are healthy for your operation path.
-- lock state is understood before commit operations.
+Check for the following conditions:
 
-## Identity transition quick table
+- `identity.type` matches the intended mode.
 
-| Current | Requested outcome | CLI shape |
-|---|---|---|
-| no identity | SAMI | `--mi-system-assigned` |
-| UAMI | SAMI + UAMI | `--mi-system-assigned --mi-user-assigned <id>` |
-| SAMI | SAMI + UAMI | `--mi-system-assigned --mi-user-assigned <id>` |
-| SAMI + UAMI | retain both | include both flags as needed |
-| any | None | invalid |
+- `principalId` exists when a SAMI is enabled.
+
+- Lifecycle states are healthy for your operation path.
+
+- The lock state is understood before commit operations.
+
+## Identity transition table
+
+The following table shows the various identity transitions possible.
+
+| Current         | Requested outcome | CLI shape                                      |
+|-----------------|-------------------|------------------------------------------------|
+| No identity     | SAMI            | `--mi-system-assigned`                         |
+| UAMI          | SAMI + UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
+| SAMI          | SAMI + UAMI   | `--mi-system-assigned --mi-user-assigned <id>` |
+| SAMI + UAMI | Retain both       | Include both flags as needed                   |
+| Any             | None              | Invalid                                        |
 
 ## Common errors and fixes
 
-### Error: LinkedAuthorizationFailed
-- Symptom: identity assignment fails during PATCH.
-- Cause: actor missing UAMI assign permission.
-- Fix: assign `Managed Identity Operator` on UAMI to the acting principal.
+You might encounter these errors. Here's how to fix them.
 
-### Error: lock-related operation failure
-- Symptom: operation blocked or commit path fails due to lock/state mismatch.
-- Fix: confirm lock state and Network Fabric resource configuration state, then rerun sequence with proper order.
+- Linked authorization failed.
+  - Symptom: The identity assignment fails during patch.
+  - Cause: The actor is missing the UAMI assign permission.
+  - Fix: Assign `Managed Identity Operator` on the UAMI to the acting principal.
 
-### Error: invalid identity combination
-- Symptom: request rejected or operation fails validation.
-- Fix: use valid transition payload shape; avoid `None`; preserve SAMI when required.
+- Lock-related operation failure.
+  - Symptom: The operation is blocked or the commit path fails due to a mismatch between lock and state.
+  - Fix: Confirm the lock state and Network Fabric resource configuration state. Then rerun the sequence with the proper order.
+
+- Invalid identity combination.
+  - Symptom: The request is rejected or the operation fails validation.
+  - Fix: Use a valid transition payload shape. Avoid `None`. Preserve a SAMI when required.
 
 ## Post-change checklist
 
-- Network Fabric resource identity reflects expected type.
-- SAMI `principalId` is present when SAMI is enabled.
-- If support-assisted existing-resource PATCH was used, verify commit outcome and resulting config state.
-- Confirm no residual lock if operation failed mid-flow.
-- For UAMI-linked paths, validate MIO role assignments for the actor.
+After you change the identity, confirm the following points:
+
+- The Network Fabric resource identity reflects the expected type.
+
+- A SAMI `principalId` is present when a SAMI is enabled.
+
+- If support personnel performed the existing-resource patch for you, verify the commit outcome and the resulting configuration state.
+
+- Confirm that there's no residual lock if the operation failed mid-flow.
+
+- For UAMI-linked paths, validate the Managed Identity Operator role assignments for the actor.
 
 ## Frequently asked questions
 
-**Q: What identity types are supported for the Network Fabric resource?**  
-A: `SystemAssigned`, `UserAssigned`, and `SystemAssigned,UserAssigned`. Identity type `None` is not supported.
+*What identity types are supported for the Network Fabric resource?*  
 
-**Q: Can I remove SAMI from the Network Fabric resource once it is associated?**  
-A: No. Removing SAMI is not permitted. If SAMI is accidentally removed (for example via a `None` PATCH), re-associate SAMI immediately using manual CLI update or support-assisted patch.
+`SystemAssigned`, `UserAssigned`, and `SystemAssigned,UserAssigned`. Identity type `None` isn't supported.
 
-**Q: What happens if I specify identity type `None`?**  
-A: The Managed Service Identity Resource Provider may remove the SAMI context before the Nexus Network Fabric Resource Provider blocks the request, which can cause token acquisition failures. Recover by re-associating SAMI immediately.
+*Can I remove a SAMI from the Network Fabric resource after it's associated?*  
 
-**Q: How do I add SAMI to a Network Fabric resource that already has UAMI?**  
-A: Use `--mi-system-assigned --mi-user-assigned <uami-id>`. The resulting identity type is `SystemAssigned,UserAssigned`.
+No. Removing a SAMI isn't permitted. If a SAMI is accidentally removed (for example, with a `None` patch), reassociate the SAMI immediately. Use a manual Azure CLI update or support-assisted patch.
 
-**Q: How do I add UAMI to a Network Fabric resource that already has SAMI?**  
-A: Use `--mi-system-assigned --mi-user-assigned <uami-id>`. SAMI is preserved and UAMI is added.
+*What happens if I specify identity type `None`?*  
 
-**Q: What identity should I use for BYoS scenarios?**  
-A: Use UAMI. If SAMI is already present, specify both identities as `SystemAssigned,UserAssigned` and include `--storage-account-config` to link the UAMI to the storage account.
+The managed identity resource provider might remove the SAMI context, leading to token acquisition failures. Recover by reassociating the SAMI immediately.
 
-**Q: What happens to identity if I perform a non-identity PATCH on the Network Fabric resource?**  
-A: Existing identity configuration is not altered unless identity fields are explicitly included in the payload.
+*How do I add a SAMI to a Network Fabric resource that already has a UAMI?*  
 
-**Q: Can I use the same UAMI across multiple Network Fabric resources?**  
-A: Yes. UAMI is reusable, but ensure correct role assignments are configured for each resource it is attached to.
+Use `--mi-system-assigned --mi-user-assigned <uami-id>`. The resulting identity type is `SystemAssigned,UserAssigned`.
+
+*How do I add a UAMI to a Network Fabric resource that already has a SAMI?*  
+
+Use `--mi-system-assigned --mi-user-assigned <uami-id>`. A SAMI is preserved and a UAMI is added.
+
+*What identity should I use for bring your own storage scenarios?*  
+
+Use a UAMI. If a SAMI is already present, specify both identities as `SystemAssigned,UserAssigned`. Include `--storage-account-config` to link the UAMI to the storage account.
+
+*What happens to the identity if I perform a non-identity patch on the Network Fabric resource?*  
+
+The existing identity configuration isn't altered unless identity fields are explicitly included in the payload.
+
+*Can I use the same UAMI across multiple Network Fabric resources?*  
+
+Yes. A UAMI is reusable, but ensure that the correct role assignments are configured for each resource the UAMI is attached to.

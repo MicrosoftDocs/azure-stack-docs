@@ -2,8 +2,8 @@
 title: Enable nested virtualization in Azure Local
 description: Learn how to enable nested virtualization in Azure Local.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 10/17/2025
 ms.subservice: hyperconverged

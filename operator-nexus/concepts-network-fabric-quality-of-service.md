@@ -1,8 +1,8 @@
 ---
 title: Network Fabric Quality of Service (QoS) in Azure Operator Nexus 
 description: Overview of Network Fabric Quality of Service (QoS) in Azure Operator Nexus.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 12/04/2025

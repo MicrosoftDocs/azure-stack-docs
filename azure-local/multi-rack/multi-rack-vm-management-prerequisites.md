@@ -1,15 +1,15 @@
 ---
-title: Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
-description: Learn about the prerequisites for deploying Azure Local VMs for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+title: Review prerequisites for Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview)
+description: Learn about the prerequisites for deploying Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview).
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 02/05/2026
 ms.subservice: multi-rack
 ---
 
-# Review prerequisites for Azure Local VMs for multi-rack deployments (preview)
+# Review prerequisites for Azure Local VMs enabled by Azure Arc for multi-rack deployments (preview)
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -26,6 +26,10 @@ Azure requirements include:
 - Azure Local VM infrastructure is supported in the regions documented in the [What is Azure Local for multi-rack deployments?](multi-rack-overview.md) For Azure Local VMs, all entities must be registered, enabled, or created in the same region.
 
   The entities included with your Azure Local for multi-rack deployments include Network Fabric Controller, Cluster Manager, Custom Location, VM resources (disks, NICs, images), and VMs created from Azure Arc. These entities can be in different or same resource groups as long as all resource groups are in the same region.
+
+## Firewall requirements
+
+Make sure the requirements as listed in [Required firewall URLs for Azure Local deployments](../concepts/firewall-requirements.md#required-firewall-urls-for-azure-local-deployments) are satisfied to allow communication between the Arc VMs running on Azure Local and Azure Arc.
 
 ## Azure Local requirements
 

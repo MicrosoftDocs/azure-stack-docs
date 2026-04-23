@@ -2,9 +2,8 @@
 title: Manage Software Load Balancer for SDN managed by on-premises tools
 description: Learn how to manage Software Load Balancer for SDN managed by on-premises tools
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 09/05/2025
 ms.subservice: hyperconverged
 ---
