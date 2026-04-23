@@ -1,5 +1,5 @@
 ---
-title: Backup for Disconnected Operations for Azure Local
+title: Backup Azure Local Disconnected Environments
 description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
@@ -17,9 +17,6 @@ ai-usage: ai-assisted
 This article explains the backup process for disconnected operations for Azure Local environments. It provides practical steps to trigger a backup and parameter configurations to customize it. Operators need access to the [Operator subscription and role-based access control (RBAC) permissions](disconnected-operations-identity.md).
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
-
-> [!IMPORTANT]
-> The restore feature is currently in development. Documentation for the restore process will be available once the feature is stable.
 
 ## Overview
 
