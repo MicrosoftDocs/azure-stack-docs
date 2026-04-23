@@ -25,7 +25,7 @@ For more information, see [Disconnected operations for Azure Local](/azure/azure
 
 The backup feature currently backs up only the control plane VM data. It doesn't include associated workloads or configured clusters. The restore functionality restores the control plane data from the backup. So, ensure that you configure the same version of Azure local disconnected where you restore the backup.
 
-## Why backup and restore operations?
+## Why back up and restore operations?
 
 Backup capability is critical because the Azure Local with disconnected operations virtual machine (VM) acts as the control plane. It stores authoritative metadata for subscriptions, resource groups, policies, and connected Azure Local resources. Any corruption or loss of this control plane disrupts the entire environment. Regular backups protect against catastrophic failures, infrastructure loss, or misconfigurations by capturing the control plane state at specific points in time. The restore functionality helps you get back the environment to the state which was at the time of backup.
 
