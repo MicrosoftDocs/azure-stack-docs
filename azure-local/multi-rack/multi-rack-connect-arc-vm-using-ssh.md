@@ -1,15 +1,15 @@
 ---
 title: Connect to an Azure Local VM using SSH or RDP over SSH for multi-rack deployments (preview)
 description: Learn how to use SSH or RDP over SSH to connect to an Azure Local VM for multi-rack deployments (preview).
-author: ronmiab
-ms.author: robess
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/18/2026
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Connect to an Azure Local VM using SSH or RDP over SSH for multi-rack deployments (preview)
+# Connect to an Azure Local VM using SSH or RDP over SSH for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -17,8 +17,6 @@ This article describes how to connect to an Azure Local virtual machine (VM) usi
 
 - **SSH** is supported for both Windows and Linux VMs.
 - **RDP over SSH** is supported for Windows VMs only.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## About SSH and RDP over SSH
 
