@@ -23,8 +23,8 @@ The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBo
 These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They're also available in the Azure Resource Graph.
 
 > [!NOTE]
-> The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
-> The Net2 interface can be created; however, it will not be operational as a backup for Net1 in the NNF 2604 release.
+> - The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
+> - The Net2 interface can be created; however, it will not be operational as a backup for Net1 in the NNF 2604 release.
 
 ## Prerequisites
 
