@@ -24,6 +24,7 @@ These resources are defined within the AON Managed Network Fabric API specificat
 
 > [!NOTE]
 > The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
+> The Net2 interface can be created; however, it will not be operational as a backup for Net1 in the NNF 2604 release.
 
 ## Prerequisites
 
