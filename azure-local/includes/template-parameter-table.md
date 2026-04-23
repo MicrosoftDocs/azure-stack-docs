@@ -4,7 +4,6 @@ ms.author: robess
 ms.service: azure-local
 ms.topic: include
 ms.date: 10/16/2025
-ms.reviewer: alkohli
 ---
 
 The following table describes the parameters that you define in the ARM template's parameters file:

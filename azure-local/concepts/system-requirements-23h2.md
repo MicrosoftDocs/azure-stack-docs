@@ -58,11 +58,11 @@ Here are the Azure requirements for your Azure Local instance:
 
 Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
 
-Before you begin, make sure that the physical machine and storage hardware used to deploy Azure Local meets the following requirements:
+Before you begin, make sure that the physical machine and storage hardware used to deploy disaggregated Azure Local meets the following requirements:
 
 |Component|Minimum|
 |--|--|
-|Number of machines| 1 to 16 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
+|Number of machines| 1 to 64 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
@@ -71,49 +71,8 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Data drives|At least two disks per server with a minimum capacity of 500 GB.<br>Same number, type, capacity, performance, and firmware of drives across all servers at time of deployment. Flexibility provided for [Add](../manage/add-server.md) and [Repair](../manage/repair-server.md) scenarios, when drives at time of deployment are no longer available. |
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
+|SAN | At minimum one LUN with 250GB for infrastructure services and one with 20GB used for performance history data |
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
-
-
-### Extra requirements for drives
-
-> [!NOTE]
-> These drive requirements supercede those for Windows Server.
-
-The machines should also meet these extra requirements for drives:
-
-- Have direct-attached drives that are physically attached to one machine each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple machines, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
-
-    > [!NOTE]
-    > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
-
-- **Drive Support**
-   - Supported drives: SATA, SAS, and NVMe (M.2, U.2, and add-in card).
-
-   - Supported formats: 512n, 512e, and 4K native.
-
-- **Deployment-specific requirements**
-
-   - **Single-node**: Use one drive type (NVMe or SSD) with uniform performance characteristics across drives.
-
-   - **Multi-node cluster**: Strongly recommend all-flash, single drive type (NVMe or SSD) with uniform performance.
-
-- **Hybrid two-tier requirements for HDD + flash**
-
-   - Hybrid two-tier is supported only when using HDD for capacity + flash (NVMe or SSD) for cache.
-
-   - Cache devices must be ≥ 32 GB.
-
-   - Cache-to-capacity ratio must be ≥ 15%.
-
-   - Cache drives recommended to have high endurance: ≥ 3 DWPD or ≥ 4 TBW/day.
-
-   - Number of capacity drives recommended to be whole multiple of cache drives.
-
-- NVMe driver is the Microsoft-provided one included in Windows (driver filename is stornvme.sys).
-
-- Flash (NVMe or SSD) must have power-loss protection.
-
-For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
 ## Networking requirements
 
@@ -127,15 +86,11 @@ For hyperconverged clusters, limited-bandwidth connections, like rural T1 lines 
 
 ## Maximum supported hardware specifications
 
-Azure Local deployments that exceed the following specifications are not supported:
+Azure Local disaggregated deployments that exceed the following specifications are not supported:
 
 | Resource | Maximum |
 | --- | --- |
-| Physical machines per system |16 |
-| Storage per system | 4 PB |
-| Storage per machine | 400 TB |
-| Volumes per system | 64 |
-| Volume size | 64 TB |
+| Physical machines per system |64 |
 | Logical processors per host | 512 |
 | RAM per host | 24 TB |
 | Virtual processors per host | 2,048 |

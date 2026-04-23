@@ -1,8 +1,8 @@
 ---
 title: Renew certificates for Software Defined Networking managed by on-premises tools infrastructure
 description: This article describes how to renew or change SDN server and Software Load Balancer multiplexer certificates.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/17/2025
 ms.subservice: hyperconverged

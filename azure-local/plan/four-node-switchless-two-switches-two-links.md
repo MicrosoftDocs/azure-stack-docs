@@ -4,7 +4,6 @@ description: Plan to deploy an Azure Local four-node storage switchless, dual TO
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom: devx-track-arm-template
 ms.date: 04/05/2026

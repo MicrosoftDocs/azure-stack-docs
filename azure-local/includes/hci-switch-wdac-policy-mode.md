@@ -4,7 +4,6 @@ ms.author: robess
 ms.service: azure-local
 ms.topic: include
 ms.date: 12/10/2024
-ms.reviewer: alkohli
 ---
 
 1. Connect to your Azure Local machine.

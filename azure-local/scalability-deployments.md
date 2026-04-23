@@ -4,7 +4,6 @@ description: Discover how Azure Local offers scalable on-premises solutions for 
 #customer intent: As an IT admin, I want to understand the different Azure Local deployment types so that I can choose the best option for my organization's needs.
 author: ronmiab
 ms.author: robess
-ms.reviewer: alkohli
 ms.date: 11/18/2025
 ms.topic: concept-article
 ms.service: azure-local

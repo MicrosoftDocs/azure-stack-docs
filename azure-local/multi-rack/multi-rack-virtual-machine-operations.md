@@ -1,22 +1,19 @@
 ---
-title: Supported Operations for Azure Local Multi-rack Virtual Machines (VMs) Enabled by Azure Arc (Preview)
+title: Supported Operations for Azure Local Multi-rack Virtual Machines (VMs) Enabled by Azure Arc
 description: Learn about the supported virtual machine (VM) operations for Azure Local multi-rack VMs enabled by Azure Arc.
 author: dramasamy
 ms.author: dramasamy
-ms.reviewer: alkohli
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Supported operations for Azure Local multi-rack VMs enabled by Azure Arc (preview)
+# Supported operations for Azure Local multi-rack VMs enabled by Azure Arc
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article discusses the most common operations for Azure Local multi-rack virtual machines (VMs) enabled by Azure Arc. The article identifies the operations that are supported on Azure Local multi-rack VMs, along with the operations that you need to avoid to prevent complications.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Overview
 
