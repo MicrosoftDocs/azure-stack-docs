@@ -1,6 +1,6 @@
 ---
-title: Create and Restore Data Disk Snapshots of Azure Local
-description: Learn how to create snapshots from a data disk and restore a new disk from a snapshot on multi-rack deployments of Azure Local.
+title: Create and Restore Data Disk Snapshots of Azure Local (Preview)
+description: Learn how to create snapshots from a data disk and restore a new disk from a snapshot on multi-rack deployments of Azure Local (preview).
 author: ronmiab
 ms.author: robess
 ms.reviewer: dramasamy
@@ -10,12 +10,14 @@ ms.subservice: multi-rack
 #customer intent: As an Azure Local administrator for multi-rack deployments, I want to create and restore data disk snapshots so that I can back up and recover data disks.
 ---
 
-# Create and restore data disk snapshots on Azure Local
+# Create and restore data disk snapshots on Azure Local (preview)
 
 Disk snapshots let you capture a point-in-time copy of a data disk so that you can recover data or quickly provision new disks from a known-good state. This article shows you how to create a snapshot from an existing data disk and restore a new disk from that snapshot on Azure Local.
 
 > [!NOTE]
 > This article covers data disk snapshots only. This release doesn't include OS disk snapshot and restore.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
