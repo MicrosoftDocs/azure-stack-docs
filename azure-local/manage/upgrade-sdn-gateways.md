@@ -8,7 +8,7 @@ ms.date: 04/15/2026
 ms.subservice: hyperconverged
 ---
 
-# Upgrade SDN gateway VMs
+# Upgrade SDN gateway VMs managed by on-premises tools
 
 > Applies to: Hyperconverged deployments of Azure Local running 2311.2 and later; Windows Server 2025, Windows Server 2022
 
@@ -18,17 +18,17 @@ This article explains how to upgrade Software Defined Networking (SDN) gateway v
 
 The SDN gateway upgrade process follows a three-phase approach:
 
-1. **Phase 1: Identify gateway roles.**
+1. **Phase 1: Identify gateway roles**.
    - Query the Network Controller to retrieve all gateway VMs.
-    - Identify each gateway's role:
+   - Identify each gateway's role:
        - Redundant gateways (standby)
        - Active gateways (hosting live connections)
    - Record the original role of each gateway before starting the update process.
-1. **Phase 2: Update redundant gateways.** Redundant gateways do not host active connections and can be updated with minimal impact.
+1. **Phase 2: Update redundant gateways**. Redundant gateways don't host active connections, so you can update them with minimal impact.
     - Remove each redundant gateway from the Network Controller. Removing the gateway prevents Gateway Manager from interfering with the VM during the update process (for example, triggering unexpected reboots).
     - Install the required Windows updates on the gateway VM.
-    - Re‑add the updated gateway to the Network Controller pool.
-1. **Phase 3: Update active gateways.** Active gateways host live network connections and virtual gateways.
+    - Add the updated gateway back to the Network Controller pool.
+1. **Phase 3: Update active gateways**. Active gateways host live network connections and virtual gateways.
    - Reboot the active gateway to trigger tunnel failover to a redundant gateway.
    - After the reboot, check that the gateway transitions to a redundant state.
    - Remove the gateway from the Network Controller. This removal prevents Gateway Manager from interfering during the Windows update process.
@@ -40,10 +40,10 @@ The SDN gateway upgrade process follows a three-phase approach:
 - Run all steps in this procedure from a physical host in the cluster that can use:
   - The Network Controller REST API.
   - The gateway VMs via WinRM.
-- **Network Controller update**
+- Network Controller update
   - All Network Controller VMs must have the same Windows updates installed.
   - The Network Controller application update must be completed before updating gateways.
-- **Infrastructure health**
+- Infrastructure health
   - The SDN infrastructure must be healthy.
   - Existing gateway connections must be operational and in a healthy state.
 - Admin credentials for the gateway VMs.
@@ -67,7 +67,7 @@ Import-Module SdnDiagnostics
 
 ## Key considerations
 
-- Always remove a gateway from the Network Controller before applying Windows updates. This prevents SDN Gateway Manager from interfering with the VM (for example, triggering unexpected reboots).
+- Always remove a gateway from the Network Controller before applying Windows updates. This action prevents SDN Gateway Manager from interfering with the VM (for example, triggering unexpected reboots).
 - Never update or remove an active gateway directly. Ensure the active gateway first transitions to a redundant state before proceeding.
 - Remove only one gateway at a time from the pool to maintain redundancy.
 - Wait for each gateway to fully stabilize and rejoin the pool before moving to the next gateway.
@@ -83,8 +83,8 @@ Import-Module SdnDiagnostics
 
 1. **Get the list of current gateways.** Query the Network Controller to retrieve all gateway VMs.
     - Identify which gateways are **Active** and which are **Redundant**.
-      - **Active** gateways host active network connections/tunnels.
-      - **Redundant** gateways are standby and do not host active connections.
+      - **Active** gateways host active network connections or tunnels.
+      - **Redundant** gateways are standby and don't host active connections.
 
     ```powershell
     # Set up variables
@@ -119,7 +119,7 @@ The following example illustrates the update process for a redundant gateway (GW
 | 1 | Backup and remove from Network Controller | **Redundant → (Not in Network Controller)** | Back up the GW01 configuration and remove it from the Network Controller. Removing the gateway triggers a reboot and deletes the GW01 resource from the Network Controller. |
 | 2 | Verify removal | **(Not in Network Controller)** | Wait for the reboot to complete and confirm that GW01 no longer appears in the Network Controller. |
 | 3 | Install updates | **(Not in Network Controller)** | Install the required Windows updates on GW01. |
-| 4 | Re-add to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | Add GW01 back to the gateway pool. The gateway initially joins in a passive (unmonitored) state. |
+| 4 | Add back to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | Add GW01 back to the gateway pool. The gateway initially joins in a passive (unmonitored) state. |
 | 5 | Verify healthy | **Passive (Unmonitored) → Redundant (Healthy)** | Verify that GW01 transitions to a healthy redundant state. |
 | 6 | Next gateway | **Redundant (Healthy)** | Repeat the process for the next redundant gateway. |
 
@@ -281,12 +281,12 @@ Complete the following steps for each redundant gateway.
 
 ### Phase 3: Update active gateways
 
-After all redundant gateways are updated, proceed with the active gateways. This phase requires careful coordination to ensure tunnel failover occurs correctly and service availability is maintained.
+After updating all redundant gateways, update the active gateways. This phase requires careful coordination to ensure tunnel failover occurs correctly and service availability is maintained.
 
 > [!IMPORTANT]
-> When an active gateway is rebooted during this process, it transitions to a **redundant** state. As a result, gateway roles can change dynamically during the update.
+> When you reboot an active gateway during this process, it transitions to a **redundant** state. As a result, gateway roles can change dynamically during the update.
 >
-> Always use the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Do not rely on the current gateway state, because it might have changed during previous updates. This approach makes sure all gateways that were originally active are updated in a predictable and controlled order.
+> Always use the original list of active gateways identified in Phase 1 when selecting the next gateway to update. Don't rely on the current gateway state, because it might have changed during previous updates. This approach makes sure you update all gateways that were originally active in a predictable and controlled order.
 
 #### Example walkthrough for active gateways
 
@@ -301,7 +301,7 @@ The following example illustrates the update process for an active gateway, wher
 | 5 | Backup and remove GW01 from Network Controller | **Redundant → (Not in Network Controller)** | **Active** | Back up GW01 configuration and remove it from Network Controller. Removal triggers a reboot and deletes the GW01 resource. |
 | 6 | Verify removal | **(Not in Network Controller)** | **Active** | Wait for GW01 to reboot and verify it no longer exists in Network Controller. |
 | 7 | Install updates | **(Not in Network Controller)** | **Active** |  Install required Windows updates on GW01. |
-| 8 | Re-add to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | **Active** | Re‑add GW01 to the gateway pool. It initially joins in a passive (unmonitored) state. |
+| 8 | Add back to Network Controller | **(Not in Network Controller) → Passive (Unmonitored)** | **Active** | Re‑add GW01 to the gateway pool. It initially joins in a passive (unmonitored) state. |
 | 9 | Verify healthy | **Passive (Unmonitored) → Redundant (Healthy)** | **Active** | Confirm GW01 transitions to a healthy redundant state. |
 | 10 | Next gateway | **Redundant** | Active | Select the next gateway from the original Phase 1 active gateway list and repeat the process. |
 
@@ -361,7 +361,7 @@ Complete the following steps for each active gateway (based on the *original* ac
 
 1. **Reboot the gateway VM to trigger failover.**
 
-    - This triggers a tunnel failure for all connections on this gateway.
+    - This action triggers a tunnel failure for all connections on this gateway.
     - Gateway Manager automatically promotes one of the redundant gateways to active.
     - All tunnels from the rebooted gateway move to the newly promoted active gateway.
 
@@ -470,10 +470,10 @@ Complete the following steps for each active gateway (based on the *original* ac
 1. **Update the now-redundant gateway.**
     
     - Follow the redundant gateway update procedure (Phase 2, steps 1-5).
-    - Remove the gateway from the pool, install Windows updates, re‑add it to the pool, and verify that it returns to a healthy redundant state.
+    - Remove the gateway from the pool, install Windows updates, add it back to the pool, and verify that it returns to a healthy redundant state.
 
     > [!NOTE]
-    > When using the scripts from Phase 2, ensure that `gatewayToUpdate` is set to this now-redundant gateway (the one that was previously active and has just transitioned to redundant state).
+    > When using the scripts from Phase 2, ensure that `gatewayToUpdate` is set to this now-redundant gateway (the one that was previously active and is now in a redundant state).
 
     ```powershell
     Write-Host "`nThe gateway is now Redundant. Follow Phase 2 steps to:" -ForegroundColor Cyan
