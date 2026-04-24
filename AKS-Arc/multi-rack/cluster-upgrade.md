@@ -1,5 +1,5 @@
 ---
-title: Upgrade an Azure Kubernetes Service (AKS) on Azure Local (multi-rack) Cluster
+title: Upgrade an Azure Kubernetes Service (AKS) on Azure Local for multi-rack deployments
 description: Learn how to upgrade an AKS cluster to a newer Kubernetes version on Azure Local.
 ms.topic: overview
 ms.date: 04/24/2026
@@ -15,7 +15,7 @@ All upgrades run in a continuous, rolling manner to ensure uninterrupted availab
 
 ## Before you begin
 
-If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or later. To find the version, run the `az --version` command. If you need to install or upgrade CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
+If you're using the Azure CLI, this article requires Azure CLI version 2.83.0 or later. To find the version, run the `az --version` command. If you need to install or upgrade CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 ## Supported Versions
 
@@ -92,7 +92,7 @@ During an upgrade operation, both the `provisioningState` and `currentState` ind
 
 ## Update operating system (OS) version
 
-You can update worker nodes to a newer version of the node image without changing the Kubernetes version only if the new image doesn't require a different Kubernetes version. Currently, AKS Arc doesn't support node-image-only updates across all supported Kubernetes versions. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
+Currently, AKS on Azure Local for multi-rack deployments doesn't support node-image-only updates across all supported Kubernetes versions. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
 
 > [!IMPORTANT]
 > If you try to use the `node-image-only` flag, you receive a message indicating that this feature isn't yet supported.

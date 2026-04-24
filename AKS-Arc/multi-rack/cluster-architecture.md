@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes Service (AKS) on Azure Local (multi-rack) cluster architecture
+title: Azure Kubernetes Service (AKS) on Azure Local for multi-rack deployments
 description: Learn about the architecture of AKS enabled by Azure Arc on Azure Local (multi-rack), including how clusters are deployed, managed, and connected to Azure.
 ms.topic: concept-article
 ms.date: 04/24/2026
@@ -11,7 +11,7 @@ author: sanjanamsft
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local allows you to deploy and manage Kubernetes clusters. Clusters run as virtual machines (VM) on the Azure Local platform and are connected to Azure through Azure Arc. That connection gives you a consistent management experience using the Azure portal, Azure CLI, or Azure Resource Manager templates (ARM templates). The goal is to provide a unified deployment and lifecycle management experience.
 
-This article describes the key architectural concepts for AKS on Azure Local for multi-rack deployments. It introduces the core Kubernetes infrastructure components, such as the control plane nodes and node pools. It also introduces workload resources such as pods, deployments, and sets, along with how to group resources into namespaces.
+This article describes the key architectural concepts for AKS on Azure Local for multi-rack deployments. It introduces core components, such as the control plane nodes and node pools.
 
 ## Overview
 
@@ -49,7 +49,7 @@ An AKS cluster on Azure Local (multi-rack) consists of:
 
 ### Kubernetes versions
 
-AKS on Azure Local supports specific Kubernetes versions. You can query available versions for your environment using the Azure CLI or Azure Resource Manager API. When you create or upgrade a cluster, you specify the Kubernetes version (for example, `1.33.7`).
+AKS on Azure Local supports specific Kubernetes versions. You can learn more about the supported Kubernetes versions and upgrade process: [Upgrade AKS on Azure Local for multi-rack deployments](cluster-upgrade.md).
 
 ### VM sizes
 

@@ -1,5 +1,5 @@
 ---
-title: Network requirements for AKS on Azure Local (multi-rack)
+title: Network requirements for AKS on Azure Local for multi-rack deployments
 description: Learn about the network requirements for deploying AKS enabled by Azure Arc clusters on Azure Local (multi-rack), including logical network configuration, IP address requirements, and port requirements.
 ms.topic: concept-article
 ms.date: 04/24/2026
@@ -33,7 +33,7 @@ The following parameters are required in order to use a logical network for AKS 
 | [Az CLI logical networks parameter](/azure/azure-local/manage/create-logical-networks?tabs=azurecli) | Description| Required parameter for AKS Arc cluster|
 |------------------|---------|-----------|
 | `--address-prefixes` | AddressPrefix for the network. Currently only one address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. | ![Supported](media/network-system-requirements/check.png) |
-| `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | ![Supported](media/network-system-requirements/check.png) |
+| `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | Optional, but highly recommended |
 | `--no-gateway`         | Specify `--no-gateway`. | ![Supported](media/network-system-requirements/check.png) |
 | `--ip-allocation-method`         | The IP address allocation method. Supported values are `Static`. Usage: `--ip-allocation-method "Static"`. | ![Supported](media/network-system-requirements/check.png) |
 | `--fabric-network-configuration-id`     | Azure Resource Manager resource ID of the Layer 3 Internal Network. | ![Supported](media/network-system-requirements/check.png) |
@@ -48,10 +48,10 @@ For detailed IP planning guidance and examples, see [Plan IP addresses for AKS o
 
 Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is always available. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly.
 
-**Auto-allocation (recommended)**: By default, the control plane endpoint IP is automatically allocated from the logical network subnet. We only support system-assigned control plane IPs currently.
+**Auto-allocation (only supported mode)**: By default, the control plane endpoint IP is automatically allocated from the logical network subnet. We only support system-assigned control plane IPs currently.
 
 > [!NOTE]
-> You can't specify the control plane IP becauseit it's system assigned.
+> You can't specify the control plane IP because it's system assigned.
 
 ## Load balancer IPs for containerized applications
 
@@ -70,7 +70,7 @@ For more information about configuring MetalLB, see [Deploy MetalLB load balance
 
 In Azure Local for multi-rack deployments, users can optionally provide a proxy for workload AKS Arc cluster traffic. For example, customer image pulls from a container registry. This proxy isn't used for any infrastructure or control plane traffic.
 
-The proxy must be set up before you create the AKS Arc cluster and must be reachable from the logical network of the AKS Arc cluster. The proxy endpoint is specified as an _http-proxy tag_ on the `provisionedClusterInstances` Azure Resource Manager resource. In the following example, replace `<proxyIPAddress>` with your proxy IP address.
+The proxy must be set up before you create the AKS Arc cluster and must be reachable from the logical network of the AKS Arc cluster. The proxy endpoint is specified as an
 
 ```json
 {

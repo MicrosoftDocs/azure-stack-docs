@@ -18,10 +18,8 @@ The table below shares minimum count supported. While there are no enforced maxi
 | Scale item   | Minimum  |
 |--------------|----------|
 | Count of control plane nodes (odd numbers)  | 1 |
-| Number of nodes in default node pool created during cluster create  | 1 |
 | Number of node pools in an AKS cluster  | 1  |
 | Number of nodes in a node pool (empty node pools not supported)  | 1 |
-| Number of AKS clusters per Azure Local deployment | 0 |
 
 > [!NOTE]
 > The control plane node count must be an odd number (>=1) to maintain etcd quorum.
@@ -34,21 +32,19 @@ Cluster autoscaler isn't currently supported on Azure Local for multi-rack deplo
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS Arc control plane nodes     | Standard_A4_v2                         | 8-GB memory, 4 vCPU  |
-| AKS Arc Linux worker node       | Standard_A4_v2                         | 8-GB memory, 4 vCPU  |
+| AKS Arc control plane nodes     | Standard_D4s_v3                         | 16-GiB memory, 4 vCPU  |
+| AKS Arc Linux worker node       | Standard_A4_v2                         | 8-GiB memory, 4 vCPU  |
 
 ## Supported values for control plane node sizes
 
-| VM Size                     | CPU  | Memory (GB)  |
+| VM Size                     | CPU  | Memory (GiB)  |
 |-----------------------------|------|--------------|
-| Standard_K8S3_v1            | 4    | 6            |
-| Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
 
 ## Supported values for worker node sizes
 
-| VM Size                     | CPU  | Memory (GB)  |
+| VM Size                     | CPU  | Memory (GiB)  |
 |-----------------------------|------|--------------|
 | Standard_A2_v2              | 2    | 4            |
 | Standard_K8S3_v1            | 4    | 6            |

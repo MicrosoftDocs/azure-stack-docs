@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Deploy an AKS Arc cluster on Azure Local (multi-rack) using an ARM template"
+title: "Quickstart: Deploy an AKS Arc cluster on Azure Local multi-rack deployment using an ARM template"
 description: Learn how to deploy an AKS enabled by Azure Arc cluster on Azure Local (multi-rack) using an Azure Resource Manager template (ARM template).
 ms.topic: quickstart
 ms.date: 04/24/2026
@@ -439,11 +439,7 @@ Save the following parameter file and update the placeholder values with your en
 
    With the proxy running, you can use the Kubernetes command-line client, `kubectl`. If you use Azure Cloud Shell, `kubectl` is already installed. To install and run `kubectl` locally, run [az-aks-install-cli](/cli/azure/aks#az-aks-install-cli) or download from the [Kubernetes](https://kubernetes.io/docs/tasks/tools/#kubectl) website.
 
-   Configure `kubectl` to connect to your Kubernetes cluster using the `az aksarc get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use the credentials.
 
-   ```azurecli
-   az aksarc get-credentials --resource-group "<resource-group-name>" --name "<cluster-name>"
-   ```
 
 1. Verify the connection to your cluster using the `kubectl get` command. This command returns a list of the cluster nodes.
 

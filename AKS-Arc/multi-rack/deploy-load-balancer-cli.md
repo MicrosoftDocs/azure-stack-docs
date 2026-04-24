@@ -1,5 +1,5 @@
 ---
-title: Create an AKS Arc-enabled MetalLB load balancer using the Azure CLI
+title: Deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters using Azure CLI
 description: Learn how to deploy the MetalLB extension for Azure Arc-enabled Kubernetes clusters on Azure Local.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
@@ -9,6 +9,8 @@ author: sanjanamsft
 ---
 
 # Deploy extension for MetalLB for Azure Kubernetes Service Arc-enabled cluster using Azure CLI
+
+**Applies to:** :heavy_check_mark: AKS on Azure Local for multi-rack deployments
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. Traffic distribution can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating a [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using an Arc extension.
 
