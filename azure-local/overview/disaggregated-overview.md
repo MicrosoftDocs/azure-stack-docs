@@ -36,7 +36,7 @@ Azure Local has the following features and capabilities:
 
 | **Features** | **Description** |
 |---|---|
-| Hardware | Validated hardware procured from a Microsoft hardware partner. Each instance can have one to 16 Azure Local machines. |
+| Hardware | Validated hardware procured from a Microsoft hardware partner. Each instance can have one to 64 Azure Local machines. |
 | Storage | SAN storage from wide range of hardware partners. |
 | Networking | Customer-managed networking that uses physical switches and VLANs in your datacenter. |
 | Azure Local services | Foundational services such as Azure Local virtual machines for general purpose VM workloads and Azure Kubernetes services (AKS) enabled by Azure Arc for containerized workloads. |
