@@ -51,6 +51,12 @@ Workloads may pause or mounts may become stuck due to several orchestrator or ne
 | Network Security Group (NSG) or Firewall misconfiguration | Review recent changes to NSGs or Firewall rules. Ensure all required ports and endpoints are open. Rule changes may only take effect after a VM reboot or other TCP reconnection event. |
 | Maintenance window | If experiencing temporary pauses, check the configured maintenance window in the Azure portal. AMLFS may be undergoing scheduled maintenance. Refer to AMLFS documentation for maintenance details, notification setup, and how to modify your maintenance window if needed. |
 
+## Security scanners and antivirus on Lustre clients
+
+Avoid running antivirus, EDR, vulnerability, or security scanners (for example, ClamAV) against a Lustre mount from multiple clients in parallel. Recursive filesystem walks can generate large volumes of metadata operations. These filesystem walks contend for locks on shared resources (especially the filesystem root and frequently traversed directories), which can slow workloads across the cluster.
+
+If scanning the Lustre filesystem is required, run the scanner from a single dedicated client during a low-activity time. Exclude the Lustre mount from scanner configurations on all other clients (the data is identical on every client, so per-client scanning provides no extra security coverage). To minimize impact, tune the scan rate.
+
 Important References:
 - [Connecting Clients to the File System](connect-clients.md)
     - [Best Practices for unmounting with Spot VMs, VMSS, and other orchestrators](https://techcommunity.microsoft.com/blog/azurehighperformancecomputingblog/how-to-unmount-azure-managed-lustre-filesystem-using-azure-scheduled-events/3917814)
