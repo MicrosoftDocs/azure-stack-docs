@@ -244,7 +244,7 @@ To address and resolve the issue of the failed extension and restore normal back
 
 1. Reassign managed identity access.
     1. Determine the managed identity that requires access to the Key Vault.
-    1. Reassign the **Key Vault Secret Officer** and **Key Vault Certificates Officer** roles to the managed identity.
+    1. Reassign the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles to the managed identity.
 
 1. Verify extension functionality.
     1. After reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
