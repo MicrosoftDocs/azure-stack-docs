@@ -246,6 +246,8 @@ items:
           href: manage/update-sdn.md
         - name: Upgrade SDN infrastructure
           href: manage/upgrade-sdn.md
+        - name: Upgrade SDN gateway VMs
+          href: manage/upgrade-sdn-gateways.md
         - name: Manage tenant logical networks
           href: manage/tenant-logical-networks.md
         - name: Manage tenant virtual networks
@@ -1505,6 +1507,8 @@ items:
       href: manage/disconnected-operations-update.md
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
+    - name: Restore disconnected operations
+      href: manage/disconnected-operations-restore.md
     - name: Billing
       href: manage/disconnected-operations-billing.md
 
