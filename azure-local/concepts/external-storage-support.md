@@ -14,8 +14,6 @@ ai-usage: ai-assisted
 
 This article explains external storage support for Azure Local, its benefits, supported configurations, and other essential information.
 
-[!INCLUDE [IMPORTANT](../includes/hci-preview.md)]
-
 ## Overview
 
 Azure Local supports integration with external Storage Area Networks (SAN), enabling customers to attach new or existing SAN arrays as block storage devices for Virtual Machines (VMs), Azure Kubernetes Service (AKS) clusters, and Azure Virtual Desktop (AVD) instances.
