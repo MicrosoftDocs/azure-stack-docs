@@ -137,7 +137,7 @@ $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID,
 $OEM = 'Replaceme'
 
 $client = New-SolutionUpdateClient
-$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM).xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
 $client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
 
