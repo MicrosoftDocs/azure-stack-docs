@@ -28,8 +28,6 @@ landingContent:
             url: multi-rack/multi-rack-overview.md
           - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
-          - text: Microsoft 365 on Local
-            url: /azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview
 
 # Card 
   - title: Plan and deploy
