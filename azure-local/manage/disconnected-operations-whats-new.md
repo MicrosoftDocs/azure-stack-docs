@@ -18,10 +18,10 @@ This article describes new features and improvements in disconnected operations 
 ## Features and improvements in 2603
 
 - Added support for the Azure Local 2603 ISO and its associated capabilities.
-- Standardized Powershell cmdlet naming
-- Implemented client certificate rotation
-- Added restore cmdlets and logic as part of BCDR
-- Added cmdlet to lock down management cluster
+- Standardized PowerShell cmdlet naming.
+- Implemented client certificate rotation.
+- Added restore cmdlets and logic as part of Business Continuity and Disaster Recovery (BCDR).
+- Added cmdlet to lock down management cluster.
 
 ::: moniker-end
 
