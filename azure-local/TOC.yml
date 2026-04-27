@@ -581,7 +581,7 @@ items:
         href: manage/refs-deduplication-and-compression.md
       - name: External storage support
         href: concepts/external-storage-support.md
-      - name: External Storage support with AKS
+      - name: External storage support with AKS
         href: manage/use-external-storage-for-containerized-workloads.md
 
     - name: Billing

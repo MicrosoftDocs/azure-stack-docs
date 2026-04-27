@@ -1,5 +1,5 @@
 ---
-title: External storage support for Azure Local (preview)
+title: External storage support for Azure Local
 ms.service: azure-local
 ms.reviewer: robess
 description: Learn how Azure Local supports external SAN integration, enabling high-performance storage for VMs, AKS clusters, and AVD instances without re-architecture (preview).
@@ -10,11 +10,9 @@ ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---
 
-# External storage support for Azure Local (preview)
+# External storage support for Azure Local
 
 This article explains external storage support for Azure Local, its benefits, supported configurations, and other essential information.
-
-[!INCLUDE [IMPORTANT](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -50,7 +48,7 @@ Once connected, SAN-backed volumes are discovered and integrated as Cluster Shar
 
 ## Dell PowerFlex solution integration
 
-**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this limited preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
+**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local.
 
 :::image type="content" source="media/external-storage-support-azure-local/integration-architecture-diagram.png" alt-text="Diagram that shows connections between Azure Local cluster hosts and PowerFlex storage nodes through dual fabric connectivity." lightbox="media/external-storage-support-azure-local/integration-architecture-diagram.png":::
 
