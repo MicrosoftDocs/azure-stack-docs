@@ -416,7 +416,7 @@ $requiredModule = "Az.Resources"
 $requiredVersion = "8.1.1"
 $installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
 
-# Note if operating air-gaped, you need to download and copy this module manually
+# Note: If operating air-gaped, you need to download and copy this module manually
 if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
      Write-Host "Installing $requiredModule version $requiredVersion..."
      Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
@@ -508,7 +508,7 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
     # Bootstrap each node
     Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
-    # If bootstrap fails/timesouts after 45:00:00 - see known-issues with CRL. 
+    # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
     ```
 
 > [!NOTE]
