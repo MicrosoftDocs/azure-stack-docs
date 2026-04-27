@@ -28,7 +28,7 @@ sections:
 
       - question: How are Azure Local and Sovereign Private Cloud related?
         answer: |
-          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/industry/sovereign-cloud/sovereign-private-cloud/overview-sovereign-private-cloud).
+          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/azure-sovereign-clouds/private/overview/sovereign-private-cloud).
 
 
       - question: What are the different hardware configurations supported on an Azure Local instance?
