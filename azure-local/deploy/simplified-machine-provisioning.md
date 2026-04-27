@@ -77,7 +77,7 @@ At a high level, the process has three key stages:
 - Register the machine provisioning feature for your subscription by using the following command:
 
     ```azurecli
-    az feature register --subscription <subcriptionid> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
+    az feature register --subscription <subscriptionid> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
     ```
 
 - After you register the machine provisioning feature, ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered for your subscription:
