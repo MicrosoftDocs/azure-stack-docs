@@ -23,7 +23,7 @@ These release notes are updated continuously to include critical issues and requ
 
 If the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation fails.
 
-**Error nessage:** Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
+**Error message:** Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
 
 **Mitigation**: 
 
