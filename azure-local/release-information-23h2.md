@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 04/26/2026
+ms.date: 04/27/2026
 ms.subservice: hyperconverged
 ---
 
