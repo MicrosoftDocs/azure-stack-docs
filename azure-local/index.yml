@@ -29,7 +29,7 @@ landingContent:
           - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
           - text: Microsoft 365 on Local
-            url: concepts/microsoft-365-local-overview.md
+            url: /azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview
 
 # Card 
   - title: Plan and deploy

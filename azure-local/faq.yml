@@ -39,7 +39,7 @@ sections:
 
           - Multi-rack deployments of Azure Local are in Preview. Reach out to the Azure Local Product team through your Account teams for more information and inclusion into the Preview. For more information, see [Get started with multi-rack deployments of Azure Local](./multi-rack/multi-rack-overview.md#get-started).
 
-          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
+          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview).
 
           - Disconnected operations allow you to deploy and manage Azure Local instances without a connection to the Azure public cloud. For more information, see the [Eligibility criteria for disconnected operations](./manage/disconnected-operations-overview.md#eligibility-criteria).
 
