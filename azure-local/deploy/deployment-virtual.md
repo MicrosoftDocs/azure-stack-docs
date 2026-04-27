@@ -4,7 +4,7 @@ description: Describes how to perform an Azure Local, version 23H2 virtualized d
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 01/06/2026
+ms.date: 04/27/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,13 +17,13 @@ This article describes how to deploy a virtualized Azure Local (*formerly Azure 
 You need administrator privileges for the Azure Local virtual deployment and should be familiar with the existing Azure Local solution. The deployment can take around 2.5 hours to complete.
 
 > [!IMPORTANT]
-> A virtual deployment of Azure Local is intended for educational and demonstration purposes only. 
+> A virtual deployment of Azure Local is intended for educational and demonstration purposes only.
 >
 > Microsoft Support doesn't support virtual deployments.
 
 ## Prerequisites
 
-Here are the hardware, networking, and other prerequisites for the virtual deployment:
+The hardware, networking, and other prerequisites for the virtual deployment are as follows:
 
 ### Physical host requirements
 
@@ -31,7 +31,7 @@ The following are the minimum requirements to successfully deploy Azure Local.
 
 Before you begin, make sure that:
 
-- You have access to a physical host system that is running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Local deployment.
+- You have access to a physical host system that's running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Local deployment.
 
 - You have enough capacity. More capacity is required for running actual workloads like virtual machines or containers.
 
@@ -59,11 +59,11 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Time synchronization in Hyper-V integration tools | Disabled. |
 
 > [!NOTE]
-> These are the minimum requirements to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
+> These requirements are the minimum to successfully deploy Azure Local. Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
-When deploying Azure Local in a virtual environment, you can use your existing networks and use IP addresses from that network if they're available. In such a case, you just need to create an external switch and connect all the virtual network adapters to that virtual switch. Virtual hosts will have connectivity to your physical network without any extra configuration.
+When deploying Azure Local in a virtual environment, you can use your existing networks and use IP addresses from that network if they're available. In such a case, you just need to create an external switch and connect all the virtual network adapters to that virtual switch. Virtual hosts have connectivity to your physical network without any extra configuration.
 
 However, if your physical network where you're planning to deploy the Azure Local virtual environment is scarce on IPs, you can create an internal virtual switch with NAT enabled, to isolate the virtual hosts from your physical network while keeping outbound connectivity to the internet.
 
@@ -158,16 +158,16 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
     - NetworkATC teams vNICs for management and compute intent and, depending on the configuration, for storage vNICs.
 
     ```PowerShell
-    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -Allow Teaming On
+    Get-VmNetworkAdapter -VmName "Node1" | Set-VmNetworkAdapter -MacAddressSpoofing On -AllowTeaming On
     ```
 
-1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
+1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This configuration is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
 
     ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" | Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
     ```
 
-1. Create a new key protector and assign it to Node1. This step uses a local “untrusted” guardian, which is appropriate for lab and test environments.
+1. Create a new key protector and assign it to Node1. This step uses a local "untrusted" guardian, which is appropriate for lab and test environments.
 
     ```PowerShell
     # Create a local guardian for lab/testing if one doesn't already exist
@@ -232,7 +232,13 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. [Download version 23H2 operating system for Azure Local deployment](./download-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
-1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 14 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
+1. Update the password since this is the VM's first startup. Make sure the password meets the Azure complexity requirements:
+    1. The password is at least 14 characters.
+    1. The password includes at least:
+        1. One uppercase character.
+        1. One lowercase character.
+        1. One number.
+        1. One special character.
 
 1. After the password is changed, the Server Configuration Tool (SConfig) is automatically loaded. Select option `15` to exit to the command line and run the next steps from there.
 
@@ -241,10 +247,10 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     ```PowerShell
       SConfig
     ```
-    
+
     For information on how to use SConfig, see [Configure with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
-1. Change hostname to `Node1`. Use option `2` for `Computer name` in SConfig to do this.
+1. Change hostname to `Node1`. Use option `2` for `Computer name` in SConfig.
 
     The hostname change results in a restart. When prompted for a restart, enter `Yes` and wait for the restart to complete. SConfig is launched again automatically.
 
@@ -256,15 +262,15 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     Get-VMNetworkAdapter -VMName "Node1" -Name "NIC1"
     ```
 
-    2. The MAC address is a string of hexadecimal numbers. The `ForEach-Object` cmdlet is used to format this string by inserting hyphens at specific intervals. Specifically, the `Insert` method of the string object is used to insert a hyphen at the 2nd, 5th, 8th, 11th, and 14th positions in the string. The `join` operator is then used to concatenate the resulting array of strings into a single string with spaces between each element.
+    1. The MAC address is a string of hexadecimal numbers. The `ForEach-Object` cmdlet is used to format this string by inserting hyphens at specific intervals. Specifically, the `Insert` method of the string object is used to insert a hyphen at the 2nd, 5th, 8th, 11th, and 14th positions in the string. The `join` operator is then used to concatenate the resulting array of strings into a single string with spaces between each element.
 
-    3. The commands are repeated for each of the four NICs on the VM, and the final formatted MAC address for each NIC is stored in a separate variable:
+    1. The commands are repeated for each of the four NICs on the VM, and the final formatted MAC address for each NIC is stored in a separate variable:
 
     ```PowerShell
     ($Node1finalmacNIC1, $Node1finalmacNIC2, $Node1finalmacNIC3, $Node1finalmacNIC4).
     ```
 
-    4. The following script outputs the final formatted MAC address for each NIC:
+    1. The following script outputs the final formatted MAC address for each NIC:
 
     ```PowerShell
     $Node1macNIC1 = Get-VMNetworkAdapter -VMName "Node1" -Name "NIC1"
@@ -294,11 +300,11 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     $cred = get-credential
     ```
 
-1. Rename and map the NICs on `Node1`. The renaming is based on the MAC addresses of the NICs assigned by Hyper-V when the VM is started the first time. These commands should be run directly from the host:
+1. Rename and map the NICs on `Node1`. The renaming is based on the MAC addresses of the NICs assigned by Hyper-V when the VM starts the first time. These commands should be run directly from the host:
 
     Use the `Get-NetAdapter` command to retrieve the physical network adapters on the VM, filter them based on their MAC address, and then rename them to the matching adapter using the `Rename-NetAdapter` cmdlet.
 
-    This is repeated for each of the four NICs on the VM, with the MAC address and new name of each NIC specified separately. This establishes a mapping between the name of the NICs in Hyper-V Manager and the name of the NICs in the VM OS:
+    Repeat this process for each of the four NICs on the VM, with the MAC address and new name of each NIC specified separately. This establishes a mapping between the name of the NICs in Hyper-V Manager and the name of the NICs in the VM OS:
 
     ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {param($Node1finalmacNIC1) Get-NetAdapter -Physical | Where-Object {$_.MacAddress -eq $Node1finalmacNIC1} | Rename-NetAdapter -NewName "NIC1"} -ArgumentList $Node1finalmacNIC1
@@ -313,7 +319,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 1. Disable the Dynamic Host Configuration Protocol (DHCP) on the four NICs for VM `Node1` by running the following commands.
 
     > [!NOTE]
-    > The interfaces won't automatically obtain IP addresses from a DHCP server and instead need to have IP addresses manually assigned to them:
+    > The interfaces don't automatically obtain IP addresses from a DHCP server and instead must have IP addresses manually assigned to them:
 
     ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Set-NetIPInterface -InterfaceAlias "NIC1" -Dhcp Disabled}
@@ -354,7 +360,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
     - [Deploy Azure Local using an Azure Resource Manager template](deployment-azure-resource-manager-template.md).
 
-Repeat the process above for extra nodes if you plan to test multi-node deployments. Ensure virtual host names and management IPs are unique and on the same subnet:
+Repeat the previous process for extra nodes if you plan to test multi-node deployments. Ensure virtual host names and management IPs are unique and on the same subnet:
 
 ## Next steps
 
