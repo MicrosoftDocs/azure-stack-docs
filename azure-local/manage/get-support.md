@@ -4,7 +4,7 @@ description: This article provides guidance on how to get support for Azure Loca
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 11/04/2025
+ms.date: 4/27/2026
 ms.subservice: hyperconverged
 ---
 
@@ -12,11 +12,15 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+This article provides guidance on how to get support for Azure Local. Azure Local follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+> [!NOTE]
+> - If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
+> - If you're a customer using an Azure Local Premier solution, contact your OEM for support, directly. You don't require a Microsoft Azure support plan for Azure Local Premier solutions. The OEM will triage the issue, whether hardware or software related, and relay the request to Microsoft Support on their own terms, if needed.
 
 Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
 
-To create an Azure Local support request requires one of the following Azure support plans: Standard, Professional Direct, or Developer. You can't use the Basic plan.
+Creating an Azure Local support request requires one of the following Azure support plans: Standard, Professional Direct, or Developer. You can't use the Basic plan.
 
 For more information, see:
 
