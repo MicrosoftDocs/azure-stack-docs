@@ -416,7 +416,7 @@ $requiredModule = "Az.Resources"
 $requiredVersion = "8.1.1"
 $installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
 
-# Note: If operating air-gaped, you need to download and copy this module manually
+# If operating air-gaped, you need to download and copy this module manually
 if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
      Write-Host "Installing $requiredModule version $requiredVersion..."
      Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
@@ -483,33 +483,31 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
-1. Initialize each Azure Local node.
-
-    ```powershell
-    $resourcegroup = 'azurelocal-management-cluster' 
-    $applianceCloudName = "azure.local"
-    $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
-    $applianceFQDN = "autonomous.cloud.private"
-    $subscriptionName = "Operator subscription"
+```powershell
+$resourcegroup = 'azurelocal-management-cluster' 
+$applianceCloudName = "azure.local"
+$applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
+$applianceFQDN = "autonomous.cloud.private"
+ $subscriptionName = "Operator subscription"
     
-    Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
-    Write-Host "Ensuring you are using operator subscription for the management cluster.."
-    $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
+Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
+Write-Host "Ensuring you are using operator subscription for the management cluster.."
+$subscription = Get-AzSubscription -SubscriptionName $subscriptionName
 
-    # Set the context to that subscription
-    Set-AzContext -SubscriptionId $subscription.Id
+# Set the context to that subscription
+Set-AzContext -SubscriptionId $subscription.Id
 
-    $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
+$armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-    # $ArmAccessToken = $armTokenResponse.Token
-    # Convert token to string for use in initialization
-    # Workaround needed for Az.Accounts 5.0.4
-    $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
+# $ArmAccessToken = $armTokenResponse.Token
+# Convert token to string for use in initialization
+# Workaround needed for Az.Accounts 5.0.4
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-    # Bootstrap each node
-    Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
-    # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
-    ```
+# Bootstrap each node
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+# If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
+```
 
 > [!NOTE]
 > Ensure that you run initialization on the first machine before moving on to other nodes.
