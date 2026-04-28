@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local using Azure Resource Manager temp
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 04/28/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -19,10 +19,6 @@ This article describes how to install the solution upgrade on your Azure Local i
 > [!IMPORTANT]
 > - While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
 > - Installing solution upgrade using ARM template is targeted for at-scale upgrades. This method is intended for IT administrators who have experience managing Azure Local instances. We recommend that you upgrade a system via the Azure portal first, and then use ARM template for subsequent upgrades. To install the solution upgrade via the Azure portal, see [Install solution upgrade on Azure Local](./install-solution-upgrade.md).
-
-## About End of Support (EOS) for version 22H2
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## Prerequisites
 
