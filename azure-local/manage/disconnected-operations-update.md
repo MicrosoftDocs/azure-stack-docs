@@ -66,14 +66,6 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 > [!NOTE]
 > Keep your BitLocker keys in a secure location.
 
-## Create appliance snapshot
-
-To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
-
-```powershell
-Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
-```
-
 ## Trigger an update
 
 > [!CAUTION]  
@@ -137,7 +129,7 @@ $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID,
 $OEM = 'Replaceme'
 
 $client = New-SolutionUpdateClient
-$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM).xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
 $client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
 
