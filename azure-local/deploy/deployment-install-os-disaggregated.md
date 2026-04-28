@@ -1,11 +1,11 @@
 ---
 title: Install the Azure Local Operating System for Disaggregated Deployments
 description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
-author: alkohli
+author: troettinger
 ms.topic: how-to
 ms.date: 03/31/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: thoroet
+ms.reviewer: thoroet
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -96,7 +96,7 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 > [!IMPORTANT]
-> - Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+> - Do not install Windows Updates using SConfig or Azure Update Manager (Microsoft.SoftwareUpdateManagement.WindowsOsUpdateExtension). Updates are installed during the deployment. Installing updates using SConfig or Azure Update Manager causes a deployment failure.
 
 
 Follow these steps to configure the operating system using SConfig:
