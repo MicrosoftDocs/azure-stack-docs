@@ -1,8 +1,8 @@
 ---
 title: Configure service load balancer in Azure Operator Nexus Kubernetes service
 description: Configure service load balancer in Azure Operator Nexus Kubernetes service
-author: dramasamy
-ms.author: dramasamy
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/09/2025

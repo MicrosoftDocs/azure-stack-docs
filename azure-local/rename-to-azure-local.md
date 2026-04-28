@@ -1,8 +1,8 @@
 ---
 title: Renaming Azure Stack HCI to Azure Local
 description: This article provides the renaming information for Azure Stack HCI to Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 01/06/2026

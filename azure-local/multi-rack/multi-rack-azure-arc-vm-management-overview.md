@@ -1,16 +1,16 @@
 ---
 title: What is Azure Local VM Management for Multi-rack Deployments (preview)?
 description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) in Azure Local multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 11/17/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# What is Azure Local VM management for multi-rack deployments (preview)?
+# What is Azure Local VM management for multi-rack deployments?
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -19,8 +19,6 @@ This article provides a brief overview of the Azure Local virtual machine (VM) m
 Azure Local VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
 
 Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Local instances by using Azure management tools, including the Azure portal, the Azure CLI, Azure PowerShell, and [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates. By using Azure Resource Manager templates, you can also automate VM provisioning in a secure cloud environment.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Benefits of Azure Local VM management
 

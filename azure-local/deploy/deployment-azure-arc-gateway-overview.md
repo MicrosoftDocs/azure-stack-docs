@@ -1,10 +1,10 @@
 --- 
 title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/15/2025
-ms.author: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

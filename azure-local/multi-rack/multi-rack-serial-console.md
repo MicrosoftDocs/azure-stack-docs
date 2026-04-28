@@ -1,15 +1,15 @@
 ---
-title: Connect to VM Serial Console Using Azure CLI on Azure Local
-description: Learn how to connect to the serial console of an Azure Local Multi Rack VM using Azure Command-line Interface (CLI).
-author: alkohli
-ms.author: alkohli
-ms.date: 03/12/2026
+title: Connect to VM Serial Console Using Azure CLI on Azure Local (Preview)
+description: Learn how to connect to the serial console of an Azure Local Multi Rack VM using Azure Command-line Interface (CLI) (preview).
+author: sipastak
+ms.author: sipastak
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.service: azure-local
 #customer intent: As an Azure Local administrator, I want to connect to a VM serial console using Azure CLI so that I can troubleshoot and manage VM boot and console issues.
 ---
 
-# Connect to a VM serial console using Azure CLI on multi-rack deployments of Azure Local
+# Connect to a VM serial console using Azure CLI on multi-rack deployments of Azure Local (preview)
 
 This article describes how to connect to the serial console of an Azure Local virtual machine (VM) in a multi-rack deployment using the Azure CLI.
 
@@ -17,6 +17,8 @@ Serial console provides access to a text-based console for VMs running Linux or 
 
 > [!NOTE]
 > Windows client versions don't include Special Administration Console (SAC). As a result, serial console access is supported for Windows Server editions and Linux VMs.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -56,10 +58,9 @@ Serial console provides access to a text-based console for VMs running Linux or 
    3. Replace `$ARM_ID_CLUSTER` with the ARM resource ID of your Azure Local multi-rack cluster's Arc-connected Kubernetes resource (for example, `/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>`).
 
     > [!IMPORTANT]
-    > You must have access to the VM serial console. Serial console access requires your Microsoft Entra identity to be explicitly granted permission on the VM serial console. 
-   To get access, open a support ticket with Microsoft Support and provide:
-    - The VM name.
-    - Your Microsoft Entra group ID (recommended, so you can manage access by changing group membership) or your user Microsoft Entra object ID.
+    > You must have access to the VM serial console. Serial console access requires your Microsoft Entra identity to be explicitly granted permission on the VM serial console. To get access, open a support ticket with Microsoft Support and provide:
+        - The VM name.
+        - Your Microsoft Entra group ID (recommended, so you can manage access by changing group membership) or your user Microsoft Entra object ID.
 
 ## Install or verify Azure CLI extensions
 

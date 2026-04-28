@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Isolation Domains
 description: Overview of Isolation Domains for Azure Operator Nexus.
-author: scottsteinbrueck
-ms.author: ssteinbrueck
+author: ronmiab
+ms.author: robess
 ms.reviewer: jdasari
 ms.date: 01/29/2024
 ms.service: azure-operator-nexus

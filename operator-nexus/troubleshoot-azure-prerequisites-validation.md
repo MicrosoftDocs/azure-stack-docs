@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot Azure prerequisites validation for Azure Operator Nexus clusters
 description: Learn how to diagnose and resolve Azure prerequisites validation failures for cluster deployment and upgrades.
-author: matternst7258
-ms.author: matthewernst
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: troubleshooting
 ms.date: 01/23/2026

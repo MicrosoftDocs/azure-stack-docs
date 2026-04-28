@@ -1,8 +1,8 @@
 ---
 title: What is Azure Local VM management
 description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content

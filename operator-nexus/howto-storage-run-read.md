@@ -1,8 +1,8 @@
 ---
 title: Query the state of a storage appliance using the `az networkcloud storageappliance run-read-command` for Operator Nexus
 description: Step by step guide on using the `az networkcloud storageappliance run-read-command` to run diagnostic commands on a storage appliance.
-author: PerfectChaos
-ms.author: chaoschhapi
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 7/29/2025

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus Cluster Support for managed identities and user provided resources"
 description: Azure Operator Nexus Cluster support for managed identities and user provided resources.
-author: eak13
-ms.author: ekarandjeff
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 6/10/2025

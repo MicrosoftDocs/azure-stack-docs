@@ -1,8 +1,8 @@
 ---
 title: What's new in Azure Migrate for Azure Local
 description: Learn about new features in Azure Migrate for Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 03/25/2026
 ms.service: azure-local

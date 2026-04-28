@@ -1,8 +1,8 @@
 ---
 title: Update Azure Local, version 23H2 systems via PowerShell
 description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Local, version 23H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 03/04/2026
 ms.subservice: hyperconverged
