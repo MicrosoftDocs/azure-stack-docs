@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 04/22/2026
+ms.date: 04/27/2026
 ms.subservice: hyperconverged
 ---
 
@@ -395,7 +395,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2511"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2511
 
@@ -412,7 +412,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -428,7 +428,7 @@ The following table lists the fixed issues in this release:
 | Update | When updating the Azure Local instance via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| |
 |Deployment <!--34752922--> |Deployment, add node, and repair node operations may fail with the error: <br> `Type 'EncryptClusterSharedVolumes' of Role 'AzureStackBitlocker' raised an exception: The job running on xxx failed due to: System.Management.Automation.RemoteException: -> Failed enabling bitlocker for C:\ClusterStorage\UserStorage_13 (F:)`  | |
 
-## Known issues
+### Known issues
 
 The following table lists the known issues in this release:
 
@@ -438,7 +438,7 @@ The following table lists the known issues in this release:
 | Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
 | Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add/remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -460,7 +460,7 @@ The following table lists the known issues from previous releases:
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent has crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This should get the node agent running again and unblock the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -468,10 +468,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM is unsupported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2510
 

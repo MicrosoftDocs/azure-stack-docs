@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 04/21/2026
+ms.date: 04/27/2026
 ms.subservice: hyperconverged
 ---
 
@@ -232,7 +232,7 @@ This release includes various reliability improvements and other bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2511"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2511
 
@@ -261,10 +261,6 @@ This release includes the following features and improvements:
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 - This release includes various reliability improvements and other bug fixes.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2510
 
