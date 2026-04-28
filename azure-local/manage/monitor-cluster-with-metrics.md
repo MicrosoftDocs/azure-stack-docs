@@ -318,9 +318,9 @@ The following table lists the metrics that Azure Monitor collects to populate th
 
 To see in-depth information about how these metrics are collected, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
 
-## Metrics for GPU
+### Metrics for GPU
 
-### Prerequisites
+#### Prerequisites
 
 - GPU mitigation drivers must be installed.
 - NVIDIA-SM must be installed.
