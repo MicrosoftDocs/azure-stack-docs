@@ -3,9 +3,8 @@ title: Make virtual machine scale sets available in Azure Stack Hub
 description: Learn how a cloud operator can add virtual machine scale sets to Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: install-set-up-deploy
-ms.date: 07/22/2021
+ms.date: 04/28/2026
 ms.author: sethm
-ms.reviewer: unknown
 ms.lastreviewed: 10/22/2019
 ms.custom: sfi-image-nochange
 
@@ -34,17 +33,18 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
 
 ## Use the Azure Stack Hub portal
 
-1. Sign in to the Azure Stack Hub admin portal or tenant portal. Then, go to **All services**, then **Virtual machine scale sets**, and then under **COMPUTE**, select **Virtual machine scale sets**.
+1. Sign in to the Azure Stack Hub admin portal or tenant portal. Then, go to **All services**, then **Virtual machine scale sets**, and then under **COMPUTE**, select **Virtual machine scale sets**. The screenshots in this section are from the admin portal using the default provider subscription. You can also follow the same steps from the tenant portal when creating VM Scale Sets.
+
    [![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-services-small.png)](media/azure-stack-compute-add-scalesets/all-services.png#lightbox)
 
-2. Select **Add**.
+3. Select **Add**.
 
    ![Create a virtual machine scale set](media/azure-stack-compute-add-scalesets/create-scale-set.png)
 
-3. Fill in the empty fields, choose from the dropdowns for **Operating system disk image**, **Subscription**, and **Instance size**. Select **Yes** for **Use managed disks**. Then, select **Create**.
+4. Fill in the empty fields, choose from the dropdowns for **Operating system disk image**, **Subscription**, and **Instance size**. Select **Yes** for **Use managed disks**. Then, select **Create**.
     [![Configure and create virtual machine scale sets](media/azure-stack-compute-add-scalesets/create-small.png)](media/azure-stack-compute-add-scalesets/create.png#lightbox)
 
-4. To see your new virtual machine scale set, go to **All resources**, search for the virtual machine scale set name, and then select its name in the search.
+5. To see your new virtual machine scale set, go to **All resources**, search for the virtual machine scale set name, and then select its name in the search.
    [![View the virtual machine scale set](media/azure-stack-compute-add-scalesets/search-small.png)](media/azure-stack-compute-add-scalesets/search.png#lightbox)
 
 ## Update images in a virtual machine scale set
