@@ -37,14 +37,16 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
 
    [![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-services-small.png)](media/azure-stack-compute-add-scalesets/all-services.png#lightbox)
 
-3. Select **Add**.
+1. Select **Add**.
 
    ![Create a virtual machine scale set](media/azure-stack-compute-add-scalesets/create-scale-set.png)
 
-4. Fill in the empty fields, choose from the dropdowns for **Operating system disk image**, **Subscription**, and **Instance size**. Select **Yes** for **Use managed disks**. Then, select **Create**.
+1. Fill in the empty fields, choose from the dropdowns for **Operating system disk image**, **Subscription**, and **Instance size**. Select **Yes** for **Use managed disks**. Then, select **Create**.
+
     [![Configure and create virtual machine scale sets](media/azure-stack-compute-add-scalesets/create-small.png)](media/azure-stack-compute-add-scalesets/create.png#lightbox)
 
-5. To see your new virtual machine scale set, go to **All resources**, search for the virtual machine scale set name, and then select its name in the search.
+1. To see your new virtual machine scale set, go to **All resources**, search for the virtual machine scale set name, and then select its name in the search.
+
    [![View the virtual machine scale set](media/azure-stack-compute-add-scalesets/search-small.png)](media/azure-stack-compute-add-scalesets/search.png#lightbox)
 
 ## Update images in a virtual machine scale set
@@ -66,7 +68,7 @@ After you create a virtual machine scale set, users can update images in the sca
         }
     ```
 
-2. Virtual machine scale set deployment template **does not specify latest** for **version** and specifies a version number instead:  
+1. Virtual machine scale set deployment template **does not specify latest** for **version** and specifies a version number instead:  
 
     If the Azure Stack operator downloads an image with a newer version (and deletes the older version), the scale set cannot scale up. This is by design, as the image version specified in the scale set template must be available.  
 
@@ -78,10 +80,10 @@ You can change the size of a virtual machine scale set to make it larger or smal
 
 1. In the portal, select your scale set and then select **Scaling**.
 
-2. Use the slide bar to set the new level of scaling for this virtual machine scale set, and then click **Save**.
+1. Use the slide bar to set the new level of scaling for this virtual machine scale set, and then click **Save**.
 
      [![Scale the virtual machine set](media/azure-stack-compute-add-scalesets/scale-small.png)](media/azure-stack-compute-add-scalesets/scale.png#lightbox)
 
 ## Next steps
 
-* [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
+[Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
