@@ -3,7 +3,7 @@ title: Install solution upgrade on Azure Local
 description: Learn how to install the solution upgrade on your Azure Local instance.
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/03/2026
+ms.date: 04/28/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -14,9 +14,6 @@ ms.subservice: hyperconverged
 # Install solution upgrade on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
-
-> [!IMPORTANT]
-> [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 This article describes how to install the solution upgrade on your Azure Local instance after upgrading the operating system (OS) from one of the following versions:
 
