@@ -663,7 +663,7 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue  |Comments  |
 |---------|---------|---------|
-| Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
+| Azure Local VMs <!--33528074--> | For Disconnected operations with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
 | Deployment <!--33478311--> | Fixed issue for importing paths with spaces. |  |
 | Update <!--32843674--> | Fixed issue where active CAU runs get canceled prematurely. |  |
 | Deployment <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |
