@@ -1,6 +1,6 @@
 ---
-title: What is Azure Local VM Management for Multi-rack Deployments (preview)?
-description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) in Azure Local multi-rack deployments (preview).
+title: What is Azure Local VM Management for Multi-rack Deployments?
+description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) in Azure Local multi-rack deployments.
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
