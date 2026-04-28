@@ -6,7 +6,7 @@ ms.author: robess
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/30/2026
+ms.date: 04/28/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -317,6 +317,21 @@ The following table lists the metrics that Azure Monitor collects to populate th
 | Volume Size Available | The available storage capacity of the volume. | Bytes | Maximum | Minimum, Maximum, Average, Sum, Count | Cluster, Node, LUN |
 
 To see in-depth information about how these metrics are collected, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
+
+## Metrics for GPU
+
+### Prerequisites
+
+- GPU mitigation drivers must be installed.
+- NVIDIA-SM must be installed.
+
+| Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
+|--|--|--|--|--|--|
+| Percentage GPU | Percentage of processor time that is not idle. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | Cluster, Node, GPU Name, GPU UUID, GPU Index, GPU PCIe Id |
+| Percentage GPU Memory | The allocated (not available) memory of the GPU. | Percent | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, GPU Name, GPU UUID, GPU Index, GPU PCIe Id |
+| GPU Temperature | A good GPU temperature range is any temperature under the manufacturer's maximum rating for your specific graphics card. | Celsius | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, GPU Name, GPU UUID, GPU Index, GPU PCIe Id |
+| GPU Graphics Clock Speed | GPU clock speed indicates how fast the cores of a GPU render graphics. | MHz | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, GPU Name, GPU UUID, GPU Index, GPU PCIe Id |
+| GPU Memory Clock speed | The GPU Memory Clock Speed is the speed at which the graphics card can read and write data from its memory. | MHz | Maximum | Minimum, Maximum, Sum, Count | Cluster, Node, GPU Name, GPU UUID, GPU Index, GPU PCIe Id |
 
 ## Next steps
 
