@@ -1,6 +1,6 @@
 ---
-title: Manage Layer 3 Isolation Domains for Azure Local Multi-rack Deployments (preview)
-description: Learn how to manage Layer 3 isolation domains for Azure Local multi-rack deployments (preview).
+title: Manage Layer 3 Isolation Domains for Azure Local Multi-rack Deployments
+description: Learn how to manage Layer 3 isolation domains for Azure Local multi-rack deployments.
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
