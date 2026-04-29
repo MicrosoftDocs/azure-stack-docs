@@ -66,14 +66,6 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 > [!NOTE]
 > Keep your BitLocker keys in a secure location.
 
-## Create appliance snapshot
-
-To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
-
-```powershell
-Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
-```
-
 ## Trigger an update
 
 > [!CAUTION]  
@@ -133,23 +125,11 @@ $eceClient = Create-ECEClientSimple
 $plans = $eceClient.GetActionPlanInstances().Result
 $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID, ActionPlanName, ActionTypeName, Status, LastModifiedDateTime
 
-#
-<# Patch the file c:\NugetStore\Microsoft.AzureStack.Role.SBE.10.2510.1001.2024\content\Helpers\SBESolutionExtensionHelper.psm1
- Insert the following lines after line 349
- $aldoSupport = [System.Environment]::GetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", "Machine")
-    #Note: order matters here - $true -eq $aldoSupport won't work because $aldoSupport is a string
-    if ($null -ne $aldoSupport -and $aldoSupport -eq "True")
-    {
-        Trace-Execution "Disconnected Operations support is enabled. SBE download is not supported."
-        return $false
-    }
-#>
-
 # Host the OEM SBE manifest and overwrite location 
 $OEM = 'Replaceme'
 
 $client = New-SolutionUpdateClient
-$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM).xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
 $client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
 

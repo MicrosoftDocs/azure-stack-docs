@@ -2,10 +2,10 @@
 title: Overview of Disaggregated Deployments for Azure Local
 description: Learn the benefits, features, and use cases of Azure Local disaggregated deployments, designed to accelerate cloud and AI innovation from edge to core.
 #customer intent: As an IT admin, I want to understand the benefits and features of Azure Local hyperconverged deployments so that I can evaluate its suitability for my organization.
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
-ms.date: 03/31/2026
+author: troettinger
+ms.author: thoroet
+ms.reviewer: thoroet
+ms.date: 04/23/2026
 ms.topic: overview
 ai-usage: ai-assisted
 ms.service: azure-local
@@ -36,7 +36,7 @@ Azure Local has the following features and capabilities:
 
 | **Features** | **Description** |
 |---|---|
-| Hardware | Validated hardware procured from a Microsoft hardware partner. Each instance can have one to 16 Azure Local machines. |
+| Hardware | Validated hardware procured from a Microsoft hardware partner. Each instance can have one to 64 Azure Local machines. |
 | Storage | SAN storage from wide range of hardware partners. |
 | Networking | Customer-managed networking that uses physical switches and VLANs in your datacenter. |
 | Azure Local services | Foundational services such as Azure Local virtual machines for general purpose VM workloads and Azure Kubernetes services (AKS) enabled by Azure Arc for containerized workloads. |
