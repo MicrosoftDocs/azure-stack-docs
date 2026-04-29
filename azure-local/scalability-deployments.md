@@ -11,7 +11,7 @@ ms.service: azure-local
 
 # Azure Local scalability and deployment types
 
-Azure Local offers you a consistent on-premises experience for your critical workloads and Arc services across a wide spectrum of scale points and use cases, from a single machine up to hundreds of machines.
+Azure Local offers a consistent on-premises experience for your critical workloads and Arc services. It supports a wide spectrum of scale points and use cases, from a single machine up to hundreds of machines.
 
 This article provides an overview of the different Azure Local deployment types and their scalability options to help you choose the right solution for your organization's needs.
 
