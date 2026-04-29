@@ -33,25 +33,25 @@ Hyperconverged deployments are the most common type of Azure Local deployment. T
 
 You can select hardware that suits your needs in the Azure Local Catalog from leading Original Equipment Manufacturer (OEM) partners.
 
-For more information on hyperconverged deployments, see [What are hyperconverged deployments for Azure Local?](./overview/hyperconverged-overview.md).
+For more information about hyperconverged deployments, see [What are hyperconverged deployments for Azure Local?](./overview/hyperconverged-overview.md).
 
 ## Disaggregated deployments
 
-Disaggregated deployments separate compute and storage, enabling independent scaling based on your workload requirements. These deployments can range from a single machine to a maximum of 64 machines that use SAN storage.
+Disaggregated deployments separate compute and storage, so you can scale each independently based on your workload requirements. These deployments can range from a single machine to a maximum of 64 machines that use SAN storage.
 
-For more information on disaggregated deployments, see [What are disaggregated deployments for Azure Local?](./overview/disaggregated-overview.md).
+For more information about disaggregated deployments, see [What are disaggregated deployments for Azure Local?](./overview/disaggregated-overview.md).
 
 ## Multi-rack deployments
 
-For very large workloads, Azure Local now provides multi-rack deployments that can accommodate hundreds of machines in a single instance. Such deployments require a prescriptive set of hardware that includes compute, storage, and networking that comes in preintegrated racks with built-in fault tolerance.
+For large workloads, Azure Local now provides multi-rack deployments that can accommodate hundreds of machines in a single instance. These deployments require a prescriptive set of hardware that includes compute, storage, and networking. The hardware comes in preintegrated racks with built-in fault tolerance.
 
-For more information on multi-rack deployments, see [What are multi-rack deployments for Azure Local?](./multi-rack/multi-rack-overview.md).
+For more information about multi-rack deployments, see [What are multi-rack deployments for Azure Local?](./multi-rack/multi-rack-overview.md).
 
 ## Disconnected operations for Azure Local
 
 Azure Local is typically deployed as a cloud-connected solution with the control plane running in an Azure cloud region. For customers with the strictest sovereignty or security requirements, you can also deploy Azure Local as a disconnected solution. Disconnected operations for Azure Local provides a local instance of the control plane, with a subset of Azure capabilities - enabling you to operate without a connection to the cloud.
 
-For more information, see [Disconnected operations for Azure Local](./manage/disconnected-operations-overview.md).
+For more information about disconnected operations, see [Disconnected operations for Azure Local](./manage/disconnected-operations-overview.md).
 
 ## Microsoft 365 Local deployments
 
