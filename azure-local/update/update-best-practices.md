@@ -53,16 +53,15 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    - **Batch updates for large environments.**
    
-         Group clusters using:
+      Group clusters using:
       - Tags
       - Resource group
       - Subscription
       - Current version
-      - Location
-            
+      - Location      
       - Sites
-            
-            Define a model where you are updating in chunks.  
+
+     Define a model where you are updating in chunks.  
 
    - **Production environment strategy.**
 
