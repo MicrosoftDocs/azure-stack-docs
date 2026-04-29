@@ -61,7 +61,7 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
       - Location      
       - Sites
 
-     Define a model where you are updating in chunks.  
+      Define a model where you are updating in chunks.  
 
    - **Production environment strategy.**
 
