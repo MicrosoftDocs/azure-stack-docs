@@ -28,7 +28,7 @@ sections:
 
       - question: How are Azure Local and Sovereign Private Cloud related?
         answer: |
-          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/industry/sovereign-cloud/sovereign-private-cloud/overview-sovereign-private-cloud).
+          Azure Local is the foundation and core product fueling Microsoft's Sovereign Private Cloud offering. It enables customers to meet strict data residency and regulatory requirements by hosting workloads on-premises, disconnected or semi-connected, while still benefiting from Azure innovation and security. For more information, see [Sovereign Private Cloud](/azure/azure-sovereign-clouds/private/overview/sovereign-private-cloud).
 
 
       - question: What are the different hardware configurations supported on an Azure Local instance?
@@ -39,7 +39,7 @@ sections:
 
           - Multi-rack deployments of Azure Local are in Preview. Reach out to the Azure Local Product team through your Account teams for more information and inclusion into the Preview. For more information, see [Get started with multi-rack deployments of Azure Local](./multi-rack/multi-rack-overview.md#get-started).
 
-          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](./concepts/microsoft-365-local-overview.md).
+          - Microsoft 365 Local runs Microsoft 365 applications on Azure Local infrastructure. For more information, see [What is Microsoft 365 Local](/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview).
 
           - Disconnected operations allow you to deploy and manage Azure Local instances without a connection to the Azure public cloud. For more information, see the [Eligibility criteria for disconnected operations](./manage/disconnected-operations-overview.md#eligibility-criteria).
 
