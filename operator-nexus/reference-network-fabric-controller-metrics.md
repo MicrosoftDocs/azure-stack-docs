@@ -8,9 +8,9 @@ ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ---
 
-# Network Fabric Controller internal service metrics
+# Network Fabric Controller(NFC)  Internal Service Metrics
 
-Azure Monitor exposes metrics that allow you to monitor the **availability** and **stability** of Network Fabric Controller (NFC) services. These metrics provide visibility into the availability and stability of NFC components and are exposed to the **NFC managed resource group (MRG)**.
+Azure Monitor exposes metrics that allow you to monitor the **availability** and **stability** of Network Fabric Controller (NFC) services. These metrics provide visibility into the availability and stability of NFC components and are exposed to the NFC managed resource group (MRG).
 
 Each metric section includes:
 
@@ -51,7 +51,7 @@ The stability signal tracks **short-window pod restarts** for NTP, xDS, Envoy, a
 | Pod restarts (5-minute window) | Measures the number of pod restarts in the last 5 minutes for NTP / xDS / Envoy / nfaOperator. Used to determine alert thresholds. | 5 minutes | Count |
 
 > [!NOTE]
-> The aggregation type for this metric should be **Max** in the Azure portal.
+> The aggregation type for this metric should be **Max** .
 
 During initial rollout, metrics should be monitored to **establish appropriate alert thresholds**. These thresholds can then be refined based on observed behavior.
 
@@ -69,40 +69,6 @@ az monitor metrics list-definitions \
   --resource <nfc-resource-id> \
   --query "[].{name:name.value, display:name.localizedValue, description:displayDescription}" \
   -o table
-```
-
-### Query current values
-
-**Availability** (state mapping may vary; refer to metric output for exact values):
-
-```azurecli
-az monitor metrics list \
-  --resource <nfc-resource-id> \
-  --metric "nfc_service_replica_state_xds,nfc_service_replica_state_envoy,nfc_service_replica_state_operator,nfc_services_statefulset_status_ntp" \
-  --interval PT1H --aggregation Average \
-  --query "value[].{metric:name.localizedValue, value:timeseries[0].data[-1].average}" \
-  -o table
-```
-
-**Stability** (restart counts):
-
-```azurecli
-az monitor metrics list \
-  --resource <nfc-resource-id> \
-  --metric "kube_pod_container_status_restarts_total_envoy,kube_pod_container_status_restarts_total_ntp,kube_pod_container_status_restarts_total_operator,kube_pod_container_status_restarts_total_xds" \
-  --interval PT1H --aggregation Average \
-  --query "value[].{metric:name.localizedValue, restarts:timeseries[0].data[-1].average}" \
-  -o table
-```
-
-**Split by cluster role:**
-
-```azurecli
-az monitor metrics list \
-  --resource <nfc-resource-id> \
-  --metric "nfc_service_replica_state_xds" \
-  --interval PT5M --aggregation Average \
-  --dimension nfcClusterRole -o table
 ```
 
 ## Configure alerts
