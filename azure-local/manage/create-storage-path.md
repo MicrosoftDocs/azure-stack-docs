@@ -1,8 +1,8 @@
 ---
 title: Create storage path for Azure Local virtual machines images 
 description: Learn how to create storage path for use with VM images for your Azure Local instance.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 01/30/2026

@@ -1,8 +1,8 @@
 ---
 title: Manage security defaults on Azure Local, version 23H2
 description: Learn how to manage security default settings available for Azure Local, version 23H2.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/23/2025

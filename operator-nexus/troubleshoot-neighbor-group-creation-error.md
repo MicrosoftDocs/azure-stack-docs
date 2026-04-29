@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Can't create Neighbor Groups"
 description: Learn how to troubleshoot Neighbor Group creation issues.
-author: benhurj
-ms.author: bejohnson
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting

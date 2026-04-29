@@ -1,8 +1,8 @@
 ---
 title: Azure Local observability
 description: Learn about observability in Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 04/25/2025
 ms.topic: how-to
 ms.service: azure-local

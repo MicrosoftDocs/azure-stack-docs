@@ -1,8 +1,8 @@
 ---
 title: Change deployment user password on Azure Local, version 23H2
 description: This article describes how to manage internal secret rotation on Azure Local, version 23H2.
-author:  alkohli
-ms.author:  alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 06/16/2025
 ms.service: azure-local

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to configure cluster metrics configuration management"
 description: This document provides instructions on how to create, list, update, retrieve, and delete cluster metrics configurations.
-author: bryan-strassner
-ms.author: bstrassner
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/09/2023

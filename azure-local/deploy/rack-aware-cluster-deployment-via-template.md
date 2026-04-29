@@ -1,11 +1,10 @@
 ---
 title: Azure Resource Manager template deployment for Azure Local rack aware cluster
 description: Learn how to prepare and then deploy Azure Local rack aware cluster using the Azure Resource Manager template.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/21/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ---
 

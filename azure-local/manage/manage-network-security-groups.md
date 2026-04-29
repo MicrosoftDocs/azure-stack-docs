@@ -1,8 +1,8 @@
 ---
 title: Manage network security groups and network security rules on Azure Local VMs
 description: Learn how to manage network security groups and network security rules for Azure Local virtual machines.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/05/2025
 ms.service: azure-local

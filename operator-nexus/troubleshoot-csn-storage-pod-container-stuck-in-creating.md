@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 12/21/2023
-ms.author: soumyamaitra
-author: neilverse
+ms.author: robess
+author: ronmiab
 ---
 
 # CSN storage pod container stuck in `ContainerCreating`

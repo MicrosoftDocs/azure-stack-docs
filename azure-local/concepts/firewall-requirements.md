@@ -1,8 +1,8 @@
 ---
 title: Firewall requirements for Azure Local
 description: This article provides guidance on firewall requirements for the Azure Stack HCI operating system.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 01/22/2026
 ms.subservice: hyperconverged

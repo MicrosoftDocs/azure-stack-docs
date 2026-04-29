@@ -4,8 +4,8 @@ description: High-level checklist to cover all essential steps required for deco
 
 
 
-author: tonyyam23
-ms.author: tonyyam
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus, devx-track-azurecli
 ms.topic: how-to

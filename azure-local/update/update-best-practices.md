@@ -1,11 +1,10 @@
 ---
 title: Best Practices for managing Azure Local Updates
 description: Learn the best practices for managing Azure Local updates.
-author: alkohli
+author: ronmiab
 ms.topic: overview
 ms.date: 09/10/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -78,6 +77,9 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2.md#step-4-recommended-predownload-and-check-update-readiness).
 
    - Limited connectivity update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
+
+> [!IMPORTANT]
+> Azure Local systems with more than 16 nodes may experience longer update runtimes. To help ensure updates complete within planned maintenance windows, consider performing the Solution Builder Extension update separately from the solution update for systems of this size.
 
 ## Don’ts for Azure Local updates
 

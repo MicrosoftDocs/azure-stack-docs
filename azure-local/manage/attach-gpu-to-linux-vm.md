@@ -1,8 +1,8 @@
 ---
 title: Attach a GPU to a Linux VM in Azure Local
 description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/28/2025
