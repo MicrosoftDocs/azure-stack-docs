@@ -37,8 +37,10 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
 
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
-   :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates." lightbox="./media/update-best-practices/azure-update-manager.png":::
-
+   ![azure-update-manager](media/update-best-practices/azure-update-manager.png)
+   
+   
+   
    - **Test environment strategy.**
 
       Select a few test clusters that mirror your Azure Local resources in production. Run the update flow to validate before applying to production.
@@ -50,15 +52,17 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
       - Status = Updates available
 
    - **Batch updates for large environments.**
-
-      Group clusters using:
+   
+         Group clusters using:
       - Tags
       - Resource group
       - Subscription
       - Current version
       - Location
-   
-      Define a model where you are updating in chunks.  
+            
+      - Sites
+            
+            Define a model where you are updating in chunks.  
 
    - **Production environment strategy.**
 
