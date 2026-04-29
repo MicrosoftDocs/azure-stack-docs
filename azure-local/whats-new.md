@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2604
 
-The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.209**. For more information, see [Release information summary](./release-information-23h2.md).
+The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.1001**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -29,7 +29,7 @@ This release includes various reliability improvements and bug fixes.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
-- **.NET updates**: 
+- **.NET updates**:
 
     - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
