@@ -424,9 +424,9 @@ This release includes the following features and improvements:
         - The correct memory and vCPU limits.
         - The correct disk size limits.
 
-- **Disconnected operations (preview)**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+- **Disconnected operations**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
-    For more information, see [About Disconnected operations (preview)](./manage/disconnected-operations-overview.md).
+    For more information, see [About Disconnected operations for Azure Local](./manage/disconnected-operations-overview.md).
 
 
 - **Documentation updates**: These changes include:
