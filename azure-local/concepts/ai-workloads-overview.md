@@ -18,9 +18,9 @@ Azure Local brings Azure AI capabilities directly to your infrastructure so you 
 
 ## Run AI model inference on your infrastructure
 
-Foundry Local on Azure Local, currently in preview, runs AI model inference on an Arc-enabled Kubernetes cluster. Use it to deploy and serve generative or predictive models from the Foundry model catalog.
+Foundry Local on Azure Local, currently in preview, brings AI inference to your Azure Local environment. Deploy and run generative or predictive models from the Foundry model catalog on an Arc-enabled Kubernetes cluster. You can deploy Foundry Local as an Azure Arc extension or by using Helm.
 
-Foundry Local uses a Kubernetes inference operator to manage the model lifecycle. The operator syncs metadata from the Foundry model catalog, deploys models through declarative custom resources, and serves requests through OpenAI-compatible API endpoints. Azure Arc provides the management connection, and the operator runs natively in Kubernetes.
+Foundry Local uses an operator-based control plane for model lifecycle management. The Kubernetes inference operator watches cluster state and reconciles model resources, syncs metadata from the Foundry model catalog, and deploys models through declarative custom resources (Model and ModelDeployment CRDs). Inference traffic is exposed through internal services or ingress, protected with API key or Microsoft Entra ID token validation and TLS.
 
 ### Capabilities
 
@@ -29,11 +29,11 @@ Foundry Local includes the core capabilities you need to run AI model inference 
 | Capability | Description |
 |-----------|-------------|
 | **Model catalog sync** | Sync model metadata from the Foundry model catalog to your cluster so you can find and deploy models. |
-| **CPU and GPU inference** | Deploy models on CPU-only or GPU-enabled nodes based on your workload needs. |
+| **CPU and GPU inference** | Deploy models on CPU-only or GPU-enabled nodes. Use the default ONNX-GenAI engine (CPU or GPU) or the vLLM engine (GPU only) for high-throughput scenarios. |
 | **OpenAI-compatible API** | Send requests through `/v1/chat/completions` for generative tasks and `/v1/predict` for predictive tasks. |
 | **Multi-model support** | Run multiple model deployments in one cluster with declarative configuration. |
 | **Bring your own model** | Deploy your own models alongside catalog models for specialized or fine-tuned inference scenarios. |
-| **Security** | Use API keys for authentication, TLS for encryption, and ingress for access control. |
+| **Security** | Use API keys or Microsoft Entra ID authentication for access control, TLS for encryption, and ingress for controlled external access. |
 
 ### Use cases
 
@@ -46,7 +46,8 @@ Use Foundry Local when you need low-latency AI inference on local infrastructure
 For more information, see:
 
 - [What is Foundry Local on Azure Local?](/azure/azure-sovereign-clouds/private/foundry-local/what-is-foundry-local-on-azure-local)
-- [Deploy Foundry Local on Azure Local](/azure/azure-sovereign-clouds/private/foundry-local/deploy-foundry-local-on-azure-local)
+- [Deploy Foundry Local by using Helm](/azure/azure-sovereign-clouds/private/foundry-local/deploy-foundry-local-on-azure-local)
+- [Deploy Foundry Local as an Azure Arc extension](/azure/azure-sovereign-clouds/private/foundry-local/deploy-foundry-local-arc-extension)
 
 ## Search and reason over on-premises documents
 
