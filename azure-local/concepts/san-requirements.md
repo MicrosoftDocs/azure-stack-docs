@@ -29,7 +29,7 @@ Select one of the partners below to view their support statements:
 # [Dell](#tab/Dell-PowerStore-support)
 The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is supported as external storage for Azure Local.
 
-# [EverPure](#tab/EverPure-support)
+# [Everpure](#tab/Everpure-support)
 Supported versions of Purity on FlashArray models (FA//X, FA//XL, FA//C, FA//E). Detailed instructions are available [here](https://support.purestorage.com/auth/login?redirect=%2Fbundle%2Fm_getting_started_with_flasharray%2Fpage%2FSolutions%2FVMware_Platform_Guide%2FTroubleshooting_for_VMware_Solutions%2FVMware-Related_KB_Articles%2Flibrary%2Fcommon_content%2Fc_introduction_46.html).
 
 # [Hitachi](#tab/Hitachi-Vantara-support)
