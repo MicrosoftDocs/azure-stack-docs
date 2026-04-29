@@ -64,5 +64,5 @@ Read about the different Azure Local deployment types:
 - [What are hyperconverged deployments of Azure Local?](./overview/hyperconverged-overview.md)
 - [What are disaggregated deployments of Azure Local?](./overview/disaggregated-overview.md)
 - [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
-- [Disconnected operations for Azure Local overview](./manage/disconnected-operations-overview.md).
-- [Microsoft 365 Local overview](/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview).
+- [Disconnected operations for Azure Local overview](./manage/disconnected-operations-overview.md)
+- [Microsoft 365 Local overview](/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview)
