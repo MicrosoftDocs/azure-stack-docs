@@ -39,7 +39,7 @@ When troubleshooting a BMM for failures and determining the most appropriate cor
 - **Restart** - Least invasive method, best for temporary glitches or unresponsive Virtual Machines (VMs). Preserves OS and data.
 - **Reimage** - Intermediate solution, restores OS to known-good state without hardware changes. Wipes OS disk but tenant data preserved.
 - **Replace** - Most comprehensive action, required after hardware component repairs (RAM, disk, NIC, etc.). Includes hardware validation before provisioning. Choose storage policy based on your scenario:
-  - Use `--storage-policy DiscardAll` for new deployments, motherboard replacements, BMMs offline 30+ days, or BMMs with no workloads
+  - Use `--storage-policy DiscardAll` for new deployments, motherboard replacements, RAID controller replacements, storage backplane replacements, BMMs offline 30+ days, or BMMs with no workloads
   - Use `--storage-policy Preserve` to retain tenant data when none of the above conditions apply
 
 > [!TIP]
@@ -233,8 +233,8 @@ naks-01-control-plane-rmwqr              rack1-compute02
 Review the output and identify nodes where the `BMM` column matches the BMM you plan to reimage. In this example, if you're reimaging `rack1-compute01`, two nodes will be affected: `naks-01-agentpool1-md-tjr8k-4qqx4` and `naks-01-agentpool2-md-zzrw8-gg8rx`.
 
 > [!NOTE]
-> The cordon/evacuate operation does not check the NAKS cluster health status before attempting to drain:
-> - If NAKS nodes exist on the BMM, the system will attempt to drain them regardless of cluster status
+> The cordon/evacuate operation doesn't check the NAKS cluster health status before attempting to drain:
+> - If NAKS nodes exist on the BMM, the system attempts to drain them regardless of cluster status
 > - If nodes are unreachable (e.g., due to BMM failure), the drain operation will timeout after 5 minutes and proceed
 > - Use the `kubectl` output above to identify which specific NAKS nodes are on this BMM
 
@@ -381,6 +381,7 @@ Choosing the correct `--storage-policy` value is critical. The wrong choice can 
 |----------|---------------|--------|
 | **New deployment** with no existing workloads on the BMM | `DiscardAll` | Clean slate; no tenant data to preserve |
 | **Existing instance**: BMM motherboard was replaced | `DiscardAll` | `Preserve` causes replace failures after motherboard swap |
+| **Existing instance**: RAID controller or storage backplane replaced | `DiscardAll` | `Preserve` causes replace failures after RAID controller or backplane swap |
 | **Existing instance**: BMM offline and unavailable for 30+ days | `DiscardAll` | Storage encryption keys may no longer be valid |
 | **Existing instance**: BMM has no workloads running | `DiscardAll` | No tenant data at risk |
 | **Existing instance**: BMM has running workloads and none of the above apply | `Preserve` | Retains tenant data on virtual disks |
@@ -450,8 +451,8 @@ az networkcloud baremetalmachine show -n <nodeName> \
 | Hardware Replaced | VM Impact | Recommendation |
 |-------------------|-----------|----------------|
 | SSD / PERC / System board / Backplane | VM data may be permanently lost. | Delete VMs and recreate them on a healthy BMM before running replace. |
-| NIC | VM data is not affected. | Verify network configuration after replace. |
-| CPU / DIMM / Fan | VM data is not affected. | No special action required. |
+| NIC | VM data isn't affected. | Verify network configuration after replace. |
+| CPU / DIMM / Fan | VM data isn't affected. | No special action required. |
 
 > [!NOTE]
 > NAKS impact:
@@ -459,12 +460,12 @@ az networkcloud baremetalmachine show -n <nodeName> \
 > - If BMM was unresponsive/unhealthy: NAKS nodes on that BMM are already impacted. The NAKS cluster will automatically reprovision nodes on healthy BMMs.
 
 > [!WARNING]
-> Replacing a single SSD is safe and does not impact VM OS disks because the RAID set tolerates single‑disk failures. However, if more than one SSD in the RAID group is replaced or fails before the array rebuilds, VM OS disks stored on those drives may be permanently lost.
+> Replacing a single SSD is safe and doesn't impact VM OS disks because the RAID set tolerates single‑disk failures. However, if more than one SSD in the RAID group is replaced or fails before the array rebuilds, VM OS disks stored on those drives may be permanently lost.
 
 ##### Step 4: Optional verification (healthy BMM only)
 
 > [!NOTE]
-> Replace with `--safeguard-mode None` automatically evacuates workloads (VMs are shut down and NAKS nodes are drained) before deprovisioning. Expect downtime even when there is no permanent data loss.
+> Replace with `--safeguard-mode None` automatically evacuates workloads (VMs are shut down and NAKS nodes are drained) before deprovisioning. Expect downtime even when there's no permanent data loss.
 
 Use the checks below to record a baseline of what is running on the BMM so you can compare results after replace.
 
@@ -518,7 +519,7 @@ Once the firmware checks are complete, proceed with the replace action.
 
 ```azurecli
 # Choose storage-policy based on your scenario:
-#   DiscardAll — new deployment, motherboard replaced, offline 30+ days, or no workloads
+#   DiscardAll — new deployment, motherboard replaced, RAID controller replaced, storage backplane replaced, offline 30+ days, or no workloads
 #   Preserve  — existing instance with workloads and none of the above conditions apply
 # See the storage policy decision guide above for full guidance.
 
