@@ -55,13 +55,11 @@ The kubernetesVersions catalog's `extendedLocation` matches the Nexus Cluster's 
 
 ## Find the HostedResources resource group for your cluster
 
-`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed `HostedResources-*` resource group, not the resource group that holds the cluster itself. To retrieve that name without leaving the CLI, query the cluster resource:
+`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed `*-HostedResources-*` resource group, not the resource group that holds the Nexus Cluster itself. The table output from the previous step already exposes this value in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
 
 ```azurecli
-az networkcloud cluster show \
-  --resource-group <cluster-rg> \
-  --name <cluster-name> \
-  --query "managedResourceGroupConfiguration.name" \
+az networkcloud kubernetesversion list \
+  --query "[?contains(extendedLocation.name, '<cluster-name>')].resourceGroup" \
   --output tsv
 ```
 
