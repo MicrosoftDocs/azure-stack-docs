@@ -1,15 +1,15 @@
 ---
-title: Prerequisites for multi-rack deployments of Azure Local (preview)
-description: Review the prerequisites for multi-rack deployments of Azure Local (preview).
+title: Prerequisites for multi-rack deployments of Azure Local
+description: Review the prerequisites for multi-rack deployments of Azure Local.
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.subservice: multi-rack
 ---
 
-# Prerequisites for multi-rack deployments of Azure Local (preview)
+# Prerequisites for multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
@@ -21,8 +21,6 @@ To get started with multi-rack deployments of Azure Local, create a Network Fabr
 
 Each NFC is associated with a CM in the same Azure region and your subscription. You need to complete the prerequisites before you can deploy the first multi-rack NFC and CM pair.
 In subsequent multi-rack deployments, you only need to create the NFC and CM after reaching the quota of supported multi-rack clusters.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Install CLI extensions and sign into your Azure subscription
 

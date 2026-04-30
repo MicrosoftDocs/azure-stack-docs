@@ -1,8 +1,8 @@
 ---
 title: Load balance multiple logical networks for Azure Local
 description: Learn how to load balance multiple logical networks in Software Defined Networking (SDN) managed by on-premises tools for Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/17/2025
 ms.subservice: hyperconverged

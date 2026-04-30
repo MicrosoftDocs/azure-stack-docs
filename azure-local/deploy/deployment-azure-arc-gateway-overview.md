@@ -1,10 +1,10 @@
 --- 
 title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/15/2025
-ms.author: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -38,7 +38,7 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 ### Traffic flows 1-3 for Azure Local host OS
 
-- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?view=azloc-2509&tabs=script&pivots=register-proxy&preserve-view=true#step-2-set-parameters) for any endpoint that you don't want to send over Arc gateway.
+- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?tabs=register-proxy#step-3-set-parameters) for any endpoint that you don't want to send over Arc gateway.
 
 - Arc gateway doesn't support HTTP traffic. Configure your proxy or firewall to allow the required HTTP endpoints for Azure Local.
 

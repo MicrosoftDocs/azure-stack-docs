@@ -2,10 +2,10 @@
 title: What's new in Hyperconverged Deployments of Azure Local latest release
 description: Find out about the new features and enhancements in the latest Azure Local release for hyperconverged deployments.
 ms.topic: overview
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
-ms.date: 03/16/2026
+ms.date: 04/21/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,11 +13,68 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2604"
+
+## Features and improvements in 2604
+
+The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.209**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+
+    - In 2604 release, all the new and existing deployments of Azure Local run the new OS version **26100.32690** (download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.32690** or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**: 
+
+    - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+    - This build uses .NET version **10.0.6** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **AKS enabled by Azure Arc changes**:
+
+    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+
+    Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
+
+- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md). <!--update link-->
+
+- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md). <!--update link-->
+
+- **Local identity with Key Vault**: Starting with this release, local identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
+
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md). <!--update link-->
+
+- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md). <!--update link-->
+
+- **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over.
+
+- **Deployment performance improvements**: Deployment duration is now consistent for clusters of up to 8 nodes, with an overall time reduction of up to 40%.
+
+- **Rack aware clustering**: Rack‑aware clustering now supports deployments using local identity with Azure Key Vault. For more information, see [Generally available or supported services](./deploy/deployment-local-identity-with-key-vault.md#generally-available-or-supported-services).
+
+- **GPU acceleration for Azure Local VMs general availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Azure portal. For more information, see [Manage GPUs via Discrete Device Assignment](./manage/gpu-manage-via-device.md). <!--the linked article still shows preview tags-->
+
+- **Enhanced data disk management experience in the Azure portal**: You can now create new data disks at the cluster level with a richer disk overview experience, along with overall visual and usability improvements across disk management workflows. Additionally, from the Azure Local VM view, you can now attach existing disks to your VM.
+
+- **Enhanced Azure Marketplace image navigation in the Azure portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images.
+
+- **Graceful stop and restart by default for Azure Local VMs**: Azure Local VM stop and restart operation now performs a graceful shutdown by default. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM.
+
+- **Enable or disable SDN management per network interface**: Azure Local now supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).
+
+::: moniker-end
+
 ::: moniker range="=azloc-2603"
 
 ## Features and improvements in 2603
 
-The March 2026 release of hyperconverged deployments of Azure Local is version **12.2603.1002.15**. For more information, see [Release information summary](./release-information-23h2.md).
+The March 2026 release of hyperconverged deployments of Azure Local is version **12.2603.1002.500**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -41,7 +98,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Support for NVIDIA RTX PRO 6000 Blackwell Server Edition GPU on Azure Local**: Starting with this release, NVIDIA RTX PRO 6000 GPU is supported on Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc. This feature allows you to run GPU-accelerated workloads on Azure Local using NVIDIA RTX PRO 6000 GPUs. For more information, see [Prepare GPUs for Azure Local instance](./manage/gpu-preparation.md).
 
-- **Improved Secure Boot Certificate readiness**: Starting with this release, built‑in orchestration deploys the new Secure Boot 2023 certificates, helping you prepare for upcoming Secure Boot changes while minimizing risk during updates.
+- **Improved Secure Boot Certificate readiness**: Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](./manage/manage-secure-boot-updates.md).
 
 - **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
 
@@ -104,7 +161,7 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
 
-- **VM Connect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
+- **VMConnect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
 
     For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-vm-connect-preview).
 
@@ -207,7 +264,7 @@ This release includes the following features and improvements:
 
 ::: moniker-end
 
-::: moniker range="=azloc-2510"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2510
 
@@ -272,11 +329,6 @@ This release includes the following features and improvements:
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 <!--- **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:-->
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2509
 
@@ -376,9 +428,9 @@ This release includes the following features and improvements:
         - The correct memory and vCPU limits.
         - The correct disk size limits.
 
-- **Disconnected operations (preview)**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
+- **Disconnected operations**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
-    For more information, see [About Disconnected operations (preview)](./manage/disconnected-operations-overview.md).
+    For more information, see [About Disconnected operations for Azure Local](./manage/disconnected-operations-overview.md).
 
 
 - **Documentation updates**: These changes include:
@@ -496,7 +548,7 @@ This release includes the following features and improvements:
 
 - **Update changes**: This release includes reliability improvements to the update process. For more information, see [Fixed issues in 2505](./known-issues.md?view=azloc-previous&preserve-view=true#fixed-issues).
 
-- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./deploy/deployment-arc-register-configurator-app.md#upload-the-support-log-package).
+- **Ability to upload logs**: You can now upload a Support log package that includes all relevant logs to help Microsoft Support troubleshoot machine problems, directly from the Configurator app. For details, see [Upload the Support log package](./manage/troubleshoot-deployment-configurator-app.md#upload-the-support-log-package).
 
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
@@ -575,7 +627,7 @@ This release includes the following features and improvements:
 
 - **Registration and deployment changes**
   - **Extension installation**: Extensions are no longer installed during the registration of Azure Local machines. Instead, the machine validation step during the Azure Local instance deployment installs the extensions. For more information, see [Register with Azure Arc via console](./deploy/deployment-arc-register-server-permissions.md) and [Deploy via Azure portal](./deploy/deploy-via-portal.md).
-  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-arc-register-configurator-app.md).
+  - **Register via app**: You can bootstrap your Azure Local machines by using the Configurator app. The local UI is now deprecated. For more information, see [Register Azure Local machines using Configurator app](./deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy).
     - Composed image is now supported for Original Equipment Manufacturers (OEMs).
     - Several security enhancements were made for the Bootstrap service.
     - Service Principal Name (SPN) is deprecated for Arc registration.

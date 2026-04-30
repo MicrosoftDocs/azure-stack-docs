@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/23/2026
+ms.date: 04/09/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -106,6 +106,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ThirdPartyNotices.txt
 
    ```powershell  
    Get-ChildItem $applianceConfigBasePath  
@@ -149,7 +152,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
 
     ```powershell  
     Get-ChildItem $certsPath 
-    Get-ChildItem $certsPath -recurse -filter *.cer  
+    Get-ChildItem $certsPath -recurse -filter *.pfx  
     ```  
 
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
@@ -290,7 +293,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > You can also specify the -clean switch to start installation from scratch. This switch resets any existing installation state and starts from the beginning
 >
-> DisableChecksum = $true skips validating the signature of the Appliance. Use this when deploying an air-gapped environment. If checksum validation is enabled, the node needs to reach and validate the Microsoft cert signing certificates used for signing this build.  
+
 
 ## Configure observability for diagnostics and support
 
@@ -355,6 +358,7 @@ To configure observability, follow these steps:
 On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane.
 
 ```powershell
+
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
@@ -397,12 +401,29 @@ Ensure you limit access to the operator subscription to only required personnel.
 
 Make sure you register the required resource providers before deployment. 
 
-Here's an example of how to automate the resource providers registration from Azure PowerShell.
+Here's an example of how to automate the resource providers registration from Azure PowerShell. 
+
+
+> [!NOTE]
+> **Run this script on a client machine, not on the Azure Local nodes**. If you run it on an Azure Local node, verify the `Az.Resources` version to avoid deployment conflicts.
 
 ```powershell
 $applianceCloudName = "azure.local"
 $subscriptionName = "Operator subscription"
 
+<# Use this block only when running this script from an Azure Local node. Check whether Az.Resources 8.1.1 is installed and install it if needed (2603).
+$requiredModule = "Az.Resources"
+$requiredVersion = "8.1.1"
+$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
+
+# If operating air-gaped, you need to download and copy this module manually
+if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
+     Write-Host "Installing $requiredModule version $requiredVersion..."
+     Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
+     Write-Information "Make sure Az.Resources is the correct version if you are running this script on an Azure Local node rather than a client"
+}#>
+
+# Register resource providers
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Selecting a different subscription than the operator subscription.."
@@ -421,10 +442,15 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguratio
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ExtendedLocation" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ResourceConnector" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
+
 # Not required on disconnected operations
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
+
+# Required for automating Key Vault creation, not for Azure Local.
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
+
 ```
 
 Wait until all resource providers are in the state **Registered**.
@@ -457,39 +483,38 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
-1. Initialize each Azure Local node.
-
-    ```powershell
-    $resourcegroup = 'azurelocal-management-cluster' 
-    $applianceCloudName = "azure.local"
-    $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
-    $applianceFQDN = "autonomous.cloud.private"
-    $subscriptionName = "Operator subscription"
+```powershell
+$resourcegroup = 'azurelocal-management-cluster' 
+$applianceCloudName = "azure.local"
+$applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
+$applianceFQDN = "autonomous.cloud.private"
+ $subscriptionName = "Operator subscription"
     
-    Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
-    Write-Host "Ensuring you are using operator subscription for the management cluster.."
-    $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
+Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
+Write-Host "Ensuring you are using operator subscription for the management cluster.."
+$subscription = Get-AzSubscription -SubscriptionName $subscriptionName
 
-    # Set the context to that subscription
-    Set-AzContext -SubscriptionId $subscription.Id
+# Set the context to that subscription
+Set-AzContext -SubscriptionId $subscription.Id
 
-    $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
+$armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-    # $ArmAccessToken = $armTokenResponse.Token
-    # Convert token to string for use in initialization
-    # Workaround needed for Az.Accounts 5.0.4
-    $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
+# $ArmAccessToken = $armTokenResponse.Token
+# Convert token to string for use in initialization
+# Workaround needed for Az.Accounts 5.0.4
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-    # Bootstrap each node
-    Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
-    ```
+# Bootstrap each node
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+# If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
+```
 
 > [!NOTE]
 > Ensure that you run initialization on the first machine before moving on to other nodes.
 >
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
-> You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
+> You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
 
 ## Pre-create Azure Key Vault
 
@@ -530,16 +555,18 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 ## Appendix
 
-### Lock down management cluster (using Azure Policy)
+### Lock down management cluster 
 
 ```powershell
-$operatorSubscriptionId = ''
-$resourceGroup = ''
-$customLocationId = 'my-cluster'
-cd "$applianceConfigBasePath\OperationsModule\AzureLocalOrchestration" 
-.\Set-MgmtClusterDenyPolicy.ps1 `
-        -SubscriptionId "$operatorSubscriptionId" `
-        -MgmtClusterCustomLocationId "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($customLocationId)"
+$operatorSubscriptionId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+$resourceGroup = 'azurelocal-management-cluster'
+$managementClusterLocationName = 'managementcluster-location'
+$customLocationId = "/subscriptions/$($operatorSubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($managementClusterLocationName)"
+Import-Module "$applianceConfigBasePath\OperationsModule\AzureLocal.Orchestration.psm1" 
+Set-ManagementClusterLock `
+        -Enabled $true `
+        -SubscriptionId $operatorSubscriptionId `
+        -MgmtClusterCustomLocationId $customLocationId
 ```
 
 ### Clean up data disks used for bootstrap

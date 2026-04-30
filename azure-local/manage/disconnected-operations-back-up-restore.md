@@ -1,5 +1,5 @@
 ---
-title: Backup for Disconnected Operations for Azure Local
+title: Back up Azure Local Disconnected Environments
 description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
@@ -18,9 +18,6 @@ This article explains the backup process for disconnected operations for Azure L
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
 
-> [!IMPORTANT]
-> The restore feature is currently in development. Documentation for the restore process will be available once the feature is stable.
-
 ## Overview
 
 The backup feature currently backs up the control plane VM data only. Associated workloads or configured clusters aren't included in the backup. Backups capture all data needed for the disconnected operations control plane VM. Because backups aren't automated, take backups regularly and before making changes to the environment.
@@ -38,6 +35,13 @@ Before you back up your system, complete these prerequisites:
 - **Server Message Block (SMB) share:** Provision an accessible SMB share as backup target from the Azure Local disconnected operations VM where system state backups are written.
 
 - **Encryption key:** Store the encryption certificate externally (*.cer* for backup) and provide it during the backup process. We recommend an Azure Key Vault in global Azure in the same subscription where the Azure Local with disconnected operations instance registration entry exists.
+
+- **Import backup module (required):** Before running any backup cmdlets, import the backup module from your Operations Module by using its full path:
+
+  ```powershell
+  # Import the backup cmdlets from the Operations Module (use the full path on your system)
+  Import-Module "<full path to Operations Module>\Azure.Local.Backup.psm1"
+  ```
 
 ## Backup parameters and customization
 

@@ -6,8 +6,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 02/16/2026
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ---
 
 # Troubleshoot resource health alerts

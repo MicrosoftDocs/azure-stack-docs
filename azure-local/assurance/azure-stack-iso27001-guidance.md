@@ -4,9 +4,8 @@ description: Learn about ISO 27001 compliance using Azure Local.
 ms.date: 04/09/2025
 ms.topic: concept-article
 ms.service: azure-local
-ms.author: nguyenhung
-author: dv00000
-ms.reviewer: alkohli
+ms.author: robess
+author: ronmiab
 ms.subservice: hyperconverged
 ---
 
@@ -19,6 +18,9 @@ This article outlines how Azure Local helps organizations meet the security cont
 ## ISO/IEC 27001:2022
 
 ISO/IEC 27001 is a global security standard that specifies requirements for establishing, implementing, operating, monitoring, maintaining, and improving an Information Security Management System (ISMS).  Certification to ISO/IEC 27001:2022 helps organizations enhance their security posture, build trust with their clients, and can help meet various legal and regulatory obligations that involve information security, such as PCI DSS, HIPAA, HITRUST, and FedRAMP. Learn more about the standard at [ISO/IEC 27001](https://www.iso.org/standard/27001).
+
+> [!NOTE]
+> ISO/IEC 27001:2023 is the European (CEN) adoption of ISO/IEC 27001:2022 with identical requirements and controls. Azure Local alignment with ISO/IEC 27001:2022 also satisfies ISO/IEC 27001:2023 requirements.
 
 ## Azure Local
 

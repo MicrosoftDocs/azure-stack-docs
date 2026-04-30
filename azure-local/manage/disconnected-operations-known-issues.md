@@ -17,38 +17,58 @@ This article identifies critical known issues and their workarounds in disconnec
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-## Known issues for version 2602
+## Known issues for version 2602 and 2603
 
 ### Bootstrap or deployment fails due certificates being invalid (exception)
 
-In cases where the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation will fail.
+If the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation fails.
+
+**Error message:** Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
 
 **Mitigation**: 
 
 Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that is accessible from the nodes.
 
-### Cloud deployment fails and transitions into a failed state
+**Alternative mitigation**:
 
-In version 2602, a known issue in disconnected operations for Azure Local causes the Hybrid Instance Metadata Service (HIMDS) to stop functioning because the control plane services take longer than expected to start. This timing issue can result in failed deployments accompanied by unclear or non-descriptive error messages.
+If you can't reconfigure your Certificate Authority (Enterprise PKI), you can bypass CRL checks during bootstrap. Run the following steps on each Azure Local node:
 
-**Workaround**:
+```powershell
+Write-Host "Updating Windows MAE Config for the Bootsrap service"
+$basePath = "C:\windows\system32\bootstrap"
 
-Perform the following steps on all nodes:
+Write-Host "Looking for config file under $basePath"
+$contentDir = Get-ChildItem -Path $basePath -Filter "content_*" -Directory -ErrorAction SilentlyContinue | Sort-Object Name -Descending | Select-Object -First 1
+if (-not $contentDir) {
+    Write-Warning "Could not find content_* directory under $basePath"
+    return
+}
+Write-Host "Found content directory: $($contentDir.FullName)"
 
-1. Download and copy the attached [Zip file](https://aka.ms/aldo-fix2/1) to the `C:\AzureLocal` folder.
-1. Extract the Zip file to the path: `C:\AzureLocal\HimdsWatchDog`.
-1. Run the `Install-HIMDS-Watchdog.ps1` command.
-1. Verify if the scheduled task is created by running:
+$ConfigPath = Join-Path $contentDir.FullName "Microsoft.Azure.Edge.Bootstrap.ManagementService\windows.mae.config.json"
+if (-not (Test-Path $ConfigPath)) {
+    Write-Warning "Config file $ConfigPath not found"
+    return
+}
+Write-Host "Config file found at $ConfigPath"
 
-   ```powershell
-   Get-ScheduledTask -TaskName HIMDS 
-   ```
+$configContent = Get-Content -Path $ConfigPath -Raw | ConvertFrom-Json
+$configContent.ManagementSettings.CheckCertificateRevocationList = $false
+Write-Host "Updated existing CheckCertificateRevocationList property to false"
 
-1. After the cloud deployment is complete, delete the task on each node by running:
+Stop-Service -Name "BootstrapManagementService" -Force -ErrorAction Stop
+Write-Host "BootstrapManagementService stopped successfully"
 
-    ```powershell
-   Unregister-ScheduledTask -TaskName HIMDSWatchdog
-   ```
+$configContent | ConvertTo-Json -Depth 10 | Set-Content -Path $ConfigPath -Force
+Write-Host "Successfully saved modified config"
+
+Write-Host "Starting BootstrapManagementService..."
+Start-Service -Name "BootstrapManagementService"
+Write-Host "Waiting 60 seconds for service to fully initialize..."
+Start-Sleep -Seconds 60
+Write-Host "Successfully started BootstrapManagementService"  
+```
+
 ### Portal issues
 
 #### Policy

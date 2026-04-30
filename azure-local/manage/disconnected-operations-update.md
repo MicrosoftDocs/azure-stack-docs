@@ -66,14 +66,6 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 > [!NOTE]
 > Keep your BitLocker keys in a secure location.
 
-## Create appliance snapshot
-
-To roll back quickly in worst case scenarios, create a virtual machine (VM) snapshot.
-
-```powershell
-Checkpoint-VM -Name "IRVM01" -SnapshotName "BeforeUpdate"
-```
-
 ## Trigger an update
 
 > [!CAUTION]  
@@ -98,6 +90,28 @@ Get-ApplianceUpdateHistory
 
 ## Update Azure Local (disconnected)
 
+> [!IMPORTANT]
+> **Azure Local, version 2603 only.** If your Azure Local system is on version 2603, complete steps 1–3 before running the update script to exclude a test that requires internet connectivity. If you're on version 2604 or later, skip this section and continue with the script.
+
+1. Identify the Azure Local node running the orchestrator service.
+
+   1. Sign in to any Azure Local node and run the following command:
+
+      ```PowerShell
+      Get-ClusterGroup
+      ```
+
+   1. From the output, identify the node that owns the **Azure Stack HCI Orchestrator Service Cluster Group**.
+
+1. Exclude the internet-dependent test.
+
+   1. Sign in to the node identified in the previous step.
+   1. Go to `C:\Program Files\WindowsPowerShell\Modules\AzStackHci.EnvironmentChecker`.
+   1. Create a new file named `ExcludeTests.txt`.
+   1. Add the following line to the file and save it: ` Test-ARBStackBandwidth`
+
+1. After saving the file, proceed to trigger the update on Azure Local.
+
 Use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
 
 ```powershell
@@ -111,23 +125,11 @@ $eceClient = Create-ECEClientSimple
 $plans = $eceClient.GetActionPlanInstances().Result
 $plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID, ActionPlanName, ActionTypeName, Status, LastModifiedDateTime
 
-#
-<# Patch the file c:\NugetStore\Microsoft.AzureStack.Role.SBE.10.2510.1001.2024\content\Helpers\SBESolutionExtensionHelper.psm1
- Insert the following lines after line 349
- $aldoSupport = [System.Environment]::GetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", "Machine")
-    #Note: order matters here - $true -eq $aldoSupport won't work because $aldoSupport is a string
-    if ($null -ne $aldoSupport -and $aldoSupport -eq "True")
-    {
-        Trace-Execution "Disconnected Operations support is enabled. SBE download is not supported."
-        return $false
-    }
-#>
-
 # Host the OEM SBE manifest and overwrite location 
 $OEM = 'Replaceme'
 
 $client = New-SolutionUpdateClient
-$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM)$.xml").Wait()
+$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM).xml").Wait()
 $client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
 $client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
 

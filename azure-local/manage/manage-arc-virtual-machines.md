@@ -1,11 +1,11 @@
 ---
 title: Manage including restart, start, stop or delete Azure Local VMs enabled by Azure Arc 
 description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 02/05/2026
+ms.date: 04/07/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -35,7 +35,7 @@ When you enable guest management on an Azure Local VM, the guest agent installs 
 Here are some key considerations for enabling guest management on a VM after you provision it:
 
 - Make sure that your Azure Local instance is running 2311.2 or later.
-- Enabling guest management after VM provisioning isn't supported for Windows Server 2012 and Windows Server 2012 R2.
+- Enabling guest management isn't supported for Windows Server 2012 and Windows Server 2012 R2 or any guest operating system that does not have support for Hyper-V sockets. For more information, see [Make your own integration services](/windows-server/virtualization/hyper-v/make-integration-service).
 - The steps to enable guest management differ based on whether a guest agent is running on your Azure Local VM.
 
 ### Verify that the guest agent is running
@@ -154,7 +154,7 @@ Follow these steps:
 
 #### Status displayed as null
 
-The following sample output snippet shows a null status. This status indicates that the required `iso` for the guest agent is missing.
+The following example output snippet shows a null status. This status indicates that the required `iso` for the guest agent is missing.
 
 ```output
 "instanceView": {
@@ -971,23 +971,6 @@ To change cores and memory, follow these steps in the Azure portal for your Azur
 
 > [!NOTE]
 > When updating only the memory of a VM, the VM remains running. A restart may be required only if the guest OS doesn't support live memory updates.
-
-## Guest management enablement support
-
-The following operating systems (OS) support guest management enablement:
-
-### Windows OS
-
-- Windows Server 2025
-- Windows Server 2022
-- Windows Server2019
-- Windows Server 2016
-- Windows 10
-- Windows 11
-
-### Linux OS
-
-- 
 
 ## Related content
 

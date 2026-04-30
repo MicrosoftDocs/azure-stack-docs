@@ -1,8 +1,8 @@
 ---
 title: Manage system security with Microsoft Defender for Cloud (preview)
 description: This article describes how to use Microsoft Defender for Cloud to secure Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 02/11/2026
 ms.service: azure-local

@@ -1,8 +1,8 @@
 ---
 title: Prepare Ubuntu image via Azure CLI for Azure Local VMs enabled by Azure Arc
 description: Learn how to prepare Ubuntu images to create an Azure Local VM image by using Azure CLI.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli, linux-related-content

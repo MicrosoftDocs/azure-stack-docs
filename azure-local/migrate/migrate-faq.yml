@@ -6,7 +6,7 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.service: azure-local
-  ms.date: 10/15/2025
+  ms.date: 03/25/2026
   ms.subservice: hyperconverged
 
 
@@ -135,6 +135,19 @@ sections:
           ### How can I migrate the same source VM again after initial migration?
           
           After you migrate a VM, the migration resource is marked as migrated and replication is disabled. To migrate the same source VM again, you need to "Complete Migration" on the migrated resource in the Azure portal. This action cleans up the migration state and allows you to enable replication again for the same source VM.
+
+          ### Will my migrated VM be a Hyper-V Generation 1 or Generation 2 VM on Azure Local?
+
+          The boot type of the source VM is retained during migration. If the source VM is using BIOS, the migrated VM on Azure Local will be a Hyper-V Generation 1 VM. If the source VM is using UEFI, the migrated VM on Azure Local will be a Hyper-V Generation 2 VM. For more information on Generation 1 VM limitations, see [Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
+
+          ### Can I use a preconfigured Microsoft Entra ID application to register a migrate appliance?
+
+          Yes. You can use a preconfigured Microsoft Entra ID application to register a migrate appliance. This approach is useful for enterprises that prefer to use existing, pre-approved Microsoft Entra ID applications that comply with internal security and governance policies. It also avoids requiring users to sign in directly on the appliance, which can be restrictive in environments where tenant-level permissions are limited or Device Code Flow is disabled.
+          
+          See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](/azure/migrate/how-to-register-appliance-using-entra-app?view=migrate) for detailed instructions on how to set this up.
+          
+          You must create and use a separate Microsoft Entra ID application for each appliance in your project - one for the source appliance and one for the target appliance. Reusing the same Microsoft Entra ID application for both appliances isn't supported.
+
 
           ## [VMware VMs only](#tab/vmware-vms)
           

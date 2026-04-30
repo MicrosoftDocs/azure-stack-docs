@@ -1,23 +1,21 @@
 ---
-title: Network Fabric Overview For Azure Local Multi-Rack Deployments (preview)
-description: Learn about network fabric resources for Azure Local multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+title: Network Fabric Overview For Azure Local Multi-Rack Deployments
+description: Learn about network fabric resources for Azure Local multi-rack deployments.
+author: sipastak
+ms.author: sipastak
 ms.service: azure-local
 ms.topic: concept-article
-ms.date: 12/19/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Network fabric overview for multi-rack deployments of Azure Local (preview)
+# Network fabric overview for multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes the capabilities of the network fabric used for infrastructure management for multi-rack deployments of Azure Local. The article also covers the workload networking required for these deployments.
 
 The network fabric instance is a single deployed physical network infrastructure - including racks, switches, terminal server connections, and cabling - that Azure represents and manages as a Network Fabric (NF) resource.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Benefits of network fabric
 

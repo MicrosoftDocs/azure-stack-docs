@@ -1,8 +1,8 @@
 ---
 title: "Use Secret Rotation v1 in Azure Operator Nexus"
 description: Learn the process for using password rotation v1 in Azure Operator Nexus.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: ronmiab
+ms.author: robess
 ms.date: 09/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus

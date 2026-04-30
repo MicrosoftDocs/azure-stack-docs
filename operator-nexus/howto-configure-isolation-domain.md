@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Configure L2 and L3 isolation domains"
 description: Learn commands to create, view, list, update, and delete Layer 2 and Layer 3 isolation domains in Azure Operator Nexus instances.
-author: jdasari
-ms.author: jdasari
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/20/2023
@@ -477,6 +477,8 @@ The following parameters are optional for creating internal networks.
 |`ipv6NeighborAddress`| IPv6 neighbor address|10:101:1::11| |
 |`isMonitoringEnabled`| TO enable or disable monitoring on internal network|False| |
 
+> [!NOTE]
+> **TWAMP Light is not supported** on Arista CE devices in Azure Operator Nexus Network Fabric. Test equipment or vendors issuing TWAMP Light requests to the CE device VLAN IP will not receive a response. 
 
 You need to create an internal network before you enable an L3 isolation domain. This command creates an internal network with BGP configuration and a specified peering address:
 

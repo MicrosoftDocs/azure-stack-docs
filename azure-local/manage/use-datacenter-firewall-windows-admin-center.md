@@ -1,8 +1,8 @@
 ---
 title: Configure network security groups with Windows Admin Center
 description: Configure network security groups with Windows Admin Center
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 01/16/2025
 ms.custom: sfi-image-nochange

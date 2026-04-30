@@ -1,12 +1,12 @@
 ---
 title: What is Azure Local VM management
 description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 03/03/2026
+ms.date: 04/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of the virtual machine (VM) management feature in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*), including its benefits, components, and a high-level workflow.
+This article provides an overview of virtual machine (VM) management in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*), including its benefits, components, and a high-level workflow.
 
 Azure Local VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
 
@@ -39,13 +39,15 @@ Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Loc
 
 Consider the following limitations when you're managing VMs on Azure Local:
 
-- Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
+- Changes to VM configurations, such as static network interface IP, or data disk configuration made either within the VM or through local management tools will not be reflected in Azure.
 
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
 
 - Azure has limitations on subscriptions and services. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
-- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. For more information, see [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. See [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+
+  Azure Local VMs running Windows Server 2012 and Windows Server 2012 R2 do not support enabling guest management as it lacks Hyper-V sockets support which is required for this feature. For more information on Hyper-V sockets, see [Make your own integration services](/windows-server/virtualization/hyper-v/make-integration-service). 
 
 - Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 

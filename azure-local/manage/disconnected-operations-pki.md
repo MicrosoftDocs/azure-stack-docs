@@ -107,12 +107,14 @@ The following script shows you how to use the OperationsModule to generate certi
   $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
   $fqdn = "autonomous.cloud.private" 
   $IngressEndpointsCertsFolder = 'C:\Certs\IngressEndpointsCerts'
-  $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+  $certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+  ## Automation alternative
+  ## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
   $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
   
   Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-  New-AldoCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
+  New-ApplianceExternalCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
   ```
 
 ### Management endpoint
@@ -129,12 +131,14 @@ $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
 $fqdn = "autonomous.cloud.private" 
 $managementEndpointIp = '192.168.100.25'
 $managementEndpointCertsFolder = 'C:\Certs\ManagementEndpointsCerts'
-$certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+$certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+## Automation alternative
+## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
 $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-New-AldoManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
+New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
 ```
 
 ## Export root CA certificate
@@ -145,10 +149,11 @@ Here's an example of how to export your root certificate public key:
 
 ```powershell
 $applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
-$caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
+$dcName = "corp.contoso.com"
+$caName = "$($dcname)$\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 # Option 1) Get the Root CA certificate by its name:
-$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($dcname)*" } | Select-Object -First 1
 
 # # Option 2) Get the Root CA certificate by its thumbprint:
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" } | Select-Object -First 1
@@ -167,6 +172,10 @@ certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
+
+>[!NOTE]
+> **Root cert is required.** Use the explicit root certificate, not an intermediate certificate. Deployment fails if the full trust chain for the ingress endpoint certificates is missing.
+
 
 ## Obtain certificate information for identity integration
 
@@ -235,10 +244,10 @@ $AzLCerts = @(
   "dp.appliances.$fqdn"
   "armmanagement.$fqdn"
   "adminmanagement.$fqdn"
+  "management.$fqdn"
   "frontend.appliances.$fqdn"
   "graph.$fqdn"
   "dp.aszrp.$fqdn"
-  "ibc.$fqdn"
   "portal.$fqdn"
   "hosting.$fqdn"    
   "catalogapi.$fqdn"    

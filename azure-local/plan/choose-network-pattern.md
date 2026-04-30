@@ -2,8 +2,8 @@
 title: Azure Local deployment network reference patterns
 description: Select a network reference pattern for single-node and two-node Azure Local deployments.
 ms.topic: overview
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 12/30/2025
 ms.subservice: hyperconverged

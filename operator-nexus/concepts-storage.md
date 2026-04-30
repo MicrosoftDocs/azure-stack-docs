@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus storage appliance
 description: Get an overview of storage appliance resources for Azure Operator Nexus.
-author: neilverse
-ms.author: soumyamaitra
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 06/29/2023

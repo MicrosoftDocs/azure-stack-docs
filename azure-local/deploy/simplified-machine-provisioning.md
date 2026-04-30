@@ -16,7 +16,6 @@ This article describes how to use simplified machine provisioning to set up mach
 
 This article covers only the installation and registration process by using simplified machine provisioning, which is currently in preview. To install the OS manually, see [Install OS on your Azure Local machines using ISO images](./deployment-install-os.md).
 
-
 ## About simplified machine provisioning process
 
 At a high level, the process has three key stages:
@@ -39,7 +38,6 @@ At a high level, the process has three key stages:
     > Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
 
 1. **Deploy the cluster by using the provisioned machines**: You can now create an Azure Local instance using the provisioned machines.
-
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -223,11 +221,11 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 
 :::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="true" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
 
-
 ## Next steps
 
-- Set up [subscription permissions](deployment-arc-register-server-permissions.md) prior to deployment.
+- Set up [subscription permissions](deployment-arc-register-server-permissions.md) before deployment.
 - Skip registration as this step already registered your Azure Local machines.
 - Once you set up the permissions, deploy your Azure Local instance by using one of the following options:
-  - [Deploy via Azure portal](../deploy/deploy-via-portal.md)
-  - [Deploy via Azure Resource Manager (ARM) template](../deploy/deployment-azure-resource-manager-template.md)
+  - [Deploy via Azure portal](./deploy-via-portal.md)
+  - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
+- [Troubleshoot simplified machine provisioning](./troubleshoot-simplified-machine-provisioning.md).

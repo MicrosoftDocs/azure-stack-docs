@@ -1,8 +1,8 @@
 ---
 title: Near-edge compute overview
 description: Learn about compute SKUs and resources available in near-edge Azure Operator Nexus instances.
-author: mukeshdua
-ms.author: mukeshdua
+author: ronmiab
+ms.author: robess
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 05/22/2023

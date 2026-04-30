@@ -2,8 +2,8 @@
 title: Repair a node on Azure Local, version 23H2
 description: Learn how to repair a node on your Azure Local, version 23H2 system.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 08/26/2025
 ms.subservice: hyperconverged
 ---
@@ -127,6 +127,7 @@ Follow these steps on the node you're trying to repair.
     > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster. 
     > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
     > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - Ensure that the management network adapter name matches the name used on the other nodes (commonly Management). For example, `Rename-NetAdapter -Name "<current-adapter-name>" -NewName "Management"`.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 

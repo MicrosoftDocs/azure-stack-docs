@@ -1,21 +1,23 @@
 ---
-title: Create and Restore Data Disk Snapshots of Azure Local
-description: Learn how to create snapshots from a data disk and restore a new disk from a snapshot on multi-rack deployments of Azure Local.
-author: alkohli
-ms.author: alkohli
+title: Create and Restore Data Disk Snapshots of Azure Local (preview)
+description: Learn how to create snapshots from a data disk and restore a new disk from a snapshot on multi-rack deployments of Azure Local (preview).
+author: ronmiab
+ms.author: robess
 ms.reviewer: dramasamy
-ms.date: 03/11/2026
+ms.date: 04/15/2026
 ms.topic: how-to
 ms.subservice: multi-rack
 #customer intent: As an Azure Local administrator for multi-rack deployments, I want to create and restore data disk snapshots so that I can back up and recover data disks.
 ---
 
-# Create and restore data disk snapshots on Azure Local
+# Create and restore data disk snapshots on Azure Local (preview)
 
 Disk snapshots let you capture a point-in-time copy of a data disk so that you can recover data or quickly provision new disks from a known-good state. This article shows you how to create a snapshot from an existing data disk and restore a new disk from that snapshot on Azure Local.
 
 > [!NOTE]
 > This article covers data disk snapshots only. This release doesn't include OS disk snapshot and restore.
+
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -75,6 +77,16 @@ Use `az stack-hci-vm snapshot create` to create a snapshot from a source disk.
 ```azurecli
 az stack-hci-vm snapshot create --resource-group <resource-group> --custom-location <custom-location-arm-id> --location <location> --name <snapshot-name> --source-resource-id </subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{diskName}>
 ```
+
+The following table describes the parameters used in the `snapshot create` command:
+
+| Parameter | Description |
+|-----------|-------------|
+| **resource-group** | Name of the resource group that contains your Azure Local resources. |
+| **custom-location** | The ARM ID of the custom location associated with your Azure Local instance. |
+| **location** | Azure region for the snapshot (for example, `eastus`). |
+| **name** | A friendly name for the snapshot. |
+| **source-resource-id** | The full ARM resource ID of the source data disk to snapshot. |
 
 ## List existing snapshots
 
@@ -160,6 +172,17 @@ To restore a disk from a snapshot, run the following command:
 ```azurecli
 az stack-hci-vm disk create --resource-group <resource-group> --custom-location <custom-location-arm-id> --location <location> --name <new-disk-name> --source-resource-id </subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.AzureStackHCI/snapshots/{snapshotName}> --size-gb <size-in-gb>
 ```
+
+The following table describes the parameters used in the `disk create` command for restoring from a snapshot:
+
+| Parameter | Description |
+|-----------|-------------|
+| **resource-group** | Name of the resource group for the new disk. |
+| **custom-location** | The ARM ID of the custom location associated with your Azure Local instance. |
+| **location** | Azure region for the new disk (for example, `eastus`). |
+| **name** | A friendly name for the restored disk. |
+| **source-resource-id** | The full ARM resource ID of the snapshot to restore from. |
+| **size-gb** | Size of the new disk in GB. Must be equal to or greater than the original snapshot size. Required due to a known issue. |
 
 ## Validate the restored disk
 
