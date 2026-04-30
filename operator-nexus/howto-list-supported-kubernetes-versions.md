@@ -340,8 +340,6 @@ for v in $(az rest --method get --url "$URL" --query "properties.values[].versio
 done
 ```
 
-The reformatting is cosmetic only — the underlying string is unchanged, so the lifecycle rules in the next section apply identically. After the structured-properties API ships, this script becomes obsolete. At that point, `--query` selectors against `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` work directly.
-
 ## Compare with per-cluster available upgrades
 
 `Microsoft.NetworkCloud/kubernetesVersions` returns the kubernetesVersions catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster, use the per-cluster query. The per-cluster query is already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle, and it returns structured upgrade candidates today:
