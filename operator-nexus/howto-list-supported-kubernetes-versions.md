@@ -34,9 +34,9 @@ In the current preview API version (`2026-01-01-preview`), the patch-level bundl
 
 ## Prerequisites
 
-- An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that supports the `2026-01-01-preview` API version of `Microsoft.NetworkCloud/kubernetesVersions`. The resource is first available on that API version. If the resource doesn't appear for a Nexus Cluster, the build on that instance doesn't yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
+- An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that supports the `2026-01-01-preview` Microsoft.NetworkCloud API version or newer. If the resource doesn't appear for a Nexus Cluster, the build on that instance doesn't yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
 - The Azure CLI installed and signed in. If you need to install or upgrade it, see [Install Azure CLI](./howto-install-cli-extensions.md).
-- Reader access on the subscription (or on the Nexus Cluster's managed `*-HostedResources-*` resource group). `Microsoft.NetworkCloud/kubernetesVersions` is projected into that managed resource group.
+- Reader access on the subscription (or on the Nexus Cluster's managed HostedResources resource group). `Microsoft.NetworkCloud/kubernetesVersions` is projected into the HostedResources group.
 - To use the `az networkcloud kubernetesversion` commands, install the preview `networkcloud` CLI extension (`5.0.0b1` or later): `az extension add --name networkcloud --version 5.0.0b1 --allow-preview true`. The `az rest` examples in this article work with any Azure CLI install and don't require the preview extension.
 
 ## Locate the kubernetesVersions resource
@@ -74,7 +74,7 @@ The kubernetesVersions resource's `extendedLocation` matches the Nexus Cluster's
 
 ## Find the HostedResources resource group for your cluster
 
-`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed `*-HostedResources-*` resource group, not in the resource group that holds the Nexus Cluster. The table output from the previous step already exposes this value in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
+`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed HostedResources resource group, not in the resource group that holds the Nexus Cluster. The table output from the previous step already exposes the HostedResources group in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
 
 ```azurecli
 az networkcloud kubernetesversion list \
@@ -158,7 +158,7 @@ Top-level kubernetesVersions resource:
 
 | Field | Description |
 | ----- | ----------- |
-| `id` | The ARM ID of the kubernetesVersions catalog. The kubernetesVersions catalog is always named `default`, scoped to the Nexus Cluster's managed `*-HostedResources-*` resource group. |
+| `id` | The ARM ID of the kubernetesVersions catalog. The kubernetesVersions catalog is always named `default`, scoped to the Nexus Cluster's managed HostedResources resource group. |
 | `location` | Azure region of the Nexus Cluster. |
 | `extendedLocation` | The custom location (extended location) reference of the Nexus Cluster that owns this kubernetesVersions catalog. |
 | `properties.provisioningState` | `Succeeded` once the kubernetesVersions catalog has been seeded. |
