@@ -45,6 +45,9 @@ View the upcoming version releases on the Nexus Kubernetes release calendar.
 
 For the past release history, see [Kubernetes history](https://github.com/kubernetes/kubernetes/releases).
 
+> [!TIP]
+> To programmatically retrieve the live version bundle catalog for a specific Nexus Cluster — including each bundle's general availability, end of support, end of extended availability dates, packaged components, and upgrade paths — see [List supported Kubernetes versions for Azure Operator Nexus](./howto-list-supported-kubernetes-versions.md).
+
 [!INCLUDE [supported-versions](./includes/kubernetes-cluster/supported-versions.md)]
 
 ## Nexus Kubernetes service version components
