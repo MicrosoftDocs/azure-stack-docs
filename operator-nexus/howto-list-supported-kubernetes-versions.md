@@ -21,9 +21,6 @@ Use this API when you want to:
 
 For per-cluster upgrade options for an existing cluster, see [Check for available upgrades](./howto-kubernetes-cluster-upgrade.md#check-for-available-upgrades).
 
-> [!IMPORTANT]
-> The supported-versions API is currently in **preview**. It's exposed only on the `2026-01-01-preview` API version of the `Microsoft.NetworkCloud` resource provider, and there is no dedicated `az networkcloud` CLI subcommand yet — you query it through `az rest` or the equivalent ARM REST call. The shape of the response is also being refined: today every version's metadata is returned inside a single `description` text field, and a future API version will surface the same data as discrete structured properties. The behavior and lifecycle rules described in this article are stable; only the field layout is expected to change.
-
 ## Prerequisites
 
 - An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that publishes the `Microsoft.NetworkCloud/kubernetesVersions/default` resource. If the resource does not appear for a Nexus Cluster, the catalog has not yet been seeded for that instance.
