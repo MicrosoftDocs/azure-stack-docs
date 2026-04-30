@@ -25,7 +25,7 @@ This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linu
 - [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file.
 
 > [!NOTE]
-> Not all operating systems listed on the [Azure Arc-enabled servers supported OS page](/azure/azure-arc/servers/prerequisites.md#supported-operating-systems) are supported for Arc enablement (guest management) on Azure Local. Guest management requires Hyper-V socket (HV socket) support, which limits the supported OS set further.
+> Not all operating systems listed on the [Azure Arc-enabled servers supported OS page](/azure/azure-arc/servers/prerequisites#supported-operating-systems) are supported for Arc enablement (guest management) on Azure Local. Guest management requires Hyper-V socket (HV socket) support, which limits the supported OS set further.
 
 ## High-level workflow
 
