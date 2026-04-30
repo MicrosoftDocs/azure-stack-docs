@@ -198,6 +198,14 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 > [!NOTE]
 > Session transcript details are kept for 90 days. You can retrieve details for a remote session within 90 days after the session.
 
+## Enable remote support via Portal
+
+This section provides an overview of the Remote Support experience in the Azure Local portal, including how customers enable it, what to expect when it is active, and how to monitor support sessions.
+
+:::image type="content" source="media/get-remote-support/remote-support-user-experience-overview.png" alt-text="Azure Local portal Diagnostics and Remote Support settings showing the Remote Support tab and Grant access option.":::
+
+In the Diagnostics and Remote Support settings, you’ll see a new Remote Support tab. You can select this tab or click Grant access directly to enable remote support.
+
 ## Error handling
 
 When you enable remote support on Azure Local, you might encounter an error. This section describes the error message, its cause, and suggested resolutions.
