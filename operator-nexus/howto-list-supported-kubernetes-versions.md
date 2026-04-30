@@ -11,7 +11,7 @@ ms.custom: template-how-to-pattern
 
 # List supported Kubernetes versions for Azure Operator Nexus
 
-This article explains how to discover the Nexus Kubernetes [version bundles](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that an Operator Nexus Cluster can deploy or upgrade clusters to. The catalog is published per Nexus Cluster as a `Microsoft.NetworkCloud/kubernetesVersions` resource named `default`, anchored to the Nexus Cluster's custom location (extended location).
+This article explains how to discover the Nexus Kubernetes [version bundles](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that an Operator Nexus Cluster can deploy or upgrade clusters to. The catalog is published per Nexus Cluster as a `Microsoft.NetworkCloud/kubernetesVersions` resource named `default`. It's anchored to the Nexus Cluster's custom location (extended location).
 
 Use this API when you want to:
 
@@ -99,7 +99,7 @@ az networkcloud kubernetesversion list
 
 ### Sample output
 
-The current preview API returns a list of supported minor versions. For each minor version, the `description` field is a single text blob that embeds every patch-level entry's component manifest and lifecycle dates. The example below is trimmed for readability:
+The current preview API returns a list of supported minor versions. For each minor version, the `description` field is a single text blob. That blob embeds every patch-level entry's component manifest and lifecycle dates. The example below is trimmed for readability:
 
 ```json
 {
@@ -213,7 +213,7 @@ az rest --method get \
 
 ## Render the description in human-readable form
 
-Because each minor version's `description` is returned as a single text blob, the raw response is difficult to read for any catalog containing more than a handful of patches. The convenience script below pulls the blob with `az networkcloud kubernetesversion show` and uses two `awk` passes to:
+Because each minor version's `description` is returned as a single text blob, the raw response is difficult to read for catalogs with more than a handful of patches. The convenience script below pulls the blob with `az networkcloud kubernetesversion show` and uses two `awk` passes to:
 
 1. Split each patch entry, component row, and lifecycle date onto its own line and strip the surrounding `{`, `}`, and `[]` punctuation.
 2. Reorder each patch block so that `patchVersion` is shown first, the lifecycle dates next, and the `components` list last — matching the order an operator typically reads a version bundle.
@@ -326,11 +326,11 @@ for v in $(az rest --method get --url "$URL" --query "properties.values[].versio
 done
 ```
 
-The reformatting is purely cosmetic — the underlying string is unchanged, so the lifecycle rules in the next section apply identically. Once the structured-properties API ships (see the [preview note](#field-reference) above), this script becomes obsolete and `--query` selectors against `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` will work directly.
+The reformatting is purely cosmetic — the underlying string is unchanged, so the lifecycle rules in the next section apply identically. Once the structured-properties API ships, this script becomes obsolete. At that point, `--query` selectors against `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` work directly.
 
 ## Compare with per-cluster available upgrades
 
-The supported-versions API returns the catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster — already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle — use the per-cluster query, which returns structured upgrade candidates today:
+The supported-versions API returns the catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster — already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle — use the per-cluster query. It returns structured upgrade candidates today:
 
 ```azurecli
 az networkcloud kubernetescluster show \
