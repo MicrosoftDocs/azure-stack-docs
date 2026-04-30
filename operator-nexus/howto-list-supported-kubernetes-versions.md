@@ -26,6 +26,7 @@ For per-cluster upgrade options for an existing cluster, see [Check for availabl
 - An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that publishes the `Microsoft.NetworkCloud/kubernetesVersions/default` resource. If the resource does not appear for a Nexus Cluster, the catalog has not yet been seeded for that instance.
 - The Azure CLI installed and signed in. If you need to install or upgrade it, see [Install Azure CLI](./howto-install-cli-extensions.md).
 - Reader access on the subscription (or on the Nexus Cluster's managed `*-HostedResources-*` resource group). The supported-versions resource is projected into that managed resource group.
+- To use the `az networkcloud kubernetesversion` commands, install the preview `networkcloud` CLI extension (`5.0.0b1` or later): `az extension add --name networkcloud --version 5.0.0b1 --allow-preview true`. The `az rest` examples in this article work with any Azure CLI install and don't require the preview extension.
 
 ## Locate the kubernetesVersions resource
 
@@ -38,6 +39,12 @@ az resource list \
   --output table
 ```
 
+Or, with the preview `networkcloud` extension, list every Nexus Cluster's catalog at once:
+
+```azurecli
+az networkcloud kubernetesversion list --output table
+```
+
 Each row returns one Nexus Cluster's catalog, with an `id` of the form:
 
 ```text
@@ -45,6 +52,20 @@ Each row returns one Nexus Cluster's catalog, with an `id` of the form:
 ```
 
 The catalog's `extendedLocation` matches the Nexus Cluster's custom location. Use the `id` value from this output as `<KubernetesVersionsResourceId>` in the next step.
+
+## Find the HostedResources resource group for your cluster
+
+The supported-versions resource lives in the cluster's managed `HostedResources-*` resource group, not the resource group that holds the cluster itself. To retrieve that name without leaving the CLI, query the cluster resource:
+
+```azurecli
+az networkcloud cluster show \
+  --resource-group <cluster-rg> \
+  --name <cluster-name> \
+  --query "managedResourceGroupConfiguration.name" \
+  --output tsv
+```
+
+The output is the value to pass as `--resource-group` to every `az networkcloud kubernetesversion` command in this article.
 
 ## Get the supported-versions catalog
 
@@ -55,11 +76,25 @@ az rest --method get \
   --url "https://management.azure.com<KubernetesVersionsResourceId>?api-version=2026-01-01-preview"
 ```
 
+Or, with the preview `networkcloud` extension:
+
+```azurecli
+az networkcloud kubernetesversion show \
+  --resource-group <cluster>-HostedResources-<hash> \
+  --name default
+```
+
 You can also list every catalog visible to a subscription in a single call (one entry per Nexus Cluster):
 
 ```azurecli
 az rest --method get \
   --url "https://management.azure.com/subscriptions/<SubscriptionId>/providers/Microsoft.NetworkCloud/kubernetesVersions?api-version=2026-01-01-preview"
+```
+
+Or:
+
+```azurecli
+az networkcloud kubernetesversion list
 ```
 
 ### Sample output
@@ -178,7 +213,7 @@ az rest --method get \
 
 ## Render the description in human-readable form
 
-Because each minor version's `description` is returned as a single text blob, the raw response is difficult to read for any catalog containing more than a handful of patches. The convenience script below pulls the blob with `az rest` and uses two `awk` passes to:
+Because each minor version's `description` is returned as a single text blob, the raw response is difficult to read for any catalog containing more than a handful of patches. The convenience script below pulls the blob with `az networkcloud kubernetesversion show` and uses two `awk` passes to:
 
 1. Split each patch entry, component row, and lifecycle date onto its own line and strip the surrounding `{`, `}`, and `[]` punctuation.
 2. Reorder each patch block so that `patchVersion` is shown first, the lifecycle dates next, and the `components` list last — matching the order an operator typically reads a version bundle.
@@ -188,14 +223,15 @@ The script uses only `az`, `bash`, and `awk` (POSIX), so it runs unmodified on m
 ```bash
 #!/usr/bin/env bash
 # Pretty-print the Microsoft.NetworkCloud/kubernetesVersions description blob
-# for a single minor version. Replace the URL placeholder and MINOR as needed.
+# for a single minor version. Replace RESOURCE_GROUP and MINOR as needed.
 
-URL="https://management.azure.com<KubernetesVersionsResourceId>?api-version=2026-01-01-preview"
+RESOURCE_GROUP="<cluster>-HostedResources-<hash>"
 MINOR="1.33"
 
-az rest --method get \
-  --url "$URL" \
-  --query "properties.values[?version=='$MINOR'].description | [0]" \
+az networkcloud kubernetesversion show \
+  --resource-group "$RESOURCE_GROUP" \
+  --name default \
+  --query "values[?version=='$MINOR'].description | [0]" \
   --output tsv \
 | awk '{
     gsub(/\},\{ components:/, "}\n\n{ components:")
