@@ -21,9 +21,20 @@ Use this API when you want to:
 
 For per-cluster upgrade options for an existing cluster, see [Check for available upgrades](./howto-kubernetes-cluster-upgrade.md#check-for-available-upgrades).
 
+## What the kubernetesVersions catalog contains
+
+Each `Microsoft.NetworkCloud/kubernetesVersions` resource is the catalog of every Nexus Kubernetes [version bundle](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that the owning Nexus Cluster can deploy or upgrade clusters to. The catalog is structured as follows:
+
+- **Supported Kubernetes minor versions.** The catalog's `properties.values[]` array lists every Kubernetes minor version (for example, `1.30`, `1.31`, `1.32`, `1.33`) for which Operator Nexus currently ships at least one bundle on this Nexus Cluster.
+- **Version bundles per minor version.** Each minor version entry contains one or more patch-level version bundles. A bundle is the unit Operator Nexus deploys: it pins a specific Kubernetes patch release together with the [Features](./concepts-nexus-kubernetes-cluster.md#nexus-kubernetes-cluster-features) (Calico, MetalLB, Azure Arc agents, CSI drivers, and so on) and the OS image that ship with that release.
+- **Lifecycle dates per bundle.** Each bundle carries a general-availability date, an end-of-support date, and an end-of-extended-availability date. Operator Nexus uses these dates to govern which bundles are valid creation or upgrade targets at any given time. See [Lifecycle visibility rules](#lifecycle-visibility-rules).
+- **Component manifest per bundle.** Each bundle records the exact Feature and OS image versions it packages, so you can correlate a Kubernetes patch release with the supporting components that ship alongside it.
+
+In the current preview API version (`2026-01-01-preview`), the patch-level bundle data for a minor version is returned as a single text field named `description`. The remainder of this article shows how to retrieve that field, how to read it, and how to filter it. A future API version replaces `description` with structured properties so the same data is queryable directly with JMESPath and SDK models.
+
 ## Prerequisites
 
-- An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that supports the `2026-01-01-preview` API version of `Microsoft.NetworkCloud/kubernetesVersions/default`. The resource is first available on that API version. If the resource does not appear for a Nexus Cluster, the build on that instance does not yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
+- An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that supports the `2026-01-01-preview` API version of `Microsoft.NetworkCloud/kubernetesVersions`. The resource is first available on that API version. If the resource doesn't appear for a Nexus Cluster, the build on that instance doesn't yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
 - The Azure CLI installed and signed in. If you need to install or upgrade it, see [Install Azure CLI](./howto-install-cli-extensions.md).
 - Reader access on the subscription (or on the Nexus Cluster's managed `*-HostedResources-*` resource group). `Microsoft.NetworkCloud/kubernetesVersions` is projected into that managed resource group.
 - To use the `az networkcloud kubernetesversion` commands, install the preview `networkcloud` CLI extension (`5.0.0b1` or later): `az extension add --name networkcloud --version 5.0.0b1 --allow-preview true`. The `az rest` examples in this article work with any Azure CLI install and don't require the preview extension.
@@ -39,7 +50,7 @@ az resource list \
   --output table
 ```
 
-Or, with the preview `networkcloud` extension, list every Nexus Cluster's kubernetesVersions catalog at once:
+Or, with the preview `networkcloud` extension, list every Nexus Cluster's kubernetesVersions catalog in a single call:
 
 ```azurecli
 az networkcloud kubernetesversion list --output table
@@ -63,7 +74,7 @@ The kubernetesVersions resource's `extendedLocation` matches the Nexus Cluster's
 
 ## Find the HostedResources resource group for your cluster
 
-`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed `*-HostedResources-*` resource group, not the resource group that holds the Nexus Cluster itself. The table output from the previous step already exposes this value in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
+`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed `*-HostedResources-*` resource group, not in the resource group that holds the Nexus Cluster. The table output from the previous step already exposes this value in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
 
 ```azurecli
 az networkcloud kubernetesversion list \
@@ -71,7 +82,7 @@ az networkcloud kubernetesversion list \
   --output tsv
 ```
 
-The output is the value to pass as `--resource-group` to every `az networkcloud kubernetesversion` command in this article.
+Pass the output as `--resource-group` to every `az networkcloud kubernetesversion` command in this article.
 
 ## Get the kubernetesVersions catalog
 
@@ -105,7 +116,7 @@ az networkcloud kubernetesversion list
 
 ### Sample output
 
-The current preview `Microsoft.NetworkCloud/kubernetesVersions` API returns a list of supported minor versions. For each minor version, the `description` field is a single text blob. That blob embeds every patch-level entry's component manifest and lifecycle dates. The example below is trimmed for readability:
+The current preview `Microsoft.NetworkCloud/kubernetesVersions` API returns a list of supported minor versions. For each minor version, the `description` field is a single text string that embeds every patch-level entry's component manifest and lifecycle dates. The following example is trimmed for readability:
 
 ```json
 {
@@ -158,7 +169,7 @@ Per-entry fields in `properties.values[]`:
 | Field | Description |
 | ----- | ----------- |
 | `version` | The Kubernetes minor version (`<major>.<minor>`) the entry describes. |
-| `description` | A text blob that lists every patch-level [version bundle](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) Operator Nexus publishes for this minor version, including each bundle's [component](./reference-nexus-kubernetes-cluster-supported-versions.md#components-version-and-breaking-changes) and [Feature](./concepts-nexus-kubernetes-cluster.md#nexus-kubernetes-cluster-features) versions and the lifecycle dates listed below. |
+| `description` | A text string that lists every patch-level [version bundle](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) Operator Nexus publishes for this minor version. Each entry includes the bundle's [component](./reference-nexus-kubernetes-cluster-supported-versions.md#components-version-and-breaking-changes) versions, [Feature](./concepts-nexus-kubernetes-cluster.md#nexus-kubernetes-cluster-features) versions, and the lifecycle dates listed in the next table. |
 
 The keys embedded in each patch entry inside `description` are:
 
@@ -167,11 +178,11 @@ The keys embedded in each patch entry inside `description` are:
 | `patchVersion` | The full version bundle identifier in the form `v<major>.<minor>.<patch>-<bundle>`. See [Nexus Kubernetes service version components](./reference-nexus-kubernetes-cluster-supported-versions.md#nexus-kubernetes-service-version-components). |
 | `components` | The Features and OS image packaged in the bundle (Calico, MetalLB, container runtime, AzureLinux, and so on). For the public component matrix, see [Components version and breaking changes](./reference-nexus-kubernetes-cluster-supported-versions.md#components-version-and-breaking-changes). |
 | `generalAvailabilityDate` | UTC date when the bundle entered [general availability](./reference-nexus-kubernetes-cluster-supported-versions.md#kubernetes-version-support-policy). A zero value (`0001-01-01 00:00:00 +0000 UTC`) means the bundle predates GA tracking on this Nexus Cluster. |
-| `supportExpiryDate` | UTC date when the bundle reaches [end of support](./reference-nexus-kubernetes-cluster-supported-versions.md#end-of-support). After this date Operator Nexus surfaces the bundle with an unsupported warning and stops shipping further patches against it. |
+| `supportExpiryDate` | UTC date when the bundle reaches [end of support](./reference-nexus-kubernetes-cluster-supported-versions.md#end-of-support). After this date, Operator Nexus surfaces the bundle with an unsupported warning and stops shipping further patches against it. |
 | `endOfExtendedAvailabilityDate` | UTC date when the bundle is removed from `Microsoft.NetworkCloud/kubernetesVersions` and can no longer be selected for cluster creation or upgrade. See [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy). |
 
 > [!NOTE]
-> Because `description` is currently a single text field rather than a structured object, programmatic consumers should treat it as informational and parse the embedded keys with caution. A future API version will replace `description` with structured properties for `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` so that the same data is queryable with JMESPath and SDK models. Until then, the recommended programmatic surface for upgrade decisions on a specific cluster is the cluster's own `availableUpgrades` field, described in [Compare with per-cluster available upgrades](#compare-with-per-cluster-available-upgrades) below.
+> Because `description` is currently a single text field rather than a structured object, programmatic consumers should treat it as informational and parse the embedded keys with caution. A future API version replaces `description` with structured properties for `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate`. After that change, the same data is queryable with JMESPath and SDK models. Until then, the recommended programmatic surface for upgrade decisions on a specific cluster is the cluster's own `availableUpgrades` field. See [Compare with per-cluster available upgrades](#compare-with-per-cluster-available-upgrades).
 
 ## Lifecycle visibility rules
 
@@ -214,17 +225,14 @@ az rest --method get \
   --output json
 ```
 
-> [!TIP]
-> JMESPath cannot pattern-match inside the `description` text. To filter on a specific `patchVersion`, GA date, or component version today, retrieve the `description` text and parse it with the tooling of your choice (for example, `jq`, `grep`, or a small Python script). Once the structured properties ship, the same filters can be expressed directly in `--query`.
-
 ## Render the description in human-readable form
 
-Because each minor version's `description` is returned as a single text blob, the raw response is difficult to read for catalogs with more than a handful of patches. The convenience script below pulls the blob with `az networkcloud kubernetesversion show` and uses two `awk` passes to:
+Because each minor version's `description` is returned as a single text string, the raw response is difficult to read for catalogs with more than a handful of patches. The following convenience script pulls the value with `az networkcloud kubernetesversion show` and uses two `awk` passes to:
 
 1. Split each patch entry, component row, and lifecycle date onto its own line and strip the surrounding `{`, `}`, and `[]` punctuation.
-2. Reorder each patch block so that `patchVersion` is shown first, the lifecycle dates next, and the `components` list last — matching the order an operator typically reads a version bundle.
+2. Reorder each patch block so that `patchVersion` appears first, the lifecycle dates appear next, and the `components` list appears last, to match the typical reading order for a version bundle.
 
-The script uses only `az`, `bash`, and `awk` (POSIX), so it runs unmodified on macOS, Linux, and WSL without requiring `perl`, GNU `sed`, or any extra dependencies.
+The script uses only `az`, `bash`, and `awk` (POSIX), so it can be ran unmodified on Linux operating systems.
 
 ```bash
 #!/usr/bin/env bash
@@ -332,11 +340,11 @@ for v in $(az rest --method get --url "$URL" --query "properties.values[].versio
 done
 ```
 
-The reformatting is purely cosmetic — the underlying string is unchanged, so the lifecycle rules in the next section apply identically. Once the structured-properties API ships, this script becomes obsolete. At that point, `--query` selectors against `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` work directly.
+The reformatting is cosmetic only — the underlying string is unchanged, so the lifecycle rules in the next section apply identically. After the structured-properties API ships, this script becomes obsolete. At that point, `--query` selectors against `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate` work directly.
 
 ## Compare with per-cluster available upgrades
 
-`Microsoft.NetworkCloud/kubernetesVersions` returns the kubernetesVersions catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster — already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle — use the per-cluster query. It returns structured upgrade candidates today:
+`Microsoft.NetworkCloud/kubernetesVersions` returns the kubernetesVersions catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster, use the per-cluster query. The per-cluster query is already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle, and it returns structured upgrade candidates today:
 
 ```azurecli
 az networkcloud kubernetescluster show \
