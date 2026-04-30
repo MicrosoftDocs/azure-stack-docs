@@ -46,8 +46,6 @@ Use Foundry Local when you need low-latency AI inference on local infrastructure
 For more information, see:
 
 - [What is Foundry Local on Azure Local?](/azure/azure-sovereign-clouds/private/foundry-local/what-is-foundry-local-on-azure-local)
-- [Deploy Foundry Local by using Helm](/azure/azure-sovereign-clouds/private/foundry-local/deploy-foundry-local-on-azure-local)
-- [Deploy Foundry Local as an Azure Arc extension](/azure/azure-sovereign-clouds/private/foundry-local/deploy-foundry-local-arc-extension)
 
 ## Search and reason over on-premises documents
 
