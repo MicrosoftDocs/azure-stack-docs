@@ -30,7 +30,7 @@ Each `Microsoft.NetworkCloud/kubernetesVersions` resource is the catalog of ever
 - **Lifecycle dates per bundle.** Each bundle carries a general-availability date, an end-of-support date, and an end-of-extended-availability date. Operator Nexus uses these dates to govern which bundles are valid creation or upgrade targets at any given time. See [Lifecycle visibility rules](#lifecycle-visibility-rules).
 - **Component manifest per bundle.** Each bundle records the exact Feature and OS image versions it packages, so you can correlate a Kubernetes patch release with the supporting components that ship alongside it.
 
-In the current preview API version (`2026-01-01-preview`), the patch-level bundle data for a minor version is returned as a single text field named `description`. The remainder of this article shows how to retrieve that field, how to read it, and how to filter it. A future API version replaces `description` with structured properties so the same data is queryable directly with JMESPath and SDK models.
+In the current preview API version (`2026-01-01-preview`), the patch-level bundle data for a minor version is returned as a single text field named `description`. The remainder of this article shows how to retrieve that field, how to read it, and how to filter it.
 
 ## Prerequisites
 
