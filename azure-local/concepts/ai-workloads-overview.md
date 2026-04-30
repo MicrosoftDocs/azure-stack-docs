@@ -4,7 +4,7 @@ description: Learn how Azure Local enables AI inference, document intelligence, 
 author: cwatson-cat
 ms.author: cwatson
 ms.topic: concept-article
-ms.date: 04/14/2026
+ms.date: 04/29/2026
 ai-usage: ai-assisted
 #CustomerIntent: As an IT admin or AI developer, I want to understand how Azure Local enables AI workloads on my own infrastructure so that I can process data locally while meeting latency, sovereignty, and compliance requirements.
 ---
@@ -39,9 +39,9 @@ Foundry Local includes the core capabilities you need to run AI model inference 
 
 Use Foundry Local when you need low-latency AI inference on local infrastructure for sensitive or operational workloads.
 
-- Deploy chat and content generation models for internal applications that handle sensitive data.
-- Serve predictive models for classification, scoring, or real-time decisions on the factory floor.
-- Standardize AI serving with Kubernetes-native operations in your existing platform workflows.
+- Run internal chat and content-generation applications while you keep sensitive data on-premises.
+- Deploy predictive models for classification, scoring, and real-time decisions on the factory floor.
+- Manage AI model serving with Kubernetes-native workflows that fit your existing platform operations.
 
 For more information, see:
 
@@ -107,8 +107,8 @@ Use Azure AI Video Indexer enabled by Azure Arc when you need to analyze live vi
 
 For more information, see:
 
-- [Azure AI Video Indexer enabled by Azure Arc overview](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
-- [Quickstart: Deploy Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-quickstart)
+- [Azure AI Video Indexer enabled by Azure Arc overview](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-overview)
+- [Quickstart: Deploy Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-quickstart)
 
 ## Operate AI in disconnected and sovereign environments
 
@@ -135,7 +135,7 @@ Before your production rollout, verify the network and connectivity requirements
 
 ## Choose the right workload
 
-Use the following table to match each AI scenario to the best-fit workload on Azure Local, and plan to combine workloads when your environment has multiple data and application needs.
+Use the following table to match each AI scenario to the best-fit workload on Azure Local. Plan to combine workloads when your environment has multiple data and application needs.
 
 | If you need to... | Consider |
 |-------------------|----------|
@@ -150,4 +150,4 @@ Use the following table to match each AI scenario to the best-fit workload on Az
 - [Azure Arc-enabled Kubernetes overview](/azure/azure-arc/kubernetes/overview)
 - [What is Foundry Local on Azure Local?](/azure/azure-sovereign-clouds/private/foundry-local/what-is-foundry-local-on-azure-local)
 - [What is Edge RAG Preview?](/azure/azure-arc/edge-rag/overview)
-- [What is Azure AI Video Indexer enabled by Azure Arc?](/azure/azure-video-indexer/azure-video-indexer-enabled-by-arc-overview)
+- [What is Azure AI Video Indexer enabled by Azure Arc?](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-overview)
