@@ -45,13 +45,21 @@ Or, with the preview `networkcloud` extension, list every Nexus Cluster's kubern
 az networkcloud kubernetesversion list --output table
 ```
 
-Each row returns one Nexus Cluster's kubernetesVersions catalog, with an `id` of the form:
+Each row corresponds to one Nexus Cluster. The table view projects `Location`, `Name` (always `default`), `ProvisioningState`, and `ResourceGroup`. To see the full ARM `id` and `extendedLocation`, rerun the command with `--output json` or project them with `--query`:
 
-```text
-/subscriptions/<sub>/resourceGroups/<cluster>-HostedResources-<hash>/providers/Microsoft.NetworkCloud/kubernetesVersions/default
+```azurecli
+az networkcloud kubernetesversion list \
+  --query "[].{id:id, resourceGroup:resourceGroup, extendedLocation:extendedLocation.name}" \
+  --output table
 ```
 
-The kubernetesVersions catalog's `extendedLocation` matches the Nexus Cluster's custom location. Use the `id` value from this output as `<KubernetesVersionsResourceId>` in the next step.
+Each `id` has the form:
+
+```text
+/subscriptions/<sub>/resourceGroups/<cluster>-<hash>-HostedResources-<hash>/providers/Microsoft.NetworkCloud/kubernetesVersions/default
+```
+
+The kubernetesVersions resource's `extendedLocation` matches the Nexus Cluster's custom location. Use the `id` value as `<KubernetesVersionsResourceId>` in the next step.
 
 ## Find the HostedResources resource group for your cluster
 
