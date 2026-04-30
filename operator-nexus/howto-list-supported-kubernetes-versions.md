@@ -86,7 +86,7 @@ Or, with the preview `networkcloud` extension:
 
 ```azurecli
 az networkcloud kubernetesversion show \
-  --resource-group <cluster>-HostedResources-<hash> \
+  --resource-group <cluster>-<hash>-HostedResources-<hash> \
   --name default
 ```
 
@@ -109,7 +109,7 @@ The current preview `Microsoft.NetworkCloud/kubernetesVersions` API returns a li
 
 ```json
 {
-  "id": "/subscriptions/<sub>/resourceGroups/<cluster>-HostedResources-<hash>/providers/Microsoft.NetworkCloud/kubernetesVersions/default",
+  "id": "/subscriptions/<sub>/resourceGroups/<cluster>-<hash>-HostedResources-<hash>/providers/Microsoft.NetworkCloud/kubernetesVersions/default",
   "name": "default",
   "type": "microsoft.networkcloud/kubernetesversions",
   "location": "uksouth",
@@ -231,7 +231,7 @@ The script uses only `az`, `bash`, and `awk` (POSIX), so it runs unmodified on m
 # Pretty-print the Microsoft.NetworkCloud/kubernetesVersions description blob
 # for a single minor version. Replace RESOURCE_GROUP and MINOR as needed.
 
-RESOURCE_GROUP="<cluster>-HostedResources-<hash>"
+RESOURCE_GROUP="<cluster>-<hash>-HostedResources-<hash>"
 MINOR="1.33"
 
 az networkcloud kubernetesversion show \
