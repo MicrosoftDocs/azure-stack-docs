@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/24/2026
+ms.date: 04/30/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -368,6 +368,24 @@ You must run the software validator by using a PowerShell session connected to a
    $session = New-PSSession -ComputerName remotesystem.contoso.com -Credential $credential
    Invoke-AzStackHciSoftwareValidation -PsSession $Session -Exclude Test-IsNotPartofDomain
    ```
+
+### Software validator output
+
+The following samples are the output from successful and unsuccessful runs of the software validator.
+
+To learn more about different sections in the readiness check report, see [Understand readiness check report](#understand-readiness-check-report).
+
+**Sample output: Successful test**
+
+The following sample is the output from a successful run of the software validator. The output indicates all operating system, local group, and NTP configuration checks completed successfully with no issues.
+
+   :::image type="content" source="./media/use-environment-checker/software-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the software validator." lightbox="./media/use-environment-checker/software-validator-sample-passed.png":::
+
+**Sample output: Failed test**
+
+The following sample is the output from a failed run of the software validator. The output indicates that most checks passed, but one NTP server synchronization issue on V-HOST2 requires remediation, resulting in 4 out of 5 checks (80%) succeeding.
+
+   :::image type="content" source="./media/use-environment-checker/software-validator-sample-failed.png" alt-text="Screenshot of another failed report after running the software validator." lightbox="./media/use-environment-checker/software-validator-sample-failed.png":::
 
 ### [Active Directory](#tab/active-directory)
 
