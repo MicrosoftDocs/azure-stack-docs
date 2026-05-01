@@ -1,8 +1,8 @@
 ---
 title: Introduction to Azure Operator Nexus 
 description: Get high-level information about the Azure Operator Nexus product.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.date: 02/26/2023
 ms.topic: overview
 ms.service: azure-operator-nexus

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: VM Console Service"
 description: Learn how to use the VM Console service to remotely access Nexus Virtual Machine through ssh from your environment.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/22/2025

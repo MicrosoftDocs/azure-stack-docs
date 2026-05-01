@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Kubernetes cluster Virtual Machine SKUs
 description: Learn about Azure Operator Nexus Kubernetes cluster SKUs
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 03/03/2026

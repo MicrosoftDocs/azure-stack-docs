@@ -3,8 +3,8 @@ title: Azure Operator Nexus observability metrics
 description: Observability metrics in Azure Operator Nexus
 ms.topic: concept-article
 ms.date: 09/30/2025
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ---
 

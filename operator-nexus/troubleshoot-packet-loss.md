@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 12/10/2024
-ms.author: robess
-author: ronmiab
+ms.author: dbristow
+author: dougbristow
 ---
 # Troubleshoot packet loss between NAKS worker nodes for Azure Operator Nexus
 This guide provides detailed steps for troubleshooting packet loss between NAKS worker nodes.

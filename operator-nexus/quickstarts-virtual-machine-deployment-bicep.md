@@ -1,8 +1,8 @@
 ---
 title: Create an Azure Operator Nexus virtual machine by using Bicep
 description: Learn how to create an Azure Operator Nexus virtual machine (VM) for virtual network function (VNF) workloads by using Bicep
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 09/30/2025
