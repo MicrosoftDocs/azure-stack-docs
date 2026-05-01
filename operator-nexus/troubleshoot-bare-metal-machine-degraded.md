@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
 ms.date: 05/21/2025
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.reviewer: ekarandjeff
 ---
 

@@ -1,9 +1,9 @@
 ---
 description: "Learn more about how to use the Health Service to monitor clusters"
 title: Monitor clusters with the Health Service
-ms.author: alkohli
+ms.author: robess
 ms.topic: how-to
-author: alkohli
+author: ronmiab
 ms.date: 02/11/2026
 ms.subservice: hyperconverged
 ---

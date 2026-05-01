@@ -1,8 +1,8 @@
 ---
 title:  How to set up Method D v2.0 secure break-glass access
 description: Process of setting up secure break-glass access using Method D v2.0
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 11/04/2024

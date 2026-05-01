@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 06/06/2023
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Troubleshoot accessing a CSN-connected internet host name within an AKS hybrid cluster

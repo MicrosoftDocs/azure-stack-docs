@@ -1,10 +1,10 @@
 ---
 title:  Security updates for Azure Local
 description: Security updates for Azure Local.
-author: alkohli
+author: ronmiab
 ms.topic: release-notes
 ms.date: 04/17/2026
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

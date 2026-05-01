@@ -1,8 +1,8 @@
 ---
 title: Update and commit Network Fabric resources 
 description: Learn how Nexus Network Fabric's resource update flow allows you to batch and update a set of Network Fabric resources.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article #Required; leave this attribute/value as-is.
 ms.date: 04/03/2024

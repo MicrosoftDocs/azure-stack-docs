@@ -1,8 +1,8 @@
 ---
 title: Manage network security groups on Azure Local multi-rack deployments
 description: Learn how to manage network security groups and network security rules on Azure Local multi-rack deployments.
-author: dramasamy
-ms.author: dramasamy
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.date: 04/15/2026
 ms.service: azure-local
