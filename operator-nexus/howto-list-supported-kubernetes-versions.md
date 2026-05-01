@@ -1,6 +1,6 @@
 ---
 title: List supported Kubernetes versions for Azure Operator Nexus
-description: Learn how to query the supported Nexus Kubernetes versions that a Nexus Cluster can deploy or upgrade clusters to, including each version's component manifest and lifecycle dates.
+description: Learn how to query the supported Nexus Kubernetes versions that an Operator Nexus cluster can deploy or upgrade Nexus Kubernetes clusters to, including each version's component manifest and lifecycle dates.
 author: ronmiab
 ms.author: robess
 ms.service: azure-operator-nexus
@@ -11,21 +11,21 @@ ms.custom: template-how-to-pattern
 
 # List supported Kubernetes versions for Azure Operator Nexus
 
-This article explains how to discover the Nexus Kubernetes [version bundles](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that an Operator Nexus Cluster can deploy or upgrade clusters to. The kubernetesVersions catalog is published per Nexus Cluster as a `Microsoft.NetworkCloud/kubernetesVersions` resource named `default`. It's anchored to the Nexus Cluster's custom location (extended location).
+This article explains how to discover the Nexus Kubernetes [version bundles](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that an Operator Nexus cluster can deploy or upgrade Nexus Kubernetes clusters to. The kubernetesVersions catalog is published per Operator Nexus cluster as a `Microsoft.NetworkCloud/kubernetesVersions` resource named `default`. It's anchored to the Operator Nexus cluster's custom location (extended location).
 
 Use this API when you want to:
 
-- Plan cluster creations or upgrades against a known list of available bundles before targeting a specific cluster.
+- Plan Nexus Kubernetes cluster creations or upgrades against a known list of available bundles before targeting a specific Nexus Kubernetes cluster.
 - Verify the general availability (GA), end-of-support (EOS), and end-of-extended-availability (EOEA) dates for a bundle.
 - Inspect the [Features](./concepts-nexus-kubernetes-cluster.md#nexus-kubernetes-cluster-features) and component versions packaged inside a version bundle.
 
-For per-cluster upgrade options for an existing cluster, see [Check for available upgrades](./howto-kubernetes-cluster-upgrade.md#check-for-available-upgrades).
+For upgrade options for an existing Nexus Kubernetes cluster, see [Check for available upgrades](./howto-kubernetes-cluster-upgrade.md#check-for-available-upgrades).
 
 ## What the kubernetesVersions catalog contains
 
-Each `Microsoft.NetworkCloud/kubernetesVersions` resource is the catalog of every Nexus Kubernetes [version bundle](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that the owning Nexus Cluster can deploy or upgrade clusters to. The catalog is structured as follows:
+Each `Microsoft.NetworkCloud/kubernetesVersions` resource is the catalog of every Nexus Kubernetes [version bundle](./reference-nexus-kubernetes-cluster-supported-versions.md#version-bundles) that the owning Operator Nexus cluster can deploy or upgrade Nexus Kubernetes clusters to. The catalog is structured as follows:
 
-- **Supported Kubernetes minor versions.** The catalog's `properties.values[]` array lists every Kubernetes minor version (for example, `1.30`, `1.31`, `1.32`, `1.33`) for which Operator Nexus currently ships at least one bundle on this Nexus Cluster.
+- **Supported Kubernetes minor versions.** The catalog's `properties.values[]` array lists every Kubernetes minor version (for example, `1.30`, `1.31`, `1.32`, `1.33`) for which Operator Nexus currently ships at least one bundle on this Operator Nexus cluster.
 - **Version bundles per minor version.** Each minor version entry contains one or more patch-level version bundles. A bundle is the unit Operator Nexus deploys: it pins a specific Kubernetes patch release together with the [Features](./concepts-nexus-kubernetes-cluster.md#nexus-kubernetes-cluster-features) (Calico, MetalLB, Azure Arc agents, CSI drivers, and so on) and the OS image that ship with that release.
 - **Lifecycle dates per bundle.** Each bundle carries a general-availability date, an end-of-support date, and an end-of-extended-availability date. Operator Nexus uses these dates to govern which bundles are valid creation or upgrade targets at any given time. See [Lifecycle visibility rules](#lifecycle-visibility-rules).
 - **Component manifest per bundle.** Each bundle records the exact Feature and OS image versions it packages, so you can correlate a Kubernetes patch release with the supporting components that ship alongside it.
@@ -34,14 +34,14 @@ In the current preview API version (`2026-01-01-preview`), the patch-level bundl
 
 ## Prerequisites
 
-- An Azure subscription with access to an Azure Operator Nexus instance whose Nexus Cluster is running a build that supports the `2026-01-01-preview` Microsoft.NetworkCloud API version or newer. If the resource doesn't appear for a Nexus Cluster, the build on that instance doesn't yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
+- An Azure subscription with access to an Azure Operator Nexus instance whose Operator Nexus cluster is running a build that supports the `2026-01-01-preview` Microsoft.NetworkCloud API version or newer. If the resource doesn't appear for an Operator Nexus cluster, the build on that instance doesn't yet expose `Microsoft.NetworkCloud/kubernetesVersions`.
 - The Azure CLI installed and signed in. If you need to install or upgrade it, see [Install Azure CLI](./howto-install-cli-extensions.md).
-- Reader access on the subscription (or on the Nexus Cluster's managed HostedResources resource group). `Microsoft.NetworkCloud/kubernetesVersions` is projected into the HostedResources group.
+- Reader access on the subscription (or on the Operator Nexus cluster's managed HostedResources resource group). `Microsoft.NetworkCloud/kubernetesVersions` is projected into the HostedResources group.
 - To use the `az networkcloud kubernetesversion` commands, install the preview `networkcloud` CLI extension (`5.0.0b1` or later): `az extension add --name networkcloud --version 5.0.0b1 --allow-preview true`. The `az rest` examples in this article work with any Azure CLI install and don't require the preview extension.
 
 ## Locate the kubernetesVersions resource
 
-`Microsoft.NetworkCloud/kubernetesVersions` is a singleton named `default` per Nexus Cluster. List the resources visible to your subscription:
+`Microsoft.NetworkCloud/kubernetesVersions` is a singleton named `default` per Operator Nexus cluster. List the resources visible to your subscription:
 
 ```azurecli
 az resource list \
@@ -50,13 +50,13 @@ az resource list \
   --output table
 ```
 
-Or, with the preview `networkcloud` extension, list every Nexus Cluster's kubernetesVersions catalog in a single call:
+Or, with the preview `networkcloud` extension, list every Operator Nexus cluster's kubernetesVersions catalog in a single call:
 
 ```azurecli
 az networkcloud kubernetesversion list --output table
 ```
 
-Each row corresponds to one Nexus Cluster. The table view projects `Location`, `Name` (always `default`), `ProvisioningState`, and `ResourceGroup`. To see the full ARM `id` and `extendedLocation`, rerun the command with `--output json` or project them with `--query`:
+Each row corresponds to one Operator Nexus cluster. The table view projects `Location`, `Name` (always `default`), `ProvisioningState`, and `ResourceGroup`. To see the full ARM `id` and `extendedLocation`, rerun the command with `--output json` or project them with `--query`:
 
 ```azurecli
 az networkcloud kubernetesversion list \
@@ -70,11 +70,11 @@ Each `id` has the form:
 /subscriptions/<sub>/resourceGroups/<cluster>-<hash>-HostedResources-<hash>/providers/Microsoft.NetworkCloud/kubernetesVersions/default
 ```
 
-The kubernetesVersions resource's `extendedLocation` matches the Nexus Cluster's custom location. Use the `id` value as `<KubernetesVersionsResourceId>` in the next step.
+The kubernetesVersions resource's `extendedLocation` matches the Operator Nexus cluster's custom location. Use the `id` value as `<KubernetesVersionsResourceId>` in the next step.
 
-## Find the HostedResources resource group for your cluster
+## Find the HostedResources resource group for your Operator Nexus cluster
 
-`Microsoft.NetworkCloud/kubernetesVersions` lives in the cluster's managed HostedResources resource group, not in the resource group that holds the Nexus Cluster. The table output from the previous step already exposes the HostedResources group in the `ResourceGroup` column. To extract it programmatically for a specific Nexus Cluster, filter the list by the cluster's custom location:
+`Microsoft.NetworkCloud/kubernetesVersions` lives in the Operator Nexus cluster's managed HostedResources resource group, not in the resource group that holds the Operator Nexus cluster. The table output from the previous step already exposes the HostedResources group in the `ResourceGroup` column. To extract it programmatically for a specific Operator Nexus cluster, filter the list by the Operator Nexus cluster's custom location:
 
 ```azurecli
 az networkcloud kubernetesversion list \
@@ -101,7 +101,7 @@ az networkcloud kubernetesversion show \
   --name default
 ```
 
-You can also list every kubernetesVersions catalog visible to a subscription in a single call (one entry per Nexus Cluster):
+You can also list every kubernetesVersions catalog visible to a subscription in a single call (one entry per Operator Nexus cluster):
 
 ```azurecli
 az rest --method get \
@@ -158,9 +158,9 @@ Top-level kubernetesVersions resource:
 
 | Field | Description |
 | ----- | ----------- |
-| `id` | The ARM ID of the kubernetesVersions catalog. The kubernetesVersions catalog is always named `default`, scoped to the Nexus Cluster's managed HostedResources resource group. |
-| `location` | Azure region of the Nexus Cluster. |
-| `extendedLocation` | The custom location (extended location) reference of the Nexus Cluster that owns this kubernetesVersions catalog. |
+| `id` | The ARM ID of the kubernetesVersions catalog. The kubernetesVersions catalog is always named `default`, scoped to the Operator Nexus cluster's managed HostedResources resource group. |
+| `location` | Azure region of the Operator Nexus cluster. |
+| `extendedLocation` | The custom location (extended location) reference of the Operator Nexus cluster that owns this kubernetesVersions catalog. |
 | `properties.provisioningState` | `Succeeded` once the kubernetesVersions catalog has been seeded. |
 | `properties.values` | One entry per supported Kubernetes minor version (for example, `1.30`, `1.31`, `1.32`, `1.33`). |
 
@@ -177,17 +177,17 @@ The keys embedded in each patch entry inside `description` are:
 | ------------ | ------- |
 | `patchVersion` | The full version bundle identifier in the form `v<major>.<minor>.<patch>-<bundle>`. See [Nexus Kubernetes service version components](./reference-nexus-kubernetes-cluster-supported-versions.md#nexus-kubernetes-service-version-components). |
 | `components` | The Features and OS image packaged in the bundle (Calico, MetalLB, container runtime, AzureLinux, and so on). For the public component matrix, see [Components version and breaking changes](./reference-nexus-kubernetes-cluster-supported-versions.md#components-version-and-breaking-changes). |
-| `generalAvailabilityDate` | UTC date when the bundle entered [general availability](./reference-nexus-kubernetes-cluster-supported-versions.md#kubernetes-version-support-policy). A zero value (`0001-01-01 00:00:00 +0000 UTC`) means the bundle predates GA tracking on this Nexus Cluster. |
+| `generalAvailabilityDate` | UTC date when the bundle entered [general availability](./reference-nexus-kubernetes-cluster-supported-versions.md#kubernetes-version-support-policy). A zero value (`0001-01-01 00:00:00 +0000 UTC`) means the bundle predates GA tracking on this Operator Nexus cluster. |
 | `supportExpiryDate` | UTC date when the bundle reaches [end of support](./reference-nexus-kubernetes-cluster-supported-versions.md#end-of-support). After this date, Operator Nexus surfaces the bundle with an unsupported warning and stops shipping further patches against it. |
-| `endOfExtendedAvailabilityDate` | UTC date when the bundle is removed from `Microsoft.NetworkCloud/kubernetesVersions` and can no longer be selected for cluster creation or upgrade. See [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy). |
+| `endOfExtendedAvailabilityDate` | UTC date when the bundle is removed from `Microsoft.NetworkCloud/kubernetesVersions` and can no longer be selected for Nexus Kubernetes cluster creation or upgrade. See [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy). |
 
 ## Lifecycle visibility rules
 
 Regardless of how the data is rendered, the lifecycle rules Operator Nexus applies to entries in the kubernetesVersions catalog are:
 
 - **Generally available bundles** are returned with `supportExpiryDate` and `endOfExtendedAvailabilityDate` in the future.
-- **Bundles past end of support but before end of extended availability** are still returned, but Operator Nexus surfaces them with an unsupported warning. New cluster creation on these bundles isn't recommended; existing clusters can still be upgraded *out* of them. Refer to the [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy) for what's supported during this period.
-- **Bundles past end of extended availability** aren't returned. Clusters that remain on a removed bundle become [abandoned clusters](./reference-nexus-kubernetes-cluster-supported-versions.md#abandoned-nexus-kubernetes-clusters) and the only supported operation is deletion.
+- **Bundles past end of support but before end of extended availability** are still returned, but Operator Nexus surfaces them with an unsupported warning. New Nexus Kubernetes cluster creation on these bundles isn't recommended; existing Nexus Kubernetes clusters can still be upgraded *out* of them. Refer to the [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy) for what's supported during this period.
+- **Bundles past end of extended availability** aren't returned. Nexus Kubernetes clusters that remain on a removed bundle become [abandoned clusters](./reference-nexus-kubernetes-cluster-supported-versions.md#abandoned-nexus-kubernetes-clusters) and the only supported operation is deletion.
 
 For the full set of policy questions, including upgrade behavior outside the support window, see the [FAQ](./reference-nexus-kubernetes-cluster-supported-versions.md#faq) in the supported versions reference.
 
@@ -213,7 +213,7 @@ az rest --method get \
   --output tsv
 ```
 
-Find every Nexus Cluster kubernetesVersions catalog visible to the subscription:
+Find every Operator Nexus cluster kubernetesVersions catalog visible to the subscription:
 
 ```azurecli
 az rest --method get \
@@ -337,9 +337,9 @@ for v in $(az rest --method get --url "$URL" --query "properties.values[].versio
 done
 ```
 
-## Compare with per-cluster available upgrades
+## Compare with available upgrades for a specific Nexus Kubernetes cluster
 
-`Microsoft.NetworkCloud/kubernetesVersions` returns the kubernetesVersions catalog for an entire Nexus Cluster. To see only the upgrade targets that apply to a specific cluster, use the per-cluster query. The per-cluster query is already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the cluster's current bundle, and it returns structured upgrade candidates today:
+`Microsoft.NetworkCloud/kubernetesVersions` returns the kubernetesVersions catalog for an entire Operator Nexus cluster. To see only the upgrade targets that apply to a specific Nexus Kubernetes cluster, use the cluster-scoped query against that Nexus Kubernetes cluster. That query is already filtered by the [Kubernetes version-skew policy](./reference-nexus-kubernetes-cluster-supported-versions.md#can-i-skip-multiple-kubernetes-versions-during-cluster-upgrade) and the Nexus Kubernetes cluster's current bundle, and it returns structured upgrade candidates today:
 
 ```azurecli
 az networkcloud kubernetescluster show \
