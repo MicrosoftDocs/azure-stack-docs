@@ -103,7 +103,7 @@ Before you begin, make sure that:
 To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node, to remove the VM instances created using the preview version.
 
 - Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
-- You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version [**2503** ISO](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version [**2503** ISO](https://aka.ms/hcireleaseimage) file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet if either of the following conditions apply:
 
@@ -130,7 +130,7 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
    Consult with your hardware vendor for assistance if required.
 
 > [!NOTE]
-> The [**2503** ISO](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#connect-to-azure-local), skip to step 6 under [Install new OS using PowerShell](#install-new-os-using-powershell) and perform the remaining steps.
+> The [**2503** ISO](https://aka.ms/hcireleaseimage) file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#connect-to-azure-local), skip to step 6 under [Install new OS using PowerShell](#install-new-os-using-powershell) and perform the remaining steps.
 > Use of 3rd party tools to install upgrades is not supported.
 
 ::: zone-end
