@@ -82,14 +82,14 @@ Create a static logical network when you want to create Azure Local VMs with net
 
     ```azurecli
     $lnetName = "mylocal-lnet-static"
-    $internalNetworkName = "<Layer 3InternalNetwork>" 
+    $fabricResourceID = "<Layer 3InternalNetworkID>" 
     $subscription = "<Subscription ID>"
     $resource_group = "mylocal-rg"
     $customLocationID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
-    $ipPoolEnd = "100.68.180.20"
     $ipPoolStart = "100.68.180.10"
+    $ipPoolEnd = "100.68.180.20"
     $dnsServers = "192.168.200.222"
     $vlan = "201"
     ```
@@ -121,8 +121,7 @@ Create a static logical network when you want to create Azure Local VMs with net
 1. Create a static logical network. Run the following command:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --no-gateway
-    --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --ip-pool-type "vm" --dns-servers $dnsServers --fabric-network-configuration-id $fabricResourceID --vlan $vlan
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --no-gateway --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --ip-pool-type "vm" --dns-servers $dnsServers --fabric-network-configuration-id $fabricResourceID --vlan $vlan
     ```
 
     Here's a sample output:
