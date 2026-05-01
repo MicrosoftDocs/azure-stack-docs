@@ -1,10 +1,10 @@
 ---
 title: Manage VMs with Windows Admin Center on Azure Local
 description: Learn how to create and manage virtual machines on Azure Local using Windows Admin Center.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 11/04/2025
-ms.author: alkohli
+ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

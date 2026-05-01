@@ -1,8 +1,8 @@
 ---
 title: Manage VM images for Azure Local multi-rack VMs enabled by Azure Arc
 description: Learn how to list, view properties, and delete virtual machine images on Azure Local multi-rack deployments using Azure CLI or Azure portal.
-author: dramasamy
-ms.author: dramasamy
+author: sipastak
+ms.author: sipastak
 ms.reviewer: kimlam
 ms.date: 04/15/2026
 ms.topic: how-to

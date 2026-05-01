@@ -2,8 +2,8 @@
 title: Troubleshoot deployment validation issues in Azure Local, version 23H2 via Azure portal
 description: Learn how to troubleshoot the deployment validation failures for Azure Local, version 23H2 when deployed via the Azure portal.
 ms.topic: how-to
-ms.author: alkohli
-author: alkohli
+ms.author: robess
+author: ronmiab
 ms.date: 01/28/2026
 ms.subservice: hyperconverged
 ---
