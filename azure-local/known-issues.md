@@ -23,6 +23,10 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2604
 
+|Feature  |Issue    |Workaround |
+|---------|---------|---------|
+| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and make sure to include `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
+
 For the 2604 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
