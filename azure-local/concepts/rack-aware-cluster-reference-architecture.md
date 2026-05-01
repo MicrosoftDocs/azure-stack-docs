@@ -8,7 +8,7 @@ ms.service: azure-local
 ms.topic: concept-article
 ---
 
-# Azure Local rack aware cluster reference architecture
+# Azure Local rack aware cluster network reference patterns
 
 ::: moniker range=">=azloc-2510"
 
