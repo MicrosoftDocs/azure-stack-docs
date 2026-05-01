@@ -1,8 +1,8 @@
 ---
 title: Manage emergency access to a Bare Metal Machine using the `az networkcloud cluster bmckeyset` command for Azure Operator Nexus
 description: Step by step guide on using the `az networkcloud cluster bmckeyset` command to manage emergency access to a Bare Metal Machine.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/02/2025
