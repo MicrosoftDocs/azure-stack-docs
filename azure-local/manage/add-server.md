@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local, version 23H2 syst
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/26/2025
+ms.date: 04/30/2026
 ms.subservice: hyperconverged
 ---
 
@@ -20,12 +20,12 @@ You can easily scale the compute and storage at the same time on Azure Local by 
 
 Each new physical node that you add to your system must closely match the rest of the nodes in terms of CPU type, memory, number of drives, and the type and size of the drives.
 
-You can dynamically scale your Azure Local instance from 1 to 16 nodes. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Local instance from 1 to 16 nodes. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling might require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 >
 > - In this release, you can only add one node at any given time. You can however add multiple nodes sequentially so that the storage pool is rebalanced only once.
-> - It is not possible to permanently remove a node from a system.
+> - It isn't possible to permanently remove a node from a system.
 
 ## Add node workflow
 
@@ -37,15 +37,15 @@ To add a node, follow these high-level steps:
 
 1. Install the operating system, drivers, and firmware on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
 1. Add the prepared node via the `Add-server` PowerShell cmdlet.
-1. When adding a node to the system, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
-1. Once the node is added, the system is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
+1. When you add a node to the system, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
+1. Once the node is added, the system is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't affect actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
 
 > [!NOTE]
 > If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is added.
 
 ## Supported scenarios
 
-For adding a node, the following scale-out scenarios are supported:
+When you add a node, the following scale-out scenarios are supported:
 
 | **Start scenario** | **Target scenario** | **Resiliency settings** | **Storage network architecture** | **Witness settings** |
 |--|--|--|--|--|
@@ -53,19 +53,19 @@ For adding a node, the following scale-out scenarios are supported:
 | Two-node system | Three-node system | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
 | Three-node system | N-node system | Three-way mirror | Switch only | Witness optional for target scenario. |
 
-When upgrading a system from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When you upgrade a system from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
 
 ### Resiliency settings
 
-In this release, for add node operation, specific tasks aren't performed on the workload volumes created after the deployment.
+In this release, for the add node operation, specific tasks aren't performed on the workload volumes created after the deployment.
 
-For add node operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you may just want a 2-way mirror volume regardless of the system scale).
+For add node operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you might want a two-way mirror volume regardless of the system scale).
 
-However, the default resiliency settings are updated at the storage pool level and so any new workload volumes that you created after the deployment will inherit the resiliency settings.
+However, the default resiliency settings are updated at the storage pool level, so any new workload volumes that you create after the deployment inherit the resiliency settings.
 
 ### Hardware requirements
 
-When adding a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before it's added to the system.
+When you add a node, the system validates the hardware of the new, incoming node and ensures that the node meets the hardware requirements before adding it to the system.
 
 [!INCLUDE [hci-hardware-requirements-add-repair-server](../includes/hci-hardware-requirements-add-repair-server.md)]
 
@@ -93,16 +93,16 @@ This section describes how to add a node using PowerShell, monitor the status of
 
 ### Add a node using PowerShell
 
-Make sure that you have reviewed and completed the [prerequisites](#prerequisites).
+Make sure that you've reviewed and completed the [prerequisites](#prerequisites).
 
 On the new node that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
 
     >[!NOTE]
-    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
-    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
-    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+    > - For versions 2503 and later, you must use the OS image of the same solution as that running on the existing cluster.
+    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you're running on the cluster.
+    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version. Don't use the Azure portal, as it doesn't list all available OS image versions and might not include the required matching version.
 
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
@@ -119,7 +119,7 @@ If you're scaling out from a single-node, follow these steps first:
 
 1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
 
-1. Configure a storage intent if you didn't do this during the initial deployment of your Azure Local instance. Modify the parameters to match your environment.
+1. Configure a storage intent if you didn't do so during the initial deployment of your Azure Local instance. Modify the parameters to match your environment.
 
     ```powershell
     Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"

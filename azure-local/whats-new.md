@@ -5,19 +5,19 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 04/21/2026
+ms.date: 04/30/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2604"
 
 ## Features and improvements in 2604
 
-The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.209**. For more information, see [Release information summary](./release-information-23h2.md).
+The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.1002**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -29,7 +29,7 @@ This release includes various reliability improvements and bug fixes.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
-- **.NET updates**: 
+- **.NET updates**:
 
     - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
