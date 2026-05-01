@@ -34,7 +34,10 @@ This article provides instructions on how to upgrade an Operator Nexus Kubernete
 
 ## Check for available upgrades
 
-Check which Kubernetes releases are available for your cluster using the following steps:
+Check which Kubernetes releases are available for your cluster using the following steps.
+
+> [!TIP]
+> To browse the full version bundle catalog for a Nexus Cluster (including general availability, end of support, and end of extended availability dates) instead of just the upgrade targets for a specific cluster, see [List supported Kubernetes versions for Azure Operator Nexus](./howto-list-supported-kubernetes-versions.md).
 
 ### Use Azure CLI
 

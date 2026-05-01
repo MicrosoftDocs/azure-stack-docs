@@ -45,6 +45,9 @@ View the upcoming version releases on the Nexus Kubernetes release calendar.
 
 For the past release history, see [Kubernetes history](https://github.com/kubernetes/kubernetes/releases).
 
+> [!TIP]
+> To programmatically retrieve the live kubernetesVersions catalog for a specific Nexus Cluster — including each bundle's general availability, end of support, end of extended availability dates, packaged components, and upgrade paths — see [List supported Kubernetes versions for Azure Operator Nexus](./howto-list-supported-kubernetes-versions.md).
+
 [!INCLUDE [supported-versions](./includes/kubernetes-cluster/supported-versions.md)]
 
 ## Nexus Kubernetes service version components
@@ -75,7 +78,7 @@ Changes to the configuration of a deployed Operator Nexus Kubernetes cluster sho
 
 ### Choosing a version bundle for an upgrade scenario
 
-We allow upgrade from any patch version in one Kubernetes minor version to any patch version in the next Kubernetes minor version, giving you flexibility. For example, an upgrade from 1.31.1-x.x.x to 1.32.x-x.x.x would be allowed, regardless of the presence of an intermediate 1.31.2-x.x.x version.
+Operator Nexus allows upgrade from any patch version in one Kubernetes minor version to any patch version in the next Kubernetes minor version, giving you flexibility. For example, an upgrade from 1.31.1-x.x.x to 1.32.x-x.x.x would be allowed, regardless of the presence of an intermediate 1.31.2-x.x.x version.
 
 When new version bundles are released, all the Kubernetes patch versions in that version bundle release use the same versions of both OS and Features; only the Kubernetes code differs between them. Let's look at a few examples of upgrade routes that might be desirable:
 
