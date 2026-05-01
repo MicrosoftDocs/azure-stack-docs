@@ -1,8 +1,8 @@
 ---
 title: Configure and manage SSH keys on Azure Operator Nexus Kubernetes cluster nodes #Required; page title is displayed in search results. Include the brand.
 description: Learn how to configure and manage SSH keys on Azure Operator Nexus Kubernetes cluster nodes. #Required; article description that is displayed in search results. 
-author: ronmiab
-ms.author: robess
+author: dramasamy #Required; your GitHub user alias, with correct capitalization.
+ms.author: dramasamy #Required; microsoft alias of author; optional team alias.
 ms.service: azure-operator-nexus #Required; service per approved list. slug assigned by ACOM.
 ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.date: 02/06/2024 #Required; mm/dd/yyyy format.

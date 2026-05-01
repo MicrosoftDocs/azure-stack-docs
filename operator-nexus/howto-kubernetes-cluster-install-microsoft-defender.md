@@ -1,8 +1,8 @@
 ---
 title: How to Install Microsoft Defender for Containers on a Nexus Kubernetes Cluster  #Required; page title is displayed in search results. Include the brand.
 description: Learn how to install Microsoft Defender for Containers on a Nexus Kubernetes Cluster. #Required; article description that is displayed in search results. 
-author: ronmiab
-ms.author: robess
+author: rickbartra #Required; your GitHub user alias, with correct capitalization.
+ms.author: rickbartra #Required; microsoft alias of author; optional team alias.
 ms.service: azure-operator-nexus #Required; service per approved list. slug assigned by ACOM.
 ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.date: 08/01/2024 #Required; mm/dd/yyyy format.

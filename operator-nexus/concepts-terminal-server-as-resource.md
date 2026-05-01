@@ -1,8 +1,8 @@
 ---
 title: Terminal Server as an Azure Operator Nexus Resource
 description: Learn how Terminal Servers (Bootstrap Devices) are modeled as ARM resources in Azure Operator Nexus for observability, automation, and lifecycle management.
-author: ronmiab
-ms.author: robess
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 04/09/2026

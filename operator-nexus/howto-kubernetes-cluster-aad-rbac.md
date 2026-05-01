@@ -1,8 +1,8 @@
 ---
 title: Role-based access control in Azure Operator Nexus Kubernetes clusters #Required; page title is displayed in search results. Include the brand.
 description: Information about role-based access control in Azure Operator Nexus Kubernetes clusters #Required; article description that is displayed in search results. 
-author: ronmiab
-ms.author: robess
+author: dramasamy #Required; your GitHub user alias, with correct capitalization.
+ms.author: dramasamy #Required; microsoft alias of author; optional team alias.
 ms.service: azure-operator-nexus #Required; service per approved list. slug assigned by ACOM.
 ms.topic: how-to #Required; leave this attribute/value as-is.
 ms.date: 06/30/2023 #Required; mm/dd/yyyy format.
