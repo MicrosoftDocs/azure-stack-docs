@@ -318,9 +318,9 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 > [!IMPORTANT]
 > Do **not** use `--storage-policy Preserve` when:
 >
-> 1. The BMM **motherboard has been replaced** — this is known to cause replace failures.
-> 2. The BMM **RAID controller or storage backplane have been replaced** — this is known to cause replace failures.
-> 3. The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine can't be brought up using normal operations.
+> - The BMM **motherboard has been replaced** — this is known to cause replace failures.
+> - The BMM **RAID controller or storage backplane have been replaced** — this is known to cause replace failures.
+> - The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine can't be brought up using normal operations.
 >
 > If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane were **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
 >
@@ -362,7 +362,7 @@ az networkcloud baremetalmachine replace \
 > Message: cannot replace healthy machine (powered on, ready, provisioned, joined to cluster). Use --safeguard-mode None to override
 > ```
 >
-> To override the safeguard, specify `--safeguard-mode None`:
+> To override the safeguard, specify `--safeguard-mode None`.
 
 If the `replace` action fails due to a hardware validation failure, the specific error or test failure is shown in the `replace` response, as shown in the following examples.
 This information can also be found in the Activity Log for the Bare Metal Machine (Operator Nexus).
