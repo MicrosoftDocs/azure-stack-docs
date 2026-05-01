@@ -3,8 +3,8 @@ title: Supported Storage Software Versions in Azure Operator Nexus
 description: Learn the storage appliance software versions supported by Azure Operator Nexus versions.
 ms.topic: concept-article
 ms.date: 12/10/2025
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ---
 

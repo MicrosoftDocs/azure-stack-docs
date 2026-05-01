@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Bare Metal Machine platform commands"
 description: Learn how to manage bare metal machines (BMM).
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 03/11/2026

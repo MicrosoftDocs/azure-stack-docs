@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: MDE Runtime Protection"
 description: Learn how to use the MDE Runtime Protection.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/13/2025

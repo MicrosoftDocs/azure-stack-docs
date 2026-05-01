@@ -1,8 +1,8 @@
 ---
 title: Restart Azure Operator Nexus Kubernetes cluster node 
 description: Learn how to restart Azure Operator Nexus Kubernetes cluster node
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 10/22/2023 

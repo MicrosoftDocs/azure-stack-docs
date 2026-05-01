@@ -1,8 +1,8 @@
 ---
 title: "Configure Virtual Routing and Forwarding (VRF) route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus"
 description: Learn the process for configuring VRF route prefix limits (IPv4 and IPv6) on AON CE devices for Azure Operator Nexus.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.date: 09/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
