@@ -1,10 +1,10 @@
 ---
 title:  Security updates for Azure Local 24xx releases
 description: Security updates for Azure Local 24xx releases.
-author: alkohli
+author: ronmiab
 ms.topic: release-notes
 ms.date: 03/25/2026
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

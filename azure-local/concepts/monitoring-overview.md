@@ -1,9 +1,9 @@
 ---
 title: Overview of Azure Local monitoring
 description: This article provides an overview of the Azure Local monitoring solution.
-ms.author: alkohli
+ms.author: robess
 ms.topic: concept-article
-author: alkohli
+author: ronmiab
 ms.date: 12/09/2025
 ---
 
