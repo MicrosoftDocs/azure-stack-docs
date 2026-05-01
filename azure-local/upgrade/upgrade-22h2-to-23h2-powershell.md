@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/02/2025
+ms.date: 05/01/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: upgrade-os
@@ -77,7 +77,6 @@ To upgrade the OS on your system, follow these high-level steps:
 
 ::: zone-end
 
-
 ## Complete prerequisites
 
 ::: zone pivot="os-23h2"
@@ -99,10 +98,10 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
 - You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
 - You run the `RepairRegistration` cmdlet if either of the following conditions apply:
 
-   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
-      - Check this in the Resource JSON in the Azure portal.
-      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
-   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+  - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
+    - Check this in the Resource JSON in the Azure portal.
+    - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
+  - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
 
    If either of these conditions are met, run the `RepairRegistration` cmdlet:
 
@@ -139,27 +138,29 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
   ```
 
   To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node to remove the VM instances created using the preview version.
+
 - Confirm that you have access to the latest Azure Local that you can [download from the Azure portal](../deploy/download-23h2-software.md#download-the-software-from-the-azure-portal).
 - Consult your hardware OEM to verify driver compatibility. Confirm that all drivers compatible with Windows Server 2025 or Azure Stack HCI OS, 26100.xxxx are installed before the upgrade.
 - Make sure the Network Interface Card (NIC) driver currently installed on your system is newer than the version included by default (inbox) with Azure Stack HCI OS, version 26100.xxxx. The following table compares the current and recommended versions of NIC drivers for two manufacturers:
 
    | NIC manufacturer | Inbox driver version | Recommended latest compatible driver |
-   |--|--|--|
+   | -- | -- | -- |
    | Intel | 1.15.121.0 | 1.17.73.0 |
    | NVIDIA | 24.4.26429.0 | 25.4.50020 |
 
 - You run the `RepairRegistration` cmdlet if either of the following conditions apply:
 
-   - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
-      - Check this in the Resource JSON in the Azure portal.
-      - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
-   - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
+  - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
+    - Check this in the Resource JSON in the Azure portal.
+    - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
+  - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
 
    If either of these conditions are met, run the `RepairRegistration` cmdlet:
 
    ```powershell
    Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
    ```
+
 - (Recommended) Enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS. To enable Secure Boot, follow these steps:
    1. Drain the cluster node.
    1. Restart the OS.
@@ -236,7 +237,6 @@ To ensure Resilient File System (ReFS) functions properly during and after OS up
 
 ## Connect to Azure Local
 
-
 Follow these steps on your client to connect to one of the machines of your Azure Local instance.
 
 1. Run PowerShell as Administrator on the client that you're using to connect to your system.
@@ -246,7 +246,7 @@ Follow these steps on your client to connect to one of the machines of your Azur
    $cred = Get-Credential
    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred 
    ```
-   
+
    Here's a sample output:
 
    ```Console
@@ -396,9 +396,7 @@ To install the new OS using PowerShell, follow these steps:
 
 ::: zone-end
 
-
 ## Check the status of an update
-
 
 [!INCLUDE [verify-update](../includes/azure-local-verify-update.md)]
 
