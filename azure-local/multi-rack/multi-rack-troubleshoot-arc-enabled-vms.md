@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Local Multi-rack Virtual Machines Enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local multi-rack Virtual Machines (VMs) enabled by Azure Arc.
-author: dramasamy
+author: sipastak
 ms.topic: how-to
 ms.date: 04/15/2026
-ms.author: dramasamy
+ms.author: sipastak
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.custom: sfi-image-nochange
