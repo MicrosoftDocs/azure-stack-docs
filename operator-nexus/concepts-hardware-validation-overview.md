@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus hardware validation overview
 description: Get an overview of hardware validation for Azure Operator Nexus.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.date: 10/03/2025
 ms.service: azure-operator-nexus
 ms.topic: concept-article

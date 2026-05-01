@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ms.topic: how-to
 ms.date: 12/02/2024
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Credential rotation management for Operator Nexus on-premises devices

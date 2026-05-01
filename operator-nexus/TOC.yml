@@ -325,6 +325,8 @@
           href: howto-kubernetes-cluster-connect.md
         - name: Configure role-based access control
           href: howto-kubernetes-cluster-aad-rbac.md
+        - name: List supported Kubernetes versions
+          href: howto-list-supported-kubernetes-versions.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
         - name: Configure huge-pages for cluster virtual machines

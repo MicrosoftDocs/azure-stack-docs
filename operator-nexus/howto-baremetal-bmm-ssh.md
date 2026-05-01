@@ -1,8 +1,8 @@
 ---
 title: Manage emergency access to a bare metal machine using the `az networkcloud cluster baremetalmachinekeyset` command for Azure Operator Nexus
 description: Step by step guide on using the `az networkcloud cluster baremetalmachinekeyset` command to manage emergency access to a bare metal machine.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 06/12/2024

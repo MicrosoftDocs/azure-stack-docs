@@ -1,8 +1,8 @@
 ---
 title: Upgrade Network Fabric for Azure Operator Nexus
 description: Learn how to upgrade Network Fabric for Azure Operator Nexus, and find out about required and recommended pre-validations.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.date: 11/25/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
