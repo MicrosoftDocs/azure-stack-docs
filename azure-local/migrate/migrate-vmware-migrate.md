@@ -1,10 +1,10 @@
 ---
 title: Migrate VMware VMs to Azure Local using Azure Migrate
 description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/10/2025
-ms.author: alkohli
+ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

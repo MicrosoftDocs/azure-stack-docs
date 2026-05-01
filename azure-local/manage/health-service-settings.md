@@ -1,9 +1,9 @@
 ---
 description: "Learn more about: Health Service settings"
 title: Modify Health Service settings
-ms.author: alkohli
+ms.author: robess
 ms.topic: how-to
-author: alkohli
+author: ronmiab
 ms.date: 07/28/2025
 ms.subservice: hyperconverged
 ---
