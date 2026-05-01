@@ -2,8 +2,8 @@
 title: Add a Node on Azure Local for Disaggregated Deployments
 description: Learn how to manage capacity on your Azure Local disaggregated deployment by adding a node.
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 03/31/2026
 ms.subservice: hyperconverged
 ---
