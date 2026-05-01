@@ -1,10 +1,10 @@
 --- 
 title: Migrate VMs to Azure Local with Azure Migrate using PowerShell
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 01/14/2026
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

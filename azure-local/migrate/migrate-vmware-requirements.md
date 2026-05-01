@@ -1,10 +1,10 @@
 ---
 title: Review requirements for VMware VM migration to Azure Local using Azure Migrate
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 03/26/2026
-ms.author: alkohli
+ms.author: robess
 ms.custom: references_regions
 ms.subservice: hyperconverged
 ---

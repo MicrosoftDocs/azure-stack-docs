@@ -2,8 +2,8 @@
 title: Troubleshoot registration issues using Configurator app in Azure Local
 description: Learn how to troubleshoot the registration failures for Azure Local when using the Configurator app.
 ms.topic: how-to
-ms.author: alkohli
-author: alkohli
+ms.author: robess
+author: ronmiab
 ms.date: 07/29/2025
 ms.subservice: hyperconverged
 ---

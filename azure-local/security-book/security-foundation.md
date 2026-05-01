@@ -1,10 +1,10 @@
 ---
 title: Security foundation for the Azure Local security book
 description: Learn about the ecurity foundation for the Azure Local security book.
-author: alkohli
+author: ronmiab
 ms.topic: concept-article
 ms.date: 08/11/2025
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 
