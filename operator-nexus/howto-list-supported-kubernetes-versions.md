@@ -181,9 +181,6 @@ The keys embedded in each patch entry inside `description` are:
 | `supportExpiryDate` | UTC date when the bundle reaches [end of support](./reference-nexus-kubernetes-cluster-supported-versions.md#end-of-support). After this date, Operator Nexus surfaces the bundle with an unsupported warning and stops shipping further patches against it. |
 | `endOfExtendedAvailabilityDate` | UTC date when the bundle is removed from `Microsoft.NetworkCloud/kubernetesVersions` and can no longer be selected for cluster creation or upgrade. See [Extended availability policy](./reference-nexus-kubernetes-cluster-supported-versions.md#extended-availability-policy). |
 
-> [!NOTE]
-> Because `description` is currently a single text field rather than a structured object, programmatic consumers should treat it as informational and parse the embedded keys with caution. A future API version replaces `description` with structured properties for `patchVersion`, `components`, `generalAvailabilityDate`, `supportExpiryDate`, and `endOfExtendedAvailabilityDate`. After that change, the same data is queryable with JMESPath and SDK models. Until then, the recommended programmatic surface for upgrade decisions on a specific cluster is the cluster's own `availableUpgrades` field. See [Compare with per-cluster available upgrades](#compare-with-per-cluster-available-upgrades).
-
 ## Lifecycle visibility rules
 
 Regardless of how the data is rendered, the lifecycle rules Operator Nexus applies to entries in the kubernetesVersions catalog are:
