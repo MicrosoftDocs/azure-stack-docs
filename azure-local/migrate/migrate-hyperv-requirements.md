@@ -1,10 +1,10 @@
 ---
 title: Review requirements for Hyper-V VM migration to Azure Local using Azure Migrate (preview) 
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 09/25/2025
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

@@ -1,9 +1,9 @@
 ---
 description: "Learn more about: Cluster performance history"
 title: Cluster performance history
-ms.author: alkohli
+ms.author: robess
 ms.topic: how-to
-author: alkohli
+author: ronmiab
 ms.date: 07/30/2025
 ms.subservice: hyperconverged
 ---
