@@ -1,10 +1,10 @@
 ---
 title: Options for migrating virtual machines to Azure Local
 description: Learn about the available migration options for migrating VM workloads to your Azure Local.
-author: alkohli
+author: ronmiab
 ms.topic: overview
 ms.date: 12/09/2025
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

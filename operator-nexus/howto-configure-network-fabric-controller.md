@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Configure a network fabric controller"
 description: Learn commands to create and modify a network fabric controller in Azure Operator Nexus instances.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/20/2023

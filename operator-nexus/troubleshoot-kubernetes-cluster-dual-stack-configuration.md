@@ -7,8 +7,8 @@ ms.custom:
   - build-2025
 ms.topic: troubleshooting
 ms.date: 04/09/2025
-ms.author: robess
-author: ronmiab
+ms.author: dbristow
+author: dougbristow
 ---
 # Troubleshooting dual-stack Nexus Kubernetes Cluster configuration issues
 

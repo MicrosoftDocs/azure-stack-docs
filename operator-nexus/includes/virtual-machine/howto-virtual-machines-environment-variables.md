@@ -1,7 +1,7 @@
 ---
 ms.date: 02/09/2026
-ms.author: robess
-author: ronmiab
+ms.author: dbristow
+author: dougbristow
 ms.topic: include
 ms.service: azure-operator-nexus
 ---

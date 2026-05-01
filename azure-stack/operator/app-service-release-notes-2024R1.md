@@ -1,10 +1,10 @@
 ---
 title: App Service on Azure Stack Hub 24R1 release notes 
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 24R1 release.
-author: apwestgarth
+author: sethmanheim
 ms.topic: release-notes
 ms.date: 02/07/2025
-ms.author: anwestg
+ms.author: sethm
 ms.reviewer:
 ---
 

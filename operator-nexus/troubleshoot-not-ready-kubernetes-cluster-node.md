@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 02/19/2025
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ---
 # Troubleshoot a KubernetesCluster with a node in NotReady state
 
