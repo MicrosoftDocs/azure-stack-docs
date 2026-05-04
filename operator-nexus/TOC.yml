@@ -105,6 +105,8 @@
           href: concepts-observability.md
         - name: Metrics
           href: reference-operator-nexus-observability-metrics.md
+        - name: Network Fabric Controller internal service metrics
+          href: reference-network-fabric-controller-metrics.md
         - name: Azure Operator Nexus Network Fabric Configuration Monitoring
           href: concepts-network-fabric-configuration-monitoring.md
         - name: Azure Operator Nexus Network Fabric Internal Network BGP Metrics
@@ -325,6 +327,8 @@
           href: howto-kubernetes-cluster-connect.md
         - name: Configure role-based access control
           href: howto-kubernetes-cluster-aad-rbac.md
+        - name: List supported Kubernetes versions
+          href: howto-list-supported-kubernetes-versions.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
         - name: Configure huge-pages for cluster virtual machines

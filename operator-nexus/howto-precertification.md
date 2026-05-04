@@ -1,8 +1,8 @@
 ---
 title: How to pre-certify network functions on Azure Operator Nexus 
 description: Overview of the pre-certification process for network function workloads on Operator Nexus 
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.date: 01/30/2023
 ms.topic: how-to
 ms.service: azure-operator-nexus 

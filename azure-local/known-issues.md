@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 04/22/2026
+ms.date: 04/30/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,14 +23,18 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2604
 
+|Feature  |Issue    |Workaround |
+|---------|---------|---------|
+| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and make sure to include `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
+
 For the 2604 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2604.1003.209 | 26100.32690 |
+| 12.2604.1003.1002 | 26100.32690 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2604.1003.209** build.
+> The new deployments of this software use the **12.2604.1003.1002** build.
 Release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -663,7 +667,7 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue  |Comments  |
 |---------|---------|---------|
-| Azure Local VMs <!--33528074--> | For Disconnected operations (preview) with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
+| Azure Local VMs <!--33528074--> | For Disconnected operations with Azure Local VMs, the Arc agent download will fail. | Corrected end point and now Arc agent download succeeds. |
 | Deployment <!--33478311--> | Fixed issue for importing paths with spaces. |  |
 | Update <!--32843674--> | Fixed issue where active CAU runs get canceled prematurely. |  |
 | Deployment <!--33731727--> | Disk types not being determined correctly, resulting in false negative results on storage pool size determination. |  |

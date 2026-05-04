@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to configure the Cluster deployment"
 description: Learn the steps for deploying the Operator Nexus Cluster.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/13/2025
@@ -72,7 +72,7 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
   --rack-location "<AGGR_RACK_LOCATION>" \
   --bare-metal-machine-configuration-data "["<AGGR_RACK_BMM>"]" \
   --storage-appliance-configuration-data '[{"adminCredentials":{"password":"<SA1_PASS>","username":"<SA_USER>"},"rackSlot":1,"serialNumber":"<SA1_SN>","storageApplianceName":"<SA1_NAME>"}]' \
-  --compute-rack-definitions '[{"networkRackId": "<COMPX_RACK_RESOURCE_ID>", "rackSkuId": "<COMPX_RACK_SKU>", "rackSerialNumber": "<COMPX_RACK_SN>", "rackLocation": "<COMPX_RACK_LOCATION>", "storageApplianceConfigurationData": [], "bareMetalMachineConfigurationData":[{"bmcCredentials": {"password":"<COMPX_SVRY_BMC_PASS>", "username":"<COMPX_SVRY_BMC_USER>"}, "bmcMacAddress":"<COMPX_SVRY_BMC_MAC>", "bootMacAddress":"<COMPX_SVRY_BOOT_MAC>", "machineDetails":"<COMPX_SVRY_SERVER_DETAILS>", "machineName":"<COMPX_SVRY_SERVER_NAME>"}]}]'\
+  --compute-rack-definitions '[{"networkRackId": "<COMPX_RACK_RESOURCE_ID>", "rackSkuId": "<COMPX_RACK_SKU>", "rackSerialNumber": "<COMPX_RACK_SN>", "rackLocation": "<COMPX_RACK_LOCATION>", "storageApplianceConfigurationData": [], "bareMetalMachineConfigurationData":[{"bmcCredentials": {"password":"<COMPX_SVRY_BMC_PASS>", "username":"<COMPX_SVRY_BMC_USER>"}, "bmcMacAddress":"<COMPX_SVRY_BMC_MAC>", "bootMacAddress":"<COMPX_SVRY_BOOT_MAC>", "serialNumber":"<COMPX_SVRY_SN>", "machineDetails":"<COMPX_SVRY_SERVER_DETAILS>", "machineName":"<COMPX_SVRY_SERVER_NAME>"}]}]'\
   --managed-resource-group-configuration name="<MRG_NAME>" location="<MRG_LOCATION>" \
   --network fabric-id "<NF_ID>" \
   --mi-user-assigned "<CLUSTER_UAMI>" \
@@ -100,7 +100,7 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
   --rack-location "<AGGR_RACK_LOCATION>" \
   --bare-metal-machine-configuration-data "["<AGGR_RACK_BMM>"]" \
   --storage-appliance-configuration-data '[{"adminCredentials":{"password":"<SA1_PASS>","username":"<SA_USER>"},"rackSlot":1,"serialNumber":"<SA1_SN>","storageApplianceName":"<SA1_NAME>"},{"adminCredentials":{"password":"<SA2_PASS>","username":"<SA_USER>"},"rackSlot":2,"serialNumber":"<SA2_SN>","storageApplianceName":"<SA2_NAME>"}]' \
-  --compute-rack-definitions '[{"networkRackId": "<COMPX_RACK_RESOURCE_ID>", "rackSkuId": "<COMPX_RACK_SKU>", "rackSerialNumber": "<COMPX_RACK_SN>", "rackLocation": "<COMPX_RACK_LOCATION>", "storageApplianceConfigurationData": [], "bareMetalMachineConfigurationData":[{"bmcCredentials": {"password":"<COMPX_SVRY_BMC_PASS>", "username":"<COMPX_SVRY_BMC_USER>"}, "bmcMacAddress":"<COMPX_SVRY_BMC_MAC>", "bootMacAddress":"<COMPX_SVRY_BOOT_MAC>", "machineDetails":"<COMPX_SVRY_SERVER_DETAILS>", "machineName":"<COMPX_SVRY_SERVER_NAME>"}]}]'\
+  --compute-rack-definitions '[{"networkRackId": "<COMPX_RACK_RESOURCE_ID>", "rackSkuId": "<COMPX_RACK_SKU>", "rackSerialNumber": "<COMPX_RACK_SN>", "rackLocation": "<COMPX_RACK_LOCATION>", "storageApplianceConfigurationData": [], "bareMetalMachineConfigurationData":[{"bmcCredentials": {"password":"<COMPX_SVRY_BMC_PASS>", "username":"<COMPX_SVRY_BMC_USER>"}, "bmcMacAddress":"<COMPX_SVRY_BMC_MAC>", "bootMacAddress":"<COMPX_SVRY_BOOT_MAC>", "serialNumber":"<COMPX_SVRY_SN>", "machineDetails":"<COMPX_SVRY_SERVER_DETAILS>", "machineName":"<COMPX_SVRY_SERVER_NAME>"}]}]'\
   --managed-resource-group-configuration name="<MRG_NAME>" location="<MRG_LOCATION>" \
   --network fabric-id "<NF_ID>" \
   --mi-user-assigned "<CLUSTER_UAMI>" \
@@ -111,6 +111,20 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
   --cluster-type "<CLUSTER_TYPE>" --cluster-version "<CLUSTER_VERSION>" \
   --tags <TAG_KEY1>="<TAG_VALUE1>" <TAG_KEY2>="<TAG_VALUE2>"
 ```
+
+### Automatic discovery with sentinel values
+
+For `COMPX_SVRY_BMC_MAC`, `COMPX_SVRY_BOOT_MAC`, and `COMPX_SVRY_SN`, you can use sentinel values to indicate that the actual hardware value isn't being supplied in the request.
+
+A sentinel value is a special placeholder value that tells Operator Nexus to discover the real value automatically during provisioning instead of using a customer-provided value.
+
+Use the following sentinel values:
+
+- `"bmcMacAddress": "00:00:00:00:00:00"`
+- `"bootMacAddress": "00:00:00:00:00:00"`
+- `"serialNumber": "000000"`
+
+If one of these parameters is set to its sentinel value, Operator Nexus treats it as a request to auto-discover the corresponding hardware value. If you provide a value other than the sentinel value, Operator Nexus uses the value you provided and doesn't perform discovery for that parameter.
 
 ### Parameters for Cluster operations
 
@@ -142,8 +156,9 @@ az networkcloud cluster create --name "<CLUSTER_NAME>" --location "<LOCATION>" \
 | COMPX_RACK_LOCATION       | Rack physical location for CompX Rack; repeat for each rack in compute-rack-definitions                                                                                                                                                                   |
 | COMPX_SVRY_BMC_PASS       | CompX Rack ServerY Baseboard Management Controller (BMC) password reference URI or password value; repeat for each rack in compute-rack-definitions and for each server in rack \*See [Key Vault Credential Reference](reference-key-vault-credential.md) |
 | COMPX_SVRY_BMC_USER       | CompX Rack ServerY BMC user; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                                                                 |
-| COMPX_SVRY_BMC_MAC        | CompX Rack ServerY BMC MAC address; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                                                          |
+| COMPX_SVRY_BMC_MAC        | CompX Rack ServerY BMC MAC address; repeat for each rack in compute-rack-definitions and for each server in rack. Providing `"00:00:00:00:00:00"` as the value will enable auto-discovery of the MAC address. |
 | COMPX_SVRY_BOOT_MAC       | CompX Rack ServerY boot Network Interface Card (NIC) MAC address; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                            |
+| COMPX_SVRY_SN             | CompX Rack ServerY serial number; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                                                            |
 | COMPX_SVRY_SERVER_DETAILS | CompX Rack ServerY details; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                                                                  |
 | COMPX_SVRY_SERVER_NAME    | CompX Rack ServerY name; repeat for each rack in compute-rack-definitions and for each server in rack                                                                                                                                                     |
 | MRG_NAME                  | Cluster managed resource group name                                                                                                                                                                                                                       |

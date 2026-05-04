@@ -1,8 +1,8 @@
 ---
 title: Using Custom Storage Classes in AKS to Consume External Storage (SAN) on Azure Local
 description: Describes how to enable leverage external storage for containerized workloads on Azure Local.
-author: shriramnat
-ms.author: shnatara
+author: ronmiab
+ms.author: robess
 ms.reviewer: ronmiab
 ms.topic: how-to
 ms.date: 03/27/2026

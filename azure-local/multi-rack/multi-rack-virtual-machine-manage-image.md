@@ -1,8 +1,8 @@
 ---
-title: Manage VM images for Azure Local multi-rack VMs enabled by Azure Arc (preview)
+title: Manage VM images for Azure Local multi-rack VMs enabled by Azure Arc
 description: Learn how to list, view properties, and delete virtual machine images on Azure Local multi-rack deployments using Azure CLI or Azure portal.
-author: dramasamy
-ms.author: dramasamy
+author: sipastak
+ms.author: sipastak
 ms.reviewer: kimlam
 ms.date: 04/15/2026
 ms.topic: how-to
@@ -10,13 +10,11 @@ ms.service: azure-local
 ms.subservice: multi-rack
 ---
 
-# Manage VM images for Azure Local multi-rack VMs enabled by Azure Arc (preview)
+# Manage VM images for Azure Local multi-rack VMs enabled by Azure Arc
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to manage virtual machine (VM) images on your Azure Local multi-rack instance. You can create VM images from an Azure Storage account. After you create images, you can list, view properties, and delete them using Azure CLI or the Azure portal.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 

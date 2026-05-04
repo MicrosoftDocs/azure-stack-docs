@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/14/2026
+ms.date: 04/30/2026
 ms.custom:
   - devx-track-azurecli
   - linux-related-content
@@ -24,13 +24,16 @@ This article describes how to use Azure CLI to prepare a Red Hat Enterprise Linu
 - Have access to an Azure Local instance. This system is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Local resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
 - [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Local instance. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file.
 
+> [!NOTE]
+> Not all operating systems listed on the [Azure Arc-enabled servers supported OS page](/azure/azure-arc/servers/prerequisites#supported-operating-systems) are supported for Arc enablement (guest management) on Azure Local. Guest management requires Hyper-V socket (HV socket) support, which limits the supported OS set further.
+
 ## High-level workflow
 
 To prepare a Red Hat Enterprise image and create an Azure Local VM image from it:
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise.md#create-a-vm-image-from-a-red-hat-enterprise-image)
 1. [Connect to a VM and install the Red Hat OS](./virtual-machine-image-red-hat-enterprise.md#step-2-connect-to-a-vm-and-install-the-red-hat-os)
-1. [Configure the VM](./virtual-machine-image-red-hat-enterprise.md#step-3-configure-the-vm)
+1. [Configure the VM with cloud-init](./virtual-machine-image-red-hat-enterprise.md#step-3-configure-the-vm-with-cloud-init)
 1. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise.md#step-4-clean-up-the-residual-configuration)
 1. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise.md#step-5-create-the-vm-image)
 
@@ -40,7 +43,7 @@ The following sections provide detailed instructions for each step in the workfl
 
 > [!IMPORTANT]
 >
-> - Do not use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
+> - Don't use a virtual hard disk from an Azure VM to prepare the Azure Local VM image.
 > - We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
 In the New Virtual Machine Wizard in Hyper-V, configure the settings to create your Red Hat Enterprise VM.
@@ -49,9 +52,9 @@ In the New Virtual Machine Wizard in Hyper-V, configure the settings to create y
 
 When creating the source Red Hat Enterprise Linux (RHEL) virtual machine locally instead of using an Azure Marketplace VM, you can use the **New Virtual Machine Wizard** in Hyper‑V to configure the required settings.
 
-On the Hyper‑V host follow these steps:
+On the Hyper‑V host, follow these steps:
 
-1. Open **Hyper‑V Manager**, then select **New** > **Virtual Machine**.
+1. Open **Hyper‑V Manager** and then select **New** > **Virtual Machine**.
 
 1. Set up the VM with the following specifications:
     1. Provide a friendly name for your VM.
@@ -142,7 +145,7 @@ After the VM is running, follow these steps:
 
 For step-by-step instructions, see [Provision a VM by using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-### Step 3: Configure the VM
+### Step 3: Configure the VM with cloud-init
 
 To configure the VM:
 
@@ -194,7 +197,7 @@ To configure the VM:
 
 ### Step 4: Clean up the residual configuration
 
-Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Local to clean up the residual configuration.
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations.
 
 1. Clean `cloud-init` default configurations.
 
