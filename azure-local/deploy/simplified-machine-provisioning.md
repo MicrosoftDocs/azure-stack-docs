@@ -184,7 +184,7 @@ Follow the steps to prepare machines for simplified provisioning. Repeat this st
 
      Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
 
-1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
+1. Select the site. Add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. After you add machines, select the pencil button to edit. Provide the machine name as the Azure Arc resource name.
 
     :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="true" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
 
@@ -196,9 +196,9 @@ In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (prev
 
 Ensure that your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
-This process reduces setup time and expertise needed at remote sites. The configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
+This process reduces setup time and expertise needed at remote sites. The configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This approach makes the process quicker, repeatable, and scalable.
 
-## Step 4: Monitor machine set up via app (optional)
+## Step 4: Monitor machine setup via app (optional)
 
 Follow these steps to track the installation progress from your Windows 11 PC.
 
@@ -225,7 +225,7 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 ## Next steps
 
 - Set up [subscription permissions](deployment-arc-register-server-permissions.md) before deployment.
-- Skip registration as this step already registered your Azure Local machines.
+- Skip registration, this step already registered your Azure Local machines.
 - Once you set up the permissions, deploy your Azure Local instance by using one of the following options:
   - [Deploy via Azure portal](./deploy-via-portal.md)
   - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
