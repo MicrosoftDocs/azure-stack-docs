@@ -28,7 +28,7 @@ When IT admins manage Azure Local VMs by using the same local tools and scripts 
 > - We recommend that you use the Azure portal or the Azure CLI to manage Azure Local VMs. Use the local tools only if these operations are included in the [list of supported operations for local tools](#local-tools) later in this article.
 > - Though the supported operations for local tools don't affect the management of Azure Local VMs, the changes aren't reflected in the Azure portal.
 > - When performed using local tools, only a VM power state change (start or stop) updates the Azure Local VM state in the Azure portal.
-> - Any tool, regardless of where its control plane resides, is considered a local tool if it executes commands locally (for example, the Windows Admin Center extension in the Azure portal).
+> - A tool is considered a local tool when the management action runs in a local execution context on or against the local host or cluster, rather than through the Azure control plane. For example, the Windows Admin Center extension can be surfaced in the Azure portal, but operations it executes locally are treated as local-tool operations.
 
 ## Supported VM operations
 
