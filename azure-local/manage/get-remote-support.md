@@ -204,13 +204,80 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 ![Screenshot 2026-04-20 171944](media/get-remote-support/screenshot-2026-04-20-171944.png)
 
-In the Diagnostics and Remote Support settings, you’ll see a new Remote Support tab. You can select this tab or click Grant access directly to enable remote support.
+In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
 
 ### How to enable Remote Support
 
 This section explains the steps and prerequisites required to enable Remote Support on an Azure Local cluster. It covers where the option is exposed in the management experience, any required permissions, and how customers explicitly opt in to allow remote access for support purposes.
 
 ![Screenshot grant access](media/get-remote-support/screenshot-grant-access.png)
+
+Select __Grant access__ to enable remote support.
+
+![Screenshot approval for remote support](media/get-remote-support/screenshot-approval-for-remote-support.png)
+
+To grant access, you’ll need to select the appropriate __access level__—either __Diagnostics__ or __Diagnostics and Repair__—and specify the __access period__, which defines how long support can access your device.
+
+You’ll also need to review and approve the __terms and conditions__ to complete the process.
+
+### Remote Support Enabled Experience
+
+When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active.
+
+![Screenshot granted remote support access 1](media/get-remote-support/screenshot-granted-remote-support-access-1.png)
+
+In the image above Remote Support is enabled in the **Remote Support tab**
+
+![Screenshot granted remote support access](media/get-remote-support/screenshot-granted-remote-support-access.png)
+
+In the image above Remote Support is enabled in the **Get Started tab**
+
+### Experience when Remote Support is Disabled on Some Nodes 
+
+This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
+
+If no banner is shown for a cluster, it indicates that Remote Support is enabled for all the nodes.
+
+![Screenshot remote support could only be enabled on these machines 2 ](media/get-remote-support/screenshot-remote-support-could-only-be-enabled-on-these-machines-2-.png)
+
+In the image above Remote Support is not enabled on all nodes in the Remote Support tab 
+
+![Screenshot remote support could only be enabled on these machines ](media/get-remote-support/screenshot-remote-support-could-only-be-enabled-on-these-machines-.png)
+
+In the image above Remote Support is not enabled on all nodes in the Get Started tab 
+
+What level of access is granted
+
+![Screenshot microsoft access level](media/get-remote-support/screenshot-microsoft-access-level.png)
+
+In the image above the support access level granted is **Diagnostics**
+
+### DME Extension Version required for Remote Support 
+
+What happens if the required version is not present: - A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” - Learn more link will redirect to [Azure Local Remote Support Arc extension and remote support overview - Azure Local | Microsoft Learn](/azure/azure-local/manage/remote-support-arc-extension?view=azloc-2602)
+
+![Screenshot DME extension version warning banner ](media/get-remote-support/screenshot-dme-extension-version-warning-banner-.png)
+In the image above, you can see a banner indicating that Remote Support is disabled because the **extension version** is not supported.
+
+ Remote Support depends on a minimum version of the __DME (Device Management Extension)__. This section documents:
+
+- The minimum required DME extension version: "1.2510.0.3012"
+
+- How customers can check the installed version:
+
+Go to Extensions:
+
+![Screenshot DME extension version](media/get-remote-support/screenshot-dme-extension-version.png)
+
+In the image above, you can see the AzureEdgeDeviceManagement extension along with its version details.
+
+Guidance on updating the extension if needed Go to the “Updates” tab:
+
+![Screenshot Updates tab](media/get-remote-support/screenshot-updates-tab.png)
+
+Select the latest eligible update version and click on “Install now” command
+
+You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?view=azloc-2604&tabs=azureupdatemanager) to complete update 
 
 ## Error handling
 
