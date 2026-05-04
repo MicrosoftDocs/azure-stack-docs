@@ -17,7 +17,6 @@ ms.subservice: hyperconverged
 
 This article describes how to install the solution upgrade on your Azure Local instance after upgrading the operating system (OS) from one of the following versions:
 
-- 20349.xxxx (22H2) to 25398.xxxx (23H2)
 - 20349.xxxx (22H2) to 26100.xxxx (24H2)
 - 25398.xxxx (23H2) to 26100.xxxx (24H2)
 

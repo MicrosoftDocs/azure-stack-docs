@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template, after upgrading the operating system (OS) build from 20349.xxxx (22H2) to 25398.xxxx (23H2).
+This article describes how to install the solution upgrade on your Azure Local instance using Azure Resource Manager (ARM) template, after upgrading the operating system (OS) build.
 
 > [!IMPORTANT]
 > - While the OS upgrade is generally available, the solution upgrade is rolled out in phases. Additionally, the solution upgrade isn't available to customers in Azure China.
