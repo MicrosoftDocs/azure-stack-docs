@@ -47,7 +47,7 @@ To upgrade the OS on your system, follow these high-level steps:
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
 - Make sure to shut down virtual machines (VMs). We recommend shutting down VMs before performing the OS upgrade to prevent unexpected outages and damages to databases.
-- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later:
+- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** PowerShell module using this command, as this module does not work on version 23H2 and later:
 
   ```powershell
   Uninstall-Module -Name AksHci -Force
