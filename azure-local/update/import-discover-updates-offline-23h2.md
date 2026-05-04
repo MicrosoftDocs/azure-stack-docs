@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 ::: moniker range=">=azloc-24113"
 
-This article explains how to discover and import solution update packages for Azure Local (*formerly Azure Stack HCI*) deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
 
 The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Arc resource bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
