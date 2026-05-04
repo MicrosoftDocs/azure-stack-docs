@@ -12,7 +12,7 @@ ms.custom: references_regions
 
 # What's new in hyperconverged deployments of Azure Local 24xx releases?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) 24xx releases.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local 24xx releases.
 
 > [!NOTE]
 > Azure Local 24xx releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
