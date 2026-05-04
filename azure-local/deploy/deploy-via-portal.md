@@ -239,17 +239,17 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
  
-       > [!IMPORTANT]
+    > [!IMPORTANT]
     > - Don't delete the infrastructure volumes created during deployment.
     > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
     
-       Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
+    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
  
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
- |---------|---------|---------|----------|
- |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
- |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
- |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
+   |---------|---------|---------|----------|
+   |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
+   |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
+   |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
 
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
