@@ -61,7 +61,7 @@ If you use a proxy with Azure Local, add these endpoints to your allowlist:
 - https\://asztrsprod.southeastasia.cloudapp.azure.com
 - https\://edgesupprd.trafficmanager.net
 
-## Enable remote support via PowerShell
+### [Enable remote support via PowerShell](#tab/PowerShell)
 
 The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, makes setup easier and boosts support efficiency. It comes preinstalled on all system nodes, so there's no action for you to take. For more information about the Remote Support Arc extension, see [Azure Local remote support Arc extension](./remote-support-arc-extension.md).
 
@@ -198,7 +198,9 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 > [!NOTE]
 > Session transcript details are kept for 90 days. You can retrieve details for a remote session within 90 days after the session.
 
-## Enable remote support via Portal
+---
+
+### [Enable remote support via Portal](#tab/azureportal)
 
 This section provides an overview of the Remote Support experience in the Azure Local portal, including how customers enable it, what to expect when it is active, and how to monitor support sessions.
 
@@ -278,6 +280,8 @@ Guidance on updating the extension if needed Go to the “Updates” tab:
 Select the latest eligible update version and click on “Install now” command
 
 You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?view=azloc-2604&tabs=azureupdatemanager) to complete update 
+
+---
 
 ## Error handling
 
