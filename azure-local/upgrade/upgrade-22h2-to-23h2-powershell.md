@@ -1,6 +1,6 @@
 ---
 title: Upgrade Azure Stack HCI OS via PowerShell
-description: Learn how to use PowerShell to upgrade Azure Stack HCI OS.
+description: Learn how to use PowerShell to upgrade Azure Stack HCI OS to 24H2.
 author: ronmiab
 ms.topic: how-to
 ms.date: 05/01/2026
@@ -16,8 +16,6 @@ This article describes how to upgrade the Azure Stack HCI operating system (OS) 
 
 - Upgrade from version 20349.xxxx (22H2) to version 26100.xxxx (24H2).
 - Upgrade from version 25398.xxxx (23H2) to version 26100.xxxx (24H2). This includes the 25398.xxxx (23H2) clusters that were upgraded from version 20349.xxxx (22H2) and the solution upgrade is not yet applied.
-
-With the 2505 release, a direct upgrade path from version 20349.xxxx (22H2) to version 26100.xxxx (24H2) is available. Skipping the upgrade to the version 26100.xxxx is one less upgrade hop and helps reduce reboots and maintenance planning prior to the solution upgrade.
 
 - Make sure to consult with your hardware vendor to determine if version 26100.xxxx OS is supported before performing the upgrade.
 - After the OS upgrade, you can apply the solution upgrade.
