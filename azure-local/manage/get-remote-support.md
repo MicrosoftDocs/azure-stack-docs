@@ -206,6 +206,12 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 In the Diagnostics and Remote Support settings, you’ll see a new Remote Support tab. You can select this tab or click Grant access directly to enable remote support.
 
+### How to enable Remote Support
+
+This section explains the steps and prerequisites required to enable Remote Support on an Azure Local cluster. It covers where the option is exposed in the management experience, any required permissions, and how customers explicitly opt in to allow remote access for support purposes.
+
+![Screenshot grant access](media/get-remote-support/screenshot-grant-access.png)
+
 ## Error handling
 
 When you enable remote support on Azure Local, you might encounter an error. This section describes the error message, its cause, and suggested resolutions.
