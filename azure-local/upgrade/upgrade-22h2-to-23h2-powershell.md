@@ -1,24 +1,15 @@
 ---
-title: Upgrade Azure Stack HCI OS, version 22H2 to version 23H2 via PowerShell
-description: Learn how to use PowerShell to upgrade Azure Stack HCI OS, version 22H2 to version 23H2.
+title: Upgrade Azure Stack HCI OS to version 24H2 via PowerShell
+description: Learn how to use PowerShell to upgrade Azure Stack HCI OS to version 24H2.
 author: ronmiab
 ms.topic: how-to
 ms.date: 05/01/2026
 ms.author: robess
 ms.service: azure-local
-zone_pivot_groups: upgrade-os
 ms.subservice: hyperconverged
 ---
 
 # Upgrade Azure Stack HCI OS via PowerShell
-
-::: zone pivot="os-23h2"
-
-This article describes how to upgrade the Azure Stack HCI operating system (OS) from version 20349.xxxx (22H2) to version 25398.xxxx (23H2), via PowerShell. This is the first step in the upgrade process, which upgrades only the OS.
-
-::: zone-end
-
-::: zone pivot="os-24h2"
 
 This article describes how to upgrade the Azure Stack HCI operating system (OS) to version 26100.xxxx (24H2), via PowerShell. There are two upgrade paths available:
 
@@ -36,34 +27,11 @@ For more information about the various upgrade paths, see the blog post on [Upgr
 > [!IMPORTANT]
 > This article covers OS upgrades only. Do not proceed if the solution upgrade is complete or Azure Local 2311.2 or later is deployed. To check if your system is already running the solution, run the `Get-StampInformation` cmdlet. If it returns output, your system is already running the solution, and you should skip these steps.
 
-::: zone-end
-
-::: zone pivot="os-24h2"
-
 ## About End of Support (EOS) for previous versions
 
 For information on end of support for various Azure Local versions, see [Azure Local, release information](../release-information-23h2.md#end-of-support-for-azure-local-versions).
 
-::: zone-end
-
 ## High-level workflow for the OS upgrade
-
-::: zone pivot="os-23h2"
-
-The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
-
-To upgrade the OS on your system, follow these high-level steps:
-
-1. [Complete the prerequisites.](#complete-prerequisites)
-1. [Update registry keys.](#update-registry-keys)
-1. [Connect to Azure Local, version 22H2.](#connect-to-azure-local)Check for the available updates using PowerShell.
-1. [Install new OS using PowerShell.](#install-new-os-using-powershell)
-1. [Check the status of the updates.](#check-the-status-of-an-update)
-1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
-
-::: zone-end
-
-::: zone pivot="os-24h2"
 
 The Azure Stack HCI OS update is available only via the Azure portal.
 
@@ -75,58 +43,7 @@ To upgrade the OS on your system, follow these high-level steps:
 1. [Check the status of the updates.](#check-the-status-of-an-update)
 1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
 
-::: zone-end
-
 ## Complete prerequisites
-
-::: zone pivot="os-23h2"
-
-Before you begin, make sure that:
-
-- You have access to an Azure Local instance running version 20349.xxxx (22H2), and it's registered in Azure.
-- Your system is registered in Azure and all the machines in the system are healthy and online.
-- If you have AKS enabled by Azure Arc clusters running on your version 22H2 instance, uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. Once you uninstall AKS Arc, you must uninstall the **AksHci** Powershell module using this command, as this module does not work on version 23H2 and later.
-
-  ```powershell
-  Uninstall-Module -Name AksHci -Force
-  ```
-
-To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/blob/main/scripts/samples/uninstall-akshci.ps1). If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` on an Azure Local node, to remove the VM instances created using the preview version.
-
-- Shut down virtual machines (VMs). To prevent unexpected outages and potential damage to databases, we recommend that you shut down the VMs before you upgrade the OS.
-- You have access to the version 25398.xxxx (23H2) OS software update for Azure Local. This update is available via Windows Update or as a downloadable media. The media must be version [**2503** ISO](https://aka.ms/hcireleaseimage) file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
-- You have access to a client that can connect to your Azure Local instance. This client should be running PowerShell 5.0 or later.
-- You run the `RepairRegistration` cmdlet if either of the following conditions apply:
-
-  - The *identity* property is either missing or doesn't contain `type = "SystemAssigned"`.
-    - Check this in the Resource JSON in the Azure portal.
-    - Or run the `Get-AzResource -Name <cluster_name>` PowerShell cmdlet.
-  - The **Cloud Management** cluster group is not present. Check it by running the `Get-ClusterGroup` PowerShell cmdlet.
-
-   If either of these conditions are met, run the `RepairRegistration` cmdlet:
-
-   ```powershell
-   Register-AzStackHCI -TenantId "<tenant_ID>" -SubscriptionId "<subscription_ID>" -ComputerName "<computer_name>" -Region "<region_name>" -RepairRegistration
-   ```
-
-- (Recommended) You enable [Secure Boot](/windows-hardware/design/device-experiences/oem-secure-boot) on Azure Local machines before you upgrade the OS.
-   To enable Secure Boot, follow these steps:
-   1. Drain the cluster node.
-   1. Restart the OS.
-   1. Enter the BIOS/UEFI menu.
-   1. Review the **Boot** or **Security** section of the UEFI configuration options Locate the Secure Boot option.
-   1. Set the option to **Enabled** or **On**.
-   1. Save the changes and restart your computer.
-
-   Consult with your hardware vendor for assistance if required.
-
-> [!NOTE]
-> The [**2503** ISO](https://aka.ms/hcireleaseimage) file is only required if the machines do not have access to Windows Update to download the OS feature update. If using this method, after you [Connect to Azure Local, version 22H2](#connect-to-azure-local), skip to step 6 under [Install new OS using PowerShell](#install-new-os-using-powershell) and perform the remaining steps.
-> Use of 3rd party tools to install upgrades is not supported.
-
-::: zone-end
-
-::: zone pivot="os-24h2"
 
 - Make sure your Azure Local system is running either OS version 20349.3692 or OS version greater than 25398.1611.
 - Make sure the system is registered in Azure and all the machines in the system are healthy and online.
@@ -186,40 +103,7 @@ To avoid any PowerShell version-related issues in your AKS deployment, you can u
     # Start the Cloud Management group
     Start-ClusterGroup -Name "Cloud Management"
 
-
-::: zone-end
-
 ## Update registry keys
-
-::: zone pivot="os-23h2"
-
-To ensure Resilient File System (ReFS) and live migrations function properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
-
-1. Set `RefsEnableMetadataValidation` to `0`:
-
-   ```powershell
-   Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "RefsEnableMetadataValidation" -Value 0 -Type DWord  -ErrorAction Stop
-   ```
-
-1. Create the parameters key if it doesn't exist. If it already exists, the command may fail with an error, which is expected.
-
-   ```powershell
-   New-Item -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters
-   ```
-
-1. Set `SkipSmallLocalAllocations` to `0`:
-
-   ```powershell
-   New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Vid\Parameters -Name SkipSmallLocalAllocations -Value 0 -PropertyType DWord
-   ```
-
-1. Restart the machine for the changes to take effect. On machine restart, if the `RefsEnableMetadataValidation` key gets overridden and ReFS volumes fail to come online, toggle the key by first setting `RefsEnableMetadataValidation` to `1` and then back to `0` again.
-
-1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
-
-::: zone-end
-
-::: zone pivot="os-24h2"
 
 To ensure Resilient File System (ReFS) functions properly during and after OS upgrade, follow these steps on each machine in the system to update registry keys. Reboot each machine for the changes to take effect.
 
@@ -232,8 +116,6 @@ To ensure Resilient File System (ReFS) functions properly during and after OS up
 1. Restart the machine to apply changes. If ReFS volumes fail to come online after reboot and the `RefsEnableMetadataValidation` key is reset, toggle the key. Set `RefsEnableMetadataValidation` to **1** and then back to **0**. To check volume status, run the `Get-ClusterSharedVolumeState` command.
 
 1. Update and verify that the registry keys have been applied on each machine in the system before moving to the next step.
-
-::: zone-end
 
 ## Connect to Azure Local
 
@@ -260,86 +142,6 @@ Follow these steps on your client to connect to one of the machines of your Azur
    ```
 
 ## Install new OS using PowerShell
-
-::: zone pivot="os-23h2"
-
-To install the new OS using PowerShell, follow these steps:
-
-> [!NOTE]
-> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the system. For information on how to install and enable this feature on your Azure Local, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
-
-1. Run the following cmdlets on every machine in the system.
-
-   ```PowerShell
-   Set-WSManQuickConfig
-   Enable-PSRemoting
-   ```
-
-1. To test whether the system is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which notifies you of any warnings or errors:
-
-   ```PowerShell
-   Test-CauSetup -ClusterName <System name>
-   ```
-
-   > [!NOTE]
-   > Some warnings reported by `Test-CauSetup` are expected and can be ignored. Review the output and proceed if no critical errors are reported.
-
-1. Validate the hardware and settings by running the `Test-Cluster` cmdlet on one of the machines in the system. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
-
-   ```PowerShell
-   Test-Cluster
-   ```
-
-1. Extract the contents of the ISO image and copy them to the local system drive on each machine. Ensure that the local path is the same on each machine. Then, update the `PathToSetupMedia` parameter with the local path to the extracted ISO contents, not the ISO file.
-
-   ```powershell
-   # Define ISO and destination folder for extracted contents 
-   $isoFilePath = "C:\SetupFiles\WindowsServer\ISOs\example.iso" 
-   $destinationPath = "C:\SetupFiles\WindowsServer\ExtractedFilesFolder" 
-   # Mount the ISO file 
-   $iso = Mount-DiskImage -ImagePath $isoFilePath 
-   # Get the drive letter 
-   $driveLetter = ($iso | Get-Volume).DriveLetter 
-   # Create the destination directory 
-   New-Item -ItemType Directory -Path $destinationPath 
-   # Copy contents to the local directory 
-   Copy-Item -Path "${driveLetter}:\*" -Destination $destinationPath -Recurse 
-   # Dismount the ISO file 
-   Dismount-DiskImage -ImagePath $isoFilePath
-   ```
-
-Depending on whether your system is connected to Windows Update, complete **either** step 5 or step 6 — not both.
-
-1. **(Connected to Windows Update)** Check for available updates:
-
-   ```PowerShell
-   Invoke-CauScan -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
-   ```
-
-   Review the output and verify that each machine is offered the same Feature Update.
-
-   Run `Invoke-CauRun` from a separate machine or VM outside the system. Using a separate machine ensures that orchestration isn't interrupted when machines are rebooted.
-
-   > [!IMPORTANT]
-   > The machine from which you run `Invoke-CauRun` must be running Windows Server 2022.
-
-   ```PowerShell
-   Invoke-CauRun -ClusterName <SystemName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
-   ```
-
-1. **(Not connected to Windows Update)** If Azure Local install media is available on a local share, you can use CAU to upgrade the system. Update the `PathToSetupMedia` parameter with the share path to the ISO image.
-
-   ```powershell
-   Invoke-CauRun –ClusterName <SystemName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
-   ```
-
-1. Check for any further updates and install them.
-
-1. Wait for the update to complete and check the status of the update.
-
-::: zone-end
-
-::: zone pivot="os-24h2"
 
 To install the new OS using PowerShell, follow these steps:
 
@@ -393,8 +195,6 @@ To install the new OS using PowerShell, follow these steps:
    ```
 
 1. Wait for the update to complete and check the status of the update.
-
-::: zone-end
 
 ## Check the status of an update
 
