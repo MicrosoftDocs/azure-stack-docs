@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 
 # What's new in hyperconverged deployments of Azure Local 23xx releases?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) 23xx releases.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local 23xx releases.
 
 > [!NOTE]
 > Azure Local 23xx releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
