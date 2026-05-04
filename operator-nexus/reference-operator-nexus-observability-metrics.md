@@ -263,3 +263,62 @@ Metrics are collected only at the physical interface level (not channel level) a
 | <br><br>DCS7280DR3A36F <br><br><br><br><br> | <br><br>CE <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> |
 | <br><br>DCS7050CX332C <br><br><br><br><br> | <br><br>TOR <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>✅ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> |
 | <br><br>Mgmt Switches <br><br><br><br><br> | <br><br>Mgmt <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> | <br><br>❌ <br><br><br><br><br> |
+
+## Power supply monitoring
+
+Monitoring power supply behavior and operational state is essential to ensure hardware reliability and prevent service disruption in Network Fabric devices. Azure Monitor exposes both electrical metrics and component operational state signals for power supply units (PSUs).
+
+### Electrical metrics
+
+Electrical metrics provide visibility into the operating characteristics of power supply units. These metrics are useful for trend analysis and diagnostics but don't independently indicate failure conditions.
+
+| Metric | Description/Usage | Collection interval | Measured unit |
+|--|--|--|--|
+| Power Supply Output Current | The output current supplied by the PSU. | 1 min | Amps |
+| Power Supply Output Voltage | The output voltage supplied by the PSU. | 1 min | Volts |
+| Power Supply Output Power | The electrical power delivered by the PSU to system components. | 1 min | Watts |
+
+### Power module operational state
+
+To determine the health of power modules, use the **Component Operational Status** metric.
+
+| Metric | Description/Usage | Collection interval | Measured unit |
+|--|--|--|--|
+| Component Operational Status | Operational status of device components such as power supplies. | 5 mins and on demand | N/A |
+
+Supported values:
+
+- **Active (0):** The component is operational
+- **Inactive (1):** The component is not operational
+- **Disabled (2):** The component is administratively disabled
+
+Dimension:
+
+- **ComponentName**
+  - PowerSupply1
+  - PowerSupply2
+
+### Alert configuration
+
+Power supply issues can be detected by configuring alerts on the **Component Operational Status** metric with the following conditions:
+
+- ComponentName = PowerSupply1 or PowerSupply2
+- Metric value = 1
+
+A value of **1 (Inactive)** indicates that the corresponding power module isn't operational and can signal a failure condition.
+
+### Recommended usage
+
+- Use **Component Operational Status** for:
+  - Failure detection
+  - Alerting on PSU health
+
+- Use electrical metrics for:
+  - Monitoring operating characteristics
+  - Identifying anomalies in power behavior
+  - Correlating with other device health signals
+
+### Limitations
+
+- Electrical metrics (Current, Voltage, Power) don't indicate failure states
+- Power supply failure detection depends on **metric-based alerting using Component Operational Status**
