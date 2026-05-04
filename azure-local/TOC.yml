@@ -191,6 +191,8 @@ items:
         href: manage/create-arc-virtual-machines.md
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
+      - name: Run AI workloads on Azure Local
+        href: concepts/ai-workloads-overview.md
 
   - name: Enable
     items:
