@@ -16,7 +16,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of disaggregated deployments of Azure Local (*formerly Azure Stack HCI*). The overview details the benefits, key features, use cases, and how to get started with this generally available solution.
+This article provides an overview of disaggregated deployments of Azure Local. The overview details the benefits, key features, use cases, and how to get started with this generally available solution.
 
 Disaggregated deployments come in different sizes, from a single machine footprint to a maximum of 64 machines that use SAN storage. They offer a unified management control plane and support a wide range of validated hardware from trusted Microsoft partners.
 

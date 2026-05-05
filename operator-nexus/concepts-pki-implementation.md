@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus PKI implementation
 description: Learn how Azure Operator Nexus uses public key infrastructure to protect platform control plane, services, and operator-facing interfaces.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 12/12/2025

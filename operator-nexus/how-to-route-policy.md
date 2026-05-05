@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to create route policy in Network Fabric"
 description: Learn to create, view, list, update, and delete commands for Network Fabric.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/20/2023

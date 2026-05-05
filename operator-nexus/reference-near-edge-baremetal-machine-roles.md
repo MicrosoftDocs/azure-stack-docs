@@ -2,8 +2,8 @@
 title: "Azure Operator Nexus: Near-edge BareMetal Machine Roles"
 titleSuffix: Azure Operator Nexus
 description: Learn about machine roles applicable to BMM in near-edge Azure Operator Nexus instances.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 05/14/2025
