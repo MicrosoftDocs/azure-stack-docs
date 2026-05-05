@@ -21,12 +21,12 @@ The following table lists the Azure resources that must be cleaned up within the
 
 |Number of resources  |Resource type  |
 |---------|---------|
-|1 per machine<sup>1</sup>  | Machine - Azure Arc  |
+|1 per machine  | Machine - Azure Arc<sup>1</sup>  |
 |1 |Azure Local |
 |1 |Arc resource bridge |
-|1<sup>2</sup> |Key vault |
+|1 |Key vault<sup>2</sup> |
 |1 |Custom location |
-|2<sup>3</sup> |Storage account |
+|2 |Storage account<sup>3</sup> |
 |1 per workload volume |Azure Local storage path - Azure Arc |
 
 <sup>1</sup> Cleaning up the Machine – Azure Arc resources for the individual nodes of the system is optional if you need to redeploy an Azure Local instance. To disconnect a machine from Azure Arc and delete the corresponding Azure resource, see [Manage and maintain the Azure Connected Machine agent - Azure Arc](/azure/azure-arc/servers/manage-agent?tabs=windows#step-2-disconnect-the-server-from-azure-arc).
@@ -46,7 +46,7 @@ By default, there are **DoNotDelete** locks configured for the Azure resources c
 
 1. Choose the resources and select **Delete** to remove the locks.  
 
-    :::image type="content" source="media/decommission-azure-local/delete-locks.png" alt-text="Screenshot of the Azure portal showing where to delete locks." border="false" lightbox="media/decommission-azure-local/delete-locks.png":::
+    :::image type="content" source="media/decommission-azure-local/delete-locks.png" alt-text="Screenshot of the Azure portal showing where to delete locks." border="true" lightbox="media/decommission-azure-local/delete-locks.png":::
 
 ## Delete resources
 
@@ -57,5 +57,3 @@ By default, there are **DoNotDelete** locks configured for the Azure resources c
 1. Select **Delete**.
 
 1. Enter "delete" to confirm deletion in **Delete Resources**.
-
-    :::image type="content" source="media/decommission-azure-local/delete-resources.png" alt-text="Screenshot of the Azure portal showing where to delete resources." border="false" lightbox="media/decommission-azure-local/delete-resources.png":::
