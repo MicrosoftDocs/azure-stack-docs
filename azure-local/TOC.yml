@@ -191,6 +191,8 @@ items:
         href: manage/create-arc-virtual-machines.md
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
+      - name: Run AI workloads on Azure Local
+        href: concepts/ai-workloads-overview.md
 
   - name: Enable
     items:
@@ -540,6 +542,8 @@ items:
         href: manage/suspend-resume-cluster-maintenance.md
       - name: Use dashboard to manage at-scale
         href: manage/manage-at-scale-dashboard.md
+      - name: Decommission system
+        href: manage/decommission-azure-local.md
 
     - name: Capacity
       items:
