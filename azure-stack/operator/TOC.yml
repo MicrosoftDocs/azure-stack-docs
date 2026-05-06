@@ -290,6 +290,8 @@
       href: azure-stack-security-av.md
     - name: Log collection and data handling
       href: azure-stack-data-collection.md
+    - name: Secure boot certificate updates
+      href: secure-boot-certificates.md
   - name: Populate the marketplace
     items:
     - name: Marketplace overview
