@@ -15,11 +15,11 @@ This article provides guidance for Azure Stack Hub operators to prepare for and 
 
 ## Overview
 
-Azure Stack Hub uses an OEM firmware package prerequisite model for Secure Boot certificate readiness. Updated Secure Boot certificates are expected to be delivered through OEM firmware packages. Platform hotfixes and/or platform updates then finalize the mitigation by ensuring the boot manager is updated to use the new certificate chain and by surfacing alerts when prerequisites are not met.
+Azure Stack Hub uses an OEM firmware package prerequisite model for Secure Boot certificate readiness. Updated Secure Boot certificates are expected to be delivered through OEM firmware packages. Platform hotfixes and platform updates then finalize the mitigation by ensuring the boot manager is updated to use the new certificate chain and by surfacing alerts when prerequisites aren't met.
 
 ## Azure Stack Hub Secure Boot certificates expiring in 2026
 
-All Windows-based devices include a standard set of Microsoft certificates in the Key Exchange Key (KEK) and Secure Boot database (DB). These certificates are approaching their expiration date. Azure Stack Hub hosts are affected if they contain any of the listed certificate versions as shown in the following table. To continue receiving regular Secure Boot updates, you must update the certificates by first applying the appropriate Azure Stack Hub OEM firmware package that refreshes the Secure Boot certificates, and then applying the required Azure Stack Hub hotfixes or updates to complete the mitigation. After applying hotfixes or updates, administrators are guided by system alerts to perform additional actions, such as updating the OEM firmware package (if not already applied), or running a Privileged Endpoint (PEP) cmdlet to update the boot manager, if required.
+All Windows-based devices include a standard set of Microsoft certificates in the Key Exchange Key (KEK) and Secure Boot database (DB). These certificates are approaching their expiration date. Azure Stack Hub hosts are affected if they contain any of the listed certificate versions as shown in the following table. To continue receiving regular Secure Boot updates, update the certificates by first applying the appropriate Azure Stack Hub OEM firmware package that refreshes the Secure Boot certificates, and then applying the required Azure Stack Hub hotfixes or updates to complete the mitigation. After applying hotfixes or updates, system alerts guide administrators to perform additional actions, such as updating the OEM firmware package (if not already applied), or running a Privileged Endpoint (PEP) cmdlet to update the boot manager, if required.
 
 | **Expiring certificate** | **Expiration date** | **New certificate** | **Storing location** | **Purpose** |
 |----|----|----|----|----|
@@ -29,7 +29,7 @@ All Windows-based devices include a standard set of Microsoft certificates in th
 | **Microsoft UEFI CA 2011*\**** | June 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
 
 > [!IMPORTANT]
-> Azure Stack Hub systems continue to operate without immediate disruption if Secure Boot certificates are not updated. However, systems that don't update their platform trust anchors might not be able to apply future security updates that rely on updated Secure Boot signing authorities. Over time, this can result in a weakening of the system's security posture.
+> Azure Stack Hub systems continue to operate without immediate disruption if Secure Boot certificates aren't updated. However, systems that don't update their platform trust anchors might not be able to apply future security updates that rely on updated Secure Boot signing authorities. Over time, this condition can result in a weakening of the system's security posture.
 
 ## Before you begin
 
@@ -45,7 +45,7 @@ Before you begin, make sure you have the following prerequisites in place:
 
 You can enable Secure Boot mitigation support by updating Azure Stack Hub to versions **2501, 2506, 2601, and 2604**, in addition to applying the corresponding Secure Boot mitigation hotfixes for versions **2501, 2506, and 2601 with the latest hotfix installed**.
 
-- Azure Stack Hub versions **2501, 2506, 2601 and 2604** can receive mitigation support by:
+- Azure Stack Hub versions **2501, 2506, 2601, and 2604** can receive mitigation support by:
   - Updating to these platform versions, or
   - Applying the Secure Boot mitigation hotfix available for the current supported versions **2501, 2506, and 2601**.
 
@@ -53,19 +53,19 @@ These updates and hotfixes enable the platform to:
 
 - Validate the presence of required Secure Boot 2023 certificates delivered through the OEM firmware package.
 - Raise alerts when Secure Boot 2023 certificates are not present.
-- Detect when the boot manager is not yet updated to use the new certificate chain.
+- Detect when the boot manager isn't yet updated to use the new certificate chain.
 - Finalize the boot manager update when prerequisites are satisfied.
-- If updates or hotfixes are applied after the certificates are updated through the OEM firmware package, the boot manager is updated automatically as part of the update or hotfix process.
+- If you apply updates or hotfixes after the platform updates the certificates through the OEM firmware package, the boot manager updates automatically as part of the update or hotfix process.
 - Prompt administrators, through platform alerts, to run a Privileged Endpoint (PEP) cmdlet to finalize the boot manager update when the OEM firmware package is applied after hotfixes or updates.
 
 > [!IMPORTANT]
-> If an Azure Stack Hub update or hotfix is applied before installing the updated OEM firmware package that contains the required Secure Boot 2023 certificates, the platform will surface alerts providing guidance to apply the appropriate OEM firmware package. After the OEM firmware package update has been successfully applied, operators can run the following PEP cmdlet to apply the final mitigation step to the boot manager, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
+> If you apply an Azure Stack Hub update or hotfix before installing the updated OEM firmware package that contains the required Secure Boot 2023 certificates, the platform surfaces alerts providing guidance to apply the appropriate OEM firmware package. After you successfully apply the OEM firmware package update, operators can run the following PEP cmdlet to apply the final mitigation step to the boot manager, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
 
-This enforcement action plan updates the boot manager to use the updated Secure Boot certificate chain and may initiate controlled, automated node reboots as part of completing the mitigation.
+This enforcement action plan updates the boot manager to use the updated Secure Boot certificate chain and might initiate controlled, automated node reboots as part of completing the mitigation.
 
 ## Recommended mitigation workflow
 
-The following workflow is recommended to ensure a smooth mitigation process with clear visibility through platform alerts and to minimize the risk of disruption:
+To ensure a smooth mitigation process with clear visibility through platform alerts and minimize the risk of disruption, follow this workflow:
 
 ### Stage 1: apply OEM firmware first (recommended)
 
@@ -79,7 +79,7 @@ The following workflow is recommended to ensure a smooth mitigation process with
 
 ### Stage 3: finalize boot manager update (if required)
 
-- If the platform indicates, via alerts, that firmware certificates are present, but the boot manager is not yet updated to use the new certificate chain (in case OEM firmware package was applied after applying AzureStack hotfix or update), run the following PEP cmdlet to enforce the final mitigation step, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
+- If the platform indicates, via alerts, that firmware certificates are present but the boot manager isn't yet updated to use the new certificate chain (in case you applied the OEM firmware package after applying AzureStack hotfix or update), run the following PEP cmdlet to enforce the final mitigation step, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
 
 ## Detailed mitigation logic (what the platform checks)
 
@@ -87,32 +87,32 @@ The platform performs the following checks and actions as part of the mitigation
 
 ### Certificate readiness checks and alerts
 
-The platform checks for the presence of required Secure Boot 2023 certificates. If any required certificate is missing, the platform raises an alert for that certificate and directs the operator to apply the latest OEM firmware package that installs the missing certificate(s).
+The platform checks for the presence of required Secure Boot 2023 certificates. If any required certificate is missing, the platform raises an alert for that certificate and directs the operator to apply the latest OEM firmware package that installs the missing certificates.
 
 ### Boot manager chain validation and alerts
 
-If the minimum required certificates are present (including **Windows UEFI CA 2023** in DB and **2023 KEK**), the platform validates whether the boot manager is using the updated certificate chain. If the boot manager is not updated, the platform raises an alert instructing the operator to run the PEP cmdlet to finalize the boot manager update.
+If the minimum required certificates are present (including **Windows UEFI CA 2023** in DB and **2023 KEK**), the platform validates whether the boot manager is using the updated certificate chain. If the boot manager isn't updated, the platform raises an alert instructing the operator to run the PEP cmdlet to finalize the boot manager update.
 
 ## HLH guidance
 
-For environments where customers manage the Hardware Lifecycle Host (HLH), those customers should check with their OEM for HLH-specific guidance. If such guidance is not available, follow the standard Microsoft Windows guidance to update firmware based on the HLH make and model, and to complete the required mitigation steps as described in:  
+For environments where you manage the Hardware Lifecycle Host (HLH), check with your OEM for HLH-specific guidance. If such guidance isn't available, follow the standard Microsoft Windows guidance to update firmware based on the HLH make and model, and to complete the required mitigation steps as described in:  
 [Windows Secure Boot certificate expiration and CA updates - Microsoft Support](https://support.microsoft.com/topic/windows-secure-boot-certificate-expiration-and-ca-updates-7ff40d33-95dc-4c3c-8725-a9b95457578e).
 
 > [!NOTE]
-> If the HLH is running an older Windows Server version, this guidance might not apply, and the HLH might need to be updated or redeployed. See the following Microsoft guidance for a list of Windows Server versions that support Secure Boot certificate mitigation: [KB5012170: Security update for Secure Boot DBX - Microsoft Support](https://support.microsoft.com/topic/kb5012170-security-update-for-secure-boot-dbx-72ff5eed-25b4-47c7-be28-c42bd211bb15#:~:text=NOTE%20Improved%20diagnostics%20have%20been,vulnerability%20exists%20in%20secure%20boot).
+> If the HLH runs an older Windows Server version, this guidance might not apply. You might need to update or redeploy the HLH. For a list of Windows Server versions that support Secure Boot certificate mitigation, see [KB5012170: Security update for Secure Boot DBX - Microsoft Support](https://support.microsoft.com/topic/kb5012170-security-update-for-secure-boot-dbx-72ff5eed-25b4-47c7-be28-c42bd211bb15#:~:text=NOTE%20Improved%20diagnostics%20have%20been,vulnerability%20exists%20in%20secure%20boot).
 
-## Impact on tenant Virtual Machines
+## Impact on tenant virtual machines
 
-Tenant virtual machines are not directly affected by Secure Boot certificate updates or boot manager mitigation actions in Azure Stack Hub.
+Secure Boot certificate updates and boot manager mitigation actions in Azure Stack Hub don't directly affect tenant virtual machines.
 
-- Azure Stack Hub tenant VMs are Gen1 virtual machines, which do not support Secure Boot.
-- Secure Boot mitigation actions apply only to the host boot chain and do not modify tenant VM configuration or guest operating systems.
+- Azure Stack Hub tenant VMs are Gen1 virtual machines, which don't support Secure Boot.
+- Secure Boot mitigation actions apply only to the host boot chain and don't modify tenant VM configuration or guest operating systems.
 - No guest‑level changes, reconfiguration, or mitigation steps are required for tenant workloads.
 - Tenant workloads remain unaffected.
 
 ## Impact on Azure Stack Hub infrastructure
 
-Secure Boot certificates mitigation primarily targets physical Azure Stack Hub hosts.
+Secure Boot certificate mitigation primarily targets physical Azure Stack Hub hosts.
 
 - Infrastructure VMs are managed and refreshed by the Azure Stack Hub platform during hub updates.
 - Infrastructure VMs created or refreshed as part of platform updates automatically pick up the updated Secure Boot state.
@@ -123,13 +123,13 @@ This section answers some frequently asked questions about the Secure Boot certi
 
 ### Do I need both a hotfix and 2604?
 
-No. You should either apply the down-level hotfix for your current Hub version **2501, 2506, 2601** or update to **2501, 2506, 2601, 2604**. In both cases, OEM firmware package is the prerequisite for certificates installation; the platform then finalizes the boot manager update when prerequisites are satisfied.
+No. You should either apply the down-level hotfix for your current Hub version **2501, 2506, 2601** or update to **2501, 2506, 2601, 2604**. In both cases, the OEM firmware package is the prerequisite for certificate installation. The platform then finalizes the boot manager update when prerequisites are satisfied.
 
-### What if I installed the hotfix/update before OEM firmware package?
+### What if I installed the hotfix or update before the OEM firmware package?
 
-This scenario is supported. Initially, platform alerts will indicate that the new Secure Boot certificates are not present and will prompt you to update the OEM firmware package. After applying the OEM firmware update, follow the platform alerts. If prompted, run the following Privileged Endpoint (PEP) cmdlet to finalize the boot manager update: `Start-SecretRotation -UpdateBootManager`.
+The platform supports this scenario. Initially, platform alerts indicate that the new Secure Boot certificates are missing and prompt you to update the OEM firmware package. After you apply the OEM firmware update, follow the platform alerts. If prompted, run the following Privileged Endpoint (PEP) cmdlet to finalize the boot manager update: `Start-SecretRotation -UpdateBootManager`.
 
-### Will the PEP cmdlet reboot my system?
+### Does the PEP cmdlet reboot my system?
 
 The PEP enforcement flow is designed to reboot nodes one at a time during the finalization step.
 
@@ -139,7 +139,7 @@ This section provides troubleshooting steps for common issues that might arise d
 
 ### Alert indicates missing certificates
 
-- Install the latest OEM firmware package that provides the missing certificate(s).
+- Install the latest OEM firmware package that provides the missing certificates.
 - After you apply the OEM firmware package update, follow the platform alerts. If prompted, run the following Privileged Endpoint (PEP) cmdlet to finalize the boot manager update: `Start-SecretRotation -UpdateBootManager`.
 
 ### Alert indicates boot manager not updated
