@@ -79,7 +79,7 @@ To ensure a smooth mitigation process with clear visibility through platform ale
 
 ### Stage 3: finalize boot manager update (if required)
 
-- If the platform indicates, via alerts, that firmware certificates are present but the boot manager isn't yet updated to use the new certificate chain (in case you applied the OEM firmware package after applying AzureStack hotfix or update), run the following PEP cmdlet to enforce the final mitigation step, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
+If the platform indicates, via alerts, that firmware certificates are present but the boot manager isn't yet updated to use the new certificate chain (if you applied the OEM firmware package after applying an Azure Stack Hub hotfix or update), run the following PEP cmdlet to enforce the final mitigation step, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
 
 ## Detailed mitigation logic (what the platform checks)
 
@@ -144,4 +144,9 @@ This section provides troubleshooting steps for common issues that might arise d
 
 ### Alert indicates boot manager not updated
 
-Run: `Start-SecretRotation -UpdateBootManager`
+Run `Start-SecretRotation -UpdateBootManager`.
+
+## Next steps
+
+- [Azure Stack Hub security best practices](azure-stack-security-av.md)
+- [Azure Stack Hub data collection](azure-stack-data-collection.md)
