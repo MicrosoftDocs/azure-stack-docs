@@ -13,16 +13,15 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article explains how to get remote support for the Azure Stack HCI operating system for Azure Local.
-It gives an overview of remote support, the terms and conditions, and the steps to enable remote support on your Azure Local. It also covers setting up proxy settings, submitting a support request, and other remote support tasks.
+This article explains how to get remote support for the Azure Stack HCI operating system for Azure Local. It gives an overview of remote support, the terms and conditions, and the steps to enable remote support on your Azure Local. It also covers setting up proxy settings, submitting a support request, and other remote support tasks.
 
 ## Overview
 
-Remote support lets a Microsoft support professional fix your support case faster by letting them access your device for limited troubleshooting and repair. You can enable remote support by granting consent and choosing the access level and duration.
+Remote support lets a Microsoft support professional fix your support case faster by letting them access your device for limited troubleshooting and repair. You can enable Remote Support by granting consent and choosing the access level and duration.
 
 :::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Diagram that shows authenticated access between the customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
-After you enable remote support, Microsoft support gets just-in-time (JIT) limited time access to your device. Access is provided over a secure, audited, and compliant channel to ensure all activities are monitored. Microsoft support can only access your device after you submit a support request, which ensures that your device remains secure and your privacy is maintained.
+After you enable Remote Support, Microsoft support gets just-in-time (JIT) limited time access to your device. Access is provided over a secure, audited, and compliant channel to ensure all activities are monitored. Microsoft support can only access your device after you submit a support request, which ensures that your device remains secure and your privacy is maintained.
 
 ## Remote support terms and conditions
 
@@ -131,7 +130,7 @@ After you enable remote support, you can perform different operations to grant r
 
 ### Enable remote support for diagnostics
 
-In this example, you grant remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
+In this example, you Grant Remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
@@ -143,9 +142,9 @@ You can set `ExpireInMinutes` a minimum duration of 60 minutes (one hour) and a 
 
 If you don't define a duration, the remote session expires in 480 minutes (8 hours) by default.
 
-### Enable remote support for diagnostics and repair
+### Enable Remote Support for diagnostics and repair
 
-In this example, you grant remote support access for diagnostic and repair related operations only. Since an expiration isn't explicitly provided, access expires in eight hours by default.
+In this example, you grant Remote Support access for diagnostic and repair related operations only. Since an expiration isn't explicitly provided, access expires in eight hours by default.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel DiagnosticsRepair
@@ -196,7 +195,7 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 
 ### [Azure portal](#tab/azureportal)
 
-This section provides an overview of the Remote Support experience in the Azure Local portal, including how customers enable it, what to expect when it is active, and how to monitor support sessions.
+This section provides an overview of the Remote Support experience in the Azure Local portal, including how to enable it, what to expect when it's active, and how to monitor support sessions.
 
 1.In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
 
@@ -256,9 +255,9 @@ Microsoft support can access your device only after you submit a support request
 
 ## Error handling
 
-When you enable remote support on Azure Local, you might encounter an error. This section describes the error message, its cause, and suggested resolutions.
+When you enable Remote Support on Azure Local, you might encounter an error. This section describes the error message, its cause, and suggested resolutions.
 
-When you run the enable remote support command for the first time, you might see the following error message:
+When you run the enable Remote Support command for the first time, you might see the following error message:
 
 ```console
 PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
