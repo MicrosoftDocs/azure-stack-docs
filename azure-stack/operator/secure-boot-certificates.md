@@ -3,10 +3,10 @@ title: Manage Secure Boot certificate updates
 description: Learn how to prepare for and complete Secure Boot certificate-related mitigation steps on Azure Stack Hub integrated systems.
 author: sethmanheim
 ms.author: sethm
-ms.reviewer: sethm
+ms.reviewer: mlawindi
 ms.date: 05/06/2026
 ms.topic: concept-article
-ms.service: azure-stack-hub
+
 ---
 
 # Manage Secure Boot certificate updates
