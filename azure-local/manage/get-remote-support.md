@@ -212,13 +212,11 @@ This section explains the steps and prerequisites required to enable Remote Supp
 
 1.You’ll also need to review and approve the **terms and conditions** to complete the process.
 
-![grant-access-remote-support](media/get-remote-support/screenshot-approval-for-remote-support.png)
+![terms-and-conditions](media/get-remote-support/terms-and-conditions.png)
 
-`1.When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active.
+1.When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active.
 
-![remote-support-granted-access-tab](media/get-remote-support/screenshot-granted-remote-support-access-1.png)
-
-![remote-support-granted-access-overview](media/get-remote-support/screenshot-granted-remote-support-access.png)
+![access-granted-view](media/get-remote-support/access-granted-view.png)
 
 1.You can view the access level which also indicates the level of access granted
 
@@ -228,11 +226,11 @@ This section explains the behavior when Remote Support is only partially enabled
 
 1.A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes
 
-![enabled-machines-overivew](media/get-remote-support/screenshot-remote-support-could-only-be-enabled-on-these-machines-.png)
+![remote-support-these-machines](media/get-remote-support/remote-support-these-machines.png)
 
 1.What happens if the required version is not present: - A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” - Learn more link will redirect to [Azure Local Remote Support Arc extension and remote support overview - Azure Local | Microsoft Learn](/azure/azure-local/manage/remote-support-arc-extension?)
 
-![extension-version-warning](media/get-remote-support/screenshot-dme-extension-version-warning-banner-.png)
+![extension-warning-banner](media/get-remote-support/extension-warning-banner.png)
 
 1.Remote Support depends on a minimum version of the __DME (Device Management Extension)__. This section documents:
 
