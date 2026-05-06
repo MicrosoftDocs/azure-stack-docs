@@ -451,7 +451,7 @@ To remediate the blocking issues in this output, open the Active Directory tool 
 
 ### [Network](#tab/network)
 
-It is possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range.
+It's possible that the IP addresses allocated to Azure Local may already be active on the network. The network validator validates your network infrastructure for valid IP ranges reserved for deployment. It attempts to ping and connect to WinRM and SSH ports to ensure there's no active host using the IP address from the reserved IP range.
 
 Network validator also checks storage connection, adapter driver readiness, and other host network configuration readiness.
 
@@ -522,12 +522,12 @@ The Arc integration validator helps assess if the Azure Local system satisfies a
 
 You can use the Arc integration validator to verify the following:
 
-- The Arc resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
+- The Arc resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you're trying to onboard.
 - One or more nodes aren't already Arc-enabled in a different subscription ID or resource group.
 - The specified Azure region is valid.
-- The resource group limit in the subscription is not reached.
-- The Azure Local resource count limit in the registration resource group is not reached.
-- The role assignment count limit in the subscription is not reached.
+- The resource group limit in the subscription isn't reached.
+- The Azure Local resource count limit in the registration resource group isn't reached.
+- The role assignment count limit in the subscription isn't reached.
 
 ### Run the Arc integration validator
 
