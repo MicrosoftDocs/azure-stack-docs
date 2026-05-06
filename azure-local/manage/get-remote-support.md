@@ -230,8 +230,6 @@ This section explains the behavior when Remote Support is only partially enabled
 
 ![enabled-machines-overivew](media/get-remote-support/screenshot-remote-support-could-only-be-enabled-on-these-machines-.png)
 
-![enable-machines-remote-support-tab](media/get-remote-support/screenshot-remote-support-could-only-be-enabled-on-these-machines-2-.png)
-
 1.What happens if the required version is not present: - A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” - Learn more link will redirect to [Azure Local Remote Support Arc extension and remote support overview - Azure Local | Microsoft Learn](/azure/azure-local/manage/remote-support-arc-extension?)
 
 ![extension-version-warning](media/get-remote-support/screenshot-dme-extension-version-warning-banner-.png)
@@ -246,15 +244,11 @@ This section explains the behavior when Remote Support is only partially enabled
 
 ![extensions-overview-page](media/get-remote-support/extensions-overview-page.png)
 
-
-
 1.You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and click **Install now**
 
 1.You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager) to complete update 
 
 ![updates-overview](media/get-remote-support/updates-overview.png)
-
-
 
 ---
 
