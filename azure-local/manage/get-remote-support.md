@@ -43,7 +43,7 @@ For more information about the personal data that Microsoft processes, how Micro
 Here's the high-level workflow to enable remote support:
 
 - [Configure proxy settings](#configure-proxy-settings)
-- [Enable remote support via PowerShell](#enable-remote-support-via-powershell)
+- [Enable remote support](#enable-remote-support)
 - [Submit a support request](#submit-a-support-request)
 - [Other remote support operations](#other-remote-support-operations)
 
