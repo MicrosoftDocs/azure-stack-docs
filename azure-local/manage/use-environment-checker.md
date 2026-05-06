@@ -1,11 +1,11 @@
 ---
-title: Use Azure Local Environment Checker to assess deployment readiness for Azure Local, version 23H2.
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Local, version 23H2.
+title: Use Azure Local Environment Checker to assess deployment readiness for Azure Local.
+description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/30/2026
+ms.date: 05/05/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -47,7 +47,7 @@ You can run the Environment Checker in two modes:
 
 - Integrated tool: The Environment Checker functionality is integrated into the deployment process. By default, all validators are run during deployment to perform pre-deployment readiness checks.
 
-- Standalone tool: This light-weight PowerShell tool is available for free download from the Windows PowerShell gallery. You can run the standalone tool anytime, outside of the deployment process. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met.
+- Standalone tool: This light-weight PowerShell tool is available for free download from the Windows PowerShell gallery. You can run the standalone tool anytime, outside of the deployment process. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met. See [Install Environment Checker](#install-environment-checker).
 
 This article describes how to run the Environment Checker in a standalone mode.
 
@@ -57,9 +57,9 @@ Before you begin, complete the following tasks:
 
 - Review [Azure Local system requirements](../concepts/system-requirements-23h2.md).
 - Review [Firewall requirements for Azure Local](../concepts/firewall-requirements.md).
-- Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Local instance.
-- Make sure that the client computer used is running PowerShell 5.1 or later.
-- Make sure you have permission to verify the Active Directory preparation tool is run.
+- Make sure you have access to a client computer that runs on the network where you deploy the Azure Local instance.
+- Make sure that the client computer used runs PowerShell 5.1 or later.
+- Make sure you have permission to verify the Active Directory preparation tool has run.
 
 ## Install Environment Checker
 
@@ -95,7 +95,7 @@ To install the Environment Checker, follow these steps:
 
 ## Run readiness checks
 
-Each validator in the Environment Checker tool checks specific settings and requirements. You can run these validators by invoking their respective PowerShell cmdlet on each machine in your Azure Local system or from any computer on the network where you'll deploy Azure Local.
+Each validator in the Environment Checker tool checks specific settings and requirements. You can run these validators by invoking their respective PowerShell cmdlet on each machine in your Azure Local system or from any computer on the network where you deploy Azure Local.
 
 You can run the validators from the following locations:  
 
@@ -113,8 +113,8 @@ Use the connectivity validator to check if all the machines in your system have 
 
 You can use the connectivity validator to:
 
-- Check the connectivity of your machines before receiving the actual hardware. You can run the connectivity validator from any client computer on the network where you'll deploy the Azure Local system.
-- Check the connectivity of all the machines in your system after you've deployed the system. You can check the connectivity of each machine by running the validator cmdlet locally on each machine. Or, you can remotely connect from a staging server to check the connectivity of one or more machines.
+- Check the connectivity of your machines before receiving the actual hardware. You can run the connectivity validator from any client computer on the network where you deploy the Azure Local system.
+- Check the connectivity of all the machines in your system after you deploy the system. You can check the connectivity of each machine by running the validator cmdlet locally on each machine. Or, you can remotely connect from a staging server to check the connectivity of one or more machines.
 
 ### Run the connectivity validator
 
@@ -129,7 +129,7 @@ To run the connectivity validator, follow these steps.
    ```
 
    > [!NOTE]
-   > Using the `Invoke-AzStackHciConnectivityValidation` cmdlet without any parameter checks connectivity for all the service endpoints that are enabled from your device. You can also pass parameters to run readiness checks for specific scenarios. See examples, below.
+   > Using the `Invoke-AzStackHciConnectivityValidation` cmdlet without any parameter checks connectivity for all the service endpoints that are enabled from your device. You can also pass parameters to run readiness checks for specific scenarios.
 
 Here are some examples of running the connectivity validator cmdlet with parameters.
  
@@ -152,7 +152,7 @@ Invoke-AzStackHciConnectivityValidation -Service "Arc For Servers"
  
 #### Example 3: Check connectivity if you're using a proxy
 
-If you're using a proxy server, you can specify the connectivity validator to go through the specified proxy and credentials, as shown in the following example:
+If you use a proxy server, you can specify the connectivity validator to go through the specified proxy and credentials, as shown in the following example:
 
 ```powershell
 Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -ProxyCredential $proxyCredential 
@@ -394,7 +394,7 @@ With this release, you must run the Active Directory preparation tool to create 
 Use the Active Directory validator to:
 
 - Validate the Active Directory preparation tool is run and the gMSAs are set and groups are provisioned prior to starting the deployment.
-- Assess any Active Directory issue during deployment. The support team can check the validator report logs to assess if you'd run the Active Directory preparation tool before deployment.
+- Assess any Active Directory issue during deployment. The support team can check the validator report logs to assess if you ran the Active Directory preparation tool before deployment.
 
 ### Run the Active Directory validator
 
@@ -455,10 +455,10 @@ It is possible that the IP addresses allocated to Azure Local may already be act
 
 Network validator also checks storage connection, adapter driver readiness, and other host network configuration readiness.
 
-You provide the answer file JSON as the input for network validator cmdlet call. The answer file is a JSON file generated by the Azure portal deployment wizard that contains the complete deployment configuration, including node details, network settings, and reserved IP ranges. For example, C:\MASLogs\Unattended-2024-07-18-20-44-48.json. Alternatively, you can manually provide the individual parameters when running the validator cmdlet.
+You provide the answer file JSON as the input for network validator cmdlet call. The answer file is a JSON file generated by the Azure portal deployment wizard that contains the complete deployment configuration. This includes node details, network settings, and reserved IP ranges. For example, C:\MASLogs\Unattended-2024-07-18-20-44-48.json. Alternatively, you can manually provide the individual parameters when running the validator cmdlet.
 
 > [!NOTE]
-> - There is currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
+> - There's currently a limitation where the network validator can only be executed after the portal wizard has continued to the last step, just before the actual deployment starts.
 >- You must run the network validator on the final hardware that you want to use for the Azure local instance deployment.
 
 ### Run the network validator
@@ -595,7 +595,7 @@ The information displayed on each readiness check report varies depending on the
 > [!NOTE]
 > The results reported by the Environment Checker tool reflect the status of your settings only at the time that you ran it. If you make changes later, for example to your Active Directory or network settings, items that passed successfully earlier can become critical issues.
 
-For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
+For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are blocking issues that you must fix before proceeding with the deployment.
 
 ## Uninstall environment checker
 
