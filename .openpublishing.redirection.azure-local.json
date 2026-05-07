@@ -1987,7 +1987,7 @@
     },
     {
       "source_path": "azure-local/concepts/system-requirements-small-23h2.md",
-      "redirect_url": "/azure/azure-local/concepts/system-requirements-23h2.md",
+      "redirect_url": "/azure/azure-local/concepts/system-requirements-23h2",
       "redirect_document_id": false
     }
   ]
