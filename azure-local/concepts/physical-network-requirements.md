@@ -420,7 +420,7 @@ Here are the mandatory IEEE standards and specifications:
 | Priority Flow Control|| &check;| | |
 | Enhanced Transmission Selection|| &check;| | |
 | LLDP Port VLAN ID |&check;| | | |
-| LLDP VLAN Name|| &check;| & check;|&check; |
+| LLDP VLAN Name|| &check;| &check;|&check; |
 | LLDP Link Aggregation|&check;| &check;| &check;|&check; |
 | LLDP ETS Configuration||&check; | | |
 | LLDP ETS Recommendation || &check;|| |
