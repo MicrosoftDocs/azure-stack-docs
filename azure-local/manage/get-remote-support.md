@@ -276,13 +276,13 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Error Message**: Processing data from remote server `NodeName` failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
 
-**Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, WinRM restarts twice, which can disrupt the PowerShell session to the node.
+**Cause**: When you enable Remote Support, a Windows Remote Management (WinRM) service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, WinRM restarts twice, which can disrupt the PowerShell session to the node.
 
-**Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
+**Suggested resolutions**: You can choose one of the following options to resolve this error and enable Remote Support:
 
 - Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
-    - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
-- Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
+    - After the third run of the enable Remote Support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
+- Instead of using the Remote PowerShell session, you can enable Remote Support by connecting to each node using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
 
 ## Next steps
 
