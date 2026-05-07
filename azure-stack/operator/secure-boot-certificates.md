@@ -4,7 +4,7 @@ description: Learn how to prepare for and complete Secure Boot certificate-relat
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: mlawindi
-ms.date: 05/06/2026
+ms.date: 05/07/2026
 ms.topic: how-to
 
 ---
@@ -43,16 +43,16 @@ Before you begin, make sure you have the following prerequisites in place:
 
 ## Supported release paths
 
-You can enable Secure Boot mitigation support by updating Azure Stack Hub to versions **2501, 2506, 2601, and 2604**, in addition to applying the corresponding Secure Boot mitigation hotfixes for versions **2501, 2506, and 2601 with the latest hotfix installed**.
+Azure Stack Hub platform updates and corresponding hotfixes provide Secure Boot mitigation support. 
 
-- Azure Stack Hub versions **2501, 2506, 2601, and 2604** can receive mitigation support by:
-  - Updating to these platform versions, or
-  - Applying the Secure Boot mitigation hotfix available for the current supported versions **2501, 2506, and 2601**.
+- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation.
+- Azure Stack Hub version 2506 supports Secure Boot mitigation by updating to the most recent 2601 that includes Secure Boot mitigation, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
+- Azure Stack Hub version 2501 supports Secure Boot mitigation by updating to a supported 2506 release that includes Secure Boot mitigation, when available, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 
 These updates and hotfixes enable the platform to:
 
 - Validate the presence of required Secure Boot 2023 certificates delivered through the OEM firmware package.
-- Raise alerts when Secure Boot 2023 certificates are not present.
+- Raise alerts when Secure Boot 2023 certificates aren't present.
 - Detect when the boot manager isn't yet updated to use the new certificate chain.
 - Finalize the boot manager update when prerequisites are satisfied.
 - If you apply updates or hotfixes after the platform updates the certificates through the OEM firmware package, the boot manager updates automatically as part of the update or hotfix process.
@@ -74,8 +74,13 @@ To ensure a smooth mitigation process with clear visibility through platform ale
 
 ### Stage 2: apply Azure Stack Hub hotfix or update
 
-- Update Azure Stack Hub to version **2501, 2506, 2601, or 2604**, or apply the Secure Boot mitigation hotfix for versions **2501, 2506, or 2601**.
-- During or after servicing, the platform evaluates certificate readiness and surfaces alerts as needed.
+Apply the supported update or version-specific hotfix that enables Secure Boot mitigation for your Azure Stack Hub version:
+
+- For version 2601, apply the most recent 2601 hotfix that includes Secure Boot mitigation.
+- For version 2506, either update to the most recent 2601 release that includes Secure Boot mitigation, or apply the version-specific hotfix that includes Secure Boot mitigation, when available.
+- For version 2501, either update to a supported 2506 release that includes Secure Boot mitigation, when available, or apply the version-specific hotfix that includes Secure Boot mitigation, when available.
+
+During or after servicing, the platform evaluates certificate readiness and surfaces alerts as needed.
 
 ### Stage 3: finalize boot manager update (if required)
 
@@ -114,16 +119,22 @@ Secure Boot certificate updates and boot manager mitigation actions in Azure Sta
 
 Secure Boot certificate mitigation primarily targets physical Azure Stack Hub hosts.
 
-- Infrastructure VMs are managed and refreshed by the Azure Stack Hub platform during hub updates.
-- Infrastructure VMs created or refreshed as part of platform updates automatically pick up the updated Secure Boot state.
+- The Azure Stack Hub platform manages and refreshes infrastructure VMs during hub updates.
+- Infrastructure VMs that you create or refresh as part of platform updates automatically pick up the updated Secure Boot state.
 
 ## FAQ
 
 This section answers some frequently asked questions about the Secure Boot certificate mitigation process.
 
-### Do I need both a hotfix and 2604?
+### Do I need to apply both a hotfix and a platform update?
 
-No. You should either apply the down-level hotfix for your current Hub version **2501, 2506, 2601** or update to **2501, 2506, 2601, 2604**. In both cases, the OEM firmware package is the prerequisite for certificate installation. The platform then finalizes the boot manager update when prerequisites are satisfied.
+No. You should apply the supported update or version-specific hotfix for your current Azure Stack Hub version:
+
+- For version 2601, apply the most recent 2601 hotfix that includes Secure Boot mitigation.
+- For version 2506, update to the most recent 2601 release that includes Secure Boot mitigation, or apply the version-specific hotfix that includes Secure Boot mitigation, when available.
+- For version 2501, update to a supported 2506 release that includes Secure Boot mitigation, when available, or apply the version-specific hotfix that includes Secure Boot mitigation, when available. 
+
+In all cases, the OEM firmware package is a prerequisite for installing the required certificates. After the prerequisites are met, the platform finalizes the boot manager update.
 
 ### What if I installed the hotfix or update before the OEM firmware package?
 
