@@ -199,37 +199,37 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 1.In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
 
-![remote-support-overview](media/get-remote-support/remote-support-overview.png)
+![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview.png)
 
 This section explains the steps and prerequisites required to enable Remote Support via the Azure portal
 
 1.Select **Grant access** to enable remote support.
 
-![grant-access-remote-support-overview](media/get-remote-support/grant-access-remote-support-overview.png)
+![Screenshot of remote support grant access.](media/get-remote-support/grant-access-remote-support-overview.png)
 
 1.To grant access, you’ll need to select the appropriate **access level**—either **Diagnostics** or **Diagnostics and Repair**—and specify the **access period**, which defines how long support can access your device.
 
 1.You’ll also need to review and approve the **terms and conditions** to complete the process.
 
-![terms-and-conditions](media/get-remote-support/terms-and-conditions.png)
+![Screenshot of terms and conditions.](media/get-remote-support/terms-and-conditions.png)
 
 1.When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active.
 
-![access-granted-view](media/get-remote-support/access-granted-view.png)
+![Screenshot of granted access.](media/get-remote-support/access-granted-view.png)
 
 1.You can view the access level which also indicates the level of access granted
 
-![access-granted-level](media/get-remote-support/access-granted-level.png)
+![Screenshot of access granted level.](media/get-remote-support/access-granted-level.png)
 
 This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
 
 1.A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes
 
-![remote-support-these-machines](media/get-remote-support/remote-support-these-machines.png)
+![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-these-machines.png)
 
 1.What happens if the required version is not present: - A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” - Learn more link will redirect to [Azure Local Remote Support Arc extension and remote support overview - Azure Local | Microsoft Learn](/azure/azure-local/manage/remote-support-arc-extension?)
 
-![extension-warning-banner](media/get-remote-support/extension-warning-banner.png)
+![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png)
 
 1.Remote Support depends on a minimum version of the __DME (Device Management Extension)__. This section documents:
 
@@ -239,13 +239,13 @@ This section explains the behavior when Remote Support is only partially enabled
 
 1.Go to Extensions, you can see the AzureEdgeDeviceManagement extension along with its version details.
 
-![extensions-overview-page](media/get-remote-support/extensions-overview-page.png)
+![Screenshot of extensions overview.](media/get-remote-support/extensions-overview-page.png)
 
 1.You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and click **Install now**
 
 1.You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager) to complete update 
 
-![updates-overview](media/get-remote-support/updates-overview.png)
+![Screenshot of updates overview.](media/get-remote-support/updates-overview.png)
 
 ---
 
