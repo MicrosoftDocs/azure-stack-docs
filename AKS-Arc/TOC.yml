@@ -227,6 +227,8 @@
             href: delete-cluster-pdb.md
       - name: Security
         items:
+        - name: Security bulletins
+          href: security-bulletins.md
         - name: Security book - recommendations and best practices
           href: /azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json
           displayName: security, best practices, recommendations
