@@ -36,7 +36,8 @@ Group mandatory certificates by area with the appropriate Subject Alternative Na
   - Use a private or internal certificate authority (CA).
   - Only internal network access to the certificate revocation list (CRL) endpoint is required.
   - Internet connectivity isn't required.
-  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension.
+  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension. 
+  - Use the script in the appendix to validate your CRL endpoints if you are unsure your setup is correct.
   - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoint certificate requirements
@@ -210,7 +211,92 @@ TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporat
 ```
 
 ### Appendix
+#### Validate CRL using Powershell script
+- Copy the below script into a file and name it ValidateCRL.ps1 
+- Invoke the script by using `.\ValidateCRL.ps1 -domainFQDN 'cloud.contoso.com'`
+```powershell
+# Powershell script for validation of certificates
 
+param (
+[Parameter(Mandatory=$false)]
+    [ValidateNotNullOrEmpty()]
+    [string] $domainFQDN = "cloud.contoso.com"
+)
+
+
+$portalURI = "https://portal.$domainFQDN"
+$armURI = "https://armmanagement.$domainFQDN/metadata/endpoints?api-version=2022-09-01"
+ 
+
+Add-Type -AssemblyName System.Net.Http
+ 
+
+foreach ($uri in @($portalURI, $armURI)) {
+    Write-Host "`n============================================" -ForegroundColor Cyan
+    Write-Host "Testing: $uri" -ForegroundColor Cyan
+    Write-Host "============================================" -ForegroundColor Cyan
+ 
+
+    # --- Test 1: CRL check ENABLED (matches your failing code) ---
+    Write-Host "`n[CRL CHECK = TRUE]" -ForegroundColor Yellow
+    try {
+        $handler = [System.Net.Http.HttpClientHandler]::new()
+        $handler.CheckCertificateRevocationList = $true
+        $client = [System.Net.Http.HttpClient]::new($handler)
+        $task = $client.GetAsync($uri)
+        $response = $task.GetAwaiter().GetResult()
+        Write-Host "  Status: $([int]$response.StatusCode) ($($response.StatusCode))" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "  FAILED:" -ForegroundColor Red
+        $ex = $_.Exception
+        $depth = 0
+        while ($ex) {
+            $indent = "  " + ("  " * $depth)
+            Write-Host "${indent}[$($ex.GetType().FullName)]" -ForegroundColor Red
+            Write-Host "${indent}Message: $($ex.Message)" -ForegroundColor Red
+            Write-Host "${indent}HResult: 0x$($ex.HResult.ToString('X8'))" -ForegroundColor DarkYellow
+            $ex = $ex.InnerException
+            $depth++
+        }
+    }
+    finally {
+        if ($client) { $client.Dispose() }
+        if ($handler) { $handler.Dispose() }
+    }
+ 
+
+    # --- Test 2: CRL check DISABLED (matches your passing PowerShell test) ---
+    Write-Host "`n[CRL CHECK = FALSE]" -ForegroundColor Yellow
+    try {
+        $handler2 = [System.Net.Http.HttpClientHandler]::new()
+        $handler2.CheckCertificateRevocationList = $false
+        $client2 = [System.Net.Http.HttpClient]::new($handler2)
+        $task2 = $client2.GetAsync($uri)
+        $response2 = $task2.GetAwaiter().GetResult()
+        Write-Host "  Status: $([int]$response2.StatusCode) ($($response2.StatusCode))" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "  FAILED:" -ForegroundColor Red
+        $ex2 = $_.Exception
+        $depth2 = 0
+        while ($ex2) {
+            $indent2 = "  " + ("  " * $depth2)
+            Write-Host "${indent2}[$($ex2.GetType().FullName)]" -ForegroundColor Red
+            Write-Host "${indent2}Message: $($ex2.Message)" -ForegroundColor Red
+            $ex2 = $ex2.InnerException
+            $depth2++
+        }
+    }
+    finally {
+        if ($client2) { $client2.Dispose() }
+        if ($handler2) { $handler2.Dispose() }
+    }
+}
+ 
+
+
+```
 #### Create certificates script based
 
 If you prefer to control certificate generation, here's an example you can modify to create CSRs and issue certificates.
