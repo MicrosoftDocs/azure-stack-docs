@@ -128,6 +128,10 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2603 | 2603.1.25508 | AzureLocal24H2.26100.1742.LCM.12.2603.0.3012 |
 | 2604 | 2604.1.25621 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 |
 
+## Original Equipment manufacturer (OEM) Golden images with lower version
+If your nodes comes pre-installed with a golden image, please update the image so it get's to the correct target solution version. For exact versions, see : http://aka.ms/azureedgeupdates. 
+To run an update out-of-band , see [Import and discover update packages with limited connectivity](/azure-local/update/import-discover-updates-offline-23h2)
+
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).
