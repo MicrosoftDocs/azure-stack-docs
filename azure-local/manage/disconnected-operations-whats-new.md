@@ -22,8 +22,8 @@ This article describes new features and improvements in disconnected operations 
 - OperationsModule: enables client certificate rotation, cmdlet naming standardization
 - BCDR : Restore implementation added to operation module
 - Added automation credential support and docs
-
 ::: moniker-end
+
 ::: moniker range="=azloc-2603"
 
 ## Features and improvements in 2603
