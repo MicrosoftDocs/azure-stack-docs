@@ -146,12 +146,24 @@ For fully automated deployments - use the AutomationCertificate as part of the I
 
 Here is an example on how to login with that certificate post-deployment:
 ```powershell
-az login --service-principal --username 2cb981cc-147e-47cd-a32c-4bb0dfa60573 --certificate /path/to/cert.pem --tenant 98b8267d-e97f-426e-8b3f-7956511fd63f
+$username = '2cb981cc-147e-47cd-a32c-4bb0dfa60573'
+$certPath = 'C:\Aldo\operatorcert.pem'
+$tenantId = '98b8267d-e97f-426e-8b3f-7956511fd63f'
+# Example using az login
+az login --service-principal --username $username --certificate $certPath --tenant $tenantId
+
+# Example using Powershell
+# Make sure the cert is installed in the CurrentUser cert store
+$CertThumbprint = (Get-ChildItem Cert:\CurrentUser\My | Where-Object { $_.Subject -like "*Azure Local disconnected operations automation credential*" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
+                  -ApplicationId $username`
+                  -TenantId $tenantId `
+                  -CertificateThumbprint $certThumbprint
 ```
 Please make note of the following:
- - Username is static - this is the application id acting as the operator
+ - Username is static. This is the application id acting as the operator
  - You need to ensure you have converted/exported the certificate to a .pem file
- 
+
 ## Limitations
 
 Consider these limitations when you plan your identity integration with disconnected operations:
