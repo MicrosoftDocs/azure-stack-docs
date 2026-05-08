@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 03/05/2026
-ms.author: robess
-author: ronmiab
+ms.author: dbristow
+author: dougbristow
 ---
 
 # Troubleshoot Nexus Kubernetes VM scheduling failures due to topology spread constraints

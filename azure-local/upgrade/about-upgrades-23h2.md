@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides an overview of upgrading your version 22H2 cluster to Azure Local (*formerly Azure Stack HCI*).
+This article provides an overview of upgrading your version 22H2 cluster to Azure Local.
 
 [!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 

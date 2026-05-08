@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 07/19/2024
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Troubleshoot Bare Metal Machine provisioning in an Azure Operator Nexus cluster

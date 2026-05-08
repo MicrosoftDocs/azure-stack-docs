@@ -2,8 +2,8 @@
 title: Unregister and re-register Azure Local machines
 description: Learn how to unregister and re-register Azure Local machines without having to install the operating system again.
 ms.topic: how-to
-ms.author: alkohli
-author: alkohli
+ms.author: robess
+author: ronmiab
 ms.date: 03/03/2026
 ms.subservice: hyperconverged
 ---

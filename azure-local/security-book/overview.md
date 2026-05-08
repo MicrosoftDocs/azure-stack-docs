@@ -1,10 +1,10 @@
 ---
 title:  Azure Local security book overview
 description: Overview of the Azure Local security book.
-author: alkohli
+author: ronmiab
 ms.topic: overview
 ms.date: 08/11/2025
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 
