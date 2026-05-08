@@ -1,3 +1,12 @@
+---
+title: Security bulletins for AKS on Azure Local
+description: Security vulnerability advisories and mitigation guidance for AKS enabled by Azure Arc on Azure Local.
+author: leslielin
+ms.author: leslielin
+ms.topic: concept-article
+ms.date: 05/08/2026
+---
+
 
 # Security bulletins for AKS on Azure Local
 
@@ -6,7 +15,7 @@
 This page provides information on security vulnerabilities affecting AKS on Azure Local, including critical advisories, ongoing investigations, and confirmed false positives.
 
 > [!NOTE]
-> For security bulletins affecting AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/security-bulletins/overview).
+> For security bulletins affecting AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
 
 ---
 
@@ -60,7 +69,7 @@ Patched VHD images are available through AKS extension hotfixes. Remediation req
 Azure Local 2605 ships with the fix natively (extension 6.0.133). No action needed.
 
 > [!IMPORTANT]
-> Customers on Azure Local releases prior to 2602 must first upgrade their Azure Local deployment to 2602 or later before applying this fix. See [Azure Local update documentation](https://learn.microsoft.com/en-us/azure/azure-local/update/) for upgrade guidance.
+> Customers on Azure Local releases prior to 2602 must first upgrade their Azure Local deployment to 2602 or later before applying this fix. See [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2) for upgrade guidance.
 
 ```azurecli
 az k8s-extension update \
