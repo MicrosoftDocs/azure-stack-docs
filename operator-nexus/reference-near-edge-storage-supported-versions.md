@@ -2,7 +2,7 @@
 title: Supported Storage Software Versions in Azure Operator Nexus
 description: Learn the storage appliance software versions supported by Azure Operator Nexus versions.
 ms.topic: concept-article
-ms.date: 12/10/2025
+ms.date: 05/08/2026
 author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
@@ -105,6 +105,8 @@ Azure Operator Nexus supports and tests the latest combination of a Purity versi
 | 6.5.8            | 2.2.1       |
 | 6.5.10           | 2.2.2       |
 | 6.5.11           | 2.2.4       |
+| 6.9.4            | 2.2.5       |
+
 
 ## FAQ
 
