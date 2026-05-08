@@ -107,7 +107,6 @@ Azure Operator Nexus supports and tests the latest combination of a Purity versi
 | 6.5.11           | 2.2.4       |
 | 6.9.4            | 2.2.5       |
 
-
 ## FAQ
 
 ### How does Microsoft notify me of a new supported Purity version?
