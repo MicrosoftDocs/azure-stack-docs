@@ -27,7 +27,7 @@ Certificates must come from a public certificate authority (CA) or enterprise ce
 Group mandatory certificates by area with the appropriate Subject Alternative Name (SAN). Before you create the certificates, review these requirements:
 
 - The use of self-signed certificates isn't supported. We recommend you use certificates issued by an enterprise CA.
-- Disconnected operations require 24 external certificates for the endpoints it exposes.
+- Disconnected operations require 23 external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
 - Define the subject and SAN for all certificates, as required by most browsers.
 - All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
