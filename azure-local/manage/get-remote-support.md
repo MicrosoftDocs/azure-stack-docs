@@ -201,7 +201,7 @@ This section provides an overview of the Remote Support experience in the Azure 
 
    ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview.png)
 
-   This section explains the steps and prerequisites required to enable Remote Support via the Azure portal
+   This section explains the steps and prerequisites required to enable Remote Support via the Azure portal.
 
 1. Select **Grant access** to enable remote support.
 
@@ -217,19 +217,19 @@ This section provides an overview of the Remote Support experience in the Azure 
 
    ![Screenshot of granted access.](media/get-remote-support/access-granted-view.png)
 
-1. You can view the access level which also indicates the level of access granted
+1. You can view the access level which also indicates the level of access granted.
 
    ![Screenshot of access granted level.](media/get-remote-support/access-granted-level.png)
 
     This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
 
-1. A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes
+1. A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes.
 
    ![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-these-machines.png)
 
-1. What happens if the required version is not present: A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” 
+1. What happens if the required version is not present: A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more”.
 
-   To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension.md)
+   To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension.md).
 
    ![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png)
 
@@ -243,9 +243,9 @@ This section provides an overview of the Remote Support experience in the Azure 
 
    ![Screenshot of extensions overview.](media/get-remote-support/extensions-overview-page.png)
 
-1. You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and click **Install now**
+1. You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and click **Install now**.
 
-1. You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager) to complete update 
+1. You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager) to complete update.
 
    ![Screenshot of updates overview.](media/get-remote-support/updates-overview.png)
 
