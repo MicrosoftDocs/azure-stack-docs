@@ -227,7 +227,9 @@ This section explains the behavior when Remote Support is only partially enabled
 
    ![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-these-machines.png)
 
-1. What happens if the required version is not present: - A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” - Learn more link will redirect to [Azure Local Remote Support Arc extension and remote support overview - Azure Local | Microsoft Learn](/azure/azure-local/manage/remote-support-arc-extension?)
+1. What happens if the required version is not present: A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” 
+
+   To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension?)
 
    ![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png)
 
