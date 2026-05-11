@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 04/30/2026
+ms.date: 05/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -41,7 +41,7 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
 
 ## Key considerations
 
-- Starting with Azure Local 2604, quality updates are available prior the cumulative update to stay compliant and remove partner dependencies.
+- Starting with Azure Local 2604, to stay compliant and remove partner dependencies, quality updates are available prior to the cumulative update.
 
 - Before the 2504 release, the solution only released one version each month, and it aligned with OS build 25398.xxxx.
 
