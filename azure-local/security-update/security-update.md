@@ -16,7 +16,7 @@ This article lists the various security updates that are available for Azure Loc
 
 ## May OS security update (KB5087539) for Azure Local
 
-This section provides the 2604 security updates associated with OS build **26100.32814** released on May 12, 2026 ([KB5087539](https://support.microsoft.com/help/5087539)).
+This section provides the 2604 security updates associated with OS build **26100.32860** released on May 12, 2026 ([KB5087539](https://support.microsoft.com/help/5087539)).
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
@@ -110,7 +110,7 @@ For more information about security vulnerabilities addressed by this update, se
 
 ## File Information
 
-For a list of the files provided in this update, download the file information for [cumulative update 5087539]().
+For a list of the files provided in this update, download the file information for [cumulative update 5087539](https://go.microsoft.com/fwlink/?linkid=2364610).
 
 ::: moniker-end
 
