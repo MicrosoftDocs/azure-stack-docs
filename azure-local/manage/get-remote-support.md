@@ -221,7 +221,7 @@ This section provides an overview of the Remote Support experience in the Azure 
 
    ![Screenshot of access granted level.](media/get-remote-support/access-granted-level.png)
 
-This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
+    This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
 
 1. A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes
 
