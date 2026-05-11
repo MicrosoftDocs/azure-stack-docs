@@ -229,7 +229,7 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 1. What happens if the required version is not present: A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more” 
 
-   To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension)
+   To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension.md)
 
    ![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png)
 
