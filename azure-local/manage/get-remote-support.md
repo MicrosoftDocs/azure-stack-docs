@@ -199,7 +199,7 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 1. In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
    
-   [ ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview-page.png) ](image-file-expanded.png)
+   [ ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview-page.png) ](remote-support-overview-page.png)
    
    This section explains the steps and prerequisites required to enable Remote Support via the Azure portal.
    
