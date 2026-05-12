@@ -42,7 +42,7 @@ No, you don't need internet connectivity to install ESUs, unless you're using an
 
 ### Can I use MAK keys to get ESUs for VMs on Azure Local?
 
-Yes. If you already bought MAK keys, you can apply them by following the instructions in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys aren't free. Consider switching to the Azure verification for VMs approach so that you can automatically get free ESUs through your Azure Local going forward.
+Yes. If you already bought MAK keys, you can apply them by following the instructions in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091).
 
 ### Can I discover ESUs if I don't have Azure verification for VMs?
 
