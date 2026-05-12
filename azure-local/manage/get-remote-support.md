@@ -198,11 +198,11 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 This section provides an overview of the Remote Support experience in the Azure Local portal, including how to enable it, what to expect when it's active, and how to monitor support sessions.
 
 1. In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
-
-   ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview.png)
-
+   
+   [ ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview-page.png) ](image-file-expanded.png)
+   
    This section explains the steps and prerequisites required to enable Remote Support via the Azure portal.
-
+   
 1. Select **Grant access** to enable remote support.
 
    ![Screenshot of remote support grant access.](media/get-remote-support/grant-access-remote-support-overview.png)
