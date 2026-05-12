@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 04/30/2026
+ms.date: 05/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -33,11 +33,15 @@ Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so for
 
 - **Cumulative build**: A cumulative update build includes the incremental updates from the most recent feature build.
 
-The following diagram illustrates the feature builds, cumulative updates, and update paths.
+- **Quality build**: A quality update is optional; it only includes security updates and isn't cumulative. It doesn't replace a cumulative build which includes incremental updates.
+
+The following diagram illustrates the feature builds, cumulative updates, quality updates, and update paths.
 
 :::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Screenshot of Azure Local release trains with supported update paths." lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
 ## Key considerations
+
+- Starting with Azure Local 2604, to stay compliant and remove partner dependencies, quality updates are available prior to the cumulative update.
 
 - Before the 2504 release, the solution only released one version each month, and it aligned with OS build 25398.xxxx.
 
@@ -81,13 +85,13 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. After you upgrade your solution, you might see 10.x versions. These versions are supported.
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2604.1003.1002** build.
+> The new deployments of this software use the **12.2604.1003.1005** build.
 
 #### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
 | Solution version | OS build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
-| 12.2604.1003.1002 <br><br> Availability date: 2026-05-01 <br><br> Supersedes: 12.2604.1003.209 <br><br> Availability date: 2026-04-22 | 26100.32690 | [April OS security update](security-update/security-update.md?view=azloc-2604&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2604&preserve-view=true#features-and-improvements-in-2604) | [Known issues](./known-issues.md?view=azloc-2604&preserve-view=true) |
+| 12.2604.1003.1005 <br><br> Availability date: 2026-05-11 <br><br> Supersedes: 12.2604.1003.209 <br><br> Availability date: 2026-04-22 | 26100.32690 | [April OS security update](security-update/security-update.md?view=azloc-2604&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2604&preserve-view=true#features-and-improvements-in-2604) | [Known issues](./known-issues.md?view=azloc-2604&preserve-view=true) |
 | 12.2603.1002.500 <br><br> Availability date: 2026-04-06 <br><br> Supersedes: 12.2603.1002.15 <br><br> Availability date: 2026-03-17 | 26100.32522 | [March OS security update](security-update/security-update.md?view=azloc-2603&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2603&preserve-view=true#features-and-improvements-in-2603) | [Known issues](./known-issues.md?view=azloc-2603&preserve-view=true) |
 | 12.2602.1002.501 <br><br> Availability date: 2026-03-02 <br><br> Supersedes: 12.2602.1002.7 <br><br> Availability date: 2026-02-17 | 26100.32370 | [February OS security update](security-update/security-update.md?view=azloc-2602&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2602&preserve-view=true#features-and-improvements-in-2602) | [Known issues](./known-issues.md?view=azloc-2602&preserve-view=true) |
 | 12.2601.1002.503 <br><br> Availability date: 2026-02-02 <br><br> Supersedes: 12.2601.1002.38 <br><br> Availability date: 2026-01-22 | 26100.32230 | [January OS security update](security-update/security-update.md?view=azloc-2601&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2601&preserve-view=true#features-and-improvements-in-2601) | [Known issues](./known-issues.md?view=azloc-2601&preserve-view=true) |
