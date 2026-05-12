@@ -19,7 +19,7 @@ This document provides a step-by-step guide to upgrade the operating system (OS)
 
 - An **on-premises machine** with access to the Terminal Server for file transfers.
 
-- Download **25.10.0 firmware**: [Opengear Firmware](https://ftp.opengear.com/download/opengear_appliances/OM/). 
+- Download **25.11.0 firmware**: [Opengear Firmware](https://ftp.opengear.com/download/opengear_appliances/OM/). 
 
 - After downloading the firmware, verify the **SHA1 checksum** to ensure integrity before proceeding with the installation.
 
@@ -61,10 +61,10 @@ After downloading the OS image on the on-premises machine, verify its integrity 
 
 ### Step 1: Download the SHA checksum file  
 
-Use `wget` or any other utility to download the checksum file corresponding to the OS version 25.10.0.
+Use `wget` or any other utility to download the checksum file corresponding to the OS version 25.11.0.
 
 ```bash
-wget https://ftp.opengear.com/download/opengear_appliances/OM/archive/25.10.0/SHASUMS
+wget https://ftp.opengear.com/download/opengear_appliances/OM/archive/25.11.0/SHASUMS
 ```
 
 ### Step 2: Compute and compare the SHA1 checksum 
@@ -79,7 +79,7 @@ cat SHASUMS | sha1sum -c
 
 ```bash
 $ cat SHASUMS | sha1sum -c
-operations_manager-25.10.0-production-signed.raucb: OK
+operations_manager-25.11.0-production-signed.raucb: OK
 ```
 
 Ensure that the output returns **"OK"** to confirm the file integrity before proceeding with installation.  
@@ -201,19 +201,19 @@ scp -r -o MACs=umac-128-etm@openssh.com root@<ts_ip>:/mnt/nvram/opengear_provisi
 Upload the latest downloaded firmware from on premise machine to the Terminal Server.
 
 ```bash
-scp -r -o MACs=umac-128-etm@openssh.com ./operations_manager-25.10.0-production-signed.raucb root@<ts_ip>:/tmp/
+scp -r -o MACs=umac-128-etm@openssh.com ./operations_manager-25.11.0-production-signed.raucb root@<ts_ip>:/tmp/
 ```
 
 >[!Note]
 > Replace <ts_ip> with the Terminal Server IP.<br>
-> Ensure the file name corresponds to the specific firmware version being used. For example, <operations_manager-25.10.0-production-signed.raucb> is the file name for Opengear OS version 25.10.0. Adjust the file name accordingly for your firmware version.
+> Ensure the file name corresponds to the specific firmware version being used. For example, <operations_manager-25.11.0-production-signed.raucb> is the file name for Opengear OS version 25.11.0. Adjust the file name accordingly for your firmware version.
 
 ### Initiate installation of firmware
 
 Run the following command on the Terminal Server.
 
 ```bash
-sudo puginstall --reboot-after /tmp/operations_manager-25.10.0-production-signed.raucb
+sudo puginstall --reboot-after /tmp/operations_manager-25.11.0-production-signed.raucb
 ```
 > [!Note]
 > The upgrade process takes 5–10 minutes, during which the Terminal Server will reboot automatically
@@ -267,7 +267,7 @@ After confirming the successful upgrade, delete temporary files from the on-prem
 
 ```bash
 rm -rf ~/ts_backup
-rm -rf ./operations_manager-25.10.0-production-signed.raucb
+rm -rf ./operations_manager-25.11.0-production-signed.raucb
 ```
 
 >[!Note]
