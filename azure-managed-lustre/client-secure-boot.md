@@ -5,7 +5,7 @@ ms.topic: how-to
 author: wolfgang-desalvador
 ms.author: wdesalvador
 ms.reviewer: rohogue
-ms.date: 12/11/2025
+ms.date: 04/23/2026
 ---
 
 # Use Secure Boot with Azure Managed Lustre file system
@@ -49,6 +49,18 @@ To successfully load and mount Azure Managed Lustre clients on Confidential VMs 
 For detailed guidance on customizing Secure Boot keys for Secure Boot–enabled Azure VMs, see [Trusted Launch secure boot custom UEFI keys](/azure/virtual-machines/trusted-launch-secure-boot-custom-uefi).
 
 For an overview of Confidential VMs, see [What are Azure confidential virtual machines?](/azure/confidential-computing/confidential-vm-overview).
+
+## DKMS-compiled modules and Secure Boot
+
+When you install the Lustre client using the **DKMS** method, the kernel module is compiled from source on your VM rather than being prebuilt and signed by Microsoft. Because DKMS-compiled modules aren't signed with the Azure Services Linux Kmod PCA certificate, they won't load when Secure Boot is enabled unless you take additional steps.
+
+If you use DKMS with Secure Boot enabled, you have two options:
+
+- **Disable Secure Boot**: The simplest approach. If your security policy permits it, disable Secure Boot on the VM before installing the DKMS package.
+- **Enroll a Machine Owner Key (MOK)**: Configure DKMS to sign modules with a self-generated key and enroll it in the UEFI MOK database. This approach maintains Secure Boot while allowing DKMS-compiled modules to load. Refer to your distribution's DKMS documentation for MOK enrollment instructions.
+
+> [!NOTE]
+> If you use the **prebuilt kmod** install method, Secure Boot works without any additional configuration on Trusted Launch VMs (as described above). The DKMS Secure Boot limitation applies only to DKMS-compiled modules.
 
 ## Related content
 

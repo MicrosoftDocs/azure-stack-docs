@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 04/29/2025
+ms.date: 04/23/2026
 
 ---
 
@@ -21,6 +21,12 @@ For more information on connecting clients to a cluster, see [Connect clients to
 
 If your client machine uses an older version of Lustre, you can upgrade the Lustre client package to the current version by using the following steps. It's important that you completely uninstall the previous Lustre client's kernel modules, in addition to removing the client software packages.
 
+> [!IMPORTANT]
+> **DKMS users: kernel upgrades vs. Lustre version upgrades**
+>
+> - **Kernel upgrades** (for example, 5.15.0-100 → 5.15.0-105): If you installed the Lustre client using DKMS, kernel upgrades are handled automatically. DKMS recompiles the Lustre module for the new kernel during the kernel upgrade process. **No action is needed** — you don't need to follow this procedure.
+> - **Lustre version upgrades** (for example, 2.15.7 → 2.15.8): To upgrade to a newer Lustre release, follow the steps below. The procedure is the same for both kmod and DKMS users — uninstall the old version, then install the new one.
+
 ### [Red Hat Enterprise Linux / Alma](#tab/rhel)
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
@@ -35,9 +41,17 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sudo dnf remove *lustre*
     ```
 
-1. Install the current version of the Lustre client by using the following command:
+1. Install the current version of the Lustre client:
 
-    [!INCLUDE [client-upgrade-version-rhel-alma](./includes/client-upgrade-version-rhel-alma.md)]
+   #### [Prebuilt kmod](#tab/kmod)
+
+   [!INCLUDE [client-upgrade-version-rhel-alma](./includes/client-upgrade-version-rhel-alma.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-upgrade-dkms-rhel](./includes/client-upgrade-dkms-rhel.md)]
+
+   ---
 
 1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
 
@@ -73,9 +87,17 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sudo apt autoremove *lustre* -y
     ```
 
-1. Install the current version of the Lustre client by using the following command:
+1. Install the current version of the Lustre client:
 
-    [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu.md)]
+   #### [Prebuilt kmod](#tab/kmod)
+
+   [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-upgrade-dkms-ubuntu](./includes/client-upgrade-dkms-ubuntu.md)]
+
+   ---
 
 1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
 
@@ -111,9 +133,17 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sudo apt autoremove *lustre* -y
     ```
 
-1. Install the current version of the Lustre client by using the following command:
+1. Install the current version of the Lustre client:
 
-    [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu-24.md)]
+   #### [Prebuilt kmod](#tab/kmod)
+
+   [!INCLUDE [client-upgrade-version-ubuntu](./includes/client-upgrade-version-ubuntu-24.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-upgrade-dkms-ubuntu-24](./includes/client-upgrade-dkms-ubuntu-24.md)]
+
+   ---
 
 1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
 
@@ -155,9 +185,17 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sudo tdnf remove '*lustre*' -y
     ```
 
-1. Install the current version of the Lustre client by using the following command:
+1. Install the current version of the Lustre client:
 
-    [!INCLUDE [client-upgrade-version-azurelinux-3](./includes/client-upgrade-version-azurelinux-3.md)]
+   #### [Prebuilt kmod](#tab/kmod)
+
+   [!INCLUDE [client-upgrade-version-azurelinux-3](./includes/client-upgrade-version-azurelinux-3.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-upgrade-dkms-azurelinux-3](./includes/client-upgrade-dkms-azurelinux-3.md)]
+
+   ---
 
 1. Verify the installation by using the following command:
 
@@ -166,7 +204,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should show the new Lustre version (for example, `2.16.1_21_g153e389`).
+    The output should show the new Lustre version (for example, `2.16.1_22_g584eedc`).
 ---
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.
