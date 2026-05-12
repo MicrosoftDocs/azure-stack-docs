@@ -1,26 +1,26 @@
 ---
-title: Extended Security Updates (ESU) on Azure Local
-description: Learn how to get free extended security updates (ESUs) with Azure VM verification on Azure Local.
+title: Extended Security Updates on Azure Local
+description: Learn how to get extended security updates (ESUs) on Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 12/12/2025
+ms.date: 05/01/2026
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Free Extended Security Updates (ESU) through Azure Local
+# Extended Security Updates on Azure Local
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Local comes with additional benefits and implementation steps. This article explains the specifics for Azure Local.
+The Extended Security Update (ESU) program allows you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Local comes with additional benefits and implementation steps. This article explains the specifics for Azure Local.
 
-To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification.md#legacy-os-support).
+For general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification.md#legacy-os-support).
 
 > [!NOTE]
-> Azure Local customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that isn't on Azure Local, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
+> Beginning April 1, 2026, Microsoft introduced a standardized pricing approach for Extended Security Updates so that you pay the same list price regardless of deployment location (Azure, on-premises, or other public clouds), and purchasing channel. See the FAQ section for further details on how this change applies to Azure Local.
 
 ## FAQ
 
@@ -28,17 +28,21 @@ To get general information about the ESU program, products that are covered, and
 
 ESU covers Windows Server and Windows client products under the ESU program. For more information, see the [product lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
 
-### Does this cover ESUs for Windows Server 2012?
+### Which ESU products remain free on Azure Local?
 
-Yes it does.
+All existing ESU products, including Windows Server 2012, Windows 10 version 22H2, and SQL Server 2014, remain free on Azure Local. You can get these products through Azure verification for VMs by following the instructions in this article.
+
+### How can I get ESUs under the new pricing model?
+
+Details on ESU pricing and availability will be made available in the next few months, and this article will be updated. 
 
 ### Does my VM need to be connected to get ESUs?
 
-No, you don't need internet connectivity to install ESUs, unless you're using an update method that requires internet connectivity to download ESU packages. Only the Azure Local host needs to maintain 30-day internet connectivity for Azure VM verification to remain active.
+No. You don't need internet connectivity to install ESUs, unless you're using an update method that requires internet connectivity to download ESU packages. Only the Azure Local host needs to maintain 30-day internet connectivity for Azure VM verification to remain active.
 
-### Can I still use MAK keys to get ESUs for VMs on Azure Local?
+### Can I use MAK keys to get ESUs for VMs on Azure Local?
 
-Yes. If you have already bought MAK keys, you can still apply them with the instructions outlined in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys aren't free. Consider switching to the Azure verification for VMs approach so that you can automatically get free ESUs through your Azure Local going forward.
+Yes. If you already bought MAK keys, you can apply them by following the instructions in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091).
 
 ### Can I discover ESUs if I don't have Azure verification for VMs?
 
@@ -46,9 +50,9 @@ Yes. You can discover ESUs even if you don't have Azure VM verification. For the
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Local?
 
-Yes. All Azure Virtual Desktop session hosts running Windows 10, version 22H2 are entitled to Windows 10 Extended Security Updates (ESU) at no additional cost. For more information, read about the [Extended Security Updates (ESU) program for Windows 10](/windows/whats-new/extended-security-updates). For creating new session hosts, there are two Windows 10, version 22H2 client multi-session images in Azure Marketplace: one with Microsoft 365 Apps and one without. The image with Microsoft 365 Apps will be retired and removed from Azure Marketplace in the near future, while the image without Microsoft 365 Apps will remain until the end of ESU support. [More information on deployment](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
+Yes. All Azure Virtual Desktop session hosts running Windows 10, version 22H2 are entitled to Windows 10 Extended Security Updates (ESU) at no extra cost. For more information, see the [Extended Security Updates (ESU) program for Windows 10](/windows/whats-new/extended-security-updates). 
 
-### Do I need to do anything to renew for Year 1, Year 2, Year 3...?
+### Do I need to do anything to renew for Year 1, Year 2, or Year 3?
 
 No. Once you set up Azure verification for VMs, you don't need to renew or do anything else.
 
