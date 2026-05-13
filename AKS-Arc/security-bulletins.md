@@ -4,7 +4,7 @@ description: Security vulnerability advisories and mitigation guidance for AKS e
 author: leslielin
 ms.author: leslielin
 ms.topic: concept-article
-ms.date: 05/08/2026
+ms.date: 05/13/2026
 ---
 
 
@@ -21,7 +21,7 @@ This page provides information on security vulnerabilities affecting AKS on Azur
 
 ## AKSARC-2026-0001: Advisory & Mitigation Guide for CVE-2026-31431 (Copy Fail)
 
-**Published Date**: May 8, 2026
+**Published Date**: May 8, 2026 | **Last Updated**: May 13, 2026
 
 ### Description
 
@@ -56,7 +56,24 @@ Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kerne
 
 **Resolutions**
 
-Patched VHD images are available through AKS extension hotfixes. Remediation requires two steps.
+Patched VHD images are available through AKS extension hotfixes.
+
+#### Option A: Automated remediation (Azure Local 2602 only)
+
+For Azure Local 2602 deployments, a support module provides a single-command remediation that automates the extension update and node image refresh:
+
+```powershell
+Invoke-SupportAksArcRemediation_FixCVE_2026_31431
+```
+
+> [!NOTE]
+> This command is available only for Azure Local 2602. Running it on other versions logs a warning and takes no action. For Azure Local 2603 and 2604, use the manual remediation steps in Option B.
+
+<!-- TODO: Confirm with engineering — does the customer need to install a module first (Install-Module)? Where should they run this command (Azure Local host PowerShell)? -->
+
+#### Option B: Manual remediation
+
+For Azure Local 2603 and 2604 (or 2602 if you prefer manual steps), remediation requires two steps.
 
 **Step 1: Update the AKS extension**
 
