@@ -37,7 +37,7 @@ Group mandatory certificates by area with the appropriate Subject Alternative Na
   - Only internal network access to the certificate revocation list (CRL) endpoint is required.
   - Internet connectivity isn't required.
   - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension. 
-  - Use the script in the appendix to validate your CRL endpoints if you are unsure your setup is correct.
+  - Use the script in the appendix to validate your CRL endpoints if you're unsure whether your setup is correct.
   - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoint certificate requirements

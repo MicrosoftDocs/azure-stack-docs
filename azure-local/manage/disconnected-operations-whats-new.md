@@ -16,12 +16,12 @@ This article describes new features and improvements in disconnected operations 
 ## Features and improvements in 2604
 
 - Added support for the Azure Local 2604 ISO and its associated capabilities.
-- Enable 64 node cluster support (Workload clusters)
-- Performance improvements
-- Security improvements to MSI
-- OperationsModule: enables client certificate rotation, cmdlet naming standardization
-- BCDR : Restore implementation added to operation module
-- Added automation credential support and docs
+- Enable 64 node cluster support (Workload clusters).
+- Performance improvements.
+- Security improvements to MSI.
+- OperationsModule: Enables client certificate rotation, cmdlet naming standardization.
+- Business continuity and disaster recovery (BCDR) : Restore implementation added to operation module.
+- Added automation credential support and docs.
 ::: moniker-end
 
 ::: moniker range="=azloc-2603"

@@ -362,9 +362,9 @@ On each node, run the following from Powershell:
 1. `Add-AzLocalEnvironment -FQDN "autonomous.cloud.private"`
 
 > [!NOTE]
-> This will default to the built in directoryTenantId and endpoints. For more information use `Get-Help Add-AzLocalEnvironment`
+> This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
 
-For environments prior to 2603 use the legacy `Add-AzEnvironment` approach : 
+For environments prior to 2603, use the legacy `Add-AzEnvironment` approach below.
 
 ```powershell
 # Legacy approach from prior to 2603 adding a private cloud environment

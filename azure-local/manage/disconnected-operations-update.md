@@ -69,7 +69,7 @@ Get-ApplianceBitlockerRecoveryKeys -DisconnectedOperationsClientContext $context
 ## Trigger an update
 
 > [!CAUTION]  
-> Before you trigger the update, ensure that your Lightweight Directory Access Protocol (LDAP) credentials are valid and not expired. You can validate your LDAP configuration by using the Test-ApplianceExternalIdentityConfigurationDeep cmdlet from the OperationsModule.
+> Before you trigger the update, ensure that your Lightweight Directory Access Protocol (LDAP) credentials are valid and not expired. You can validate your LDAP configuration by using the `Test-ApplianceExternalIdentityConfigurationDeep` cmdlet from the OperationsModule.
 
 On the seed node, in the same session as the preceding section, run the following command to trigger an update.
 
