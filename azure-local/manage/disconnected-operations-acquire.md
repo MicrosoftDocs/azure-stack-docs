@@ -130,7 +130,7 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 
 ## Original Equipment manufacturer (OEM) Golden images with lower version
 If your nodes come preinstalled with a golden image, update the image so it gets to the correct target solution version. For exact versions, see : https://aka.ms/azureedgeupdates. 
-To run an update out-of-band, see [Import and discover update packages with limited connectivity](/update/import-discover-updates-offline-23h2.md)
+To run an update out-of-band, see [Import and discover update packages with limited connectivity](../update/import-discover-updates-offline-23h2.md)
 
 ## Related content
 
