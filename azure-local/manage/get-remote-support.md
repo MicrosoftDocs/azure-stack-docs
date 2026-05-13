@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 07/31/2025
+ms.date: 05/13/2026
 ms.subservice: hyperconverged
 ---
 
@@ -19,7 +19,7 @@ This article explains how to get Remote Support for the Azure Stack HCI operatin
 
 Remote Support lets a Microsoft support professional fix your support case faster by letting them access your device for limited troubleshooting and repair. You can enable Remote Support by granting consent and choosing the access level and duration.
 
-:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Diagram that shows authenticated access between the customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
+:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Diagram that shows the Azure Local remote support workflow with authenticated access between the customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
 After you enable Remote Support, Microsoft support gets just-in-time (JIT) limited time access to your device. Access is provided over a secure, audited, and compliant channel to ensure all activities are monitored. Microsoft support can only access your device after you submit a support request, which ensures that your device remains secure and your privacy is maintained.
 
@@ -48,7 +48,7 @@ Here's the high-level workflow to enable remote support:
 
 ## Configure proxy settings
 
-If you use a proxy with Azure Local, add these endpoints to your allowlist:
+If you use a proxy with Azure Local, add these endpoints to your allow list:
 
 - \*.servicebus.windows.net
 - \*.core.windows.net
@@ -64,7 +64,7 @@ If you use a proxy with Azure Local, add these endpoints to your allowlist:
 
 ### [PowerShell](#tab/powershell)
 
-The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, makes setup easier and boosts support efficiency. It comes preinstalled on all system nodes, so there's no action for you to take. For more information about the Remote Support Arc extension, see [Azure Local remote support Arc extension](./remote-support-arc-extension.md).
+The Remote Support Arc extension, listed as **AzureEdgeRemoteSupport** in the Azure portal, simplifies setup and improves support efficiency. It's preinstalled on all system nodes, so you don't need to take any action. For more information about the Remote Support Arc extension, see [Azure Local remote support Arc extension](./remote-support-arc-extension.md).
 
 To enable remote support on your Azure Local, follow these steps:
 
@@ -130,7 +130,7 @@ After you enable remote support, you can perform different operations to grant r
 
 ### Enable remote support for diagnostics
 
-In this example, you Grant Remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
+In this example, you grant Remote Support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
@@ -138,7 +138,7 @@ Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 
 Use the `ExpireInMinutes` parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access can't be established.
 
-You can set `ExpireInMinutes` a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
+You can set `ExpireInMinutes` with a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
 If you don't define a duration, the remote session expires in 480 minutes (8 hours) by default.
 
@@ -156,7 +156,7 @@ For information on other available operations, see [Other remote support operati
 
 ## Other remote support operations
 
-There are other operations you can perform to get information about access or a remote session. The next sections detail some examples of those operations.
+To get information about access or a remote session, you can perform other operations. The next sections detail some examples of those operations.
 
 ### Retrieve existing consent grants
 
@@ -168,7 +168,7 @@ Get-RemoteSupportAccess -IncludeExpired
 
 ### Revoke remote access consent
 
-In this example, you revoke remote access consent. Any existing sessions are terminated and new sessions can no longer be established.
+In this example, you revoke remote access consent. The action terminates any existing sessions and prevents new sessions from being established.
 
 ```powershell
 Disable-RemoteSupport
@@ -197,57 +197,57 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 
 This section provides an overview of the Remote Support experience in the Azure Local portal, including how to enable it, what to expect when it's active, and how to monitor support sessions.
 
-1. In the **Diagnostics and Remote Support settings**, you’ll see a new **Remote Support** tab. You can select this tab or click **Grant access** directly to enable remote support.
-   
-   [ ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview-page.png) ](media/get-remote-support/remote-support-overview-page.png)
-   
-   This section explains the steps and prerequisites required to enable Remote Support via the Azure portal.
-   
+1. In **Diagnostics and Remote Support settings**, you see a new **Remote Support** tab. Select this tab or select **Grant access** directly to enable remote support.
+
+   [ ![Screenshot of remote support overview.](media/get-remote-support/remote-support-overview-page.png) ](media/get-remote-support/remote-support-overview-page.png#lightbox)
+
+   This section explains the steps and prerequisites required to enable Remote Support through the Azure portal.
+
 1. Select **Grant access** to enable remote support.
 
-   [ ![Screenshot of remote support grant access.](media/get-remote-support/grant-access-remote-support-overview.png) ](media/get-remote-support/grant-access-remote-support-overview.png)
+   [ ![Screenshot of remote support grant access.](media/get-remote-support/grant-access-remote-support-overview.png) ](media/get-remote-support/grant-access-remote-support-overview.png#lightbox)
 
-1. To grant access, you’ll need to select the appropriate **access level**—either **Diagnostics** or **Diagnostics and Repair**—and specify the **access period**, which defines how long support can access your device.
+1. To grant access, select the appropriate **access level** - either **Diagnostics** or **Diagnostics and Repair**. Then, specify the **access period**, which defines how long support can access your device.
 
-1. You’ll also need to review and approve the **terms and conditions** to complete the process.
+1. Review and approve the **terms and conditions** to complete the process.
 
-   [ ![Screenshot of terms and conditions.](media/get-remote-support/terms-and-conditions.png) ](media/get-remote-support/terms-and-conditions.png)
+   [ ![Screenshot of terms and conditions.](media/get-remote-support/terms-conditions.png) ](media/get-remote-support/terms-conditions.png#lightbox)
 
-1. When Remote Support is enabled, customers can see clear indicators in the management experience showing that remote access is active.
+1. When Remote Support is enabled, you can see indicators in the management experience showing that remote access is active.
 
-   [ ![Screenshot of granted access.](media/get-remote-support/access-granted-view.png) ](media/get-remote-support/access-granted-view.png)
+   [ ![Screenshot of granted access.](media/get-remote-support/access-granted-view.png) ](media/get-remote-support/access-granted-view.png#lightbox)
 
-1. You can view the access level which also indicates the level of access granted.
+1. You can view the access level, which also indicates the level of access granted.
 
-   [ ![Screenshot of access granted level.](media/get-remote-support/access-granted-level.png) ](media/get-remote-support/access-granted-level.png)
+   [ ![Screenshot of access granted level.](media/get-remote-support/access-granted-level.png) ](media/get-remote-support/access-granted-level.png#lightbox)
 
     This section explains the behavior when Remote Support is only partially enabled or not enabled on all nodes in the cluster.
 
-1. A banner will appear to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes.
+1. A banner appears to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes.
 
-   [ ![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-these-machines.png) ](media/get-remote-support/remote-support-these-machines.png)
+   [ ![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-machines.png) ](media/get-remote-support/remote-support-machines.png#lightbox)
 
-1. What happens if the required version is not present: A warning banner will be shown: “Remote support is disabled because your extension version is not supported. Learn more”.
+1. What happens if the required version isn't present: A warning banner appears: "Remote support is disabled because your extension version is not supported. Learn more."
 
    To learn more, see [Azure Local Remote Support Arc extension and remote support overview](../manage/remote-support-arc-extension.md).
 
-   [ ![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png) ](media/get-remote-support/extension-warning-banner.png)
+   [ ![Screenshot of extension warning banner.](media/get-remote-support/extension-warning-banner.png) ](media/get-remote-support/extension-warning-banner.png#lightbox)
 
 1. Remote Support depends on a minimum version of the __DME (Device Management Extension)__. This section documents:
 
    - The minimum required DME extension version: "1.2510.0.3012"
 
-   - How customers can check the installed version:
+   - How you can check the installed version
 
-1. Go to Extensions, you can see the AzureEdgeDeviceManagement extension along with its version details.
+1. Go to **Extensions**, you can see the **AzureEdgeDeviceManagement** extension along with its version details.
 
-   [ ![Screenshot of extensions overview.](media/get-remote-support/extensions-overview-page.png) ](media/get-remote-support/extensions-overview-page.png)
+   [ ![Screenshot of extensions overview.](media/get-remote-support/extensions-overview-page.png) ](media/get-remote-support/extensions-overview-page.png#lightbox)
 
-1. You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and click **Install now**.
+1. You can update the extension by updating your environment. Navigate to **Operations → Updates**, select the latest eligible version, and select **Install now**.
 
-1. You can reference steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager) to complete update.
+1. To complete the update, see the steps [here](/azure/azure-local/update/azure-update-manager-23h2?&tabs=azureupdatemanager).
 
-   [ ![Screenshot of updates overview.](media/get-remote-support/updates-overview.png) ](media/get-remote-support/updates-overview.png)
+   [ ![Screenshot of updates overview.](media/get-remote-support/updates-overview.png) ](media/get-remote-support/updates-overview.png#lightbox)
 
 ---
 
@@ -264,7 +264,7 @@ When you run the enable Remote Support command for the first time, you might see
 ```console
 PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
 
-PS C:\Users\HciDeploymentUser\Documents> Enable-RemoteSupport -AccessLevel Diagnostics -ExpireMinutes 1440
+PS C:\Users\HciDeploymentUser\Documents> Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 
 Proceed with enabling remote support?
 [Y] Yes  [N] No  [?] Help (default is "Y"): Y
@@ -280,11 +280,11 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Cause**: When you enable Remote Support, a Windows Remote Management (WinRM) service restart is required to activate Just Enough Administration (JEA). During the remote support JEA configuration, WinRM restarts twice, which can disrupt the PowerShell session to the node.
 
-**Suggested resolutions**: You can choose one of the following options to resolve this error and enable Remote Support:
+**Suggested resolutions**: To resolve this error and enable Remote Support, choose one of the following options:
 
 - Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your machine and enable remote support.
-    - After the third run of the enable Remote Support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
-- Instead of using the Remote PowerShell session, you can enable Remote Support by connecting to each node using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
+    - After the third run of the enable Remote Support command, you shouldn't see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
+- Instead of using the Remote PowerShell session, you can enable Remote Support by connecting to each node by using [Remote Desktop Protocol](https://support.microsoft.com/en-us/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
 
 ## Next steps
 
