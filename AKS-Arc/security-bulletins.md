@@ -123,9 +123,6 @@ No action required. The fix is included natively (extension 6.0.133).
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
-   > [!NOTE]
-   > This command updates the AKS extension only. You must still refresh your cluster nodes in the next step.
-
 2. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
 
 ##### Azure Local versions prior to 2602
@@ -138,13 +135,7 @@ No action required. The fix is included natively (extension 6.0.133).
 > [!IMPORTANT]
 > The extension update makes patched VHDs available but does **not** automatically apply them to running clusters. You must refresh nodes using one of the methods below.
 
-The following Kubernetes versions are available after the extension update. For a complete version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
-
-| Kubernetes versions |
-|---|
-| 1.31.12, 1.31.13 |
-| 1.32.8, 1.32.9 |
-| 1.33.4, 1.33.5 |
+The following Kubernetes versions are available after the extension update: **1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5**. For a complete version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
 
 - **If your cluster is on an older Kubernetes version** than those listed above: upgrade the cluster. The upgrade pulls the patched VHDs and replaces nodes.
 
@@ -169,6 +160,14 @@ The following Kubernetes versions are available after the extension update. For 
   > Set `--node-count` to your current count + 1, wait for the new node, then scale back to the original count. Repeat until all nodes are replaced.
 
 - **New clusters** created after the extension update use patched VHDs automatically.
+
+After refreshing, verify that all nodes have been replaced by checking their age:
+
+```bash
+kubectl get nodes -o wide
+```
+
+Nodes created after the extension update are running the patched VHDs. Confirm that no old nodes remain.
 
 ---
 
