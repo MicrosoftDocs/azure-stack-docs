@@ -211,7 +211,8 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 1. Review and approve the **terms and conditions** to complete the process.
 
-   [ ![Screenshot of terms and conditions.](media/get-remote-support/terms-conditions.png) ](media/get-remote-support/terms-conditions.png#lightbox)
+   [ :::image type="content" source="media/get-remote-support/terms-conditions.png" alt-text="Screenshot of terms and conditions."::: ](media/get-remote-support/terms-conditions.png#lightbox)
+
 
 1. When Remote Support is enabled, you can see indicators in the management experience showing that remote access is active.
 
@@ -225,7 +226,8 @@ This section provides an overview of the Remote Support experience in the Azure 
 
 1. A banner appears to indicate the specific machines where remote support is enabled. If no banner is displayed for a cluster, it means remote support is enabled across all nodes.
 
-   [ ![Screenshot of remote support machines enabled.](media/get-remote-support/remote-support-machines.png) ](media/get-remote-support/remote-support-machines.png#lightbox)
+   [ :::image type="content" source="media/get-remote-support/remote-support-machines.png" alt-text="Screenshot of remote support machines enabled."::: ](media/get-remote-support/remote-support-machines.png#lightbox)
+
 
 1. What happens if the required version isn't present: A warning banner appears: "Remote support is disabled because your extension version is not supported. Learn more."
 
