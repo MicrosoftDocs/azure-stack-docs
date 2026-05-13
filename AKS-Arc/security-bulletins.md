@@ -67,9 +67,20 @@ No action required. The fix is included natively (extension 6.0.133).
      --version 6.0.133
    ```
 
-2. Wait for the extension to reach **Succeeded** provisioning state.
+2. Confirm the extension update succeeded:
+
+   ```azurecli
+   az k8s-extension show \
+     --resource-group <resource-group> \
+     --cluster-name <azure-local-cluster> \
+     --cluster-type connectedClusters \
+     --name <extension-name> \
+     --query "{version: version, provisioningState: provisioningState}"
+   ```
+
+   Verify that `version` is **6.0.133** and `provisioningState` is **Succeeded**.
+
 3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
-4. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
 
 ##### Azure Local 2603
 
@@ -84,13 +95,27 @@ No action required. The fix is included natively (extension 6.0.133).
      --version 5.0.122
    ```
 
-2. Wait for the extension to reach **Succeeded** provisioning state.
+2. Confirm the extension update succeeded:
+
+   ```azurecli
+   az k8s-extension show \
+     --resource-group <resource-group> \
+     --cluster-name <azure-local-cluster> \
+     --cluster-type connectedClusters \
+     --name <extension-name> \
+     --query "{version: version, provisioningState: provisioningState}"
+   ```
+
+   Verify that `version` is **5.0.122** and `provisioningState` is **Succeeded**.
+
 3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
-4. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
 
 ##### Azure Local 2602
 
-**Prerequisite**: Install and import the [AKS Arc Support Tool](/azure/aks/aksarc/support-module) on your Azure Local node.
+**Prerequisites**:
+
+- Install and import the [AKS Arc Support Tool](/azure/aks/aksarc/support-module) on your Azure Local node.
+- Run `az login` on the node before running the remediation command.
 
 1. Run the remediation command:
 
@@ -98,12 +123,10 @@ No action required. The fix is included natively (extension 6.0.133).
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
-2. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
+   > [!NOTE]
+   > This command updates the AKS extension only. You must still refresh your cluster nodes in the next step.
 
-> [!NOTE]
-> This command is available only for Azure Local 2602. Running it on other versions logs a warning and takes no action.
-
-<!-- TODO: Confirm with Rohit — does the customer need to install a module first (Install-Module)? Where should they run this command (Azure Local host PowerShell)? Does this command handle both extension update AND node refresh, or only extension update? -->
+2. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
 
 ##### Azure Local versions prior to 2602
 
@@ -115,7 +138,15 @@ No action required. The fix is included natively (extension 6.0.133).
 > [!IMPORTANT]
 > The extension update makes patched VHDs available but does **not** automatically apply them to running clusters. You must refresh nodes using one of the methods below.
 
-- **If a newer Kubernetes version is available**: upgrade the cluster to pull the patched VHDs.
+The following Kubernetes versions are available after the extension update. For a complete version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
+
+| Kubernetes versions |
+|---|
+| 1.31.12, 1.31.13 |
+| 1.32.8, 1.32.9 |
+| 1.33.4, 1.33.5 |
+
+- **If your cluster is on an older Kubernetes version** than those listed above: upgrade the cluster. The upgrade pulls the patched VHDs and replaces nodes.
 
   ```azurecli
   az aksarc upgrade \
@@ -124,7 +155,7 @@ No action required. The fix is included natively (extension 6.0.133).
     --kubernetes-version <version>
   ```
 
-- **If already on the latest Kubernetes version**: scale out then scale in each node pool. Set `--node-count` to your current count + 1, wait for the new node, then scale back to the original count.
+- **If your cluster is already on one of the versions above**: scale out then scale in each node pool. New nodes are provisioned from the patched VHDs; old nodes are drained and removed.
 
   ```azurecli
   az aksarc nodepool scale \
@@ -135,9 +166,9 @@ No action required. The fix is included natively (extension 6.0.133).
   ```
 
   > [!NOTE]
-  > Repeat the scale-out/scale-in cycle until all nodes in the pool are running patched VHDs.
+  > Set `--node-count` to your current count + 1, wait for the new node, then scale back to the original count. Repeat until all nodes are replaced.
 
-- **New clusters** created after the hotfix use patched VHDs automatically.
+- **New clusters** created after the extension update use patched VHDs automatically.
 
 ---
 
