@@ -6,7 +6,7 @@ ms.author: robess
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/28/2026
+ms.date: 05/13/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
