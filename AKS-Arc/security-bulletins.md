@@ -90,7 +90,9 @@ No action required. The fix is included natively (extension 6.0.133).
 
 ##### Azure Local 2602
 
-1. Run the support module remediation command:
+**Prerequisite**: Install and import the [AKS Arc Support Tool](/azure/aks/aksarc/support-module) on your Azure Local node.
+
+1. Run the remediation command:
 
    ```powershell
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
