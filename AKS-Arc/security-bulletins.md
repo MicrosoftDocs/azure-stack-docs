@@ -44,17 +44,7 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 
 **Affected Versions**
 
-All AKS node images based on Azure Linux running on Azure Local releases 2604 and earlier are affected.
-
-Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) will **automatically load it on demand** when any process — **including unprivileged containers** — creates an AF_ALG socket with AEAD type. This means:
-
-- **An attacker with code execution in any pod (even non-root) can escalate to root on the node**
-- No special pod privileges, capabilities, or host access are required
-
-| OS | Kernel | Exploitable? |
-|----|--------|-------------|
-| Azure Linux 3.0 (6.6 branch) | < 6.6.137.1-1 | ⚠️ **Yes** |
-| Azure Linux 3.0 (6.12 branch) | < 6.12.85.1-1 | ⚠️ **Yes** |
+All AKS node images on Azure Local releases 2604 and earlier are affected. Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) will **automatically load it on demand** when any process — **including unprivileged containers** — creates an AF_ALG socket with AEAD type. An attacker with code execution in any pod (even non-root) can escalate to root on the node without special privileges.
 
 **Resolutions**
 
@@ -62,7 +52,7 @@ Patched VHD images are available through AKS extension hotfixes. Follow the step
 
 ##### Azure Local 2605
 
-✅ Fix is included natively (extension 6.0.133). **No action required.**
+No action required. The fix is included natively (extension 6.0.133).
 
 ##### Azure Local 2604
 
@@ -79,7 +69,7 @@ Patched VHD images are available through AKS extension hotfixes. Follow the step
 
 2. Wait for the extension to reach **Succeeded** provisioning state.
 3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
-4. [Verify](#verify) that all nodes are running patched kernels.
+4. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
 
 ##### Azure Local 2603
 
@@ -96,7 +86,7 @@ Patched VHD images are available through AKS extension hotfixes. Follow the step
 
 2. Wait for the extension to reach **Succeeded** provisioning state.
 3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
-4. [Verify](#verify) that all nodes are running patched kernels.
+4. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
 
 ##### Azure Local 2602
 
@@ -106,7 +96,7 @@ Patched VHD images are available through AKS extension hotfixes. Follow the step
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
-2. [Verify](#verify) that all nodes are running patched kernels.
+2. Verify: run `kubectl get nodes -o wide` and confirm all nodes are running the patched image.
 
 > [!NOTE]
 > This command is available only for Azure Local 2602. Running it on other versions logs a warning and takes no action.
@@ -143,19 +133,9 @@ Patched VHD images are available through AKS extension hotfixes. Follow the step
   ```
 
   > [!NOTE]
-  > Repeat the scale-out/scale-in cycle until all nodes in the pool are running patched VHDs. Verify after each cycle.
+  > Repeat the scale-out/scale-in cycle until all nodes in the pool are running patched VHDs.
 
 - **New clusters** created after the hotfix use patched VHDs automatically.
-
-#### Verify
-
-Confirm nodes are running patched kernels:
-
-```bash
-kubectl get nodes -o wide
-```
-
-Verify the kernel version is at or above **6.6.137.1-1** (6.6 branch) or **6.12.85.1-1** (6.12 branch).
 
 ---
 
