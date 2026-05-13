@@ -1,8 +1,8 @@
 ---
 title: Rotate NAKS certificates in Azure Operator Nexus
 description: Learn how to monitor and rotate NAKS cluster certificates to prevent expiration-related outages in Azure Operator Nexus
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/20/2026

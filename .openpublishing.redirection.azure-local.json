@@ -1984,6 +1984,16 @@
       "source_path": "azure-local/deploy/deployment-arc-register-configurator-app.md",
       "redirect_url": "/azure/azure-local/deploy/deployment-without-azure-arc-gateway?tabs=app&pivots=register-proxy",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/concepts/system-requirements-small-23h2.md",
+      "redirect_url": "/azure/azure-local/concepts/system-requirements-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/upgrade/upgrade-stretched-cluster-to-23h2.md",
+      "redirect_url": "/azure/azure-local/upgrade/about-upgrades-23h2",
+      "redirect_document_id": false
     }
   ]
 }

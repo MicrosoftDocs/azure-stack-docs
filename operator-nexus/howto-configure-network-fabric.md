@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Configure the Network Fabric"
 description: Learn commands to create, view, list, update, and delete Network Fabrics.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/20/2023

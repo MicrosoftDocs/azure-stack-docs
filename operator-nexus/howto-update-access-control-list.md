@@ -1,8 +1,8 @@
 ---
 title: Updating ACL on NNI, External Network, or Network Fabrics
 description: Learn the process of updating ACLs associated with resources
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/18/2024

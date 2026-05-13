@@ -4,7 +4,7 @@ description: Install and register Azure Local machines using simplified machine 
 author: sipastak
 ms.author: sipastak
 ms.topic: how-to
-ms.date: 02/24/2026
+ms.date: 05/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -12,7 +12,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use simplified machine provisioning to set up machines for an Azure Local instance. You can install the OS on your Azure Local machines in two distinct ways: you can manually install the OS using ISO images, or you can use the simplified machine provisioning process. 
+This article describes how to use simplified machine provisioning to set up machines for an Azure Local instance. You can install the OS on your Azure Local machines in two distinct ways: you can manually install the OS using ISO images, or you can use the simplified machine provisioning process.
 
 This article covers only the installation and registration process by using simplified machine provisioning, which is currently in preview. To install the OS manually, see [Install OS on your Azure Local machines using ISO images](./deployment-install-os.md).
 
@@ -33,7 +33,7 @@ At a high level, the process has three key stages:
     1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, proxy server, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
 
     1. Provision the machines: Once the site configurations are done, claim machine ownership by using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
-    
+
     > [!NOTE]
     > Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
 
@@ -59,14 +59,15 @@ At a high level, the process has three key stages:
 
 - [Prepare your Active Directory](deployment-prep-active-directory.md) environment.
 
-- Download software to your Windows 11 computer. 
-    - Go to **Azure Arc** > **Azure Local** > **Get started**. 
-    - On the **Get started** page, in the banner at the top of the page, select **Try provisioning (preview)**.
+- Download software to your Windows 11 computer.
+  - Go to **Azure Arc** > **Azure Local** > **Get started**.
+  - On the **Get started** page, in the banner at the top of the page, select **Try provisioning (preview)**.
 
-        :::image type="content" source="media/simplified-machine-provisioning/try-provisioning.png" alt-text="Screenshot of the Azure portal showing how to try simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/try-provisioning.png":::
-    - On the **Machine provisioning (preview)** page, go to the **Download and install** tile and select **View Downloads** to download the software to your Windows 11 computer.
-        
-        The software includes the maintenance environment ISO image, USB preparation tool, and the Configurator app. A maintenance environment is a secure bootable OS that prepares a machine for provisioning by generating the device ID and voucher.
+     :::image type="content" source="media/simplified-machine-provisioning/try-provisioning.png" alt-text="Screenshot of the Azure portal showing how to try simplified machine provisioning." border="true" lightbox="media/simplified-machine-provisioning/try-provisioning.png":::
+
+  - On the **Machine provisioning (preview)** page, go to the **Download and install** tile and select **View Downloads** to download the software to your Windows 11 computer.
+
+    The software includes the maintenance environment ISO image, USB preparation tool, and the Configurator app. A maintenance environment is a secure bootable OS that prepares a machine for provisioning by generating the device ID and voucher.
 
     :::image type="content" source="media/simplified-machine-provisioning/view-downloads.png" alt-text="Screenshot of the Azure portal showing how to view downloads." border="true" lightbox="media/simplified-machine-provisioning/view-downloads.png":::
 
@@ -77,7 +78,7 @@ At a high level, the process has three key stages:
 - Register the machine provisioning feature for your subscription by using the following command:
 
     ```azurecli
-    az feature register --subscription <subcriptionid> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
+    az feature register --subscription <Subscription ID> --namespace Microsoft.DeviceOnboarding --name AzureLocalZTP
     ```
 
 - After you register the machine provisioning feature, ensure the following [resource providers](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) are registered for your subscription:
@@ -121,7 +122,7 @@ Follow these steps to create a USB installation media from your Windows 11 PC:
 1. Run the USB preparation tool from the downloaded software package.
 
     1. When prompted, enter the full path to the folder that contains the maintenance environment image ISO, and press **Enter**.  
-    
+
     1. Select the USB drive to use from the list of available machines.
 
     1. Press 'Y' to confirm and begin creating a bootable USB drive. The process deletes any content on the flash drive.
@@ -176,14 +177,14 @@ Follow the steps to prepare machines for simplified provisioning. Repeat this st
 
 1. After creating the site, set up the provisioning configuration for your site. This configuration applies to all new machines under the site.
 
-    |Parameter  |Description  |
-    |---------|---------|
-    |Time zone     | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't.       |
-    |Time server    |  Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
+    | Parameter | Description |
+    | --------- | --------- |
+    | Time zone | Select the common time zone for all the machines under the site. You can change it later. New machines use this time zone, but existing ones don't. |
+    | Time server | Enter the common time server for synchronized system time for all the machines under the site. You can change it later. New machines use this time server, but existing ones don't. |
 
      Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
-    
-1. Select the site, add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. Once you add machines, select the pencil button to edit. Provide the machine name as the Arc resource name.
+
+1. Select the site. Add vouchers from [Prepare machines](#step-2-prepare-machines), software version, and local administrator credentials. The password must have at least 12 characters including lower and upper-case characters, a digit, and a special character. After you add machines, select the pencil button to edit. Provide the machine name as the Azure Arc resource name.
 
     :::image type="content" source="media/simplified-machine-provisioning/provision-machines-portal.png" alt-text="Screenshot of the Azure portal showing the Provision new machines pane." border="true" lightbox="media/simplified-machine-provisioning/provision-machines-portal.png":::
 
@@ -195,9 +196,9 @@ In the Azure portal, go to **Azure Arc** > **Operations** > **Provisioning (prev
 
 Ensure that your on-site staff keeps the machine connected to the network and powered on. The machine automatically connects securely to a call-home URL, then gets fully configured from Azure. This configuration includes download of the Azure Stack HCI operating system, setting up the operating system, connecting the machine to Azure Arc, and installing all the mandatory Azure Arc extensions. The machine is ready for clustering.
 
-This process reduces setup time and expertise needed at remote sites. The configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This makes the process quicker, repeatable, and scalable.
+This process reduces setup time and expertise needed at remote sites. The configuration is done from Azure. Use Azure Resource Manager templates to provision servers at many remote sites. This approach makes the process quicker, repeatable, and scalable.
 
-## Step 4: Monitor machine set up via app (optional)
+## Step 4: Monitor machine setup via app (optional)
 
 Follow these steps to track the installation progress from your Windows 11 PC.
 
@@ -219,13 +220,13 @@ Confirm your machines connect to Azure. To monitor the provisioning machine stat
 
 1. Wait for the machine status to show **Ready to cluster**.
 
-:::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="true" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
+    :::image type="content" source="media/simplified-machine-provisioning/machine-status-details.png" alt-text="Screenshot of the Azure portal showing machine status details." border="true" lightbox="media/simplified-machine-provisioning/machine-status-details.png":::
 
 ## Next steps
 
 - Set up [subscription permissions](deployment-arc-register-server-permissions.md) before deployment.
-- Skip registration as this step already registered your Azure Local machines.
+- Skip registration, this step already registered your Azure Local machines.
 - Once you set up the permissions, deploy your Azure Local instance by using one of the following options:
   - [Deploy via Azure portal](./deploy-via-portal.md)
   - [Deploy via Azure Resource Manager (ARM) template](./deployment-azure-resource-manager-template.md)
-- [Troubleshoot simplified machine provisioning](./troubleshoot-simplified-machine-provisioning.md).
+- [Troubleshoot simplified machine provisioning](./troubleshoot-simplified-machine-provisioning.md)

@@ -5,19 +5,19 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 04/21/2026
+ms.date: 05/11/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*). The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
 ::: moniker range="=azloc-2604"
 
 ## Features and improvements in 2604
 
-The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.209**. For more information, see [Release information summary](./release-information-23h2.md).
+The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.1005**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -29,7 +29,7 @@ This release includes various reliability improvements and bug fixes.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
-- **.NET updates**: 
+- **.NET updates**:
 
     - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -64,7 +64,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Enhanced Azure Marketplace image navigation in the Azure portal**: When creating a new VM image, the list of Azure Marketplace images available for download now opens in a full page view to make it easier to view and select images.
 
-- **Graceful restart by default for Azure Local VMs**: Azure Local VM restart operation now performs a graceful shutdown by default. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM.
+- **Graceful stop and restart by default for Azure Local VMs**: Azure Local VM stop and restart operation now performs a graceful shutdown by default. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).To bypass the shutdown, use the `--skip-shutdown` flag when restarting the VM.
 
 - **Enable or disable SDN management per network interface**: Azure Local now supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).
 
@@ -379,7 +379,6 @@ This release includes the following features and improvements:
 
     - **Upgrade and update docs changes** include new articles and major updates to existing articles:
         - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
-        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.
         - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
         - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
         - [**Update best practices**](./update/update-best-practices.md) is released.

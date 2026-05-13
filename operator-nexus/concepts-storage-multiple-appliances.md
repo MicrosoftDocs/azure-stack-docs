@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus multiple storage appliances
 description: Lean about Azure Operator Nexus support for multiple storage appliances.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 05/22/2025
