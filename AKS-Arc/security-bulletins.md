@@ -9,7 +9,11 @@ ms.date: 05/13/2026
 
 # Security bulletins for AKS enabled by Azure Arc
 
-This page provides information on security vulnerabilities affecting AKS enabled by Azure Arc, including critical advisories, ongoing investigations, and confirmed false positives.
+This page provides up-to-date information on security vulnerabilities affecting AKS enabled by Azure Arc and its components. This information includes details on:
+
+- **Critical Security Advisories** — High-impact security vulnerabilities, including zero-day vulnerabilities and other critical CVEs requiring immediate attention, along with mitigation guidance.
+- **Ongoing Security Investigations** — Security issues under review, including CVEs where a patch isn't yet available or further assessment is needed.
+- **False Positives & Non-Exploitable CVEs** — Cases where a reported CVE doesn't impact AKS enabled by Azure Arc due to specific configurations, mitigations, or lack of exploitability.
 
 > [!NOTE]
 > For security bulletins affecting AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
@@ -22,36 +26,39 @@ This page provides information on security vulnerabilities affecting AKS enabled
 
 ### Description
 
-A local privilege escalation (LPE) vulnerability was publicly disclosed on April 29, 2026 affecting the Linux kernel's `algif_aead` module.
+This bulletin provides an update on a local privilege escalation (LPE) vulnerability that was publicly disclosed on April 29, 2026 affecting the Linux kernel's `algif_aead` module. This vulnerability has been assigned **CVE-2026-31431** and is referred to as **"Copy Fail"**.
 
-- **CVE**: [CVE-2026-31431](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
-- **CVSS Score**: 7.8 HIGH
-- **Attack Vector**: Local — requires code execution on the node
-
-Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) automatically loads it on demand when any process — including unprivileged containers — creates an AF_ALG socket with AEAD type. This means an attacker with code execution in any pod (even non-root) can escalate to root on the node without special privileges.
+- **CVSS Score**: 7.8 HIGH (`CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H`)
+- **Attack Vector**: Local — requires code execution on the node (e.g., from a container)
+- **Affected Component**: `algif_aead` kernel module (hardware-accelerated cryptographic functions)
+- **Canonical Advisory**: [https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available](https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available)
 
 ### References
 
-- [CVE-2026-31431 · NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
-- [Ubuntu advisory](https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available)
-- [CVE-2026-31431 — AKS Advisory & Mitigation Guide](https://github.com/Azure/AKS/issues/5753)
+- [CVE-2026-31431](https://nvd.nist.gov/vuln/detail/CVE-2026-31431)
+- [AKS Advisory](https://github.com/Azure/AKS/issues/5753)
 
 ### Affected Components
 
 # [AKS on Azure Local](#tab/azure-local)
 
-#### Affected Versions
+**Affected Versions**
 
 All AKS node images based on Azure Linux running on Azure Local releases 2604 and earlier are affected.
+
+Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) will **automatically load it on demand** when any process — **including unprivileged containers** — creates an AF_ALG socket with AEAD type. This means:
+
+- **An attacker with code execution in any pod (even non-root) can escalate to root on the node**
+- No special pod privileges, capabilities, or host access are required
 
 | OS | Kernel | Exploitable? |
 |----|--------|-------------|
 | Azure Linux 3.0 (6.6 branch) | < 6.6.137.1-1 | ⚠️ **Yes** |
 | Azure Linux 3.0 (6.12 branch) | < 6.12.85.1-1 | ⚠️ **Yes** |
 
-#### Resolutions
+**Resolutions**
 
-Patched VHD images are available through AKS extension hotfixes. Choose the remediation steps that match your Azure Local version.
+Patched VHD images are available through AKS extension hotfixes. Follow the steps below that match your Azure Local version.
 
 ##### Azure Local 2605
 
@@ -59,41 +66,47 @@ Patched VHD images are available through AKS extension hotfixes. Choose the reme
 
 ##### Azure Local 2604
 
-Update the AKS extension to version **6.0.133**, then refresh your AKS cluster nodes.
+1. Update the AKS extension to version **6.0.133**:
 
-```azurecli
-az k8s-extension update \
-  --resource-group <resource-group> \
-  --cluster-name <azure-local-cluster> \
-  --cluster-type connectedClusters \
-  --name <extension-name> \
-  --version 6.0.133
-```
+   ```azurecli
+   az k8s-extension update \
+     --resource-group <resource-group> \
+     --cluster-name <azure-local-cluster> \
+     --cluster-type connectedClusters \
+     --name <extension-name> \
+     --version 6.0.133
+   ```
 
-Wait for the extension to reach **Succeeded** provisioning state, then [refresh your cluster nodes](#refresh-aks-cluster-nodes).
+2. Wait for the extension to reach **Succeeded** provisioning state.
+3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
+4. [Verify](#verify) that all nodes are running patched kernels.
 
 ##### Azure Local 2603
 
-Update the AKS extension to version **5.0.122**, then refresh your AKS cluster nodes.
+1. Update the AKS extension to version **5.0.122**:
 
-```azurecli
-az k8s-extension update \
-  --resource-group <resource-group> \
-  --cluster-name <azure-local-cluster> \
-  --cluster-type connectedClusters \
-  --name <extension-name> \
-  --version 5.0.122
-```
+   ```azurecli
+   az k8s-extension update \
+     --resource-group <resource-group> \
+     --cluster-name <azure-local-cluster> \
+     --cluster-type connectedClusters \
+     --name <extension-name> \
+     --version 5.0.122
+   ```
 
-Wait for the extension to reach **Succeeded** provisioning state, then [refresh your cluster nodes](#refresh-aks-cluster-nodes).
+2. Wait for the extension to reach **Succeeded** provisioning state.
+3. [Refresh your AKS cluster nodes](#refresh-aks-cluster-nodes) to apply the patched VHDs.
+4. [Verify](#verify) that all nodes are running patched kernels.
 
 ##### Azure Local 2602
 
-A support module provides a single-command remediation:
+1. Run the support module remediation command:
 
-```powershell
-Invoke-SupportAksArcRemediation_FixCVE_2026_31431
-```
+   ```powershell
+   Invoke-SupportAksArcRemediation_FixCVE_2026_31431
+   ```
+
+2. [Verify](#verify) that all nodes are running patched kernels.
 
 > [!NOTE]
 > This command is available only for Azure Local 2602. Running it on other versions logs a warning and takes no action.
@@ -102,10 +115,8 @@ Invoke-SupportAksArcRemediation_FixCVE_2026_31431
 
 ##### Azure Local versions prior to 2602
 
-> [!IMPORTANT]
-> Customers on Azure Local releases prior to 2602 must first upgrade their Azure Local deployment to 2602 or later before applying this fix. See [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2) for upgrade guidance.
-
-After upgrading to 2602, follow the [Azure Local 2602](#azure-local-2602) remediation steps above.
+1. Upgrade your Azure Local deployment to 2602 or later. See [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2) for upgrade guidance.
+2. After upgrading, follow the remediation steps for your new Azure Local version above.
 
 #### Refresh AKS cluster nodes
 
@@ -114,21 +125,25 @@ After upgrading to 2602, follow the [Azure Local 2602](#azure-local-2602) remedi
 
 - **If a newer Kubernetes version is available**: upgrade the cluster to pull the patched VHDs.
 
-```azurecli
-az aksarc upgrade \
-  --resource-group <resource-group> \
-  --name <cluster> \
-  --kubernetes-version <version>
-```
+  ```azurecli
+  az aksarc upgrade \
+    --resource-group <resource-group> \
+    --name <cluster> \
+    --kubernetes-version <version>
+  ```
 
 - **If already on the latest Kubernetes version**: scale out then scale in each node pool. Set `--node-count` to your current count + 1, wait for the new node, then scale back to the original count.
 
-> [!NOTE]
-> Repeat the scale-out/scale-in cycle until all nodes in the pool are running patched VHDs. Verify with the step below after each cycle.
+  ```azurecli
+  az aksarc nodepool scale \
+    --resource-group <resource-group> \
+    --cluster-name <cluster> \
+    --name <pool> \
+    --node-count <node-count>
+  ```
 
-```azurecli
-az aksarc nodepool scale --resource-group <resource-group> --cluster-name <cluster> --name <pool> --node-count <node-count>
-```
+  > [!NOTE]
+  > Repeat the scale-out/scale-in cycle until all nodes in the pool are running patched VHDs. Verify after each cycle.
 
 - **New clusters** created after the hotfix use patched VHDs automatically.
 
@@ -140,7 +155,7 @@ Confirm nodes are running patched kernels:
 kubectl get nodes -o wide
 ```
 
-Verify the kernel version is at or above 6.6.137.1-1 (6.6 branch) or 6.12.85.1-1 (6.12 branch).
+Verify the kernel version is at or above **6.6.137.1-1** (6.6 branch) or **6.12.85.1-1** (6.12 branch).
 
 ---
 
