@@ -21,14 +21,14 @@ This article lists the various features and improvements that are available in v
 
 This release includes these features and improvements:
 
-- **Support for migrating to external storage Azure Local instances** – You can now replicate and migrate VMs to Azure Local instances that use external SAN storage. For more information, see [External storage support for Azure Local](/azure/azure-local/concepts/external-storage-support?view=azloc-2603&preserve-view=true).
+- **Azure CLI support for replication and migration (Preview)** – You can now use the Azure CLI to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell or Azure CLI (Preview)](migrate-via-powershell.md).
 - **Migrate appliance improvements** – Improved the Azure Local onboarding flow in source appliance configuration manager and fixed a bug where source appliance installation was failing on Windows Server 2025.
 
 ## March 2026
 
 This release includes these features and improvements:
 
-- **Azure CLI support for replication and migration (Preview)** – You can now use the Azure CLI to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell or Azure CLI (Preview)](migrate-via-powershell.md).
+
 - **Linux static IP migration script improvements** - Fixed several issues with the Linux static IP migration script:
     - Resolved an issue where static IP addresses weren't applied when a DHCP server was active on the Azure Local cluster.
     - Fixed a bug where DNS server entries were incorrectly formatted after migration, causing DNS resolution failures and blocking guest management enablement.
