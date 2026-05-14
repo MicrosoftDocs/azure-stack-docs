@@ -126,6 +126,7 @@ Collect and make available the following parameters before deployment:
 | LdapPort | LDAP port that is used to connect to the global catalog. Default 3268 is a nonsecure channel and 3269 is a ssl/secure channel for global catalog | 3269 |
 | RootOperatorUserPrincipalName | UPN for the initial operator persona granted access to the Operator subscription | `Cloud-admin@local.contoso.com` |
 | SyncGroupIdentifier | GUID to Active Directory group to start syncing from. <br></br> `$group = Get-ADGroup -Identity “mygroup” \| Select-Object Name, ObjectGUID` | `81d71e5c5-abc4-11af-8132-afdf6bbe2ec1` |
+| AutomationCertificate | (Optional) Certificate to use for automation account <br></br> Create client cert using your own PKI or use self-signed certificate and safeguard this certificate | $cert=New-SelfSignedCertificate -Subject 'Automation Account' |
 
 Example configuration parameter:
 
@@ -140,6 +141,28 @@ $idpConfig = @{
       syncGroupIdentifier           = '81d71e5c5-abc4-11af-8132-afdf6bbe2ec1'
 }
 ```
+## Fully automated deployments
+For fully automated deployments, use the AutomationCertificate as part of the IdentityConfiguration. This allows you to automate the full deployment flow as this account can be used to log in as an operator, to create subscriptions, register resource providers, and run with full automation.
+
+Here is an example on how to login with that certificate post-deployment:
+```powershell
+$username = '2cb981cc-147e-47cd-a32c-4bb0dfa60573'
+$certPath = 'C:\Aldo\operatorcert.pem'
+$tenantId = '98b8267d-e97f-426e-8b3f-7956511fd63f'
+# Example using az login
+az login --service-principal --username $username --certificate $certPath --tenant $tenantId
+
+# Example using Powershell
+# Make sure the cert is installed in the CurrentUser cert store
+$CertThumbprint = (Get-ChildItem Cert:\CurrentUser\My | Where-Object { $_.Subject -like "*Azure Local disconnected operations automation credential*" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
+                  -ApplicationId $username`
+                  -TenantId $tenantId `
+                  -CertificateThumbprint $certThumbprint
+```
+Please make note of the following:
+ - Username is static. This is the application id acting as the operator
+ - You need to ensure you have converted/exported the certificate to a .pem file
 
 ## Limitations
 
