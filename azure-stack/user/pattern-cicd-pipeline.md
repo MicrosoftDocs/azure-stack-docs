@@ -3,7 +3,7 @@ title: The DevOps pattern in Azure Stack Hub
 description: Learn about the DevOps pattern so you can ensure consistency across deployments in Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: concept-article
-ms.date: 02/11/2026
+ms.date: 03/04/2026
 ms.author: robess
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
@@ -86,9 +86,7 @@ This pattern isn't recommended if:
 
 ## Next steps
 
-To learn more:
-
-- See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
-- See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
+- To learn more about Azure DevOps and related tools, including Azure Repos and Azure Pipelines, see the [Azure DevOps documentation](/azure/devops).
+- To learn more about the entire portfolio of products and solutions, see the [Azure Stack family of products and solutions](/azure-stack).
 
 When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an app to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.

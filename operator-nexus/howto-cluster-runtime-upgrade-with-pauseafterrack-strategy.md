@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Runtime upgrade with PauseAfterRack strategy"
 description: Learn to execute a Cluster runtime upgrade for Operator Nexus with a PauseAfterRack strategy
-author: bartpinto
-ms.author: bpinto
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 11/21/2025

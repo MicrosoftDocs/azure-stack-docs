@@ -1,11 +1,10 @@
 ---
 title: Physical network requirements for Azure Local
 description: Learn about physical network requirements for Azure Local, including network switches, to ensure optimal performance.
-author: alkohli
+author: ronmiab
 ms.topic: concept-article
 ms.date: 03/27/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 
@@ -219,7 +218,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
@@ -229,7 +228,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
@@ -330,8 +329,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
 | [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
 | [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
-| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/i/214442/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
-| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/i/214442/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -343,8 +342,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
 | [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
 | [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
-| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/i/214442/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
-| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/i/214442/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -421,7 +420,7 @@ Here are the mandatory IEEE standards and specifications:
 | Priority Flow Control|| &check;| | |
 | Enhanced Transmission Selection|| &check;| | |
 | LLDP Port VLAN ID |&check;| | | |
-| LLDP VLAN Name|| &check;| & check;|&check; |
+| LLDP VLAN Name|| &check;| &check;|&check; |
 | LLDP Link Aggregation|&check;| &check;| &check;|&check; |
 | LLDP ETS Configuration||&check; | | |
 | LLDP ETS Recommendation || &check;|| |

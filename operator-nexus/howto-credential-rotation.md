@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ms.topic: how-to
 ms.date: 12/02/2024
-author: matternst7258
-ms.author: matthewernst
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Credential rotation management for Operator Nexus on-premises devices
@@ -98,6 +98,16 @@ Example `secretRotationStatus` for BMC credential. Use the `secretName` and `sec
   }
 },
 ```
+
+## Credential rotation and machine health
+
+Credential rotation for a Bare Metal Machine is paused when any of the following conditions are true:
+
+- The machine is unhealthy.
+- The machine is customer-cordoned.
+- The machine provisioning status isn't `Succeeded`.
+
+Rotation resumes automatically when these conditions are cleared and the machine returns to a healthy, uncordoned state with provisioning status `Succeeded`.
 
 ## Create a support request
 

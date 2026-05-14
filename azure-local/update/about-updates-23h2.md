@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes the new update feature for this release of Azure Local (*formerly Azure Stack HCI*), the benefits of the feature, and how to keep various components of your solution up to date.
+This article describes the new update feature for this release of Azure Local, the benefits of the feature, and how to keep various components of your solution up to date.
 
 ## About the updates
 
@@ -67,6 +67,9 @@ Sometimes you might see updates to the latest patch level of your current featur
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 
 ## What's in the update package?
+
+> [!IMPORTANT]
+> Azure Local systems with more than 16 nodes may experience longer update runtimes. To help ensure updates complete within planned maintenance windows, consider performing the Solution Builder Extension update separately from the solution update for systems of this size.
 
 Solution updates managed by this feature contain new versions of the Azure Stack HCI OS, core agents and services, and the solution extension (depending on your system's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 

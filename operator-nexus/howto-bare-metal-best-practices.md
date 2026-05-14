@@ -5,8 +5,8 @@ ms.date: 08/12/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, best-practices
-author: omarrivera
-ms.author: omarrivera
+author: dougbristow
+ms.author: dbristow
 ms.reviewer: bartpinto
 ---
 

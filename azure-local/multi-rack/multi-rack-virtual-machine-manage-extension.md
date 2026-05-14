@@ -1,23 +1,21 @@
 ---
-title: Manage VM extensions on Azure Local VMs for multi-rack deployments (preview)
-description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+title: Manage VM extensions on Azure Local VMs for multi-rack deployments
+description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via Azure portal for multi-rack deployments.
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/17/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Manage VM extensions for multi-rack deployments of Azure Local (preview) 
+# Manage VM extensions for multi-rack deployments of Azure Local 
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to install and manage Azure Local virtual machine (VM) extensions for multi-rack deployments via Azure portal.
 
 VM extensions for Azure Local VMs enabled by Azure Arc are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Azure Local VMs.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Supported VM extensions
 
@@ -37,7 +35,7 @@ To manage VMs on Azure Local, you must enable guest management on the VMs. When 
 Verify that guest management is enabled on your virtual machines before you install VM extensions.
 
 > [!NOTE]
-> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [update link URL after release branch merge](../index.yml)<!--update link-->.
+> Extensions for domain join are supported only for Windows VMs. You can enable and install these extensions only during VM creation, via the Azure portal. For more information, see [Create Azure Local VMs for multi-rack deployments](./multi-rack-create-arc-virtual-machines.md).
 
 To verify that guest management is enabled:
 

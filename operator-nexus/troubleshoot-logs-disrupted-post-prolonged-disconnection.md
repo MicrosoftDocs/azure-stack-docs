@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Logs Disrupted After 48-hour Disconnection"
 description: Learn how to troubleshoot log disruption Issue post a disconnection period of more than two days.
-author: neilverse
-ms.author: soumyamaitra
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting

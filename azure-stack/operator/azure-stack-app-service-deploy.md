@@ -3,8 +3,8 @@ title: Deploy App Service in Azure Stack Hub
 description: Learn how to deploy App Service in Azure Stack Hub.
 author: sethmanheim
 ms.topic: install-set-up-deploy
-ms.date: 06/26/2025
-ms.author: anwestg
+ms.date: 05/11/2026
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 12/09/2021
 zone_pivot_groups: 
@@ -204,6 +204,15 @@ Go to the WorkersNsg in the Admin Portal and add an outbound security rule with 
  - Action: Allow
  - Priority: 710
  - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
+
+Windows update behavior: Based on customer feedback, we've changed the way Windows Update is configured on App Service roles from Update 7:
+
+Three modes:
+Disabled - Windows Update service disabled, Windows is updated with the KB that's shipped with Azure App Service on Azure Stack Hub releases;
+Automatic - Windows Update service enabled and Windows Update determines how and when to update;
+Managed - Windows Update service is disabled, Azure App Service performs a Windows Update cycle during OnStart of the individual role. (Default).
+
+This setting can be changed in the Web Management Console application on the App Service Controller instance(s).
 
 ## Validate the Azure App Service on Azure Stack Hub installation
 

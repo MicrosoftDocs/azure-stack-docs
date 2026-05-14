@@ -1,8 +1,8 @@
 ---
 title: Create network security groups, network security rules, default network access policies on Azure Local VMs
 description: Learn how to create network security groups, network security rules, and default network access policies on Azure Local VMs using the Azure CLI or the Azure portal.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/05/2025
 ms.service: azure-local

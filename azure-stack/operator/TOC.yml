@@ -16,8 +16,16 @@
       items:
       - name: Currently supported versions
         items:
+        - name: 2601
+          items:
+          - name: Hotfix 1.2601.1.14
+            href: hotfix-1-2601-1-14.md
+          - name: Hotfix 1.2601.1.10
+            href: hotfix-1-2601-1-10.md
         - name: 2506
           items:
+          - name: Hotfix 1.2506.3.30
+            href: hotfix-1-2506-3-30.md
           - name: Hotfix 1.2506.2.24
             href: hotfix-1-2506-2-24.md
         - name: 2501
@@ -284,6 +292,8 @@
       href: azure-stack-security-av.md
     - name: Log collection and data handling
       href: azure-stack-data-collection.md
+    - name: Secure boot certificate updates
+      href: secure-boot-certificates.md
   - name: Populate the marketplace
     items:
     - name: Marketplace overview

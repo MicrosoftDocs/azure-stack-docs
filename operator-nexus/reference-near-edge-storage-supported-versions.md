@@ -2,9 +2,9 @@
 title: Supported Storage Software Versions in Azure Operator Nexus
 description: Learn the storage appliance software versions supported by Azure Operator Nexus versions.
 ms.topic: concept-article
-ms.date: 12/10/2025
-author: matternst7258
-ms.author: matthewernst
+ms.date: 05/08/2026
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ---
 
@@ -57,12 +57,13 @@ Each number in the version indicates general compatibility with the previous ver
 
 | PurityOS version | Support added in | End of support |
 |------------------|------------------|----------------|
-| 6.5.1            | Nexus 2403.3     | Mar 2026*      |
-| 6.5.4            | Nexus 2404.2     | Mar 2026*      |
-| 6.5.6            | Nexus 2406.2     | Mar 2026*      |
-| 6.5.8            | Nexus 2408.1     | Mar 2026*      |
-| 6.5.10           | Nexus 2504.1     | Mar 2026*      |
-| 6.5.11           | Nexus 2509.1     | Mar 2026*      |
+| 6.5.1            | Nexus 2403.3     | Sept 2026*      |
+| 6.5.4            | Nexus 2404.2     | Sept 2026*      |
+| 6.5.6            | Nexus 2406.2     | Sept 2026*      |
+| 6.5.8            | Nexus 2408.1     | Sept 2026*      |
+| 6.5.10           | Nexus 2504.1     | Sept 2026*      |
+| 6.5.11           | Nexus 2509.1     | Sept 2026*      |
+| 6.9.4            | Nexus 2604.2     | May 2028*      |
 
 > [!IMPORTANT]
 > \* At max 2 LTS versions will be supported. The dates are tentative assuming that by this timeframe we will have another set of LTS versions released, making this version deprecated per our support guidelines.
@@ -104,6 +105,7 @@ Azure Operator Nexus supports and tests the latest combination of a Purity versi
 | 6.5.8            | 2.2.1       |
 | 6.5.10           | 2.2.2       |
 | 6.5.11           | 2.2.4       |
+| 6.9.4            | 2.2.5       |
 
 ## FAQ
 

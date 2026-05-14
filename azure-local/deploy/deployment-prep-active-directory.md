@@ -1,11 +1,10 @@
 --- 
 title: Prepare Active Directory for Azure Local, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 03/25/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

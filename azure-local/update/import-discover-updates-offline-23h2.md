@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 03/23/2026
+ms.date: 05/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 ::: moniker range=">=azloc-24113"
 
-This article explains how to discover and import solution update packages for Azure Local (*formerly Azure Stack HCI*) deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
 
 The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Arc resource bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
@@ -40,7 +40,8 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | Notes / SHA256 |
 |--|--|--|
-| 26100.32522 | [12.2603.1002.15](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2603.1002.15/CombinedSolutionBundle.12.2603.1002.15.zip) <br><br> Availability date: 2026-03-17 | 77063963B992A2B5736C871961972AF617F43C3A4C795B6F4F3DDB05AECFB1FC |
+| 26100.32690 | [12.2604.1003.1005]( https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2604.1003.1005/CombinedSolutionBundle.12.2604.1003.1005.zip) <br><br> Availability date: 2026-05-11 | BB712F0FFAD460E231BD8EB198BF3371A38D0560594E4FBF37827D8EFF935A48 |
+| 26100.32522 | [12.2603.1002.500](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2603.1002.500/CombinedSolutionBundle.12.2603.1002.500.zip) <br><br> Availability date: 2026-04-06 | 49EC786A779316C887D25537EFB52E6B43FD336507E5D877B8C6F98494B468C3 |
 | 26100.32370 | [12.2602.1002.501](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2602.1002.501/CombinedSolutionBundle.12.2602.1002.501.zip) <br><br> Availability date: 2026-03-02 | B7109C8067F7C4D99D1B7A956FC911525384B211BB34BAF13BC68E229BD6F628 |
 | 26100.32230 | [12.2601.1002.503](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2601.1002.503/CombinedSolutionBundle.12.2601.1002.503.zip) <br><br> Availability date: 2026-02-02 | 68848F4082C3F1B75D303476193E81A4593316DAABB8C45380AFEFAD94E90E78 |
 | 26100.7462 | [12.2512.1002.16](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2512.1002.16/CombinedSolutionBundle.12.2512.1002.16.zip) <br><br> Availability date: 2025-12-16 | EE8BC57EA3B59B1761B07F99B559F5E6280CDE21C0ECDC939EAC6BC7B8D2F4E6 |

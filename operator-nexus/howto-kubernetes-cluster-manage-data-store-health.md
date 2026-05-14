@@ -1,8 +1,8 @@
 ---
 title: ETCD best practices for Azure Operator Nexus Kubernetes clusters
 description: Learn about ETCD best practices for maintaining healthy Nexus AKS clusters, including backups, compaction, defragmentation, and monitoring.
-author: abailey011
-ms.author: alexbailey
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/26/2026

@@ -1,8 +1,8 @@
 ---
 title: Prepare GPUs for Azure Local instance
 description: Learn how to prepare GPUs for an Azure Local instance.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 02/11/2026
 ms.service: azure-local
@@ -58,7 +58,6 @@ The following table shows GPU model support by GPU assignment type and VM worklo
 | NVIDIA L40 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA L40S |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
 | NVIDIA RTX Pro 6000 |&check; Yes |&check; Yes |&check; Yes |&check; Yes |
-| NVIDIA H100 |&check; Yes |&check; Yes |&cross; No |&check; Yes |
 
 *AKS Arc doesn't currently support GPU partitions.
 

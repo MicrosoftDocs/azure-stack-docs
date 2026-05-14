@@ -1,8 +1,8 @@
 ---
 title: Get support for Azure Local deployment issues
 description: Learn how to get Microsoft support for Azure Local deployment issues, including log collection and remote support.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/10/2025
@@ -105,7 +105,7 @@ To enable remote support, follow these steps:
    > This means the Just Enough Administration (JEA) configuration isn't established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, Windows Remote Management (WinRM) restarts twice, which can disrupt the PsSession to the machine. To fix this error, wait a few minutes before reconnecting to the remote machine, and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
    >
 
-For remote support usage scenarios, see [Enable remote support diagnostics](./get-remote-support.md#enable-remote-support-diagnostics) and [Other remote support operations](./get-remote-support.md#other-remote-support-operations).
+For remote support usage scenarios, see [Enable remote support](./get-remote-support.md#enable-remote-support) and [Other remote support operations](./get-remote-support.md#other-remote-support-operations).
 
 ## Next steps
 

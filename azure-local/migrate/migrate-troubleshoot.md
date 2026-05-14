@@ -1,11 +1,10 @@
 ---
 title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/01/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.custom:
   - linux-related-content
   - sfi-image-nochange

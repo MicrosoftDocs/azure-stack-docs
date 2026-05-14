@@ -2,8 +2,8 @@
 title: Remediation Support Tool for Azure Local infrastructure component issues
 description: Learn how to run commands in the Support.AksArc PowerShell module to remediate issues in Azure Local infrastructure components.
 ms.topic: troubleshooting
-author: alkohli 
-ms.author: alkohli 
+author: ronmiab
+ms.author: robess
 ms.date: 01/09/2026
 ---
 

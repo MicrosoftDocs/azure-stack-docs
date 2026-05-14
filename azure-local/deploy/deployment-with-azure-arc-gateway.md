@@ -1,10 +1,10 @@
 --- 
 title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
-author: alkohli
+author: ronmiab
 ms.topic: how-to
-ms.date: 03/26/2026
-ms.author: alkohli
+ms.date: 04/10/2026
+ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
 ms.subservice: hyperconverged
@@ -85,7 +85,7 @@ $RG = "yourResourceGroupName"
 $Region = "eastus"
 
 #Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+$ArcgwId = "/subscriptions/yoursubscriptionid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
     
 #Define the proxy address for your Azure Local deployment to access the internet via proxy.
 $ProxyServer = "http://proxyaddress:port"
@@ -406,7 +406,7 @@ $RG = "yourResourceGroupName"
 $Region = "eastus"
 
 #Define the Arc gateway resource ID from Azure 
-$ArcgwId = "/subscriptions/yourarcgatewayid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
+$ArcgwId = "/subscriptions/yoursubscriptionid/resourceGroups/yourResourceGroupName/providers/Microsoft.HybridCompute/gateways/yourArcGatewayName" 
     
 #Optional: Define the Azure Resource Manager access token.
 # Required only if you want to use token-based authentication instead of device code authentication.

@@ -1,25 +1,21 @@
 ---
 title: Manage GPUs via Discrete Device Assignment for Azure Local (preview)
 description: Learn how to manage GPUs via Discrete Device Assignment for Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 08/27/2025
 ms.subservice: hyperconverged
 ---
 
-# Manage GPUs via Discrete Device Assignment (preview)
+# Manage GPUs via Discrete Device Assignment
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage GPUs using Discrete Device Assignment (DDA) for Azure Local VMs enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Use GPUs for compute-intensive workloads](/azure/aks/hybrid/deploy-gpu-node-pool#create-a-new-workload-cluster-with-a-gpu-enabled-node-pool).
 
 DDA allows you to dedicate a physical graphical processing unit (GPU) to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.
-
-> [!IMPORTANT]
-> This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
 
 ## Prerequisites
 
@@ -49,13 +45,13 @@ After attaching the GPU, the output shows the full VM details. You can confirm t
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[
-			{
-				"assignmentType": "GpuDDA",
-				"gpuName": "NVIDIA A2",
-				"partitionSizeMb": null
-			}
+    "hardwareProfile":{
+        "virtualMachineGPUs":[
+            {
+                "assignmentType": "GpuDDA",
+                "gpuName": "NVIDIA A2",
+                "partitionSizeMb": null
+            }
          ],
 ```
 
@@ -73,8 +69,8 @@ After detaching the GPU, the output shows the full VM details. You can confirm t
 
 ```azurecli
 "properties":{
-	"hardwareProfile":{
-		"virtualMachineGPUs":[],
+    "hardwareProfile":{
+        "virtualMachineGPUs":[],
 ```
 
 For details on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stack-hci-vm/gpu).
