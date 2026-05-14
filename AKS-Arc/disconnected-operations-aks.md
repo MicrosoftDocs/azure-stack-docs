@@ -34,9 +34,10 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 Limitations for disconnected operations with AKS Arc include:
 
 - Support for disconnected operations begins with the 2408 release.
-- Supported Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4.
+- Supported Kubernetes versions: 1.33.4 and 1.33.5.
+- Windows node pools are not supported yet.
 - Microsoft Entra ID (formerly Azure Active Directory) isn't supported for disconnected operations.
-- GPUs aren't supported.
+- GPUs aren't supported yet.
 - Arc Gateway isn't supported for configuring outbound URLs.
 - Create logical networks using the CLI only. The portal isn't supported.
 - Create SSH keys using the CLI only. The portal isn't supported.
