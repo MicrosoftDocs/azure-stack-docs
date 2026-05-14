@@ -109,7 +109,7 @@ To collect and send diagnostic logs to Microsoft using the Azure portal, follow 
 
 ## Support operations
 
-You can grant remote access to Microsoft support by using remote support operations. After you enable remote support, assign a specific access level to Microsoft support based on your requirements. For more information, see [Enable remote support diagnostics](../manage/get-remote-support.md#enable-remote-support-diagnostics) and the [List of Microsoft support operations](../manage/remote-support-arc-extension.md#list-of-microsoft-support-operations).
+You can grant remote access to Microsoft support by using remote support operations. After you enable remote support, assign a specific access level to Microsoft support based on your requirements. For more information, see [Enable remote support diagnostics](../manage/get-remote-support.md#enable-remote-support) and the [List of Microsoft support operations](../manage/remote-support-arc-extension.md#list-of-microsoft-support-operations).
 
 ## Next step
 

@@ -3,10 +3,10 @@ title: Update Azure App Service on Azure Stack Hub
 description: Learn how to update Azure App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/25/2025
+ms.date: 05/11/2026
 ms.author: sethm
 ms.reviewer: anwestg
-ms.lastreviewed: 10/28/2020
+ms.lastreviewed: 11/28/2020
 zone_pivot_groups: 
 # Intent: As an Azure Stack operator, I want to update my App Service so I'm up to date.
 # Keyword: update app service azure stack
@@ -107,6 +107,17 @@ During this process, the upgrade will:
     1. After the upgrade successfully completes, select **Exit**.
 
         ![Screenshot showing Azure App Service on Azure Stack Hub upgrade progress.][5]
+
+## Post Upgrade 
+
+Windows update behavior: Based on customer feedback, we've changed the way Windows Update is configured on App Service roles from Update 7:
+
+Three modes:
+Disabled - Windows Update service disabled, Windows is updated with the KB that's shipped with Azure App Service on Azure Stack Hub releases;
+Automatic - Windows Update service enabled and Windows Update determines how and when to update;
+Managed - Windows Update service is disabled, Azure App Service performs a Windows Update cycle during OnStart of the individual role. (Default).
+
+This setting can be changed in the Web Management Console application on the App Service Controller instance(s).
 
 ## Next steps
 

@@ -353,12 +353,21 @@ To configure observability, follow these steps:
     Get-ApplianceObservabilityConfiguration
     ```
 
-## Configure Azure PowerShell
+## Add the Azure Local disconected operations environment to the nodes
 
-On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane.
+In order for the nodes to understand your private cloud environment, you must add the local environment. This is required for bootstrapping the Azure Local nodes later to the control plane.
+
+On each node, run the following from Powershell:
+ 
+1. `Add-AzLocalEnvironment -FQDN "autonomous.cloud.private"`
+
+> [!NOTE]
+> This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
+
+For environments prior to 2603, use the legacy `Add-AzEnvironment` approach below.
 
 ```powershell
-
+# Legacy approach from prior to 2603 adding a private cloud environment
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
