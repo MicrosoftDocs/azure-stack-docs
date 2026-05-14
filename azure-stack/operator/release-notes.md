@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 04/29/2026
+ms.date: 05/14/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -100,13 +100,13 @@ The 2601 release of Azure Stack Hub must be applied on the 2506 release with the
 
 - [Azure Stack Hub hotfix 1.2506.2.24](hotfix-1-2506-2-24.md)
 
-### After successfully applying the 2506 update
+### After successfully applying the 2601 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
 After the installation of 2601, if any hotfixes for 2601 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2601.1.10](hotfix-1-2601-1-10.md)
+- [Azure Stack Hub hotfix 1.2601.1.14](hotfix-1-2601-1-14.md)
 ::: moniker-end
 
 ::: moniker range="azs-2506"
