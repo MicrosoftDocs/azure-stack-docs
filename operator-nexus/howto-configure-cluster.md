@@ -5,7 +5,7 @@ author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 08/13/2025
+ms.date: 05/14/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -510,6 +510,12 @@ Cluster create Logs can be viewed in the following locations:
 ## Deleting a Cluster
 
 Deleting a Cluster deletes the resources in Azure and the Cluster that resides in the on-premises environment.
+
+When deletion starts, the Cluster moves into a `Deleting` state. Azure Operator Nexus coordinates cleanup of cluster lifecycle resources across Azure and the on-premises environment before the Azure Cluster resource is removed. At a high level, the workflow removes cluster lifecycle artifacts, cleans up associated infrastructure resources, stops cluster-managed credential activity, removes service-managed access and network fabric information where applicable, and then completes the resource deletion.
+
+As part of Cluster deletion, Azure Operator Nexus uses the server management interface to return the bare-metal machines to a reusable state. This cleanup powers down the servers and removes cluster-created storage configuration and management access artifacts, such as RAID configuration, management users, and certificates. This server cleanup is platform-managed and can add time to the delete operation.
+
+Deletion can take time because the platform coordinates with Azure services and on-premises components, and some cleanup operations retry when a dependent service is temporarily unavailable. Wait for the delete operation to finish before creating another Cluster with the same name.
 
 > [!IMPORTANT]
 > If there are any tenant resources that exist in the Cluster, the delete fails until the tenant resources are deleted.
