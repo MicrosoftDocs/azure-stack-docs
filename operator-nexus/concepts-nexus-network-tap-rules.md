@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus Network Packet Broker – Network TAP Rules"
 description: Conceptual overview of Network TAP Rules in Azure Operator Nexus Network Packet Broker.
-author: sushantjrao
-ms.author: sushrao
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 08/16/2025

@@ -1,8 +1,8 @@
 ---
 title: Configure BGP Prefix Limit on CE Devices for Azure Operator Nexus
 description: Learn the process for configuring a BGP prefix limit on customer edge (CE) devices for Azure Operator Nexus.
-author: sushantjrao 
-ms.author: sushrao
+author: dougbristow
+ms.author: dbristow
 ms.date: 04/02/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus

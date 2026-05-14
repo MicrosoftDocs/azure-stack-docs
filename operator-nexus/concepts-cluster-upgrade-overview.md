@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus cluster runtime upgrade overview
 description: Get an overview of cluster runtime upgrade for Azure Operator Nexus.
-author: matternst7258
-ms.author: matthewernst
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 01/16/2026

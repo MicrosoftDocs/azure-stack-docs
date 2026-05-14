@@ -1,11 +1,10 @@
 ---
 title: Release notes with fixed and known issues in Azure Local 23xx releases
 description: Read about the known issues and fixed issues in Azure Local 23xx releases.
-author: alkohli
+author: ronmiab
 ms.topic: troubleshooting-general
 ms.date: 02/11/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

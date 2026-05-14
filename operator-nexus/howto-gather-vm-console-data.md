@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Gather VM Console Data"
 description: Learn how to gather VM Console Data.
-author: keithritchie
-ms.author: keithritchie
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 11/26/2024

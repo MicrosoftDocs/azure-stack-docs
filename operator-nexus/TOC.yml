@@ -52,6 +52,8 @@
           href: concepts-disable-border-gateway-protocol-neighbors.md
         - name: Network Packet Broker
           href: concepts-nexus-network-packet-broker.md
+        - name: Terminal Server as an Azure Operator Nexus Resource
+          href: concepts-terminal-server-as-resource.md 
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
         - name: Route Policy
@@ -103,6 +105,8 @@
           href: concepts-observability.md
         - name: Metrics
           href: reference-operator-nexus-observability-metrics.md
+        - name: Network Fabric Controller internal service metrics
+          href: reference-network-fabric-controller-metrics.md
         - name: Azure Operator Nexus Network Fabric Configuration Monitoring
           href: concepts-network-fabric-configuration-monitoring.md
         - name: Azure Operator Nexus Network Fabric Internal Network BGP Metrics
@@ -195,6 +199,8 @@
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Certificate Rotation
+              href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault
               href: how-to-credential-manager-key-vault.md
             - name: Updating ExpressRoute Gateway Authorization Key in Azure Operator Nexus
@@ -321,6 +327,8 @@
           href: howto-kubernetes-cluster-connect.md
         - name: Configure role-based access control
           href: howto-kubernetes-cluster-aad-rbac.md
+        - name: List supported Kubernetes versions
+          href: howto-list-supported-kubernetes-versions.md
         - name: Upgrade Nexus Kubernetes cluster
           href: howto-kubernetes-cluster-upgrade.md
         - name: Configure huge-pages for cluster virtual machines

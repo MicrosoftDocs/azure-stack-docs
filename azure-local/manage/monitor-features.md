@@ -1,8 +1,8 @@
 ---
 title: Monitor Azure Local features with Insights
 description: Monitor Azure Local features with Insights.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local

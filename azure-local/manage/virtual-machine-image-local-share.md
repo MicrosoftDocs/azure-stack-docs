@@ -1,8 +1,8 @@
 ---
 title: Create Azure Local VM from local share images via Azure CLI 
 description: Learn how to create Azure Local VM images using source images from a local share on your system.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom:

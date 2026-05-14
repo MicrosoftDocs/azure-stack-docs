@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Bare Metal Machine platform commands"
 description: Learn how to manage bare metal machines (BMM).
-author: matternst7258
-ms.author: matthewernst
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 03/11/2026
@@ -306,7 +306,8 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 |----------|---------------|--------|
 | **New deployment** with no existing workloads on the BMM | `DiscardAll` | Clean slate; no tenant data to preserve |
 | **Existing instance**: BMM motherboard was replaced | `DiscardAll` | `Preserve` is known to cause replace failures after motherboard swap |
-| **Existing instance**: BMM has been offline and unavailable for 30+ days | `DiscardAll` | Machine cannot be brought up using normal operations; storage encryption keys may no longer be valid |
+| **Existing instance**: RAID controller or storage backplane replaced | `DiscardAll` | `Preserve` is known to cause replace failures after RAID controller or backplane swap |
+| **Existing instance**: BMM has been offline and unavailable for 30+ days | `DiscardAll` | Machine can't be brought up using normal operations; storage encryption keys may no longer be valid |
 | **Existing instance**: BMM has no workloads running | `DiscardAll` | No tenant data at risk |
 | **Existing instance**: BMM has running workloads and none of the above conditions apply | `Preserve` | Retains tenant data on virtual disks |
 | **Existing instance**: Unsure of workload status and none of the above conditions apply | `Preserve` | Cautious approach to avoid unnecessary data loss |
@@ -317,10 +318,11 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 > [!IMPORTANT]
 > Do **not** use `--storage-policy Preserve` when:
 >
-> 1. The BMM **motherboard has been replaced** — this is known to cause replace failures.
-> 2. The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine cannot be brought up using normal operations.
+> - The BMM **motherboard has been replaced** — this is known to cause replace failures.
+> - The BMM **RAID controller or storage backplane have been replaced** — this is known to cause replace failures.
+> - The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine can't be brought up using normal operations.
 >
-> If local path storage decryption failures occur and the motherboard was **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
+> If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane were **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
 >
 > If local path storage decryption failures persist after a Replace with `DiscardAll`, perform an iDRAC reset before retrying.
 
@@ -334,6 +336,9 @@ During a replace operation, the system progresses through the following phases:
 1. **Cloud Init**: Waits for the replacement machine to join the cluster and become ready
 
 As of the 2506.2 release, the password value for iDRAC can be provided as a Key Vault Uniform Resource Identifier (URI) or password value. See [Key Vault Credential Reference](reference-key-vault-credential.md). Using a URI instead of a plaintext password provides extra security.
+
+> [!IMPORTANT]
+> If the cluster resource still shows [sentinel values](./howto-configure-cluster.md#automatic-discovery-with-sentinel-values) for a Bare Metal Machine's `bmcMacAddress` (`00:00:00:00:00:00`), `bootMacAddress` (`00:00:00:00:00:00`), or `serialNumber` (`000000`), you must provide the actual hardware values for `--bmc-mac-address`, `--boot-mac-address`, and `--serial-number` when executing the `replace` command. Automatic discovery of sentinel values is only supported during initial cluster provisioning and is **not** supported for `replace` operations.
 
 [!INCLUDE [warning-do-not-run-multiple-actions](./includes/baremetal-machines/warning-do-not-run-multiple-actions.md)]
 
@@ -360,7 +365,7 @@ az networkcloud baremetalmachine replace \
 > Message: cannot replace healthy machine (powered on, ready, provisioned, joined to cluster). Use --safeguard-mode None to override
 > ```
 >
-> To override the safeguard, specify `--safeguard-mode None`:
+> To override the safeguard, specify `--safeguard-mode None`.
 
 If the `replace` action fails due to a hardware validation failure, the specific error or test failure is shown in the `replace` response, as shown in the following examples.
 This information can also be found in the Activity Log for the Bare Metal Machine (Operator Nexus).

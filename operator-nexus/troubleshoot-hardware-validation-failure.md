@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 04/02/2025
-author: vnikolin
-ms.author: vanjanikolin
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Troubleshoot hardware validation failure in an Azure Operator Nexus cluster

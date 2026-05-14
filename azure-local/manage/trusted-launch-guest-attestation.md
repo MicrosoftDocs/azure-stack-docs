@@ -2,8 +2,8 @@
 title: Guest attestation for Trusted launch for Azure Local VMs (preview)
 description: Learn how guest attestation works for Trusted launch for Azure Local VMs (preview).
 ms.topic: how-to
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 12/08/2025
 ms.subservice: hyperconverged

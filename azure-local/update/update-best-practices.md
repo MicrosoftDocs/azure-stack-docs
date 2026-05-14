@@ -1,11 +1,10 @@
 ---
 title: Best Practices for managing Azure Local Updates
 description: Learn the best practices for managing Azure Local updates.
-author: alkohli
+author: ronmiab
 ms.topic: overview
 ms.date: 09/10/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -39,7 +38,9 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    AUM provides a centralized view to apply and manage updates across all Azure Local instances. In the Azure portal, go to **Azure Update Manager** > **Resources** > **Azure Local**.
 
    :::image type="content" source="./media/update-best-practices/azure-update-manager.png" alt-text="Screenshot of the Azure Update Manager displaying the Azure Local systems ready for updates." lightbox="./media/update-best-practices/azure-update-manager.png":::
-
+   
+   
+   
    - **Test environment strategy.**
 
       Select a few test clusters that mirror your Azure Local resources in production. Run the update flow to validate before applying to production.
@@ -51,14 +52,15 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
       - Status = Updates available
 
    - **Batch updates for large environments.**
-
+   
       Group clusters using:
       - Tags
       - Resource group
       - Subscription
       - Current version
-      - Location
-   
+      - Location      
+      - Sites
+
       Define a model where you are updating in chunks.  
 
    - **Production environment strategy.**
@@ -78,6 +80,9 @@ Follow these practices to ensure smooth, reliable updates for Azure Local instan
    - Prepare only workflow. See [Predownloads and check update readiness](./update-via-powershell-23h2.md#step-4-recommended-predownload-and-check-update-readiness).
 
    - Limited connectivity update workflow. See [Import and discover update packages with limited connectivity](./import-discover-updates-offline-23h2.md).
+
+> [!IMPORTANT]
+> Azure Local systems with more than 16 nodes may experience longer update runtimes. To help ensure updates complete within planned maintenance windows, consider performing the Solution Builder Extension update separately from the solution update for systems of this size.
 
 ## Don’ts for Azure Local updates
 

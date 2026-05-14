@@ -1,8 +1,8 @@
 ---
 title: Understanding Kubernetes cluster features in Azure Operator Nexus Kubernetes service 
 description: Working with Kubernetes cluster features in Azure Operator Nexus Kubernetes clusters 
-author: dramasamy 
-ms.author: dramasamy 
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus 
 ms.topic: how-to 
 ms.date: 08/14/2024 

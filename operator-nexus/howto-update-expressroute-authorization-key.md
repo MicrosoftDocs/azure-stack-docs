@@ -1,8 +1,8 @@
 ---
 title: Updating ExpressRoute Gateway Authorization Key in Azure Operator Nexus
 description: Learn the process of updating ExpressRoute Gateway Authorization Key in Azure Operator Nexus
-author: sushantjrao 
-ms.author: sushrao
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 12/16/2024

@@ -1,11 +1,10 @@
 ---
 title: Physical network requirements for Azure Local
 description: Learn about physical network requirements for Azure Local, including network switches, to ensure optimal performance.
-author: alkohli
+author: ronmiab
 ms.topic: concept-article
 ms.date: 03/27/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 
@@ -219,7 +218,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
@@ -229,7 +228,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
@@ -421,7 +420,7 @@ Here are the mandatory IEEE standards and specifications:
 | Priority Flow Control|| &check;| | |
 | Enhanced Transmission Selection|| &check;| | |
 | LLDP Port VLAN ID |&check;| | | |
-| LLDP VLAN Name|| &check;| & check;|&check; |
+| LLDP VLAN Name|| &check;| &check;|&check; |
 | LLDP Link Aggregation|&check;| &check;| &check;|&check; |
 | LLDP ETS Configuration||&check; | | |
 | LLDP ETS Recommendation || &check;|| |

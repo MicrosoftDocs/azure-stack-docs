@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
 ms.date: 11/14/2024
-author: sushantjrao
-ms.author: sushrao
+author: dougbristow
+ms.author: dbristow
 ---
 
 # BMP log streaming

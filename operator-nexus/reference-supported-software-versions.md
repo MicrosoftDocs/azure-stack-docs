@@ -3,8 +3,8 @@ title: Supported software versions in Azure Operator Nexus
 description: Learn about supported software versions in Azure Operator Nexus. 
 ms.topic: feature-availability
 ms.date: 02/26/2026
-author: jac0bsmith    
-ms.author: jacobsmith
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ---
 

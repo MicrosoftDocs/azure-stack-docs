@@ -1,8 +1,8 @@
 ---
 title: Create image for Azure Operator Nexus virtual machine
 description: Create container image for Operator Nexus virtual machine
-author: dramasamy
-ms.author: dramasamy
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 07/09/2023

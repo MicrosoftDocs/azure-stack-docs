@@ -1,8 +1,8 @@
 ---
 title: Enable a SAMI for the Network Fabric Resource in Azure Operator Nexus
 description: This article describes how to enable a SAMI for the Network Fabric resource in Azure Operator Nexus. You can enable a SAMI for new and existing resource paths.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: dougbristow
+ms.author: dbristow
 ms.date: 03/30/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus

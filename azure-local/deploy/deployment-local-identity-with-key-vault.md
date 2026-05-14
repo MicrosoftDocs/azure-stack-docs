@@ -1,9 +1,9 @@
---- 
+---
 title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 04/16/2026
+ms.date: 04/24/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -15,8 +15,6 @@ ms.subservice: hyperconverged
 ::: moniker range=">=azloc-2510"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -184,7 +182,7 @@ The following table describes the available alerts, their impact, and recommende
 | Alerts | Description | Impact | Recommended action |
 |--|--|--|--|
 | KeyVaultDoesNotExist | The specified Key Vault does not exist. | A Key Vault is required to back up and store secrets securely. Without it, secret backup operations will fail. | - Verify that the Key Vault resource exists in your Azure subscription.<br>- Ensure the Key Vault name and resource group match the configuration in your deployment.<br>- If the Key Vault was deleted, recreate it and update the configuration. |
-| KeyVaultAccess | One or more cluster nodes were unable to access the Key Vault. | If nodes cannot access the Key Vault, operations that require secret retrieval or backup may fail.| - Check network connectivity between the cluster nodes and the Key Vault endpoint.<br>- Verify that the Key Vault firewall and access policies allow the cluster nodes to connect.<br>- Ensure that the managed identity or service principal used by the cluster has the required permissions (such as **Get**, **List**, and **Backup**). Additionally, the managed identity associated with the nodes (Arc for Server resources) must be assigned the **Key Vault Secrets Officer** role on the Key Vault. |
+| KeyVaultAccess | One or more cluster nodes were unable to access the Key Vault. | If nodes cannot access the Key Vault, operations that require secret retrieval or backup may fail.| - Check network connectivity between the cluster nodes and the Key Vault endpoint.<br>- Verify that the Key Vault firewall and access policies allow the cluster nodes to connect.<br>- Ensure that the managed identity or service principal used by the cluster has the required permissions (such as **Get**, **List**, and **Backup**). Additionally, the managed identity associated with the nodes (Arc for Server resources) must be assigned the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles on the Key Vault. |
 
 ## Update Key Vault on Azure Local
 
@@ -192,7 +190,7 @@ Follow these steps to update the backup configuration to use a new Key Vault:
 
 1. Create a new Key Vault in the Azure portal. Configure it to store backup secrets.
 
-1. Set up access controls for the new Key Vault. This includes granting necessary permissions to the node identity. Ensure your Key Vault is assigned the **Key Vaults Secret Officer** role. For instructions, see [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-guide?tabs=azure-portal).
+1. Set up access controls for the new Key Vault. This includes granting necessary permissions to the node identity. Ensure your Key Vault is assigned the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles. For instructions, see [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-guide?tabs=azure-portal).
 
     :::image type="content" source="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png" alt-text="Screenshot of Add role assignment page." lightbox="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png":::
 
@@ -246,7 +244,7 @@ To address and resolve the issue of the failed extension and restore normal back
 
 1. Reassign managed identity access.
     1. Determine the managed identity that requires access to the Key Vault.
-    1. Reassign the **Key Vault Secret Officer** role to the managed identity.
+    1. Reassign the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles to the managed identity.
 
 1. Verify extension functionality.
     1. After reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
@@ -328,7 +326,7 @@ If the extension wasn't installed during deployment, you can manually install it
 ## Next steps
 
 - If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
-- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md)
+- [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end
 

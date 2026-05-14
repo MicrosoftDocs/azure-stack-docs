@@ -1,8 +1,8 @@
 ---
 title: What's new in Azure Migrate for Azure Local
 description: Learn about new features in Azure Migrate for Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 04/16/2026
 ms.service: azure-local
@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 
 # What's new in Azure Migrate for Azure Local
 
-This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local (*formerly Azure Stack HCI*). This article applies to both Hyper-V (Preview) and VMware VM migrations.
+This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 

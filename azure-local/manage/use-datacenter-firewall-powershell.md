@@ -1,8 +1,8 @@
 ---
 title: Configure network security groups with PowerShell
 description: Configure network security groups with PowerShell.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 10/24/2024

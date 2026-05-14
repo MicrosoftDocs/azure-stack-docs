@@ -1,9 +1,8 @@
 ---
 title: Troubleshoot Simplified Machine Provisioning for Azure Local (preview)
 description: Learn how to troubleshoot simplified machine provisioning for Azure Local (preview).
-ms.author: alkohli
-author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
+author: ronmiab
 ms.topic: how-to
 ms.date: 04/01/2026
 ms.subservice: hyperconverged
@@ -122,61 +121,6 @@ You only need to boot from a USB device once to install the maintenance environm
 
 1. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Get started** > **Provision**. Upload the voucher and provision the machine again. For more information, see [Provision machines from Azure](simplified-machine-provisioning.md#step-3-provision-machines-from-azure).
 
-## Provisioned machine creation fails with the error message "StorageAccountForbidden"
-
-This error has the following possible causes.
-
-**Cause:** Your administrator has set up an [Azure Policy](/azure/governance/policy/overview) that includes one or more of the following requirements:
-
-- Resource groups must be created in a specific region. In this preview release, only the `eastus` region supports simplified machine provisioning.
-
-- Resource groups must be created using a specific naming convention.
-
-- Resources must have [Azure Resource Manager tags](/azure/azure-resource-manager/management/tag-resources). Simplified machine provisioning doesn't currently support this requirement.
-
-**Recommendation:**
-
-1. In Azure portal, browse to the resource group where you're trying to provision new machines and select **Monitor** > **Activity log**. You can use the activity log to investigate the provisioning error and determine which Azure Policy is restricting resource creation. For more information, see [Activity log in Azure Monitor](/azure/azure-monitor/platform/activity-log).
-
-1. Add an [Azure Policy exemption](/azure/governance/policy/concepts/exemption-structure) for the policy that conflicts with simplified machine provisioning.
-
-1. Delete the provisioned machine. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Provisioned machines**. Select the machine and then select **Delete**.
-
-1. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Get started** > **Provision**. Upload the voucher and provision the machine again. For more information, see [Provision machines from Azure](simplified-machine-provisioning.md#step-3-provision-machines-from-azure).
-
-**Cause:** You didn't register the `Microsoft.Storage` resource provider.
-
-**Recommendation:**
-
-1. Register the resource provider as described in the [prerequisites](simplified-machine-provisioning.md#azure-prerequisites).
-
-1. Delete the provisioned machine. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Provisioned machines**. Select the machine and then select **Delete**.
-
-1. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Get started** > **Provision**. Upload the voucher and provision the machine again. For more information, see [Provision machines from Azure](simplified-machine-provisioning.md#step-3-provision-machines-from-azure).
-
-## Provisioned machine creation fails with the error message "DeviceOnboardingConflict"
-
-**Cause:** You didn't register the `Microsoft.DeviceOnboarding/AzureLocalZTP` feature or the `Microsoft.DeviceOnboarding` resource provider.
-
-**Recommendation:**
-
-1. Register the `Microsoft.DeviceOnboarding/AzureLocalZTP` feature and required resource providers as described in the [prerequisites](simplified-machine-provisioning.md#azure-prerequisites).
-
-1. Delete the provisioned machine. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Provisioned machines**. Select the machine and then select **Delete**.
-
-1. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Get started** > **Provision**. Upload the voucher and provision the machine again. For more information, see [Provision machines from Azure](./simplified-machine-provisioning.md#step-3-provision-machines-from-azure).
-
-## Provisioned machine creation fails with the error message "UpdateArcSettingDataFailed"
-
-**Cause:** You didn't register the `Microsoft.HybridCompute` resource provider.
-
-**Recommendation:**
-
-1. Register the resource provider as described in the [prerequisites](simplified-machine-provisioning.md#azure-prerequisites).
-
-1. Delete the provisioned machine. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Provisioned machines**. Select the machine and then select **Delete**.
-
-1. Select **Azure Arc** > **Operations** > **Machine provisioning (preview)** > **Get started** > **Provision**. Upload the voucher and provision the machine again. For more information, see [Provision machines from Azure](simplified-machine-provisioning.md#step-3-provision-machines-from-azure).
 
 ## Reattempt a failed OS provisioning
 

@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ms.topic: how-to
 ms.date: 03/30/2026
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: dougbristow
+ms.author: dbristow
 ---
 
 # Enable and use a customer-managed key vault

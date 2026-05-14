@@ -1,8 +1,8 @@
 ---
 title: Azure Hybrid Benefit for Azure Local
 description: Learn about Azure Hybrid Benefit for Azure Local.
-author: sethmanheim
-ms.author: sethm
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/05/2026

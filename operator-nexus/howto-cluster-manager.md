@@ -1,8 +1,8 @@
 ---
 title: "Cluster Manager: How to manage the Cluster Manager in Operator Nexus"
 description: Learn to create, view, list, update, delete commands for Cluster Manager on Operator Nexus
-author: mbashtovaya
-ms.author: mbashtovaya
+author: dougbristow
+ms.author: dbristow
 ms.date: 12/17/2025
 ms.topic: how-to
 # ms.prod: used for on prem applications

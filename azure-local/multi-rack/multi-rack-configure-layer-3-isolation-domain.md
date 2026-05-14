@@ -1,22 +1,20 @@
 ---
-title: Manage Layer 3 Isolation Domains for Azure Local Multi-rack Deployments (preview)
-description: Learn how to manage Layer 3 isolation domains for Azure Local multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+title: Manage Layer 3 Isolation Domains for Azure Local Multi-rack Deployments
+description: Learn how to manage Layer 3 isolation domains for Azure Local multi-rack deployments.
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/30/2026
+ms.date: 04/15/2026
 ---
 
-# Manage Layer 3 isolation domains for multi-rack deployments of Azure Local (preview)
+# Manage Layer 3 isolation domains for multi-rack deployments of Azure Local
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to create, modify, or delete Layer 3 (L3) isolation domains for multi-rack deployments of Azure Local.
 
 Isolation domains enable network connectivity between workloads hosted in the same rack (intra-rack communication) or different racks (inter-rack communication) and with endpoints external to Azure Local. You can create, update, delete, and check the status of your L3 isolation domains by using the Azure Command-Line Interface (CLI).
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## About isolation domains
 

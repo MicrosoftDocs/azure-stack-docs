@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus Cluster Support for managed identities and user provided resources"
 description: Azure Operator Nexus Cluster support for managed identities and user provided resources.
-author: eak13
-ms.author: ekarandjeff
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 6/10/2025
@@ -167,6 +167,9 @@ The following steps should be followed for using UAMIs with Nexus Clusters and a
 1. To limit access to the Key Vault to a select set of IP or virtual networks, see [Configure Azure Key Vault firewalls and virtual networks](/azure/key-vault/general/network-security?WT.mc_id=Portal-Microsoft_Azure_KeyVault).
    1. The IPs for all users requiring access to the Key Vault need to be added to the Key Vault's `Virtual Networks` and/or `Firewall` lists.
    1. Ensure the `Allow trusted Microsoft services to bypass this firewall.` under `Exceptions` is selected.
+
+> [!IMPORTANT]
+> The **Allow trusted Microsoft services to bypass this firewall** exception does **not** apply to Edge Credential writes when the **EdgeCredentialManagement** feature is enabled. For clusters using this feature, you must configure a Network Security Perimeter or add the infrastructure firewall IP to the Key Vault allowlist. See [Configure Network Security Perimeter for Key Vault with firewall enabled](./how-to-credential-manager-key-vault.md#configure-network-security-perimeter-for-key-vault-with-firewall-enabled) for instructions.
 
 ### Create or update the Nexus Cluster to use User Assigned Managed Identities and user provided resources
 
