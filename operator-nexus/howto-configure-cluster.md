@@ -518,7 +518,7 @@ As part of Cluster deletion, Azure Operator Nexus uses the server management int
 Deletion can take time because the platform coordinates with Azure services and on-premises components, and some cleanup operations retry when a dependent service is temporarily unavailable. Wait for the delete operation to finish before creating another Cluster with the same name.
 
 > [!IMPORTANT]
-> If there are any tenant resources that exist in the Cluster, the delete fails until the tenant resources are deleted.
+> If there are any workload resources that exist in the Cluster, the delete fails until the workload resources are deleted. This validation helps prevent accidental deletion of a Cluster that is still hosting customer workloads. Workload resources can include virtual machines, Nexus Kubernetes clusters, and network resources associated with workloads.
 
 :::image type="content" source="./media/nexus-delete-failure.png" lightbox="./media/nexus-delete-failure.png" alt-text="Screenshot of the portal showing the failure to delete because of tenant resources.":::
 
