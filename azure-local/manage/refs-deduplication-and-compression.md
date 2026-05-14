@@ -131,7 +131,7 @@ Follow these steps to enable ReFS deduplication through PowerShell:
 
 After you enable this feature, you can run a one-time job manually or schedule recurring jobs as needed.
 
-Before you run, you should also consider:
+Before you run, you should also consider the following:
 
 - You can specify more parameters for more complex use cases. The cmdlet used in this section is for the simplest use case.
 - The Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply when running deduplication.
@@ -231,7 +231,7 @@ Set a recurring schedule to run storage optimizations for the volume. You can th
 
 ### Suspend scheduled jobs
 
-Suspending the schedule cancels any running jobs and stops scheduled runs in the future. This option retains ReFS deduplication-related metadata and continues to track file changes for optimized future runs. You can resume the schedule at any time, with the schedule settings preserved.
+When you suspend the schedule, it cancels any running jobs and stops scheduled runs in the future. This option keeps ReFS deduplication-related metadata and continues to track file changes for optimized future runs. You can resume the schedule at any time, and the schedule settings stay the same.
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
@@ -374,7 +374,7 @@ Start-ReFSDedupJob -Volume <path>
 
 **Status:** Resolved.
 
-Once you disable ReFS deduplication on a volume, the ETW channel for ReFS deduplication logs repeated stopped monitoring events. However, we don't expect this issue to cause significant usage impact.
+When you disable ReFS deduplication on a volume, the ETW channel for ReFS deduplication logs repeated stopped monitoring events. However, we don't expect this issue to cause significant usage impact.
 
 ## Next steps
 
