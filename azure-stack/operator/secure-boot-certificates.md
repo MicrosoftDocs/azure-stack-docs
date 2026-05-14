@@ -45,7 +45,7 @@ Before you begin, make sure you have the following prerequisites in place:
 
 Azure Stack Hub platform updates and corresponding hotfixes provide Secure Boot mitigation support. 
 
-- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation ([Hotfix 1.2601.1.14](hotfix-1-2601-1-14.md) or later).
+- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation ([hotfix 1.2601.1.14](hotfix-1-2601-1-14.md) or later).
 - Azure Stack Hub version 2506 supports Secure Boot mitigation by updating to the most recent 2601 build that includes Secure Boot mitigation, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 - Azure Stack Hub version 2501 supports Secure Boot mitigation by updating to a supported 2506 release that includes Secure Boot mitigation, when available, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 
