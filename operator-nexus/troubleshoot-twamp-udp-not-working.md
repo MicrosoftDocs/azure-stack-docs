@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: TWAMP (UDP) not working"
 description: Learn how to troubleshoot TWAMP (UDP) issues.
-author: papadeltasierra
-ms.author: pauldsmith
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting

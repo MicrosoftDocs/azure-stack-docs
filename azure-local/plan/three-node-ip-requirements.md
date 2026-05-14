@@ -2,9 +2,8 @@
 title: Review three-node storage reference pattern IP requirements for Azure Local
 description: Review three-node storage reference pattern IP requirements for Azure Local
 ms.topic: article
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 02/14/2025
 ms.subservice: hyperconverged

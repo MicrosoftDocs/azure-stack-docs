@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to set up the Defender for Cloud security environment"
 description: Learn how to enable and configure Defender for Cloud security plan features on your Operator Nexus subscription. 
-author: scottsteinbrueck 
-ms.author: ssteinbrueck
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/18/2023

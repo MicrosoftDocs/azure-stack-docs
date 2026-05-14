@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 02/18/2025
-ms.author: nyeemakhtar
-author: mdnyeemakhtar
+ms.author: dbristow
+author: dougbristow
 ---
 # Troubleshoot stuck (unable to reschedule) workloads in a Nexus Kubernetes Cluster due to power failure
 

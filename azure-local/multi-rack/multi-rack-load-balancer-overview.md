@@ -3,8 +3,8 @@ title: About Load Balancers in Multi-Rack Deployments of Azure Local (preview)
 description: Learn about the types of load balancers you can use in multi-rack deployments of Azure Local (preview).
 ms.topic: concept-article
 ms.date: 11/24/2025
-author: alkohli
-ms.author: alkohli
+author: sipastak
+ms.author: sipastak
 ms.subservice: multi-rack
 ---
 
@@ -36,6 +36,7 @@ Multi-rack deployments of Azure Local support three types of load balancers:
 - Available as a managed Software Defined Networking (SDN) service. You don't need to install or manage a separate load balancer appliance or design for its high availability.
 - Supports TCP and HTTP health monitoring to check backend availability and ensure traffic is sent only to healthy instances.
 - Supports only IPv4 traffic. IPv6 traffic isn't supported currently.
+- Load balancer names must be 22 characters or less.
 - Doesn't support Network Address Translation (NAT), both inbound and outbound. For Source Network Address Translation (SNAT) functionality and outbound connectivity, always use a NAT Gateway.
 
 > [!NOTE]
@@ -59,11 +60,11 @@ Backend pools must be in the same virtual network but can be across different su
 
 On logical networks, only public load balancers are supported. To create a load balancer on a logical network, provide a public IP address resource from the same logical network. Backend pools must be in the same logical network.
 
-The following table shows the configuration parameters for different types of load balancers:
+The following table shows the configuration keys for the `--frontend-ip` and `--backend-pool` parameters for different types of load balancers:
 
-| Parameter | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
+| Key | Public load balancer on virtual network | Internal load balancer on virtual network | Load balancers on logical network |
 |--|--|--|--|
-| `frontend-ip-subnet-ids` | Required | Required | Omit |
-| `frontend-ip-public-ip-ids` | Required<br><br>Must be from the same logical network as the NAT Gateway public IP. | Omit | Required<br><br>Must be from the same logical network. |
-| `backend-pool-virtual-network-ids` | Required | Required | Omit |
-| `backend-pool-logical-network-ids` | Omit | Omit | Required |
+| `subnet-id` (in `--frontend-ip`) | Required | Required | Omit |
+| `public-ip-id` (in `--frontend-ip`) | Required | Omit | Required<br><br>Must be from the same logical network. |
+| `vnet-id` (in `--backend-pool`) | Required | Required | Omit |
+| `lnet-id` (in `--backend-pool`) | Omit | Omit | Required |

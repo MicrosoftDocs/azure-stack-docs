@@ -4,8 +4,8 @@ description: Learn how to use Kerberos authentication with SPN.
 manager: grcusanz
 ms.topic: how-to
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
-ms.author: alkohli
-author: alkohli
+ms.author: robess
+author: ronmiab
 ms.date: 11/04/2025
 ms.subservice: hyperconverged
 ---

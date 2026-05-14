@@ -2405,6 +2405,11 @@
       "source_path": "azure-local/manage/disconnected-operations-prepare-azure-local.md",
       "redirect_url": "/azure/azure-local/manage/disconnected-operations-prepare",
       "redirect_document_id": false
+    }, 
+    {
+      "source_path": "azure-local/concepts/microsoft-365-local-overview.md",
+      "redirect_url": "/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview",
+      "redirect_document_id": false
     } 
   ]
 }

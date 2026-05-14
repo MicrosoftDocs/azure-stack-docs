@@ -1,8 +1,8 @@
 ---
 title: Quickstart - Create an Azure Nexus Kubernetes cluster by using Bicep
 description: Learn how to create an Azure Nexus Kubernetes cluster by using Bicep.
-author: dramasamy
-ms.author: dramasamy
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: quickstart-bicep #Required; leave this attribute/value as-is.
 ms.custom:

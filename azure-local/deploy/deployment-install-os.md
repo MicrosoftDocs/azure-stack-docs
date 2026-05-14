@@ -1,11 +1,10 @@
 ---
 title: Install Azure Stack HCI operating system, version 23H2 using SConfig
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/11/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -94,8 +93,8 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 > [!IMPORTANT]
-> - Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
-> - Machines must not be joined to Active Directory before deployment.
+> - Do not install Windows Updates using SConfig or Azure Update Manager (Microsoft.SoftwareUpdateManagement.WindowsOsUpdateExtension). Updates are installed during the deployment. Installing updates using SConfig or Azure Update Manager causes a deployment failure.
+
 
 Follow these steps to configure the operating system using SConfig:
 
@@ -146,11 +145,11 @@ Follow these steps to configure the operating system using SConfig:
     > [!NOTE]
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
    
-<!-- Starting with version 2510, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
+Starting with version 2604, domain joining before deployment is supported. If you choose to domain join, you must add the deployment user to the local Administrators group. If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ### Domain join before deployment
 
-Starting with version 2510, you can domain join machines before deployment:
+Starting with version 2604, you can domain join machines before deployment:
 
 1. Use `SConfig option 1 Domain/workgroup` to join the machine to your domain.
 1. Add the deployment user to the local Administrators group on each machine, using the following command:

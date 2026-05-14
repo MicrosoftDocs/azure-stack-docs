@@ -1,9 +1,9 @@
 ---
 title: View Health Service faults
 description: Learn more about Health Service faults
-ms.author: alkohli
+ms.author: robess
 ms.topic: how-to
-author: alkohli
+author: ronmiab
 ms.date: 07/16/2025
 ms.subservice: hyperconverged
 ---

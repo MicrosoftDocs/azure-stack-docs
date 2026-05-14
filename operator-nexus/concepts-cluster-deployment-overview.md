@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus cluster deployment overview
 description: Get an overview of cluster deployment for Azure Operator Nexus.
-author: sbatchu
-ms.author: sbatchu
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 08/05/2024

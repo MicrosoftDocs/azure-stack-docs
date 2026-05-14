@@ -1,8 +1,8 @@
 ---
 title: Create virtual networks for multi-rack deployments of Azure Local (preview)
 description: Learn how to create virtual networks for multi-rack deployments of Azure Local (preview).
-author: alkohli
-ms.author: alkohli
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/17/2025
@@ -61,13 +61,13 @@ Complete the following steps to create a virtual network using Azure CLI. 
 
 1. Sign in. Type:
 
-    ```azurecli
+    ```powershell
     az login --use-device-code  
     ```
 
 1. Set your subscription.
 
-    ```azurecli
+    ```powershell
     az account set --subscription <Subscription ID>  
     ```
 
@@ -82,7 +82,7 @@ Complete these steps in Azure CLI to configure a virtual network: 
 
 1. Set the parameters. Here's an example:  
 
-    ```azurecli
+    ```powershell
     $vnetName = "mylocal-vnet"  
     $location = "eastus"  
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
@@ -172,7 +172,7 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
 
 1. Set the parameters. Here's an example:
 
-    ```azurecli
+    ```powershell
     $subnetName = "mylocal-subnet"  
     $vnetName = “mylocal-vnet” 
     $location = "eastus"  
@@ -182,7 +182,6 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     $subscription = "<Subscription ID>"  
     $resourceGroup = "mylocal-rg"  
     $nsg = “mylocal-nsg” --- Optional 
-    $routes = “'[{"name":"default","address_prefix":"0.0.0.0/0","next_hop_ip_address":"10.0.0.1"}]'”  
     ```
 
     The required parameters:  
@@ -195,7 +194,7 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     | subscription  | Subscription ID you want to use for the resource creation.  |
     | custom-location  | Use this to provide the custom location associated with your Azure Local where you're creating this virtual network subnet.  |
     | location  | Azure regions as specified by az locations. |
-    | address-prefix  | Private address space in CIDR notation. Must fall within the parent virtual network address space. For example: "10.0.0.0/24".  |
+    | address-prefix  | Private address space in CIDR notation. Must fall within the parent virtual network address space. The minimum supported subnet size is /29. For example: "10.0.0.0/24".  |
 
 1. Create a virtual network subnet. Run the following cmdlet:  
 
@@ -208,7 +207,6 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
     --custom-location $customLocationID \ 
     --address-prefix $addressPrefix \ 
     --network-security-group $nsg\ 
-    --routes $routes 
     ```
 
     Here's a sample output:  

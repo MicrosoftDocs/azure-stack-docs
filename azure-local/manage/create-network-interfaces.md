@@ -1,13 +1,12 @@
 ---
 title: Create network interfaces for virtual machines on Azure Local
 description: Learn how to create network interfaces on an existing logical network associated with your Azure Local. The Azure Local VM enabled by Azure Arc uses these network interfaces.
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: devx-track-azurecli
-ms.date: 03/20/2026
+ms.date: 04/01/2026
 ms.subservice: hyperconverged
 ---
 
@@ -42,6 +41,9 @@ In the Azure portal, you create a network interface during the VM creation flow.
 ## Create network interface
 
 To create a VM, you must first create a network interface on your logical network. The steps can be different depending on whether your logical network is static or uses Dynamic Host Configuration Protocol (DHCP).
+
+> [!NOTE]
+> When creating a resource that requires referring to another resource (for example, creating a NIC needs to refer to LNET), you need to pass the full resource ID if that resource is in a different resource group than the targeted one.
 
 # [Azure CLI](#tab/azurecli)
 

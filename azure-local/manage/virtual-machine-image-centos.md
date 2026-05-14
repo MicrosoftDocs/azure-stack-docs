@@ -1,8 +1,8 @@
 ---
 title: Prepare CentOS Linux image via Azure CLI for Azure Local VMs enabled by Azure Arc (preview)
 description: Learn how to prepare CentOS Linux images to create an Azure Local VM image (preview).
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 03/21/2025

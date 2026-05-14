@@ -1,10 +1,9 @@
 ---
 title: Configure Software Load Balancer for high availability ports
 description: Learn how to configure Software Load Balancer for high availability ports.
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.topic: how-to
-author: alkohli
+author: ronmiab
 ms.date: 01/16/2025
 ms.subservice: hyperconverged
 ---

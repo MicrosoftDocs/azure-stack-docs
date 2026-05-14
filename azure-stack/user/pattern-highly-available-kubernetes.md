@@ -3,7 +3,7 @@ title: High availability Kubernetes pattern using Azure and Azure Stack Hub
 description: Learn how a Kubernetes cluster solution provides high availability using Azure and Azure Stack Hub.
 author: ronmiab 
 ms.topic: how-to
-ms.date: 02/11/2026
+ms.date: 03/04/2026
 ms.author: robess
 ms.reviewer: bryanla
 ms.lastreviewed: 12/03/2020
@@ -69,7 +69,7 @@ Go to [Known Issues and Limitations](https://github.com/Azure/aks-engine/blob/ma
 
 **Azure Pipelines** is part of Azure DevOps Services and runs automated builds, tests, and deployments. You can also use third-party CI/CD solutions such as Jenkins. Go to [Azure Pipeline Overview](/azure/devops/pipelines/get-started/what-is-azure-pipelines) to learn more.
 
-**Azure Monitor** collects and stores metrics and logs, including platform metrics for the Azure services in the solution and application telemetry. Use this data to monitor the application, set up alerts and dashboards, and perform root cause analysis of failures. Azure Monitor integrates with Kubernetes to collect metrics from controllers, nodes, and containers, as well as container logs and master node logs. Go to [Azure Monitor Overview](/azure/azure-monitor/overview) to learn more.
+**Azure Monitor** collects and stores metrics and logs, including platform metrics for the Azure services in the solution and application telemetry. Use this data to monitor the application, set up alerts and dashboards, and perform root cause analysis of failures. Azure Monitor integrates with Kubernetes to collect metrics from controllers, nodes, and containers, as well as container logs and primary node logs. Go to [Azure Monitor Overview](/azure/azure-monitor/overview) to learn more.
 
 **Azure Traffic Manager** is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across different Azure regions or Azure Stack Hub deployments. Traffic Manager also provides high availability and responsiveness. The application endpoints must be accessible from the outside. There are other on-premises solutions available as well.
 

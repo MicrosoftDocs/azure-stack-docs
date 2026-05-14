@@ -114,8 +114,15 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     ```powershell
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
+1. Domain join the machine prior to deployment (recommended)
 
-1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
+    We recommend you to domain join each Azure Local node prior to deployment. Here's an example using Powershell:
+
+    ```powershell
+    $credential = Get-Credential
+    Add-Computer -DomainName dc.azure.local -Credential $credential -Restart
+    ```
+    You can also use SConfig to domain join your node.
 
 1. From the list of node names, select the first machine and designate it as the (seed node). The seed node is the first node used to deploy the disconnected operations control plane. Use the following command to designate the seed node.
 

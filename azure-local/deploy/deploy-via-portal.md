@@ -1,10 +1,10 @@
 ---
 title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 03/23/2026
-ms.author: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -230,25 +230,26 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+   * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates at least one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+      
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
     * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
         To use this option, use a single machine and have a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
-    
+ 
     > [!IMPORTANT]
     > - Don't delete the infrastructure volumes created during deployment.
     > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
     
     Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
-    
+ 
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
-    |---------|---------|---------|----------|
-    |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
-    |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
-    |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
+   |---------|---------|---------|----------|
+   |Single machine    |Two-way mirror         | 1        | At least 1 per machine        |
+   |Two machines     | Two-way mirror       | 1        |  At least 1 per machine       |
+   |Three machines +     | Three-way mirror        |1        | At least 1 per machine         |
 
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
