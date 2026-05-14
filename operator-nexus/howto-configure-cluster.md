@@ -513,12 +513,12 @@ Deleting a Cluster deletes the resources in Azure and the Cluster that resides i
 
 When deletion starts, the Cluster moves into a `Deleting` state. Azure Operator Nexus coordinates cleanup of cluster lifecycle resources across Azure and the on-premises environment before the Azure Cluster resource is removed. At a high level, the workflow removes cluster lifecycle artifacts, cleans up associated infrastructure resources, stops cluster-managed credential activity, removes service-managed access and network fabric information where applicable, and then completes the resource deletion.
 
-As part of Cluster deletion, Azure Operator Nexus uses the server management interface to return the bare-metal machines to a reusable state. This cleanup powers down the servers and removes cluster-created storage configuration and management access artifacts, such as RAID configuration, management users, and certificates. This server cleanup is platform-managed and can add time to the delete operation.
+As part of Cluster deletion, Azure Operator Nexus uses the server management interface to return the bare-metal machines to a reusable state. This cleanup process powers down the servers and removes cluster-created storage configuration and management access artifacts, such as RAID configuration, management users, and certificates. This server cleanup is platform-managed and can add time to the delete operation.
 
-Deletion can take time because the platform coordinates with Azure services and on-premises components, and some cleanup operations retry when a dependent service is temporarily unavailable. Wait for the delete operation to finish before creating another Cluster with the same name.
+Deletion can take time because the platform coordinates with Azure services and on-premises components. Some cleanup operations retry when a dependent service is temporarily unavailable. Wait for the delete operation to finish before creating another cluster with the same name.
 
 > [!IMPORTANT]
-> If there are any workload resources that exist in the Cluster, the delete fails until the workload resources are deleted. This validation helps prevent accidental deletion of a Cluster that is still hosting customer workloads. Workload resources can include virtual machines, Nexus Kubernetes clusters, and network resources associated with workloads.
+> If any workload resources exist in the cluster, the delete fails until you delete the workload resources. This validation helps prevent accidental deletion of a cluster that is still hosting customer workloads. Workload resources can include virtual machines, Nexus Kubernetes clusters, and network resources associated with workloads.
 
 :::image type="content" source="./media/nexus-delete-failure.png" lightbox="./media/nexus-delete-failure.png" alt-text="Screenshot of the portal showing the failure to delete because of tenant resources.":::
 
