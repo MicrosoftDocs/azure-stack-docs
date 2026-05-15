@@ -87,38 +87,42 @@ This step applies only if you downloaded the .zip file. Use the `AzureMigrateIns
 
 After you install the source appliance, follow these steps:
 
-1. [Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). Complete these steps.
-    1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
+[Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). Complete these steps.
 
-        :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
-        1. If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
-    > [!NOTE]
-    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
+1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
-    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. 
+   :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
 
-        > [!IMPORTANT]
-        > Don't use VDDK 7.0.X. These versions have known problems and result in errors during migration.
+If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
 
-    1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
+   > [!NOTE]
+   > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
 
-        :::image type="content" source="./media/migrate-vmware-replicate/verify-vddk-installation-1.png" alt-text="Screenshot of verification of VDDK installation." lightbox="./media/migrate-vmware-replicate/verify-vddk-installation-1.png":::
+1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. 
 
-    1. Provide vCenter server credentials for the discovery of VMware VMs.
-        1. Select **Add credentials**.
-        1. Select the **Source type** as vCenter Server.
-        1. Provide a **Friendly name** for the credentials.
-        1. Enter the **Username** and the **Password** for the vCenter server.
-        1. **Save** the credentials.
-    1. Add discovery sources.
-        1. Add the vCenter discovery source.
-        1. Enter the IP address or FQDN of the vCenter server.
-        1. Enter the friendly name for the credentials used when discovering the VMware VMs.
-        1. Select **Save**. Select **Add more** to repeat this step for each vCenter server. The discovery source table is updated.
+   > [!IMPORTANT]
+   > Don't use VDDK 7.0.X. These versions have known problems and result in errors during migration.
 
-        :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
+1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
 
-    1. Disable the slider under the **Applications discovery and agentless dependency analysis** section, as this feature isn't currently supported in VMware to Azure Local migrations.
+   :::image type="content" source="./media/migrate-vmware-replicate/verify-vddk-installation-1.png" alt-text="Screenshot of verification of VDDK installation." lightbox="./media/migrate-vmware-replicate/verify-vddk-installation-1.png":::
+
+1. Provide vCenter server credentials for the discovery of VMware VMs.
+   1. Select **Add credentials**.
+   1. Select the **Source type** as vCenter Server.
+   1. Provide a **Friendly name** for the credentials.
+   1. Enter the **Username** and the **Password** for the vCenter server.
+   1. **Save** the credentials.
+
+1. Add discovery sources.
+	1. Add the vCenter discovery source.
+ 	1. Enter the IP address or FQDN of the vCenter server.
+  	1. Enter the friendly name for the credentials used when discovering the VMware VMs.
+   	1. Select **Save**. Select **Add more** to repeat this step for each vCenter server. The discovery source table is updated.
+
+	:::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
+
+1. Disable the slider under the **Applications discovery and agentless dependency analysis** section. This feature isn't currently supported in VMware to Azure Local migrations.
 
 ### Onboard to Azure Local
 
@@ -141,15 +145,13 @@ After you install the source appliance, follow these steps:
 1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of VMware VMs.
 1. Select **Start Discovery**. The discovery might take several minutes to finish.
 
-:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="start discovery source appliance":::
+	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot of the start discovery source appliance":::
 
-### Start discovery
+1. Wait until you see a green checkmark that indicates the discovery is finished. This mark also means the migration readiness checks are successful. After the discovery finishes, go to the Azure portal to review the VM inventory.
 
-Wait until you see a green checkmark that indicates the discovery is finished. This mark also means the migration readiness checks are successful. After the discovery finishes, go to the Azure portal to review the VM inventory.
+1. Ensure that all VMs you want to migrate are powered on and have VMware tools installed before or during the discovery process.
 
-Ensure that all VMs you want to migrate are powered on and have VMware tools installed before or during the discovery process.
-
-:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png":::
+	:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png":::
 
 ## Step 2: Create and configure the target appliance
 
@@ -159,7 +161,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. Verify that you see a nonzero value for **Discovered servers** under **Migration tools**.
+1. Verify that you see a value greater than zero for **Discovered servers** under **Migration tools**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/migrate-vmware-replicate/replicate-discovered-servers.png":::
 
@@ -184,13 +186,13 @@ Complete the following tasks to generate the target appliance key:
 
 ### Create the target appliance
 
-#### Install using a template (.VHD file)
+#### Install using a template (.vhd file)
 
-This step applies only if you downloaded the .VHD zipped file. 
+This step applies only if you downloaded the .vhd zipped file. 
 
 1. Check that the zipped file is secure before you deploy it. 
 
-1. On the machine where you downloaded the file, open an administrator PowerShell window. 
+1. On the machine where you downloaded the file, open PowerShell as an administrator. 
 
 1. Run the following command to generate the hash for the VHD. 
 
@@ -202,13 +204,13 @@ This step applies only if you downloaded the .VHD zipped file.
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
+    |Azure Local appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`  |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb  |
 
 1. Extract the zipped file to a folder. 
 
-Now you can install the appliance using the .VHD file.
+Now you can install the appliance using the .vhd file.
 
-1. Using local tools, such as Hyper-V Manager or Failover Cluster, install the target appliance from the downloaded .VHD file on your Azure Local instance. 
+1. Using local tools, such as Hyper-V Manager or Failover Cluster, install the target appliance from the downloaded .vhd file on your Azure Local instance. 
 
 1. After the VM finishes provisioning and boots, open the **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
 
@@ -226,9 +228,9 @@ This step applies to using a .zip file.
 
 1. You can download the appliance from a .zip file. Under  **Step 2: Download and install the target appliance**, select **.zip**, and then select  **Download**. 
 
-1. Copy the downloaded zip file to the new VM that you created on the Azure Local instance. Extract the zip to a folder and go where the `AzureMigrateInstaller.ps1` PowerShell script resides in the extracted folder. 
+1. Copy the downloaded zip file to the new VM that you created on the Azure Local instance. Extract the zip to a folder and go where the `AzureMigrateInstaller.ps1` PowerShell script is located. 
 
-1. Open a PowerShell window as an administrator and run the following command:
+1. Open PowerShell as an administrator and run the following command:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted 
