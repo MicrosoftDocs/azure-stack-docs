@@ -3,7 +3,7 @@ title: About Azure Local upgrades
 description: This article provides an overview of upgrading your cluster to Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 12/09/2025
+ms.date: 04/28/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -14,8 +14,6 @@ ms.subservice: hyperconverged
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides an overview of upgrading your version 22H2 cluster to Azure Local.
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## About Azure Local
 
