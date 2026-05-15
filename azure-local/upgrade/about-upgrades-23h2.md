@@ -3,7 +3,7 @@ title: About Azure Local upgrades
 description: This article provides an overview of upgrading your cluster to Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 12/09/2025
+ms.date: 04/28/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -14,8 +14,6 @@ ms.subservice: hyperconverged
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides an overview of upgrading your version 22H2 cluster to Azure Local.
-
-[!INCLUDE [end-of-service-22H2](../includes/end-of-service-22h2.md)]
 
 ## About Azure Local
 
@@ -65,7 +63,6 @@ Azure Local upgrade supports the following services and workloads:
 |--|--|
 | Azure Kubernetes (AKS) on Azure Local | Kubernetes versions are incompatible between the old and new Azure Local versions. <br> Before you apply the OS upgrade, it's important to uninstall AKS Arc and all its settings using the [Uninstall-Aks-Hci](/azure/aks/hybrid/reference/ps/uninstall-akshci) command. If you used the preview version of AKS Arc on 22H2, run the command `Uninstall-Moc` to remove the VM instances created using the preview version.|
 | Azure Local VMs enabled by Azure Arc | See notes <br> Preview versions of Azure Local VMs can't be upgraded. If you used the preview version of Arc VM on 22H2, run the command `Uninstall-Moc` to remove the VM instances created using the preview version.  |
-| Stretched clusters on Azure Local | Yes <br> To maintain your cluster in a supported state, you must upgrade to Azure Stack HCI OS, version 23H2. For more information, see [Upgrade stretched clusters from Azure Stack HCI OS, version 22H2 to 23H2](../upgrade/upgrade-stretched-cluster-to-23h2.md). <br> The solution upgrade isn't applicable for stretched clusters. |
 | System Center Virtual Machine Manager (SCVMM) | Yes <br> If your Azure Local instance running version 22H2 is managed by SCVMM 2025, the OS upgrade is supported. |
 | Azure Local, version 22H2SP | No <br> This upgrade process isn't supported for upgrading from Azure Local, version 22H2 Supplemental Package clusters. |
 
