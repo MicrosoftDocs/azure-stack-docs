@@ -24,7 +24,7 @@ All Windows-based devices include a standard set of Microsoft certificates in th
 | **Expiring certificate** | **Expiration date** | **New certificate** | **Storing location** | **Purpose** |
 |----|----|----|----|----|
 | **Microsoft Corporation KEK CA 2011** | June 2026 | Microsoft Corporation KEK 2K CA 2023 | Stored in KEK | Signs updates to DB and DBX. |
-| **Microsoft Windows Production PCA 2011** | Oct 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the   Windows boot loader. |
+| **Microsoft Windows Production PCA 2011** | Oct 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the Windows boot loader. |
 | **Microsoft UEFI CA 2011** | June 2026 | Microsoft UEFI CA 2023 | Stored in DB | Signs third-party boot loaders and EFI applications. |
 | **Microsoft UEFI CA 2011** | June 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
 
