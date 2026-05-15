@@ -85,7 +85,7 @@ Once the source appliance is installed, you are ready to [Configure the applianc
 1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of Hyper-V VMs.
 1. Select **Start Discovery**. The discovery may take several minutes to finish.
 
-	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot showing how to start the discovery source appliance":::
+	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot showing how to start the discovery source appliance.":::
 
 1. Wait until you see green checkmarks to indicate that the discovery and migration readiness are complete.
 1. Go to the Azure portal to review the VM inventory.
@@ -121,7 +121,7 @@ Complete the following tasks to generate the target appliance key:
 
     :::image type="content" source="./media/migrate-hyperv-replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-hyperv-replicate/generate-target-key.png":::
 
-1. Copy and paste the project key to a text editor (for example, Notepad) after it is generated; for future use.
+1. Copy and paste the project key to a text editor (for example, Notepad) after it is generated for future use.
 
 ### Create the target appliance
 

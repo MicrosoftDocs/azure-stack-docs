@@ -91,12 +91,12 @@ After you install the source appliance, follow these steps:
 
 1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
-   :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
-
-If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
-
-   > [!NOTE]
-   > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
+    :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
+        
+    If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    
+       > [!NOTE]
+       > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
 
 1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. 
 
@@ -145,7 +145,7 @@ If needed, use a preconfigured Microsoft Entra ID application to register the so
 1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of VMware VMs.
 1. Select **Start Discovery**. The discovery might take several minutes to finish.
 
-	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot of the start discovery source appliance":::
+	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot of the start discovery source appliance.":::
 
 1. Wait until you see a green checkmark that indicates the discovery is finished. This mark also means the migration readiness checks are successful. After the discovery finishes, go to the Azure portal to review the VM inventory.
 
@@ -253,7 +253,7 @@ This step applies to using a .zip file.
 
 
 1. After the verification is complete, select **Log in** and sign in to your Azure account.
-    1. If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    - If needed, you can use a preconfigured Microsoft Entra ID application to register the target appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
     > [!NOTE]
     > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for each appliance.
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
