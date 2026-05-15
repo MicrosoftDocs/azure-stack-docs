@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 04/30/2026
+ms.date: 05/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2604
 
-The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.1002**. For more information, see [Release information summary](./release-information-23h2.md).
+The April 2026 release of hyperconverged deployments of Azure Local is version **12.2604.1003.1005**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -232,7 +232,7 @@ This release includes various reliability improvements and other bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2511"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2511
 
@@ -261,10 +261,6 @@ This release includes the following features and improvements:
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 - This release includes various reliability improvements and other bug fixes.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2510
 
@@ -379,7 +375,6 @@ This release includes the following features and improvements:
 
     - **Upgrade and update docs changes** include new articles and major updates to existing articles:
         - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
-        - [**Upgrade OS for stretch clusters via PowerShell**](./upgrade/upgrade-stretched-cluster-to-23h2.md) is released.
         - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
         - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
         - [**Update best practices**](./update/update-best-practices.md) is released.

@@ -65,17 +65,17 @@ To be eligible to procure disconnected operations, you must meet the following c
 
   - Plan enough capacity for the management cluster to host the disconnected operations appliance VM and run core Azure Local infrastructure components. A dedicated management cluster is currently required. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
 
-    | Specification                | Minimum configuration            |
+    | Specification                | Minimum configuration *          |
     | -----------------------------| ---------------------------------|
     | Number of nodes              | 3 nodes                          |
-    | Memory per node              | 96 GB *                          |
+    | Memory per node              | 512 GB                           |
     | Cores per node               | 24 physical cores                |
-    | Storage per node             | 2 TB SSD/NVME                    |
+    | Storage per node             | 8 drives/min 2 TB each (SSD/NVME)|
     | Boot disk drive storage      | 960 GB SSD/NVME **               |
 
-    *<sub> The disconnected operations appliance running on the management cluster needs at least 64 GB of memory. We recommend that management cluster nodes have at least 96 GB of memory to provide enough capacity to run the appliance and other infrastructure components.</sub>
+    *<sub> The recommended configuration allows for additional capabilities and higher scalepoints for your private cloud. If you are looking a smaller configurations for the dedicated management cluster  - please contact your account team to discuss your options </sub>
 
-    **<sub> For systems with boot disks smaller than 960 GB, you must use extra data disks from the nodes (capacity) to install the appliance. A 960 GB boot drive is recommended as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.</sub>
+    **<sub> For systems with boot disks smaller than 960 GB, you must use extra data disks from the nodes (capacity) to install the appliance. Ensure you have enough data drives. A 960 GB boot drive is recommended as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.</sub>
 
 ## Get started
 

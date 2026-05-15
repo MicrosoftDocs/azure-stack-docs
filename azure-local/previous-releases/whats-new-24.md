@@ -61,11 +61,13 @@ This release includes the following features and improvements:
 - **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
     For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](../concepts/system-requirements-small-23h2.md).
-- **Azure Local for disconnected operations** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
+
+- **Azure Local for disconnected operations (Preview)** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
 
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
-    For more information about this feature, see [About Disconnected operations for Azure Local](../manage/disconnected-operations-overview.md).
+    For more information about this Preview feature, see [About Disconnected operations for Azure Local (Preview)](../manage/disconnected-operations-overview.md).
+
 - **Deploy Azure Local with Local Identity (Preview)** - Starting with this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
 
     For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](../deploy/deployment-local-identity-with-key-vault.md).

@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 05/08/2026
+ms.date: 05/15/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -148,7 +148,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **​​​​​​​[Texts and Fonts]** This update improves Windows fonts by adding the new Saudi Riyal currency symbol. This change helps keep text clear, accurate, and visually consistent across your Windows apps and experiences​​​​​​​.
 
-- **[Windows Deployment Services (WDS)]** This update disables the “Hands-Free Deployment” feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
+- **[Windows Deployment Services (WDS)]** This update disables the "Hands-Free Deployment" feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
@@ -381,23 +381,23 @@ For a list of the files that are provided in this update, download the file info
 ::: moniker-end
 
 
-::: moniker range="=azloc-2511"
+::: moniker range="=azloc-previous"
 
 ## November OS security update (KB5068861) for Azure Local
 
 This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171** released on November 11, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-## Simplified Windows update titles
+### Simplified Windows update titles
 
 A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
  
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5068861](https://support.microsoft.com/topic/november-11-2025-kb5068861-os-builds-26200-7171-and-26100-7171-2e0512e4-3ad4-4da6-958c-a468a1af949e) (released November 11, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -428,11 +428,11 @@ To turn off strict parsing, use the following registry key and values:
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -440,14 +440,9 @@ For more information about security vulnerabilities addressed by this update, se
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5068861](https://go.microsoft.com/fwlink/?linkid=2340951).
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## October OS security updates (KB5066780 and KB5066835) for Azure Local
 
