@@ -40,12 +40,12 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 Here are the key phases of the migration process:
 
 
-|#  |Phase  |Description  |
+|STeps |Phase  |Description  |
 |---------|---------|---------|
-|1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-hyperv-prerequisites.md).         |
-|1.     |**Discover**       |Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-replicate.md).          |
-|1.     |**Replicate**      |Create and configure the target appliance on your Azure Local. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-hyperv-replicate.md).         |
-|1.     |**Migrate, verify**|Once the replication is complete, select and migrate VMs to your Azure Local. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMs. <br><br> For more information, see [Migrate and verify Hyper-V VMs](./migrate-azure-migrate.md).         |
+|Step 1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-hyperv-prerequisites.md).         |
+|Step 1.     |**Discover**       |Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-replicate.md).          |
+|Step 1.     |**Replicate**      |Create and configure the target appliance on your Azure Local. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-hyperv-replicate.md).         |
+|Step 1.     |**Migrate, verify**|Once the replication is complete, select and migrate VMs to your Azure Local. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMs. <br><br> For more information, see [Migrate and verify Hyper-V VMs](./migrate-azure-migrate.md).         |
 
 
 ## Next steps
