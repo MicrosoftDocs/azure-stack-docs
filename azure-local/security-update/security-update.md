@@ -152,7 +152,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -192,7 +192,7 @@ This security update contains fixes and quality improvements from [KB5075899](
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -259,7 +259,7 @@ This security update contains fixes and quality improvements from [KB5073379](ht
 
   Data to be set: `0`
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
