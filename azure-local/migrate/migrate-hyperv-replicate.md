@@ -152,7 +152,7 @@ This step applies only if you downloaded the .vhd zipped file.
 
 1. Extract the zipped file to a folder. 
 
-1. Install the appliance using the .vhd file.
+Now you can install the appliance using the .vhd file.
 
 1. Use a local tool, such as Hyper-V Manager or Failover Cluster, and install the target appliance from the downloaded .vhd file on your Azure Local instance. 
 
