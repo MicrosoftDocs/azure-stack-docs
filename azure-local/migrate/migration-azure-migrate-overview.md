@@ -40,7 +40,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 Here are the key phases of the migration process:
 
 
-|STeps |Phase  |Description  |
+|Migration steps |Phase  |Description  |
 |---------|---------|---------|
 |Step 1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-hyperv-prerequisites.md).         |
 |Step 1.     |**Discover**       |Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-replicate.md).          |
