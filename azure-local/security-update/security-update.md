@@ -38,7 +38,7 @@ This security update includes fixes and quality improvements from [KB5082063](
 
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -98,7 +98,7 @@ Enterprises should audit their BitLocker group policies for explicit PCR7 inclus
 
 1. ​​​​​​​This command updates the BitLocker bindings to use the Windows-selected default PCR profile.
 
-A permanent resolution for this issue is planned in a future Windows update. More information will be provided when it is available.
+A permanent resolution for this issue is planned in a future Windows update. More information will be provided when it's available.
 
 ## To install
 
