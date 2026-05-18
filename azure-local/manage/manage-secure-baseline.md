@@ -23,7 +23,7 @@ Before you begin, make sure that you have access to an Azure Local system that i
 
 To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
-You can use the security default settings to manage system security, drift control, and Secured-core settings on your system.
+Use the security default settings to manage system security, drift control, and Secured-core settings on your system.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
