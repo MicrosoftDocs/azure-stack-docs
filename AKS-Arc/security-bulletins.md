@@ -67,6 +67,8 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
+   After running the command, you should see: `Hotfix for CVE-2026-31431 applied successfully.` If the hotfix is already applied, you'll see: `The version is already latest. No update needed.`
+
 3. Upgrade your AKS clusters to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
 
    | Current K8s version | Supported versions for Azure Local 2602 |
