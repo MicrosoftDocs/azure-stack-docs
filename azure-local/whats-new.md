@@ -68,7 +68,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Enable or disable SDN management per network interface**: Azure Local now supports enabling or disabling SDN management for individual network interfaces. Use the `--bypass-sdn-policies` flag to configure this behavior. To use this feature via the Azure CLI, ensure the `stack-hci-vm` extension is updated (`az extension update --name "stack-hci-vm"`).
 
-- **Security Baseline improvements**: We introduced User Logon Text & Banner To comply with DISA STIG and CIS requirements. We continuesly monitor and drop updates in our security baseline to maintain security and compliance. If customization is needed, you are required to stop Drift control at this time, see [Manage Secure Defaults](./manage/manage-secure-baseline.md).
+- **Security baseline improvements**: We introduced a user logon text and banner to help comply with DISA STIG and CIS requirements. We continuously release updates to our security baseline to maintain security and compliance. If you need to customize a setting, you must disable drift control. For more information, see [Manage security defaults for Azure Local](./manage/manage-secure-baseline.md).
 
 ::: moniker-end
 
