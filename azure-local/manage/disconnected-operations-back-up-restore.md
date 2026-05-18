@@ -43,16 +43,6 @@ Before you back up your system, complete these prerequisites:
   Import-Module "<full path to Operations Module>\Azure.Local.Backup.psm1"
   ```
 
-- **Set the appliance client context (required):** Before running any backup cmdlets, set the management endpoint client context. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node.
-
-  ```powershell
-  # Retrieve the certificate password from the seed node location, then convert to a secure string
-  $sec = ConvertTo-SecureString <password> -AsPlainText -Force
-
-  # Set the appliance client context using the certificate from the seed node location
-  Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $sec -ManagementEndpoint <management endpoint IP>
-  ```
-
 ## Backup parameters and customization
 
 Before running the backup command, configure environment-specific settings and parameters, such as backup paths, encryption certificates, retention preferences, and target locations. These configurations ensure that the backup process runs correctly and aligns with your infrastructure layout and security requirements.
@@ -68,6 +58,14 @@ To configure settings and parameters, open an administrator PowerShell session a
 
 # set operator subscription which will be listed after login
 > az account set --subscription <operator subscription GUID> 
+```
+
+You also need to set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node. Don't use hardcoded values; reference the certificate file and password from that location.
+
+```PowerShell
+# Set the appliance client context. Retrieve the password and ManagementEndpointClientAuth.pfx from C:\ProgramData\Microsoft\aldodependencies on the seed node.
+> $sec = ConvertTo-SecureString <password> -AsPlainText -Force
+> Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $sec -ManagementEndpoint <management endpoint IP>
 
 # Create backup config with SMB share details, Encryption Key
 > Set-ApplianceBackupConfiguration 
