@@ -1459,6 +1459,49 @@ items:
       - name: Azure Local VM CLI commands
         href: /cli/azure/stack-hci-vm
 
+- name: Small form factor deployments
+  items:
+  - name: Overview
+    items:
+    - name: About small form factor deployments
+      href: small-form-factor/small-form-factor-overview.md
+    - name: FAQ
+      href: small-form-factor/small-form-factor-faq.md
+  - name: Concepts
+    items:
+    - name: Resource overview
+      href: small-form-factor/small-form-factor-resource-overview.md
+    - name: Container orchestrators
+      href: small-form-factor/small-form-factor-container-orchestrators.md
+    - name: Zero-touch provisioning
+      href: small-form-factor/small-form-factor-zero-touch-provisioning.md
+    - name: Configurator App
+      href: small-form-factor/small-form-factor-configurator-app.md
+    - name: Firewall requirements
+      href: small-form-factor/small-form-factor-firewall-requirements.md
+  - name: Deploy
+    items:
+    - name: Set up subscription
+      href: small-form-factor/small-form-factor-subscription-setup.md
+    - name: Install small form factor
+      href: small-form-factor/small-form-factor-installation.md
+    - name: Connect via Azure portal
+      href: small-form-factor/small-form-factor-connect-portal.md
+    - name: Run containerized workloads
+      href: small-form-factor/small-form-factor-containerized-workloads.md
+    - name: Deploy applications
+      href: small-form-factor/small-form-factor-deploy-applications.md
+  - name: Troubleshoot
+    items:
+    - name: Collect system logs
+      href: small-form-factor/small-form-factor-collect-system-logs.md
+    - name: Troubleshoot small form factor deployments
+      href: small-form-factor/small-form-factor-troubleshoot.md
+  - name: Reference
+    items:
+    - name: Azure Arc site manager CLI commands
+      href: /cli/azure/site
+
 - name: Disconnected operations
   items:
   - name: Overview
