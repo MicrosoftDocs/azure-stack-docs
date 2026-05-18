@@ -92,7 +92,7 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
 
 ##### Option B: Self-service mitigation
 
-If you can't upgrade immediately, or if your clusters are already on Kubernetes 1.33.5 (the latest available version), we strongly recommend applying the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753).
+If you can't upgrade immediately, or if your clusters are already on Kubernetes 1.33.5 (the latest available version), apply the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753).
 
 ---
 
