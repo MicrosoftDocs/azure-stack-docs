@@ -43,6 +43,16 @@ Before you back up your system, complete these prerequisites:
   Import-Module "<full path to Operations Module>\Azure.Local.Backup.psm1"
   ```
 
+- **Set the appliance client context (required):** Before running any backup cmdlets, set the management endpoint client context. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node.
+
+  ```powershell
+  # Retrieve the certificate password from the seed node location, then convert to a secure string
+  $sec = ConvertTo-SecureString <password> -AsPlainText -Force
+
+  # Set the appliance client context using the certificate from the seed node location
+  Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $sec -ManagementEndpoint <management endpoint IP>
+  ```
+
 ## Backup parameters and customization
 
 Before running the backup command, configure environment-specific settings and parameters, such as backup paths, encryption certificates, retention preferences, and target locations. These configurations ensure that the backup process runs correctly and aligns with your infrastructure layout and security requirements.
@@ -50,8 +60,8 @@ Before running the backup command, configure environment-specific settings and p
 To configure settings and parameters, open an administrator PowerShell session and run these cmdlets.
 
 ```PowerShell
-# point az to arca
-> az cloud set --name arca
+# point az to Azure.Local
+> az cloud set --name Azure.Local
 
 # Login as admin
 > az login
@@ -102,6 +112,20 @@ To trigger and monitor a backup, follow these steps:
     Here's an example output:
 
     :::image type="content" source="media/disconnected-operations/back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations/back-up-restore/track-status-back-up-id.png":::
+
+## Troubleshooting
+
+If you encounter the following error while running any backup commands:
+
+```output
+Unable to connect to the remote server
+```
+
+Rerun the command with the `-ExternalDomainSuffix` parameter set to your external domain suffix. For example:
+
+```powershell
+-ExternalDomainSuffix autonomous.aldo.private
+```
 
 ::: moniker-end
 
