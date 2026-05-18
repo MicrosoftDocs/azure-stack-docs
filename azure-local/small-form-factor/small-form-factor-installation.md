@@ -37,6 +37,9 @@ Use one of these supported devices:
 - Lenovo ThinkEdge SE100
 - OnLogic HX521
 
+> [!NOTE]
+> Securing the Baseboard Management Controller (BMC) is essential to protect the integrity of your hardware and the systems running on it. You should always set a strong, unique password and replace any default credentials immediately. The BMC must also be kept off untrusted or public networks and placed instead on a restricted, dedicated management network with strict access controls. Because BMC implementations can vary across manufacturers, we recommend consulting your hardware vendor for their specific security guidance and best practices to ensure your environment is fully protected.
+
 ### Software and tools
 
 - A Windows PC with internet access and a USB port
