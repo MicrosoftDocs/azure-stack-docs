@@ -44,7 +44,7 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 
 **Affected Versions**
 
-- All AKS node images on Azure Local releases 2604 and earlier are affected. For Azure Local 2605 and beyond, the fix is included natively. No action is required.
+- All current AKS on Azure Local Linux nodes are exploitable. We are working on integrating this fix into a future Azure Local update. In the meantime, follow the remediation steps below.
 - Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) will **automatically load it on demand** when any process — **including unprivileged containers** — creates an AF_ALG socket with AEAD type. This means:
 - **An attacker with code execution in any pod (even non-root) can escalate to root on the node**
 - No special pod privileges, capabilities, or host access are required
