@@ -50,7 +50,7 @@ The following table explains the rules that aren't compliant and the rationale o
 
 ### Fixing the compliance for the rules
 
-To fix the compliance for the rules, run the following commands or use any other tool you prefer:
+To fix the compliance for the rules, run the following commands or use any other tool you prefer. On Azure Local, version 2604 and later, the legal notice is already configured by the baseline and protected by drift control — skip step 1 unless you intend to customize it (and first [disable drift control](#disable-drift-control)).
 
 1. **Legal notice**: Create a custom value for legal notice depending on your organization's needs and policies. Run the following commands:
 
