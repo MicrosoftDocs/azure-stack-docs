@@ -67,6 +67,11 @@ The ephemeral bootstrap node sequentially provisions each KCP node, and if a KCP
 
 Once KCP nodes are successfully provisioned, the deployment action proceeds to provision NMP nodes in parallel. Each management group must achieve at least a 50% provisioning success rate. If this requirement isn't met, the cluster deployment action fails, resulting in the cluster status being marked as failed.
 
+> [!NOTE]  
+> The availability of spare KCP node on the cluster depends on the 'EnableRepurposeSpareKcpNode' feature flag. If the feature is enabled there will be no spare KCP on the cluster and it will be provisoined as a NMP node.
+> - The required number of KCP nodes is always maintained in the cluster.
+> - This feature is available for runtime version 4.11 and above.
+
 Upon successful provisioning of NMP nodes, up to two storage appliances are created before the deployment action proceeds with provisioning the compute nodes. Compute nodes are provisioned in parallel, and once the defined compute node threshold is met, the cluster status transitions from Deploying to Running. However, the remaining nodes continue undergoing the provisioning process until they too are successfully provisioned.
 
 
