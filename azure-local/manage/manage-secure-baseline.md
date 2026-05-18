@@ -1,6 +1,6 @@
 ---
-title: Manage security defaults on Azure Local, version 23H2
-description: Learn how to manage security default settings available for Azure Local, version 23H2.
+title: Manage security defaults for Azure Local
+description: Learn how to manage security default settings available for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -23,7 +23,7 @@ Before you begin, make sure that you have access to an Azure Local system that i
 
 To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
-You can use the security default settings to manage system security, drift control, and Secured core settings on your system.
+You can use the security default settings to manage system security, drift control, and Secured-core settings on your system.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
@@ -40,13 +40,13 @@ For an Azure Local host machine, when all the hardware requirements for Secured-
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
 > [!NOTE]
-> Starting with Azure Local, version 2604, the **Interactive logon: Message text for users attempting to log on** and **Interactive logon: Message title for users attempting to log on** rules are configured by default as part of the security baseline, so they''re no longer reported as non-compliant. The values can be customized — see [Modify security defaults](#modify-security-defaults). The **Minimum password length** rule still requires customer configuration.
+> Starting with Azure Local, version 2604, the two **Interactive logon** rules in the following table (message text and message title) are set to default values by the security baseline and protected by drift control, so they're no longer reported as non-compliant. To customize either value, first [disable drift control](#disable-drift-control). In earlier versions, these settings weren't managed by the baseline.
 
 | Rule name           | Compliance state    | Reason   | Comments    |
 |---------------------|---------------------|----------|------------|
-| Interactive logon: Message text for users attempting to log on| Not compliant (versions earlier than 2604) | Warning - ""is equal to"" | Configured by default starting with version 2604. In earlier versions, must be defined by the customer; drift control isn''t enforced for this rule.|
-| Interactive logon: Message title for users attempting to log on| Not Compliant (versions earlier than 2604) | Warning - "" is equal to "" | Configured by default starting with version 2604. In earlier versions, must be defined by the customer; drift control isn''t enforced for this rule.|
-| Minimum password length | Not Compliant | Critical - Seven is less than the minumum value of 14. | This must be defined by customer, it does not have drift control enabled in order to allow this setting to align with your organization's policies.|
+| Interactive logon: Message text for users attempting to log on| Compliant in 2604+; otherwise not compliant | Warning - ""is equal to"" | See the preceding note. |
+| Interactive logon: Message title for users attempting to log on| Compliant in 2604+; otherwise not compliant | Warning - "" is equal to "" | See the preceding note. |
+| Minimum password length | Not Compliant | Critical - Seven is less than the minimum value of 14. | This must be defined by customer, it does not have drift control enabled in order to allow this setting to align with your organization's policies.|
 
 ### Fixing the compliance for the rules
 
@@ -153,7 +153,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Credential Guard
     - VBS (Virtualization Based Security)- We only support enable command.
     - DRTM (Dynamic Root of Trust for Measurement)
-    - HVCI (Hypervisor Enforced if Code Integrity)
+    - HVCI (Hypervisor-protected Code Integrity)
     - Side Channel Mitigation
     - SMB Signing
     - SMB Cluster encryption
