@@ -26,9 +26,6 @@ Before you begin, make sure you have completed the following prerequisites:
 - [Install small form factor](small-form-factor-installation.md) on your machines or virtual machines (VMs).
 - Have a Windows PC with the [Configurator App](small-form-factor-configurator-app.md) installed.
 - Have the ownership voucher (`.pem`) files for your machines.
-- You must have the one of the following role assignments at the subscription level. Pick the role assignment based on the level of access needed.  
-  - [Virtual Machine Administrator Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-administrator-login): Users who have this role assigned can log in with administrator privileges. This role provides sudo level access on the provisioned machine.
-  - [Virtual Machine User Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-user-login): Users who have this role assigned can log in with regular user privileges. This role provides non-sudo level access on the provisioned machine.
 
 ## Create and configure an Azure Arc site
 
