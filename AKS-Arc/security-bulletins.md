@@ -26,10 +26,10 @@ This article provides up-to-date information on security vulnerabilities that af
 
 ### Description
 
-This bulletin provides an update on a local privilege escalation (LPE) vulnerability that was publicly disclosed on April 29, 2026 affecting the Linux kernel's `algif_aead` module. This vulnerability has been assigned **CVE-2026-31431** and is referred to as **"Copy Fail"**.
+This bulletin provides an update on a local privilege escalation (LPE) vulnerability that was publicly disclosed on April 29, 2026. The vulnerability affects the Linux kernel's `algif_aead` module. It has been assigned **CVE-2026-31431** and is referred to as **"Copy Fail"**.
 
 - **CVSS Score**: 7.8 HIGH (`CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H`)
-- **Attack Vector**: Local — requires code execution on the node (e.g., from a container)
+- **Attack Vector**: Local — requires code execution on the node, for example, from a container
 - **Affected Component**: `algif_aead` kernel module (hardware-accelerated cryptographic functions)
 - **Canonical Advisory**: [https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available](https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available)
 
@@ -45,15 +45,15 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 **Affected Versions**
 
 - All current AKS on Azure Local Linux nodes are exploitable. We are working on integrating this fix into a future Azure Local update. In the meantime, follow the remediation steps below.
-- Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) will **automatically load it on demand** when any process — **including unprivileged containers** — creates an AF_ALG socket with AEAD type. This means:
-- **An attacker with code execution in any pod (even non-root) can escalate to root on the node**
-- No special pod privileges, capabilities, or host access are required
+- Although `algif_aead` is **not loaded by default** on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) **automatically loads it on demand**. Any process, **including unprivileged containers**, can trigger this by creating an AF_ALG socket with AEAD type. This means:
+- **An attacker with code execution in any pod, even non-root, can escalate to root on the node.**
+- No special pod privileges, capabilities, or host access are required.
 
 **Resolutions**
 
 #### Step 1: Upgrade Azure Local (if needed)
 
-If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or later. See [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2) for upgrade guidance. After upgrading, follow Step 2.
+If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or later before you continue. For upgrade guidance, see [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2). After upgrading, follow Step 2.
 
 #### Step 2: Choose a remediation path
 
@@ -67,7 +67,7 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
-   After running the command, you should see: `Hotfix for CVE-2026-31431 applied successfully.` If the hotfix is already applied, you'll see: `The version is already latest. No update needed.`
+   After running the command, you should see `Hotfix for CVE-2026-31431 applied successfully.` If the hotfix is already applied, you see `The version is already latest. No update needed.`
 
 3. Upgrade your AKS clusters to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
 
@@ -92,7 +92,7 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
 
 ##### Option B: Self-service mitigation
 
-If you can't upgrade immediately, or your clusters are already on Kubernetes 1.33.5 (the latest available version), we strongly recommend applying the self-service mitigation described in [AKS Advisory](https://github.com/Azure/AKS/issues/5753).
+If you can't upgrade immediately, or if your clusters are already on Kubernetes 1.33.5 (the latest available version), we strongly recommend applying the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753).
 
 ---
 
