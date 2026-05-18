@@ -16,7 +16,7 @@ This article provides up-to-date information on security vulnerabilities that af
 - **False Positives & Non-Exploitable CVEs** — Cases where a reported CVE doesn't impact AKS enabled by Azure Arc due to specific configurations, mitigations, or lack of exploitability.
 
 > [!NOTE]
-> For security bulletins affecting AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
+> For security bulletins that affect AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
 
 ---
 
