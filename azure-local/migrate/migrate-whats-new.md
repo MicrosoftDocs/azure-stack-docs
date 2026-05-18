@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 04/16/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -14,6 +14,28 @@ ms.subservice: hyperconverged
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+
+
+## April 2026
+
+This release includes these features and improvements:
+
+- **Azure CLI support for replication and migration (Preview)** – You can now use the Azure CLI to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell or Azure CLI (Preview)](migrate-via-powershell.md).
+- **Migrate appliance improvements** – Improved the Azure Local onboarding flow in source appliance configuration manager and fixed a bug where source appliance installation was failing on Windows Server 2025.
+
+## March 2026
+
+This release includes these features and improvements:
+
+
+- **Linux static IP migration script improvements** - Fixed several issues with the Linux static IP migration script:
+    - Resolved an issue where static IP addresses weren't applied when a DHCP server was active on the Azure Local cluster.
+    - Fixed a bug where DNS server entries were incorrectly formatted after migration, causing DNS resolution failures and blocking guest management enablement.
+    - Fixed an issue where the script attempted to set a default gateway on interfaces that didn't have one configured.
+- **Windows static IP migration script improvements** - Fixed an issue where network interface ordering was nondeterministic, which could cause network configuration failures after migration. Interfaces with a default gateway are now prioritized.
+- **Improved cleanup for failed prerequisite checks** - Fixed an issue where cleanup after a failed prerequisite check attempted to delete resources that hadn't been created yet. Cleanup now verifies resource existence before attempting deletion.
+- **Azure portal UX improvements and bug fixes** - Fixed a set of minor issues across Azure Migrate blades for Azure Local to improve clarity and reliability of replication and migration workflows.
 
 ## February 2026
 
@@ -50,7 +72,7 @@ This release includes these features and improvements:
 - **Pagination on replication, events, and jobs pages** - Improved performance and usability by adding paginated views to replication, events, and jobs pages in the Azure portal.
 - **Force delete now available for replications and migrations** - You can now forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. For more information, see [Can I forcefully stop replications or complete migrations?](https://go.microsoft.com/fwlink/?linkid=2335712)
 
-![Screenshot of force stop replication option for Azure Migrate replications to Azure Local.](media/migrate-whats-new/force-stop-replication.png)
+    ![Screenshot of force stop replication option for Azure Migrate replications to Azure Local.](media/migrate-whats-new/force-stop-replication.png)
 
 ## October 2025
 
