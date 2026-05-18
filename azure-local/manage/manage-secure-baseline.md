@@ -39,10 +39,13 @@ For an Azure Local host machine, when all the hardware requirements for Secured-
 
 The following table explains the rules that aren't compliant and the rationale of the current gap:
 
+> [!NOTE]
+> Starting with Azure Local, version 2604, the **Interactive logon: Message text for users attempting to log on** and **Interactive logon: Message title for users attempting to log on** rules are configured by default as part of the security baseline, so they''re no longer reported as non-compliant. The values can be customized — see [Modify security defaults](#modify-security-defaults). The **Minimum password length** rule still requires customer configuration.
+
 | Rule name           | Compliance state    | Reason   | Comments    |
 |---------------------|---------------------|----------|------------|
-| Interactive logon: Message text for users attempting to log on| Not compliant | Warning - ""is equal to"" | This must be defined by customer, it does not have drift control enabled.|
-| Interactive logon: Message title for users attempting to log on| Not Compliant | Warning - "" is equal to "" |This must be defined by customer, it does not have drift control enabled.|
+| Interactive logon: Message text for users attempting to log on| Not compliant (versions earlier than 2604) | Warning - ""is equal to"" | Configured by default starting with version 2604. In earlier versions, must be defined by the customer; drift control isn''t enforced for this rule.|
+| Interactive logon: Message title for users attempting to log on| Not Compliant (versions earlier than 2604) | Warning - "" is equal to "" | Configured by default starting with version 2604. In earlier versions, must be defined by the customer; drift control isn''t enforced for this rule.|
 | Minimum password length | Not Compliant | Critical - Seven is less than the minumum value of 14. | This must be defined by customer, it does not have drift control enabled in order to allow this setting to align with your organization's policies.|
 
 ### Fixing the compliance for the rules
