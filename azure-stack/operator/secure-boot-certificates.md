@@ -4,7 +4,7 @@ description: Learn how to prepare for and complete Secure Boot certificate-relat
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: mlawindi
-ms.date: 05/07/2026
+ms.date: 05/13/2026
 ms.topic: how-to
 
 ---
@@ -24,7 +24,7 @@ All Windows-based devices include a standard set of Microsoft certificates in th
 | **Expiring certificate** | **Expiration date** | **New certificate** | **Storing location** | **Purpose** |
 |----|----|----|----|----|
 | **Microsoft Corporation KEK CA 2011** | June 2026 | Microsoft Corporation KEK 2K CA 2023 | Stored in KEK | Signs updates to DB and DBX. |
-| **Microsoft Windows Production PCA 2011** | Oct 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the   Windows boot loader. |
+| **Microsoft Windows Production PCA 2011** | Oct 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the Windows boot loader. |
 | **Microsoft UEFI CA 2011** | June 2026 | Microsoft UEFI CA 2023 | Stored in DB | Signs third-party boot loaders and EFI applications. |
 | **Microsoft UEFI CA 2011** | June 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
 
@@ -45,8 +45,8 @@ Before you begin, make sure you have the following prerequisites in place:
 
 Azure Stack Hub platform updates and corresponding hotfixes provide Secure Boot mitigation support. 
 
-- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation.
-- Azure Stack Hub version 2506 supports Secure Boot mitigation by updating to the most recent 2601 that includes Secure Boot mitigation, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
+- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation ([hotfix 1.2601.1.14](hotfix-1-2601-1-14.md) or later).
+- Azure Stack Hub version 2506 supports Secure Boot mitigation by updating to the most recent 2601 build that includes Secure Boot mitigation, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 - Azure Stack Hub version 2501 supports Secure Boot mitigation by updating to a supported 2506 release that includes Secure Boot mitigation, when available, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 
 These updates and hotfixes enable the platform to:
