@@ -171,7 +171,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
    - Go back to the MySQL RP configuration page. Paste the blob URI (e.g. https://\<storageAccountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi) to the textbox and click OK.
       ![Screenshot of providing MySQL Connector URI.](media/azure-stack-mysql-rp-deploy/7-5-provide-connector-uri.png)
 
-1. Next you'll see the following page, which indicates that MySQL resource provider is being installed.
+1. Next, you see the following page, which indicates that MySQL resource provider is being installed.
    ![Screenshot of marketplace management RP installing.](media/azure-stack-mysql-rp-deploy/7-installing.png)
 
 1. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
