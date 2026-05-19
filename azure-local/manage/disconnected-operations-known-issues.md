@@ -734,10 +734,6 @@ Use CLI to delete and clean up the cluster. Run this command:
 az aksarc delete
 ```
 
-#### Export Host Guardian Service certificates
-
-This feature is unsupported in this preview release.
-
 #### Restart a node or the control plane VM
 
 After you restart a node or the control plane VM, the system might take up to an hour to become fully ready. If you notice issues with the local portal, missing resources, or failed deployments, check the appliance health using the **OperationsModule** to confirm that all services are fully converged.
@@ -796,11 +792,11 @@ Close your browser, then go to the Portal URL.
 
 #### Template specs
 
-Template specs are unsupported in the preview release. Deployments that use ARM templates with template specs fail.
+Template specs are unsupported. Deployments that use ARM templates with template specs fail.
 
 ### Unsupported scenarios
 
-The following scenarios are unsupported in the preview release.
+The following scenarios are unsupported
 
 - Arc-Enabled servers (remote or non Azure Local VMs)
 - Arc-Enabled Kubernetes clusters (remote or non AKS clusters)

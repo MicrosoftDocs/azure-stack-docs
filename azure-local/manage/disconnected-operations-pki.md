@@ -139,7 +139,7 @@ $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server 
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
+New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caName -CertificatePassword $certpassword
 ```
 
 ## Export root CA certificate
