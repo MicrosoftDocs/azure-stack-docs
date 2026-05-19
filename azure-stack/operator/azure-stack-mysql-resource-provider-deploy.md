@@ -121,7 +121,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 
 1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
 
-1. Once MySQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "MySQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
+1. After downloading the MySQL resource provider and other required software, **Marketplace Management** shows the "MySQL Server resource provider" packages with a status of "Not Installed". You might see other packages that show a status of "Downloaded". 
 
    ![Screenshot of marketplace management before installing the RP.](media/azure-stack-mysql-rp-deploy/1-before-install-marketplace.png)
 
