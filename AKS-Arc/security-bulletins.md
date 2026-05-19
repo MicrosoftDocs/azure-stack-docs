@@ -90,7 +90,7 @@ Upgrade each AKS cluster to refresh nodes with patched VHDs. Use the table below
 | 1.33.4 | 1.33.5 |
 | 1.33.5 (latest) | No upgrade available — use Option B |
 
-For the full version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release). To upgrade your cluster, follow the steps in [Upgrade the Kubernetes version](/azure/aks/aksarc/cluster-upgrade#upgrade-the-kubernetes-version).
+To upgrade your cluster, follow the steps in [Upgrade the Kubernetes version](/azure/aks/aksarc/cluster-upgrade#upgrade-the-kubernetes-version). For the full version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
 
 After the upgrade completes, verify that all nodes are running the new image:
 
