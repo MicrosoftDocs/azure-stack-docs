@@ -3,10 +3,8 @@ title: Deploy MySQL resource provider on Azure Stack Hub
 description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack Hub.  
 author: sethmanheim
 ms.topic: install-set-up-deploy
-ms.date: 09/02/2021
+ms.date: 05/19/2026
 ms.author: sethm
-ms.reviewer: jiadu
-ms.lastreviewed: 09/02/2021
 ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to deploy the MySQL resource provider adapter and databases as a service on Azure Stack.
@@ -82,7 +80,7 @@ When deploying MySQL Server resource provider V1 in a disconnected scenario, com
    $Path = "c:\temp\azs1.6.0"
    ```
 
-2. Depending on the version of resource provider that you are deploying, run one of the scripts.
+1. Depending on the version of resource provider that you are deploying, run one of the scripts.
 
    ```powershell
    # for resource provider version >= 1.1.93.0
@@ -95,11 +93,11 @@ When deploying MySQL Server resource provider V1 in a disconnected scenario, com
    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
    ```
 
-3. Then you copy the downloaded packages to a USB device.
+1. Then you copy the downloaded packages to a USB device.
 
-4. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
+1. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-5. Register this location as a local repository.
+1. Register this location as a local repository.
 
    ```powershell
    # requires -Version 5
@@ -123,11 +121,11 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 
 1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
 
-2. Once MySQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "MySQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
+1. Once MySQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "MySQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
 
    ![Screenshot of marketplace management before installing the RP.](media/azure-stack-mysql-rp-deploy/1-before-install-marketplace.png)
 
-3. Select the row you wish to install. The MySQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
+1. Select the row you wish to install. The MySQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
    ![Screenshot of marketplace management begin RP installation.](media/azure-stack-mysql-rp-deploy/2-blue-banner-for-start-install.png)
 
 ### Install prerequisites
@@ -135,7 +133,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
    ![Screenshot of marketplace management install prerequisites.](media/azure-stack-mysql-rp-deploy/3-install-prerequisites.png)
 
-2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
+1. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
    ![Screenshot of marketplace management install prerequisites succeeded.](media/azure-stack-mysql-rp-deploy/4-prerequisites-installed.png)
 
 ### Prepare secrets 
@@ -143,9 +141,9 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 1. Under the **2. Prepare secrets** step, select **Add certificate**, and the **Add a certificate** panel will appear.
    ![Screenshot of marketplace management prepare secrets.](media/azure-stack-mysql-rp-deploy/5-prepare-secrets.png)
 
-2. Select the browse button on **Add a certificate**, just to the right of the certificate filename field. Select the .pfx certificate file you procured when completing the prerequisites. 
+1. Select the browse button on **Add a certificate**, just to the right of the certificate filename field. Select the .pfx certificate file you procured when completing the prerequisites. 
 
-4. Enter the password you provided to create a secure string for SQL Server resource provider SSL Certificate. Then select **Add**.
+1. Enter the password you provided to create a secure string for SQL Server resource provider SSL Certificate. Then select **Add**.
    ![Screenshot of marketplace management add certificate.](media/azure-stack-mysql-rp-deploy/6-add-certificate.png)
 
 ### Configure and install resource provider
@@ -153,7 +151,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Configure + Install** button next to **3 Install resource provider**.
    ![Screenshot of marketplace management start RP installation.](media/azure-stack-mysql-rp-deploy/7-start-to-install-rp.png)
 
-2. Next you'll need to provide an Azure Stack Hub Blob URI for MySQL Connector.
+1. Next you'll need to provide an Azure Stack Hub Blob URI for MySQL Connector.
 
    - Review the GPL license of MySQL Connector [here](https://downloads.mysql.com/archives/c-net/) and download version 8.0.21 to a local folder.
 
@@ -173,13 +171,13 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
    - Go back to the MySQL RP configuration page. Paste the blob URI (e.g. https://\<storageAccountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi) to the textbox and click OK.
       ![Screenshot of providing MySQL Connector URI.](media/azure-stack-mysql-rp-deploy/7-5-provide-connector-uri.png)
 
-3. Next you'll see the following page, which indicates that MySQL resource provider is being installed.
+1. Next you'll see the following page, which indicates that MySQL resource provider is being installed.
    ![Screenshot of marketplace management RP installing.](media/azure-stack-mysql-rp-deploy/7-installing.png)
 
-4. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
+1. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
    ![Screenshot of marketplace management RP install in progress.](media/azure-stack-mysql-rp-deploy/8-installation-in-progress.png)
 
-5. Verify that the installation of MySQL Server resource provider has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of MySQL Server resource provider should show "Installed".
+1. Verify that the installation of MySQL Server resource provider has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of MySQL Server resource provider should show "Installed".
    ![Screenshot of marketplace management RP installed.](media/azure-stack-mysql-rp-deploy/9-installed.png)
 
 ## Deploy the SQL resource provider V1
@@ -301,20 +299,14 @@ When the resource provider installation script finishes, refresh your browser to
 ### Verify the V1 deployment by using the Azure Stack Hub portal
 
 1. Sign in to the administrator portal as the service admin.
-2. Select **Resource Groups**.
-3. Select the **system.\<location\>.mysqladapter** resource group.
-4. On the summary page for Resource group Overview, there should be no failed deployments.
-5. Finally, select **Virtual machines** in the administrator portal to verify that the MySQL resource provider VM was successfully created and is running.
-
-<a name='important-configuration-for-azure-ad'></a>
+1. Select **Resource Groups**.
+1. Select the **system.\<location\>.mysqladapter** resource group.
+1. On the summary page for Resource group Overview, there should be no failed deployments.
+1. Finally, select **Virtual machines** in the administrator portal to verify that the MySQL resource provider VM was successfully created and is running.
 
 ## Important configuration for Microsoft Entra ID
 
 If your Azure Stack Hub is using Microsoft Entra ID as an identity provider, make sure the VM that has installed MySQL Server resource provider has outbound internet connectivity. 
-
-::: moniker range=">=azs-2108"
-If there is a need to get the IP of the VM that has installed MySQL Server resource provider (i.e. add the IP to your firewall allowlist), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the MySQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
-::: moniker-end
 
 ## Next steps
 
