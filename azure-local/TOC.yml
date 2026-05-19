@@ -577,7 +577,7 @@ items:
         href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
       - name: Storage thin provisioning
         href: manage/manage-thin-provisioning-23h2.md
-      - name: Use ReFS deduplication and compression
+      - name: Use ReFS deduplication
         href: manage/refs-deduplication-and-compression.md
       - name: External storage support
         href: concepts/external-storage-support.md
@@ -691,7 +691,7 @@ items:
           href: migrate/migrate-vmware-replicate.md
         - name: Migrate, verify
           href: migrate/migrate-vmware-migrate.md
-      - name: Migrate via PowerShell
+      - name: Migrate via PowerShell or Azure CLI
         href: migrate/migrate-via-powershell.md
       - name: Enable guest management
         href: migrate/migrate-enable-guest-management.md
