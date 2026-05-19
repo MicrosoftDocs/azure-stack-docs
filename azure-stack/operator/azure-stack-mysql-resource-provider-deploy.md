@@ -125,7 +125,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 
    ![Screenshot of marketplace management before installing the RP.](media/azure-stack-mysql-rp-deploy/1-before-install-marketplace.png)
 
-1. Select the row you wish to install. The MySQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
+1. Select the row you want to install. The MySQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
    ![Screenshot of marketplace management begin RP installation.](media/azure-stack-mysql-rp-deploy/2-blue-banner-for-start-install.png)
 
 ### Install prerequisites
