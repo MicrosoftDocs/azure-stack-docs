@@ -51,13 +51,17 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 
 **Resolutions**
 
-#### Step 1: Upgrade Azure Local (if needed)
+Choose one of the following remediation paths.
 
-If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or later before you continue. For upgrade guidance, see [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2). After upgrading, follow Step 2.
+#### Option A: Patch your Azure Local instance (recommended)
 
-#### Step 2: Choose a remediation path
+This option patches VHD images at the Azure Local level. After patching, upgrade each AKS cluster to refresh nodes with the patched VHDs. This applies to both existing and new clusters on the patched Azure Local instance.
 
-##### Option A: Upgrade AKS clusters (recommended)
+##### Step 1: Upgrade Azure Local (if needed)
+
+If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or later before you continue. For upgrade guidance, see [Azure Local update documentation](/azure/azure-local/update/about-updates-23h2).
+
+##### Step 2: Run the remediation command
 
 1. Install the [AKS Arc Support Tool](/azure/aks/aksarc/support-module) and run `az login` on your Azure Local node.
 
@@ -72,36 +76,40 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
    > [!NOTE]
    > After the command completes, wait 10-15 minutes for the new VHD images to download to your Azure Local deployment before proceeding to step 3.
 
-3. Upgrade your AKS clusters to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
+##### Step 3: Upgrade AKS clusters
 
-   | Current K8s version | Supported versions for Azure Local 2602 |
-   |---|---|
-   | 1.30 or earlier | 1.31.12, 1.31.13 |
-   | 1.31.12 | 1.31.13, 1.32.8, 1.32.9 |
-   | 1.31.13 | 1.32.8, 1.32.9 |
-   | 1.32.8 | 1.32.9, 1.33.4, 1.33.5 |
-   | 1.32.9 | 1.33.4, 1.33.5 |
-   | 1.33.4 | 1.33.5 |
-   | 1.33.5 (latest) | No upgrade available — use Option B |
+Upgrade each AKS cluster to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
 
-   For the full version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
+| Current K8s version | Supported versions for Azure Local 2602 |
+|---|---|
+| 1.30 or earlier | 1.31.12, 1.31.13 |
+| 1.31.12 | 1.31.13, 1.32.8, 1.32.9 |
+| 1.31.13 | 1.32.8, 1.32.9 |
+| 1.32.8 | 1.32.9, 1.33.4, 1.33.5 |
+| 1.32.9 | 1.33.4, 1.33.5 |
+| 1.33.4 | 1.33.5 |
+| 1.33.5 (latest) | No upgrade available — use Option B |
 
-   ```azurecli
-   az aksarc upgrade \
-     --resource-group <resource-group> \
-     --name <cluster> \
-     --kubernetes-version <version>
-   ```
+For the full version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
 
-4. After the upgrade completes, verify that all nodes are running the new image:
+```azurecli
+az aksarc upgrade \
+  --resource-group <resource-group> \
+  --name <cluster> \
+  --kubernetes-version <version>
+```
 
-   ```bash
-   kubectl get nodes -o wide
-   ```
+After the upgrade completes, verify that all nodes are running the new image:
 
-##### Option B: Self-service mitigation
+```bash
+kubectl get nodes -o wide
+```
 
-If you can't upgrade immediately, or if your clusters are already on Kubernetes 1.33.5 (the latest available version), apply the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753). Once you upgrade your clusters and validate that the kernel includes the fix, you can remove the mitigation by following the cleanup steps in the same advisory.
+#### Option B: Self-service mitigation (alternative)
+
+If you can't upgrade Azure Local or your AKS clusters immediately, apply this per-cluster mitigation. This blocks the vulnerable kernel module from loading without requiring an Azure Local update or Kubernetes upgrade. Apply this to each existing cluster that needs protection. New clusters also require this mitigation until you complete Option A.
+
+Apply the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753). Once you upgrade your clusters and validate that the kernel includes the fix, you can remove the mitigation by following the cleanup steps in the same advisory.
 
 ---
 
