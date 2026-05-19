@@ -60,12 +60,11 @@ To configure settings and parameters, open an administrator PowerShell session a
 > az account set --subscription <operator subscription GUID> 
 ```
 
-Set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node. Don't use hardcoded values; reference the certificate file and password from that location.
+Clients also need to set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password.
 
 ```PowerShell
-# Set the appliance client context. Retrieve the password and ManagementEndpointClientAuth.pfx from C:\ProgramData\Microsoft\aldodependencies on the seed node.
-> $sec = ConvertTo-SecureString <password> -AsPlainText -Force
-> Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $sec -ManagementEndpoint <management endpoint IP>
+# Set the appliance client context. Send the password(SecureString) and ManagementEndpointClientAuth.pfx.
+> Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $securePassword -ManagementEndpoint <management endpoint IP>
 
 # Create backup config with SMB share details, Encryption Key
 > Set-ApplianceBackupConfiguration 
