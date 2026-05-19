@@ -177,7 +177,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 1. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
    ![Screenshot of marketplace management RP install in progress.](media/azure-stack-mysql-rp-deploy/8-installation-in-progress.png)
 
-1. Verify that the installation of MySQL Server resource provider has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of MySQL Server resource provider should show "Installed".
+1. Verify that the installation of MySQL Server resource provider succeeded by returning to the **Marketplace Management**, **Resource Providers** page. The status of MySQL Server resource provider should show "Installed".
    ![Screenshot of marketplace management RP installed.](media/azure-stack-mysql-rp-deploy/9-installed.png)
 
 ## Deploy the SQL resource provider V1
