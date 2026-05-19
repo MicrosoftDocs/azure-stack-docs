@@ -67,7 +67,10 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
    Invoke-SupportAksArcRemediation_FixCVE_2026_31431
    ```
 
-   After running the command, you should see `Hotfix for CVE-2026-31431 applied successfully.` If the hotfix is already applied, you see `The version is already latest. No update needed.`
+   When complete, you see a confirmation message indicating that the update was applied or that no update is needed.
+
+   > [!NOTE]
+   > After the command completes, wait 10-15 minutes for the new VHD images to download to your Azure Local deployment before proceeding to step 3.
 
 3. Upgrade your AKS clusters to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
 
@@ -88,6 +91,12 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
      --resource-group <resource-group> \
      --name <cluster> \
      --kubernetes-version <version>
+   ```
+
+4. After the upgrade completes, verify that all nodes are running the new image:
+
+   ```bash
+   kubectl get nodes -o wide
    ```
 
 ##### Option B: Self-service mitigation
