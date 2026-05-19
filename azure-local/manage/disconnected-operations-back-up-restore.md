@@ -60,7 +60,7 @@ To configure settings and parameters, open an administrator PowerShell session a
 > az account set --subscription <operator subscription GUID> 
 ```
 
-You also need to set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node. Don't use hardcoded values; reference the certificate file and password from that location.
+Set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password from `C:\ProgramData\Microsoft\aldodependencies` on the seed node. Don't use hardcoded values; reference the certificate file and password from that location.
 
 ```PowerShell
 # Set the appliance client context. Retrieve the password and ManagementEndpointClientAuth.pfx from C:\ProgramData\Microsoft\aldodependencies on the seed node.
