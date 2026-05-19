@@ -151,7 +151,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
 1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Configure + Install** button next to **3 Install resource provider**.
    ![Screenshot of marketplace management start RP installation.](media/azure-stack-mysql-rp-deploy/7-start-to-install-rp.png)
 
-1. Next you'll need to provide an Azure Stack Hub Blob URI for MySQL Connector.
+1. Next, provide an Azure Stack Hub Blob URI for MySQL Connector.
 
    - Review the GPL license of MySQL Connector [here](https://downloads.mysql.com/archives/c-net/) and download version 8.0.21 to a local folder.
 
