@@ -12,6 +12,8 @@ ms.subservice: hyperconverged
 # Azure Local release information
 
 > [!IMPORTANT]
+> Azure Local versions 2601 and later are **temporarily** blocked from receiving solution updates. This block also extends to Solution Builder Extension (SBE) updates that Azure Local partners deliver during this time. For more information, see [Known issues](known-issues.md?view=azloc-2604&preserve-view=true). 
+> 
 > Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
 >
 > - If you're on 11.2510.1002.87, you can upgrade directly to 12.2510.1002.531.

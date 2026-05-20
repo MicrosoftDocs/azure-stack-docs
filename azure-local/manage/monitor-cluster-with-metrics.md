@@ -6,7 +6,7 @@ ms.author: robess
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 05/13/2026
+ms.date: 05/20/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -320,13 +320,16 @@ To see in-depth information about how these metrics are collected, see [Performa
 
 ### Metrics for GPU
 
+> [!NOTE]
+> You can view GPU metrics only when you configure GPUs by using GPU Partitioning (GPU-P). These metrics aren't supported for Discrete Device Assignment (DDA).
+
 #### Prerequisites
 
 To enable GPU metrics, ensure the following requirements are met:
 
-- Install GPU mitigation drivers.
+- Install GPU mitigation drivers. The GPU drivers include NVIDIA System Management Interface (NVIDIA-SMI).
+- Verify that NVIDIA-SMI is installed and accessible on the system (for example, by running the `nvidia-smi` command). For more information, see the [System Management Interface](https://developer.nvidia.com/system-management-interface) documentation.
 - GPU metrics are currently supported only on NVIDIA GPUs.
-- Install NVIDIA System Management Interface (NVIDIA-SMI). For more information, see [System Management Interface](https://developer.nvidia.com/system-management-interface) documentation.
 
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
