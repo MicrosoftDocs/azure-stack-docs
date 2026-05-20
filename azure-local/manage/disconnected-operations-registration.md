@@ -77,64 +77,81 @@ function New-AzureLocalDisconnectedOperationsSelfAttestation {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [ValidateSet('AzureCloud', 'AzureUSGovernment']
+        [ValidateSet('AzureCloud', 'AzureUSGovernment')]
         [string]$Cloud,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$SubscriptionId,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$ResourceGroup,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$ResourceName,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [int]$TotalCores,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [int]$DiskSpaceInGb,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [int]$MemoryInGb,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$Oem,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$HardwareSku,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [int]$Nodes,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$VersionAtRegistration,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$SolutionBuilderExtension,
 
-        [Parameter(Mandatory)]
+[Parameter(Mandatory)]
         [string]$DeviceId,
 
-        [string]$ApiVersion = '2026-03-01-preview',
+[string]$ApiVersion = '2026-03-01-preview',
 
-        [switch]$SkipLogin
+[switch]$SkipLogin
     )
 
-    if (-not $SkipLogin) {
-        Connect-AzureForCloud -Cloud $Cloud
-    }
+        if (-not $SkipLogin) {
+                Connect-AzAccount -EnvironmentName $Cloud -ErrorAction Stop | Out-Null
+        }
 
-    $baseEndpoint = switch ($Cloud) {
+        Select-AzSubscription -SubscriptionId $SubscriptionId -ErrorAction Stop | Out-Null
+
+        function Get-BearerToken {
+                param(
+                        [Parameter(Mandatory)]
+                        [ValidateSet('AzureCloud', 'AzureUSGovernment')]
+                        [string]$CloudEnvironment
+                )
+
+                $resource = switch ($CloudEnvironment) {
+                        'AzureCloud'        { 'https://management.azure.com/' }
+                        'AzureUSGovernment' { 'https://management.usgovcloudapi.net/' }
+                }
+
+                $tokenResponse = Get-AzAccessToken -ResourceUrl $resource -ErrorAction Stop
+                return "Bearer $($tokenResponse.Token)"
+        }
+
+$baseEndpoint = switch ($Cloud) {
         'AzureCloud'         { 'management.azure.com' }
         'AzureUSGovernment'  { 'management.usgovcloudapi.net' }
-        'AzureChinaCloud'    { 'management.chinacloudapi.cn' }
     }
 
-    $token = Get-BearerToken
+$token = Get-BearerToken -CloudEnvironment $Cloud
     $uri = "https://$baseEndpoint/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/providers/Microsoft.Edge/disconnectedOperations/$ResourceName/hardwareSettings/default?api-version=$ApiVersion"
 
-    $body = @{
+$body = @{
         properties = @{
             totalCores               = $TotalCores
             diskSpaceInGb            = $DiskSpaceInGb
@@ -148,15 +165,15 @@ function New-AzureLocalDisconnectedOperationsSelfAttestation {
         }
     } | ConvertTo-Json -Depth 5
 
-    Write-Host "Creating HardwareSetting for '$ResourceName'..." -ForegroundColor Cyan
+Write-Host "Creating HardwareSetting for '$ResourceName'..." -ForegroundColor Cyan
     Write-Host "  PUT $uri" -ForegroundColor DarkGray
 
-    $response = Invoke-RestMethod -Method Put -Uri $uri -Headers @{
+$response = Invoke-RestMethod -Method Put -Uri $uri -Headers @{
         Authorization  = $token
         'Content-Type' = 'application/json'
     } -Body $body
 
-    Write-Host "HardwareSetting created successfully." -ForegroundColor Green
+Write-Host "HardwareSetting created successfully." -ForegroundColor Green
     $response | ConvertTo-Json -Depth 10
 }
 ``` 
