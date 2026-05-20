@@ -133,7 +133,7 @@ Follow the SSH steps in [Connect a provisioned machine from the Azure portal](sm
 
 ### Install K3s
 
-To remotely install open source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use setup-k3s-arc.sh <!--[setup-k3s-arc.sh](small-form-factor-containerized-workloads.md)-->. Otherwise, follow the steps in this section.
+To remotely install open source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use [setup-k3s-arc.sh](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh). Otherwise, follow the steps in this section.
 
 1. Install K3s and disable Traefik:
 

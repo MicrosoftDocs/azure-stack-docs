@@ -330,7 +330,7 @@ To simplify setup, use the provided script to create the Hyper-V switch, configu
 
 ### Run the network configuration script
 
-1. Download <!--[`set-network.ps1`](../scripts/set-network.ps1)-->.
+1. Download [`set-network.ps1`](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/set-network.ps1).
 1. Save the script locally.
 1. Open PowerShell and allow the script to run for the current session:
 

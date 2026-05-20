@@ -100,7 +100,7 @@ TPM clear options vary by hardware vendor and BIOS version. Look under **Advance
 
 ### The VM doesn't get an IP address
 
-- Confirm the virtual machine (VM) uses the `HV-Internal-NAT` switch created by `set-network.ps1`.
+- Confirm the virtual machine (VM) uses the `HV-Internal-NAT` switch created by [`set-network.ps1`](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/set-network.ps1).
 - Confirm the host has internet connectivity.
 - Rerun `set-network.ps1` from an elevated PowerShell session.
 
