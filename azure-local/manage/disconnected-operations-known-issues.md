@@ -14,7 +14,7 @@ ai-usage: ai-assisted
 ## Known issues for version 2604
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
-Workload clusters in Air-gapped environments fails to deploy in rare conditions. 
+Workload clusters in air-gapped environments fail to deploy in rare conditions. 
 
 **Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
 **Mitigation**: 
