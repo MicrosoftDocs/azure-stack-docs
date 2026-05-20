@@ -17,9 +17,23 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2605
 
-The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.1005**<!--update for 2605-->. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+
+    - In 2605 release, all the new and existing deployments of Azure Local run the new OS version **26100.32690**<!--update for 2605-->(download from the Azure portal).
+
+    - You also need a driver that's compatible with OS version **26100.32690**<!--update for 2605-->or Windows Server 2025.
+
+    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+
+    - This build uses .NET version **8.0.26**<!--update for 2605-->for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+    - This build uses .NET version **10.0.6**<!--update for 2605-->for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
 
