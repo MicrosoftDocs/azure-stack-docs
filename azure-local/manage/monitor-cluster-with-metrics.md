@@ -321,7 +321,7 @@ To see in-depth information about how these metrics are collected, see [Performa
 ### Metrics for GPU
 
 > [!NOTE]
-> The GPU metrics are available only when GPUs are configured using GPU Partitioning (GPU-P), and aren't supported for Discrete Device Assignment (DDA).
+> You can view GPU metrics only when you configure GPUs by using GPU Partitioning (GPU-P). These metrics aren't supported for Discrete Device Assignment (DDA).
 
 #### Prerequisites
 
