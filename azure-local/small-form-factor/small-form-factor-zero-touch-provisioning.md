@@ -78,7 +78,7 @@ Provisioned Azure Local device
 
 ### 1. Prepare the device locally
 
-The local preparation phase gets the physical device into a bootstrap state. This phase is done by downloading the maintenance OS from the Azure portal, creating bootable USB media, booting the target device from that media, and waiting for the maintenance environment installation to complete.
+The local preparation phase gets the physical device into a bootstrap state. This phase involves downloading the maintenance OS from the Azure portal, creating bootable USB media, booting the target device from that media, and waiting for the maintenance environment installation to complete.
 
 The maintenance environment is a lightweight bootstrap environment. It's not the final workload operating system. Its job is to prepare the device for secure onboarding and make the ownership voucher available for upload to Azure.
 
