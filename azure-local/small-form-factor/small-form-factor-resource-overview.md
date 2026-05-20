@@ -26,7 +26,7 @@ Azure Subscription
     ├── Provisioned Machine B
     ├── ...
     └── Azure Arc Site
-        └── Managed Resource Group (auto-created, one per site)
+        └── Managed Resource Group (auto-created, one per site; name derived from site name unless overridden)
             └── Arc for Servers instance (one per provisioned machine)
                 ├── Azure Edge Device Management Extension
                 └── Azure Edge Telemetry And Monitoring Extension
@@ -70,7 +70,7 @@ The **Azure Arc site** is a resource that represents a physical location where o
 The Arc site plays two key roles:
 
 - **Location grouping**: It logically groups all provisioned machines at the same physical location. This makes it straightforward to identify and manage all devices at a given site from the Azure portal.
-- **Managed resource group ownership**: The site, not the individual provisioned machine, owns the managed resource group. Azure creates one managed resource group per site, and all provisioned machines associated with that site share it. This means the Arc for Servers instances for all devices at a site live in the same managed resource group.
+- **Managed resource group ownership**: The site, not the individual provisioned machine, owns the managed resource group. Azure creates one managed resource group per site, and all provisioned machines associated with that site share it. By default, the managed resource group name is derived from the site name, but you can override that name during configuration. This means the Arc for Servers instances for all devices at a site live in the same managed resource group.
 
 This design has practical implications:
 
@@ -80,11 +80,12 @@ This design has practical implications:
 
 ## Managed resource group
 
-When you create an Azure Arc site, Azure automatically creates a **managed resource group**. This resource group is distinct from the user-created resource group where the site and provisioned machine resources live. A single managed resource group is created per site, and all provisioned machines associated with that site share it.
+When you create an Azure Arc site, Azure automatically creates a **managed resource group**. This resource group is distinct from the user-created resource group where the site and provisioned machine resources live. A single managed resource group is created per site, and all provisioned machines associated with that site share it. If you don't specify a custom managed resource group name, Azure derives the name from the site name. If you do specify an override, Azure uses the custom name instead.
 
 The managed resource group has the following characteristics:
 
 - **Automatically created and managed**: Azure creates this resource group when the site is provisioned. You don't create it manually.
+- **Name derived by default, but overridable**: If no custom managed resource group name is configured, Azure derives the managed resource group name from the site name. If a custom name is provided, Azure uses that override.
 - **One per site**: All provisioned machines within an Arc site share the same managed resource group. Each device gets its own Arc for Servers instance inside it, but they all live in one group.
 - **Lifecycle bound to the site**:The managed resource group is tied to the lifecycle of the Arc site, not individual provisioned machines. Removing a single device from a multi-device site doesn't delete the managed resource group.
 - **Contains supporting resources**: The managed resource group holds the Arc for Servers instances and their extensions, which provide the cloud-to-device management channel for each device at the site.
