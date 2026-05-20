@@ -102,14 +102,6 @@ groups:
     title: With proxy
   - id: register-without-proxy
     title: Without proxy
-- id: small-form-factor-installation
-  title: Installation options
-  prompt: "Choose an installation option:"
-  pivots:
-  - id: machine-installation
-    title: Machine installation
-  - id: vm-installation
-    title: VM installation
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 

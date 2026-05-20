@@ -1481,6 +1481,10 @@ items:
       href: ./small-form-factor/small-form-factor-configurator-app.md
     - name: Firewall requirements
       href: ./small-form-factor/small-form-factor-firewall-requirements.md
+  - name: Evaluate
+    items:
+    - name: Install small form factor on a VM
+      href: ./small-form-factor/small-form-factor-vm-installation.md
   - name: Deploy
     items:
     - name: Set up subscription
