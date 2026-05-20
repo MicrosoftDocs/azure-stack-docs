@@ -100,7 +100,7 @@ kubectl get nodes -o wide
 
 #### Option B: Self-service mitigation (alternative)
 
-If you can't upgrade Azure Local or your AKS clusters immediately, apply this per-cluster mitigation. This blocks the vulnerable kernel module from loading without requiring an Azure Local update or Kubernetes upgrade. Apply this to each existing cluster that needs protection. New clusters also require this mitigation until you complete Option A.
+If you can't upgrade Azure Local or your AKS clusters immediately, apply this per-cluster mitigation. This process blocks the vulnerable kernel module from loading without requiring an Azure Local update or Kubernetes upgrade. Apply this mitigation to each existing cluster that needs protection. New clusters also require this mitigation until you complete Option A.
 
 Apply the self-service mitigation described in the [AKS Advisory](https://github.com/Azure/AKS/issues/5753). Once you upgrade your clusters and validate that the kernel includes the fix, you can remove the mitigation by following the cleanup steps in the same advisory.
 
