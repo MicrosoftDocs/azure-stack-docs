@@ -7,7 +7,7 @@ ms.date: 05/20/2026
 ms.author: sipastak
 ---
 
-# Known issues for small form factor deployments of Azure Local
+# Known issues for small form factor deployments of Azure Local (preview)
 
 This article lists the known issues and limitations for small form factor deployments of Azure Local.
 
