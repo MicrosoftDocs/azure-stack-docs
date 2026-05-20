@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 05/11/2026
+ms.date: 05/20/2026
 ms.subservice: hyperconverged
 ---
 
@@ -22,10 +22,6 @@ For more information about new features in this release, see [What's new for Azu
 ::: moniker range="=azloc-2604"
 
 ## Known issues for version 2604
-
-|Feature  |Issue    |Workaround |
-|---------|---------|---------|
-| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and make sure to include `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
 
 For the 2604 release of Azure Local, Microsoft released the following update:
 
@@ -63,7 +59,10 @@ The following table lists the fixed issues in this release:
 
 ## Known issues
 
-There are no known issues for this release.
+|Feature  |Issue    |Workaround |
+|---------|---------|---------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. |
+| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and make sure to include `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
 
 ## Known issues from previous releases
 
@@ -71,6 +70,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. |
 | Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you're using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
@@ -133,6 +133,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. |
 | Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you're using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 
@@ -143,6 +144,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -203,6 +205,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. |
 | Deployment | If an IP address conflict is detected with the default AKS Arc IP ranges `10.244.0.0/16` or `10.96.0.0/12`, a new validator in version 2602 blocks the deployment or solution upgrade. | - Deployment: If the IP address conflict can't be resolved, you must deploy Azure Local using version 2601. Once deployed, you can update to version 2602 using the solution update process.<br>- Solution upgrade: There's no workaround available for solution upgrade. |
 
 ## Known issues from previous releases
@@ -211,6 +214,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as that running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -297,6 +301,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
 
 ## Known issues from previous releases
