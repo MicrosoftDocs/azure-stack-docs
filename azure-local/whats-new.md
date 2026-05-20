@@ -5,13 +5,25 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 05/11/2026
+ms.date: 05/20/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2605"
+
+## Features and improvements in 2605
+
+The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.xxxx**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2604"
 
