@@ -816,7 +816,7 @@ Template specs are unsupported. Deployments that use ARM templates with template
 
 ### Unsupported scenarios
 
-The following scenarios are unsupported
+The following scenarios aren't supported:
 
 - Arc-Enabled servers (remote or non Azure Local VMs)
 - Arc-Enabled Kubernetes clusters (remote or non AKS clusters)
