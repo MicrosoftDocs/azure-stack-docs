@@ -64,7 +64,7 @@ K3s clusters running on small form factor devices can be connected to **Azure Ar
 - **Deploy workloads** using GitOps (Flux) for automated, source-controlled application delivery.
 - **Enable Azure RBAC** so that Microsoft Entra ID identities and role assignments control access to the Kubernetes API, eliminating the need to manage separate kubeconfig credentials.
 
-To connect a K3s cluster to Azure Arc, you use the `az connectedk8s connect` command. Because small form factor devices typically don't have the Azure CLI installed on the host, the CLI can be run from inside a container using K3s's bundled containerd runtime. This approach avoids installing additional software on the host OS. For a script that can remotely install K3s, start the cluster, and Arc-enable the cluster, see the `setup-k3s-arc.sh` script in this repository.
+To connect a K3s cluster to Azure Arc, you use the `az connectedk8s connect` command. Because small form factor devices typically don't have the Azure CLI installed on the host, the CLI can be run from inside a container using K3s's bundled containerd runtime. This approach avoids installing additional software on the host OS. For a script that can remotely install K3s, start the cluster, and Arc-enable the cluster, see the [`setup-k3s-arc.sh` script](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh).
 
 ### When to use K3s
 
