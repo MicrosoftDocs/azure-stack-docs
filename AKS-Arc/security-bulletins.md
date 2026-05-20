@@ -11,9 +11,9 @@ ms.date: 05/18/2026
 
 This article provides information on security vulnerabilities that affect AKS enabled by Azure Arc and its components. This information includes details on:
 
-- **Critical Security Advisories** — High-impact security vulnerabilities, including zero-day vulnerabilities and other critical CVEs that require immediate attention, along with mitigation guidance.
-- **Ongoing Security Investigations** — Security issues under review, including CVEs where a patch isn't yet available or further assessment is needed.
-- **False Positives & Non-Exploitable CVEs** — Cases where a reported CVE doesn't impact AKS enabled by Azure Arc due to specific configurations, mitigations, or lack of exploitability.
+- **Critical Security Advisories:** High-impact security vulnerabilities, including zero-day vulnerabilities and other critical CVEs that require immediate attention, along with mitigation guidance.
+- **Ongoing Security Investigations:** Security issues under review, including CVEs where a patch isn't yet available or further assessment is needed.
+- **False Positives & Non-Exploitable CVEs:** Cases where a reported CVE doesn't impact AKS enabled by Azure Arc due to specific configurations, mitigations, or lack of exploitability.
 
 > [!NOTE]
 > For security bulletins that affect AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
@@ -31,7 +31,7 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 - **CVSS Score**: 7.8 HIGH (`CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H`)
 - **Attack Vector**: Local — requires code execution on the node, for example, from a container
 - **Affected Component**: `algif_aead` kernel module (hardware-accelerated cryptographic functions)
-- **Canonical Advisory**: [https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available](https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available)
+- **Canonical Advisory**: [Fixes available for Copy Fail vulnerability](https://ubuntu.com/blog/copy-fail-vulnerability-fixes-available)
 
 ### References
 
@@ -44,8 +44,8 @@ This bulletin provides an update on a local privilege escalation (LPE) vulnerabi
 
 **Affected Versions**
 
-- All current AKS on Azure Local Linux nodes are exploitable. We are working on integrating this fix into a future Azure Local update. In the meantime, follow the remediation steps below.
-- Although `algif_aead` isn't loaded by default on AKS nodes, the Linux kernel's module auto-loading mechanism (`request_module`) **automatically loads it on demand**. Any process, **including unprivileged containers**, can trigger this mechanism by creating an AF_ALG socket with AEAD type. This condition means:
+- All current AKS on Azure Local Linux nodes are exploitable. Microsoft is working on integrating this fix into a future Azure Local update. In the meantime, follow the remediation steps in this article.
+- Although `algif_aead` isn't loaded by default on AKS nodes, the Linux kernel's module autoloading mechanism (`request_module`) **automatically loads it on demand**. Any process, **including unprivileged containers**, can trigger this mechanism by creating an AF_ALG socket with AEAD type. This condition means:
 - **An attacker with code execution in any pod, even non-root, can escalate to root on the node.**
 - No special pod privileges, capabilities, or host access are required.
 
@@ -78,7 +78,7 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
 
 ##### Step 3: Upgrade AKS clusters
 
-Upgrade each AKS cluster to refresh nodes with patched VHDs. Use the table below to determine your upgrade path.
+Upgrade each AKS cluster to refresh nodes with patched VHDs. Use the following table to determine your upgrade path.
 
 | Current K8s version | Supported versions for Azure Local 2602 |
 |---|---|
@@ -88,7 +88,7 @@ Upgrade each AKS cluster to refresh nodes with patched VHDs. Use the table below
 | 1.32.8 | 1.32.9, 1.33.4, 1.33.5 |
 | 1.32.9 | 1.33.4, 1.33.5 |
 | 1.33.4 | 1.33.5 |
-| 1.33.5 (latest) | No upgrade available — use Option B |
+| 1.33.5 (latest) | No upgrade available - use Option B |
 
 To upgrade your cluster, follow the steps in [Upgrade the Kubernetes version](/azure/aks/aksarc/cluster-upgrade#upgrade-the-kubernetes-version). For the full version list, see [Supported Kubernetes versions](/azure/aks/aksarc/supported-kubernetes-versions#aks-arc-supported-kubernetes-minor-and-patch-versions-per-release).
 
