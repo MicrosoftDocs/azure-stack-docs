@@ -125,13 +125,13 @@ For local access and file transfers, you can configure SSH on your local machine
 
 1. Use the config file to copy files:
 
-   ```azurecli
+   ```bash
    scp -F ~/sshconfig ~/setup-k3s-arc.sh <MANAGED_RESOURCE_GROUP_NAME>-<ARC_FOR_SERVERS_NAME>-clouduser:~
    ```
 
 1. Use the config file to connect:
 
-   ```azurecli
+   ```bash
    ssh -F ~/sshconfig <MANAGED_RESOURCE_GROUP_NAME>-<ARC_FOR_SERVERS_NAME>-clouduser
    ```
 

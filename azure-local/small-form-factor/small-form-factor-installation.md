@@ -154,29 +154,11 @@ If no USB drive is present when the voucher is written, the voucher remains on t
 
 You can obtain the ownership voucher in one of the following ways:
 
-- Download it by using the Configurator App
 - Copy it from the USB drive
+- Download it by using the Configurator App
 - Download it by using SSH or SCP
 
-# [Configurator App](#tab/configurator-app)
-
-### Download the voucher by using Configurator App
-
-Use this option if the voucher remained on the device and you prefer a Windows UI, need to verify the device status, or want to download the voucher without using command-line tools.
-
-1. Install Configurator App on your Windows PC.
-1. Open **Configurator App**.
-1. Connect to the device using either:
-    - ROE-{device-serial-number}.local, or
-    - The device IP address
-1. Sign in with the local administrator credentials.
-   - Username: `edgeuser`
-   - Password: `Password1`
-1. Download the ownership voucher.
-
-    :::image type="content" source="media/small-form-factor-download-voucher.png" alt-text="Screenshot of the Download ownership voucher option in Configurator App." border="true" lightbox="media/small-form-factor-download-voucher.png":::
-
-# [USB drive](#tab/usb-drive)
+## [USB drive](#tab/usb-drive)
 
 ### Copy the voucher from the USB drive
 
@@ -194,7 +176,25 @@ Use this option for the default flow, where the voucher was written to the USB d
 > [!IMPORTANT]
 > If you lose the `.pem` file before you connect the machine to Azure, you must redeploy the operating system on that machine to generate a new ownership voucher.
 
-# [SSH or SCP](#tab/ssh-scp)
+## [Configurator App](#tab/configurator-app)
+
+### Download the voucher by using Configurator App
+
+Use this option if the voucher remained on the device and you prefer a Windows UI, need to verify the device status, or want to download the voucher without using command-line tools.
+
+1. Install Configurator App on your Windows PC.
+1. Open **Configurator App**.
+1. Connect to the device using either:
+    - ROE-{device-serial-number}.local, or
+    - The device IP address
+1. Sign in with the local administrator credentials.
+   - Username: `edgeuser`
+   - Password: `Password1`
+1. Download the ownership voucher.
+
+    :::image type="content" source="media/small-form-factor-download-voucher.png" alt-text="Screenshot of the Download ownership voucher option in Configurator App." border="true" lightbox="media/small-form-factor-download-voucher.png":::
+
+## [SSH or SCP](#tab/ssh-scp)
 
 ### Download the voucher by using SSH or SCP
 
