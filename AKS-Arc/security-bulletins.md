@@ -20,7 +20,7 @@ This article provides information on security vulnerabilities that affect AKS en
 
 ---
 
-## AKSARC-2026-0001: Advisory & Mitigation Guide for CVE-2026-31431 (Copy Fail)
+## AKSARC-2026-0001: Advisory and Mitigation Guide for CVE-2026-31431 (Copy Fail)
 
 **Last updated**: May 18, 2026
 
