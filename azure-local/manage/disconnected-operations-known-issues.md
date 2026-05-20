@@ -10,8 +10,28 @@ ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
+::: moniker range=">=azloc-2604"
+## Known issues for version 2604
+### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
-::: moniker range=">=azloc-2602"
+Workload clusters in Air-gapped environments fails to deploy in rare conditions. 
+
+**Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
+**Mitigation**: 
+- Connect to the first node of the Azure Local cluster
+- Open an elevated PowerShell session (Run as Administrator)
+- Create the StorageContainerContributor role by running the following command:
+
+```powershell
+    New-MocRole -Name StorageContainerContributor `
+            -actionProviders "StorageContainer" `
+            -actionOperations "all"
+```
+- Resume deployment using the same method that it was started with (example through portal or ARM template deployment)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2603"
 
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
