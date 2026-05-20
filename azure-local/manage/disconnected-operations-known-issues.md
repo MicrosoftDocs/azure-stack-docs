@@ -27,7 +27,7 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
             -actionProviders "StorageContainer" `
             -actionOperations "all"
 ```
-- Resume deployment using the same method that it was started with (example through portal or ARM template deployment)
+- Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
 
 ::: moniker-end
 
