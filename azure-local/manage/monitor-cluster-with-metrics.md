@@ -327,9 +327,9 @@ To see in-depth information about how these metrics are collected, see [Performa
 
 To enable GPU metrics, ensure the following requirements are met:
 
-- Install GPU mitigation drivers.
+- Install GPU mitigation drivers. The GPU drivers include NVIDIA System Management Interface (NVIDIA-SMI).
+- Verify that NVIDIA-SMI is installed and accessible on the system (for example, by running the `nvidia-smi` command). For more information, see the [System Management Interface](https://developer.nvidia.com/system-management-interface) documentation.
 - GPU metrics are currently supported only on NVIDIA GPUs.
-- Install NVIDIA System Management Interface (NVIDIA-SMI). For more information, see [System Management Interface](https://developer.nvidia.com/system-management-interface) documentation.
 
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
