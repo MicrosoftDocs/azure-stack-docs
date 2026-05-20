@@ -100,7 +100,7 @@ To connect over SSH, you must have the one of the following role assignments at 
 
 1. Restrict permissions on the uploaded key file:
 
-   ```bash
+   ```azurecli
    chmod 600 /path/to/uploaded-key-file
    ```
 
@@ -119,19 +119,19 @@ For local access and file transfers, you can configure SSH on your local machine
 
 1. Create an SSH config file:
 
-   ```bash
+   ```azurecli
    az ssh config -g <MANAGED_RESOURCE_GROUP_NAME> -n <ARC_FOR_SERVERS_NAME> --file ./sshconfig -i </path/to/private-key>
    ```
 
 1. Use the config file to copy files:
 
-   ```bash
+   ```azurecli
    scp -F ~/sshconfig ~/setup-k3s-arc.sh <MANAGED_RESOURCE_GROUP_NAME>-<ARC_FOR_SERVERS_NAME>-clouduser:~
    ```
 
 1. Use the config file to connect:
 
-   ```bash
+   ```azurecli
    ssh -F ~/sshconfig <MANAGED_RESOURCE_GROUP_NAME>-<ARC_FOR_SERVERS_NAME>-clouduser
    ```
 

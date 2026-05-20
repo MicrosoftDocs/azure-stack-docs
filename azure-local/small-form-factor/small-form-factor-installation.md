@@ -142,13 +142,27 @@ To download the files:
 
 ## Extract ownership vouchers
 
+The ownership voucher is a `.pem` file that proves the identity of the machine when you connect the provisioned machine to Azure from the Azure portal. In the portal deployment flow, this file is generated during installation and then made available either on the USB drive or on the device, depending on whether a USB drive is present when the voucher is written.
+
+You'll use the `.pem` file in the next step when you connect the provisioned machine from the Azure portal. Treat this file as required deployment material for that machine.
+
+If the `.pem` file is lost before the machine is connected to Azure, you can't recreate or redownload the same voucher later. In that case, you must redeploy the operating system on the machine to generate a new ownership voucher.
+
+By default, the ownership voucher is written to your USB drive, and the local file on the device is then deleted for security. In that case, obtain the voucher by copying it from the USB drive.
+
+If no USB drive is present when the voucher is written, the voucher remains on the device. In that case, you can obtain it by downloading it with the Configurator App or by using SSH or SCP.
+
 You can obtain the ownership voucher in one of the following ways:
 
 - Download it by using the Configurator App
 - Copy it from the USB drive
 - Download it by using SSH or SCP
 
+# [Configurator App](#tab/configurator-app)
+
 ### Download the voucher by using Configurator App
+
+Use this option if the voucher remained on the device and you prefer a Windows UI, need to verify the device status, or want to download the voucher without using command-line tools.
 
 1. Install Configurator App on your Windows PC.
 1. Open **Configurator App**.
@@ -162,7 +176,11 @@ You can obtain the ownership voucher in one of the following ways:
 
     :::image type="content" source="media/small-form-factor-download-voucher.png" alt-text="Screenshot of the Download ownership voucher option in Configurator App." border="true" lightbox="media/small-form-factor-download-voucher.png":::
 
+# [USB drive](#tab/usb-drive)
+
 ### Copy the voucher from the USB drive
+
+Use this option for the default flow, where the voucher was written to the USB drive during installation.
 
 1. Insert the USB drive into your Windows PC.
 1. Open the `vouchers` folder.
@@ -173,9 +191,14 @@ You can obtain the ownership voucher in one of the following ways:
 > [!TIP]
 > Store the `.pem` files in a secure, backed-up location. The `.pem` files are needed for connecting the machine to Azure.
 
+> [!IMPORTANT]
+> If you lose the `.pem` file before you connect the machine to Azure, you must redeploy the operating system on that machine to generate a new ownership voucher.
+
+# [SSH or SCP](#tab/ssh-scp)
+
 ### Download the voucher by using SSH or SCP
 
-If you prefer a command-line approach, you can copy the vouchers from the device file system:
+Use this option if the voucher remained on the device and you prefer a command-line approach. You can copy the vouchers from the device file system:
 
 ```bash
 /var/staging/export/vouchers/<serial-number>/<serial-number>.pem
@@ -223,6 +246,8 @@ foreach ($ip in $devices) {
     scp -r edgeuser@${ip}:/var/staging/export/vouchers/ "$dst\"
 }
 ```
+
+---
 
 ## Review your installation
 
