@@ -18,7 +18,7 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
 
 **Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
 **Mitigation**: 
-- Connect to the first node of the Azure Local cluster
+- Connect to the first node of the Azure Local cluster.
 - Open an elevated PowerShell session (Run as Administrator)
 - Create the StorageContainerContributor role by running the following command:
 
