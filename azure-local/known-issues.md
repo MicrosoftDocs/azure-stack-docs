@@ -301,7 +301,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604). Once the MOC component update is applied, the Azure Local instance is no longer exposed to this issue. | |
+| Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. | |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so the failure message can be ignored. |
 
 ## Known issues from previous releases
