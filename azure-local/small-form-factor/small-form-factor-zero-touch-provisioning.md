@@ -104,16 +104,16 @@ The provisioned machine resource is the main management surface for the Azure Lo
 
 ### 5. Device connects to Azure
 
-The maintenance environment has a built-in polling mechanism that pings the rendezvous server in Azure periodically to see if anyone has uploaded its associated ownership voucher. If it finds the voucher, it pulls down its desired configuration from Azure.
+The maintenance environment has a built-in polling mechanism that pings the rendezvous server in Azure periodically to see if anyone uploaded its associated ownership voucher. If it finds the voucher, it pulls down its desired configuration from Azure.
 
-By default, the maintenance environment tries to connect over DHCP. If you need to connect in an environment that only supports static IP, requires a particular gateway IP, or has any other requirements where the out-of-box maintenance environment is failing to connect, you need to configure those settings on the device by using the Configurator App.
+By default, the maintenance environment tries to connect over DHCP. If you need to connect in an environment that only supports static IP, requires a particular gateway IP, or has any other requirements where the out-of-box maintenance environment fails to connect, you need to configure those settings on the device by using the Configurator App.
 
 ## Important concepts
 
-**Ownership vouchers are one-time use.** After an ownership voucher is uploaded to the cloud to create a provisioned machine and that machine connects to Azure, the machine no longer polls to see if it has been claimed.
+**Ownership vouchers are one-time use.** After you upload an ownership voucher to the cloud to create a provisioned machine and that machine connects to Azure, the machine no longer polls to see if it has been claimed.
 
-**A device can't be claimed in two places at once.** If you've already uploaded an ownership voucher for a device and haven't deleted its provisioned machine resource, you have to delete it before you can upload a new one and reconnect it. The ZTP service rejects any attempts to claim a device that it has already assigned to a provisioned machine.
+**A device can't be claimed in two places at once.** If you already uploaded an ownership voucher for a device and didn't delete its provisioned machine resource, you must delete it before you can upload a new one and reconnect it. The ZTP service rejects any attempts to claim a device that it already assigned to a provisioned machine.
 
 **Anyone can prep a device for ZTP.** The real value of the ZTP feature comes from preparing many devices at scale, shipping them directly to site, then centrally managing them across many locations. However, to make it easier to spin up a quick test, the feature is designed so that anyone can install from a USB drive and achieve the same experience.
 
-**The reset-os command makes a machine identical to a newly installed maintenance environment.** Calling reset-os on a provisioned machine redownloads and then installs the maintenance environment, but maintains the same persistent ARM identity of the provisioned machine. This is designed for scenarios where you want to wipe a device clean but continue to represent it with a persistent ARM resource.
+**The reset-os command makes a machine identical to a newly installed maintenance environment.** Calling reset-os on a provisioned machine redownloads and then installs the maintenance environment, but maintains the same persistent ARM identity of the provisioned machine. This design is for scenarios where you want to wipe a device clean but continue to represent it with a persistent ARM resource.

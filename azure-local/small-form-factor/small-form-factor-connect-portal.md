@@ -20,7 +20,7 @@ This article describes how to create an Azure Arc site, upload an ownership vouc
 
 ## Prerequisites
 
-Before you begin, make sure you have completed the following prerequisites:
+Before you begin, make sure you complete the following prerequisites:
 
 - [Set up your subscription](small-form-factor-subscription-setup.md)
 - [Install small form factor](small-form-factor-installation.md) on your machines or virtual machines (VMs).
@@ -35,7 +35,7 @@ Before you begin, make sure you have completed the following prerequisites:
 
 1. Go to **Operations** > **Provisioning (preview)**.
 
-1. On the **Get started** page, select **Provision**.
+1. On **Get started**, select **Provision**.
 
       :::image type="content" source="media/small-form-factor-arc-provision.png" alt-text="Screenshot of the Azure portal with the provision option selected." border="true" lightbox="media/small-form-factor-arc-provision.png":::
 
@@ -68,7 +68,7 @@ Before you begin, make sure you have completed the following prerequisites:
 
 1. In the **Operating system** dropdown list, select **Azure Local on Linux 2604**.
 
-1. Enter a name for the SSH key that you'll use later, and then select **Review + create**.
+1. Enter a name for the SSH key that you use later, and then select **Review + create**.
 
 ## Wait for the machine to become ready
 
@@ -83,11 +83,11 @@ Provisioning can take up to 25 minutes.
 
 When the machine state is **Provisioned**, you can connect to it over SSH.
 
-To connect over SSH, you must have the one of the following role assignments at the subscription level. Pick the role assignment based on the level of access needed:
+To connect over SSH, you must have one of the following role assignments at the subscription level. Pick the role assignment based on the level of access needed:
 
-- [Virtual Machine Administrator Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-administrator-login): Users who have this role assigned can log in with administrator privileges. This role provides sudo level access on the provisioned machine.
+- [Virtual Machine Administrator Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-administrator-login): Users with this role can sign in with administrator privileges. This role provides sudo level access on the provisioned machine.
 
-- [Virtual Machine User Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-user-login): Users who have this role assigned can log in with regular user privileges. This role provides non-sudo level access on the provisioned machine.
+- [Virtual Machine User Login](/azure/role-based-access-control/built-in-roles/compute#virtual-machine-user-login): Users with this role can sign in with regular user privileges. This role provides non-sudo level access on the provisioned machine.
 
 ### Connect by using Azure Cloud Shell
 
@@ -98,7 +98,7 @@ To connect over SSH, you must have the one of the following role assignments at 
 
       :::image type="content" source="media/small-form-factor-connect-ssh.png" alt-text="Screenshot of the Azure portal showing how to connect with SSH." border="true" lightbox="media/small-form-factor-connect-ssh.png":::
 
-1. Restrict permissions on the uploaded key file:
+1. Restrict permissions on the uploaded key file.
 
    ```azurecli
    chmod 600 /path/to/uploaded-key-file
@@ -111,7 +111,7 @@ To connect over SSH, you must have the one of the following role assignments at 
 1. Run the command to establish the SSH connection.
 
 > [!NOTE]
-> The SSH command is generated automatically in the Azure portal under **Connect** for your provisioned machine.
+> The Azure portal automatically generates the SSH command under **Connect** for your provisioned machine.
 
 ### Connect over the local network (optional)
 
