@@ -9,7 +9,7 @@ ms.date: 05/18/2026
 
 # Security bulletins for AKS enabled by Azure Arc
 
-This article provides up-to-date information on security vulnerabilities that affect AKS enabled by Azure Arc and its components. This information includes details on:
+This article provides information on security vulnerabilities that affect AKS enabled by Azure Arc and its components. This information includes details on:
 
 - **Critical Security Advisories** — High-impact security vulnerabilities, including zero-day vulnerabilities and other critical CVEs that require immediate attention, along with mitigation guidance.
 - **Ongoing Security Investigations** — Security issues under review, including CVEs where a patch isn't yet available or further assessment is needed.
