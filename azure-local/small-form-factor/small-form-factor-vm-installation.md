@@ -7,7 +7,6 @@ ms.date: 05/04/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
-zone_pivot_groups: small-form-factor-installation
 ---
 
 # Test small form factor deployments of Azure Local in a Hyper-V virtual machine (preview)
