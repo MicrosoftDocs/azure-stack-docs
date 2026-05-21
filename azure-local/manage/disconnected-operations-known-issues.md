@@ -10,8 +10,28 @@ ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
+::: moniker range=">=azloc-2604"
+## Known issues for version 2604
+### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
-::: moniker range=">=azloc-2602"
+Workload clusters in air-gapped environments fail to deploy in rare conditions. 
+
+**Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
+**Mitigation**: 
+- Connect to the first node of the Azure Local cluster.
+- Open an elevated PowerShell session (Run as Administrator).
+- Create the StorageContainerContributor role by running the following command:
+
+```powershell
+    New-MocRole -Name StorageContainerContributor `
+            -actionProviders "StorageContainer" `
+            -actionOperations "all"
+```
+- Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
+
+::: moniker-end
+
+::: moniker range="<=azloc-2603"
 
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
@@ -734,10 +754,6 @@ Use CLI to delete and clean up the cluster. Run this command:
 az aksarc delete
 ```
 
-#### Export Host Guardian Service certificates
-
-This feature is unsupported in this preview release.
-
 #### Restart a node or the control plane VM
 
 After you restart a node or the control plane VM, the system might take up to an hour to become fully ready. If you notice issues with the local portal, missing resources, or failed deployments, check the appliance health using the **OperationsModule** to confirm that all services are fully converged.
@@ -796,11 +812,11 @@ Close your browser, then go to the Portal URL.
 
 #### Template specs
 
-Template specs are unsupported in the preview release. Deployments that use ARM templates with template specs fail.
+Template specs aren't supported. Deployments that use ARM templates with template specs fail.
 
 ### Unsupported scenarios
 
-The following scenarios are unsupported in the preview release.
+The following scenarios aren't supported:
 
 - Arc-Enabled servers (remote or non Azure Local VMs)
 - Arc-Enabled Kubernetes clusters (remote or non AKS clusters)

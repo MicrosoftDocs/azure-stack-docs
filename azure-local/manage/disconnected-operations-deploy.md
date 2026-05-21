@@ -148,7 +148,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Copy-Item \\fileserver\share\azurelocalcerts $certspath -recurse  
     ```
 
-1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointsCerts` and at least 24 certificates.
+1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointsCerts` and `IngressEndpointsCerts` and at least 24 certificates.
 
     ```powershell  
     Get-ChildItem $certsPath 
@@ -160,7 +160,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     ```powershell  
     Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
 
-    $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
+    $mgmntCertFolderPath = "$certspath\ManagementEndpointsCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointsCerts"  
     ```
 
@@ -253,13 +253,6 @@ Populate the required parameters based on your deployment planning. Modify the e
     ```  
 
     For more information, see [PKI for disconnected operations](disconnected-operations-pki.md).
-
-1. Copy the appliance manifest file (Downloaded from Azure) to your configuration folder:
-
-    ```powershell
-    # Modify your source path accordingly 
-    copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.manifest.json
-    ```  
 
 ## Install and configure the appliance  
 
@@ -359,7 +352,7 @@ In order for the nodes to understand your private cloud environment, you must ad
 
 On each node, run the following from Powershell:
  
-1. `Add-AzLocalEnvironment -FQDN "autonomous.cloud.private"`
+1. `Add-AzLocalEnvironment -CloudFQDN "autonomous.cloud.private"`
 
 > [!NOTE]
 > This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
