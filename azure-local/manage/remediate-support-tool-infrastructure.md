@@ -90,8 +90,8 @@ Import-Module Support.AksArc -force
 If you already have the module installed, update it by using the following cmdlet:
 
 ```powershell
-Update-Module -Name Support.AksArc
 Remove-Module -Name Support.AksArc
+Update-Module -Name Support.AksArc
 Import-Module -Name Support.AksArc
 ```
 
