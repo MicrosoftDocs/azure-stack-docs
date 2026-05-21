@@ -62,17 +62,43 @@ Before you begin, make sure you complete the following prerequisites:
 
 ## Add the machine
 
+SSH keys are used for secure remote access to the machine over SSH. During provisioning, the public key is installed on the machine, and the corresponding private key is later used to authenticate SSH connections.
+
+You can either generate a new SSH key pair in Azure or upload an existing SSH public key that you already use.
+
+If you generate a new key pair in Azure, Azure creates both the public and private keys. The public key is installed on the machine, and the private key (`.pem` file) is downloaded to your local computer. You use the downloaded private key later to connect to the machine over SSH.
+
+For example:
+
+```bash
+ssh -i mykey.pem clouduser@<ip-address>
+```
+
+Store the private SSH key securely. If the private key is lost and no other authentication method or authorized key exists on the machine, you might lose SSH access to the machine.
+
+If you upload your own SSH public key, make sure that you securely store and manage the corresponding private key.
+
+Multiple users can access the same machine either by securely sharing the same private key between authorized users or by adding additional SSH public keys to the machine for separate user access.
+
+To add your machine:
+
 1. Under **Provisioned machines**, select **Add**.
 
 1. In the **Add machines using ownership vouchers** pane, upload the ownership voucher that you created in [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md). Select **Add**.
 
 1. In the **Operating system** dropdown list, select **Azure Linux 2604**.
 
-1. Enter a name for the SSH key that you use later, and then select **Review + create**.
+1. Enter a name for the SSH key that you use later.
+
+1. Select **Review + create**.
 
 ## Wait for the machine to become ready
 
-Provisioning can take up to 25 minutes.
+   :::image type="content" source="media/small-form-factor-connect-portal.png" alt-text="Screenshot of diagram showing machine provisioning." border="true" lightbox="media/small-form-factor-connect-portal.png":::
+
+During provisioning, the machine moves through several lifecycle states. The diagram above shows the possible machine states and transitions during provisioning.
+
+Provisioning can take up to 25 minutes to complete.
 
 1. Open the **Provisioned machines** tab.
 1. Wait until **Machine State** changes to **Provisioned**.
