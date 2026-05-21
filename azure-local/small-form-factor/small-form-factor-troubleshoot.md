@@ -131,7 +131,7 @@ If the file permissions are too open, SSH rejects the key for security reasons.
 
 **Recommendation**:
 
-1. Verify that you're using the correct `pem` file downloaded from the Azure portal for the specific device you're connecting to.
+1. Verify that you're using the correct `.pem` file downloaded from the Azure portal for the specific device you're connecting to.
 
 1. Confirm that the key file permissions are configured correctly.
     1. On Linux, restrict the key permissions with:
