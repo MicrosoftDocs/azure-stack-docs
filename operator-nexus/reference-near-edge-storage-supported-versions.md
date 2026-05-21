@@ -64,6 +64,7 @@ Each number in the version indicates general compatibility with the previous ver
 | 6.5.10           | Nexus 2504.1     | Sept 2026*      |
 | 6.5.11           | Nexus 2509.1     | Sept 2026*      |
 | 6.9.4            | Nexus 2604.2     | May 2028*      |
+| 6.9.5            | Nexus 2604.2     | May 2028*      |
 
 > [!IMPORTANT]
 > \* At max 2 LTS versions will be supported. The dates are tentative assuming that by this timeframe we will have another set of LTS versions released, making this version deprecated per our support guidelines.
@@ -106,6 +107,7 @@ Azure Operator Nexus supports and tests the latest combination of a Purity versi
 | 6.5.10           | 2.2.2       |
 | 6.5.11           | 2.2.4       |
 | 6.9.4            | 2.2.5       |
+| 6.9.5            | 2.2.6       |
 
 ## FAQ
 
