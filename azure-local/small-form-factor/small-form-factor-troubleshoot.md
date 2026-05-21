@@ -96,6 +96,67 @@ TPM clear options vary by hardware vendor and BIOS version. Look under **Advance
 
       :::image type="content" source="media/small-form-factor-tpm-clear.png" alt-text="Screenshot ASUS NUC TPM clear options." border="true" lightbox="media/small-form-factor-tpm-clear.png":::
 
+## SSH login prompts for a password when using a `.pem` file
+
+**Problem**:
+
+When connecting to a provisioned machine over SSH using a `.pem` file, the connection prompts for a password instead of signing in automatically.
+
+For example:
+
+```bash
+ssh -i mykey.pem clouduser@<ip-address>
+```
+
+Instead of connecting successfully, SSH prompts:
+
+```text
+clouduser@<ip-address>'s password:
+```
+
+**Cause**:
+
+The `clouduser` account doesn't have a password configured.
+
+If SSH prompts for a password, it means the `.pem` key authentication failed and SSH is falling back to password authentication.
+
+The most common causes are:
+
+- The wrong `.pem` file is being used. For example, using:
+  - A `.pem` file downloaded for a different device
+  - A `.pem` file copied from the USB instead of the one downloaded from the Azure portal
+- The `.pem` file permissions weren't restricted with `chmod 600`
+
+If the file permissions are too open, SSH rejects the key for security reasons.
+
+**Recommendation**:
+
+1. Verify that you're using the correct `pem` file downloaded from the Azure portal for the specific device you're connecting to.
+
+1. Confirm that the key file permissions are configured correctly.
+    1. On Linux, restrict the key permissions with:
+
+    ```bash
+    chmod 600 <your-key>.pem
+    ```
+
+    1. On Windows, you can restrict the key permissions using:
+
+    ```powershell
+    icacls <your-key>.pem /inheritance:r
+    icacls <your-key>.pem /grant:r "%username%":R
+    ```
+
+1. Then retry the SSH connection.
+
+1. If the issue persists, run the Azure Arc SSH command with verbose logging enabled to view detailed authentication errors:
+
+    ```bash
+    az ssh arc --verbose
+    ```
+
+1. Review the verbose output for key authentication failures, permission issues, or mismatched key errors.
+
 ## Troubleshoot VM setup
 
 ### The VM doesn't get an IP address
