@@ -64,9 +64,9 @@ Before you begin, make sure you complete the following prerequisites:
 
 1. Under **Provisioned machines**, select **Add**.
 
-1. In the **Add device using ownership voucher** pane, upload the ownership voucher that you created in [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md). Select **Add**.
+1. In the **Add machines using ownership vouchers** pane, upload the ownership voucher that you created in [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md). Select **Add**.
 
-1. In the **Operating system** dropdown list, select **Azure Local on Linux 2604**.
+1. In the **Operating system** dropdown list, select **Azure Linux 2604**.
 
 1. Enter a name for the SSH key that you use later, and then select **Review + create**.
 
