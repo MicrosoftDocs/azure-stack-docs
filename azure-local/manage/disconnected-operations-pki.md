@@ -73,7 +73,7 @@ This table lists the mandatory certificates required for disconnected operations
 
 ### Management endpoints
 
-The management endpoint requires two certificates. Put these certificates in the same folder, *ManagementEndpointCerts*. The certificates are:
+The management endpoint requires two certificates. Put these certificates in the same folder, *ManagementEndpointsCerts*. The certificates are:
 
 | Management Endpoint Certificate | Required certificate subject |
 | ---------------------- | ------------------ |
@@ -139,7 +139,7 @@ $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server 
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
+New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caName -CertificatePassword $certpassword
 ```
 
 ## Export root CA certificate
@@ -421,7 +421,7 @@ $certPassword = Read-Host -AsSecureString -Message 'ManagementCertPass' -Force
 # Alternative
 # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
 
-$managementendpointPath = "C:\AzureLocalDisconnectedOperations\Certs\ManagementEndpointCerts"
+$managementendpointPath = "C:\AzureLocalDisconnectedOperations\Certs\ManagementEndpointsCerts"
 [void](New-Item -ItemType Directory -path $managementendpointPath -force)
 $managementEndpointIPAddress = '192.168.100.25'
 $fileNames = @('ManagementEndpointSsl', 'ManagementEndpointClientAuth')

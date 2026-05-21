@@ -54,7 +54,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
      Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
 
      # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
-     Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
+     Get-NetAdapter -name "vEthernet*"| Rename-NetAdapter -NewName "vManagement($networkIntentName)"
      ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.

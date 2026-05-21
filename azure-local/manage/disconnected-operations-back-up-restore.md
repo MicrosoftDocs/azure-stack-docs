@@ -50,14 +50,21 @@ Before running the backup command, configure environment-specific settings and p
 To configure settings and parameters, open an administrator PowerShell session and run these cmdlets.
 
 ```PowerShell
-# point az to arca
-> az cloud set --name arca
+# point az to Azure.Local
+> az cloud set --name Azure.Local
 
 # Login as admin
 > az login
 
 # set operator subscription which will be listed after login
 > az account set --subscription <operator subscription GUID> 
+```
+
+Clients also need to set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password.
+
+```PowerShell
+# Set the appliance client context. Send the password(SecureString) and ManagementEndpointClientAuth.pfx.
+> Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $securePassword -ManagementEndpoint <management endpoint IP>
 
 # Create backup config with SMB share details, Encryption Key
 > Set-ApplianceBackupConfiguration 
@@ -102,6 +109,20 @@ To trigger and monitor a backup, follow these steps:
     Here's an example output:
 
     :::image type="content" source="media/disconnected-operations/back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations/back-up-restore/track-status-back-up-id.png":::
+
+## Troubleshooting
+
+If you encounter the following error while running any backup commands:
+
+```output
+Unable to connect to the remote server
+```
+
+Rerun the command with the `-ExternalDomainSuffix` parameter set to your external domain suffix. For example:
+
+```powershell
+-ExternalDomainSuffix autonomous.aldo.private
+```
 
 ::: moniker-end
 
