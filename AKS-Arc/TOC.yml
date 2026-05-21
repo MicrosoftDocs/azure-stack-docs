@@ -13,6 +13,8 @@
     href: data-collection.md
   - name: Blogs and announcements
     href: blogs-announcements.md
+  - name: Security bulletins
+    href: security-bulletins.md
 - name: AKS Arc on Azure Local
   expanded: true
   items:

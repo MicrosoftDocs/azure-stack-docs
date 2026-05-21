@@ -126,7 +126,7 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2601 | 2601.1.24997 | AzureLocal24H2.26100.1742.LCM.12.2601.0.3137 |
 | 2602 | 2602.1.25411 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
 | 2603 | 2603.1.25508 | AzureLocal24H2.26100.1742.LCM.12.2603.0.3012 |
-| 2604 | 2604.1.25621 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 |
+| 2604 | 2604.2.25645 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 |
 
 ## Original Equipment manufacturer (OEM) Golden images with lower version
 If your nodes come preinstalled with a golden image, update the image so it gets to the correct target solution version. For exact versions, see : https://aka.ms/azureedgeupdates. 
