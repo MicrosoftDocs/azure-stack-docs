@@ -41,7 +41,7 @@ Use either of the following solutions:
 
 ## Replication failure because of storage account network settings
 
-When you replicate a VMware VM to Azure Local, replication fails if the storage account that's used for migration has public network access disabled.
+When you replicate a VMware VM to Azure Local, replication fails if the storage account that you use for migration has public network access disabled.
 
 ### Symptoms
 
