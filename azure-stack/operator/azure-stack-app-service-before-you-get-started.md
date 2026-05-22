@@ -417,7 +417,7 @@ Azure App Service on Azure Stack Hub requires you to [download items from the Az
    - Version = Specify the "latest" version
 
 # [Previous versions](#tab/previous-disconnected)
-1. Windows Server 2016 Datacenter Full VM image with Microsoft .NET 3.5.1 SP1 activated. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. In disconnected environments, the image can't reach Microsoft Update to download the packages to install using DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled for disconnected deployments.
+1. Windows Server 2016 Datacenter full VM image with Microsoft .NET 3.5.1 SP1 activated. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. In disconnected environments, the image can't reach Microsoft Update to download the packages to install by using DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled for disconnected deployments.
 
    For information about creating a custom image and adding it to the Marketplace, see [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md). Be sure to specify the following properties when adding the image to Marketplace:
 
