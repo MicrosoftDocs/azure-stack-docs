@@ -324,7 +324,7 @@ Azure App Service uses an identity application (service principal) to support th
 - Virtual machine scale set integration on worker tiers.
 - SSO for the Azure Functions portal and advanced developer tools (Kudu).
 
-Depending on which identity provider Azure Stack Hub uses, Microsoft Entra ID or Active Directory Federation Services (ADFS), follow the appropriate steps to create the service principal for use by Azure App Service on the Azure Stack Hub resource provider.
+Depending on which identity provider Azure Stack Hub uses, Microsoft Entra ID or Active Directory Federation Services (AD FS), follow the appropriate steps to create the service principal for use by Azure App Service on the Azure Stack Hub resource provider.
 
 ::: zone pivot="state-connected"
 
