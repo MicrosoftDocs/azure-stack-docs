@@ -300,7 +300,7 @@ The network and identity configuration for Azure App Service on Azure Stack Hub 
 ### Virtual network
 
 > [!NOTE]
-> Pre-creating a custom virtual network is optional. Azure App Service on Azure Stack Hub can create the required virtual network but then must communicate with SQL and the file server through public IP addresses. If you use the App Service HA file server and SQL Server quickstart template to deploy the prerequisite SQL and file server resources, the template also deploys a virtual network.
+> Precreating a custom virtual network is optional. Azure App Service on Azure Stack Hub can create the required virtual network but then must communicate with SQL and the file server through public IP addresses. If you use the App Service HA file server and SQL Server quickstart template to deploy the prerequisite SQL and file server resources, the template also deploys a virtual network.
 
 Azure App Service on Azure Stack Hub enables you to deploy the resource provider to an existing virtual network or create a virtual network as part of the deployment. If you use an existing virtual network, you can use internal IPs to connect to the file server and SQL Server that Azure App Service on Azure Stack Hub requires. Before you install Azure App Service on Azure Stack Hub, configure the virtual network with the following address range and subnets:
 
@@ -417,7 +417,7 @@ Azure App Service on Azure Stack Hub requires you to [download items from the Az
    - Version = Specify the "latest" version
 
 # [Previous versions](#tab/previous-disconnected)
-1. Windows Server 2016 Datacenter Full VM image with Microsoft .NET 3.5.1 SP1 activated. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. In disconnected environments, the image can't reach Microsoft Update to download the packages to install using DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled for disconnected deployments.
+1. Windows Server 2016 Datacenter full VM image with Microsoft .NET 3.5.1 SP1 activated. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. In disconnected environments, the image can't reach Microsoft Update to download the packages to install by using DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled for disconnected deployments.
 
    For information about creating a custom image and adding it to the Marketplace, see [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md). Be sure to specify the following properties when adding the image to Marketplace:
 
