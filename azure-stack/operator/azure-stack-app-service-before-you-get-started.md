@@ -300,7 +300,7 @@ The network and identity configuration for Azure App Service on Azure Stack Hub 
 ### Virtual network
 
 > [!NOTE]
-> Pre-creating a custom virtual network is optional. Azure App Service on Azure Stack Hub can create the required virtual network but then must communicate with SQL and the file server through public IP addresses. If you use the App Service HA file server and SQL Server quickstart template to deploy the prerequisite SQL and file server resources, the template also deploys a virtual network.
+> Precreating a custom virtual network is optional. Azure App Service on Azure Stack Hub can create the required virtual network but then must communicate with SQL and the file server through public IP addresses. If you use the App Service HA file server and SQL Server quickstart template to deploy the prerequisite SQL and file server resources, the template also deploys a virtual network.
 
 Azure App Service on Azure Stack Hub enables you to deploy the resource provider to an existing virtual network or create a virtual network as part of the deployment. If you use an existing virtual network, you can use internal IPs to connect to the file server and SQL Server that Azure App Service on Azure Stack Hub requires. Before you install Azure App Service on Azure Stack Hub, configure the virtual network with the following address range and subnets:
 
