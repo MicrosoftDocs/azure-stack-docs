@@ -90,7 +90,7 @@ Import-Module Support.AksArc -force
 If you already have the module installed, update it by using the following cmdlet:
 
 > [!IMPORTANT]
-    > If you already have the module installed on your Azure Local instance, running the three commands below is required and should not be skipped.
+    >If you already have the module installed on your Azure Local instance, running the three commands below is required and should not be skipped.
 
 ```powershell
 Remove-Module -Name Support.AksArc
