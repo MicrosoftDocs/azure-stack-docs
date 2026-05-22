@@ -128,7 +128,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     - Add deployment user to local administrator group of this machine
     - Add computer to the correct OU in the domain
 
-Here's an example script you can run:
+    Here's an example script you can run:
     ```powershell
 
     # Add deployment user to local administrator group 
