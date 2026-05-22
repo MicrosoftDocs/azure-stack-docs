@@ -482,7 +482,7 @@ Verify the deployment before creating local Azure resources.
 1. Check that a resource group exists for your Azure Local infrastructure (for example, azurelocal-disconnected-operations).
 
 > [!NOTE]  
-> The management cluster does not support the AD-less deployments. 
+> The management cluster doesn't support AD-less deployments. 
 
 ### Initialize each Azure Local node
 

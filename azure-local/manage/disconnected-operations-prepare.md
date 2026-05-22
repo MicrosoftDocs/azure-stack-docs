@@ -124,11 +124,11 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     ```
     You can also use SConfig to domain join your node.
 
-    Once domain joined - you will need to do the following:
+    Once domain joined - you need to do the following:
     - Add deployment user to local administrator group of this machine
     - Add computer to the correct OU in the domain
 
-    Here's an example script you can run :
+Here's an example script you can run:
     ```powershell
 
     # Add deployment user to local administrator group 
