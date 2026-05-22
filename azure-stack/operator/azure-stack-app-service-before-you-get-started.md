@@ -335,7 +335,7 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
 1. Open a PowerShell instance as **azurestack\AzureStackAdmin**.
 1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](#installer-and-helper-scripts).
 1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
-1. Run the **Create-AADIdentityApp.ps1** script. When prompted, enter the Microsoft Entra tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
+1. Run the [**Create-AADIdentityApp.ps1**](#create-aadidentityapp-powershell-script) script. When prompted, enter the Microsoft Entra tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
 1. In the **Credential** window, enter your Microsoft Entra service admin account and password. Select **OK**.
 1. Enter the certificate file path and certificate password for the [certificate you created earlier](#certificates-and-server-configuration-integrated-systems). The certificate you created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
 1. Make a note of the application ID that's returned in the PowerShell output. You use the ID in the following steps to provide consent for the application's permissions, and during installation. 
@@ -345,7 +345,7 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
 1. Search for the application ID you noted in step 7. 
 1. Select the App Service application registration from the list.
 1. Select **API permissions** in the left pane.
-1. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Microsoft Entra tenant. Confirm the consent grant by selecting **Yes**.
+1. Select **Grant admin consent for \<tenant\>**, where `<tenant>` is the name of your Microsoft Entra tenant. Confirm the consent grant by selecting **Yes**.
 1. For multitenancy scenarios, grant the **Directory.Read.All** and **user_impersonation** permissions to the App Services App Registration using the Azure Resource Manager admin endpoint.
 
    ```powershell
@@ -392,6 +392,8 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
    ```
 
    Once this script is executed, each tenant that needs to use App Services must re-run the registration script. See [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?view=azs-2601&pivots=management-tool-powershell&preserve-view=true).
+
+#### Create-AADIdentityApp PowerShell script
 
 ```powershell
 Create-AADIdentityApp.ps1
