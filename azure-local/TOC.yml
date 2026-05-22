@@ -190,7 +190,7 @@ items:
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
       - name: Run AI workloads on Azure Local
-        href: concepts/ai-workloads-overview.md
+        href: /azure/azure-sovereign-clouds/private/azure-local/ai-workloads-overview?toc=/azure/azure-local/toc.json&bc=/azure/azure-local/breadcrumb/toc.json
 
   - name: Enable
     items:
