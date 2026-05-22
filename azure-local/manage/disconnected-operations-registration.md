@@ -181,7 +181,7 @@ Write-Host "HardwareSetting created successfully." -ForegroundColor Green
 ## Register your Azure Local disconnected operations 
 
 ```powershell
-# Modify these to fit your disconnected operations resource. DeviceId you can find by running Get-ApplianceInstanceConfiguration on your deployed environment. This should be a guid.
+# Modify these to fit your disconnected operations resource. You can find the DeviceId by running the Get-ApplianceInstanceConfiguration on your deployed environment. This should be a guid.
 $params = @{
     Cloud                      = 'AzureCloud'
     SubscriptionId             = ''
