@@ -391,7 +391,7 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
    New-AzResource @params -Verbose -Force
    ```
 
-   Once this script is executed, each tenant that needs to use App Services must re-run the registration script. See [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?view=azs-2601&pivots=management-tool-powershell).
+   Once this script is executed, each tenant that needs to use App Services must re-run the registration script. See [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?view=azs-2601&pivots=management-tool-powershell&preserve-view=true).
 
 ```powershell
 Create-AADIdentityApp.ps1
