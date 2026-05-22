@@ -124,6 +124,26 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     ```
     You can also use SConfig to domain join your node.
 
+    Once domain joined - you will need to do the following:
+    - Add deployment user to local administrator group of this machine
+    - Add computer to the correct OU in the domain
+
+    Here's an example script you can run :
+    ```powershell
+
+    # Add deployment user to local administrator group 
+    $deploymentUser = "contoso.com\lcmuser" # Change this to your deployment username
+    $adminGroup = [ADSI]"WinNT://./Administrators,group"
+    $adminGroup.Add("WinNT://$deploymentUser")
+
+    # Add computer to the correct OU in the domain
+    $computerName = $env:COMPUTERNAME
+    # Modify these to match your domain and OU path
+    $domain = "contoso.com"
+    $ou = "OU=AzureLocal,DC=contoso,DC=com" 
+    Move-ADObject -Identity "CN=$computerName,CN=Computers,DC=contoso,DC=com" -TargetPath $ou
+    ```
+
 1. From the list of node names, select the first machine and designate it as the (seed node). The seed node is the first node used to deploy the disconnected operations control plane. Use the following command to designate the seed node.
 
     ```powershell

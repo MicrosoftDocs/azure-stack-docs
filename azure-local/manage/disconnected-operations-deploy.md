@@ -481,6 +481,9 @@ Verify the deployment before creating local Azure resources.
 1. Check that required resource providers are registered in the subscription.
 1. Check that a resource group exists for your Azure Local infrastructure (for example, azurelocal-disconnected-operations).
 
+> [!NOTE]  
+> The management cluster does not support the AD-less deployments. 
+
 ### Initialize each Azure Local node
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
