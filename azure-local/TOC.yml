@@ -1493,6 +1493,8 @@ items:
       href: ./small-form-factor/small-form-factor-containerized-workloads.md
     - name: Deploy applications
       href: ./small-form-factor/small-form-factor-deploy-applications.md
+    - name: Deploy GPU-enabled workloads
+      href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
   - name: Evaluate
     items:
     - name: Install small form factor on a VM
