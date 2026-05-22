@@ -346,6 +346,52 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
 1. Select the App Service application registration from the list.
 1. Select **API permissions** in the left pane.
 1. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Microsoft Entra tenant. Confirm the consent grant by selecting **Yes**.
+1. For multitenancy scenarios, grant the **Directory.Read.All** and **user_impersonation** permissions to the App Services App Registration using the Azure Resource Manager admin endpoint.
+
+   ```powershell
+   $adminarmendpoint = "https://adminmanagement.xxx.xxx.ro/"
+   Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $userarmendpoint
+   #Home directory
+   $AADTenantName = "xxx"
+   $authEndpoint = (Get-AzEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
+   $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
+   Login-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
+   $Location = 'xxxx'
+   $AppServicesAppId = '' # the identity app's application id, use Azure portal to obtain it - Entra ID - App Registration - App Services   Application ID
+   $AppServicesObjectId = '' # the identity app's object id, use Azure portal to get it - Entra ID - App Registration - App Services  Object ID
+   
+   #The property 'applicationId' in the json returned from 'https://<AdminArmEndpoint>/metadata/identity?api-version=2015-01-01'
+   $TenantArmAppId = (Invoke-WebRequest https://adminmanagement.xxxx.xxx.ro/metadata/identity?api-version=2015-01-01 -UseBasicParsing | select -ExpandProperty Content | ConvertFrom-Json | select applicationId).applicationId
+
+    $params = @{
+       ResourceGroupName = "system.$Location"
+       ResourceType = 'Microsoft.Subscriptions.Providers/applicationRegistrations'
+       ResourceName = 'AppService'
+       ApiVersion = '2018-05-01'
+       Location = $Location
+       Properties = @{
+           appId = $AppServicesAppId
+           objectId = $AppServicesObjectId
+           appRoleAssignments = @(@{
+               client = $AppServicesAppId
+               roleId = ([guid]('5778995a-e1bf-45b8-affa-663a9f3f4d04')).ToString() # Well known value for the 'Directory.Read.All' permission
+               resource = ([guid]('00000002-0000-0000-c000-000000000000')).ToString() # Well known value for Microsoft.Azure.ActiveDirectory
+           })
+           oAuth2PermissionGrants = @(@{
+               client = $AppServicesAppId
+               resource = ([guid]('00000002-0000-0000-c000-000000000000')).ToString() # Well known value for Microsoft.Azure.ActiveDirectory
+               scope = 'User.Read Directory.Read.All'
+           }, @{
+               client = $AppServicesAppId
+               resource = $tenantArmAppId
+               scope = 'user_impersonation'
+           })
+       }
+   }
+   New-AzResource @params -Verbose -Force
+   ```
+
+   Once this script is executed, each tenant that needs to use App Services must re-run the registration script. See [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md?view=azs-2601&pivots=management-tool-powershell).
 
 ```powershell
 Create-AADIdentityApp.ps1
