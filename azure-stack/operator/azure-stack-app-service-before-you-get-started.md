@@ -374,7 +374,7 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
            objectId = $AppServicesObjectId
            appRoleAssignments = @(@{
                client = $AppServicesAppId
-               roleId = ([guid]('5778995a-e1bf-45b8-affa-663a9f3f4d04')).ToString() # Well known value for the 'Directory.Read.All' permission
+               roleId = ([guid]('00000002-0000-0000-c000-000000000000')).ToString() # Well known value for the 'Directory.Read.All' permission
                resource = ([guid]('00000002-0000-0000-c000-000000000000')).ToString() # Well known value for Microsoft.Azure.ActiveDirectory
            })
            oAuth2PermissionGrants = @(@{
