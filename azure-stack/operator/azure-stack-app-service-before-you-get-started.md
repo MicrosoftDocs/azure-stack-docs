@@ -349,21 +349,24 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
 1. For multitenancy scenarios, run the following PowerShell script to grant the **Directory.Read.All** and **user_impersonation** permissions to the App Services App Registration using the Azure Resource Manager admin endpoint.
 
    ```powershell
-   $adminarmendpoint = "https://adminmanagement.xxx.xxx.ro/"
+   #Build the admin endpoint by replacing the region and the FQDN with the values specific to your system.
+   $adminarmendpoint = https://adminmanagement.<region>.<FQDN>/
    Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $userarmendpoint
-   #Home directory
+   # Home directory
    $AADTenantName = "xxx"
    $authEndpoint = (Get-AzEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
    $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
    Login-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
-   $Location = 'xxxx'
-   $AppServicesAppId = '' # the identity app's application id, use Azure portal to obtain it - Entra ID - App Registration - App Services   Application ID
-   $AppServicesObjectId = '' # the identity app's object id, use Azure portal to get it - Entra ID - App Registration - App Services  Object ID
    
-   #The property 'applicationId' in the json returned from 'https://<AdminArmEndpoint>/metadata/identity?api-version=2015-01-01'
-   $TenantArmAppId = (Invoke-WebRequest https://adminmanagement.xxxx.xxx.ro/metadata/identity?api-version=2015-01-01 -UseBasicParsing | select -ExpandProperty Content | ConvertFrom-Json | select applicationId).applicationId
+   #Enter the region name of your Azure Stack Hub system.
+   $Location = '<region>'
+   $AppServicesAppId = '' # the identity app's application id, use Azure portal to obtain it - Entra ID - App Registration - App Services - Application ID
+   $AppServicesObjectId = '' # the identity app's object id, use Azure portal to get it - Entra ID - App Registration - App Services - Object ID
 
-    $params = @{
+   #The property 'applicationId' in the json returned from 'https://<AdminArmEndpoint>/metadata/identity?api-version=2015-01-01'
+   $TenantArmAppId = (Invoke-WebRequest "$adminarmendpoint/metadata/identity?api-version=2015-01-01" -UseBasicParsing | select -ExpandProperty Content | ConvertFrom-Json | select applicationId).applicationId
+
+   $params = @{
        ResourceGroupName = "system.$Location"
        ResourceType = 'Microsoft.Subscriptions.Providers/applicationRegistrations'
        ResourceName = 'AppService'
