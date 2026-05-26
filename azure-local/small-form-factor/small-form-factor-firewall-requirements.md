@@ -7,6 +7,7 @@ ms.date: 05/04/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
+ms.custom: references_regions
 ---
 
 # Firewall requirements for small form factor deployments of Azure Local (preview)
