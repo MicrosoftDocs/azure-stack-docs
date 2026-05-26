@@ -72,7 +72,7 @@ If the built-in roles for Azure resources don't meet the specific needs of your 
 * [Manage usage and billing as a CSP](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 * [Create a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 
-Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack Hub are:
+Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that can be used for registration of a multitenant Azure Stack Hub are:
 
 * Cloud Solution Provider
 * Partner Shared Services subscription
@@ -201,7 +201,7 @@ If you're using an integrated system in a disconnected scenario, it's recommende
 
 ### Create-AADIdentityApp.ps1 script fails
 
-If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#create-an-azure-ad-app).
+If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
 
 ## Troubleshoot Azure Stack Hub updates
 
