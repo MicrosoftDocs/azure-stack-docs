@@ -263,7 +263,7 @@ GO
 
 ## Licensing concerns for required file server and SQL Server
 
-Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You can use pre-existing resources located outside of your Azure Stack Hub deployment or deploy resources within your Azure Stack Hub default provider subscription.
+Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You can use preexisting resources located outside of your Azure Stack Hub deployment or deploy resources within your Azure Stack Hub default provider subscription.
 
 If you choose to deploy the resources within your Azure Stack Hub default provider subscription, the cost of Azure App Service on Azure Stack Hub includes the licenses for those resources (Windows Server licenses and SQL Server licenses) subject to the following constraints:
 
