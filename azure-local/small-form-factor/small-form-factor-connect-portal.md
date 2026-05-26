@@ -1,5 +1,5 @@
 ---
-title: Connect a Provisioned Machine from the Azure Portal for Small Form Factor Deployments of Azure Local (preview)
+title: Connect a Provisioned Machine from the Azure portal for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to connect a provisioned machine from the Azure portal for small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.topic: how-to

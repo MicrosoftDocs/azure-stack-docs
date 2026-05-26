@@ -37,7 +37,7 @@ Azure Subscription
 The provisioned machine is the top-level Azure resource that represents your physical small form factor device. It provides a cloud-based management surface for the hardware running at your edge location.
 
 > [!NOTE]
-> In the ARM API, this resource is referred to as an "Edge Machine." This name exists for backwards compatibility with previous versions of the API. The CLI and portal continue to refer to it as a "Provisioned Machine," but the underlying API refers to it as an "Edge Machine."
+> In the Azure Resource Manager API, this resource is referred to as an "Edge Machine." This name exists for backwards compatibility with previous versions of the API. The CLI and portal continue to refer to it as a "Provisioned Machine," but the underlying API refers to it as an "Edge Machine."
 
 Through the provisioned machine resource, you can perform lifecycle operations on the physical device, including:
 
@@ -87,7 +87,7 @@ The managed resource group has the following characteristics:
 - **Automatically created and managed**: Azure creates this resource group when the site is provisioned. You don't create it manually.
 - **Name derived by default, but overridable**: If no custom managed resource group name is configured, Azure derives the managed resource group name from the site name. If a custom name is provided, Azure uses that override.
 - **One per site**: All provisioned machines within an Arc site share the same managed resource group. Each device gets its own Arc for Servers instance inside it, but they all live in one group.
-- **Lifecycle bound to the site**:The managed resource group is tied to the lifecycle of the Arc site, not individual provisioned machines. Removing a single device from a multi-device site doesn't delete the managed resource group.
+- **Lifecycle bound to the site**: The managed resource group is tied to the lifecycle of the Arc site, not individual provisioned machines. Removing a single device from a multi-device site doesn't delete the managed resource group.
 - **Contains supporting resources**: The managed resource group holds the Arc for Servers instances and their extensions, which provide the cloud-to-device management channel for each device at the site.
 
 > [!IMPORTANT]

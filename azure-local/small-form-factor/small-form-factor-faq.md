@@ -15,7 +15,7 @@ ms.subservice: small-form-factor
 
 ## How do I delete all the resources from a test?
 
-You can delete the resources directly from the Azure portal or Azure CLI. You can even just delete the entire reource group. The only resource that is left behind when deleting the resource group & which needs a specific command to delete is the Azure Arc Site. To delete this resource follow the documentation for [Azure Arc Site](/azure/azure-arc/site-manager/how-to-crud-site).
+You can delete the resources directly from the Azure portal or Azure CLI. You can even just delete the entire resource group. The only resource that is left behind when deleting the resource group & which needs a specific command to delete is the Azure Arc Site. To delete this resource follow the documentation for [Azure Arc Site](/azure/azure-arc/site-manager/how-to-crud-site).
 
 ## Can I register the same device more than once?
 

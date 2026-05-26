@@ -15,7 +15,7 @@ This article describes how to run GPU-enabled containerized workloads on a provi
 
 [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md) establishes your container platform by verifying Docker or installing open-source K3s. This article builds on that foundation to enable NVIDIA GPU acceleration for the workloads that you deploy in module 5.
 
-Docker is supported for single-node GPU workloads. If you want a lightweight Kubernetes environment for orchestrated GPU workloads, you can also use the open-source K3s distribution. To compare these options before you choose one, see [Container orchestrators](../concepts/container-orchestrators.md).
+Docker is supported for single-node GPU workloads. If you want a lightweight Kubernetes environment for orchestrated GPU workloads, you can also use the open-source K3s distribution. To compare these options before you choose one, see [Container orchestrators](small-form-factor-container-orchestrators.md).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -178,7 +178,7 @@ The NVIDIA Container Toolkit enables containers to access GPU devices from the h
 
 Docker workloads can access GPUs directly through the NVIDIA container runtime.
 
-Use this path if you followed the Docker workflow in [Run containerized workloads on a provisioned machine](./04-run-containerized-workloads.md#use-docker-on-the-provisioned-device).
+Use this path if you followed the Docker workflow in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#use-docker-on-the-provisioned-device).
 
 1. Configure the NVIDIA runtime for Docker:
 
@@ -225,7 +225,7 @@ Use this path if you followed the Docker workflow in [Run containerized workload
 
 K3s environments that use `containerd` must be configured to expose the NVIDIA runtime to containers.
 
-Use this path if you installed K3s and configured cluster access in [Run containerized workloads on a provisioned machine](./04-run-containerized-workloads.md#install-and-use-open-source-k3s).
+Use this path if you installed K3s and configured cluster access in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#install-and-use-open-source-k3s).
 
 1. Restart K3s:
 

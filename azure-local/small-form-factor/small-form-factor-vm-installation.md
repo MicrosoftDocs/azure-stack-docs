@@ -13,7 +13,7 @@ ms.subservice: small-form-factor
 
 This article describes how to test small form factor deployments of Azure Local in a Hyper-V virtual machine (VM).
 
-If you don't have access to physical hardware, you can test small form factor deployments of Azure Local in a Hyper-V VM. You can also use this flow in an Azure VM, but you'll need to use the Azure VM workaround later in the article.
+If you don't have access to physical hardware, you can test small form factor deployments of Azure Local in a Hyper-V VM. You can also use this flow in an Azure Virtual Machine, but you'll need to use the Azure Virtual Machine workaround later in the article.
 
 A VM is useful for testing, but it doesn't behave exactly like bare-metal hardware. If you want the closest match to a customer deployment, use a supported physical device. For more information, see [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md).
 
@@ -30,7 +30,7 @@ Before you start, make sure you have:
 - The ability to run PowerShell as an administrator.
 
 > [!TIP]
-> If you're running Hyper-V inside an Azure VM, choose a VM size that supports nested virtualization.
+> If you're running Hyper-V inside an Azure Virtual Machine, choose a VM size that supports nested virtualization.
 
 ## Install Hyper-V
 
@@ -70,9 +70,9 @@ To download them:
 
 The VM needs a network that:
 
-1. Provides DHCP for the initial connection
-1. Supports assigning a static IP address later
-1. Has internet connectivity
+- Provides DHCP for the initial connection
+- Supports assigning a static IP address later
+- Has internet connectivity
 
 To simplify setup, use the provided script to create the Hyper-V switch, configure NAT, and enable DHCP.
 
@@ -95,9 +95,9 @@ To simplify setup, use the provided script to create the Hyper-V switch, configu
     > [!TIP]
     > The script is idempotent. You can rerun it if setup is interrupted or if you need to repair the Hyper-V switch, NAT, or DHCP configuration. Repeat runs converge on the same network configuration instead of creating duplicate resources.
 
-## Apply the Azure VM workaround if needed
+## Apply the Azure Virtual Machine workaround if needed
 
-If you're creating the Hyper-V environment inside an Azure VM, block access to Azure Instance Metadata Service (IMDS) from the guest VM. That prevents the test VM from trying to use the host VM identity.
+If you're creating the Hyper-V environment inside an Azure Virtual Machine, block access to Azure Instance Metadata Service (IMDS) from the guest VM. That prevents the test VM from trying to use the host VM identity.
 
 Run these commands after you create the VM, but before you start it for the first time:
 
@@ -142,7 +142,7 @@ Add-VMNetworkAdapterAcl -VMNetworkAdapter $adapter -Action Deny -Direction Outbo
 ## Download the ownership voucher
 
 > [!NOTE]
-> If you're running Hyper-V inside an Azure VM, apply the [Azure VM workaround](#apply-the-azure-vm-workaround-if-needed) before starting the VM.
+> If you're running Hyper-V inside an Azure Virtual Machine, apply the [Azure Virtual Machine workaround](#apply-the-azure-virtual-machine-workaround-if-needed) before starting the VM.
 
 1. Start the VM and wait about five minutes.
 
@@ -183,8 +183,6 @@ Before you continue, confirm that:
 - The VM is Generation 2, has TPM enabled, has Secure Boot disabled, and has at least 4 virtual processors.
 - The VM booted the Maintenance OS successfully.
 - You downloaded the ownership voucher and stored it securely.
-
-::: zone-end
 
 ## Next steps
 

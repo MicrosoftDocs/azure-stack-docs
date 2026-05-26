@@ -1,5 +1,5 @@
 ---
-title: Deploy Applications to your Cluster (preview)
+title: Deploy Applications to your Cluster for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to deploy applications to your cluster (preview).
 author: sipastak
 ms.topic: how-to

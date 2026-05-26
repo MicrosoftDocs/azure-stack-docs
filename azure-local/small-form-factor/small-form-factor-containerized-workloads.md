@@ -1,5 +1,5 @@
 ---
-title: Run Containerized Workloads on a Provisioned Machine (preview)
+title: Run Containerized Workloads on a Provisioned Machine for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to run containerized workloads on a provisioned machine (preview).
 author: sipastak
 ms.topic: how-to
@@ -55,7 +55,7 @@ docker --version
 
 ### Pull and run a container from Azure Container Registry
 
-If you don't already have an Azure Container Registry (ACR), complete step 1. Otherwise, skip to step 2.
+If you don't already have an Azure Container Registry, complete step 1. Otherwise, skip to step 2.
 
 1. Create an Azure Container Registry by following [Quickstart: Create a container registry in the portal](/azure/container-registry/container-registry-get-started-portal).
 
@@ -94,7 +94,7 @@ If you don't already have an Azure Container Registry (ACR), complete step 1. Ot
    > [!NOTE]
    > To confirm the push succeeded, open the registry in the Azure portal, select **Services** > **Repositories**, and verify that `hello-world` appears.
 
-1. On your provisioned machine, pull and run the image from ACR.
+1. On your provisioned machine, pull and run the image from Container Registry.
 
    ```bash
    docker pull <YOUR_REGISTRY_NAME>.azurecr.io/hello-world:latest
@@ -116,9 +116,9 @@ If you don't already have an Azure Container Registry (ACR), complete step 1. Ot
 Confirm that:
 
 - Docker is installed on the provisioned device.
-- Docker sign-in to ACR succeeds.
+- Docker sign-in to Container Registry succeeds.
 - The `hello-world` image is pushed to your registry.
-- The provisioned machine pulls the image from ACR successfully.
+- The provisioned machine pulls the image from Container Registry successfully.
 - The container runs and displays `Hello from Docker!`.
 
 # [K3s](#tab/k3s)
