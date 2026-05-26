@@ -54,27 +54,7 @@ For Azure Local deployments, ZTP has two major phases:
 
 The following diagram shows the high-level flow.
 
-```text
-Supported Azure Local device
-    |
-    | Boot from prepared USB media
-    v
-Maintenance environment
-    |
-    | Export ownership voucher
-    v
-Azure portal or CLI
-    |
-    | Create or select Azure Arc site
-    | Upload ownership voucher
-    | Configure installed OS and access settings
-    v
-Provisioned machine resource
-    |
-    | Azure validates ownership and completes onboarding
-    v
-Provisioned Azure Local device
-```
+:::image type="content" source="media/small-form-factor-zero-touch-provisioning.png" alt-text="Diagram showing high-level flow of zero touch provisioning." border="true" lightbox="media/small-form-factor-zero-touch-provisioning.png":::
 
 ### 1. Prepare the device locally
 

@@ -28,21 +28,7 @@ Containers offer a lightweight alternative for running application workloads on 
 
 Containers on small form factor devices act as an **application isolation layer** that sits on top of the Azure Local operating system. The host OS, managed through the [provisioned machine resource](small-form-factor-resource-overview.md), handles hardware management and Azure connectivity, while the container orchestrator manages application lifecycle above it.
 
-```
-┌─────────────────────────────────────────────┐
-│           Application Workloads             │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐     │
-│  │Container │ │Container │ │Container │     │
-│  │    A     │ │    B     │ │    C     │     │
-│  └──────────┘ └──────────┘ └──────────┘     │
-├─────────────────────────────────────────────┤
-│     Container Orchestrator (K3s / Docker)   │
-├─────────────────────────────────────────────┤
-│     Azure Local OS (e.g., Azure Linux)      │
-├─────────────────────────────────────────────┤
-│     Small form factor hardware              │
-└─────────────────────────────────────────────┘
-```
+:::image type="content" source="media/small-form-factor-container-orchestrators.png" alt-text="Diagram showing application workloads." border="true" lightbox="media/small-form-factor-container-orchestrators.png":::
 
 ## K3s
 

@@ -19,30 +19,7 @@ Configurator App is a Windows application that connects directly to an Azure Loc
 
 The Configurator App must run on a Windows PC that has routable local-network access to the device. Azure doesn't proxy this connection. The PC must be able to resolve the device hostname or reach the device IP address.
 
-```
-┌──────────────────────────────┐
-│ Windows PC                   │
-│ Configurator App             │
-└──────────────┬───────────────┘
-               │
-               │ Local network connection
-               │ - ROE-<serial-number>.local
-               │ - Device IP address
-               v
-┌──────────────────────────────┐
-│ Azure Local device           │
-│ Maintenance environment or   │
-│ installed operating system   │
-└──────────────┬───────────────┘
-               │
-               │ Azure onboarding and management
-               v
-┌──────────────────────────────┐
-│ Azure                        │
-│ Provisioned machine resource │
-│ Azure Arc site               │
-└──────────────────────────────┘
-```
+:::image type="content" source="media/small-form-factor-configurator-app.png" alt-text="Diagram showing network access model." border="true" lightbox="media/small-form-factor-configurator-app.png":::
 
 If the operator's PC isn't on the same network segment, or if local firewall rules block access to the device, the Configurator app can't connect even if the provisioned machine resource exists in Azure.
 
