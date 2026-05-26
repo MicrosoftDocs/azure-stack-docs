@@ -1,8 +1,8 @@
 ---
 title: "Use Certificate Rotation in Azure Operator Nexus"
 description: Learn the process for using certificate rotation in Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: rekha bhupatiraju
+ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 3/31/2026
@@ -58,7 +58,7 @@ Sample response:
 }
 ```
 
-Rotation with --no-wait for asynchronous execution:
+Rotation with `--no-wait` for asynchronous execution:
 ```Azure CLI
     az networkfabric fabric rotate-certificate --resource-group <resource-group-name> --resource-name <fabric-name> --no-wait
 ```
@@ -86,7 +86,7 @@ Sample response:
 }
 ```
 
-Resync with --no-wait for asynchronous execution:
+Resync with `--no-wait` for asynchronous execution:
 
 ```Azure CLI
 az networkfabric fabric resync-certificate --resource-group <resource-group-name> --resource-name <fabric-name> --no-wait
