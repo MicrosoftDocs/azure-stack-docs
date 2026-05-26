@@ -110,7 +110,7 @@ Sample response:
 }
 ```
 
-Resync with --no-wait for asynchronous execution:
+Resync with `--no-wait` for asynchronous execution:
 ```Azure CLI
 az networkfabric device resync-certificate --resource-group <resource-group-name> --resource-name <device-name> --no-wait
 ```
