@@ -23,7 +23,7 @@ With small form factor deployments, you can:
 - Run containerized workloads by using Docker, which is included in the base image.
 - Run Kubernetes workloads by using the open-source K3s distribution.
 - Support AI and IoT workloads on distributed devices.
-- Standardize infrastructure across large-scale, geographically distributed environments.
+- Standardize infrastructure across geographically distributed edge environments.
 
 Small form factor deployments are optimized for single-node and small-scale scenarios. They work well for retail locations, manufacturing sites, and other edge environments where traditional datacenter hardware isn't practical.
 
