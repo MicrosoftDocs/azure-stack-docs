@@ -17,9 +17,6 @@ If you don't have access to physical hardware, you can test small form factor de
 
 A VM is useful for testing, but it doesn't behave exactly like bare-metal hardware. If you want the closest match to a customer deployment, use a supported physical device. For more information, see [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md).
 
-> [!NOTE]
-> Use [this Azure portal preview link](https://aka.ms/sfflinux/tryit) for testing.
-
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -49,7 +46,7 @@ Before you start, make sure you have:
 
 ## Download the ISO and Configurator App
 
-Download these two artifacts from the [Azure portal](https://aka.ms/sfflinux/tryit):
+Download these two artifacts from the Azure portal:
 
 | Download | Description |
 |--|--|
@@ -58,7 +55,7 @@ Download these two artifacts from the [Azure portal](https://aka.ms/sfflinux/try
 
 To download them:
 
-1. Go to the [Azure portal](https://aka.ms/sfflinux/tryit).
+1. Go to the Azure portal.
 1. Select **Azure Arc** > **Operations** > **Machine Provisioning (preview)** > **Get started** > **View downloads**.
 1. Select **Download all**.
 

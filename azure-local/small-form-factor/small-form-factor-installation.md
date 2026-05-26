@@ -15,9 +15,6 @@ This article describes how to install small form factor deployments of Azure Loc
 
 If you don't have access to physical hardware, you can test small form factor deployments of Azure Local in a Hyper-V virtual machine (VM). For more information, see [Test small form factor deployments of Azure Local in a Hyper-V virtual machine](small-form-factor-vm-installation.md).
 
-> [!NOTE]
-> Use [this Azure portal preview link](https://aka.ms/sfflinux/tryit) for testing.
-
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -57,7 +54,7 @@ Use one of these supported devices:
 
 ## Download the ISO and Configurator App
 
-Download the following artifacts from the [Azure portal](https://aka.ms/sfflinux/tryit):
+Download the following artifacts from the Azure portal:
 
 | Download             | Description                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -66,7 +63,7 @@ Download the following artifacts from the [Azure portal](https://aka.ms/sfflinux
 
 To download the files:
 
-1. Go to the [Azure portal](https://aka.ms/sfflinux/tryit).
+1. Go to the Azure portal.
 1. Select **Azure Arc** > **Operations** > **Machine Provisioning (preview)** > **Get started** > **View downloads**.
 1. In the **Download and install** pane, review the terms, and select **Download all**.
 

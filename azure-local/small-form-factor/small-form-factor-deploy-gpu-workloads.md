@@ -172,6 +172,8 @@ The NVIDIA Container Toolkit enables containers to access GPU devices from the h
     nvidia-ctk --version
     ```
 
+# [Docker](#tab/docker)
+
 ## Run a GPU-enabled Docker workload
 
 Docker workloads can access GPUs directly through the NVIDIA container runtime.
@@ -216,6 +218,8 @@ Use this path if you followed the Docker workflow in [Run containerized workload
     - Docker successfully accessed the NVIDIA GPU.
     - The NVIDIA runtime was configured correctly.
     - The container successfully used the GPU.
+
+# [K3s](#tab/k3s)
 
 ## Run a GPU-enabled K3s workload
 
@@ -513,6 +517,8 @@ Delete the sample workload:
 ```bash
 kubectl delete job cuda-vectoradd
 ```
+
+---
 
 ## Troubleshooting
 

@@ -13,9 +13,6 @@ ms.subservice: small-form-factor
 
 This article describes how to create an Azure Arc site, upload an ownership voucher, and connect a provisioned machine to Azure.
 
-> [!NOTE]
-> Use [this Azure portal preview link](https://aka.ms/sfflinux/tryit) for testing.
-
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -31,9 +28,9 @@ Before you begin, make sure you complete the following prerequisites:
 
 ### Create the site
 
-1. In the [Azure portal](https://aka.ms/sfflinux/tryit), search for and select **Azure Arc**.
+1. In the Azure portal, search for and select **Azure Arc**.
 
-1. Go to **Operations** > **Provisioning (preview)**.
+1. Go to **Operations** > **Machine provisioning (preview)**.
 
 1. On **Get started**, select **Provision**.
 
