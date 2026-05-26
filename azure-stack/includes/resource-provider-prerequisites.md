@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/19/2026
+ms.date: 05/22/2026
 ms.reviewer: sethm
-ms.lastreviewed: 12/09/2019
+
 ---
 
 If you already installed a resource provider, you likely completed the following prerequisites and can skip this section. Otherwise, complete these steps before continuing: 
