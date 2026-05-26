@@ -123,9 +123,9 @@ If SSH prompts for a password, it means the `.pem` key authentication failed and
 The most common causes are:
 
 - The wrong `.pem` file is being used. For example, using:
-  - A `.pem` file downloaded for a different device
-  - A `.pem` file copied from the USB instead of the one downloaded from the Azure portal
-- The `.pem` file permissions weren't restricted with `chmod 600`
+  - A `.pem` file downloaded for a different device.
+  - The wrong .pem file is being used for the target device.
+- The `.pem` file permissions weren't restricted with `chmod 600`.
 
 If the file permissions are too open, SSH rejects the key for security reasons.
 
