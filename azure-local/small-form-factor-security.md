@@ -79,55 +79,55 @@ Azure Local small form factor deployments help protect sensitive data through mu
 
 - If you're running AKS Arc, your cross-node communication between Kubernetes control plane components is encrypted. To learn more, see [AKS Arc Security Book - Configure TLS encryption and authentication](/azure/azure-arc/kubernetes/conceptual-secure-your-workloads#configure-tls-encryption-and-authentication-withintofrom-workloads).
 
-### Centralized secrets management
+**Centralized secrets management:**
 
-For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally by using the Azure Key Vault Secret Store Extension. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
+- For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally by using the Azure Key Vault Secret Store Extension. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
 
-## Secure lifecycle and defense in depth
+**Secure lifecycle and defense in depth:**
 
-Azure Local small form factor deployments are built and maintained by using secure engineering practices that reduce vulnerabilities over time and support reliable delivery of updates. Implement security as defense in depth by combining layered controls across the software lifecycle and runtime environment.
+- Azure Local small form factor deployments are built and maintained by using secure engineering practices that reduce vulnerabilities over time and support reliable delivery of updates. Implement security as defense in depth by combining layered controls across the software lifecycle and runtime environment.
 
-### Embedding Microsoft Security Development Lifecycle best practices
+**Embedding Microsoft Security Development Lifecycle best practices:**
 
-Azure Local small form factor applies the [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/securityengineering/sdl/?msockid=3800329235a16ddf0ac627e7341b6c83), which integrates security best practices throughout the design, implementation, testing, and release of platform software. Azure Local build and release workflows integrate SDL practices such as threat modeling, dependency governance, and automated security testing. Additionally, complementary secure engineering practices, including Software Bill of Materials (SBOM) generation and safe deployment workflows, support platform software supply chain integrity and enable the safe rollout of updates and out-of-band security fixes. These practices reduce the likelihood of vulnerabilities being introduced into released software over time.
+- Small form factor applies the [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/en-us/securityengineering/sdl/?msockid=3800329235a16ddf0ac627e7341b6c83), which integrates security best practices throughout the design, implementation, testing, and release of platform software. Azure Local build and release workflows integrate SDL practices such as threat modeling, dependency governance, and automated security testing. Additionally, complementary secure engineering practices, including Software Bill of Materials (SBOM) generation and safe deployment workflows, support platform software supply chain integrity and enable the safe rollout of updates and out-of-band security fixes. These practices reduce the likelihood of vulnerabilities being introduced into released software over time.
 
-### Operating system level isolation and least-privilege design
+**Operating system level isolation and least-privilege design:**
 
-Small form factor deployments follow defense‑in‑depth principles across the platform stack to help reduce risk and limit blast radius if a component is misconfigured or compromised. At the operating system layer, platform services and extensions minimize unnecessary access by using scoped permissions and constrained privileges wherever possible. This approach reduces reliance on broad administrative permissions and supports clearer privilege boundaries between platform components.
+- Small form factor deployments follow defense‑in‑depth principles across the platform stack to help reduce risk and limit blast radius if a component is misconfigured or compromised. At the operating system layer, platform services and extensions minimize unnecessary access by using scoped permissions and constrained privileges wherever possible. This approach reduces reliance on broad administrative permissions and supports clearer privilege boundaries between platform components.
 
 ## Centralized access, policy, and diagnostics
 
-Azure Local small form factor deployments provide centralized control over access and policy enforcement across distributed edge environments. Azure-integrated mechanisms authenticate and authorize devices, users, and services that interact with the platform and Azure control plane, helping ensure that only trusted entities can perform management operations.
+Small form factor deployments provide centralized control over access and policy enforcement across distributed edge environments. Azure-integrated mechanisms authenticate and authorize devices, users, and services that interact with the platform and Azure control plane, helping ensure that only trusted entities can perform management operations.
 
 Use these capabilities to apply consistent access controls and security policies across your deployment.
   
-### Establishing trusted device and service identities
+**Establishing trusted device and service identities:**
 
-Azure Local relies on strong, cryptographically backed, and where supported, hardware-backed identities (for example, TPM-anchored identities) for devices and platform services when interacting with Azure control plane endpoints (for example, during provisioning, management, policy evaluation, and update operations). These identities establish which devices and services are trusted to communicate with Azure, forming the foundation for secure control plane interactions and helping prevent unauthorized systems from participating in management or lifecycle operations.
+- Azure Local relies on strong, cryptographically backed, and where supported, hardware-backed identities (for example, TPM-anchored identities) for devices and platform services when interacting with Azure control plane endpoints (for example, during provisioning, management, policy evaluation, and update operations). These identities establish which devices and services are trusted to communicate with Azure, forming the foundation for secure control plane interactions and helping prevent unauthorized systems from participating in management or lifecycle operations.
 
-### Controlling access through role‑based authorization
+**Controlling access through role‑based authorization:**
   
-After a device or service authenticates, Azure role‑based access control (RBAC) governs access to resources and management operations. RBAC determines what authenticated users and services are allowed to do – such as viewing configuration, initiating upgrades, or performing administrative actions. To reduce risk, apply least‑privilege principles when assigning Azure roles, limit standing administrative access, and regularly review role assignments. Using scoped roles for routine operations helps ensure that day‑to‑day tasks don't require elevated permissions, reducing the impact of compromised credentials.
+- After a device or service authenticates, Azure role‑based access control (RBAC) governs access to resources and management operations. RBAC determines what authenticated users and services are allowed to do – such as viewing configuration, initiating upgrades, or performing administrative actions. To reduce risk, apply least‑privilege principles when assigning Azure roles, limit standing administrative access, and regularly review role assignments. Using scoped roles for routine operations helps ensure that day‑to‑day tasks don't require elevated permissions, reducing the impact of compromised credentials.
 
-When running Kubernetes-based deployments, either with AKS Arc or on third-party clusters such as K3s, refer to [AKS Arc Security Book – Secure your operations](/azure/azure-arc/kubernetes/conceptual-secure-your-operations) for guidance on controlling access to Azure and Kubernetes control plane using Azure RBAC and Kubernetes RBAC.
+- When running Kubernetes-based deployments, either with AKS Arc or on third-party clusters such as K3s, refer to [AKS Arc Security Book – Secure your operations](/azure/azure-arc/kubernetes/conceptual-secure-your-operations) for guidance on controlling access to Azure and Kubernetes control plane using Azure RBAC and Kubernetes RBAC.
 
-### Direct device access via Secure Shell (SSH)
+**Direct device access via Secure Shell (SSH):**
 
-Direct device access, such as SSH, is supported as an operational option for specific administrative or troubleshooting scenarios. Where enabled, restrict and control direct access by using strong authentication methods, least‑privilege access, and limited network exposure.
+- Direct device access, such as SSH, is supported as an operational option for specific administrative or troubleshooting scenarios. Where enabled, restrict and control direct access by using strong authentication methods, least‑privilege access, and limited network exposure.
 
-SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-connect-portal?&branch=pr-en-us-20809#connect-to-the-machine-over-ssh).
+- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-connect-portal?&branch=pr-en-us-20809#connect-to-the-machine-over-ssh).
 
-### Security baselines and best practices enabled by default
+**Security baselines and best practices enabled by default:**
 
-By default, Azure Local small form factor deployments enable security baseline settings and security best practices based on Microsoft recommendations and industry best practices. The tailored security baseline is applied during provisioning to help establish a secure foundation. These protections include controls for network configuration hardening, authentication policy enforcement, and secure system configuration settings, which help reduce the risk of misconfiguration and limit exposure to common host‑level risks such as unauthorized data access, weak credential use, and certain network‑based attacks.  
+- By default, Azure Local small form factor deployments enable security baseline settings and security best practices based on Microsoft recommendations and industry best practices. The tailored security baseline is applied during provisioning to help establish a secure foundation. These protections include controls for network configuration hardening, authentication policy enforcement, and secure system configuration settings, which help reduce the risk of misconfiguration and limit exposure to common host‑level risks such as unauthorized data access, weak credential use, and certain network‑based attacks.  
   
-This security baseline is informed by widely adopted standards, such as the [Center for Internet Security (CIS) Benchmark](https://www.cisecurity.org/cis-benchmarks), [Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG)](https://www.cyber.mil/stigs/), Federal Information Processing Standards (FIPS 140-2) requirements for the operating system (OS), and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-linux). The security baseline settings are verified for compatibility and performance impact and are designed to evolve alongside industry standards.
+- This security baseline is informed by widely adopted standards, such as the [Center for Internet Security (CIS) Benchmark](https://www.cisecurity.org/cis-benchmarks), [Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG)](https://www.cyber.mil/stigs/), Federal Information Processing Standards (FIPS 140-2) requirements for the operating system (OS), and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-linux). The security baseline settings are verified for compatibility and performance impact and are designed to evolve alongside industry standards.
 
-### Collecting system logs for troubleshooting and operational review
+**Collecting system logs for troubleshooting and operational review:**
 
-Azure Local supports secure log collection workflows to help with troubleshooting, auditing, and security investigations. Role‑based access controls and supported collection processes govern access to logs and diagnostic data. You're responsible for retention, access, and downstream use in line with your organizational policies.
+- Azure Local supports secure log collection workflows to help with troubleshooting, auditing, and security investigations. Role‑based access controls and supported collection processes govern access to logs and diagnostic data. You're responsible for retention, access, and downstream use in line with your organizational policies.
   
-For more information about the process of log collection, see [Collect logs for small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-collect-system-logs?&branch=pr-en-us-20809).
+- For more information about the process of log collection, see [Collect logs for small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-collect-system-logs?&branch=pr-en-us-20809).
 
 ## Next steps
 
