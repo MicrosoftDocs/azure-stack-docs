@@ -8,7 +8,7 @@ ms.date: 06/01/2026
 # Create an AKS on bare metal cluster using an ARM template
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
 This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using an ARM template. The template automates the entire deployment, including RBAC role assignments, Device Pool, Logical Network, and the AKS cluster.
 
@@ -33,7 +33,7 @@ Complete all [system requirements and prerequisites](system-requirements.md) bef
 ```
 
 > [!NOTE]
-> `arcMachineName` is the only required parameter. All others have sensible defaults. Override any of the optional parameters below as needed.
+> `arcMachineName` is the only required parameter. All other parameters have sensible defaults. Override any of the optional parameters as needed.
 
 ### Optional parameters
 
@@ -64,7 +64,7 @@ Complete all [system requirements and prerequisites](system-requirements.md) bef
 
 ### Service principal parameters (advanced)
 
-These parameters default to standard Microsoft tenant values. Override only if deploying in a different tenant.
+These parameters default to standard Microsoft tenant values. Override them only if you're deploying in a different tenant.
 
 | Parameter | How to look up |
 |-----------|----------------|
@@ -94,13 +94,13 @@ az deployment group create \
 
 ## Verify deployment
 
-After the deployment completes, connect to your cluster:
+After the deployment finishes, connect to your cluster:
 
 ```azurecli
 az connectedk8s proxy --name <clusterName> --resource-group <RESOURCE_GROUP>
 ```
 
-Then in a new terminal:
+Then, in a new terminal:
 
 ```bash
 kubectl get nodes
@@ -112,8 +112,8 @@ For detailed connection instructions, see [Connect to your cluster](connect-to-c
 
 The ARM template deploys the following resources in order:
 
-1. **RBAC Role Assignments** — 8 service principal roles required by AKS Arc.
-1. **Device Pool** — Registers the Arc machine for AKS workloads (auto-creates Custom Location).
+1. **RBAC Role Assignments** — Eight service principal roles required by AKS Arc.
+1. **Device Pool** — Registers the Arc machine for AKS workloads and automatically creates Custom Location.
 1. **Logical Network** — Networking configuration with IP pools and VIP pool.
 1. **AKS Arc Cluster** — Connected cluster with provisioned cluster instance.
 

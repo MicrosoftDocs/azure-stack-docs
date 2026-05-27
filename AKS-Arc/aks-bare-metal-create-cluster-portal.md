@@ -8,7 +8,7 @@ ms.date: 06/01/2026
 # Create an AKS on bare metal cluster using the Azure portal
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
 This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using the Azure portal.
 
@@ -29,11 +29,11 @@ On the **Basics** tab, configure the following settings:
 
 | Setting | Value |
 |---------|-------|
-| Site | Select your site. This automatically populates your subscription. |
+| Site | Select your site. This selection automatically populates your subscription. |
 | Resource group | Select or create a resource group in **East US**. |
-| Cluster name | Enter a name for your cluster. Spaces aren't allowed. |
+| Cluster name | Enter a name for your cluster. Don't use spaces. |
 | Kubernetes version | Select **1.34.2** or **1.34.3**. |
-| Edge machine | Select **Add machines** to view available machines within your selected site, then select the machine to deploy on. |
+| Edge machine | Select **Add machines** to view available machines within your selected site, and then select the machine to deploy on. |
 
 ## Step 3: Configure access
 

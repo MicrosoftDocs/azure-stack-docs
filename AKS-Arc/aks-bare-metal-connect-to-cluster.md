@@ -8,15 +8,15 @@ ms.date: 06/01/2026
 # Connect to your AKS on bare metal cluster
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
-This article shows you how to connect to your AKS on bare metal cluster to run `kubectl` commands. After your cluster is deployed, you can use the Azure Arc proxy to route `kubectl` commands from your local machine to the Kubernetes cluster running on your device.
+This article shows you how to connect to your AKS on bare metal cluster to run `kubectl` commands. After you deploy your cluster, use the Azure Arc proxy to route `kubectl` commands from your local machine to the Kubernetes cluster running on your device.
 
 ## Prerequisites
 
 - An AKS on bare metal cluster in a **Succeeded** state.
 - Azure CLI installed on your local machine.
-- The `connectedk8s` extension installed:
+- The `connectedk8s` extension installed.
 
   ```azurecli
   az extension add --name connectedk8s
@@ -28,15 +28,15 @@ This article shows you how to connect to your AKS on bare metal cluster to run `
   az aks install-cli
   ```
 
-- Your user account must be a member of the Microsoft Entra ID admin group you specified during cluster deployment. This is required to view and manage workloads on the cluster.
+- Your user account must be a member of the Microsoft Entra ID admin group you specified during cluster deployment. This membership is required to view and manage workloads on the cluster.
 
-## Connect using Azure Arc proxy
+## Connect by using Azure Arc proxy
 
 The Azure Arc proxy lets you connect to your cluster from anywhere without direct network access to the bare metal host.
 
 ### Step 1: Sign in to Azure
 
-Open a terminal and sign in to Azure, then select the subscription that contains your deployed cluster:
+Open a terminal and sign in to Azure, and then select the subscription that contains your deployed cluster:
 
 ```azurecli
 az login
@@ -44,13 +44,13 @@ az login
 
 ### Step 2: Start the proxy
 
-Run the following command and leave this terminal window open:
+Run the following command and keep this terminal window open:
 
 ```azurecli
 az connectedk8s proxy --name <cluster-name> --resource-group <resource-group>
 ```
 
-You should see output similar to:
+You see output similar to:
 
 ```output
 Proxy is listening on port 47011
