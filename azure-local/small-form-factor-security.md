@@ -11,11 +11,11 @@ ms.subservice: small-form-factor
 
 # Security features for small form factor deployments of Azure Local (preview)
 
-This article describes the built-in security capabilities for small form factor deployments and provides guidance for securing your environment.
+This article describes the built-in security capabilities for small form factor deployments of Azure Local and provides guidance for securing your environment.
 
 [!INCLUDE [hci-preview](includes/hci-preview.md)]
 
-Small form factor deployments of Azure Local run in distributed edge environments where physical access, connectivity, and operational controls differ from traditional datacenters.
+Small form factor deployments run in distributed edge environments where physical access, connectivity, and operational controls differ from traditional datacenters.
 
 These environments often include:
 
@@ -47,37 +47,37 @@ Small form factor deployments use hardware-anchored identity and integrity capab
 
 For details on provisioning, see [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
 
-### Establishing a trusted boot process
+**Establishing a trusted boot process:**
 
-Azure Local small form factor deployments rely on Secure Boot to enforce a chain of trust from device startup. Secure Boot enables the device to only boot software signed by a trusted certificate authority configured in the device’s Secure Boot database. This feature helps prevent unauthorized or tampered firmware and bootloaders from executing during startup. Ensure Secure Boot is enabled on your device to activate this protection - either configured by you on self-sourced hardware or provisioned by your OEM.
+- Azure Local small form factor deployments rely on Secure Boot to enforce a chain of trust from device startup. Secure Boot enables the device to only boot software signed by a trusted certificate authority configured in the device’s Secure Boot database. This feature helps prevent unauthorized or tampered firmware and bootloaders from executing during startup. Ensure Secure Boot is enabled on your device to activate this protection - either configured by you on self-sourced hardware or provisioned by your OEM.
   
-At each stage in the boot sequence, the platform records measurements in the Trusted Platform Module (TPM). The system unlocks encrypted data volumes when these measurements match expected, trusted values. This process helps the system start in a known-good state and reduces the risk of sensitive data exposure if the platform state is modified.
+- At each stage in the boot sequence, the platform records measurements in the Trusted Platform Module (TPM). The system unlocks encrypted data volumes when these measurements match expected, trusted values. This process helps the system start in a known-good state and reduces the risk of sensitive data exposure if the platform state is modified.
 
-### Applying defense-in-depth supply chain verification during onboarding
+**Applying defense-in-depth supply chain verification during onboarding:**
 
-Microsoft implements the industry standard FIDO Device Onboarding (FDO) protocol to establish device identity and ownership. When Azure Local is first bootstrapped, Microsoft or the OEM generates and provides an Ownership Voucher. Microsoft cryptographically binds this voucher to the device’s hardware identifiers and secrets. During onboarding, Azure Local validates the voucher against the provisioned device's reported state and might prevent onboarding if the validation doesn't succeed. This process helps establish a secure link between the physical device and Azure and reduces the risk of certain supply chain threats, such as unauthorized device replacement or cloning.
+- Microsoft implements the industry standard FIDO Device Onboarding (FDO) protocol to establish device identity and ownership. When Azure Local is first bootstrapped, Microsoft or the OEM generates and provides an Ownership Voucher. Microsoft cryptographically binds this voucher to the device’s hardware identifiers and secrets. During onboarding, Azure Local validates the voucher against the provisioned device's reported state and might prevent onboarding if the validation doesn't succeed. This process helps establish a secure link between the physical device and Azure and reduces the risk of certain supply chain threats, such as unauthorized device replacement or cloning.
 
-### Detecting changes to device platform software across boots
+**Detecting changes to device platform software across boots:**
 
-After Azure verifies your device's identity, the device downloads and installs the approved target operating system image and prepares the system to run workloads. When booting the target operating system, the system only unlocks the encrypted data volumes if the recorded TPM measurements match previous and trusted values. The device doesn't boot if measurements have changed.
+- After Azure verifies your device's identity, the device downloads and installs the approved target operating system image and prepares the system to run workloads. When booting the target operating system, the system only unlocks the encrypted data volumes if the recorded TPM measurements match previous and trusted values. The device doesn't boot if measurements have changed.
 
-### Protecting platform software integrity at runtime
+**Protecting platform software integrity at runtime:**
 
-Azure Local small form factor deployments help protect the integrity of critical non-data volumes through dm-verity and read-only permissions. If the system detects any unauthorized modifications for key files such as system binaries and libraries, either offline or at runtime, it may restrict or interrupt normal operation. These controls help mitigate risks from pre-boot and post-boot tampering, persistent malware, and unauthorized changes that could survive reboots.
+- Azure Local small form factor deployments help protect the integrity of critical non-data volumes through dm-verity and read-only permissions. If the system detects any unauthorized modifications for key files such as system binaries and libraries, either offline or at runtime, it may restrict or interrupt normal operation. These controls help mitigate risks from pre-boot and post-boot tampering, persistent malware, and unauthorized changes that could survive reboots.
 
 ## Data protection by default
   
 Azure Local small form factor deployments help protect sensitive data through multiple layers of encryption designed to safeguard information both at rest and in transit.
   
-### Encrypting data at rest
+**Encrypting data at rest:**
 
-Persistent data partitions that store customer or workload data, such as application data, configuration files, and logs, are encrypted by default. The devices use hardware-backed disk encryption. The devices' TPM seals the encryption keys and only releases them when the platform boots into a known, verified state by using Secure and Measured boot. These partitions stay encrypted at rest to help protect data even if the storage device is physically removed, lost, stolen, or booted by using unauthorized or alternate media. This protection helps reduce the risk of offline data exfiltration and unauthorized inspection of stored data.
+- Persistent data partitions that store customer or workload data, such as application data, configuration files, and logs, are encrypted by default. The devices use hardware-backed disk encryption. The devices' TPM seals the encryption keys and only releases them when the platform boots into a known, verified state by using Secure and Measured boot. These partitions stay encrypted at rest to help protect data even if the storage device is physically removed, lost, stolen, or booted by using unauthorized or alternate media. This protection helps reduce the risk of offline data exfiltration and unauthorized inspection of stored data.
   
-### Encrypting data in transit
+**Encrypting data in transit:**
 
-All platform communication uses industry-standard encryption protocols. Azure Local enables applications and platform components to use end-to-end encrypted communication for data in transit by leveraging Transport Layer Security (TLS) and industry-standard cryptographic ciphers supported by Azure services. TLS 1.3 is enabled by default, with fallback to TLS 1.2 when required. Datagram TLS (DTLS) 1.2 is supported for UDP-based communication. These protections reduce the risks from eavesdropping, man-in-the-middle attacks, and data tampering by helping ensure network traffic is encrypted by using modern encryption protocols and cipher suites without known weaknesses.
+- All platform communication uses industry-standard encryption protocols. Azure Local enables applications and platform components to use end-to-end encrypted communication for data in transit by leveraging Transport Layer Security (TLS) and industry-standard cryptographic ciphers supported by Azure services. TLS 1.3 is enabled by default, with fallback to TLS 1.2 when required. Datagram TLS (DTLS) 1.2 is supported for UDP-based communication. These protections reduce the risks from eavesdropping, man-in-the-middle attacks, and data tampering by helping ensure network traffic is encrypted by using modern encryption protocols and cipher suites without known weaknesses.
 
-If you're running AKS Arc, your cross-node communication between Kubernetes control plane components is encrypted. To learn more, see [AKS Arc Security Book - Configure TLS encryption and authentication](/azure/azure-arc/kubernetes/conceptual-secure-your-workloads#configure-tls-encryption-and-authentication-withintofrom-workloads).
+- If you're running AKS Arc, your cross-node communication between Kubernetes control plane components is encrypted. To learn more, see [AKS Arc Security Book - Configure TLS encryption and authentication](/azure/azure-arc/kubernetes/conceptual-secure-your-workloads#configure-tls-encryption-and-authentication-withintofrom-workloads).
 
 ### Centralized secrets management
 
