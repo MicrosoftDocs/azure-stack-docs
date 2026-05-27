@@ -140,7 +140,7 @@ To download the files:
 
 The ownership voucher is a `.pem` file that proves the identity of the machine when you connect the provisioned machine to Azure from the Azure portal. In the portal deployment flow, this file is generated during installation and then made available either on the USB drive or on the device, depending on whether a USB drive is present when the voucher is written.
 
-You'll use the `.pem` file in the next step when you connect the provisioned machine from the Azure portal. Treat this file as required deployment material for that machine.
+Use the `.pem` file in the next step when you connect the provisioned machine from the Azure portal. Treat this file as required deployment material for that machine.
 
 If the `.pem` file is lost before the machine is connected to Azure, you can't recreate or redownload the same voucher later. In that case, you must redeploy the operating system on the machine to generate a new ownership voucher.
 

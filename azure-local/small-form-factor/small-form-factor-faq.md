@@ -31,7 +31,7 @@ After the delete operation completes, you can claim or provision the device agai
 
 ## How do I reset a provisioned machine?
 
-Resetting a provisioned machine brings the device back to the maintenance environment so you can redeploy an OS with new inputs. That's useful if the system becomes unusable or if you need to provision it again with new network or configuration settings.
+When you reset a provisioned machine, it returns to the maintenance environment so you can redeploy an OS. This reset process is useful when a system becomes unusable or when you need to reprovision it with different network or configuration settings.
 
 Run:
 

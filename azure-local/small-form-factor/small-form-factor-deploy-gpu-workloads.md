@@ -32,11 +32,11 @@ Before you begin, make sure that you:
 - Installed and signed into Azure CLI.
 - Have internet connectivity available to install packages and pull container images.
 
-If you're using Docker, make sure that:
+If you use Docker, make sure that:
 
 - Docker is already available on the provisioned machine, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#use-docker-on-the-provisioned-device).
 
-If you're using K3s, make sure that:
+If you use K3s, make sure that:
 
 - Open-source K3s is installed and running.
 - `kubectl` access to the K3s cluster is configured, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#prepare-the-kubeconfig-on-your-windows-pc).

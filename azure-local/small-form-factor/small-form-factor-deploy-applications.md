@@ -17,13 +17,13 @@ This article describes practical ways to deploy applications to your cluster.
 
 ## Deploy Foundry Local on Azure Local
 
-If you're testing or developing AI workloads, Foundry Local can help you get started quickly by enabling local inference on your Azure Local environment.
+If you test or develop AI workloads, Foundry Local can help you get started quickly by enabling local inference on your Azure Local environment.
 
 For step-by-step guidance, see [Foundry Local documentation](/azure/azure-sovereign-clouds/private/foundry-local/how-to-run-inference).
 
 ## Deploy Azure IoT Operations
 
-Deploying Azure IoT Operations to small form factor deployments of Azure Local follows the same process used for any Azure Arc–enabled Kubernetes cluster.
+To deploy Azure IoT Operations to small form factor Azure Local deployments, use the same process as for any Azure Arc-enabled Kubernetes cluster.
 
 For end-to-end instructions, see [Azure IoT Operations quickstart](/azure/iot-operations/get-started-end-to-end-sample/quickstart-configure).
 
