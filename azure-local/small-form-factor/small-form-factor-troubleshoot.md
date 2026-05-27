@@ -25,7 +25,7 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 
 1. After the support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
 
-## USB boot infinite loop when "Boot USB Devices First" is enabled
+## Infinite USB boot loop with “Boot USB Devices First” enabled (Intel NUC)
 
 **Problem**:
 
@@ -65,7 +65,7 @@ After you disable the setting:
 
 **Problem**:
 
-Provisioning can fail if the device TPM isn't writable. Some OEM systems ship with TPM settings that block write operations until you clear the TPM in BIOS.
+Provisioning can fail if the device Trusted Platform Module (TPM) isn't writable. Some OEM systems ship with TPM settings that block write operations until you clear the TPM in BIOS.
 
 If TPM write access isn't enabled:
 

@@ -1,6 +1,6 @@
 ---
-title: Zero-Touch Provisioning for Azure Local (preview)
-description: Learn about zero-touch provisioning for Azure Local (preview).
+title: Zero-Touch Provisioning for Small Form Factor Deployments of Azure Local (preview)
+description: Learn about zero-touch provisioning for small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.topic: concept-article
 ms.date: 05/04/2026
@@ -9,9 +9,11 @@ ms.service: azure-local
 ms.subservice: small-form-factor
 ---
 
-# Zero-touch provisioning for Azure Local (preview)
+# Zero-touch provisioning for small form factor deployments of Azure Local (preview)
 
-Zero-touch provisioning (ZTP) reduces the manual work required to claim, configure, and manage a physical device from Azure. Instead of configuring each device on-site, the device acquires a simple network connection and ARM identity through an ownership voucher, and then receives its final configuration through Azure.
+This article describles zero-touch provisioning (ZTP) for small form factor deployments of Azure Local.
+
+Zero-touch provisioning reduces the manual work required to claim, configure, and manage a physical device from Azure. Instead of configuring each device on-site, the device acquires a simple network connection and ARM identity through an ownership voucher, and then receives its final configuration through Azure.
 
 This provisioning service uses the same core ideas described by the [FIDO Device Onboard (FDO) specification](https://fidoalliance.org/device-onboarding-overview/) and the same core technology as [simplified provisioning for Azure Local](../deploy/simplified-machine-provisioning.md).
 
@@ -96,4 +98,4 @@ By default, the maintenance environment tries to connect over DHCP. If you need 
 
 **Anyone can prep a device for ZTP.** The real value of the ZTP feature comes from preparing many devices at scale, shipping them directly to site, then centrally managing them across many locations. However, to make it easier to spin up a quick test, the feature is designed so that anyone can install from a USB drive and achieve the same experience.
 
-**The reset-os command makes a machine identical to a newly installed maintenance environment.** Calling reset-os on a provisioned machine redownloads and then installs the maintenance environment, but maintains the same persistent ARM identity of the provisioned machine. This design is for scenarios where you want to wipe a device clean but continue to represent it with a persistent ARM resource.
+**The reset-os command makes a machine identical to a newly installed maintenance environment.** Calling reset-os on a provisioned machine redownloads and then installs the maintenance environment, but maintains the same persistent Azure Resource Manager identity of the provisioned machine. This design is for scenarios where you want to wipe a device clean but continue to represent it with a persistent Azure Resource Manager resource.

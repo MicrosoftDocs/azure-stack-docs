@@ -11,6 +11,8 @@ ms.subservice: small-form-factor
 
 # Configurator App for small form factor deployments of Azure Local (preview)
 
+This article describes Configurator App for small form factor deployments of Azure Local.
+
 Configurator App is a Windows application that connects directly to an Azure Local device to collect diagnostics or perform management actions. It's designed to be used only when you don't have access to the Azure control plane and need to take some local action to establish an Azure connection or debug an issue.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
@@ -79,4 +81,4 @@ The same device might require different credentials over time. For example, befo
 
 ## Next steps
 
-- [Machine installation](small-form-factor-installation.md)
+- [Machine installation](small-form-factor-installation.md).

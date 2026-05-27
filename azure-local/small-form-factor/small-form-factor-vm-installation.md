@@ -13,9 +13,9 @@ ms.subservice: small-form-factor
 
 This article describes how to test small form factor deployments of Azure Local in a Hyper-V virtual machine (VM).
 
-If you don't have access to physical hardware, you can test small form factor deployments of Azure Local in a Hyper-V VM. You can also use this flow in an Azure Virtual Machine, but you'll need to use the Azure Virtual Machine workaround later in the article.
+If you don’t have access to physical hardware, you can use a Hyper-V VM to test these deployments. You can also follow this approach in an Azure Virtual Machine, though additional workaround steps are required as described later in this article.
 
-A VM is useful for testing, but it doesn't behave exactly like bare-metal hardware. If you want the closest match to a customer deployment, use a supported physical device. For more information, see [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md).
+While a VM is useful for testing, it doesn’t fully replicate bare-metal hardware behavior. For the most accurate representation of a customer deployment, use a supported physical device. For more information, see [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -173,7 +173,7 @@ Add-VMNetworkAdapterAcl -VMNetworkAdapter $adapter -Action Deny -Direction Outbo
 
 ## Troubleshoot
 
-To troubleshoot VM setup, see [Troubleshoot small form factor deployments of Azure Local](small-form-factor-troubleshoot.md#troubleshoot-vm-setup)
+To troubleshoot VM setup, see [Troubleshoot small form factor deployments of Azure Local](small-form-factor-troubleshoot.md#troubleshoot-vm-setup).
 
 ## Review your VM setup
 

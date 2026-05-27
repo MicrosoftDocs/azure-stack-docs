@@ -11,7 +11,7 @@ ms.subservice: small-form-factor
 
 # Container orchestrators on small form factor deployments of Azure Local (preview)
 
-This article describes how container orchestrators provide an application isolation layer on top of small form factor deployments of Azure Local. It covers the two primary options - K3s and Docker - and explains when to use each one.
+This article describes how container orchestrators provide an application isolation layer for small form factor deployments of Azure Local. It covers the two primary options, K3s and Docker, and explains when to use each.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -142,7 +142,7 @@ For these reasons, choose your container orchestrator before deploying your firs
 
 ### One orchestrator per fleet, not just per device
 
-If you're deploying small form factor devices across multiple sites, standardize on the same container orchestrator across your entire fleet. A mixed fleet — some devices running K3s, others running Docker — multiplies the operational burden:
+If you're deploying small form factor devices across multiple sites, standardize on the same container orchestrator across your entire fleet. Using a mixed environment where some devices run K3s and others run Docker increases operational overhead.
 
 - Deployment tooling must support both orchestrators.
 - Troubleshooting playbooks diverge per device type.
@@ -153,7 +153,7 @@ Standardizing on a single orchestrator keeps your fleet operationally uniform an
 
 ### Switch device to a different container runtime
 
-Switching to a new container runtime is straightforward. With `az provisionedmachine reset`, your machine is good as new—reset it, install a fresh OS image, and treat it like a brand new machine.
+Switching to a new container runtime is straightforward. With `az provisionedmachine reset`, you can reset the machine, install a fresh OS image, and treat it as new.
 
 ## Networking considerations
 
@@ -170,7 +170,7 @@ Running containers on small form factor devices introduces a shared-kernel secur
 - **Image provenance**: Pull container images only from trusted registries. Use image signing and vulnerability scanning where possible.
 - **Least privilege**: Avoid running containers as root unless required. Both K3s and Docker support running containers with reduced privileges.
 
-## Learn more
+## Next steps
 
 - [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md)
 - [Deploy applications](small-form-factor-deploy-applications.md)

@@ -11,7 +11,7 @@ ms.subservice: small-form-factor
 
 # Deploy applications to your cluster (preview)
 
-This article describes practical ways to deploy workloads to your cluster.
+This article describes practical ways to deploy applications to your cluster.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -23,6 +23,10 @@ For step-by-step guidance, see [Foundry Local documentation](/azure/azure-sovere
 
 ## Deploy Azure IoT Operations
 
-Deploying Azure IoT Operations to small form factor Azure Local deployments follows the same process used for any Azure Arc–enabled Kubernetes cluster.
+Deploying Azure IoT Operations to small form factor deployments of Azure Local follows the same process used for any Azure Arc–enabled Kubernetes cluster.
 
 For end-to-end instructions, see [Azure IoT Operations quickstart](/azure/iot-operations/get-started-end-to-end-sample/quickstart-configure).
+
+## Next steps
+
+- [Deploy GPU-enabled workloads on a provisioned machine](small-form-factor-deploy-gpu-workloads.md)

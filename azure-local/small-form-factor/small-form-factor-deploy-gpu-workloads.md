@@ -11,9 +11,9 @@ ms.subservice: small-form-factor
 
 # Deploy GPU-enabled workloads on a provisioned machine (preview)
 
-This article describes how to run GPU-enabled containerized workloads on a provisioned machine.
+This article describes how to deploy GPU-enabled containerized workloads on a provisioned machine for small form factor deployments of Azure Local.
 
-[Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md) establishes your container platform by verifying Docker or installing open-source K3s. This article builds on that foundation to enable NVIDIA GPU acceleration for the workloads that you deploy in module 5.
+[Containerized workloads](small-form-factor-containerized-workloads.md) establishes your container platform by verifying Docker or installing open-source K3s. This article builds on that foundation to enable NVIDIA GPU acceleration for the workloads that you deploy in module 5.
 
 Docker is supported for single-node GPU workloads. If you want a lightweight Kubernetes environment for orchestrated GPU workloads, you can also use the open-source K3s distribution. To compare these options before you choose one, see [Container orchestrators](small-form-factor-container-orchestrators.md).
 
@@ -24,8 +24,8 @@ Docker is supported for single-node GPU workloads. If you want a lightweight Kub
 Before you begin, make sure that you:
 
 - Have a provisioned machine that you can reach over SSH.
-- Complete [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md).
-- Complete [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md).
+- Complete the steps in [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md).
+- Complete the steps in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md).
 - Have supported hardware with an NVIDIA GPU installed in the provisioned machine.
 - Installed NVIDIA GPU drivers on the host OS.
 - Have a Windows PC on the same local network as the provisioned machine.
@@ -34,12 +34,12 @@ Before you begin, make sure that you:
 
 If you're using Docker, make sure that:
 
-- Docker is already available on the provisioned machine, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#use-docker-on-the-provisioned-device)
+- Docker is already available on the provisioned machine, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#use-docker-on-the-provisioned-device).
 
 If you're using K3s, make sure that:
 
-- Open-source K3s is installed and running
-- `kubectl` access to the K3s cluster is configured, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#prepare-the-kubeconfig-on-your-windows-pc)
+- Open-source K3s is installed and running.
+- `kubectl` access to the K3s cluster is configured, as described in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#prepare-the-kubeconfig-on-your-windows-pc).
 
 ## Choose your approach
 
@@ -77,7 +77,7 @@ If any layer is missing or misconfigured, GPU workloads might fail to start or m
 
     Example output:
 
-    ```text
+    ```output
     01:00.0 VGA compatible controller: NVIDIA Corporation Device
     ```
 
@@ -89,7 +89,7 @@ If any layer is missing or misconfigured, GPU workloads might fail to start or m
 
     Example output:
 
-    ```text
+    ```output
     +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 550.xx.xx                                                        |
     | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
@@ -172,9 +172,9 @@ The NVIDIA Container Toolkit enables containers to access GPU devices from the h
     nvidia-ctk --version
     ```
 
-# [Docker](#tab/docker)
+## Run a GPU-enabled workload
 
-## Run a GPU-enabled Docker workload
+# [Docker](#tab/docker)
 
 Docker workloads can access GPUs directly through the NVIDIA container runtime.
 
@@ -192,8 +192,8 @@ Use this path if you followed the Docker workflow in [Run containerized workload
     sudo systemctl restart docker
     ```
 
-> [!NOTE]
-> This article uses the NVIDIA CUDA sample image hosted in the NVIDIA GPU Cloud (NGC) catalog: [NVIDIA CUDA Sample Container Image](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/cuda-sample?version=vectoradd-cuda12.5.0-ubi8).
+    > [!NOTE]
+    > This article uses the NVIDIA CUDA sample image hosted in the NVIDIA GPU Cloud (NGC) catalog: [NVIDIA CUDA Sample Container Image](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/k8s/containers/cuda-sample?version=vectoradd-cuda12.5.0-ubi8).
 
 1. Run the sample workload:
 
@@ -220,8 +220,6 @@ Use this path if you followed the Docker workflow in [Run containerized workload
     - The container successfully used the GPU.
 
 # [K3s](#tab/k3s)
-
-## Run a GPU-enabled K3s workload
 
 K3s environments that use `containerd` must be configured to expose the NVIDIA runtime to containers.
 

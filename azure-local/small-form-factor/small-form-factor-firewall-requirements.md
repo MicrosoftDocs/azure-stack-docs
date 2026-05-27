@@ -51,3 +51,7 @@ The following table lists the outbound endpoints and ports required for small fo
 
 > [!NOTE]
 > Endpoint names that include placeholders (for example, `<your-gateway-endpoint-id>`) are environment-specific and are generated during deployment.
+
+## Next steps
+
+- [Set up your Azure subscription for small form factor deployments of Azure Local](small-form-factor-subscription-setup.md).

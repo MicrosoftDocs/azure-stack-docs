@@ -49,7 +49,7 @@ To register a resource provider, run:
 az provider register --namespace <RESOURCE_PROVIDER_NAME>
 ```
 
-You can also register resource providers in the Azure portal. For step-by-step guidance, see [resolve resource provider errors](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
+You can also register resource providers in the Azure portal. For step-by-step guidance, see [Register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
 
 ## Check subscription permissions
 

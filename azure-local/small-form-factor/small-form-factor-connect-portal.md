@@ -19,8 +19,8 @@ This article describes how to create an Azure Arc site, upload an ownership vouc
 
 Before you begin, make sure you complete the following prerequisites:
 
-- [Set up your subscription](small-form-factor-subscription-setup.md)
-- [Install small form factor](small-form-factor-installation.md) on your machines or virtual machines (VMs).
+- [Set up your subscription](small-form-factor-subscription-setup.md).
+- Install small form factor on your [machines](small-form-factor-installation.md) or [virtual machines (VMs)](small-form-factor-vm-installation.md).
 - Have a Windows PC with the [Configurator App](small-form-factor-configurator-app.md) installed.
 - Have the ownership voucher (`.pem`) files for your machines.
 
@@ -57,7 +57,7 @@ Before you begin, make sure you complete the following prerequisites:
 
 1. Select **Save**.
 
-## Add the machine
+## Configure SSH keys for machine access
 
 SSH keys are used for secure remote access to the machine over SSH. During provisioning, the public key is installed on the machine, and the corresponding private key is later used to authenticate SSH connections.
 
@@ -77,6 +77,8 @@ If you upload your own SSH public key, make sure that you securely store and man
 
 Multiple users can access the same machine either by securely sharing the same private key between authorized users or by adding additional SSH public keys to the machine for separate user access.
 
+## Add the machine
+
 To add your machine:
 
 1. Under **Provisioned machines**, select **Add**.
@@ -91,20 +93,20 @@ To add your machine:
 
 ## Wait for the machine to become ready
 
-   :::image type="content" source="media/small-form-factor-connect-portal.png" alt-text="Screenshot of diagram showing machine provisioning." border="true" lightbox="media/small-form-factor-connect-portal.png":::
+During provisioning, the machine moves through several lifecycle states. The following diagram shows the possible machine states and transitions during provisioning.
 
-During provisioning, the machine moves through several lifecycle states. The diagram above shows the possible machine states and transitions during provisioning.
+   :::image type="content" source="media/small-form-factor-connect-portal.png" alt-text="Screenshot of diagram showing machine provisioning." border="true" lightbox="media/small-form-factor-connect-portal.png":::
 
 Provisioning can take up to 25 minutes to complete.
 
 1. Open the **Provisioned machines** tab.
-1. Wait until **Machine State** changes to **Provisioned**.
+1. Wait until **Status** changes to **Provisioned**.
 
       :::image type="content" source="media/small-form-factor-provision-status.png" alt-text="Screenshot of the Azure portal with the machine state status showing provisioned." border="true" lightbox="media/small-form-factor-provision-status.png":::
 
 ## Connect to the machine over SSH
 
-When the machine state is **Provisioned**, you can connect to it over SSH.
+After the machine state is **Provisioned**, you can connect to it over SSH.
 
 To connect over SSH, you must have one of the following role assignments at the subscription level. Pick the role assignment based on the level of access needed:
 
@@ -181,4 +183,4 @@ To use the app:
 
 ## Next steps
 
-- [Run containerized workloads](small-form-factor-containerized-workloads.md)
+- [Run containerized workloads](small-form-factor-containerized-workloads.md).

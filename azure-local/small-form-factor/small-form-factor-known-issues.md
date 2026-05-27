@@ -15,7 +15,7 @@ This article lists the known issues and limitations for small form factor deploy
 
 ## Known issues in version 2604
 
-The following known issues apply to Azure Local Small Form Factor deployments running version 2604.
+The following known issues apply to Azure Local small form factor deployments running version 2604.
 
 | Feature area | Issue | Impact | Workaround |
 |---|---|---|---|

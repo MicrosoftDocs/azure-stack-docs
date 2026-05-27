@@ -65,7 +65,7 @@ The provisioned machine resource tracks the state of these operations, allowing 
 
 ## Azure Arc site
 
-The **Azure Arc site** is a resource that represents a physical location where one or more small form factor devices are deployed — for example, a retail store, a factory floor, or a branch office. The site is created in the user-managed resource group alongside the provisioned machine resources.
+The **Azure Arc site** is a resource that represents a physical location where one or more small form factor devices are deployed - for example, a retail store, a factory floor, or a branch office. The site is created in the user-managed resource group alongside the provisioned machine resources.
 
 The Arc site plays two key roles:
 
@@ -75,12 +75,12 @@ The Arc site plays two key roles:
 This design has practical implications:
 
 - **Adding a device** to an existing site doesn't create a new managed resource group. A new Arc for Servers instance is created inside the existing managed resource group for that site.
-- **Removing a single device** from a multi-device site doesn't delete the managed resource group — it only removes that device's Arc for Servers instance.
+- **Removing a single device** from a multi-device site doesn't delete the managed resource group. It only removes that device's Arc for Servers instance.
 - **Deleting the site** removes the managed resource group and all Arc for Servers instances within it.
 
 ## Managed resource group
 
-When you create an Azure Arc site, Azure automatically creates a **managed resource group**. This resource group is distinct from the user-created resource group where the site and provisioned machine resources live. A single managed resource group is created per site, and all provisioned machines associated with that site share it. If you don't specify a custom managed resource group name, Azure derives the name from the site name. If you do specify an override, Azure uses the custom name instead.
+When you create an Azure Arc site, Azure automatically creates a **managed resource group**. This resource group is distinct from the user-created resource group where the site and provisioned machine resources live. A single managed resource group is created per site, and all provisioned machines associated with that site share it.
 
 The managed resource group has the following characteristics:
 
@@ -133,4 +133,4 @@ Telemetry data helps Microsoft improve product quality, proactively identify iss
 
 ## Next steps
 
-- [Container orchestrators on small form factor deployments of Azure Local](small-form-factor-container-orchestrators.md)
+- [Container orchestrators on small form factor deployments of Azure Local](small-form-factor-container-orchestrators.md).

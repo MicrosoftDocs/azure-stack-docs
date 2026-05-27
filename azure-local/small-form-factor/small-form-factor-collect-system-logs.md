@@ -51,7 +51,7 @@ ping <ip-address>
 
 ## Choose the correct credentials
 
-The credentials you use depend on the current state of the **provisioned machine** resource in Azure.
+The credentials you use depend on the current state of the provisioned machine resource in Azure.
 
 ### Credential mapping by device state
 
@@ -70,3 +70,7 @@ The credentials you use depend on the current state of the **provisioned machine
 |--| -- |--|--|
 | Set A: Maintenance OS credentials | `edgeuser` | Password | `Password1` |
 | Set B: Target OS credentials | The username entered during target OS setup, usually `clouduser` | SSH key | The SSH key downloaded by your browser during setup |
+
+## Next steps
+
+- [Troubleshoot small form factor deployments of Azure Local (preview)](small-form-factor-troubleshoot.md)

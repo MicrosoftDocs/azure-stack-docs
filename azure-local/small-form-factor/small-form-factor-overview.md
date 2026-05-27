@@ -38,6 +38,8 @@ Small form factor deployments help you:
 
 ## Features
 
+The following table describes the key features of small form factor deployments.
+
 | Feature | Description |
 | --------------------------------- | ----------------------------------------------- |
 | Zero-touch provisioning (ZTP)     | Deploy consistent software across large fleets of devices by using a secure, FDO-compliant supply chain.   |
@@ -58,8 +60,8 @@ Azure Local small form factor deployments are validated on the following devices
 - OnLogic HX521
 
 > [!IMPORTANT]
-> We recommend using one of the supported devices listed here. Other hardware might work, but validation, documentation, and troubleshooting guidance for the preview apply only to these devices.
+> Use one of the supported devices listed here. Other hardware might work, but validation, documentation, and troubleshooting guidance for the preview apply only to these devices.
 
 ## Next steps
 
-- [Set up your Azure subscription](small-form-factor-subscription-setup.md)
+- [Set up your Azure subscription](small-form-factor-subscription-setup.md).

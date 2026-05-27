@@ -21,6 +21,9 @@ If you don't have access to physical hardware, you can test small form factor de
 
 [Set up your subscription](small-form-factor-subscription-setup.md) and make sure you have the following items.
 
+> [!IMPORTANT]
+> If your environment uses firewall restrictions, review [Outbound connectivity](small-form-factor-firewall-requirements.md) before you start.
+
 ### Hardware
 
 Use one of these supported devices:
@@ -40,7 +43,7 @@ Use one of these supported devices:
 - [Rufus 4.12](https://github.com/pbatard/rufus/releases/download/v4.12/rufus-4.12p.exe)
 
 > [!TIP]
-> Use Rufus only. Other USB creation tools can leave the drive in a read-only state, which can prevent ownership voucher extraction.
+> Use only Rufus. Other USB creation tools can leave the drive in a read-only state, which can prevent ownership voucher extraction.
 
 ### Additional equipment
 
@@ -48,9 +51,6 @@ Use one of these supported devices:
 - A USB keyboard
 - An HDMI cable and monitor
 - A direct Ethernet connection with internet access
-
-> [!IMPORTANT]
-> If your environment uses firewall restrictions, review [Outbound connectivity](small-form-factor-firewall-requirements.md) before you start.
 
 ## Download the ISO and Configurator App
 
@@ -63,9 +63,9 @@ Download the following artifacts from the Azure portal:
 
 To download the files:
 
-1. Go to the Azure portal.
-1. Select **Azure Arc** > **Operations** > **Machine Provisioning (preview)** > **Get started** > **View downloads**.
-1. In the **Download and install** pane, review the terms, and select **Download all**.
+1. In the Azure portal, select **Azure Arc** > **Operations** > **Machine Provisioning (preview)** > **Get started** > **View downloads**.
+
+1. In the **Download and Install** pane, review the terms, and select **Download all**.
 
     :::image type="content" source="media/small-form-factor-download-install.png" alt-text="Screenshot of the Download and Install pane in the Azure portal." border="true" lightbox="media/small-form-factor-download-install.png":::
 
@@ -79,7 +79,9 @@ To download the files:
 ## Create a bootable USB drive
 
 1. Connect the USB flash drive to your Windows PC.
+
 1. Open **Run** from the Start menu.
+
 1. Enter `rufus`, then select **OK**.
 
    > [!NOTE]
@@ -93,7 +95,7 @@ To download the files:
 
     :::image type="content" source="media/small-form-factor-prepare-usb.png" alt-text="Screenshot of the USB preparation settings." border="true" lightbox="media/small-form-factor-prepare-usb.png":::
 
-1. Select **Start**.
+1. Select **START**.
 1. If prompted, choose **Write in ISO image mode**.
 
     :::image type="content" source="media/small-form-factor-prepare-usb-iso-image-mode.png" alt-text="Screenshot of the USB preparation settings ISO prompt." border="true" lightbox="media/small-form-factor-prepare-usb-iso-image-mode.png":::
