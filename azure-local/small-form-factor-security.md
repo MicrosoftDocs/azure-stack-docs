@@ -1,5 +1,5 @@
 ---
-title: Security Book for Small Form Factor Deployments of Azure Local (Preview)
+title: Security Features for Small Form Factor Deployments of Azure Local (Preview)
 description: Security guidance and best practices for securing small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.author: sipastak
@@ -11,13 +11,21 @@ ms.subservice: small-form-factor
 
 # Security features for small form factor deployments of Azure Local (preview)
 
+This article describes the built-in security capabilities for small form factor deployments and provides guidance for securing your environment.
+
 [!INCLUDE [hci-preview](includes/hci-preview.md)]
 
-This security book applies to small form factor deployments of Azure Local running the current preview release.
+Small form factor deployments of Azure Local run in distributed edge environments where physical access, connectivity, and operational controls differ from traditional datacenters.
 
-## Overview
+These environments often include:
 
-Small form factor deployments of Azure Local operate in distributed edge environments where physical access, network reliability, and operational controls differ significantly from traditional datacenters. You often deploy devices at scale, ranging from hundreds to thousands of nodes across retail stores, factory floors, or remote sites, where physical security and administrative access is limited, and connectivity might be intermittent. These conditions increase exposure to risks such as device tampering, unauthorized software modification, and data exfiltration.
+- Retail stores, factory floors, or remote sites.
+- Limited physical security or on-site administration.
+- Intermittent or constrained network connectivity.
+
+These conditions increase exposure to risks such as device tampering, unauthorized software modification, and data exfiltration.
+
+## Security approach
 
 Small form factor deployments are designed with these constraints in mind. Microsoft built security into the platform from the ground up - anchored in secure device provisioning, reinforced through platform protections, and extended into cloud-based management. This approach helps devices start in a known, trusted state, protect sensitive data, and support secure management at scale when deployed and configured according to Microsoft guidance.
 
@@ -25,21 +33,19 @@ As deployments grow across locations, Azure Arc provides centralized governance 
 
 The security posture of Azure Local small form factor is built on four core pillars:
 
-1. [Hardware-rooted trust and platform integrity](#hardware-rooted-trust-and-platform-integrity): Device identity and integrity are anchored in hardware-based protections that help detect and reduce the risk of unauthorized changes during boot and operation.
+- [**Hardware-rooted trust and platform integrity**](#hardware-rooted-trust-and-platform-integrity): Device identity and integrity are anchored in hardware-based protections that help detect and reduce the risk of unauthorized changes during boot and operation.
 
-1. [Data protection by default](#data-protection-by-default): Sensitive data and credentials are encrypted at rest and in transit, reducing the risk of exposure, even in the event of device loss or compromise.
+- [**Data protection by default**](#data-protection-by-default): Sensitive data and credentials are encrypted at rest and in transit, reducing the risk of exposure, even in the event of device loss or compromise.
 
-1. [Secure lifecycle and defense in depth](#secure-lifecycle-and-defense-in-depth): Microsoft develops, deploys, and updates platform software by using secure engineering practices. Layered protections help reduce risk across the software lifecycle.
+- [**Secure lifecycle and defense in depth**](#secure-lifecycle-and-defense-in-depth): Microsoft develops, deploys, and updates platform software by using secure engineering practices. Layered protections help reduce risk across the software lifecycle.
 
-1. [Centralized access, policy, and diagnostics](#centralized-access-policy-and-diagnostics): Azure-based management supports centralized access control, policy enforcement, and operational visibility across distributed environments, subject to connectivity and configuration.
-
-This security book describes the built-in protections across these four pillars. It also provides guidance on additional measures you can take to further strengthen the security posture of your deployments.
+- [**Centralized access, policy, and diagnostics**](#centralized-access-policy-and-diagnostics): Azure-based management supports centralized access control, policy enforcement, and operational visibility across distributed environments, subject to connectivity and configuration.
 
 ## Hardware-rooted trust and platform integrity
 
-Azure Local small form factor deployments use hardware-anchored identity and integrity capabilities to help establish device trust at startup and maintain platform integrity during operation. These capabilities reduce the risk of unauthorized changes to the platform across distributed edge deployments.
+Small form factor deployments use hardware-anchored identity and integrity capabilities to help establish device trust at startup and maintain platform integrity during operation. These capabilities reduce the risk of unauthorized changes to the platform across distributed edge deployments.
 
-For details on provisioning and setup flows, see [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
+For details on provisioning, see [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
 
 ### Establishing a trusted boot process
 
@@ -64,8 +70,8 @@ Azure Local small form factor deployments help protect the integrity of critical
 Azure Local small form factor deployments help protect sensitive data through multiple layers of encryption designed to safeguard information both at rest and in transit. 
   
 ### Encrypting data at rest
- 
-Persistent data partitions that store customer or workload data, such as application data, configuration files, and logs, are encrypted by default. The devices use hardware-backed disk encryption. The devices' TPM seals the encryption keys and only releases them when the platform boots into a known, verified state by using Secure and Measured boot. These partitions stay encrypted at rest to help protect data even if the storage device is physically removed, lost, stolen, or booted by using unauthorized or alternate media. This protection helps reduce the risk of offline data exfiltration and unauthorized inspection of stored data. 
+
+Persistent data partitions that store customer or workload data, such as application data, configuration files, and logs, are encrypted by default. The devices use hardware-backed disk encryption. The devices' TPM seals the encryption keys and only releases them when the platform boots into a known, verified state by using Secure and Measured boot. These partitions stay encrypted at rest to help protect data even if the storage device is physically removed, lost, stolen, or booted by using unauthorized or alternate media. This protection helps reduce the risk of offline data exfiltration and unauthorized inspection of stored data.
   
 ### Encrypting data in transit
 
