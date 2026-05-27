@@ -398,12 +398,6 @@
       href: aks-bare-metal-overview.md
     - name: Public preview limitations
       href: aks-bare-metal-preview-limitations.md
-  - name: Concepts
-    items:
-    - name: Architecture
-      href: aks-bare-metal-architecture.md
-    - name: Networking
-      href: aks-bare-metal-networking.md
   - name: Get started
     items:
     - name: System requirements and prerequisites
@@ -420,8 +414,6 @@
       href: aks-bare-metal-connect-to-cluster.md
     - name: Deploy an application
       href: aks-bare-metal-deploy-application.md
-    - name: Use Azure RBAC for Kubernetes authorization
-      href: aks-bare-metal-azure-rbac.md
     - name: Upgrade Kubernetes clusters
       href: aks-bare-metal-upgrade-cluster.md
     - name: Delete cluster resources
