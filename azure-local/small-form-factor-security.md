@@ -132,3 +132,4 @@ Use these capabilities to apply consistent access controls and security policies
 ## Next steps
 
 - [Set up your Azure subscription for small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-subscription-setup?&branch=pr-en-us-20809).
+- [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
