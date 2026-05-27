@@ -452,7 +452,7 @@ To correct the display problem in Azure portal and show the true data disk size,
 - For **VHDX** disks, no actual size increase is required. You can expand the disk to the same size as the current data disk.
 - For **VHD** disks, you must power off the VM and increase the size of the on-premises disk for the resize to take effect. For example, if the current data disk is 100 GB, you might need to expand it to 101 GB for the display to be correct.
 
-This triggers a portal refresh and updates the UX to reflect the correct data disk size.
+This action triggers a portal refresh and updates the UX to show the correct data disk size.
 
 ## Next steps
 
