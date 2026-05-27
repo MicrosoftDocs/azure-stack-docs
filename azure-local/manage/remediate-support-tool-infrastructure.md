@@ -89,31 +89,21 @@ Import-Module Support.AksArc -force
 
 If you already have the module installed, update it by using the following cmdlet:
 
-```powershell
-Update-Module -Name Support.AksArc
-```
-
-Alternatively, you can update the module manually by removing and importing it:
+> [!IMPORTANT]
+>If you already have the module installed on your Azure Local instance, running the three commands in the following section is required and shouldn't be skipped.
 
 ```powershell
 Remove-Module -Name Support.AksArc
+Update-Module -Name Support.AksArc
 Import-Module -Name Support.AksArc
 ```
 
 ## Use the Support tool
 
-This section provides examples of the different cmdlets available in the Support tool.
+This section explains how to run the diagnostic and remediation commands included in the Support tool.
 
 > [!NOTE]
 > Run these PowerShell commands locally, not in a PowerShell remote session.
-
-### View available cmdlets
-
-To see a list of available cmdlets in the PowerShell module, run the following cmdlet:
-
-```powershell
-Get-Command -Module Support.AksArc
-```
 
 ### Perform diagnostic checks
 
