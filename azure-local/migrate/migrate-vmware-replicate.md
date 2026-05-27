@@ -365,6 +365,8 @@ This step applies to using a .zip file.
     > Once selected, the OS disks can't be unselected.
  
 4. Change the disk type if needed and select **Next**.
+    1. It is recommended to use **VHDX** format for the disks to ensure future expand and disk operations compatibility.
+
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/migrate-vmware-replicate/replicate-6-disks.png":::
 
