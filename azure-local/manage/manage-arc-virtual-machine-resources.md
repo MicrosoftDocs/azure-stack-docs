@@ -77,11 +77,11 @@ Follow these steps in the Azure portal for your Azure Local instance:
 
 ## Expand a data disk
 
-You can expand an existing data disk to your desired size by using Azure CLI. The behavior of the resize operation depends on the disk format (VHDX or VHD):
+You can expand an existing data disk to your desired size by using Azure CLI. The behavior of the expand operation depends on the disk format (VHDX or VHD):
 
-- **VHDX data disks**: You don't need to take the VM offline to resize the disk. You can also resize the disk to the same size as the original disk.
+- **VHDX data disks**: You don't need to take the VM offline to expand the disk. You can also expand the disk to the same size as the original disk.
 
-- **VHD data disks**: You must take the VM offline before you resize the disk. The new size must be greater than the original disk size. You can only increase the disk size.
+- **VHD data disks**: You must take the VM offline before you expand the disk. The new size must be greater than the original disk size. You can only increase the disk size.
 
 > [!NOTE]
 >
@@ -94,7 +94,7 @@ To expand the size of your data disk using Azure CLI, run the following command:
 az stack-hci-vm disk update --name $name --resource-group $resource_group --size-gb $size_in_gb
 ```
 
-Here's a sample output that indicates successful resizing of the data disk:
+Here's a sample output that indicates successful expansion of the data disk:
 
 ```Output
 {

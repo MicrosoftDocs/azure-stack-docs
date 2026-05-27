@@ -450,7 +450,7 @@ This is a display issue only and doesn't affect the actual functionality or size
 To correct the display problem in Azure portal and show the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the correct size for the data disk.
 
 - For **VHDX** disks, no actual size increase is required. You can expand the disk to the same size as the current data disk.
-- For **VHD** disks, you must power off the VM and increase the size of the on-premises disk for the resize to take effect. For example, if the current data disk is 100 GB, you might need to expand it to 101 GB for the display to be correct.
+- For **VHD** disks, you must power off the VM and increase the size of the on-premises disk for the expansion to take effect. For example, if the current data disk is 100 GB, you will need to expand it to 101 GB for the display to be correct.
 
 This action triggers a portal refresh and updates the UX to show the correct data disk size.
 
