@@ -5,13 +5,52 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 12/11/2025
+ms.date: 12/15/2025
 zone_pivot_groups: select-os
 ---
 
 # Install prebuilt Lustre client software
 
 In this article, you learn how to download and install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+
+Confirm your distribution, kernel, and architecture are supported:
+
+<details>
+<summary><strong>Support Matrix:  select to expand</strong></summary>
+
+Each row is a distribution, architecture, Lustre client version, and kernel series combination that Microsoft publishes packages for. Authoritative source: [Linux software repository for Microsoft products](https://packages.microsoft.com).
+
+| OS | Architecture | Lustre client version | Supported kernel package series |
+|---|---|---|---|
+| [Ubuntu 24.04](https://packages.microsoft.com/repos/amlfs-noble/) | amd64, arm64 | 2.16.1 | [6.8.0-\*-azure](https://packages.microsoft.com/repos/amlfs-noble/pool/main/k/) |
+| [Ubuntu 22.04](https://packages.microsoft.com/repos/amlfs-jammy/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.15.0-\*-azure](https://packages.microsoft.com/repos/amlfs-jammy/pool/main/k/) |
+| [Ubuntu 20.04](https://packages.microsoft.com/repos/amlfs-focal/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-focal/pool/main/k/) |
+| [Ubuntu 18.04](https://packages.microsoft.com/repos/amlfs-bionic/) \* | amd64 | 2.15.4 | [4.15.0-\*-azure, 5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-bionic/pool/main/k/) |
+| [Azure Linux 3](https://packages.microsoft.com/yumrepos/amlfs-al3/) | amd64 | 2.16.1 | [>= 6.6.119.3](https://packages.microsoft.com/yumrepos/amlfs-al3/Packages/k/) |
+| [RHEL / AlmaLinux 9.7](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | [5.14.0-611.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 9.6](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | [5.14.0-570.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 9.5](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-503.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 9.4](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.14.0-427.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 9.2](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-284.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 9.0](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-70.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
+| [RHEL / AlmaLinux 8.10](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [4.18.0-553.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
+| [RHEL / AlmaLinux 8.9](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-513.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
+| [RHEL / AlmaLinux 8.8](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-477.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
+| [RHEL / AlmaLinux 8.7](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-425.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
+| [RHEL / AlmaLinux 8.6](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-372.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
+| [RHEL / CentOS 7.9](https://packages.microsoft.com/yumrepos/amlfs-el7/) \* | amd64 | 2.15.4 | [3.10.0-1160.\*](https://packages.microsoft.com/yumrepos/amlfs-el7/Packages/k/) |
+
+\* **Frozen** - End of life.
+
+**Notes:**
+
+- Only Ubuntu 24.04 currently provides arm64 packages. All other distributions are amd64 only.
+- Ubuntu kernels listed are the Azure LTS kernel for each distribution. The Azure Marketplace images for Ubuntu 22.04 and 24.04 use the Hardware Enablement (HWE) kernel by default. Switch to the Azure LTS kernel before you install the Lustre client. See the per-distribution instructions in the following sections.
+- AlmaLinux 9 occasionally ships kernel sub-revisions off Red Hat's z-stream cadence (for example, `5.14.0-611.54.6.el9_7` alongside Red Hat's `5.14.0-611.54.1.el9_7`). Microsoft publishes Lustre metapackages for those AlmaLinux-only sub-revisions as well. AlmaLinux 8 mirrors Red Hat's z-stream cadence, so no separate sub-revision handling is needed there.
+- Ubuntu 18.04 and RHEL 7 are frozen at Lustre 2.15.4. They reached end of life; no further Lustre client updates are published. Existing packages remain available for installation. Upgrade base OS for ongoing updates.
+- Package availability changes as new Linux kernels are released.  When a new maintenance kernel ships for an already-supported distribution kernel series, Microsoft typically publishes a matching Lustre metapackage within one business day.
+
+</details>
 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
 
@@ -48,9 +87,9 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone pivot="rhel-9"
 
-## Install client software for Red Hat Enterprise Linux 9
+## Install client software for Red Hat Enterprise Linux 9 or AlmaLinux 9
 
-This article shows how to install the client package to set up client VMs running Red Hat Enterprise Linux 9 (RHEL 9).
+This article shows how to install the client package to set up client VMs running Red Hat Enterprise Linux 9 (RHEL 9) or AlmaLinux 9.
 
 ::: zone-end
 

@@ -4,7 +4,7 @@ description: Learn how to connect Linux clients with supported software versions
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 04/30/2025
+ms.date: 12/15/2025
 ms.reviewer: dsundarraj
 ms.custom: sfi-image-nochange
 
@@ -36,21 +36,21 @@ The basic workflow is as follows:
 
 ## Install or upgrade Lustre client software
 
-Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15).
+Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15 or 2.16, depending on your operating system). For the full list of supported distributions, kernels, and architectures, see [Install prebuilt Lustre client software](client-install.md).
 
 You can download prebuilt and tested client packages for Azure Managed Lustre from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
 Packages and kernel modules are available for the following Linux operating systems. Select the links to go to the installation instructions.
 
-- [AlmaLinux HPC 8.6](install-hpc-alma-86.md)
-- [AlmaLinux 8](install-rhel-8.md)
-- [Red Hat Enterprise Linux 7](install-rhel-7.md)
-- [Red Hat Enterprise Linux 8](install-rhel-8.md)
-- [Red Hat Enterprise Linux 9](install-rhel-9.md)
-- [Ubuntu 18.04](install-ubuntu-18.md)
-- [Ubuntu 20.04](install-ubuntu-20.md)
-- [Ubuntu 22.04](install-ubuntu-22.md)
-- [Ubuntu 24.04](install-ubuntu-24.md)
+- [Ubuntu 24.04](client-install.md?pivots=ubuntu-24) (Lustre 2.16, amd64 and arm64)
+- [Ubuntu 22.04](client-install.md?pivots=ubuntu-22) (Lustre 2.15)
+- [Ubuntu 20.04](client-install.md?pivots=ubuntu-20) (Lustre 2.15)
+- [Ubuntu 18.04](client-install.md?pivots=ubuntu-18) (Lustre 2.15.4 -- frozen, no new packages)
+- [Azure Linux 3](client-install.md?pivots=azurelinux-3) (Lustre 2.16)
+- [Red Hat Enterprise Linux 9 or AlmaLinux 9](client-install.md?pivots=rhel-9) (Lustre 2.15)
+- [Red Hat Enterprise Linux 8 or AlmaLinux 8](client-install.md?pivots=rhel-8) (Lustre 2.15)
+- [Red Hat Enterprise Linux 7](client-install.md?pivots=rhel-7) (Lustre 2.15.4 -- frozen, no new packages)
+- [AlmaLinux HPC 8.6](client-install.md?pivots=alma-86) (Lustre 2.15)
 
 If you need to support a different distribution, contact the support team.
 
