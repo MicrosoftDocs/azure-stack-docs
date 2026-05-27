@@ -78,7 +78,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md). <!--update link-->
 
-- **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over.
+- **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over. If validation already ran and completed within a three-hour window, the "Validate environment" step during deployment has an 'Unknown' status.
 
 - **Deployment performance improvements**: Deployment duration is now consistent for clusters of up to 8 nodes, with an overall time reduction of up to 40%.
 
