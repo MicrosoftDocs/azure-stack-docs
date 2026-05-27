@@ -157,7 +157,8 @@ Validate Virtual Machine Management Service Responsiveness Passed  Virtual Machi
 
 ### Fix common problems
 
-This command fixes known problems with a given solution version. If you encounter errors while running the `Test-SupportAksArcKnownIssues` command above, use the follwoing command to remediate them:
+This command fixes known problems with a given solution version. If you encounter errors while running the `Test-SupportAksArcKnownIssues` command, use the following command to fix them:
+
 
 ```powershell
 Invoke-SupportAksArcRemediation
