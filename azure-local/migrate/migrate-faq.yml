@@ -96,7 +96,7 @@ sections:
 
           ### Are VMs that have secure boot enabled, supported for migration? 
         
-          Both Linux and Windows VMs that have secure boot enabled aren't supported in this release.
+          Yes, Secure Boot settings are preserved during migration for eligible UEFI (Generation 2) VMs. If Secure Boot is enabled on the source VM, it remains enabled on Azure Local after migration, helping maintain workload security posture.
 
           ### Can I use private endpoints with Azure Migrate for Azure Local migrations?
           
