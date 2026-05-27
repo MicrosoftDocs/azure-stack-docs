@@ -67,7 +67,7 @@ Azure Local small form factor deployments help protect the integrity of critical
 
 ## Data protection by default
   
-Azure Local small form factor deployments help protect sensitive data through multiple layers of encryption designed to safeguard information both at rest and in transit. 
+Azure Local small form factor deployments help protect sensitive data through multiple layers of encryption designed to safeguard information both at rest and in transit.
   
 ### Encrypting data at rest
 
@@ -81,7 +81,7 @@ If you're running AKS Arc, your cross-node communication between Kubernetes cont
 
 ### Centralized secrets management
 
-For scenarios requiring tighter control over sensitive credentials, you can store secrets in Azure Key Vault and sync only the required secrets locally using the Azure Key Vault Secret Store Extension. This reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
+For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally by using the Azure Key Vault Secret Store Extension. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
 
 ## Secure lifecycle and defense in depth
 
