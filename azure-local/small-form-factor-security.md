@@ -83,9 +83,9 @@ Azure Local small form factor deployments help protect sensitive data through mu
 
 - For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally by using the Azure Key Vault Secret Store Extension. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
 
-**Secure lifecycle and defense in depth:**
+## Secure lifecycle and defense in depth
 
-- Azure Local small form factor deployments are built and maintained by using secure engineering practices that reduce vulnerabilities over time and support reliable delivery of updates. Implement security as defense in depth by combining layered controls across the software lifecycle and runtime environment.
+Azure Local small form factor deployments are built and maintained by using secure engineering practices that reduce vulnerabilities over time and support reliable delivery of updates. Implement security as defense in depth by combining layered controls across the software lifecycle and runtime environment.
 
 **Embedding Microsoft Security Development Lifecycle best practices:**
 
