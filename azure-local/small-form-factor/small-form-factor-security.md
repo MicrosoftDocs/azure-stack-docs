@@ -13,7 +13,7 @@ ms.subservice: small-form-factor
 
 This article describes the built-in security capabilities for small form factor deployments of Azure Local and provides guidance for securing your environment.
 
-[!INCLUDE [hci-preview](includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 Small form factor deployments run in distributed edge environments where physical access, connectivity, and operational controls differ from traditional datacenters.
 
@@ -115,7 +115,7 @@ Use these capabilities to apply consistent access controls and security policies
 
 - Direct device access, such as SSH, is supported as an operational option for specific administrative or troubleshooting scenarios. Where enabled, restrict and control direct access by using strong authentication methods, least‑privilege access, and limited network exposure.
 
-- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-connect-portal?&branch=pr-en-us-20809#connect-to-the-machine-over-ssh).
+- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](/azure/azure-local/small-form-factor/small-form-factor-connect-portal#connect-to-the-machine-over-ssh.
 
 **Security baselines and best practices enabled by default:**
 
