@@ -81,7 +81,7 @@ Azure Local small form factor deployments help protect sensitive data through mu
 
 **Centralized secrets management:**
 
-- For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally by using the Azure Key Vault Secret Store Extension. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
+- For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally. When running Kubernetes-based deployments, either with AKS Arc or on third-party clusters such as K3s, you can use the [Azure Key Vault Secret Store Extension](/azure/azure-arc/kubernetes/secret-store-extension) to do so. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
 
 ## Secure lifecycle and defense in depth
 
