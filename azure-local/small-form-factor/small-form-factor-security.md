@@ -45,7 +45,7 @@ The security posture of Azure Local small form factor is built on four core pill
 
 Small form factor deployments use hardware-anchored identity and integrity capabilities to help establish device trust at startup and maintain platform integrity during operation. These capabilities reduce the risk of unauthorized changes to the platform across distributed edge deployments.
 
-For details on provisioning, see [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
+For details on provisioning, see [Install small form factor deployments of Azure Local](small-form-factor-installation.md).
 
 **Establishing a trusted boot process:**
 
@@ -115,7 +115,7 @@ Use these capabilities to apply consistent access controls and security policies
 
 - Direct device access, such as SSH, is supported as an operational option for specific administrative or troubleshooting scenarios. Where enabled, restrict and control direct access by using strong authentication methods, least‑privilege access, and limited network exposure.
 
-- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](/azure/azure-local/small-form-factor/small-form-factor-connect-portal#connect-to-the-machine-over-ssh.
+- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](small-form-factor-connect-portal.md#connect-to-the-machine-over-ssh).
 
 **Security baselines and best practices enabled by default:**
 
@@ -127,9 +127,9 @@ Use these capabilities to apply consistent access controls and security policies
 
 - Azure Local supports secure log collection workflows to help with troubleshooting, auditing, and security investigations. Role‑based access controls and supported collection processes govern access to logs and diagnostic data. You're responsible for retention, access, and downstream use in line with your organizational policies.
   
-- For more information about the process of log collection, see [Collect logs for small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-collect-system-logs?&branch=pr-en-us-20809).
+- For more information about the process of log collection, see [Collect logs for small form factor deployments of Azure Local](small-form-factor-collect-system-logs.md).
 
 ## Next steps
 
-- [Set up your Azure subscription for small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-subscription-setup?&branch=pr-en-us-20809).
-- [Install small form factor deployments of Azure Local](https://review.learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-installation?&branch=pr-en-us-20809).
+- [Set up your Azure subscription for small form factor deployments of Azure Local](small-form-factor-subscription-setup.md).
+- [Install small form factor deployments of Azure Local](small-form-factor-installation.md).
