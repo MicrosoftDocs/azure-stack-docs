@@ -2,10 +2,10 @@
 title: Troubleshoot issue in which AKS cluster creation fails
 description: Learn how to troubleshoot and mitigate an issue that causes AKS cluster creation to fail.
 ms.topic: troubleshooting
-author: rayoef
-ms.author: rayoflores
-ms.date: 12/16/2025
-ms.lastreviewed: 12/16/2025
+author: davidsmatlak
+ms.author: davidsmatlak
+ms.date: 05/27/2026
+ms.lastreviewed: 05/27/2026
 
 ---
 
@@ -24,6 +24,7 @@ az aksarc create --node-vm-size <Standard_NC16_L4_1>
 ## Workaround
 
 Create an AKS cluster with a non-GPU enabled default node pool, then add the needed GPU enabled node pool. 
+
 ```azurecli
 az aksarc create <default node pool size>
 az aksarc nodepool add --node-vm-size <Standard_NC16_L4_1>
