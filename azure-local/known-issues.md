@@ -49,7 +49,7 @@ The following table lists the fixed issues in this release:
 
 There are no known issues specific to this release. For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
 
-<--|Feature  |Issue    |Workaround |
+<!--|Feature  |Issue    |Workaround |
 |---------|---------|---------|-->
 
 ## Known issues from previous releases
