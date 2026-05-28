@@ -26,6 +26,8 @@ landingContent:
             url: overview/hyperconverged-overview.md
           - text: Multi-rack deployments
             url: multi-rack/multi-rack-overview.md
+          - text: Small form factor deployments
+            url: small-form-factor/small-form-factor-overview.md
           - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
 
@@ -38,6 +40,8 @@ landingContent:
             url: deploy/deploy-via-portal.md
           - text: Plan multi-rack
             url: multi-rack/multi-rack-prerequisites.md
+          - text: Deploy small form factor deployments
+            url: small-form-factor/small-form-factor-installation.md
           - text: Deploy disconnected operations
             url: manage/disconnected-operations-deploy.md
 
