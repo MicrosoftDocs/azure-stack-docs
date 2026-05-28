@@ -16,7 +16,7 @@ If you already installed a resource provider, you likely completed the following
 
 1. Update your Microsoft Entra home directory. Starting with build 1910, you must register a new application in your home directory tenant. This app enables Azure Stack Hub to successfully create and register newer resource providers (like Azure Event Hubs and others) with your Microsoft Entra tenant.
 
-   This action is required after you upgrade to build 1910 or newer. If you don't complete this step, installations of resource providers from the marketplace fail.
+   This action is required after you upgrade to build 1910 or later. If you don't complete this step, installations of resource providers from the marketplace fail.
 
 1. After you successfully update your Azure Stack Hub instance to 1910 or later, follow the [instructions for cloning/downloading the Azure Stack Hub Tools repository](../operator/azure-stack-powershell-download.md).
 

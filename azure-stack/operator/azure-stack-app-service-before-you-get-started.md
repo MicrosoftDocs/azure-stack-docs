@@ -444,7 +444,7 @@ Create-ADFSIdentityApp.ps1
 
 ### <a name = "download-items-from-the-azure-marketplace"></a>Download items from Microsoft Marketplace
 
-Azure App Service on Azure Stack Hub requires you to [download items from Microsoft Marketplace](azure-stack-download-azure-marketplace-item.md) to make them available in Azure Stack Hub Marketplace. Before you start the deployment or upgrade of Azure App Service on Azure Stack Hub, download the following items.
+Azure App Service on Azure Stack Hub requires you to [download items from Microsoft Marketplace](azure-stack-download-azure-marketplace-item.md) to make them available in the Azure Stack Hub marketplace. Before you start the deployment or upgrade of Azure App Service on Azure Stack Hub, download the following items.
 
 > [!IMPORTANT]
 > Windows Server Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.
@@ -482,10 +482,10 @@ Azure App Service on Azure Stack Hub requires you to [download items from Micros
 
   For information about creating a custom image and adding it to Marketplace, see [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md). Be sure to specify the following properties when you add the image to Marketplace:
 
-  - **Publisher** = Enter **MicrosoftWindowsServer**.
-  - **Offer** = Enter **WindowsServer**.
-  - **SKU** = Enter **2016-Datacenter**.
-  - **Version** = Specify the latest version.
+  - **Publisher**: Enter **MicrosoftWindowsServer**.
+  - **Offer**: Enter **WindowsServer**.
+  - **SKU**: Enter **2016-Datacenter**.
+  - **Version**: Specify the latest version.
 
 ::: zone-end
 

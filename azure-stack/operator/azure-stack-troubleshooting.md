@@ -55,15 +55,13 @@ A cloud operator can use the retention period setting to specify a time period i
 
 For more information, see [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period).
 
-### Security, compliance, and identity  
-
-#### Manage role-based access control
+### Management of role-based access control
 
 A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For more information, see [Set access permissions using role-based access control](azure-stack-manage-permissions.md).
 
 If the built-in roles for Azure resources don't meet the specific needs of your organization, you can [create your own custom roles](/azure/role-based-access-control/tutorial-custom-role-powershell).
 
-### Management of usage and billing as a CSP
+### Management of usage and billing based on subscription type
 
 Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that you can use for registration of a multitenant Azure Stack Hub deployment are Cloud Solution Provider (CSP) and Azure Partner Shared Services (APSS). For more information, see [Create a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).
 
@@ -79,7 +77,7 @@ You can use PowerShell to get stamp utilization information without help from Mi
    Test-AzureStack
    ```
 
-3. Close the PEP session.8
+3. Close the PEP session.
 
 4. Run the following command by using an invoke-command call:
 
@@ -227,11 +225,11 @@ The following problems and solutions apply to Azure Stack Hub integrated systems
 
 **Applicable**: This problem applies to all supported releases.
 
-**Cause**: When an Azure Stack Hub update is in the status **In progress**, warnings and errors might be reported in the portal. Components might time out while waiting for other components during an upgrade, resulting in an error. Azure Stack Hub has a mechanism to retry or remediate some of the tasks due to intermittent errors.
+**Cause**: When an Azure Stack Hub update is in the status **In progress**, warnings and errors might be reported in the portal. Components might time out while waiting for other components during an upgrade. This timeout results in an error. Azure Stack Hub has a mechanism to retry or remediate some of the tasks due to intermittent errors.
 
 **Remediation**: While the Azure Stack Hub update has an **In progress** status, you can ignore warnings and errors reported in the portal.
 
-**Occurrence**: Common
+**Occurrence**: Common.
 
 ::: moniker range="azs-2002"
 
