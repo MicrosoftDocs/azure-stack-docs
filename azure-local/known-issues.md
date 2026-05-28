@@ -42,6 +42,8 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |---------|---------|---------|
+| Azure Local VMs <!--37983058--> | Fixed an issue where instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | |
+Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations.
 | Azure Local VMs <!--30775126--> | Fixed an issue where the `az stack-hci-vm stop` command could fail when using CLI version 1.14.x against clusters running versions prior to 2604. | Improved compatibility for VM stop operations in CLI version 1.14.x on clusters running versions prior to 2604. |
 
 ## Known issues
