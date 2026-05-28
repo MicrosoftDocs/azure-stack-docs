@@ -79,7 +79,7 @@ You can use PowerShell to get stamp utilization information without help from Mi
    Test-AzureStack
    ```
 
-3. Close the PEP session.
+3. Close the PEP session.8
 
 4. Run the following command by using an invoke-command call:
 
@@ -87,7 +87,7 @@ You can use PowerShell to get stamp utilization information without help from Mi
    Get-AzureStackLog -FilterByRole SeedRing
    ```
 
-5. Extract the **SeedRing.zip** file. You can obtain the validation report from the **ERCS** folder where you ran `Test-AzureStack`.
+5. Extract the **SeedRing.zip** file. You can get the validation report from the **ERCS** folder where you ran `Test-AzureStack`.
 
 For more information, see [Send Azure Stack Hub diagnostic logs by using the privileged endpoint](azure-stack-get-azurestacklog.md).
 
@@ -95,7 +95,7 @@ For more information, see [Send Azure Stack Hub diagnostic logs by using the pri
 
 ### Reset of a Linux VM password
 
-If you forget the password for a Linux VM and the **Reset password** option isn't working due to problems with the VMAccess extension, you can perform a reset by following these steps:
+If you forget the password for a Linux VM and the **Reset password** option isn't working due to problems with the VMAccess extension, you can reset the password by following these steps:
 
 1. Choose a Linux VM to use as a recovery VM.
 
@@ -123,7 +123,7 @@ If you forget the password for a Linux VM and the **Reset password** option isn'
 
    1. Detach the disk from the recovery VM.
    1. Re-create the VM from the disk.
-   1. Transfer the public IP from the previous VM, attach the data disks, and do related tasks.
+   1. Transfer the public IP from the previous VM, attach the data disks, and complete related tasks.
 
 You can also take a snapshot of the original disk and create a new disk from it rather than perform the changes directly on the original disk. For more information, see these topics:
 
@@ -133,7 +133,7 @@ You can also take a snapshot of the original disk and create a new disk from it 
 
 ### License activation failure for Windows Server 2012 R2 during provisioning
 
-If there's a problem with license activation, Windows fails to activate and a watermark appears on the lower-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
+If there's a problem with license activation, Windows fails to activate and a watermark appears on the lower-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contain the following event:
 
 ```xml
 <Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
@@ -171,7 +171,7 @@ You must add a Windows Server image and gallery item before you deploy VMs in Az
 After you delete VMs, you might still see the VHD files on disk. This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
-* When a storage account is deleted, the deletion is visible immediately through Azure Resource Manager. But the disks that it might contain stay in storage until garbage collection runs.
+* When you delete a storage account, the deletion is visible immediately through Azure Resource Manager. But the disks that it might contain stay in storage until garbage collection runs.
 
 If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
 
@@ -179,7 +179,7 @@ If you see "orphan" VHDs, it's important to know if they're part of the folder f
 
 ### Storage reclamation
 
-Reclaimed capacity might take up to 14 hours to show up in the portal. Space reclamation depends on various factors, including usage percentage of internal container files in a block blob store. Depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when the garbage collector runs.
+Reclaimed capacity might take up to 14 hours to show up in the portal. Space reclamation depends on various factors, including the usage percentage of internal container files in a block blob store. Depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when the garbage collector runs.
 
 You can read more about configuring the retention threshold and on-demand reclamation in [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md).
 
@@ -191,9 +191,9 @@ If you're using an integrated system in a disconnected scenario, we recommend th
 
 If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when you're running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
 
-## Azure Stack Hub patches and updates
+## <a name = "troubleshoot-azure-stack-hub-updates"></a>Azure Stack Hub patches and updates
 
-The patch and update process for Azure Stack Hub is designed to allow operators to apply update packages in a consistent, streamlined way. Although problems are uncommon during the patch and update process, they can occur. We recommend the following steps if you encounter a problem.
+The patch and update process for Azure Stack Hub is designed to help operators apply update packages in a consistent, streamlined way. Although problems are uncommon during the patch and update process, they can occur. We recommend the following steps if you encounter a problem.
 
 Before you start, be sure to follow the [update activity checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
@@ -201,7 +201,7 @@ Before you start, be sure to follow the [update activity checklist](release-note
 
 2. If you can't resolve your problem, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure to [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the problem occurred.
 
-If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit doesn't stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period can cause additional problems that are more difficult to resolve later.
+If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert. Leaving a scale unit in a failed update state for a long time can cause additional problems that are more difficult to resolve later.
 
 The following problems and solutions apply to Azure Stack Hub integrated systems.
 
@@ -211,7 +211,7 @@ The following problems and solutions apply to Azure Stack Hub integrated systems
 
 **Cause**: When you try to install the Azure Stack Hub update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems, this state usually indicates that the update package can't be downloaded properly due to a weak internet connection.
 
-**Remediation**: You can work around this problem by selecting **Install now** again. If the problem persists, we recommend that you [manually upload the update package](azure-stack-apply-updates.md?#install-updates-and-monitor-progress).
+**Remediation**: Select **Install now** again. If the problem persists, [manually upload the update package](azure-stack-apply-updates.md?#install-updates-and-monitor-progress).
 
 **Occurrence**: Common.
 
@@ -227,7 +227,7 @@ The following problems and solutions apply to Azure Stack Hub integrated systems
 
 **Applicable**: This problem applies to all supported releases.
 
-**Cause**: When an Azure Stack Hub update is in the status **In progress**, warnings and errors might be reported in the portal. Components might time out waiting for other components during an upgrade, resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
+**Cause**: When an Azure Stack Hub update is in the status **In progress**, warnings and errors might be reported in the portal. Components might time out while waiting for other components during an upgrade, resulting in an error. Azure Stack Hub has a mechanism to retry or remediate some of the tasks due to intermittent errors.
 
 **Remediation**: While the Azure Stack Hub update has an **In progress** status, you can ignore warnings and errors reported in the portal.
 

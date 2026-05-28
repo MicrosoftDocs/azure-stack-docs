@@ -109,7 +109,7 @@ Before you deploy the App Service resource provider, [validate the certificates]
 
 When you're working with any of the necessary [Azure Stack Hub PKI certificates](azure-stack-pki-certs.md), plan enough time to test and reissue certificates if necessary.
 
-### Preparation of the file server
+### <a name = "prepare-the-file-server"></a>Preparation of the file server
 
 Azure App Service requires a file server. For production deployments, you must configure the file server to be highly available and capable of handling failures.
 
@@ -223,7 +223,7 @@ icacls %WEBSITES_FOLDER% /grant FileShareUsers:(CI)(S,X,RA)
 icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
-### Preparation of the SQL Server instance
+### <a name = "prepare-the-sql-server-instance"></a>Preparation of the SQL Server instance
 
 > [!NOTE]
 > If you chose to deploy the quickstart template for a highly available file server and SQL Server, you can skip this section. The template deploys and configures SQL Server in a highly available configuration.
@@ -248,7 +248,7 @@ RECONFIGURE;
 GO
 ```
 
-## Licensing concerns for the required file server and SQL Server
+## <a name = "licensing-concerns-for-required-file-server-and-sql-server"></a>Licensing concerns for the required file server and SQL Server
 
 Azure App Service on Azure Stack Hub requires a file server and SQL Server to operate. You can use preexisting resources located outside your Azure Stack Hub deployment or deploy resources within your Azure Stack Hub default provider subscription.
 
@@ -284,7 +284,7 @@ Get-AzureStackRootCert.ps1
 
 The network and identity configuration for Azure App Service on Azure Stack Hub involves setting up the necessary network infrastructure and identity management to support the resource provider.
 
-### Configure a virtual network
+### <a name = "virtual-network"></a>Configure a virtual network
 
 With Azure App Service on Azure Stack Hub, you can deploy the resource provider to an existing virtual network or create a virtual network as part of the deployment. If you use an existing virtual network, you can use internal IPs to connect to the file server and SQL Server instance that App Service on Azure Stack Hub requires.
 
@@ -442,7 +442,7 @@ Create-ADFSIdentityApp.ps1
 | `CertificateFilePath` | Required | `Null` | Full path to the identity application's certificate PFX file. |
 | `CertificatePassword` | Required | `Null` | Password that helps protect the certificate private key. |
 
-### Download items from Microsoft Marketplace
+### <a name = "download-items-from-the-azure-marketplace"></a>Download items from Microsoft Marketplace
 
 Azure App Service on Azure Stack Hub requires you to [download items from Microsoft Marketplace](azure-stack-download-azure-marketplace-item.md) to make them available in Azure Stack Hub Marketplace. Before you start the deployment or upgrade of Azure App Service on Azure Stack Hub, download the following items.
 
