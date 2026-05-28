@@ -13,10 +13,10 @@ zone_pivot_groups: select-os
 
 In this article, you learn how to download and install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
-Confirm your distribution, kernel, and architecture are supported:
+## Support matrix
 
-<details>
-<summary><strong>Support Matrix:  select to expand</strong></summary>
+<details id="support-matrix">
+<summary><strong>Select to expand</strong></summary>
 
 Each row is a distribution, architecture, Lustre client version, and kernel series combination that Microsoft publishes packages for. Authoritative source: [Linux software repository for Microsoft products](https://packages.microsoft.com).
 
@@ -44,19 +44,11 @@ Each row is a distribution, architecture, Lustre client version, and kernel seri
 
 **Notes:**
 
-- Only Ubuntu 24.04 currently provides arm64 packages. All other distributions are amd64 only.
-- Ubuntu kernels listed are the Azure LTS kernel for each distribution. The Azure Marketplace images for Ubuntu 22.04 and 24.04 use the Hardware Enablement (HWE) kernel by default. Switch to the Azure LTS kernel before you install the Lustre client. See the per-distribution instructions in the following sections.
-- AlmaLinux 9 occasionally ships kernel sub-revisions off Red Hat's z-stream cadence (for example, `5.14.0-611.54.6.el9_7` alongside Red Hat's `5.14.0-611.54.1.el9_7`). Microsoft publishes Lustre metapackages for those AlmaLinux-only sub-revisions as well. AlmaLinux 8 mirrors Red Hat's z-stream cadence, so no separate sub-revision handling is needed there.
-- Ubuntu 18.04 and RHEL 7 are frozen at Lustre 2.15.4. They reached end of life; no further Lustre client updates are published. Existing packages remain available for installation. Upgrade base OS for ongoing updates.
-- Package availability changes as new Linux kernels are released.  When a new maintenance kernel ships for an already-supported distribution kernel series, Microsoft typically publishes a matching Lustre metapackage within one business day.
+- **arm64 support:** Only Ubuntu 24.04 currently provides arm64 packages.
+- **Frozen distributions:** Ubuntu 18.04 and RHEL 7 are frozen at Lustre 2.15.4. They reached end of life; no further Lustre client updates are published. Existing packages remain available for installation. Upgrade base OS for ongoing updates.
+- **Kernel update cadence:** Package availability changes as new Linux kernels are released and as Lustre gains support.  When a new maintenance kernel ships for an already-supported distribution kernel series, Microsoft typically publishes a matching Lustre metapackage within one business day.
 
 </details>
-
-If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
-
-For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
-
-For more information about the behavior of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 
 ::: zone pivot="alma-86"
 
@@ -529,5 +521,7 @@ This article shows how to install the client package to set up client VMs runnin
 
 ## Related content
 
+- [Upgrade Lustre client software to the current version](client-upgrade.md)
 - [Connect clients to an Azure Managed Lustre file system](connect-clients.md)
+- [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 - [Azure Managed Lustre overview](amlfs-overview.md)
