@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 05/20/2026
+ms.date: 05/28/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,23 +17,23 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2605
 
-The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.1005**<!--update for 2605-->. For more information, see [Release information summary](./release-information-23h2.md).
+The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.210**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
 
-    - In the 2605 release, all new and existing deployments of Azure Local run the new OS version **26100.32690**<!--update for 2605--> (download from the Azure portal).
+    - In the 2605 release, all new and existing deployments of Azure Local run the new OS version **26100.32860** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.32690**<!--update for 2605--> or Windows Server 2025.
+    - You also need a driver that's compatible with OS version **26100.32860** or Windows Server 2025.
 
     - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
 
-    - This build uses .NET version **8.0.26**<!--update for 2605--> for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+    - This build uses .NET version **8.0.27** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-    - This build uses .NET version **10.0.6**<!--update for 2605--> for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+    - This build uses .NET version **10.0.8** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
 
@@ -49,7 +49,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
 
-    - In 2604 release, all the new and existing deployments of Azure Local run the new OS version **26100.32690** (download from the Azure portal).
+    - In the 2604 release, all new and existing deployments of Azure Local run the new OS version **26100.32690** (download from the Azure portal).
 
     - You also need a driver that's compatible with OS version **26100.32690** or Windows Server 2025.
 
@@ -64,7 +64,7 @@ This release includes various reliability improvements and bug fixes.
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
@@ -108,7 +108,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
 
-    - In 2603 release, all the new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
+    - In the 2603 release, all new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
 
     - You also need a driver that's compatible with OS version **26100.32522** or Windows Server 2025.
 
@@ -119,14 +119,14 @@ This release includes various reliability improvements and bug fixes.
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
 - **Support for NVIDIA RTX PRO 6000 Blackwell Server Edition GPU on Azure Local**: Starting with this release, NVIDIA RTX PRO 6000 GPU is supported on Azure Local VMs and Azure Kubernetes Service (AKS) enabled by Azure Arc. This feature allows you to run GPU-accelerated workloads on Azure Local using NVIDIA RTX PRO 6000 GPUs. For more information, see [Prepare GPUs for Azure Local instance](./manage/gpu-preparation.md).
 
-- **Improved Secure Boot Certificate readiness**: Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](./manage/manage-secure-boot-updates.md).
+- **Improved Secure Boot Certificate readiness**: Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](./manage/manage-secure-boot-updates.md).
 
 - **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
 
@@ -142,7 +142,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - In 2602 release, all the new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
+    - In the 2602 release, all new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
 
     - You also need a driver that's compatible with OS version **26100.32370** or Windows Server 2025.
 
@@ -153,7 +153,7 @@ This release includes various reliability improvements and other bug fixes.
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
@@ -175,7 +175,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - In 2601 release, all the new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
+    - In the 2601 release, all new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
 
     - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
 
@@ -199,7 +199,7 @@ This release includes various reliability improvements and other bug fixes.
 
     For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
-- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs directly from the Azure portal to help with support investigations. This eliminates the need to manually gather logs from individual nodes.
+- **Diagnostics log collection in Azure portal**: You can now collect diagnostics logs directly from the Azure portal to help with support investigations. This change eliminates the need to manually gather logs from individual nodes.
 
 - **Drift detection for Azure PowerShell modules and Azure Command-line Interface (CLI)**: This release adds the Drift Detection framework, enabling Azure Local to continuously validate component level state against the baseline of approved component versions and configurations. The system detects version mismatches during both deployment and runtime by comparing installed component metadata to that of the baseline. Administrators can manually trigger validation using the `Invoke-AzStackHciVSRDriftDetectionValidation` cmdlet to generate detailed drift reports for build components.
 
@@ -214,7 +214,7 @@ This release includes various reliability improvements and other bug fixes.
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
@@ -253,7 +253,7 @@ This release includes various reliability improvements and other bug fixes.
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
@@ -283,7 +283,7 @@ This release includes the following features and improvements:
 - **AKS enabled by Azure Arc changes**:
 
     - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
@@ -347,7 +347,7 @@ This release includes the following features and improvements:
 - **AKS enabled by Azure Arc changes**:
     - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
     - Support for Kubernetes version 1.32 is introduced. Kubernetes version 1.29 is no longer supported.
-    - KMS v1 will be deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
     - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
@@ -685,7 +685,7 @@ This release includes the following features and improvements:
 
 ## Next steps
 
-- [Read the Azure Local blog](https://aka.ms/ignite25/blog/azurelocal) post.
+- [Read the Azure Local blog](https://aka.ms/ignite25/blog/azurelocal).
 - Read the [blog announcing the general availability of Azure Local](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - Read [About hyperconverged deployment methods](./deploy/deployment-introduction.md).
 - Learn how to [Deploy Azure Local via the Azure portal](./deploy/deploy-via-portal.md).
