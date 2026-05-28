@@ -12,12 +12,15 @@ ms.subservice: hyperconverged
 # Azure Local release information
 
 > [!IMPORTANT]
-> Azure Local resumed solution updates to versions 2603, 2604, and 2605, including Solution Builder Extension (SBE) updates delivered by our partners.
+> **Azure Local solution updates resumed (including Solution Builder Extension updates)**
 >
-> As part of resuming solution updates, the 2601 and 2602 versions are removed and are no longer available as update targets:
+> Microsoft resolved an issue that could cause unintended Azure Local VM deletion. For affected clusters, Microsoft shared manual [remediation guidance](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). In addition, a newly released Telemetry & Diagnostics Arc extension (via a managed update) automatically remediated the majority of the remaining clusters.
 >
-> - If you're already on Azure Local versions 2601 or 2602, you're unaffected and can update forward to Azure Local versions 2603, 2604, or 2605.
-> - If you're on an earlier version, you can no longer update to Azure Local versions 2601 or 2602, and should update to version 2603 or later.
+> Hotfixes are now available for Azure Local versions 2603 and 2604 and add a second layer of automated remediation as you update into these versions. With those in place, Microsoft unblocked Solution and SBE updates. Azure Local versions 2601 and 2602 are removed as update targets; target 2603 or later instead. Customers already on 2601 or 2602 are unaffected and remain fully supported.
+>
+> - If you're on Azure Local versions 2510–2512, 2601, or 2602 → discover and apply solution version 12.2603.1002.502 or later
+> - If you're on Azure Local version 2603 → discover and apply solution version 12.2604.1003.1006 or later
+> - If you're on Azure Local version 2604 → discover and apply solution version 12.2605.1003.210
 >
 > Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
 >
