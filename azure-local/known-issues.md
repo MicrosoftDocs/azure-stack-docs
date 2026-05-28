@@ -91,7 +91,7 @@ For the 2604 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2604.1003.1005 | 26100.32690 |
+| 12.2604.1003.1006 | 26100.32690 |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2604.1003.1005** build.
@@ -167,7 +167,7 @@ For the 2603 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2603.1002.500 | 26100.32522 |
+| 12.2603.1002.502 | 26100.32522 |
 
 > [!IMPORTANT]
 > New deployments of this software use the **12.2603.1002.500** build.
