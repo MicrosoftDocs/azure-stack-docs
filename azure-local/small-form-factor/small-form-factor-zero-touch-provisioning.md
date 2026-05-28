@@ -11,7 +11,7 @@ ms.subservice: small-form-factor
 
 # Zero-touch provisioning for small form factor deployments of Azure Local (preview)
 
-This article describles zero-touch provisioning (ZTP) for small form factor deployments of Azure Local.
+This article describes zero-touch provisioning (ZTP) for small form factor deployments of Azure Local.
 
 Zero-touch provisioning reduces the manual work required to claim, configure, and manage a physical device from Azure. Instead of configuring each device on-site, the device acquires a simple network connection and ARM identity through an ownership voucher, and then receives its final configuration through Azure.
 
