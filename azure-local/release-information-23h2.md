@@ -15,7 +15,7 @@ ms.subservice: hyperconverged
 > Azure Local resumed solution updates to versions 2603, 2604, and 2605, including Solution Builder Extension (SBE) updates delivered by our partners.
 >
 > As part of resuming solution updates, the 2601 and 2602 versions are removed and are no longer available as update targets:
-> - If you're already on Azure Local versions 2601 or 2602, you are unaffected and can update forward to Azure Local versions 2603, 2604, or 2605.
+> - If you're already on Azure Local versions 2601 or 2602, you're unaffected and can update forward to Azure Local versions 2603, 2604, or 2605.
 > - If you are on an earlier version, you can no longer update to Azure Local versions 2601 or 2602, and should update to version 2603 or later.
 >   
 > Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
