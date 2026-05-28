@@ -1465,6 +1465,8 @@ items:
     items:
     - name: About small form factor deployments
       href: ./small-form-factor/small-form-factor-overview.md
+    - name: Security features
+      href: ./small-form-factor/small-form-factor-security.md
     - name: Known issues
       href: ./small-form-factor/small-form-factor-known-issues.md
     - name: FAQ
