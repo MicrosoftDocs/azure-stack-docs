@@ -5,15 +5,19 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 05/11/2026
+ms.date: 05/29/2026
 ms.subservice: hyperconverged
 ---
 
 # Azure Local release information
 
 > [!IMPORTANT]
-> Azure Local versions 2601 and later are **temporarily** blocked from receiving solution updates. This block also extends to Solution Builder Extension (SBE) updates that Azure Local partners deliver during this time. For more information, see [Known issues](known-issues.md?view=azloc-2604&preserve-view=true). 
-> 
+> Azure Local has now resumed solution updates to versions 2603, 2604, and 2605, including Solution Builder Extension (SBE) updates delivered by our partners.
+>
+> As part of resuming solution updates, the 2601 and 2602 versions have been removed and are no longer available as update targets:
+> - If you're already on Azure Local versions 2601 or 2602, you are unaffected and can update forward to Azure Local versions 2603, 2604, or 2605.
+> - If you are on an earlier version, you can no longer update to Azure Local versions 2601 or 2602, and should update to version 2603 or later.
+>   
 > Azure Local versions 11.2510.1002.93 and 12.2510.1002.531 (supersedes 12.2510.1002.529) are now available.
 >
 > - If you're on 11.2510.1002.87, you can upgrade directly to 12.2510.1002.531.
