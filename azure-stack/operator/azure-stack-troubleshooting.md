@@ -101,15 +101,15 @@ For more information, see [Send Azure Stack Hub diagnostic logs by using the pri
 
 ### Reset of Linux VM password
 
-If you forget the password for a Linux VM and the **Reset password** option is not working due to issues with the VMAccess extension, you can perform a reset following these steps:
+If you forget the password for a Linux VM and the **Reset password** option isn't working due to issues with the VMAccess extension, you can perform a reset by following these steps:
 
 1. Choose a Linux VM to use as a recovery VM.
 
-1. Sign in to the User portal:
-   1. Make a note of the VM size, NIC, Public IP, NSG and data disks.
-   1. Stop the impacted VM.
-   1. Remove the impacted VM.
-   1. Attach the disk from the impacted VM as a data disk on the recovery VM (it may take a couple of minutes for the disk to be available).
+1. Sign in to the user portal, and then:
+   1. Make a note of the VM size, NIC, public IP, network security group, and data disks.
+   1. Stop the affected VM.
+   1. Remove the affected VM.
+   1. Attach the disk from the affected VM as a data disk on the recovery VM. (The disk might take a couple of minutes to become available.)
 
 1. Sign in to the recovery VM and run the following command:
 
@@ -125,21 +125,21 @@ If you forget the password for a Linux VM and the **Reset password** option is n
    umount /tempmount
    ```
 
-1. Sign in to the User portal:
+1. Sign in to the user portal, and then:
 
-   1. Detach the disk from the Recovery VM.
-   1. Recreate the VM from the disk.
-   1. Be sure to transfer the Public IP from the previous VM, attach the data disks, etc.
+   1. Detach the disk from the recovery VM.
+   1. Re-create the VM from the disk.
+   1. Transfer the public IP from the previous VM, attach the data disks, and do related tasks.
 
-You may also take a snapshot of the original disk and create a new disk from it rather than perform the changes directly on the original disk. For more information, see these topics:
+You can also take a snapshot of the original disk and create a new disk from it rather than perform the changes directly on the original disk. For more information, see these topics:
 
-* [Reset password](/azure/virtual-machines/troubleshooting/reset-password)
+* [Reset a local Linux password on Azure VMs](/azure/virtual-machines/troubleshooting/reset-password)
 * [Create a disk from a snapshot](/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
-* [Changing and resetting the Root password](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader#sec-Changing_and_Resetting_the_Root_Password)
+* [Change and reset the root password](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader#sec-Changing_and_Resetting_the_Root_Password) (Red Hat Enterprise Linux documentation)
 
 ### License activation failure for Windows Server 2012 R2 during provisioning
 
-In this case, Windows fails to activate and you see a watermark on the bottom-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
+If there's a problem with license activation, Windows fails to activate and a watermark appears on the lower-right corner of the screen. The WaSetup.xml logs located under C:\Windows\Panther contains the following event:
 
 ```xml
 <Event time="2019-05-16T21:32:58.660Z" category="ERROR" source="Unattend">
@@ -152,9 +152,9 @@ In this case, Windows fails to activate and you see a watermark on the bottom-ri
 </Event>
 ```
 
-To activate the license, copy the Automatic Virtual Machine Activation (AVMA) key for the SKU you want to activate.
+To activate the license, copy the Automatic Virtual Machine Activation (AVMA) key for the edition that you want to activate.
 
-|Edition|AVMA Key|
+|Edition|AVMA key|
 |-|-|
 |Datacenter|Y4TGP-NPTV9-HTC2H-7MGQ3-DV4TW|
 |Standard|DBGBW-NPF86-BJVTX-K3WKJ-MTB6V|
@@ -166,40 +166,40 @@ On the VM, run the following command:
 slmgr /ipk <AVMA_key>
 ```
 
-For complete details, see [VM Activation](/windows-server/get-started-19/vm-activation-19).
+For complete details, see [Automatic Virtual Machine activation in Windows Server](/windows-server/get-started-19/vm-activation-19).
 
 ### Default image and gallery item
 
-A Windows Server image and gallery item must be added before deploying VMs in Azure Stack Hub.
+You must add a Windows Server image and gallery item before you deploy VMs in Azure Stack Hub.
 
 ### VHD files on disk after VM deletion
 
-This behavior is by design:
+After you delete VMs, you might still see the VHD files on disk. This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
-* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager. But the disks it may contain are still kept in storage until garbage collection runs.
+* When a storage account is deleted, the deletion is visible immediately through Azure Resource Manager. But the disks that it might contain stay in storage until garbage collection runs.
 
 If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
-
-You can read more about configuring the retention threshold and on-demand reclamation in [manage storage accounts](azure-stack-manage-storage-accounts.md).
 
 ## Storage
 
 ### Storage reclamation
 
-It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on different factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+Reclaimed capacity might take up to 14 hours to show up in the portal. Space reclamation depends on various factors, including usage percentage of internal container files in a block blob store. Depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+
+You can read more about configuring the retention threshold and on-demand reclamation in [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md).
 
 ### Azure Storage Explorer not working with Azure Stack Hub
 
-If you're using an integrated system in a disconnected scenario, it's recommended to use an Enterprise Certificate Authority (CA). Export the root certificate in a Base-64 format and then import it in Azure Storage Explorer. Make sure that you remove the trailing slash (`/`) from the Resource Manager endpoint. For more information, see [Prepare for connecting to Azure Stack Hub](../user/azure-stack-storage-connect-se.md).
+If you're using an integrated system in a disconnected scenario, we recommend that you use an enterprise certificate authority. Export the root certificate in a Base64 format and then import it in Azure Storage Explorer. Be sure to remove the trailing slash (`/`) from the Resource Manager endpoint. For more information, see [Prepare for connecting to Azure Stack Hub](../user/azure-stack-storage-connect-se.md#prepare-for-connecting-to-azure-stack-hub).
 
 ## App Service
 
-If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
+If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when you're running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).
 
 ## Azure Stack Hub patches and updates
 
-The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process.
+The patch and update process for Azure Stack Hub is designed to allow operators to apply update packages in a consistent, streamlined way. Althoug problems are uncommon, they can occur the during patch and update process. We recommend the following steps if you encounter a problem.
 
 Before you start, be sure to follow the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
@@ -231,7 +231,7 @@ The following problems and solutions apply to Azure Stack Hub integrated systems
 
 **Applicable**: This issue applies to all supported releases.
 
-**Cause**: When Azure Stack Hub update is in status **In progress**, warnings and errors may be reported in the portal. Components may timeout waiting for other components during upgrade resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
+**Cause**: When Azure Stack Hub update is in status **In progress**, warnings and errors might be reported in the portal. Components might timeout waiting for other components during upgrade resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
 
 **Remediation**: While the Azure Stack Hub update is in status **In progress**, warnings and errors reported in the portal can be ignored.
 
