@@ -20,7 +20,7 @@ This article provides troubleshooting information for Azure Stack Hub integrated
 
 ## Common support issues
 
-These sections include links to documentation that covers common questions sent to Microsoft Support about Azure Stack Hub.
+The following sections include links to documentation that covers common questions sent to Microsoft Support about Azure Stack Hub.
 
 ### Purchase considerations
 
@@ -34,7 +34,7 @@ These sections include links to documentation that covers common questions sent 
 * [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [Verify and troubleshoot node status](azure-stack-node-actions.md)
 
-### Supported operating systems and sizes for guest virtual machines
+### Supported operating systems and sizes for guest VMs
 
 * [Guest operating systems supported on Azure Stack Hub](azure-stack-supported-os.md)
 * [VM sizes supported in Azure Stack Hub](../user/azure-stack-vm-sizes.md)
@@ -51,31 +51,25 @@ To increase the total available memory capacity for Azure Stack Hub, you can add
 
 #### Retention period
 
-A cloud operator can use the retention period setting to specify a time period in days (0 to 9999 days) during which any deleted account can potentially be recovered. The default retention period is **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+A cloud operator can use the retention period setting to specify a time period in days (**0** to **9999**) during which any deleted account can potentially be recovered. The default retention period is **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
-* [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period)
+For more information, see [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period).
 
 ### Security, compliance, and identity  
 
 #### Manage role-based access control
 
-A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service.
+A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For more information, see [Set access permissions using role-based access control](azure-stack-manage-permissions.md).
 
-* [Set access permissions using role-based access control](azure-stack-manage-permissions.md)
-
-If the built-in roles for Azure resources don't meet the specific needs of your organization, you can create your own custom roles.
-
-* [Create an Azure custom role using Azure PowerShell](/azure/role-based-access-control/tutorial-custom-role-powershell)
+If the built-in roles for Azure resources don't meet the specific needs of your organization, you can [create your own custom roles](/azure/role-based-access-control/tutorial-custom-role-powershell).
 
 ### Management of usage and billing as a CSP
 
-Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that can be used for registration of a multitenant Azure Stack Hub are Cloud Solution Provider (CSP) and Azure Partner Shared Services (APSS).
-
-* [Create a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
+Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that you can use for registration of a multitenant Azure Stack Hub deployment are Cloud Solution Provider (CSP) and Azure Partner Shared Services (APSS). For more information, see [Create a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).
 
 ### Scale unit metrics
 
-You can use PowerShell to get stamp utilization information without help from Microsoft Support. To obtain stamp utilization:
+You can use PowerShell to get stamp utilization information without help from Microsoft Support:
 
 1. Create a [privileged endpoint (PEP) session](azure-stack-privileged-endpoint.md).
 
@@ -99,9 +93,9 @@ For more information, see [Send Azure Stack Hub diagnostic logs by using the pri
 
 ## Virtual machines
 
-### Reset of Linux VM password
+### Reset of a Linux VM password
 
-If you forget the password for a Linux VM and the **Reset password** option isn't working due to issues with the VMAccess extension, you can perform a reset by following these steps:
+If you forget the password for a Linux VM and the **Reset password** option isn't working due to problems with the VMAccess extension, you can perform a reset by following these steps:
 
 1. Choose a Linux VM to use as a recovery VM.
 
@@ -185,7 +179,7 @@ If you see "orphan" VHDs, it's important to know if they're part of the folder f
 
 ### Storage reclamation
 
-Reclaimed capacity might take up to 14 hours to show up in the portal. Space reclamation depends on various factors, including usage percentage of internal container files in a block blob store. Depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+Reclaimed capacity might take up to 14 hours to show up in the portal. Space reclamation depends on various factors, including usage percentage of internal container files in a block blob store. Depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when the garbage collector runs.
 
 You can read more about configuring the retention threshold and on-demand reclamation in [Manage Azure Stack Hub storage accounts](azure-stack-manage-storage-accounts.md).
 
@@ -199,41 +193,43 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 ## Azure Stack Hub patches and updates
 
-The patch and update process for Azure Stack Hub is designed to allow operators to apply update packages in a consistent, streamlined way. Althoug problems are uncommon, they can occur the during patch and update process. We recommend the following steps if you encounter a problem.
+The patch and update process for Azure Stack Hub is designed to allow operators to apply update packages in a consistent, streamlined way. Although problems are uncommon during the patch and update process, they can occur. We recommend the following steps if you encounter a problem.
 
-Before you start, be sure to follow the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
+Before you start, be sure to follow the [update activity checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
-1. Follow the remediation steps in the failure alert created when your update failed.
+1. Follow the remediation steps in the failure alert.
 
-2. If you're unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Make sure you [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred. If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit does not stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period of time can cause additional issues that are more difficult to resolve later.
+2. If you can't resolve your problem, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure to [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the problem occurred.
+
+If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit doesn't stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period can cause additional problems that are more difficult to resolve later.
 
 The following problems and solutions apply to Azure Stack Hub integrated systems.
 
-### PreparationFailed
+### PreparationFailed state
 
-**Applicable**: This issue applies to all supported releases.
+**Applicable**: This problem applies to all supported releases.
 
-**Cause**: When attempting to install the Azure Stack Hub update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems this is usually indicative of the update package being unable to download properly due to a weak internet connection.
+**Cause**: When you try to install the Azure Stack Hub update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems, this state usually indicates that the update package can't be downloaded properly due to a weak internet connection.
 
-**Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
+**Remediation**: You can work around this problem by selecting **Install now** again. If the problem persists, we recommend that you [manually upload the update package](azure-stack-apply-updates.md?#install-updates-and-monitor-progress).
 
-**Occurrence**: Common
+**Occurrence**: Common.
 
-### Update failed: Check and Enforce external key protectors on CSVs
+### Update failed with a warning to check and enforce external key protectors on CSVs
 
-**Applicable**: This issue applies to all supported releases.
+**Applicable**: This problem applies to all supported releases.
 
-**Cause**: The baseboard management controller (BMC) password is not set correctly.
+**Cause**: The baseboard management controller (BMC) password isn't set correctly.
 
 **Remediation**: [Update the BMC credential](./azure-stack-rotate-secrets.md#update-the-bmc-credential) and resume the update.
 
-### Warnings and errors reported while update is in progress
+### Warnings and errors reported while an update is in progress
 
-**Applicable**: This issue applies to all supported releases.
+**Applicable**: This problem applies to all supported releases.
 
-**Cause**: When Azure Stack Hub update is in status **In progress**, warnings and errors might be reported in the portal. Components might timeout waiting for other components during upgrade resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
+**Cause**: When an Azure Stack Hub update is in the status **In progress**, warnings and errors might be reported in the portal. Components might time out waiting for other components during an upgrade, resulting in an error. Azure Stack Hub has mechanism to retry or remediate some of the tasks due to intermittent errors.
 
-**Remediation**: While the Azure Stack Hub update is in status **In progress**, warnings and errors reported in the portal can be ignored.
+**Remediation**: While the Azure Stack Hub update has an **In progress** status, you can ignore warnings and errors reported in the portal.
 
 **Occurrence**: Common
 
@@ -241,9 +237,9 @@ The following problems and solutions apply to Azure Stack Hub integrated systems
 
 ### 2002 update failed
 
-**Applicable**: This issue applies only to the 2002 release.
+**Applicable**: This problem applies only to the 2002 release.
 
-**Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
+**Cause**: When you attempt the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
 
 **Remediation**:
 [Set up a private internal network](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network).
