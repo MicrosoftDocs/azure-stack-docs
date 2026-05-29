@@ -75,7 +75,11 @@ landingContent:
         links:
           - text: What is AKS on bare metal?
             url: aks-bare-metal-overview.md
-      - linkListType: quickstart
+      - linkListType: concept
+        links:
+          - text: Check system requirements
+            url: aks-bare-metal-system-requirements.md
+      - linkListType: deploy
         links:
           - text: Deploy an AKS on bare metal cluster
             url: aks-bare-metal-create-cluster-portal.md
