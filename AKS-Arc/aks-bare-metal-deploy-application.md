@@ -3,6 +3,8 @@ title: Deploy an application on AKS on bare metal
 description: Learn how to deploy a containerized application to your Azure Kubernetes Service on bare metal cluster.
 ms.topic: how-to
 ms.date: 06/01/2026
+author: SummerSmith
+ms.author: sumsmith
 ---
 
 # Deploy an application
