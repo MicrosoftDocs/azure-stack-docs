@@ -10,7 +10,7 @@ ms.author: sumsmith
 # Deploy a sample application on AKS on bare metal (preview)
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal preview is partially covered by customer support on a best-effort basis.
 
 This article walks you through deploying a sample application to your AKS on bare metal cluster and accessing it.
 
@@ -21,7 +21,7 @@ This article walks you through deploying a sample application to your AKS on bar
 - `kubectl` installed and configured
 
 ## Deploy a sample nginx application
-Follow the steps below to deploy a simple nginx deployment on your AKS on bare metal cluster.
+Follow the steps below to deploy a nginx deployment on your AKS on bare metal cluster.
 
 ### Step 1: Create the deployment
 
@@ -128,19 +128,19 @@ kubectl apply -f hello-app.yaml
 
 Since AKS on bare metal runs a single-node cluster during public preview:
 
-- **Set resource requests and limits** — Prevents workloads from consuming all host resources and starving the control plane
-- **Reserve capacity for the control plane** — The Kubernetes control plane requires approximately 2 GB RAM and 1 CPU core
-- **Use NodePort for external access** — LoadBalancer type is not supported during preview
-- **Pull images from MCR** — Microsoft Container Registry (`mcr.microsoft.com`) images are guaranteed to be accessible
+- **Set resource requests and limits**: Prevents workloads from consuming all host resources and starving the control plane
+- **Reserve capacity for the control plane**: The Kubernetes control plane requires approximately 2-GB RAM and 1 CPU core
+- **Use NodePort for external access**: LoadBalancer type isn't supported during preview
+- **Pull images from MCR**: Microsoft Container Registry (`mcr.microsoft.com`) images are guaranteed to be accessible
 
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
 | Pod stuck in `ErrImagePull` | Verify the host can reach `mcr.microsoft.com`. Check DNS and firewall rules |
-| Pod stuck in `Pending` | Check node resources: `kubectl describe node` — look for CPU or memory pressure |
+| Pod stuck in `Pending` | Check node resources: `kubectl describe node`. Look for CPU or memory pressure |
 | Service not accessible | Verify you're using the correct NodePort and host IP. Check firewall allows the port |
-| `context deadline exceeded` on kubectl | The `az connectedk8s proxy` is not running. Restart it in another terminal |
+| `context deadline exceeded` on kubectl | The `az connectedk8s proxy` isn't running. Restart it in another terminal |
 
 ## Clean up
 
