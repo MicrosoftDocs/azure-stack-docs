@@ -16,7 +16,7 @@ This article shows you how to create an Azure Kubernetes Service (AKS) cluster o
 
 ## Prerequisites
 
-Complete all [system requirements and prerequisites](system-requirements.md) before you begin.
+Complete all [system requirements and prerequisites](aks-bare-metal-system-requirements.md) before you begin.
 
 ## Step 1: Download the ARM parameters file
 
@@ -108,7 +108,7 @@ Then, in a new terminal:
 kubectl get nodes
 ```
 
-For detailed connection instructions, see [Connect to your cluster](connect-to-cluster.md).
+For detailed connection instructions, see [Connect to your cluster](aks-bare-metal-connect-to-cluster.md).
 
 ## What the template creates
 
