@@ -17,7 +17,7 @@ This article walks you through deploying a sample application to your AKS on bar
 ## Prerequisites
 
 - An AKS on bare metal cluster in a **Succeeded** state
-- Connected to the cluster via `az connectedk8s proxy` (see [Connect to your cluster](connect-to-cluster.md))
+- Connected to the cluster via `az connectedk8s proxy` (see [Connect to your cluster](aks-bare-metal-connect-to-cluster.md))
 - `kubectl` installed and configured
 
 ## Deploy a sample nginx application
@@ -152,5 +152,4 @@ kubectl delete svc nginx
 
 ## Next steps
 
-- [Use Azure RBAC for Kubernetes authorization](azure-rbac.md)
-- [Upgrade your cluster](upgrade-cluster.md)
+- [Upgrade your cluster](aks-bare-metal-upgrade-cluster.md)
