@@ -44,11 +44,7 @@ Customer support provides **best-effort** assistance for public preview features
 - Might introduce breaking changes before GA.
 - Might be deprecated or removed.
 
-## Known issues
-
-For current known issues and workarounds, see [Known issues (public preview)](known-issues.md).
-
 ## Next steps
 
-- [What is AKS on bare metal?](what-is-aks-on-bare-metal.md)
-- [System requirements and prerequisites](system-requirements.md)
+- [What is AKS on bare metal?](aks-bare-metal-overview.md)
+- [System requirements and prerequisites](aks-bare-metal-system-requirements.md)
