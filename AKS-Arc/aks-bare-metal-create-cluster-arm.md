@@ -70,9 +70,9 @@ These parameters default to standard Microsoft tenant values. Override them only
 
 | Parameter | How to look up |
 |-----------|----------------|
-| `azureStackHciRpPrincipalId` | `az ad sp show --id 1412d89f-b8a8-4111-b4fd-e82905cbd85d --query id -o tsv` |
-| `aksArcCloudMgmtPrincipalId` | `az ad sp show --id 89ad4ee6-8387-4829-9ce1-885479863c60 --query id -o tsv` |
-| `cmpAppPrincipalId` | `az ad sp show --id f76c49e3-2a2f-4584-ac3b-0a2ccd30cce2 --query id -o tsv` |
+| `azureStackHciRpPrincipalId` | `az ad sp show --id aaaaaaaa-bbbb-cccc-1111-222222222222 --query id -o tsv` |
+| `aksArcCloudMgmtPrincipalId` | `az ad sp show --id bbbbbbbb-cccc-dddd-2222-333333333333 --query id -o tsv` |
+| `cmpAppPrincipalId` | `az ad sp show --id cccccccc-dddd-eeee-3333-444444444444 --query id -o tsv` |
 | `cmpDevUaiPrincipalId` | Environment-specific. Override for your subscription. |
 | `deployerPrincipalType` | Set to `ServicePrincipal` when deploying from a pipeline. Default: `User`. |
 
