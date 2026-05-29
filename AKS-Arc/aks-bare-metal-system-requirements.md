@@ -1,5 +1,5 @@
 ---
-title: System requirements and prerequisites for AKS on bare metal
+title: System requirements and prerequisites for AKS on bare metal (preview)
 description: Hardware, network, and Azure prerequisites for deploying Azure Kubernetes Service on bare metal.
 ms.topic: conceptual
 ms.date: 06/01/2026
@@ -7,10 +7,10 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# System requirements and prerequisites
+# System requirements and prerequisites (preview)
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
 This article describes the hardware, network, and Azure requirements for deploying Azure Kubernetes Service (AKS) on bare metal.
 
