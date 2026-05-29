@@ -31,6 +31,9 @@ AKS on bare metal supports in-place Kubernetes version upgrades. During an upgra
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Navigate to your Kubernetes cluster resource.
 1. In the left menu, expand **Settings** and select **Cluster configuration**.
+
+![Screenshot of the Cluster configuration option for your AKS on bare metal cluster.](./media/aks-bare-metal-upgrade-cluster/upgrade-cluster.png)
+   
 1. Under **Upgrade**, note your current Kubernetes version.
 1. Select **Upgrade version**.
 1. Select the target Kubernetes version and confirm.
