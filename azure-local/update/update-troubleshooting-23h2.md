@@ -33,7 +33,7 @@ The troubleshooting steps differ depending on which scenario the readiness check
 
 This scenario occurs when preparing to install system updates in Azure Update Manager:
 
-1. In the system list, review the **Update readiness** status. Systems that require attention show a **Critical** state.
+1. In the system list, select the **Update readiness** status. Systems that require attention show a **Critical** or **Warning** state.
 
     :::image type="content" source="media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="media/troubleshoot-updates/update-manager.png":::
 
