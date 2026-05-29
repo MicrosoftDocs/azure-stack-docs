@@ -37,7 +37,6 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
 
     :::image type="content" source="media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="media/troubleshoot-updates/update-manager.png":::
 
-1. Select one or more systems from the list, and then select **Install now**.  
 
 1. On the **Check readiness** tab, review the list of readiness checks and their results.
 
