@@ -1,5 +1,5 @@
 ---
-title: Create an AKS on bare metal cluster using the Azure portal
+title: Create an AKS on bare metal cluster using the Azure portal (preview)
 description: Learn how to deploy an Azure Kubernetes Service (AKS) cluster on bare metal using the Azure portal.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Create an AKS on bare metal cluster using the Azure portal
+# Create an AKS on bare metal cluster using the Azure portal (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
