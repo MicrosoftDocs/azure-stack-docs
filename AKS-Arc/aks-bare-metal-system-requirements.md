@@ -16,7 +16,7 @@ This article describes the hardware, network, and Azure requirements for deployi
 
 ## Hardware requirements
 
-Use one of the [supported devices for small form factor deployments of Azure Local.](/azure-local/small-form-factor/small-form-factor-overview.md#supported-devices)
+Use one of the [supported devices for small form factor deployments of Azure Local.](/azure-local/small-form-factor/small-form-factor-overview.md)
 
 ## Network requirements
 
@@ -51,7 +51,7 @@ You need one IP address planned before deployment:
 | Region | **East US** (only supported region for public preview) |
 | Role | **Owner** or **Contributor + User Access Administrator** on the resource group |
 | Role assignment status | Must be both **Active** and **Permanent** |
-| Resource providers | [`Microsoft.HybridCompute`](azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep), [`Microsoft.HybridContainerService`](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template), [`Microsoft.Kubernetes`](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-bicep), [`Microsoft.ExtendedLocation`](/azure/templates/microsoft.extendedlocation/customlocations?pivots=deployment-language-bicep) must be registered |
+| Resource providers | [`Microsoft.HybridCompute`](/azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep), [`Microsoft.HybridContainerService`](/azure/templates/microsoft.hybridcontainerservice/provisionedclusters?pivots=deployment-language-bicep), [`Microsoft.Kubernetes`](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-bicep), [`Microsoft.ExtendedLocation`](/azure/templates/microsoft.extendedlocation/customlocations?pivots=deployment-language-bicep) must be registered |
 
 > [!IMPORTANT]
 > If your role assignment isn't active and permanent, you might need to temporarily elevate your permissions before running deployment commands.
@@ -78,7 +78,7 @@ az extension add --name connectedk8s
 
 ### Arc-enabled machine
 
-Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](https://learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-overview?view=azloc-2605).
+Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](/azure-local/small-form-factor/small-form-factor-overview.md).
 
 
 ## Entra ID requirements
