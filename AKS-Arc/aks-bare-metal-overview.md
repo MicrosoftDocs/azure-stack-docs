@@ -42,20 +42,9 @@ AKS on bare metal deploys a Kubernetes cluster directly onto an Azure Arc-enable
 
 You manage all resources through Azure Resource Manager and see them in the Azure portal.
 
-## Architecture overview
-
-![image.png](/.attachments/image-98ec65d9-ecdb-42a0-8615-05330040805c.png)
-
 ## Public preview scope
 
-During public preview, AKS on bare metal supports:
-
-- Single-node clusters
-- Small form factor Azure Local device as the host OS
-- Kubernetes versions 1.34.2 and 1.34.3
-- Region: **East US** only
-- Zero-rated billing (no charges during preview)
-- Cluster creation via Azure portal, Bicep, and ARM templates
+See the [AKS on bare metal preview limitations page](aks-bare-metal-preview-limitations.md) for an overview of what is available during public preview. 
 
 ## Next steps
 
