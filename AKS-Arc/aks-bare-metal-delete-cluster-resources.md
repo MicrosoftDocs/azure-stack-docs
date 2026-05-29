@@ -1,5 +1,5 @@
 ---
-title: Delete AKS on bare metal cluster resources
+title: Delete AKS on bare metal cluster resources (preview)
 description: Learn how to delete Azure Kubernetes Service on bare metal cluster resources and edge machine resources from Azure in the correct order.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Delete AKS on bare metal cluster resources
+# Delete AKS on bare metal cluster resources (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
