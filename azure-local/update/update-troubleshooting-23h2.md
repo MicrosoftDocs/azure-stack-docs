@@ -4,10 +4,9 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 05/28/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
-#customer intent: As a Principal Content Developer, I want provide customers with information and guidance on how to troubleshoot solution updats for their Azure Local intances.
 ---
 
 # Troubleshoot solution updates for Azure Local
@@ -34,24 +33,25 @@ The troubleshooting steps differ depending on which scenario the readiness check
 
 This scenario occurs when preparing to install system updates in Azure Update Manager:
 
-1. In the system list, view the **Critical** state of **Update readiness**.
+1. In the system list, review the **Update readiness** status. Systems that require attention show a **Critical** state.
 
     :::image type="content" source="media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="media/troubleshoot-updates/update-manager.png":::
 
-1. Select one or more systems from the list, then select **Install now**.  
+1. Select one or more systems from the list, and then select **Install now**.  
 
 1. On the **Check readiness** tab, review the list of readiness checks and their results.
 
-    1. Select the links under **Details**.
+    1. Select the links under **Details** to view more information.
 
     1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
 
-    :::image type="content" source="media/troubleshoot-updates/install-updates.png" alt-text="Screenshot of Install updates page." lightbox="media/troubleshoot-updates/install-updates.png":::
+        :::image type="content" source="media/troubleshoot-updates/readiness-checks.png" alt-text="Screenshot of Readiness checks with multiple critical errors, highlighting a storage health check failure and its detailed error message with remediation guidance." lightbox="media/troubleshoot-updates/readiness-checks.png":::
 
-    To resolve the failures, follow the remediation instructions provided.
+    1. Follow the remediation steps provided to resolve any failures.
 
-    > [!NOTE]
-    > The system health checks run every 24 hours, so it might take up to 24 hours for the new results to sync to the Azure portal after remediating the failures. To initiate a new system health check immediately or further troubleshoot, see the [PowerShell](#using-powershell) section.
+    1. After resolving the issues, select **Check again** to rerun the readiness checks.
+    
+        :::image type="content" source="media/troubleshoot-updates/readiness-check-again.png" alt-text="Screenshot of Readiness checks showing the Check again button." lightbox="media/troubleshoot-updates/readiness-check-again.png":::
 
 ### Using Azure portal, scenario 2: Update readiness checks
 
