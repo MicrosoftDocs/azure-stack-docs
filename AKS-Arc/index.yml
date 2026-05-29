@@ -69,6 +69,17 @@ landingContent:
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
+  - title: Get started with AKS on bare metal
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS on bare metal?
+            url: aks-bare-metal-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Deploy an AKS on bare metal cluster
+            url: aks-bare-metal-create-cluster-portal.md
+
   - title: Get started with AKS enabled by Azure Arc on VMware
     linkLists:
       - linkListType: overview
