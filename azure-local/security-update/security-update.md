@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 04/17/2026
+ms.date: 05/15/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -11,6 +11,108 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2605"
+
+## May OS security update (KB5087539) for Azure Local
+
+This section describes the 2605 security updates associated with OS build **26100.32860** released on May 12, 2026 ([KB5087539](https://support.microsoft.com/help/5087539)).
+
+For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
+
+## Improvements
+
+This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/en-us/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
+
+- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+
+- **[Connectivity]** This update improves the reliability of Simple Service Discovery Protocol (SSDP) notifications to help prevent the service from becoming unresponsive.
+
+- **[Daylight saving time (DST)]** This update supports the 2023 DST change for the Arab Republic of Egypt.
+
+- **[Domain controllers]** This update improves the performance of the Local Security Authority Subsystem Service (LSASS) on domain controllers when Microsoft Defender is enabled. It reduces CPU and memory usage during Event Tracing for Windows collection of IDL_DRSGetNCChanges events.
+
+- **[Remote Desktop (known issue)]** Fixed: This update addresses an issue that affects the Remote Desktop Connection security warning dialog. The dialog could render incorrectly in multimonitor scenario when the monitors had different scaling set. This problem might occur after installing the April 2026 ([KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true)) security update. For more information, see [Understanding security warnings when opening Remote Desktop (RDP) files](/windows-server/remote/remote-desktop-services/remotepc/understanding-security-warnings).
+
+- **​​​[Sign-In]** After you install the Windows update released on or after March 10, 2026, some users might experience an issue signing in to apps with a Microsoft account. Even when the device has a working Internet connection, a "no Internet" error appears during sign in and prevents access to Microsoft services and apps such as Microsoft Teams.
+
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
+
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
+
+### Devices with an unrecommended BitLocker Group Policy configuration might need to enter their BitLocker recovery key
+
+**Symptom**
+
+Some devices with an unrecommended BitLocker Group Policy configuration might need to enter their BitLocker recovery key on the first restart after installing this update.
+
+This issue only affects a limited number of systems in which **all** of the following conditions are true. These conditions are unlikely to be found on personal devices that IT departments don't manage.
+
+1. BitLocker is enabled on the OS drive.
+
+1. The Group Policy `Configure TPM platform validation profile for native UEFI firmware configurations` is configured, and PCR7 is included in the validation profile (or the equivalent registry key is set manually).
+
+1. System Information (`msinfo32.exe`) reports Secure Boot State PCR7 Binding as `Not Possible`.
+
+1. The Windows UEFI CA 2023 certificate is present in the device’s Secure Boot Signature Database (DB), making the device eligible for the 2023‑signed Windows Boot Manager to be made the default.
+
+1. The device isn't already running the 2023-signed Windows Boot Manager.
+
+In this scenario, the user only needs to enter the BitLocker recovery key once. Subsequent restarts don't trigger a BitLocker recovery screen, as long as the group policy configuration remains unchanged. For help finding your BitLocker recovery key, see the article, [Find your BitLocker recovery key](https://support.microsoft.com/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6).
+
+Enterprises should audit their BitLocker group policies for explicit PCR7 inclusion and check msinfo32.exe for their PCR7 binding status before installing this update. (See the Workaround section.)
+
+**Workaround**
+
+**Remove the Group Policy configuration before installing the update (Recommended)**
+
+1. Open Group Policy Editor (`gpedit.msc`) or your Group Policy Management Console.
+
+1. Go to: **Computer Configuration** > **Administrative Templates** > **Windows Components** > **BitLocker Drive Encryption** > **Operating System Drives**.
+
+1. Set `Configure TPM platform validation profile for native UEFI firmware configurations` to `Not Configured`.
+
+1. Run the following command on affected devices to propagate the policy change:
+
+    ```
+    gpupdate /force
+    ```
+
+1. Run the following command to suspend BitLocker (where BitLocker is enabled on the C: drive):
+
+    ```
+    manage-bde -protectors -disable C:  
+    ```
+
+1. Run the following command to resume BitLocker (where BitLocker is enabled on the C: drive):
+
+    ```
+    manage-bde -protectors -enable C:  
+    ```
+
+1. ​​​​​​​This command updates the BitLocker bindings to use the Windows-selected default PCR profile.
+
+A permanent resolution for this issue is planned in a future Windows update. More information will be provided when it's available.
+
+## To install
+
+### Before you install this update
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-May).
+
+## File information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5087539](https://go.microsoft.com/fwlink/?linkid=2364610).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2604"
 
@@ -46,11 +148,11 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **​​​​​​​[Texts and Fonts]** This update improves Windows fonts by adding the new Saudi Riyal currency symbol. This change helps keep text clear, accurate, and visually consistent across your Windows apps and experiences​​​​​​​.
 
-- **[Windows Deployment Services (WDS)]** This update disables the “Hands-Free Deployment” feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
+- **[Windows Deployment Services (WDS)]** This update disables the "Hands-Free Deployment" feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -90,7 +192,7 @@ This security update contains fixes and quality improvements from [KB5075899](
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -157,7 +259,7 @@ This security update contains fixes and quality improvements from [KB5073379](ht
 
   Data to be set: `0`
 
-For an overview of Azure local, see [What is Azure Local?](../overview.md)
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
@@ -279,23 +381,23 @@ For a list of the files that are provided in this update, download the file info
 ::: moniker-end
 
 
-::: moniker range="=azloc-2511"
+::: moniker range="=azloc-previous"
 
 ## November OS security update (KB5068861) for Azure Local
 
 This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171** released on November 11, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-## Simplified Windows update titles
+### Simplified Windows update titles
 
 A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
  
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5068861](https://support.microsoft.com/topic/november-11-2025-kb5068861-os-builds-26200-7171-and-26100-7171-2e0512e4-3ad4-4da6-958c-a468a1af949e) (released November 11, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -326,11 +428,11 @@ To turn off strict parsing, use the following registry key and values:
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-## Known issues
+### Known issues
 
 Microsoft is not currently aware of any issues with this update.
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -338,14 +440,9 @@ For more information about security vulnerabilities addressed by this update, se
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5068861](https://go.microsoft.com/fwlink/?linkid=2340951).
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## October OS security updates (KB5066780 and KB5066835) for Azure Local
 
