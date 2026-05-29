@@ -3,6 +3,8 @@ title: What is Azure Kubernetes Service on bare metal?
 description: Learn about Azure Kubernetes Service (AKS) on bare metal, a deployment option that runs Kubernetes directly on hardware without a hypervisor layer.
 ms.topic: overview
 ms.date: 06/01/2026
+author: SummerSmith
+ms.author: sumsmith
 ---
 
 # What is Azure Kubernetes Service on bare metal?
