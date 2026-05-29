@@ -16,13 +16,7 @@ This article describes the hardware, network, and Azure requirements for deployi
 
 ## Hardware requirements
 
-| Requirement | Minimum | Recommended |
-|-------------|---------|-------------|
-| Hardware platform | A small form factor Azure Local device | A small form factor Azure Local device |
-| Host OS | Azure Linux | Azure Linux |
-| CPU | 4 cores | 8+ cores |
-| RAM | 16 GB | 32+ GB |
-| Storage | 128 GB SSD | 256+ GB SSD |
+Use one of the [supported devices for small form factor deployments of Azure Local.](https://learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-overview?view=azloc-2605#supported-devices)
 
 ## Network requirements
 
@@ -84,7 +78,7 @@ az extension add --name connectedk8s
 
 ### Arc-enabled machine
 
-Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](https://learn.microsoft.com/azure/TODO-azure-local-sff-setup).
+Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](https://learn.microsoft.com/azure/azure-local/small-form-factor/small-form-factor-overview?view=azloc-2605).
 
 
 ## Entra ID requirements
@@ -98,6 +92,4 @@ To use Azure RBAC for cluster access:
 
 ## Next steps
 
-- [Create a Kubernetes cluster using the Azure portal](create-cluster-portal.md)
-- [Create a Kubernetes cluster using Bicep](create-cluster-bicep.md)
-- [Create a Kubernetes cluster using an ARM template](create-cluster-arm.md)
+- [Create a Kubernetes cluster using the Azure portal](aks-bare-metal-create-cluster-portal.md)
