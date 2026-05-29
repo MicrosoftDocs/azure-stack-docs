@@ -67,7 +67,7 @@ To install system updates using Azure Update Manager, follow these steps:
 1. On the **Check readiness** page, review the list of readiness checks and their results.
 
     - To view more details and individual system results, select the links under **Details**. For information on the check types, see [About readiness checks](#about-readiness-checks).
-    - The Azure portal displays details only for failed health checks. Detailed readiness check results, including successful checks, are available in PowerShell. For more information, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md#using-powershell).
+    - The Azure portal displays details only for informational, warning, and failed health checks. Detailed readiness check results, including successful checks, are available in PowerShell. For more information, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md#using-powershell).
     - For failed readiness checks, review details and remediation messages via the links under **Details**. To further troubleshoot, see [Troubleshoot updates](./update-troubleshooting-23h2.md) before proceeding.
 
     :::image type="content" source="media/azure-update-manager/check-readiness.png" alt-text="Screenshot on the check readiness of updates in Azure Update Manager." lightbox="media/azure-update-manager/check-readiness.png":::
