@@ -12,6 +12,9 @@ ms.reviewer: simonw, joasa
 
 # Known issues in Azure Migrate for Azure Local
 
+This article identifies critical known issues and their workarounds in Azure Migrate for Azure Local.
+
+These release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added.
 ## Static IP address conflicts during migration
 
 When you migrate a virtual machine (VM) from VMware to Azure Local and retain a static IP address, the migration fails and generates an `InUse` error if the IP address is already assigned to another resource. This problem is common when you migrate domain controller VMs or other role-based VMs.
