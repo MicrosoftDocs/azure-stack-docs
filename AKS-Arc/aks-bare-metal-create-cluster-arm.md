@@ -130,5 +130,5 @@ The ARM template deploys the following resources in order:
 
 ## Next steps
 
-- [Connect to your cluster](connect-to-cluster.md)
-- [Deploy an application](deploy-application.md)
+- [Connect to your cluster](aks-bare-metal-connect-to-cluster.md)
+- [Deploy an application](aks-bare-metal-deploy-application.md)
