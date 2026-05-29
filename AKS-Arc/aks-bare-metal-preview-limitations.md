@@ -1,5 +1,5 @@
 ---
-title: Public preview limitations for AKS on bare metal
+title: Public preview limitations for AKS on bare metal (preview)
 description: Known limitations and scope for the Azure Kubernetes Service on bare metal public preview.
 ms.topic: conceptual
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Public preview limitations
+# Public preview limitations (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. For legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability, see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
