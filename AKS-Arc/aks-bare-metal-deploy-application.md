@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Deploy an application
+# Deploy a sample application
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
