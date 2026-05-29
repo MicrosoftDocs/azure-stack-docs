@@ -20,7 +20,7 @@ These release notes are continuously updated, and as issues requiring a workarou
 
 When you migrate a virtual machine (VM) from VMware to Azure Local and retain a static IP address, the migration fails and generates an `InUse` error if the IP address is already assigned to another resource. This problem is common when you migrate domain controller VMs or other role-based VMs.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -28,11 +28,11 @@ Common symptoms include:
 - You receive the following error message: **Network interface service found the address already set or in use.**
 - You see the following status: `Operation status: Failed.`
 
-**Cause**
+**Cause**:
 
 The migration process tries to assign a static IP that's already in use. This problem occurs because of current product limitations on network interface handling for certain roles, such as domain controllers.
 
-**Solution**
+**Solution**:
 
 Use either of the following solutions:
 
@@ -43,18 +43,18 @@ Use either of the following solutions:
 
 When you replicate a VMware VM to Azure Local, replication fails if the storage account that you use for migration has public network access disabled.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - You see the following error code: `VMwareToAzLocalProtectionStateEnablingFailed`.
 - Replication doesn't start.
 
-**Cause**
+**Cause**:
 
 Replication service operations can't proceed because public network access is disabled on the storage account.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -66,7 +66,7 @@ To resolve the problem, follow these steps:
 
 During migration from VMware to Azure Local, the Azure Migrate portal remains at the **Discovering** phase for more than 48 hours.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -74,11 +74,11 @@ Common symptoms include:
 - No errors are reported in diagnostics.
 - Clearing the browser cache doesn't fix the problem.
 
-**Cause**
+**Cause**:
 
 The tool and portal are transitioning from public preview to general availability during discovery. Cached browser data and an in-progress discovery process compound the problem.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -90,21 +90,21 @@ To resolve the problem, follow these steps:
 
 Migrating from VMware to Azure Local fails if the storage account is in a different region than the Azure Migrate project.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - Replication setup errors after you enable public network access.
 - Additional extension errors.
 
-**Causes**
+**Causes**:
 
 Common causes include:
 
 - Public network access is disabled on the storage account.
 - The storage account region doesn't match the Azure Migrate project region.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -116,18 +116,18 @@ To resolve the problem, follow these steps:
 
 After you migrate a Windows 10 Long-Term Servicing Channel (LTSC) VM from VMware to Azure Local, you enable virtual Trust Platform Module (vTPM). In this scenario, the VM doesn't start.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - The VM doesn't start if vTPM is enabled.
 - The VM starts without any problems if vTPM is disabled.
 
-**Cause**
+**Cause**:
 
 Azure Local doesn't support Windows 10 LTSC for vTPM.
 
-**Solution**
+**Solution**:
 
 Disable vTPM or migrate to a supported OS version.
 
@@ -135,7 +135,7 @@ Disable vTPM or migrate to a supported OS version.
 
 After migration, some VMs appear in the portal without a disk attached even though they otherwise start normally.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -143,14 +143,14 @@ Common symptoms include:
 - An incorrect IP address is registered in the portal.
 - VMs are inaccessible until the correct IP is identified.
 
-**Causes**
+**Causes**:
 
 Common causes include:
 
 - The resource model displays only data disks in the Azure Migrate portal.
 - An IP mismatch exists between the portal and the actual VM.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -162,18 +162,18 @@ To resolve the problem, follow these steps:
 
 Migrating Linux VMs (for example, RedHat 8 and CentOS) to Azure Local fails if the initial RAM filesystem (initramfs) image doesn't include the required Hyper-V kernel modules.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - The VM starts in emergency mode or doesn't start altogether.
 - You encounter missing module errors for `hv_storvsc`, `hv_vmbus`, and `hv_utils`.
 
-**Cause**
+**Cause**:
 
 The initramfs image isn't configured to have the necessary Hyper-V drivers.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -188,7 +188,7 @@ To resolve the problem, follow these steps:
 
 VM migration to Azure Local fails if Azure PowerShell remoting isn't enabled on cluster nodes.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -196,11 +196,11 @@ Common symptoms include:
 - Encountering error code `60183: FailedToConnectTargetClusterShare`
 - Inconsistent connectivity to the cluster
 
-**Cause**
+**Cause**:
 
 This problem is caused by incorrect configuration of Azure PowerShell remoting and the firewall on the target nodes.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -212,15 +212,15 @@ To resolve the problem, follow these steps:
 
 Migration fails if a VM's static IP isn't within the logical network's configured subnet range.
 
-**Symptoms**
+**Symptoms**:
 
 You receive an error message that indicates the IP address is outside the subnet range.
 
-**Cause**
+**Cause**:
 
 The IP address doesn't match logical network configuration.
 
-**Solution**
+**Solution**:
 
 Update the logical network configuration to include the required IP range.
 
@@ -228,7 +228,7 @@ Update the logical network configuration to include the required IP range.
 
 If you try to migrate VMs from VMware to Azure Local by having Azure Arc connectivity enabled, the process fails because of unsupported secure boot requirements and missing drivers.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -236,11 +236,11 @@ Common symptoms include:
 - Linux VMs don't start or start into emergency mode.
 - Network interface conflicts occur.
 
-**Cause**
+**Cause**:
 
 This problem occurs if you enable secure boot but don't include the required Hyper-V drivers.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -252,7 +252,7 @@ To resolve the problem, follow these steps:
 
 In Azure Local version 2411, migration fails during cleanup of the seed ISO disk.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
@@ -260,11 +260,11 @@ Common symptoms include:
 - You see the following Windows Management Instrumentation (WMI) error reported: `0x00008000`.
 - You can't remove the Hyper-V Synthetic DVD drive.
 
-**Cause**
+**Cause**:
 
 This is a known problem in version 2411.
 
-**Solution**
+**Solution**:
 
 Update to version 2503, which contains a fix for this problem.
 
@@ -272,15 +272,15 @@ Update to version 2503, which contains a fix for this problem.
 
 Migration doesn't occur if the VMware Elastic Sky X (ESX) version isn't supported.
 
-**Symptoms**
+**Symptoms**:
 
 While you're using ESX version 6.0, you receive the following error message: **No appliance available for replication.**
 
-**Cause**
+**Cause**:
 
 ESX 6.0 isn't supported.
 
-**Solution**
+**Solution**:
 
 Upgrade to a supported ESX version.
 
@@ -288,18 +288,18 @@ Upgrade to a supported ESX version.
 
 Replication stalls if required replication fabric resources are missing from the resource group.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - Replication stays at 0 percent for a long time.
 - No activity appears in the logs.
 
-**Cause**
+**Cause**:
 
 The problem occurs if you manually delete or clean up hidden replication fabric resources.
 
-**Solution**
+**Solution**:
 
 To resolve the problem, follow these steps:
 
@@ -310,17 +310,17 @@ To resolve the problem, follow these steps:
 
 If a migration appliance shuts down because the Windows license expires, reactivating the license doesn't restore functionality.
 
-**Symptoms**
+**Symptoms**:
 
 Common symptoms include:
 
 - Replication times out during the snapshot phase.
 - The appliance can't communicate with Azure services.
 
-**Cause**
+**Cause**:
 
 The appliance environment becomes corrupted after shutdown.
 
-**Solution**
+**Solution**:
 
 Deploy a new migration appliance.
