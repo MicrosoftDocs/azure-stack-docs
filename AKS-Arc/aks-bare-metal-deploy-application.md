@@ -1,5 +1,5 @@
 ---
-title: Deploy an application on AKS on bare metal (preview)
+title: Deploy a sample application on AKS on bare metal (preview)
 description: Learn how to deploy a containerized application to your Azure Kubernetes Service on bare metal cluster.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Deploy a sample application (preview)
+# Deploy a sample application on AKS on bare metal (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
