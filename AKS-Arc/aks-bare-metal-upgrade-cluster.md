@@ -3,6 +3,8 @@ title: Upgrade Kubernetes on AKS on bare metal
 description: Learn how to upgrade the Kubernetes version on your Azure Kubernetes Service on bare metal cluster using the Azure portal.
 ms.topic: how-to
 ms.date: 06/01/2026
+author: SummerSmith
+ms.author: sumsmith
 ---
 
 # Upgrade Kubernetes clusters
