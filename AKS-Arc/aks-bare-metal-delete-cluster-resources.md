@@ -3,6 +3,8 @@ title: Delete AKS on bare metal cluster resources
 description: Learn how to delete Azure Kubernetes Service on bare metal cluster resources and edge machine resources from Azure in the correct order.
 ms.topic: how-to
 ms.date: 06/01/2026
+author: SummerSmith
+ms.author: sumsmith
 ---
 
 # Delete AKS on bare metal cluster resources
