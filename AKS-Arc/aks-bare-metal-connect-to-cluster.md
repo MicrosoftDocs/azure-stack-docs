@@ -90,4 +90,4 @@ NAME               STATUS   ROLES           AGE   VERSION
 
 ## Next steps
 
-- [Deploy an application](aks-arc-baremetal-deploy-application.md)
+- [Deploy an application](aks-bare-metal-deploy-application.md)
