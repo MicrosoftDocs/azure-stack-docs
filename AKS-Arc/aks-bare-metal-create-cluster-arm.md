@@ -1,5 +1,5 @@
 ---
-title: Create an AKS on bare metal cluster using an ARM template
+title: Create an AKS on bare metal Cluster Using an ARM Template (preview)
 description: Learn how to deploy an Azure Kubernetes Service (AKS) cluster on bare metal using an Azure Resource Manager template.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Create an AKS on bare metal cluster using an ARM template
+# Create an AKS on bare metal Cluster Using an ARM Template (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
