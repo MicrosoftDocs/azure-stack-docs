@@ -16,7 +16,7 @@ This article describes the hardware, network, and Azure requirements for deployi
 
 ## Hardware requirements
 
-Use one of the [supported devices for small form factor deployments of Azure Local.](/azure-local/small-form-factor/small-form-factor-overview.md)
+Use one of the [supported devices for small form factor deployments of Azure Local.](/azure-local/small-form-factor/small-form-factor-overview)
 
 ## Network requirements
 
@@ -78,7 +78,7 @@ az extension add --name connectedk8s
 
 ### Arc-enabled machine
 
-Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](/azure-local/small-form-factor/small-form-factor-overview.md).
+Before deploying an AKS cluster, you must have a small form factor Azure Local device set up by following the [Azure Local documentation](/azure-local/small-form-factor/small-form-factor-overview).
 
 
 ## Entra ID requirements
