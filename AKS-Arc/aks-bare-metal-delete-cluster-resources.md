@@ -121,5 +121,5 @@ az resource delete --ids <ssh-key-resource-id>
 
 ## Next steps
 
-- [Create a Kubernetes cluster using the Azure portal](create-cluster-portal.md)
-- [System requirements and prerequisites](system-requirements.md)
+- [Create a Kubernetes cluster using the Azure portal](aks-bare-metal-create-cluster-portal.md)
+- [System requirements and prerequisites](aks-bare-metal-system-requirements.md)
