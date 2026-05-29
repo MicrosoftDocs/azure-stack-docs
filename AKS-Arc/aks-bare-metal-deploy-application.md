@@ -21,6 +21,7 @@ This article walks you through deploying a sample application to your AKS on bar
 - `kubectl` installed and configured
 
 ## Deploy a sample nginx application
+Follow the steps below to deploy a simple nginx deployment on your AKS on bare metal cluster.
 
 ### Step 1: Create the deployment
 
