@@ -51,7 +51,7 @@ You need one IP address planned before deployment:
 | Region | **East US** (only supported region for public preview) |
 | Role | **Owner** or **Contributor + User Access Administrator** on the resource group |
 | Role assignment status | Must be both **Active** and **Permanent** |
-| Resource providers | [`Microsoft.HybridCompute`](https://learn.microsoft.com/azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep), [`Microsoft.HybridContainerService`](https://learn.microsoft.com/en-us/azure/templates/microsoft.hybridcontainerservice/provisionedclusters?pivots=deployment-language-bicep), [`Microsoft.Kubernetes`](https://learn.microsoft.com/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-bicep), [`Microsoft.ExtendedLocation`](https://learn.microsoft.com/azure/templates/microsoft.extendedlocation/customlocations?pivots=deployment-language-bicep) must be registered |
+| Resource providers | [`Microsoft.HybridCompute`](azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep), [`Microsoft.HybridContainerService`](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template), [`Microsoft.Kubernetes`](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-bicep), [`Microsoft.ExtendedLocation`](/azure/templates/microsoft.extendedlocation/customlocations?pivots=deployment-language-bicep) must be registered |
 
 > [!IMPORTANT]
 > If your role assignment isn't active and permanent, you might need to temporarily elevate your permissions before running deployment commands.
