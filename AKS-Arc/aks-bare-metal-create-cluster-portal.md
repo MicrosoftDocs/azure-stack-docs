@@ -25,7 +25,7 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 1. In the left menu, expand **Operations** and select **Machine provisioning (preview)**.
 1. Under **3. Deploy cluster**, select **Deploy** > **AKS Arc for Azure Local on Linux**.
 
-:::image type="content" source="./media/aks-bare-metal-create-cluster-portal/create-cluster.png" alt-text="Screenshot of Azure Arc Machine provisioning to deploy a cluster for AKS Arc for Azure Local on Linux." lightbox="./media/aks-bare-metal-create-cluster-portal/create-cluster.png":::
+![Screenshot of Azure Arc Machine provisioning to deploy a cluster for AKS Arc for Azure Local on Linux.](./media/aks-bare-metal-create-cluster-portal/create-cluster.png)
 
 ## Step 2: Configure basics
 
