@@ -90,5 +90,4 @@ NAME               STATUS   ROLES           AGE   VERSION
 
 ## Next steps
 
-- [Deploy an application](deploy-application.md)
-- [Use Azure RBAC for Kubernetes authorization](azure-rbac.md)
+- [Deploy an application](aks-arc-baremetal-deploy-application.md)
