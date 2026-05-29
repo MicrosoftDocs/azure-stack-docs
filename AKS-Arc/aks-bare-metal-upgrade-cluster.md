@@ -66,5 +66,5 @@ During public preview, the following Kubernetes versions are available:
 
 ## Next steps
 
-- [Public preview limitations](public-preview-limitations.md)
-- [Connect to your cluster](connect-to-cluster.md)
+- [Public preview limitations](aks-bare-metal-preview-limitations.md)
+- [Connect to your cluster](aks-bare-metal-connect-to-cluster.md)
