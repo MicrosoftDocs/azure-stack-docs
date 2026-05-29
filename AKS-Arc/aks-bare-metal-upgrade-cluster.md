@@ -1,5 +1,5 @@
 ---
-title: Upgrade Kubernetes on AKS on bare metal
+title: Upgrade Kubernetes on AKS on bare metal (preview)
 description: Learn how to upgrade the Kubernetes version on your Azure Kubernetes Service on bare metal cluster using the Azure portal.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,10 +7,10 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Upgrade Kubernetes clusters
+# Upgrade Kubernetes clusters (preview)
 
 > [!IMPORTANT]
-> Azure Kubernetes Service on bare metal is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
+> Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
 This article shows you how to upgrade the Kubernetes version on your AKS on bare metal cluster using the Azure portal.
 
