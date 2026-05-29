@@ -1,5 +1,5 @@
 ---
-title: Connect to an AKS on bare metal cluster
+title: Connect to an AKS on bare metal Cluster (preview)
 description: Learn how to connect to your Azure Kubernetes Service on bare metal cluster using the Azure Arc proxy and kubectl.
 ms.topic: how-to
 ms.date: 06/01/2026
@@ -7,7 +7,7 @@ author: SummerSmith
 ms.author: sumsmith
 ---
 
-# Connect to your AKS on bare metal cluster
+# Connect to an AKS on bare metal Cluster (preview)
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
@@ -38,7 +38,7 @@ The Azure Arc proxy lets you connect to your cluster from anywhere without direc
 
 ### Step 1: Sign in to Azure
 
-Open a terminal and sign in to Azure, and then select the subscription that contains your deployed cluster:
+Open a terminal window and sign in to Azure, and then select the subscription that contains your deployed cluster:
 
 ```azurecli
 az login
