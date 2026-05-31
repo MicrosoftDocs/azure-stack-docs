@@ -28,53 +28,28 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "arcMachineName": { "value": "<YOUR_ARC_MACHINE_NAME>" },
-    "tags": { "value": { "owner": "<your-alias>", "project": "aksarc-bml" } }
+    "edgeMachineName": {
+      "value": "<your-edge-machine-name>"
+    },
+    "controlPlaneIp": {
+      "value": "<static-ip-for-k8s-api-server>"
+    },
+    "adminGroupObjectIds": {
+      "value": ["<entra-id-group-object-id>"]
+    },
+    "sshPublicKey": {
+      "value": "<contents-of-your-ssh-public-key>"
+    }
   }
 }
 ```
 
 > [!NOTE]
-> `arcMachineName` is the only required parameter. All other parameters have sensible defaults. Override any of the optional parameters as needed.
-
-### Optional parameters
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `location` | Resource group location | Azure region. Use **eastus** for public preview. |
-| `clusterName` | `<arcMachineName>-cluster` | Name for the AKS cluster. |
-| `kubernetesVersion` | `1.34.3-20260204` | Supported versions: `1.34.2-20260204` or `1.34.3-20260204`. Format: `Major.Minor.Patch-YYYYMMDD`. |
-| `controlPlaneIp` | Machine IP | VIP for the Kubernetes control plane. Defaults to the edge machine's IP address if not specified. |
-| `controlPlaneCount` | `1` | Number of control plane nodes. |
-| `sshPublicKey` | Placeholder key | Provide your own if you need SSH access to nodes. |
-| `clusterAdminAadObjectId` | Deployer's object ID | Microsoft Entra ID object ID granted cluster-admin. |
-| `aadAdminGroupObjectIds` | `[]` | Microsoft Entra ID group object IDs for admin access. |
-| `subnetAddressPrefix` | `10.0.0.0/24` | CIDR for the logical network subnet. |
-| `gateway` | `10.0.0.1` | Default gateway IP. |
-| `dnsServers` | `["8.8.8.8"]` | DNS servers for the logical network. |
-| `ipPoolStart` | `10.0.0.20` | Start of VM IP pool. |
-| `ipPoolEnd` | `10.0.0.30` | End of VM IP pool. |
-| `vlan` | `0` | VLAN ID (0 = no VLAN tagging). |
-| `networkPolicy` | `cilium` | Kubernetes network policy plugin. |
-| `podCidr` | `10.244.0.0/16` | CIDR for Kubernetes pod network. |
-| `devicePoolName` | `<arcMachineName>-dp` | Name for the Device Pool. |
-| `customLocationName` | `<arcMachineName>-cl` | Name for the Custom Location (auto-created). |
-| `logicalNetworkName` | `<arcMachineName>-lnet` | Name for the Logical Network. |
+> All other parameters have sensible defaults. Check the deployment template and override any of the optional parameters as needed.
 
 > [!WARNING]
 > If your machine uses DHCP, you must reserve the control plane IP address so it remains permanently assigned to this machine. If the control plane IP changes, the Kubernetes cluster becomes unreachable and must be redeployed.
 
-### Service principal parameters (advanced)
-
-These parameters default to standard Microsoft tenant values. Override them only if you're deploying in a different tenant.
-
-| Parameter | How to look up |
-|-----------|----------------|
-| `azureStackHciRpPrincipalId` | `az ad sp show --id aaaaaaaa-bbbb-cccc-1111-222222222222 --query id -o tsv` |
-| `aksArcCloudMgmtPrincipalId` | `az ad sp show --id bbbbbbbb-cccc-dddd-2222-333333333333 --query id -o tsv` |
-| `cmpAppPrincipalId` | `az ad sp show --id cccccccc-dddd-eeee-3333-444444444444 --query id -o tsv` |
-| `cmpDevUaiPrincipalId` | Environment-specific. Override for your subscription. |
-| `deployerPrincipalType` | Set to `ServicePrincipal` when deploying from a pipeline. Default: `User`. |
 
 ## Step 2: Download the ARM template
 
@@ -87,12 +62,12 @@ Run the following command from the directory containing both files:
 ```azurecli
 az deployment group create \
   --resource-group <RESOURCE_GROUP> \
-  --template-file azuredeploy.json \
-  --parameters azuredeploy.parameters.json
+  --template-file aks-arc-bm-cluster-create.json \
+  --parameters aks-arc-bm-cluster-create-parameters.json
 ```
 
 > [!NOTE]
-> Deployment typically takes 20 minutes. The template automatically creates the Device Pool (which auto-creates the Custom Location), Logical Network, RBAC role assignments, and AKS cluster. You can monitor progress in the Azure portal under your resource group > **Deployments**.
+> Deployment typically takes 20 minutes. You can monitor progress in the Azure portal under your resource group > **Deployments**.
 
 ## Verify deployment
 
@@ -110,20 +85,12 @@ kubectl get nodes
 
 For detailed connection instructions, see [Connect to your cluster](aks-bare-metal-connect-to-cluster.md).
 
-## What the template creates
-
-The ARM template deploys the following resources in order:
-
-1. **RBAC Role Assignments** — Eight service principal roles required by AKS Arc.
-1. **Device Pool** — Registers the Arc machine for AKS workloads and automatically creates Custom Location.
-1. **Logical Network** — Networking configuration with IP pools and VIP pool.
-1. **AKS Arc Cluster** — Connected cluster with provisioned cluster instance.
 
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
-| `arcMachineName` not found | Verify the Arc machine exists in the same resource group. |
+| `edgeMachineName` not found | Verify the Arc machine exists in the same resource group. |
 | RBAC assignment fails | Ensure you have **Owner** role on the resource group. |
 | Control plane IP conflict | Choose an IP inside `subnetAddressPrefix` but outside `ipPoolStart`–`ipPoolEnd`. |
 | Deployment timeout | Check that the Arc machine is online and connected. |
