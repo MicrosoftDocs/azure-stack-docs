@@ -99,7 +99,7 @@ For detailed connection instructions, see [Connect to your cluster](aks-bare-met
 |-------|-----|
 | `edgeMachineName` not found | Verify the Arc machine exists in the same resource group. |
 | RBAC assignment fails | Ensure you have **Owner** role on the resource group. |
-| Control plane IP conflict | Choose an IP inside `subnetAddressPrefix` but outside `ipPoolStart`–`ipPoolEnd`. |
+| Control plane IP conflict | Choose an IP within the same subnet as the edge machine IP. |
 | Deployment timeout | Check that the Arc machine is online and connected. |
 
 ## Next steps
