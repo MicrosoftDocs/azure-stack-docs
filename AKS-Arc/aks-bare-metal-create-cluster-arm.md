@@ -12,7 +12,7 @@ ms.author: sumsmith
 > [!IMPORTANT]
 > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability. Azure Kubernetes Service on bare metal previews are partially covered by customer support on a best-effort basis.
 
-This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using an ARM template. The template automates the entire deployment, including RBAC role assignments, Device Pool, Logical Network, and the AKS cluster.
+This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using an ARM template. The template automates the entire AKS cluster deployment.
 
 ## Prerequisites
 
