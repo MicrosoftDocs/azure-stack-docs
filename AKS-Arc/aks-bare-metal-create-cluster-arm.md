@@ -44,6 +44,13 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 }
 ```
 
+| Parameter | Type |
+|-------|-----|
+| `edgeMachineName` | String set or automatically assigned during edge machine deployment. |
+| `controlPlaneIp` | IP address. Can be the machine IP. |
+| `adminGroupObjectIds` | GUID. |
+| `sshPublicKey` | Public key from SSH key created during edge machine deployment. |
+
 > [!NOTE]
 > All other parameters have sensible defaults. Check the deployment template and override any of the optional parameters as needed.
 
