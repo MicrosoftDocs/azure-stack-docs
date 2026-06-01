@@ -659,6 +659,8 @@ items:
     items:
     - name: Migration overview
       href: migrate/migration-options-overview.md
+    - name: Known issues in Azure Migrate for Azure Local 
+      href: migrate/migration-known-issues.md
     - name: Migrate using Azure Migrate
       items:
       - name: What's new in VM migration?
