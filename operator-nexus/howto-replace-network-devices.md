@@ -130,7 +130,7 @@ This action performs the following tasks:
 Verify that the replacement device is in ZTP mode. If not, configure the device for ZTP before continuing.
 
 > [!IMPORTANT]
-> ZTP enables automatic configuration retrieval during the RMA process. The Terminal Server (TS) **net3** interface must be configured and operational for ZTP to successfully communicate with the replacement device. If the net3 interface is not available, the ZTP process will fail and the RMA cannot be completed.
+> ZTP enables automatic configuration retrieval during the RMA process. The Terminal Server (TS) **net3** interface must be configured and operational for ZTP to successfully communicate with the replacement device. If the net3 interface isn't available, the ZTP process fails and the RMA can't be completed.
 
 ### Step 4: Initiate RMA process
 
