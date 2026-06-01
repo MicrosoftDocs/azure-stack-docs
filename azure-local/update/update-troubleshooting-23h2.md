@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Local, 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 05/28/2026
+ms.date: 06/01/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -13,11 +13,11 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot solution updates that are applied to your Azure Local to keep it up-to-date.
+This article describes how to troubleshoot solution updates that are applied to your Azure Local instance to keep it up-to-date.
 
 ## About troubleshooting updates
 
-If your system was created via a new deployment of Azure Local, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services.
+If you deployed your system by using a new Azure Local installation, the orchestrator was installed as part of that deployment. The orchestrator manages platform updates, including the OS, drivers and firmware, and agents and services.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the issue.
 
@@ -25,7 +25,7 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 [!INCLUDE [about-readiness-checks](../includes/about-readiness-checks.md)]
 
-The troubleshooting steps differ depending on which scenario the readiness checks are from.
+The troubleshooting steps vary depending on the readiness check scenario.
 
 ## Using Azure portal
 
@@ -145,7 +145,7 @@ To troubleshoot system health checks via PowerShell:
 
 1. Review the `Remediation` property for the failed tests and take action as appropriate to resolve the failures.
 
-1. If you require more diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
+1. If you need more diagnostic information to determine why tests failed, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
 
     ```powershell
     $FullResults = Get-SolutionUpdateEnvironment -FullHealthCheckDetails
@@ -155,9 +155,9 @@ To troubleshoot system health checks via PowerShell:
     $Failures | Format-List *
     ```
 
-1. If present, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure, together with information provided in the link from the `Remediation` property to resolve the failures.
+1. If available, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
 
-1. After resolving the failures, invoke the system health checks again by running the following command:
+1. After you resolve the failure, invoke the system health checks again by running the following command:
 
     ```powershell
     Invoke-SolutionUpdatePrecheck -SystemHealth
@@ -187,9 +187,9 @@ To troubleshoot system health checks via PowerShell:
 
 ### Using PowerShell, scenario 2: Update readiness checks
 
-When update readiness checks fail, this causes the update to fail on the system. To troubleshoot update readiness checks via PowerShell:
+When update readiness checks fail, the system update also fails. To troubleshoot update readiness checks via PowerShell:
 
-1. To validate that the update readiness checks failed, run the following command on one of the machines in your system to identify the `ResourceId` of the update:
+1. To verify that update readiness checks failed, run the following command on one machine in your system to find the `ResourceId` of the update:
 
     ```powershell
    Get-SolutionUpdate | Format-Table ResourceId, State, Version
@@ -206,7 +206,7 @@ When update readiness checks fail, this causes the update to fail on the system.
 
     ```
 
-1. Using the `ResourceId` of the update you're attempting to install, run the following command replacing the `Id` parameter with the ResourceId of your update, from the output of the previous command:
+1. Using the update `ResourceId` from the previous command's output, run the following command and replace the `Id` parameter with that value:
 
     ```powershell
     Get-SolutionUpdate -Id <Resource ID> | Format-Table Version, State, HealthCheckResult
@@ -226,7 +226,7 @@ When update readiness checks fail, this causes the update to fail on the system.
 
 1. Review the `State` for the update and view the `HealthCheckResult` value.
 
-1. To filter the `HealthCheckResult` property to identify failing tests, run the following command, replace the `Id` value with the `ResourceId` of your update, identified from the earlier command:
+1. To filter the `HealthCheckResult` property and identify failed tests, run the following command. Replace the `Id` value with the update `ResourceId` from the previous command.
 
     ```powershell
     $result = Get-SolutionUpdate -Id <Resource ID>
@@ -251,9 +251,9 @@ When update readiness checks fail, this causes the update to fail on the system.
               tests-for-cluster-updating-readiness
      ```
 
-1. Use the link shown in the `Remediation` property of the failed test. Review the article using a device with a web-browser to determine appropriate actions to resolve the failures.
+1. Use the link in the `Remediation` property for the failed test. Open the article on a device with a web browser, and follow the recommended steps to resolve the failures.
 
-1. If you require more diagnostic information to determine the cause of the failed tests, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
+1. If you need more diagnostic information to determine why tests failed, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
 
     ```powershell
     $FullResults = Get-SolutionUpdate -Id <Resource ID> -FullHealthCheckDetails
@@ -263,9 +263,9 @@ When update readiness checks fail, this causes the update to fail on the system.
     $Failures | Format-List *
     ```
 
-1. If present, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure, together with information provided in the link from the `Remediation` property to resolve the failures.
+1. If available, use diagnostic details in the `AdditionalData` property, such as 'FailedMachines', 'Source', and "ExceptionMessage", to identify which physical machines caused the test failure. Then use the link in the `Remediation` property to resolve the failures.
 
-1. After resolving the failures, invoke the update readiness checks again by running the following command
+1. After you resolve the failure, invoke the update readiness checks again by running the following command
 
     ```powershell
     Get-SolutionUpdate -Id <Resource ID> | Start-SolutionUpdate -PrepareOnly
@@ -273,7 +273,7 @@ When update readiness checks fail, this causes the update to fail on the system.
 
 ## Troubleshoot update failures
 
-When an update fails, review the detailed step progress to identify where it failed. This helps determine whether the issue can be fixed with a simple repair and resume, or requires a support engagement to resolve the issue. Key items to note for the failing step include:
+When an update fails, review detailed step progress to identify the point of failure. This review helps you determine whether you can resolve the issue by repairing and resuming the update or whether you need to contact support.
 
 - Failing step name and description.
 
@@ -281,7 +281,7 @@ When an update fails, review the detailed step progress to identify where it fai
 
 - Failure message string (might pinpoint the issue to a specific known issue with documented remediation).
 
-Microsoft recommends using the Azure portal to identify the failing step information as shown at [Resume an update](#the-azure-portal). Alternatively, see the next section for how view similar details in PowerShell using `Start-MonitoringActionplanInstanceToComplete`.
+Microsoft recommends using the Azure portal to identify failing step details, as described in [Resume an update](#the-azure-portal). Alternatively, see the next section for similar details in PowerShell by using `Start-MonitoringActionplanInstanceToComplete`.
 
 The following table lists update failure scenarios and remediation guidelines.
 
@@ -372,7 +372,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
 1. Select the **View details** of an error.
 
-2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, you can select the **How to collect logs** link near the Open a support ticket button.
+2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, select the **How to collect logs** link near the **Open a support ticket** button.
 
     [:::image type="content" source="media/troubleshoot-updates/download-error-logs.png" alt-text="Screenshot to download error logs.":::](media/troubleshoot-updates/download-error-logs.png#lightbox)
 
