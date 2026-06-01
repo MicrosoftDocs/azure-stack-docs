@@ -187,7 +187,7 @@ To troubleshoot system health checks via PowerShell:
 
 ### Using PowerShell, scenario 2: Update readiness checks
 
-When update readiness checks fail, the system update also fails. To troubleshoot update readiness checks via PowerShell:
+When update readiness checks fail, the system update also fails. To troubleshoot update readiness checks by using PowerShell:
 
 1. To verify that update readiness checks failed, run the following command on one machine in your system to find the `ResourceId` of the update:
 
@@ -263,9 +263,9 @@ When update readiness checks fail, the system update also fails. To troubleshoot
     $Failures | Format-List *
     ```
 
-1. If available, use diagnostic details in the `AdditionalData` property, such as 'FailedMachines', 'Source', and "ExceptionMessage", to identify which physical machines caused the test failure. Then use the link in the `Remediation` property to resolve the failures.
+1. If available, use diagnostic details in the `AdditionalData` property, such as `FailedMachines`, `Source`, and `ExceptionMessage`, to identify which physical machines caused the test failure. Then use the link in the `Remediation` property to resolve the failures.
 
-1. After you resolve the failure, invoke the update readiness checks again by running the following command
+1. After you resolve the failure, invoke the update readiness checks again by running the following command:
 
     ```powershell
     Get-SolutionUpdate -Id <Resource ID> | Start-SolutionUpdate -PrepareOnly
@@ -273,7 +273,7 @@ When update readiness checks fail, the system update also fails. To troubleshoot
 
 ## Troubleshoot update failures
 
-When an update fails, review detailed step progress to identify the point of failure. This review helps you determine whether you can resolve the issue by repairing and resuming the update or whether you need to contact support.
+When an update fails, review the detailed step progress to identify the point of failure. This review helps you determine whether you can resolve the issue by repairing and resuming the update or whether you need to contact support.
 
 - Failing step name and description.
 
@@ -281,7 +281,7 @@ When an update fails, review detailed step progress to identify the point of fai
 
 - Failure message string (might pinpoint the issue to a specific known issue with documented remediation).
 
-Microsoft recommends using the Azure portal to identify failing step details, as described in [Resume an update](#the-azure-portal). Alternatively, see the next section for similar details in PowerShell by using `Start-MonitoringActionplanInstanceToComplete`.
+Use the Azure portal to identify failing step details, as described in [Resume an update](#the-azure-portal). Alternatively, see the next section for similar details in PowerShell by using `Start-MonitoringActionplanInstanceToComplete`.
 
 The following table lists update failure scenarios and remediation guidelines.
 
@@ -372,7 +372,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
 1. Select the **View details** of an error.
 
-2. When the details box opens, you can review the error details. For more information on collecting diagnostic logs, select the **How to collect logs** link near the **Open a support ticket** button.
+1. When the details box opens, review the error details. For more information on collecting diagnostic logs, select the **How to collect logs** link near the **Open a support ticket** button.
 
     [:::image type="content" source="media/troubleshoot-updates/download-error-logs.png" alt-text="Screenshot to download error logs.":::](media/troubleshoot-updates/download-error-logs.png#lightbox)
 
