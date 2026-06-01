@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot solution updates that are applied to your Azure Local instance to keep it up-to-date.
+This article describes how to troubleshoot solution updates that you apply to your Azure Local instance to keep it up-to-date.
 
 ## About troubleshooting updates
 
