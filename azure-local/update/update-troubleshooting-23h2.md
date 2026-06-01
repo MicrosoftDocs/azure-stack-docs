@@ -19,7 +19,7 @@ This article describes how to troubleshoot solution updates that you apply to yo
 
 If you deploy your system by using a new Azure Local installation, you install the orchestrator as part of that deployment. The orchestrator manages platform updates, including the OS, drivers and firmware, and agents and services.
 
-The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the issue.
+The new update solution includes retry and remediation logic. This logic attempts to fix update problems in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, inspect the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the problem.
 
 ## Troubleshoot readiness checks
 
@@ -52,9 +52,9 @@ This scenario occurs when preparing to install system updates in Azure Update Ma
     
         :::image type="content" source="media/troubleshoot-updates/readiness-check-again.png" alt-text="Screenshot of Readiness checks showing the Check again button." lightbox="media/troubleshoot-updates/readiness-check-again.png":::
 
-### Using Azure portal, scenario 2: Update readiness checks
+### Using the Azure portal, scenario 2: Update readiness checks
 
-This scenario occurs when installing and tracking system updates in Azure Update Manager:
+This scenario occurs when you install and track system updates in Azure Update Manager:
 
 1. In **History**, select the failed update run from the list.
 
@@ -74,7 +74,7 @@ This scenario occurs when installing and tracking system updates in Azure Update
 
 ### Using PowerShell, scenario 1: System health checks
 
-To troubleshoot system health checks via PowerShell:
+To troubleshoot system health checks by using PowerShell:
 
 1. To validate that the system health checks failed, run the following command on one of the machines in your system:
 
@@ -155,7 +155,7 @@ To troubleshoot system health checks via PowerShell:
     $Failures | Format-List *
     ```
 
-1. If available, use the diagnostic information shown in `AdditionalData` property, such as `FailedMachines`, `Source` and `ExceptionMessage` to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
+1. If available, use the diagnostic information shown in the `AdditionalData` property, such as `FailedMachines`, `Source`, and `ExceptionMessage` to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
 
 1. After you resolve the failure, invoke the system health checks again by running the following command:
 
@@ -277,7 +277,7 @@ When an update fails, review the detailed step progress to identify the point of
 
 - Failing step name and description.
 
-- Which machine or server the step failed on (if there's a machine-specific issue).
+- The machine or server where the step failed (if there's a machine-specific issue).
 
 - Failure message string (might pinpoint the issue to a specific known issue with documented remediation).
 
@@ -289,27 +289,27 @@ The following table lists update failure scenarios and remediation guidelines.
 | --- | --- | --- |
 | Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
 | CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If multiple CAU attempts fail, investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
-| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>After the node is repaired, the update can be resumed. |
+| Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>After the node is repaired, resume the update. |
 
 ## Collect update logs
 
 You can also collect diagnostic logs to help Microsoft identify and fix the issues.
 
-To collect logs for updates using the Azure portal, see [Resume an update](#the-azure-portal).
+To collect logs for updates by using the Azure portal, see [Resume an update](#the-azure-portal).
 
-To collect logs for the update failures see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md?tabs=azureportal.md).
+To collect logs for the update failures, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md?tabs=azureportal.md).
 
 ## View update summary report
 
-To view a detailed update summary report using PowerShell, follow these steps on the client that you're using to access your system:
+To view a detailed update summary report by using PowerShell, follow these steps on the client that you're using to access your system:
 
-1. Establish a remote PowerShell session with the machine. Run PowerShell as administrator and run the following command:
+1. Establish a remote PowerShell session with the machine. Run PowerShell as an administrator and run the following command:
 
     ```powershell
     Enter-PSSession -ComputerName <machine_IP_address> -Credential <username\password for the machine>
     ```
 
-1. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
+1. Get all the solutions updates, and then filter the solution updates that correspond to a specific version. The version you use corresponds to the version of solution update that failed to install.
 
     ```powershell
     $Update = Get-SolutionUpdate | ? Version -eq "<Version string>" -verbose
@@ -360,15 +360,15 @@ To view a detailed update summary report using PowerShell, follow these steps on
 
 ## Resume an update
 
-To resume a previously failed update run, you can retry the update run via the Azure portal or PowerShell.
+To resume a previously failed update run, retry the update run through the Azure portal or PowerShell.
 
 ### The Azure portal
 
-We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Validate that the system is ready, and Install updates stages of an update run.
+Use the Azure portal to browse to your failed update and select the **Try again** button. You can find this functionality at the Download updates, Validate that the system is ready, and Install updates stages of an update run.
 
 :::image type="content" source="media/troubleshoot-updates/try-again-update.png" alt-text="Screenshot of the retry failed update button." lightbox="media/troubleshoot-updates/try-again-update.png":::
 
-If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
+If you can't successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
 
 1. Select the **View details** of an error.
 
@@ -379,7 +379,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
     For more information on retrieving logs, see [Collect diagnostic logs for Azure Local](../manage/collect-logs.md).
 
-3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your logs so that they're available to Microsoft Support.
+1. Select the **Open a support ticket** button. Fill in the appropriate information, and attach your logs so that they're available to Microsoft Support.
 
     [:::image type="content" source="media/troubleshoot-updates/open-support-ticket.png" alt-text="Screenshot to open a support ticket.":::](media/troubleshoot-updates/open-support-ticket.png#lightbox)
 
