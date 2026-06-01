@@ -12,8 +12,8 @@ ms.subservice: small-form-factor
 # Test small form factor deployments of Azure Local in a Hyper-V virtual machine (preview)
 
 > [!IMPORTANT]
->- Virtual machines (VMs) are supported only for testing and evaluation scenarios. Running Azure Local small form factor deployments on VMs for production use isn't supported.
->- If you plan to run production workloads, deploy on a supported physical device. For a list of supported hardware, see [Supported devices for small form factor deployments](https://learn.microsoft.com/en-us/azure/azure-local/small-form-factor/small-form-factor-overview?view=azloc-2605#supported-devices).
+>- Virtual machines (VMs) only support testing and evaluation scenarios. Running Azure Local small form factor deployments on VMs for production use isn't supported.
+>- If you plan to run production workloads, deploy on a supported physical device. For a list of supported hardware, see [Supported devices for small form factor deployments](small-form-factor-overview.md#supported-devices).
 
 This article describes how to test small form factor deployments of Azure Local in a Hyper-V virtual machine (VM).
 
