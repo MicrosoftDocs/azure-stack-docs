@@ -17,7 +17,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 ## About troubleshooting updates
 
-If you deployed your system by using a new Azure Local installation, the orchestrator was installed as part of that deployment. The orchestrator manages platform updates, including the OS, drivers and firmware, and agents and services.
+If you deploy your system by using a new Azure Local installation, you install the orchestrator as part of that deployment. The orchestrator manages platform updates, including the OS, drivers and firmware, and agents and services.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, Microsoft recommends inspecting the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the issue.
 
