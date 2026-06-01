@@ -155,7 +155,7 @@ To troubleshoot system health checks via PowerShell:
     $Failures | Format-List *
     ```
 
-1. If available, use the diagnostic information shown in `AdditionalData` property, such as 'FailedMachines', 'Source' and/or "ExceptionMessage" to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
+1. If available, use the diagnostic information shown in `AdditionalData` property, such as `FailedMachines`, `Source` and `ExceptionMessage` to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
 
 1. After you resolve the failure, invoke the system health checks again by running the following command:
 
