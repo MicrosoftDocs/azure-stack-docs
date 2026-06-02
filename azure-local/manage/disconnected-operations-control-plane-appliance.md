@@ -119,7 +119,7 @@ To proceed with an Azure Local deployment with disconnected operations, complete
 
 1. Review the [disconnected operations overview and eligibility criteria](/azure/azure-local/manage/disconnected-operations-overview#eligibility-criteria).
 1. Select a [catalog listed hardware solution](https://azurelocalsolutions.azure.microsoft.com/#/catalog) marked as disconnected operations supported.
-1. After you're approved to access disconnected operations, contact the OEM partner and procure a four-node configuration to start the POC or a three-node dedicated management cluster if you already have the workload clusters.
+1. After you're approved to access disconnected operations, contact the OEM partner and procure a four-node configuration to start the POC or a three-node dedicated management cluster if you have the workload clusters.
 1. Follow the deployment documentation for installation and configuration of disconnected operations.
 
 ::: moniker-end
