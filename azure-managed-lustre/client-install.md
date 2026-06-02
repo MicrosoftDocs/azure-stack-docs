@@ -18,7 +18,8 @@ In this article, you learn how to download and install a Lustre client package. 
 <details id="support-matrix">
 <summary><strong>Select to expand</strong></summary>
 
-Each row is a distribution, architecture, Lustre client version, and kernel series combination that Microsoft publishes packages for. Authoritative source: [Linux software repository for Microsoft products](https://packages.microsoft.com).
+Each row in the following table shows a combination of a distribution, architecture, Lustre client version, and kernel series that Microsoft supports. The authoritative source is the [Linux software repository for Microsoft products](https://packages.microsoft.com).
+
 
 | OS | Architecture | Lustre client version | Supported kernel package series |
 |---|---|---|---|
