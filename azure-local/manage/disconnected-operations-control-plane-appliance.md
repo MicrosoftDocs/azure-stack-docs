@@ -16,7 +16,7 @@ ai-usage: ai-assisted
 
 This article describes the architecture, hardware, and configuration concepts behind acquiring and deploying a dedicated management cluster for disconnected operations.
 
-## Overview of disconnected operations control plane appliance
+## Overview
 
 Disconnected operations for Azure Local is a deployment model that brings cloud consistency and data sovereignty to environments with limited or no connectivity. In a disconnected deployment, a local control plane replaces selected Azure control plane functions and runs entirely within the customer environment, providing a familiar Azure consistent management experience.
 
