@@ -1531,7 +1531,7 @@ items:
     - name: Public key infrastructure
       href: manage/disconnected-operations-pki.md
     - name: Dedicated management cluster
-      href: manage/disconnected-operations-control-plane-appliances.md
+      href: manage/disconnected-operations-control-plane-appliance.md
   - name: Deploy
     items:
     - name: Acquire disconnected operations
