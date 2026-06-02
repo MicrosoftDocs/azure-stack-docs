@@ -39,7 +39,7 @@ Wait until the STATUS shows **Running**:
 
 ```
 NAME                     READY   STATUS    RESTARTS   AGE
-nginx-6db489d4b7-xyz12   1/1     Running   0          30s
+nginx-1ab234c5d6-xyz12   1/1     Running   0          30s
 ```
 
 ### Step 3: Expose the deployment as a service
