@@ -62,7 +62,11 @@ Rotation with `--no-wait` for asynchronous execution:
 ```Azure CLI
     az networkfabric fabric rotate-certificate --resource-group <resource-group-name> --resource-name <fabric-name> --no-wait
 ```
-
+If `--no-wait` was used for any certificate rotation operation, the status can be checked using this command to query for provisioning state:
+```Azure CLI
+az networkfabric fabric show --resource-group <rg> --resource-name <fabric-name> --query "provisioningState" -o ts
+```
+The provisoning state will be `Succeeded` once the rotation is complete.
 
 ### Resync certificates across the fabric
 
