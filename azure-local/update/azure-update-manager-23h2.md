@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 06/01/2026
+ms.date: 06/02/2026
 ms.subservice: hyperconverged
 ---
 
@@ -41,6 +41,16 @@ Here are some benefits of the Azure Update Manager:
 - Make sure to apply updates via supported navigation paths in Azure portal. Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**. Additionally, use of non-Microsoft tools to install updates isn't supported.
 
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).
+
+## (Optional) Check for updates
+
+Before installing system updates, you can optionally check for the latest available updates on a per-system basis. This helps you keep your cluster status synchronized.
+
+1. Select the systems for which you want to check for updates.
+
+1. Select **Check for updates**.
+
+:::image type="content" source="media/azure-update-manager/check-for-updates.png" alt-text="Screenshot to check for system updates in Azure Update Manager." lightbox="media/azure-update-manager/check-for-updates.png":::
 
 ## Install system updates
 
