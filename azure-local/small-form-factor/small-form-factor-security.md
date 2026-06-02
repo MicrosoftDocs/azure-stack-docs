@@ -65,7 +65,7 @@ For details on provisioning, see [Install small form factor deployments of Azure
 
 **Protecting platform software integrity at runtime:**
 
-- Azure Local small form factor deployments help protect the integrity of critical nondata volumes through dm-verity and read-only permissions. If the system detects any unauthorized modifications for key files such as system binaries and libraries, either offline or at runtime, it might restrict or interrupt normal operation. These controls help mitigate risks from preboot and post-boot tampering, persistent malware, and unauthorized changes that could survive reboots.
+- Azure Local small form factor deployments help protect the integrity of critical non-data volumes through dm-verity and read-only permissions. If the system detects any unauthorized modifications for key files such as system binaries and libraries, either offline or at runtime, it might restrict or interrupt normal operation. These controls help mitigate risks from preboot and post-boot tampering, persistent malware, and unauthorized changes that could survive reboots.
 
 ## Data protection by default
   
