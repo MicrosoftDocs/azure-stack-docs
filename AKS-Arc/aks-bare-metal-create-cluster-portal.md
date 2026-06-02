@@ -53,7 +53,7 @@ On the **Networking** tab, configure the following settings:
 
 | Setting | Value |
 |---------|-------|
-| Control plane IP | An IP address in the same subnet as your edge machine. This can be the same as the machine's IP address but doesn't need to be. |
+| Control plane IP | An IP address in the same subnet as your edge machine. This **cannot** be the same as the machine's IP address. |
 
 > [!WARNING]
 > If your machine uses DHCP, you must reserve the control plane IP address so it remains permanently assigned to this machine. If the control plane IP changes, the Kubernetes cluster becomes unreachable and must be redeployed.
