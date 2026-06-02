@@ -18,10 +18,10 @@ This article shows you how to upgrade the Kubernetes version on your AKS on bare
 
 AKS on bare metal supports in-place Kubernetes version upgrades. During an upgrade:
 
-1. The new Kubernetes binaries are downloaded to the host.
-1. The control plane components are upgraded.
-1. The node is cordoned, drained, and upgraded.
-1. Workloads are rescheduled after the upgrade completes.
+- The new Kubernetes binaries are downloaded to the host.
+- The control plane components are upgraded.
+- The node is cordoned, drained, and upgraded.
+- Workloads are rescheduled after the upgrade completes.
 
 > [!NOTE]
 > Since AKS on bare metal uses a single-node topology during public preview, **workloads are temporarily unavailable** during the upgrade process.
