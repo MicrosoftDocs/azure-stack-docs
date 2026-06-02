@@ -44,7 +44,7 @@ For Azure Local, Azure Update Manager is supported only in the regions where Azu
 
 ## (Optional) Check for updates
 
-Before installing system updates, you can optionally check for the latest available updates on a per-system basis. This helps you keep your cluster status synchronized.
+Before installing system updates, you can optionally check for the latest available updates on a per-system basis. This step helps you keep your cluster status synchronized.
 
 1. Select the systems for which you want to check for updates.
 
