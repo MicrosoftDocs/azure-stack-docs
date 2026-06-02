@@ -70,7 +70,7 @@ The provisioning state is `Succeeded` when the rotation finishes.
 
 ### Resync certificates across the fabric
 
-This operation allows network devices missed during a previous certificate rotation to be brought back into sync.
+This operation brings back into sync network devices missed during a previous certificate rotation.
 Retry syncing the new certificates on all devices:
 
 ```Azure CLI
