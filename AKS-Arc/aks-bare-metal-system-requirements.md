@@ -58,6 +58,8 @@ You need one IP address planned before deployment:
 
 ### Register resource providers
 
+Ensure Azure CLI is installed and signed in.
+
 ```azurecli
 az provider register --namespace Microsoft.HybridCompute
 az provider register --namespace Microsoft.HybridContainerService
