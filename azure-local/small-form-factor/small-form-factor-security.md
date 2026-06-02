@@ -81,7 +81,7 @@ Azure Local small form factor deployments help protect sensitive data through mu
 
 **Centralized secrets management:**
 
-- For scenarios that require tighter control over sensitive credentials, store secrets in Azure Key Vault and sync only the required secrets locally. When running Kubernetes-based deployments, either with AKS Arc or on third-party clusters such as K3s, you can use the [Azure Key Vault Secret Store Extension](/azure/azure-arc/kubernetes/secret-store-extension) to do so. This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed.
+- When running Kubernetes-based deployments with AKS Arc, you can store your secret values (passwords, keys, and other sensitive information) in a vault, such as [Azure Key Vault](/azure/key-vault/general/overview) to achieve tighter control over your sensitive credentials. You can then sync only the required secrets locally using the [Azure Key Vault Secret Store Extension (SSE)](/azure/azure-arc/kubernetes/secret-store-extension). This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed. For more information, see [Secure your data in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-secure-your-data#use-a-vault-to-store-your-secrets-and-sync-to-the-cluster-as-needed).
 
 ## Secure lifecycle and defense in depth
 
@@ -108,8 +108,6 @@ Use these capabilities to apply consistent access controls and security policies
 **Controlling access through role‑based authorization:**
   
 - After a device or service authenticates, Azure role‑based access control (RBAC) governs access to resources and management operations. RBAC determines what authenticated users and services are allowed to do – such as viewing configuration, initiating upgrades, or performing administrative actions. To reduce risk, apply least‑privilege principles when assigning Azure roles, limit standing administrative access, and regularly review role assignments. Using scoped roles for routine operations helps ensure that day‑to‑day tasks don't require elevated permissions, reducing the impact of compromised credentials.
-
-- When running Kubernetes-based deployments with AKS Arc, you can store your secret values (passwords, keys, and other sensitive information) in a vault, such as [Azure Key Vault](/azure/key-vault/general/overview) to achieve tighter control over your sensitive credentials. You can then sync only the required secrets locally using the [Azure Key Vault Secret Store Extension (SSE)](/azure/azure-arc/kubernetes/secret-store-extension). This approach reduces the amount of sensitive data persisted on edge devices while supporting offline operation when needed. For more information, see [Secure your data in Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-secure-your-data#use-a-vault-to-store-your-secrets-and-sync-to-the-cluster-as-needed).
 
 **Direct device access via Secure Shell (SSH):**
 
