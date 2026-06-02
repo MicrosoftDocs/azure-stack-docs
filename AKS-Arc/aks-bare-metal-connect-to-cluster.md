@@ -17,7 +17,7 @@ This article shows you how to connect to your AKS on bare metal cluster to run `
 ## Prerequisites
 
 - An AKS on bare metal cluster in a **Succeeded** state.
-- Azure CLI installed on your local machine.
+- Azure CLI installed on your local machine and signed in.
 - The `connectedk8s` extension installed.
 
   ```azurecli
