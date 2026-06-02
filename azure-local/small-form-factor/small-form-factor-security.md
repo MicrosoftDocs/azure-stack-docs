@@ -109,7 +109,7 @@ Use these capabilities to apply consistent access controls and security policies
 
 **Controlling access through role‑based authorization:**
   
-- After a device or service authenticates, Azure role‑based access control (RBAC) governs access to resources and management operations. RBAC determines what authenticated users and services are allowed to do – such as viewing configuration, initiating upgrades, or performing administrative actions. To reduce risk, apply least‑privilege principles when assigning Azure roles, limit standing administrative access, and regularly review role assignments. Using scoped roles for routine operations helps ensure that day‑to‑day tasks don't require elevated permissions, reducing the impact of compromised credentials.
+- After a device or service is authenticated, Azure role‑based access control (RBAC) governs access to resources and management operations. RBAC determines what authenticated users and services are allowed to do – such as viewing configuration, initiating upgrades, or performing administrative actions. To reduce risk, apply least‑privilege principles when assigning Azure roles, limit standing administrative access, and regularly review role assignments. Using scoped roles for routine operations helps ensure that day‑to‑day tasks don't require elevated permissions, reducing the impact of compromised credentials.
 
 **Direct device access via Secure Shell (SSH):**
 
