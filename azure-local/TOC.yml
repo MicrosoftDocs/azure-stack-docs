@@ -1154,8 +1154,6 @@ items:
         
     - name: Billing
       items:
-      - name: Azure Hybrid Benefit
-        href: concepts/azure-hybrid-benefit-disaggregated.md
       - name: Billing and payment
         href: concepts/billing.md
         
