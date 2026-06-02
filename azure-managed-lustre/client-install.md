@@ -20,9 +20,9 @@ Azure Managed Lustre offers two install methods for the Lustre client kernel mod
 | | Prebuilt kmod | DKMS |
 |---|---|---|
 | **How it works** | Installs a precompiled kernel module built for your specific kernel version | Compiles the kernel module from source on your VM using DKMS (Dynamic Kernel Module Support) |
-| **Install speed** | Fast — no compilation needed | Slower — compiles the module during install (typically 2–5 minutes) |
+| **Install speed** | Fast - no compilation needed | Slower - compiles the module during install (typically 2-5 minutes) |
 | **Kernel upgrades** | Requires a new kmod package for each kernel version. If you upgrade your kernel before a matching kmod is published, the Lustre client won't load. | Automatically rebuilds the module when your kernel is upgraded. No manual intervention needed. |
-| **Package selection** | Requires matching your kernel version to the package name (may involve `sed` commands on RHEL) | Single package name — no kernel version matching needed |
+| **Package selection** | Requires matching your kernel version to the package name (might involve `sed` commands on RHEL) | Single package name - no kernel version matching needed |
 | **Build dependencies** | None | Requires kernel headers, GCC, and Make (installed automatically as package dependencies) |
 | **Secure Boot** | ✅ Modules are pre-signed with the Azure Services Linux Kmod PCA certificate. Works on Trusted Launch VMs without extra configuration. | ⚠️ Modules are compiled locally and unsigned. Requires Secure Boot to be disabled or MOK (Machine Owner Key) enrollment. See [Secure Boot with DKMS](client-secure-boot.md#dkms-compiled-modules-and-secure-boot). |
 | **Best for** | Production environments with controlled kernel versions, Secure Boot requirements, or HPC workloads where compile overhead isn't acceptable | Development environments, workloads where kernel versions change frequently, or scenarios where you want zero-maintenance kernel upgrades |
@@ -73,7 +73,7 @@ If you need to upgrade an existing Lustre client to the current version, see [Up
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
-For more information about the behavior of Azure Managed Lustre with Trusted Launch Virtual Machines and Confidential Compute Virtual Machines, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
+For more information about the behavior of Azure Managed Lustre with Trusted Launch Virtual Machines and Confidential Compute Virtual Machines, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
 
 ::: zone pivot="alma-86"
 
@@ -257,7 +257,7 @@ This article shows how to install the client package to set up client VMs runnin
 
    #### [Prebuilt kmod](#tab/kmod)
 
-   The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
+   The metapackage version doesn't always align with the kernel version. Use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-8](./includes/client-install-version-rhel-8.md)]
 

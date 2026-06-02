@@ -52,15 +52,15 @@ For an overview of Confidential VMs, see [What are Azure confidential virtual ma
 
 ## DKMS-compiled modules and Secure Boot
 
-When you install the Lustre client using the **DKMS** method, the kernel module is compiled from source on your VM rather than being prebuilt and signed by Microsoft. Because DKMS-compiled modules aren't signed with the Azure Services Linux Kmod PCA certificate, they won't load when Secure Boot is enabled unless you take additional steps.
+When you install the Lustre client by using the **DKMS** method, the installation process compiles the kernel module from source on your VM instead of using a prebuilt and Microsoft-signed module. Because DKMS-compiled modules aren't signed by the Azure Services Linux Kmod PCA certificate, they don't load when Secure Boot is enabled unless you take extra steps.
 
 If you use DKMS with Secure Boot enabled, you have two options:
 
 - **Disable Secure Boot**: The simplest approach. If your security policy permits it, disable Secure Boot on the VM before installing the DKMS package.
-- **Enroll a Machine Owner Key (MOK)**: Configure DKMS to sign modules with a self-generated key and enroll it in the UEFI MOK database. This approach maintains Secure Boot while allowing DKMS-compiled modules to load. Refer to your distribution's DKMS documentation for MOK enrollment instructions.
+- **Enroll a Machine Owner Key (MOK)**: Configure DKMS to sign modules with a self-generated key and enroll it in the UEFI MOK database. This approach maintains Secure Boot while allowing DKMS-compiled modules to load. For MOK enrollment instructions, refer to your distribution's DKMS documentation.
 
 > [!NOTE]
-> If you use the **prebuilt kmod** install method, Secure Boot works without any additional configuration on Trusted Launch VMs (as described above). The DKMS Secure Boot limitation applies only to DKMS-compiled modules.
+> If you use the **prebuilt kmod** install method, Secure Boot works without any extra configuration on Trusted Launch VMs (as described earlier). The DKMS Secure Boot limitation applies only to DKMS-compiled modules.
 
 ## Related content
 
