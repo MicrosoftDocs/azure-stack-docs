@@ -34,9 +34,8 @@ AKS on bare metal is ideal for scenarios where:
 ## How it works
 
 AKS on bare metal deploys a Kubernetes cluster directly onto an Azure Arc-enabled machine. The deployment creates:
-
-1. **Logical Network** — Configures networking with IP pools for the cluster (not needed for single node clusters)
-1. **AKS cluster** — A fully managed Kubernetes cluster running directly on the hardware
+- **Logical Network** — Configures networking with IP pools for the cluster (not needed for single node clusters)
+- **AKS cluster** — A fully managed Kubernetes cluster running directly on the hardware
 
 You manage all resources through Azure Resource Manager and see them in the Azure portal.
 
