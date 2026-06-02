@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Dedicated management cluster concepts for disconnected operations
+# Dedicated management cluster for disconnected operations
 
 ::: moniker range=">=azloc-2603"
 
