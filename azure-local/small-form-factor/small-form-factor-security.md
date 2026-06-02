@@ -13,7 +13,7 @@ ms.subservice: small-form-factor
 
 This article describes the built-in security capabilities for small form factor deployments of Azure Local and provides guidance for securing your environment.
 
-For security guidance when running Kubernetes-based deployments on small form factor devices, either with AKS Arc or on third-party clusters such as K3s, see the [Azure Arc enabled Kubernetes and AKS enabled by Azure Arc Security Book](/azure/azure-arc/kubernetes/conceptual-security-book). Note that this reference book doesn't cover security guidance if running raw containers via Docker.
+For security guidance when running Kubernetes-based deployments on small form factor devices, either with AKS Arc or on third-party clusters such as K3s, see the [Azure Arc enabled Kubernetes and AKS enabled by Azure Arc Security Book](/azure/azure-arc/kubernetes/conceptual-security-book). This reference book doesn't cover security guidance for running raw containers via Docker.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
