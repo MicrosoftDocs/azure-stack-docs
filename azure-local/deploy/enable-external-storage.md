@@ -37,7 +37,7 @@ The following prerequisites apply to use this document:
 # [Dell](#tab/Dell-PowerStore)
 
 > [!NOTE]
-> Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu; install driver via DUP in Windows OS.
+> Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu. Install driver via DUP in Windows OS.
 
 1. Register Dell PowerStore with MSDSM: 
     ```powershell
