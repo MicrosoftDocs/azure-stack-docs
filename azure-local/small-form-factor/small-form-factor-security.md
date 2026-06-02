@@ -13,6 +13,8 @@ ms.subservice: small-form-factor
 
 This article describes the built-in security capabilities for small form factor deployments of Azure Local and provides guidance for securing your environment.
 
+For security guidance when running Kubernetes-based deployments on small form factor devices, either with AKS Arc or on third-party clusters such as K3s, see the [Azure Arc enabled Kubernetes and AKS enabled by Azure Arc Security Book](/azure/azure-arc/kubernetes/conceptual-security-book). Note that this reference book doesn't cover security guidance if running raw containers via Docker.
+
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 Small form factor deployments run in distributed edge environments where physical access, connectivity, and operational controls differ from traditional datacenters.
@@ -126,6 +128,10 @@ Use these capabilities to apply consistent access controls and security policies
 - Azure Local supports secure log collection workflows to help with troubleshooting, auditing, and security investigations. Role‑based access controls and supported collection processes govern access to logs and diagnostic data. You're responsible for retention, access, and downstream use in line with your organizational policies.
   
 - For more information about the process of log collection, see [Collect logs for small form factor deployments of Azure Local](small-form-factor-collect-system-logs.md).
+
+## Endnotes
+
+This document is provided "as-is". Information, views, URLs, and other Internet Web site references may change without notice. Some information relates to pre-released product, which may be substantially modified before it’s commercially released.
 
 ## Next steps
 
