@@ -346,7 +346,7 @@ Follow these steps to create the service principal in your Microsoft Entra tenan
 
 1. In the left pane, select **API permissions**.
 
-1. Select **Grant admin consent for** *tenant*, where *tenant* is the name of your Microsoft Entra tenant. Confirm the consent grant by selecting **Yes**.
+1. Select **Grant admin consent for** *tenant*, where *tenant* is the name of your Microsoft Entra tenant. Select **Yes** to confirm the consent grant.
 
 1. For multitenancy scenarios, run the following PowerShell script to grant the **Directory.Read.All** and **user_impersonation** permissions to the App Service app registration by using the Azure Resource Manager admin endpoint.
 

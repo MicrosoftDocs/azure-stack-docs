@@ -71,21 +71,21 @@ You can use PowerShell to get stamp utilization information without help from Mi
 
 1. Create a [privileged endpoint (PEP) session](azure-stack-privileged-endpoint.md).
 
-2. Run the following command:
+1. Run the following command:
 
    ```
    Test-AzureStack
    ```
 
-3. Close the PEP session.
+1. Close the PEP session.
 
-4. Run the following command by using an invoke-command call:
+1. Run the following command by using an invoke-command call:
 
    ```
    Get-AzureStackLog -FilterByRole SeedRing
    ```
 
-5. Extract the **SeedRing.zip** file. You can get the validation report from the **ERCS** folder where you ran `Test-AzureStack`.
+1. Extract the **SeedRing.zip** file. You can get the validation report from the **ERCS** folder where you ran `Test-AzureStack`.
 
 For more information, see [Send Azure Stack Hub diagnostic logs by using the privileged endpoint](azure-stack-get-azurestacklog.md).
 
@@ -197,7 +197,7 @@ Before you start, be sure to follow the [update activity checklist](release-note
 
 1. Follow the remediation steps in the failure alert.
 
-2. If you can't resolve your problem, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure to [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the problem occurred.
+1. If you can't resolve your problem, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure to [collect logs](./diagnostic-log-collection.md#send-logs-now) for the time span when the problem occurred.
 
 If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert. Leaving a scale unit in a failed update state for a long time can cause additional problems that are more difficult to resolve later.
 
