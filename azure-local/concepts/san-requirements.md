@@ -33,7 +33,6 @@ The Dell PowerStore family (T and Q appliances) running OS 3.0 or later is suppo
 
 Azure Local supports Everpure FlashArray. For more information, see [Azure Local with Everpure](https://support.purestorage.com/bundle/m_microsoft_platform_guide/page/Solutions/Microsoft_Platform_Guide/topics/concept/c_azure_local.html).
 
-For more information, see [Azure Local with Everpure](https://support.purestorage.com/bundle/m_microsoft_platform_guide/page/Solutions/Microsoft_Platform_Guide/topics/concept/c_azure_local.html).
 
 The following models qualify to integrate with Azure Local:
 
