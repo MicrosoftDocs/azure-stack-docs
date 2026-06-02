@@ -46,7 +46,7 @@ For Azure Local, Azure Update Manager is supported only in the regions where Azu
 
 Before installing system updates, you can optionally check for the latest available updates on a per-system basis. This step helps you keep your cluster status synchronized.
 
-1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
+1. Sign in to [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
 
 1. Under the **Resources** dropdown, select **Azure Local**.
 
