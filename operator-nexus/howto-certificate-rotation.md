@@ -210,4 +210,4 @@ az graph query \
 
 * **Operation fails:** Check output from the command.  Result may be Failed (if the whole operation has failed) or PartialSuccess (if the operation succeeded on some devices but not others).  The error detail will list errors on devices.  Address any issues and then run the per-device resync operation on the affected devices.
 * **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait for the operation to finish, and then retry.
-* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is Enabled, and then run a resync.
+* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is `Enabled`, and then run a resync.
