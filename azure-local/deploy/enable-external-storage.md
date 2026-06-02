@@ -5,7 +5,7 @@ author: troettinger
 ms.author: thoroet
 ms.reviewer: ronmiab
 ms.topic: how-to
-ms.date: 03/27/2026
+ms.date: 06/02/2026
 ms.subservice: hyperconverged
 ---
 # Connecting an External Storage Array to Azure Local
@@ -79,7 +79,7 @@ The following prerequisites apply to use this document:
     ```powershell
     Update-HostStorageCache 
     ```
-# [EverPure](#tab/EverPure)
+# [Everpure](#tab/Everpure)
 
 1. Register Pure FlashArray with MSDSM: 
     ```powershell
