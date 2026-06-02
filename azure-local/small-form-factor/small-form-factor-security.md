@@ -131,7 +131,7 @@ Use these capabilities to apply consistent access controls and security policies
 
 ## Endnotes
 
-This document is provided "as-is". Information, views, URLs, and other Internet Web site references may change without notice. Some information relates to pre-released product, which may be substantially modified before it’s commercially released.
+This document is provided "as-is". Information, views, URLs, and other Internet Web site references might change without notice. Some information relates to prereleased product, which might be substantially modified before it's commercially released.
 
 ## Next steps
 
