@@ -72,7 +72,7 @@ Because the control plane runs locally, you need to plan capacity to keep the ma
 
 ## Proof-of-concept configurations
 
-To get started with a quick proof of concept (POC) for disconnected operations, we recommend a four-node Azure Local hardware configuration from the supported solutions in the Azure Local catalog. You can arrange the four nodes in three alternative configurations, depending on which aspects of disconnected operations you want to emphasize during testing.
+To get started with a quick proof of concept (POC) for disconnected operations, we recommend you use a four-node Azure Local hardware configuration from the supported solutions in the Azure Local catalog. You can arrange the four nodes in three alternative configurations, depending on which aspects of disconnected operations you want to emphasize during testing.
 
 ### Option 1: Dedicated management cluster
 
