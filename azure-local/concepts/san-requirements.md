@@ -44,9 +44,8 @@ The following models qualify to integrate with Azure Local:
 - FlashArray RC20
 
 # [Hitachi](#tab/Hitachi-Vantara-support)
-Azure Local supports Hitachi VSP One storage family.
+Azure Local supports the Hitachi VSP One storage family. For more information, see the [Product Compatibility Guide](https://compatibility.hitachivantara.com/products/interop-matrix).
 
-For more information, see the [Product Compatibility Guide](https://compatibility.hitachivantara.com/products/interop-matrix).
 
 The following Hitachi storage models qualify to integrate with Azure Local (subject to program scope and the PCG for host/fabric specifics):
 
