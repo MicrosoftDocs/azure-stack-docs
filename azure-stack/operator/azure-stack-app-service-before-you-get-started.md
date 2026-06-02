@@ -64,7 +64,7 @@ In addition to the specific requirements listed in the following sections, you u
 
 #### Default domain certificate
 
-Place the default domain certificate on the front-end role. User apps for wildcard or default domain requests to Azure App Service use this certificate. The certificate also secures source control operations (Kudu).
+The resource provider places the default domain certificate on the front-end role. User apps for wildcard or default domain requests to Azure App Service use this certificate. The certificate also secures source control operations (Kudu).
 
 The certificate must be in .pfx format and should be a three-subject wildcard certificate. This requirement allows one certificate to cover both the default domain and the `scm` endpoint for source control operations.
 
