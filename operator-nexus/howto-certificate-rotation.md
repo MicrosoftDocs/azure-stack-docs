@@ -66,7 +66,7 @@ If `--no-wait` was used for any certificate rotation operation, the status can b
 ```Azure CLI
 az networkfabric fabric show --resource-group <rg> --resource-name <fabric-name> --query "provisioningState" -o ts
 ```
-The provisoning state will be `Succeeded` once the rotation is complete.
+The provisioning state is `Succeeded` when the rotation finishes.
 
 ### Resync certificates across the fabric
 
