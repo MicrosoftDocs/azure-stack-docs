@@ -406,8 +406,6 @@
       href: aks-bare-metal-create-cluster-portal.md
     - name: Create a cluster - Bicep
       href: aks-bare-metal-create-cluster-bicep.md
-    - name: Create a cluster - ARM template
-      href: aks-bare-metal-create-cluster-arm.md
   - name: How-to
     items:
     - name: Connect to your cluster
