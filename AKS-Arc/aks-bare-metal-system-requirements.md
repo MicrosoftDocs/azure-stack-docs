@@ -16,7 +16,7 @@ This article describes the hardware, network, and Azure requirements for deployi
 
 ## Hardware requirements
 
-Use one of the [supported devices for small form factor deployments of Azure Local.](/azure/azure-local/small-form-factor/small-form-factor-overview)
+Use one of the [supported devices for small form factor deployments of Azure Local.](/azure/azure-local/small-form-factor/small-form-factor-overview#supported-devices)
 
 ## Network requirements
 
