@@ -20,7 +20,7 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 
 ## Step 1: Download the Bicep parameters file
 
-1. Download a local copy of the [Bicep parameters file](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-baremetal/cluster-create.example.bicepparam).
+1. Download a local copy of the [Bicep parameters file](https://github.com/Azure/aksArc/blob/main/deploymentTemplates/aks-baremetal-bicep/create.example.bicepparam).
 1. Configure the following parameters:
 
 | Parameter | Value | Notes |
@@ -28,10 +28,10 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 | `location` | `eastus` | Only supported region for public preview. |
 | `clusterName` | Your cluster name | Name must be 1-27 characters long, start and end with a letter or number, and can only contain letters, numbers, hyphens, or underscores.|
 | `kubernetesVersion` | `1.34.2-20260204` or `1.34.3-20260204` | Format: `Major.Minor.Patch-YYYYMMDD`. |
-| `controlPlaneIp` | IP address | Must match the edge machine IP or be in the same subnet. |
+| `controlPlaneIp` | IP address | Must be in the same subnet as the host IP **but cannot be the same as the host IP**. |
 | `adminGroupObjectIds` | Microsoft Entra ID group object ID | Used for cluster admin RBAC. |
 | `sshPublicKey` | SSH public key | An SSH key pair was created during Edge Machine creations. Use that public key here. |
-| `logAnalyticsWorkspaceId` | '/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.OperationalInsights/workspaces/<WORKSPACE_NAME>' | New workspace used for log analytics. |
+| `logAnalyticsWorkspaceId` | `/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.OperationalInsights/workspaces/<WORKSPACE_NAME>` | New workspace used for log analytics. |
 | `edgeMachineName` | Edge machine name | Must match the provisioned machine in your resource group. |
 
 > [!WARNING]
@@ -39,7 +39,7 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 
 ## Step 2: Download the Bicep template
 
-Save the [Bicep template](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-baremetal/cluster-create.bicep) to the same directory as your parameters file.
+Save the [Bicep template](https://github.com/Azure/aksArc/blob/main/deploymentTemplates/aks-baremetal-bicep/cluster-create.bicep) to the same directory as your parameters file.
 
 ## Step 3: Deploy
 
@@ -48,7 +48,8 @@ Run the following command from the directory containing both files:
 ```azurecli
 az deployment group create \
   --resource-group <RESOURCE_GROUP> \
-  --parameters cluster-create.bicepparam
+  --template-file cluster-create.bicep \
+  --parameters create.example.bicepparam
 ```
 
 > [!NOTE]
