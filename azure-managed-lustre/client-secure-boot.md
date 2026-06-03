@@ -60,6 +60,9 @@ If you use DKMS with Secure Boot enabled, you have two options:
 - **Enroll a Machine Owner Key (MOK)**: Configure DKMS to sign modules with a self-generated key and enroll it in the UEFI MOK database. This approach maintains Secure Boot while allowing DKMS-compiled modules to load. For MOK enrollment instructions, refer to your distribution's DKMS documentation.
 
 > [!NOTE]
+> **Azure Linux 3 considerations**: Azure Linux 3 enables [kernel lockdown](https://docs.kernel.org/admin-guide/kernel-lockdown.html) in integrity mode by default through the `lockdown=integrity` boot parameter. Kernel lockdown blocks loading of unsigned kernel modules independently of Secure Boot, so disabling Secure Boot alone doesn't let DKMS-compiled modules load on Azure Linux 3. To use DKMS on Azure Linux 3, **enroll a Machine Owner Key (MOK)** as described in the previous bullet. Removing the `lockdown=integrity` parameter from the boot configuration also lets unsigned modules load, but isn't recommended because it weakens the platform's security baseline.
+
+> [!NOTE]
 > If you use the **prebuilt kmod** install method, Secure Boot works without any extra configuration on Trusted Launch VMs (as described earlier). The DKMS Secure Boot limitation applies only to DKMS-compiled modules.
 
 ## Related content
