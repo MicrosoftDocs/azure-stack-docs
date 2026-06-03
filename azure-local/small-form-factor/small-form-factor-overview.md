@@ -53,11 +53,11 @@ The following table describes the key features of small form factor deployments.
 
 Azure Local small form factor deployments are validated on the following devices:
 
-- ASUS NUC 14 Pro
-- ASUS NUC 15 Pro
-- Lenovo ThinkEdge SE30
-- Lenovo ThinkEdge SE100
-- OnLogic HX521
+- [ASUS NUC 14 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-14-pro/)
+- [ASUS NUC 15 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-15-pro/)
+- [Lenovo ThinkEdge SE30](https://www.lenovo.com/us/en/p/desktops/thinkedge/thinkedge-se30/len102c0004?orgRef=https%253A%252F%252Fwww.bing.com%252F)
+- [Lenovo ThinkEdge SE100](https://www.lenovo.com/us/en/p/servers-storage/servers/edge/thinkedge-se100/len21te0020?orgRef=https%253A%252F%252Fwww.bing.com%252F&clickid=whp0Rqw5BxyZT-5wqgy1oyjRUkuWSZV3z3IU3U0&irgwc=1&afsrc=1&PID=2003851&acid=ww:affiliate:bv0as6&cid=us:affiliate:cxsaam)
+- [OnLogic HX521](https://www.onlogic.com/store/hx521-azurelocal/)
 
 > [!IMPORTANT]
 > Use one of the supported devices listed here. Other hardware might work, but validation, documentation, and troubleshooting guidance for the preview apply only to these devices.

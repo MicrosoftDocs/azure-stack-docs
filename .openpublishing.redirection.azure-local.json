@@ -1999,6 +1999,15 @@
       "source_path": "azure-local/concepts/ai-workloads-overview.md",
       "redirect_url": "/azure/azure-sovereign-clouds/private/azure-local/ai-workloads-overview",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-local/concepts/azure-hybrid-benefit-disaggregated.md",
+      "redirect_url": "/azure/azure-local/concepts/azure-hybrid-benefit",
+      "redirect_document_id": true
     }
+
+
+
+
   ]
 }
