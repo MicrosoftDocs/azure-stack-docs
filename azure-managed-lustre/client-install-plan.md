@@ -67,14 +67,7 @@ Choose the method that best fits your environment:
 > [!TIP]
 > **Not sure which to choose?** Use **prebuilt kmod** if you're running Trusted Launch VMs with Secure Boot enabled, or if you need the fastest possible install. Use **DKMS** if you want your Lustre client to survive kernel upgrades automatically without waiting for a new kmod package to be published.
 
-## Secure Boot considerations
-
-If your client VMs use Secure Boot, the install method you choose affects whether the Lustre kernel module loads:
-
-- **Prebuilt kmod packages** are signed with the Azure Services Linux Kmod PCA certificate. They load on Trusted Launch VMs with no extra configuration. Confidential VMs require you to add the certificate to the trusted key databases.
-- **DKMS packages** compile the kernel module locally and produce unsigned modules. To use DKMS with Secure Boot, either disable Secure Boot or enroll a Machine Owner Key (MOK).
-
-For full details on Secure Boot behavior, certificate trust, and Confidential VM requirements, see [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
+For **Confidential VM** requirements and full Secure Boot details (signing certificates, MOK enrollment for DKMS), see [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
 
 ## Next steps
 
