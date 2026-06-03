@@ -28,11 +28,11 @@ If you don't have access to physical hardware, you can test small form factor de
 
 Use one of these supported devices:
 
-- ASUS NUC 14 Pro
-- ASUS NUC 15 Pro
-- Lenovo ThinkEdge SE30
-- Lenovo ThinkEdge SE100
-- OnLogic HX521
+- [ASUS NUC 14 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-14-pro/)
+- [ASUS NUC 15 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-15-pro/)
+- [Lenovo ThinkEdge SE30](https://www.lenovo.com/us/en/p/desktops/thinkedge/thinkedge-se30/len102c0004?orgRef=https%253A%252F%252Fwww.bing.com%252F)
+- [Lenovo ThinkEdge SE100](https://www.lenovo.com/us/en/p/servers-storage/servers/edge/thinkedge-se100/len21te0020?orgRef=https%253A%252F%252Fwww.bing.com%252F&clickid=whp0Rqw5BxyZT-5wqgy1oyjRUkuWSZV3z3IU3U0&irgwc=1&afsrc=1&PID=2003851&acid=ww:affiliate:bv0as6&cid=us:affiliate:cxsaam)
+- [OnLogic HX521](https://www.onlogic.com/store/hx521-azurelocal/)
 
 > [!NOTE]
 > Securing the Baseboard Management Controller (BMC) is essential to protect the integrity of your hardware and the systems running on it. You should always set a strong, unique password and replace any default credentials immediately. The BMC must also be kept off untrusted or public networks and placed instead on a restricted, dedicated management network with strict access controls. Because BMC implementations can vary across manufacturers, we recommend consulting your hardware vendor for their specific security guidance and best practices to ensure your environment is fully protected.
