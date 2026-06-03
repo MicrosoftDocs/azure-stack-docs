@@ -45,7 +45,7 @@ For detailed and current hardware requirements, review the [minimum configuratio
 
 For a list of hardware solutions that support running as a management cluster for disconnected operations, go to the [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **Disconnected operations** under **Solution capability** in the left menu. These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
 
-## Cluster topology and workload separation
+## Topology and workload separation
 
 For the management cluster, use a three-node Azure Local cluster with a switchless storage network design (recommended). This configuration provides quorum and resiliency for the management plane while minimizing infrastructure footprint and network complexity.
 
