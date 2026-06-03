@@ -13,7 +13,7 @@ ms.date: 04/23/2026
 
 In this article, you learn how to upgrade an existing Lustre client package to the current version. Upgraded client software is required to connect to an Azure Managed Lustre file system.
 
-If you need to install the client software for the first time, see [Install prebuilt Lustre client software](client-install.md).
+If you need to install the client software for the first time, see [Install Lustre client software](client-install.md). For the supported distribution matrix and to choose between the prebuilt **kmod** and **DKMS** install methods, see [Plan your Lustre client installation](client-install-plan.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
