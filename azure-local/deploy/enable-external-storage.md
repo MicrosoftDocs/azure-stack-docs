@@ -8,9 +8,8 @@ ms.topic: how-to
 ms.date: 06/02/2026
 ms.subservice: hyperconverged
 ---
-# Connecting an External Storage Array to Azure Local
+# Connecting an external storage array to Azure Local
 
-## Overview
 Azure Local supports attaching external Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This capability enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
 
 ## Prerequisites
@@ -223,7 +222,8 @@ The following prerequisites apply to use this document:
     ```
     mpclaim -s -d 
     ```
-**Note:** The Windows Host Utilities installer automatically sets the required HBA registry values. See NetApp ONTAP SAN Host documentation for details. 
+> [!NOTE]
+> The Windows Host Utilities installer automatically sets the required HBA registry values. See NetApp ONTAP SAN Host documentation for details. 
 
 8. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
@@ -265,7 +265,8 @@ The following prerequisites apply to use this document:
 
 ## Step 4: Initialize and Format Disks 
 
-**Note:** Run on one cluster node only. 
+>[!NOTE]
+> Run on one cluster node only. 
 
 1. Get the new disk (usually the one with no partition): 
     ```powershell
@@ -299,7 +300,8 @@ The following prerequisites apply to use this document:
 
 3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\{VolumeName}), then select Create. 
 
-**Note:** Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
+> [!NOTE]
+> Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
 
 ## Troubleshooting 
 
@@ -352,7 +354,7 @@ If volumes are missing or inaccessible, check Failover Cluster Manager for disk 
 
 If creating a Storage Path fails in the Azure portal, verify that the specified file system path exists and is accessible on the cluster. The path must point to a valid CSV location under C:\ClusterStorage\. Also confirm that the Azure Arc connection for the cluster is healthy and that the cluster resource is in a ready state. If the issue persists, retry the operation after confirming that all previous steps completed successfully. 
 
-## Next Articles: 
+## Next steps
 
 - [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
 - [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
