@@ -4,7 +4,7 @@ description: Learn how to connect Linux clients with supported software versions
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 12/15/2025
+ms.date: 04/23/2026
 ms.reviewer: dsundarraj
 ms.custom: sfi-image-nochange
 
@@ -36,7 +36,12 @@ The basic workflow is as follows:
 
 ## Install or upgrade Lustre client software
 
-Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15 or 2.16, depending on your operating system). For the full list of supported distributions, kernels, and architectures, see [Install prebuilt Lustre client software](client-install.md).
+Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15 or 2.16, depending on your operating system). For the full list of supported distributions, kernels, and architectures, see [Plan your Lustre client installation](client-install-plan.md).
+
+You can install the client by using one of two methods:
+
+- **Prebuilt kmod packages**: Precompiled kernel modules matched to specific kernel versions. Fastest to install.
+- **DKMS packages**: Compiles the kernel module from source on your VM. Automatically rebuilds when your kernel is upgraded.
 
 You can download prebuilt and tested client packages for Azure Managed Lustre from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
