@@ -42,7 +42,7 @@ Each row in the following table shows a combination of a distribution, architect
 
 † **Frozen** - End of life.
 
->[!Note]
+> [!NOTE]
 > - **arm64 support:** Only Ubuntu 24.04 currently provides arm64 packages.
 > - **Frozen distributions:** Ubuntu 18.04 and RHEL 7 are frozen at Lustre 2.15.4. They reached end of life; no further Lustre client updates are published. Existing packages remain available for installation. Upgrade base OS for ongoing updates.
 > - **Kernel update cadence:** Package availability changes as new Linux kernels are released and as Lustre gains support. When a new maintenance kernel ships for an already-supported distribution kernel series, Microsoft typically publishes a matching Lustre metapackage within one business day.

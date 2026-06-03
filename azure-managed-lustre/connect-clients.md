@@ -36,7 +36,7 @@ The basic workflow is as follows:
 
 ## Install or upgrade Lustre client software
 
-Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15 or 2.16, depending on your operating system). For the full list of supported distributions, kernels, and architectures, see [Install prebuilt Lustre client software](client-install.md).
+Each client that connects to the Lustre file system must have a Lustre client package that's compatible with the file system's Lustre version (currently 2.15 or 2.16, depending on your operating system). For the full list of supported distributions, kernels, and architectures, see [Plan your Lustre client installation](client-install-plan.md).
 
 You can install the client by using one of two methods:
 
