@@ -94,7 +94,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create the certificates by using the OperationsModule helper method with the target **IngressEndpointsCerts** folder.
-1. View and copy the certificates (24 .pfx files) exported to **IngressEndpointsCerts**.
+1. View and copy the certificates (23 .pfx files) exported to **IngressEndpointsCerts**.
 
 The following script shows you how to use the OperationsModule to generate certificates. The script creates Certificate Signing Requests (CSRs), submits them to your Certificate Authority (CA), and then exports the generated certificates with password protection.
 
