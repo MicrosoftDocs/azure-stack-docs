@@ -29,21 +29,25 @@ To host the local control plane, you must deploy a separate Azure Local manageme
 This separation improves:
 
 - **Availability** of the control plane
-- **Operational isolation** from customer workloads
+- **Operational isolation** from tenant workloads
 - **Lifecycle predictability** during upgrade and maintenance
-
-This management cluster is separate from the clusters that run customer applications and tenant workloads, for operational isolation and control-plane reliability. Because this control plane is essential for ongoing management and lifecycle operations, it must be deployed on highly available infrastructure.
 
 >[!NOTE]
 > Production deployments require a dedicated three-node Azure Local management cluster to host the local control plane. Evaluation and test configurations may use smaller management clusters, as described in the deployment options later in this article.
 
 ## Hardware procurement
 
-To procure hardware for a management cluster that hosts the disconnected operations control plane, you must meet specific requirements for performance, availability, and supportability.
+To procure hardware for a management cluster that hosts the disconnected operations control plane, start from the Azure Local catalog.
+
+For a list of hardware solutions that support running as a management cluster for disconnected operations:
+
+1. Go to the [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
+
+1. Select **Disconnected operations** under **Solution capability** in the left menu.
+
+These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
 
 For detailed and current hardware requirements, review the [minimum configurations](/azure/azure-local/manage/disconnected-operations-overview#eligibility-criteria) for a management cluster with the disconnected operations control plane appliance.
-
-For a list of hardware solutions that support running as a management cluster for disconnected operations, go to the [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA) and select **Disconnected operations** under **Solution capability** in the left menu. These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
 
 ## Topology and workload separation
 
@@ -54,7 +58,7 @@ The management cluster is dedicated to:
 - Control plane appliance for disconnected operations
 - Supporting management services required for disconnected operations
 
->[!NOTE]
+>[!IMPORTANT]
 > Deploy tenant workloads (VMs and applications) on separate Azure Local clusters. Don't deploy workloads other than the control plane to the management cluster.
 
 ## Capacity planning
