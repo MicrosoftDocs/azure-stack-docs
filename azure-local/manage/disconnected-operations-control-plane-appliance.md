@@ -77,6 +77,8 @@ This option uses:
 - Three-node dedicated management cluster that hosts the disconnected operations control plane services
 - One-node Azure Local workload cluster used to validate basic workload deployment and management scenarios
 
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/management-focused.png" alt-text="Diagram of a management focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/management-focused.png":::
+
 Use this configuration when the primary goal is to:
 
 - Evaluate the disconnected control plane architecture
@@ -90,6 +92,8 @@ This option uses:
 - One-node management cluster that hosts the disconnected operations control plane for testing purposes
 - Three-node Azure Local workload cluster used to evaluate workload placement, resiliency, and management at small scale
 
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/workload-focused.png" alt-text="Diagram of a workload focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/workload-focused.png":::
+
 Use this configuration when the primary goal is to:
 
 - Focus on Azure Local workload behavior in disconnected mode
@@ -102,6 +106,8 @@ This option uses:
 
 - One-node management cluster that hosts the disconnected operations control plane for testing purposes
 - Three separate one-node Azure Local workload clusters used to validate basic workload deployment and multi-cluster management scenarios
+
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/multi-cluster-focused.png" alt-text="Diagram of a multi-cluster focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/multi-cluster-focused.png":::
 
 Use this configuration when the primary goal is to:
 
