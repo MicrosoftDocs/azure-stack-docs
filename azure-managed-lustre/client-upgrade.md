@@ -24,7 +24,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 > [!IMPORTANT]
 > **DKMS users: kernel upgrades vs. Lustre version upgrades**
 >
-> - **Kernel upgrades** (for example, 5.15.0-100 → 5.15.0-105): If you installed the Lustre client by using DKMS, kernel upgrades are handled automatically. DKMS recompiles the Lustre module for the new kernel during the kernel upgrade process. **No action is needed** - you don't need to follow this procedure.
+> - **Kernel upgrades** (for example, 5.15.0-100 → 5.15.0-105): If you installed the Lustre client by using DKMS, kernel upgrades are handled automatically. DKMS recompiles the Lustre module during the kernel package install (typically 2-5 minutes), not at boot. The new kernel is ready to load Lustre as soon as you reboot. **No action is needed** - you don't need to follow this procedure.
 > - **Lustre version upgrades** (for example, 2.15.7 → 2.15.8): To upgrade to a newer Lustre release, follow the steps in this article. The procedure is the same for both kmod and DKMS users - uninstall the old version, then install the new one.
 
 ### [Red Hat Enterprise Linux / Alma](#tab/rhel)
