@@ -69,6 +69,8 @@ Choose the method that best fits your environment:
 
 For **Confidential VM** requirements and full Secure Boot details (signing certificates, MOK enrollment for DKMS), see [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
 
+If you plan to use DKMS on **Azure Linux 3**, see the kernel lockdown note in [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md#dkms-compiled-modules-and-secure-boot) — disabling Secure Boot alone isn't enough.
+
 ## Next steps
 
 - [Install Lustre client software](client-install.md)
