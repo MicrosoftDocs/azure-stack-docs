@@ -510,7 +510,7 @@ $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($app
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
 # Bootstrap each node
-Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion '12.2604.1003.1005'
 # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
 ```
 
@@ -520,6 +520,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
+>  Ensure that TargetSolutionVersion parameter is set to correct solution version used for the deployment e.g. '12.2604.1003.1005'
 
 ## Pre-create Azure Key Vault
 
