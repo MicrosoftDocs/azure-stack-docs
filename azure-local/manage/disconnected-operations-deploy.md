@@ -56,7 +56,7 @@ Before you deploy Azure Local with disconnected operations, you need the followi
 - [Active directory OU and networking requirements](../deploy/deployment-prerequisites.md).
 - [Local credentials and AD credentials to meet minimum password complexity](../deploy/deployment-prerequisites.md).
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
-- Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
+- Certificates to secure ingress endpoints (23 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (two certificates).
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
