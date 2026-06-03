@@ -280,7 +280,7 @@ The following table lists the known issues from previous releases:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. For the latest update, see [Release information summary](release-information-23h2.md). |
-| Update | Updates to Azure Local versions 2601 or 2602 are removed and no longer available. | Update to version 2603. For more details, see [Azure Local release information](release-information-23h2.md). |
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -368,7 +368,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
 | Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. For the latest update, see [Release information summary](release-information-23h2.md). |
-| Update | Updates to Azure Local versions 2601 or 2602 are removed and no longer available. | Update to version 2603. For more details, see [Azure Local release information](release-information-23h2.md). |
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
 
 ## Known issues from previous releases
@@ -377,7 +377,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Update | Updates to Azure Local versions 2601 or 2602 are removed and no longer available. | Update to version 2603. For more details, see [Azure Local release information](release-information-23h2.md). |
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
 | Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
@@ -434,7 +434,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
-| Update | Updates to Azure Local versions 2601 or 2602 are removed and no longer available. | Update to version 2603. For more details, see [Azure Local release information](release-information-23h2.md). |
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | There's no known workaround in this release. |
 | Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
 
@@ -444,6 +444,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -509,6 +510,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue    |Workaround  |
 |---------|---------|------------|
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
 | Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
 | Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add or remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
@@ -519,6 +521,7 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
@@ -594,6 +597,7 @@ The following table lists the known issues in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| Update | Azure Local versions 2601 and 2602 are no longer available as update targets. | For the latest information, see [Azure Local release information](release-information-23h2.md). |
 | Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.531. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.531, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This action gets the node agent running again and unblocks the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 

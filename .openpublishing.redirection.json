@@ -1922,6 +1922,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-managed-lustre/install-azurelinux-3.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=azurelinux-3",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/get-started.md",
       "redirect_url": "/azure-stack/hci/manage/monitor-cluster",
       "redirect_document_id": false

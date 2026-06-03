@@ -218,18 +218,31 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x435 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/X435-Data-Sheet?v=83ff8e12) <br>(1, 2.5 GbE)|Version 33.6.1 or later |&check;| | &check;|  |
+| [4120 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [4220 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x435 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/X435-Data-Sheet?v=83ff8e12) <br>(1, 2.5 GbE)|Version 33.6.1 or later |&check;| | &check;|  |
+| [4120 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [4220 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.

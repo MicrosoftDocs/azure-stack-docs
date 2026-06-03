@@ -5,9 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 04/01/2026
+ms.date: 06/02/2026
 ms.subservice: hyperconverged
-#customer intent: As a Senior Content Developer, I want provide customers with information and guidance on using Azure Update Manager to manage and keep their Azure Local instances up to date.
 ---
 
 # Use Azure Update Manager to update Azure Local
@@ -43,6 +42,20 @@ Here are some benefits of the Azure Update Manager:
 
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).
 
+## (Optional) Check for updates
+
+Before installing system updates, you can optionally check for the latest available updates on a per-system basis. This step helps you keep your cluster status synchronized.
+
+1. Sign in to [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
+
+1. Under the **Resources** dropdown, select **Azure Local**.
+
+1. Select the systems for which you want to check for updates.
+
+1. Select **Check for updates**.
+
+:::image type="content" source="media/azure-update-manager/check-for-updates.png" alt-text="Screenshot to check for system updates in Azure Update Manager." lightbox="media/azure-update-manager/check-for-updates.png":::
+
 ## Install system updates
 
 > [!IMPORTANT]
@@ -67,8 +80,11 @@ To install system updates using Azure Update Manager, follow these steps:
 
 1. On the **Check readiness** page, review the list of readiness checks and their results.
 
-    - You can select the links under **Details** to view more details and individual system results. For information on the check types, see [About readiness checks](#about-readiness-checks).
-    - For failed readiness checks, review the details and remediation messages via the links under **Details**. To further troubleshoot, see [Troubleshoot updates](./update-troubleshooting-23h2.md) before proceeding.
+    - To view more details and individual system results, select the links under **Details**.
+    - The Azure portal displays details only for informational, warning, and failed health checks. Detailed readiness check results, including successful checks, are available in PowerShell.
+    - For failed readiness checks, review details and remediation messages via the links under **Details**.
+
+    To learn more about readiness checks, view successful check results, and troubleshoot solution updates, see [Troubleshoot solution updates for Azure Local](./update-troubleshooting-23h2.md).
 
     :::image type="content" source="media/azure-update-manager/check-readiness.png" alt-text="Screenshot on the check readiness of updates in Azure Update Manager." lightbox="media/azure-update-manager/check-readiness.png":::
 
