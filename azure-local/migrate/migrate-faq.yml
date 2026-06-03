@@ -3,8 +3,8 @@ metadata:
   title: Azure Migrate FAQ
   description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Local instance using Azure Migrate.
   ms.topic: faq
-  author: alkohli
-  ms.author: alkohli
+  author: ronmiab
+  ms.author: robess
   ms.service: azure-local
   ms.date: 03/25/2026
   ms.subservice: hyperconverged
