@@ -5,12 +5,11 @@ author: troettinger
 ms.author: thoroet
 ms.reviewer: ronmiab
 ms.topic: how-to
-ms.date: 03/27/2026
+ms.date: 06/02/2026
 ms.subservice: hyperconverged
 ---
-# Connecting an External Storage Array to Azure Local
+# Connecting an external storage array to Azure Local
 
-## Overview
 Azure Local supports attaching external Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This capability enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
 
 ## Prerequisites
@@ -36,7 +35,8 @@ The following prerequisites apply to use this document:
 
 # [Dell](#tab/Dell-PowerStore)
 
-> [!Note:] Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu; install driver via DUP in Windows OS. 
+> [!NOTE]
+> Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu. Install driver via DUP in Windows OS.
 
 1. Register Dell PowerStore with MSDSM: 
     ```powershell
@@ -79,7 +79,7 @@ The following prerequisites apply to use this document:
     ```powershell
     Update-HostStorageCache 
     ```
-# [EverPure](#tab/EverPure)
+# [Everpure](#tab/Everpure)
 
 1. Register Pure FlashArray with MSDSM: 
     ```powershell
@@ -222,7 +222,8 @@ The following prerequisites apply to use this document:
     ```
     mpclaim -s -d 
     ```
-**Note:** The Windows Host Utilities installer automatically sets the required HBA registry values. See NetApp ONTAP SAN Host documentation for details. 
+> [!NOTE]
+> The Windows Host Utilities installer automatically sets the required HBA registry values. See NetApp ONTAP SAN Host documentation for details. 
 
 8. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
 
@@ -264,7 +265,8 @@ The following prerequisites apply to use this document:
 
 ## Step 4: Initialize and Format Disks 
 
-**Note:** Run on one cluster node only. 
+>[!NOTE]
+> Run on one cluster node only. 
 
 1. Get the new disk (usually the one with no partition): 
     ```powershell
@@ -298,7 +300,8 @@ The following prerequisites apply to use this document:
 
 3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\{VolumeName}), then select Create. 
 
-**Note:** Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
+> [!NOTE]
+> Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
 
 ## Troubleshooting 
 
@@ -351,7 +354,7 @@ If volumes are missing or inaccessible, check Failover Cluster Manager for disk 
 
 If creating a Storage Path fails in the Azure portal, verify that the specified file system path exists and is accessible on the cluster. The path must point to a valid CSV location under C:\ClusterStorage\. Also confirm that the Azure Arc connection for the cluster is healthy and that the cluster resource is in a ready state. If the issue persists, retry the operation after confirming that all previous steps completed successfully. 
 
-## Next Articles: 
+## Next steps
 
 - [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
 - [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
