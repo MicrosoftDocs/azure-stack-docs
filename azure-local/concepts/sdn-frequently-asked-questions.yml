@@ -3,8 +3,8 @@ metadata:
   title: Frequently Asked Questions (FAQ) for Software-Defined Networking (SDN) on Azure Local
   description: This FAQ provides information about SDN enabled by Azure Arc on Azure Local.
   ms.topic: faq
-  author: alkohli
-  ms.author: alkohli
+  author: ronmiab
+  ms.author: robess
   ms.service: azure-local
   ms.date: 11/11/2025
   ms.subservice: hyperconverged
