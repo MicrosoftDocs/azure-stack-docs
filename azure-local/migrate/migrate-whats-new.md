@@ -15,7 +15,13 @@ This article lists the various features and improvements that are available in v
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
+## May 2026
 
+This release includes these features and improvements:
+
+- **Migration support for Azure Local with external storage** - Azure Migrate now supports migration to Azure Local instances that use external Storage Area Network (SAN) storage, including volumes configured as NTFS. For more information, see [External storage support for Azure Local](../concepts/external-storage-support.md).
+- **Migrated data disk size reporting fix** - Fixed an issue where the reported size of migrated VHDX data disks incorrectly showed 1 GB instead of the actual size. This fix ensures accurate reporting of VHDX disk sizes after migration. VHD data disks still incorrectly show 1 GB. Previously migrated data disks aren't updated. You can manually update them by following [these troubleshooting steps](migrate-troubleshoot.md#migrated-vm-data-disks-show-as-1gb-in-azure-portal).
+- **New replication validation checks in the Azure portal** – Added proactive validation checks during the replication setup flow to detect common misconfigurations earlier. For example, the portal now displays errors if the selected storage account uses the Premium performance tier or has public access disabled, and warnings if source VM static IP addresses conflict with or fall outside the IP pool range of the selected logical network.
 
 ## April 2026
 
