@@ -1,11 +1,10 @@
 ---
 title: Assign a public IP address to a virtual machine
 description: Learn how to assign a public IP address to a virtual machine in Software Defined Networking managed by on-premises tools.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/16/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

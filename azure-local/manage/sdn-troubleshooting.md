@@ -1,12 +1,11 @@
 ---
 title: Troubleshoot Azure Local SDN enabled by Azure Arc
 description: Troubleshoot and resolve common Azure Local SDN network controller deployment errors, VM connectivity issues, and NSG configuration problems. Learn how to fix DNS, downtime, and network policy errors.
-author: alkohli
+author: ronmiab
 contributors:
 ms.topic: concept-article
 ms.date: 09/05/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

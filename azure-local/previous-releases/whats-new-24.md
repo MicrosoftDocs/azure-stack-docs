@@ -2,8 +2,8 @@
 title: What's new in Hyperconverged Deployments of Azure Local 24xx releases
 description: Find out about the new features and enhancements in the Azure Local 24xx releases.
 ms.topic: overview
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.service: azure-local
 ms.date: 02/11/2026
 ms.subservice: hyperconverged
@@ -12,7 +12,7 @@ ms.custom: references_regions
 
 # What's new in hyperconverged deployments of Azure Local 24xx releases?
 
-This article lists the features and improvements that are available in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*) 24xx releases.
+This article lists the features and improvements that are available in hyperconverged deployments of Azure Local 24xx releases.
 
 > [!NOTE]
 > Azure Local 24xx releases are not in a supported state. For more information, see [Azure Local release information](../release-information-23h2.md).
@@ -61,11 +61,13 @@ This release includes the following features and improvements:
 - **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
     For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](../concepts/system-requirements-small-23h2.md).
+
 - **Azure Local for disconnected operations (Preview)** - Azure Local is now available for disconnected operations. Disconnected operations for Azure Local enable the deployment and management of Azure Local instances without a connection to the Azure public cloud.
 
     This feature allows you to build, deploy, and manage virtual machines (VMs) and containerized applications using select Azure Arc-enabled services from a local control plane, providing a familiar Azure portal and CLI experience.
 
-    For more information about this Preview feature, see [Azure Local for Disconnected Operations (Preview)](../manage/disconnected-operations-overview.md).
+    For more information about this Preview feature, see [About Disconnected operations for Azure Local (Preview)](../manage/disconnected-operations-overview.md).
+
 - **Deploy Azure Local with Local Identity (Preview)** - Starting with this release, you can deploy Azure Local using Local identity with Azure Key Vault. By integrating with Key Vault and using certificate-based authentication, security posture is enhanced and operations continuity is ensured. This approach offers minimal edge infrastructure, a secure secret store, and simplified management by consolidating secrets in a single vault. Additionally, it streamlines deployment by eliminating dependencies on Active Directory systems and simplifying firewall configurations.
 
     For more information about this Preview feature, see [Deploy Azure Local with Local Identity and Azure Key Vault (Preview)](../deploy/deployment-local-identity-with-key-vault.md).
@@ -96,7 +98,9 @@ This release includes the following features and improvements:
 
     For more information, see [System requirements for Azure Local](../concepts/system-requirements-23h2.md).
 
-- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. For more information, see [What's new in AKS on Azure Local](/azure/aks/hybrid/aks-whats-new-23h2).
+- **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, and 1.29.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
+
+    For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2411).
 
 ## Features and improvements in 2408.2
 
@@ -158,6 +162,17 @@ This release includes the following changes for SBE:
 - **Reduced deployment times**: Starting in this release, SBE extension interfaces run more efficiently, so Azure Local deployment times are shorter.
 - **CAU plugin**: Starting in this release, SBE extensions use an updated CAU plugin that enhances support for host OS driver updates, addressing problems with drivers that are newer than those in the SBE. This plugin update gives hardware vendors more flexibility for driver version updates in support cases. Microsoft recommends that you install host OS driver updates only through your hardware vendor's SBE.
 - **Improved error details**: Starting in this release, hardware vendor SBE failures or exceptions include the SBE publisher, family, and version at the beginning of the exception string. Provide this information to your hardware vendor to streamline the failure analysis.
+
+### Azure Kubernetes Service on Azure Local
+
+This release supports the following component versions:
+
+|Component|Version|
+|---|---|
+|AKS enabled by Azure Arc|1.3.218|
+|Kubernetes versions|1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4|
+
+Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2408).
 
 ## Features and improvements in 2405.3
 
@@ -291,9 +306,14 @@ This release includes the following updates to the security documentation:
 
 ### Azure Kubernetes Service on Azure Local
 
-For a list of the changes and improvements in AKS on Azure Local, see [What's new in Azure Kubernetes on Azure Local?](/azure/aks/hybrid/aks-whats-new-23h2).
+This release supports the following component versions:
 
+|Component|Version|
+|---|---|
+|AKS enabled by Azure Arc|1.0.23.10605|
+|Kubernetes versions|1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5|
 
+Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2405).
 
 ## Features and improvements in 2402.4
 
@@ -348,6 +368,10 @@ This release includes the following updates to the security documentation:
 - Updates to the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
 - Updates to the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
 - The [Azure Local security book](../security-book/overview.md).
+
+### AKS enabled by Azure Arc changes
+
+For a list of the changes and improvements in AKS on Azure Local, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2402).
 
 ## Next steps
 

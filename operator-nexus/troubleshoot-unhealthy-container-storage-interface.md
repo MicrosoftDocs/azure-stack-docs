@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot unhealthy CSI (storage)
 description: Troubleshooting Azure Resource Health alerts about unhealthy CSI pods (storage)
-author: jensheasby
-ms.author: jensheasby
+author: dougbristow
+ms.author: dbristow
 ms.date: 07/21/2025
 ms.topic: troubleshooting
 ms.service: azure-operator-nexus

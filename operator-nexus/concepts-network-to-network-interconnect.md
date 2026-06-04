@@ -1,8 +1,8 @@
 ---
 title: 'Network-to-Network Interconnect (NNI) in Azure Operator Nexus'
 description: Learn about Network-to-Network Interconnect (NNI) in Azure Operator Nexus
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 02/04/2026

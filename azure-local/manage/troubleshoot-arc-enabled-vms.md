@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot Azure Local Virtual Machines enabled by Azure Arc
 description: Learn how to troubleshoot issues you experience with Azure Local Virtual Machines (VMs).
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 01/08/2026
-ms.author: alkohli
+ms.author: robess
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -97,7 +97,7 @@ Follow these steps to verify that the managed identity doesn't exist for this VM
     "azure-cli-telemetry": "1.1.0",
     "extensions": {
         "akshybrid": "0.1.1",
-        "arcappliance"^ "1.0.2",
+        "arcappliance": "1.0.2",
         "connectedk8s": "1.5.4",
         "connectedmachine": "0.7.0",
         "customlocation": "0.1.3",

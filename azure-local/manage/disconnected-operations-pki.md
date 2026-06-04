@@ -27,7 +27,7 @@ Certificates must come from a public certificate authority (CA) or enterprise ce
 Group mandatory certificates by area with the appropriate Subject Alternative Name (SAN). Before you create the certificates, review these requirements:
 
 - The use of self-signed certificates isn't supported. We recommend you use certificates issued by an enterprise CA.
-- Disconnected operations require 24 external certificates for the endpoints it exposes.
+- Disconnected operations require 23 external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
 - Define the subject and SAN for all certificates, as required by most browsers.
 - All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
@@ -36,7 +36,8 @@ Group mandatory certificates by area with the appropriate Subject Alternative Na
   - Use a private or internal certificate authority (CA).
   - Only internal network access to the certificate revocation list (CRL) endpoint is required.
   - Internet connectivity isn't required.
-  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension.
+  - Make sure your disconnected operations infrastructure can reach the CRL endpoint specified in the certificates' CRL Distribution Point (CDP) extension. 
+  - Use the script in the appendix to validate your CRL endpoints if you're unsure whether your setup is correct.
   - Don't use a public or external CA. Deployments fail if certificates come from a public CA, because internet connectivity is required to access the CRL and Online Certificate Status Protocol (OCSP) services for HTTPS.  
 
 ### Ingress endpoint certificate requirements
@@ -72,7 +73,7 @@ This table lists the mandatory certificates required for disconnected operations
 
 ### Management endpoints
 
-The management endpoint requires two certificates. Put these certificates in the same folder, *ManagementEndpointCerts*. The certificates are:
+The management endpoint requires two certificates. Put these certificates in the same folder, *ManagementEndpointsCerts*. The certificates are:
 
 | Management Endpoint Certificate | Required certificate subject |
 | ---------------------- | ------------------ |
@@ -93,7 +94,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create the certificates by using the OperationsModule helper method with the target **IngressEndpointsCerts** folder.
-1. View and copy the certificates (24 .pfx files) exported to **IngressEndpointsCerts**.
+1. View and copy the certificates (23 .pfx files) exported to **IngressEndpointsCerts**.
 
 The following script shows you how to use the OperationsModule to generate certificates. The script creates Certificate Signing Requests (CSRs), submits them to your Certificate Authority (CA), and then exports the generated certificates with password protection.
 
@@ -107,12 +108,14 @@ The following script shows you how to use the OperationsModule to generate certi
   $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
   $fqdn = "autonomous.cloud.private" 
   $IngressEndpointsCertsFolder = 'C:\Certs\IngressEndpointsCerts'
-  $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+  $certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+  ## Automation alternative
+  ## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
   $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
   
   Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-  New-AldoCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
+  New-ApplianceExternalCertificatesFromCA -ExternalFQDN $fqdn -OutputFolder $IngressEndpointsCertsFolder -CAConfig $caName -CertificatePassword $certPassword
   ```
 
 ### Management endpoint
@@ -129,12 +132,14 @@ $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
 $fqdn = "autonomous.cloud.private" 
 $managementEndpointIp = '192.168.100.25'
 $managementEndpointCertsFolder = 'C:\Certs\ManagementEndpointsCerts'
-$certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
+$certPassword  = Read-Host 'Password for output certificate file .pfx' -AsSecureString
+## Automation alternative
+## $certPassword =  (ConvertTo-SecureString "REPLACEME" -AsPlainText -Force)
 $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
-New-AldoManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caConfig -CertificatePassword $certpassword
+New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caName -CertificatePassword $certpassword
 ```
 
 ## Export root CA certificate
@@ -145,10 +150,11 @@ Here's an example of how to export your root certificate public key:
 
 ```powershell
 $applianceRootcert = "C:\AzureLocalDisconnectedOperations\applianceRoot.cer"
-$caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
+$dcName = "corp.contoso.com"
+$caName = "$($dcname)$\Contoso-RootCA" # Replace with your CA server and CA name (Run certutil -config - -ping to find the names)
 
 # Option 1) Get the Root CA certificate by its name:
-$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($caname)*" } | Select-Object -First 1
+$RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Subject -like "*$($dcname)*" } | Select-Object -First 1
 
 # # Option 2) Get the Root CA certificate by its thumbprint:
 $RootCACert = Get-ChildItem -Path Cert:\LocalMachine\Root | Where-Object { $_.Thumbprint -eq "AA11BB22CC33DD44EE55FF66AA77BB88CC99DD00" } | Select-Object -First 1
@@ -167,6 +173,10 @@ certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 ```
 
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
+
+>[!NOTE]
+> **Root cert is required.** Use the explicit root certificate, not an intermediate certificate. Deployment fails if the full trust chain for the ingress endpoint certificates is missing.
+
 
 ## Obtain certificate information for identity integration
 
@@ -201,7 +211,92 @@ TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporat
 ```
 
 ### Appendix
+#### Validate CRL using Powershell script
+- Copy the below script into a file and name it ValidateCRL.ps1 
+- Invoke the script by using `.\ValidateCRL.ps1 -domainFQDN 'cloud.contoso.com'`
+```powershell
+# Powershell script for validation of certificates
 
+param (
+[Parameter(Mandatory=$false)]
+    [ValidateNotNullOrEmpty()]
+    [string] $domainFQDN = "cloud.contoso.com"
+)
+
+
+$portalURI = "https://portal.$domainFQDN"
+$armURI = "https://armmanagement.$domainFQDN/metadata/endpoints?api-version=2022-09-01"
+ 
+
+Add-Type -AssemblyName System.Net.Http
+ 
+
+foreach ($uri in @($portalURI, $armURI)) {
+    Write-Host "`n============================================" -ForegroundColor Cyan
+    Write-Host "Testing: $uri" -ForegroundColor Cyan
+    Write-Host "============================================" -ForegroundColor Cyan
+ 
+
+    # --- Test 1: CRL check ENABLED (matches your failing code) ---
+    Write-Host "`n[CRL CHECK = TRUE]" -ForegroundColor Yellow
+    try {
+        $handler = [System.Net.Http.HttpClientHandler]::new()
+        $handler.CheckCertificateRevocationList = $true
+        $client = [System.Net.Http.HttpClient]::new($handler)
+        $task = $client.GetAsync($uri)
+        $response = $task.GetAwaiter().GetResult()
+        Write-Host "  Status: $([int]$response.StatusCode) ($($response.StatusCode))" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "  FAILED:" -ForegroundColor Red
+        $ex = $_.Exception
+        $depth = 0
+        while ($ex) {
+            $indent = "  " + ("  " * $depth)
+            Write-Host "${indent}[$($ex.GetType().FullName)]" -ForegroundColor Red
+            Write-Host "${indent}Message: $($ex.Message)" -ForegroundColor Red
+            Write-Host "${indent}HResult: 0x$($ex.HResult.ToString('X8'))" -ForegroundColor DarkYellow
+            $ex = $ex.InnerException
+            $depth++
+        }
+    }
+    finally {
+        if ($client) { $client.Dispose() }
+        if ($handler) { $handler.Dispose() }
+    }
+ 
+
+    # --- Test 2: CRL check DISABLED (matches your passing PowerShell test) ---
+    Write-Host "`n[CRL CHECK = FALSE]" -ForegroundColor Yellow
+    try {
+        $handler2 = [System.Net.Http.HttpClientHandler]::new()
+        $handler2.CheckCertificateRevocationList = $false
+        $client2 = [System.Net.Http.HttpClient]::new($handler2)
+        $task2 = $client2.GetAsync($uri)
+        $response2 = $task2.GetAwaiter().GetResult()
+        Write-Host "  Status: $([int]$response2.StatusCode) ($($response2.StatusCode))" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "  FAILED:" -ForegroundColor Red
+        $ex2 = $_.Exception
+        $depth2 = 0
+        while ($ex2) {
+            $indent2 = "  " + ("  " * $depth2)
+            Write-Host "${indent2}[$($ex2.GetType().FullName)]" -ForegroundColor Red
+            Write-Host "${indent2}Message: $($ex2.Message)" -ForegroundColor Red
+            $ex2 = $ex2.InnerException
+            $depth2++
+        }
+    }
+    finally {
+        if ($client2) { $client2.Dispose() }
+        if ($handler2) { $handler2.Dispose() }
+    }
+}
+ 
+
+
+```
 #### Create certificates script based
 
 If you prefer to control certificate generation, here's an example you can modify to create CSRs and issue certificates.
@@ -235,10 +330,10 @@ $AzLCerts = @(
   "dp.appliances.$fqdn"
   "armmanagement.$fqdn"
   "adminmanagement.$fqdn"
+  "management.$fqdn"
   "frontend.appliances.$fqdn"
   "graph.$fqdn"
   "dp.aszrp.$fqdn"
-  "ibc.$fqdn"
   "portal.$fqdn"
   "hosting.$fqdn"    
   "catalogapi.$fqdn"    
@@ -326,7 +421,7 @@ $certPassword = Read-Host -AsSecureString -Message 'ManagementCertPass' -Force
 # Alternative
 # $certPassword = "REPLACEME"|ConvertTo-SecureString -AsPlainText -Force
 
-$managementendpointPath = "C:\AzureLocalDisconnectedOperations\Certs\ManagementEndpointCerts"
+$managementendpointPath = "C:\AzureLocalDisconnectedOperations\Certs\ManagementEndpointsCerts"
 [void](New-Item -ItemType Directory -path $managementendpointPath -force)
 $managementEndpointIPAddress = '192.168.100.25'
 $fileNames = @('ManagementEndpointSsl', 'ManagementEndpointClientAuth')

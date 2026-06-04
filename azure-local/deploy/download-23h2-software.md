@@ -1,8 +1,8 @@
 ---
 title: Download Azure Stack HCI Operating System, version 23H2 software for Azure Local deployment
 description: Learn how to download Azure Local, version 23H2 software from the Azure portal to deploy an Azure Local instance.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 09/24/2025

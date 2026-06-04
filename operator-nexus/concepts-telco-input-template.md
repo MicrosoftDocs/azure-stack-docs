@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Telco Input Template"
 description: Representing a Nexus instance in a Telco Input template.
-author: lb4368
-ms.author: lborgmeyer
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 07/21/2025

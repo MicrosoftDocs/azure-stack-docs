@@ -1,21 +1,19 @@
 ---
-title: Manage Azure Local VMs for Multi-Rack Deployments (preview) 
-description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments (preview).
-author: alkohli
-ms.author: alkohli
+title: Manage Azure Local VMs for Multi-Rack Deployments 
+description: Learn how to manage Azure Local VMs enabled by Azure Arc. This includes operations such as start, stop, restart, view properties of Azure Local VMs for multi-rack deployments.
+author: sipastak
+ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 11/18/2025
+ms.date: 04/15/2026
 ms.subservice: multi-rack
 ---
 
-# Manage Azure Local VMs for multi-rack deployments (preview)
+# Manage Azure Local VMs for multi-rack deployments
 
 [!INCLUDE [multi-rack-applies-to-preview](../includes/multi-rack-applies-to-preview.md)]
 
 This article describes how to manage Azure Local virtual machines (VMs) enabled by Azure Arc for multi-rack deployments. The procedures to start, stop, restart, and delete an Azure Local VM, and manage guest management are detailed.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -43,6 +41,8 @@ Follow these steps to verify that guest management is enabled in the Azure porta
 
 ## View VM properties
 
+### [Azure portal](#tab/azureportal)
+
 To view VM properties for your Azure Local instance, follow these steps in the Azure portal:
 
 1. Go to the Azure Local resource, and then go to **Virtual machines**.
@@ -55,7 +55,19 @@ To view VM properties for your Azure Local instance, follow these steps in the A
 
    :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/view-virtual-machine-properties-2.png" alt-text="Screenshot of the properties of a selected Azure Local virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machines/view-virtual-machine-properties-2.png":::
 
+### [Azure CLI](#tab/azurecli)
+
+To view the properties of a VM, run the following command:
+
+```azurecli
+az stack-hci-vm show --name $vmName --resource-group $resource_group
+```
+
+---
+
 ## Start a VM
+
+### [Azure portal](#tab/azureportal)
 
 To start a VM, follow these steps in the Azure portal for your Azure Local instance:
 
@@ -71,7 +83,19 @@ To start a VM, follow these steps in the Azure portal for your Azure Local insta
 
 1. Verify that the VM started.
 
+### [Azure CLI](#tab/azurecli)
+
+To start a VM, run the following command:
+
+```azurecli
+az stack-hci-vm start --name $vmName --resource-group $resource_group
+```
+
+---
+
 ## Restart a VM
+
+### [Azure portal](#tab/azureportal)
 
 To restart a VM, follow these steps in Azure portal for your Azure Local instance:
 
@@ -87,7 +111,19 @@ To restart a VM, follow these steps in Azure portal for your Azure Local instanc
 
 1. Verify that the VM restarted.
 
+### [Azure CLI](#tab/azurecli)
+
+To restart a VM, run the following command:
+
+```azurecli
+az stack-hci-vm restart --name $vmName --resource-group $resource_group
+```
+
+---
+
 ## Stop a VM
+
+### [Azure portal](#tab/azureportal)
 
 To stop a VM, follow these steps in the Azure portal for your Azure Local instance:
 
@@ -103,9 +139,21 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 
 1. Verify that the VM stopped.
 
+### [Azure CLI](#tab/azurecli)
+
+To stop a VM, run the following command:
+
+```azurecli
+az stack-hci-vm stop --name $vmName --resource-group $resource_group
+```
+
+---
+
 ## Delete a VM
 
 Deleting a VM doesn't delete all the resources associated with the VM. For example, it doesn't delete the data disks or the network interfaces associated with the VM. You need to locate and delete these resources separately.
+
+### [Azure portal](#tab/azureportal)
 
 To delete a VM, follow these steps in the Azure portal for your Azure Local instance:
 
@@ -124,6 +172,23 @@ To delete a VM, follow these steps in the Azure portal for your Azure Local inst
 1. Locate the associated resources, such as the network interfaces and data disks, and delete them. You might need to select **Show hidden types** to view the resources associated with this VM that weren't deleted.
 
     :::image type="content" source="./media/multi-rack-manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types of resources associated with a virtual machine." lightbox="./media/multi-rack-manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
+
+### [Azure CLI](#tab/azurecli)
+
+To delete a VM, run the following command:
+
+```azurecli
+az stack-hci-vm delete --name $vmName --resource-group $resource_group --yes
+```
+
+After deleting the VM, locate and delete the associated resources such as network interfaces and data disks:
+
+```azurecli
+az stack-hci-vm network nic delete --name $nicName --resource-group $resource_group --yes
+az stack-hci-vm disk delete --name $diskName --resource-group $resource_group --yes
+```
+
+---
 
 ## Change the local account password
 

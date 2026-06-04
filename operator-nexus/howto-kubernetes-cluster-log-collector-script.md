@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to run log collector script"
 description: Learn how to run the log collector script.
-author: dramasamy
-ms.author: dramasamy
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 03/25/2024
@@ -19,6 +19,8 @@ In certain scenarios, Microsoft support will require deeper visibility into a no
 - Other issues that require a deeper inpsection on the node
 
 To facilitate this, a log collector script is available for you to use. This script retrieves all the necessary logs, enabling Microsoft support to gain a better understanding of the issue and troubleshoot it effectively.
+
+**IMPORTANT:** Run the log collector script on the node that is observing issues, running it on any other node will not provide the proper visibility for triage.  It is especially important to run the log collector script first before the target node is deleted.
 
 ## What it collects
 

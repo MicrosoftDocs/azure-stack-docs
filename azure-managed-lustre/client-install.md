@@ -1,23 +1,25 @@
 ---
 title: Install Client Software for Azure Managed Lustre
-description: Learn how to install client software for the Azure Managed Lustre file system.
+description: Learn how to install client software for the Azure Managed Lustre file system using prebuilt kmod packages or DKMS.
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 12/11/2025
+ms.date: 04/23/2026
 zone_pivot_groups: select-os
 ---
 
-# Install prebuilt Lustre client software
+# Install Lustre client software
 
-In this article, you learn how to download and install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+In this article, you learn how to install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+
+Before you install, see [Plan your Lustre client installation](client-install-plan.md) for the support matrix and to choose between the prebuilt **kmod** and **DKMS** install methods.
 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
-For more information about the behavior of Azure Managed Lustre with Trusted Lunch Virtual Machines and Confidential Compute Virtual Machine, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
+For more information about the behavior of Azure Managed Lustre with Trusted Launch Virtual Machines and Confidential Compute Virtual Machines, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
 
 ::: zone pivot="alma-86"
 
@@ -48,9 +50,9 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone pivot="rhel-9"
 
-## Install client software for Red Hat Enterprise Linux 9
+## Install client software for Red Hat Enterprise Linux 9 or AlmaLinux 9
 
-This article shows how to install the client package to set up client VMs running Red Hat Enterprise Linux 9 (RHEL 9).
+This article shows how to install the client package to set up client VMs running Red Hat Enterprise Linux 9 (RHEL 9) or AlmaLinux 9.
 
 ::: zone-end
 
@@ -94,7 +96,7 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone-end
 
-### Download and install prebuilt client software
+### Download and install client software
 
 ::: zone pivot="alma-86"
 
@@ -197,11 +199,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
 
-    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
+   #### [Prebuilt kmod](#tab/kmod)
+
+   The metapackage version doesn't always align with the kernel version. Use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-8](./includes/client-install-version-rhel-8.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-rhel](./includes/client-install-dkms-rhel.md)]
+
+   ---
 
 ::: zone-end
 
@@ -232,11 +242,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-9](./includes/client-install-version-rhel-9.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-rhel](./includes/client-install-dkms-rhel.md)]
+
+   ---
 
 ::: zone-end
 
@@ -303,11 +321,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu](./includes/client-install-dkms-ubuntu.md)]
+
+   ---
 
 ::: zone-end
 
@@ -372,11 +398,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu](./includes/client-install-dkms-ubuntu.md)]
+
+   ---
 
 ::: zone-end
 
@@ -442,11 +476,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubunt-24](./includes/client-install-version-ubuntu-24.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu-24](./includes/client-install-dkms-ubuntu-24.md)]
+
+   ---
 
 ::: zone-end
 
@@ -480,15 +522,26 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-azurelinux-3](./includes/client-install-version-azurelinux-3.md)]
 
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-azurelinux-3](./includes/client-install-dkms-azurelinux-3.md)]
+
+   ---
+
 ::: zone-end
 
 ## Related content
 
+- [Plan your Lustre client installation](client-install-plan.md)
+- [Upgrade Lustre client software to the current version](client-upgrade.md)
 - [Connect clients to an Azure Managed Lustre file system](connect-clients.md)
+- [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)
 - [Azure Managed Lustre overview](amlfs-overview.md)

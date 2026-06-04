@@ -24,12 +24,12 @@ landingContent:
             url: overview.md
           - text: Hyperconverged deployments
             url: overview/hyperconverged-overview.md
-          - text: Multi-rack deployments (preview)
+          - text: Multi-rack deployments
             url: multi-rack/multi-rack-overview.md
+          - text: Small form factor deployments
+            url: small-form-factor/small-form-factor-overview.md
           - text: Disconnected operations
             url: manage/disconnected-operations-overview.md
-          - text: Microsoft 365 on Local
-            url: concepts/microsoft-365-local-overview.md
 
 # Card 
   - title: Plan and deploy
@@ -38,8 +38,10 @@ landingContent:
         links:
           - text: Deploy hyperconverged deployments
             url: deploy/deploy-via-portal.md
-          - text: Plan multi-rack (preview)
+          - text: Plan multi-rack
             url: multi-rack/multi-rack-prerequisites.md
+          - text: Deploy small form factor deployments
+            url: small-form-factor/small-form-factor-installation.md
           - text: Deploy disconnected operations
             url: manage/disconnected-operations-deploy.md
 
@@ -50,11 +52,11 @@ landingContent:
         links:
           - text: Complete prerequisites on hyperconverged
             url: manage/azure-arc-vm-management-prerequisites.md
-          - text: Complete prerequisites on multi-rack (preview)
+          - text: Complete prerequisites on multi-rack
             url: multi-rack/multi-rack-vm-management-prerequisites.md
           - text: Deploy Azure Local VMs on hyperconverged
             url: manage/create-arc-virtual-machines.md
-          - text: Deploy Azure Local VMs on multi-rack (preview)
+          - text: Deploy Azure Local VMs on multi-rack
             url: multi-rack/multi-rack-create-arc-virtual-machines.md
           - text: Azure Local VMs on disconnected
             url: manage/disconnected-operations-arc-vm.md
@@ -66,13 +68,13 @@ landingContent:
         links:
           - text: Monitor hyperconverged deployments
             url: concepts/monitoring-overview.md
-          - text: Monitor multi-rack deployments (preview)
+          - text: Monitor multi-rack deployments
             url: multi-rack/multi-rack-monitor-overview.md
           - text: Monitor disconnected operations
             url: manage/disconnected-operations-monitoring.md       
           - text: Azure Monitor metrics for hyperconverged deployments
             url: manage/monitor-cluster-with-metrics.md
-          - text: Azure Monitor metrics for multi-rack deployments (preview)
+          - text: Azure Monitor metrics for multi-rack deployments
             url: multi-rack/multi-rack-monitor-cluster-with-metrics.md
 
   # Card
@@ -96,7 +98,7 @@ landingContent:
         links:
           - text: Security for hyperconverged deployments
             url: concepts/security-features.md
-          - text: Security for multi-rack deployments (preview)
+          - text: Security for multi-rack deployments
             url: multi-rack/multi-rack-security.md
           - text: Security for disconnected operations
             url: manage/disconnected-operations-security.md
@@ -120,7 +122,7 @@ landingContent:
         links:
           - text: About Azure Local VMs on hyperconverged 
             url: manage/azure-arc-vm-management-overview.md
-          - text: About Azure Local VMs on multi-rack (preview)
+          - text: About Azure Local VMs on multi-rack
             url: multi-rack/multi-rack-azure-arc-vm-management-overview.md
 
   # Card
@@ -130,7 +132,7 @@ landingContent:
         links:
           - text: Create NSGs on hyperconverged 
             url: manage/create-network-security-groups.md
-          - text: Create NSGs on multi-rack (preview)
+          - text: Create NSGs on multi-rack
             url: multi-rack/multi-rack-create-network-security-groups.md
           - text: Manage NSGs on hyperconverged 
             url: manage/manage-network-security-groups.md

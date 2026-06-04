@@ -1,10 +1,10 @@
 ---
 title: Download Azure managed disk to Azure Local
 description: Learn how to download Azure managed disk to Azure Local.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 06/27/2025
-ms.author: alkohli
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

@@ -35,7 +35,7 @@ The architecture has the following components.
 
 -   **Virtual network and subnets**. Every Azure VM is deployed into a virtual network that can be segmented into subnets. Create a separate subnet for each tier.
 
--   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](../operator/azure-stack-marketplace-azure-items.md) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
+-   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](../operator/azure-stack-marketplace-azure-items.md) such as: [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
 
 -   **Load balancers**. Use [Azure Load Balancer ](/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
 
@@ -159,7 +159,7 @@ For more information, see [Design considerations for scale sets](/azure/virtual-
 -   Currently, there is a 700 VM limit on Azure Stack Hub, which accounts for all Azure Stack Hub infrastructure VMs, individual VMs, and scale set instances.
 
 > [!NOTE]
-> Unmanaged disks are retiring. Migrate to managed disks before the retirement date. For more information, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+> Unmanaged disks are no longer supported, migrate to managed disks. For details, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 ## Subscription limits
 

@@ -57,3 +57,9 @@ Important References:
 - [Network Security Group configuration](configure-network-security-group.md)
 - [Use Azure Firewall with Azure Managed Lustre](configure-firewall.md)
 - [Maintenance Window documentation](create-file-system-portal.md#maintenance-window)
+
+## Security scanners and antivirus on Lustre clients
+
+Avoid running antivirus, EDR, vulnerability, or security scanners (for example, ClamAV) against a Lustre mount from multiple clients in parallel. Recursive filesystem walks can generate large volumes of metadata operations. These filesystem walks contend for locks on shared resources (especially the filesystem root and frequently traversed directories), which can slow workloads across the cluster.
+
+If scanning the Lustre filesystem is required, run the scanner from a single dedicated client during a low-activity time. Exclude the Lustre mount from scanner configurations on all other clients (the data is identical on every client, so per-client scanning provides no extra security coverage). To minimize impact, tune the scan rate.

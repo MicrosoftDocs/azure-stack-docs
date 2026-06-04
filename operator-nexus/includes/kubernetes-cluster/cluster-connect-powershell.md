@@ -1,6 +1,6 @@
 ---
-author: rashirg
-ms.author: rajeshwarig
+author: dougbristow
+ms.author: dbristow
 ms.date: 10/03/2023
 ms.topic: include
 ms.service: azure-operator-nexus

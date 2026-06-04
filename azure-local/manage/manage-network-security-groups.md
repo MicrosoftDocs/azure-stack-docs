@@ -1,8 +1,8 @@
 ---
 title: Manage network security groups and network security rules on Azure Local VMs
 description: Learn how to manage network security groups and network security rules for Azure Local virtual machines.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 09/05/2025
 ms.service: azure-local
@@ -259,7 +259,7 @@ In this example, we create a network interface with an existing network security
 1. Run the following command to create a network interface (NIC) on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --ip-address $ipaddress --name $nicname --network-security-group $nsgname 
+    az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname 
     ```
 
     <details>
@@ -351,7 +351,7 @@ In this example,  we associate a static logical network with an existing network
 1. Run the following command to associate a logical network with a network security group on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan –network-security-group $nsgname 
+    az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --vm-switch-name $vmswitchname --dns-servers $dnsservers --gateway $gateway --vlan $vlan --network-security-group $nsgname 
     ```
 
     <details>
@@ -748,7 +748,7 @@ This section describes the manage operations supported for network security rule
 1. Run this command to update a network security rule:
 
     ```azurecli
-    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resouce_group --destination-port-ranges $destinationport
+    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resource_group --destination-port-ranges $destinationport
     ```
 
     <details>

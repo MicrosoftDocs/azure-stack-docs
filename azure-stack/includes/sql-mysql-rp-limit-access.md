@@ -1,12 +1,11 @@
 ---
-author: YangCao
-ms.author: caoyang
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/27/2021
-ms.reviewer: caoyang
-ms.lastreviewed: 05/27/2021
+ms.date: 05/19/2026
+
 ---
 
 > [!IMPORTANT]
-> Starting from Azure Stack Hub build 2108, the SQL and MySQL resource providers are offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](../operator/azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
+> The SQL and MySQL resource providers for Azure Stack Hub are deprecated and aren't available for onboarding new customers. Instead, deploy SQL or MySQL directly on virtual machines and manage them by using standard tools and practices. Existing deployments of the resource providers continue to be supported, but no new feature development or onboarding is planned.

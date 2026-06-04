@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/23/2026
+ms.date: 04/09/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -56,7 +56,7 @@ Before you deploy Azure Local with disconnected operations, you need the followi
 - [Active directory OU and networking requirements](../deploy/deployment-prerequisites.md).
 - [Local credentials and AD credentials to meet minimum password complexity](../deploy/deployment-prerequisites.md).
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
-- Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
+- Certificates to secure ingress endpoints (23 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (two certificates).
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
@@ -106,6 +106,9 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
     - OSAndDocker_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ThirdPartyNotices.txt
 
    ```powershell  
    Get-ChildItem $applianceConfigBasePath  
@@ -126,6 +129,8 @@ To prepare the first machine for the disconnected operations appliance, follow t
     - IRVM.zip
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
     - OSAndDocker_A.vhdx
     - Storage.json
 
@@ -143,11 +148,11 @@ To prepare the first machine for the disconnected operations appliance, follow t
     Copy-Item \\fileserver\share\azurelocalcerts $certspath -recurse  
     ```
 
-1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointCerts` and `IngressEndpointsCerts` and at least 24 certificates.
+1. Verify the certificates, public key, and management endpoint. You should have two folders: `ManagementEndpointsCerts` and `IngressEndpointsCerts` and at least 24 certificates.
 
     ```powershell  
     Get-ChildItem $certsPath 
-    Get-ChildItem $certsPath -recurse -filter *.cer  
+    Get-ChildItem $certsPath -recurse -filter *.pfx  
     ```  
 
 1. Import the **Operations module**. Run the command as an administrator using PowerShell. Modify the path to match your folder structure.
@@ -155,7 +160,7 @@ To prepare the first machine for the disconnected operations appliance, follow t
     ```powershell  
     Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
 
-    $mgmntCertFolderPath = "$certspath\ManagementEndpointCerts"  
+    $mgmntCertFolderPath = "$certspath\ManagementEndpointsCerts"  
     $ingressCertFolderPath = "$certspath\IngressEndpointsCerts"  
     ```
 
@@ -249,13 +254,6 @@ Populate the required parameters based on your deployment planning. Modify the e
 
     For more information, see [PKI for disconnected operations](disconnected-operations-pki.md).
 
-1. Copy the appliance manifest file (Downloaded from Azure) to your configuration folder:
-
-    ```powershell
-    # Modify your source path accordingly 
-    copy-item AzureLocal.DisconnectedOperations.Manifest.json $applianceConfigBasePath\AzureLocal.DisconnectedOperations.manifest.json
-    ```  
-
 ## Install and configure the appliance  
 
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
@@ -288,7 +286,7 @@ Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose
 >
 > You can also specify the -clean switch to start installation from scratch. This switch resets any existing installation state and starts from the beginning
 >
-> DisableChecksum = $true skips validating the signature of the Appliance. Use this when deploying an air-gapped environment. If checksum validation is enabled, the node needs to reach and validate the Microsoft cert signing certificates used for signing this build.  
+
 
 ## Configure observability for diagnostics and support
 
@@ -348,11 +346,21 @@ To configure observability, follow these steps:
     Get-ApplianceObservabilityConfiguration
     ```
 
-## Configure Azure PowerShell
+## Add the Azure Local disconected operations environment to the nodes
 
-On each node, run the following to enable a custom cloud endpoint for Azure PowerShell. You'll use this later when bootstrapping the Azure Local node to the control plane.
+In order for the nodes to understand your private cloud environment, you must add the local environment. This is required for bootstrapping the Azure Local nodes later to the control plane.
+
+On each node, run the following from Powershell:
+ 
+1. `Add-AzLocalEnvironment -CloudFQDN "autonomous.cloud.private"`
+
+> [!NOTE]
+> This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
+
+For environments prior to 2603, use the legacy `Add-AzEnvironment` approach below.
 
 ```powershell
+# Legacy approach from prior to 2603 adding a private cloud environment
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
@@ -395,12 +403,29 @@ Ensure you limit access to the operator subscription to only required personnel.
 
 Make sure you register the required resource providers before deployment. 
 
-Here's an example of how to automate the resource providers registration from Azure PowerShell.
+Here's an example of how to automate the resource providers registration from Azure PowerShell. 
+
+
+> [!NOTE]
+> **Run this script on a client machine, not on the Azure Local nodes**. If you run it on an Azure Local node, verify the `Az.Resources` version to avoid deployment conflicts.
 
 ```powershell
 $applianceCloudName = "azure.local"
 $subscriptionName = "Operator subscription"
 
+<# Use this block only when running this script from an Azure Local node. Check whether Az.Resources 8.1.1 is installed and install it if needed (2603).
+$requiredModule = "Az.Resources"
+$requiredVersion = "8.1.1"
+$installedModule = Get-InstalledModule -Name $requiredModule -ErrorAction SilentlyContinue
+
+# If operating air-gaped, you need to download and copy this module manually
+if (-not $installedModule -or $installedModule.Version -lt $requiredVersion) {
+     Write-Host "Installing $requiredModule version $requiredVersion..."
+     Install-Module -Name $requiredModule -RequiredVersion $requiredVersion -Force
+     Write-Information "Make sure Az.Resources is the correct version if you are running this script on an Azure Local node rather than a client"
+}#>
+
+# Register resource providers
 # Connect to the ARM endpointusing device authentication
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Selecting a different subscription than the operator subscription.."
@@ -419,10 +444,15 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguratio
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ExtendedLocation" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ResourceConnector" 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridContainerService"
+
 # Not required on disconnected operations
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Attestation"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 # Register-AzResourceProvider -ProviderNamespace "Microsoft.Insights"
+
+# Required for automating Key Vault creation, not for Azure Local.
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
+
 ```
 
 Wait until all resource providers are in the state **Registered**.
@@ -447,47 +477,50 @@ Verify the deployment before creating local Azure resources.
     - You're redirected to your identity provider to sign in.
 1. Sign in to your identity provider with the credentials you configured during deployment.
     - You should see Azure portal running in your network.
-1. Check that a subscription exists for your Azure Local infrastructure (for example, Starter subscription).
+1. Check that a subscription exists for your Azure Local infrastructure (for example, Operator subscription).
 1. Check that required resource providers are registered in the subscription.
 1. Check that a resource group exists for your Azure Local infrastructure (for example, azurelocal-disconnected-operations).
+
+> [!NOTE]  
+> The management cluster doesn't support AD-less deployments. 
 
 ### Initialize each Azure Local node
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
-1. Initialize each Azure Local node.
-
-    ```powershell
-    $resourcegroup = 'azurelocal-management-cluster' 
-    $applianceCloudName = "azure.local"
-    $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
-    $applianceFQDN = "autonomous.cloud.private"
-    $subscriptionName = "Starter subscription"
+```powershell
+$resourcegroup = 'azurelocal-management-cluster' 
+$applianceCloudName = "azure.local"
+$applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
+$applianceFQDN = "autonomous.cloud.private"
+ $subscriptionName = "Operator subscription"
     
-    Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
-    Write-Host "Selecting a different subscription than the operator subscription.."
-    $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
+Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
+Write-Host "Ensuring you are using operator subscription for the management cluster.."
+$subscription = Get-AzSubscription -SubscriptionName $subscriptionName
 
-    # Set the context to that subscription
-    Set-AzContext -SubscriptionId $subscription.Id
+# Set the context to that subscription
+Set-AzContext -SubscriptionId $subscription.Id
 
-    $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
+$armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($applianceFQDN)"
 
-    # $ArmAccessToken = $armTokenResponse.Token
-    # Convert token to string for use in initialization
-    # Workaround needed for Az.Accounts 5.0.4
-    $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
+# $ArmAccessToken = $armTokenResponse.Token
+# Convert token to string for use in initialization
+# Workaround needed for Az.Accounts 5.0.4
+$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-    # Bootstrap each node
-    Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
-    ```
+# Bootstrap each node
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion '12.2604.1003.1005'
+# If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
+```
 
 > [!NOTE]
 > Ensure that you run initialization on the first machine before moving on to other nodes.
 >
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
-> You can also use the [Configurator App](../deploy/deployment-arc-register-configurator-app.md?view=azloc-2506&preserve-view=true) to initialize each node.
+> You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
+>  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2604.1003.1005`.
 
 ## Pre-create Azure Key Vault
 
@@ -517,16 +550,63 @@ Follow these steps to create an Azure Local instance (cluster):
 Perform the following tasks after deploying Azure Local with disconnected operations:
 
 1. **Back up the BitLocker keys (do not skip this step)**. During deployment, the appliance is encrypted. Without the recovery keys for the volumes, you can't recover and restore the appliance. For more information, see [Understand security controls with disconnected operations on Azure Local](disconnected-operations-security.md).
-
-1. **Assign extra operators.** You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
-
+1. **Assign extra operators**. You can assign one or more operators by navigating to **Operator subscriptions**. Assign the **contributor** role at the subscription level.
 1. [Export the host guardian service certificates](disconnected-operations-security.md) and back up the folder you export them to on an external share or drive.
 1. [Register the management cluster](disconnected-operations-registration.md)
-1. **Lock down the management cluster** - Prevent operators from creating workloads on the management cluster. Limit operator access to a few and use Azure Policy to prevent workloads on the cluster resource.
+1. **Lock down the management cluster**. Restrict operators from deploying workloads on the management cluster. Limit operator access to a select few and enforce this restriction using Azure Policy to block workloads on the cluster resource. 
+1. Clean up disks. If data disks were used during the bootstrap process, ensure they are removed.
+
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
 
 ## Appendix
+
+### Lock down management cluster 
+
+```powershell
+$operatorSubscriptionId = 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+$resourceGroup = 'azurelocal-management-cluster'
+$managementClusterLocationName = 'managementcluster-location'
+$customLocationId = "/subscriptions/$($operatorSubscriptionId)/resourceGroups/$($resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/$($managementClusterLocationName)"
+Import-Module "$applianceConfigBasePath\OperationsModule\AzureLocal.Orchestration.psm1" 
+Set-ManagementClusterLock `
+        -Enabled $true `
+        -SubscriptionId $operatorSubscriptionId `
+        -MgmtClusterCustomLocationId $customLocationId
+```
+
+### Clean up data disks used for bootstrap
+
+```powershell
+# ===============================
+# Remove CSV and Return Space to Pool
+# ===============================
+
+$CsvName="Cluster Virtual Disk (InfraLocal_1)"
+$VirtualDiskName ="InfraLocal_1"
+
+Write-Host "Starting CSV removal process..." -ForegroundColor Cyan
+
+# --- Validate CSV exists ---
+$csv = Get-ClusterSharedVolume -Name $CsvName -ErrorAction Stop
+Write-Host "Found CSV: $($csv.Name)"
+
+# --- Remove CSV ---
+$csv = remove-ClusterSharedVolume -Name $CsvName -ErrorAction Stop
+Write-Host "Removed CSV: $($csv.Name)"
+
+# --- Take Cluster Resources offline ---
+Write-Host "Taking CSV resource offline..." -ForegroundColor Yellow
+Stop-ClusterResource -Name $csv.name -Wait 120
+
+# --- Remove Cluster Resources offline ---
+Write-Host "Taking CSV resource offline..." -ForegroundColor Yellow
+remove-ClusterResource -Name $csv.name
+
+# --- Remove virtual disk and return space to pool ---
+Write-Host "Remoing virtual disk..." -ForegroundColor Yellow
+remove-virtualdisk -FriendlyName $VirtualDiskName
+```
 
 ### Troubleshoot and reconfigure by using management endpoint
 

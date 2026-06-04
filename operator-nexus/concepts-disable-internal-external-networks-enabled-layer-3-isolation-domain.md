@@ -1,8 +1,8 @@
 ---
 title: Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
 description: Learn about disabling internal/external networks in an enabled layer 3 isolation domain in Azure Operator Nexus.
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 05/16/2025
@@ -29,6 +29,7 @@ Disabling internal or external networks while an isolation domain (ISD) is enabl
 
   - **Internal networks**: `RoutePolicy`, `NetworkTap`, and `NetworkMonitor`
   - **External networks**: `RoutePolicy`, network-to-network interconnect, and access control lists
+- Disabling and enabling of Internal/External networks fails if the parent L3 ISD is not enabled.
 - Disabling internal/external networks isn't supported via A/B update workflow.
 - Modification of any internal/external network configuration might lead to temporary or permanent disruption of the network if the dependent service or workloads are still using the old configuration.
 - Unlocking during the batch doesn't restore the resource to an enabled state. You must update the administrative state to enabled and commit if you want to change the state.

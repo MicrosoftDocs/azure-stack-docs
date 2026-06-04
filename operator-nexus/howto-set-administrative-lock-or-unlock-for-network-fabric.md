@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus - How to Use Administrative Lock or Unlock Network fabric
 description: Learn how to lock or unlock a fabric resource using the Administrative Lock feature in Nexus Network Fabric.
-author: jac0bsmith
-ms.author: jacosmith
+author: dougbristow
+ms.author: dbristow
 ms.date: 10/08/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
@@ -46,6 +46,9 @@ az networkfabric fabric show \
 * `--resource-name`: Name of your Network Fabric resource.
 * `--query`: Filters the output to show only Administrative lock type and its current state.
 * `-o table`: Formats the output as a table for better readability.
+
+> [!NOTE]
+> An administrativeLock is allowed only when NetworkFabric.configurationState is one of the following - Provisioned, Accepted, PendingAdministrativeUpdate, Succeeded, Failed. In addition, NetworkFabric.provisioningState should be Succeed.
 
 ### Example
 

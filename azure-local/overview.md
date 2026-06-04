@@ -1,9 +1,8 @@
 ---
 title: What Is Azure Local? Overview and Key Benefits
 description: Learn how Azure Local accelerates cloud and AI innovation by delivering applications, workloads, and services from cloud to edge with Azure Arc as the control plane.
-author: alkohli
-ms.author: alkohli
-ms.reviewer: alkohli
+author: ronmiab
+ms.author: robess
 ms.date: 11/18/2025
 ms.topic: overview
 ---

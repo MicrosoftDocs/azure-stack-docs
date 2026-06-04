@@ -1,11 +1,10 @@
 ---
 title: Physical network requirements for Azure Local
 description: Learn about physical network requirements for Azure Local, including network switches, to ensure optimal performance.
-author: alkohli
+author: ronmiab
 ms.topic: concept-article
-ms.date: 02/06/2026
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.date: 03/27/2026
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 
@@ -27,15 +26,17 @@ Microsoft tests Azure Local to the standards and protocols identified in the **N
 
 When you purchase network switches, contact your switch vendor and ensure that the devices meet the Azure Local requirements for your specified role types. The following vendors (in alphabetical order) confirm that their switches support Azure Local requirements:
 
-# [Overview](#tab/overview)
+## Validated network switches by vendor
 
-Select a vendor tab to see validated switches for each of the Azure Local traffic types. You can find these network classifications [here](host-network-requirements.md#network-traffic-types).
+To see validated switches for each of the Azure Local traffic types, select and expand a vendor in the following list. You can find these network classifications [here](host-network-requirements.md#network-traffic-types).
+
+If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 > [!IMPORTANT]
 > We update these lists as we're informed of changes by network switch vendors.
 
-If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
-# [Alcatel-Lucent](#tab/Alcatel-Lucent)
+<details>
+<summary><strong>Alcatel-Lucent</strong></summary>
 
 ### 24H2
 
@@ -57,7 +58,10 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [Arista](#tab/Arista)
+</details>
+
+<details>
+<summary><strong>Arista</strong></summary>
 
 ### 24H2
 
@@ -69,7 +73,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;|&check; |
-
+| [CX 10040 series](https://www.hpe.com/psnow/doc/PSN1014368376CHEN) <br> (10, 100, 400 GbE)|AOS CX version 10.16.1020 or later|&check;| &check;| &check;|&check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -83,12 +87,15 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf)<br>(10, 25, 100 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;|  &check;|
 | [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf)<br>(10, 25, 100, 400 GbE) |EOS version 4.26.2F or later|&check;| &check;| &check;| &check; |
 | [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf) <br> (10, 25, 100, 400 GbE)|EOS version 4.26.2F or later|&check;| &check;| &check;|&check; |
-
+| [CX 10040 series](https://www.hpe.com/psnow/doc/PSN1014368376CHEN) <br> (10, 100, 400 GbE)|AOS CX version 10.16.1020 or later|&check;| &check;| &check;|&check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
+</details>
 
-# [Aruba](#tab/Aruba)
+<details>
+<summary><strong>Aruba</strong></summary>
+
 ### 24H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
@@ -104,6 +111,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
@@ -116,9 +124,14 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [CX 10000 series](https://www.hpe.com/psnow/doc/PSN1014368376PREN) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300 series](https://www.hpe.com/psnow/doc/a00125744enw)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300S series](https://www.hpe.com/psnow/doc/PSN1014825214USEN)<br>(10, 25, 100, 400 GbE) |AOS CX version 10.14.1000 or later|&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-# [Cisco](#tab/Cisco)
+
+</details>
+
+<details>
+<summary><strong>Cisco</strong></summary>
 
 ### 24H2
 <!-- > [!Important]     
@@ -134,9 +147,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
 | [Nexus 9332D-H2R]( https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9332d-h2r-switch-ds.html) <br> (100, 400 GbE)|NX-OS 10.4(1) or later|&check;| &check;| &check;| &check; |
 | [Nexus 9300-H1](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nb-06-nexus-93400ld-h1-switch-ds-cte-en.html) <br> (10, 25 GbE)|NX-OS 10.4(2) or later|&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
+
 <!-- > [!Important]     
 > NX-OS version 10.3(2)F or later is required. -->
 
@@ -150,11 +166,15 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
 | [Nexus 9332D-H2R]( https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9332d-h2r-switch-ds.html) <br> (100, 400 GbE)|NX-OS 10.4(1) or later|&check;| &check;| &check;| &check; |
 | [Nexus 9300-H1](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nb-06-nexus-93400ld-h1-switch-ds-cte-en.html) <br> (10, 25 GbE)|NX-OS 10.4(2) or later|&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
+</details>
 
-# [Dell](#tab/Dell)
+<details>
+<summary><strong>Dell</strong></summary>
+
 ### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -171,6 +191,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -188,15 +209,59 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [HPE](#tab/HPE)
+</details>
+
+<details>
+<summary><strong>Extreme Networks</strong></summary>
+
+### 24H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x435 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/X435-Data-Sheet?v=83ff8e12) <br>(1, 2.5 GbE)|Version 33.6.1 or later |&check;| | &check;|  |
+| [4120 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [4220 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+### 23H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x435 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/X435-Data-Sheet?v=83ff8e12) <br>(1, 2.5 GbE)|Version 33.6.1 or later |&check;| | &check;|  |
+| [4120 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [4220 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/4000-Series-Data-Sheet%27?v=bb9ebc88) <br>(10, 40 GbE)|Version 33.6.1 or later |&check;| &check;| &check;|  |
+| [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+| [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+</details>
+
+<details>
+<summary><strong>HPE</strong></summary>
+
 ### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [5944 series](https://www.hpe.com/psnow/doc/4aa5-4495enw?jumpid=in_lit-psnow-red) <br>(10, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; |
 | [5945 series](https://www.hpe.com/psnow/doc/a00049249enw) <br>(10, 25, 100 GbE)|Comware 7 version R6710 or later |&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -206,21 +271,25 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
+</details>
 
-# [Juniper](#tab/Juniper)
+<details>
+<summary><strong>Juniper</strong></summary>
+
 ### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)<br>(100, 400 GbE) |Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
 | [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf) <br>(25, 100 GbE) |Junos 23.4R2-S4.11 or later|&check;| &check;| &check;| &check; |
-| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later	|&check;| &check;| &check;| &check; |
+| [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later    |&check;| &check;| &check;| &check; |
 | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf) <br>(400 GbE)|Junos 20.2R3-S2 or later|&check;| &check;| &check;| &check; |
-| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later	|&check;| &check;| &check;| &check; |
+| [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf) <br>(10, 25, 100 GbE) |Junos 23.4R2-S4.11 or later    |&check;| &check;| &check;| &check; |
 | [QFX5110 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5110-ethernet-switch-datasheet.pdf) <br>(10 GbE) |Junos 23.4R2-S4.11 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -235,9 +304,24 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [NETGEAR](#tab/NETGEAR)
+</details>
+
+<details>
+<summary><strong>NETGEAR</strong></summary>
 
 ### 24H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
+| [M4350](https://www.downloads.netgear.com/files/GDC/M4350/M4350_Datasheet.pdf) <br>(1, 2.5, 5, 10, 25, 100 GbE)|Version 14.0.2.26 or later   |&check;| | &check;| |
+| [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+### 23H2
+
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
@@ -245,17 +329,42 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
-### 23H2
+
+</details>
+<details>
+<summary><strong>Nokia</strong></summary>
+
+### 24H2
+
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [M4250](https://www.downloads.netgear.com/files/GDC/M4250/M4250_Datasheet.pdf) <br>(1, 2.5, 10 GbE)|Version 13.0.4.26 or later  |&check;| | &check;| |
-| [M4350](https://www.downloads.netgear.com/files/GDC/M4350/M4350_Datasheet.pdf) <br>(1, 2.5, 5, 10, 25, 100 GbE)|Version 14.0.2.26 or later   |&check;| | &check;| |
-| [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; |
+| [7220-IXR-D2L](https://www.nokia.com/asset/207599/) <br>(1, 10, 25, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
+| [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
+| [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
+| [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
+### 23H2
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [7220-IXR-D2L](https://www.nokia.com/asset/207599/) <br>(1, 10, 25, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
+| [7220 IXR-D3L](https://www.nokia.com/asset/207599/) <br>(10, 40, 100 GbE)|SR Linux 26.3.1-410 or later  |&check;| | &check;| &check; |
+| [7220-IXR-D4](https://www.nokia.com/asset/207599/) <br>(40, 50, 100, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
+| [7220-IXR-D5](https://www.nokia.com/asset/207599/) <br>(10, 40, 50, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check; 
+| [7220 IXR-H4/ 7220 IXR-H4-32D](https://www.nokia.com/asset/f/210990/) <br>(1/10, 100, 200, 400 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;
+| [7220 IXR-H5-32D/7220 IXR-H5-64D/7220 IXR-H5-64O](https://www.nokia.com/asset/f/210990/) <br>(10, 100, 200, 400, 800 GbE)|SR Linux 26.3.1-410 or later  |&check;|&check; | &check;| &check;  
 
-# [NVIDIA](#tab/NVIDIA)
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+</details>
+<details>
+<summary><strong>NVIDIA</strong></summary>
+
 ### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -263,6 +372,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; |
 | [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; |
 | [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -273,28 +383,36 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; |
 | [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) <br>(10, 25, 100 GbE)|Cumulus Linux 5.1 or later |&check;| &check;| &check;| &check; |
 | [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) <br>(10, 25, 100, 400 GbE)|Cumulus Linux 5.1 or later|&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
-# [Supermicro](#tab/Supermicro)
+</details>
+
+<details>
+<summary><strong>Supermicro</strong></summary>
+
 ### 24H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
 | [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### 23H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
 | [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
----
+</details>
 
 ## Network switch requirements
 
@@ -304,6 +422,7 @@ This section lists industry standards that are mandatory for the specific roles 
 > Network adapters used for compute, storage, and management traffic require Ethernet. For more information, see [Host network requirements](host-network-requirements.md).
 
 Here are the mandatory IEEE standards and specifications:
+
 # [24H2](#tab/24H2reqs)
 
 ### 24H2 role requirements
@@ -323,8 +442,10 @@ Here are the mandatory IEEE standards and specifications:
 | Maximum Transmission Unit || | |&check; |
 | Border Gateway Protocol || | |&check; |
 | DHCP Relay Agent |&check;| | | |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### Standard: IEEE 802.1Q
 
 Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. Azure Local requires VLANs for several aspects and requires them in all scenarios.
@@ -373,7 +494,7 @@ Ethernet switches used for Azure Local management traffic must support DHCP rela
 
 # [23H2](#tab/23H2reqs)
 
-### 23H2 Role Requirements
+### 23H2 role requirements
 
 |Requirement |Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  | :-:  | :-:  | :-:   | :-:   |
@@ -390,8 +511,10 @@ Ethernet switches used for Azure Local management traffic must support DHCP rela
 | Maximum Transmission Unit || | |&check; |
 | Border Gateway Protocol || | |&check; |
 | DHCP Relay Agent |&check;| | | |
+
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
+
 ### Standard: IEEE 802.1Q
 
 Ethernet switches must comply with the IEEE 802.1Q specification that defines VLANs. Azure Local requires VLANs for several aspects and requires them in all scenarios.

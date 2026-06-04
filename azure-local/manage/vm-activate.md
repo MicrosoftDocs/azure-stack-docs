@@ -1,8 +1,8 @@
 ---
 title: Activate Windows Server VMs on Azure Local
 description: This article explains the benefits of using Automatic Virtual Machine Activation and provides instructions on setting up this optional feature on Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.date: 12/30/2025
 ms.service: azure-local

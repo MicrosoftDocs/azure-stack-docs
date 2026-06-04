@@ -1,8 +1,8 @@
 ---
 title: Cluster Inspect Action Hardware Validation
 description: Overview of Cluster Inspect Action Hardware Validation
-author: vanjams
-ms.author: vanjanikolin
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/03/2026
@@ -25,10 +25,12 @@ The time required to complete cluster inspect depends on the number of nodes and
 - The cluster inspect action requires 2026-01-01-preview API
 
 > [!IMPORTANT]
+>
 > Cluster inspect action is rejected if there's another running cluster inspection or HWV on the cluster.
 >
 > `ResetHardware` is only supported on clusters in `Pending Deployment` state
-
+>
+> The BMM names specified in `bareMetalMachineNames` and rack names specified in `rackNames` are case sensitive. Multiple bare metal machines can be listed in `bareMetalMachineNames` and multiple rack names can be listed in `rackNames`. Both `bareMetalMachineNames` and `rackNames` can be used together in the same command; the resulting filter is additive.
 
 ## Cluster Inspect Command Arguments
 
@@ -47,7 +49,7 @@ The `az networkcloud cluster inspect` command triggers an inspection of the clus
 ## Running Cluster Inspect Action
 
 
-**The following Azure CLI command will run a read only, non-disruptive Cluster Inspect Action against all BMMs in a cluster:**
+**The following Azure CLI command will run a read only, non-disruptive Cluster Inspect Action against all BMMs in a cluster**
 
 ```azurecli
 az networkcloud cluster inspect \
@@ -59,7 +61,7 @@ az networkcloud cluster inspect \
 ```azurecli
 az networkcloud cluster inspect \
   --ids <Resource ID> \
-  --filter-devices '{"bareMetalMachineNames": [<BMM name>]}' \
+  --filter-devices '{"bareMetalMachineNames":["<BMM name>"]}' \
   --additional-actions ResetHardware
 ```
 
@@ -68,15 +70,31 @@ az networkcloud cluster inspect \
 ```azurecli
 az networkcloud cluster inspect \
   --ids <Resource ID> \
-  --filter-devices '{"rackNames": [<rack name>]}' \
+  --filter-devices '{"rackNames":["<rack name>"]}' \
+  --additional-actions ResetHardware
+```
+
+**The following Azure CLI command will run a disruptive Cluster Inspection against two racks and two selected BMMs**
+
+```azurecli
+az networkcloud cluster inspect \
+  --ids <Resource ID> \
+  --filter-devices '{"rackNames":["<rack name 1>","<rack name 2>"],"bareMetalMachineNames":["<BMM name 1>","<BMM name 2>"]}' \
   --additional-actions ResetHardware
 ```
 
 > [!NOTE]
-> The BMM names specified in `bareMetalMachineNames` and rack names specified in `rackNames` are case sensitive. Multiple bare metal machines can be listed in `bareMetalMachineNames` and multiple rack names can be listed in `rackNames`. Both `bareMetalMachineNames` and `rackNames` can be used together in the same command; the resulting filter is additive.
+>
+> Cluster inspection runs all standard HWV checks. When used with ResetHardware option, the cluster inspection HWV cleans up the iDRAC users/TLS certificates and server RAID; it also updates any necessary firmware components and BIOS settings as needed.
 
 ## Cluster Inspect Action Results
 
 Cluster Inspection results are logged to the Cluster Log Analytics Workspace.
+
+> [!IMPORTANT]
+>
+> Cluster inspect action runs hardware validation (HWV) using the serial number, boot MAC address, and Baseboard Management Controller (BMC) MAC address stored in the Cluster Manager cluster custom resource. If those hardware identity values later change on the server, for example after a system board replacement or server swap, cluster inspect action will use stale values.
+>
+> As a result, inspection failures for serial number, boot MAC address, or BMC MAC address mismatches are false positives when the reported values match the current Bare Metal Machine (BMM) values. If HWV reports one of these mismatches, compare the reported values with the current BMM values. If the values match, treat the mismatch as a false positive and continue troubleshooting any other inspection failures separately.
 
 If hardware validation fails during cluster inspection, see [Troubleshoot hardware validation failure](./troubleshoot-hardware-validation-failure.md) for detailed troubleshooting procedures organized by validation category.

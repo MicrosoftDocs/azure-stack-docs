@@ -1,8 +1,8 @@
 ---
-title: External storage support for Azure Local (preview)
+title: External storage support for Azure Local
 ms.service: azure-local
 ms.reviewer: robess
-description: Learn how Azure Local supports external SAN integration, enabling high-performance storage for VMs, AKS clusters, and AVD instances without re-architecture (preview).
+description: Learn how Azure Local supports external SAN integration, enabling high-performance storage for VMs, AKS clusters, and AVD instances without re-architecture.
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
@@ -10,11 +10,9 @@ ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---
 
-# External storage support for Azure Local (preview)
+# External storage support for Azure Local
 
 This article explains external storage support for Azure Local, its benefits, supported configurations, and other essential information.
-
-[!INCLUDE [IMPORTANT](../includes/hci-preview.md)]
 
 ## Overview
 
@@ -38,9 +36,7 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Supported configurations
 
-- **Fibre Channel (FC) based SAN connectivity**: Currently in preview.
-
-- **Dell PowerFlex**: Generally available.
+Fibre Channel (FC) based SAN connectivity and Dell PowerFlex are Generally available.
 
 ## Fibre Channel based SAN arrays
 
@@ -50,12 +46,9 @@ Bring your Fibre Channel based SAN arrays from leading vendors and directly inte
 
 Once connected, SAN-backed volumes are discovered and integrated as Cluster Shared Volumes (CSVs) formatted with NTFS, allowing shared access across nodes and seamless visibility for workloads. This configuration enables independent scaling of compute and storage while maintaining unified Azure management for both local and Arc-enabled services.
 
-> [!NOTE]
-> Fibre Channel support is currently available for nonproduction workloads through **limited preview program**. Customers interested in evaluating this capability should contact their Microsoft representative or their Storage vendor for participation in the preview.
-
 ## Dell PowerFlex solution integration
 
-**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local. In this limited preview release, PowerFlex enables external block storage to be presented as **high-performance CSVs** accessible to Azure Local clusters over Fibre Channel.
+**Dell PowerFlex** delivers a robust, software-defined storage solution built for hybrid environments like Azure Local.
 
 :::image type="content" source="media/external-storage-support-azure-local/integration-architecture-diagram.png" alt-text="Diagram that shows connections between Azure Local cluster hosts and PowerFlex storage nodes through dual fabric connectivity." lightbox="media/external-storage-support-azure-local/integration-architecture-diagram.png":::
 

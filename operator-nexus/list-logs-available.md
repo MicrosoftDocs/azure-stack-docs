@@ -1,8 +1,8 @@
 ---
 title: List of logs available in Azure Operator Nexus
 description: List of logs available in Azure Operator Nexus for streaming to customer's subscription by creating diagnostic settings.
-author: neilverse
-ms.author: soumyamaitra
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/13/2024

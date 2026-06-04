@@ -1,3 +1,4 @@
+items:
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
@@ -20,4 +21,7 @@
   topicHref: /azure/azure-local/index
 - name: Azure Local
   tocHref: /troubleshoot/
+  topicHref: /azure/azure-local/index
+- name: Azure Local
+  tocHref: /azure-sovereign-clouds/
   topicHref: /azure/azure-local/index

@@ -1,12 +1,12 @@
 ---
 title: What is Azure Local VM management
 description: Learn about using Azure Local VM management to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 12/15/2025
+ms.date: 04/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,7 +14,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of the virtual machine (VM) management feature in hyperconverged deployments of Azure Local (*formerly Azure Stack HCI*), including its benefits, components, and a high-level workflow.
+This article provides an overview of virtual machine (VM) management in hyperconverged deployments of Azure Local, including its benefits, components, and a high-level workflow.
 
 Azure Local VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
 
@@ -39,13 +39,15 @@ Although Hyper-V provides capabilities to manage your on-premises VMs, Azure Loc
 
 Consider the following limitations when you're managing VMs on Azure Local:
 
-- Updates to VM configurations, such as vCPU, memory, network interface, or data disk via on-premises tools, won't be reflected on the Azure management plane.
+- Changes to VM configurations, such as static network interface IP, or data disk configuration made either within the VM or through local management tools will not be reflected in Azure.
 
 - Moving a resource group isn't supported for VMs on Azure Local and its associated resources (such as network interfaces and disks).
 
 - Azure has limitations on subscriptions and services. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
-- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. For more information, see [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+- Creation of VMs by using Windows Server 2012 and Windows Server 2012 R2 images isn't supported via the Azure portal. You can do it only via the Azure CLI. See [Additional parameters for Windows Server 2012 and Windows Server 2012 R2 images](./create-arc-virtual-machines.md#additional-parameters-for-windows-server-2012-and-windows-server-2012-r2-images).
+
+  Azure Local VMs running Windows Server 2012 and Windows Server 2012 R2 do not support enabling guest management as it lacks Hyper-V sockets support which is required for this feature. For more information on Hyper-V sockets, see [Make your own integration services](/windows-server/virtualization/hyper-v/make-integration-service). 
 
 - Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 
@@ -64,7 +66,26 @@ Consider the following limitations when you're managing VMs on Azure Local:
 
 Azure Local VM management has several components, including:
 
-- **Azure Arc resource bridge**: This lightweight Kubernetes VM connects your on-premises Azure Local instance to the Azure cloud. The Azure Arc resource bridge is created automatically when you deploy Azure Local.
+- **Azure Arc resource bridge**: A prepackaged virtual appliance that runs as a virtual machine (VM) on your Azure Local cluster. It hosts an Azure Arc-enabled Kubernetes cluster that acts as the management cluster and enables the projection of on-premises resources such as VMs, logical networks, network interfaces, disks, and other related resources into Azure for cloud-based management. The Azure Arc resource bridge is created automatically when you deploy Azure Local. The Arc resource bridge appears:
+
+  - **In Azure**: as an Azure resource named *&lt;instance-name&gt;*-arcbridge
+  - **On the local cluster**: as a VM named *&lt;GUID&gt;*-control-plane-*&lt;GUID&gt;*
+
+    > [!IMPORTANT]
+    > Azure Arc resource bridge is a critical component for Azure Local VM management and should not be deleted unless you plan to reimage or decommission your Azure Local instance. Deleting this resource results in loss of the Azure control plane used to manage Azure Local VMs.
+    >
+    > If you need to delete the Arc resource bridge, do so only after you've deleted all Azure resources associated with workload management, including:
+    >
+    > - Azure Local VMs
+    > - AKS Arc clusters
+    > - VM images
+    > - Storage paths
+    > - Logical networks
+    > - Network interfaces
+    > - Virtual hard disks
+    > - Network security groups
+    >
+    > To delete the Arc resource bridge, follow the guidance here: [Azure Arc resource bridge deployment command overview](/azure/azure-arc/resource-bridge/deploy-cli).
 
     For more information, see [What is Azure Arc resource bridge?](/azure/azure-arc/resource-bridge/overview).
 
@@ -72,9 +93,16 @@ Azure Local VM management has several components, including:
 
     For more information, see [Manage logical networks for Azure Local VMs enabled by Azure Arc](./manage-logical-networks.md).
 
-- **Custom location**: Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, to integrate your on-premises setup more closely with Azure.
+- **Custom location**: An Azure resource that represents a target location for deploying Azure Local VMs and other associated resources. You can think of it as your organization's private Azure region. By selecting a custom location, Azure understands where and how to deploy resources within your Azure Local environment.
 
-- **Kubernetes extension for VM operators**: The VM operator is the on-premises counterpart of the Azure Resource Manager resource provider. It's a Kubernetes controller that uses custom resources to manage your VMs.
+    Just like the Azure Arc resource bridge, a custom location is created automatically when you deploy Azure Local. It represents your Azure Local instance as a target location for deploying Azure resources. Custom locations bring Azure's consistent deployment model to Azure Local by abstracting away the underlying infrastructure details. Virtual machine administrators can deploy Azure resources such as VMs, disks, and network interfaces directly from Azure by simply choosing the custom location, without needing to interact directly with the underlying infrastructure.
+
+    Each Azure Local instance has one custom location, and each custom location has a one-to-one mapping to the Azure Arc-enabled Kubernetes cluster namespace running inside the Azure Arc resource bridge.
+
+    > [!IMPORTANT]
+    > The custom location should only be deleted after the Arc resource bridge has been deleted.
+
+- **Kubernetes cluster extension for Azure Local VMs**: This extension is a Kubernetes controller installed into the Azure Arc-enabled Kubernetes management cluster hosted inside the Azure Arc resource bridge. This extension implements the core business logic for Azure Local VM lifecycle management. It orchestrates fabric operations such as power operations, attaching and detaching disks and network interfaces, and GPU assignment on Azure Local VMs. The cluster extension processes requests from Azure Resource Manager (ARM), triggered by customer-initiated actions from the Azure control plane, and executes them locally on the Azure Local cluster.
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution that bridges the gap between on-premises and cloud infrastructures.
 

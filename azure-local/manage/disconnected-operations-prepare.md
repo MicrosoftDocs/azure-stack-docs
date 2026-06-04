@@ -54,7 +54,7 @@ Prepare your Azure Local machines for disconnected operations by completing thes
      Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch($networkIntentName)" -NewName "vManagement($networkIntentName)"
 
      # Rename the NetAdapter. During creation, Hyper-V adds the string "vEthernet" to the beginning of the name.
-     Rename-NetAdapter -Name "vEthernet (ConvergedSwitch($networkIntentName))" -NewName "vManagement($networkIntentName)"
+     Get-NetAdapter -name "vEthernet*"| Rename-NetAdapter -NewName "vManagement($networkIntentName)"
      ```
 
    - If you use VLANs, make sure you set the network adapter VLAN.
@@ -114,8 +114,42 @@ Prepare your Azure Local machines for disconnected operations by completing thes
     ```powershell
     [Environment]::SetEnvironmentVariable("DISCONNECTED_OPS_SUPPORT", $true, [System.EnvironmentVariableTarget]::Machine)
     ```
+1. Domain join the machine prior to deployment (recommended)
 
-1. [Setup Azure CLI on each node](../manage/disconnected-operations-cli.md). Ensure it works on each node before you deploy an Azure Local instance. Otherwise, the deployment fails.
+    We recommend you to domain join each Azure Local node prior to deployment. Here's an example using Powershell:
+
+    ```powershell
+    $credential = Get-Credential
+    Add-Computer -DomainName contoso.com -Credential $credential -Restart
+    # You can also specifcy OU path and skip one step below
+    # Add-Computer -DomainName contoso.com -credential $credential -OUPAth 'OU=AzureLocal,DC=contoso,DC=com' -restart 
+    ```
+    You can also use SConfig to domain join your node.
+
+    Once domain joined - you need to do the following:
+    - Add deployment user to local administrator group of this machine
+    - Add computer to the correct OU in the domain unless specified in the Add-Computer cmdlet
+
+    Here's an example script you can run:
+    ```powershell
+
+    # Add deployment user to local administrator group 
+    $deploymentUser = "contoso.com\lcmuser" # Change this to your deployment username
+    try {
+        Add-LocalGroupMember -Group "Administrators" -Member $deploymentUser -ErrorAction Stop
+        Write-Host "Successfully added $deploymentUser to Administrators group"
+    } catch {
+        Write-Host "Error adding user to Administrators group: $_"
+        Write-Host "Ensure user exists and domain is reachable"
+    }
+    
+    # Move computer to the correct OU in the domain if not specified in previous step
+    $computerName = $env:COMPUTERNAME
+    # Modify these to match your domain and OU path
+    $domain = "contoso.com"
+    $ou = "OU=AzureLocal,DC=contoso,DC=com" 
+    Move-ADObject -Identity "CN=$computerName,CN=Computers,DC=contoso,DC=com" -TargetPath $ou
+    ```
 
 1. From the list of node names, select the first machine and designate it as the (seed node). The seed node is the first node used to deploy the disconnected operations control plane. Use the following command to designate the seed node.
 

@@ -32,9 +32,14 @@ Disconnected operations for Azure Local are licensed on a capacity-based model w
 
 When you create a disconnected operations resource, enter the number of processor cores that it manages, including the control plane itself. During the annual term, you can increase the number of physical cores if you need more managed cores. Billing adjusts based on the new total core count for the remainder of the license period.
 
-## Windows Server VMs licensed
+## Azure Hybrid Benefit for Windows Server VMs
 
-To license Windows Server VMs running on Azure Local with disconnected operations or to apply the Azure Hybrid Benefit, you need an eligible Windows Server license with Software Assurance, or an active Windows Server subscription.
+> [!Note]
+> Azure Hybrid Benefits for Azure Local isn't available with disconnected operations.
+
+Azure Hybrid Benefit is supported for Windows Server VMs running on Azure Local in disconnected operations. To license these Windows Server VMs and use Azure Hybrid Benefit, you must have an eligible Windows Server license with active Software Assurance or an active Windows Server subscription.
+
+Azure Hybrid Benefit for Azure Local is not available with disconnected operations. Azure Hybrid Benefit is only applicable for the Windows Server VMs running on Azure Local with disconnected operations
 
 ## Licensing prerequisites
 

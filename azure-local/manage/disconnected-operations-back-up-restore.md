@@ -1,5 +1,5 @@
 ---
-title: Backup for Disconnected Operations for Azure Local
+title: Back up Azure Local Disconnected Environments
 description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
@@ -17,9 +17,6 @@ ai-usage: ai-assisted
 This article explains the backup process for disconnected operations for Azure Local environments. It provides practical steps to trigger a backup and parameter configurations to customize it. Operators need access to the [Operator subscription and role-based access control (RBAC) permissions](disconnected-operations-identity.md).
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
-
-> [!IMPORTANT]
-> The restore feature is currently in development. Documentation for the restore process will be available once the feature is stable.
 
 ## Overview
 
@@ -39,6 +36,13 @@ Before you back up your system, complete these prerequisites:
 
 - **Encryption key:** Store the encryption certificate externally (*.cer* for backup) and provide it during the backup process. We recommend an Azure Key Vault in global Azure in the same subscription where the Azure Local with disconnected operations instance registration entry exists.
 
+- **Import backup module (required):** Before running any backup cmdlets, import the backup module from your Operations Module by using its full path:
+
+  ```powershell
+  # Import the backup cmdlets from the Operations Module (use the full path on your system)
+  Import-Module "<full path to Operations Module>\Azure.Local.Backup.psm1"
+  ```
+
 ## Backup parameters and customization
 
 Before running the backup command, configure environment-specific settings and parameters, such as backup paths, encryption certificates, retention preferences, and target locations. These configurations ensure that the backup process runs correctly and aligns with your infrastructure layout and security requirements.
@@ -46,14 +50,21 @@ Before running the backup command, configure environment-specific settings and p
 To configure settings and parameters, open an administrator PowerShell session and run these cmdlets.
 
 ```PowerShell
-# point az to arca
-> az cloud set --name arca
+# point az to Azure.Local
+> az cloud set --name Azure.Local
 
 # Login as admin
 > az login
 
 # set operator subscription which will be listed after login
 > az account set --subscription <operator subscription GUID> 
+```
+
+Clients also need to set the management endpoint client context by using the `Set-ApplianceClientContext` cmdlet. Retrieve the management endpoint client authentication certificate (*ManagementEndpointClientAuth.pfx*) and its password.
+
+```PowerShell
+# Set the appliance client context. Send the password(SecureString) and ManagementEndpointClientAuth.pfx.
+> Set-ApplianceClientContext -ManagementEndpointClientCertificatePath <path to ManagementEndpointClientAuth.pfx> -ManagementEndpointClientCertificatePassword $securePassword -ManagementEndpoint <management endpoint IP>
 
 # Create backup config with SMB share details, Encryption Key
 > Set-ApplianceBackupConfiguration 
@@ -98,6 +109,20 @@ To trigger and monitor a backup, follow these steps:
     Here's an example output:
 
     :::image type="content" source="media/disconnected-operations/back-up-restore/track-status-back-up-id.png" alt-text="Screenshot of the Wait-ApplianceBackupOperationComplete command output." lightbox=" ./media/disconnected-operations/back-up-restore/track-status-back-up-id.png":::
+
+## Troubleshooting
+
+If you encounter the following error while running any backup commands:
+
+```output
+Unable to connect to the remote server
+```
+
+Rerun the command with the `-ExternalDomainSuffix` parameter set to your external domain suffix. For example:
+
+```powershell
+-ExternalDomainSuffix autonomous.aldo.private
+```
 
 ::: moniker-end
 

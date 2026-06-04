@@ -1,11 +1,11 @@
 ---
 title: Manage VM Extensions on Azure Local VMs enabled by Azure Arc on Azure Local 
 description: Learn how to enable guest management and then install and manage extensions on Azure Local VMs via the Azure portal.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 05/15/2025
+ms.date: 04/05/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -60,7 +60,7 @@ After you verify that guest management is enabled, follow these steps to add a V
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png" alt-text="Screenshot that shows the command to add an extension on the chosen Azure Local VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png":::
 
-1. On the **Install extension** pane, choose from the available extensions. In this example, we'll deploy **Azure Monitor Agent for Windows (Recommended)**.
+1. On the **Install extension** pane, choose from the available extensions. In this example, we deploy **Azure Monitor Agent for Windows (Recommended)**.
 
     :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png" alt-text="Screenshot that shows the Azure Monitor extension selected for the chosen Azure Local VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png":::
 

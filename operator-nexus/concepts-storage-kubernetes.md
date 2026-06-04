@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus persistent storage for Kubernetes
 description: Get an overview of available storage classes for Kubernetes on Azure Operator Nexus.
-author: pjw711
-ms.author: peterwhiting
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 05/22/2025

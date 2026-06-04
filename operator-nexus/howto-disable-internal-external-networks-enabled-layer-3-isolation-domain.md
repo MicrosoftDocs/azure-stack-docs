@@ -1,8 +1,8 @@
 ---
 title: How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
 description: Learn about how to disable Internal/External networks in an enabled layer 3 isolation domain in Azure Operator Nexus 
-author: RaghvendraMandawale
-ms.author: rmandawale
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/16/2025
@@ -126,6 +126,7 @@ az managednetworkfabric internal-network delete \
 - **Always** perform a **Lock** followed by a **Commit** after administrative state changes.
 - Deletion is permitted **only after** disable + commit success.
 - Keep at least one Internal Network enabled per ISD to avoid service disruption.
+- Disable/Enable is not permitted if the parent L3 ISD is not enabled.
 
 ### Important Notes
 

@@ -1,6 +1,6 @@
 ---
-author: csmuell
-ms.author: chmuell
+author: pauljewellmsft
+ms.author: pauljewell
 ms.service: azure-stack
 ms.topic: include
 ms.date: 02/19/2026

@@ -1,6 +1,6 @@
 ---
-author: omarrivera
-ms.author: omarrivera
+author: dougbristow
+ms.author: dbristow
 ms.date: 07/02/2025
 ms.topic: include
 ms.service: azure-operator-nexus

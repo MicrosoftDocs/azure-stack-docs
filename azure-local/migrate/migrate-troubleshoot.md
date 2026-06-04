@@ -1,11 +1,10 @@
 ---
 title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 12/01/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.author: robess
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
@@ -445,13 +444,14 @@ When you migrate a VM with one or more data disks attached, Azure portal may inc
 
 This is a display issue only and doesn't affect the actual functionality or size of the VM's data disks.
 
-
 **Recommended resolution**
 
-To correct the display issue in Azure portal and reflect the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the same size as the current data disk (no actual size increase is required).
+To correct the display problem in Azure portal and show the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the correct size for the data disk.
 
-This triggers a portal refresh and updates the UX to reflect the correct data disk size.
+- For **VHDX** disks, no actual size increase is required. You can expand the disk to the same size as the current data disk.
+- For **VHD** disks, you must power off the VM and increase the size of the on-premises disk for the expansion to take effect. For example, if the current data disk is 100 GB, you need to expand it to 101 GB for the display to be correct.
 
+This action triggers a portal refresh and updates the UX to show the correct data disk size.
 
 ## Next steps
 

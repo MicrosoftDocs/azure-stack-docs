@@ -1,10 +1,10 @@
 ---
 title: Host network requirements for Azure Local
 description: Learn the host network requirements for Azure Local
-author: alkohli
+author: ronmiab
 ms.topic: how-to
 ms.date: 01/15/2026
-ms.author: alkohli
+ms.author: robess
 ms.subservice: hyperconverged
 ---
 

@@ -1,19 +1,62 @@
 ---
 title: What's new in Azure Migrate for Azure Local
 description: Learn about new features in Azure Migrate for Azure Local.
-author: alkohli
-ms.author: alkohli
+author: ronmiab
+ms.author: robess
 ms.topic: how-to
-ms.date: 12/17/2025
+ms.date: 04/16/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
 # What's new in Azure Migrate for Azure Local
 
-This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local (*formerly Azure Stack HCI*). This article applies to both Hyper-V (Preview) and VMware VM migrations.
+This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## May 2026
+
+This release includes these features and improvements:
+
+- **Migration support for Azure Local with external storage** - Azure Migrate now supports migration to Azure Local instances that use external Storage Area Network (SAN) storage, including volumes configured as NTFS. For more information, see [External storage support for Azure Local](../concepts/external-storage-support.md).
+- **Migrated data disk size reporting fix** - Fixed an issue where the reported size of migrated VHDX data disks incorrectly showed 1 GB instead of the actual size. This fix ensures accurate reporting of VHDX disk sizes after migration. VHD data disks still incorrectly show 1 GB. Previously migrated data disks aren't updated. You can manually update them by following [these troubleshooting steps](migrate-troubleshoot.md#migrated-vm-data-disks-show-as-1gb-in-azure-portal).
+- **New replication validation checks in the Azure portal** – Added proactive validation checks during the replication setup flow to detect common misconfigurations earlier. For example, the portal now displays errors if the selected storage account uses the Premium performance tier or has public access disabled, and warnings if source VM static IP addresses conflict with or fall outside the IP pool range of the selected logical network.
+
+## April 2026
+
+This release includes these features and improvements:
+
+- **Azure CLI support for replication and migration (Preview)** – You can now use the Azure CLI to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell or Azure CLI (Preview)](migrate-via-powershell.md).
+- **Migrate appliance improvements** – Improved the Azure Local onboarding flow in source appliance configuration manager and fixed a bug where source appliance installation was failing on Windows Server 2025.
+
+## March 2026
+
+This release includes these features and improvements:
+
+
+- **Linux static IP migration script improvements** - Fixed several issues with the Linux static IP migration script:
+    - Resolved an issue where static IP addresses weren't applied when a DHCP server was active on the Azure Local cluster.
+    - Fixed a bug where DNS server entries were incorrectly formatted after migration, causing DNS resolution failures and blocking guest management enablement.
+    - Fixed an issue where the script attempted to set a default gateway on interfaces that didn't have one configured.
+- **Windows static IP migration script improvements** - Fixed an issue where network interface ordering was nondeterministic, which could cause network configuration failures after migration. Interfaces with a default gateway are now prioritized.
+- **Improved cleanup for failed prerequisite checks** - Fixed an issue where cleanup after a failed prerequisite check attempted to delete resources that hadn't been created yet. Cleanup now verifies resource existence before attempting deletion.
+- **Azure portal UX improvements and bug fixes** - Fixed a set of minor issues across Azure Migrate blades for Azure Local to improve clarity and reliability of replication and migration workflows.
+
+## February 2026
+
+This release includes these features and improvements:
+
+- **Secure boot migration support for eligible VMs** - Secure Boot settings are now preserved during migration for eligible UEFI (Generation 2) VMs. If Secure Boot is enabled on the source VM, it remains enabled on Azure Local after migration, helping maintain workload security posture.
+- **Azure portal bug fix** - Resolved a bug in the Azure portal where Azure Local logical networks and storage paths that are in a different subscription than the Azure Local instance weren't showing up as options during migration. These resources now show up correctly in the replication wizard.
+
+## January 2026
+
+This release includes these features and improvements:
+
+- **Register new target appliance when original appliance is in a bad state** - You can now register a new target appliance if the original appliance becomes unresponsive or enters a bad state. This change allows migrations to continue without requiring a new Azure Migrate project. The 1:1 relationship between source and target appliance in the Azure Migrate project still applies, so the new target appliance replaces the original target appliance for all VMs in the project.
+- **Fix for VM IP address discovery overwrite issue** - Resolved a bug where IP address discovery data for certain VMs was cleared prior to migration due to discovery inconsistencies.
+- **Improved error messaging for static IP migration issues** - Enhanced error messages and validation guidance for scenarios involving static IP address migrations.
 
 ## December 2025
 
@@ -28,14 +71,14 @@ This release includes these features and improvements.
 
 This release includes these features and improvements:
 
-- **Key bug fix for Hyper-V migration boot failures** - Fixed a critical issue causing some VMs migrated from Hyper-V to fail at boot due to mismatched source and target data.
-- **Improved Hyper-V source environment cleanup** - Enhanced the cleanup process for Hyper-V environments and resolved issues where snapshot creation failed or old snapshots weren’t removed when the snapshot name exceeded 100 characters.
-- **Support for migrating Hyper-V VMs hosted on SOFS** - Added support for discovering and replicating Hyper-V source VMs whose virtual disks are stored on external Scale-Out File Server (SOFS) shares. Previously, replication failed because the source appliance could not read disks hosted on SOFS. With this release, replication and migration work as long as the source Hyper-V credentials have read access to the SOFS shares. This feature only enables Azure Migrate to read from SOFS during replication. After migration, VMs run on Azure Local storage.
+- **Key bug fix for Hyper-V migration boot failures** - Fixed a critical issue that caused some VMs migrated from Hyper-V to fail at boot due to mismatched source and target data.
+- **Improved Hyper-V source environment cleanup** - Enhanced the cleanup process for Hyper-V environments and resolved problems where snapshot creation failed or old snapshots weren't removed when the snapshot name exceeded 100 characters.
+- **Support for migrating Hyper-V VMs hosted on SOFS** - Added support for discovering and replicating Hyper-V source VMs whose virtual disks are stored on external Scale-Out File Server (SOFS) shares. Previously, replication failed because the source appliance couldn't read disks hosted on SOFS. With this release, replication and migration work as long as the source Hyper-V credentials have read access to the SOFS shares. This feature only enables Azure Migrate to read from SOFS during replication. After migration, VMs run on Azure Local storage.
 - **Replication workflows in deployments** - Replication workflow and validation now execute through the standard Azure deployment model, providing improved visibility, consistent execution, and full tracking through the Activity Log and target resource group.
 - **Pagination on replication, events, and jobs pages** - Improved performance and usability by adding paginated views to replication, events, and jobs pages in the Azure portal.
-- **Force delete now available for replications and migrations** - You can now forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. For more information, see [Can I forcefully stop replications or complete migrations?](https://go.microsoft.com/fwlink/?linkid=2335712).
+- **Force delete now available for replications and migrations** - You can now forcefully stop replications and complete migrations if your target appliance becomes unresponsive or the migrate project is in a bad state. For more information, see [Can I forcefully stop replications or complete migrations?](https://go.microsoft.com/fwlink/?linkid=2335712)
 
-![Screenshot of force stop replication option for Azure Migrate replications to Azure Local.](media/migrate-whats-new/force-stop-replication.png)
+    ![Screenshot of force stop replication option for Azure Migrate replications to Azure Local.](media/migrate-whats-new/force-stop-replication.png)
 
 ## October 2025
 
@@ -55,15 +98,15 @@ For more information, see [Overview of Azure Migrate based VMware migration for 
 
 This release includes these features and improvements:
 
-- **Improved PowerShell validation** – Fixed an issue in the Az.Migrate PowerShell module where VM replications were blocked if source disk names contained reserved words. Replications now proceed correctly using validated target VM names for disk naming.
+- **Improved PowerShell validation** – Fixed an issue in the Az.Migrate PowerShell module where VM replications were blocked if source disk names contained reserved words. Replications now proceed correctly by using validated target VM names for disk naming.
 
-- **Additional PowerShell reliability improvements** – Fixed an issue requiring `-PhysicalSectorSize` when replicating VHD disks and enhanced ARM ID validation for resources in PowerShell migrations
+- **Additional PowerShell reliability improvements** – Fixed an issue that required `-PhysicalSectorSize` when replicating VHD disks and enhanced ARM ID validation for resources in PowerShell migrations.
 
 ## August 2025
 
 This release includes these features and improvements:
 
-- **Tag updates for Data Replication Vault** – You can now correctly create and update tags for the Azure Migrate Data Replication Vault resource in Azure portal. This improves organization, tag-based policies, and automation.
+- **Tag updates for Data Replication Vault** – You can now correctly create and update tags for the Azure Migrate Data Replication Vault resource in the Azure portal. This improvement makes organization, tag-based policies, and automation better.
 
 - **Azure portal UX improvements** – Fixed a set of minor issues across Azure Migrate blades for Azure Local to make replication and migration flows smoother and more reliable.
 
@@ -71,22 +114,22 @@ This release includes these features and improvements:
 
 This release includes these features and improvements:
 
-- **PowerShell support for replication and migration** – You can now use the Azure Migrate PowerShell module to replicate and migrate VMs to Azure Local. This enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell](migrate-via-powershell.md).
+- **PowerShell support for replication and migration** – You can now use the Azure Migrate PowerShell module to replicate and migrate VMs to Azure Local. This support enables automation and scripting for streamlined migration workflows. For more information, see [Migrate VMs to Azure Local using PowerShell](migrate-via-powershell.md).
 
-- **Monitor migrations via diagnostic settings** – You can now enable diagnostic settings in Azure Migrate to monitor Azure Local migrations. This provides improved observability and troubleshooting capabilities. For more information, see [Monitor Azure Local migrations using diagnostic settings](monitor-migration.md).  
+- **Monitor migrations via diagnostic settings** – You can now enable diagnostic settings in Azure Migrate to monitor Azure Local migrations. This feature provides improved observability and troubleshooting capabilities. For more information, see [Monitor Azure Local migrations using diagnostic settings](monitor-migration.md).  
 
 ## June 2025
 
 This release includes these features and improvements:
 
-- **Improved cleanup for failed replications** – Fixed an issue where failed replication jobs left behind data on the target Azure Local instance. The leftover data is now properly removed when replication fails in such cases.
+- **Improved cleanup for failed replications** – Fixed an issue where failed replication jobs left data on the target Azure Local instance. The process now properly removes the leftover data when replication fails.
 - **Static IP address migration Windows script improvements** – Made several improvements to the Windows VM static IP migration script:
-    - Updated the scheduled task execution policy to resolve permission issues.
-    - Improved handling of file paths containing spaces.
+    - Updated the scheduled task execution policy to resolve permission problems.
+    - Improved handling of file paths that contain spaces.
     - Implemented automatic cleanup to retain only the three most recent log files.
-- **Improved error resolution guidance** – Enhanced error messaging and added detailed resolution steps for common issues, including replication failures.
+- **Improved error resolution guidance** – Enhanced error messaging and added detailed resolution steps for common problems, including replication failures.
 - **Stricter static IP validation** – Added error handling to prevent Network Interface Card (NIC) creation if the specified static IP is outside the defined pool range.
-- **Generation 1 VM Guest Management Enablement Message** – Added a warning message in the portal to ensure that generation 1 VMs are powered off prior to enabling guest management.
+- **Generation 1 VM Guest Management Enablement Message** – Added a warning message in the portal to ensure that generation 1 VMs are powered off before enabling guest management.
 
     :::image type="content" source="./media/migrate-whats-new/guest-enablement-warning-message.png" alt-text="Screenshot showing the warning message in the portal when enabling guest management on generation 1 VMs." lightbox="./media/migrate-whats-new/guest-enablement-warning-message.png":::
 

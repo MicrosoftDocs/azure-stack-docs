@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus compute
 description: Get an overview of compute resources for Azure Operator Nexus.
-author: mukeshdua
-ms.author: mukeshdua
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 10/25/2024

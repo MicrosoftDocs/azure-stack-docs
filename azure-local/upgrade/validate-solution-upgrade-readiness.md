@@ -1,11 +1,10 @@
 ---
 title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
-author: alkohli
+author: ronmiab
 ms.topic: how-to
-ms.date: 10/22/2025
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.date: 02/27/2026
+ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -71,6 +70,10 @@ The following table contains the validation tests with severity *Warning* that y
 | TPM Property `AutoProvisioning` is Enabled     | Warning  |
 | TPM Property `LockedOut` is False              | Warning  |
 | TPM Property `TpmEnabled` is True              | Warning  |
+| WinRM CredSSP                                  | Warning  |
+
+> [!NOTE]
+> Incorrect CredSSP settings can cause the upgrade to fail. Admins should ensure that the settings are properly configured and functioning.
 
 ### Set up the Environment Checker
 

@@ -79,7 +79,7 @@ To create a virtual appliance and download the required files for your on-premis
     | Action | Description | Estimated download size |  
     | ------ | ------------- | ---------------- |  
     | Manifest file | Identified as `AzureLocal.DisconnectedOperations.Appliance.manifest`. You need this file for deployment and to activate the appliance. It contains the required licensing information and more. | < 1 KB |  
-    | Appliance | Shows a set of files you can download, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`, `ArcA_SharedData_A.vhdx`, and `OSAndDocker_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. You can download each file individually or run the script provided on the page to automate the download. | 250 GB+ |  
+    | Appliance | Shows a set of files you can download, identified as  `AzureLocal.disconnectedoperations.zip`, `ArcA_LocalData_A.vhdx`, `ArcA_SharedData_A.vhdx`, `OSAndDocker_A.vhdx`, `ArcA_SharedData_ACSBlob_A.vhdx`, and `ArcA_SharedData_ACSTable_A.vhdx`. These files contain the virtual hard disks and virtual machine together with the operations module required to deploy and configure the virtual appliance as a whole. You can download each file individually or run the script provided on the page to automate the download. | 250 GB+ |  
 
 1. Select **download manifest**.
 
@@ -92,6 +92,8 @@ To create a virtual appliance and download the required files for your on-premis
     - IRVM.zip
     - ArcA_LocalData_A.vhdx
     - ArcA_SharedData_A.vhdx
+    - ArcA_SharedData_ACSBlob_A.vhdx
+    - ArcA_SharedData_ACSTable_A.vhdx
     - OSAndDocker_A.vhdx
     - Storage.json
 
@@ -113,8 +115,8 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 
 ### Review disconnected operations for Azure Local compatible versions
 
-| Disconnected Operations Milestone | Disconnected Operations Build | Azure Local Build |  
-| ------ | ------------- | ---------------- |  
+| Disconnected Operations Milestone | Disconnected Operations Build | Azure Local Build |  TargetSolution Version |
+| ------ | ------------- | ---------------- |  --|
 | M1 | 6.1064663200.16860 | AzureLocal24H2.26100.1742.LCM.10.2411.2.3003 |
 | M2 | 7.1064837202.19761 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
@@ -122,7 +124,14 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2511 | 10.1064997818.22636 | AzureLocal24H2.26100.1742.LCM.12.2511.0.3038 |
 | 2512 | 10.1065058340.24001 | AzureLocal24H2.26100.1742.LCM.12.2512.0.3021 |
 | 2601 | 2601.1.24997 | AzureLocal24H2.26100.1742.LCM.12.2601.0.3137 |
-| 2602 | 2602.1.25069 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
+| 2602 | 2602.1.25411 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
+| 2603 | 2603.1.25508 | AzureLocal24H2.26100.1742.LCM.12.2603.0.3012 |
+| 2604 | 2604.3.25706 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 | 12.2604.1003.1005
+
+## Original Equipment manufacturer (OEM) Golden images with lower version
+If your nodes come preinstalled with a golden image, update the image so it gets to the correct target solution version. For exact versions, see : https://aka.ms/azureedgeupdates. 
+To run an update out-of-band, see [Import and discover update packages with limited connectivity](../update/import-discover-updates-offline-23h2.md)
+
 ## Related content
 
 - [Deploy disconnected operations for Azure Local](disconnected-operations-deploy.md).

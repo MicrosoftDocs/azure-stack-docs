@@ -1,8 +1,8 @@
 ---
 title: Validate Cables for Nexus Network Fabric
 description: Learn how to perform cable validation for Nexus Network Fabric infrastructure management using diagnostic APIs.
-author: HollyCl
-ms.author: HollyCl
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to #Required; leave this attribute/value as-is
 ms.date: 04/15/2024
