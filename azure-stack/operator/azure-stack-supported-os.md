@@ -47,7 +47,7 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 | Windows Server 2012 | 64-bit |  Datacenter |
 | Windows Server 2008 R2 SP1 | 64-bit |  Datacenter |
 | Windows Server 2008 SP2 | 64-bit |  Bring your own image |
-| Windows 10<sup>1</sup> | 64-bit, Pro, and Enterprise | Bring your own image |
+| Windows 10<sup>2</sup> | 64-bit, Pro, and Enterprise | Bring your own image |
 
 ---
 
