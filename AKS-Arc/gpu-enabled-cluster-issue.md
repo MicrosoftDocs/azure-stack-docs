@@ -11,14 +11,14 @@ ms.lastreviewed: 05/27/2026
 
 # Troubleshoot AKS cluster creation failure
 
-This article describes an issue in which creating an AKS cluster with a GPU-enabled default node pool fails. This issue occurs when you specify NVIDIA L-series GPUs as the default node pool.
+This article describes an issue in which creating an AKS cluster with a GPU-enabled default node pool fails. This issue occurs when you specify newly added GPU types, including NVIDIA L-series GPUs and NVIDIA RTX 6000 Ada GPUs, as the default node pool.
 
 ## Symptoms
 
 The following command causes the AKS cluster creation to fail:
 
 ```azurecli
-az aksarc create --node-vm-size <Standard_NC16_L4_1>
+az aksarc create --node-vm-size <GPU_ENABLED_VM_SIZE>
 ```
 
 ## Workaround
@@ -27,7 +27,7 @@ Create an AKS cluster with a non-GPU enabled default node pool, then add the nee
 
 ```azurecli
 az aksarc create <default node pool size>
-az aksarc nodepool add --node-vm-size <Standard_NC16_L4_1>
+az aksarc nodepool add --node-vm-size <GPU_ENABLED_VM_SIZE>
 ```
 
 ## Verification
