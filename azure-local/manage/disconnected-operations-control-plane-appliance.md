@@ -133,10 +133,6 @@ To proceed with an Azure Local deployment with disconnected operations:
 
 1. Follow the deployment documentation for installation and configuration of disconnected operations.
 
-## Next step
-
-[About Azure Local deployment](../deploy/deployment-introduction.md)
-
 ::: moniker-end
 
 ::: moniker range="<=azloc-2602"
