@@ -133,10 +133,14 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
    -ResourceGroup $RG `
    -Region $Region `
    -Cloud "AzureCloud" `
-   -Proxy $ProxyServer ` # Optional
-   -ProxyBypass $ProxyBypassList ` # Optional
-   -ArmAccessToken $ArmAccessToken ` # Optional: include only when using token-based authentication
-   -TargetSolutionVersion $TargetSolutionVersion ` # Optional
+   # Optional
+   -Proxy $ProxyServer `
+   # Optional
+   -ProxyBypass $ProxyBypassList `
+   # Optional: include only when using token-based authentication
+   -ArmAccessToken $ArmAccessToken `
+   # Optional
+   -TargetSolutionVersion $TargetSolutionVersion
    ```
 
    > [!NOTE]
