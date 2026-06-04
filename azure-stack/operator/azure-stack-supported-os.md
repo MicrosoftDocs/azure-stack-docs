@@ -63,28 +63,38 @@ Datacenter editions are available in Azure Stack Hub Marketplace for downloading
 
 ## Linux
 
-Linux distributions listed as available in Azure Stack Hub Marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack, follow the guidelines in [Add Linux images to Azure Stack](azure-stack-linux.md).
+Azure Stack Hub follows the same [Linux guest OS support model](#support-scope) as public Azure. All Linux distributions are welcome as guest operating systems, either deployed from the Azure Stack Hub Marketplace or uploaded as custom images.
 
-> [!NOTE]  
-> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent).
->
-> [cloud-init](https://cloud-init.io/) is supported.
+### Endorsed distributions
 
-| Distribution | Description | Publisher | Azure Stack Hub Marketplace |
-| --- | --- | --- | --- |
-| ClearLinux | 64-bit | ClearLinux.org | Yes |
-| Debian 8 "Jessie" | 64-bit | credativ |  Yes |
-| Debian 9 "Stretch" | 64-bit | credativ | Yes |
-| Oracle Linux | 64-bit | Oracle | Yes |
-| Red Hat Enterprise Linux 7.1 (and later) | 64-bit | Red Hat | Bring your own image |
-| SLES 11SP4 | 64-bit | SUSE | Yes |
-| SLES 12SP3 | 64-bit | SUSE | Yes |
-| Ubuntu 14.04-LTS | 64-bit | Canonical | Yes |
-| Ubuntu 16.04-LTS | 64-bit | Canonical | Yes |
-| Ubuntu 18.04-LTS | 64-bit | Canonical | Yes |
-| Ubuntu Server 20.04 LTS | 64-bit | Canonical | Yes |
+Azure Stack Hub recognizes the same set of [endorsed Linux distributions as public Azure](/azure/virtual-machines/linux/endorsed-distros). Endorsed distributions are validated for the Azure platform by their publishers in partnership with Microsoft. Marketplace images of endorsed distributions include a preinstalled [Azure Linux Agent (WALinuxAgent)](https://github.com/Azure/WALinuxAgent) and are tested for compatibility with Azure Stack Hub.
 
-For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
+Being an endorsed distribution or being available in the Marketplace doesn't imply a higher level of support. It indicates additional testing and reliability validation. Microsoft provides commercially reasonable support for all Linux distributions running on Azure Stack Hub, as described in [Support for Linux and open-source technology in Azure](/troubleshoot/azure/cloud-services/classic/support-linux-open-source-technology).
+
+> [!NOTE]
+> The Azure Stack Hub Marketplace might offer a subset of the endorsed distributions available in the public Azure Marketplace. Availability depends on the images syndicated by the Azure Stack Hub operator. For information about which images are currently available, contact your Azure Stack Hub operator or see [Azure Stack Hub Marketplace overview](/azure-stack/operator/azure-stack-marketplace).
+
+### Custom images
+
+You can bring any Linux distribution to Azure Stack Hub as a custom VM image, including distributions that aren't listed as endorsed. You should build custom images with the latest public version of the [Azure Linux Agent (WALinuxAgent)](https://github.com/Azure/WALinuxAgent). For minimum version requirements, see [Minimum supported Azure Linux Agent](/azure-stack/operator/azure-stack-linux#minimum-supported-azure-linux-agent).
+
+When you upload a custom image, follow the guidance in [Add Linux images to Azure Stack Hub](/azure-stack/operator/azure-stack-linux).
+
+[cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub.
+
+### Support scope
+
+Microsoft provides commercially reasonable support for Linux running on Azure Stack Hub. The scope of support follows the same policies as public Azure:
+
+- Microsoft supports the Azure platform and services. For distribution-specific issues, Microsoft might engage or defer to the distribution vendor.
+- For endorsed Marketplace images, Microsoft provides first-level support. For distribution-specific issues beyond Microsoft's scope, customers might need to engage the distribution vendor directly.
+- For custom or bring-your-own images, the distribution vendor is primarily responsible for OS-level support. Microsoft provides platform-level assistance.
+
+For full details, see [Support for Linux and open-source technology in Azure](/troubleshoot/azure/cloud-services/classic/support-linux-open-source-technology).
+
+### Red Hat Enterprise Linux
+
+For information about Red Hat support on Azure Stack Hub, including Cloud Access (bring-your-own-subscription) and on-demand options, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
 ## Next steps
 
