@@ -1,8 +1,8 @@
 ---
 title: "Use Certificate Rotation in Azure Operator Nexus"
 description: Learn the process for using certificate rotation in Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 3/31/2026
@@ -38,128 +38,88 @@ This article explains the prerequisites for rotating certificates for a network 
 
 ## Azure CLI procedures
 
-### 1. Rotate certificates across the fabric
+### Rotate certificates across the fabric
 
 Start a fabric-scoped rotation across all supported devices:
 
 ```Azure CLI
-az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/rotateCertificates?api-version=2025-07-15" --verbose
-```
->[!Note]
->You must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
-
-Sample response, containing `Location` parameter which is needed to query status:
-```Azure CLI
-Request URL: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric/rotateCertificates?api-version=2025-07-15'
-Request method: 'POST'
-Request headers:
-    ...
-Request body:
-None
-Response status: 202
-Response headers:
-    ...
-    'Location': 'https://management.azure.com/subscriptions/...'
-    ...
-Response content:
-null
+az networkfabric fabric rotate-certificate --resource-group <resource-group-name> --resource-name <fabric-name>
 ```
 
-Result of the operation can be queried using `az rest`:
-
-```Azure CLI
-az rest --url '{Location}'
-```
-
-Sample response while rotation is happening:
-
-```Azure CLI
+Sample response:
+```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "...",
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/MyFabric",
-  "startTime": "...",
-  "status": "Accepted"
-}
-```
-
-Sample response once rotation has completed:
-```Azure CLI
-{
-  "endTime": "2026-03-19T16:36:21.0453827Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "23d4460f...",
-  "properties": null,
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/MyFabric",
-  "startTime": "2026-03-19T16:25:01.6370816Z",
+  "endTime": "2026-04-22T09:58:29.5174661Z",
+  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "startTime": "2026-04-22T09:40:13.3419824Z",
   "status": "Succeeded"
 }
 ```
 
+Rotation with `--no-wait` for asynchronous execution:
+```Azure CLI
+    az networkfabric fabric rotate-certificate --resource-group <resource-group-name> --resource-name <fabric-name> --no-wait
+```
+If you use `--no-wait` for any certificate rotation operation, check the status by running this command to query for provisioning state:
+```Azure CLI
+az networkfabric fabric show --resource-group <rg> --resource-name <fabric-name> --query "provisioningState" -o ts
+```
+The provisioning state is `Succeeded` when the rotation finishes.
 
-### 3. Resync a single device 
+### Resync certificates across the fabric
 
+This operation brings back into sync network devices missed during a previous certificate rotation.
 Retry syncing the new certificates on all devices:
 
 ```Azure CLI
-az rest --method post --url "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice/resyncCertificates?api-version=2025-07-15" --verbose
+az networkfabric fabric resync-certificate --resource-group <resource-group-name> --resource-name <fabric-name>
 ```
 
->[!Note]
->You must pass either `--verbose` or `--debug` so that the reply includes the `Location` parameter, needed to query the result.
+Sample response:
 
-Sample response, containing `Location` parameter which is needed to query status:
-
-```Azure CLI
-Request URL: 'https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice/resyncCertificates?api-version=2025-07-15'
-Request method: 'POST'
-Request headers:
-    ...
-Request body:
-None
-Response status: 202
-Response headers:
-    ...
-    'Location': 'https://management.azure.com/subscriptions/...'
-    ...
-Response content:
-null
-```
-
-Result of the operation can be queried using `az rest`:
-
-```Azure CLI
-az rest --url '{Location}'
-```
-
-Sample response while resync is happening:
-
-```Azure CLI
+```json
 {
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "...",
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice",
-  "startTime": "...",
-  "status": "Accepted"
-}
-```
-
-Sample response once resync has completed:
-
-```Azure CLI
-{
-  "endTime": "2026-03-19T16:53:51.3739074Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedNetworkFabric/locations/{Region}/operationStatuses/...",
-  "name": "...",
-  "properties": null,
-  "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.ManagedNetworkFabric/networkDevices/MyDevice",
-  "startTime": "2026-03-19T16:48:16.6660348Z",
+  "endTime": "2026-04-22T10:24:12.6499675Z",
+  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "startTime": "2026-04-22T10:06:15.1423306Z",
   "status": "Succeeded"
 }
 ```
 
+Resync with `--no-wait` for asynchronous execution:
 
-### 4. Get device certificate rotation status
+```Azure CLI
+az networkfabric fabric resync-certificate --resource-group <resource-group-name> --resource-name <fabric-name> --no-wait
+```
+
+### Resync certificates on specific devices
+
+```Azure CLI
+az networkfabric device resync-certificate --resource-group <resource-group-name> --resource-name <device-name>
+```
+
+Sample response:
+```json
+{
+  "endTime": "2026-04-22T10:31:03.7090686Z",
+  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-device",
+  "startTime": "2026-04-22T10:27:43.7739143Z",
+  "status": "Succeeded"
+}
+```
+
+Resync with `--no-wait` for asynchronous execution:
+```Azure CLI
+az networkfabric device resync-certificate --resource-group <resource-group-name> --resource-name <device-name> --no-wait
+```
+
+### Get device certificate rotation status
 
 Return the device-level certificate rotation status object for auditing and troubleshooting:
 
@@ -250,4 +210,4 @@ az graph query \
 
 * **Operation fails:** Check output from the command.  Result may be Failed (if the whole operation has failed) or PartialSuccess (if the operation succeeded on some devices but not others).  The error detail will list errors on devices.  Address any issues and then run the per-device resync operation on the affected devices.
 * **BadRequest/Operation not allowed:** Fabric is in a conflicting workflow (commit/upgrade). Wait for the operation to finish, and then retry.
-* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is Enabled, and then run a resync.
+* **Devices remain under failedDeviceIds:** Ensure that the device administrative state is `Enabled`, and then run a resync.
