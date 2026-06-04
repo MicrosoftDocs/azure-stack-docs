@@ -21,8 +21,6 @@ ms.lastreviewed: 09/09/2021
 
 Azure Stack Hub supports the Windows guest operating systems listed in the following table:
 
-### [Azure Stack Hub 2108 or later](#tab/os1)
-
 | Operating system | Description | Available in Azure Stack Hub Marketplace |
 | --- | --- | --- |
 | Windows Server 2025<sup>1</sup> | 64-bit | Datacenter, Datacenter core |
@@ -39,23 +37,6 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 <sup>1</sup> Windows Server 2025 VM guest OS activation only supports MAK and KMS (not AVMA), which is [described in the readme.md file on GitHub](https://github.com/Azure/AzureStack-Tools/tree/master/Support/create-ws2025-image-from-azure#readme). Additionally, Windows Server 2025 requires the image to be added manually; that is, it isn't available for syndication using the **Add from Azure** experience in the admin portal.
 
 <sup>2</sup> To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a [Qualified Multitenant Hoster (QMTH)](https://partner.microsoft.com/membership/cloud-solution-provider).
-
-### [Azure Stack Hub 2102 or earlier](#tab/os2)
-
-| Operating system | Description | Available in Azure Stack Hub Marketplace |
-| --- | --- | --- |
-| Windows Server, version 1709 | 64-bit | Core with containers |
-| Windows Server 2019 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
-| Windows Server 2016 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
-| Windows Server 2012 R2 | 64-bit |  Datacenter |
-| Windows Server 2012 | 64-bit |  Datacenter |
-| Windows Server 2008 R2 SP1 | 64-bit |  Datacenter |
-| Windows Server 2008 SP2 | 64-bit |  Bring your own image |
-| Windows 10<sup>1</sup> | 64-bit, Pro, and Enterprise | Bring your own image |
-
-<sup>1</sup> To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a [Qualified Multitenant Hoster (QMTH)](https://partner.microsoft.com/membership/cloud-solution-provider).
-
----
 
 Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack Hub instance isn't supported. During deployment, Azure Stack Hub injects a suitable version of the guest agent into the image.
 
