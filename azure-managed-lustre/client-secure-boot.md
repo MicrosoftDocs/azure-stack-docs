@@ -5,7 +5,7 @@ ms.topic: how-to
 author: wolfgang-desalvador
 ms.author: wdesalvador
 ms.reviewer: rohogue
-ms.date: 12/11/2025
+ms.date: 04/23/2026
 ---
 
 # Use Secure Boot with Azure Managed Lustre file system
@@ -49,6 +49,21 @@ To successfully load and mount Azure Managed Lustre clients on Confidential VMs 
 For detailed guidance on customizing Secure Boot keys for Secure Boot–enabled Azure VMs, see [Trusted Launch secure boot custom UEFI keys](/azure/virtual-machines/trusted-launch-secure-boot-custom-uefi).
 
 For an overview of Confidential VMs, see [What are Azure confidential virtual machines?](/azure/confidential-computing/confidential-vm-overview).
+
+## DKMS-compiled modules and Secure Boot
+
+When you install the Lustre client by using the **DKMS** method, the installation process compiles the kernel module from source on your VM instead of using a prebuilt and Microsoft-signed module. Because DKMS-compiled modules aren't signed by the Azure Services Linux Kmod PCA certificate, they don't load when Secure Boot is enabled unless you take extra steps.
+
+If you use DKMS with Secure Boot enabled, you have two options:
+
+- **Disable Secure Boot**: The simplest approach. If your security policy permits it, disable Secure Boot on the VM before installing the DKMS package.
+- **Enroll a Machine Owner Key (MOK)**: Configure DKMS to sign modules with a self-generated key and enroll it in the UEFI MOK database. This approach maintains Secure Boot while allowing DKMS-compiled modules to load. For MOK enrollment instructions, refer to your distribution's DKMS documentation.
+
+> [!NOTE]
+> **Azure Linux 3 considerations**: Azure Linux 3 enables [kernel lockdown](https://man7.org/linux/man-pages/man7/kernel_lockdown.7.html) in integrity mode by default through the `lockdown=integrity` boot parameter. Kernel lockdown blocks loading of unsigned kernel modules independently of Secure Boot, so disabling Secure Boot alone doesn't let DKMS-compiled modules load on Azure Linux 3. To use DKMS on Azure Linux 3, **enroll a Machine Owner Key (MOK)** as described in the previous bullet. Removing the `lockdown=integrity` parameter from the boot configuration also lets unsigned modules load, but isn't recommended because it weakens the platform's security baseline.
+
+> [!NOTE]
+> If you use the **prebuilt kmod** install method, Secure Boot works without any extra configuration on Trusted Launch VMs (as described earlier). The DKMS Secure Boot limitation applies only to DKMS-compiled modules.
 
 ## Related content
 

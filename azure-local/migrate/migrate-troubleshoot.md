@@ -444,7 +444,6 @@ When you migrate a VM with one or more data disks attached, Azure portal may inc
 
 This is a display issue only and doesn't affect the actual functionality or size of the VM's data disks.
 
-
 **Recommended resolution**
 
 To correct the display problem in Azure portal and show the true data disk size, follow the steps at [Expand a data disk](../manage/manage-arc-virtual-machine-resources.md?&tabs=azurecli#expand-a-data-disk) to reapply the correct size for the data disk.

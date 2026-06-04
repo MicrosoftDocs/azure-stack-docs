@@ -1,56 +1,25 @@
 ---
 title: Install Client Software for Azure Managed Lustre
-description: Learn how to install client software for the Azure Managed Lustre file system.
+description: Learn how to install client software for the Azure Managed Lustre file system using prebuilt kmod packages or DKMS.
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 12/15/2025
+ms.date: 04/23/2026
 zone_pivot_groups: select-os
 ---
 
-# Install prebuilt Lustre client software
+# Install Lustre client software
 
-In this article, you learn how to download and install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+In this article, you learn how to install a Lustre client package. After you install the package, you can set up client virtual machines (VMs) and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
-## Support matrix
+Before you install, see [Plan your Lustre client installation](client-install-plan.md) for the support matrix and to choose between the prebuilt **kmod** and **DKMS** install methods.
 
-<details id="support-matrix">
-<summary><strong>Select to expand</strong></summary>
+If you need to upgrade an existing Lustre client to the current version, see [Upgrade Lustre client software to the current version](client-upgrade.md).
 
-Each row in the following table shows a combination of a distribution, architecture, Lustre client version, and kernel series that Microsoft supports. The authoritative source is the [Linux software repository for Microsoft products](https://packages.microsoft.com).
+For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
-
-| OS | Architecture | Lustre client version | Supported kernel package series |
-|---|---|---|---|
-| [Ubuntu 24.04](https://packages.microsoft.com/repos/amlfs-noble/) | amd64, arm64 | 2.16.1 | [6.8.0-\*-azure](https://packages.microsoft.com/repos/amlfs-noble/pool/main/k/) |
-| [Ubuntu 22.04](https://packages.microsoft.com/repos/amlfs-jammy/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.15.0-\*-azure](https://packages.microsoft.com/repos/amlfs-jammy/pool/main/k/) |
-| [Ubuntu 20.04](https://packages.microsoft.com/repos/amlfs-focal/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-focal/pool/main/k/) |
-| [Ubuntu 18.04](https://packages.microsoft.com/repos/amlfs-bionic/) † | amd64 | 2.15.4 | [4.15.0-\*-azure, 5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-bionic/pool/main/k/) |
-| [Azure Linux 3](https://packages.microsoft.com/yumrepos/amlfs-al3/) | amd64 | 2.16.1 | [>= 6.6.119.3](https://packages.microsoft.com/yumrepos/amlfs-al3/Packages/k/) |
-| [RHEL / AlmaLinux 9.7](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | [5.14.0-611.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.6](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | [5.14.0-570.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.5](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-503.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.4](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [5.14.0-427.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.3](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6 | [5.14.0-362.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.2](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-284.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.1](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6 | [5.14.0-162.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 9.0](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | [5.14.0-70.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
-| [RHEL / AlmaLinux 8.10](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | [4.18.0-553.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
-| [RHEL / AlmaLinux 8.9](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-513.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
-| [RHEL / AlmaLinux 8.8](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-477.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
-| [RHEL / AlmaLinux 8.7](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-425.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
-| [RHEL / AlmaLinux 8.6](https://packages.microsoft.com/yumrepos/amlfs-el8/) | amd64 | 2.15.6, 2.15.7 | [4.18.0-372.\*](https://packages.microsoft.com/yumrepos/amlfs-el8/Packages/k/) |
-| [RHEL / CentOS 7.9](https://packages.microsoft.com/yumrepos/amlfs-el7/) † | amd64 | 2.15.4 | [3.10.0-1160.\*](https://packages.microsoft.com/yumrepos/amlfs-el7/Packages/k/) |
-
-† **Frozen** - End of life.
-
->[!Note]
-> - **arm64 support:** Only Ubuntu 24.04 currently provides arm64 packages.
-> - **Frozen distributions:** Ubuntu 18.04 and RHEL 7 are frozen at Lustre 2.15.4. They reached end of life; no further Lustre client updates are published. Existing packages remain available for installation. Upgrade base OS for ongoing updates.
-> - **Kernel update cadence:** Package availability changes as new Linux kernels are released and as Lustre gains support.  When a new maintenance kernel ships for an already-supported distribution kernel series, Microsoft typically publishes a matching Lustre metapackage within one business day.
-
-</details>
+For more information about the behavior of Azure Managed Lustre with Trusted Launch Virtual Machines and Confidential Compute Virtual Machines, refer to [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md).
 
 ::: zone pivot="alma-86"
 
@@ -127,7 +96,7 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone-end
 
-### Download and install prebuilt client software
+### Download and install client software
 
 ::: zone pivot="alma-86"
 
@@ -230,11 +199,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
 
-    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
+   #### [Prebuilt kmod](#tab/kmod)
+
+   The metapackage version doesn't always align with the kernel version. Use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-8](./includes/client-install-version-rhel-8.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-rhel](./includes/client-install-dkms-rhel.md)]
+
+   ---
 
 ::: zone-end
 
@@ -265,11 +242,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-rhel-9](./includes/client-install-version-rhel-9.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-rhel](./includes/client-install-dkms-rhel.md)]
+
+   ---
 
 ::: zone-end
 
@@ -336,11 +321,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu](./includes/client-install-dkms-ubuntu.md)]
+
+   ---
 
 ::: zone-end
 
@@ -405,11 +398,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu](./includes/client-install-dkms-ubuntu.md)]
+
+   ---
 
 ::: zone-end
 
@@ -475,11 +476,19 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
     The following command installs a metapackage that keeps the version of Lustre aligned with the installed kernel. For this alignment to work, you must use `apt full-upgrade` instead of `apt upgrade` when updating your system.
 
    [!INCLUDE [client-install-version-ubunt-24](./includes/client-install-version-ubuntu-24.md)]
+
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-ubuntu-24](./includes/client-install-dkms-ubuntu-24.md)]
+
+   ---
 
 ::: zone-end
 
@@ -513,16 +522,25 @@ This article shows how to install the client package to set up client VMs runnin
    sudo bash repo.bash
    ```
 
-1. Install the metapackage that matches your running kernel.
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+   #### [Prebuilt kmod](#tab/kmod)
 
    The metapackage version doesn't always align with the kernel version. You can use the following command to install the proper metapackage:
 
    [!INCLUDE [client-install-version-azurelinux-3](./includes/client-install-version-azurelinux-3.md)]
 
+   #### [DKMS](#tab/dkms)
+
+   [!INCLUDE [client-install-dkms-azurelinux-3](./includes/client-install-dkms-azurelinux-3.md)]
+
+   ---
+
 ::: zone-end
 
 ## Related content
 
+- [Plan your Lustre client installation](client-install-plan.md)
 - [Upgrade Lustre client software to the current version](client-upgrade.md)
 - [Connect clients to an Azure Managed Lustre file system](connect-clients.md)
 - [Use Secure Boot with Azure Managed Lustre file system](client-secure-boot.md)

@@ -32,6 +32,8 @@
       href: migrate-data-from-linux.md
 - name: Access a file system
   items:
+    - name: Plan your client install
+      href: client-install-plan.md
     - name: Install Lustre client
       href: client-install.md
     - name: Upgrade Lustre client
