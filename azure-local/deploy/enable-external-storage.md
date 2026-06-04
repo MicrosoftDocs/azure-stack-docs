@@ -74,18 +74,18 @@ If you enabled MPIO on pre-2604 builds or if `RestartNeeded` returns `True`, per
 
 After enabling the required services, collect the initiator identifiers from each node. You need these identifiers to configure LUN masking on the SAN array.
 
-**FC — collect World Wide Port Names (WWPNs):**
+- **FC — collect World Wide Port Names (WWPNs)**
 
-```powershell
-Get-InitiatorPort | Where-Object ConnectionType -eq 'Fibre Channel' |
+    ```powershell
+    Get-InitiatorPort | Where-Object ConnectionType -eq 'Fibre Channel' |
     Select-Object NodeAddress, PortAddress, ConnectionType | Format-Table -AutoSize
-```
+    ```
 
-**iSCSI — collect iSCSI Qualified Names (IQNs):**
+- **iSCSI — collect iSCSI Qualified Names (IQNs)**
 
-```powershell
-(Get-InitiatorPort | Where-Object ConnectionType -eq 'iSCSI').NodeAddress
-```
+    ```powershell
+    (Get-InitiatorPort | Where-Object ConnectionType -eq 'iSCSI').NodeAddress
+    ```
 
 ## Step 2: Register vendor with MPIO and configure settings
 
@@ -138,31 +138,31 @@ Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR
 
 Most supported vendors don't require extra MPIO tuning beyond the default settings. The following vendors recommend vendor-specific overrides.
 
-#### Dell PowerStore
+- **Dell PowerStore**
 
-```powershell
-Set-MPIOSetting -NewRetryCount 3 -CustomPathRecovery Enabled `
--NewPathRecoveryInterval 10 -NewDiskTimeout 30
-```
+    ```powershell
+    Set-MPIOSetting -NewRetryCount 3 -CustomPathRecovery Enabled `
+    -NewPathRecoveryInterval 10 -NewDiskTimeout 30
+    ```
 
-#### Everpure FlashArray
+- **Everpure FlashArray**
 
-```powershell
-Set-MPIOSetting -NewPathRecoveryInterval 20 -CustomPathRecovery Enabled `
--NewPDORemovePeriod 20 -NewDiskTimeout 60 -NewPathVerificationState Enabled
-```
+    ```powershell
+    Set-MPIOSetting -NewPathRecoveryInterval 20 -CustomPathRecovery Enabled `
+    -NewPDORemovePeriod 20 -NewDiskTimeout 60 -NewPathVerificationState Enabled
+    ```
 
-#### HPE Alletra / 3PAR
+- **HPE Alletra / 3PAR**
 
-No MPIO tuning required when you set the host persona to WINDOWS on the array.
+    No MPIO tuning required when you set the host persona to WINDOWS on the array.
 
-#### Hitachi VSP
+- **Hitachi VSP**
 
-Default MSDSM settings with RR policy work well.
+    Default MSDSM settings with RR policy work well.
 
-#### NetApp ONTAP
+- **NetApp ONTAP**
 
-No extra MPIO tuning required beyond the default settings.
+    No extra MPIO tuning required beyond the default settings.
 
 ### 2e. Enable iSCSI auto-claim (iSCSI only)
 
@@ -242,12 +242,11 @@ New-NetQosPolicy -Name "CSV-LiveMigration" -Cluster -PriorityValue8021Action 3
 New-NetQosPolicy -Name "ClusterHeartbeat" -IPProtocol UDP -IPDstPortStart 3343 -IPDstPortEnd 3343 -PriorityValue8021Action 7
 ```
 
-## Step 4: Configure Storage Array and Present LUNs
+## Step 4: Configure storage array and present LUNs
 
-Perform this step on the storage array, not on the Azure Local nodes. The procedures are vendor-specific. For vendor documentation links, see [Vendor array-side configuration](#vendor-array-side-configuration).
+Perform this step on the storage array, not on the Azure Local nodes. The procedures are vendor-specific. For more information, see [Vendor array-side configuration](#vendor-array-side-configuration).
 
-> [!IMPORTANT]
-> Before proceeding to Step 5, confirm the following items with your storage administrator:
+Before proceeding to Step 5, confirm the following items with your storage administrator:
 
 | Item | FC | iSCSI |
 |--|--|--|
@@ -312,12 +311,10 @@ Initialize SAN volumes as GUID Partition Table (GPT) and format them with NTFS (
 $sanDisks = Get-Disk | Where-Object {
     $_.BusType -in 'Fibre Channel','iSCSI' -and $_.PartitionStyle -eq 'RAW'
 }
-
 foreach ($disk in $sanDisks) {
     # Bring disk online — SAN LUNs are Offline by default (OfflineShared policy)
     Set-Disk -Number $disk.Number -IsOffline $false
     Set-Disk -Number $disk.Number -IsReadOnly $false
-
     Initialize-Disk -Number $disk.Number -PartitionStyle GPT
     New-Partition -DiskNumber $disk.Number -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS -AllocationUnitSize 65536 -NewFileSystemLabel "SAN-LUN-$($disk.Number)" -Confirm:$false
 }
@@ -335,8 +332,9 @@ Add the SAN disks to the failover cluster, and then convert the disks to CSVs.
 Get-ClusterAvailableDisk | Add-ClusterDisk
 
 # Convert to Cluster Shared Volumes
-Get-ClusterResource | Where-Object {
-    $_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'
+Get-ClusterResource | Where-Object 
+{
+  $_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'
 } | Add-ClusterSharedVolume
 
 # Verify CSVs
@@ -370,8 +368,7 @@ Azure Local supports external SAN integration with the following vendors and sto
 | NetApp | AFF, ASA, ONTAP platforms | ✓ | ✓ |
 | Lenovo | ThinkSystem DS/DM/DG Series | ✓ | ✓ |
 
-> [!NOTE]
-> For a complete list of supported models and firmware requirements, see [Supported SAN solutions on Azure Local](../concepts/san-requirements.md).
+For a complete list of supported models and firmware requirements, see [Supported SAN solutions on Azure Local](../concepts/san-requirements.md).
 
 ### What to request from your storage administrator
 
@@ -393,10 +390,7 @@ Use the following guidance to identify and resolve common issues when integratin
 
 ### Disks aren't visible on cluster nodes
 
-If SAN disks don't appear on one or more cluster nodes, verify that the storage array maps the LUNs to all cluster node initiators:
-
-- WWPNs for FC
-- IQNs for iSCSI
+If SAN disks don't appear on one or more cluster nodes, verify that the storage array maps the LUNs to all cluster node initiators. (WWPNs for FC, IQNs for iSCSI).
 
 Rescan storage on each node.
 
@@ -474,6 +468,6 @@ If storage path creation fails in the Azure portal, check the following conditio
 
 ## Next steps
 
-- [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
-- [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
-- [Deploying AVD on Azure Local](/azure/virtual-desktop/azure-local-overview) 
+- [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md).
+- [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md).
+- [Deploying AVD on Azure Local](/azure/virtual-desktop/azure-local-overview).
