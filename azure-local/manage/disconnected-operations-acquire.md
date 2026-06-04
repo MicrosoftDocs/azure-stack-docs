@@ -115,8 +115,8 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 
 ### Review disconnected operations for Azure Local compatible versions
 
-| Disconnected Operations Milestone | Disconnected Operations Build | Azure Local Build |  
-| ------ | ------------- | ---------------- |  
+| Disconnected Operations Milestone | Disconnected Operations Build | Azure Local Build |  TargetSolution Version |
+| ------ | ------------- | ---------------- |  --|
 | M1 | 6.1064663200.16860 | AzureLocal24H2.26100.1742.LCM.10.2411.2.3003 |
 | M2 | 7.1064837202.19761 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
 | 2508 | 8.1064855627.20050 | AzureLocal24H2.26100.1742.LCM.12.2506.0.3136 |
@@ -126,7 +126,7 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2601 | 2601.1.24997 | AzureLocal24H2.26100.1742.LCM.12.2601.0.3137 |
 | 2602 | 2602.1.25411 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
 | 2603 | 2603.1.25508 | AzureLocal24H2.26100.1742.LCM.12.2603.0.3012 |
-| 2604 | 2604.2.25645 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 |
+| 2604 | 2604.3.25706 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 | 12.2604.1003.1005
 
 ## Original Equipment manufacturer (OEM) Golden images with lower version
 If your nodes come preinstalled with a golden image, update the image so it gets to the correct target solution version. For exact versions, see : https://aka.ms/azureedgeupdates. 
