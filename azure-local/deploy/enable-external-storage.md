@@ -12,17 +12,12 @@ ms.subservice: hyperconverged
 
 This article describes how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
 
-Azure Local supports external SAN storage alongside Storage Spaces Direct storage, or as a standalone storage architecture. This support enables:
+Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing customers to reuse existing SAN investments while running Azure Local workloads.
 
-- Hybrid deployments (Storage Spaces Direct + SAN)
-- Disaggregated deployments (SAN only)
-
-These deployment models allow organizations to reuse existing SAN investments while running Azure Local workloads.
-
-Supported protocols include:
+Supported protocols:
 
 - Fibre Channel (FC)
-- iSCSI (TCP/IP)
+- iSCSI (over TCP/IP)
 
 ## Prerequisites
 
@@ -120,13 +115,12 @@ Register your storage vendor with Microsoft Device Specific Module (MSDSM) so MP
 | HPE Alletra / 3PAR | `3PARdata` | `VV` | `New-MSDSMSupportedHW -VendorId "3PARdata" -ProductId "VV"` |
 | NetApp ONTAP | `NETAPP` | `LUN C-Mode` | `New-MSDSMSupportedHW -VendorId "NETAPP" -ProductId "LUN C-Mode"` |
 
-> [!NOTE]
-> - For NetApp:** ONTAP C-Mode reports `LUN C-Mode`, **not** `LUN`. Using `-ProductId "LUN"` doesn't match. Only register `LUN` if connecting to legacy 7-Mode systems.
->
-> - For Everpure: Remove the generic vendor wildcard entry to prevent MSDSM from automatically claiming non-Pure devices:
->     ```powershell
->     Remove-MSDSMSupportedHW -VendorId 'Vendor*' -ProductId 'Product*'
->     ```
+- **For NetApp:** ONTAP C-Mode reports `LUN C-Mode`, **not** `LUN`. Using `-ProductId "LUN"` doesn't match. Only register `LUN` if connecting to legacy 7-Mode systems.
+- **For Everpure:** Remove the generic vendor wildcard entry to prevent MSDSM from automatically claiming non-Pure devices:
+
+    ```powershell
+    Remove-MSDSMSupportedHW -VendorId 'Vendor*' -ProductId 'Product*'
+    ```
 
 ### 2c. Set the load balancing policy
 
