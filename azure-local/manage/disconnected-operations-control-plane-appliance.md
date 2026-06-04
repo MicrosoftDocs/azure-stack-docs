@@ -45,6 +45,8 @@ For a list of hardware solutions that support running as a management cluster fo
 
 1. Select **Disconnected operations** under **Solution capability** in the left menu.
 
+1. Select a hardware solution, then open the **Solution capability** tab to verify which configurations support use as a management cluster.
+
 These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
 
 For detailed and current hardware requirements, review the [minimum configurations](/azure/azure-local/manage/disconnected-operations-overview#eligibility-criteria) for a management cluster with the disconnected operations control plane appliance.
@@ -118,6 +120,18 @@ Use this configuration when the primary goal is to:
 - Manage multiple Azure Local clusters from a single control plane appliance
 - Validate cluster-level inventory, visibility, and lifecycle operations
 - Perform disconnected management across multiple isolated environments
+
+## Get started
+
+To proceed with an Azure Local deployment with disconnected operations:
+
+1. Review the [disconnected operations overview and eligibility criteria](disconnected-operations-overview.md).
+
+1. Select a [catalog listed hardware solution](https://azurelocalsolutions.azure.microsoft.com/#/catalog) marked as disconnected operations supported.
+
+1. Once approved to access disconnected operations, contact the OEM partner and procure a four-node configuration to start a POC, or a three-node dedicated management cluster if you already have workload clusters.
+
+1. Follow the deployment documentation for installation and configuration of disconnected operations.
 
 ## Next step
 
