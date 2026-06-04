@@ -12,12 +12,17 @@ ms.subservice: hyperconverged
 
 This article describes how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
 
+## Overview
+
 Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing customers to reuse existing SAN investments while running Azure Local workloads.
 
 Supported protocols:
 
 - Fibre Channel (FC)
 - iSCSI (over TCP/IP)
+
+> [!IMPORTANT]
+> SAN integration using FC is generally available. However, SAN integration using iSCSI is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
 
