@@ -365,13 +365,13 @@ Azure Local supports external SAN integration with the following vendors and sto
 |--|--|--|--|
 | Dell | PowerStore T/Q (OS 3.0+) | ✓ | ✓ |
 | Everpure | FlashArray X, C, XL, E, RC20 | ✓ | ✓ |
-| Hitachi | VSP One Block, VSP 5x00, VSP Exx90, VSP Fxx0, VSP Gxx0 | ✓ | ✓ |  |
-| HPE | Alletra MP 10000 | ✓ | ✓ |  |
+| Hitachi | VSP One Block, VSP 5x00, VSP Exx90, VSP Fxx0, VSP Gxx0 | ✓ | ✓ |
+| HPE | Alletra MP 10000 | ✓ | ✓ |
 | NetApp | AFF, ASA, ONTAP platforms | ✓ | ✓ |
 | Lenovo | ThinkSystem DS/DM/DG Series | ✓ | ✓ |
 
 > [!NOTE]
-> For a complete list of supported models and firmware requirements, see [Supported SAN solutions on Azure Local](../concepts/san-requirements).
+> For a complete list of supported models and firmware requirements, see [Supported SAN solutions on Azure Local](../concepts/san-requirements.md).
 
 ### What to request from your storage administrator
 
