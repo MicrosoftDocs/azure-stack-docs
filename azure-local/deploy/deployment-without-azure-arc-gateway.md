@@ -127,20 +127,16 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 1. Run the Arc registration script. The script takes a few minutes to run.
 
    ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
-   # Optional
-   -Proxy $ProxyServer
-   # Optional
-   -ProxyBypass $ProxyBypassList
-   # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
-   # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
+   Invoke-AzStackHciArcInitialization `
+   -TenantId $Tenant `
+   -SubscriptionID $Subscription `
+   -ResourceGroup $RG `
+   -Region $Region `
+   -Cloud "AzureCloud" `
+   -Proxy $ProxyServer ` # Optional
+   -ProxyBypass $ProxyBypassList ` # Optional
+   -ArmAccessToken $ArmAccessToken ` # Optional: include only when using token-based authentication
+   -TargetSolutionVersion $TargetSolutionVersion ` # Optional
    ```
 
    > [!NOTE]
@@ -413,16 +409,14 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 1. Run the Arc registration script. The script takes a few minutes to run.
 
    ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
-   # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
-   # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
+   Invoke-AzStackHciArcInitialization `
+   -TenantId $Tenant `
+   -SubscriptionID $Subscription `
+   -ResourceGroup $RG `
+   -Region $Region `
+   -Cloud "AzureCloud" `
+   -ArmAccessToken $ArmAccessToken ` # Optional: include only when using token-based authentication
+   -TargetSolutionVersion $TargetSolutionVersion ` # Optional
    ```
 
    > [!NOTE]
