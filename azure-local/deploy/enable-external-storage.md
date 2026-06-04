@@ -213,7 +213,7 @@ New-NetIPAddress -InterfaceAlias "iSCSI-NIC-B" -IPAddress 10.31.31.11 -PrefixLen
 
 ### 3c. Configure MTU and VLANs (optional)
 
-Use consistent maximum transmission unit (MTU) settings across the entire iSCSI network path. If switch ports are configured as access ports, the host sends untagged traffic.Configure VLAN tagging on the host only when switch ports are configured as trunk ports.
+Use consistent maximum transmission unit (MTU) settings across the entire iSCSI network path. If switch ports are configured as access ports, the host sends untagged traffic. Configure VLAN tagging on the host only when switch ports are configured as trunk ports.
 
 ```powershell
 Set-NetAdapterAdvancedProperty -Name "iSCSI-NIC-A" -RegistryKeyword "*JumboPacket" -RegistryValue 9014
