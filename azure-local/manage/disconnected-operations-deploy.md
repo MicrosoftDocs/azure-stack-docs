@@ -56,7 +56,7 @@ Before you deploy Azure Local with disconnected operations, you need the followi
 - [Active directory OU and networking requirements](../deploy/deployment-prerequisites.md).
 - [Local credentials and AD credentials to meet minimum password complexity](../deploy/deployment-prerequisites.md).
 - [Active directory prepared for Azure Local deployment](../deploy/deployment-prep-active-directory.md).
-- Certificates to secure ingress endpoints (24 certificates) and the public key (root) used to create these certificates.
+- Certificates to secure ingress endpoints (23 certificates) and the public key (root) used to create these certificates.
 - Certificates to secure the management endpoint (two certificates).
 - Credentials and parameters to integrate with identity provider:
   - Active Directory Federations Services (ADFS) application, credentials, server details, and certificate chain details for certificates used in identity configuration.
@@ -510,7 +510,7 @@ $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($app
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
 # Bootstrap each node
-Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion '12.2604.1003.1005'
 # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
 ```
 
@@ -520,6 +520,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
+>  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2604.1003.1005`.
 
 ## Pre-create Azure Key Vault
 
