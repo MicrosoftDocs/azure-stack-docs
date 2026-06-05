@@ -21,7 +21,7 @@ With small form factor deployments, you can:
 
 - Deploy and manage edge infrastructure through Azure with a cloud-like experience.
 - Run containerized workloads by using Docker, which is included in the base image.
-- Run Kubernetes workloads by using the open-source K3s distribution.
+- Run Kubernetes workloads by using AKS or the open-source K3s distribution.
 - Support AI and IoT workloads on distributed devices.
 - Standardize infrastructure across geographically distributed edge environments.
 
