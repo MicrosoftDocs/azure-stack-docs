@@ -65,7 +65,8 @@ Use K3s when your workloads benefit from Kubernetes-native capabilities:
 
 ## AKS
 
- [Azure Kubernetes Service (AKS)](/azure/aks/aksarc/aks-bare-metal-overview) is a fully managed Kubernetes service that runs directly onsmall form factor devices with no hypervisor. Unlike K3s, which requires you to install and maintain the clusteryourself, AKS is deployed and managed entirely from Azure — including cluster creation, Kubernetes version upgrades,and monitoring.
+[Azure Kubernetes Service (AKS)](/azure/aks/aksarc/aks-bare-metal-overview) is a fully managed Kubernetes service that runs directly on small form factor devices with no hypervisor. Unlike K3s, which requires you to install and maintain the cluster yourself, you deploy and manage AKS entirely from Azure - including cluster creation, Kubernetes version upgrades, and monitoring.
+
 
  ### Why use AKS on small form factor devices
 
