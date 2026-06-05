@@ -377,7 +377,7 @@ For a complete list of supported models and firmware requirements, see [Supporte
 
 Before starting the host-side configuration, provide your storage administrator with the following information:
 
-1. The initiator identifiers collected in [Step 1d: Collect initiator identifiers](#1d-collect-initiator-identifiers) (WWPNs for FC, IQNs for iSCSI).
+1. The initiator identifiers collected in [Step 1d: Collect initiator identifiers](#14-collect-initiator-identifiers) (WWPNs for FC, IQNs for iSCSI).
 1. The required number and size of LUNs.
 1. Cluster node names for host registration on the array.
 
