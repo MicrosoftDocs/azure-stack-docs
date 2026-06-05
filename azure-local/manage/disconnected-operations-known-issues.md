@@ -167,13 +167,13 @@ Make sure that the Remote Desktop session isn't mapping smart cards. If smart ca
 
 .EXAMPLE
     .\Set-MgmtClusterDenyPolicy.ps1 `
-        -SubscriptionId "a1b2c3d4-e5f6-7890-abcd-ef1234567890" `
-        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+        -SubscriptionId "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e" `
+        -MgmtClusterCustomLocationId "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
 
 .EXAMPLE
     .\Set-MgmtClusterDenyPolicy.ps1 `
         -AllSubscriptions `
-        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+        -MgmtClusterCustomLocationId "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
 
 .NOTES
     Rollback commands:
