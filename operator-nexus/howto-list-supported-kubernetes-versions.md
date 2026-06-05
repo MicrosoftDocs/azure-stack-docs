@@ -1,8 +1,8 @@
 ---
 title: List supported Kubernetes versions for Azure Operator Nexus
 description: Learn how to query the supported Nexus Kubernetes versions that an Operator Nexus cluster can deploy or upgrade Nexus Kubernetes clusters to, including each version's component manifest and lifecycle dates.
-author: ronmiab
-ms.author: robess
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/30/2026
