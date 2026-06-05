@@ -63,6 +63,28 @@ Use K3s when your workloads benefit from Kubernetes-native capabilities:
 - You need Azure Arc-enabled Kubernetes integration for centralized management.
 - You want to use GitOps for automated workload deployment across a fleet of edge devices.
 
+## AKS
+
+ [Azure Kubernetes Service (AKS)](/azure/aks/aksarc/aks-bare-metal-overview) is a fully managed Kubernetes service that runs directly onsmall form factor devices with no hypervisor. Unlike K3s, which requires you to install and maintain the clusteryourself, AKS is deployed and managed entirely from Azure — including cluster creation, Kubernetes version upgrades,and monitoring.
+
+ ### Why use AKS on small form factor devices
+
+ - **Fully managed lifecycle**: Cluster creation, upgrades, and deletion are handled through the Azure portal, Biceptemplates, or ARM templates.
+ - **No hypervisor**: AKS runs directly on the bare metal host OS, avoiding the resource overhead of a virtualizationlayer on devices where memory and CPU are constrained.
+ - **Built-in Azure Arc integration**: The cluster is Arc-enabled from the moment it's created. There's no separate `az connectedk8s connect` step. Azure portal visibility, Azure RBAC, Azure Monitor, and Azure Policy are available immediately.
+ - **Kubernetes-compatible**: AKS runs standard Kubernetes with Cilium CNI, so existing Kubernetes manifests, Helmcharts, and tooling work without modification.
+ - **Resilient to connectivity loss**: Because the Kubernetes control plane runs locally on the device, deployedworkloads continue to operate normally during connectivity loss. Only portal visibility and Azure management actionsare interrupted until the connection is restored.
+
+ ### When to use AKS
+
+ Use AKS when you want Azure to manage the Kubernetes lifecycle on your small form factor devices:
+
+ - You want to create, upgrade, and delete clusters from the Azure portal without logging into the device.
+ - You need Azure RBAC with Microsoft Entra ID identities controlling cluster access from day one.
+ - You're managing a fleet of edge devices and want a consistent AKS experience across cloud and edge.
+ - You want built-in Azure Monitor and Azure Policy without additional setup.
+ - You prefer a fully managed platform over operating your own Kubernetes distribution.
+
 ## Docker
 
 [Docker](https://www.docker.com/) provides a simpler container runtime for running individual containers or small groups of containers on a small form factor device. Compared to K3s, Docker has less operational overhead but also fewer orchestration capabilities.
@@ -92,40 +114,41 @@ Use Docker when your workloads are simple and don't require Kubernetes orchestra
 - Your team is familiar with Docker but not Kubernetes.
 - You don't need centralized fleet management through Azure Arc-enabled Kubernetes.
 
-## Choosing between K3s and Docker
+## Choosing between AKS, K3s and Docker
 
 The following table summarizes the key differences to help you choose the right container orchestrator for your small form factor deployment:
 
-| Capability | K3s | Docker |
-|---|---|---|
-| Kubernetes API compatibility | Yes (CNCF certified) | No |
-| Resource overhead | ~512 MB RAM | ~100 MB RAM |
-| Multi-container orchestration | Built-in (pods, deployments, services) | Docker Compose |
-| Self-healing and auto-restart | Yes (declarative reconciliation) | Restart policies only |
-| Service discovery | Built-in (CoreDNS) | Manual or Docker networks |
-| Azure Arc-enabled Kubernetes | Yes (`az connectedk8s connect`) | No |
-| Rolling updates | Built-in | Manual |
-| Learning curve | Moderate (Kubernetes knowledge required) | Low |
-| Best for | Multi-service apps, fleet management, GitOps | Single-app deployments, prototyping |
+| Capability | AKS | K3s | Docker |
+|---|---|---|---|
+| Kubernetes API compatibility | Yes (managed) | Yes (CNCF certified) | No |
+| Resource overhead | Higher (full control plane) | ~512 MB RAM | ~100 MB RAM |
+| Multi-container orchestration | Built-in (pods, deployments, services) | Built-in (pods, deployments, services) |Docker Compose |
+| Self-healing and auto-restart | Yes (declarative reconciliation) | Yes (declarative reconciliation) | Restartpolicies only |
+| Service discovery | Built-in (CoreDNS) | Built-in (CoreDNS) | Manual or Docker networks |
+| Azure Arc-enabled Kubernetes | Yes (automatic at creation) | Yes (`az connectedk8s connect`) | No |
+| Rolling updates | Built-in | Built-in | Manual |
+| Cluster lifecycle managed by Azure | Yes (create, upgrade, delete from portal) | No (manual) | No |
+| Learning curve | Low (Azure portal driven) | Moderate (Kubernetes knowledge required) | Low |
+| Best for | Fleet management, fully managed edge Kubernetes | Multi-service apps, self-managed Kubernetes |Single-app deployments, prototyping |
 
 > [!TIP]
 > If you're unsure which to choose, start with K3s. Its resource overhead is manageable on small form factor hardware, and it gives you a path to Azure Arc integration and fleet management as your edge deployment grows. You can always run simple single-container workloads on K3s - you don't need to use advanced Kubernetes features to benefit from it.
 
 ## Small form factor devices should only run one container orchestrator
 
-A small form factor device should run either K3s or Docker, not both. Make this decision early in your deployment planning, before you begin deploying containerized workloads. Deploy all of your applications using the chosen orchestrator.
+A small form factor device should run either AKS, K3s or Docker, not multiple. Make this decision early in your deployment planning, before you begin deploying containerized workloads. Deploy all of your applications using the chosen orchestrator.
 
 ### Why not both?
 
-While you can technically install both K3s and Docker on the same device, doing so creates problems that compound over time:
+While you can technically install both AKS or K3s and Docker on the same device, doing so creates problems that compound over time:
 
-- **Resource contention**: Small form factor devices operate within tight resource constraints (as few as 14 physical cores and 32 GB of RAM). Each container orchestrator reserves memory and CPU for its own runtime components. Running both means you pay overhead cost twice - K3s's control plane components (API server, scheduler, controller manager, etcd) alongside Docker's daemon - leaving less capacity for actual application workloads.
+- **Resource contention**: Small form factor devices operate within tight resource constraints (as few as 14 physical cores and 32 GB of RAM). Each container orchestrator reserves memory and CPU for its own runtime components. Running both means you pay overhead cost twice - AKS or K3s's control plane components (API server, scheduler, controller manager, etcd) alongside Docker's daemon - leaving less capacity for actual application workloads.
 
 - **Port conflicts**: Both orchestrators manage container networking and port allocation independently. When two separate systems map container ports to the host, conflicting port bindings become likely, especially on devices with a single network interface. Debugging which orchestrator owns which port adds unnecessary operational friction.
 
-- **Conflicting container runtimes**: K3s bundles its own containerd runtime, while Docker runs its own containerd instance (or, in older versions, its own runtime). Two container runtimes on the same host can interfere with each other's storage, networking, and process management. Container images pulled by one runtime aren't visible to the other, leading to duplicated image storage on an already storage-constrained device.
+- **Conflicting container runtimes**: AKS or K3s bundles its own containerd runtime, while Docker runs its own containerd instance (or, in older versions, its own runtime). Two container runtimes on the same host can interfere with each other's storage, networking, and process management. Container images pulled by one runtime aren't visible to the other, leading to duplicated image storage on an already storage-constrained device.
 
-- **Split operational model**: Running both orchestrators means your team must maintain two different sets of deployment practices, monitoring approaches, and troubleshooting procedures for the same device. Containers managed by K3s are visible through `kubectl` and Azure Arc. Containers managed by Docker are visible through `docker ps`. There's no unified view across both, making it difficult to understand the full workload picture on a device.
+- **Split operational model**: Running both orchestrators means your team must maintain two different sets of deployment practices, monitoring approaches, and troubleshooting procedures for the same device. Containers managed by AKS or K3s are visible through `kubectl` and Azure Arc. Containers managed by Docker are visible through `docker ps`. There's no unified view across both, making it difficult to understand the full workload picture on a device.
 
 - **Unpredictable update behavior**: OS-level updates applied through the provisioned machine lifecycle might interact differently with each container runtime. Having a single orchestrator simplifies the update matrix and reduces the risk of one runtime breaking after a host OS change.
 
@@ -138,7 +161,7 @@ Changing container orchestrators after you deploy workloads is disruptive. It ty
 1. Updating any CI/CD pipelines, monitoring integrations, and operational runbooks.
 1. Coordinating downtime for the migration, which may not be acceptable at always-on edge locations.
 
-For these reasons, choose your container orchestrator before deploying your first workload. Evaluate your requirements against the [comparison table](#choosing-between-k3s-and-docker), considering not just your current needs but where your edge deployment is headed. If there's any chance you'll need Azure Arc-enabled Kubernetes management or fleet-wide GitOps in the future, starting with K3s avoids a costly migration later.
+For these reasons, choose your container orchestrator before deploying your first workload. Evaluate your requirements against the [comparison table](#choosing-between-AKS,-k3s-and-docker), considering not just your current needs but where your edge deployment is headed. If there's any chance you'll need Azure Arc-enabled Kubernetes management or fleet-wide GitOps in the future, starting with K3s avoids a costly migration later.
 
 ### One orchestrator per fleet, not just per device
 
