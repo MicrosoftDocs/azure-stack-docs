@@ -14,7 +14,7 @@ This article describes how to integrate external storage area network (SAN) stor
 
 ## Overview
 
-Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing customers to reuse existing SAN investments while running Azure Local workloads.
+Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing you to reuse existing SAN investments while running Azure Local workloads.
 
 Supported protocols:
 
@@ -26,6 +26,8 @@ Supported protocols:
 
 ## Prerequisites
 
+The following prerequisites apply to FC and iSCSI.
+
 ### Fibre Channel
 
 - Azure Local cluster deployed with version 2604 or later.
@@ -33,7 +35,7 @@ Supported protocols:
 - The SAN array is accessible on the FC fabric with management access configured.
 
 > [!IMPORTANT]
-> Don't zone in FC HBA World Wide Names (WWNs) until after the Azure Local deployment to avoid deployment confusion for FC LUNs.
+> To avoid deployment confusion for FC LUNs, don't zone in FC HBA World Wide Names (WWNs) until after the Azure Local deployment.
 
 ### iSCSI
 
@@ -44,7 +46,7 @@ Supported protocols:
 
 ## Step 1: Enable Windows features and services
 
-### 1a. Verify Multipath I/O (all deployments)
+### 1.1 Verify Multipath I/O (all deployments)
 
 Azure Local 2604 and later versions enable Multipath I/O (MPIO) by default. Verify that MPIO is enabled on all nodes. If MPIO isn't enabled, which can happen in earlier versions, you need to reboot after enabling it.
 
@@ -56,7 +58,7 @@ Get-WindowsOptionalFeature -Online -FeatureName MultipathIO |
     Select-Object FeatureName, State, RestartNeeded
 ```
 
-### 1b. Enable iSCSI Initiator service (iSCSI only)
+### 1.2 Enable iSCSI Initiator service (iSCSI only)
 
 For iSCSI deployments, enable and start the iSCSI Initiator service on all nodes. This step isn't required for FC-only deployments.
 
@@ -66,11 +68,11 @@ Start-Service -Name MSiSCSI
 Get-Service -Name MSiSCSI | Select-Object Name, Status, StartType
 ```
 
-### 1c. Reboot if required
+### 1.3 Reboot if required
 
 If you enabled MPIO on pre-2604 builds or if `RestartNeeded` returns `True`, perform a rolling reboot of all nodes before proceeding.
 
-### 1d. Collect initiator identifiers
+### 1.4 Collect initiator identifiers
 
 After enabling the required services, collect the initiator identifiers from each node. You need these identifiers to configure LUN masking on the SAN array.
 
@@ -91,7 +93,7 @@ After enabling the required services, collect the initiator identifiers from eac
 
 Run all configurations on each Azure Local node. MPIO policy changes don't take effect until after a reboot.
 
-### 2a. MPIO defaults
+### 2.1 MPIO defaults
 
 Azure Local 2604 and later versions include the following MPIO default settings:
 
@@ -108,7 +110,7 @@ Azure Local 2604 and later versions include the following MPIO default settings:
 | Load Balance Policy | Round Robin (RR) |
 | NewDiskPolicy | OfflineShared |
 
-### 2b. Register vendor device with MSDSM
+### 2.2 Register vendor device with MSDSM
 
 Register your storage vendor with Microsoft Device Specific Module (MSDSM) so MPIO can claim the array's LUNs. Use the command for your vendor:
 
@@ -127,13 +129,13 @@ Register your storage vendor with Microsoft Device Specific Module (MSDSM) so MP
     Remove-MSDSMSupportedHW -VendorId 'Vendor*' -ProductId 'Product*'
     ```
 
-### 2c. Set the load balancing policy
+### 2.3 Set the load balancing policy
 
 ```powershell
 Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR
 ```
 
-### 2d. Configure MPIO timers (vendor-specific)
+### 2.4 Configure MPIO timers (vendor-specific)
 
 Most supported vendors don't require extra MPIO tuning beyond the default settings. The following vendors recommend vendor-specific overrides.
 
@@ -163,7 +165,7 @@ Most supported vendors don't require extra MPIO tuning beyond the default settin
 
     No extra MPIO tuning required beyond the default settings.
 
-### 2e. Enable iSCSI auto-claim (iSCSI only)
+### 2.5 Enable iSCSI auto-claim (iSCSI only)
 
 ```powershell
 Enable-MSDSMAutomaticClaim -BusType iSCSI
@@ -171,7 +173,7 @@ Enable-MSDSMAutomaticClaim -BusType iSCSI
 
 This command registers MPIO to automatically claim all iSCSI devices. If you enable auto-claim after LUNs are already visible, restart the node so MSDSM can re-enumerate the devices.
 
-### 2f. Verify the configuration and reboot
+### 2.6 Verify the configuration and reboot
 
 ```powershell
 mpclaim -s -d
@@ -182,9 +184,10 @@ Restart each node in a rolling manner to apply MPIO changes before proceeding wi
 
 ## Step 3: Configure the iSCSI network (iSCSI only)
 
-Skip this step for FC-only deployments.
+> [!IMPORTANT]
+> Skip this step for FC-only deployments.
 
-### 3a. Exclude iSCSI NICs from Network ATC
+### 3.1 Exclude iSCSI NICs from Network ATC
 
 Network ATC manages management, compute, and storage intents for Storage Spaces Direct and Remote Direct Memory Access (RDMA) traffic. Keep iSCSI NICs outside Network ATC and configure them manually.
 
@@ -195,7 +198,7 @@ Add-NetIntent -Name "Storage" -Storage -AdapterName "NIC3","NIC4"
 
 If you add an iSCSI NIC to an Network ATC intent, remove it and reconfigure the adapter manually.
 
-### 3b. Configure dedicated iSCSI NICs
+### 3.2 Configure dedicated iSCSI NICs
 
 Assign each iSCSI NIC a static IP address on its storage subnet without a default gateway.
 
@@ -210,7 +213,7 @@ New-NetIPAddress -InterfaceAlias "iSCSI-NIC-B" -IPAddress 10.31.31.11 -PrefixLen
 > [!NOTE]
 > Don't configure a default gateway on iSCSI NICs.
 
-### 3c. Configure MTU and VLANs (optional)
+### 3.3 Configure MTU and VLANs (optional)
 
 Use consistent maximum transmission unit (MTU) settings across the entire iSCSI network path. If switch ports are configured as access ports, the host sends untagged traffic. Configure VLAN tagging on the host only when switch ports are configured as trunk ports.
 
@@ -222,7 +225,7 @@ Set-NetAdapter -Name "iSCSI-NIC-A" -VlanID 500
 Set-NetAdapter -Name "iSCSI-NIC-B" -VlanID 600
 ```
 
-### 3d. Configure static routes
+### 3.4 Configure static routes
 
 Add persistent /32 routes for each target portal on both iSCSI NICs.
 
@@ -231,7 +234,7 @@ New-NetRoute -DestinationPrefix <TargetPortalIP>/32 -InterfaceAlias "iSCSI-NIC-A
 New-NetRoute -DestinationPrefix <TargetPortalIP>/32 -InterfaceAlias "iSCSI-NIC-B" -NextHop <GatewayIP> -PolicyStore PersistentStore
 ```
 
-### 3e. Configure quality of service (QoS) settings (optional)
+### 3.5 Configure quality of service (QoS) settings (optional)
 
 If iSCSI traffic shares Ethernet infrastructure with other traffic, tag iSCSI with priority 4 and use Enhanced Transmission Selection (ETS) to reserve bandwidth.
 
@@ -258,12 +261,13 @@ Before proceeding to Step 5, confirm the following items with your storage admin
 
 ## Step 5: Connect to iSCSI targets (iSCSI only)
 
-Skip this step for FC-only deployments. FC LUNs appear automatically after zoning and LUN masking.
+FC LUNs appear automatically after zoning and LUN masking.
 
 > [!IMPORTANT]
-> Run the commands in this section on every Azure Local node.
+>- Skip this step for FC-only deployments.
+>- For iSCSI, run these commands on every Azure Local node.
 
-Discover each target portal from both iSCSI NICs, and then connect to each target with persistence and multipath enabled.
+1. Discover each target portal from both iSCSI NICs, and then connect to each target with persistence and multipath enabled.
 
 ```powershell
 # Discover target portals
@@ -276,12 +280,12 @@ Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPo
 -IsPersistent $true -IsMultipathEnabled $true
 ```
 
-For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
+1. For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
 
 ## Step 6: Verify SAN Disks
 
 > [!IMPORTANT]
-> Run the commands in this section on every Azure Local node.
+> Run these commands on every Azure Local node.
 
 Compare the `UniqueId` values. All nodes must see the same set of LUNs. Disk numbers might vary between nodes. Use UniqueId as the authoritative identifier.
 
@@ -302,7 +306,7 @@ Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Obje
 ## Step 7: Initialize and Format Disks
 
 > [!IMPORTANT]
-> Run this section on one Azure Local node only.
+> Run these commands only on a single Azure Local node.
 
 Initialize SAN volumes as GUID Partition Table (GPT) and format them with NTFS (use a 64K allocation unit for CSV). The cluster manages multi-node access after you add the disks as Cluster Shared Volumes (CSVs).
 
@@ -322,7 +326,7 @@ foreach ($disk in $sanDisks) {
 ## Step 8: Add disks to the cluster and create CSVs
 
 > [!IMPORTANT]
-> Run this section after all SAN disks are visible and validated on every cluster node.
+> After all SAN disks are visible and validated, run these commands on every Azure Local node.
 
 Add the SAN disks to the failover cluster, and then convert the disks to CSVs.
 
