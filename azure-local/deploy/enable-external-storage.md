@@ -197,7 +197,7 @@ Add-NetIntent -Name "Mgmt-Compute" -Management -Compute -AdapterName "NIC1","NIC
 Add-NetIntent -Name "Storage" -Storage -AdapterName "NIC3","NIC4"
 ```
 
-If you add an iSCSI NIC to an Network ATC intent, remove it and reconfigure the adapter manually.
+If you add an iSCSI NIC to a Network ATC intent, remove it and reconfigure the adapter manually.
 
 ### 3.2 Configure dedicated iSCSI NICs
 
@@ -270,16 +270,16 @@ FC LUNs appear automatically after zoning and LUN masking.
 
 1. Discover each target portal from both iSCSI NICs, and then connect to each target with persistence and multipath enabled.
 
-```powershell
-# Discover target portals
-New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A>
-New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B>
+    ```powershell
+    # Discover target portals
+    New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A>
+    New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B>
 
-# Connect with multipath and persistence
-Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A> `-IsPersistent $true -IsMultipathEnabled $true
-Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B> `
--IsPersistent $true -IsMultipathEnabled $true
-```
+    # Connect with multipath and persistence
+    Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A> `-IsPersistent $true -IsMultipathEnabled $true
+    Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B> `
+    -IsPersistent $true -IsMultipathEnabled $true
+    ```
 
 1. For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
 
@@ -378,15 +378,15 @@ For a complete list of supported models and firmware requirements, see [Supporte
 
 Before starting the host-side configuration, provide your storage administrator with the following information:
 
-1. The initiator identifiers collected in [Step 1d: Collect initiator identifiers](#14-collect-initiator-identifiers) (WWPNs for FC, IQNs for iSCSI).
-1. The required number and size of LUNs.
-1. Cluster node names for host registration on the array.
+- The initiator identifiers collected in [Step 1d: Collect initiator identifiers](#14-collect-initiator-identifiers) (WWPNs for FC, IQNs for iSCSI).
+- The required number and size of LUNs.
+- Cluster node names for host registration on the array.
 
 Your storage administrator should provide the following information:
 
-1. For FC: Target WWPNs for zoning configuration.
-1. For iSCSI: Target portal IP addresses and target IQN.
-1. Confirmation that LUNs are mapped to all cluster nodes with consistent LUN IDs.
+- For FC: Target WWPNs for zoning configuration.
+- For iSCSI: Target portal IP addresses and target IQN.
+- Confirmation that LUNs are mapped to all cluster nodes with consistent LUN IDs.
 
 ## Troubleshooting
 
