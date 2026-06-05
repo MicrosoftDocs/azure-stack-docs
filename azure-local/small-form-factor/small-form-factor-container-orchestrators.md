@@ -163,7 +163,7 @@ Changing container orchestrators after you deploy workloads is disruptive. It ty
 1. Updating any CI/CD pipelines, monitoring integrations, and operational runbooks.
 1. Coordinating downtime for the migration, which may not be acceptable at always-on edge locations.
 
-For these reasons, choose your container orchestrator before deploying your first workload. Evaluate your requirements against the [comparison table](#choosing-between-AKS,-k3s-and-docker), considering not just your current needs but where your edge deployment is headed. If there's any chance you'll need Azure Arc-enabled Kubernetes management or fleet-wide GitOps in the future, starting with K3s avoids a costly migration later.
+For these reasons, choose your container orchestrator before deploying your first workload. Evaluate your requirements against the [comparison table](#choosing-between-AKS,-k3s,-and-docker), considering not just your current needs but where your edge deployment is headed. If there's any chance you'll need Azure Arc-enabled Kubernetes management or fleet-wide GitOps in the future, starting with K3s avoids a costly migration later.
 
 ### One orchestrator per fleet, not just per device
 
