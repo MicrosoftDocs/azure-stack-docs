@@ -116,7 +116,7 @@ Use Docker when your workloads are simple and don't require Kubernetes orchestra
 - Your team is familiar with Docker but not Kubernetes.
 - You don't need centralized fleet management through Azure Arc-enabled Kubernetes.
 
-## Choosing between AKS, K3s and Docker
+## Choosing between AKS, K3s, and Docker
 
 The following table summarizes the key differences to help you choose the right container orchestrator for your small form factor deployment:
 
@@ -138,7 +138,7 @@ The following table summarizes the key differences to help you choose the right 
 
 ## Small form factor devices should only run one container orchestrator
 
-A small form factor device should run either AKS, K3s or Docker, not multiple. Make this decision early in your deployment planning, before you begin deploying containerized workloads. Deploy all of your applications using the chosen orchestrator.
+A small form factor device should run either AKS, K3s, or Docker, not multiple. Make this decision early in your deployment planning, before you begin deploying containerized workloads. Deploy all of your applications by using the chosen orchestrator.
 
 ### Why not both?
 
