@@ -3,8 +3,8 @@ title: Network Fabric Controller internal service metrics
 description: Learn about the internal service metrics exposed by the Network Fabric Controller (NFC) for monitoring availability and stability.
 ms.topic: reference
 ms.date: 04/29/2026
-author: bhumikashah
-ms.author: bhumikashah
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ---
 
