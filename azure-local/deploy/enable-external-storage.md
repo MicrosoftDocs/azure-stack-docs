@@ -8,7 +8,8 @@ ms.topic: how-to
 ms.date: 06/04/2026
 ms.subservice: hyperconverged
 ---
-# Connecting an external storage array to Azure Local
+
+# Connect an external storage array to Azure Local
 
 This article describes how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
 
