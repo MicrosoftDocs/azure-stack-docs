@@ -22,23 +22,23 @@ ms.author: sumsmith
 
  1. Download a local copy of the [ARM parameters file](https://github.com/Azure/aksArc/blob/main/deploymentTemplates/aks-baremetal-arm/aks-baremetal-arm.parameteres.json).
  1. Configure the following required parameters:
- 
- | Parameter | Value | Notes |
- |-----------|-------|-------|
- | `edgeMachineName` | Edge machine name | Must match the provisioned machine in your resource group. |
- | `adminGroupObjectIds` | Microsoft Entra ID group object ID | Used for cluster admin RBAC. Must be a valid GUID. |
- | `sshPublicKey` | SSH public key | An SSH key pair was created during Edge Machine creation. Use that public keyhere. |
+  
+    | Parameter | Value | Notes |
+    |-----------|-------|-------|
+    | `edgeMachineName` | Edge machine name | Must match the provisioned machine in your resource group. |
+    | `adminGroupObjectIds` | Microsoft Entra ID group object ID | Used for cluster admin RBAC. Must be a valid GUID. |
+    | `sshPublicKey` | SSH public key | An SSH key pair was created during Edge Machine creation. Use that public keyhere. |
  
  1. Optionally configure additional parameters:
 
- | Parameter | Default | Notes |
- |-----------|---------|-------|
- | `clusterName` | `my-aks-on-baremetal-cluster` | Name must be 1-27 characters long, start and end with a letter ornumber, and can only contain letters, numbers, hyphens, or underscores. |
- | `kubernetesVersion` | `1.34.3-20260204` | Format: `Major.Minor.Patch-YYYYMMDD`. |
- | `controlPlaneIp` | (auto-assigned as host IP) | If specified, must be in the same subnet as the host IP **but cannot be the same as the host IP**. If no IP is provided, it will default to the host IP. |
- | `enableAzurePolicy` | `true` | Set to `false` to skip Azure Policy extension installation. |
- | `enableContainerMonitoring` | `true` | Set to `false` to skip Container Monitoring extension installation. |
- | `logAnalyticsWorkspaceId` | (empty) | Required if `enableContainerMonitoring` is `true`. Format: `/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.OperationalInsights/workspaces/<WORKSPACE_NAME>` |
+    | Parameter | Default | Notes |
+    |-----------|---------|-------|
+    | `clusterName` | `my-aks-on-baremetal-cluster` | Name must be 1-27 characters long, start and end with a letter ornumber, and can only contain letters, numbers, hyphens, or underscores. |
+    | `kubernetesVersion` | `1.34.3-20260204` | Format: `Major.Minor.Patch-YYYYMMDD`. |
+    | `controlPlaneIp` | (auto-assigned as host IP) | If specified, must be in the same subnet as the host IP **but cannot be the same as the host IP**. If no IP is provided, it will default to the host IP. |
+    | `enableAzurePolicy` | `true` | Set to `false` to skip Azure Policy extension installation. |
+    | `enableContainerMonitoring` | `true` | Set to `false` to skip Container Monitoring extension installation. |
+    | `logAnalyticsWorkspaceId` | (empty) | Required if `enableContainerMonitoring` is `true`. Format: `/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.OperationalInsights/workspaces/<WORKSPACE_NAME>` |
 
  > [!WARNING]
  > If your machine uses DHCP and you specify a control plane IP, you must reserve that IP address so it remainspermanently assigned to this machine. If the control plane IP changes, the Kubernetes cluster becomes unreachable and must be redeployed.
