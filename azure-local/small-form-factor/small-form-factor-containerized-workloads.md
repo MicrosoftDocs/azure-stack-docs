@@ -243,7 +243,7 @@ Confirm that:
 
 ### Deploy and use AKS
 
-Follow the [AKS on bare metal](/azure/aks/aksarc/aks-bare-metal-create-cluster-portal) directions to deploy an AKS cluster running on a small form factor deployment of Azure Local.
+To deploy an AKS cluster running on a small form factor deployment of Azure Local, see [AKS on bare metal](/azure/aks/aksarc/aks-bare-metal-create-cluster-portal).
 
 ---
 
