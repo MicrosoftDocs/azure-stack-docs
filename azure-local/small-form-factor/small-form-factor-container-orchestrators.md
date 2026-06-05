@@ -74,7 +74,7 @@ Use K3s when your workloads benefit from Kubernetes-native capabilities:
 - **No hypervisor**: AKS runs directly on the bare metal host OS, so you avoid the resource overhead of a virtualization layer on devices where memory and CPU are constrained.
  - **Built-in Azure Arc integration**: The cluster is Arc-enabled from the moment it's created. There's no separate `az connectedk8s connect` step. Azure portal visibility, Azure RBAC, Azure Monitor, and Azure Policy are available immediately.
 - **Kubernetes-compatible**: AKS runs standard Kubernetes with Cilium CNI, so existing Kubernetes manifests, Helm charts, and tooling work without modification.
-- **Resilient to connectivity loss**: Because the Kubernetes control plane runs locally on the device, deployed workloads continue to operate normally during connectivity loss. Only portal visibility and Azure management actions are interrupted until the connection is restored.
+ - **Resilient to connectivity loss**: Because the Kubernetes control plane runs locally on the device, deployed workloads continue to operate normally during connectivity loss. Only portal visibility and Azure management actions are interrupted until the connection is restored.
 
 
  ### When to use AKS
