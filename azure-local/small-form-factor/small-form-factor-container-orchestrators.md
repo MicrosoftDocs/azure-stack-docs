@@ -70,7 +70,7 @@ Use K3s when your workloads benefit from Kubernetes-native capabilities:
 
  ### Why use AKS on small form factor devices
 
- - **Fully managed lifecycle**: Cluster creation, upgrades, and deletion are handled through the Azure portal, Biceptemplates, or ARM templates.
+- **Fully managed lifecycle**: Handle cluster creation, upgrades, and deletion through the Azure portal, Bicep templates, or ARM templates.
  - **No hypervisor**: AKS runs directly on the bare metal host OS, avoiding the resource overhead of a virtualizationlayer on devices where memory and CPU are constrained.
  - **Built-in Azure Arc integration**: The cluster is Arc-enabled from the moment it's created. There's no separate `az connectedk8s connect` step. Azure portal visibility, Azure RBAC, Azure Monitor, and Azure Policy are available immediately.
  - **Kubernetes-compatible**: AKS runs standard Kubernetes with Cilium CNI, so existing Kubernetes manifests, Helmcharts, and tooling work without modification.
