@@ -12,7 +12,7 @@ ms.author: sumsmith
  > [!IMPORTANT]
  > Azure Kubernetes Service on bare metal is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply toAzure features that are in beta, preview, or otherwise not yet released into general availability. Azure KubernetesService on bare metal previews are partially covered by customer support on a best-effort basis.
 
- This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using an Azure ResourceManager (ARM) template.
+ This article shows you how to create an Azure Kubernetes Service (AKS) cluster on bare metal using an Azure Resource Manager (ARM) template.
 
  ## Prerequisites
 
