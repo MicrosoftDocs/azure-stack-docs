@@ -35,7 +35,7 @@ On the **Basics** tab, configure the following settings:
 |---------|-------|
 | Site | Select your site. This selection automatically populates your subscription. |
 | Resource group | Select or create a resource group in **East US**. |
-| Cluster name | Enter a name for your cluster. Don't use spaces. |
+| Cluster name | Enter a name for your cluster. Name must be 1-27 characters long, start and end with a letter ornumber, and can only contain letters, numbers, hyphens, or underscores. |
 | Kubernetes version | Select **1.34.2** or **1.34.3**. |
 | Edge machine | Select **Add machines** to view available machines within your selected site, and then select the machine to deploy on. |
 
