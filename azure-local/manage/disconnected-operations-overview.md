@@ -100,6 +100,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Understand and configure your identity solution. | [Identity integration for disconnected operations](disconnected-operations-identity.md) |
 | Understand and configure security controls. | [Security controls for disconnected operations](disconnected-operations-security.md) |
 | Configure PKI and secure the endpoints. | [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md) |
+| Understand the dedicated management cluster and plan for hardware procurement. | [Dedicated management cluster for disconnected operations](disconnected-operations-control-plane-appliance.md) |
 
 ### Deploy
 
