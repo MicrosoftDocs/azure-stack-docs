@@ -404,7 +404,7 @@
       href: aks-bare-metal-system-requirements.md
     - name: Create a cluster - Azure portal
       href: aks-bare-metal-create-cluster-portal.md
-    - name: Create a cluster - ARM
+    - name: Create a cluster - ARM template
       href: aks-bare-metal-create-cluster-arm.md
     - name: Create a cluster - Bicep
       href: aks-bare-metal-create-cluster-bicep.md

@@ -1,5 +1,5 @@
 ---
-title: Create an AKS on bare metal cluster using ARM (preview)
+title: Create an AKS on bare metal cluster using ARM template (preview)
 description: Learn how to deploy an Azure Kubernetes Service (AKS) cluster on bare metal using an ARM template.
 ms.topic: how-to
 ms.date: 06/05/2026
@@ -18,9 +18,9 @@ ms.author: sumsmith
 
  Complete all [system requirements and prerequisites](aks-bare-metal-system-requirements.md) before you begin.
 
- ## Step 1: Download the ARM parameters file
+ ## Step 1: Download the ARM template parameters file
 
- 1. Download a local copy of the [ARM parameters file](https://github.com/Azure/aksArc/blob/main/deploymentTemplates/aks-baremetal-arm/aks-baremetal-arm.parameteres.json).
+ 1. Download a local copy of the [ARM template parameters file](https://github.com/Azure/aksArc/blob/main/deploymentTemplates/aks-baremetal-arm/aks-baremetal-arm.parameteres.json).
  1. Configure the following required parameters:
   
     | Parameter | Value | Notes |
