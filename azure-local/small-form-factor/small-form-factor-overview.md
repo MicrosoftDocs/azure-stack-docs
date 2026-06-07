@@ -21,7 +21,7 @@ With small form factor deployments, you can:
 
 - Deploy and manage edge infrastructure through Azure with a cloud-like experience.
 - Run containerized workloads by using Docker, which is included in the base image.
-- Run Kubernetes workloads by using the open-source K3s distribution.
+- Run Kubernetes workloads by using AKS or the open-source K3s distribution.
 - Support AI and IoT workloads on distributed devices.
 - Standardize infrastructure across geographically distributed edge environments.
 
@@ -46,6 +46,7 @@ The following table describes the key features of small form factor deployments.
 | Arc gateway URL management        | Provide cloud-native applications with a predictable set of URLs by using a built-in HTTP tunnel to Azure. |
 | Secure, signed OS kernel          | Run a host operating system built with signed Microsoft packages and security updates.                     |
 | Docker included in the base image | Start running containerized workloads without installing a separate container runtime.                     |
+| Azure Kubernetes Service (AKS)    | Deploy and run a managed AKS cluster on your provisioned device.                                           |
 | Open-source K3s support           | Install and run a lightweight, upstream Kubernetes distribution on a provisioned device.                   |
 | Validated IoT applications        | Run Azure IoT Operations and Foundry Local with configurations validated by Microsoft for each release.    |
 
