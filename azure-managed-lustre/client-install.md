@@ -243,7 +243,7 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone pivot="rhel-9"
 
 > [!IMPORTANT]
-> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). If your VM is already on 9.8, downgrade to **9.6 EUS** before installing the Lustre client. Check the [Support matrix](client-install-plan.md#support-matrix) for the current list of supported minor releases — 9.8 will be listed there once Azure Managed Lustre packages ship for it.
+> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). Before installing the Lustre client, make sure your VM is on a supported minor release. Check the [Support matrix](client-install-plan.md#support-matrix) for the current list — 9.8 will be listed there once Azure Managed Lustre packages ship for it.
 
 > [!IMPORTANT]
 > For production workloads, Microsoft recommends pinning RHEL 9 systems to a Red Hat Extended Update Support (EUS) minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against.
@@ -256,7 +256,11 @@ This article shows how to install the client package to set up client VMs runnin
 >
 > <!-- Doc-authors: re-check this guidance when (a) AMLFS adds RHEL 9.8 support (remove the 9.8-unsupported callout above), (b) RHEL 9.6 EUS approaches end of life (May 2027), or (c) Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
 
-1. Pin the system to the recommended minor release, using the method that matches your deployment.
+1. Pin the system to a supported minor release so the kernel doesn't roll forward into an unsupported minor on the next update.
+
+   These steps lock a system at its current minor. If your VM is on a newer minor than the [Support matrix](client-install-plan.md#support-matrix) covers, deploy a new VM from an image at a supported minor — the supported path back varies by distro, subscription, and entitlements, so this article doesn't prescribe an in-place procedure.
+
+   Use the method that matches your deployment.
 
    **RHEL with Red Hat Subscription Manager (BYOS or on-premises):**
 
