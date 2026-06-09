@@ -174,6 +174,31 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone pivot="rhel-8"
 
+> [!IMPORTANT]
+> Microsoft recommends running on RHEL/AlmaLinux **8.10**, the latest (and terminal) RHEL 8 minor release. RHEL 8 is in Maintenance Support phase, and Red Hat ships security errata only for 8.10. Older 8.x minors (8.6 through 8.9) no longer receive Red Hat errata.
+
+1. Verify the running RHEL minor version:
+
+   ```bash
+   cat /etc/redhat-release
+   ```
+
+   Expected output for a RHEL 8.10 system:
+
+   ```output
+   Red Hat Enterprise Linux release 8.10 (Ootpa)
+   ```
+
+1. If the system is on an older 8.x minor, upgrade to 8.10:
+
+   ```bash
+   sudo dnf upgrade --refresh -y
+   sudo reboot
+   ```
+
+   > [!NOTE]
+   > If the system was previously locked to an older minor with `subscription-manager release --set=8.x` (for example, a paid RHEL 8.6 or 8.8 EUS pin), the upgrade above is blocked by that release lock. Check with `sudo subscription-manager release --show`. To allow the move to 8.10, run `sudo subscription-manager release --unset` before the upgrade. RHEL 8 EUS support ended May 31, 2025, so a pre-existing 8.x EUS pin no longer receives security updates.
+
 1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
 
    ```bash
@@ -216,6 +241,49 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone-end
 
 ::: zone pivot="rhel-9"
+
+> [!IMPORTANT]
+> For production workloads, Microsoft recommends pinning RHEL 9 systems to a Red Hat Extended Update Support (EUS) minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against.
+>
+> The currently recommended minor for RHEL 9 is **9.6 EUS** (EUS support ends May 31, 2027). For the current list of RHEL EUS minor releases, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata). For the AMLFS-tested kernel series for each RHEL/AlmaLinux 9 minor, see the [Support matrix](client-install-plan.md#support-matrix).
+>
+> AlmaLinux 9 doesn't have an EUS program. For the same stability reasons, Microsoft recommends pinning AlmaLinux 9 to a specific minor release (currently **9.6**) so the kernel doesn't roll forward unexpectedly.
+>
+> If the VM was deployed from the **RHEL 9.6 EUS** image in the Azure Marketplace, EUS is already configured and you can skip the pinning step.
+>
+> <!-- Doc-authors: re-check this recommendation when RHEL 9.6 EUS approaches end of life (May 2027), or when Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
+
+1. Pin the system to the recommended minor release, using the method that matches your deployment.
+
+   **RHEL with Red Hat Subscription Manager (BYOS or on-premises):**
+
+   ```bash
+   sudo subscription-manager release --set=9.6
+   sudo subscription-manager repos \
+       --disable=rhel-9-for-x86_64-baseos-rpms \
+       --disable=rhel-9-for-x86_64-appstream-rpms \
+       --enable=rhel-9-for-x86_64-baseos-eus-rpms \
+       --enable=rhel-9-for-x86_64-appstream-eus-rpms
+   sudo dnf clean all && sudo dnf makecache
+   ```
+
+   EUS requires a subscription with the EUS entitlement. Red Hat Enterprise Linux Server Premium subscriptions include EUS; Standard subscriptions require the EUS add-on.
+
+   **RHEL on Azure with pay-as-you-go (RHUI) billing:**
+
+   For PAYG VMs that use Azure RHUI, follow the Microsoft Azure procedure in [Switch a RHEL Server to EUS Repositories](/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-server-to-eus-repositories). Use `9.6` as the `releasever` value in the lock step.
+
+   > [!NOTE]
+   > Flipping RHUI repositories in place doesn't change how Azure bills the VM. For correct billing, deploy a fresh VM from the **RHEL 9.6 EUS** Azure Marketplace image.
+
+   **AlmaLinux 9 (minor-version pin, not EUS):**
+
+   AlmaLinux 9 doesn't offer EUS. The steps below pin DNF's `releasever` to 9.6 so the system doesn't roll to a newer minor on the next `dnf upgrade`:
+
+   ```bash
+   echo '9.6' | sudo tee /etc/dnf/vars/releasever
+   sudo dnf clean all && sudo dnf makecache
+   ```
 
 1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
 
