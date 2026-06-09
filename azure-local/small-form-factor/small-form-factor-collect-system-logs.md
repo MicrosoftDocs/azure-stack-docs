@@ -3,7 +3,7 @@ title: Collect System Logs for Small Form Factor Deployments of Azure Local (pre
 description: Learn how to collect system logs for small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.topic: how-to
-ms.date: 05/04/2026
+ms.date: 06/03/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -28,6 +28,15 @@ To verify connectivity, open PowerShell and run:
 ```powershell
 ping <ip-address>
 ```
+
+## Install the Configurator App
+
+If the Configurator App isn't already installed on your Windows PC, download and install it before you collect logs.
+
+1. On your Windows PC, download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI).
+1. When prompted by your browser, select **Open** to start the installation. If you select **Save as**, open the downloaded installer after the download completes.
+1. Follow the prompts to install the app.
+1. After installation completes, open **Configurator App** from the Start menu.
 
 ## Connect to the device in the Configurator App
 
