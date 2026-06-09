@@ -243,6 +243,9 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone pivot="rhel-9"
 
 > [!IMPORTANT]
+> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). If your VM is already on 9.8, downgrade to 9.7 or **9.6 EUS** before installing the Lustre client. The [Support matrix](client-install-plan.md#support-matrix) is the authoritative list of supported minor releases — 9.8 will appear there first when support ships.
+
+> [!IMPORTANT]
 > For production workloads, Microsoft recommends pinning RHEL 9 systems to a Red Hat Extended Update Support (EUS) minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against.
 >
 > The currently recommended minor for RHEL 9 is **9.6 EUS** (EUS support ends May 31, 2027). For the current list of RHEL EUS minor releases, see [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata). For the AMLFS-tested kernel series for each RHEL/AlmaLinux 9 minor, see the [Support matrix](client-install-plan.md#support-matrix).
@@ -251,7 +254,7 @@ This article shows how to install the client package to set up client VMs runnin
 >
 > If the VM was deployed from the **RHEL 9.6 EUS** image in the Azure Marketplace, EUS is already configured and you can skip the pinning step.
 >
-> <!-- Doc-authors: re-check this recommendation when RHEL 9.6 EUS approaches end of life (May 2027), or when Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
+> <!-- Doc-authors: re-check this guidance when (a) AMLFS adds RHEL 9.8 support (remove the 9.8-unsupported callout above), (b) RHEL 9.6 EUS approaches end of life (May 2027), or (c) Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
 
 1. Pin the system to the recommended minor release, using the method that matches your deployment.
 
