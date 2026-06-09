@@ -243,7 +243,7 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone pivot="rhel-9"
 
 > [!IMPORTANT]
-> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). If your VM is already on 9.8, downgrade to 9.7 or **9.6 EUS** before installing the Lustre client. The [Support matrix](client-install-plan.md#support-matrix) is the authoritative list of supported minor releases — 9.8 will appear there first when support ships.
+> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). If your VM is already on 9.8, downgrade to **9.6 EUS** before installing the Lustre client. The [Support matrix](client-install-plan.md#support-matrix) is the authoritative list of supported minor releases — 9.8 will appear there first when support ships.
 
 > [!IMPORTANT]
 > For production workloads, Microsoft recommends pinning RHEL 9 systems to a Red Hat Extended Update Support (EUS) minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against.
