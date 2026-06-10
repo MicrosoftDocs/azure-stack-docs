@@ -33,7 +33,7 @@ sections:
           
           Run `winrm quickconfig` to add `winrm` access through the firewall.
 
-          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target Azure Local instance.
           
           > [!NOTE]
           > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
