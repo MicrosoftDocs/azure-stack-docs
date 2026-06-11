@@ -243,7 +243,7 @@ This article shows how to install the client package to set up client VMs runnin
 ::: zone pivot="rhel-9"
 
 > [!IMPORTANT]
-> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). Before installing the Lustre client, make sure your VM is on a supported minor release. Check the [Support matrix](client-install-plan.md#support-matrix) for the current list — 9.8 will be listed there once Azure Managed Lustre packages ship for it.
+> Azure Managed Lustre client packages don't yet support **RHEL/AlmaLinux 9.8** (released May 19, 2026). Support is expected to land with the upcoming **Lustre 2.15.9** release. Before installing the Lustre client, make sure your VM is on a supported minor release. Check the [Support matrix](client-install-plan.md#support-matrix) for the current list — 9.8 will be listed there once Azure Managed Lustre packages ship for it.
 
 > [!IMPORTANT]
 > For production workloads, Microsoft recommends pinning RHEL 9 systems to a Red Hat Extended Update Support (EUS) minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against.
@@ -254,7 +254,7 @@ This article shows how to install the client package to set up client VMs runnin
 >
 > If the VM was deployed from the **RHEL 9.6 EUS** image in the Azure Marketplace, EUS is already configured and you can skip the pinning step.
 >
-> <!-- Doc-authors: re-check this guidance when (a) AMLFS adds RHEL 9.8 support (remove the 9.8-unsupported callout above), (b) RHEL 9.6 EUS approaches end of life (May 2027), or (c) Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
+> <!-- Doc-authors: re-check this guidance when (a) AMLFS ships the Lustre 2.15.9 client with RHEL 9.8 support (remove the 9.8-unsupported callout above), (b) RHEL 9.6 EUS approaches end of life (May 2027), or (c) Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
 
 > [!IMPORTANT]
 > The procedure below **pins the system at its current running minor** — it doesn't change which minor the system is on. If `cat /etc/redhat-release` reports a minor newer than **9.6**, this article doesn't cover the rollback.
