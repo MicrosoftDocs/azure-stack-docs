@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 05/28/2026
+ms.date: 06/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -34,6 +34,8 @@ This release includes various reliability improvements and bug fixes.
     - This build uses .NET version **8.0.27** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
     - This build uses .NET version **10.0.8** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **SAN integration using iSCSI (preview)**: You can now integrate external storage area network (SAN) storage from supported vendors with Azure Local using Internet Small Computer Systems Interface (iSCSI), in addition to Fibre Channel (FC). This feature is currently in preview. For more information, see [Connect an external storage array to Azure Local](./deploy/enable-external-storage.md).
 
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
 
@@ -68,15 +70,15 @@ This release includes various reliability improvements and bug fixes.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
-- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md). <!--update link-->
+- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md).
 
-- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md). <!--update link-->
+- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md).
 
 - **Local identity with Key Vault**: Starting with this release, local identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md). <!--update link-->
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md).
 
-- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md). <!--update link-->
+- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md).
 
 - **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over. If validation already ran and completed within a three-hour window, the "Validate environment" step during deployment has an 'Unknown' status.
 
@@ -84,7 +86,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Rack aware clustering**: Rack‑aware clustering now supports deployments using local identity with Azure Key Vault. For more information, see [Generally available or supported services](./deploy/deployment-local-identity-with-key-vault.md#generally-available-or-supported-services).
 
-- **GPU acceleration for Azure Local VMs general availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Azure portal. For more information, see [Manage GPUs via Discrete Device Assignment](./manage/gpu-manage-via-device.md). <!--the linked article still shows preview tags-->
+- **GPU acceleration for Azure Local VMs general availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Azure portal. For more information, see [Manage GPUs via Discrete Device Assignment](./manage/gpu-manage-via-device.md).
 
 - **Enhanced data disk management experience in the Azure portal**: You can now create new data disks at the cluster level with a richer disk overview experience, along with overall visual and usability improvements across disk management workflows. Additionally, from the Azure Local VM view, you can now attach existing disks to your VM.
 

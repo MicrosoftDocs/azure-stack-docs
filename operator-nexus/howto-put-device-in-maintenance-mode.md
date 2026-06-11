@@ -21,6 +21,9 @@ Only one device at a time can be in maintenance mode.
 
 Fabric upgrades are restricted when device is in maintenance mode.
 
+> [!IMPORTANT]
+> It is recommended that customers have Inter-PE connectivity configured for better convergence. When a CE device is placed into maintenance mode, having Inter-PE connected ensures that a backup path is immediately available, enabling faster traffic failover with minimal disruption.
+
 ## How to put a device into maintenance mode
 
 This guide will walk you through the process of putting a device into maintenance mode and then returning it to normal operation.
