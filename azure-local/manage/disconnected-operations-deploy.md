@@ -346,11 +346,11 @@ To configure observability, follow these steps:
     Get-ApplianceObservabilityConfiguration
     ```
 
-## Add the Azure Local disconected operations environment to the nodes
+## Add the Azure Local disconnected operations environment to the nodes
 
 In order for the nodes to understand your private cloud environment, you must add the local environment. This is required for bootstrapping the Azure Local nodes later to the control plane.
 
-On each node, run the following from Powershell:
+On each node, run the following from PowerShell:
  
 1. `Add-AzLocalEnvironment -CloudFQDN "autonomous.cloud.private"`
 
@@ -558,6 +558,186 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
+
+## Deploy workload clusters
+
+To deploy standard Azure Local instances as workload clusters, follow the same steps used for the management cluster.
+
+### Deploy a rack aware cluster
+
+Starting with the version 2604 release, you can deploy an Azure Local rack aware cluster in Azure Local disconnected operations.
+
+A file share witness is required for deploying a rack aware cluster in Azure Local disconnected operations. The file share must be a local file share and hosted on a Windows server joined to the same Active Directory forest as the cluster.
+
+Before starting the deployment, complete the following prerequisites:
+
+- [Add the Azure Local disconnected operations environment to the nodes](/azure/azure-local/manage/disconnected-operations-deploy) 
+
+- [Initialize each Azure Local node](/azure/azure-local/manage/disconnected-operations-deploy) 
+
+- Import the root certificate public key onto each node. Refer to steps 8 to 10 of [Prepare Azure Local for disconnected deployments](/azure/azure-local/manage/disconnected-operations-prepare). 
+
+To deploy a rack aware cluster, use the following ARM template: **[create-cluster-rac-enabled-disconnected](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-rac-enabled-disconnected)**. 
+
+ For an example that shows the format of various inputs, such as ArcNodeResourceID, see parameter JSON file [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-rac-enabled-disconnected/azuredeploy.parameters.json). For a detailed description of parameters defined in these files, see [ARM template parameters reference](/azure/azure-local/deploy/rack-aware-cluster-deployment-via-template?tabs=azure-powershell). 
+
+> [!IMPORTANT]
+> - Ensure that all parameters in the JSON file are filled out.  
+> - Replace any placeholder values such as [""] with actual data. These placeholders indicate that the parameter expects an array structure.  
+> - If required values are missing or incorrectly formatted, the validation fails.
+
+#### Example rack aware cluster configuration
+
+The following example deploys a four-node rack aware cluster with two nodes in each rack:
+
+- **node1** and **node2** are physically located in the same rack (**Zone1**). 
+
+- **node3** and **node4** are located in a different rack (**Zone2**).  
+
+In addition to all standard deployment parameters, configure the following parameters for rack aware deployment.
+
+**Arc node resource IDs**
+
+
+```json
+"arcNodeResourceIds": {
+"value": [
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node1",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node2",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node3",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node4"
+]
+}
+```
+
+**Cluster pattern and local availability zones** 
+
+Set `clusterPattern` to **RackAware** and define a local availability zone for each rack. Assign nodes to zones based on their physical rack location. In this example, **node1** and **node2** are in **Zone1**, while **node3** and **node4** are in **Zone2**.
+
+
+```json
+"clusterPattern": {
+"value": "RackAware"
+},
+"localAvailabilityZones": {
+    "value": [
+    {
+        "localAvailabilityZoneName": "Zone1",
+        "nodes": ["node1","node2"]  
+    },
+    {
+        "localAvailabilityZoneName": "Zone2",
+        "nodes": ["node3","node4"]
+    }
+    ]
+}
+```
+
+**File share witness**
+
+A rack aware cluster in Azure Local disconnected operations requires a file share witness. Set `witnessType` to **FileShare** and specify the UNC path to the file share.
+
+
+```json
+"witnessType": {
+    "value": "FileShare"
+},
+"witnessPath": {
+    "value": "witness_share_path"
+}
+```
+
+**Network intent configuration** 
+
+For rack aware clusters, the storage network intent must be a dedicated intent separate from management and compute traffic. Define two network intents:
+
+- **ManagementCompute** — handles management and compute traffic on shared adapters.
+- **Storage** — handles storage traffic on dedicated adapters.
+
+Configure the storage VLAN IDs for each storage adapter. The default VLAN IDs (711 and 712) can be customized for your environment.
+
+
+```json
+"networkingType": {
+    "value": "switchedMultiserverDeployment"
+},
+"networkingPattern": {
+    "value" : "convergedManagementCompute"
+},
+"intentList" : {
+    "value": [
+        {
+            "name": "ManagementCompute",
+            "trafficType": [
+                "Management",
+                "Compute"
+            ],
+            "adapter": [
+                "ethernet",
+                "ethernet 2"
+            ],
+            "overridevirtualswitchConfiguration": false,
+            "virtualswitchConfigurationoverrides": {
+                "enableIov": "",
+                "loadBalancingAlgorithm": ""
+            },
+            "overrideQosPolicy": false,
+            "qosPolicyoverrides": {
+                "priorityvalue8021Action_SMB": "",
+                "priorityvalues8021Action_Cluster": "",
+                "bandwidthPercentage_SMB": ""
+            },
+            "overrideAdapterProperty": false,
+            "adapterPropertyoverrides": {
+                "jumboPacket": "",
+                "networkDirect": "",
+                "networkDirectTechnology": ""
+            }
+        },
+        {
+            "name": "Storage",
+            "trafficType": [
+                    "Storage"
+            ],
+            "adapter": [
+                "ethernet 3",
+                "ethernet 4"
+            ],
+            "overridevirtualswitchConfiguration": false,
+            "virtualswitchConfigurationoverrides": {
+                "enableIov": "",
+                "loadBalancingAlgorithm": ""
+            },
+            "overrideQosPolicy": false,
+            "qosPolicyoverrides": {
+                "priorityvalue8021Action_SMB": "",
+                "priorityvalues8021Action_Cluster": "",
+                "bandwidthPercentage_SMB": ""
+            },
+            "overrideAdapterProperty": false,
+            "adapterPropertyoverrides": {
+                "jumboPacket": "",
+                "networkDirect": "",
+                "networkDirectTechnology": ""
+            }
+      }
+    ]
+},
+"storageNetworkList": {
+    "value": [
+        {
+            "name": "Storage1Network",
+            "networkAdapterName": "ethernet 3",
+            "vlanId": "711"
+        },
+        {
+            "name": "Storage2Network",
+            "networkAdapterName": "ethernet 4",
+            "vlanId": "712"
+        }
+    ]
+}
+```
 
 ## Appendix
 
