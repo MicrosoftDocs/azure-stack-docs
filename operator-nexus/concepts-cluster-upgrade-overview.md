@@ -43,6 +43,7 @@ The runtime upgrade starts by upgrading the three management servers designated 
 
 > [!Note]
 > Customers may observe the spare server with a different runtime version. This is expected.
+> If the internal feature flag `EnableRepurposeSpareKcpNode` is enabled, a healthy management server/node is temporarily repurposed as the spare control plane server/node before the control plane upgrade begins. After all control plane nodes are upgraded, that spare control plane server/node is converted back to a management server/node.
 
 Once all management servers are upgraded, the upgrade progresses to the compute servers. Each rack is upgraded in alphanumeric order, and there are various configurations customers can use to dictate how the computes are upgrade to best limit disruption. As each rack progresses, there are various health checks performed in order to ensure the release successfully upgrades and a sufficient number of computes in a rack returns to operational status. When a rack completes, a customer defined waits time starts to provide extra time for workloads to come online. Once each rack upgrades, the upgrade completes and the cluster returns to `Running` status. 
 
