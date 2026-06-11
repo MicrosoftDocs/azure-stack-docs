@@ -210,7 +210,7 @@ The following list is the combined set of release notes for the AKS engine on Az
 - (Patch Release) https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.82.2
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.83.0
 - (Patch Release) https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.83.1
-- https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.84.1
+- https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.84.2
 - https://github.com/Azure/aks-engine-azurestack/releases/tag/release-v0.85.0
 
 ::: moniker-end
