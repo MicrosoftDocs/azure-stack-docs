@@ -256,9 +256,12 @@ This article shows how to install the client package to set up client VMs runnin
 >
 > <!-- Doc-authors: re-check this guidance when (a) AMLFS adds RHEL 9.8 support (remove the 9.8-unsupported callout above), (b) RHEL 9.6 EUS approaches end of life (May 2027), or (c) Microsoft validates a newer EUS minor. The current RHEL EUS list is maintained at https://learn.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#rhel-eus-and-version-locking-rhel-vms -->
 
-1. Pin the system to a supported minor release so the kernel doesn't roll forward into an unsupported minor on the next update.
+> [!IMPORTANT]
+> The procedure below **pins the system at its current running minor** — it doesn't change which minor the system is on. If `cat /etc/redhat-release` reports a minor newer than **9.6**, this article doesn't cover the rollback.
+>
+> The most reliable path is to **deploy a new VM from the RHEL 9.6 EUS image** in the Azure Marketplace (or, for AlmaLinux, from a 9.6 image) and re-install the Lustre client there. In-place rollback to an earlier minor depends on the system's subscription type, RHUI versus BYOS configuration, and EUS entitlement; refer to Red Hat documentation or your Red Hat support channel for downgrade procedures.
 
-   These steps lock a system at its current minor. If your VM is on a newer minor than the [Support matrix](client-install-plan.md#support-matrix) covers, deploy a new VM from an image at a supported minor — the supported path back varies by distro, subscription, and entitlements, so this article doesn't prescribe an in-place procedure.
+1. Pin the system to a supported minor release so the kernel doesn't roll forward into an unsupported minor on the next update.
 
    Use the method that matches your deployment.
 
