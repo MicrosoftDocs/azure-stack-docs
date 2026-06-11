@@ -3,7 +3,7 @@ title:  Silicon assisted security for the Azure Local security book
 description: Learn about silicon assisted security for the Azure Local security book.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 08/11/2025
+ms.date: 06/10/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -50,7 +50,7 @@ Enabling Secured-core functionality helps proactively defend against and disrupt
 
 ## Azure Local solutions
 
-Secured-core machines can be easily identified in the [Azure Local catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog) as well as in the [Windows Server catalog](https://www.windowsservercatalog.com/). Azure Local solutions supporting Secured-core capabilities are available from industry leading solution builders today. Furthermore, starting with Azure Local, version 22H2, Secured-core support is required on all new solutions based on Gen 3 or newer CPU. Thus, customers will benefit from host protection that is available with Microsoft OS platforms.
+Secured-core machines can be easily identified in the [Azure Local catalog](https://azurelocalsolutions.azure.microsoft.com/#/catalog) as well as in the [Windows Server catalog](https://www.windowsservercatalog.com/). Azure Local solutions supporting Secured-core capabilities are available from industry leading solution builders today. Furthermore, Secured-core support is required on all new solutions based on Gen 3 or newer CPU. Thus, customers will benefit from host protection that is available with Microsoft OS platforms.
 
 Microsoft Hardware Solution Partners provide [Azure Local solution categories](https://azurelocalsolutions.azure.microsoft.com/#/Learn) (Premier Solutions, Integrated Systems and Validated Nodes) with hardware service, support, and security updates for at least five years.
 
