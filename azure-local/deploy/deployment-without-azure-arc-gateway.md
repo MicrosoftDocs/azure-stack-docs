@@ -127,24 +127,39 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 1. Run the Arc registration script. The script takes a few minutes to run.
 
    ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
+   $params = @{
+    TenantId       = $Tenant
+    SubscriptionID = $Subscription
+    ResourceGroup  = $RG
+    Region         = $Region
+    Cloud          = "AzureCloud"
+   }
+
    # Optional
-   -Proxy $ProxyServer
+   if ($ProxyServer) {
+    $params.Proxy = $ProxyServer
+   }
+
    # Optional
-   -ProxyBypass $ProxyBypassList
+   if ($ProxyBypassList) {
+    $params.ProxyBypass = $ProxyBypassList
+   }
+
    # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
+   if ($ArmAccessToken) {
+    $params.ArmAccessToken = $ArmAccessToken
+   }
+
    # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
+   if ($TargetSolutionVersion) {
+    $params.TargetSolutionVersion = $TargetSolutionVersion
+   }
+
+   Invoke-AzStackHciArcInitialization @params
    ```
 
    > [!NOTE]
-   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
+   > If using `ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
 
    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
@@ -413,20 +428,26 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 1. Run the Arc registration script. The script takes a few minutes to run.
 
    ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
+   $params = @{
+    TenantId            = $Tenant
+    SubscriptionID      = $Subscription
+    ResourceGroup       = $RG
+    Region              = $Region
+    Cloud               = "AzureCloud"
+    TargetSolutionVersion = $TargetSolutionVersion
+   }
+
    # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
-   # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
+
+   if ($ArmAccessToken) {
+     $params.ArmAccessToken = $ArmAccessToken
+   }
+
+   Invoke-AzStackHciArcInitialization @params
    ```
 
    > [!NOTE]
-   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
+   > If using `ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
     
    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
