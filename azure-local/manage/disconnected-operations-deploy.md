@@ -488,6 +488,9 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
+> [!NOTE]
+> If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
+
 ```powershell
 $resourcegroup = 'azurelocal-management-cluster' 
 $applianceCloudName = "azure.local"
@@ -522,13 +525,78 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
 >  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2604.1003.1005`.
 
+## Handle preinstalled OEM images in disconnected operations
+
+### Prerequisites
+
+- Download **CombinedSolutionBundle**. For more information, see [Solution update bundle](../update/import-discover-updates-offline-23h2.md).
+
+- On a connected machine, [download the bootstrap package](https://aka.ms/BootstrapBundle).
+
+### Update the bootstrap service
+
+1. Copy and extract the **BootstrapBundle.zip** file. This bundle includes:
+
+    - **Update-BootstrapService.ps1**. Signed update script.
+
+    - **Microsoft.Azure.Edge.Bootstrap.Setup.Official.release.10.3342.1.3008.nupkg**. Bootstrap NuGet package.
+
+1. Copy both files to each Azure Local node. For example, copy them to **C:\packages**.
+
+1. On each node, run the bootstrap update script and verify that the bootstrap service updated successfully.
+
+    ```powershell
+    # Run the bootstrap update script on the node
+    C:\packages\Update-BootstrapService.ps1 -NugetPath "C:\packages\Microsoft.Azure.Edge.Bootstrap.Setup.Official.release.10.3342.1.3008.nupkg"
+    ```
+
+    :::image type="content" source="./media/disconnected-operations-deploy/boot-strap-service-update.png" alt-text="Screenshot showing the bootstrap service update." lightbox=" ./media/disconnected-operations-deploy/boot-strap-service-update.png":::
+
+1. Verify that the bootstrap service update completes successfully.
+
+### Initialize Azure Arc
+
+1. Copy **Platform.zip** to **C:\zerodayupdate** directory on each node.
+
+1. On each node, run the `Invoke-AzStackHciArcInitialization` command:
+    
+    ```powershell
+    # Initialize Azure Arc with ALDO-specific parameters
+      Invoke-AzStackHciArcInitialization
+      -TenantId $Tenant
+	  - SubscriptionID $Subscription
+	  -ResourceGroup $RG
+	  -Region $Region
+	# cloud must be set to `Azure.local` for disconnected operations
+      -Cloud "Azure.local" 
+      -TargetSolutionVersion "<SolutionVersionToDeploy>" 
+	#LocalPlatformPackagePath - The local path to the `Platform.zip` file you copied
+      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.zip"
+	```
+
+    > [!IMPORTANT]
+    > Set the **Cloud** parameter to `Azure.local`. Any other value causes the node to attempt registration with the public Azure cloud, which fails in a disconnected environment.
+    > Ensure the **TargetSolutionVersion** matches your disconnected operations appliance version. Mismatched versions cause deployment failures.
+
+    :::image type="content" source="./media/disconnected-operations-deploy/arc-initialization-zero-update.png" alt-text="Screenshot showing Arc initialization." lightbox=" ./media/disconnected-operations-deploy/arc-initialization-zero-update.png":::
+
+1. Wait for the initialization to complete. This process might take up to 30-60 minutes.
+
+1. Run the following command on the seed node and wait until the appliance is healthy:
+
+    ```powershell
+    Get-ApplianceHealthState
+    ```
+
+1. Run `Invoke-AzStackHciArcInitialization` again on each node.
+
 ## Pre-create Azure Key Vault
 
 Create the Azure Key Vault before you deploy Azure Local to avoid long deployment delays caused by a known issue.
 
 For a code example, see [Known issues](./disconnected-operations-known-issues.md).
 
-After you create the Key Vault, wait 5 minutes before you continue with the next portal deployment step. 
+After you create the Key Vault, wait 5 minutes before you continue with the next portal deployment step.
 
 ## Deploy the management cluster (first Azure Local instance)
 
