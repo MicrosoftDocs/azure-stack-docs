@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/30/2025
+ms.date: 06/10/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -447,7 +447,7 @@ Network adapters are qualified by network traffic type (management, compute, and
 
 Before purchasing a machine for Azure Local, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Local. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it's important to use supported network adapters.
 
-The default values used by Network ATC are documented in [Cluster network settings](../deploy/network-atc.md?tabs=22H2#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or Resource Manager templates if needed:
+The default values used by Network ATC are documented in [Cluster network settings](/windows-server/networking/network-atc/network-atc?#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or Resource Manager templates if needed:
 
 - **Storage VLANs**: Set this value to the required VLANs for storage.
 - **Jumbo Packets**: Defines the size of the jumbo packets.
