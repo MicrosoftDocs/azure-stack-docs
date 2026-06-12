@@ -32,6 +32,7 @@ Before you begin, make sure that you have:
 
 - Use Docker if you want the fastest way to run a container on a single device.
 - Use K3s if you want Kubernetes APIs, `kubectl` workflows, or a lightweight orchestration layer.
+- Use AKS if you want an end-to-end Microsoft stack with a Microsoft managed Kubernetes solution.
 
 ## [Docker](#tab/docker)
 
@@ -237,7 +238,15 @@ Confirm that:
 - Your Windows `kubeconfig` points to the machine IP address.
 - The `az connectedk8s connect` command completes successfully.
 
+
+## [AKS](#tab/AKS)
+
+### Deploy and use AKS
+
+To deploy an AKS cluster running on a small form factor deployment of Azure Local, see [AKS on bare metal](/azure/aks/aksarc/aks-bare-metal-create-cluster-portal).
+
 ---
+
 
 ## Next steps
 

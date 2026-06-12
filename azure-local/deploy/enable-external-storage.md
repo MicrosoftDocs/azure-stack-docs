@@ -1,361 +1,477 @@
 ---
-title: Enable External Storage (SAN) on Azure Local
-description: Describes how to enable integration of external Storage from various SAN vendors to Azure Local.
+title: Enable External Storage on Azure Local
+description: Learn how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or iSCSI.
 author: troettinger
 ms.author: thoroet
 ms.reviewer: ronmiab
 ms.topic: how-to
-ms.date: 06/02/2026
+ms.date: 06/04/2026
 ms.subservice: hyperconverged
 ---
-# Connecting an external storage array to Azure Local
 
-Azure Local supports attaching external Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This capability enables customers with existing SAN investments to reuse that infrastructure while running Azure Local workloads.
+# Connect an external storage array to Azure Local
 
-## Prerequisites
-The following prerequisites apply to use this document: 
-- Azure Local cluster deployed with 2604 release or later. 
-- Fibre Channel HBAs (Windows Server 2025 certified HBA and driver) installed in all cluster nodes and zoned on the FC fabric. 
-- The SAN array is accessible on the FC fabric with management access configured. 
+This article describes how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
+
+## Overview
+
+Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing you to reuse existing SAN investments while running Azure Local workloads.
+
+Supported protocols:
+
+- Fibre Channel (FC)
+- iSCSI (over TCP/IP)
 
 > [!IMPORTANT]
-> Don't zone in FC HBA World Wide Names (WWNs) until AFTER the Azure Local deployment, to avoid deployment confusion for FC LUNs. 
+> SAN integration using FC is generally available. However, SAN integration using iSCSI is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-## Step 1: Enable Multipath IO 
+## Prerequisites
 
-1. Enable MPIO feature on each node:
-    ```powershell
-    Add-WindowsFeature -Name 'Multipath-IO' -IncludeManagementTools
-    ```
+The following prerequisites apply to FC and iSCSI.
 
-## Step 2: Configure MPIO and Set MPIO policy  
+### Fibre Channel
 
-> [!NOTE]
-> Run configurations on each Azure Local node. MPIO policy changes aren't in effect until after a reboot. 
+- Azure Local cluster deployed with version 2604 or later.
+- Fibre Channel HBAs (Windows Server 2025 certified HBA and driver) installed on all cluster nodes and zoned on the FC fabric.
+- The SAN array is accessible on the FC fabric with management access configured.
 
-# [Dell](#tab/Dell-PowerStore)
+> [!IMPORTANT]
+> To avoid deployment confusion for FC LUNs, don't zone in FC HBA World Wide Names (WWNs) until after the Azure Local deployment.
 
-> [!NOTE]
-> Required HBA: Emulex LPe36002-M64  |  Firmware: 03.09.19 (DUP: D815X A00-00)  |  Driver: 14.4.393.20 (DUP: VKNP1 A00-00). Install firmware via DUP through the iDRAC System Update menu. Install driver via DUP in Windows OS.
+### iSCSI
 
-1. Register Dell PowerStore with MSDSM: 
-    ```powershell
-    New-MSDSMSupportedHW -VendorId "DellEMC" -ProductId "PowerStore" 
-    ```
+- Azure Local cluster deployed with version 2604 or later.
+- Network interface card (NIC) firmware and driver versions must match the Azure Local hardware catalog requirements.
+- All nodes in the cluster must use identical NIC configurations.
+- Hybrid storage configuration (Storage Spaces Direct + iSCSI) requires dedicated physical ports for iSCSI. vNICs aren't supported.
 
-2. Set round robin load-balancing policy: 
-    ```powershell
-    Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
-    ```
-3. Configure MPIO path recovery settings: 
-    ```powershell
-    Set-MPIOSetting -NewPathVerificationState Enabled -NewPathVerificationPeriod 30 ` 
-    -NewPDORemovePeriod 20 -NewRetryCount 3 -NewRetryInterval 3 ` 
-    -CustomPathRecovery Enabled -NewPathRecoveryInterval 10 -NewDiskTimeout 30 
-    ```
-4. Verify that paths are using correct policy: 
-    ```powershell
-    mpclaim -s -d 
-    ```
-5. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
+## Step 1: Enable Windows features and services
 
-6. Launch the PowerStore WebUI. For example, `https://PowerStoreManagementIPorFQDN`.
+### 1.1 Verify Multipath I/O (all deployments)
 
-7. Compute → Host Information → Hosts & Host Groups → '+Add Host.'
+Azure Local 2604 and later versions enable Multipath I/O (MPIO) by default. Verify that MPIO is enabled on all nodes. If MPIO isn't enabled, which can happen in earlier versions, you need to reboot after enabling it.
 
-8. Enter host name; select Operating System = Windows; select Next. 
-
-9. Select Fibre Channel as protocol; select Next. 
-
-10. Run Get-InitiatorPort on the node for World Wide Port Names (WWPNs); select the appropriate initiators; select Next. Leave default Local Connectivity; select Next. Verify summary and select Add Host. Repeat for all nodes. 
-
-11. Compute → Host Information → '+Add Host Group'; enter name; select all cluster hosts; select Create. 
-
-12. Storage → Volume → '+CREATE'; enter name, size, and Volume Performance Policy; select Next. 
-
-13. Select SCSI protocol; map to the host group; select 'Generate Automatically' for LUN ID; complete the wizard. 
-
-14. On each cluster node, rescan for the new volume: 
-    ```powershell
-    Update-HostStorageCache 
-    ```
-# [Everpure](#tab/Everpure)
-
-1. Register Pure FlashArray with MSDSM: 
-    ```powershell
-    New-MSDSMSupportedHw -VendorId PURE -ProductId FlashArray 
-    ```
-2. Remove the generic vendor wildcard entry (if present): 
-    ```powershell
-    Remove-MSDSMSupportedHw -VendorId 'Vendor*' -ProductId 'Product*' 
-    ```
-3. Set Round robin load-balancing policy: 
-    ```powershell
-    Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
-    ```
-4. Verify that paths are using correct policy: 
-    ```powershell
-    mpclaim -s -d
-    ``` 
-
-5. Configure MPIO path recovery settings: 
-    ```powershell
-    Set-MPIOSetting -NewPathRecoveryInterval 20 -CustomPathRecovery Enabled -NewPDORemovePeriod 20 -NewDiskTimeout 60 -NewPathVerificationState Enabled
-    ```
-
-6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
-
-6. Launch the Purity WebUI. For example, `https://FlashArrayManagementIPorFQDN`
-
-7. Navigate to Storage → Hosts → select '+' to create a new host for each cluster node. Don't select a Personality. 
-
-8. Select the host; select the three vertical ellipses under Host Ports → 'Configure WWN.' If nodes are zoned, WWNs appear under 'Existing WWNs.' Select the two WWNs for each host. Repeat for each node. 
-
-9. Navigate to Storage → Host Groups → select '+'; name the host group and add all cluster host objects. 
-
-10. Navigate to Storage → Volumes → select '+'; enter name, size, and assign to the host group. 
-
-12. On each cluster node, rescan for the new volume: 
-    ```powershell
-    Update-HostStorageCache
-    ``` 
-
-# [Hitachi](#tab/Hitachi-Vantara)
-**Note:** Default MSDSM settings with RR policy are effective for Hitachi storage 
-
-1. Autoclaim Hitachi Open-V disks with MSDSM: 
-    ```powershell
-    mpclaim -r -i -d "HITACHI OPEN-V" 
-    ```
-2. Set Round robin load-balancing policy: 
-    ```powershell
-    Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
-    ```
-3. Verify that paths are using correct policy: 
-    ```powershell
-    mpclaim -s -d 
-    ```
-4. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
-
-5. On the FC switch, zone the HBA WWNs for every cluster node to the target ports on the VSP 5600 or VSP One Block 28. 
-
-6. Register each host's WWN in the VSP Storage Navigator. 
-
-7. Create SAN LUNs of the required size on the VSP array. 
-
-8. Unmask the LUNs to all cluster hosts via host group / LUN mapping configuration. 
-
-9. On each cluster node, rescan for the new volume: 
-    ```powershell
-    Update-HostStorageCache 
-    ```
-# [HPE](#tab/HPE-Alletra) 
-
-1. Install the HPE PowerShell Toolkit (or use the array GUI) 
-
-2. Register HPE array with MSDSM:  
-    ```powershell
-    New-MSDSMSupportedHW -VendorId "3PARdata" -ProductId "VV" -Verbose 
-    ```
-3. Set Round robin load-balancing:  
-    ```powershell
-    Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
-    ```
-4. No other MPIO tuning is required when host persona is set to WINDOWS on the array. 
-
-5. Verify that paths are using correct policy: 
-    ```powershell
-    mpclaim -s -d
-    ```
-
-6. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
-
-7. Connect to array:  
-    ```powershell
-    Connect-HPESAN -ArrayNameOrIPAddress <IP> -ArrayType AlletraMP-B10000 -Credential (get-credential)
-    ```
-
-8. Retrieve WWPNs from each node:  
-    ```powershell
-    Get-InitiatorPort | Format-Table PortAddress 
-    ```
-9. Create host entries (per node):  
-    ```powershell
-    new-a9host -HostName <NodeName> -FCWWN <WWPN> -Persona WINDOWS 
-    ```
-10. Create host set (cluster grouping):  
-    ```powershell
-    new-a9hostset -HostSetName <ClusterName> -SetMembers <NodeList> 
-    ```
-11. Create volume:  
-    ```powershell
-    new-a9vv -VVName <VolumeName> -CpgName <CPG> -SizeMiB <Size> -TPVV $true 
-    ```
-12. Map volume to host set:  
-    ```powershell
-    New-a9vLun -VolumeName <VolumeName> -HostSet <ClusterName> 
-    ```
-13. Rescan disks on each node:  
-    ```powershell
-    Update-HostStorageCache 
-    ```
-
-# [NetApp and Lenovo](#tab/NetApp-Lenovo) 
-
-1. Set Application Control (WDAC) to Audit mode BEFORE installing Host Utilities; revert to Enforced mode after installation is complete. 
-
-2. Set Application Control to Audit mode (see Microsoft Learn for WDAC management). 
-
-3. Copy the NetApp Windows Host Utilities installer to each Azure Local node. 
-
-4. Install Host Utilities with MPIO enabled (system autoreboots on completion): 
-    ```
-    msiexec /i installer.msi /quiet MULTIPATHING=1 
-    ```
-5. After reboot, revert Application Control to Enforced mode. 
-
-6. Set Round robin load-balancing policy: 
-    ```powershell
-    Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR 
-    ```
-7. Verify that paths are using correct policy: 
-    ```
-    mpclaim -s -d 
-    ```
-> [!NOTE]
-> The Windows Host Utilities installer automatically sets the required HBA registry values. See NetApp ONTAP SAN Host documentation for details. 
-
-8. Restart each node after completing MPIO configuration. Perform reboots in a rolling manner before proceeding with SAN configuration and WWN registration. 
-
-9. Zone and register FC WWNs for each host with the SAN array via the FC switch. 
-
-10. Create a new Storage Virtual Machine (SVM) with FC (block protocol) enabled. Use CLI, ONTAP System Manager, or NetApp PowerShell Toolkit. 
-
-11. Configure FC protocol settings for the SVM. 
-
-12. Assign Logical Interfaces (LIFs) to the SVM on each cluster node. 
-
-13. Start the FC service on the SVM. 
-
-14. Create FC port sets using the SVM LIFs. 
-
-15. Create an initiator group (igroup) of type Windows using the port set. 
-
-16. Add each cluster node's WWPN as initiators to the igroup. 
-
-17. Create a LUN using the Create LUN wizard; associate it with the igroup. 
-
-18. On each cluster node, rescan for the new volume: 
-    ```powershell
-    Update-HostStorageCache 
-    ```
-
----
-
-## Step 3: Verify SAN Disks Before Initialization 
-1. On each Azure Local node, run: 
-    ```powershell
-    Get-Disk  
-    ```
-2. Verify that new disks are visible on all nodes, disk sizes match expected LUN sizes and the number of disks is consistent across nodes. If disks are missing: 
-
-3. Rerun Update-HostStorageCache 
-
-4. Verify zoning and LUN masking 
-
-## Step 4: Initialize and Format Disks 
-
->[!NOTE]
-> Run on one cluster node only. 
-
-1. Get the new disk (usually the one with no partition): 
-    ```powershell
-    $disk = Get-Disk | Where-Object PartitionStyle -Eq 'RAW' 
-    ```
-
-2. Initialize as GPT: 
-    ```powershell
-    Initialize-Disk -Number $disk.Number -PartitionStyle GPT 
-    ```
-4. Create a partition and format it as NTFS: 
-    ```powershell
-    New-Partition -DiskNumber $disk.Number -UseMaximumSize -AssignDriveLetter | 
-    Format-Volume -FileSystem NTFS -NewFileSystemLabel "ClusterDisk1" -Confirm:$false 
-    ```
-## Step 5: Validate Cluster Configuration and Add CSV  
-
-1. Validate cluster storage configuration and inspect the report for issues. 
-    ```powershell
-    Test-Cluster 
-    ```
-2. Add SAN volumes as Cluster Shared Volumes: 
-    ```powershell
-    Get-ClusterAvailableDisk | Add-ClusterDisk | Add-ClusterSharedVolume 
-    ```
-
-## Step 6: Add Storage Path in Azure portal 
-1. In the Azure portal (portal.azure.com), select the Azure Local Cluster. 
-
-2. Under Resources, select Storage Paths, then Create Storage Path. 
-
-3. Enter a friendly Name and the actual File System Path (for example, C:\ClusterStorage\{VolumeName}), then select Create. 
-
-> [!NOTE]
-> Reference: [Create Storage Path on Azure Local](../manage/create-storage-path.md)
-
-## Troubleshooting 
-
-Use the following guidance to identify and resolve common issues when attaching SAN storage to Azure Local. 
-
-### Disks aren't visible on cluster nodes 
-
-If SAN disks don't appear on one or more cluster nodes, first verify that Fibre Channel zoning is configured correctly between the host HBAs and the SAN array target ports. Ensure that all LUNs are masked and presented to every node in the cluster. On each node, run the following command to refresh the storage view: 
 ```powershell
-Update-HostStorageCache 
+Enable-WindowsOptionalFeature -Online -FeatureName MultipathIO
+
+# Verify
+Get-WindowsOptionalFeature -Online -FeatureName MultipathIO |
+    Select-Object FeatureName, State, RestartNeeded
 ```
 
-If the disks are still not visible, confirm that the HBA drivers and firmware are correctly installed and that all FC ports are online. 
+### 1.2 Enable iSCSI Initiator service (iSCSI only)
 
-### MPIO isn't claiming disks correctly 
+For iSCSI deployments, enable and start the iSCSI Initiator service on all nodes. This step isn't required for FC-only deployments.
 
-If disks are visible but MPIO isn't managing them, verify that the correct storage vendor is registered with MSDSM and that the MPIO feature is enabled on all nodes. 
-
-Run the following command to check disk claim status: 
-```
-mpclaim -s -d 
-```
-Ensure that disks are listed under MSDSM and that multiple active paths are present. If disks aren't claimed, recheck vendor registration and reboot the node to apply MPIO settings. 
-
-### Cluster validation fails during Test-Cluster 
-
-If the Test-Cluster command reports errors, review the generated validation report carefully and don't proceed with configuration until all critical issues are resolved. Common causes include inconsistent disk visibility across nodes, incorrect zoning, or LUNs that aren't presented uniformly to all cluster members. Ensure that all nodes can see the same set of disks with identical characteristics. 
-
-### Unable to add disks as Cluster Shared Volumes 
-
-If disks can't be added as Cluster Shared Volumes, verify that the disks are visible to all nodes and aren't already in use or reserved. Confirm that the disks are initialized and formatted correctly using NTFS. You can also check disk state using: 
 ```powershell
-Get-ClusterAvailableDisk 
+Set-Service -Name MSiSCSI -StartupType Automatic
+Start-Service -Name MSiSCSI
+Get-Service -Name MSiSCSI | Select-Object Name, Status, StartType
 ```
 
-Only disks listed as available can be added to the cluster. 
+### 1.3 Reboot if required
 
-### Cluster Shared Volumes aren't accessible 
+If you enabled MPIO on pre-2604 builds or if `RestartNeeded` returns `True`, perform a rolling reboot of all nodes before proceeding.
 
-If CSV paths aren't accessible or don't appear under C:\ClusterStorage\, verify that the disks were successfully added to the cluster and promoted to CSVs. 
+### 1.4 Collect initiator identifiers
 
-Use the following command to confirm CSV status: 
+After enabling the required services, collect the initiator identifiers from each node. You need these identifiers to configure LUN masking on the SAN array.
+
+- **FC — collect World Wide Port Names (WWPNs)**
+
+    ```powershell
+    Get-InitiatorPort | Where-Object ConnectionType -eq 'Fibre Channel' |
+    Select-Object NodeAddress, PortAddress, ConnectionType | Format-Table -AutoSize
+    ```
+
+- **iSCSI — collect iSCSI Qualified Names (IQNs)**
+
+    ```powershell
+    (Get-InitiatorPort | Where-Object ConnectionType -eq 'iSCSI').NodeAddress
+    ```
+
+## Step 2: Register vendor with MPIO and configure settings
+
+Run all configurations on each Azure Local node. MPIO policy changes don't take effect until after a reboot.
+
+### 2.1 MPIO defaults
+
+Azure Local 2604 and later versions include the following MPIO default settings:
+
+| Setting | Default Value |
+|--|--|
+| PathVerificationState | Enabled |
+| PathVerificationPeriod | 30 |
+| PDORemovePeriod | 20 |
+| RetryCount | 6 |
+| RetryInterval | 3 |
+| CustomPathRecovery | Disabled |
+| CustomPathRecoveryTime | 20 |
+| DiskTimeoutValue | 60 |
+| Load Balance Policy | Round Robin (RR) |
+| NewDiskPolicy | OfflineShared |
+
+### 2.2 Register vendor device with MSDSM
+
+Register your storage vendor with Microsoft Device Specific Module (MSDSM) so MPIO can claim the array's LUNs. Use the command for your vendor:
+
+| Vendor | VendorId | ProductId | Command |
+|--------|----------|-----------|---------|
+| Dell PowerStore | `DellEMC` | `PowerStore` | `New-MSDSMSupportedHW -VendorId "DellEMC" -ProductId "PowerStore"` |
+| Everpure FlashArray | `PURE` | `FlashArray` | `New-MSDSMSupportedHW -VendorId "PURE" -ProductId "FlashArray"` |
+| Hitachi VSP | *(use mpclaim)* | `OPEN-V` | `mpclaim -r -i -d "HITACHI OPEN-V"` |
+| HPE Alletra / 3PAR | `3PARdata` | `VV` | `New-MSDSMSupportedHW -VendorId "3PARdata" -ProductId "VV"` |
+| NetApp ONTAP | `NETAPP` | `LUN C-Mode` | `New-MSDSMSupportedHW -VendorId "NETAPP" -ProductId "LUN C-Mode"` |
+
+- **For NetApp:** ONTAP C-Mode reports `LUN C-Mode`, **not** `LUN`. Using `-ProductId "LUN"` doesn't match. Only register `LUN` if connecting to legacy 7-Mode systems.
+- **For Everpure:** Remove the generic vendor wildcard entry to prevent MSDSM from automatically claiming non-Pure devices:
+
+    ```powershell
+    Remove-MSDSMSupportedHW -VendorId 'Vendor*' -ProductId 'Product*'
+    ```
+
+### 2.3 Set the load balancing policy
+
 ```powershell
-Get-ClusterSharedVolume 
+Set-MSDSMGlobalDefaultLoadBalancePolicy -Policy RR
 ```
 
-If volumes are missing or inaccessible, check Failover Cluster Manager for disk ownership and status, and ensure that there are no underlying storage connectivity issues. 
+### 2.4 Configure MPIO timers (vendor-specific)
 
-### Storage Path creation fails in Azure portal 
+Most supported vendors don't require extra MPIO tuning beyond the default settings. The following vendors recommend vendor-specific overrides.
 
-If creating a Storage Path fails in the Azure portal, verify that the specified file system path exists and is accessible on the cluster. The path must point to a valid CSV location under C:\ClusterStorage\. Also confirm that the Azure Arc connection for the cluster is healthy and that the cluster resource is in a ready state. If the issue persists, retry the operation after confirming that all previous steps completed successfully. 
+- **Dell PowerStore**
+
+    ```powershell
+    Set-MPIOSetting -NewRetryCount 3 -CustomPathRecovery Enabled `
+    -NewPathRecoveryInterval 10 -NewDiskTimeout 30
+    ```
+
+- **Everpure FlashArray**
+
+    ```powershell
+    Set-MPIOSetting -NewPathRecoveryInterval 20 -CustomPathRecovery Enabled `
+    -NewPDORemovePeriod 20 -NewDiskTimeout 60 -NewPathVerificationState Enabled
+    ```
+
+- **HPE Alletra / 3PAR**
+
+    No MPIO tuning required when you set the host persona to WINDOWS on the array.
+
+- **Hitachi VSP**
+
+    Default MSDSM settings with RR policy work well.
+
+- **NetApp ONTAP**
+
+    No extra MPIO tuning required beyond the default settings.
+
+### 2.5 Enable iSCSI auto-claim (iSCSI only)
+
+```powershell
+Enable-MSDSMAutomaticClaim -BusType iSCSI
+```
+
+This command registers MPIO to automatically claim all iSCSI devices. If you enable auto-claim after LUNs are already visible, restart the node so MSDSM can re-enumerate the devices.
+
+### 2.6 Verify the configuration and reboot
+
+```powershell
+mpclaim -s -d
+Get-MSDSMSupportedHw
+```
+
+Restart each node in a rolling manner to apply MPIO changes before proceeding with SAN configuration.
+
+## Step 3: Configure the iSCSI network (iSCSI only)
+
+> [!IMPORTANT]
+> Skip this step for FC-only deployments.
+
+### 3.1 Exclude iSCSI NICs from Network ATC
+
+Network ATC manages management, compute, and storage intents for Storage Spaces Direct and Remote Direct Memory Access (RDMA) traffic. Keep iSCSI NICs outside Network ATC and configure them manually.
+
+```powershell
+Add-NetIntent -Name "Mgmt-Compute" -Management -Compute -AdapterName "NIC1","NIC2"
+Add-NetIntent -Name "Storage" -Storage -AdapterName "NIC3","NIC4"
+```
+
+If you add an iSCSI NIC to a Network ATC intent, remove it and reconfigure the adapter manually.
+
+### 3.2 Configure dedicated iSCSI NICs
+
+Assign each iSCSI NIC a static IP address on its storage subnet without a default gateway.
+
+```powershell
+Rename-NetAdapter -Name "Ethernet 3" -NewName "iSCSI-NIC-A"
+Rename-NetAdapter -Name "Ethernet 4" -NewName "iSCSI-NIC-B"
+
+New-NetIPAddress -InterfaceAlias "iSCSI-NIC-A" -IPAddress 10.30.30.11 -PrefixLength 24
+New-NetIPAddress -InterfaceAlias "iSCSI-NIC-B" -IPAddress 10.31.31.11 -PrefixLength 24
+```
+
+> [!NOTE]
+> Don't configure a default gateway on iSCSI NICs.
+
+### 3.3 Configure MTU and VLANs (optional)
+
+Use consistent maximum transmission unit (MTU) settings across the entire iSCSI network path. If switch ports are configured as access ports, the host sends untagged traffic. Configure VLAN tagging on the host only when switch ports are configured as trunk ports.
+
+```powershell
+Set-NetAdapterAdvancedProperty -Name "iSCSI-NIC-A" -RegistryKeyword "*JumboPacket" -RegistryValue 9014
+Set-NetAdapterAdvancedProperty -Name "iSCSI-NIC-B" -RegistryKeyword "*JumboPacket" -RegistryValue 9014
+
+Set-NetAdapter -Name "iSCSI-NIC-A" -VlanID 500
+Set-NetAdapter -Name "iSCSI-NIC-B" -VlanID 600
+```
+
+### 3.4 Configure static routes
+
+Add persistent /32 routes for each target portal on both iSCSI NICs.
+
+```powershell
+New-NetRoute -DestinationPrefix <TargetPortalIP>/32 -InterfaceAlias "iSCSI-NIC-A" -NextHop <GatewayIP> -PolicyStore PersistentStore
+New-NetRoute -DestinationPrefix <TargetPortalIP>/32 -InterfaceAlias "iSCSI-NIC-B" -NextHop <GatewayIP> -PolicyStore PersistentStore
+```
+
+### 3.5 Configure quality of service (QoS) settings (optional)
+
+If iSCSI traffic shares Ethernet infrastructure with other traffic, tag iSCSI with priority 4 and use Enhanced Transmission Selection (ETS) to reserve bandwidth.
+
+```powershell
+New-NetQosPolicy -Name "iSCSI" -IPDstPortStart 3260 -IPDstPortEnd 3260 -IPProtocol TCP -PriorityValue8021Action 4
+New-NetQosPolicy -Name "CSV-LiveMigration" -Cluster -PriorityValue8021Action 3
+New-NetQosPolicy -Name "ClusterHeartbeat" -IPProtocol UDP -IPDstPortStart 3343 -IPDstPortEnd 3343 -PriorityValue8021Action 7
+```
+
+## Step 4: Configure storage array and present LUNs
+
+Perform this step on the storage array, not on the Azure Local nodes. The procedures are vendor-specific. For more information, see [Vendor array-side configuration](#vendor-array-side-configuration).
+
+Before proceeding to Step 5, confirm the following items with your storage administrator:
+
+| Item | FC | iSCSI |
+|--|--|--|
+| LUNs created and mapped to all cluster nodes | ✓ | ✓ |
+| Host entries created using initiator IDs from Step 1d | ✓ | ✓ |
+| FC zoning configured between HBAs and array target ports | ✓ | — |
+| iSCSI target portal IPs and target IQN available | — | ✓ |
+| Each node can reach every target portal on port 3260 | — | ✓ |
+| Consistent LUN IDs presented to all nodes | ✓ | ✓ |
+
+## Step 5: Connect to iSCSI targets (iSCSI only)
+
+FC LUNs appear automatically after zoning and LUN masking.
+
+> [!IMPORTANT]
+>- Skip this step for FC-only deployments.
+>- For iSCSI, run these commands on every Azure Local node.
+
+1. Discover each target portal from both iSCSI NICs, and then connect to each target with persistence and multipath enabled.
+
+    ```powershell
+    # Discover target portals
+    New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A>
+    New-IscsiTargetPortal -TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B>
+
+    # Connect with multipath and persistence
+    Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-A> `-IsPersistent $true -IsMultipathEnabled $true
+    Connect-IscsiTarget -NodeAddress "iqn.yyyy-mm.com.vendor:target-name" `-TargetPortalAddress <TargetPortalIP-A> -InitiatorPortalAddress <InitiatorPortalIP-B> `
+    -IsPersistent $true -IsMultipathEnabled $true
+    ```
+
+1. For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
+
+## Step 6: Verify SAN Disks
+
+> [!IMPORTANT]
+> Run these commands on every Azure Local node.
+
+Compare the `UniqueId` values. All nodes must see the same set of LUNs. Disk numbers might vary between nodes. Use UniqueId as the authoritative identifier.
+
+```powershell
+# Rescan storage
+Update-HostStorageCache
+
+# List SAN LUNs — appear with BusType 'Fibre Channel' or 'iSCSI'
+Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Object Number, FriendlyName, Size, OperationalStatus, PartitionStyle, BusType | Format-Table -AutoSize
+
+# Verify MPIO path count per disk
+mpclaim -s -d
+
+# Verify disk UniqueId matches across all nodes
+Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Object Number, SerialNumber, UniqueId | Format-Table -AutoSize
+```
+
+## Step 7: Initialize and Format Disks
+
+> [!IMPORTANT]
+> Run these commands only on a single Azure Local node.
+
+Initialize SAN volumes as GUID Partition Table (GPT) and format them with NTFS (use a 64K allocation unit for CSV). The cluster manages multi-node access after you add the disks as Cluster Shared Volumes (CSVs).
+
+```powershell
+$sanDisks = Get-Disk | Where-Object {
+    $_.BusType -in 'Fibre Channel','iSCSI' -and $_.PartitionStyle -eq 'RAW'
+}
+foreach ($disk in $sanDisks) {
+    # Bring disk online — SAN LUNs are Offline by default (OfflineShared policy)
+    Set-Disk -Number $disk.Number -IsOffline $false
+    Set-Disk -Number $disk.Number -IsReadOnly $false
+    Initialize-Disk -Number $disk.Number -PartitionStyle GPT
+    New-Partition -DiskNumber $disk.Number -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS -AllocationUnitSize 65536 -NewFileSystemLabel "SAN-LUN-$($disk.Number)" -Confirm:$false
+}
+```
+
+## Step 8: Add disks to the cluster and create CSVs
+
+> [!IMPORTANT]
+> After all SAN disks are visible and validated, run these commands on every Azure Local node.
+
+Add the SAN disks to the failover cluster, and then convert the disks to CSVs.
+
+```powershell
+# Add SAN disks to cluster
+Get-ClusterAvailableDisk | Add-ClusterDisk
+
+# Convert to Cluster Shared Volumes
+Get-ClusterResource | Where-Object 
+{
+  $_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'
+} | Add-ClusterSharedVolume
+
+# Verify CSVs
+Get-ClusterSharedVolume | Select-Object Name, State, OwnerNode | Format-Table -AutoSize
+
+# Verify CSV paths
+Get-ClusterSharedVolume | Select-Object -ExpandProperty SharedVolumeInfo | Select-Object FriendlyVolumeName
+```
+
+## Step 9: Add storage path in the Azure portal
+
+Register each SAN CSV path in the Azure portal to enable virtual machine (VM) placement on SAN volumes. Only register SAN CSV paths. Azure Local automatically manages Storage Spaces Direct volumes, such as `Infrastructure` and `UserStorage`.
+
+1. Sign in to the Azure portal and navigate to your Azure Local cluster resource.
+1. Go to **Settings** > **Storage path**.
+1. Select **+ Add storage path**.
+1. Enter the CSV path, for example, `C:\ClusterStorage\Volume1`.
+1. Confirm and save.
+1. Repeat for each SAN CSV.
+
+## Vendor array-side configuration
+
+Azure Local supports external SAN integration with the following vendors and storage platforms. The corresponding sections of this article include vendor-specific array-side configuration guidance.
+
+| Vendor | Supported Models | FC | iSCSI |
+|--|--|--|--|
+| Dell | PowerStore T/Q (OS 3.0+) | ✓ | ✓ |
+| Everpure | FlashArray X, C, XL, E, RC20 | ✓ | ✓ |
+| Hitachi | VSP One Block, VSP 5x00, VSP Exx90, VSP Fxx0, VSP Gxx0 | ✓ | ✓ |
+| HPE | Alletra MP 10000 | ✓ | ✓ |
+| NetApp | AFF, ASA, ONTAP platforms | ✓ | ✓ |
+| Lenovo | ThinkSystem DS/DM/DG Series | ✓ | ✓ |
+
+For a complete list of supported models and firmware requirements, see [Supported SAN solutions on Azure Local](../concepts/san-requirements.md).
+
+### What to request from your storage administrator
+
+Before starting the host-side configuration, provide your storage administrator with the following information:
+
+- The initiator identifiers collected in [Step 1d: Collect initiator identifiers](#14-collect-initiator-identifiers) (WWPNs for FC, IQNs for iSCSI).
+- The required number and size of LUNs.
+- Cluster node names for host registration on the array.
+
+Your storage administrator should provide the following information:
+
+- For FC: Target WWPNs for zoning configuration.
+- For iSCSI: Target portal IP addresses and target IQN.
+- Confirmation that LUNs are mapped to all cluster nodes with consistent LUN IDs.
+
+## Troubleshooting
+
+Use the following guidance to identify and resolve common issues when integrating SAN storage with Azure Local.
+
+### Disks aren't visible on cluster nodes
+
+If SAN disks don't appear on one or more cluster nodes, verify that the storage array maps the LUNs to all cluster node initiators. (WWPNs for FC, IQNs for iSCSI).
+
+Rescan storage on each node.
+
+```powershell
+Update-HostStorageCache
+```
+
+Also verify the following configuration settings:
+
+- Check FC zoning or iSCSI target portal connectivity.
+- Verify MPIO is enabled and the correct vendor and product IDs are registered.
+
+```powershell
+Get-MSDSMSupportedHw
+```
+
+### MPIO doesn't claim disks correctly
+
+Verify that the registered vendor and product IDs match the storage array configuration.
+
+```powershell
+Get-MSDSMSupportedHw
+```
+
+For iSCSI deployments, verify that automatic MPIO claiming is enabled.
+
+```powershell
+Get-MSDSMAutomaticClaimSettings
+```
+
+If you add hardware IDs after the LUNs are already visible, restart the node so MPIO can re-enumerate the disks.
+
+```powershell
+mpclaim -s -d
+```
+
+### Cluster validation fails during Test-Cluster
+
+Run cluster validation tests, including storage validation, and review the generated report.
+
+```powershell
+Test-Cluster -Include Storage
+```
+
+Verify the following requirements:
+
+- All cluster nodes detect the same set of shared disks.
+- LUN IDs are consistent across all nodes.
+- The storage array supports SCSI-3 Persistent Reservations (PR).
+
+### Can't add disks as CSVs
+
+Before you can convert a disk to a CSV, add the disk to the failover cluster as a cluster resource.
+
+Make sure the disks are online and formatted with the NTFS file system.
+
+```powershell
+Get-Disk | Select-Object Number, OperationalStatus, PartitionStyle
+Get-Volume
+```
+
+Make sure the disk is available as a cluster resource.
+
+```powershell
+Get-ClusterResource | Where-Object ResourceType -eq 'Physical Disk'
+```
+
+### Storage path creation fails in the Azure portal
+
+If storage path creation fails in the Azure portal, check the following conditions:
+
+- CSV is online and accessible from all cluster nodes
+- The CSV path uses the correct format, such as `C:\ClusterStorage\Volume1`
+- The Azure Local cluster is registered and healthy in the Azure portal
 
 ## Next steps
 
-- [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md)
-- [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md)
-- [Deploying AVD on Azure Local](/azure/virtual-desktop/azure-local-overview) 
+- [Create a VM on Azure Local](../manage/create-arc-virtual-machines.md).
+- [Using External Storage in AKS clusters on Azure Local](../manage/use-external-storage-for-containerized-workloads.md).
+- [Deploying AVD on Azure Local](/azure/virtual-desktop/azure-local-overview).
