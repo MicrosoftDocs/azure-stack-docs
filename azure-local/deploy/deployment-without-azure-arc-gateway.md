@@ -419,7 +419,6 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 </details>
 
 
-
 ## Step 3: Run registration script
 
 > [!NOTE]
