@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/09/2026
+ms.date: 06/12/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -564,7 +564,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
     # Initialize Azure Arc with ALDO-specific parameters
       Invoke-AzStackHciArcInitialization
       -TenantId $Tenant
-	  - SubscriptionID $Subscription
+	  -SubscriptionID $Subscription
 	  -ResourceGroup $RG
 	  -Region $Region
 	# cloud must be set to `Azure.local` for disconnected operations
