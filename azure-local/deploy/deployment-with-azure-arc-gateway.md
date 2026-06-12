@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 04/10/2026
+ms.date: 06/12/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
