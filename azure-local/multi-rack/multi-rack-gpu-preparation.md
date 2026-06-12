@@ -17,7 +17,7 @@ This article describes how to prepare graphical processing units (GPUs) on your 
 
 Azure Local multi-rack supports **Discrete Device Assignment (DDA)** which allows you to dedicate a physical GPU to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.  
 
-Discrete Device Assignment dedicates an entire physical GPU to a single virtual machine, giving each VM exclusive access to the full device. This model delivers the highest level of GPU performance and compatibility: applications running in the guest VM use the native GPU vendor driver (NVIDIA) and have access to the complete set of GPU capabilities the hardware provides, including OpenGL and CUDA. Because the full GPU is allocated to one VM, the VM also has access to the GPU's entire VRAM. This makes DDA well suited for workloads that require maximum GPU throughput, predictable performance, or vendor-specific GPU features without virtualization overhead.
+Discrete Device Assignment dedicates an entire physical GPU to a single virtual machine, giving each VM exclusive access to the full device. This model delivers the highest level of GPU performance and compatibility: applications running in the guest VM use the native GPU vendor driver (NVIDIA) and have access to the complete set of GPU capabilities the hardware provides, including OpenGL and CUDA. Because the full GPU is allocated to one VM, the VM also has access to the GPU's entire VRAM. This approach makes DDA well suited for workloads that require maximum GPU throughput, predictable performance, or vendor-specific GPU features without virtualization overhead.
 
 ## Supported GPU models
 
@@ -36,7 +36,7 @@ Your Azure Local host must meet the following requirements:
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
 > [!NOTE]
-> GPU drivers are not automatically installed inside the VM. After attaching a GPU to a VM, you must install the appropriate NVIDIA guest driver inside the VM before your workload can use the GPU.
+> GPU drivers aren't automatically installed inside the VM. After attaching a GPU to a VM, you must install the appropriate NVIDIA guest driver inside the VM before your workload can use the GPU.
 
 ## Next steps
 
