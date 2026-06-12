@@ -423,7 +423,7 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 
