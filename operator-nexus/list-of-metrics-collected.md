@@ -457,6 +457,7 @@ The collection interval for Network Fabric device metrics varies and you can fin
 | LldpFrameIn | LLDP Frame In | LLDP State Counters | Count | Average | The count of LLDP frames received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | LldpFrameOut | LLDP Frame Out | LLDP State Counters | Count | Average | The count of LLDP frames transmitted from an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | LldpTlvUnknown | LLDP Tlv Unknown | LLDP State Counters | Count | Average | The count of LLDP frames received with unknown TLV by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LldpTlvDiscard | LLDP Tlv Discard | LLDP State Counters | Count | Average | The count of LLDP TLV frames received and discarded by an interface over a given interval of time. A null value indicates the device reported no discards, which is expected behavior. | Interface name | Yes | Every 5 mins |
 
 >[!Note]
 > Arista devices use interface names in the a/b format (for example, Ethernet1/1). However, because ARM resource IDs use / as a delimiter, this format is not permitted in ARM‑based resource names. As a workaround, NNF employs an a‑b convention for interface resource naming (such as Ethernet1‑1) in ARM contexts.
