@@ -19,7 +19,7 @@ DDA allows you to dedicate a physical graphical processing unit (GPU) to your wo
 
 Before you begin, satisfy the following prerequisites:
 
-- Follow the setup instructions found at [Prepare GPUs for Azure Local multi-rack](./multi-rack-gpu-preparation.md) to ensure that your GPUs are prepared for DDA.
+- Follow the setup instructions in [Prepare GPUs for Azure Local multi-rack](./multi-rack-gpu-preparation.md) to ensure that your GPUs are prepared for DDA.
 
 > [!IMPORTANT]
 > Keep the following limitations in mind when working with GPU-attached VMs:
@@ -46,9 +46,9 @@ The `--gpus` parameter takes one or more `assignmentType,partitionSizeMB` tokens
 
 ## Attach a GPU after Azure Local multi-rack VM creation
 
-GPUs can be added to an existing VM via a PATCH operation against `hardwareProfile.virtualMachineGPUs`. The VM must be in the **Stopped** power state before the change is applied. GPU updates on a running VM are rejected.
+You can add GPUs to an existing VM by using a PATCH operation on hardwareProfile.virtualMachineGPUs. The VM must be in the Stopped state before you apply the change. The service rejects GPU updates on a running VM.
 
-The flow is: stop VM → attach GPU → start VM.
+The process is: stop VM → attach GPU → start VM.
 
 Use the following CLI command to attach the GPU:
 
@@ -56,7 +56,7 @@ Use the following CLI command to attach the GPU:
 az stack-hci-vm gpu attach --resource-group "test-rg" --custom-location "test-location" --vm-name "test-vm" --gpus GpuDDA,0
 ```
 
-After you attach the GPU, the output shows the full VM details. You can confirm the GPUs were attached by reviewing the hardware profile `virtualMachineGPUs` section - the output looks like this:
+After you attach the GPU, the output shows the full VM details. You can confirm the GPUs are attached by reviewing the hardware profile `virtualMachineGPUs` section - the output looks like this:
 
 ```azurecli
 "properties":{
@@ -79,7 +79,7 @@ The VM must be in the **Stopped** power state before detaching a GPU. Use the fo
 az stack-hci-vm gpu detach --resource-group "test-rg" --custom-location "test-location" --vm-name "test-vm"
 ```
 
-After you detach the GPU, the output shows the full VM details. You can confirm the GPUs were detached by reviewing the hardware profile `virtualMachineGPUs` section - the output looks like this:
+After you detach the GPU, the output shows the full VM details. You can confirm the GPUs are detached by reviewing the hardware profile `virtualMachineGPUs` section - the output looks like this:
 
 ```azurecli
 "properties":{
