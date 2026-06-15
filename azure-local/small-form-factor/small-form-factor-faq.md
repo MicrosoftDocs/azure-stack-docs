@@ -40,3 +40,5 @@ az provisionedmachine reset-os --name <NAME_OF_MACHINE> --resource-group <RESOUR
 ```
 
 After the reset finishes, you can provision the machine again by using either the Azure portal or the Azure CLI.
+
+This is a test
