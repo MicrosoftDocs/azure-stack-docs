@@ -5,7 +5,6 @@ ms.topic: how-to
 ms.date: 09/25/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
-ms.reviewer: sethm
 ms.lastreviewed: 09/24/2025
 
 ---
