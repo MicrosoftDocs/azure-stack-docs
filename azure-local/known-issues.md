@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 05/28/2026
+ms.date: 06/09/2026
 ms.subservice: hyperconverged
 ---
 
@@ -898,6 +898,7 @@ The following table lists the known issues in this release:
 | Deployment <!--33471589--> |  After Azure portal deployment, SConfig network settings shows the error: `Set-SCfNetworksetting : Cannot bind argument to parameter 'Value' because it is null.` | There's no known workaround in this release. |
 | Update <!--33448368--> |  Cluster-Aware Updating runs might fail with the error:<br>`Type 'SBEPartnerConfirmCauDone' of Role 'SBE' raised an exception:<br>SBE_MsftCIOnlyCommon_CommonForTesting_4.2.2504.16: ErrorID: SBE-CAU-RUNNING-AFTER-DONE -- CAU run is still in progress when it should be done. See https://aka.ms/AzureLocal/SBE/CauHelp for help. Review full Get-CauRun output it identify if it is progressing or stuck. Wait for it to complete if progressing.` | Wait for CAU run to complete (wait for `Get-CauRun` to report `RunNotInProgress`) and resume the update. |
 |Azure Local VMs <!--33811472-->| When you don't specify a storage path during deployment, resources (VMs, data disks, and images) are automatically placed on the first storage path of the cluster, even when other storage paths are also available. Over time, this placement might cause insufficient disk space on that path, potentially resulting in deployment failures. | Update to 2507 as this build contains a fix for the issue. Or, create resources with a specified storage path. For more information, see [Troubleshoot Azure Local Virtual Machines enabled by Azure Arc](../azure-local/manage/troubleshoot-arc-enabled-vms.md#resource-deployment-failure-due-to-insufficient-disk-space-on-the-first-storage-path). |
+| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM functions, but the watermark persists. | There's no known workaround in this release. |
 
 ### Known issues from previous releases
 
@@ -905,7 +906,6 @@ The following table lists the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Azure Verification <!--58937961-->  | VMs on Azure Local running Windows Server Azure Edition, Windows 10, or Windows 11 multi-session OS may not activate properly. A pop-up message or a watermark may display, indicating that Windows isn't activated. The VM functions, but the watermark persists. | There's no known workaround in this release. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
