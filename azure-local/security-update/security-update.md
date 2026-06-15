@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 05/15/2026
+ms.date: 06/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -11,6 +11,67 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2606"
+
+## June OS security update (KB5094125) for Azure Local
+
+This section describes the 2606 security updates associated with OS build **26100.32995** released on June 9, 2026 ([KB5094125](https://support.microsoft.com/help/5094125)).
+
+For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
+
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices are set to expire starting in June 2026. Microsoft has been updating these certificates on consumer and non-managed business devices for the past months. Devices that haven’t received the newer certificates will continue to start and operate normally, and standard Windows updates will continue to install. We will continue to install the newer certificates via Windows updates in the coming months.
+> You can check your PC status on the Windows Security app. If you are an IT administrator, follow the guidance on the Secure Boot Playbook for Windows clients and Windows Server.
+
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5087539​​​​​​​](https://support.microsoft.com/en-us/topic/may-12-2026-kb5087539-os-build-26100-32860-fe3fd635-23fc-41bd-b7a7-00e57c1c4f91?preview=true) (released May 12, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[Boot manager servicing update (Known issue)]** Fixed: This update addresses an issue where some devices might enter BitLocker Recovery after updating boot files on systems with certain Trusted Platform Module (TPM) validation settings, including invalid PCR7 (Platform Configuration Register 7) configurations. This might occur after installing the April 2026 security update ([KB5082063](https://support.microsoft.com/en-us/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true)).
+
+- **[File Explorer]** This update improves File Explorer search, including support for Chinese text, and UTF 8–encoded files without a byte order mark (BOM). Text now displays more clearly and consistently across search results, Content view, and tooltips.
+
+- **[Reliability]** This update improves reliability during user profile load by managing system resources more efficiently.
+
+- **​​​​​​​​​​​[Secure Boot]**
+    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+    - This update adds the **LimitSecureBootRequiredServiceData** Group Policy and mobile device management (MDM) setting under **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Secure Boot**. When enabled, Windows limits the Secure Boot service data it sends by suppressing the event normally sent to Microsoft. This policy is included in the Windows Restricted Traffic Limited Functionality Baseline. For information about the policy, see [Manage connections from Windows 10 and Windows 11 operating system components to Microsoft services](/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services).
+
+- **[Networking]** Windows Server 2025 DNS Server now supports DNS over HTTPS (DoH), enabling encrypted DNS communication between the server and clients. DoH helps improve privacy and security by protecting DNS queries from being viewed and preventing unauthorized modification of DNS responses. This feature is generally available and compatible with existing DNS infrastructure and management workflows.
+    - Note: This support applies only to server-client communication and doesn’t support encrypted DNS communication between servers.
+
+- **[Windows Update Deployment (known issue)]** Fixed: This update addresses an issue in Windows Server 2025, where updates installed using the Windows Update Standalone Installer (WUSA) might fail with error code `ERROR_BAD_PATHNAME`. This issue can occur when you double-click a .msu file or run WUSA from a network share that contains multiple .msu files.
+
+If you've already installed previous updates, your device will download and install only the new updates included in this package.
+
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+## Windows Server Update Services (WSUS) does not display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
+
+## To install
+
+### Before you install this update
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [June 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Jun).
+
+## File information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5094125](https://go.microsoft.com/fwlink/?LinkId=2368429).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2605"
 
@@ -87,13 +148,13 @@ Enterprises should audit their BitLocker group policies for explicit PCR7 inclus
 1. Run the following command to suspend BitLocker (where BitLocker is enabled on the C: drive):
 
     ```
-    manage-bde -protectors -disable C:  
+    manage-bde -protectors -disable C: 
     ```
 
 1. Run the following command to resume BitLocker (where BitLocker is enabled on the C: drive):
 
     ```
-    manage-bde -protectors -enable C:  
+    manage-bde -protectors -enable C: 
     ```
 
 1. ​​​​​​​This command updates the BitLocker bindings to use the Windows-selected default PCR profile.
@@ -144,7 +205,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[PowerShell]** This update improves how the Set-GPPrefRegistryValue cmdlet in PowerShell imports registry preference values. The cmdlet now preserves each imported value in full, including the final character.
 
-- **[Remote Desktop]** This update improves protection against phishing attacks that use Remote Desktop (.rdp) files. When you open an .rdp file, Remote Desktop shows all requested connection settings before it connects, with each setting turned off by default. A one-time security warning also appears the first time you open an .rdp file on a device. For more information, see [Understanding security warnings when opening Remote Desktop (RDP) files](https://go.microsoft.com/fwlink/?linkid=2347342).  
+- **[Remote Desktop]** This update improves protection against phishing attacks that use Remote Desktop (.rdp) files. When you open an .rdp file, Remote Desktop shows all requested connection settings before it connects, with each setting turned off by default. A one-time security warning also appears the first time you open an .rdp file on a device. For more information, see [Understanding security warnings when opening Remote Desktop (RDP) files](https://go.microsoft.com/fwlink/?linkid=2347342). 
 
 - **​​​​​​​[Texts and Fonts]** This update improves Windows fonts by adding the new Saudi Riyal currency symbol. This change helps keep text clear, accurate, and visually consistent across your Windows apps and experiences​​​​​​​.
 
@@ -202,7 +263,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 ## To install
 
-### Before you install this update  
+### Before you install this update 
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -229,7 +290,7 @@ This section provides the 2602 security updates associated with OS build **26100
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-## Improvements  
+## Improvements 
 
 This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -269,7 +330,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 ## To install
 
-### Before you install this update  
+### Before you install this update 
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -329,19 +390,19 @@ For a list of the files that are provided in this update, download the file info
 
 ::: moniker-end
 
-::: moniker range="=azloc-2512"
+::: moniker range="=azloc-previous"
 
 ## December OS security update (KB5072033) for Azure Local
 
 This section provides the 2512 security updates associated with OS build **26200.7462** and **26100.7462** released on December 9, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-builds-26200-7462-and-26100-7462-0c1a4334-19ba-406d-bb1e-88fcffc87b79) (released December 9, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -353,7 +414,7 @@ This security update contains fixes and quality improvements from [KB5072033](
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
-## Known issues
+### Known issues
 
 The following is a known issue with this update.
 
@@ -366,7 +427,7 @@ After installing the August 2025 non-security preview update (KB5064081) or late
 **Workaround**
 Microsoft is working to resolve this issue and will provide information when it's available.
 
-## To install
+### To install
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -374,14 +435,9 @@ For more information about security vulnerabilities addressed by this update, se
 
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
-## File list
+### File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update KB 5072033](https://go.microsoft.com/fwlink/?linkid=2345024).
-
-::: moniker-end
-
-
-::: moniker range="=azloc-previous"
 
 ## November OS security update (KB5068861) for Azure Local
 
@@ -396,7 +452,7 @@ A new, standardized title format makes Windows updates easier to read and unders
 The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
- 
+
 ### Improvements
 
 This security update contains fixes and quality improvements from [KB5068861](https://support.microsoft.com/topic/november-11-2025-kb5068861-os-builds-26200-7171-and-26100-7171-2e0512e4-3ad4-4da6-958c-a468a1af949e) (released November 11, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
@@ -415,16 +471,16 @@ This security update contains fixes and quality improvements from [KB5068861](
 - **​​​​​​​[Window management]** Fixed: his update addresses an issue where selecting the desktop could unexpectedly open **Task View**.
 
 - **[Networking]** Fixed: This update fixes an issue in the `HTTP.sys` request parser, a Windows component that reads and processes HTTP requests. The parser allowed a single line break within HTTP/1.1 chunk extensions, where the RFC 9112 standard requires a carriage return and line feed (CRLF) sequence to terminate each chunk. This can cause a parsing discrepancy when front end proxies are a part of the setup.
- 
+
 To turn off strict parsing, use the following registry key and values:
 
-**Registry Key:** 
+**Registry Key:**
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Http\Parameters]`
 
 **Registry value:**
 `"HttpAllowLenientChunkExtParsing"=dword:00000001`
 
-**Data to be set**: `1`  
+**Data to be set**: `1`
 
 If you've already installed previous updates, your device will download and install only the new updates included in this package.
 
@@ -543,7 +599,7 @@ Some Digital TV and Blu-ray/DVD apps might not play protected content as expecte
 
 Apps that use [Enhanced Video Renderer](/windows/win32/medfound/enhanced-video-renderer) with [HDCP enforcement](https://www.digital-cp.com/hdcp-specifications) or [Digital Rights Management (DRM)](/windows-hardware/drivers/audio/drm-overview) for digital audio might show copyright protection errors, frequent playback interruptions, unexpected stops, or black screens.
 
-Streaming services are not affected.  
+Streaming services are not affected. 
 
 **Workaround**
 
@@ -598,7 +654,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
     For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
 
-- **[Device management]**​​​​​​​ Fixed: An issue where the removable storage policy didn't correctly block external devices such as USB flash drives.  
+- **[Device management]**​​​​​​​ Fixed: An issue where the removable storage policy didn't correctly block external devices such as USB flash drives. 
 
 - **[File sharing]** Fixed: This update addresses an issue where accessing files on a Server Message Block (SMB) share over Quick UDP Internet Connections (QUIC) might result in unexpected delays.
 
@@ -664,19 +720,19 @@ To learn more about differences between security updates, optional non-securit
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
 - **[App compatibility (known issue)]** ​​​​​​​Fixed: Addresses an issue that caused non-admin users to receive unexpected User Account Control (UAC) prompts when MSI installers perform certain [custom actions](/windows/win32/msi/custom-actions). These actions might include configuration or repair operations in the foreground or background, during the initial installation of an application.
-    
+
     This issue could prevent non-admin users from running apps that perform MSI repairs, including Office Professional Plus 2010 and multiple applications from Autodesk (including AutoCAD). This fix reduces the scope for requiring UAC prompts for MSI repairs and enables IT admins to disable UAC prompts for specific apps by adding them to an allow list.
 
     For more information, see [Unexpected UAC prompts when running MSI repair operations after installing the August 2025 Windows security update](https://support.microsoft.com/topic/unexpected-uac-prompts-when-running-msi-repair-operations-after-installing-the-august-2025-windows-security-update-5806f583-e073-4675-9464-fe01974df273?preview=true).
 
 - **[File server]**: This update enabled auditing SMB client compatibility for SMB Server signing as well as SMB Server EPA. This allows customers to assess their environment and identify any potential device or software incompatibility issues before deploying the hardening measures that are already supported by SMB Server. For detailed guidance, see [CVE-2025-55234](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-55234).
 
-- **[Input]**: 
+- **[Input]**:
 
     - Fixed: This update addresses an issue that caused certain apps to stop responding input in some input method scenarios.
 
     - Fixed: This update addresses an issue that caused some Internet Information Services (IIS) modules to disappear from IIS Manager, preventing users from configuring IIS using the IIS Manager interface.
-    
+
 - **[Networking (known issue)]** Fixed: This update addresses an issue that affects audio in apps using the Network Device Interface (NDI). Audio stutters when Display Capture is on in OBS Studio Application. This can occur after installing [KB5063878](https://support.microsoft.com/topic/august-12-2025-kb5063878-os-build-26100-4946-e4b87262-75c8-4fef-9df7-4a18099ee294?preview=true).
 
 To find more information on Azure local, see [Azure Local solution overview](../overview.md).
@@ -688,7 +744,7 @@ The following is a known issue with this update:
 **PSDirect connections failing in hotpatched devices**
 
 **Symptoms**
- 
+
 We are aware of an edge case affecting hotpatched devices that have installed the September 2025 Hotpatch update [(KB5065474)](https://support.microsoft.com/topic/september-9-2025-kb5065474-hotpatch-for-windows-11-enterprise-version-24h2-os-build-26100-6508-1591ce1b-9c6f-4bc9-8d3d-d65240a738ee?preview=true) or the September 2025 security update [(KB5065426)](https://support.microsoft.com/topic/september-9-2025-kb5065426-os-build-26100-6584-77a41d9b-1b7c-4198-b9a5-3c4b6706dea9?preview=true). These devices might experience failures with [PowerShell Direct (PSDirect)](/windows-server/virtualization/hyper-v/powershell-direct) connections when the host and guest virtual machines (VMs) are both not fully updated.
 
 When a patched guest VM attempts to connect to an unpatched host (or vice versa), the system is expected to fall back to a legacy handshake and clean up the socket gracefully. However, this fallback mechanism fails intermittently, resulting in socket cleanup issues. The connection failure might appear random, and users might observe Event ID [4625](/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4625) logged in the Security Event log within Windows Event Viewer.
@@ -749,7 +805,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 ### Known issues
 
-Microsoft is not currently aware of any issues with this update.​​​​​ 
+Microsoft is not currently aware of any issues with this update.​​​​​
 
 ### To install
 
@@ -775,7 +831,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 ### Known issues
 
-Microsoft is not currently aware of any issues with this update.​​​​​ 
+Microsoft is not currently aware of any issues with this update.​​​​​
 
 ### To install
 
@@ -820,7 +876,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 ### Known issues
 
-Microsoft is not currently aware of any issues with this update.​​​​​ 
+Microsoft is not currently aware of any issues with this update.​​​​​
 
 ### To install
 
@@ -985,7 +1041,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
-- **[Azure Virtual Network]** Fixed: You can turn off the network interface card (NIC) symmetry check feature with the following registry keys:  
+- **[Azure Virtual Network]** Fixed: You can turn off the network interface card (NIC) symmetry check feature with the following registry keys:
 
     - Registry key: **SYSTEM\CurrentControlSet\Services\NetworkAtc\\**
 
@@ -993,7 +1049,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 ### Known issues
 
-Microsoft is not currently aware of any issues with this update.​​​​​ 
+Microsoft is not currently aware of any issues with this update.​​​​​
 
 ### To install
 
@@ -1024,7 +1080,7 @@ This security update includes quality improvements. Here is a summary of the key
 
 ### AI components
 
-The following AI components have been updated with this release: 
+The following AI components have been updated with this release:
 
 | AI Component | Version |
 | -- | -- |
@@ -1034,7 +1090,7 @@ The following AI components have been updated with this release:
 
 ### Known issues
 
-Microsoft is not currently aware of any issues with this update.​​​​​ 
+Microsoft is not currently aware of any issues with this update.​​​​​
 
 ### To install
 
@@ -1076,9 +1132,9 @@ The following is a known issue with this update.
 **Symptom**
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update.
-  
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device.  
-  
+ 
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device then reverts to the Windows updates previously present on the device. 
+ 
 This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.
 
 **Workaround**
@@ -1118,10 +1174,10 @@ This update has the following known issues:
 **Symptom**
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update.
-  
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn't go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device.  
-  
-This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue.  
+ 
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to *"Something didn't go as planned. No need to worry – undoing changes"* appears. The device will then revert to the Windows updates previously present on the device. 
+ 
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users aren't expected to be affected by this issue. 
 
 **Workaround**
 
@@ -1145,7 +1201,7 @@ For a list of the files that are provided in this update, download the file info
 
 This article describes the OS security update for Azure Local that was released on March 11, 2025 and applies to OS build 25398.1486.
 
-### Improvements 
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
@@ -1170,10 +1226,10 @@ The following is a known issue with this update.
 **Symptom**
 
 Devices that have certain Citrix components installed might be unable to complete installation of the January 2025 Windows security update.
-  
-Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device.  
-  
-This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue.  
+ 
+Affected devices might initially download and apply the January 2025 Windows security update correctly, such as via the Windows Update page in Settings. However, when restarting the device to complete the update installation, an error message with text similar to "*Something didn't go as planned. No need to worry – undoing changes*" appears. The device will then revert to the Windows updates previously present on the device. 
+ 
+This issue likely affects a limited number of organizations as version 2411 of the SRA application is a new version. Home users are not expected to be affected by this issue. 
 
 **Workaround**
 
@@ -1195,7 +1251,7 @@ For a list of the files that are provided in this update, download the file info
 
 This article describes the OS security update for Azure Local that was released on February 11, 2025 and applies to OS build 25398.1425.
 
-### Improvements 
+### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
 
