@@ -204,14 +204,6 @@ This warning can appear in two scenarios:
 
 1. Investigate the underlying hardware health. Check the baseboard management controller (BMC) logs and hardware status for the affected server.
 2. If the hardware is functional, run a **BMM Replace** action to clear the unhealthy state and reprovision the machine:
-
-    ```azurecli
-    az networkcloud baremetalmachine replace \
-      -g <ResourceGroup_Name> \
-      -n <BMM_Name> \
-      --subscription <subscription>
-    ```
-
 3. If hardware replacement is required, coordinate the physical hardware swap and then run the BMM Replace action.
 
 > [!NOTE]
