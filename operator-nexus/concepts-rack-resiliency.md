@@ -2,7 +2,7 @@
 title: Operator Nexus rack resiliency
 description: Document how rack resiliency works in Operator Nexus
 ms.topic: concept-article
-ms.date: 12/18/2025
+ms.date: 06/16/2026
 author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
@@ -31,14 +31,14 @@ KCP = Kubernetes Control Plane Node
 MGMT = Management Node Pool Node
 
 | Rack 1    | Rack 2 | Rack 3 |
-| --------- | ------ | ------ |
+|-----------|--------|--------|
 | KCP       | KCP    | KCP    |
 | KCP-spare | MGMT   | MGMT   |
 
 Four or more compute racks:
 
 | Rack 1 | Rack 2 | Rack 3 | Rack 4    |
-| ------ | ------ | ------ | --------- |
+|--------|--------|--------|-----------|
 | KCP    | KCP    | KCP    | KCP-spare |
 | MGMT   | MGMT   | MGMT   | MGMT      |
 
@@ -128,27 +128,78 @@ For detailed information about these processes, see the [Automated remediation](
 
 ## Automated remediation
 
-To maintain Kubernetes control plane (KCP) quorum, Operator Nexus provides automated remediation when specific server issues are detected. Additionally, this automated remediation extends to Management Plane & Compute nodes.
+Operator Nexus continuously monitors the health of all servers (Compute, Management Plane, and Kubernetes Control Plane) and automatically remediates issues when specific conditions are detected. The goal is to maintain cluster stability and control plane quorum without operator intervention.
 
-Here are the triggers for automated remediation:
+### Triggers for automated remediation
 
-- For all servers (Compute, Management and KCP): if a server fails to provision successfully after six hours, automated remediation occurs. This check includes provisioning a new machine at initial deployment time or provisioning during a Replace action.
-- For all servers (Compute, Management and KCP): if a running node is stuck in a read only root file system mode for 10 minutes, automated remediation occurs, deprecated in 2510.
-- For KCP and Management Plane servers only, if a Kubernetes node is in an Unknown state for 30 minutes, automated remediation occurs.
+The conditions that trigger automated remediation differ by node type:
+
+| Trigger                                                   | Compute | Management Plane | Control Plane (KCP) |
+|-----------------------------------------------------------|:-------:|:----------------:|:-------------------:|
+| Server fails to provision within the expected timeframe   |   Yes   |       Yes        |         Yes         |
+| Kubernetes node Ready condition is Unknown for 30 minutes |   No    |       Yes        |         Yes         |
+
+> [!NOTE]
+> Provisioning failures are detected through dynamic per-phase monitoring rather than a single fixed timeout. The system tracks each stage of the provisioning process and detects stalls at any phase.
 
 ### Remediation process
 
-- Remediation of a Compute node is now one reprovisioning attempt. If the reprovisioning fails, the node is marked Unhealthy. Reprovisioning no longer continues to retry infinitely, and the Bare Metal Machine is powered off.
-- Remediation of a Management Plane node is to attempt one reboot and then one reprovisioning attempt. If those steps fail, the node is marked Unhealthy.
-- Remediation of a KCP node is to attempt one reboot. If the reboot fails, the node is marked Unhealthy and Nexus triggers the immediate provisioning of the spare KCP node. This process is outlined in the [KCP remediation details](#kcp-remediation-details) section.
-- In all instances, when the Bare Metal Machine is marked unhealthy, the BMM's `detailedStatusMessage` is updated to read `Warning: BMM Node is unhealthy and may require hardware replacement.` The Bare Metal Machine's node is removed from the Kubernetes Cluster, which triggers a node drain. Users need to run a BMM Replace action to return the BMM into service and have it rejoin the Kubernetes Cluster.
+Remediation actions are performed sequentially. If an action doesn't resolve the issue, the system escalates to the next step. The actions available differ by node type:
+
+| Node type           | Step 1      | Step 2      | Final step     |
+|---------------------|-------------|-------------|----------------|
+| Compute             | Reprovision | —           | Mark Unhealthy |
+| Management Plane    | Reboot      | Reprovision | Mark Unhealthy |
+| Control Plane (KCP) | Reboot      | —           | Mark Unhealthy |
+
+**Key behaviors:**
+
+- **Compute nodes** skip the reboot step because remediation only triggers on provisioning failures, where a reboot wouldn't help.
+- **Control Plane nodes** skip reprovisioning because potential loss of quorum is too critical to wait for a reprovision attempt. Instead, the system escalates directly to marking the node unhealthy and triggering a role swap with a healthy Management Plane server.
+- **Reprovision** is a single attempt. If it fails, the system doesn't retry indefinitely — it escalates to mark the node unhealthy.
+- **Disabling compute reprovision**: Operators can optionally disable the reprovision step for compute nodes. When disabled, the system escalates directly from a provisioning failure to marking the node unhealthy.
+
+### Safeguards
+
+To prevent cascading failures, the system enforces limits on how many nodes can be simultaneously remediated:
+
+- **Compute**: No more than 50% of compute nodes can be under remediation at once.
+- **Management Plane**: No more than 25% of management nodes can be under remediation at once.
+- **Control Plane**: No more than 50% of control plane nodes can be under remediation at once.
+
+If an individual node was recently reprovisioned and fails again shortly after, the system skips another reprovision attempt and escalates directly to marking the node unhealthy. This prevents infinite remediation loops.
+
+### Mark Unhealthy outcome
+
+When a Bare Metal Machine is marked unhealthy:
+
+- The BMM's `detailedStatusMessage` is updated to: `Warning: BMM Node is unhealthy and may require hardware replacement.`
+- The node is removed from the Kubernetes cluster, which triggers a node drain.
+- The Bare Metal Machine is powered off.
+- **User action required**: Run a BMM Replace action to return the machine into service and have it rejoin the cluster.
+
+> [!TIP]
+> The `detailedStatusMessage` value is an alertable signal. You can configure Azure Monitor alerts on this property to be notified when a machine requires manual intervention. For troubleshooting guidance, see [Troubleshoot BMM Warning messages](./troubleshoot-bare-metal-machine-warning.md#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement).
+
+### Monitoring remediation activity
+
+Automated remediation emits customer-visible logs in the **Platform Operation Logs** category each time a remediation strategy starts, completes, or fails. These logs are prefixed with `Machine Health Check Remediation:` and include the name of the affected server.
+
+Example log messages:
+
+| Event              | Example message                                                                                                                         |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Strategy starts    | `Machine Health Check Remediation: starting reboot strategy for BareMetalHost rack1compute01`                                           |
+| Strategy completes | `Machine Health Check Remediation: reprovision-in-place strategy completed for BareMetalHost rack1compute01`                            |
+| Strategy fails     | `Machine Health Check Remediation: Reboot strategy failed for BareMetalHost rack1compute01: timeout waiting for host to become healthy` |
+
+To receive and configure these logs, see [List of logs available for streaming](./list-logs-available.md).
 
 ### KCP remediation details
 
-Ongoing control plane resiliency requires a spare KCP node. When KCP node fails remediation and is marked Unhealthy, a deprovisioning of the node occurs. For NC 4.7.x runtimes, the unhealthy KCP node is exchanged with a suitable healthy Management Plane server. This Management Plane server becomes the new spare KCP node. The failed KCP node is updated and labeled as a Management Plane node. Once the label changes, an attempt to provision the newly labeled management plane node occurs. If it fails to provision, the management plane remediation process takes over. If it fails provisioning or doesn't run successfully, the machine's status remains unhealthy, and the user must fix. The unhealthy condition surfaces to the Bare Metal Machine's (BMM) `detailedStatus` and `detailedStatusMessage` fields in Azure and clears through a BMM Replace action.
+Ongoing control plane resiliency requires a spare KCP node. When a KCP node fails remediation and is marked Unhealthy, a deprovisioning of the node occurs. The unhealthy KCP node is exchanged with a suitable healthy Management Plane server. This Management Plane server becomes the new spare KCP node. The failed KCP node is updated and labeled as a Management Plane node. Once the label changes, an attempt to provision the newly labeled management plane node occurs. If it fails to provision, the management plane remediation process takes over. If it fails provisioning or doesn't run successfully, the machine's status remains unhealthy, and the user must fix. The unhealthy condition surfaces to the Bare Metal Machine's (BMM) `detailedStatus` and `detailedStatusMessage` fields in Azure and clears through a BMM Replace action.
 
-> [!NOTE]
->The provisioning retry process doesn't execute on compute and management node pool nodes for systems running the 4.1 NetworkCloud runtime. This capability is available when the Nexus Cluster is updated to the 4.4 runtime.
+Only one KCP role swap can be in progress at a time. If a swap is already underway, additional remediation requests wait until the active swap completes before proceeding.
 
 ## Related links
 
