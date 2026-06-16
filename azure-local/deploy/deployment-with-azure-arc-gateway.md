@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 04/10/2026
+ms.date: 06/12/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -359,7 +359,7 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 - Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
 
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 
 ## Step 1: Get the Arc gateway ID  
@@ -425,7 +425,7 @@ $TargetSolutionVersion = "<solution-version>"
 ## Step 4: Run the registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
 
