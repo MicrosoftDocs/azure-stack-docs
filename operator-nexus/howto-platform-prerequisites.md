@@ -5,7 +5,7 @@ author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 02/26/2026
+ms.date: 06/15/2026
 ms.custom:
   - template-how-to
   - build-2025
@@ -138,7 +138,7 @@ Now that the physical installation and validation has completed, the next steps 
 ### Set up Terminal Server
 
 >[!Note]
-> This guide has been validated with Opengear firmware version 24.11.2, which was upgraded from version 22.06.0, and is supported with Nexus Network Fabric runtime version 5.0.0.
+> This guide has been validated with Opengear firmware version 25.11.5, which was upgraded from version 24.11.2, and is supported with Nexus Network Fabric runtime version 7.0.0 or newer.
 
 Terminal Server has been deployed and configured as follows:
 
@@ -148,7 +148,7 @@ Terminal Server has been deployed and configured as follows:
   - HTTP access is enabled
 - Terminal Server interface is connected to the operators on-premises Provider Edge routers (PEs) and configured with the IP addresses and credentials
 - Terminal Server is accessible from the management VPN
-- To upgrade the terminal server to OS version 24.11.2 [refer](./howto-upgrade-os-of-terminal-server.md)
+- To upgrade the terminal server to OS version 25.11.5 [refer](./howto-upgrade-os-of-terminal-server.md)
 - To set up single session and session timeout for serial console [refer](./howto-restrict-serial-port-access-and-set-timeout-on-terminal-server.md)
 
 ### Step 1: Setting up hostname

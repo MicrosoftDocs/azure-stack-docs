@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/09/2026
+ms.date: 06/12/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -346,11 +346,11 @@ To configure observability, follow these steps:
     Get-ApplianceObservabilityConfiguration
     ```
 
-## Add the Azure Local disconected operations environment to the nodes
+## Add the Azure Local disconnected operations environment to the nodes
 
 In order for the nodes to understand your private cloud environment, you must add the local environment. This is required for bootstrapping the Azure Local nodes later to the control plane.
 
-On each node, run the following from Powershell:
+On each node, run the following from PowerShell:
  
 1. `Add-AzLocalEnvironment -CloudFQDN "autonomous.cloud.private"`
 
@@ -488,6 +488,9 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
+> [!NOTE]
+> If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
+
 ```powershell
 $resourcegroup = 'azurelocal-management-cluster' 
 $applianceCloudName = "azure.local"
@@ -522,13 +525,78 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
 >  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2604.1003.1005`.
 
+## Handle preinstalled OEM images in disconnected operations
+
+### Prerequisites
+
+- Download **CombinedSolutionBundle**. For more information, see [Solution update bundle](../update/import-discover-updates-offline-23h2.md).
+
+- On a connected machine, [download the bootstrap package](https://aka.ms/BootstrapBundle).
+
+### Update the bootstrap service
+
+1. Copy and extract the **BootstrapBundle.zip** file. This bundle includes:
+
+    - **Update-BootstrapService.ps1**. Signed update script.
+
+    - **Microsoft.Azure.Edge.Bootstrap.Setup.Official.release.10.3342.1.3008.nupkg**. Bootstrap NuGet package.
+
+1. Copy both files to each Azure Local node. For example, copy them to **C:\packages**.
+
+1. On each node, run the bootstrap update script and verify that the bootstrap service updated successfully.
+
+    ```powershell
+    # Run the bootstrap update script on the node
+    C:\packages\Update-BootstrapService.ps1 -NugetPath "C:\packages\Microsoft.Azure.Edge.Bootstrap.Setup.Official.release.10.3342.1.3008.nupkg"
+    ```
+
+    :::image type="content" source="./media/disconnected-operations-deploy/boot-strap-service-update.png" alt-text="Screenshot showing the bootstrap service update." lightbox=" ./media/disconnected-operations-deploy/boot-strap-service-update.png":::
+
+1. Verify that the bootstrap service update completes successfully.
+
+### Initialize Azure Arc
+
+1. Copy **Platform.zip** to **C:\zerodayupdate** directory on each node.
+
+1. On each node, run the `Invoke-AzStackHciArcInitialization` command:
+    
+    ```powershell
+    # Initialize Azure Arc with ALDO-specific parameters
+      Invoke-AzStackHciArcInitialization
+      -TenantId $Tenant
+	  -SubscriptionID $Subscription
+	  -ResourceGroup $RG
+	  -Region $Region
+	# cloud must be set to `Azure.local` for disconnected operations
+      -Cloud "Azure.local" 
+      -TargetSolutionVersion "<SolutionVersionToDeploy>" 
+	#LocalPlatformPackagePath - The local path to the `Platform.zip` file you copied
+      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.zip"
+	```
+
+    > [!IMPORTANT]
+    > Set the **Cloud** parameter to `Azure.local`. Any other value causes the node to attempt registration with the public Azure cloud, which fails in a disconnected environment.
+    > Ensure the **TargetSolutionVersion** matches your disconnected operations appliance version. Mismatched versions cause deployment failures.
+
+    :::image type="content" source="./media/disconnected-operations-deploy/arc-initialization-zero-update.png" alt-text="Screenshot showing Arc initialization." lightbox=" ./media/disconnected-operations-deploy/arc-initialization-zero-update.png":::
+
+1. Wait for the initialization to complete. This process might take up to 30-60 minutes.
+
+1. Run the following command on the seed node and wait until the appliance is healthy:
+
+    ```powershell
+    Get-ApplianceHealthState
+    ```
+
+1. Run `Invoke-AzStackHciArcInitialization` again on each node.
+
 ## Pre-create Azure Key Vault
 
 Create the Azure Key Vault before you deploy Azure Local to avoid long deployment delays caused by a known issue.
 
 For a code example, see [Known issues](./disconnected-operations-known-issues.md).
 
-After you create the Key Vault, wait 5 minutes before you continue with the next portal deployment step. 
+After you create the Key Vault, wait 5 minutes before you continue with the next portal deployment step.
 
 ## Deploy the management cluster (first Azure Local instance)
 
@@ -558,6 +626,186 @@ Perform the following tasks after deploying Azure Local with disconnected operat
 
 > [!NOTE]
 > Do not skip these steps. Consider this as a deployment completion checklist. These steps are critical in order to be able to recover in case of disasters, receive support and to stay compliant.
+
+## Deploy workload clusters
+
+To deploy standard Azure Local instances as workload clusters, follow the same steps used for the management cluster.
+
+### Deploy a rack aware cluster
+
+Starting with the version 2604 release, you can deploy an Azure Local rack aware cluster in Azure Local disconnected operations.
+
+A file share witness is required for deploying a rack aware cluster in Azure Local disconnected operations. The file share must be a local file share and hosted on a Windows server joined to the same Active Directory forest as the cluster.
+
+Before starting the deployment, complete the following prerequisites:
+
+- [Add the Azure Local disconnected operations environment to the nodes](/azure/azure-local/manage/disconnected-operations-deploy) 
+
+- [Initialize each Azure Local node](/azure/azure-local/manage/disconnected-operations-deploy) 
+
+- Import the root certificate public key onto each node. Refer to steps 8 to 10 of [Prepare Azure Local for disconnected deployments](/azure/azure-local/manage/disconnected-operations-prepare). 
+
+To deploy a rack aware cluster, use the following ARM template: **[create-cluster-rac-enabled-disconnected](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-rac-enabled-disconnected)**. 
+
+ For an example that shows the format of various inputs, such as ArcNodeResourceID, see parameter JSON file [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-rac-enabled-disconnected/azuredeploy.parameters.json). For a detailed description of parameters defined in these files, see [ARM template parameters reference](/azure/azure-local/deploy/rack-aware-cluster-deployment-via-template?tabs=azure-powershell). 
+
+> [!IMPORTANT]
+> - Ensure that all parameters in the JSON file are filled out.  
+> - Replace any placeholder values such as [""] with actual data. These placeholders indicate that the parameter expects an array structure.  
+> - If required values are missing or incorrectly formatted, the validation fails.
+
+#### Example rack aware cluster configuration
+
+The following example deploys a four-node rack aware cluster with two nodes in each rack:
+
+- **node1** and **node2** are physically located in the same rack (**Zone1**). 
+
+- **node3** and **node4** are located in a different rack (**Zone2**).  
+
+In addition to all standard deployment parameters, configure the following parameters for rack aware deployment.
+
+**Arc node resource IDs**
+
+
+```json
+"arcNodeResourceIds": {
+"value": [
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node1",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node2",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node3",
+"/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HybridCompute/machines/node4"
+]
+}
+```
+
+**Cluster pattern and local availability zones** 
+
+Set `clusterPattern` to **RackAware** and define a local availability zone for each rack. Assign nodes to zones based on their physical rack location. In this example, **node1** and **node2** are in **Zone1**, while **node3** and **node4** are in **Zone2**.
+
+
+```json
+"clusterPattern": {
+"value": "RackAware"
+},
+"localAvailabilityZones": {
+    "value": [
+    {
+        "localAvailabilityZoneName": "Zone1",
+        "nodes": ["node1","node2"]  
+    },
+    {
+        "localAvailabilityZoneName": "Zone2",
+        "nodes": ["node3","node4"]
+    }
+    ]
+}
+```
+
+**File share witness**
+
+A rack aware cluster in Azure Local disconnected operations requires a file share witness. Set `witnessType` to **FileShare** and specify the UNC path to the file share.
+
+
+```json
+"witnessType": {
+    "value": "FileShare"
+},
+"witnessPath": {
+    "value": "witness_share_path"
+}
+```
+
+**Network intent configuration** 
+
+For rack aware clusters, the storage network intent must be a dedicated intent separate from management and compute traffic. Define two network intents:
+
+- **ManagementCompute** — handles management and compute traffic on shared adapters.
+- **Storage** — handles storage traffic on dedicated adapters.
+
+Configure the storage VLAN IDs for each storage adapter. The default VLAN IDs (711 and 712) can be customized for your environment.
+
+
+```json
+"networkingType": {
+    "value": "switchedMultiserverDeployment"
+},
+"networkingPattern": {
+    "value" : "convergedManagementCompute"
+},
+"intentList" : {
+    "value": [
+        {
+            "name": "ManagementCompute",
+            "trafficType": [
+                "Management",
+                "Compute"
+            ],
+            "adapter": [
+                "ethernet",
+                "ethernet 2"
+            ],
+            "overridevirtualswitchConfiguration": false,
+            "virtualswitchConfigurationoverrides": {
+                "enableIov": "",
+                "loadBalancingAlgorithm": ""
+            },
+            "overrideQosPolicy": false,
+            "qosPolicyoverrides": {
+                "priorityvalue8021Action_SMB": "",
+                "priorityvalues8021Action_Cluster": "",
+                "bandwidthPercentage_SMB": ""
+            },
+            "overrideAdapterProperty": false,
+            "adapterPropertyoverrides": {
+                "jumboPacket": "",
+                "networkDirect": "",
+                "networkDirectTechnology": ""
+            }
+        },
+        {
+            "name": "Storage",
+            "trafficType": [
+                    "Storage"
+            ],
+            "adapter": [
+                "ethernet 3",
+                "ethernet 4"
+            ],
+            "overridevirtualswitchConfiguration": false,
+            "virtualswitchConfigurationoverrides": {
+                "enableIov": "",
+                "loadBalancingAlgorithm": ""
+            },
+            "overrideQosPolicy": false,
+            "qosPolicyoverrides": {
+                "priorityvalue8021Action_SMB": "",
+                "priorityvalues8021Action_Cluster": "",
+                "bandwidthPercentage_SMB": ""
+            },
+            "overrideAdapterProperty": false,
+            "adapterPropertyoverrides": {
+                "jumboPacket": "",
+                "networkDirect": "",
+                "networkDirectTechnology": ""
+            }
+      }
+    ]
+},
+"storageNetworkList": {
+    "value": [
+        {
+            "name": "Storage1Network",
+            "networkAdapterName": "ethernet 3",
+            "vlanId": "711"
+        },
+        {
+            "name": "Storage2Network",
+            "networkAdapterName": "ethernet 4",
+            "vlanId": "712"
+        }
+    ]
+}
+```
 
 ## Appendix
 
