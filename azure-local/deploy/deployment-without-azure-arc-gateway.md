@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 04/09/2026
+ms.date: 06/12/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -356,7 +356,7 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -419,11 +419,10 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 </details>
 
 
-
 ## Step 3: Run registration script
 
 > [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 1. Run the Arc registration script. The script takes a few minutes to run.
 

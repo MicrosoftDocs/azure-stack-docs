@@ -10,36 +10,107 @@ ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
+This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
+
+These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
+
 ::: moniker range=">=azloc-2604"
+
 ## Known issues for version 2604
+
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
 Workload clusters in air-gapped environments fail to deploy in rare conditions. 
 
 **Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
-**Mitigation**: 
-- Connect to the first node of the Azure Local cluster.
-- Open an elevated PowerShell session (Run as Administrator).
-- Create the StorageContainerContributor role by running the following command:
 
-```powershell
+**Mitigation**: 
+
+1. Connect to the first node of the Azure Local cluster.
+1. Open an elevated PowerShell session (Run as Administrator).
+1. Create the StorageContainerContributor role by running the following command:
+
+   ```powershell
     New-MocRole -Name StorageContainerContributor `
             -actionProviders "StorageContainer" `
             -actionOperations "all"
-```
-- Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
+   ```
+1. Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
 
 ::: moniker-end
 
 ::: moniker range="<=azloc-2603"
 
-This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
-
-These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
-
 ## Known issues for version 2602 and 2603
 
-### Bootstrap or deployment fails due certificates being invalid (exception)
+### Upgrading from 2602 to 2604 fails in air-gapped environments
+
+**Symptom**: Upgrading from build 2602 in an air-gapped environment fails during package upload with an error similar to
+
+```
+ErrorReports     : {Update Download: Update package 'arca.update.package.2603.1.25553.zip' did not pass validation. Below is the summary of the validation error(s) encountered:
+                   - ManifestSignatureInvalid: File signature on Manifest.xml is invalid or it is not signed. The package may be tampered with or corrupted.
+                   }
+```
+
+This error occurs because the update package is signed with a different certificate than the one available in build 2602.
+
+1. Download the following [zip](https://aka.ms/aldo-fix1/2602-update) and copy it over to your seed node.
+1. Modify and run this script:
+
+**Mitigation:**
+
+```powershell
+    # Using the operations module:
+    $targetFolder = 'C:\ALDO\2602'
+    $targetFile = Join-Path $targetFolder "2602-update.zip"
+    (New-Item -ItemType Directory $targetFolder -force)|Out-null
+    
+    Expand-Archive $targetFile -destinationPath $targetFolder
+    Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
+
+    $managementEndpoint = "192.168.200.10" 
+    $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
+    $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress $managementEndpoint  
+    
+    $recoveryKeys = (Get-ApplianceBitlockerRecoveryKeys).recoverykeyset
+    # Run the script (This takes the control plane VM down and reboots it)
+    & "$($targetFolder)\ImportCodeSignCertsOffline.ps1" -CertsFolder $targetFolder -BitLockerRecoveryKeys $recoveryKeys
+```
+
+ - Wait 10 minutes or more
+ - From the same PowerShell context, run:
+   
+   ```powershell
+        Get-ApplianceUpdateHistory                   
+   ```
+
+ - The update history after the appliance virtual machine (VM) restarts might show an error like this: 
+
+   ```
+    Type             : UpdatePreparation
+    TargetVersion    : 2603.1.25553
+    StartTime        : 2026-04-25T04:31:41.627
+    EndTime          : 2026-04-25T04:38:38.445
+    CompletionStatus : Failed
+    FailedTasks      : {Update Download}
+    InProgressTasks  : {}
+    CompletedTasks   : {}
+    PendingTasks     : {}
+    ErrorReports     : {}
+   ```
+   
+ - If the error *File signature on Manifest.xml is invalid* no longer appears, the issue is resolved and you can continue the update process.
+ - To continue the update process, modify and run this command:
+
+    ```powershell
+        $updateTargetVersion = ""
+        Wait-AppliancePreUpdate -TargetVersion $updateTargetVersion
+        Start-ApplianceUpdate -TargetVersion $updateTargetVersion -Wait
+     ```
+ - The process takes about 3 hours to finish.
+
+### Bootstrap or deployment fails due to invalid certificates (exception)
 
 If the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation fails.
 
@@ -47,11 +118,11 @@ If the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap va
 
 **Mitigation**: 
 
-Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that is accessible from the nodes.
+Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that nodes can access.
 
 **Alternative mitigation**:
 
-If you can't reconfigure your Certificate Authority (Enterprise PKI), you can bypass CRL checks during bootstrap. Run the following steps on each Azure Local node:
+If you can't reconfigure your Certificate Authority (Enterprise Public Key Infrastructure), you can bypass CRL checks during bootstrap. Run the following steps on each Azure Local node:
 
 ```powershell
 Write-Host "Updating Windows MAE Config for the Bootsrap service"
@@ -103,30 +174,30 @@ There's a known issue in the Azure portal that prevents creating SSH keys during
 
 Use command-line tools to generate an SSH key and include the key during the VM or AKS creation process.
  
-### Additional cluster deployments fail as Host Guardian certificates aren't available
+### Other cluster deployments fail - Host Guardian certificates aren't available
 
-When deploying additional Azure Local cluster after successfully deploying the dedicated management cluster, they fail.
+When you deploy more Azure Local clusters after successfully deploying the dedicated management cluster, the deployments fail.
 
 **Mitigation**:
 
-Copy the following certs from the first node of the management cluster and paste it in all Azure local nodes (workload clusters) at path `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
+ Copy the following certificates from the first node of the management cluster and paste them in all Azure Local nodes (workload clusters) at `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
 
 Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster:
 
 - `C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-encryption.pfx`
 - `C:\Users\Administrator\AppData\Roaming\AzureLocal\AzsVmHostGuardian-IRVM01-signing.pfx`
 
-### Control plane deployment stuck and times out without completing
+### Control plane deployment gets stuck and times out without completing
 
-In rare cases, deployments may time out, and services might not reach 100% convergence, even after 8 hours.
+In rare cases, deployments might time out, and services might not reach 100% convergence, even after eight hours.
 
 **Mitigation:**
 
-Redeploy the disconnected operations appliance. If the issue persists after 2–3 clean redeployments, collect logs and open a support ticket.
+Redeploy the disconnected operations appliance. If the issue persists after two or three clean redeployments, collect logs and open a support ticket.
 
 ### Generating certificates gets stuck
 
-When running the Operations module or using a script-based approach to generate certificates, the process may hang if executed through a Remote Desktop session.
+The certificate generation process might hang if you run it through a Remote Desktop session, whether you use the Operations module or a script-based approach.
 
 **Mitigation**:
 
@@ -134,7 +205,7 @@ Make sure that the Remote Desktop session isn't mapping smart cards. If smart ca
 
 ### Set-MgmtClusterDenyPolicy.ps1 script is missing
 
-**Mitigation**: Generate the file using the below script:
+**Mitigation**: Generate the file by using the following script:
 
 ```powershell
 <#
@@ -167,13 +238,13 @@ Make sure that the Remote Desktop session isn't mapping smart cards. If smart ca
 
 .EXAMPLE
     .\Set-MgmtClusterDenyPolicy.ps1 `
-        -SubscriptionId "a1b2c3d4-e5f6-7890-abcd-ef1234567890" `
-        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+        -SubscriptionId "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e" `
+        -MgmtClusterCustomLocationId "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
 
 .EXAMPLE
     .\Set-MgmtClusterDenyPolicy.ps1 `
         -AllSubscriptions `
-        -MgmtClusterCustomLocationId "/subscriptions/a1b2c3d4-e5f6-7890-abcd-ef1234567890/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
+        -MgmtClusterCustomLocationId "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/my-rg/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location"
 
 .NOTES
     Rollback commands:
@@ -401,21 +472,21 @@ if ($failures.Count -gt 0 -and $results.Count -eq 0) {
 
 ```
 
-### SSL/TLS error using management endpoint (OperationsModule)
+### SSL/TLS error when using management endpoint (OperationsModule)
 
-When you use a cmdlet that uses the management endpoint (for example, Get-ApplianceHealthState) you receive an error "threw and exception: The request was aborted: Could not create SSL/TLS secure channel.. Retrying"
+When you use a cmdlet that uses the management endpoint (for example, `Get-ApplianceHealthState`), you receive an error "threw an exception: The request was aborted: Could not create SSL/TLS secure channel... Retrying."
 
 **Mitigation:**
 
-For 2511, do not use `Set-DisconnectedOperationsClientContext`. Instead use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
+For 2511, don't use `Set-DisconnectedOperationsClientContext`. Instead, use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
 ### Arc bootstrap fails on node (Invoke-AzStackHCIArcInitialization) on Original Equipment Manufacturer (OEM) provided images
 
-If you are running an OEM image, make sure that you are on the correct OS baseline.
+If you're running an OEM image, make sure you're on the correct OS baseline.
 
 Follow these steps:
 
-1. Make sure that you are on a same supported version or an earlier version (for example, 2508 or earlier).
+1. Make sure you're on the same supported version or an earlier version (for example, 2508 or earlier).
 1. Disable zero-day update on each node:
   
    ```powershell
@@ -458,15 +529,15 @@ Follow these steps:
 
 ### Cloud deployment validation fails during the portal experience
 
-Solution Builder extension (SBE) validation fails when trying to reach an *aka.ms* link to download.
+Solution Builder extension (SBE) validation fails when it tries to reach an aka.ms link to download.
 
 **Workaround**:
 
 1. Run the cloud deployment (portal) flow until the validation fails in the UX.
-1. Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1)
-1. Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2)
+1. Download a patched version of [ExtractOEMContent.ps1](https://aka.ms/aldo-fix1/1).
+1. Download a patched version of [EN-US\ExtractOEMContent.Strings.psd1](https://aka.ms/aldo-fix1/2).
 1. Modify the following file using your favorite editor `ExtractOEMContent.ps1`.
-1. Replace line 899 in this file with the code snippet:
+1. Replace line 899 in this file with the following code snippet:
 
    ```powershell
    if (-not (Test-SBEXMLSignature -XmlPath $sbeDiscoveryManifestPath)) {
@@ -520,9 +591,9 @@ During the validate or cloud deployment flow, the first machine (seed node) rest
    - Deploy stage: Check the latest file with a name starting with *CloudDeployment*.
    - If the status in the file is different from what appears in the portal, follow the next steps to resync the deployment status with the portal.
 
-### Deployment status out of sync from cluster to portal
+### Deployment status is out of sync from cluster to portal
 
-The portal shows that cloud deployment is in progress even though it's already completed, or the deployment is taking longer than expected. This happens because the cloud deployment status isn't synced with the actual status.
+The portal shows that cloud deployment is in progress even though it's completed, or the deployment is taking longer than expected. This issue occurs because the cloud deployment status isn't synced with the actual status.
 
 If the portal and log file are out of sync, restart the LCM Controller service to reestablish the connection to relay by running `Restart-Service LCMController`.
 
@@ -533,7 +604,7 @@ If the portal and log file are out of sync, restart the LCM Controller service t
    - For the **Deploy** stage: `C:\ECEStore\efb61d70-47ed-8f44-5d63-bed6adc0fb0f\086a22e3-ef1a-7b3a-dc9d-f407953b0f84`
 1. Update the attribute **EndTimeUtc** located in the first line of the file to a future time based on the machine's current time. For example, \<Action Type="CloudDeployment" StartTimeUtc="2025-04-09T08:01:51.9513768Z" Status="Success" EndTimeUtc="2025-04-10T23:30:45.9821393Z">.
 1. Save the file and close it.
-1. LCM sends the notification to HCI RP within 5-10 minutes.
+1. LCM sends the notification to Hyper-Converged Infrastructure (HCI) Resource Provider (RP) within 5-10 minutes.
 1. To view LCM Controller logs, use the following command:
 
    ```powershell
@@ -541,7 +612,7 @@ If the portal and log file are out of sync, restart the LCM Controller service t
    ```
 
 > [!NOTE]
-> This process works if HCI RP hasn't failed the deployment status due to a timeout (approximately 48 hours from the start of cloud deployment).
+> This process works if HCI RP didn't fail the deployment status due to a timeout (approximately 48 hours from the start of cloud deployment).
 
 ### Failed to deploy disconnected operations Appliance (Appliance.Operations failure)
 
@@ -549,7 +620,7 @@ Some special characters in the management TLS cert password, external certs pass
 
  **Mitigation**:
 
- Do not use special characters like single or double quotes in the passwords.
+Don't use special characters like single or double quotes in the passwords.
 
 ### Resources disappear from portal
 
@@ -577,9 +648,9 @@ In virtual environments, deployments can time out, and services might not reach 
 
 Redeploy the disconnected operations appliance a few times. If you're using a physical environment and the problem continues, collect logs and open a support ticket.
 
-### Azure Local deployment with Azure Keyvault
+### Azure Local deployment with Azure Key Vault
 
-Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Key Vault in the local portal and quickly try to finish the cloud deployment, you might encounter permission issues when validating the cluster.
+Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault can take up to 20 minutes to propagate. If you create the Key Vault in the local portal and quickly try to finish the cloud deployment, you might encounter permission problems during cluster validation.
 
 **Mitigation**:
 
@@ -644,7 +715,7 @@ Write-Verbose "Wait 20 min before running cloud deployment from portal"
 
 #### Azure Resource Graph add or edit tags error
 
-After you start, restart, or stop the Azure Local VM, the power action buttons are disabled and the status isn't reflected properly.
+After you start, restart, or stop an Azure Local VM, the power action buttons are disabled and the status doesn't update correctly.
 
 **Mitigation**:
 
@@ -674,7 +745,7 @@ az stack-hci-vm network nic delete
 
 #### AKS deployment fails in fully air-gapped scenarios
 
-AKS deployments fails in fully air-gapped scenarios. No mitigation is available for this issue in the current releases.
+AKS deployments fail in fully air-gapped scenarios. No mitigation is available for this issue in the current releases.
 
 #### Use an existing public key when creating AKS cluster
 
@@ -736,15 +807,15 @@ When attempting to create a Kubernetes cluster with Entra authentication, you en
 
 Only local accounts with Kubernetes RBAC are supported in this preview release.
 
-#### Arc extensions
+#### Azure Arc extensions
 
-When navigating to extensions on an AKS cluster, the add button is disabled and there aren't any extensions listed.
+When you go to extensions on an AKS cluster, the **Add** button is disabled and no extensions appear.
 
-Arc extensions are unsupported in this preview release.
+Azure Arc extensions aren't supported in this preview release.
 
 #### AKS resource shows on portal after deletion
 
-After successfully deleting an AKS cluster from portal, the resource continues to show.
+After you delete an AKS cluster from the portal, the resource keeps showing.
 
 **Mitigation**:
 
@@ -760,7 +831,7 @@ After you restart a node or the control plane VM, the system might take up to an
 
 ### Subscriptions
 
-#### Operator create subscription
+#### Operator creates subscription
 
 After you create a new subscription as an operator, the subscription appears in the list as non-clickable and displays ***no access*** for the owner.
 
@@ -788,7 +859,7 @@ When you use the `az cloud` commands, such as `az cloud register`, `az cloud sho
 
 **Mitigation**:
 
-Only use lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
+Use only lowercase letters for cloud names in `az cloud` subcommands, such as `register`, `show`, or `set`.
 
 #### Create subscriptions
 
@@ -796,7 +867,7 @@ Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions.
 
 **Mitigation**:
 
-Use `az rest` to create subscriptions with a different owner if required to automate directly with different owner
+Use `az rest` to create subscriptions with a different owner if you need to automate the process with a different owner.
 
 ### Azure portal
 
@@ -806,7 +877,7 @@ When you select **Signout**, the request doesn't work.
 
 **Mitigation**:
 
-Close your browser, then go to the Portal URL.
+Close your browser, and then go to the portal URL.
 
 ### Azure Resource Manager
 
@@ -818,8 +889,8 @@ Template specs aren't supported. Deployments that use ARM templates with templat
 
 The following scenarios aren't supported:
 
-- Arc-Enabled servers (remote or non Azure Local VMs)
-- Arc-Enabled Kubernetes clusters (remote or non AKS clusters)
+- non-Azure Local VMs
+- non-AKS clusters
 
 If you test these scenarios, these systems must trust your custom CA and you need to pass `-custom-ca-cert` when Arc-enabling them.
 

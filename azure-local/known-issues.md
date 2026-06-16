@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 05/28/2026
+ms.date: 06/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -18,6 +18,67 @@ These release notes are continuously updated, and as critical issues requiring a
 > For information about supported update paths for this release, see [Release information](./release-information-23h2.md#about-azure-local-releases).
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
+
+::: moniker range="=azloc-2606"
+
+## Known issues for version 2606
+
+For the 2606 release of Azure Local, Microsoft released the following update:
+
+| Solution version | OS build |
+|--|--|
+| 12.2606.1003.205 | 26100.32995 |
+
+> [!IMPORTANT]
+> The new deployments of this software use the **12.2606.1003.205** build.
+The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+There are no fixed issues specific to this release.
+
+
+## Known issues
+
+There are no known issues specific to this release. For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
+
+<!--|Feature  |Issue    |Workaround |
+|---------|---------|---------|-->
+
+## Known issues from previous releases
+
+The following table lists the known issues from previous releases:
+
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and make sure to include `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
+| Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you're using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
+| Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
+| Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
+| Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
+| Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Update | There's an intermittent issue in this release when the Azure portal incorrectly reports the update status as **Failed to update** or **In progress** though the update is complete.  |[Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. The Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+| Security <!--30348397--> |  Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment.  | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions aren't yet installed. | If you face this issue, retry the deployment. |
+| Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update fails to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation.|
+| Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
+
+## Known and expected behaviors
+
+The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
+
+| Feature  | Behavior  |  Workaround |
+|---------|---------|---------|
+| Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
+| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
+
+::: moniker-end
+
 
 ::: moniker range="=azloc-2605"
 
@@ -111,7 +172,7 @@ The following table lists the fixed issues in this release:
 | Update <!--37373738--> | SBE pre-deployment health checks aren't executed if SBE version is 5.0 or higher. | |
 | Azure Local VMs <!--35957329--> | In some Azure Local VM create scenarios, when you don't specify a storage path, the precheck incorrectly targets the infrastructure volume instead of an eligible customer storage path. | The precheck logic is updated to correctly resolve and target the appropriate customer storage path when you don't explicitly provide a storage path, preventing the infrastructure volume from being used unintentionally. |
 | Azure Local VMs <!--33489182--> | In some cases, gallery image create or update operations take longer than expected or timeout with larger images. | Gallery image create and update operations are optimized to improve reliability and performance, resulting in faster and more consistent image operations. |
-| Azure Local VMs <!--34513309--> | VM Connect couldn't connect to Azure Local virtual machines if you deployed them in a different resource group than the Azure Local instance. | VM Connect now supports connectivity to Azure Local VMs across different resource groups from the Azure Local instance. |
+| Azure Local VMs <!--34513309--> | VMConnect couldn't connect to Azure Local virtual machines if you deployed them in a different resource group than the Azure Local instance. | VMConnect now supports connectivity to Azure Local VMs across different resource groups from the Azure Local instance. |
 | Update <!--33993719--> | Cloud Management service fails because the subscription isn't active. | An update health check was added to validate the subscription state is active. |
 | Update <!-- 35851395--> | Azure Local doesn't discover SBE update.  | An update health check was added to validate the discovery URL is matching hardware model and SKU.  |
 | Deployment <!--36020508--> | Fixed an issue that can cause deployment to fail because of DNS timeout.  | |
@@ -403,7 +464,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2512"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2512
 
@@ -420,7 +481,7 @@ Release notes for this version include the issues fixed in this release, known i
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -428,7 +489,7 @@ The following table lists the fixed issues in this release:
 |---------|---------|---------|
 | Azure Local VMs <!--35657991--> | Azure Local VM create flow allows adding a data disk with a name that already exists in the same resource group, leading to provisioning errors. | Validation to ensure the data disk name is unique within the resource group before creating the Azure Local VM. |
 
-## Known issues
+### Known issues
 
 The following table lists the known issues in this release:
 
@@ -438,7 +499,7 @@ The following table lists the known issues in this release:
 | Deployment <!--36041656--> | Deployment using Local Identity doesn't support manual secret rotation. | There's no known workaround in this release. |
 | Deployment <!--36440701--> | When upgrading from 2510 to 2511, 2512, or 2601, cluster creation fails due to CSI provisioning. | For detailed steps on how to resolve this issue, see [AKS Arc cluster creation fails on Azure Local 2511, 2512, or 2601 after upgrade from 2510](/azure/aks/aksarc/cluster-create-fails-after-azure-local-upgrade). |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -460,7 +521,7 @@ The following table lists the known issues from previous releases:
 | Update <!--35747709--> | Update may fail when the cloud management group is running on a different node than the owner node with the error: `Type 'RegisterCloudManagementUpdatesExtension' of Role 'CloudManagementConfig' raised an exception: Exception occurred in Get-ClusterExtension'` | Move the management group to the owner node manually and proceed with the update: <br><br> `# Get the owner node of the group matching '*orch*'` <br> `$orchOwner = (Get-ClusterGroup -Name '*orch*').OwnerNode.Name`<br><br> `# Move the "Cloud Management" group to that node`<br> `Move-ClusterGroup -Name 'Cloud Management' -Node $orchOwner` |
 | Azure Local VMs  | VM start or stop operation is blocked with an error after attaching or detaching GPU to the VM. | Update the size of the VM (add or remove vCPU, memory) before attempting a start or stop operation. Once the size is updated, proceed with VM start or stop. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
@@ -468,10 +529,6 @@ The following table lists the known and expected system behaviors that shouldn't
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
 | Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2511
 
@@ -999,7 +1056,7 @@ The following table lists the known issues from previous releases:
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 | Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
 | Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
-| Update | There's an intermittent issues in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Update | There's an intermittent issue in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
 | Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, you can't update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts doesn't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you change the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password by using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
@@ -1072,7 +1129,7 @@ The following table lists the known issues from previous releases:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
-| Update | There's an intermittent issues in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Update | There's an intermittent issue in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
 | Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, you can't update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts doesn't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you change the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password by using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
@@ -1154,7 +1211,7 @@ The following table lists the known issues from previous releases:
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
-| Update | There's an intermittent issues in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
+| Update | There's an intermittent issue in this release where the Azure portal may incorrectly display the update status as **Failed to update** or **In progress**, even though the update actually completes successfully. This behavior is particularly observed when updating Azure Local instances via Azure Update Manager, where the update progress and results may not be visible in the portal.  | You might need to wait up to 30 minutes or more to see the updated status. If the status still isn't refreshed after that time, follow these steps: [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"`|
 | Add server <!--26852600--> |In this release and previous releases, when adding a machine to the system, you can't update the proxy bypass list string to include the new machine. Updating environment variables proxy bypass list on the hosts doesn't update the proxy bypass list on Azure resource bridge or AKS. |There's no workaround in this release. If you encounter this issue, contact Microsoft Support to determine next steps.|
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Security <!-- 56969147 --> | When fixing the compliance for the minimum password length rule, even after you change the minimum password length on the Azure Local host to 14, you continue to see it as non-compliant in Azure policy.  | You can verify the length of the password by using the `net accounts` cmdlet. In the output, find **Minimum password length** to see the value. |
