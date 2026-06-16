@@ -16,53 +16,8 @@ ai-usage: ai-assisted
 
 This article explains how to register disconnected operations for Azure Local after deploying your management cluster with the control plane. Learn how to ensure compliance with Azure Local requirements through proper registration.
 
-## Get the registration file
-
-The registration file contains data about your Azure Local deployment, which is required to complete the registration process in the Azure portal.
-
-To register disconnected operations for Azure Local, first generate a registration file from your management cluster.
-
-> [!NOTE]
-> Certain compliance regulations prohibit copying data from air-gapped environments. If these restrictions prevent copying the registration file, use the self-attestation flow.
-
-Follow these steps to create and export the registration file:
-
-1. On your management cluster, sign in to the seed node by using local administrator credentials.
-
-1. Import the operations module and initialize the management context:
-
-    ```powershell
-    # Replace with your actual values.
-    $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
-    Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
-
-    $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
-    $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress "169.254.53.25"  
-    ```
-
-1. Export the appliance registration data file by using the following command:
-
-    ```powershell
-     $file = 'AzureLocal-managementCluster.reg'
-     Export-ApplianceRegistrationData -File $file
-    ```
-
-1. Copy this file to a machine that you can use to connect to the internet.
-
-## Complete the registration
-
-To finalize the registration process for disconnected operations, follow these steps in the Azure portal.
-
-1. On an internet connected machine, navigate to the [Azure portal](https://portal.azure.com).
-1. Navigate to your disconnected operations resource.
-1. Check for a banner that indicates that your disconnected operations resource isn't registered.
-1. Select the **Register** button, and then upload the registration file.
-1. Confirm the registration details and select **Register**.
-1. After the operation completes, the **Registration status** changes to **Registered**.
 
 ## Registration using self-attestation flow
-
-If you can't register Azure Local disconnected operations using the registration file flow, use the self-attestation flow instead.
 
 On a machine with internet access, ensure that Azure CLI and Azure PowerShell are installed. 
 
@@ -121,26 +76,32 @@ function New-AzureLocalDisconnectedOperationsSelfAttestation {
 [switch]$SkipLogin
     )
 
-        if (-not $SkipLogin) {
+if (-not $SkipLogin) {
                 Connect-AzAccount -EnvironmentName $Cloud -ErrorAction Stop | Out-Null
-        }
+}
 
-        Select-AzSubscription -SubscriptionId $SubscriptionId -ErrorAction Stop | Out-Null
+Select-AzSubscription -SubscriptionId $SubscriptionId -ErrorAction Stop | Out-Null
 
-        function Get-BearerToken {
+function Get-BearerToken {
                 param(
                         [Parameter(Mandatory)]
                         [ValidateSet('AzureCloud', 'AzureUSGovernment')]
                         [string]$CloudEnvironment
                 )
 
-                $resource = switch ($CloudEnvironment) {
+$resource = switch ($CloudEnvironment) {
                         'AzureCloud'        { 'https://management.azure.com/' }
                         'AzureUSGovernment' { 'https://management.usgovcloudapi.net/' }
                 }
 
-                $tokenResponse = Get-AzAccessToken -ResourceUrl $resource -ErrorAction Stop
-                return "Bearer $($tokenResponse.Token)"
+$tokenResponse = Get-AzAccessToken -ResourceUrl $resource -ErrorAction Stop
+                $token = $tokenResponse.Token
+                if ($token -is [System.Security.SecureString]) {
+                        $plainTextToken = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($token))
+                } else {
+                        $plainTextToken = $token
+                }
+                return "Bearer $plainTextToken"
         }
 
 $baseEndpoint = switch ($Cloud) {
@@ -149,7 +110,8 @@ $baseEndpoint = switch ($Cloud) {
     }
 
 $token = Get-BearerToken -CloudEnvironment $Cloud
-    $uri = "https://$baseEndpoint/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/providers/Microsoft.Edge/disconnectedOperations/$ResourceName/hardwareSettings/default?api-version=$ApiVersion"
+Write-host "Obtained authorization token $token." -ForegroundColor Green
+$uri = "https://$baseEndpoint/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/providers/Microsoft.Edge/disconnectedOperations/$ResourceName/hardwareSettings/default?api-version=$ApiVersion"
 
 $body = @{
         properties = @{
@@ -169,7 +131,7 @@ Write-Host "Creating HardwareSetting for '$ResourceName'..." -ForegroundColor Cy
     Write-Host "  PUT $uri" -ForegroundColor DarkGray
 
 $response = Invoke-RestMethod -Method Put -Uri $uri -Headers @{
-        Authorization  = $token
+        'Authorization' = $token
         'Content-Type' = 'application/json'
     } -Body $body
 
@@ -192,7 +154,7 @@ $params = @{
     MemoryInGb                 = 2000 # Total memory
     Oem                        = ''   # E.g. Dell / Lenovo / HPE etc.
     HardwareSku                = ''   # E.g. AX-760 / MX 655
-    Nodes                      = 10
+    Nodes                      = 10   # Total number of nodes managed
     VersionAtRegistration      = '2602.2.32510'
     SolutionBuilderExtension   = 'x.y.z'
     DeviceId                   = ''   # Copy your device id from portal
@@ -201,6 +163,7 @@ $params = @{
 
 New-AzureLocalDisconnectedOperationsSelfAttestation @params
 ```
+After successful registration, the message 'Hardware setting created successfully' appears. The banner in the Azure portal also disappears, and the hardware properties for your Azure Local disconnected operations populate with the registered information.
 
 ## Related content
 

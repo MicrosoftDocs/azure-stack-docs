@@ -4,9 +4,8 @@ description: Learn how to upgrade the Windows Server version on your node pools 
 ms.topic: how-to
 author: davidsmatlak
 ms.date: 09/25/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 09/24/2025
-ms.reviewer: sethm
 
 ---
 
@@ -41,7 +40,7 @@ Select the right OS SKU and create a new [Windows-based node pool](howto-create-
 
 A node selector is the most common and recommended option for placement of Windows pods on Windows nodes.
 
-1. Update the `nodeSelector` field in your application's deployment YAML to match the label of the new Windows node pool.  
+1. Update the `nodeSelector` field in your application's deployment YAML to match the label of the new Windows node pool.
 
    ```yaml
    nodeSelector:
