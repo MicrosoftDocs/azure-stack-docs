@@ -1,9 +1,9 @@
 --- 
-title: Prepare Active Directory for Azure Local, version 23H2 deployment
-description: Learn how to prepare Active Directory before you deploy Azure Local, version 23H2.
+title: Prepare Active Directory for Azure Local deployment
+description: Learn how to prepare Active Directory for an Azure Local deployment by creating required OU and permissions to ensure a smooth deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 06/16/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -13,18 +13,18 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory environment before you deploy Azure Local.
+This article explains how to prepare Active Directory for Azure Local deployment, including creating the required OU and permissions to help avoid deployment issues.
 
 Active Directory requirements for Azure Local include:
 
-- A dedicated Organization Unit (OU).
-- Group policy inheritance that is blocked for the applicable Group Policy Object (GPO).
-- A user account that has all rights to the OU in the Active Directory.
-- Machines must not be joined to Active Directory before deployment.
+- A dedicated organizational unit (OU).
+- Group policy inheritance that's blocked for the applicable Group Policy Object (GPO).
+- A user account that has all rights to the OU in Active Directory.
 
 > [!NOTE]
-> - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
-> - When group policy inheritance is blocked at the OU level, GPOs with enforced option enabled aren't blocked. If applicable, ensure that these GPOs are blocked using other methods, for example using a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648). Apply the WMI filter to any enforced GPOs, to exclude machine computer accounts for your Azure Local instances from applying the GPOs. Once the filter is applied, enforced GPOs won't apply, based on the logic defined in the WMI filter.
+>
+> - You can use your existing process to meet the preceding requirements. The script used in this article is optional and is provided to simplify the preparation.
+> - When you block group policy inheritance at the OU level, GPOs with enforced option enabled aren't blocked. If applicable, ensure that these GPOs are blocked by using other methods, such as a [Windows Management Instrumentation (WMI) Filter](https://techcommunity.microsoft.com/t5/ask-the-directory-services-team/fun-with-wmi-filters-in-group-policy/ba-p/395648). Apply the WMI filter to any enforced GPOs, to exclude machine computer accounts for your Azure Local instances from applying the GPOs. Once the filter is applied, enforced GPOs don't apply, based on the logic defined in the WMI filter.
 
 To manually assign the required permissions for Active Directory, create an OU, and block GPO inheritance, see
 [Custom Active Directory configuration for your Azure Local](../plan/configure-custom-settings-active-directory.md).
@@ -41,7 +41,7 @@ To manually assign the required permissions for Active Directory, create an OU, 
     > [!NOTE]
     > Make sure to uninstall any previous versions of the module before installing the new version.
 
-- You require permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
+- You need permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
 
 - If you have a firewall between your Azure Local system and Active Directory, ensure that the proper firewall rules are configured. For specific guidance, see [Firewall requirements for Active Directory Web Services and Active Directory Gateway Management Service](../concepts/firewall-requirements.md). See also [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts#windows-server-2008-and-later-versions).
 
@@ -49,19 +49,20 @@ To manually assign the required permissions for Active Directory, create an OU, 
 
 The Lifecycle Manager (LCM) deployment user account must meet the following Active Directory requirements for Azure Local deployment and lifecycle management.
 
-- Interactive logon. The deployment user must be allowed to sign in interactively.
+- Interactive logon. The deployment user must be allowed to log on interactively.
 - Log on as a batch job. The deployment user must have the [*Log on as a batch job*](/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/log-on-as-a-batch-job) user rights. Ensure that the default domain policy doesn't deny this right, or explicitly grant it to the deployment user account.
 
 ## Active Directory preparation module
 
-The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory for Azure Local deployments. Here are the required parameters associated with the cmdlet:
+To prepare Active Directory for Azure Local deployments, use the `New-HciAdObjectsPreCreation` cmdlet from the AsHciADArtifactsPreCreationTool PowerShell module. Here are the required parameters for the cmdlet:
 
 |Parameter|Description|
 |--|--|
-|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that only the username is provided. The name shouldn't include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 14 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name can't be exactly the same as the local admin user. <br> The name can use *admin* as the username.|
-|`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Local deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
+|`-AzureStackLCMUserCredential`|A new user object that you create with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br> Make sure that you provide only the username. Don't include the domain name in the name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that's at least 14 characters long. The password must contain: a lowercase character, an uppercase character, a numeral, and a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).<br> The name can't be exactly the same as the local admin user. <br> You can't use *admin* as the username. The name must be unique for each Azure Local instance (deployment).|
+|`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Local deployment. This OU blocks existing group policies and inheritance to ensure there's no conflict of settings. Specify the OU as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 
 > [!NOTE]
+>
 > - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
 > - After the deployment is complete, moving the computer objects to a different OU isn't supported.
 
@@ -106,7 +107,7 @@ To create a dedicated OU, follow these steps:
 
 The LCM user account is used during servicing operations, such as applying updates via PowerShell. This account is also used when performing domain join actions against your AD, such as [repairing a node](../manage/repair-server.md) or [adding a node](../manage/add-server.md). This requires the LCM user identity having delegated permissions to add computer accounts to the target OU in the on-premises domain.
 
-During the cloud deployment of Azure Local, the LCM user account is added to the local administrators group of the physical nodes. To mitigate the risk of a compromised LCM user account, **we recommend having a dedicated LCM user account with a unique password for each Azure Local instance.** This recommendation limits the scope and impact of a compromised LCM account to a single instance.
+During the cloud deployment of Azure Local, the LCM user account is added to the local administrator's group of the physical nodes. The LCM account username must be unique for each Azure Local instance (deployment). To further mitigate the risk of a compromised LCM user account, we also recommend using a dedicated LCM user account with a unique password for each Azure Local instance. This recommendation limits the scope and impact of a compromised LCM account to a single instance.
 
 We recommend that you follow these best practices for OU creation. These recommendations are automated when you use the `New-HciAdObjectsPreCreation` cmdlet to [Prepare Active Directory](#active-directory-preparation-module).
 
