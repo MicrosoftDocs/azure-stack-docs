@@ -73,7 +73,7 @@ For details on the GPU attach command, see [az stack-hci-vm gpu](/cli/azure/stac
 
 ## Detach a GPU
 
-The VM must be in the **Stopped** power state before detaching a GPU. Use the following CLI command:
+The VM must be in the **Stopped** state before detaching a GPU. Use the following CLI command:  
 
 ```azurecli
 az stack-hci-vm gpu detach --resource-group "test-rg" --custom-location "test-location" --vm-name "test-vm"
