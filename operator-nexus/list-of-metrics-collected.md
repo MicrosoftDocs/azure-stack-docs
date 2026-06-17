@@ -5,8 +5,10 @@ author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 02/03/2023
+ms.date: 06/17/2026
 ms.custom: template-reference
+ms.last-modified-by: MSbhumika-shah
+ms.last-modified-author: BhumikaShah
 ---
 
 # List of metrics collected in Azure Operator Nexus
