@@ -46,7 +46,7 @@ The `--gpus` parameter takes one or more `assignmentType,partitionSizeMB` tokens
 
 ## Attach a GPU after Azure Local multi-rack VM creation
 
-You can add GPUs to an existing VM by using a PATCH operation on hardwareProfile.virtualMachineGPUs. The VM must be in the Stopped state before you apply the change. The service rejects GPU updates on a running VM.
+You can add GPUs to an existing VM by using a PATCH operation on `hardwareProfile.virtualMachineGPUs`. The VM must be in the **Stopped** state before you apply the change. The service rejects GPU updates on a running VM.  
 
 The process is: stop VM → attach GPU → start VM.
 
