@@ -11,7 +11,7 @@ ms.subservice: multi-rack
 
 # Manage GPUs through Discrete Device Assignment for multi-rack deployments of Azure Local
 
-This article describes how to manage GPUs using Discrete Device Assignment (DDA) for Azure Local multi-rack virtual machines (VMs) enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](../../AKS-Arc/multi-rack/deploy-gpu-node-pool.md).
+This article describes how to manage GPUs by using Discrete Device Assignment (DDA) for Azure Local multi-rack virtual machines (VMs) enabled by Azure Arc. For GPU DDA management on Azure Kubernetes Service (AKS) enabled by Azure Arc, see [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](../../AKS-Arc/multi-rack/deploy-gpu-node-pool.md).
 
 DDA allows you to dedicate a physical graphical processing unit (GPU) to your workload. In a DDA deployment, virtualized workloads run on the native driver and typically have full access to the GPU's functionality. DDA offers the highest level of app compatibility and potential performance.
 
