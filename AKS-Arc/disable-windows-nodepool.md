@@ -4,8 +4,7 @@ description: Learn how to disable the Windows node pool feature on the 2509 rele
 ms.topic: how-to
 ms.date: 09/25/2025
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.reviewer: sethm
+ms.author: davidsmatlak
 ms.lastreviewed: 09/25/2025
 
 ---
@@ -93,8 +92,8 @@ If for some reason you're not able to use Azure CloudShell or a machine with con
 az login --use-device-code --tenant <Azure tenant ID>
 az account set -s <subscription ID>
 $res=get-archcimgmt
- 
-az k8s-extension update --resource-group $res.HybridaksExtension.resourceGroup --cluster-name $res.ResourceBridge.name --cluster-type appliances --name $res.HybridaksExtension.name --version $res.HybridaksExtension.version --release-train  $res.HybridaksExtension.releaseTrain --config disable-windows-nodepool=true --yes 
+
+az k8s-extension update --resource-group $res.HybridaksExtension.resourceGroup --cluster-name $res.ResourceBridge.name --cluster-type appliances --name $res.HybridaksExtension.name --version $res.HybridaksExtension.version --release-train  $res.HybridaksExtension.releaseTrain --config disable-windows-nodepool=true --yes
 ```
 
 ### Validate if the Windows node pool feature is disabled
@@ -102,7 +101,7 @@ az k8s-extension update --resource-group $res.HybridaksExtension.resourceGroup -
 You can check if the configuration settings were applied by running `az k8s-extension show`, as follows:
 
 ```azurecli
-az k8s-extension show --name $extensionName --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --query configurationSettings 
+az k8s-extension show --name $extensionName --resource-group $resourceGroup --cluster-name $clusterName --cluster-type appliances --query configurationSettings
 ```
 
 Expected output:

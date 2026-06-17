@@ -148,7 +148,7 @@ Here is an example on how to login with that certificate post-deployment:
 ```powershell
 $username = '2cb981cc-147e-47cd-a32c-4bb0dfa60573'
 $certPath = 'C:\Aldo\operatorcert.pem'
-$tenantId = '98b8267d-e97f-426e-8b3f-7956511fd63f'
+$tenantId = 'aaaabbbb-0000-cccc-1111-dddd2222eeee'
 # Example using az login
 az login --service-principal --username $username --certificate $certPath --tenant $tenantId
 
