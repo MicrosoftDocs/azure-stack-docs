@@ -105,7 +105,7 @@ You can also check for any potentially related recent lifecycle actions (such as
 
 This message in the BMM _Detailed status message_ field indicates a problem with network connectivity on the Preboot Execution Environment (PXE) Ethernet port on the underlying bare metal host.
 The PXE port is used during provisioning and upgrades to download the operating system image and other software components.
-PXE connectivity issues shouldn't directly affect customer workloads running on a bare metal host.
+PXE connectivity issues don't directly affect customer workloads running on a bare metal host.
 However they can cause failures in BMM lifecycle operations such as the following.
 
 - Cluster Provisioning
