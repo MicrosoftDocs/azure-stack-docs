@@ -12,7 +12,7 @@ ms.subservice: hyperconverged
 
 # Deploy Azure Local using local identity with Azure Key Vault
 
-::: moniker range=">=azloc-2510"
+::: moniker range=">=azloc-2607"
 
 This article describes how to use local identity with Azure Key Vault for Azure Local deployment.
 
@@ -50,9 +50,15 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 - Download the Azure Local software. See [Download operating system for Azure Local deployment](./download-23h2-software.md).
 
-- The nodes require static IP addresses and don't support DHCP. After the OS is installed, use SConfig to set the static IP address, subnet, gateway, and DNS.
+- Nodes and Instance IP assignemnts supports 2 options:
+    - "Manual" : The server nodes has manually assigned static IP addresses on the primary network interface
+    - "Automatic (DHCP) : The server nodes has DHCP server in the local network assigned IP addresses (the IP address assignment must be reserved/permanent for a specific MAC/HOST)
 
-- Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
+      Note: After the OS is installed, it is defaulted to DHCP, and if a DHCP server is available and support IP reservation, no change is needed. For static IP address, use SConfig to set the static IP address, subnet, gateway, and DNS (See DNS Service Setup).
+ 
+- DNS Service setup supports 2 options:
+    - Existing DNS Service - "Yes" : If there is an existing DNS servers, the IP address and the corresponding server/cluster hostname must be added to the DNS server under a specific DNS zone. And this DNS Server IP should be setup within Nodes and Instance IP assignments in the DNS IP field. Here is an example DNS setup that can support Azure Local Deployment - See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
+    - Existing DNS Service - "No" : If there is no existing DNS servers, and no plan to have an external DNS to manage the cluster hostname resolution, this option will configure an internal infrastructure only DNS for the cluster. It will require an DNS forwarder, such as an IP gateway or public DNS server for internet endpoint resolution. (Note: this internal DNS do not support external application uses and it is intended for cluster internal infrastructure operations only).
 
 - Enable SSH on each node for remote access from the Azure portal. For instructions, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
