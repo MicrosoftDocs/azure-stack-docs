@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 06/15/2026
+ms.date: 06/18/2026
 ms.subservice: hyperconverged
 ---
 
@@ -88,7 +88,7 @@ For the 2605 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2605.1003.210 | 26100.32860 |
+| 12.2605.1003.1003 | 26100.32860 |
 
 > [!IMPORTANT]
 > The new deployments of this software use the **12.2605.1003.210** build.
