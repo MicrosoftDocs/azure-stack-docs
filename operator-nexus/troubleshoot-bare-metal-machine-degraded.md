@@ -4,7 +4,7 @@ description: Troubleshooting guide for Bare Metal Machines in 'Degraded' status 
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
-ms.date: 05/21/2025
+ms.date: 06/17/2026
 author: dougbristow
 ms.author: dbristow
 ms.reviewer: ekarandjeff
@@ -12,7 +12,7 @@ ms.reviewer: ekarandjeff
 
 # Troubleshoot _Degraded_ status errors on an Azure Operator Nexus Cluster Bare Metal Machine
 
-This document provides basic troubleshooting information for Bare Metal Machine (BMM) resources which are reporting a _Degraded_ status in the BMM detailed status message.
+This document provides basic troubleshooting information for Bare Metal Machine (BMM) resources that are reporting a _Degraded_ status in the BMM detailed status message.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Bare Metal Machines (BMM) which are in _Degraded_ state exhibit the following sy
 - Control and Management nodes can be reported as _Degraded_, but aren't automatically cordoned.
 
 | Detailed status message         | Details and mitigation                                           |
-| ------------------------------- | ---------------------------------------------------------------- |
+|---------------------------------|------------------------------------------------------------------|
 | `Degraded: NIC failed`          | [`Degraded: NIC failed`](#degraded-nic-failed)                   |
 | `Degraded: port down`           | [`Degraded: port down`](#degraded-port-down)                     |
 | `Degraded: LACP status is down` | [`Degraded: LACP status is down`](#degraded-lacp-status-is-down) |
@@ -43,8 +43,8 @@ _Degraded_ status messages and associated automatic cordoning behavior are prese
 To check for any Bare Metal Machines (BMMs) which are currently degraded, run `az networkcloud baremetalmachine list -g <ResourceGroup_Name> -o table`.
 This command shows the current status of all BMMs in the specified resource group. Any active _Degraded_ conditions are visible in the detailed status message.
 
-To see the current Cordoning status, include a `--query` parameter which specifies the `cordonStatus`, as seen in the following example.
-This command can help to identify any compute nodes which are still automatically cordoned due to recently resolved _Degraded_ conditions.
+To see the current Cordoning status, include a `--query` parameter that specifies the `cordonStatus`, as seen in the following example.
+This command can help to identify any compute nodes that are still automatically cordoned due to recently resolved _Degraded_ conditions.
 
 ```azurecli
 az networkcloud baremetalmachine list \
@@ -71,7 +71,7 @@ rack1compute04    On            Succeeded            True          Cordoned     
 Additional information about recent degraded conditions and automatic cordoning is available in the following fields on the `bmm` kubernetes resource.
 
 - `degradedStartTime` and `degradedEndTime` show the start and end time of the most recent _degraded_ state
-- `conditions` shows the status of any individual conditions which are contributing to a _degraded_ state
+- `conditions` shows the status of any individual conditions that are contributing to a _degraded_ state
 - `cordonStatus` indicates whether the node is currently cordoned or uncordoned
 - `annotations` shows which conditions triggered the current cordon, if automatically cordoned.
   - `platform.afo-nc.microsoft.com/lacp-down-cordon`
@@ -79,6 +79,8 @@ Additional information about recent degraded conditions and automatic cordoning 
   - `platform.afo-nc.microsoft.com/port-flap-cordon`
 - If the user manually cordoned the BMM, the following annotation is also present.
   - `platform.afo-nc.microsoft.com/customer-cordon`
+- If a user overrode automatic cordoning (version 2604.1 and later), the following annotation is present with a timestamp showing when the override expires.
+  - `platform.afo-nc.microsoft.com/force-uncordon-until`
 - The Activity Logs for the BMM resource in the Azure portal can also provide more information about any recent user initiated cordon requests.
 
 - The `annotations` metadata on the `bmm` kubernetes resource shows which condition triggered the cordon.
@@ -149,9 +151,27 @@ If an uncordoned Compute BMM remains in a _Degraded_ state for more than 15 minu
 
 - An automatically cordoned node will remain cordoned for 2 hours after the underlying conditions are resolved, after which it will be automatically uncordoned.
 - To uncordon a BMM manually, use the `az networkcloud baremetalmachine uncordon` command or execute the _Uncordon_ action from the Azure portal.
-- Manually uncordoning a BMM which still has an active degraded condition isn't allowed. In this case, the _Uncordon_ request is rejected with an error message similar to the following.
+
+### Uncordon a BMM that's still degraded
+
+The behavior of a manual uncordon on a BMM that still has an active degraded condition depends on the platform version.
+
+**Versions before 2604.1**: Manually uncordoning a BMM that still has an active degraded condition isn't allowed. The _Uncordon_ request is rejected with an error message similar to the following.
 
 `action rejected: baremetalmachine 'rack1compute01' currently degraded since 2025-02-26 05:26:09 +0000 UTC`
+
+**Version 2604.1 and later**: Manually uncordoning a BMM that's currently degraded and automatically cordoned succeeds and applies a 24-hour override that suppresses automatic cordoning:
+
+- The platform adds the `platform.afo-nc.microsoft.com/force-uncordon-until` annotation to the BMM, set to an expiry timestamp 24 hours in the future.
+- The override is applied only when uncordoning a BMM that has an active automatic cordon. Uncordoning a healthy BMM doesn't add the annotation.
+- While the override is active, **all** automatic cordoning of the BMM is suppressed, for both existing and any new degraded conditions.
+- Running a manual `cordon` command removes the override (and cordons the BMM as usual).
+- When the override expires after 24 hours, normal automatic cordoning resumes. If the BMM still meets the conditions for automatic cordoning at the time of expiry, the platform cordons it again immediately.
+
+To check whether an override is active, inspect the `platform.afo-nc.microsoft.com/force-uncordon-until` annotation on the `bmm` kubernetes resource, as described in the [Troubleshooting](#troubleshooting) section.
+
+> [!CAUTION]
+> The override suppresses the platform's protection against scheduling workloads on a BMM with known hardware issues. Use it only when you understand the degraded condition and need to temporarily keep the BMM schedulable, such as during planned maintenance or deployment activities.
 
 Note: only BMMs used for _Compute_ are automatically cordoned. Control and Management nodes aren't automatically cordoned.
 
@@ -197,7 +217,7 @@ To troubleshoot this issue:
 - review the `conditions` status of the kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section
 - this information should identify the affected port and approximate time of the issue
 - check the Ethernet cabling and Top Of Rack (TOR) switch for the specified port
-- check for any recent deployment or infrastructure changes which coincide with the time of failure.
+- check for any recent deployment or infrastructure changes that coincide with the time of failure.
 
 **Example `conditions` output for port down**
 
@@ -224,7 +244,7 @@ To troubleshoot this issue:
 - this information should identify the affected port and approximate time of the issue
 - check the Ethernet cabling and Top Of Rack (TOR) switch for the specified port
 - check whether any other BMMs are also reporting port or LACP issues, which might help to identify any potential mis-cabling or wider issue with the TOR switch or network configuration
-- check for any recent deployment or infrastructure changes which coincide with the time of failure
+- check for any recent deployment or infrastructure changes that coincide with the time of failure
 - for more information about diagnosing and fixing LACP issues, see [Troubleshoot LACP Bonding](./troubleshoot-lacp-bonding.md).
 
 > [!WARNING]
@@ -258,8 +278,8 @@ To troubleshoot this issue:
 - identify the affected port and approximate time of the issue by reviewing the BMM `conditions`, as described in the [Troubleshooting](#troubleshooting) section
 - check the `degradedStartTime` timestamp on the `bmm` object (if different) for more context about the overall timeline
 - check the Ethernet cabling and Top Of Rack (TOR) switch for the specified port
-- check for any other BMMs which are also reporting port flapping or link failures, for information about the scope of the issue or any common cause
-- check for any recent deployment or infrastructure changes which coincide with the time of failure.
+- check for any other BMMs that are also reporting port flapping or link failures, for information about the scope of the issue or any common cause
+- check for any recent deployment or infrastructure changes that coincide with the time of failure.
 
 **Example `conditions` output for port flapping**
 
