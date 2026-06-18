@@ -76,7 +76,7 @@ The creation of the Network Cloud specific resources is subject to the following
 | Layer 2 Networks            | 3500 per Nexus instance |
 | Layer 3 Networks            | 200 per Nexus instance |
 | Trunked Networks            | 3500 per Nexus instance |
-| Cloud Service Networks      |	10 per Nexus instance |
+| Cloud Service Networks      |	18 per Nexus instance |
 
 
 ### Other Azure resources
