@@ -91,7 +91,7 @@ For the 2605 release of Azure Local, Microsoft released the following update:
 | 12.2605.1003.1003 | 26100.32860 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2605.1003.1003** build.
+> New deployments of this software use the **12.2605.1003.1003** build.
 The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
