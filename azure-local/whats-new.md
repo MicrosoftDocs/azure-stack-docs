@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 06/05/2026
+ms.date: 06/18/2026
 ms.subservice: hyperconverged
 ---
 
@@ -39,7 +39,7 @@ This release includes various reliability improvements and bug fixes.
 
 ## Features and improvements in 2605
 
-The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.210**. For more information, see [Release information summary](./release-information-23h2.md).
+The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.1003**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
