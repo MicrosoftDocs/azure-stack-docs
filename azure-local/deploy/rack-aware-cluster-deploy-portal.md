@@ -16,7 +16,6 @@ This article describes the steps to deploy Azure Local rack aware clusters using
 ## Prerequisites
 
 - Make sure you complete the steps in [Prepare for rack aware cluster deployment](./rack-aware-cluster-deploy-prep.md).
-- Make sure that the machines you intend to use for the cluster are not joined to Active Directory before deployment.
 
 ## Deploy rack aware cluster
 
@@ -49,9 +48,6 @@ To deploy a rack aware cluster, follow the steps to [Deploy an Azure Local insta
    If the system doesn't transfer a lot of data, you can select a region that isn't close.
 
 1. Select **+ Add machines** and choose the machine or machines that make up the Azure Local instance.
-
-   > [!IMPORTANT]
-   > Machines must not be joined to Active Directory before deployment.
 
 1. On **+ Add machines** page:
     1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
