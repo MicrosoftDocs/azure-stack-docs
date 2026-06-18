@@ -185,7 +185,7 @@ Use cordon when:
 - Troubleshooting a node while keeping existing workloads running
 
 > [!NOTE]
-> The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you execute an uncordon command, it clears both your cordon and any platform-applied cordons.
+> The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you run an uncordon command, it clears both your cordon and any platform-applied cordons.
 >
 > If the node still has an active problem, this also applies a user override, which suppresses all automatic cordoning for the next 24 hours. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
