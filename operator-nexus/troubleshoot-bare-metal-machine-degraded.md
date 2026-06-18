@@ -4,10 +4,10 @@ description: Troubleshooting guide for Bare Metal Machines in 'Degraded' status 
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
-ms.date: 06/17/2026
-author: dougbristow
-ms.author: dbristow
-ms.reviewer: ekarandjeff
+ms.date: 06/18/2026
+author: robertstarling
+ms.author: robstarling
+ms.reviewer: goberfield
 ---
 
 # Troubleshoot _Degraded_ status errors on an Azure Operator Nexus Cluster Bare Metal Machine

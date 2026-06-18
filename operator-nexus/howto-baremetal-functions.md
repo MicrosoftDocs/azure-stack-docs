@@ -1,11 +1,12 @@
 ---
 title: "Azure Operator Nexus: Bare Metal Machine platform commands"
 description: Learn how to manage bare metal machines (BMM).
-author: dougbristow
-ms.author: dbristow
+author: robertstarling
+ms.author: robstarling
+ms.reviewer: goberfield
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 06/17/2026
+ms.date: 06/18/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -184,9 +185,9 @@ Use cordon when:
 - Troubleshooting a node while keeping existing workloads running
 
 > [!NOTE]
-> The platform might automatically cordon nodes due to detected hardware issues such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you execute an uncordon command, it clears both your cordon and any platform-applied cordons.
+> The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you execute an uncordon command, it clears both your cordon and any platform-applied cordons.
 >
-> In versions before 2604.1, if the node is still degraded due to an unresolved hardware issue, the uncordon is rejected. In version 2604.1 and later, the uncordon succeeds and applies a 24-hour override that suppresses automatic cordoning. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
+> If the node still has an active problem, this also applies a user override, which suppresses all automatic cordoning for the next 24 hours. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ### Drain Bare Metal Machine workloads
 
@@ -226,21 +227,18 @@ kubectl get nodes <resourceName> -ojson |jq '.metadata.labels."topology.kubernet
 
 ## Make a Bare Metal Machine schedulable (uncordon)
 
-The uncordon action removes the scheduling restriction from a bare metal machine, allowing new workloads to be placed on the node. This action is the inverse of the cordon action and is typically performed after maintenance is complete. The uncordon action also clears any automatic cordons that the platform might have applied due to detected hardware issues.
+The uncordon action removes the scheduling restriction from a bare metal machine, allowing new workloads to be placed on the node. This action is the inverse of the cordon action and is typically performed after maintenance is complete. The uncordon action also clears any automatic cordons that the platform has applied due to detected hardware issues.
 
 All workloads in a `pending` state on the Bare Metal Machine are `restarted` when the Bare Metal Machine is `uncordoned`.
 
 Use uncordon when:
 
 - Maintenance is complete and the node should resume normal scheduling
-- A hardware issue has been resolved and the automatic cordon should be cleared
+- A hardware problem is resolved and the automatic cordon should be cleared
 - The node is ready to accept new workloads again
 
 > [!NOTE]
-> For compute nodes that are degraded due to a hardware issue and which the platform has automatically cordoned, the uncordon behavior depends on the platform version:
->
-> - In versions before 2604.1, the uncordon action is rejected until the underlying hardware issue is resolved. The error message indicates the node is degraded and which condition is preventing uncordon. This protection prevents accidentally scheduling workloads on nodes with known hardware issues.
-> - In version 2604.1 and later, the uncordon succeeds and applies a temporary override that suppresses automatic cordoning for 24 hours. See [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
+> For compute nodes that the platform has automatically cordoned due to a hardware issue, the uncordon action also applies a temporary override. This override suppresses any further automatic cordoning for 24 hours. See [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ```azurecli
 az networkcloud baremetalmachine uncordon \
@@ -251,9 +249,7 @@ az networkcloud baremetalmachine uncordon \
 
 ### Override automatic cordoning of a degraded machine
 
-The platform automatically cordons a compute Bare Metal Machine that stays in a _Degraded_ state for more than 15 minutes. In versions before 2604.1, uncordoning a machine that's still degraded was rejected, which could block legitimate maintenance and deployment activities.
-
-Starting in version 2604.1, when uncordoning a machine that's currently degraded and automatically cordoned, the uncordon succeeds and the platform applies a 24-hour override:
+The platform automatically cordons a compute Bare Metal Machine that stays in a _Degraded_ state for more than 15 minutes. Uncordoning a machine while it's still degraded removes the cordon and applies an override, which prevents new automatic cordons for 24 hours.
 
 - The platform adds the `platform.afo-nc.microsoft.com/force-uncordon-until` annotation to the Bare Metal Machine with an expiry timestamp 24 hours in the future.
 - The override is only applied when uncordoning a machine that has an active automatic cordon. Uncordoning a healthy machine doesn't add the annotation.
