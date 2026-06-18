@@ -4,9 +4,9 @@ description: Troubleshooting guide for Bare Metal Machines Warning status messag
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
-ms.date: 08/12/2025
-author: dougbristow
-ms.author: dbristow
+ms.date: 06/16/2026
+author: mbethi527
+ms.author: mbethi
 ms.reviewer: ekarandjeff
 ---
 
@@ -103,9 +103,9 @@ You can also check for any potentially related recent lifecycle actions (such as
 
 ## `Warning: PXE port is unhealthy`
 
-This message in the BMM _Detailed status message_ field indicates a problem with network connectivity on the Preboot Execution Environment (PXE) Ethernet port on the underlying compute host.
+This message in the BMM _Detailed status message_ field indicates a problem with network connectivity on the Preboot Execution Environment (PXE) Ethernet port on the underlying bare metal host.
 The PXE port is used during provisioning and upgrades to download the operating system image and other software components.
-PXE connectivity issues shouldn't directly affect customer workloads running on a compute host.
+PXE connectivity issues don't directly affect customer workloads running on a bare metal host.
 However they can cause failures in BMM lifecycle operations such as the following.
 
 - Cluster Provisioning
@@ -147,7 +147,7 @@ This message in the BMM _Detailed status message_ field indicates that either:
 - the underlying host is powered off when it should be on, or
 - the underlying host is powered on when it should be off.
 
-This message can indicate an issue with the underlying compute host or baseboard management controller (BMC).
+This message can indicate an issue with the underlying bare metal host or baseboard management controller (BMC).
 
 To troubleshoot this issue:
 
