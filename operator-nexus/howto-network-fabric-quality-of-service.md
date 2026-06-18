@@ -33,14 +33,16 @@ Use 'Disabled' to turn QoS off
 
 ### Enable configuration lock: 
 ```Azure CLI
-az networkfabric fabric configuration-lock enable \ 
+az networkfabric fabric lock-fabric \ 
   --subscription XXX_SUBSCRIPTION_ID \ 
   --resource-group XXX_RESOURCE_GROUP \ 
-  --resource-name XXX_FABRIC_NAME 
+  --network-fabric-name XXX_FABRIC_NAME \
+  --lock-type Configuration \
+  --action Lock
 ```
 ### Commit configuration: 
 ```Azure CLI
-az networkfabric fabric commit \ 
+az networkfabric fabric commit-configuration \ 
   --subscription XXX_SUBSCRIPTION_ID \ 
   --resource-group XXX_RESOURCE_GROUP \ 
   --resource-name XXX_FABRIC_NAME 
