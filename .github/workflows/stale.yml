@@ -23,7 +23,7 @@ jobs:
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-pr-stale: 7
-        days-before-pr-close: 7
+        days-before-pr-close: 14
         stale-pr-label: inactive
         close-pr-label: auto-close
         exempt-pr-labels: keep-open
