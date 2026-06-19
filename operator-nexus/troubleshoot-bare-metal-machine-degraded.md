@@ -79,7 +79,7 @@ Additional information about recent degraded conditions and automatic cordoning 
   - `platform.afo-nc.microsoft.com/port-flap-cordon`
 - If the user manually cordoned the BMM, the following annotation is also present.
   - `platform.afo-nc.microsoft.com/customer-cordon`
-- If a user overrides automatic cordoning while the BMM is still degraded, the following annotation indicates the override expiry time.
+- If you override automatic cordoning while the BMM is still degraded, the following annotation indicates the override expiry time.
   - `platform.afo-nc.microsoft.com/force-uncordon-until`
 - The Activity Logs for the BMM resource in the Azure portal can also provide more information about any recent user initiated cordon requests.
 
