@@ -201,6 +201,8 @@
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Rotate Credential API
+              href: howto-rotate-credential-api.md
             - name: Certificate Rotation
               href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault
