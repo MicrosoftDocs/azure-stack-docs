@@ -94,6 +94,8 @@ Where-Object { ($_.Status -ne "Success") -and ($_.Severity -ne "Informational") 
 Format-List Title, Status, Severity, Description, Remediation
 ```
 
+By default an update in the `ReadyToInstall` state will transition to a `HealthCheckExpired` state after three days. If an update installation is triggered in this state, the health check will be repeated prior to starting the installation action plan.
+
 For help with troubleshooting health check failures, see [Troubleshoot updates](update-troubleshooting-23h2.md).
 
 ## Monitor the preparation phase
