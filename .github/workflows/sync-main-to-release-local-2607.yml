@@ -1,0 +1,16 @@
+name: "Sync main → release-local-2607"
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # 11:00 AM UTC daily
+  workflow_dispatch:        # Allow manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    uses: ./.github/workflows/sync-main-to-release-template.yml
+    with:
+      release_branch: release-local-2607
+    secrets: inherit
