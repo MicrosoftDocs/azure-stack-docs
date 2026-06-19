@@ -79,7 +79,7 @@ Additional information about recent degraded conditions and automatic cordoning 
   - `platform.afo-nc.microsoft.com/port-flap-cordon`
 - If the user manually cordoned the BMM, the following annotation is also present.
   - `platform.afo-nc.microsoft.com/customer-cordon`
-- If a user overrode automatic cordoning (version 2604.1 and later), the following annotation is present with a timestamp showing when the override expires.
+- If a user overrode automatic cordoning while the BMM was still degraded, the following annotation is present with a timestamp showing when the override expires.
   - `platform.afo-nc.microsoft.com/force-uncordon-until`
 - The Activity Logs for the BMM resource in the Azure portal can also provide more information about any recent user initiated cordon requests.
 
@@ -154,13 +154,9 @@ If an uncordoned Compute BMM remains in a _Degraded_ state for more than 15 minu
 
 ### Uncordon a BMM that's still degraded
 
-The behavior of a manual uncordon on a BMM that still has an active degraded condition depends on the platform version.
+The behavior of a manual uncordon on a BMM that still has an active degraded condition 
 
-**Versions before 2604.1**: Manually uncordoning a BMM that still has an active degraded condition isn't allowed. The _Uncordon_ request is rejected with an error message similar to the following.
-
-`action rejected: baremetalmachine 'rack1compute01' currently degraded since 2025-02-26 05:26:09 +0000 UTC`
-
-**Version 2604.1 and later**: Manually uncordoning a BMM that's currently degraded and automatically cordoned succeeds and applies a 24-hour override that suppresses automatic cordoning:
+Manually uncordoning a BMM while it still has an active degraded condition also applies an override, which suppresses further automatic cordoning for the next 24 hours.
 
 - The platform adds the `platform.afo-nc.microsoft.com/force-uncordon-until` annotation to the BMM, set to an expiry timestamp 24 hours in the future.
 - The override is applied only when uncordoning a BMM that has an active automatic cordon. Uncordoning a healthy BMM doesn't add the annotation.
