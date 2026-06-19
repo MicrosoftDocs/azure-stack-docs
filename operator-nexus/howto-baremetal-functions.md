@@ -1,11 +1,12 @@
 ---
 title: "Azure Operator Nexus: Bare Metal Machine platform commands"
 description: Learn how to manage bare metal machines (BMM).
-author: dougbristow
-ms.author: dbristow
+author: robertstarling
+ms.author: robstarling
+ms.reviewer: goberfield
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 03/11/2026
+ms.date: 06/18/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
@@ -32,15 +33,15 @@ The Cordon action without the `evacuate` parameter isn't considered disruptive w
 
 The following table summarizes each action to help you select the appropriate operation for your scenario:
 
-| Action    | Purpose                                         | Data Loss | Downtime | Hardware Change | Timeout     |
-|-----------|-------------------------------------------------|-----------|----------|-----------------|-------------|
-| Cordon    | Mark node unschedulable                         | None      | None     | No              | 10 minutes  |
-| Uncordon  | Remove scheduling restriction                   | None      | None     | No              | 10 minutes  |
-| Power off | Gracefully power down the machine               | None      | Yes      | No              | 40 minutes  |
-| Start     | Power on a machine                              | None      | Recovery | No              | 30 minutes  |
-| Restart   | Reboot the machine while preserving OS and data | None      | Minutes  | No              | 40 minutes  |
-| Reimage   | Reinstall the OS image on existing hardware     | OS disk only | Hours    | No              | 3 hours     |
-| Replace   | Swap physical hardware with new machine         | Depends on storage policy | Hours    | Yes             | 4 hours     |
+| Action    | Purpose                                         | Data Loss                 | Downtime | Hardware Change | Timeout    |
+|-----------|-------------------------------------------------|---------------------------|----------|-----------------|------------|
+| Cordon    | Mark node unschedulable                         | None                      | None     | No              | 10 minutes |
+| Uncordon  | Remove scheduling restriction                   | None                      | None     | No              | 10 minutes |
+| Power off | Gracefully power down the machine               | None                      | Yes      | No              | 40 minutes |
+| Start     | Power on a machine                              | None                      | Recovery | No              | 30 minutes |
+| Restart   | Reboot the machine while preserving OS and data | None                      | Minutes  | No              | 40 minutes |
+| Reimage   | Reinstall the OS image on existing hardware     | OS disk only              | Hours    | No              | 3 hours    |
+| Replace   | Swap physical hardware with new machine         | Depends on storage policy | Hours    | Yes             | 4 hours    |
 
 > [!NOTE]
 > Replace data impact depends on the `--storage-policy` parameter: `DiscardAll` (default) resets the RAID controller and wipes all data; `Preserve` retains tenant data on virtual disks. See [Choose the right storage policy](#choose-the-right-storage-policy) for guidance on which value to use. The `Preserve` option is available in API version 2025-07-01-preview and later.
@@ -89,14 +90,14 @@ Use the following guidance to determine which action best fits your situation:
 Control plane nodes require extra caution when performing lifecycle actions. The platform implements special handling for control plane nodes to maintain cluster quorum and availability:
 
 - **One at a time**: The platform prevents multiple concurrent disruptive actions (restart, reimage, replace) on control plane nodes. If another control plane node is already undergoing a disruptive action, new requests are blocked until that action completes and the node rejoins the cluster.
-- **Quorum safety**: The platform verifies that sufficient healthy control plane nodes remain before allowing disruptive operations. Actions may be rejected if proceeding would break cluster quorum.
+- **Quorum safety**: The platform verifies that sufficient healthy control plane nodes remain before allowing disruptive operations. Actions might be rejected if proceeding would break cluster quorum.
 - **Extended coordination**: Restart, reimage, and replace actions on control plane nodes include extra steps to safely remove and rejoin the node to the control plane.
 
 ## Action locking
 
 Only one lifecycle action can run on a BMM at a time. If you attempt to start a new action while another is in progress, the request is rejected. Before starting a new action:
 
-- Verify any previous action has completed by checking the BMM's `actionStates` in the Azure portal or via the API
+- Verify that any previous action is complete by checking the BMM's `actionStates` in the Azure portal or via the API.
 - If an action appears stuck, investigate the root cause before attempting another action
 
 [!INCLUDE [caution-affect-cluster-integrity](./includes/baremetal-machines/caution-affect-cluster-integrity.md)]
@@ -113,7 +114,7 @@ Only one lifecycle action can run on a BMM at a time. If you attempt to start a 
 The power-off action gracefully shuts down a bare metal machine, making it unavailable to the cluster while preserving its data. The machine remains in a powered-off state until explicitly started again. This action is useful for maintenance scenarios where the hardware needs to be offline but no reprovisioning is required.
 
 > [!IMPORTANT]
-> There are rare cases where running Nexus VMs fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
+> Rarely, running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
 
 Use the `power-off` command when the machine needs to be taken completely offline, such as for physical maintenance that requires the machine to be powered down or to reduce power consumption for unused capacity.
 
@@ -133,7 +134,7 @@ The start action powers on a bare metal machine that was previously powered off,
 Use the `start` command when a powered-off machine needs to be brought back online, such as recovering from a power-off action or restoring capacity after maintenance.
 
 > [!NOTE]
-> After a start operation, if the machine was cordoned before being powered off, you may need to execute an [`uncordon`](#make-a-bare-metal-machine-schedulable-uncordon) command to allow workloads to be scheduled on the node.
+> After a start operation, if you cordoned the machine before powering it off, you might need to run an [`uncordon`](#make-a-bare-metal-machine-schedulable-uncordon) command to allow workloads to be scheduled on the node.
 
 This command will `start` the specified `bareMetalMachineName`.
 
@@ -149,7 +150,7 @@ az networkcloud baremetalmachine start \
 The restart action performs a controlled reboot of the bare metal machine. Unlike power-off followed by start, the restart action coordinates the shutdown and startup as a single operation, ensuring workloads are gracefully terminated and the machine rejoins the cluster after rebooting. The operating system and all data on the machine are preserved.
 
 > [!IMPORTANT]
-> There are rare cases where running Nexus VMs fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
+> In rare cases, running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
 
 Use the `restart` command when the machine is unresponsive but hardware is healthy, a reboot is needed to apply configuration changes, or temporary software issues need to be cleared. The restart action is the least disruptive operation among those that cause downtime.
 
@@ -184,7 +185,9 @@ Use cordon when:
 - Troubleshooting a node while keeping existing workloads running
 
 > [!NOTE]
-> The platform may automatically cordon nodes due to detected hardware issues such as port flapping, NIC failures, or LACP issues. When you execute an uncordon command, it clears both your cordon and any platform-applied cordons. However, if the node is still degraded due to an unresolved hardware issue, the uncordon is rejected.
+> The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you run an uncordon command, it clears both your cordon and any platform-applied cordons.
+>
+> If the node still has an active problem, this user override suppresses all automatic cordoning for the next 24 hours. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ### Drain Bare Metal Machine workloads
 
@@ -224,18 +227,18 @@ kubectl get nodes <resourceName> -ojson |jq '.metadata.labels."topology.kubernet
 
 ## Make a Bare Metal Machine schedulable (uncordon)
 
-The uncordon action removes the scheduling restriction from a bare metal machine, allowing new workloads to be placed on the node. This action is the inverse of the cordon action and is typically performed after maintenance is complete. The uncordon action also clears any automatic cordons that the platform may have applied due to detected hardware issues.
+The uncordon action removes the scheduling restriction from a bare metal machine, so you can place new workloads on the node. This action is the inverse of the cordon action. Typically, you perform it after maintenance is complete. The uncordon action also clears any automatic cordons that the platform applies due to detected hardware problems.
 
 All workloads in a `pending` state on the Bare Metal Machine are `restarted` when the Bare Metal Machine is `uncordoned`.
 
 Use uncordon when:
 
 - Maintenance is complete and the node should resume normal scheduling
-- A hardware issue has been resolved and the auto-cordon should be cleared
+- A hardware problem is resolved and the automatic cordon should be cleared
 - The node is ready to accept new workloads again
 
 > [!NOTE]
-> For compute nodes, if the node is degraded due to a hardware issue and was automatically cordoned by the platform, the uncordon action is rejected until the underlying hardware issue is resolved. The error message indicates the node is degraded and which condition is preventing uncordon. This protection prevents accidentally scheduling workloads on nodes with known hardware issues.
+> For compute nodes that the platform automatically cordons due to a hardware problem, the uncordon action also applies a temporary override. This override suppresses any further automatic cordoning for 24 hours. To learn more, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ```azurecli
 az networkcloud baremetalmachine uncordon \
@@ -243,6 +246,25 @@ az networkcloud baremetalmachine uncordon \
   --resource-group <resourceGroup> \
   --subscription <subscriptionID>
 ```
+
+### Override automatic cordoning of a degraded machine
+
+The platform automatically cordons a compute Bare Metal Machine that stays in a _Degraded_ state for more than 15 minutes. Uncordoning a machine while it's still degraded removes the cordon and applies an override, which prevents new automatic cordons for 24 hours.
+
+- The platform adds the `platform.afo-nc.microsoft.com/force-uncordon-until` annotation to the Bare Metal Machine with an expiry timestamp 24 hours in the future.
+- The override is only applied when uncordoning a machine that has an active automatic cordon. Uncordoning a healthy machine doesn't add the annotation.
+
+While the override is active:
+
+- All automatic cordoning of the machine is suppressed, even if degraded conditions persist or recur.
+- Running a manual `cordon` command removes the override (and cordons the machine as usual).
+
+When the override expires after 24 hours, normal automatic cordoning resumes. If the machine still meets the conditions for automatic cordoning at the time of expiry, the platform cordons it again immediately.
+
+> [!CAUTION]
+> The override suppresses the platform's protection against scheduling workloads on a machine with known hardware issues. Use it only when you understand the degraded condition and need to temporarily keep the machine schedulable, such as during planned maintenance or deployment activities.
+
+For more information about degraded conditions, automatic cordoning, and monitoring the override, see [Troubleshoot Degraded status errors](./troubleshoot-bare-metal-machine-degraded.md).
 
 ## Reimage a Bare Metal Machine
 
@@ -255,7 +277,7 @@ This process **redeploys** the runtime image on the target Bare Metal Machine an
 
 Use reimage when:
 
-- The OS has become corrupted or unstable
+- The OS is corrupted or unstable
 - A clean slate is needed without changing hardware
 - Software configuration has drifted beyond recovery
 
@@ -286,7 +308,7 @@ az networkcloud baremetalmachine reimage \
 
 ## Replace a Bare Metal Machine
 
-The replace action integrates new or repaired physical hardware into the cluster. Before provisioning the new hardware, the system validates that the replacement hardware meets requirements by testing BMC connectivity, verifying credentials, and checking network links. After validation passes, the old machine is deprovisioned and the replacement hardware is provisioned with a fresh OS image. The machine then rejoins the cluster with the same logical identity.
+The replace action integrates new or repaired physical hardware into the cluster. Before the system begins provisioning the new hardware, it validates that the replacement hardware meets requirements by testing BMC connectivity, verifying credentials, and checking network links. After validation passes, the old machine is deprovisioned and the replacement hardware is provisioned with a fresh OS image. The machine then rejoins the cluster with the same logical identity.
 
 After replacing components such as motherboard or Network Interface Card (NIC), the MAC address of Bare Metal Machine changes; however, the iDRAC IP address and hostname remain the same.
 A `replace` **must** be executed after each hardware maintenance operation, read through [Best practices for a Bare Metal Machine replace](./howto-bare-metal-best-practices.md#best-practices-for-a-bare-metal-machine-replace) for more details.
@@ -300,17 +322,17 @@ Use replace when:
 
 ### Choose the right storage policy
 
-The `--storage-policy` parameter controls whether tenant data on the BMM's virtual disks is preserved or wiped during a replace operation. Choosing the wrong value can result in unnecessary data loss or a failed replace. Use the following decision table to determine the correct value:
+The `--storage-policy` parameter controls whether tenant data on the BMM's virtual disks is preserved or wiped during a replace operation. Choosing the wrong value can result in unnecessary data loss or a failed replace action. Use the following decision table to determine the correct value:
 
-| Scenario | Storage policy | Reason |
-|----------|---------------|--------|
-| **New deployment** with no existing workloads on the BMM | `DiscardAll` | Clean slate; no tenant data to preserve |
-| **Existing instance**: BMM motherboard was replaced | `DiscardAll` | `Preserve` is known to cause replace failures after motherboard swap |
-| **Existing instance**: RAID controller or storage backplane replaced | `DiscardAll` | `Preserve` is known to cause replace failures after RAID controller or backplane swap |
-| **Existing instance**: BMM has been offline and unavailable for 30+ days | `DiscardAll` | Machine can't be brought up using normal operations; storage encryption keys may no longer be valid |
-| **Existing instance**: BMM has no workloads running | `DiscardAll` | No tenant data at risk |
-| **Existing instance**: BMM has running workloads and none of the above conditions apply | `Preserve` | Retains tenant data on virtual disks |
-| **Existing instance**: Unsure of workload status and none of the above conditions apply | `Preserve` | Cautious approach to avoid unnecessary data loss |
+| Scenario                                                                                | Storage policy | Reason                                                                                                |
+|-----------------------------------------------------------------------------------------|----------------|-------------------------------------------------------------------------------------------------------|
+| **New deployment** with no existing workloads on the BMM                                | `DiscardAll`   | Clean slate; no tenant data to preserve                                                               |
+| **Existing instance**: BMM motherboard was replaced                                     | `DiscardAll`   | `Preserve` is known to cause replace failures after motherboard swap                                  |
+| **Existing instance**: RAID controller or storage backplane replaced                    | `DiscardAll`   | `Preserve` is known to cause replace failures after RAID controller or backplane swap                 |
+| **Existing instance**: BMM has been offline and unavailable for 30+ days                | `DiscardAll`   | Machine can't be brought up using normal operations; storage encryption keys might no longer be valid |
+| **Existing instance**: BMM has no workloads running                                     | `DiscardAll`   | No tenant data at risk                                                                                |
+| **Existing instance**: BMM has running workloads and none of the above conditions apply | `Preserve`     | Retains tenant data on virtual disks                                                                  |
+| **Existing instance**: Unsure of workload status and none of the above conditions apply | `Preserve`     | Cautious approach to avoid unnecessary data loss                                                      |
 
 > [!CAUTION]
 > Always verify which scenario applies before choosing a storage policy. If you select `DiscardAll`, **all data on the virtual disks is permanently deleted**. If you're uncertain and none of the `DiscardAll` conditions above apply, use `Preserve`.
@@ -318,11 +340,11 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 > [!IMPORTANT]
 > Do **not** use `--storage-policy Preserve` when:
 >
-> - The BMM **motherboard has been replaced** — this is known to cause replace failures.
-> - The BMM **RAID controller or storage backplane have been replaced** — this is known to cause replace failures.
-> - The BMM has been **offline and unavailable for 30 days or longer** — storage encryption keys may no longer be valid, and the machine can't be brought up using normal operations.
+> - The BMM **motherboard has been replaced** - this is known to cause replace failures.
+> - The BMM **RAID controller or storage backplane have been replaced** - this is known to cause replace failures.
+> - The BMM has been **offline and unavailable for 30 days or longer** - storage encryption keys might no longer be valid, and the machine can't be brought up using normal operations.
 >
-> If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane were **not** replaced and the BMM was **not** offline for 30+ days, the issue may require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
+> If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane **weren't** replaced and the BMM **wasn't** offline for 30+ days, the issue might require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
 >
 > If local path storage decryption failures persist after a Replace with `DiscardAll`, perform an iDRAC reset before retrying.
 
