@@ -1,5 +1,11 @@
 # Reusable workflow: merges main into a specified release branch.
 # Call this from a per-branch scheduler workflow.
+# Because release branches are protected (requiring status checks and
+# restricting direct pushes), this workflow merges via a pull request:
+#   1. A temporary sync branch is created and pushed.
+#   2. A PR is opened targeting the release branch.
+#   3. Auto-merge is enabled so the PR merges automatically once all
+#      required status checks (e.g. OpenPublishing.Build) pass.
 # On merge conflict, the job fails and @sethmanheim is mentioned in the
 # workflow run summary so GitHub sends a failure notification.
 
@@ -15,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -37,19 +44,45 @@ jobs:
       - name: Fetch latest main
         run: git fetch origin main
 
-      - name: Attempt merge of main into ${{ inputs.release_branch }}
-        id: merge
+      - name: Check whether sync is needed
+        id: check
         run: |
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "Branch ${{ inputs.release_branch }} is already up to date with main."
+            echo "needs_sync=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_sync=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Attempt merge on a temporary sync branch
+        id: merge
+        if: steps.check.outputs.needs_sync == 'true'
+        run: |
+          SYNC_BRANCH="sync/main-to-${{ inputs.release_branch }}-$(date +%Y%m%dT%H%M%S)"
+          git checkout -b "$SYNC_BRANCH"
           if git merge origin/main --no-edit; then
             echo "merge_status=success" >> "$GITHUB_OUTPUT"
+            echo "sync_branch=$SYNC_BRANCH" >> "$GITHUB_OUTPUT"
+            git push origin "$SYNC_BRANCH"
           else
             echo "merge_status=conflict" >> "$GITHUB_OUTPUT"
             git merge --abort
           fi
 
-      - name: Push merged branch
+      - name: Open pull request and enable auto-merge
         if: steps.merge.outputs.merge_status == 'success'
-        run: git push origin ${{ inputs.release_branch }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_URL=$(gh pr create \
+            --title "🔄 Sync: main → ${{ inputs.release_branch }}" \
+            --body "Automated daily sync of \`main\` into \`${{ inputs.release_branch }}\`. Created by the sync workflow." \
+            --base "${{ inputs.release_branch }}" \
+            --head "${{ steps.merge.outputs.sync_branch }}")
+          echo "PR created: $PR_URL"
+          gh pr merge --auto --merge "$PR_URL" \
+            && echo "Auto-merge enabled — PR will merge once required checks pass." \
+            || echo "::warning::Auto-merge could not be enabled; please merge $PR_URL manually once checks pass."
 
       - name: Annotate run summary on conflict and fail
         if: steps.merge.outputs.merge_status == 'conflict'
