@@ -12,7 +12,7 @@ ms.reviewer: goberfield
 
 # Troubleshoot _Degraded_ status errors on an Azure Operator Nexus Cluster Bare Metal Machine
 
-This document provides basic troubleshooting information for Bare Metal Machine (BMM) resources that are reporting a _Degraded_ status in the BMM detailed status message.
+This article provides basic troubleshooting information for Bare Metal Machine (BMM) resources that report a _Degraded_ status in the BMM detailed status message.
 
 ## Prerequisites
 
@@ -43,8 +43,8 @@ _Degraded_ status messages and associated automatic cordoning behavior are prese
 To check for any Bare Metal Machines (BMMs) which are currently degraded, run `az networkcloud baremetalmachine list -g <ResourceGroup_Name> -o table`.
 This command shows the current status of all BMMs in the specified resource group. Any active _Degraded_ conditions are visible in the detailed status message.
 
-To see the current Cordoning status, include a `--query` parameter that specifies the `cordonStatus`, as seen in the following example.
-This command can help to identify any compute nodes that are still automatically cordoned due to recently resolved _Degraded_ conditions.
+To see the current cordoning status, include a `--query` parameter that specifies the `cordonStatus`, as shown in the following example.
+This command can help you identify any compute nodes that are still automatically cordoned due to recently resolved _Degraded_ conditions.
 
 ```azurecli
 az networkcloud baremetalmachine list \
@@ -71,7 +71,7 @@ rack1compute04    On            Succeeded            True          Cordoned     
 Additional information about recent degraded conditions and automatic cordoning is available in the following fields on the `bmm` kubernetes resource.
 
 - `degradedStartTime` and `degradedEndTime` show the start and end time of the most recent _degraded_ state
-- `conditions` shows the status of any individual conditions that are contributing to a _degraded_ state
+- `conditions` shows the status of any individual conditions that are contributing to a _degraded_ state.
 - `cordonStatus` indicates whether the node is currently cordoned or uncordoned
 - `annotations` shows which conditions triggered the current cordon, if automatically cordoned.
   - `platform.afo-nc.microsoft.com/lacp-down-cordon`

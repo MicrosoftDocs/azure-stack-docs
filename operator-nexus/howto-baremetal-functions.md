@@ -97,7 +97,7 @@ Control plane nodes require extra caution when performing lifecycle actions. The
 
 Only one lifecycle action can run on a BMM at a time. If you attempt to start a new action while another is in progress, the request is rejected. Before starting a new action:
 
-- Verify any previous action is complete by checking the BMM's `actionStates` in the Azure portal or via the API
+- Verify that any previous action is complete by checking the BMM's `actionStates` in the Azure portal or via the API.
 - If an action appears stuck, investigate the root cause before attempting another action
 
 [!INCLUDE [caution-affect-cluster-integrity](./includes/baremetal-machines/caution-affect-cluster-integrity.md)]
@@ -114,7 +114,7 @@ Only one lifecycle action can run on a BMM at a time. If you attempt to start a 
 The power-off action gracefully shuts down a bare metal machine, making it unavailable to the cluster while preserving its data. The machine remains in a powered-off state until explicitly started again. This action is useful for maintenance scenarios where the hardware needs to be offline but no reprovisioning is required.
 
 > [!IMPORTANT]
-> There are rare cases where running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
+> Rarely, running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
 
 Use the `power-off` command when the machine needs to be taken completely offline, such as for physical maintenance that requires the machine to be powered down or to reduce power consumption for unused capacity.
 
@@ -134,7 +134,7 @@ The start action powers on a bare metal machine that was previously powered off,
 Use the `start` command when a powered-off machine needs to be brought back online, such as recovering from a power-off action or restoring capacity after maintenance.
 
 > [!NOTE]
-> After a start operation, if the machine was cordoned before being powered off, you might need to execute an [`uncordon`](#make-a-bare-metal-machine-schedulable-uncordon) command to allow workloads to be scheduled on the node.
+> After a start operation, if you cordoned the machine before powering it off, you might need to run an [`uncordon`](#make-a-bare-metal-machine-schedulable-uncordon) command to allow workloads to be scheduled on the node.
 
 This command will `start` the specified `bareMetalMachineName`.
 
@@ -150,7 +150,7 @@ az networkcloud baremetalmachine start \
 The restart action performs a controlled reboot of the bare metal machine. Unlike power-off followed by start, the restart action coordinates the shutdown and startup as a single operation, ensuring workloads are gracefully terminated and the machine rejoins the cluster after rebooting. The operating system and all data on the machine are preserved.
 
 > [!IMPORTANT]
-> There are rare cases where running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
+> In rare cases, running Nexus virtual machines fail to relaunch after BMM shutdown or restart. To prevent these cases, power off any virtual machines on the BMM before powering off or restarting the BMM. See the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command for instructions on finding the workloads running on a BMM.
 
 Use the `restart` command when the machine is unresponsive but hardware is healthy, a reboot is needed to apply configuration changes, or temporary software issues need to be cleared. The restart action is the least disruptive operation among those that cause downtime.
 
@@ -187,7 +187,7 @@ Use cordon when:
 > [!NOTE]
 > The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you run an uncordon command, it clears both your cordon and any platform-applied cordons.
 >
-> If the node still has an active problem, this also applies a user override, which suppresses all automatic cordoning for the next 24 hours. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
+> If the node still has an active problem, this user override suppresses all automatic cordoning for the next 24 hours. For more information, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ### Drain Bare Metal Machine workloads
 
@@ -227,7 +227,7 @@ kubectl get nodes <resourceName> -ojson |jq '.metadata.labels."topology.kubernet
 
 ## Make a Bare Metal Machine schedulable (uncordon)
 
-The uncordon action removes the scheduling restriction from a bare metal machine, allowing new workloads to be placed on the node. This action is the inverse of the cordon action and is typically performed after maintenance is complete. The uncordon action also clears any automatic cordons that the platform has applied due to detected hardware issues.
+The uncordon action removes the scheduling restriction from a bare metal machine, so you can place new workloads on the node. This action is the inverse of the cordon action. Typically, you perform it after maintenance is complete. The uncordon action also clears any automatic cordons that the platform applies due to detected hardware problems.
 
 All workloads in a `pending` state on the Bare Metal Machine are `restarted` when the Bare Metal Machine is `uncordoned`.
 
