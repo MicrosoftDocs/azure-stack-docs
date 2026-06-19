@@ -284,6 +284,8 @@
           href: ./multi-rack/resource-manager-quickstart.md
         - name: Use MetalLB using Azure CLI
           href: ./multi-rack/deploy-load-balancer-cli.md
+        - name: Use Azure RBAC
+          href: ./multi-rack/use-azure-rbac.md
         - name: Monitoring and logging
           items:
           - name: Enable container insights
