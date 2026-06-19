@@ -16,10 +16,42 @@ Users can enable or disable QoS via Azure CLI.
 ## Prerequisites 
 
 - Use supported API and Fabric version.  
-- Fabric must be in a state that allows updates (not in an immutable provisioning phase). 
- 
+- Fabric must be in a state that allows updates (not in an immutable provisioning phase).
+- States that allow fabric update:
 
-## Option 1—Azure CLI 
+    #### Network Fabric Update (PATCH) — Allowed & Blocked States
+    
+    ##### Configuration State
+    
+    | Allowed ✅ | Blocked ❌ |
+    |-----------|-----------|
+    | Succeeded | Provisioning |
+    | Provisioned | Deprovisioning |
+    | Deprovisioned | Rejected |
+    | ErrorProvisioning | DeferredControl |
+    | ErrorDeprovisioning | PendingCommit |
+    | Accepted | PendingAdministrativeUpdate |
+    | Failed | CommitStaged |
+    | | CommitStageFailed |
+    | | CommitRollbackFailed |
+    | | Initializing |
+    
+    ##### Lock States
+    
+    | Lock Type | Allowed ✅ | Blocked ❌ |
+    |-----------|-----------|-----------|
+    | Administrative Lock | Disabled | Enabled |
+    | Configuration Lock (Commit Lock) | Disabled | Enabled |
+    
+    ##### Under Maintenance — Exempted Reasons (PATCH still allowed)
+    
+    | Reason |
+    |--------|
+    | NniUpdateInProgress |
+    | ControlPlaneAclsUpdated |
+    | TrustedIpPrefixesUpdated |
+    
+    Any other `UnderMaintenance` reason → ❌ PATCH blocked
 
 ### Enable (or disable) QoS on a fabric: 
 ```Azure CLI
@@ -47,6 +79,8 @@ az networkfabric fabric commit-configuration \
   --resource-group XXX_RESOURCE_GROUP \ 
   --resource-name XXX_FABRIC_NAME 
 ```
+
+Note: The commit-configuration will remove the Configuration lock on Fabric
 
 ## Feature behavior & traffic classification 
 
