@@ -55,28 +55,28 @@ Users can enable or disable QoS via Azure CLI.
 
 ### Enable (or disable) QoS on a fabric: 
 ```Azure CLI
-az networkfabric fabric update \ 
-  --subscription XXX_SUBSCRIPTION_ID \ 
-  --resource-group XXX_RESOURCE_GROUP \ 
-  --resource-name XXX_FABRIC_NAME \ 
+az networkfabric fabric update \
+  --subscription XXX_SUBSCRIPTION_ID \
+  --resource-group XXX_RESOURCE_GROUP \
+  --resource-name XXX_FABRIC_NAME \
   --qos-configuration "{qosConfigurationState:'Enabled'}" 
  ```
 Use 'Disabled' to turn QoS off 
 
 ### Enable configuration lock: 
 ```Azure CLI
-az networkfabric fabric lock-fabric \ 
-  --subscription XXX_SUBSCRIPTION_ID \ 
-  --resource-group XXX_RESOURCE_GROUP \ 
+az networkfabric fabric lock-fabric \
+  --subscription XXX_SUBSCRIPTION_ID \
+  --resource-group XXX_RESOURCE_GROUP \
   --network-fabric-name XXX_FABRIC_NAME \
   --lock-type Configuration \
   --action Lock
 ```
 ### Commit configuration: 
 ```Azure CLI
-az networkfabric fabric commit-configuration \ 
-  --subscription XXX_SUBSCRIPTION_ID \ 
-  --resource-group XXX_RESOURCE_GROUP \ 
+az networkfabric fabric commit-configuration \
+  --subscription XXX_SUBSCRIPTION_ID \
+  --resource-group XXX_RESOURCE_GROUP \
   --resource-name XXX_FABRIC_NAME 
 ```
 
