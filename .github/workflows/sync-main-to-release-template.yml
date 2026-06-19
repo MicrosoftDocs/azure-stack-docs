@@ -74,15 +74,33 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          PR_URL=$(gh pr create \
-            --title "🔄 Sync: main → ${{ inputs.release_branch }}" \
-            --body "Automated daily sync of \`main\` into \`${{ inputs.release_branch }}\`. Created by the sync workflow." \
-            --base "${{ inputs.release_branch }}" \
-            --head "${{ steps.merge.outputs.sync_branch }}")
-          echo "PR created: $PR_URL"
-          gh pr merge --auto --merge "$PR_URL" \
-            && echo "Auto-merge enabled — PR will merge once required checks pass." \
-            || echo "::warning::Auto-merge could not be enabled; please merge $PR_URL manually once checks pass."
+          SYNC_BRANCH="${{ steps.merge.outputs.sync_branch }}"
+          BASE_BRANCH="${{ inputs.release_branch }}"
+          COMPARE_URL="https://github.com/${GITHUB_REPOSITORY}/compare/${BASE_BRANCH}...${SYNC_BRANCH}"
+
+          if PR_URL=$(gh pr create \
+            --title "🔄 Sync: main → ${BASE_BRANCH}" \
+            --body "Automated daily sync of \`main\` into \`${BASE_BRANCH}\`. Created by the sync workflow." \
+            --base "${BASE_BRANCH}" \
+            --head "${SYNC_BRANCH}" 2>&1); then
+            echo "PR created: $PR_URL"
+            gh pr merge --auto --merge "$PR_URL" \
+              && echo "Auto-merge enabled — PR will merge once required checks pass." \
+              || echo "::warning::Auto-merge could not be enabled; please merge $PR_URL manually once checks pass."
+          else
+            echo "::warning::Automatic PR creation failed (GitHub Actions PR creation may be disabled in this repository)."
+            echo "::warning::Sync branch '${SYNC_BRANCH}' was pushed. Create the PR manually: ${COMPARE_URL}"
+            cat >> "$GITHUB_STEP_SUMMARY" << SUMMARY
+          ## ⚠️ Manual PR creation required
+
+          Branch \`${SYNC_BRANCH}\` was pushed successfully, but a pull request could not be created automatically.
+
+          **Reason:** GitHub Actions is not permitted to create pull requests in this repository.
+
+          **Action required:** @sethmanheim please open a PR manually:
+          ${COMPARE_URL}
+          SUMMARY
+          fi
 
       - name: Annotate run summary on conflict and fail
         if: steps.merge.outputs.merge_status == 'conflict'
