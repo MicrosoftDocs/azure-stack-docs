@@ -238,7 +238,7 @@ Use uncordon when:
 - The node is ready to accept new workloads again
 
 > [!NOTE]
-> For compute nodes that the platform has automatically cordoned due to a hardware issue, the uncordon action also applies a temporary override. This override suppresses any further automatic cordoning for 24 hours. See [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
+> For compute nodes that the platform automatically cordons due to a hardware problem, the uncordon action also applies a temporary override. This override suppresses any further automatic cordoning for 24 hours. To learn more, see [Override automatic cordoning of a degraded machine](#override-automatic-cordoning-of-a-degraded-machine).
 
 ```azurecli
 az networkcloud baremetalmachine uncordon \
@@ -344,7 +344,7 @@ The `--storage-policy` parameter controls whether tenant data on the BMM's virtu
 > - The BMM **RAID controller or storage backplane have been replaced** - this is known to cause replace failures.
 > - The BMM has been **offline and unavailable for 30 days or longer** - storage encryption keys might no longer be valid, and the machine can't be brought up using normal operations.
 >
-> If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane were **not** replaced and the BMM was **not** offline for 30+ days, the issue might require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
+> If local path storage decryption failures occur and the motherboard, RAID controller, storage backplane **weren't** replaced and the BMM **wasn't** offline for 30+ days, the issue might require a physical flea drain or iDRAC reset rather than a Replace with `DiscardAll`. In this case, contact support before proceeding, as `DiscardAll` won't resolve the underlying problem and will result in data loss.
 >
 > If local path storage decryption failures persist after a Replace with `DiscardAll`, perform an iDRAC reset before retrying.
 

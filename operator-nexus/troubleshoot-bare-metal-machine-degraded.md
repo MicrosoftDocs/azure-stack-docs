@@ -79,7 +79,7 @@ Additional information about recent degraded conditions and automatic cordoning 
   - `platform.afo-nc.microsoft.com/port-flap-cordon`
 - If the user manually cordoned the BMM, the following annotation is also present.
   - `platform.afo-nc.microsoft.com/customer-cordon`
-- If a user overrode automatic cordoning while the BMM was still degraded, the following annotation is present with a timestamp showing when the override expires.
+- If a user overrides automatic cordoning while the BMM is still degraded, the following annotation indicates the override expiry time.
   - `platform.afo-nc.microsoft.com/force-uncordon-until`
 - The Activity Logs for the BMM resource in the Azure portal can also provide more information about any recent user initiated cordon requests.
 
@@ -274,7 +274,7 @@ To troubleshoot this issue:
 - identify the affected port and approximate time of the issue by reviewing the BMM `conditions`, as described in the [Troubleshooting](#troubleshooting) section
 - check the `degradedStartTime` timestamp on the `bmm` object (if different) for more context about the overall timeline
 - check the Ethernet cabling and Top Of Rack (TOR) switch for the specified port
-- check for any other BMMs that are also reporting port flapping or link failures, for information about the scope of the issue or any common cause
+- check for any other BMMs that are also reporting port flapping or link failures, for information about the scope of the problem or any common cause
 - check for any recent deployment or infrastructure changes that coincide with the time of failure.
 
 **Example `conditions` output for port flapping**
