@@ -53,9 +53,6 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
     For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
 
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
-
-   > [!IMPORTANT]
-   > Machines must not be joined to Active Directory before deployment.
    
    :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png" alt-text="Screenshot of the deploy Azure Local Basics tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png":::
    
