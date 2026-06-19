@@ -1,11 +1,11 @@
 ---
 title: List of Metrics Collected in Azure Operator Nexus.
 description: List of metrics emitted by the resource types in Azure Operator Nexus and observed in Azure Monitor.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: BhumikaShah
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 02/03/2023
+ms.date: 06/17/2026
 ms.custom: template-reference
 ---
 
@@ -422,7 +422,7 @@ The collection interval for Network Fabric device metrics varies and you can fin
 | PowerSupplyOutputCurrent | Power Supply Output Current | Resource Utilization | Amps | Average | The output current supplied by the power supply | NA | Yes | Per minute |
 | PowerSupplyOutputPower| Power Supply Output Power | Resource Utilization | Watts | Average | The output power supplied by the power supply | NA | Yes | Per minute |
 | PowerSupplyOutputVoltage | Power Supply Output Voltage | Resource Utilization | Volts | Average | The output voltage supplied the power supply | NA | Yes | Per minute |
-| BgpPeerStatus | BGP Peer Status | BGP Status | Count | Minimum, Maximum, Average | Operational state of the BGP Peer represented in numerical form. 1-Idle, 2-Connect, 3-Active, 4-OpenSent, 5-OpenConfirm, 6-Established <br><br>*While `Average` provides insight into overall trends, `Minimum` and `Maximum` values are also useful for identifying state transitions during a period.* | NA | Yes | Every 5 mins and on state change |
+| BgpPeerStatus | BGP Peer Status | BGP Status | Count | Minimum, Maximum, Average | Operational state of the BGP Peer represented in numerical form. 1-Idle, 2-Connect, 3-Active, 4-OpenSent, 5-OpenConfirm, 6-Established <br><br>*While `Average` provides insight into overall trends, `Minimum` and `Maximum` values are also useful for identifying state transitions during a period.* <sup>[1](#footnote1)</sup> | NA | Yes | Every 5 mins and on state change |
 | InterfaceOperStatus | Interface Operational State | Interface Operational State | Count | Minimum, Maximum, Average | Operational state of the Interface represented in numerical form. 0-Up, 1-Down, 2-Lower Layer Down, 3-Testing, 4-Unknown, 5-Dormant, 6-Not Present <br><br>*`Average` can indicate trends over time, while `Minimum` and `Maximum` values provide more accurate detection of state transitions during a monitoring window.* | NA | Yes | Every 5 mins and on state change |
 | IfEthInCrcErrors | Ethernet Interface In CRC Errors | Interface State Counters | Count | Average | The count of incoming CRC errors caused by several factors for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfEthInFragmentFrames | Ethernet Interface In Fragment Frames | Interface State Counters | Count | Average | The count of incoming fragmented frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
@@ -457,7 +457,24 @@ The collection interval for Network Fabric device metrics varies and you can fin
 | LldpFrameIn | LLDP Frame In | LLDP State Counters | Count | Average | The count of LLDP frames received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | LldpFrameOut | LLDP Frame Out | LLDP State Counters | Count | Average | The count of LLDP frames transmitted from an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | LldpTlvUnknown | LLDP Tlv Unknown | LLDP State Counters | Count | Average | The count of LLDP frames received with unknown TLV by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LldpTlvDiscard | LLDP Tlv Discard | LLDP State Counters | Count | Average | The count of LLDP TLV frames received and discarded by an interface over a given interval of time. A null value indicates the device reported no discards, which is expected behavior. | Interface name | Yes | Every 5 mins |
 
 >[!Note]
 > Arista devices use interface names in the a/b format (for example, Ethernet1/1). However, because ARM resource IDs use / as a delimiter, this format is not permitted in ARM‑based resource names. As a workaround, NNF employs an a‑b convention for interface resource naming (such as Ethernet1‑1) in ARM contexts.
 >Important: All metrics and logs will continue to report the interface using the original a/b naming format (e.g. Ethernet1/1), even though ARM resource names always substitute the slash (/) with a hyphen (-).
+
+---
+
+<a name="footnote1"></a>
+**<sup>1</sup> Aggregation behavior during rapid BGP state changes (flapping):**
+
+When a BGP session flaps multiple times within a single aggregation interval (1 minute), the underlying telemetry collector (gNMI Gateway) reports each state change as an individual sample. However, Azure Monitor aggregates all samples within the 1-minute window into a single data point, exposing only the **Minimum**, **Maximum**, **Average**, and **Count** values. The individual transition sequence and timing are not preserved in the aggregated view.
+
+For example, if a BGP peer transitions through states 6→1→6→1→6 (five changes) within one minute, the aggregated metric shows: Min=1, Max=6, Count=5.
+
+**Recommendations:**
+
+- Use **Count** to detect flapping — a count significantly higher than 1 within a monitoring window indicates multiple state transitions occurred.
+- Use **Minimum** to identify the worst state reached during the interval.
+- Configure alerts on `Count > threshold` (for example, Count > 3 in 1 minute) to detect BGP instability, rather than relying solely on the state value.
+- For detailed transition-level analysis, use diagnostic settings to export raw metrics to Log Analytics, where individual samples can be queried.

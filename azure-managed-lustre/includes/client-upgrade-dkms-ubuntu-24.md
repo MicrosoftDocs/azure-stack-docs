@@ -3,11 +3,11 @@ author: jebearer
 ms.author: jebearer
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/23/2026
+ms.date: 06/19/2026
 ms.reviewer:
 ms.lastreviewed: 04/23/2026
 ---
 
 ```bash
-sudo apt install -y amlfs-lustre-client-dkms-2.16.1-22-g584eedc
+sudo apt install -y amlfs-lustre-client-dkms-2.17.0-19-gbb5310f
 ```
