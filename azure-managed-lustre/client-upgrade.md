@@ -2,10 +2,10 @@
 title: Upgrade Client Software for Azure Managed Lustre
 description: Learn how to upgrade client software for the Azure Managed Lustre file system.
 ms.topic: how-to
-author: pauljewellmsft
-ms.author: pauljewell
-ms.reviewer: dsundarraj
-ms.date: 04/23/2026
+author: jeffbearer
+ms.author: jebearer
+ms.reviewer: wdesalvador
+ms.date: 06/19/2026
 
 ---
 
@@ -204,7 +204,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should show the new Lustre version (for example, `2.16.1_22_g584eedc`).
+    The output should show the new Lustre version (for example, `2.17.0_19_gbb5310f`).
 ---
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.

@@ -2,10 +2,10 @@
 title: Plan Your Azure Managed Lustre Client Installation
 description: Review the support matrix and choose between prebuilt kmod and DKMS install methods before you install the Azure Managed Lustre client.
 ms.topic: overview
-author: pauljewellmsft
-ms.author: pauljewell
-ms.reviewer: dsundarraj
-ms.date: 04/23/2026
+author: jeffbearer
+ms.author: jebearer
+ms.reviewer: wdesalvador
+ms.date: 06/19/2026
 ---
 
 # Plan your Lustre client installation
@@ -20,11 +20,11 @@ Each row in the following table shows a combination of a distribution, architect
 
 | OS | Architecture | Lustre client version | DKMS support | Supported kernel package series |
 |---|---|---|---|---|
-| [Ubuntu 24.04](https://packages.microsoft.com/repos/amlfs-noble/) | amd64, arm64 | 2.16.1 | 2.16.1 | [6.8.0-\*-azure](https://packages.microsoft.com/repos/amlfs-noble/pool/main/k/) |
+| [Ubuntu 24.04](https://packages.microsoft.com/repos/amlfs-noble/) | amd64, arm64 | 2.17.0 | 2.17.0 | [6.8.0-\*-azure, 6.11.0-\*-azure, 6.14.0-\*-azure, 6.17.0-\*-azure](https://packages.microsoft.com/repos/amlfs-noble/pool/main/k/) |
 | [Ubuntu 22.04](https://packages.microsoft.com/repos/amlfs-jammy/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | 2.15.8 | [5.15.0-\*-azure](https://packages.microsoft.com/repos/amlfs-jammy/pool/main/k/) |
 | [Ubuntu 20.04](https://packages.microsoft.com/repos/amlfs-focal/) | amd64 | 2.15.6, 2.15.7, 2.15.8 | 2.15.8 | [5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-focal/pool/main/k/) |
 | [Ubuntu 18.04](https://packages.microsoft.com/repos/amlfs-bionic/) † | amd64 | 2.15.4 | — | [4.15.0-\*-azure, 5.4.0-\*-azure](https://packages.microsoft.com/repos/amlfs-bionic/pool/main/k/) |
-| [Azure Linux 3](https://packages.microsoft.com/yumrepos/amlfs-al3/) | amd64 | 2.16.1 | 2.16.1 | [>= 6.6.119.3](https://packages.microsoft.com/yumrepos/amlfs-al3/Packages/k/) |
+| [Azure Linux 3](https://packages.microsoft.com/yumrepos/amlfs-al3/) | amd64 | 2.17.0 | 2.17.0 | [>= 6.6.119.3](https://packages.microsoft.com/yumrepos/amlfs-al3/Packages/k/) |
 | [RHEL / AlmaLinux 9.7](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | 2.15.8 | [5.14.0-611.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
 | [RHEL / AlmaLinux 9.6](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.7, 2.15.8 | 2.15.8 | [5.14.0-570.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
 | [RHEL / AlmaLinux 9.5](https://packages.microsoft.com/yumrepos/amlfs-el9/) | amd64 | 2.15.6, 2.15.7 | 2.15.8 | [5.14.0-503.\*](https://packages.microsoft.com/yumrepos/amlfs-el9/Packages/k/) |
