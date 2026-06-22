@@ -38,8 +38,12 @@ The release notes for this version include the issues fixed in this release, kno
 
 ## Fixed issues
 
-There are no fixed issues specific to this release.
+The following table lists the fixed issues in this release:
 
+|Feature  |Issue    |Comments |
+|---------|---------|---------|
+| Azure Local VMs <!--37535438--> | Network interface create and delete operations are blocked when a tenant logical network has IP pool ranges overlapping with an auto-created infrastructure logical network. | The validation logic was updated to skip redundant IP pool overlap checks during tenant logical network updates. |
+| Azure Local VMs <!--36746514--> | When changing startup memory and vCPU outside of Azure, it would reconcile these values but sometimes revert to the old configuration and reboot unexpectedly. | Startup memory and vCPU changes outsides of Azure are synced back to Azure and do not revert unexpectedly. This fix **does not** add support for syncing dynamic memory min/max values changed outside of Azure. |
 
 ## Known issues
 
