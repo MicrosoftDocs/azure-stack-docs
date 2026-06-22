@@ -18,6 +18,10 @@
         items:
         - name: 2601
           items:
+          - name: Hotfix 1.2601.1.16
+            href: hotfix-1-2601-1-16.md
+          - name: Hotfix 1.2601.1.14
+            href: hotfix-1-2601-1-14.md
           - name: Hotfix 1.2601.1.14
             href: hotfix-1-2601-1-14.md
           - name: Hotfix 1.2601.1.10
