@@ -203,7 +203,7 @@ This BMM _Detailed status message_ indicates that hardware validation for the BM
 ## `Warning: Disk I/O failures detected`
 
 This message in the BMM _Detailed status message_ field indicates that Node Problem Detector reported disk input/output failures on the host.
-This can indicate storage media issues, filesystem or kernel I/O errors, or intermittent device-path problems.
+This condition can indicate storage media issues, filesystem or kernel I/O errors, or intermittent device-path problems.
 
 To troubleshoot this issue:
 
