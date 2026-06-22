@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 05/14/2026
+ms.date: 06/22/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
@@ -74,6 +74,12 @@ Exact update durations typically depend on the capacity used on your system by t
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
+
+- Added support for [Secure Boot certificates update](secure-boot-certificates.md). This support enables the platform to validate the presence of updated Secure Boot certificates delivered through OEM packages and firmware, automatically update the boot manager when prerequisites are met, and surface actionable alerts to guide operators when additional steps are required. If applied prior to the OEM package/firmware update, the platform directs operators to install the required OEM package/firmware and, if needed, run a Privileged Endpoint (PEP) cmdlet to complete mitigation. Controlled, automated node reboots can occur as part of applying the hotfix or finalizing mitigation. If existing Secure Boot certificates are not updated before their expiration, systems continue to operate but might be unable to apply future security updates that rely on updated Secure Boot signing authorities, which can weaken the platform's security posture over time. This update applies to Azure Stack Hub hosts only and has no impact on tenant workloads.
+
+-  Added [April 24, 2026 KB KB5082142 security update for Windows Server 2022](https://support.microsoft.com/topic/april-14-2026-kb5082142-os-build-20348-5020-6217e03b-0ee3-488e-9f10-90a1e17e620e).
+
+- Added [April 14, 2026-KB5082427 cumulative update for .NET Framework 3.5 and 4.8 for Windows Server 2022](https://support.microsoft.com/topic/april-14-2026-kb5082427-cumulative-update-for-net-framework-3-5-and-4-8-for-windows-server-2022-35840571-924c-4c7c-973f-e2a4976fd2c4).
 
 - The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 
