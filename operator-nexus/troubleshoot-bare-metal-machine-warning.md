@@ -208,10 +208,10 @@ This condition can indicate storage media issues, filesystem or kernel I/O error
 To troubleshoot this problem:
 
 - Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
-- identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why disk I/O failures were reported
-- review host logs (for example, `dmesg`, kernel logs, and storage subsystem logs) for disk or block-device errors around the same time
-- check if any tenant workload on this BMM has memory failures
-- if errors persist, collect diagnostics and engage hardware/vendor support for deeper storage-path investigation
+- Identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why disk I/O failures were reported.
+- Review host logs (for example, `dmesg`, kernel logs, and storage subsystem logs) for disk or block-device errors around the same time.
+- Check if any tenant workload on this BMM has memory failures.
+- If errors persist, collect diagnostics and engage hardware or vendor support for deeper storage-path investigation.
 
 **Example `conditions` output for disk I/O warning**
 
@@ -232,7 +232,7 @@ To troubleshoot this problem:
 This message in the BMM _Detailed status message_ field indicates that Node Problem Detector heartbeat updates are stale (older than 15 minutes).
 When heartbeat data is stale, health signals from Node Problem Detector might not represent the current host state. Any new tenant workload creation might fail on BMM, due to scheduling issues.
 
-To troubleshoot this issue:
+To troubleshoot this problem:
 
 - Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
 - check the `BmmNpdHeartbeatHealthy` condition and confirm whether the heartbeat is reported as older than 15 minutes

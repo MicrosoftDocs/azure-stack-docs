@@ -301,16 +301,16 @@ To troubleshoot this issue:
 
 ## `Degraded: kernel memory failures detected`
 
-This message in the BMM _Detailed status message_ field indicates that Node Problem Detector has identified kernel memory-related failures on the host.
+This message in the BMM _Detailed status message_ field indicates that Node Problem Detector identified kernel memory-related failures on the host.
 This scenario can indicate memory pressure or kernel-level memory instability on the underlying machine, which can prevent tenant workloads from being created successfully on the BMM.
 
-To troubleshoot this issue:
+To troubleshoot this problem:
 
-- review the `conditions` status of the kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section
-- identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why the failure was reported
-- check operating system and kernel logs on the affected host for memory failure, hardware memory corruption, or related kernel faults
-- correlate the condition timestamp with any recent workload spikes, configuration changes, or host maintenance operations
-- if the condition persists, collect a support bundle and engage hardware/vendor support for deeper host diagnostics
+- Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
+- Identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why the failure was reported.
+- Check operating system and kernel logs on the affected host for memory failure, hardware memory corruption, or related kernel faults.
+- Correlate the condition timestamp with any recent workload spikes, configuration changes, or host maintenance operations.
+- If the condition persists, collect a support bundle and engage hardware/vendor support for deeper host diagnostics.
 
 **Example `conditions` output for kernel memory failures**
 
