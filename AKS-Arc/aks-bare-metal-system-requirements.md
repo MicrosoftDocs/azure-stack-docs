@@ -1,7 +1,7 @@
 ---
 title: System requirements and prerequisites for AKS on bare metal (preview)
 description: Hardware, network, and Azure prerequisites for deploying Azure Kubernetes Service on bare metal.
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
