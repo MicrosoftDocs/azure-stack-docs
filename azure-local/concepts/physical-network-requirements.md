@@ -61,6 +61,32 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 </details>
 
 <details>
+<summary><strong>Allied Telesis</strong></summary>
+
+### 24H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|AlliedwarePlus 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
+
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+### 23H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|AlliedwarePlus 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+</details>
+
+<details>
 <summary><strong>Arista</strong></summary>
 
 ### 24H2
