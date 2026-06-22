@@ -79,7 +79,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 -  Added [April 24, 2026 KB KB5082142 security update for Windows Server 2022](https://support.microsoft.com/topic/april-14-2026-kb5082142-os-build-20348-5020-6217e03b-0ee3-488e-9f10-90a1e17e620e).
 
-- Added [April 14, 2026-KB5082427 cumulative update for .NET Framework 3.5 and 4.8 for Windows Server 2022](https://support.microsoft.com/topic/april-14-2026-kb5082427-cumulative-update-for-net-framework-3-5-and-4-8-for-windows-server-2022-35840571-924c-4c7c-973f-e2a4976fd2c4).
+- Added [April 14, 2026 KB5082427 cumulative update for .NET Framework 3.5 and 4.8 for Windows Server 2022](https://support.microsoft.com/topic/april-14-2026-kb5082427-cumulative-update-for-net-framework-3-5-and-4-8-for-windows-server-2022-35840571-924c-4c7c-973f-e2a4976fd2c4).
 
 - The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534). For more information, see [Microsoft Entra ID Graph API retirement](graph-api-retirement.md).
 
