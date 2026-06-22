@@ -207,7 +207,7 @@ This can indicate storage media issues, filesystem or kernel I/O errors, or inte
 
 To troubleshoot this issue:
 
-- review the `conditions` status of the kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section
+- Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
 - identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why disk I/O failures were reported
 - review host logs (for example, `dmesg`, kernel logs, and storage subsystem logs) for disk or block-device errors around the same time
 - check if any tenant workload on this BMM has memory failures
