@@ -205,7 +205,7 @@ This BMM _Detailed status message_ indicates that hardware validation for the BM
 This message in the BMM _Detailed status message_ field indicates that Node Problem Detector reported disk input/output failures on the host.
 This condition can indicate storage media issues, filesystem or kernel I/O errors, or intermittent device-path problems.
 
-To troubleshoot this issue:
+To troubleshoot this problem:
 
 - Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
 - identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why disk I/O failures were reported
