@@ -29,12 +29,13 @@ Bare Metal Machines (BMM) which are in _Degraded_ state exhibit the following sy
 - The BMM will then remain cordoned for 2 hours after the underlying conditions resolve, after which it will be automatically uncordoned.
 - Control and Management nodes can be reported as _Degraded_, but aren't automatically cordoned.
 
-| Detailed status message         | Details and mitigation                                           |
-|---------------------------------|------------------------------------------------------------------|
-| `Degraded: NIC failed`          | [`Degraded: NIC failed`](#degraded-nic-failed)                   |
-| `Degraded: port down`           | [`Degraded: port down`](#degraded-port-down)                     |
-| `Degraded: LACP status is down` | [`Degraded: LACP status is down`](#degraded-lacp-status-is-down) |
-| `Degraded: port flapping`       | [`Degraded: port flapping`](#degraded-port-flapping)             |
+| Detailed status message                      | Details and mitigation                                                                      |
+|----------------------------------------------|---------------------------------------------------------------------------------------------|
+| `Degraded: NIC failed`                       | [`Degraded: NIC failed`](#degraded-nic-failed)                                              |
+| `Degraded: port down`                        | [`Degraded: port down`](#degraded-port-down)                                                |
+| `Degraded: LACP status is down`              | [`Degraded: LACP status is down`](#degraded-lacp-status-is-down)                            |
+| `Degraded: port flapping`                    | [`Degraded: port flapping`](#degraded-port-flapping)                                        |
+| `Degraded: kernel memory failures detected`  | [`Degraded: kernel memory failures detected`](#degraded-kernel-memory-failures-detected)    |
 
 _Degraded_ status messages and associated automatic cordoning behavior are present in Azure Operator Nexus version 2502.1 and higher.
 
@@ -118,19 +119,26 @@ This example shows an automatically cordoned BMM with two active _Degraded_ cond
   "status": {
     "conditions": [
       {
-        "lastTransitionTime": "2025-03-04T02:47:59Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "status": "True",
         "type": "BmmInExpectedLACPState"
       },
       {
-        "lastTransitionTime": "2025-03-04T03:27:00Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
+        "message": "No kernel memory related errors detected",
+        "reason": "KernelMemoryHealthy",
+        "status": "True",
+        "type": "BmmKernelMemoryHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "message": "Physical link(s) down: 4b_p1",
         "reason": "PortDown",
         "status": "False",
         "type": "BmmNetworkLinksUp"
       },
       {
-        "lastTransitionTime": "2025-03-04T03:49:00Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "message": "Port flapping in the last 15 mins: 4b_p1 (2 times)",
         "reason": "PortFlappingDetected",
         "status": "False",
@@ -138,7 +146,7 @@ This example shows an automatically cordoned BMM with two active _Degraded_ cond
       }
     ],
     "cordonStatus": "Cordoned",
-    "degradedStartTime": "2025-03-04T03:27:00Z",
+    "degradedStartTime": "2026-06-20T17:14:47Z",
     "detailedStatus": "Provisioned",
     "detailedStatusMessage": "The OS is provisioned to the machine. Degraded: port flapping Degraded: port down"
   }
@@ -288,6 +296,33 @@ To troubleshoot this issue:
     "status": "False",
     "type": "BmmNetworkLinksStable"
   },
+],
+```
+
+## `Degraded: kernel memory failures detected`
+
+This message in the BMM _Detailed status message_ field indicates that Node Problem Detector has identified kernel memory-related failures on the host.
+This scenario can indicate memory pressure or kernel-level memory instability on the underlying machine, which can prevent tenant workloads from being created successfully on the BMM.
+
+To troubleshoot this issue:
+
+- review the `conditions` status of the kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section
+- identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why the failure was reported
+- check operating system and kernel logs on the affected host for memory failure, hardware memory corruption, or related kernel faults
+- correlate the condition timestamp with any recent workload spikes, configuration changes, or host maintenance operations
+- if the condition persists, collect a support bundle and engage hardware/vendor support for deeper host diagnostics
+
+**Example `conditions` output for kernel memory failures**
+
+```json
+"conditions": [
+  {
+    "lastTransitionTime": "2026-06-19T09:12:45Z",
+    "message": "1 kernel memory error(s) detected in the last 15 min",
+    "reason": "KernelMemoryErrorsdetected",
+    "status": "False",
+    "type": "BmmKernelMemoryHealthy"
+  }
 ],
 ```
 
