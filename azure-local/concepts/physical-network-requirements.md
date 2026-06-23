@@ -61,6 +61,32 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 </details>
 
 <details>
+<summary><strong>Allied Telesis</strong></summary>
+
+### 24H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|Alliedware+ 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
+
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+### 23H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|Alliedware+ 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+</details>
+
+<details>
 <summary><strong>Arista</strong></summary>
 
 ### 24H2
@@ -180,8 +206,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S4348T](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S4348F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5212F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S5224F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
@@ -197,8 +227,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S4348T](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S4348F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5212F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S5224F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
@@ -224,7 +258,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
-| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5720-Series-Data-Sheet?v=25a4737c) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 
@@ -240,7 +274,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [5320 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5520-Series-Data-Sheet?v=b01cf46b) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
-| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5720-Series-Data-Sheet?v=25a4737c) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 | [7520 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7520-Series-Data-Sheet?v=e203d9c0) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 | [7720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/7720-Series-Data-Sheet?v=151cc70c) <br>(10, 25, 40, 100 GbE)|Version 33.6.1 or later |&check;| &check;| &check;| &check; |
 

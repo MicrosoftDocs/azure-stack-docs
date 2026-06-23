@@ -195,12 +195,16 @@
               href: howto-cluster-runtime-upgrade-with-pauseafterrack-strategy.md
             - name: Cluster Upgrades Template
               href: howto-cluster-runtime-upgrade-template.md
+            - name: Cluster Upgrades Preflight Validations
+              href: howto-cluster-runtime-upgrade-preflight-checks.md
             - name: Network Fabric Upgrades
               href: howto-upgrade-nexus-fabric.md
             - name: Network Fabric Upgrades Template
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Rotate Credential API
+              href: howto-rotate-credential-api.md
             - name: Certificate Rotation
               href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault

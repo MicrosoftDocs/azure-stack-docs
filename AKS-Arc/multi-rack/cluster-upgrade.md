@@ -20,15 +20,21 @@ If you're using the Azure CLI, this article requires Azure CLI version 2.83.0 or
 ## Supported Versions
 
 The supported Kubernetes Versions are:
-- 1.33.7
-- 1.33.8
+- 1.31.14
+- 1.31.100
+- 1.32.10
+- 1.32.11
+- 1.33.10
+- 1.33.11
+- 1.34.6
+- 1.34.7
 
 ## Upgrade the Kubernetes version
 
-When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versions. You must perform all upgrades sequentially by major version number. Any attempts to skip Kubernetes minor versions are automatically blocked. For example, you can't upgrade from **1.30.x** to **1.32.x**.
+When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versions. You must perform all upgrades sequentially by minor version number. The system automatically blocks any attempts to skip Kubernetes minor versions. For example, you can't upgrade from **1.30.x** to **1.32.x**.
 
 > [!NOTE]
-> If you don't specify a patch version, the cluster automatically upgrades to the latest GA patch for the specified minor version. For example, setting `--kubernetes-version` to **1.33** upgrades the cluster to **1.33.8**.
+> If you don't specify a patch version, the cluster automatically upgrades to the latest GA patch for the specified minor version. For example, setting `--kubernetes-version` to **1.33** upgrades the cluster to **1.33.11**.
 
 Use the following command to upgrade your cluster:
 
@@ -39,13 +45,22 @@ az aksarc upgrade \
   --kubernetes-version <KUBERNETES_VERSION>
 ```
 
+For example, to upgrade a cluster to Kubernetes version 1.34.7, run:
+
+```azurecli
+az aksarc upgrade \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --kubernetes-version 1.34.7
+```
+
 Use the `show` command to confirm the upgrade was successful:
 
 ```azurecli
 az aksarc show --resource-group myResourceGroup --name myAKSCluster
 ```
 
-The following example output shows that the cluster now runs **1.33.8**:
+The following example output shows that the cluster now runs **1.33.11**:
 
 ```output
 {
@@ -78,7 +93,7 @@ The following example output shows that the cluster now runs **1.33.8**:
       "osType": "Linux",
       "vmSize": "Standard_A4_v2"
     },
-    "kubernetesVersion": "1.33.8",
+    "kubernetesVersion": "1.33.11",
     ...
     "provisioningState": "Succeeded",
     ...
