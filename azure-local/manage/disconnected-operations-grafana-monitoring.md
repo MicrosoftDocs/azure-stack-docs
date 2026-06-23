@@ -11,11 +11,9 @@ ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Point in time Metrics to Monitor disconnected operations for Azure Local 
+# Point in time Metrics to Monitor disconnected operations for Azure Local — Grafana Plugin
 
 ::: moniker range=">=azloc-2604"
-
-# Azure Local Observability — Grafana Plugin
 
 A Grafana datasource plugin for monitoring **Azure Local** clusters running in **disconnected operations** mode. It queries the local ARM endpoint directly, without requiring connectivity to Azure public cloud.
 
