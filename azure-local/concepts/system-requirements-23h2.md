@@ -1,12 +1,12 @@
 ---
-title: System requirements for Azure Local, version 23H2
-description: How to choose machines, storage, and networking components for Azure Local, version 23H2.
+title: System requirements for Azure Local
+description: How to choose machines, storage, and networking components for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 01/30/2026
+ms.date: 05/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -26,11 +26,13 @@ Here are the Azure requirements for your Azure Local instance:
    - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
+   
+   For more information, see [Microsoft Product Terms > Online Services > Azure](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/) and select your licensing program.
 
-- **Azure permissions**: Make sure that you're assigned the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md).
+- **Azure permissions**: Verify that you have the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md).
 - **Azure regions**: Azure Local is supported for the following regions:
 
-   # [Azure public](#tab/azure-public)
+  ### [Azure public](#tab/azure-public)
 
    These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
 
@@ -43,8 +45,7 @@ Here are the Azure requirements for your Azure Local instance:
    - Japan East
    - South Central US
 
-
-   # [Azure Government](#tab/azure-government)
+  ### [Azure Government](#tab/azure-government)
 
    Regions supported in the Azure Government cloud:
 
@@ -56,7 +57,7 @@ Here are the Azure requirements for your Azure Local instance:
 
 ## Machine and storage requirements
 
-Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog, or successor](https://aka.ms/azurelocalcatalog).
+Microsoft Support may only be provided for Azure Local running on hardware listed in the [Azure Local catalog](https://aka.ms/azurelocalcatalog).
 
 Before you begin, make sure that the physical machine and storage hardware used to deploy disaggregated Azure Local meets the following requirements:
 
@@ -74,13 +75,40 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |SAN | At minimum one LUN with 250GB for infrastructure services and one with 20GB used for performance history data |
 |GPU | Optional<br>Up to 192 GB GPU memory per machine. |
 
+## Data drive requirements
+
+The following drive requirements apply to Azure Local and supersede the requirements for Windows Server.
+
+
+- For Storage Spaces Direct, drives must be direct‑attached and physically connected to a single machine.
+- Host bus adapter (HBA) cards must support simple pass‑through mode for any storage devices used with Storage Spaces Direct.
+- RAID controller cards, SAN storage (Fibre Channel, iSCSI, or FCoE), shared SAS enclosures connected to multiple machines, and any form of multipath I/O (MPIO) where drives are accessible through multiple paths are not supported.
+
+Exceptions exist for SAN configurations using Fibre Channel. For more information, see [*Use of Azure Local with external SAN storage](#use-of-azure-local-with-external-san-storage).
+
+| Category | Requirements |
+|---------|--------------|
+| **Drive Support** | - SATA, SAS, NVMe (M.2, U.2, add‑in card)<br>- Supported formats: 512n, 512e, 4K native |
+| **Deployment Requirements** | **Single‑node:** One drive type (NVMe or SSD) with uniform performance.<br>**Multi‑node cluster:** Strongly recommended: all‑flash, single drive type (NVMe or SSD) with uniform performance. |
+| **Hybrid Two‑Tier (HDD + Flash)** | - Supported only with HDD for capacity + flash (NVMe or SSD) for cache.<br>- Cache devices ≥ 32 GB.<br>- Cache‑to‑capacity ratio ≥ 15%.<br>- Cache endurance recommended: ≥ 3 DWPD or ≥ 4 TBW/day.<br>- Number of capacity drives should be a whole multiple of cache drives. |
+| **NVMe Driver** | Uses Microsoft‑provided driver (`stornvme.sys`). The improved StorNVMe driver, available for Windows Server is not supported at this time. |
+| **Flash Requirements** | Flash (NVMe or SSD) must include power‑loss protection. |
+
+For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
+
+### Use of Azure Local with external SAN storage
+
+Azure Local supports the use of additional SAN storage via Fibre Channel (FC), currently in preview. For certified solutions, consult your Original Equipment Manufacturer (OEM). For more information, see [External Storage Support for Azure Local](../concepts/external-storage-support.md).
+
+Storage Spaces Direct remains required, at a minimum, for the Azure Local infrastructure volume and for [cluster performance history](/windows-server/storage/storage-spaces/performance-history).
+
+A minimum amount of available Storage Spaces Direct capacity is required, including at least two physical disks per node. All previously stated requirements for Storage Spaces Direct still apply, except where external SAN storage is used.
+
 ## Networking requirements
 
 Azure Local requires connectivity to public endpoints in Azure, see [Firewall requirements](firewall-requirements.md) for details. Multi-machine deployments of Azure Local require a reliable high-bandwidth, low-latency network connection between each machine in the instance.
 
-Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Local](../concepts/physical-network-requirements.md).
-
-## Bandwidth requirements
+### Bandwidth requirements
 
 For hyperconverged clusters, limited-bandwidth connections, like rural T1 lines or satellite/cellular connections, are adequate for Azure Local to sync. The minimum required connectivity is 10 Mbit. More services might require extra bandwidth, especially to replicate or back up whole VMs, download large software updates, or upload verbose logs for analysis and monitoring in the cloud.
 
@@ -108,27 +136,44 @@ Before deploying Azure Local, ensure that your hardware is up to date by:
 - Determining the current version of your Solution Builder Extension (SBE) package.
 - Finding the best method to download, install, and update your SBE package.
 
-### OEM information
-
-This section contains OEM contact information and links to OEM Azure Local reference material.
-
-| Azure Local Solution provider | Solution platform  | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the system after it's running |
-|-----------------------|--------------------|--------------------------------|------------------------|-----------------------|-----------------------------------------------|
-| Bluechip              | SERVERline R42203a *Certified for Azure Local*   | [bluechip Service & Support](https://service.bluechip.de/)     | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) |
-| DataON                | AZS-XXXX    | [AZS-XXXX BIOS link](https://www.dataonstorage.com/ir72)     | [AZS-XXXX driver link](https://www.dataonstorage.com/469v) | [AZS-XXXX driver link](https://www.dataonstorage.com/469v)| [AZS-XXXX update link](https://www.dataonstorage.com/9kto) |
-| primeLine             | All models  | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/)   | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/)  | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/) |     |
-| Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
-| Thomas-krenn          | All models    | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios)   | [Firmware update process](https://thomas-krenn.com/azshci-driver)  | [Driver update process](https://thomas-krenn.com/azshci-driver)  |    |
-
-For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
-
-### BIOS setting
+## BIOS setting
 
 Check with your OEM regarding the necessary generic BIOS settings for Azure Local. These settings may include hardware virtualization, TPM enabled, and secure core.
 
-## Driver
+### BIOS resets
 
-Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
+If the BIOS, Secure Boot, or TPM is reset, consult your OEM to ensure that the required optimized settings are applied.
+
+Suboptimal configuration can negatively affect performance, for example, networking, SR-IOV, and Azure Local security features such as Secured-core and BitLocker. Incorrect settings can also cause instance deployments to fail.
+
+## Manage drivers and firmware
+
+> [!IMPORTANT]
+> Check with your OEM regarding the necessary drivers that need to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
+
+It is imperative to adhere to the recommended installation steps stipulated by the OEM.
+For Integrated and Validated Solutions, verify the respective compatibility matrix of the SBE package matching the node, and the deployed or to be updated Azure Local solution version.
+A driver and firmware compatibility matrix, when provided by the OEM, should be qualified for deployed or to be updated Azure Local solution version.
+
+### Driver and firmware updates using Windows Admin Center extensions
+
+> [!IMPORTANT]
+> Starting with Azure Local 23H2, Windows Admin Center extensions are no longer supported for installing drivers and firmware. However, it is still safe to use these extensions on certified Azure Local nodes running Windows Server with Storage Spaces Direct.
+
+### Initial deployment
+
+- **Premier solutions and integrated systems:** These solutions are delivered preinstalled and preconfigured. Firmware and driver updates are applied automatically.
+- **Validated nodes:** These nodes may come preinstalled. A driver and firmware check, or additional sideloading of update packages, may be required based on OEM recommendations.
+
+### Instance or node redeployment
+
+- **Premier solutions and integrated systems:** Some OEMs provide ready-to-use ISO images that match the preinstalled and preconfigured version.
+- **Validated nodes:** These nodes may come preinstalled. A driver check using PowerShell or additional sideloading of update packages may be required, in accordance with OEM recommendations.
+
+### Update existing firmware and drivers
+
+- **Premier solutions:** Firmware and driver updates are applied automatically through Azure Update Manager as part of the automated update process.
+- **Integrated systems and validated nodes:** These configurations require manual updates. It is recommended to update firmware and drivers before deployment. Use OEM‑provided Solution Builder Extensions (SBE) packages appropriate for your solution type, and consult your OEM documentation for additional guidance.
 
 ### Driver installation steps
 
@@ -153,7 +198,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     vManagement(compute_ma…	      Hyper-V Virtual Ethernet Adapter	        14      Up	         B8-83-03-58-91-88	    25 Gbps
     ```
 
-2. Identify the **DriverFileName**, **DriverVersion**, **DriverDate**, **DriverDescription**, and the **DriverProvider** using this command:
+1. Identify the **DriverFileName**, **DriverVersion**, **DriverDate**, **DriverDescription**, and the **DriverProvider** using this command:
 
     ```powershell
     Get-NetAdapter -name ethernet | select *driver*
@@ -179,11 +224,11 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     MinorDriverVersion		: 0
     ```
 
-3. Search for your driver and the recommended installation steps.
+1. Search for your driver and the recommended installation steps.
 
-4. Download your driver.
+1. Download your driver.
 
-5. Install the driver identified in Step #2 by **DriverFileName** on all machines of the system. For more information, see [PnPUtil Examples - Windows Drivers](/windows-hardware/drivers/devtest/pnputil-examples#add-driver).
+1. Install the driver identified in Step #2 by **DriverFileName** on all machines of the system. For more information, see [PnPUtil Examples - Windows Drivers](/windows-hardware/drivers/devtest/pnputil-examples#add-driver).
 
     Here's an example:
 
@@ -191,7 +236,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     pnputil /add-driver mlx5.inf /install
     ```
 
-6. Check to be sure the drivers are updated by reviewing **DriverVersion** and **DriverDate**.
+1. Check to be sure the drivers are updated by reviewing **DriverVersion** and **DriverDate**.
 
     ```powershell
     Get-NetAdapter -name ethernet | select *driver*
@@ -235,13 +280,21 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     MinorDriverVersion		: 0
     ```
 
-## Firmware
+## OEM information
 
-Check with your OEM regarding the necessary firmware that needs to be installed for Azure Local. Additionally, your OEM can provide you with their preferred installation steps.
+This section contains OEM contact information and links to OEM Azure Local reference material.
 
-## Drivers and firmware via the Windows Admin Center extension
+OEMs can provide technical training, certification, and deployment guidance that complement the Microsoft deployment documentation. This guidance may include white papers or deployment guides.
 
-You should always follow the OEM's recommended installation steps. With Azure Local, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+| Azure Local Solution provider | Solution platform | How to configure BIOS settings | How to update firmware | How to update drivers | How to update the system after it's running |
+|--|--|--|--|--|--|
+| Bluechip | SERVERline R42203a *Certified for Azure Local* | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) | [bluechip Service & Support](https://service.bluechip.de/) |
+| DataON | AZS-XXXX | [AZS-XXXX BIOS link](https://www.dataonstorage.com/ir72) | [AZS-XXXX driver link](https://www.dataonstorage.com/469v) | [AZS-XXXX driver link](https://www.dataonstorage.com/469v) | [AZS-XXXX update link](https://www.dataonstorage.com/9kto) |
+| primeLine | All models | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/) | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/) | [Contact primeLine service](https://www.primeline-solutions.com/de/kontakt-und-service/) |  |
+| Supermicro | BigTwin 2U 2-Node | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS) | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC) | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/) |  |
+| Thomas-krenn | All models | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios) | [Firmware update process](https://thomas-krenn.com/azshci-driver) | [Driver update process](https://thomas-krenn.com/azshci-driver) |  |
+
+For a comprehensive list of all OEM contact information, download the [Azure Local OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
