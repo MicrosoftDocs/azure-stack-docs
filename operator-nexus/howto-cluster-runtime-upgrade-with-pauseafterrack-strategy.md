@@ -1,11 +1,11 @@
 ---
 title: "Azure Operator Nexus: Runtime upgrade with PauseAfterRack strategy"
 description: Learn to execute a Cluster runtime upgrade for Operator Nexus with a PauseAfterRack strategy
-author: dougbristow
-ms.author: dbristow
+author: mbethi527
+ms.author: mbethi
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 11/21/2025
+ms.date: 06/22/2026
 # ms.custom: template-include
 ---
 
@@ -67,8 +67,16 @@ Executing Cluster runtime upgrade with `PauseAfterRack` strategy will pause to w
    ```azurecli
    az networkcloud cluster continue-update-version --cluster-name "<CLUSTER>" \
    --resource-group="<CLUSTER_RG>" \
-   --subscription="<SUBSCRIPTION>"
+   --subscription="<SUBSCRIPTION>" \
+   --safeguard-mode <SAFEGUARD_MODE>
    ```
+
+Optional parameters:
+   - `--safeguard-mode`: Specifies how safeguards are applied during the `continue-update-version` operation. Use `All` to run all preoperation validation checks. Use `None` to bypass safeguards that block the upgrade when they detect problems. The default value is `All`.
+
+>[!IMPORTANT]
+> The default safeguard mode `All` blocks the upgrade from resuming if validations determine that the upgrade can't be completed without fixing the detected problems. To learn more, see [Cluster Runtime Upgrade preflight validations](howto-cluster-runtime-upgrade-preflight-checks.md).
+
 
 6. Repeat step 5 for each rack until all racks are upgraded to the latest runtime bundle.
 
