@@ -23,7 +23,7 @@ Discrete Device Assignment dedicates an entire physical GPU to a single virtual 
 
 Azure Local multi-rack currently supports the NVIDIA Ray Tracing Texel eXtreme (RTX) Pro 6000 GPU for DDA workloads for Azure Local VMs enabled by Azure Arc.
 
-For AKS Arc workloads with GPU support, see [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](../../AKS-Arc/multi-rack/deploy-gpu-node-pool.md).
+For AKS Arc workloads with GPU support, see [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](/azure/aks/aksarc/multi-rack/deploy-gpu-node-pool).
 
 ## Host requirements
 
@@ -41,4 +41,4 @@ Your Azure Local host must meet the following requirements:
 ## Next steps
 
 - [Deploy GPUs on Arc VMs via Discrete Device Assignment (DDA)](./multi-rack-gpu-manage-via-device.md)
-- [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](../../AKS-Arc/multi-rack/deploy-gpu-node-pool.md)
+- [Deploy GPU node pools for AKS Arc on Azure Local multi-rack](/azure/aks/aksarc/multi-rack/deploy-gpu-node-pool)
