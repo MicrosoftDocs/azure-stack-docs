@@ -104,7 +104,7 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 The 2604 release of Azure Stack Hub must be applied on the 2601 release with the following hotfix installed:
 
-- No hotfixes have been released for 2601 at this time.
+- [Azure Stack Hub hotfix 1.2601.1.16](hotfix-1-2601-1-16.md)
 
 ### After successfully applying the 2506 update
 
@@ -167,7 +167,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2601, if any hotfixes for 2601 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2601.1.14](hotfix-1-2601-1-14.md)
+- [Azure Stack Hub hotfix 1.2601.1.16](hotfix-1-2601-1-16.md)
 ::: moniker-end
 
 ::: moniker range="azs-2506"
