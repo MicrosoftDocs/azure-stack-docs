@@ -57,7 +57,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2604"
 ## 2604 build reference
 
-The Azure Stack Hub 2604 update build number is **1.2604.x.xx**.
+The Azure Stack Hub 2604 update build number is **1.2604.0.20**.
 
 ### Update type
 
