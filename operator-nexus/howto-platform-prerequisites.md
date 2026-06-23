@@ -390,7 +390,7 @@ Pure Storage arrays purchased prior to 2024 have revision R3 controllers which u
 **Pure Storage R3 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
-ogcli update port ports-<PORT_#> 'pinout="X1"' <PORT_#>	Pure Storage Controller console
+ogcli update port ports-<PORT_#> 'pinout="X1"' <PORT_#>    Pure Storage Controller console
 ```
 
 Newer Pure Storage appliances, and systems upgraded from R3 to R4 Pure Storage controllers, will use straight-through console cables with the updated settings below:
@@ -398,7 +398,7 @@ Newer Pure Storage appliances, and systems upgraded from R3 to R4 Pure Storage c
 **Pure Storage R4 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
-ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>	Pure Storage Controller console
+ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>    Pure Storage Controller console
 ```
 
 **Parameters:**
@@ -604,9 +604,9 @@ For more information about SafeMode and its implications, see the [Pure Storage 
 
 ## iDRAC IP Assignment
 
-Before deploying the Nexus Cluster, it’s best for the operator to set the iDRAC IPs while organizing the hardware racks. Here’s how to map servers to IPs:
+Before deploying the Nexus Cluster, it's best for the operator to set the iDRAC IPs while organizing the hardware racks. Here's how to map servers to IPs:
 
-   - Assign IPs based on each server’s position within the rack.
+   - Assign IPs based on each server's position within the rack.
    - Use the fourth /24 block from the /19 subnet allocated for Fabric.
    - Start assigning IPs from the bottom server upwards in each rack, beginning with 0.11.
    - Continue to assign IPs in sequence to the first server at the bottom of the next rack.

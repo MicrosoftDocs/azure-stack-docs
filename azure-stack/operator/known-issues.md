@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: troubleshooting-known-issue
-ms.date: 02/02/2026
+ms.date: 06/23/2026
 ms.author: sethm
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
@@ -18,11 +18,11 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2601"
+::: moniker range=">=azs-2604"
 > [!IMPORTANT]  
 > Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2601"
+::: moniker range="<azs-2604"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -33,6 +33,51 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2604"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+## Compute
+
+### Azure Kubernetes Service on Azure Stack Hub
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### Graph API retirement
+
+- Applicable: This issue applies to all supported versions of Azure Stack Hub.
+- Cause: The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534).
+- Remediation: Run the [script included in this article](graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
+- Occurrence: Occasional.
+
+<!-- ## Alerts -->
+
+<!-- ## Portal -->
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Resource providers -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2601"
 <!-- ## Update -->
@@ -124,52 +169,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
-::: moniker range="azs-2501"
-<!-- ## Update -->
-
-<!-- ## Networking -->
-
-## Compute
-
-### Azure Kubernetes Service on Azure Stack Hub
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: Azure Kubernetes Service on Azure Stack Hub, currently in preview, is being discontinued and won't be released to general availability. If you try to register a new subscription to the **Microsoft.Containerservice** resource provider, the registration stays in the **Registering** state. If you try to create a new managed Kubernetes cluster or access existing managed Kubernetes clusters, you might see the raining cloud error screen.
-- Remediation: Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Common.
-
-### Graph API retirement
-
-- Applicable: This issue applies to all supported versions of Azure Stack Hub.
-- Cause: The Microsoft Entra ID [Graph API service is being retired](https://techcommunity.microsoft.com/blog/microsoft-entra-blog/important-update-azure-ad-graph-api-retirement/4090534).
-- Remediation: Run the [script included in this article](graph-api-retirement.md) for all impacted applications. The script sets a flag that configures these applications for an extension that allows these specific applications to continue calling the legacy Graph API until June 2025.
-- Occurrence: Occasional.
-
-<!-- ## Alerts -->
-
-<!-- ## Portal -->
-
-<!-- ## Datacenter integration -->
-
-<!-- ## Storage -->
-
-<!-- ## SQL and MySQL-->
-
-<!-- ## App Service -->
-
-<!-- ## Resource providers -->
-
-<!-- ## Usage -->
-
-<!-- ### Identity -->
-
-<!-- ### Marketplace -->
-
-<!-- ## Event Hubs -->
-
-::: moniker-end
-
-::: moniker range="azs-2601 || azs-2506 || azs-2501"
+::: moniker range="azs-2604 || azs-2601 || azs-2506"
 ## Update
 
 ### Update URL is changing
@@ -183,6 +183,9 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2501"
+## 2501 archived known issues
+::: moniker-end
 ::: moniker range="azs-2408"
 ## 2408 archived known issues
 ::: moniker-end
@@ -268,6 +271,6 @@ To access known issues for a different version, use the version selector dropdow
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2501"
+::: moniker range="<azs-2506"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

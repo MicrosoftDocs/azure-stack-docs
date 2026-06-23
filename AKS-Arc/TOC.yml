@@ -290,6 +290,8 @@
           items:
           - name: Enable container insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+        - name: Configure a customer HTTPS proxy
+          href: ./multi-rack/aks-customer-proxy.md
         - name: Upgrade Kubernetes cluster
           href: ./multi-rack/cluster-upgrade.md
 - name: AKS Edge Essentials
