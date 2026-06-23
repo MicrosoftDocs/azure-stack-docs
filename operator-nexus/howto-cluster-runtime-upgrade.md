@@ -1,12 +1,12 @@
 ---
 title: "Azure Operator Nexus: Runtime upgrade"
 description: Learn to execute a Cluster runtime upgrade for Operator Nexus
-author: dougbristow
-ms.author: dbristow
+author: mbethi527
+ms.author: mbethi
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus, devx-track-azurecli
 ms.topic: how-to
-ms.date: 11/21/2025
+ms.date: 06/22/2026
 # ms.custom: template-include
 ---
 
@@ -27,11 +27,14 @@ This how-to guide explains the steps for installing the required Azure CLI and e
 1. Cluster to Cluster Manager connectivity must be ``Connected``.
 1. Azure prerequisites (Log Analytics Workspace, Storage Account, Key Vault) must be validated. These resources are checked before upgrade begins. See [Cluster Managed Identity and User Provided Resources](howto-cluster-managed-identity-user-provided-resources.md).
 1. Under Cluster > Workload > Compute Servers
-    - Three of four control plane nodes must be Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
-        - The spare control plane node should be in Power state ``Off``, Ready state ``No``, and Degraded ``No``.
-    - The management plane servers are broken into two groups on odd and even numbered racks. For each group at least one half of the servers must be in Power State ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
-        - It is recommended to have more than 50% of the management plane servers available to mitigate any risk.
-    - Compute plane server numbers vary based on individual cluster runtime threshold settings. Customers need to determine their minimum number based on their settings, looking for Power state ``On``, Cordon status ``Uncordoned``, Ready state ``Yes``, and Degraded ``No``.
+    - Control plane node health requirements before upgrade are:
+      - If no spare control plane node exists, all control plane nodes must be healthy: Power state `On`, Cordon status `Uncordoned`, Ready state `Yes`, and Degraded `No`.
+      - If a spare control plane node exists, only the spare node can be in Power state `Off`, Ready state `No`, and Degraded `No`. Every other control plane node must be healthy: Power state `On`, Cordon status `Uncordoned`, Ready state `Yes`, and Degraded `No`.
+      >[!NOTE]
+      > If the spare control plane machine previously went through a provisioning process, it is expected to be in Cordon status `Cordoned`. If not, it should be in Cordon status `Uncordoned`.
+    - The management plane servers are broken into two groups on odd and even numbered racks. In each group, at least more than 50% of the servers must be healthy: Power State `On`, Cordon status `Uncordoned`, Ready state `Yes`, and Degraded `No`.
+        - Across both management plane groups, at least 75% of the management machines must be healthy.
+    - Compute plane server numbers vary based on individual cluster runtime threshold settings. Customers need to determine their minimum number based on their settings, looking for Power state `On`, Cordon status `Uncordoned`, Ready state `Yes`, and Degraded `No`.
 1. Under Cluster > Managed Resource Group select the group name to go to the resource group page.
     - In the resource group, search for ``Kubernetes - Azure Arc`` to identify the Azure Arc information and select it. Status should be ``Connected``.
         - Within Azure Arc page, select Settings > Extensions.
@@ -43,8 +46,7 @@ This how-to guide explains the steps for installing the required Azure CLI and e
 
 ## Checking current runtime version
 
-Verify current Cluster runtime version before upgrade:
-[How to check current Cluster runtime version.](./howto-check-runtime-version.md#check-current-cluster-runtime-version)
+Verify the current cluster runtime version before upgrade: See [How to check current Cluster runtime version](./howto-check-runtime-version.md#check-current-cluster-runtime-version).
 
 ## Finding available runtime versions
 
@@ -54,7 +56,7 @@ To find available upgradeable runtime versions, navigate to the target Cluster i
 
 :::image type="content" source="./media/runtime-upgrade-upgradeable-runtime-versions.png" alt-text="Screenshot of Azure portal showing correct tab to identify available Cluster upgrades." lightbox="./media/runtime-upgrade-upgradeable-runtime-versions.png":::
 
-From the **available upgrade versions** tab, we're able to see the different Cluster versions that are currently available to upgrade. The operator can select from the listed the target runtime versions. Once selected, proceed to upgrade the Cluster.
+From the **available upgrade versions** tab, you can see the different cluster versions available to upgrade. Select the target runtime version from the list, and then proceed with upgrading the cluster.
 
 :::image type="content" source="./media/runtime-upgrade-runtime-version.png" lightbox="./media/runtime-upgrade-runtime-version.png" alt-text="Screenshot of Azure portal showing available Cluster upgrades.":::
 
@@ -154,8 +156,15 @@ To resume the runtime upgrade, execute the following az networkcloud cli command
 ```azurecli
 az networkcloud cluster continue-update-version --cluster-name "<CLUSTER>" \
 --resource-group="<CLUSTER_RG>" \
---subscription="<SUBSCRIPTION>"
+--subscription="<SUBSCRIPTION>" \
+--safeguard-mode <SAFEGUARD_MODE>
 ```
+
+Optional parameters:
+- `--safeguard-mode`: Specifies how safeguards are applied during the continue-update-version operation. Use `All` to run all preoperation validation checks. Use `None` to bypass safeguards that block the upgrade when they detect problems. The default value is `All`.
+
+>[!IMPORTANT]
+> The default safeguard mode `All` blocks the upgrade from resuming if validations determine that the upgrade can't be completed without fixing the detected problems. To learn more, see [Cluster Runtime Upgrade preflight validations](howto-cluster-runtime-upgrade-preflight-checks.md).
 
 ### Upgrade Behavior based on CountSuccess threshold Type
 
@@ -187,7 +196,7 @@ az networkcloud cluster show --name "<CLUSTER>" \
 In this example, if at least 10 nodes are successfully upgraded, the upgrade moves on to the next rack while continuing to provision any remaining machines in the current rack. If atleast 10 machines in the rack fail to upgrade, the cluster upgrade will pause. When this happens, the required hardware must be repaired before running the continue‑update‑version action to resume and complete the upgrade. 
 
 > [!NOTE]
-> **_`update-strategy` cannot be changed after the Cluster runtime upgrade has started._**
+> **You can't change _`update-strategy` after the Cluster runtime upgrade starts._**
 
 > For troubleshooting issues with bare metal machines, refer to [Troubleshoot Azure Operator Nexus server problems](troubleshoot-reboot-reimage-replace.md)
 
@@ -204,18 +213,33 @@ During a Runtime Upgrade, if a KCP machine failure occurs:
 
 This strict requirement ensures cluster control plane stability and prevents potential cluster management issues that could arise from a partially upgraded or unhealthy control plane.
 
+## Validations that can block the cluster runtime upgrade
+When you trigger a cluster runtime upgrade, the process runs a series of preupgrade validations before the OS or runtime upgrade starts. These validations confirm that the OS upgrade can succeed given the current state of the cluster. For more information, see [Cluster Runtime Upgrade preflight validations](howto-cluster-runtime-upgrade-preflight-checks.md).
+
+
 ## Upgrade Cluster runtime using CLI
 
 To perform an upgrade of the runtime, use the following Azure CLI command:
 
 ```azurecli
-az networkcloud cluster update-version --cluster-name "<CLUSTER>" \
---target-cluster-version "<versionNumber>" \
+az networkcloud cluster update-version\
+--cluster-name "<CLUSTER>" \
 --resource-group "<CLUSTER_RG>" \
---subscription "<SUBSCRIPTION>"
+--subscription "<SUBSCRIPTION>" \
+--target-cluster-version "<versionNumber>" \
+--safeguard-mode "<SAFEGUARD_MODE>"
 ```
 
-This command initiates the runtime upgrade process for the specified Cluster. The command itself typically completes within about 5 minutes, but this command only starts the upgrade process. The actual runtime upgrade continues to execute in the background and can take several hours to complete, as it upgrades nodes rack by rack and installs the new OS version.
+Required parameters:
+- `--target-cluster-version`: The version to apply to the cluster during the update.
+
+Optional parameters:
+- `--safeguard-mode`: Specifies how safeguards are applied during the update version operation. Use `All` to run all preoperation validation checks. Use `None` to bypass safeguards that block the upgrade when they detect problems. The default value is `All`.
+
+>[!IMPORTANT]
+> The default safeguard mode `All` blocks the OS and extensions upgrade from starting if validations determine that the upgrade can't be completed without fixing the detected problems. To learn more, see [Cluster Runtime Upgrade preflight validations](howto-cluster-runtime-upgrade-preflight-checks.md).
+
+This command initiates the runtime upgrade process for the specified cluster. The command itself typically finishes within about five minutes, but it only starts the upgrade process once the validations succeed. The actual runtime upgrade continues to execute in the background and can take several hours to complete, as it upgrades nodes rack by rack and installs the new OS version.
 
 Detailed status and diagnostic information for the initiation step is available in Azure portal in the `JSON View` of the Cluster (Operator Nexus) resource. The following information is included in the `updateVersion` entry of the `properties.actionStates` field, when using API Version `2025-07-01-preview` or higher.
 

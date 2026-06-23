@@ -56,13 +56,13 @@ For these examples, assume that you created a customer-managed Key Vault. You al
     {
         ...,
         "identity": {
-            "principalId": "11223344-5566-7788-99aa-bbccddeeff00",
-            "tenantId": "00ffeedd-ccbb-aa99-8877-665544332211",
+            "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
+            "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
             "type": "SystemAssigned, UserAssigned",
             "userAssignedIdentities": {
                 "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>": {
-                    "principalId": "12345678-1234-1234-1234-1234567890ab",
-                    "clientId": "87654321-4321-4321-4321-ba0987654321"
+                    "principalId": "bbbbbbbb-cccc-dddd-2222-333333333333",
+                    "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444"
                 }
             }
         },
@@ -80,7 +80,7 @@ For these examples, assume that you created a customer-managed Key Vault. You al
     $ az networkfabric fabric update \
     --resource-group <my-nf-rg> \
     --resource-name <my-nf> \
-    --mi-system-assigned 11223344-5566-7788-99aa-bbccddeeff00 \
+    --mi-system-assigned aaaaaaaa-bbbb-cccc-1111-222222222222 \
     --mi-user-assigned [ \
     "/subscriptions/<some-subscription>/resourcegroups/<some-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<some-user-assigned-identity>", \
     "/subscriptions/<my-subscription>/resourcegroups/<my-resource-group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<my-user-assigned-identity>", \
