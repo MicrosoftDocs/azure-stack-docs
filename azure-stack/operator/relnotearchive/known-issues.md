@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/25/2026
+ms.date: 06/23/2026
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
