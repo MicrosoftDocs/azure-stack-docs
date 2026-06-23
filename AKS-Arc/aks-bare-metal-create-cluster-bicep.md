@@ -28,14 +28,14 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 | `location` | `eastus` | Only supported region for public preview. |
 | `clusterName` | Your cluster name | Name must be 1-27 characters long, start and end with a letter or number, and can only contain letters, numbers, hyphens, or underscores.|
 | `kubernetesVersion` | `1.34.2-20260204` or `1.34.3-20260204` | Format: `Major.Minor.Patch-YYYYMMDD`. |
-| `controlPlaneIp` | IP address | Must be in the same subnet as the host IP **but cannot be the same as the host IP**. |
+| `controlPlaneIp` | IP address | If omitted, defaults to the host machine's IP address. Only specify a custom IP if you need the control plane to be reachable on a different address than the host. If provided, it must be in the same subnet as the host IP. |
 | `adminGroupObjectIds` | Microsoft Entra ID group object ID | Used for cluster admin RBAC. |
 | `sshPublicKey` | SSH public key | An SSH key pair was created during Edge Machine creations. Use that public key here. |
 | `logAnalyticsWorkspaceId` | `/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.OperationalInsights/workspaces/<WORKSPACE_NAME>` | New workspace used for log analytics. |
 | `edgeMachineName` | Edge machine name | Must match the provisioned machine in your resource group. |
 
 > [!WARNING]
-> If your machine uses DHCP, you must reserve the control plane IP address so it remains permanently assigned to this machine. If the control plane IP changes, the Kubernetes cluster becomes unreachable and must be redeployed.
+> If you specify a custom controlPlaneIp and your machine uses DHCP, you must reserve the control plane IP address so it remains permanently assigned to this machine. If the control plane IP changes, the Kubernetes cluster becomes unreachable and must be redeployed.
 
 ## Step 2: Download the Bicep template
 
