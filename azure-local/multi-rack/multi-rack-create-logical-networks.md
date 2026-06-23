@@ -5,7 +5,7 @@ author: sipastak
 ms.author: sipastak
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 04/15/2026
+ms.date: 06/23/2026
 ms.subservice: multi-rack
 ---
 
@@ -90,6 +90,7 @@ Create a static logical network when you want to create Azure Local VMs with net
     $addressPrefixes = "100.68.180.0/28"
     $ipPoolEnd = "100.68.180.20"
     $ipPoolStart = "100.68.180.10"
+    $gateway = "100.68.180.1"
     $dnsServers = "192.168.200.222"
     $vlan = "201"
     ```
@@ -111,17 +112,16 @@ Create a static logical network when you want to create Azure Local VMs with net
     | **ip-pool-start** | Start of the IP pool. For example: “192.168.0.0”. |
     | **ip-pool-end** | End of the IP pool. For example: “192.168.0.20”. |
     | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" Use the `--no-dns-server` flag instead if you choose not to provide this parameter.|
-    | **gateway** | Use the `--no-gateway` flag. Customer-provided default gateway isn't currently supported. |
+    | **gateway** | IPv4 address of the default gateway. |
     | **fabric-network-configuration-id** |ARM resource ID of the Layer 3 Internal network. |
 
     > [!NOTE]
-    >- The `dns-server` parameter is optional. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
-    >- Customer-provided default gateway isn't currently supported. You must use the `--no-gateway` flag to bypass passing the gateway parameter.
+    > The `dns-servers` parameter is optional. Use the `--no-dns-servers` flag to bypass passing the `dns-servers` parameter.
 
 1. Create a static logical network. Run the following command:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --no-gateway
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway
     --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd --ip-pool-type "vm" --dns-servers $dnsServers --fabric-network-configuration-id $fabricResourceID --vlan $vlan
     ```
 
