@@ -1450,6 +1450,13 @@ items:
       - name: Security concepts
         href: ./multi-rack/multi-rack-security.md
         
+  - name: GPUs
+    items:
+      - name: Prepare GPUs
+        href: ./multi-rack/multi-rack-gpu-preparation.md
+      - name: Manage GPUs using Discrete Device Assignment
+        href: ./multi-rack/multi-rack-gpu-manage-via-device.md
+
   - name: Reference
     items:
       - name: Network cloud REST API reference
@@ -1524,6 +1531,8 @@ items:
       href: manage/disconnected-operations-known-issues.md
   - name: Plan
     items:
+    - name: Hardware
+      href: manage/disconnected-operations-control-plane-appliance.md
     - name: Network
       href: manage/disconnected-operations-network.md
     - name: Identity
@@ -1532,8 +1541,6 @@ items:
       href: manage/disconnected-operations-security.md
     - name: Public key infrastructure
       href: manage/disconnected-operations-pki.md
-    - name: Dedicated management cluster
-      href: manage/disconnected-operations-control-plane-appliance.md
   - name: Deploy
     items:
     - name: Acquire disconnected operations

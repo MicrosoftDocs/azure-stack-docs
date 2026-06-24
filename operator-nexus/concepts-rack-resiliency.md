@@ -2,9 +2,9 @@
 title: Operator Nexus rack resiliency
 description: Document how rack resiliency works in Operator Nexus
 ms.topic: concept-article
-ms.date: 12/18/2025
-author: dougbristow
-ms.author: dbristow
+ms.date: 06/24/2026
+author: santhosh-kumar-cm
+ms.author: sacm
 ms.service: azure-operator-nexus
 ---
 
@@ -14,77 +14,77 @@ The Nexus service is engineered to uphold control plane resiliency across variou
 
 ## Instances with three or more compute racks
 
-Operator Nexus ensures the availability of three active Kubernetes control plane (KCP) nodes in instances with three or more compute racks. These nodes are strategically distributed across different racks to guarantee control plane resiliency, when possible.
+Operator Nexus ensures the availability of three active Kubernetes control plane (KCP) servers in instances with three or more compute racks. It strategically distributes these roles across different racks to guarantee control plane resiliency.
 
 > [!TIP]
 > The Kubernetes control plane is a set of components that manage the state of a Kubernetes cluster, schedule workloads, and respond to cluster events. It includes the API server, etcd storage, scheduler, and controller managers.
 >
-> The remaining management nodes contain various operators that run the platform software and other components performing support capabilities for monitoring, storage, and networking.
+> The remaining management servers contain various operators that run the platform software and other components that perform support capabilities for monitoring, storage, and networking.
 >
-> Auto-remediation actions on control plane servers are designed to maintain the health and availability of the Kubernetes management layer. These actions on the control plane are strictly isolated to the platform’s management infrastructure and do not interact with compute nodes or customer workloads. Applications and services running on compute nodes continue to operate normally during control plane remediation events, ensuring runtime stability and uninterrupted service.
+> Auto-remediation actions on control plane servers maintain the health and availability of the Kubernetes management layer. These actions on the control plane are strictly isolated to the platform’s management infrastructure and don't interact with compute servers or customer workloads. Applications and services running on compute servers continue to operate normally during control plane remediation events, ensuring runtime stability and uninterrupted service.
 
-During runtime upgrades, Operator Nexus implements a sequential upgrade of the control plane nodes. The sequential node approach preserves resiliency throughout the upgrade.
+During runtime upgrades, Operator Nexus implements a sequential upgrade of the control plane servers. The sequential server approach preserves resiliency throughout the upgrade.
 
 Three compute racks:
 
-KCP = Kubernetes Control Plane Node
-MGMT = Management Node Pool Node
+KCP = Kubernetes Control Plane server
+MGMT = Management server
 
 | Rack 1    | Rack 2 | Rack 3 |
-| --------- | ------ | ------ |
+|-----------|--------|--------|
 | KCP       | KCP    | KCP    |
 | KCP-spare | MGMT   | MGMT   |
 
 Four or more compute racks:
 
 | Rack 1 | Rack 2 | Rack 3 | Rack 4    |
-| ------ | ------ | ------ | --------- |
+|--------|--------|--------|-----------|
 | KCP    | KCP    | KCP    | KCP-spare |
 | MGMT   | MGMT   | MGMT   | MGMT      |
 
 
-## Spare control plane node
+## Spare control plane server
 
-The spare control plane node is a critical component of Operator Nexus resiliency architecture. This node serves as a standby control plane instance that maintains cluster quorum and provides seamless failover capabilities during upgrades and failure scenarios.
+The spare control plane server is a critical component of Operator Nexus resiliency architecture. This server acts as a standby control plane instance that maintains cluster quorum and provides seamless failover capabilities during upgrades and failure scenarios.
 
 In disaster situations when the control plane loses quorum, there are impacts to the Kubernetes API across the instance. This scenario can affect a workload's ability to read and write Custom Resources (CRs) and talk across racks.
 
-### Spare node characteristics
+### Spare server characteristics
 
-A spare control plane node has the following characteristics:
+A spare control plane server has the following characteristics:
 
 - **Power state**: Off (powered down when not in use)
 - **BMM status**: Available (ready to participate in the cluster)  
 - **Ready state**: False (not currently active in the cluster)
 - **Cordoned status**: Cordoned (prevented from scheduling workloads)
 - **Labels**: `platform.afo-nc.microsoft.com/control-plane=true`
-- **OAM IP**: Not assigned until the node is provisioned and becomes active
+- **OAM IP**: Not assigned until the server is provisioned and becomes active
 
-### How the spare node works
+### How the spare server works
 
-The spare control plane node acts as a standby that can be activated to maintain cluster quorum in several scenarios:
+The spare control plane server acts as a standby that can be activated to maintain cluster quorum in several scenarios:
 
-- **Runtime upgrades**: During cluster runtime upgrades, the spare node is the first to be upgraded and provisioned, ensuring continuous control plane availability throughout the upgrade process
-- **Control plane failures**: If an active control plane node becomes unhealthy, the spare node can be automatically provisioned to replace it and maintain quorum
-- **Maintenance operations**: When performing maintenance on active control plane nodes, the spare provides redundancy
+- **Runtime upgrades**: During cluster runtime upgrades, the spare server is the first server upgraded and provisioned, ensuring continuous control plane availability throughout the upgrade process.
+- **Control plane failures**: If an active control plane server becomes unhealthy, the spare server automatically provisions to replace it and maintain quorum.
+- **Maintenance operations**: When you perform maintenance on active control plane servers, the spare server provides redundancy.
 
-### Identifying spare nodes
+### Identifying spare servers
 
-You can identify spare control plane nodes using the Azure portal or Azure CLI:
+You can identify spare control plane servers by using the Azure portal or Azure CLI:
 
 #### Azure portal
 
-In the Azure portal, navigate to your Nexus cluster's bare metal machines, from the Cluster resource under Workloads > Compute Servers. The spare control plane node appears with:
+In the Azure portal, go to your Nexus cluster's bare metal machines. From the Cluster resource, under **Workloads** > **Compute Servers**, you can see the spare control plane server with these properties:
 
 - Power state: Off
 - Detailed status: Available
 - Machine roles: control-plane
 
-![Compute spare control plane node](media/compute-spare-control.png)
+![Compute spare control plane server](media/compute-spare-control.png)
 
 #### Azure CLI
 
-Use the following command to list control plane nodes and identify the spare:
+Use the following command to list control plane servers and identify the spare:
 
 ```azurecli
 az networkcloud baremetalmachine list \
@@ -93,62 +93,108 @@ az networkcloud baremetalmachine list \
   --output table
 ```
 
-You can identify the spare node by looking for these attributes: `powerState: Off`, `detailedStatus: Available`, and `machineRoles: control-plane`.
+You can identify the spare server by looking for these attributes: `powerState: Off`, `detailedStatus: Available`, and `machineRoles: control-plane`.
 
-### Spare node provisioning and lifecycle
+### Spare server provisioning and lifecycle
 
 #### Initial setup
 
 - **BIOS configuration**: Matches the server configuration at the time of initial deployment
-- **Operating system**: Not loaded initially; the node remains unprovisioned until needed  
+- **Operating system**: Not loaded initially; the server remains unprovisioned until needed.
 - **RAID configuration**: Matches the state of the server at the version it was running at deployment
 - **Firmware**: Initially matches the deployment version (typically N-1 version following an upgrade)
 
 #### Activation process
 
-When a spare node needs to become active:
+When a spare server needs to become active:
 
-1. The node is powered on automatically
+1. The server powers on automatically.
 2. The operating system is provisioned with the current cluster runtime version
 3. Kubernetes control plane components are deployed and configured
-4. The node joins the active control plane cluster
+1. The server joins the active control plane cluster.
 5. An OAM IP address is assigned
 
-The spare control plane node's firmware is updated when the node becomes active, such as during runtime upgrades. This process ensures firmware compatibility while minimizing unnecessary updates to inactive nodes.
+The spare control plane server's firmware updates when the server becomes active, such as during runtime upgrades. This process ensures firmware compatibility while minimizing unnecessary updates to inactive servers.
 
 ### Transition to active control plane
 
-A spare control plane node can become an active control plane node through several mechanisms:
+A spare control plane server becomes an active control plane server through several mechanisms:
 
 - **Automated upgrade process**: During runtime upgrades, orchestrated by the upgrade workflow
-- **Machine Health Check (MHC)**: Automatic replacement of failed active control plane nodes
-- **Manual intervention**: Replace or reimage operations on active control plane nodes may trigger spare activation
+- **Machine Health Check (MHC)**: Automatic replacement of failed active control plane servers
+- **Manual intervention**: Replace or reimage operations on active control plane servers might trigger spare activation
 
 For detailed information about these processes, see the [Automated remediation](#automated-remediation) section in this document.
 
 ## Automated remediation
 
-To maintain Kubernetes control plane (KCP) quorum, Operator Nexus provides automated remediation when specific server issues are detected. Additionally, this automated remediation extends to Management Plane & Compute nodes.
+Operator Nexus continuously monitors the health of all servers (Compute, Management Plane, and Kubernetes Control Plane) and automatically remediates issues when specific conditions are detected. The goal is to maintain cluster stability and control plane quorum without operator intervention.
 
-Here are the triggers for automated remediation:
+### Triggers for automated remediation
 
-- For all servers (Compute, Management and KCP): if a server fails to provision successfully after six hours, automated remediation occurs. This check includes provisioning a new machine at initial deployment time or provisioning during a Replace action.
-- For all servers (Compute, Management and KCP): if a running node is stuck in a read only root file system mode for 10 minutes, automated remediation occurs, deprecated in 2510.
-- For KCP and Management Plane servers only, if a Kubernetes node is in an Unknown state for 30 minutes, automated remediation occurs.
+The conditions that trigger automated remediation differ by server role type:
+
+| Trigger                                                   | Compute | Management Plane | Control Plane (KCP) |
+|-----------------------------------------------------------|:-------:|:----------------:|:-------------------:|
+| Server fails to provision within the expected timeframe   |   Yes   |       Yes        |         Yes         |
+| Kubernetes node Ready condition is Unknown for 30 minutes |   No    |       Yes        |         Yes         |
+
+> [!NOTE]
+> Provisioning failures are detected through dynamic per-phase monitoring rather than a single fixed timeout. The system tracks each stage of the provisioning process and detects stalls at any phase.
 
 ### Remediation process
 
-- Remediation of a Compute node is now one reprovisioning attempt. If the reprovisioning fails, the node is marked Unhealthy. Reprovisioning no longer continues to retry infinitely, and the Bare Metal Machine is powered off.
-- Remediation of a Management Plane node is to attempt one reboot and then one reprovisioning attempt. If those steps fail, the node is marked Unhealthy.
-- Remediation of a KCP node is to attempt one reboot. If the reboot fails, the node is marked Unhealthy and Nexus triggers the immediate provisioning of the spare KCP node. This process is outlined in the [KCP remediation details](#kcp-remediation-details) section.
-- In all instances, when the Bare Metal Machine is marked unhealthy, the BMM's `detailedStatusMessage` is updated to read `Warning: BMM Node is unhealthy and may require hardware replacement.` The Bare Metal Machine's node is removed from the Kubernetes Cluster, which triggers a node drain. Users need to run a BMM Replace action to return the BMM into service and have it rejoin the Kubernetes Cluster.
+The system performs remediation actions sequentially. If an action doesn't resolve the issue, the system escalates to the next step. The available actions differ by server type:
+
+| server type         | Step 1      | Step 2      | Final step     |
+|---------------------|-------------|-------------|----------------|
+| Compute             | Reprovision | —           | Mark Unhealthy |
+| Management Plane    | Reboot      | Reprovision | Mark Unhealthy |
+| Control Plane (KCP) | Reboot      | —           | Mark Unhealthy |
+
+**Key behaviors:**
+
+- **Compute servers** skip the reboot step because remediation only triggers on provisioning failures, where a reboot wouldn't help.
+- **Control Plane servers** skip reprovisioning because potential loss of quorum is too critical to wait for a reprovision attempt. Instead, the system escalates directly to marking the server unhealthy and triggering a role swap with a healthy Management Plane server.
+- **Reprovision** is a single attempt. If it fails, the system doesn't retry indefinitely - it escalates to mark the server unhealthy.
+- **Disabling compute reprovision**: Operators can optionally disable the reprovision step for compute servers. When disabled, the system escalates directly from a provisioning failure to marking the server unhealthy.
+
+### Safeguards
+
+- If an individual server was recently reprovisioned and fails again shortly after, the system considers remediation to be unsuccessful, and continues to the next remediation step.
+- The system suspends remediation while a user-initiated disruptive action (such as BMM Replace, Reimage, Restart, or Power Off) is in progress. This step prevents race conditions and conflicts between automated remediation and the user's operation.
+
+### Mark Unhealthy outcome
+
+When you mark a Bare Metal Machine as unhealthy:
+
+- The process updates the BMM's `detailedStatusMessage` to: `Warning: BMM Node is unhealthy and may require hardware replacement.`
+- The process removes the server from the Kubernetes cluster, which triggers a node drain.
+- The process powers off the Bare Metal Machine.
+- **User action required**: Run a BMM Replace action to return the machine into service and have it rejoin the cluster.
+
+> [!TIP]
+> The `detailedStatusMessage` value is an alertable signal. You can configure Azure Monitor alerts on this property to be notified when a machine requires manual intervention. For troubleshooting guidance, see [Troubleshoot BMM Warning messages](./troubleshoot-bare-metal-machine-warning.md#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement).
+
+### Monitoring remediation activity
+
+Automated remediation emits customer-visible logs in the **Platform Operation Logs** category each time a remediation strategy starts, completes, or fails. These logs are prefixed with `Machine Health Check Remediation:` and include the name of the affected server.
+
+Example log messages:
+
+| Event              | Example message                                                                                                                         |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Strategy starts    | `Machine Health Check Remediation: starting reboot strategy for BareMetalHost rack1compute01`                                           |
+| Strategy completes | `Machine Health Check Remediation: reprovision-in-place strategy completed for BareMetalHost rack1compute01`                            |
+| Strategy fails     | `Machine Health Check Remediation: Reboot strategy failed for BareMetalHost rack1compute01: timeout waiting for host to become healthy` |
+
+To receive and configure these logs, see [List of logs available for streaming](./list-logs-available.md).
 
 ### KCP remediation details
 
-Ongoing control plane resiliency requires a spare KCP node. When KCP node fails remediation and is marked Unhealthy, a deprovisioning of the node occurs. For NC 4.7.x runtimes, the unhealthy KCP node is exchanged with a suitable healthy Management Plane server. This Management Plane server becomes the new spare KCP node. The failed KCP node is updated and labeled as a Management Plane node. Once the label changes, an attempt to provision the newly labeled management plane node occurs. If it fails to provision, the management plane remediation process takes over. If it fails provisioning or doesn't run successfully, the machine's status remains unhealthy, and the user must fix. The unhealthy condition surfaces to the Bare Metal Machine's (BMM) `detailedStatus` and `detailedStatusMessage` fields in Azure and clears through a BMM Replace action.
+When a KCP server fails remediation and is marked unhealthy, the server is deprovisioned. The unhealthy KCP server is exchanged with a suitable healthy Management Plane server. This Management Plane server becomes the new KCP server. The failed KCP server is updated and labeled as a Management Plane server. Once the label changes, an attempt to provision the newly labeled Management Plane server occurs. If it fails to provision, the Management Plane remediation process takes over. If it fails provisioning or doesn't run successfully, the machine's status remains unhealthy, and the user must fix the server. The unhealthy condition surfaces to the Bare Metal Machine's (BMM) `detailedStatus` and `detailedStatusMessage` fields in Azure and clears through a BMM Replace action.
 
-> [!NOTE]
->The provisioning retry process doesn't execute on compute and management node pool nodes for systems running the 4.1 NetworkCloud runtime. This capability is available when the Nexus Cluster is updated to the 4.4 runtime.
+Only one KCP role swap can be in progress at a time. If a swap is already underway, additional remediation requests wait until the active swap completes before proceeding.
 
 ## Related links
 
