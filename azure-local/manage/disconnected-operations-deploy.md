@@ -525,7 +525,11 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
->  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2605.1003.1003`.
+>  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment.
+> | Version | Solution Version |
+> | --- | --- |
+> | 2604 | 12.2604.1003.1005 |
+> | 2605 | 12.2605.1003.1003 |
 
 ## Handle preinstalled OEM images in disconnected operations
 
