@@ -60,7 +60,7 @@ az deployment group create \
 After the deployment completes, connect to your cluster:
 
 ```azurecli
-az connectedk8s proxy --name <clusterName> --resource-group <RESOURCE_GROUP>
+az aksarc get-credentials --name <clusterName> --resource-group <RESOURCE_GROUP>
 ```
 
 Then in a new terminal:

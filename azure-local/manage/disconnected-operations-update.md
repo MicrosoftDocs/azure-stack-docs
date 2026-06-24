@@ -93,7 +93,10 @@ Get-ApplianceUpdateHistory
 
 > [!IMPORTANT]
 > **Azure Local, version 2603 only.** If your Azure Local system is on version 2603, complete steps 1–3 before running the update script to exclude a test that requires internet connectivity. If you're on version 2604 or later, skip this section and continue with the script.
-
+> **Update from Azure Local, version 2602 to version 2604.** To update your Azure Local system on version 2602 to version 2604, you must first:
+> 1. Update disconnected operations from version 2602 to version 2604.
+> 1. Then, update Azure Local from version 2602 to version 2603.
+> 1. Then, update Azure Local from version 2603 to version 2604.
 1. Identify the Azure Local node running the orchestrator service.
 
    1. Sign in to any Azure Local node and run the following command:
