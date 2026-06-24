@@ -79,7 +79,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ::: moniker-end
 
@@ -147,7 +146,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ::: moniker-end
 
@@ -223,7 +221,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ::: moniker-end
 
@@ -298,7 +295,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ::: moniker-end
 
@@ -369,7 +365,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ::: moniker-end
 
@@ -465,7 +460,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 | Add server <br> Repair server <!--32447442--> | The `Add-server` and `Repair-server` cmdlets fail with the error: <br> `Cluster Build ID matches node to add's Build ID`. | Use the OS image of the same solution version as the version running on the existing cluster. To get the OS image, identify and download the image version from this [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md). |
 
 ::: moniker-end
@@ -534,7 +528,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2511
 
@@ -607,7 +600,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2510
 
@@ -694,7 +686,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2509
 
@@ -773,7 +764,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2508
 
@@ -845,7 +835,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2507
 
@@ -912,7 +901,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2506
 
@@ -987,7 +975,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 This article identifies critical known issues and their workarounds in Azure Local.
 
@@ -1077,7 +1064,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2504
 
@@ -1149,7 +1135,6 @@ The following table lists the known and expected system behaviors that shouldn't
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-| Azure Local VM management| Using an exported Azure VM OS disk as a VHD to create a gallery image for provisioning an Azure Local VM isn't supported. | Run the command `restart-service mochostagent` to restart the mochostagent service. |
 
 ## Known issues for version 2503
 
