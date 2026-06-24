@@ -3,10 +3,9 @@ title: Create Windows node pools
 description: Learn how to create Windows node pools in AKS enabled by Azure Arc on Azure Local.
 ms.topic: how-to
 author: davidsmatlak
-ms.date: 09/25/2025
-ms.author: davidsmatlak 
+ms.date: 06/19/2026
+ms.author: davidsmatlak
 ms.lastreviewed: 09/22/2025
-ms.reviewer: sethm
 
 ---
 
@@ -22,6 +21,8 @@ Create an AKS cluster following the instructions in [How to create AKS clusters]
 
 > [!IMPORTANT]
 > Windows Server node pools must be licensed using either the Windows Server subscription or Azure Hybrid Benefit, as described in [Activate Windows Server VMs on Azure Local](/azure/azure-local/manage/vm-activate).
+
+[!INCLUDE [gmsa-windows-node-pools-not-supported](includes/gmsa-windows-node-pools-not-supported.md)]
 
 ## Add a Windows node pool
 
@@ -84,7 +85,7 @@ You can use a YAML manifest to create all the objects needed to run the ASP.NET 
 
 The ASP.NET sample application is provided as part of the [.NET Framework samples](https://hub.docker.com/_/microsoft-dotnet-framework-samples/) and runs in a Windows Server container. AKS requires Windows Server containers to be based on images of Windows Server 2019 or later. The Kubernetes manifest file must also define a [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to ensure your ASP.NET sample application's pods are scheduled on a node that can run Windows Server containers.
 
-1. Create a file named **sample.yaml** and paste the following YAML definition:
+1. Create a file named _sample.yaml_ and paste the following YAML definition:
 
    ```yaml
    apiVersion: apps/v1

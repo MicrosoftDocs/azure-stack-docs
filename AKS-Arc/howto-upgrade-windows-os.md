@@ -3,8 +3,8 @@ title: Upgrade the Windows Server version on your node pools
 description: Learn how to upgrade the Windows Server version on your node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 author: davidsmatlak
-ms.date: 09/25/2025
-ms.author: davidsmatlak
+ms.date: 06/19/2026
+ms.author: davidsmatlak 
 ms.lastreviewed: 09/24/2025
 
 ---
@@ -35,6 +35,8 @@ When a new version of the Windows Server operating system is released, AKS Arc i
 ## Add a new Windows-based node pool to an existing cluster
 
 Select the right OS SKU and create a new [Windows-based node pool](howto-create-windows-node-pools.md) on your AKS Arc cluster.
+
+[!INCLUDE [gmsa-windows-node-pools-not-supported](includes/gmsa-windows-node-pools-not-supported.md)]
 
 ## Update the application YAML to use the new OS SKU
 
