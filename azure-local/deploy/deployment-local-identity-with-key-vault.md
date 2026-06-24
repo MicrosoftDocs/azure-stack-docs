@@ -3,7 +3,7 @@ title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/24/2026
+ms.date: 04/24/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -28,13 +28,13 @@ As part of this configuration, an Azure Key Vault in the Azure Cloud is provisio
 
 Using local identity with Key Vault on Azure Local offers several benefits, particularly for environments that don't rely on AD. Here are some key benefits:
 
-- **Minimal edge infrastructure**: For environments that don't use AD, local identity with Key Vault provides a secure and efficient way to manage user identities and secrets.
+- **Minimal edge infrastructure.** For environments that don't use AD, local identity with Key Vault provides a secure and efficient way to manage user identities and secrets.
 
-- **Secret store**: Key Vault securely manages and stores secrets, such as BitLocker keys, node passwords, and other sensitive information. This reduces the risk of unauthorized access and enhances the overall security posture.
+- **Secret store.** Key Vault securely manages and stores secrets, such as BitLocker keys, node passwords, and other sensitive information. This reduces the risk of unauthorized access and enhances the overall security posture.
 
-- **Maintain simplified management**: By integrating with Key Vault, organizations can streamline the management of secrets and credentials. This includes storing deployment and local identity secrets in a single vault, making it easier to manage and access these secrets.
+- **Maintain simplified management.** By integrating with Key Vault, organizations can streamline the management of secrets and credentials. This includes storing deployment and local identity secrets in a single vault, making it easier to manage and access these secrets.
 
-- **Simplified deployment**: During the system deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This option streamlines the deployment process by ensuring all necessary secrets are securely stored within Key Vault. The deployment becomes more efficient by reducing dependencies on existing AD systems or other systems that run AD, which require ongoing maintenance. Additionally, this approach simplifies firewall configurations for Operational Technology networks, making it easier to manage and secure these environments.
+- **Simplified deployment.** During the system deployment via the Azure portal, you have the option to select a local identity provider integrated with Key Vault. This option streamlines the deployment process by ensuring all necessary secrets are securely stored within Key Vault. The deployment becomes more efficient by reducing dependencies on existing AD systems or other systems that run AD, which require ongoing maintenance. Additionally, this approach simplifies firewall configurations for Operational Technology networks, making it easier to manage and secure these environments.
 
 ## Prerequisites
 
@@ -50,43 +50,27 @@ Using local identity with Key Vault on Azure Local offers several benefits, part
 
 - Download the Azure Local software. See [Download operating system for Azure Local deployment](./download-23h2-software.md).
 
-- Configure nodes and instance IP addresses by using one of the following methods: 
+- The nodes require static IP addresses and don't support DHCP. After the OS is installed, use SConfig to set the static IP address, subnet, gateway, and DNS.
 
-  - **Manual (Static IP Address)**: You configure each server node with a manually assigned static IP address on its primary network interface.
-  - **Automatic (DHCP Assignment)**: A DHCP server on the local network automatically assigns IP addresses to the server nodes. You must configure the assigned addresses as permanent or reserved for the corresponding MAC address or host. 
-  
-    > [!NOTE]
-    > After the operating system is installed, network configuration defaults to DHCP. If a DHCP server is available and supports IP reservations, no additional configuration is required. If static IP addresses are preferred, use **SConfig** to configure the IP address, subnet mask, default gateway, and DNS settings (see **DNS Service Setup**).
-    
-- Configure DNS services by using one of the following options:
- 
-  - **Use an Existing DNS Service**: Yes. If an existing DNS infrastructure is available, register the IP addresses and corresponding server or cluster hostnames in the appropriate DNS zone. Provide the DNS server IP address in the **DNS IP** field during node and instance network configuration.
-    
-    For guidance on configuring DNS for Azure Local deployments, see [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
-    
-  - **Use Internal Infrastructure DNS**: No. If no external DNS service exists and there are no plans to deploy one for cluster name resolution, Azure Local can configure an internal infrastructure-only DNS service for the cluster.
-    
-    This configuration requires a DNS forwarder, such as a network gateway or public DNS server, to resolve internet endpoints.
+- Have a DNS server with a properly configured zone. This setup is crucial for the network to function correctly. See [Configure DNS server for Azure Local](#configure-dns-server-for-azure-local).
 
-    > [!IMPORTANT]
-    > The internal DNS service is intended exclusively for Azure Local cluster infrastructure operations. It doesn't support external application workloads or general-purpose DNS services.).
-    
 - Enable SSH on each node for remote access from the Azure portal. For instructions, see [SSH access to Azure Arc-enabled servers](/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli).
 
 ## Configure DNS server for Azure Local
 
 Follow these steps to configure DNS for Azure Local:
 
-1. Create and configure DNS server.
+1. **Create and configure DNS server.**
 
     Set up your DNS server if you don't already have one. You can use Windows Server DNS or another DNS solution.
 
-1. Create DNS Host A records.
+1. **Create DNS Host A records.**
 
-   1. For each node in your Azure Local instance, create a DNS Host A record. This record maps the node's hostname to its IP address, allowing other devices on the network to locate and communicate with the node.
-   1. Additionally, create a DNS Host A record for the system itself. This record should use the first IP address from the network range you've allocated for the system.
+    For each node in your Azure Local instance, create a DNS Host A record. This record maps the node's hostname to its IP address, allowing other devices on the network to locate and communicate with the node.
 
-1. Verify DNS records.
+    Additionally, create a DNS Host A record for the system itself. This record should use the first IP address from the network range you've allocated for the system.
+
+1. **Verify DNS records.**
 
     To verify that the DNS records for a specific machine are correctly set up, use the fully qualified domain name (FQDN) that is configured as a zone in DNS:
 
@@ -100,19 +84,19 @@ Follow these steps to configure DNS for Azure Local:
     Resolve-DnsName "machinename.domain.com"
     ```
 
-1. Set up DNS forwarding.
+1. **Set up DNS forwarding.**
 
     Configure DNS forwarding on your DNS server to forward DNS queries to Azure DNS or another external DNS provider as needed.
 
-1. Update network settings.
+1. **Update network settings.**
 
     Update the network settings on your Azure Local nodes to use the DNS server you have configured. This can be done through the network adapter settings or using PowerShell commands.
 
-1. Verify DNS configuration.
+1. **Verify DNS configuration.**
 
     Test the DNS configuration to ensure that DNS queries are resolved correctly. You can use tools like `Resolve-DnsName` in Windows PowerShell or `dig` to verify DNS resolution.
 
-1. Restart the operating system on local and remote machines.
+1. Restart the operating system on local and remote machines:
     
     ```powershell
     Restart-Computer
@@ -126,9 +110,9 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
 ### Networking tab
 
-1. Provide a valid **Zone name** (domain) to establish a private, authoritative DNS namespace for the cluster. This domain must be resolvable either internally (for internal only hosts and workloads) or externally (for publicly available hosts and workloads) depending on your cluster's visibility requirements.
+- Provide a valid **Zone name** (domain) to establish a private, authoritative DNS namespace for the cluster. This domain must be resolvable either internally (for internal only hosts and workloads) or externally (for publicly available hosts and workloads) depending on your cluster's visibility requirements.
 
-1. Provide the **DNS server** details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
+- Provide the **DNS server** details configured in the [Configure DNS for Azure Local](#configure-dns-server-for-azure-local) section.
     
     :::image type="content" source="media/deployment-local-identity-with-key-vault/provide-dns-server.png" alt-text="Screenshot of the Networking tab showing the Zone name and DNS server fields." lightbox="media/deployment-local-identity-with-key-vault/provide-dns-server.png":::
 
@@ -185,61 +169,7 @@ In scenarios where AD isn't available, you can utilize a dedicated recovery admi
 
 This ensures that all critical information is stored safely and can be easily retrieved when needed, providing an additional layer of security and reliability for our infrastructure.
 
-## Deploy with Internal DNS
-
-You can deploy Azure Local by using Local Identity, making it a good option for environments that don't have an existing Active Directory or dedicated DNS infrastructure. As part of this deployment model, Azure Local can automatically deploy and manage an Internal DNS service to support cluster operations and core infrastructure requirements.
-
-### Benefits
-
-Internal DNS simplifies deployment for customers who don't have an existing DNS environment by:
-
-- Enabling Azure Local deployments without requiring a dedicated DNS server.
-- Providing name resolution required for cluster management and infrastructure services.
-- Reducing deployment complexity and infrastructure prerequisites.
-- Eliminating the need to deploy and manage extra DNS servers solely for Azure Local cluster operations.
-- Providing a lightweight DNS solution optimized for Azure Local infrastructure scenarios.
-
-> [!IMPORTANT]
-> Internal DNS isn't intended for application DNS.
-
-The Internal DNS service included with Azure Local is designed specifically for cluster operations and infrastructure-level name resolution. It's not intended to function as a general-purpose enterprise DNS service.
-
-Don't use the Internal DNS server as the primary DNS server for:
-
-- Virtual Machines (VMs).
-- Arc-enabled VMs.
-- Kubernetes workloads.
-- Application-specific DNS records.
-- Enterprise application name resolution.
-- Service discovery for workload applications.
-
-### Guidance for VMs and applications
-
-If you plan to host applications, virtual machines, or Kubernetes workloads on Azure Local, those workloads should use one of the following options:
-
-- Your organization's existing DNS infrastructure.
-- A designated forwarding DNS server.
-- Enterprise DNS services already used by other applications in your environment. 
-
-### Recommended architecture
-
-| Scenario | Recommended DNS |
-| -------- | -------- |
-| Azure Local Cluster Operations | Internal DNS |
-| Azure Local Management Services | Internal DNS |
-| Virtual Machines | Enterprise DNS or Forwarding DNS |
-| Arc-enabled VMs | Enterprise DNS or Forwarding DNS |
-| Kubernetes Workload | Enterprise DNS or Forwarding DNS |
-| Business Applications| Enterprise DNS or Forwarding DNS |
-| Application-specific DNS records | Enterprise DNS or Forwarding DNS |
-
-### Networking tab (Internal DNS)
-
-1. Enter a valid **Zone name** (domain) to create a private, authoritative DNS namespace for the cluster. 
-1. Select '**No**' for 'Do you have an existing DNS Service?'.
-1. Enter the **Zone Forwarder** IP Address – Provide the IP address of a DNS forwarder, network gateway, or public DNS server that can resolve external internet endpoints.
-   
-   :::image type="content" source="media/deployment-local-identity-with-key-vault/screenshot-of-internal-dns.png" alt-text="Screenshot of the Internal DNS." lightbox="media/deployment-local-identity-with-key-vault/screenshot-of-internal-dns.png":::
+:::image type="content" source="media/deployment-local-identity-with-key-vault/back-up-secrets.png" alt-text="Screenshot of the Secrets page." lightbox="media/deployment-local-identity-with-key-vault/back-up-secrets.png":::
 
 ## Alerts for Key Vault extension in Azure Local
 
@@ -262,7 +192,7 @@ Follow these steps to update the backup configuration to use a new Key Vault:
 
 1. Set up access controls for the new Key Vault. This includes granting necessary permissions to the node identity. Ensure your Key Vault is assigned the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles. For instructions, see [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](/azure/key-vault/general/rbac-guide?tabs=azure-portal).
 
-    :::image type="content" source="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png" alt-text="Screenshot of the Add role assignment page." lightbox="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png":::
+    :::image type="content" source="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png" alt-text="Screenshot of Add role assignment page." lightbox="media/deployment-local-identity-with-key-vault/add-key-vault-secret-officer-role.png":::
 
 1. Update the system configuration. Use a POST request to update the cluster configuration with the new Key Vault details. You must have the **Azure Stack HCI Administrator** role assigned to run the POST API. For more information, see [Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md).
 
@@ -280,17 +210,17 @@ Follow these steps to update the backup configuration to use a new Key Vault:
 
     1. Once authenticated, use the `Invoke-AzRestMethod` cmdlet to send the POST request. This updates the cluster with the new Key Vault location.
     
-        Here's a sample output:
-    
-        ```output
-        Invoke-AzRestMethod -Path "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.AzureStackHCI/clusters/<clusterName>/updateSecretsLocations" -Method POST -Payload
-        { 
-        "properties": {
-            "secretsType": "BackupSecrets",
-            "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"
-                      }
-        } # Response: 200 OK
-        ```
+    Here's a sample output:
+
+    ```output
+    Invoke-AzRestMethod -Path "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.AzureStackHCI/clusters/<clusterName>/updateSecretsLocations" -Method POST -Payload
+    { 
+    "properties": {
+        "secretsType": "BackupSecrets",
+        "secretsLocation": "https://hcikeyvaulttestingnew.vault.azure.net/"
+                  }
+    } # Response: 200 OK
+    ```
 
 1. Validate configuration. In the Azure portal, open the system resource and verify that **Resource JSON** includes the updated Key Vault details.
 
@@ -300,15 +230,15 @@ Follow these steps to update the backup configuration to use a new Key Vault:
 
 1. Check secrets in the new Key Vault. Confirm that all backup secrets are properly stored in the new Key Vault.
 
-1. Clean up the old Key Vault. The old Key Vault and its secrets aren't deleted automatically.  verifying the new Key Vault is configured correctly, you can delete the old Key Vault if necessary.
+1. Clean up the old Key Vault. The old Key Vault and its secrets aren't deleted automatically. After verifying the new Key Vault is configured correctly, you can delete the old Key Vault if necessary.
 
 ## Recover a deleted Key Vault and resume backup
 
 When you delete and subsequently recover a Key Vault, the managed identity that previously had access to the Key Vault is affected in the following ways:
 
-- **Revocation of managed identity access**: During the deletion process, the managed identity's access permissions to the Key Vault are revoked. This means the identity no longer has authorization to access the Key Vault.
-- **Failure of extension operations**: The backup key vault extension responsible for managing secret backups relies on the managed identity for access. With the access permissions revoked, the extension is unable to perform backup operations.
-- **Extension status in the Azure portal**: In the Azure portal, the status of the extension displays as **Failed** indicating the extension can't backup secrets due to the loss of necessary permissions.
+- Revocation of managed identity access. During the deletion process, the managed identity's access permissions to the Key Vault are revoked. This means the identity no longer has authorization to access the Key Vault.
+- Failure of extension operations. The backup key vault extension responsible for managing secret backups relies on the managed identity for access. With the access permissions revoked, the extension is unable to perform backup operations.
+- Extension status in the Azure portal. In the Azure portal, the status of the extension displays as **Failed** indicating the extension can't backup secrets due to the loss of necessary permissions.
 
 To address and resolve the issue of the failed extension and restore normal backup operations, perform the following steps:
 
@@ -317,7 +247,7 @@ To address and resolve the issue of the failed extension and restore normal back
     1. Reassign the **Key Vault Secrets Officer** and **Key Vault Certificates Officer** roles to the managed identity.
 
 1. Verify extension functionality.
-    1.  reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
+    1. After reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
     1. Test the backup operations to ensure that secrets are being backed up correctly and that the backup process is functioning as expected.
 
 ## Tool compatibility in Azure Local environments configured with Azure Key Vault
@@ -326,18 +256,20 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 ### Supported tools
 
-- **PowerShell**: Fully supported for both AD and Azure Key Vault-based identity environments. PowerShell is the primary interface for managing and automating Azure Local clusters across identity configurations.
-- **Azure Monitor**: Supported for monitoring the health and performance of hosts and virtual machines. Integration with Azure Monitor enables visibility into system health, alerts, and telemetry.
-- **Azure portal**: Supported for managing Azure Local clusters.
+- **PowerShell.** Fully supported for both AD and Azure Key Vault-based identity environments. PowerShell is the primary interface for managing and automating Azure Local clusters across identity configurations.
+
+- **Azure Monitor.** Supported for monitoring the health and performance of hosts and virtual machines. Integration with Azure Monitor enables visibility into system health, alerts, and telemetry.
+
+- **Azure portal.** Supported for managing Azure Local clusters.
 
 ### Unsupported or limited support tools
 
-- **Windows Admin Center**: Not supported in Azure Key Vault-based identity environments. You should use PowerShell or other supported tools for administrative tasks.
-- **System Center Virtual Machine Manager (SCVMM)**: Expected to have limited or no support in Azure Key Vault-based identity environments. Validate specific use cases before relying on SCVMM.
+- **Windows Admin Center.** Not supported in Azure Key Vault-based identity environments. You should use PowerShell or other supported tools for administrative tasks.
+- **System Center Virtual Machine Manager (SCVMM).** Expected to have limited or no support in Azure Key Vault-based identity environments. Validate specific use cases before relying on SCVMM.
 
 ### Mixed compatibility
 
-**Microsoft Management Consoles (MMCs)**: Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
+- **Microsoft Management Consoles (MMCs).** Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
 
 ###  Generally available or supported services
 
