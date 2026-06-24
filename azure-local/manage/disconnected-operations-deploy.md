@@ -259,7 +259,8 @@ Populate the required parameters based on your deployment planning. Modify the e
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
-$networkIntentName = 'ManagementComputeStorage' 
+$networkIntentName = 'ManagementComputeStorage'
+$TimeServers = "Your reliable NTP source" 
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
 $applianceManifestJsonPath = Join-Path $applianceConfigBasePath AzureLocal.DisconnectedOperations.manifest.json
 
@@ -271,7 +272,8 @@ $installAzureLocalParams = @{
     ManagementSwitchName = "ConvergedSwitch($networkIntentName)"  
     ApplianceManifestFile = $applianceManifestJsonPath  
     IdentityConfiguration = $identityConfiguration  
-    CertificatesConfiguration = $CertificatesConfiguration      
+    CertificatesConfiguration = $CertificatesConfiguration 
+    ExternalTimeServers = $TimeServers  
 }  
 
 Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose  
