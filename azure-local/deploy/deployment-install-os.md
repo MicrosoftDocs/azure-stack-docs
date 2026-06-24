@@ -118,7 +118,7 @@ Follow these steps to configure the operating system using SConfig:
    To configure a valid time source, run the following command:
 
    ```cmd
-   w32tm /config /manualpeerlist:"ntpserver.contoso.com" /syncfromflags:manual /update
+   w32tm /config /manualpeerlist:"ntpserver.contoso.com,0x8" /syncfromflags:manual /update
    ```
 
    Confirm that the time is successfully synchronizing using the new time server:
