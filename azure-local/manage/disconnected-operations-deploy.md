@@ -259,7 +259,8 @@ Populate the required parameters based on your deployment planning. Modify the e
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
-$networkIntentName = 'ManagementComputeStorage' 
+$networkIntentName = 'ManagementComputeStorage'
+$TimeServers = "Your reliable NTP source" 
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
 $applianceManifestJsonPath = Join-Path $applianceConfigBasePath AzureLocal.DisconnectedOperations.manifest.json
 
@@ -271,7 +272,8 @@ $installAzureLocalParams = @{
     ManagementSwitchName = "ConvergedSwitch($networkIntentName)"  
     ApplianceManifestFile = $applianceManifestJsonPath  
     IdentityConfiguration = $identityConfiguration  
-    CertificatesConfiguration = $CertificatesConfiguration      
+    CertificatesConfiguration = $CertificatesConfiguration 
+    ExternalTimeServers = $TimeServers  
 }  
 
 Install-Appliance @installAzureLocalParams -disconnectMachineDeploy -Verbose  
@@ -488,6 +490,11 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
+| Azure Local Disconnected Operations | Target Solution Version |
+| --- | --- |
+| 2604 | 12.2604.1003.1005 |
+| 2605 | 12.2605.1003.1003 |
+
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
 
@@ -523,7 +530,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
->  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment, such as `12.2604.1003.1005`.
+>  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment.
 
 ## Handle preinstalled OEM images in disconnected operations
 
