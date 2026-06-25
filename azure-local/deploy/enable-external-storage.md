@@ -303,7 +303,7 @@ mpclaim -s -d
 Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Object Number, SerialNumber, UniqueId | Format-Table -AutoSize
 ```
 
-## Step 8: Initialize and Format Disks
+## Step 8: Initialize and format disks
 
 > [!IMPORTANT]
 > Run these commands only on a single Azure Local node.
