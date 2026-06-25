@@ -174,15 +174,6 @@ Enable-MSDSMAutomaticClaim -BusType iSCSI
 
 This command registers MPIO to automatically claim all iSCSI devices. If you enable auto-claim after LUNs are already visible, restart the node so MSDSM can re-enumerate the devices.
 
-### 2.6 Verify the configuration and reboot
-
-```powershell
-mpclaim -s -d
-Get-MSDSMSupportedHw
-```
-
-Restart each node in a rolling manner to apply MPIO changes before proceeding with SAN configuration.
-
 ## Step 3: Configure the iSCSI network (iSCSI only)
 
 > [!IMPORTANT]
@@ -283,7 +274,15 @@ FC LUNs appear automatically after zoning and LUN masking.
 
 1. For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
 
-## Step 6: Verify SAN Disks
+## Step 6: Verify the configuration and reboot
+
+```powershell
+mpclaim -s -d
+Get-MSDSMSupportedHw
+```
+
+Restart each node in a rolling manner to apply MPIO changes before proceeding with SAN configuration.
+## Step 7: Verify SAN Disks
 
 > [!IMPORTANT]
 > Run these commands on every Azure Local node.
@@ -304,7 +303,7 @@ mpclaim -s -d
 Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Object Number, SerialNumber, UniqueId | Format-Table -AutoSize
 ```
 
-## Step 7: Initialize and Format Disks
+## Step 8: Initialize and Format Disks
 
 > [!IMPORTANT]
 > Run these commands only on a single Azure Local node.
@@ -324,7 +323,7 @@ foreach ($disk in $sanDisks) {
 }
 ```
 
-## Step 8: Add disks to the cluster and create CSVs
+## Step 9: Add disks to the cluster and create CSVs
 
 > [!IMPORTANT]
 > After all SAN disks are visible and validated, run these commands on every Azure Local node.
@@ -336,10 +335,7 @@ Add the SAN disks to the failover cluster, and then convert the disks to CSVs.
 Get-ClusterAvailableDisk | Add-ClusterDisk
 
 # Convert to Cluster Shared Volumes
-Get-ClusterResource | Where-Object 
-{
-  $_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'
-} | Add-ClusterSharedVolume
+Get-ClusterResource | Where-Object {$_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'} | Add-ClusterSharedVolume
 
 # Verify CSVs
 Get-ClusterSharedVolume | Select-Object Name, State, OwnerNode | Format-Table -AutoSize
@@ -348,7 +344,7 @@ Get-ClusterSharedVolume | Select-Object Name, State, OwnerNode | Format-Table -A
 Get-ClusterSharedVolume | Select-Object -ExpandProperty SharedVolumeInfo | Select-Object FriendlyVolumeName
 ```
 
-## Step 9: Add storage path in the Azure portal
+## Step 10: Add storage path in the Azure portal
 
 Register each SAN CSV path in the Azure portal to enable virtual machine (VM) placement on SAN volumes. Only register SAN CSV paths. Azure Local automatically manages Storage Spaces Direct volumes, such as `Infrastructure` and `UserStorage`.
 
