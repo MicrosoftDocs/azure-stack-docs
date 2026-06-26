@@ -19,7 +19,7 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/stale@v5
+    - uses: actions/stale@v10
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-pr-stale: 7
@@ -27,6 +27,7 @@ jobs:
         stale-pr-label: inactive
         close-pr-label: auto-close
         exempt-pr-labels: keep-open
+        remove-pr-stale-when-updated: true
         operations-per-run: 100   # increase as needed; use -1 for unlimited
         stale-pr-message: >
            This pull request has been inactive for 7 days.
