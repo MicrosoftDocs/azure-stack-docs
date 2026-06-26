@@ -207,8 +207,8 @@ This condition can indicate storage media issues, filesystem or kernel I/O error
 
 To troubleshoot this problem:
 
-- Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
-- Identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why disk I/O failures were reported.
+- Review the `conditions` status of the `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
+- Identify the `lastTransitionTime`, `reason`, and `message` values from 'conditions' to determine when and why disk I/O failures were reported.
 - Review host logs (for example, `dmesg`, kernel logs, and storage subsystem logs) for disk or block-device errors around the same time.
 - Check if any tenant workload on this BMM has memory failures.
 - If errors persist, collect diagnostics and engage hardware or vendor support for deeper storage-path investigation.
@@ -234,7 +234,7 @@ When heartbeat data is stale, health signals from Node Problem Detector might no
 
 To troubleshoot this problem:
 
-- Review the `conditions` status of the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
+- Review the `conditions` status of the `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
 - check the `BmmNpdHeartbeatHealthy` condition and confirm whether the heartbeat is reported as older than 15 minutes
 - verify the node ready state of the BMM.
 - verify the health and restart history of the Node Problem Detector components on the affected node
