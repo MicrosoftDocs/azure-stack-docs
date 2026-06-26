@@ -4,9 +4,9 @@ description: Troubleshooting guide for Bare Metal Machines Warning status messag
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
-ms.date: 06/16/2026
-author: mbethi527
-ms.author: mbethi
+ms.date: 06/22/2026
+author: santhosh-kumar-cm
+ms.author: sacm
 ms.reviewer: ekarandjeff
 ---
 
@@ -24,13 +24,14 @@ This document provides basic troubleshooting information for Bare Metal Machine 
 
 The Detailed status message of the Bare Metal Machine (Operator Nexus) resource includes one or more of the following.
 
-| Detailed status message                                      | Details and mitigation                                                                                                     |
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| `Warning: PXE port is unhealthy`                             | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                                         |
-| `Warning: BMM power state doesn't match expected state`      | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state)            |
-| `Warning: Disk I/O failures detected`                        | [`Warning: Disk I/O failures detected`](#warning-disk-io-failures-detected)                                                |
-| `Warning: health monitoring agent is not responding`         | [`Warning: health monitoring agent is not responding`](#warning-node-problem-detector-heartbeat-failures-detected)         |
-| `Warning: This machine has failed hardware validation`       | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)             |
+| Detailed status message                                               | Details and mitigation                                                                                                                       |
+|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `Warning: PXE port is unhealthy`                                      | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                                                           |
+| `Warning: BMM power state doesn't match expected state`               | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state)                              |
+| `Warning: Disk I/O failures detected`                                 | [`Warning: Disk I/O failures detected`](#warning-disk-io-failures-detected)                                                                  |
+| `Warning: Health monitoring agent is not responding`                  | [`Warning: Health monitoring agent is not responding`](#warning-node-problem-detector-heartbeat-failures-detected)                           |
+| `Warning: This machine has failed hardware validation`                | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)                               |
+| `Warning: BMM Node is unhealthy and may require hardware replacement` | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement) |
 
 ## Troubleshooting
 
@@ -256,3 +257,25 @@ To troubleshoot this problem:
 ```
 
 For more information about troubleshooting hardware validation failures, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
+
+## `Warning: BMM Node is unhealthy and may require hardware replacement`
+
+This BMM _Detailed status message_ indicates that the machine is marked as unhealthy and removed from the Kubernetes cluster. The machine is powered off and requires manual intervention to return to service.
+
+This warning is an **alertable signal** - you can configure Azure Monitor alerts on the BMM `detailedStatusMessage` property to detect when a machine enters this state.
+
+### Possible causes
+
+This warning can appear in two scenarios:
+
+- **Automated remediation (Machine Health Check) failure**: MHC exhausted all available recovery strategies (reboot, reprovisioning) and couldn't restore the node to a healthy state. For more information, see [Automated remediation](./concepts-rack-resiliency.md#automated-remediation).
+- **Hardware validation failure during BMM Replace**: A BMM Replace action was initiated, but the hardware validation phase failed. The machine is marked unhealthy to prevent further provisioning attempts on potentially faulty hardware.
+
+### Mitigation
+
+1. Investigate the underlying hardware health. Check the baseboard management controller (BMC) logs and hardware status for the affected server.
+1. If the hardware is functional, run a **BMM Replace** action to clear the unhealthy state and reprovision the machine.
+1. If hardware replacement is required, coordinate the physical hardware swap and then run the BMM Replace action.
+
+> [!NOTE]
+> The BMM Replace action is the only supported path to recover a machine from this state. The unhealthy condition clears through the Replace action's hardware validation and reprovisioning process.
