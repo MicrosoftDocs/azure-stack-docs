@@ -66,6 +66,37 @@ You could also use the following *optional* parameters:
 | ----- | ----------- |
 | **location** | Azure regions as specified by `az locations`. |
 
+## Storage path options
+
+When creating a data disk for a virtual machine on Azure Local, you can specify how the storage path is selected.
+
+### Auto
+
+When set to **Auto**, Azure Local automatically selects a storage path from the available **high-availability cluster shared volumes (CSV)**.
+
+- Disk placement uses a **round‑robin distribution** across eligible CSVs.
+- This option ensures high availability but **does not guarantee colocation** with:
+  - The virtual machine OS disk
+  - Virtual machine configuration files
+  - Other data disks belonging to the same VM
+
+Use **Auto** when you want Azure Local to distribute data disks evenly across available cluster storage.
+
+### Manual
+
+When set to **Manual**, you explicitly choose the storage path where the data disk is created.
+
+- To maintain **high availability**, the selected path **must be a clustered storage path (CSV)**.
+- Selecting a non‑clustered local path results in a non‑highly available disk.
+- Manual selection allows you to colocate a data disk with a specific volume, including the same volume used by the VM OS disk, if desired.
+
+Use **Manual** when you require precise control over disk placement.
+
+> **Note**
+>  
+> Storage path settings apply **only to data disks**.
+>  
+> Virtual machine configuration files and OS disks follow VM placement rules and are not affected by the data disk storage path setting.
 
 ### Create a storage path
 
