@@ -307,7 +307,7 @@ This scenario can indicate memory pressure or kernel-level memory instability on
 To troubleshoot this problem:
 
 - Review the `conditions` status of the BMM, as described in the [Troubleshooting](#troubleshooting) section.
-- Identify the `lastTransitionTime`, `reason`, and `message` values to determine when and why the failure was reported.
+- Identify the `lastTransitionTime`, `reason`, and `message` values from the 'conditions' to determine when and why the failure was reported.
 - Check operating system and kernel logs on the affected host for memory failure, hardware memory corruption, or related kernel faults.
 - Correlate the condition timestamp with any recent workload spikes, configuration changes, or host maintenance operations.
 - If the condition persists, collect a support bundle and engage hardware/vendor support for deeper host diagnostics.
