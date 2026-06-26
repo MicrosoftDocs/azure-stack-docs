@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 
 # Host network requirements for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This topic discusses host networking considerations and requirements for Azure Local. For information on datacenter architectures and the physical connections between machines, see [Physical network requirements](physical-network-requirements.md).
 
@@ -43,7 +43,7 @@ For more information about this role-based NIC qualification, see this [Windows 
 
 :::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot shows 'Certified for Windows' qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
-## Driver Requirements
+## Driver requirements
 
 Inbox drivers are not supported for use with Azure Local. To identify if your adapter is using an inbox driver, run the following cmdlet. An adapter is using an inbox driver if the **DriverProvider** property is **Microsoft.**
 
@@ -158,7 +158,8 @@ SET requires the use of symmetric (identical) adapters. Symmetric network adapte
 - speed (throughput)
 - configuration
 
-In 22H2, Network ATC will automatically detect and inform you if the adapters you've chosen are asymmetric. The easiest way to manually identify if adapters are symmetric is if the speeds and interface descriptions are **exact** matches. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
+Network ATC automatically detects and informs you if the adapters you choose are asymmetric. The easiest way to manually identify if adapters are symmetric is if the speeds and interface descriptions are **exact** matches. They can deviate only in the numeral listed in the description. Use the [`Get-NetAdapterAdvancedProperty`](/powershell/module/netadapter/get-netadapteradvancedproperty) cmdlet to ensure the configuration reported lists the same property values.
+
 
 See the following table for an example of the interface descriptions deviating only by numeral (#):
 
@@ -216,7 +217,7 @@ SMB provides many benefits as the storage protocol for Azure Local, including SM
 > [!NOTE]
 >We recommend using multiple subnets and VLANs to separate storage traffic in Azure Local.
 
-Consider the following example of a four node system. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
+Consider the following example of a four-node system. Each machine has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first machine (192.168.1.1) will make a connection to the left-side port on the second machine (192.168.1.2). The right-side port on the first machine (192.168.1.12) will connect to the right-side port on the second machine. Similar connections are established for the third and fourth machines.
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 

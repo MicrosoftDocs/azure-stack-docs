@@ -10,7 +10,7 @@ ms.subservice: hyperconverged
 
 # Physical network requirements for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Local, particularly for network switches.
 
@@ -19,7 +19,7 @@ This article discusses physical (fabric) network considerations and requirements
 
 ## Network switches for Azure Local
 
-Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Local requirements.
+Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section. While Microsoft doesn't certify network switches, it works with vendors to identify devices that support Azure Local requirements.
 
 > [!IMPORTANT]
 > While other network switches that use technologies and protocols not listed here may work, Microsoft can't guarantee they work with Azure Local. Microsoft may be unable to assist in troubleshooting problems that occur.
@@ -33,7 +33,7 @@ To see validated switches for each of the Azure Local traffic types, select and 
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 > [!IMPORTANT]
-> We update these lists as we're informed of changes by network switch vendors.
+> Microsoft updates these lists as it is informed of changes by network switch vendors.
 
 <details>
 <summary><strong>Alcatel-Lucent</strong></summary>
@@ -69,7 +69,6 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|Alliedware+ 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
 | [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
-
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -430,8 +429,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
-| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
+| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -440,8 +439,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
-| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
+| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -492,7 +491,7 @@ Ethernet switches used for Azure Local storage traffic must comply with the IEEE
 
 Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
@@ -501,7 +500,7 @@ A minimum of three CoS priorities are required without downgrading the switch ca
 
 Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). Azure Local requires LLDP and enables troubleshooting of physical networking configurations.
 
-Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+You must dynamically enable configuration of the LLDP Type-Length-Values (TLVs). Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
 ### Custom TLV requirements
 
@@ -517,12 +516,15 @@ LLDP allows organizations to define and encode their own custom TLVs. These cust
 | IEEE 802.1   | PFC Configuration (Subtype = B)  |
 | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
-### Maximum Transmission Unit 
-The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
-### Border Gateway Protocol 
-Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This requirement enables tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+### Maximum transmission unit
 
-### DHCP Relay Agent 
+The maximum transmission unit (MTU) is the largest size frame or packet that you can transmit across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
+
+### Border Gateway Protocol
+
+Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol that's used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This requirement enables tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+
+### DHCP relay agent 
 
 Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host used to forward requests and replies between the DHCP server and client when the server is on a different network. It's required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
@@ -561,7 +563,7 @@ Ethernet switches used for Azure Local storage traffic must comply with the IEEE
 
 Ethernet switches used for Azure Local storage traffic must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
 > Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft doesn't test Azure Local with Differentiated Services Code Point (DSCP).
@@ -570,7 +572,7 @@ A minimum of three CoS priorities are required without downgrading the switch ca
 
 Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). Azure Local requires LLDP and enables troubleshooting of physical networking configurations.
 
-Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+You must dynamically enable configuration of the LLDP Type-Length-Values (TLVs). Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
 ### Custom TLV requirements
 
@@ -586,14 +588,15 @@ LLDP allows organizations to define and encode their own custom TLVs. These cust
 | IEEE 802.1   | PFC Configuration (Subtype = B)  |
 | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
-### Maximum Transmission Unit 
+### Maximum transmission unit 
 
-The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
+The maximum transmission unit (MTU) is the largest size frame or packet that you can transmit across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
+
 ### Border Gateway Protocol 
 
-Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This requirement enables tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
+Ethernet switches used for Azure Local SDN compute traffic must support Border Gateway Protocol (BGP). BGP is a standard routing protocol that's used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This requirement enables tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
 
-### DHCP Relay Agent 
+### DHCP relay agent 
 
 Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host used to forward requests and replies between the DHCP server and client when the server is on a different network. It's required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
@@ -608,13 +611,10 @@ Azure Local can function in various data center architectures, including 2-tier 
 
 ## Network models
 
-Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
+You can classify network traffic by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
-> All Azure Local machines in a site are required to be physically located in the same rack and connected to the same top-of-rack (ToR) switches.
-
-> [!NOTE]
-> Stretched cluster functionality is only available in Azure Local, version 22H2.
+> All Azure Local machines in a site must be physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 ### North-South traffic for Azure Local
 
@@ -622,7 +622,7 @@ North-South traffic has the following characteristics:
 
 - Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch.
 - Traffic leaves the physical rack or crosses a Layer-3 boundary (IP).
-- Includes management (PowerShell, Windows Admin Center), compute (VM), and inter-site stretched cluster traffic.
+- Includes management (PowerShell, Windows Admin Center) and compute (VM) traffic.
 - Uses an Ethernet switch for connectivity to the physical network.
 
 ### East-West traffic for Azure Local
@@ -630,7 +630,7 @@ North-South traffic has the following characteristics:
 East-West traffic has the following characteristics:
 
 - Traffic remains within the ToR switches and Layer-2 boundary (VLAN).
-- Includes storage traffic or Live Migration traffic between nodes in the same system and, if using a stretched cluster, within the same site.
+- Includes storage traffic or Live Migration traffic between nodes in the same system.
 - May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 
@@ -644,9 +644,9 @@ For more information, see [Azure Local - QoS Policy](https://github.com/Azure/Az
 
 North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Local, the most important aspect is the proper sizing of the network fabric.
 
-It's necessary to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
+You need to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
-Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. For more information, see [Host network requirements](host-network-requirements.md).
+You can eliminate common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, through proper use of subnets and VLANs. For more information, see [Host network requirements](host-network-requirements.md).
 
 Work with your network vendor or network support team to ensure your network switches are properly sized for the workload you're intending to run.
 
@@ -668,15 +668,15 @@ Azure Local supports switchless (direct) connections for East-West traffic for a
 
 ### Advantages of switchless connections
 
-- No switch purchase is necessary for East-West traffic. A switch is required for North-South traffic. This may result in lower capital expenditure (CAPEX) costs, but it depends on the number of nodes in the system.
-- Because there's no switch, configuration is limited to the host, which may reduce the potential number of configuration steps needed. This value diminishes as the system size increases.
+- You don't need to purchase a switch for East-West traffic. You need a switch for North-South traffic. This may result in lower capital expenditure (CAPEX) costs, but it depends on the number of nodes in the system.
+- Because there's no switch, you configure only the host, which may reduce the number of configuration steps. This value diminishes as the system size increases.
 
 ### Disadvantages of switchless connections
 
-- More planning is required for IP and subnet addressing schemes.
-- Provides only local storage access. Management traffic, VM traffic, and other traffic that requires North-South access can't use these adapters.
-- As the number of nodes in the system grows, the cost of network adapters could exceed the cost of using network switches.
-- Doesn't scale well beyond three-node systems. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
+- You need to plan more for IP and subnet addressing schemes.
+- These adapters provide only local storage access. Management traffic, VM traffic, and other traffic that requires North-South access can't use these adapters.
+- As the number of nodes in the system grows, the cost of network adapters can exceed the cost of using network switches.
+- They don't scale well beyond three-node systems. More nodes incur extra cabling and configuration that can surpass the complexity of using a switch.
 - System expansion is complex, requiring hardware and software configuration changes.
 
 ## Next steps

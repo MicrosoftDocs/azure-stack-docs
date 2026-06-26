@@ -84,7 +84,6 @@ connectivity remains available.
 
 [sriov]: https://en.wikipedia.org/wiki/Single-root_input/output_virtualization
 [mlag]: https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group
-[lacp]: https://www.cisco.com/c/en/us/td/docs/ios/12_2sb/feature/guide/gigeth.html
 [numa]: https://en.wikipedia.org/wiki/Non-uniform_memory_access
 
 ## Logical network resources
