@@ -1578,6 +1578,8 @@ items:
     items:
     - name: Overview
       href: manage/disconnected-operations-monitoring.md
+    - name: Grafana for Point in time Metrics
+      href: manage/disconnected-operations-grafana-monitoring.md
   - name: Troubleshoot
     items:
     - name: On-demand log collection
