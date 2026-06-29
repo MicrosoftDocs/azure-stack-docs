@@ -39,11 +39,8 @@ Here are some benefits of the Azure Update Manager:
 
 - An Azure Local system deployed and registered with Azure.
 - Make sure to apply updates via supported navigation paths in Azure portal. Microsoft only supports updates applied from the **Azure Local** resource page or via the **Azure Update Manager > Resources > Azure Local**. Additionally, use of non-Microsoft tools to install updates isn't supported.
-
 - You have one of the following Azure RBAC roles assigned:
-
   - **Azure Stack HCI Administrator** - Full access to cluster and resources, including updates.
-    
   - **Azure Stack HCI Device Management Role** - Full cluster operations including updates.
     
 For Azure Local, Azure Update Manager is supported only in the regions where Azure Local is supported. For more information, see [List of supported Azure Local regions](../concepts/system-requirements-23h2.md#azure-requirements).
