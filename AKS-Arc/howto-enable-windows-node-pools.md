@@ -2,10 +2,9 @@
 title: Use Windows node pools 
 description: Learn how to enable the Windows node pool feature in AKS on Azure Local.
 ms.topic: how-to
-ms.date: 09/25/2025
+ms.date: 06/19/2026
 author: davidsmatlak
 ms.author: davidsmatlak 
-ms.reviewer: sethm
 ms.lastreviewed: 09/24/2025
 
 ---
@@ -30,6 +29,8 @@ Before you begin creating Windows node pools, make sure you have the following p
 - **Custom Location**. Name of the custom location. The custom location is configured during the Azure Local deployment. If you're in the Azure portal, go to the **Overview** page of the Azure Local system resource. In the **Essentials** section, you should see the custom location name for your cluster.
 - **Azure resource group**. The Azure resource group in which Azure Local is deployed.
 - Access to at least one node on the Azure Local instance, either directly or via remote PowerShell.
+
+[!INCLUDE [gmsa-windows-node-pools-not-supported](includes/gmsa-windows-node-pools-not-supported.md)]
 
 ## Enable the Windows node pool feature on AKS Arc clusters
 

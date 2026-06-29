@@ -1,10 +1,10 @@
 ---
 title: "Azure Operator Nexus: Cluster runtime upgrade template"
 description: Learn the process for upgrading Cluster for Operator Nexus with step-by-step parameterized template.
-author: dougbristow
-ms.author: dbristow
+author: mbethi527
+ms.author: mbethi
 ms.service: azure-operator-nexus
-ms.date: 11/21/2025
+ms.date: 06/22/2026
 ms.topic: how-to
 ms.custom: azure-operator-nexus, template-include
 ---
@@ -274,8 +274,19 @@ Once a compute Rack meets the success threshold, the upgrade pauses until the us
 Use the following command to continue upgrade once a Compute Rack is paused after meeting the deployment threshold for the Rack:
 
 ```azcli
-az networkcloud cluster continue-update-version -g <CLUSTER_RG> -n <CLUSTER_NAME> --subscription <CUSTOMER_SUB_ID>
+az networkcloud cluster continue-update-version \
+-g <CLUSTER_RG> \
+-n <CLUSTER_NAME> \
+--subscription <CUSTOMER_SUB_ID> \
+--safeguard-mode <SAFEGUARD_MODE>
 ```
+
+Optional parameters:
+- `--safeguard-mode`: Specifies how safeguards are applied during the continue-update-version operation. Use `All` to run all preoperation validation checks. Use `None` to bypass safeguards that block the upgrade when they detect problems. The default value is `All`.
+
+>[!IMPORTANT]
+> The default safeguard mode `All` blocks the upgrade from resuming if validations determine that the upgrade can't be completed without fixing the detected problems. To learn more, see [Cluster Runtime Upgrade preflight validations](howto-cluster-runtime-upgrade-preflight-checks.md).
+
 
 ### Check status of Cluster for Rack Upgrade Progress
 

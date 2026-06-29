@@ -52,24 +52,24 @@ groups:
   title: Operating system
   prompt: Choose an operating system to install
   pivots:
-  - id: alma-86
-    title: AlmaLinux HPC 8.6
-  - id: rhel-7
-    title: Red Hat Enterprise Linux 7
-  - id: rhel-8
-    title: Red Hat Enterprise Linux or AlmaLinux 8
-  - id: rhel-9
-    title: Red Hat Enterprise Linux 9
-  - id: ubuntu-18
-    title: Ubuntu 18.04
-  - id: ubuntu-20
-    title: Ubuntu 20.04
-  - id: ubuntu-22
-    title: Ubuntu 22.04
   - id: ubuntu-24
     title: Ubuntu 24.04
+  - id: ubuntu-22
+    title: Ubuntu 22.04
+  - id: ubuntu-20
+    title: Ubuntu 20.04
+  - id: ubuntu-18
+    title: Ubuntu 18.04
   - id: azurelinux-3
     title: Azure Linux 3
+  - id: rhel-9
+    title: Red Hat Enterprise Linux or AlmaLinux 9
+  - id: rhel-8
+    title: Red Hat Enterprise Linux or AlmaLinux 8
+  - id: rhel-7
+    title: Red Hat Enterprise Linux 7
+  - id: alma-86
+    title: AlmaLinux HPC 8.6
 - id: version-select
   title: AKS enabled by Azure Arc Azure Local versions
   prompt: AKS on Azure Local version

@@ -22,8 +22,9 @@ Keep your disconnected operations appliance up to date. Follow these steps to do
 
 1. From the Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
-1. Select **Download** and wait for the download to complete.
-1. Copy the update file to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations`.
+1. Select **Download** and wait for the download to complete in your browser. You can also use the script based download.
+1. Verify that you have the following files downloaded: `Docker.wim`, `OS.wim`, `Package.zip`, `EFI.wim`, `Manifest.xml`, and `Notice.txt`.
+1. Copy the files to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations\Update`.
 
 ## Load the OperationsModule
 
@@ -40,8 +41,8 @@ Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.Disconnecte
 On the seed node, in the same session as the preceding section, run the following command to upload the update.
 
 ```powershell
-# Specify the update package
-$updatePath = "C:\AzureLocalDisconnectedOperations\aldo-2512.zip"
+# Specify the update package path
+$updatePath = "C:\AzureLocalDisconnectedOperations\Update\"
 $updatePackageResult = Invoke-ApplianceUpdatePackageUpload -UpdatePackagePath $updatePath     
 ```
 
@@ -92,7 +93,10 @@ Get-ApplianceUpdateHistory
 
 > [!IMPORTANT]
 > **Azure Local, version 2603 only.** If your Azure Local system is on version 2603, complete steps 1–3 before running the update script to exclude a test that requires internet connectivity. If you're on version 2604 or later, skip this section and continue with the script.
-
+> **Update from Azure Local, version 2602 to version 2604.** To update your Azure Local system on version 2602 to version 2604, you must first:
+> 1. Update disconnected operations from version 2602 to version 2604.
+> 1. Then, update Azure Local from version 2602 to version 2603.
+> 1. Then, update Azure Local from version 2603 to version 2604.
 1. Identify the Azure Local node running the orchestrator service.
 
    1. Sign in to any Azure Local node and run the following command:

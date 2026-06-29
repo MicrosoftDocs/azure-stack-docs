@@ -54,6 +54,10 @@ Cluster autoscaler isn't currently supported on Azure Local for multi-rack deplo
 | Standard_D16s_v3            | 16   | 64           |
 | Standard_D32s_v3            | 32   | 128          |
 
+## GPU requirements
+
+Currently, the only supported GPU model is the NVIDIA RTX Pro 6000 Blackwell (48 GiB). For supported GPU-enabled VM sizes and deployment steps, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
+
 ## Next steps
 
 - [Review AKS on Azure Local prerequisites](../aks-hci-network-system-requirements.md)

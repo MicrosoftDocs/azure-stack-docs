@@ -85,6 +85,8 @@
               href: reference-isolation-domain-technical-requirements.md
         - name: Access Control Lists
           href: concepts-access-control-lists.md
+        - name: Network-to-Network Interconnect (NNI)
+          href: concepts-network-to-network-interconnect.md
         - name: Network Fabric OptionA and OptionB
           href: concepts-network-fabric-optionA-optionB.md
     - name: Nexus Kubernetes Cluster
@@ -193,12 +195,16 @@
               href: howto-cluster-runtime-upgrade-with-pauseafterrack-strategy.md
             - name: Cluster Upgrades Template
               href: howto-cluster-runtime-upgrade-template.md
+            - name: Cluster Upgrades Preflight Validations
+              href: howto-cluster-runtime-upgrade-preflight-checks.md
             - name: Network Fabric Upgrades
               href: howto-upgrade-nexus-fabric.md
             - name: Network Fabric Upgrades Template
               href: howto-upgrade-nexus-fabric-template.md
             - name: Credential Rotation
               href: howto-credential-rotation.md
+            - name: Rotate Credential API
+              href: howto-rotate-credential-api.md
             - name: Certificate Rotation
               href: howto-certificate-rotation.md
             - name: Credential Manager Key Vault
@@ -262,6 +268,8 @@
           href: howto-replace-network-devices.md
         - name: How to Configure NNF with Bring Your Own (BYO) Storage
           href: howto-configure-bring-your-own-storage-network-fabric.md
+        - name: How to update a Network-to-Network Interconnect (NNI)
+          href: howto-update-network-to-network-interconnect.md
         - name: How to upgrade OS of terminal server
           href: howto-upgrade-os-of-terminal-server.md
         - name: How to restrict serial port access and set timeout on terminal-server

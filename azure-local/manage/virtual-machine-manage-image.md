@@ -222,7 +222,7 @@ To view image properties using Azure CLI, follow these steps:
         Here's a sample output:
 
         ```console
-        PS /home/user> az stack-hci-vm image show --name "2022-datacenter-azure-edition-hotpatch-01" --resource-group ""  
+        PS /home/user> az stack-hci-vm image show --name "2022-datacenter-azure-edition-hotpatch-01" --resource-group $resource_group  
         {
           "extendedLocation": {
             "name": "/subscriptions/<subscription>/resourcegroups/<resource group>/providers/microsoft.extendedlocation/customlocations/<custom location>",
@@ -308,7 +308,7 @@ To delete a VM image using Azure CLI, follow these steps:
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Azure Local resource group>"
-    $mktplaceImage = "<Markeplace image name>"
+    $mktplaceImage = "<Marketplace image name>"
     ```
 
 1. Remove an existing VM image. Run the following command:

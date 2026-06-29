@@ -57,25 +57,14 @@ To be eligible to procure disconnected operations, you must meet the following c
 
 - **Eligible agreement**: You need an eligible agreement with Microsoft. The Microsoft online subscription program (MOSA) isn't eligible. Discuss your agreement options with your account team before you qualify.
 
+- **Support plan**: You must have an active support plan ([Standard or higher](https://azure.microsoft.com/support/plans/?msockid=093d901b20b065e43189856d213464e3)) with Microsoft or work with a partner with an active support plan.   
+
 - **Business needs to operate disconnected**: Disconnected operations are for organizations that can't connect to Azure because of connectivity issues or regulatory restrictions. To be able to procure disconnected operations, you need a valid business need for running and operating in a disconnected environment. For more information, see [Why use disconnected operations?](./disconnected-operations-overview.md#why-use-disconnected-operations)
 
 - **Operational and technical prerequisites**: Your organization must have staff that can deploy and operate disconnected operations or work with a preferred partner to deploy and operate disconnected operations on your behalf. You must identify workloads and application requirements for what you deploy and operate disconnected.
 
-- **Hardware**: Disconnected operations support premier Azure Local hardware. You must bring your own Azure Local hardware. For a list of supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog).
+- **Hardware**: Disconnected operations support Premier Solutions for Azure Local. You must bring your own Azure Local hardware and deploy a dedicated management cluster. For supported configurations, see the [Azure Local solutions catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) and [Management cluster hardware requirements](./disconnected-operations-control-plane-appliance.md).
 
-  - Plan enough capacity for the management cluster to host the disconnected operations appliance VM and run core Azure Local infrastructure components. A dedicated management cluster is currently required. Review the minimum specifications for setting up a management cluster with the disconnected operations appliance:
-
-    | Specification                | Minimum configuration *          |
-    | -----------------------------| ---------------------------------|
-    | Number of nodes              | 3 nodes                          |
-    | Memory per node              | 512 GB                           |
-    | Cores per node               | 24 physical cores                |
-    | Storage per node             | 8 drives/min 2 TB each (SSD/NVME)|
-    | Boot disk drive storage      | 960 GB SSD/NVME **               |
-
-    *<sub> The recommended configuration allows for additional capabilities and higher scalepoints for your private cloud. If you are looking a smaller configurations for the dedicated management cluster  - please contact your account team to discuss your options </sub>
-
-    **<sub> For systems with boot disks smaller than 960 GB, you must use extra data disks from the nodes (capacity) to install the appliance. Ensure you have enough data drives. A 960 GB boot drive is recommended as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.</sub>
 
 ## Get started
 
@@ -100,6 +89,7 @@ Here's the flow to deploy and manage Azure Local with disconnected operations:
 | Understand and configure your identity solution. | [Identity integration for disconnected operations](disconnected-operations-identity.md) |
 | Understand and configure security controls. | [Security controls for disconnected operations](disconnected-operations-security.md) |
 | Configure PKI and secure the endpoints. | [Public key infrastructure (PKI) integration for disconnected operations](disconnected-operations-pki.md) |
+| Understand the dedicated management cluster and plan for hardware procurement. | [Dedicated management cluster for disconnected operations](disconnected-operations-control-plane-appliance.md) |
 
 ### Deploy
 

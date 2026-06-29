@@ -1,11 +1,11 @@
 ---
 title: "Azure Operator Nexus: Before you start platform deployment prerequisites"
 description: Learn the prerequisite steps for deploying the Operator Nexus platform software.
-author: dougbristow
-ms.author: dbristow
+author: sirajyasin
+ms.author: sirajudeenmo
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 02/26/2026
+ms.date: 06/16/2026
 ms.custom:
   - template-how-to
   - build-2025
@@ -138,7 +138,7 @@ Now that the physical installation and validation has completed, the next steps 
 ### Set up Terminal Server
 
 >[!Note]
-> This guide has been validated with Opengear firmware version 24.11.2, which was upgraded from version 22.06.0, and is supported with Nexus Network Fabric runtime version 5.0.0.
+> This guide has been validated with Opengear firmware version 25.11.5, which was upgraded from version 24.11.2, and is supported with Nexus Network Fabric runtime version 7.0.0 or newer.
 
 Terminal Server has been deployed and configured as follows:
 
@@ -148,7 +148,7 @@ Terminal Server has been deployed and configured as follows:
   - HTTP access is enabled
 - Terminal Server interface is connected to the operators on-premises Provider Edge routers (PEs) and configured with the IP addresses and credentials
 - Terminal Server is accessible from the management VPN
-- To upgrade the terminal server to OS version 24.11.2 [refer](./howto-upgrade-os-of-terminal-server.md)
+- To upgrade the terminal server to OS version 25.11.5 [refer](./howto-upgrade-os-of-terminal-server.md)
 - To set up single session and session timeout for serial console [refer](./howto-restrict-serial-port-access-and-set-timeout-on-terminal-server.md)
 
 ### Step 1: Setting up hostname
@@ -390,7 +390,7 @@ Pure Storage arrays purchased prior to 2024 have revision R3 controllers which u
 **Pure Storage R3 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
-ogcli update port ports-<PORT_#> 'pinout="X1"' <PORT_#>	Pure Storage Controller console
+ogcli update port ports-<PORT_#> 'pinout="X1"' <PORT_#>    Pure Storage Controller console
 ```
 
 Newer Pure Storage appliances, and systems upgraded from R3 to R4 Pure Storage controllers, will use straight-through console cables with the updated settings below:
@@ -398,7 +398,7 @@ Newer Pure Storage appliances, and systems upgraded from R3 to R4 Pure Storage c
 **Pure Storage R4 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
-ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>	Pure Storage Controller console
+ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>    Pure Storage Controller console
 ```
 
 **Parameters:**
@@ -604,9 +604,9 @@ For more information about SafeMode and its implications, see the [Pure Storage 
 
 ## iDRAC IP Assignment
 
-Before deploying the Nexus Cluster, it’s best for the operator to set the iDRAC IPs while organizing the hardware racks. Here’s how to map servers to IPs:
+Before deploying the Nexus Cluster, it's best for the operator to set the iDRAC IPs while organizing the hardware racks. Here's how to map servers to IPs:
 
-   - Assign IPs based on each server’s position within the rack.
+   - Assign IPs based on each server's position within the rack.
    - Use the fourth /24 block from the /19 subnet allocated for Fabric.
    - Start assigning IPs from the bottom server upwards in each rack, beginning with 0.11.
    - Continue to assign IPs in sequence to the first server at the bottom of the next rack.
@@ -682,6 +682,36 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 
 | Component                                                               | Version       |
 |-------------------------------------------------------------------------|---------------|
+| BIOS                                                                    | 1.21.1        |
+| Storage Array Controller (PERC H755)                                    | 52.30.0-6115  |
+| iDRAC                                                                   | 7.30.10.50    |
+| Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.16          |
+| CPLD                                                                    | 1.1.1         |
+| Mellanox ConnectX-6 DX Adapter                                          | 22.47.10.88   |
+| NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.47.10.88   |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.61.3       |
+
+##### BOM 2.0.0
+
+| Component                                           | Version       |
+|-----------------------------------------------------|---------------|
+| BIOS                                                | 2.10.1         |
+| Storage Array Controller (PERC H755)                | 52.30.0-6115  |
+| iDRAC                                               | 7.30.10.50    |
+| SAS Expander Backplane Firmware (R760)              | 1.61          |
+| Non-Expander Storage Backplane Firmware (R660)      | 7.20          |
+| CPLD                                                | 1.2.7         |
+| Mellanox ConnectX-6 DX Adapter                      | 22.47.10.88   |
+| NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.47.10.88   |
+| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.61.3       |
+
+
+#### Nexus Cluster runtime version N-1
+
+##### BOM 1.7.3
+
+| Component                                                               | Version       |
+|-------------------------------------------------------------------------|---------------|
 | BIOS                                                                    | 1.20.2        |
 | Storage Array Controller (PERC H755)                                    | 52.30.0-6115  |
 | iDRAC                                                                   | 7.20.80.50    |
@@ -705,7 +735,7 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
 | Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.31.1       |
 
-#### Nexus Cluster runtime version N-1
+#### Nexus Cluster runtime version N-2
 
 ##### BOM 1.7.3
 
@@ -727,35 +757,6 @@ For reference, version N is the latest available runtime version. N-1 and N-2 ar
 | BIOS                                                | 2.7.5         |
 | Storage Array Controller (PERC H755)                | 52.30.0-6115  |
 | iDRAC                                               | 7.20.30.55    |
-| SAS Expander Backplane Firmware (R760)              | 1.61          |
-| Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
-| CPLD                                                | 1.2.6         |
-| Mellanox ConnectX-6 DX Adapter                      | 22.47.10.88   |
-| NVIDIA ConnectX-6 Lx 2x 25G SFP28                   | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter         | 23.21.6       |
-
-#### Nexus Cluster runtime version N-2
-
-##### BOM 1.7.3
-
-| Component                                                               | Version       |
-|-------------------------------------------------------------------------|---------------|
-| BIOS                                                                    | 1.17.2        |
-| Storage Array Controller (PERC H755)                                    | 52.26.0-5179  |
-| iDRAC                                                                   | 7.20.30.00    |
-| Non-Expander Storage Backplane Passive SEP Firmware (15G Non-Expander)  | 7.10          |
-| CPLD                                                                    | 1.1.1         |
-| Mellanox ConnectX-6 DX Adapter                                          | 22.47.10.88   |
-| NVIDIA ConnectX-6 Lx 2x 25G SFP28                                       | 26.41.10.00   |
-| Broadcom 5720 Quad Port 1GbE BASE-T Adapter                             | 23.21.6       |
-
-##### BOM 2.0.0
-
-| Component                                           | Version       |
-|-----------------------------------------------------|---------------|
-| BIOS                                                | 2.6.3         |
-| Storage Array Controller (PERC H755)                | 52.26.0-5179  |
-| iDRAC                                               | 7.20.30.00    |
 | SAS Expander Backplane Firmware (R760)              | 1.61          |
 | Non-Expander Storage Backplane Firmware (R660)      | 7.10          |
 | CPLD                                                | 1.2.6         |

@@ -120,23 +120,30 @@ Prepare your Azure Local machines for disconnected operations by completing thes
 
     ```powershell
     $credential = Get-Credential
-    Add-Computer -DomainName dc.azure.local -Credential $credential -Restart
+    Add-Computer -DomainName contoso.com -Credential $credential -Restart
+    # You can also specifcy OU path and skip one step below
+    # Add-Computer -DomainName contoso.com -credential $credential -OUPAth 'OU=AzureLocal,DC=contoso,DC=com' -restart 
     ```
     You can also use SConfig to domain join your node.
 
     Once domain joined - you need to do the following:
     - Add deployment user to local administrator group of this machine
-    - Add computer to the correct OU in the domain
+    - Add computer to the correct OU in the domain unless specified in the Add-Computer cmdlet
 
     Here's an example script you can run:
     ```powershell
 
     # Add deployment user to local administrator group 
     $deploymentUser = "contoso.com\lcmuser" # Change this to your deployment username
-    $adminGroup = [ADSI]"WinNT://./Administrators,group"
-    $adminGroup.Add("WinNT://$deploymentUser")
-
-    # Add computer to the correct OU in the domain
+    try {
+        Add-LocalGroupMember -Group "Administrators" -Member $deploymentUser -ErrorAction Stop
+        Write-Host "Successfully added $deploymentUser to Administrators group"
+    } catch {
+        Write-Host "Error adding user to Administrators group: $_"
+        Write-Host "Ensure user exists and domain is reachable"
+    }
+    
+    # Move computer to the correct OU in the domain if not specified in previous step
     $computerName = $env:COMPUTERNAME
     # Modify these to match your domain and OU path
     $domain = "contoso.com"

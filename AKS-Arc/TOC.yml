@@ -284,10 +284,16 @@
           href: ./multi-rack/resource-manager-quickstart.md
         - name: Use MetalLB using Azure CLI
           href: ./multi-rack/deploy-load-balancer-cli.md
+        - name: Use GPUs
+          href: ./multi-rack/deploy-gpu-node-pool.md
+        - name: Use Azure RBAC
+          href: ./multi-rack/use-azure-rbac.md
         - name: Monitoring and logging
           items:
           - name: Enable container insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+        - name: Configure a customer HTTPS proxy
+          href: ./multi-rack/aks-customer-proxy.md
         - name: Upgrade Kubernetes cluster
           href: ./multi-rack/cluster-upgrade.md
 - name: AKS Edge Essentials
@@ -390,6 +396,34 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md
+- name: AKS on bare metal
+  items:
+  - name: Overview
+    items:
+    - name: What is AKS on bare metal?
+      href: aks-bare-metal-overview.md
+    - name: Public preview limitations
+      href: aks-bare-metal-preview-limitations.md
+  - name: Get started
+    items:
+    - name: System requirements and prerequisites
+      href: aks-bare-metal-system-requirements.md
+    - name: Create a cluster - Azure portal
+      href: aks-bare-metal-create-cluster-portal.md
+    - name: Create a cluster - ARM template
+      href: aks-bare-metal-create-cluster-arm-template.md
+    - name: Create a cluster - Bicep
+      href: aks-bare-metal-create-cluster-bicep.md
+  - name: How-to
+    items:
+    - name: Connect to your cluster
+      href: aks-bare-metal-connect-to-cluster.md
+    - name: Deploy an application
+      href: aks-bare-metal-deploy-application.md
+    - name: Upgrade Kubernetes clusters
+      href: aks-bare-metal-upgrade-cluster.md
+    - name: Delete cluster resources
+      href: aks-bare-metal-delete-cluster-resources.md
 - name: AKS Arc on VMware
   items:
   - name: Overview

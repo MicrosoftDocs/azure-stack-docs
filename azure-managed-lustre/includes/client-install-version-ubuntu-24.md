@@ -1,17 +1,17 @@
 ---
-author: pauljewellmsft
-ms.author: pauljewell
+author: jebearer
+ms.author: jebearer
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/29/2025
-ms.reviewer: rohogue
+ms.date: 06/19/2026
+ms.reviewer: wdesalvador
 ---
 
 > [!NOTE]
-> 2.16 is a non-LTS release of Lustre and will stop receiving support from the community soon after the release of 2.17. Please check back in late 2025/early 2026 for more information about the 2.17 release.
+> Version 2.17 is a non-LTS release of Lustre and the community support ends soon after the release of version 2.18. For more information about the 2.18 release, check back later.
 
 ```bash
-sudo apt install amlfs-lustre-client-2.16.1-14-gbc76088=$(uname -r)
+sudo apt install amlfs-lustre-client-2.17.0-19-gbb5310f=$(uname -r)
 ```
 
 > [!NOTE]
@@ -20,5 +20,5 @@ sudo apt install amlfs-lustre-client-2.16.1-14-gbc76088=$(uname -r)
 Optionally, if you want to upgrade *only* the kernel and not all packages, you must (at minimum) also upgrade the `amlfs-lustre-client` metapackage so that the Lustre client can continue to work after the restart. The command should look similar to the following example:
 
 ```bash
-apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.16.1-14-gbc76088
+apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.17.0-19-gbb5310f
 ```

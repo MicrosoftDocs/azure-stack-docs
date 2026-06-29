@@ -38,7 +38,7 @@ To ensure a smooth and timely RMA process, verify the following prerequisites be
 
   - Replacement device supports Zero Touch Provisioning (ZTP)
 
-  - The Terminal Server (TS) **net3** interface must be configured and operational. This interface is required for ZTP to communicate with the replacement device during the RMA process. Verify that the net3 interface is up and reachable before proceeding.
+  - The Terminal Server (TS) **net3** interface is configured and operational. This interface is required for ZTP to communicate with the replacement device during the RMA process. Verify that the net3 interface is up and reachable before proceeding.
 
   - To prevent failure during the device disable action if the device is affected by continuous reboots due to hardware issues, it is advised to power off the device prior to initiating the RMA process. 
 

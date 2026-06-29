@@ -1,0 +1,157 @@
+---
+title: Dedicated Management Cluster for Disconnected Operations
+description: Learn hardware, topology, and capacity planning concepts to deploy a dedicated management cluster for disconnected operations.
+author: ronmiab
+ms.author: robess
+ms.reviewer: lihou
+ms.date: 06/02/2026
+ms.topic: concept-article
+ms.subservice: hyperconverged
+ai-usage: ai-assisted
+---
+
+# Dedicated management cluster for disconnected operations
+
+::: moniker range=">=azloc-2603"
+
+This article describes the architecture, hardware, and configuration concepts behind acquiring and deploying a dedicated management cluster for disconnected operations.
+
+## Overview
+
+Disconnected operations for Azure Local is a deployment model that brings cloud consistency and data sovereignty to environments with limited or no connectivity. In a disconnected deployment, a local control plane replaces selected Azure control plane functions and runs entirely within your environment, providing a familiar Azure consistent management experience.
+
+To host the local control plane, you must deploy a separate Azure Local management cluster that is:
+
+- Exclusively dedicated to control plane and management components
+- Isolated from application or tenant workload clusters
+- Sized to meet the hardware requirements of disconnected operations
+
+This separation improves:
+
+- **Availability** of the control plane
+- **Operational isolation** from tenant workloads
+- **Lifecycle predictability** during upgrade and maintenance
+
+>[!NOTE]
+> Production deployments require a dedicated three-node Azure Local management cluster to host the local control plane. Evaluation and test configurations may use smaller management clusters, as described in the deployment options later in this article.
+
+## Hardware procurement
+
+To procure hardware for a management cluster that hosts the disconnected operations control plane, start from the Azure Local catalog.
+
+For a list of hardware solutions that support running as a management cluster for disconnected operations:
+
+1. Go to the [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA).
+
+1. Select **Disconnected operations** under **Solution capability** in the left menu.
+
+1. Select a hardware solution, then open the **Solution capability** tab to verify which configurations support use as a management cluster.
+
+These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
+
+### Management cluster hardware requirements 
+You must deploy a dedicated management cluster for Azure Local disconnected operations. Review the minimum production specifications for setting up a management cluster with the disconnected operations appliance:
+
+| Specification                | Minimum configuration           |
+| -----------------------------| ---------------------------------|
+| Number of nodes              | 3 nodes                          |
+| Memory per node              | 512 GB                           |
+| Cores per node               | 24 physical cores                |
+| Storage per node             | 8 drives/min 2 TB each (SSD/NVME)|
+| Boot disk drive storage      | 960 GB SSD/NVME **               |
+
+> [!NOTE]
+> The recommended configuration allows for additional capabilities and higher scalepoints for your private cloud. If you're looking for smaller configurations for the dedicated management cluster, contact your account team to discuss your options.
+> 
+> ** For systems with boot disks smaller than 960 GB, you must use extra data disks from the nodes (capacity) to install the appliance. Ensure you have enough data drives. A 960-GB boot drive is recommended as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.
+
+## Topology and workload separation
+
+For the management cluster, use a three-node Azure Local cluster with a switchless storage network design (recommended). This configuration provides quorum and resiliency for the management plane while minimizing infrastructure footprint and network complexity.
+
+The management cluster is dedicated to:
+
+- Control plane appliance for disconnected operations
+- Supporting management services required for disconnected operations
+
+>[!IMPORTANT]
+> Deploy tenant workloads (VMs and applications) on separate Azure Local clusters. Don't deploy workloads other than the control plane to the management cluster.
+
+## Capacity planning
+
+Because the control plane runs locally, you need to plan capacity to keep the management cluster reliable.
+
+- Size hardware to meet the control plane requirements.
+- Don't use the management cluster as a general-purpose compute pool.
+- Keep capacity headroom for updates and lifecycle operations.
+- Plan for node repair and replacement scenarios to keep the management cluster operational during unexpected hardware events.
+
+## Proof-of-concept configurations
+
+To get started with a quick proof of concept (POC) for disconnected operations, use a four-node Azure Local hardware configuration from the supported solutions in the Azure Local catalog. You can arrange the four nodes in three alternative configurations, depending on which aspects of disconnected operations you want to emphasize during testing.
+
+### Option 1: Management-focused
+
+This option uses:
+
+- Three-node dedicated management cluster that hosts the disconnected operations control plane services
+- One-node Azure Local workload cluster used to validate basic workload deployment and management scenarios
+
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/management-focused.png" alt-text="Diagram of a management focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/management-focused.png":::
+
+Use this configuration when the primary goal is to:
+
+- Evaluate the disconnected control plane architecture
+- Understand management cluster sizing and isolation
+- Validate operational independence of the control plane
+
+### Option 2: Workload-focused
+
+This option uses:
+
+- One-node management cluster that hosts the disconnected operations control plane for testing purposes
+- Three-node Azure Local workload cluster used to evaluate workload placement, resiliency, and management at small scale
+    - Or a single node Azure Local workload cluster to evaluate workload capabilities without resiliency options to minimize costs
+
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/workload-focused.png" alt-text="Diagram of a workload focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/workload-focused.png":::
+
+Use this configuration when the primary goal is to:
+
+- Focus on Azure Local workload behavior in disconnected mode
+- Test application deployment scenarios
+- Evaluate workload cluster operations with a minimal management footprint
+
+### Option 3: Multi-cluster-focused
+
+This option uses:
+
+- One-node management cluster that hosts the disconnected operations control plane for testing purposes
+- Three separate one-node Azure Local workload clusters used to validate basic workload deployment and multi-cluster management scenarios
+
+:::image type="content" source="media/disconnected-operations-control-plane-appliance/multi-cluster-focused.png" alt-text="Diagram of a multi-cluster focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/multi-cluster-focused.png":::
+
+Use this configuration when the primary goal is to:
+
+- Manage multiple Azure Local clusters from a single control plane appliance
+- Validate cluster-level inventory, visibility, and lifecycle operations
+- Perform disconnected management across multiple isolated environments
+
+## Get started
+
+To proceed with an Azure Local deployment with disconnected operations:
+
+1. Review the [disconnected operations overview and eligibility criteria](disconnected-operations-overview.md).
+
+1. Select a [catalog listed hardware solution](https://azurelocalsolutions.azure.microsoft.com/#/catalog) marked as disconnected operations supported.
+
+1. Once approved to access disconnected operations, contact the OEM partner and procure a four-node configuration to start a POC, or a three-node dedicated management cluster if you already have workload clusters.
+
+1. Follow the deployment documentation for installation and configuration of disconnected operations.
+
+::: moniker-end
+
+::: moniker range="<=azloc-2602"
+
+This feature is available only in Azure Local 2603 or later.
+
+::: moniker-end

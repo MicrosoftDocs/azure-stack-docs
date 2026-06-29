@@ -97,7 +97,7 @@ Follow these steps to verify that the managed identity doesn't exist for this VM
     "azure-cli-telemetry": "1.1.0",
     "extensions": {
         "akshybrid": "0.1.1",
-        "arcappliance"^ "1.0.2",
+        "arcappliance": "1.0.2",
         "connectedk8s": "1.5.4",
         "connectedmachine": "0.7.0",
         "customlocation": "0.1.3",

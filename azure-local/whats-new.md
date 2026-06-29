@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 05/28/2026
+ms.date: 06/18/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,27 +13,51 @@ ms.subservice: hyperconverged
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
 
+::: moniker range="=azloc-2606"
+
+## Features and improvements in 2606
+
+The June 2026 release of hyperconverged deployments of Azure Local is version **12.2606.1003.205**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2606 release, all new and existing deployments of Azure Local run the new OS version **26100.32995** (download from the Azure portal).
+  
+  - You also need a driver that's compatible with OS version **26100.32995** or Windows Server 2025.
+  
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.28** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.9** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+::: moniker-end
+
 ::: moniker range="=azloc-2605"
 
 ## Features and improvements in 2605
 
-The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.210**. For more information, see [Release information summary](./release-information-23h2.md).
+The May 2026 release of hyperconverged deployments of Azure Local is version **12.2605.1003.1003**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
 
-    - In the 2605 release, all new and existing deployments of Azure Local run the new OS version **26100.32860** (download from the Azure portal).
+  - In the 2605 release, all new and existing deployments of Azure Local run the new OS version **26100.32860** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.32860** or Windows Server 2025.
+  - You also need a driver that's compatible with OS version **26100.32860** or Windows Server 2025.
 
-    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
 
-    - This build uses .NET version **8.0.27** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+  - This build uses .NET version **8.0.27** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-    - This build uses .NET version **10.0.8** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+  - This build uses .NET version **10.0.8** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **SAN integration using iSCSI (preview)**: You can now integrate external storage area network (SAN) storage from supported vendors with Azure Local using Internet Small Computer Systems Interface (iSCSI), in addition to Fibre Channel (FC). This feature is currently in preview. For more information, see [Connect an external storage array to Azure Local](./deploy/enable-external-storage.md).
 
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
 
@@ -48,35 +72,34 @@ The April 2026 release of hyperconverged deployments of Azure Local is version *
 This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
+  - In the 2604 release, all new and existing deployments of Azure Local run the new OS version **26100.32690** (download from the Azure portal).
 
-    - In the 2604 release, all new and existing deployments of Azure Local run the new OS version **26100.32690** (download from the Azure portal).
+  - You also need a driver that's compatible with OS version **26100.32690** or Windows Server 2025.
 
-    - You also need a driver that's compatible with OS version **26100.32690** or Windows Server 2025.
-
-    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
 
-    - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+  - This build uses .NET version **8.0.26** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-    - This build uses .NET version **10.0.6** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+  - This build uses .NET version **10.0.6** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
-- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md). <!--update link-->
+- **Disaggregated deployments for Azure Local**: Starting with this release, you can deploy Azure Local using Storage Area Network (SAN) storage only. This architecture enables independent scaling of storage and compute, allowing clusters to scale beyond 16 nodes. For more information, see [Disaggregated deployment](./overview/disaggregated-overview.md).
 
-- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md). <!--update link-->
+- **SAN support for Azure Local**: SAN storage is now generally available for Azure Local. You can attach SAN storage and use it alongside Storage Spaces Direct. For more information, see [attaching SAN storage](./deploy/enable-external-storage.md).
 
 - **Local identity with Key Vault**: Starting with this release, local identity with Key Vault is generally available. For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md). <!--update link-->
+- **Manage update settings for Azure Local**: Starting with this release, you can control how updates are applied to Azure Local. For more information, see [update setting](./update/update-settings.md).
 
-- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md). <!--update link-->
+- **Domain join prior to deployment**: Starting with this release, domain join prior to deployment is supported. For more information, see [domain join prior to deployment](./deploy/deployment-install-os.md).
 
 - **Validation improvements**: Validation time during deployment and update is reduced by up to 50%. Validation now resumes from the point of failure (within a three‑hour window) instead of starting over. If validation already ran and completed within a three-hour window, the "Validate environment" step during deployment has an 'Unknown' status.
 
@@ -84,7 +107,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Rack aware clustering**: Rack‑aware clustering now supports deployments using local identity with Azure Key Vault. For more information, see [Generally available or supported services](./deploy/deployment-local-identity-with-key-vault.md#generally-available-or-supported-services).
 
-- **GPU acceleration for Azure Local VMs general availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Azure portal. For more information, see [Manage GPUs via Discrete Device Assignment](./manage/gpu-manage-via-device.md). <!--the linked article still shows preview tags-->
+- **GPU acceleration for Azure Local VMs general availability**: GPU acceleration for Azure Local VMs is now generally available. Azure Local supports attaching or detaching full GPUs (DDA) or GPU partitions (GPU‑P) to Azure Local VMs during creation or as a Day‑2 operation using the Azure CLI or Azure portal. For more information, see [Manage GPUs via Discrete Device Assignment](./manage/gpu-manage-via-device.md).
 
 - **Enhanced data disk management experience in the Azure portal**: You can now create new data disks at the cluster level with a richer disk overview experience, along with overall visual and usability improvements across disk management workflows. Additionally, from the Azure Local VM view, you can now attach existing disks to your VM.
 
@@ -108,19 +131,19 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
 
-    - In the 2603 release, all new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
+  - In the 2603 release, all new and existing deployments of Azure Local run the new OS version **26100.32522** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.32522** or Windows Server 2025.
+  - You also need a driver that's compatible with OS version **26100.32522** or Windows Server 2025.
 
-    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**: This build uses .NET version **8.0.25** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
@@ -142,19 +165,19 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - In the 2602 release, all new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
+  - In the 2602 release, all new and existing deployments of Azure Local run the new OS version **26100.32370** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.32370** or Windows Server 2025.
+  - You also need a driver that's compatible with OS version **26100.32370** or Windows Server 2025.
 
-    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**: This build uses .NET version **8.0.24** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.31.12, 1.31.13, 1.32.8, 1.32.9, 1.33.4, 1.33.5. Kubernetes version 1.30 is no longer supported.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2602).
 
@@ -175,23 +198,23 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - In the 2601 release, all new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
+  - In the 2601 release, all new and existing deployments of Azure Local run the new OS version **26100.32230** (download from the Azure portal).
 
-    - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
+  - You also need a driver that's compatible with OS version **26100.32230** or Windows Server 2025.
 
-    - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - Build **12.2601.1002.503** improves system reliability by addressing several bugs across core workflows. If you already deployed or updated to **12.2601.1002.38**, no further action is needed. Both **12.2601.1002.38** and **12.2601.1002.503** are supported builds.
-        
+
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Infrastructure logical network surfaced in Azure portal**: The infrastructure logical network created during Azure Local deployment is now visible in the Azure portal. This visibility allows administrators to review the infrastructure network configuration. This change also acts as a safeguard against accidental workload provisioning on the network reserved for Azure Local infrastructure.
 
     For more information, see [About infrastructure logical network for Azure Local VMs](./manage/manage-logical-networks.md#about-infrastructure-logical-network).
 
-- **VMConnect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures. 
+- **VMConnect for Azure Local VMs (Preview)**: Starting with 2601 release, you can connect to Windows and Linux based Azure Local VMs that don't have network connectivity or have boot failures.
 
-    For more information, see [VM Connect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-vm-connect-preview).
+    For more information, see [VMConnect for Azure Local VMs](./manage/connect-arc-vm-using-ssh.md#connect-to-an-azure-local-vm-using-vm-connect-preview).
 
 - **Unique ID for data disks**: In 2601 release, you can identify data disks on your Azure Local instance with a new property called **Unique ID**. The unique ID matches the `UniqueId` of the data disk (`Get-Disk | Select-Object UniqueId`).
 
@@ -213,15 +236,15 @@ This release includes various reliability improvements and other bug fixes.
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 ::: moniker-end
 
-::: moniker range="=azloc-2512"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2512
 
@@ -231,11 +254,11 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
+  - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+    - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.16** and a driver that's compatible with OS version **26100.7462** or Windows Server 2025.
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2512.1002.16** and a driver that's compatible with OS version **26100.7462** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.22** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -247,20 +270,16 @@ This release includes various reliability improvements and other bug fixes.
     For more information, see [Azure Kubernetes Service (AKS) enabled by Azure Arc](/azure/aks/aksarc/aks-overview#about-aks-on-azure-local).
 
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
-    - [SDN upgrade infrastructure](./manage/upgrade-sdn.md) guidance is released.
-    - Azure Stack HCI renaming banners added to the top of the feature overview articles were removed. This change was consistent with Azure portal updates that removed the renaming banners.
+  - [SDN upgrade infrastructure](./manage/upgrade-sdn.md) guidance is released.
+  - Azure Stack HCI renaming banners added to the top of the feature overview articles were removed. This change was consistent with Azure portal updates that removed the renaming banners.
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2511
 
@@ -270,11 +289,11 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. From 2511 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7171**. You can download the 2511 OS image from the Azure portal.
+  - The 2504 release introduced a new operating system for Azure Local deployments. From 2511 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7171**. You can download the 2511 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.7171** or Windows Server 2025. If a compatible driver isn't available, use the 2503 image.
+    - You also need a driver that's compatible with OS version **26100.7171** or Windows Server 2025. If a compatible driver isn't available, use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.502** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2511.1002.502** and a driver that's compatible with OS version **26100.7171** or Windows Server 2025.
 
 - Build **12.2511.1002.502** improves the reliability of deploy and update admin actions. If you already deployed or updated to **12.2511.1002.5**, no further action is needed. Both **12.2511.1002.5** and **12.2511.1002.502** are supported builds.
 
@@ -282,9 +301,9 @@ This release includes the following features and improvements:
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
@@ -294,10 +313,10 @@ This release includes the following features and improvements:
 
 There are two 2510 releases for October. Here are the details of each release:
 
-|Solution version  | OS version |
-|---------|---------|
-|12.2510.1002.531 |  26100.6899 |
-|11.2510.1002.93  | 25398.1913  |
+| Solution version | OS version |
+| --------- | --------- |
+| 12.2510.1002.531 | 26100.6899 |
+| 11.2510.1002.93 | 25398.1913 |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -305,39 +324,39 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. For 2510, all the new deployments of Azure Local run the new OS version **26100.6899**. You can download the 2510 OS image from the Azure portal.
+  - The 2504 release introduced a new operating system for Azure Local deployments. For 2510, all the new deployments of Azure Local run the new OS version **26100.6899**. You can download the 2510 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.6899** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+    - You also need a driver that's compatible with OS version **26100.6899** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        - Existing deployments of Azure Local continue to use OS version **25398.1913**. For more information, see [Release information summary](./release-information-23h2.md).
+    - Existing deployments of Azure Local continue to use OS version **25398.1913**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.531** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2510.1002.531** and a driver that's compatible with OS version **26100.6899** or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.21** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
-    
+
 - **Azure Local rack aware clustering (Preview)**: Azure Local now supports rack aware clustering. This Preview feature allows you to define local availability zones based on physical racks in your datacenter, enhancing the resilience of your cluster against rack-level failures. For more information, see [Rack aware clustering](concepts/rack-aware-cluster-overview.md).
 
 - **Upgrade**: Starting with this release, solution upgrade from 11.2510 to 12.2510 is available to everyone and no longer requires you to opt in. The reliability of the upgrade orchestration is also improved.
-    - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.531.
-    - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.531.
+  - If you're already on 11.2510.1002.87, you can apply the OS upgrade to 12.2510.1002.531.
+  - If you aren't on 11.2510.1002.87, you can update to 11.2510.1002.93 first before applying the upgrade to 12.2510.1002.531.
 
 <!--- **Deployment**: Starting with this release, you can domain join your machines before deployment. If you choose to domain join machines before deployment, you must add the deployment user to the local Administrators group on each machine. For more information, see [Domain join before deployment](./deploy/deployment-install-os.md#domain-join-before-deployment).-->
 
 - **Azure Local VM updates**:
-    - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
-    
-        For more information, see [Software Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
+  - **Software Defined Networking (SDN)**: SDN enabled by Azure Arc on Azure Local is now generally available. This feature allows you to create and manage network security groups (NSGs) and network security rules for your Azure Local VMs, providing enhanced network security and segmentation capabilities.
 
-    - **Trusted Virtual Machine (Trusted VM) guest attestation (Preview)** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
-        
-        This Preview feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain.  This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers).
-        
-        For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
+       For more information, see [Software Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
+
+  - **Trusted Virtual Machine (Trusted VM) guest attestation (Preview)** - Azure Local 2510 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch.
+
+       This Preview feature lets you verify that the virtual machine starts in a well known good state by checking the integrity of the entire boot chain.  This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers).
+
+       For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Azure Local deployment using local identity**: This feature moved from Limited Preview to Preview. There were many changes made to the documentation for deploying Azure Local using local identity with Azure Key Vault, including:
-    - Revised instructions for updating Azure Key Vault in Azure Local environments.
-    - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
-    - Added a new FAQ section to address common questions.
+  - Revised instructions for updating Azure Key Vault in Azure Local environments.
+  - Added a new section on tool compatibility in Azure Local environments configured with Azure Key Vault.
+  - Added a new FAQ section to address common questions.
     For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
 - **VMware migration to Azure Local** - This feature is now generally available. You can migrate your VMware VMs to Azure Local using Azure Migrate. For more information, see [Migrate VMware VMs to Azure Local](./migrate/migration-azure-migrate-vmware-overview.md).
@@ -345,10 +364,10 @@ This release includes the following features and improvements:
 - **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
 
 - **AKS enabled by Azure Arc changes**:
-    - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
-    - Support for Kubernetes version 1.32 is introduced. Kubernetes version 1.29 is no longer supported.
-    - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
-    - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
+  - This release supports the following Kubernetes versions: 1.30.13, 1.30.14, 1.31.9, 1.31.10, 1.32.5, 1.32.6.
+  - Support for Kubernetes version 1.32 is introduced. Kubernetes version 1.29 is no longer supported.
+  - KMS v1 is deprecated soon. KMS v2 is included in this Azure Local release. Plan on redeploying your clusters by using KMS v2.
+  - Support for [Windows Server 2019 SKU for node pools](https://techcommunity.microsoft.com/blog/containers/announcing-the-3-year-retirement-of-windows-server-2019-on-azure-kubernetes-serv/3777341) ends in March 2026.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
@@ -358,10 +377,10 @@ This release includes the following features and improvements:
 
 There are two 2509 releases for September. Here are the details of each release:
 
-|Solution version  | OS version |
-|---------|---------|
-|12.2509.1001.22 |  26100.6584 |
-|11.2509.1001.21  | 25398.1849  |
+| Solution version | OS version |
+| --------- | --------- |
+| 12.2509.1001.22 | 26100.6584 |
+| 11.2509.1001.21 | 25398.1849 |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -369,57 +388,56 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.6584**. You can download the 2509 OS image from the Azure portal.
+  - The 2504 release introduced a new operating system for Azure Local deployments. For 2509, all the new deployments of Azure Local run the new OS version **26100.6584**. You can download the 2509 OS image from the Azure portal.
 
-        - You also need a driver that's compatible with OS version **26100.6584** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+    - You also need a driver that's compatible with OS version **26100.6584** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        - Existing deployments of Azure Local continue to use OS version **25398.1849**. For more information, see [Release information summary](./release-information-23h2.md).
+    - Existing deployments of Azure Local continue to use OS version **25398.1849**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.6584** or Windows Server 2025.
-    
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image that's compatible with **12.2509** and a driver that's compatible with OS version **26100.6584** or Windows Server 2025.
+
 - **.NET updates**: This build uses .NET version **8.0.20** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Update and upgrade changes**: Starting with this release, you can opt in to update the solution version 11.25xx (running OS 25398.xxx) to solution version 12.25xx (running OS 26100.xxxx). For more information, see [Opt in update to Azure Local solution versions 12.25x](./update/update-opt-enable.md).
 
-
 - **Azure Local VM updates**:
-    - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
-    - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart might be required only if the guest OS doesn't support live memory updates.
+  - **Enhanced storage path deletion workflow** - Starting with this release, you can view all the dependent resources linked to a storage path before deletion. Azure portal lets you delete both the storage path and its dependent resources in a single, streamlined action, making cleanup faster and more intuitive.
+  - **Live update memory of an Azure Local VM** - You can now live update (VM remains running) the memory of a VM. A restart might be required only if the guest OS doesn't support live memory updates.
 
 - **AKS enabled by Azure Arc changes**:
-    - The default OS disk size for the AKS VM is increased from 100 GB to 200 GB. A larger OS disk size offers flexibility on the size of the containerized workloads.
-    - Starting with this release, the download of Windows VHD images is disabled by default.
-    - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
-    - Support for Kubernetes minor version 1.29 ends with this 2509 release.
-    - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
+  - The default OS disk size for the AKS VM is increased from 100 GB to 200 GB. A larger OS disk size offers flexibility on the size of the containerized workloads.
+  - Starting with this release, the download of Windows VHD images is disabled by default.
+  - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+  - Support for Kubernetes minor version 1.29 ends with this 2509 release.
+  - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
 
     For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2509).
-    
+
 - **Azure Local deployment using local identity** include zone name for both external and internal DNS servers.
 
 - **Documentation updates**: The noteworthy changes include the following new articles or articles with major updates:
 
-    - **Upgrade and update docs changes** include new articles and major updates to existing articles:
-        - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
-        - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
-        - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
-        - [**Update best practices**](./update/update-best-practices.md) is released.
+  - **Upgrade and update docs changes** include new articles and major updates to existing articles:
+    - [**Opt in update to Azure Local solution versions 12.25x**](./update/update-opt-enable.md) is released.
+    - [**Install solution upgrade on Azure Local using Azure Resource Manager template**](./upgrade/install-solution-upgrade-azure-resource-manager-template.md) is released.
+    - [**ARM template parameters**](./deploy/deployment-azure-resource-manager-template.md#arm-template-parameters-reference) reference is added.
+    - [**Update best practices**](./update/update-best-practices.md) is released.
 
-    - **Azure Local VM doc changes** include:
-        - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
-        - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
-    - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
+  - **Azure Local VM doc changes** include:
+    - **Disaster recovery for Azure Local VMs**: A new node in TOC **Implementing disaster recovery** is created consisting of four new articles and one updated article. These articles include [Disaster recovery overview](./manage/disaster-recovery-overview.md), [Infrastructure resiliency](./manage/disaster-recovery-infrastructure-resiliency.md), [Virtual machine resiliency overview](./manage/disaster-recovery-vm-resiliency.md), [Use Azure Site Recovery](./manage/azure-site-recovery.md), and [Workloads resiliency](./manage/disaster-recovery-workloads-resiliency.md).
+    - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
+  - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
 
 ## Features and improvements in 2508
 
 There are two 2508 releases for August. Here are the details of each release:
 
-|Solution version  | OS version |
-|---------|---------|
-|12.2508.1001.52 |  26100.4946 |
-|11.2508.1001.51  | 25398.1791  |
+| Solution version | OS version |
+| --------- | --------- |
+| 12.2508.1001.52 | 26100.4946 |
+| 11.2508.1001.51 | 25398.1791 |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -427,46 +445,45 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2508, all the new deployments of Azure Local run the new OS version **26100.4946**. You can download the 2508 OS image from the Azure portal.
+  - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2508, all the new deployments of Azure Local run the new OS version **26100.4946**. You can download the 2508 OS image from the Azure portal.
 
-        - You also need to get the driver compatible with OS version **26100.4946** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+    - You also need to get the driver compatible with OS version **26100.4946** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-        - Existing deployments of Azure Local continue to use OS version **25398.1791**. For more information, see [Release information summary](./release-information-23h2.md).
+    - Existing deployments of Azure Local continue to use OS version **25398.1791**. For more information, see [Release information summary](./release-information-23h2.md).
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.4946** or Windows Server 2025.
-    
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2508** and driver compatible with OS version **26100.4946** or Windows Server 2025.
+
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Trusted Virtual Machine (Trusted VM) guest attestation**: Azure Local 2508 release introduces guest attestation (also known as boot integrity verification) for Azure Local virtual machines with Trusted launch. This feature lets you verify that the virtual machine starts in a known good state by checking the integrity of the entire boot chain. This process helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) and take action if it's compromised. For more information, see [Trusted VM guest attestation](manage/trusted-launch-guest-attestation.md).
 
 - **Deployment and upgrade changes**:
-    - Starting with this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
-    - With this release, preexisting cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and moved to managed-system identity (MSI).
-    - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
+  - Starting with this release, Azure Resource Manager (ARM) deployment templates are available for previous releases.
+  - With this release, preexisting cluster (Brownfield) upgrade scenarios no longer require Service Principal Name (SPN) creation and moved to managed-system identity (MSI).
+  - This release includes connectivity validators that ensure that external connectivity is available for Arc registration.
 
 - **Azure Local VM updates**:
-    - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, you can modify DNS servers associated with the logical networks for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
-    - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
-    - **Limit enforcement**: Azure portal now enforces:
-        - The correct memory and vCPU limits.
-        - The correct disk size limits.
+  - **Edit DNS servers on logical networks via Azure CLI**: Starting with this release, you can modify DNS servers associated with the logical networks for Azure Local virtual machines. For more information, see [Manage DNS server configuration on logical networks](./manage/manage-arc-virtual-machine-resources.md).
+  - **Save and Pause Azure Local VMs**: The ability to save and pause an Azure Local VM is available on the Azure portal. For more information, see [Save and Pause Azure Local VMs](./manage/manage-arc-virtual-machines.md#save-a-vm).
+  - **Limit enforcement**: Azure portal now enforces:
+    - The correct memory and vCPU limits.
+    - The correct disk size limits.
 
 - **Disconnected operations**: Azure Local now supports disconnected operations, letting you work in environments with limited or no internet connectivity. Build, deploy, and manage virtual machines (VMs) and containerized applications with select Azure Arc-enabled services from a local control plane. You get the familiar Azure portal and Azure Command-Line Interface (CLI) experience.
 
     For more information, see [About Disconnected operations for Azure Local](./manage/disconnected-operations-overview.md).
 
-
 - **Documentation updates**: These changes include:
 
-    - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
-    - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
-    - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
+  - **Azure Arc gateway documentation updates**: Improved guidance on registering with and without Azure Arc gateway and with and without proxy in an easy to use layout. For more information, see [Register with Azure Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register with Azure Arc](./deploy/deployment-without-azure-arc-gateway.md).
+  - **Upgrade documentation updates**: Clarified steps for upgrading from previous versions of Azure Local and an easy to use layout. For more information, see [Upgrade OS for Azure Local](./upgrade/upgrade-22h2-to-23h2-powershell.md).
+  - **Azure Local security book**: This book was previously available as a *pdf* and is now available as web content on Learn. For more information, see [Azure Local security book](./security-book/overview.md).
 
 - **AKS enabled by Azure Arc changes**:
 
-    - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
-    - Support for Kubernetes minor version 1.29 ends with the 2509 release.
-    - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
+  - This release supports the following Kubernetes versions: 1.29.12, 1.29.13, 1.30.8, 1.30.9, 1.31.4, 1.31.5.
+  - Support for Kubernetes minor version 1.29 ends with the 2509 release.
+  - KMS v1 is deprecated. We're adding support for KMS v2 in an upcoming Azure Local release.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2508).
 
@@ -474,10 +491,10 @@ This release includes the following features and improvements:
 
 Two 2507 releases are available for July. Here are the details of each release:
 
-|Solution version  | OS version |
-|---------|---------|
-|12.2507.1001.10 |  26100.4652 |
-|11.2507.1001.9  | 25398.1732  |
+| Solution version | OS version |
+| --------- | --------- |
+| 12.2507.1001.10 | 26100.4652 |
+| 11.2507.1001.9 | 25398.1732 |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -485,26 +502,26 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.4652**. You can download the 2507 OS image from the Azure portal.
-    
-        - You also need to get the driver compatible with OS version **26100.4652** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+  - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2507, all the new deployments of Azure Local run the new OS version **26100.4652**. You can download the 2507 OS image from the Azure portal.
 
-        - Existing deployments of Azure Local continue to use OS version **25398.1732**. For more information, see [Release information summary](./release-information-23h2.md).
+    - You also need to get the driver compatible with OS version **26100.4652** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS comes preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2507** and driver compatible with OS version **26100.4652** or Windows Server 2025.
-    
+    - Existing deployments of Azure Local continue to use OS version **25398.1732**. For more information, see [Release information summary](./release-information-23h2.md).
+
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS comes preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2507** and driver compatible with OS version **26100.4652** or Windows Server 2025.
+
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2507).
- 
+
 ## Features and improvements in 2506
 
 There are two 2506 releases for June. Here are the details of each release:
 
-|Solution version  | OS version |
-|---------|---------|
-|12.2506.1001.29 |  26100.4349  |
-|11.2506.1001.28  | 25398.1665  |
+| Solution version | OS version |
+| --------- | --------- |
+| 12.2506.1001.29 | 26100.4349 |
+| 11.2506.1001.28 | 25398.1665 |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -512,14 +529,14 @@ This release includes the following features and improvements:
 
 - **OS changes**:
 
-    - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2506, all the new deployments of Azure Local run the new OS version **26100.4349**. You can download the 2506 OS image from the Azure portal.
-    
-        You also need to get the driver compatible with OS version **26100.4349** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+  - In the 2504 release, Microsoft introduced a new operating system for Azure Local deployments. For 2506, all the new deployments of Azure Local run the new OS version **26100.4349**. You can download the 2506 OS image from the Azure portal.
 
-        Existing deployments of Azure Local continue to use OS version **25398.1665**. For more information, see [Release information summary](./release-information-23h2.md).
+       You also need to get the driver compatible with OS version **26100.4349** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4349** or Windows Server 2025.
-    
+       Existing deployments of Azure Local continue to use OS version **25398.1665**. For more information, see [Release information summary](./release-information-23h2.md).
+
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2506** and driver compatible with OS version **26100.4349** or Windows Server 2025.
+
 - **.NET updates**: This build uses .NET version **8.0.17** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **Software-Defined Networking (SDN) enabled by Azure Arc (Preview)**: Azure Local now supports creating Networking Security Groups (NSGs), configuring Network Security Rules, and assigning them to logical networks and network interfaces. This support provides a consistent networking experience across your cloud and edge environment. For more information, see [Software-Defined Networking (SDN) enabled by Azure Arc](./concepts/sdn-overview.md).
@@ -529,14 +546,14 @@ This release includes the following features and improvements:
 - **Overprovisioning alert**: A warning is shown prior to starting an update if an Azure Local instance is overprovisioned. This alert indicates there's insufficient compute capacity (memory) to live migrate workloads during an update. You must acknowledge this alert before proceeding with an update, as VM workloads are paused due to the lack of available compute or memory capacity.
 
 - **Security improvements**:
-    - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
-      - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
-      - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
-      - Additional adjustments tailored for Azure Local.
+  - **New security baseline**: The 2506 release introduces a security baseline with 407 evaluated rules, a 25% increase from the previous 324. Key improvements include:
+    - Over 90% alignment with CIS Azure Compute Windows Baseline and Defense Information Systems Agency (DISA) Security Technical Implementation Guide (STIG) benchmark.
+    - Enhanced Microsoft Defender Antivirus settings, including Potentially Unwanted Apps (PUA), network inspection, and attack surface reduction rules.
+    - Additional adjustments tailored for Azure Local.
 
       This release also improves conflict resolution with existing security policies. Instead of disabling drift control system-wide, you can now fine-tune individual settings while maintaining drift control. For more information, see [View and download security settings in Azure Local](./manage/manage-secure-baseline.md#view-and-download-security-settings).
 
-    - To comply with National Institute of Standards and Technology (NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
+  - To comply with National Institute of Standards and Technology (NIST) 2 guidelines, the minimum required password length when deploying Azure Local is changed to 14 characters.
 
 - **Archival of Azure Local, version 22H2 documentation**: [Azure Local, version 22H2 documentation](/previous-versions/azure/azure-local/release-information) is now archived and available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
@@ -548,10 +565,10 @@ This release includes the following features and improvements:
 
 There are two 2505 releases for May. Here are the details of each release:
 
-|Solution version  |OS version |Deployment  |
-|---------|---------|---------|
-|12.2505.1001.23 |  26100.4061        | New deployments only.        |
-|11.2505.1001.22  | 25398.1611        | Existing deployments only.        |
+| Solution version | OS version | Deployment |
+| --------- | --------- | --------- |
+| 12.2505.1001.23 | 26100.4061 | New deployments only. |
+| 11.2505.1001.22 | 25398.1611 | Existing deployments only. |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
@@ -559,13 +576,13 @@ This release includes the following features and improvements:
 
 - **OS version changes**:
 
-    - In the last release (2504), you saw a new operating system for Azure Local deployments. For 2505, all the new deployments of Azure Local run new OS version **26100.4061**. You can download the 2505 OS image from the Azure portal.
-    
-        You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
+  - In the last release (2504), you saw a new operating system for Azure Local deployments. For 2505, all the new deployments of Azure Local run new OS version **26100.4061**. You can download the 2505 OS image from the Azure portal.
 
-        Existing deployments of Azure Local continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+       You also need to get the driver compatible with Azure Local 12.2505 or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 
-    - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
+       Existing deployments of Azure Local continue to use OS version **25398.1611**. For more information, see [Release information summary](./release-information-23h2.md).
+
+  - If you purchased Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2505** and driver compatible with Azure Local 12.2505 or Windows Server 2025.
 
 - **.NET updates**: This build uses .NET version **8.0.16** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
@@ -581,51 +598,51 @@ This release includes the following features and improvements:
 
 Starting with the 2504 release, Microsoft uses a new versioning schema. There are two 2504 releases for April. Here are the details of each release:
 
-|Solution version  |OS version |Deployment  |
-|---------|---------|---------|
-|12.2504.1001.20 | 26100.3775        | New deployments only.        |
-|11.2504.1001.21  | 25398.1551        | Existing deployments only.        |
+| Solution version | OS version | Deployment |
+| --------- | --------- | --------- |
+| 12.2504.1001.20 | 26100.3775 | New deployments only. |
+| 11.2504.1001.21 | 25398.1551 | Existing deployments only. |
 
 For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes the following features and improvements:
 
 - **OS version changes**:
-    - Starting with 2504, all new Azure Local deployments use a new operating system (OS) version **26100.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
-    - If you purchase Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
+  - Starting with 2504, all new Azure Local deployments use a new operating system (OS) version **26100.3775**. You can download the 2504 OS image from the Azure portal. You also need to get the driver compatible with Azure Local 12.2504 or Windows Server 2025. Existing deployments continue to use the OS version **25398.1551**. For more information, see [Release information summary](./release-information-23h2.md).
+  - If you purchase Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get the OS image compatible with **12.2504** and driver compatible with Azure Local 12.2504 or Windows Server 2025.
 
 - **.NET update installations improvements**:
   - Increased reliability of .NET security update installations.
 
 - **Registration and deployment changes**:
-    - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
-    - The error logging in the registration script is enhanced.
-    - Proxy bypass list is now mandatory if a proxy configuration is specified.
+  - Starting with this release, you can download a specific version of Azure Local software instead of just the latest version. For each upcoming release, you can choose from up to last six supported versions. For more information, see [Download Azure Local software](./deploy/download-23h2-software.md).
+  - The error logging in the registration script is enhanced.
+  - Proxy bypass list is now mandatory if a proxy configuration is specified.
 
 - **Security changes**: The Dynamic Root of Trust for Measurement (DRTM) is enabled by default for all new 2504 deployments running OS version **26100.3775**. For more information, see [Security features for Azure Local](./concepts/security-features.md#security-features-for-azure-local).
 
 - **Azure Local VM changes**:
-    - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
-    - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
-    - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
+  - **Data disk expansion**: With this release, you can expand the size of a data disk attached to an Azure Local VM. For more information, see [Expand the size of a data disk attached to an Azure Local VM](./manage/manage-arc-virtual-machine-resources.md).
+  - **Live VM migration with GPU partitioning (GPU-P)**: You can now live migrate VMs with GPU-P. These VMs must be on the latest NVIDIA virtual GPU v18 drivers to enable live migration with GPU-P. For more information, see [Microsoft Azure Local - NVIDIA Docs](https://docs.nvidia.com/vgpu/18.0/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html).
+  - **Documentation changes**: An article describing a [Comparison of the management capabilities of VMs on Azure](./concepts/compare-vm-management-capabilities.md) was released recently.
 
 - **Update improvements**:
-    - Improved reliability when downloading updates.
-    - Added a health check to ensure failover cluster nodes are healthy before starting the update.
-    - Simplified the Azure portal experience for viewing the progress and history of update runs.
+  - Improved reliability when downloading updates.
+  - Added a health check to ensure failover cluster nodes are healthy before starting the update.
+  - Simplified the Azure portal experience for viewing the progress and history of update runs.
 
 - **Add and repair node changes**:
-    - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
+  - For Microsoft images, download the OS image matching the solution version of your existing cluster. See the [Release table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) for the correct version. For OEM images, contact your OEM.
 
 - **OEM license changes**:
-    
-    - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
-    - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local is available with Windows Server 2025 guest VMs. This license integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
+
+  - **OEM license renamed**: Azure Stack HCI OEM license is now known as OEM license for Azure Local. For more information, see [OEM license overview](./oem-license.md) and [OEM license and billing FAQ](./license-billing.yml).
+  - **OEM license with Windows Server 2025 guest VMs**: With the release of 2504, OEM license for Azure Local is available with Windows Server 2025 guest VMs. This license integrates essential services for your cloud infrastructure: Azure Local, and Windows Server Datacenter 2025 Guest rights.
 
 - **Solution extension improvements**:
-    - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
-    - Improved reliability of copying solution extension content locally to each machine.
-    - Added specification of plug-in name in the solution extension.
+  - Improved error message to fix firewall blocking access to solution extension manifest endpoints.
+  - Improved reliability of copying solution extension content locally to each machine.
+  - Added specification of plug-in name in the solution extension.
 
 - **Billing changes**: For deployments running solution version 12.2504.1001.20 and later, the usage record originates from the Azure Local resource in Azure directly. For more information, see [Billing and payment](./concepts/billing.md#billing-changes-for-version-2504-and-later).
 
@@ -673,7 +690,7 @@ This release includes the following features and improvements:
 
 - **Azure Local VM changes**: You can now connect to an Azure Local VM by using the SSH/RDP protocol without the need for line of sight (inside the host network). For more information, see [Connect to an Azure Local VM using SSH](./manage/connect-arc-vm-using-ssh.md).
 
-- **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as the version running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md). 
+- **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as the version running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md).
 
 - **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
 
