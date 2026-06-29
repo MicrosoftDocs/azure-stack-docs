@@ -37,7 +37,9 @@ Import-Module "<disconnected operations module folder path>" -Force
 ```
 
 > [!NOTE]
-> Ensure you unblock the module files when copying them to your target machine. Use PowerShell command unblock-file. PowerShell ISE and PowerShell 7 are not supported for the log collection commands.
+> Before you copy the module files to the target machine, run the `Unblock-File` cmdlet on the files by using Windows PowerShell.
+>
+> PowerShell ISE and PowerShell 7 aren't supported for log collection commands.
 
 ## Export logs via Copy-DiagnosticData
 
