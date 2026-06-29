@@ -187,6 +187,8 @@
             href: kube-api-server-unreachable.md
           - name: Disable Windows node pools
             href: disable-windows-nodepool.md
+          - name: Infrastructure operation failures
+            href: infrastructure-operation-failures.md
           - name: Networking
             items:
             - name: General network validation errors
