@@ -36,6 +36,9 @@ To import appliance logging, run the following command:
 Import-Module "<disconnected operations module folder path>" -Force
 ```
 
+> [!NOTE]
+> Ensure you unblock the module files when copying them to your target machine. Use PowerShell command unblock-file. PowerShell ISE and PowerShell 7 are not supported for the log collection commands.
+
 ## Export logs via Copy-DiagnosticData
 
 To export logs in the fallback scenario, use the `Copy-DiagnosticData` cmdlet.
