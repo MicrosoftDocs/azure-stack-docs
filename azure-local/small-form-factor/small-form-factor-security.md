@@ -137,3 +137,5 @@ This document is provided "as-is". Information, views, URLs, and other Internet 
 
 - [Set up your Azure subscription for small form factor deployments of Azure Local](small-form-factor-subscription-setup.md).
 - [Install small form factor deployments of Azure Local](small-form-factor-installation.md).
+
+Learn more - future releases 
