@@ -898,7 +898,7 @@ You can run the command by using `az networkcloud baremetalmachine run-data-extr
 az networkcloud baremetalmachine run-data-extracts-restricted --name "<machine-name>"  \
   --resource-group "<cluster_MRG>" \
   --subscription "<subscriptionID>" \
-  --commands '[{"arguments":["--min-severity=8"],"command":"cluster-cve-report"}]'  \
+  --commands '[{"command":"cluster-cve-report"}]'  \
   --limit-time-seconds "600"
   --output-directory ~/path/to/my/output/directory
 ```
