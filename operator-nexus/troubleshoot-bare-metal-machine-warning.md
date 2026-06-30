@@ -28,6 +28,8 @@ The Detailed status message of the Bare Metal Machine (Operator Nexus) resource 
 |-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | `Warning: PXE port is unhealthy`                                      | [`Warning: PXE port is unhealthy`](#warning-pxe-port-is-unhealthy)                                                                           |
 | `Warning: BMM power state doesn't match expected state`               | [`Warning: BMM power state doesn't match expected state`](#warning-bmm-power-state-doesnt-match-expected-state)                              |
+| `Warning: Disk I/O failures detected`                                 | [`Warning: Disk I/O failures detected`](#warning-disk-io-failures-detected)                                                                  |
+| `Warning: Health monitoring agent is not responding`                  | [`Warning: Health monitoring agent is not responding`](#warning-node-problem-detector-heartbeat-failures-detected)                           |
 | `Warning: This machine has failed hardware validation`                | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)                               |
 | `Warning: BMM Node is unhealthy and may require hardware replacement` | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement) |
 
@@ -73,13 +75,20 @@ Review the `lastTransitionTime` and `message` fields for more information about 
 {
   "status": {
     "conditions": [
+       {
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
+        "message": "No persistent disk I/O errors detected",
+        "reason": "DiskIOHealthy",
+        "status": "True",
+        "type": "BmmDiskIOHealthy"
+      },
       {
-        "lastTransitionTime": "2025-03-04T01:57:06Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "status": "True",
         "type": "BmmInExpectedNodeReadiness"
       },
       {
-        "lastTransitionTime": "2025-03-04T15:59:36Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "message": "BareMetalMachine expected to be powered on",
         "reason": "BmmPoweredOnExpected",
         "severity": "Error",
@@ -87,7 +96,14 @@ Review the `lastTransitionTime` and `message` fields for more information about 
         "type": "BmmInExpectedPowerState"
       },
       {
-        "lastTransitionTime": "2025-03-04T02:48:54Z",
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
+        "message": "Node Problem Detector heartbeat is healthy",
+        "reason": "Last NPD heartbeat is within the last 15 mins",
+        "status": "True",
+        "type": "BmmNpdHeartbeatHealthy"
+      },
+      {
+        "lastTransitionTime": "2026-06-20T17:24:47Z",
         "message": "PXE network port (pxe) is up and stable",
         "reason": "PxePortsHealthy",
         "status": "True",
@@ -184,6 +200,61 @@ For more information about logging into the BMC, see [Troubleshoot Hardware Vali
 ## `Warning: This machine has failed hardware validation`
 
 This BMM _Detailed status message_ indicates that hardware validation for the BMM failed. Hardware validation typically occurs during initial cluster provisioning or during a BMM Replace action.
+
+## `Warning: Disk I/O failures detected`
+
+This message in the BMM _Detailed status message_ field indicates that Node Problem Detector reported disk input/output failures on the host.
+This condition can indicate storage media issues, filesystem or kernel I/O errors, or intermittent device-path problems.
+
+To troubleshoot this problem:
+
+- Review the `conditions` status of the `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
+- Identify the `lastTransitionTime`, `reason`, and `message` values from 'conditions' to determine when and why disk I/O failures were reported.
+- Review host logs (for example, `dmesg`, kernel logs, and storage subsystem logs) for disk or block-device errors around the same time.
+- Check if any tenant workload on this BMM has memory failures.
+- If errors persist, collect diagnostics and engage hardware or vendor support for deeper storage-path investigation.
+
+**Example `conditions` output for disk I/O warning**
+
+```json
+"conditions": [
+  {
+    "lastTransitionTime": "2026-06-19T09:12:45Z",
+    "message": "Disk I/O errors detected in the last 15 min for device(s): sda",
+    "reason": "DiskIOErrorDetected",
+    "status": "False",
+    "type": "BmmDiskIOHealthy"
+  },
+],
+```
+
+## `Warning: node problem detector heartbeat failures detected`
+
+This message in the BMM _Detailed status message_ field indicates that Node Problem Detector heartbeat updates are stale (older than 15 minutes).
+When heartbeat data is stale, health signals from Node Problem Detector might not represent the current host state. Any new tenant workload creation might fail on BMM, due to scheduling issues.
+
+To troubleshoot this problem:
+
+- Review the `conditions` status of the `bmm` object, as described in the [Troubleshooting](#troubleshooting) section.
+- check the `BmmNpdHeartbeatHealthy` condition and confirm whether the heartbeat is reported as older than 15 minutes
+- verify the node ready state of the BMM.
+- verify the health and restart history of the Node Problem Detector components on the affected node
+- check for transient control-plane, kubelet, or node resource pressure events that may have delayed condition updates
+- after remediation, verify that heartbeat updates resume and the warning condition clears
+
+**Example `conditions` output for stale NPD heartbeat warning**
+
+```json
+"conditions": [
+  {
+    "lastTransitionTime": "2026-06-19T09:12:45Z",
+    "message": "Warning: health monitoring agent is not responding; problems on this machine may not be detected",
+    "reason": "Last NPD heartbeat is older than 15 mins",
+    "status": "False",
+    "type": "BmmNpdHeartbeatHealthy"
+  },
+],
+```
 
 For more information about troubleshooting hardware validation failures, see [Troubleshoot Hardware Validation Failure](./troubleshoot-hardware-validation-failure.md).
 
