@@ -21,7 +21,7 @@ Before you begin, make sure that you have access to an Azure Local system that i
 
 ## View security default settings in the Azure portal
 
-To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+To view the security default settings in the Azure portal, make sure that you apply the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
 Use the security default settings to manage system security, drift control, and Secured-core settings on your system.
 
@@ -67,11 +67,11 @@ To fix the compliance for the rules, run the following commands or use any other
 
 ## Manage security defaults with PowerShell
 
-With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection.
+When you enable drift protection, you can only change nonprotected security settings. To change protected security settings that form the baseline, you must first disable drift protection.
 
 ### View and download security settings
 
-Use the following table to view and download the complete list of security settings based on the software version you are running.
+Use the following table to view and download the complete list of security settings based on the software version you're running.
 
 | Azure Local solution version             | Running Azure Local OS version                       | Download link for settings csv file |
 |------------------------------------------|-------------------------------------------|-------------------------------------|
@@ -81,7 +81,7 @@ Use the following table to view and download the complete list of security setti
 
 ## Modify security defaults
 
-Start with the initial security baseline and then modify drift control and protected security settings defined during deployment.
+Start with the initial security baseline, and then modify drift control and protected security settings defined during deployment.
 
 ### Enable drift control
 
@@ -91,11 +91,15 @@ Use the following steps to enable drift control:
 1. Run the following cmdlet:
 
     ```PowerShell
-    Enable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
+    # Apply to the local node (default)
+    Enable-AzsSecurity -FeatureName DriftControl -Local
+
+    # Apply to all nodes in the cluster using the orchestrator
+    Enable-AzsSecurity -FeatureName DriftControl -Cluster
     ```
 
-   - **Local** - Affects the local node only.
-   - **Cluster** - Affects all nodes in the cluster using the orchestrator.
+   - **`-Local`** - Affects the local node only. This value is the default if you don't specify a scope switch.
+   - **`-Cluster`** - Affects all nodes in the cluster by using the orchestrator.
 
 ### Disable drift control
 
@@ -105,73 +109,72 @@ Use the following steps to disable drift control:
 1. Run the following cmdlet:
 
     ```PowerShell
-    Disable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
+    # Apply to the local node (default)
+    Disable-AzsSecurity -FeatureName DriftControl -Local
+
+    # Apply to all nodes in the cluster using the orchestrator
+    Disable-AzsSecurity -FeatureName DriftControl -Cluster
     ```
 
-   - **Local** - Affects the local node only.
-   - **Cluster** - Affects all nodes in the cluster using the orchestrator.
+   - **`-Local`** - Affects the local node only. This value is the default if you don't specify a scope switch.
+   - **`-Cluster`** - Affects all nodes in the cluster by using the orchestrator.
 
 > [!IMPORTANT]
-> If you disable drift control, the protected settings can be modified. If you enable drift control again, any changes that you since made to the protected settings are overwritten.
+> If you disable drift control, you can modify the protected settings. If you enable drift control again, any changes you made to the protected settings are overwritten.
 
 ## Configure security settings during deployment
 
 As part of deployment, you can modify drift control and other security settings that constitute the security baseline on your cluster.
 
-The following table describes security settings that can be configured on your Azure Local instance during deployment.
+The following table describes security settings that you can configure on your Azure Local instance during deployment.
 
-| Feature area | Feature     |Description           | Supports drift control? |
-|--------------|-------------|----------------------|---------------------------------|
-| Governance                 | [Security baseline](#view-and-download-security-settings)            | Maintains the security defaults on each node. Helps protect against changes.  | Yes                             |
-| Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
-| Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each node.           | No                              |
-| Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each node.                                        | No                              |
-| Data at-rest encryption    | [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this system                               | No                              |
-| Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       | Yes                             |
-| Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between nodes in the system (on your storage network).            | No                              |
+| Feature area | Feature     | Description           |
+|--------------|-------------|----------------------|
+| Governance                 | [Security baseline](#view-and-download-security-settings)            | Maintains the security defaults on each node. Helps protect against changes.  |
+| Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. |
+| Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each node.           |
+| Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each node.                                        |
+| Data at-rest encryption    | [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this system                               |
+| Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       |
+| Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between nodes in the system (on your storage network).            |
 
 ## Modify security settings after deployment
 
-After deployment is complete, you can use PowerShell to modify security settings while maintaining drift control. Some features require a reboot to take effect.
+After deployment, use PowerShell to modify security settings while maintaining drift control. Some features require a reboot to take effect.
 
 ### PowerShell cmdlet properties
 
-The following cmdlet properties are for the *AzureStackOSConfigAgent* module. The module is installed during deployment.
+The following cmdlet properties are for the *AzureStackOSConfigAgent* module. The deployment installs the module.
 
-- `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
-  - **Local** - Provides boolean value (true/False) on local node. Can be run from a regular remote PowerShell session.
-  - **PerNode** - Provides boolean value (true/False) per node.
-  - **Report** - Requires CredSSP or an Azure Local machine using a remote desktop protocol (RDP) connection.
-    - AllNodes – Provides boolean value (true/False) computed across nodes.
-    - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
+- `Get-AzsSecurity -FeatureName <name> [-Local | -PerNode | -AllNodes | -Cluster]`
+  - **`-Local`** - Provides a boolean value (True/False) for the local node. You can run it from a regular remote PowerShell session. This value is the default if you don't specify a scope switch.
+  - **`-PerNode`** - Provides a boolean value (True/False) for each node. Requires CredSSP or a remote desktop protocol (RDP) connection.
+  - **`-AllNodes`** - Provides a boolean value (True/False) computed across all nodes. Requires CredSSP or an RDP connection.
+  - **`-Cluster`** - Provides the boolean value from the ECE store. Interacts with the orchestrator and applies to all nodes in the cluster. Requires CredSSP or an RDP connection.
   
 
-- `Enable-AzsSecurity`   -Scope <Local | Cluster>
-- `Disable-AzsSecurity`  -Scope <Local | Cluster>
-  - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
-    - Drift Control
-    - Credential Guard
-    - VBS (Virtualization Based Security)- We only support enable command.
-    - DRTM (Dynamic Root of Trust for Measurement)
-    - HVCI (Hypervisor-protected Code Integrity)
-    - Side Channel Mitigation
-    - SMB Signing
-    - SMB Cluster encryption
-    
-    > [!IMPORTANT]
-    > `Enable AzsSecurity` and `Disable AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after security baselines are properly applied to nodes. For more information, see [Manage security after upgrading Azure Local](manage-security-post-upgrade.md).
+- `Enable-AzsSecurity -FeatureName <name> [-Local | -Cluster]`
+- `Disable-AzsSecurity -FeatureName <name> [-Local | -Cluster]`
+  - **`-Local`** - Applies the change to the local node only. This value is the default if you don't specify a scope switch.
+  - **`-Cluster`** - Applies the change to all nodes in the cluster by using the orchestrator.
+  - **`-FeatureName`** - The security feature to act on. The following table lists the valid values. `DriftControl` is also a valid value; see [Enable drift control](#enable-drift-control) and [Disable drift control](#disable-drift-control).
 
-The following table documents supported security features, whether they support drift control, and whether a reboot is required to implement the feature.
+> [!IMPORTANT]
+> The `Enable-AzsSecurity` and `Disable-AzsSecurity` cmdlets are only available on new deployments or on upgraded deployments after security baselines are properly applied to nodes. For more information, see [Manage security after upgrading Azure Local](manage-security-post-upgrade.md).
 
-|Name |Feature |Supports drift control |Reboot required |
-|-----|--------|-----------------------|----------------|
-|Enable <br> |Virtualization Based Security (VBS) |Yes   |Yes |
-|Enable <br> |Credential Guard |Yes   |Yes |
-|Enable <br> Disable |Dynamic Root of Trust for Measurement (DRTM) |Yes |Yes |
-|Enable <br> Disable |Hypervisor-protected Code Integrity (HVCI) |Yes |Yes |
-|Enable <br> Disable |Side channel mitigation |Yes |Yes |
-|Enable <br> Disable |SMB signing |Yes |Yes |
-|Enable <br> Disable |SMB cluster encryption |No, cluster setting |No |
+The following table lists the security features you can manage by using the `Get-AzsSecurity`, `Enable-AzsSecurity`, and `Disable-AzsSecurity` cmdlets. It shows the value to pass to `-FeatureName`, the operations each feature supports, whether it supports drift control, and whether a reboot is required.
+
+| `-FeatureName` value | Feature | Supported operations | Supports drift control | Reboot required |
+| --- | --- | --- | --- | --- |
+| `VBS` | Virtualization Based Security (VBS) | Enable | Yes | Yes |
+| `CredentialGuard` | Credential Guard | Enable, Disable | Yes | Yes |
+| `DRTM` | Dynamic Root of Trust for Measurement (DRTM) | Enable, Disable | Yes | Yes |
+| `HVCI` | Hypervisor-protected Code Integrity (HVCI) | Enable, Disable | Yes | Yes |
+| `SideChannelMitigation` | Side channel mitigation | Enable, Disable | Yes | Yes |
+| `SMBSigning` | SMB signing | Enable, Disable | Yes | No * |
+| `SMBClusterEncryption` | SMB cluster encryption | Enable, Disable | No (cluster setting) | No * |
+
+\* No reboot is required. Newly established SMB connections negotiate and honor the updated configuration immediately. Existing SMB sessions continue using their previously negotiated settings until they reconnect.
 
 ## Next steps
 
