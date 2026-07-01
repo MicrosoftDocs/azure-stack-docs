@@ -87,6 +87,9 @@ To add your machine:
 
 1. In the **Operating system** dropdown list, select **Azure Linux 2604**.
 
+   > [!NOTE]
+   > You must select **Azure Linux 2604** to deploy Azure Local small form factor. Selecting a different option will result in deployment failures later on.
+
 1. Enter a name for the SSH key that you use later.
 
 1. Select **Review + create**.
