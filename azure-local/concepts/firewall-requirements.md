@@ -10,11 +10,11 @@ ms.subservice: hyperconverged
 
 # Firewall requirements for Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
-This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
+This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allow list.
 
 > [!IMPORTANT]
 > Azure Arc Private Link Scopes are not supported by Azure Local. Arc endpoints (*.his.arc.azure.com,*.guestconfiguration.azure.com and *.dp.kubernetesconfiguration.azure.com) must always resolve to public IPs from Azure Local nodes, ARB VM and the proxy server if in use.
@@ -40,7 +40,7 @@ As shown in the following diagram, Azure Local can access Azure using more than 
 
 ## Required firewall URLs for Azure Local deployments
 
-Azure Local instances automatically enable Azure Resource Bridge and AKS infrastructure and use the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
+Azure Local instances automatically enable Azure Resource Bridge and AKS infrastructure and use the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Local](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Local](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
 For a consolidated list of endpoints for East US that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in East US for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
@@ -107,7 +107,7 @@ Depending on additional Azure services you enable for Azure Local, you may need 
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all nodes, both within a site and between sites for stretched instances (stretched instance functionality is only available in Azure Stack HCI, version 22H2). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
+Make sure the proper network ports are open between all nodes. You need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if you're using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all nodes in the cluster.
 
 When using the **Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each machine, open the ports as described in the following sections:
 
@@ -214,7 +214,7 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
     $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
     ```
 
-1. Import the list of IP addresses to your external corporate firewall, if you're using an allowlist with it.
+1. Import the list of IP addresses to your external corporate firewall, if you're using an allow list with it.
 
 1. Create a firewall rule for each node in the system to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
 

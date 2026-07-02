@@ -11,19 +11,45 @@ ms.subservice: hyperconverged
 
 # Connect an external storage array to Azure Local
 
-This article describes how to integrate external storage area network (SAN) storage from supported vendors with Azure Local using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
+This article explains external storage support for Azure Local, its benefits, and how to integrate external storage area network (SAN) storage from supported vendors with Azure Local by using Fibre Channel (FC) or Internet Small Computer Systems Interface (iSCSI). It covers both Azure Local host-side configuration performed on cluster nodes and vendor array-side configuration tasks. Vendor-specific steps, such as creating Logical Unit Number (LUNs), registering hosts, and configuring zoning, are covered in [Vendor array-side configuration](#vendor-array-side-configuration).
 
 ## Overview
 
-Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only), allowing you to reuse existing SAN investments while running Azure Local workloads.
+Azure Local supports attaching external SAN storage alongside local Storage Spaces Direct storage or using SAN storage independently. You can attach new or existing SAN arrays as block storage devices for virtual machines (VMs), Azure Kubernetes Service (AKS) clusters, and Azure Virtual Desktop (AVD) instances.
 
-Supported protocols:
+This capability enables both **hybrid** deployments (Storage Spaces Direct + SAN) and **disaggregated** deployments (SAN only). You can reuse existing SAN investments while running Azure Local workloads. It provides flexibility to choose the right data-tiering and performance model for each workload.
+
+You can present multiple volumes from the SAN array as Cluster Shared Volumes (CSVs) on Azure Local nodes. Each CSV appears as a folder path that you can map as a Storage Path for VMs.
+
+## Benefits
+
+- **Investment protection**: Extend existing SAN infrastructure into Azure Local without re-architecture.
+
+- **Operational consistency**: Use existing practices for management and operations.
+
+- **Resilience and scale**: Dual fabrics, multipathing, and SAN-native redundancy ensure high availability.
+
+- **Flexibility**: Choose between Storage Spaces Direct or external SAN volumes per workload requirement.
+
+- **Enterprise performance**: Uses Fibre Channel-class bandwidth and latency for demanding workloads.
+
+## Supported protocols
 
 - Fibre Channel (FC)
 - iSCSI (over TCP/IP)
 
 > [!IMPORTANT]
 > SAN integration using FC is generally available. However, SAN integration using iSCSI is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+## Azure Local Storage Architecture (Storage Spaces Direct + SAN)
+
+Bring your Fibre Channel or iSCSI-based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN by using Fibre Channel fabrics or iSCSI network paths, ensuring high availability, resiliency, and performance. Host Bus Adapters (HBAs) for Fibre Channel or Ethernet network adapters for iSCSI enable reliable connectivity to external SAN storage.
+
+:::image type="content" source="./media/enable-external-storage/san-image.jpg" alt-text="Diagram showing Azure Local cluster using Storage Spaces Direct or external SAN storage to host VMs, AVD, and AKS workloads." lightbox="./media/enable-external-storage/san-image.jpg":::
+
+Once connected, the cluster discovers SAN-backed volumes and integrates them as CSVs formatted with NTFS, so you can share access across nodes and give seamless visibility for workloads. This configuration enables independent scaling of compute and storage while maintaining unified Azure management for both local and Arc-enabled services.
+
+## Connect SAN with Storage Spaces Direct
 
 ## Prerequisites
 
@@ -174,15 +200,6 @@ Enable-MSDSMAutomaticClaim -BusType iSCSI
 
 This command registers MPIO to automatically claim all iSCSI devices. If you enable auto-claim after LUNs are already visible, restart the node so MSDSM can re-enumerate the devices.
 
-### 2.6 Verify the configuration and reboot
-
-```powershell
-mpclaim -s -d
-Get-MSDSMSupportedHw
-```
-
-Restart each node in a rolling manner to apply MPIO changes before proceeding with SAN configuration.
-
 ## Step 3: Configure the iSCSI network (iSCSI only)
 
 > [!IMPORTANT]
@@ -283,7 +300,15 @@ FC LUNs appear automatically after zoning and LUN masking.
 
 1. For each target portal IP that the array provides, run `New-IscsiTargetPortal` and `Connect-IscsiTarget`.
 
-## Step 6: Verify SAN Disks
+## Step 6: Verify the configuration and reboot
+
+```powershell
+mpclaim -s -d
+Get-MSDSMSupportedHw
+```
+
+Restart each node in a rolling manner to apply MPIO changes before proceeding with SAN configuration.
+## Step 7: Verify SAN Disks
 
 > [!IMPORTANT]
 > Run these commands on every Azure Local node.
@@ -304,7 +329,7 @@ mpclaim -s -d
 Get-Disk | Where-Object { $_.BusType -in 'Fibre Channel','iSCSI' } | Select-Object Number, SerialNumber, UniqueId | Format-Table -AutoSize
 ```
 
-## Step 7: Initialize and Format Disks
+## Step 8: Initialize and format disks
 
 > [!IMPORTANT]
 > Run these commands only on a single Azure Local node.
@@ -324,7 +349,7 @@ foreach ($disk in $sanDisks) {
 }
 ```
 
-## Step 8: Add disks to the cluster and create CSVs
+## Step 9: Add disks to the cluster and create CSVs
 
 > [!IMPORTANT]
 > After all SAN disks are visible and validated, run these commands on every Azure Local node.
@@ -336,10 +361,7 @@ Add the SAN disks to the failover cluster, and then convert the disks to CSVs.
 Get-ClusterAvailableDisk | Add-ClusterDisk
 
 # Convert to Cluster Shared Volumes
-Get-ClusterResource | Where-Object 
-{
-  $_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'
-} | Add-ClusterSharedVolume
+Get-ClusterResource | Where-Object {$_.ResourceType -eq 'Physical Disk' -and $_.OwnerGroup -eq 'Available Storage'} | Add-ClusterSharedVolume
 
 # Verify CSVs
 Get-ClusterSharedVolume | Select-Object Name, State, OwnerNode | Format-Table -AutoSize
@@ -348,7 +370,7 @@ Get-ClusterSharedVolume | Select-Object Name, State, OwnerNode | Format-Table -A
 Get-ClusterSharedVolume | Select-Object -ExpandProperty SharedVolumeInfo | Select-Object FriendlyVolumeName
 ```
 
-## Step 9: Add storage path in the Azure portal
+## Step 10: Add storage path in the Azure portal
 
 Register each SAN CSV path in the Azure portal to enable virtual machine (VM) placement on SAN volumes. Only register SAN CSV paths. Azure Local automatically manages Storage Spaces Direct volumes, such as `Infrastructure` and `UserStorage`.
 

@@ -46,6 +46,7 @@ Logs emitted by Nexus Resources provide insight in the detailed operations of Ne
 | Log categories      | Description |
 |-------------|:--------------|
 | Cluster Manager Deploy or Upgrade Logs | Logs emitted during the deployment or upgrade of the Cluster from Cluster Manager |
+| Cloud Init Diagnostics Logs | Structured diagnostics emitted during host bootstrap to summarize cloud-init status, network readiness, pNIC health, and related system state. |
 
 ## Target for streaming the logs
 
