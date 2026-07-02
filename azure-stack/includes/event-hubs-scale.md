@@ -9,6 +9,6 @@ ms.lastreviewed: 04/14/2020
 ---
 
 > [!IMPORTANT]
-> For production deployments requiring high availability (HA), we recommend a 2 CU cluster. For non-HA and development/test, you can start with 1 CU.
+> For production deployments that require high availability (HA), use a two CU cluster. For non-HA deployments and development or test environments, you can use one CU.
 >
-> CU scale-out (smaller-to-larger) is supported via the [Create Event Hubs Cluster blade](../user/event-hubs-quickstart-cluster-portal.md#create-an-event-hubs-cluster). Scale-in (larger-to-smaller) is not supported.
+> You can scale out CU units from smaller to larger through the [Create Event Hubs Cluster blade](../user/event-hubs-quickstart-cluster-portal.md#create-an-event-hubs-cluster). Scale in (from larger to smaller) isn't supported.
