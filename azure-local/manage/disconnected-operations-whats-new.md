@@ -16,10 +16,10 @@ This article describes new features and improvements in disconnected operations 
 ::: moniker range="=azloc-2605"
 ## Features and improvements in 2605
 
-- Infrastructure hardening
-- AKS-airgapped cluster creation restored
-- Improved support diagnostics
-- Scalability and reliabilitiy improvements
+- Infrastructure hardening.
+- Restored AKS-airgapped cluster creation.
+- Improved support diagnostics.
+- Scalability and reliability improvements.
 
 ::: moniker-end
 
