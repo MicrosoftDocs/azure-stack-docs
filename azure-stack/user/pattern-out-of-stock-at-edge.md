@@ -50,7 +50,7 @@ This solution uses the following components:
 |  | Azure Time Series Insights | [Azure Time Series Insights](/azure/time-series-insights/) stores the messages from IoT Hub for visualization. |
 |  | Power BI | [Microsoft Power BI](https://powerbi.microsoft.com/) provides business-focused reports of out of stock events. Power BI provides an easy-to-use dashboard interface for viewing the output from Azure Stream Analytics. |
 | Azure Stack Edge or<br>Azure IoT Edge device | Azure IoT Edge | [Azure IoT Edge](/azure/iot-edge/) orchestrates the runtime for the on-premises containers and handles device management and updates.|
-| | Azure project brainwave | On an Azure Stack Edge device, [Project Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/) uses Field-Programmable Gate Arrays (FPGAs) to accelerate ML inferencing.|
+| | Azure project brainwave | On an Azure Stack Edge device, [Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) uses Field-Programmable Gate Arrays (FPGAs) to accelerate ML inferencing.|
 
 ## Issues and considerations
 
@@ -76,7 +76,7 @@ This pattern handles potentially sensitive data. Make sure keys are regularly ro
 
 To learn more about topics introduced in this article:
 - Multiple IoT related services are used in this pattern, including [Azure IoT Edge](/azure/iot-edge/), [Azure IoT Hub](/azure/iot-hub/), and [Azure Time Series Insights](/azure/time-series-insights/).
-- To learn more about Microsoft Project Brainwave, see [the blog announcement](https://blogs.microsoft.com/ai/build-2018-project-brainwave/) and checkout out the [Azure Accelerated Machine Learning with Project Brainwave video](https://www.youtube.com/watch?v=DJfMobMjCX0).
+- To learn more about Microsoft Project Brainwave, see [the blog announcement](https://www.microsoft.com/research/project/project-brainwave/) and checkout out the [Azure Accelerated Machine Learning with Project Brainwave video](https://www.youtube.com/watch?v=DJfMobMjCX0).
 - See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [Edge ML inferencing solution deployment guide](https://aka.ms/edgeinferencingdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components.
