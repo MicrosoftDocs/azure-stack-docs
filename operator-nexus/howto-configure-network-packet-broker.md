@@ -36,7 +36,7 @@ A **network TAP rule** defines the traffic you want to capture and the actions t
 
 * **Actions** are executed once a packet matches a configuration.
 
-* TAP rules can be created **inline** (Azure CLI, portal, or Azure Resource Manager) or **file-based** (upload from a storage URL). File updates support **push or pull mechanisms**.
+* You can create TAP rules **inline** (Azure CLI, portal, or Azure Resource Manager) for content up to 2 MB or **file-based** (upload from a storage URL). File updates support **push or pull mechanisms**.
 
 **CLI examples:**
 
@@ -125,6 +125,7 @@ az networkfabric tap delete --name <tap-name> --resource-group <rg-name> --fabri
 # Show a network TAP
 az networkfabric tap show --name <tap-name> --resource-group <rg-name> --fabric-name <fabric-name>
 ```
+
 
 ## Step 4: Enable or Disable a Network TAP
 

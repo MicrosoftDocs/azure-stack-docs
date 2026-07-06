@@ -36,7 +36,7 @@ A Network TAP resource represents the configuration that controls destinations, 
 | Direct connections                            | Supported with NNIID                         |
 | Max neighbor groups per TAP                   | 8                                            |
 | TAP rule per destination                      | Only 1                                       |
-| Match condition input                         | Inline or file (WIP)                         |
+| Match condition input                         | Inline (up to 2 MB) or file                   |
 | File polling interval                         | 30–120 seconds (applies to all destinations) |
 
 
@@ -48,13 +48,13 @@ When traffic matches all conditions in a configuration, the corresponding action
 
 ### Match configuration methods
 
-* **Inline (current)** – values entered via Azure CLI or ARM client.
-* **File-based (WIP)** – rule definitions provided through a file stored in Azure Storage. Two mechanisms will be supported:
+* **Inline** – enter values through Azure CLI or ARM client.
+* **File-based** – provide rule definitions through a file stored in Azure Storage. Two mechanisms are supported:
 
   * **Pull**: Service periodically fetches the file based on the polling interval.
   * **Push**: An event triggers updates when the file changes.
 
-File-based configuration is recommended (once available) for easier updates, larger rule sets, and dynamic match conditions.
+Use file-based configuration for easier updates, larger rule sets, and dynamic match conditions. If the update content exceeds 2 MB, you must use file-based configuration.
 
 
 ## Static match conditions
@@ -167,7 +167,6 @@ Each match configuration can trigger one or more actions.
 
 ## Known limitations
 
-* File-based rule definition is in development (WIP).
 * GTPv1 with port conditions isn’t supported.
 * Only GRE/VXLAN encapsulation supported for isolation domains.
 
