@@ -19,7 +19,8 @@ This document provides step-by-step instructions for configuring an AKS cluster 
 - A custom location configured for the Azure Local cluster.
 - A logical network (vnet) created for the AKS cluster.
 - A Microsoft Entra group with cluster administrator access.
-- Access to external SAN storage (e.g., NetApp, Pure Storage, Hitachi) provisioned and accessible from the Azure Local cluster nodes.
+- Access to external SAN storage provisioned and accessible from the Azure Local cluster nodes.
+
 - kubectl installed locally.
 
 ## Step 1: Create an AKS Cluster
