@@ -38,6 +38,9 @@ A **network TAP rule** defines the traffic you want to capture and the actions t
 
 * You can create TAP rules **inline** (Azure CLI, portal, or Azure Resource Manager) for content up to 2 MB or **file-based** (upload from a storage URL). File updates support **push or pull mechanisms**.
 
+> [!NOTE]
+> On `M8-A400-A100-C16-ab` / `-ac` NPBs, truncation is limited to one neighbor group (redirect) and one NNI (mirror) per NPB, allocated first-come, first-served. See [Known limitations](./concepts-nexus-network-tap-rules.md#known-limitations).
+
 **CLI examples:**
 
 ```bash

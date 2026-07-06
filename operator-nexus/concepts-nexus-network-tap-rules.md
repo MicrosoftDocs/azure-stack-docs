@@ -169,6 +169,7 @@ Each match configuration can trigger one or more actions.
 
 * GTPv1 with port conditions isn’t supported.
 * Only GRE/VXLAN encapsulation supported for isolation domains.
+* Packet truncation on the `M8-A400-A100-C16-ab` and `-ac` NPB SKUs uses two reserved loopback ports (`Ethernet5/1` for `redirect`, `Ethernet17/1` for `mirror`). As a result, truncation is limited to one neighbor group and one NNI per NPB on a first-come, first-served basis. The system rejects additional TAPs that request truncation against a different neighbor group or NNI. Multiple TAP rules can share the allocated neighbor group or NNI. When their truncation sizes differ, the largest value applies to all of them. These loopback ports aren't redundant.
 
 ## Additional resources 
 [Concepts: Network Packet Broker](./concepts-nexus-network-packet-broker.md)
