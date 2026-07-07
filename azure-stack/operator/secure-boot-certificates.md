@@ -28,7 +28,7 @@ All Windows-based devices include a standard set of Microsoft certificates in th
 | **Microsoft UEFI CA 2011*** | June 27, 2026 | Microsoft UEFI CA 2023 | Stored in DB | Signs third-party boot loaders and EFI applications. |
 | **Microsoft UEFI CA 2011*** | June 27, 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
 
-* During renewal of the Microsoft Corporation UEFI CA 2011 certificate, two certificates separate boot loader signing from option ROM signing. This allows finer control over system trust. For example, systems that need to trust option ROMs can add the Microsoft Option ROM UEFI CA 2023 without adding trust for third-party boot loaders.
+\* During renewal of the Microsoft Corporation UEFI CA 2011 certificate, two certificates separate boot loader signing from option ROM signing. This allows finer control over system trust. For example, systems that need to trust option ROMs can add the Microsoft Option ROM UEFI CA 2023 without adding trust for third-party boot loaders.
 
 > [!IMPORTANT]
 > Azure Stack Hub systems continue to operate without immediate disruption if Secure Boot certificates aren't updated. However, systems that don't update their platform trust anchors might not be able to apply future security updates that rely on updated Secure Boot signing authorities. Over time, this condition can result in a weakening of the system's security posture.
