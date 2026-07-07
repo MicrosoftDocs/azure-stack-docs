@@ -1426,7 +1426,8 @@ items:
       items:
       - name: Manage NSGs
         href: ./multi-rack/multi-rack-manage-network-security-groups.md
-
+    - name: Run AKS on Azure Local 
+      href: /azure/aks/aksarc/multi-rack/resource-manager-quickstart
 
   - name: Monitor
     items:
