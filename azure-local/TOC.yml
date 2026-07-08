@@ -926,12 +926,6 @@ items:
         href: manage/create-arc-virtual-machines.md
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
-
-  - name: Enable
-    items:
-    - name: Connect External Storage (SAN)
-      href: deploy/enable-external-storage.md
-
   - name: Update 
     items:
     - name: About Updates
