@@ -34,6 +34,7 @@ Your subscription must have the following resource providers registered. Some pr
 | `Microsoft.Edge` | All use cases | [Site, site configuration](/azure/templates/microsoft.edge/sites?pivots=deployment-language-bicep) |
 | `Microsoft.AzureStackHCI` | All use cases | [Edge machine (also known as provisioned machine)](/azure/templates/microsoft.azurestackhci/edgemachines?pivots=deployment-language-bicep) |
 | `Microsoft.HybridCompute` | All use cases | [Arc-connected machines in the managed resource group](/azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep) |
+| `Microsoft.Compute` | All use cases | [VM resources](https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/virtualmachines?pivots=deployment-language-bicep) |
 | `Microsoft.GuestConfiguration` | All use cases | [Guest configuration assignments in the managed resource group](/azure/templates/microsoft.guestconfiguration/guestconfigurationassignments?pivots=deployment-language-bicep) |
 | `Microsoft.HybridConnectivity` | All use cases | [Connectivity endpoints for Arc-connected machines](/azure/templates/microsoft.hybridconnectivity/endpoints?pivots=deployment-language-bicep) |
 | `Microsoft.KeyVault` | All use cases | [Key vault for managing secrets](/azure/templates/microsoft.keyvault/vaults?pivots=deployment-language-bicep) |
