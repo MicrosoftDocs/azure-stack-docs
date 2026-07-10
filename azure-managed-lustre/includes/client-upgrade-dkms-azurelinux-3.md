@@ -9,5 +9,5 @@ ms.lastreviewed: 04/23/2026
 ---
 
 ```bash
-sudo tdnf install -y lustre-client-dkms-2.17.0_19_gbb5310f
+sudo tdnf install -y lustre-client-dkms-2.17.0_24_gf517bc4
 ```
