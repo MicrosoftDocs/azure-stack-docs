@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 07/07/2026
+ms.date: 12/09/2025
 ms.subservice: hyperconverged
 ---
 
@@ -151,16 +151,7 @@ Syslog forwarding agents are deployed on every Azure Local host to forward syslo
 
 The syslog forwarder in Azure Local supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there's unidirectional or bidirectional authentication.
 
-For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md). For disconnected deployments, also see [Configure syslog forwarding for disconnected operations](../manage/disconnected-operations-security.md#configure-syslog-forwarding).
-
-### Third-party SIEM integration
-
-Because the syslog forwarder emits standard RFC3164 messages with a CEF payload, you can integrate Azure Local with virtually any SIEM that supports syslog and CEF. This flexibility is especially important for disconnected deployments, where cloud-based services such as Microsoft Sentinel aren't available and a customer-managed, on-premises SIEM is required.
-
-The following SIEM solutions have partnered with Microsoft and documented their support for Azure Local, especially disconnected:
-
-- [IBM QRadar](https://aka.ms/azlocal-siem-options-qradar)
-- [Splunk](https://aka.ms/azlocal-siem-options-splunk)
+For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
 ## Microsoft Defender Antivirus
 
