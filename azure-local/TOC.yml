@@ -1534,8 +1534,6 @@ items:
       href: manage/disconnected-operations-identity.md
     - name: Security
       href: manage/disconnected-operations-security.md
-    - name: About security features
-      href: concepts/security-features.md
     - name: Public key infrastructure
       href: manage/disconnected-operations-pki.md
   - name: Deploy
