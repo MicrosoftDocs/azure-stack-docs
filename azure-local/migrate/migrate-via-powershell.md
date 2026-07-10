@@ -3,16 +3,16 @@ title: Migrate VMs to Azure Local with Azure Migrate using PowerShell
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell.
 author: ronmiab
 ms.topic: how-to
-ms.date: 01/14/2026
+ms.date: 07/10/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
-# Migrate VMs to Azure Local with Azure Migrate using PowerShell or Azure CLI (Preview)
+# Migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview)
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell or Azure CLI (Preview). This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
+This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview). This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
 
 ## Prerequisites
@@ -58,6 +58,36 @@ Before you begin, ensure that the following prerequisites are met:
     az extension add --name migrate --allow-preview true
     ```
 
+# [Terraform (Preview)](#tab/terraform)
+
+1. Install [Terraform version 1.9 or later](https://developer.hashicorp.com/terraform/install).
+
+2. Configure the [AzAPI provider](https://registry.terraform.io/providers/Azure/azapi/latest) (version 2.4 or later) and add the Azure Migrate module to your Terraform configuration:
+
+    ```terraform
+    terraform {
+      required_version = ">= 1.9"
+
+      required_providers {
+        azapi = {
+          source  = "Azure/azapi"
+          version = "~> 2.4"
+        }
+      }
+    }
+
+    provider "azapi" {}
+
+    module "migrate" {
+      source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+      version = "<version>" # Pin to the latest version from the Terraform Registry.
+
+      # Set the operation_mode input for each migration step, as shown in the following sections.
+    }
+    ```
+
+    Pin `version` to the latest release of the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest). Each migration step is a separate module invocation that sets a different `operation_mode` value.
+
 ---
 
 ## Sign in and set subscription
@@ -94,6 +124,17 @@ Authenticate with your Azure account and set the subscription:
 az login
 az account set --subscription "<subscriptionId>"
 ```
+
+# [Terraform (Preview)](#tab/terraform)
+
+The AzAPI provider uses your Azure CLI sign-in for authentication. Sign in and set the subscription that hosts your Azure Migrate project:
+
+```azurecli
+az login
+az account set --subscription "<subscriptionId>"
+```
+
+For more information, see the [AzAPI provider documentation](https://registry.terraform.io/providers/Azure/azapi/latest/docs).
 
 ---
 
@@ -140,6 +181,25 @@ az migrate get-discovered-server \
 ```
 
 For more information, see the [`az migrate get-discovered-server`](/cli/azure/migrate#az-migrate-get-discovered-server) command.
+
+# [Terraform (Preview)](#tab/terraform)
+
+Use the `discover` operation mode to list the VMs discovered by the source appliance. Set `source_machine_type` to `VMware` or `HyperV` to match your source environment:
+
+```terraform
+module "discover" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name                = "discover"
+  parent_id           = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode      = "discover"
+  project_name        = "<projectName>"
+  source_machine_type = "VMware"
+}
+```
+
+The `discovered_servers` output lists each VM's machine name, IP addresses, operating system, boot type, and OS disk ID. Use the source machine ID (`sdsArmId`) and OS disk ID values from this output when you replicate a VM. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
@@ -228,6 +288,27 @@ For more information, see the [`az migrate local replication init`](/cli/azure/m
 
 > [!NOTE]
 > The storage account used for metadata must be **Standard Performance** tier and use Azure Blob storage. The storage account must also have **Public network access** enabled. If public network access is disabled, replication fails.
+
+# [Terraform (Preview)](#tab/terraform)
+
+Use the `initialize` operation mode to set up the replication vault, policy, extension, and cache storage account. Provide the source and target appliance names, and the module discovers the corresponding replication fabrics automatically. You can safely run this operation multiple times. If the infrastructure already exists, the module validates it instead of recreating it.
+
+```terraform
+module "initialize" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name                  = "initialize"
+  parent_id             = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode        = "initialize"
+  project_name          = "<projectName>"
+  source_machine_type   = "VMware"
+  source_appliance_name = "<sourceAppliance>"
+  target_appliance_name = "<targetAppliance>"
+}
+```
+
+To use a custom cache storage account, set `cache_storage_account_id` to its ARM ID. The storage account must use the Standard performance tier and Azure Blob storage, with public network access enabled. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
@@ -448,6 +529,41 @@ az migrate local replication new \
 
 For more information, see the [`az migrate local replication new`](/cli/azure/migrate/local/replication#az-migrate-local-replication-new) command.
 
+# [Terraform (Preview)](#tab/terraform)
+
+Use the `replicate` operation mode to start replication for a discovered VM. For a VM with a single OS disk and a single NIC, provide the source machine ID (`sdsArmId`) and OS disk ID from the `discover` output, along with the target settings:
+
+```terraform
+module "replicate" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name                = "replicate-vm"
+  parent_id           = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode      = "replicate"
+  project_name        = "<projectName>"
+  source_machine_type = "VMware"
+
+  # Source VM and OS disk from the discover output.
+  machine_id = "<machineARMID>"
+  os_disk_id = "<osDiskID>"
+
+  # Target VM configuration.
+  target_vm_name           = "<targetVMName>"
+  target_virtual_switch_id = "<logicalNetworkARMID>"
+  target_resource_group_id = "<resourceGroupARMID>"
+  target_storage_path_id   = "<storagePathARMID>"
+  target_hci_cluster_id    = "<clusterARMID>"
+  custom_location_id       = "<customLocationARMID>"
+
+  # Appliance names.
+  source_appliance_name = "<sourceAppliance>"
+  target_appliance_name = "<targetAppliance>"
+}
+```
+
+To replicate a VM that has multiple disks or NICs, use the `disks_to_include` and `nics_to_include` inputs instead of `os_disk_id` and `target_virtual_switch_id`. The `protected_item_id` output identifies the replicating VM, which you use to monitor, migrate, and remove replication. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+
 ---
 
 ## Monitor replications
@@ -549,6 +665,27 @@ az migrate local replication get-job \
 
 For more information, see the [`az migrate local replication get-job`](/cli/azure/migrate/local/replication#az-migrate-local-replication-get-job) command.
 
+# [Terraform (Preview)](#tab/terraform)
+
+Use the `jobs` operation mode to track replication job status. To view protected items, use the `list` and `get` operation modes.
+
+```terraform
+module "jobs" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name           = "replication-jobs"
+  parent_id      = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode = "jobs"
+  project_name   = "<projectName>"
+}
+```
+
+- To list all protected (replicating) items in the vault, set `operation_mode` to `list`.
+- To get the detailed status of a specific protected item, set `operation_mode` to `get` and provide `protected_item_id` or `protected_item_name`.
+
+For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+
 ---
 
 ## Migrate a VM 
@@ -595,6 +732,28 @@ For more information, see the [`az migrate local start-migration`](/cli/azure/mi
 > [!NOTE]
 > **Known bug:** When running `az migrate local start-migration`, you may see the warning *"Could not verify Arc Resource Bridge status via Resource Graph query."* This warning displays incorrectly even when the Arc Resource Bridge status is healthy. Migration is not affected and can still succeed even if the warning is shown.
 
+# [Terraform (Preview)](#tab/terraform)
+
+Use the `migrate` operation mode to perform the planned failover, which creates the VM on the target Azure Local cluster. Set `shutdown_source_vm` to `true` to shut down the source VM before failover, which is recommended for data consistency.
+
+```terraform
+module "migrate" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name               = "migrate-vm"
+  parent_id          = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode     = "migrate"
+  target_object_id   = "<protectedItemARMID>"
+  shutdown_source_vm = true
+}
+```
+
+> [!IMPORTANT]
+> Before you migrate, the protected item must be in the `Protected` state with `PlannedFailover` in its allowed jobs. Use the `get` operation mode to verify readiness.
+
+For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+
 ---
 
 ## Complete migration (clean up)
@@ -634,6 +793,28 @@ az migrate local replication remove \
 ```
 
 For more information, see the [`az migrate local replication remove`](/cli/azure/migrate/local/replication#az-migrate-local-replication-remove) command.
+
+# [Terraform (Preview)](#tab/terraform)
+
+After migration succeeds, use the `remove` operation mode to disable and remove replication for the protected item. Don't remove replication until you verify that the migration succeeded and you no longer need the protected item in Azure Migrate.
+
+```terraform
+module "remove" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  name             = "remove-replication"
+  parent_id        = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>"
+  operation_mode   = "remove"
+  target_object_id = "<protectedItemARMID>"
+  force_remove     = false # Set to true only if normal removal fails.
+}
+```
+
+> [!CAUTION]
+> Setting `force_remove` to `true` can leave resources in an inconsistent state. Use it only as a last resort.
+
+For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
