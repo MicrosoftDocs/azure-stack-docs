@@ -6,6 +6,7 @@ author: jeffbearer
 ms.author: jebearer
 ms.reviewer: wdesalvador
 ms.date: 06/19/2026
+zone_pivot_groups: select-os
 
 ---
 
@@ -27,7 +28,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 > - **Kernel upgrades** (for example, 5.15.0-100 → 5.15.0-105): If you installed the Lustre client by using DKMS, kernel upgrades are handled automatically. DKMS recompiles the Lustre module during the kernel package install (typically 2-5 minutes), not at boot. The new kernel is ready to load Lustre as soon as you reboot. **No action is needed** - you don't need to follow this procedure.
 > - **Lustre version upgrades** (for example, 2.15.7 → 2.15.8): To upgrade to a newer Lustre release, follow the steps in this article. The procedure is the same for both kmod and DKMS users - uninstall the old version, then install the new one.
 
-### [Red Hat Enterprise Linux / Alma](#tab/rhel)
+::: zone pivot="rhel-9,rhel-8,rhel-7,alma-86"
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
 
@@ -73,7 +74,9 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 
-### [Ubuntu 20.04/22.04](#tab/ubuntu)
+::: zone-end
+
+::: zone pivot="ubuntu-22,ubuntu-20,ubuntu-18"
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
 
@@ -119,7 +122,9 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 
-### [Ubuntu 24.04](#tab/ubuntu24)
+::: zone-end
+
+::: zone pivot="ubuntu-24"
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
 
@@ -165,7 +170,9 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 
     If the output shows an old version of the Lustre kernel module, we recommend that you restart (`sudo reboot`) the system.
 
-### [Azure Linux 3](#tab/azurelinux3)
+::: zone-end
+
+::: zone pivot="azurelinux-3"
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
 
@@ -204,8 +211,9 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should show the new Lustre version (for example, `2.17.0_19_gbb5310f`).
----
+    The output should show the new Lustre version (for example, `2.17.0_24_gf517bc4`).
+
+::: zone-end
 
 After you perform this procedure, you can [mount the client](connect-clients.md#start-the-lustre-client-by-using-the-mount-command) to your Azure Managed Lustre file system.
 

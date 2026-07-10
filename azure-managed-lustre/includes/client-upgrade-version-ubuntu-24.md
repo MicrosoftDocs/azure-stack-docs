@@ -8,5 +8,5 @@ ms.reviewer: wdesalvador
 ---
 
 ```bash
-sudo apt install -y amlfs-lustre-client-2.17.0-19-gbb5310f=$(uname -r)
+sudo apt install -y amlfs-lustre-client-2.17.0-24-gf517bc4=$(uname -r)
 ```
