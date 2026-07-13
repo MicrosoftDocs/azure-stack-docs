@@ -1,11 +1,11 @@
 ---
-title: Manage security after upgrading your Azure Local from an Azure Stack HCI, version 22H2.
-description: Learn how to manage security posture after you upgrade Azure Local from an Azure Stack HCI, version 22H2.
+title: Manage security after upgrading Azure Local.
+description: Learn how to manage security posture after you upgrade your Azure Local system.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 03/12/2025
+ms.date: 06/29/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,21 +13,21 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage security settings on an Azure Local that was upgraded from an Azure Stack HCI, version 22H2.
+This article describes how to manage security settings on an Azure Local system that you upgraded.
 
 ## Prerequisites
 
-Before you begin, make sure that you have access to an Azure Local system that was upgraded from an Azure Stack HCI, version 22H2.
+Before you begin, make sure that you have access to an upgraded Azure Local system.
 
 ## Post upgrade security changes
 
-When you upgrade your system from Azure Stack HCI, version 22H2, the security posture of your system doesn't change. We strongly recommend that you update the security settings after the upgrade to benefit from enhanced security.
+When you upgrade your Azure Local system, the security posture of your system doesn't change. Update the security settings after the upgrade to take advantage of enhanced security.
 
-Here are the benefits of updating the security settings:
+Updating the security settings provides the following benefits:
 
 - Improves the security posture by disabling legacy protocols and ciphers, and hardening your deployment.
-- Reduces Operating Expense (OpEx) with a built-in drift protection mechanism for consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
-- Enables you to closely meet Center for Internet Security (CIS) benchmarks and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS.
+- Reduces operating expense (OpEx) with a built-in drift protection mechanism for consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
+- Helps you closely meet Center for Internet Security (CIS) benchmarks and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS.
 
 Make these high-level changes after the upgrade is complete:
 
@@ -169,7 +169,7 @@ The following table shows a partial example output from `Get-AzSOSConfigDefender
 
 ---
 
-### Enable encryption at-rest
+### Enable encryption at rest
 
 During the upgrade, Microsoft detects if your system nodes have BitLocker enabled. If BitLocker is enabled, you're prompted to suspend it. If you previously enabled BitLocker across your volumes, resume the protection. No further steps are required.
 
@@ -186,9 +186,9 @@ If you need to enable BitLocker on any of your volumes, see [Manage BitLocker en
 
 Application control for business (formerly known as Windows Defender Application Control or WDAC) provides a great layer of defense against running untrusted code.
 
-After you upgrade your system, consider enabling Application Control. This can be disruptive if the necessary measures aren't taken for proper validation of existing non-Microsoft software already existing on the servers.
+After you upgrade your system, consider enabling Application Control. This feature can be disruptive if you don't take the necessary measures for proper validation of existing non-Microsoft software already on the servers.
 
-For new deployments, Application Control is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems we recommend that you follow these steps:
+For new deployments, Application Control is enabled in *Enforced* mode (blocking nontrusted binaries), whereas for upgraded systems, follow these steps:
 
 1. [Enable Application Control in *Audit* mode (assuming unknown software might be present)](./manage-wdac.md#switch-application-control-policy-modes).
 1. [Monitor Application Control events](/windows/security/application-security/application-control/app-control-for-business/operations/event-id-explanations).
@@ -196,7 +196,7 @@ For new deployments, Application Control is enabled in *Enforced* mode (blocking
 1. Repeat steps #2 and #3 as necessary until no further audit events are observed. Switch to *Enforced* mode.
 
     > [!WARNING]
-    > Failure to create the necessary AppControl policies to enable non-Microsoft software may prevent that software from running.
+    > Failure to create the necessary AppControl policies to enable non-Microsoft software might prevent that software from running.
 
 For instructions to enable in *Enforced* mode, see [Manage Application Control for Azure Local](./manage-wdac.md#switch-application-control-policy-modes).
 
