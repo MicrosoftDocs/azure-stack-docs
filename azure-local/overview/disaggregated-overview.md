@@ -89,6 +89,8 @@ The following table lists commonly used Azure services with Azure Local:
 | Azure Video Indexer | Extract insights from your videos using **Azure** AI **Video Indexer** video and audio models. To learn more, see [What is Azure AI Video Indexer enabled by Azure Arc](/azure/azure-video-indexer/arc/azure-video-indexer-enabled-by-arc-overview)? |
 | Azure Edge RAG (Preview) | Azure Edge RAG, enabled by Azure Arc is a turnkey solution that packages everything that's necessary to allow customers to build custom chat assistants and derive insights from their private data. To learn more, see [What is Edge Retrieval Augmented Generation (RAG)?](/azure/azure-arc/edge-rag/overview) |
 | Azure IoT Operations | Deploy Azure IoT Operations on Azure Kubernetes Service (AKS) enabled by Azure Arc clusters running on Azure Local to manage and process IoT data at the edge. To learn more, see [Azure IoT Operations overview](/azure/iot-operations/overview-iot-operations). |
+| Azure DocumentDB | Run Azure DocumentDB, a MongoDB-compatible open source document database, on Azure Local for document and JSON workloads. To learn more, see [Azure DocumentDB overview](/azure/documentdb/) and contact [DocumentDB feedback](documentdb-feedback@microsoft.com) to get set up.
+| Azure Cosmoss DB | Run Azure Cosmos DB workloads on Azure Local, close to your data. To learn more, see [Azure Cosmos DB overview](https://learn.microsoft.com/en-us/azure/cosmos-db/) and contact [Document DB feedback](documentdb-feedback@microsoft.com) to get set up.
 
 For more information on the cloud service components of Azure Local, see [Azure Local hybrid capabilities with Azure services](../hybrid-capabilities-with-azure-services-23h2.md).
 
