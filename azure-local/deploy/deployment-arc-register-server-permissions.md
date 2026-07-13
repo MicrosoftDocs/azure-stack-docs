@@ -32,9 +32,9 @@ This article describes how to set up the required permissions on your subscripti
 
 Follow these steps to assign Azure permissions for deployment from the Azure portal.
 
-1. In [the Azure portal](https://portal.azure.com/), go to the subscription used to register the machines. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
+1. In [the Azure portal](https://portal.azure.com/), go to the resource group used to register the machines on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-a.png" alt-text="Screenshot of the Add role assignment in Access control in subscription for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-a.png":::
+    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Local deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
 1. Go through the tabs and assign the following role permissions to the user who deploys the instance:
 
