@@ -3,26 +3,26 @@ title: Install Azure Stack HCI operating system, version 23H2 using SConfig
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/11/2025
+ms.date: 06/30/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Install the Azure Stack HCI operating system manually using SConfig
+# Install the Azure Stack HCI operating system manually by using SConfig
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-There are two distinct ways of installing the OS on your Azure Local machines. You can use the **Install Azure Stack HCI** wizard and SConfig or you can install and register the OS using simplified machine provisioning (preview). This article describes the OS install using the wizard only. To use simplified machine provisioning, see [Install and register the OS using simplified machine provisioning](simplified-machine-provisioning.md).
+You can install the OS on your Azure Stack HCI machines in two distinct ways. You can use the **Install Azure Stack HCI** wizard and SConfig, or you can install and register the OS by using simplified machine provisioning (preview). This article describes the OS install by using the wizard only. To use simplified machine provisioning, see [Install and register the OS using simplified machine provisioning](simplified-machine-provisioning.md).
 
 ## Prerequisites
 
-Before you begin, make sure you do the following steps:
+Before you begin, make sure you complete the following steps:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
-- Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+- Keep a password handy to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that's at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
 ## Boot and install the operating system
 
@@ -41,7 +41,7 @@ To install the operating system, follow these steps:
 1. On the **Which type of installation do you want?** page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
 
     > [!NOTE]
-    > Upgrade installations are not supported in this release of the operating system.
+    > Upgrade installations aren't supported in this release of the operating system.
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
 
@@ -57,16 +57,16 @@ To install the operating system, follow these steps:
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-installing.png" alt-text="Screenshot of the status page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-installing.png":::
 
     > [!NOTE]
-    > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
+    > The installation process restarts the operating system twice to complete the process. It displays notices on starting services before opening an Administrator command prompt.
 
-1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, then press **Enter**.
+1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, and then press **Enter**.
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-change-admin-password.png" alt-text="Screenshot of the change password prompt." lightbox="media/deployment-install-os/azure-stack-hci-change-admin-password.png":::
 
 1. At the **Enter new credential** for Administrator prompt, enter a new password.
 
     > [!IMPORTANT]
-    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that's at least 14 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
     Enter the password again to confirm it, then press **Enter**.
 
@@ -78,9 +78,9 @@ To install the operating system, follow these steps:
 
 To install the latest drivers and firmware, follow these steps:
 
-1. Install the latest supported drivers and firmware as per the instructions provided by your hardware manufacturer. After the installation is complete, restart your machines.
+1. Install the latest supported drivers and firmware according to the instructions provided by your hardware manufacturer. After the installation finishes, restart your machines.
 
-1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
+1. Perform this step only if your hardware partner provides an SBE. Copy the SBE to each machine that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it's detected and used during deployment. For more information, see [Azure Local solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
@@ -118,8 +118,10 @@ Follow these steps to configure the operating system using SConfig:
    To configure a valid time source, run the following command:
 
    ```cmd
-   w32tm /config /manualpeerlist:"ntpserver.contoso.com" /syncfromflags:manual /update
+   w32tm /config /manualpeerlist:"ntpserver.contoso.com,0x8" /syncfromflags:manual /update
    ```
+
+   The `0x8` flag tells Windows Time Service to send Network Time Protocol (NTP) requests as a client. For more information, see the [NTP specification](https://www.rfc-editor.org/info/rfc5905/#section-3).
 
    Confirm that the time is successfully synchronizing using the new time server:
 
