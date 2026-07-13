@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 05/01/2026
+ms.date: 06/29/2026
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 # Extended Security Updates on Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 The Extended Security Update (ESU) program allows you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Local comes with additional benefits and implementation steps. This article explains the specifics for Azure Local.
 

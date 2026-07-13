@@ -4,20 +4,19 @@ description: Learn how to use enhanced Azure management for Azure Local. This en
 ms.topic: concept-article
 author: ronmiab
 ms.author: robess
-ms.date: 06/10/2025
+ms.date: 06/29/2026
 ms.subservice: hyperconverged
 ---
 
 # Enhanced management of Azure Local from Azure
 
-[!INCLUDE [hci-applies-to-22h2-later](../includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This guide describes the feature in the May 2023 cumulative update for Azure Local, version 22H2, that enables enhanced management from Azure.
-
+This guide describes the Azure Local feature that enables enhanced management from Azure.
 
 ## About enhanced Azure management
 
-In the May 2023 cumulative update for Azure Local, version 22H2, a feature enhancement has been made to the operating system that enables additional capabilities for Azure Local to be managed from Azure.
+Enhanced Azure management provides extra capabilities for managing Azure Local from Azure.
 
 This feature enhancement includes support of managed identity for Azure Local resources in Azure to enable Azure services such as Azure Monitor and Azure Site Recovery. The managed identity is created when your Azure Local is registered with Azure and persists for the lifetime of resource in Azure. The managed identity communicates with the resource provider in Azure and is used to authenticate your Azure Local with Azure.
 
@@ -42,24 +41,18 @@ With this feature enhancement, the following actions can be initiated from Azure
 - Enabling a Windows Server guest license subscription via the Azure portal. For more information, see [Activate Windows Server VMs on Azure Local](../manage/vm-activate.md?tab=azure-portal#enable-windows-server-subscription).
 - Changing the level of service health data sent to Microsoft. For more information, see [Azure Local data collection](../concepts/data-collection.md) to understand the diagnostic data that Microsoft collects for your system.
 
-## Enable enhanced management
-
-To enable the enhanced management feature, you'll need to install the latest cumulative update for Azure Local, version 22H2 and rerun registration for your system.
-
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites.
 
-To reach the Azure Service Bus endpoint required by this feature, include the following URL to your outbound firewall allowlist:
+To reach the Azure Service Bus endpoint required by this feature, include the following URL to your outbound firewall allow list:
 
 - URL: *servicebus.windows.net*
 - Ports: *443, 5671, 5672*
 
-## Enable enhanced management for Azure Local, version 22H2
+## Enable enhanced management for Azure Local
 
-For systems running version 22H2, to enable Azure management and managed identity, follow these steps:
-
-1. Install the May 2023 cumulative update for Azure Local, version 22H2.
+To enable Azure management and managed identity, follow these steps:
 
 1. On one of the machines, install or update to the latest `Az.StackHCI` PowerShell module that includes the latest registration script changes.
     - To install the module, run the following command in PowerShell:
