@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 06/18/2026
+ms.date: 07/10/2026
 ms.subservice: hyperconverged
 ---
 
@@ -32,6 +32,8 @@ This release includes various reliability improvements and bug fixes.
   - This build uses .NET version **8.0.28** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
   - This build uses .NET version **10.0.9** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ::: moniker-end
 
@@ -60,6 +62,8 @@ This release includes various reliability improvements and bug fixes.
 - **SAN integration using iSCSI (preview)**: You can now integrate external storage area network (SAN) storage from supported vendors with Azure Local using Internet Small Computer Systems Interface (iSCSI), in addition to Fibre Channel (FC). This feature is currently in preview. For more information, see [Connect an external storage array to Azure Local](./deploy/enable-external-storage.md).
 
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
+
+- **Azure Migrate now supports migrating to Azure Local instances that use external (SAN) storage**: You can migrate VMs to Azure Local instances that use external Storage Area Network (SAN) storage, including volumes configured as NTFS. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#may-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ::: moniker-end
 
@@ -119,6 +123,8 @@ This release includes various reliability improvements and bug fixes.
 
 - **Security baseline improvements**: A user logon text and banner help comply with DISA STIG and CIS requirements. The new settings are protected by drift control; to customize the values, first disable drift control. For more information, see [Manage security defaults for Azure Local](./manage/manage-secure-baseline.md).
 
+- **Azure Migrate now supports Azure CLI for replication and migration (preview)**: You can use Azure CLI to replicate and migrate VMs to Azure Local, which enables automation and scripting for migration workflows. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#april-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2603"
@@ -153,6 +159,8 @@ This release includes various reliability improvements and bug fixes.
 
 - **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#march-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2602"
@@ -186,6 +194,8 @@ This release includes various reliability improvements and other bug fixes.
 - **End of Windows Server Subscription and Extended Security Updates (ESU) purchases for OS version 20349.xxxx (22H2)**: If running OS version 20349.xxxx (version 22H2), you can no longer purchase Windows Server Subscription or ESU.
 
 - **Drift detection**: Starting with this release, the drift detection framework identifies configuration deviations, improves troubleshooting, and helps reduce configuration-related issues in your Azure Local environment. For more information, see [Drift detection](./manage/drift-detection.md).
+
+- **Azure Migrate now preserves Secure Boot settings during migration**: For eligible UEFI (Generation 2) VMs, Secure Boot settings are preserved when you migrate to Azure Local, helping maintain workload security posture. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#february-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ::: moniker-end
 
@@ -242,6 +252,8 @@ This release includes various reliability improvements and other bug fixes.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
+- **Azure Migrate now supports registering a new target appliance**: If the original target appliance becomes unresponsive or enters a bad state, you can register a new one and continue migrations without creating a new Azure Migrate project. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#january-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ::: moniker-end
 
 ::: moniker range="=azloc-previous"
@@ -281,6 +293,8 @@ This release includes various reliability improvements and other bug fixes.
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#december-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ## Features and improvements in 2511
 
 The November 2025 release of hyperconverged deployments of Azure Local is version **12.2511.1002.502**. For more information, see [Release information summary](./release-information-23h2.md).
@@ -308,6 +322,8 @@ This release includes the following features and improvements:
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2510).
 
 - This release includes various reliability improvements and other bug fixes.
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#november-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ## Features and improvements in 2510
 
@@ -359,7 +375,7 @@ This release includes the following features and improvements:
   - Added a new FAQ section to address common questions.
     For more information, see [Deploy Azure Local using local identity with Azure Key Vault](./deploy/deployment-local-identity-with-key-vault.md).
 
-- **VMware migration to Azure Local** - This feature is now generally available. You can migrate your VMware VMs to Azure Local using Azure Migrate. For more information, see [Migrate VMware VMs to Azure Local](./migrate/migration-azure-migrate-vmware-overview.md).
+- **Azure Migrate for VMware VM migration to Azure Local is generally available**: You can migrate your VMware VMs to Azure Local using Azure Migrate. For more information, see [Overview of Azure Migrate based VMware migration for Azure Local](./migrate/migration-azure-migrate-vmware-overview.md) and [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#october-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 - **OEM image support for registration** - OEM images are now supported for registration of Azure Local machines for both proxy and without proxy scenarios. For more information, see [Register with Arc gateway](./deploy/deployment-with-azure-arc-gateway.md) and [Register without Arc gateway](./deploy/deployment-without-azure-arc-gateway.md).
 
@@ -430,6 +446,8 @@ This release includes the following features and improvements:
     - **VM images**: For Azure Local VMs, two new articles are released including [Prepare Ubuntu Azure Marketplace image](manage/virtual-machine-azure-marketplace-ubuntu.md) and [Prepare RHEL Azure Marketplace image](manage/virtual-machine-azure-marketplace-red-hat.md).
   - A troubleshooting section is added for issues in [Add-server](./manage/add-server.md) and [Repair-server](./manage/repair-server.md) articles.
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#september-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ## Features and improvements in 2508
 
 There are two 2508 releases for August. Here are the details of each release:
@@ -487,6 +505,8 @@ This release includes the following features and improvements:
 
     Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2508).
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#august-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ## Features and improvements in 2507
 
 Two 2507 releases are available for July. Here are the details of each release:
@@ -513,6 +533,8 @@ This release includes the following features and improvements:
 - **.NET updates**: This build uses .NET version **8.0.18** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2507).
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#july-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ## Features and improvements in 2506
 
@@ -561,6 +583,8 @@ This release includes the following features and improvements:
 
 - **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#june-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ## Features and improvements in 2505
 
 There are two 2505 releases for May. Here are the details of each release:
@@ -593,6 +617,8 @@ This release includes the following features and improvements:
 - **Archival of Azure Local, version 22H2 documentation**: The archival of Azure Local, version 22H2 documentation is currently in progress and will complete soon. Once archived, the articles are available in the [Azure previous versions documentation](/previous-versions/azure/) for reference. The archived documentation isn't updated and isn't supported.
 
 - **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#may-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 ## Features and improvements in 2504
 
@@ -652,6 +678,8 @@ This release includes the following features and improvements:
 
 - **AKS on Azure Local** - This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local. For more information, see [What's new in AKS enabled by Azure Arc on Azure Local](/azure/aks/aksarc/aks-whats-new-local#release-2503).
 
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#april-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
 ## Features and improvements in 2503
 
 This release includes the following features and improvements:
@@ -692,7 +720,7 @@ This release includes the following features and improvements:
 
 - **Add and repair node changes**: Starting with this release, you must use the OS image of the same solution version as the version running on the existing cluster. For more information on the OS image, see [Add a node](./manage/add-server.md) and [Repair a node](./manage/repair-server.md).
 
-- **What's new for migration**: Documentation for improvements and features for VM migration to Azure Local is now available. For more information, see [What's new in migration](./migrate/migrate-whats-new.md).
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#march-2025). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
 - **AKS on Azure Local** - This release has several new features and enhancements for AKS on Azure Local. This release supports the following Kubernetes versions: 1.28.12, 1.28.14, 1.29.7, 1.29.9, 1.30.3, and 1.30.4. Ensure your AKS clusters are on a supported Kubernetes version before upgrading Azure Local.
 
