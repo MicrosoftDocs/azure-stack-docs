@@ -62,7 +62,7 @@ Before you begin, ensure that the following prerequisites are met:
 
 1. Install [Terraform version 1.9 or later](https://developer.hashicorp.com/terraform/install).
 
-2. Configure the [AzAPI provider](https://registry.terraform.io/providers/Azure/azapi/latest) (version 2.4 or later) and add the Azure Migrate module to your Terraform configuration:
+1. Configure the [AzAPI provider](https://registry.terraform.io/providers/Azure/azapi/latest) (version 2.4 or later) and add the Azure Migrate module to your Terraform configuration:
 
     ```terraform
     terraform {
