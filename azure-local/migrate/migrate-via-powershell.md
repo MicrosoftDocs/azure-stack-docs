@@ -199,7 +199,13 @@ module "discover" {
 }
 ```
 
-The `discovered_servers` output lists each VM's machine name, IP addresses, operating system, boot type, and OS disk ID. Use the source machine ID (`sdsArmId`) and OS disk ID values from this output when you replicate a VM. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+This operation is read-only. Its key outputs include:
+
+- `discovered_servers`: A filtered list of discovered VMs. Each entry includes the machine name, IP addresses, operating system, boot type, and OS disk ID.
+- `discovered_servers_count`: The number of discovered servers that have discovery data.
+- `total_machines_count`: The total number of machines, including those without discovery data.
+
+Use the source machine ID (`sdsArmId`) and OS disk ID from this output as the `machine_id` and `os_disk_id` inputs in the [Replicate a VM](#replicate-a-vm) step. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
@@ -308,7 +314,18 @@ module "initialize" {
 }
 ```
 
-To use a custom cache storage account, set `cache_storage_account_id` to its ARM ID. The storage account must use the Standard performance tier and Azure Blob storage, with public network access enabled. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+To use a custom cache storage account, set `cache_storage_account_id` to its ARM ID. The storage account must use the Standard performance tier and Azure Blob storage, with public network access enabled.
+
+This operation's key outputs include:
+
+- `replication_vault_id`: The replication vault ARM ID.
+- `replication_policy_id`: The replication policy ARM ID.
+- `replication_extension_id` and `replication_extension_name`: The replication extension ARM ID and name.
+- `cache_storage_account_id` and `cache_storage_account_name`: The cache storage account.
+- `source_fabric_id` and `target_fabric_id`: The resolved replication fabric ARM IDs.
+- `replication_vault_identity`: The managed identity principal ID of the vault.
+
+Later steps resolve these resources automatically from the project and appliance names, so you don't usually set them manually. The outputs are useful for verification and troubleshooting. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
@@ -531,7 +548,11 @@ For more information, see the [`az migrate local replication new`](/cli/azure/mi
 
 # [Terraform (Preview)](#tab/terraform)
 
-Use the `replicate` operation mode to start replication for a discovered VM. For a VM with a single OS disk and a single NIC, provide the source machine ID (`sdsArmId`) and OS disk ID from the `discover` output, along with the target settings:
+Use the `replicate` operation mode to start replication for a discovered VM by creating a protected item in the replication vault.
+
+### Default mode (single OS disk and NIC)
+
+For a VM with a single OS disk and a single NIC, provide the source machine ID (`sdsArmId`) and OS disk ID from the `discover` output, along with the target settings:
 
 ```terraform
 module "replicate" {
@@ -562,7 +583,59 @@ module "replicate" {
 }
 ```
 
-To replicate a VM that has multiple disks or NICs, use the `disks_to_include` and `nics_to_include` inputs instead of `os_disk_id` and `target_virtual_switch_id`. The `protected_item_id` output identifies the replicating VM, which you use to monitor, migrate, and remove replication. For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
+### Power user mode (multiple disks or NICs)
+
+For a VM with multiple disks or NICs, use the `disks_to_include` and `nics_to_include` inputs instead of `os_disk_id` and `target_virtual_switch_id`. Keep the same common and target configuration as the default mode, and add the disk and NIC lists:
+
+```terraform
+module "replicate" {
+  source  = "Azure/avm-ptn-azure-local-migrate/azurerm"
+  version = "<version>"
+
+  # Include the same common and target configuration as the default mode,
+  # but omit os_disk_id and target_virtual_switch_id.
+
+  disks_to_include = [
+    {
+      disk_id          = "<osDiskID>"
+      disk_size_gb     = 40
+      disk_file_format = "VHDX"
+      is_os_disk       = true
+      is_dynamic       = true
+    },
+    {
+      disk_id          = "<dataDiskID>"
+      disk_size_gb     = 100
+      disk_file_format = "VHDX"
+      is_os_disk       = false
+      is_dynamic       = true
+    }
+  ]
+
+  nics_to_include = [
+    {
+      nic_id            = "<nicID>"
+      target_network_id = "<logicalNetworkARMID>"
+      selection_type    = "SelectedByUser"
+    }
+  ]
+}
+```
+
+Add one object to `disks_to_include` for each disk to replicate, and one object to `nics_to_include` for each NIC:
+
+- Disk objects set `disk_id` (the disk UUID for VMware or the instance ID for Hyper-V), `disk_size_gb`, `disk_file_format` (`VHDX` or `VHD`), `is_os_disk`, and `is_dynamic`.
+- NIC objects set `nic_id`, `target_network_id` (the target logical network ARM ID), and `selection_type` (for example, `SelectedByUser`).
+
+When `disks_to_include` is set, it takes precedence over `os_disk_id`. Likewise, `nics_to_include` takes precedence over `target_virtual_switch_id`.
+
+### Key outputs
+
+- `protected_item_id`: The ARM ID of the created protected item. Use this value as the `target_object_id` input in the [Migrate a VM](#migrate-a-vm) and [Complete migration (clean up)](#complete-migration-clean-up) steps.
+- `protected_item_name`: The name of the protected item.
+- `replication_state`: The current replication health.
+
+For more information, see the [Azure Migrate to Azure Local Terraform module](https://registry.terraform.io/modules/Azure/avm-ptn-azure-local-migrate/azurerm/latest).
 
 ---
 
