@@ -453,6 +453,21 @@ items:
         - name: Manual backup and recovery
           href: manage/trusted-launch-vm-import-key.md
 
+    - name: Confidential VMs
+      items:
+        - name: What are confidential VMs for Azure Local?
+          href: index.yml
+        - name: Deploy an Azure Local cluster via ARM template
+          href: index.yml
+        - name: Create and deploy an integrity-protected VM image
+          href: index.yml
+        - name: Create and connect to an Azure Local CVM
+          href: index.yml
+        - name: Guest attestation for CVMs
+          href: index.yml
+        - name: Troubleshooting
+          href: index.yml
+
     - name: Unmanaged VMs
       items:
         - name: Manage VMs
