@@ -9,13 +9,17 @@ author: sanjanamsft
 
 # Access and identity options for AKS enabled Azure Arc (multi-rack)
 
-You can authenticate, authorize, secure, and control access to Kubernetes clusters with [Kubernetes role-based access control (Kubernetes RBAC)](#kubernetes-rbac). You can grant users, groups, and service accounts access to only the Kubernetes resources they need. Kubernetes RBAC helps you secure your cluster access and provide only the minimum required permissions to developers and operators.
+You can authenticate, authorize, secure, and control access to Kubernetes clusters in various ways:
+
+- By using [Kubernetes role-based access control (Kubernetes RBAC)](#kubernetes-rbac), you can grant users, groups, and service accounts access to only the Kubernetes resources they need.
+- By using [AKS clusters enabled with Azure RBAC](#azure-role-based-access-control), you can further enhance the security and permissions structure by using Microsoft Entra ID and Azure RBAC.
+
+Kubernetes RBAC and Azure RBAC help you secure your cluster access and provide only the minimum required permissions to developers and operators.
 
 This article introduces the core concepts that help you authenticate and assign permissions in AKS.
 
 > [!NOTE]
-> - The "Microsoft Entra ID with Azure role-based access control (Azure RBAC) for Kubernetes authorization" scenario isn't currently available on multi-rack deployments.
-> - Azure RBAC isn't currently supported on multi-rack deployments.
+> On multi-rack deployments, the `az aksarc get-credentials` API isn't supported. Interactive access to an Azure RBAC-enabled cluster is provided through `az connectedk8s proxy` rather than a `get-credentials`-based Microsoft Entra integration. For step-by-step guidance, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md).
 
 ## Kubernetes RBAC
 
@@ -62,7 +66,62 @@ With a ClusterRoleBinding, you bind roles to users and apply to resources across
 
 _Service accounts_ are one of the primary user types in Kubernetes. The Kubernetes API holds and manages service accounts. Service account credentials are stored as Kubernetes secrets, allowing them to be used by authorized pods to communicate with the API server. Most API requests provide an authentication token for a service account or a standard user account.
 
-Standard user accounts allow more traditional access for human administrators or developers, not just services and processes. While Kubernetes doesn't provide an identity management solution to store regular user accounts and passwords, you can integrate external identity solutions into Kubernetes.
+Standard user accounts provide more traditional access for human administrators or developers, not just services and processes. While Kubernetes doesn't provide an identity management solution to store regular user accounts and passwords, you can integrate external identity solutions into Kubernetes. For AKS clusters, this integrated identity solution is Microsoft Entra ID.
+
+For more information about the identity options in Kubernetes, see [Kubernetes authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication).
+
+## Azure role-based access control
+
+Azure role-based access control (RBAC) is an authorization system built on [Azure Resource Manager](/azure/azure-resource-manager/management/overview) that provides fine-grained access management of Azure resources.
+
+| RBAC system | Description |
+| --- | --- |
+| Kubernetes RBAC | Designed to work on Kubernetes resources within your AKS cluster. |
+| [Azure RBAC](use-azure-rbac.md) | Designed to work on resources within your Azure subscription. |
+
+With Azure RBAC, you create a _role definition_ that outlines the permissions to apply. You then assign this role definition to a user or group through a _role assignment_ for a particular _scope_. The scope can be an individual resource, a resource group, or across the subscription.
+
+For more information, see [What is Azure role-based access control (Azure RBAC)?](/azure/role-based-access-control/overview).
+
+To fully operate an AKS Arc cluster, you need two levels of access:
+
+- Access the AKS resource in your Azure subscription.
+  - Control scaling or upgrading your cluster by using the AKS enabled by Azure Arc APIs.
+  - Connect to your cluster through the Azure Arc connected cluster proxy (`az connectedk8s proxy`).
+- Access to the Kubernetes API. This access is controlled by either:
+  - Kubernetes RBAC, or
+  - Integrating Azure RBAC with AKS for Kubernetes authorization.
+
+### Azure RBAC to authorize access to the AKS resource
+
+By using Azure RBAC, you can give your users (or identities) granular access to AKS resources across one or more subscriptions. Three roles are available for this control plane action: **Azure Kubernetes Service Arc Cluster Admin Role**, **Azure Kubernetes Service Arc Cluster User Role**, and **Azure Kubernetes Service Arc Contributor Role**. Each role has a different permission scope, as described in [Azure built-in roles for Containers](/azure/role-based-access-control/built-in-roles/containers). For example, you can use the [Azure Kubernetes Service Arc Contributor](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role to create, scale, and upgrade your cluster.
+
+### Azure RBAC for Kubernetes authorization
+
+By using the Azure RBAC integration, you can manage Kubernetes cluster resource permissions and assignments by using Azure role definitions and role assignments.
+
+:::image type="content" source="media/concepts-security-access-identity/azure-rbac-k8s-authorization-flow.png" alt-text="Diagram of authorization flow." lightbox="media/concepts-security-access-identity/azure-rbac-k8s-authorization-flow.png":::
+
+When you use the Azure RBAC integration, all requests to the Kubernetes API follow the same authentication flow. If the identity making the request exists in Microsoft Entra ID, Azure teams with Kubernetes RBAC to authorize the request. If the identity exists outside of Microsoft Entra ID (for example, a Kubernetes service account), authorization defers to the normal Kubernetes RBAC.
+
+In this scenario, you use Azure RBAC mechanisms and APIs to assign users built-in roles or create custom roles, just as you would with Kubernetes roles.
+
+By using this feature, you not only give users permissions to the AKS resource across subscriptions, but you also configure the role and permissions for inside each of those clusters controlling Kubernetes API access.
+
+> [!IMPORTANT]
+> You must enable Azure RBAC for Kubernetes authorization when you **create** the cluster, before doing role assignment. Enabling or disabling Azure RBAC on an existing multi-rack cluster isn't allowed. For more details and step-by-step guidance, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md).
+
+### Built-in roles
+
+AKS Arc provides the following five built-in roles. They're similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
+
+| Role | Description |
+| --- | --- |
+| [Azure Arc-enabled Kubernetes Cluster User](/azure/role-based-access-control/built-in-roles/containers#azure-arc-enabled-kubernetes-cluster-user-role) | Allows you to retrieve the Cluster Connect-based kubeconfig file to manage clusters from anywhere. |
+| [Azure Arc Kubernetes Viewer](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-viewer) | Allows read-only access to see most objects in a namespace. Doesn't allow viewing secrets, because **read** permission on secrets enables access to **ServiceAccount** credentials in the namespace. These credentials in turn allow API access through that **ServiceAccount** value (a form of privilege escalation). |
+| [Azure Arc Kubernetes Writer](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-writer) | Allows read/write access to most objects in a namespace. Doesn't allow viewing or modifying roles or role bindings. However, this role allows accessing secrets and running pods as any **ServiceAccount** value in the namespace, so it can be used to gain the API access levels of any such **ServiceAccount** value in the namespace. |
+| [Azure Arc Kubernetes Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-admin) | Allows admin access. It's intended to be granted within a namespace through **RoleBinding**. If you use it in **RoleBinding**, it allows read/write access to most resources in a namespace, including the ability to create roles and role bindings within the namespace. This role doesn't allow write access to resource quota or to the namespace itself. |
+| [Azure Arc Kubernetes Cluster Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-cluster-admin) | Allows "superuser" access to execute any action on any resource. When you use it in **ClusterRoleBinding**, it gives full control over every resource in the cluster and in all namespaces. When you use it in **RoleBinding**, it gives full control over every resource in the role binding namespace, including the namespace itself. |
 
 ## Current limitations
 
@@ -70,20 +129,20 @@ The following security features aren't currently available on AKS on Azure Local
 
 | Feature | Status | Notes |
 |---|---|---|
-| Azure RBAC for Kubernetes authorization | Not available | The `enableAzureRBAC` field is accepted in the API schema but isn't currently enforced. Use Kubernetes RBAC. |
 | OIDC issuer / Workload identity | Not available | Workload identity federation isn't currently supported on AKS on Azure Local for multi-rack deployments. |
 | SSH access restriction (`authorizedIPRanges`) | Not available | The `clusterVMAccessProfile.authorizedIPRanges` field is accepted in the API schema but isn't currently enforced. |
-| Microsoft Entra ID integration| Not available | Microsoft Entra ID integration isn't currently available on AKS on Azure Local for multi-rack deployments. |
+| Microsoft Entra integration via `az aksarc get-credentials` | Not available | The `get-credentials`-based Microsoft Entra integration isn't currently available. Use `az connectedk8s proxy` together with Azure RBAC for Microsoft Entra ID-based access. |
 
 ## Summary
 
-The following steps are how users can authenticate to Kubernetes when Microsoft Entra integration is enabled.
+The following steps show how users can authenticate to Kubernetes when Azure RBAC is enabled.
 
 1. Run `az login` and authenticate to Azure.
-1. Connect to the cluster (for example, using `az connectedk8s proxy`).
+1. Connect to the cluster using `az connectedk8s proxy`.
 1. Run `kubectl` commands.
    The first command can trigger browser-based authentication to authenticate to the Kubernetes cluster.
 
 ## Next steps
 
-To learn about Kubernetes RBAC, see [Using Kubernetes RBAC authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+- To learn about Kubernetes RBAC, see [Using Kubernetes RBAC authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+- To enable and use Azure RBAC, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md).

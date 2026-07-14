@@ -67,6 +67,15 @@ az provider register --namespace Microsoft.Kubernetes
 az provider register --namespace Microsoft.ExtendedLocation
 ```
 
+### Register feature
+
+```azurecli
+az feature register \
+  --subscription <subscription_id> \
+  --namespace Microsoft.HybridContainerService \
+  --name hiddenPreviewAccess
+```
+
 ### Azure CLI extensions
 
 Install the required CLI extensions:

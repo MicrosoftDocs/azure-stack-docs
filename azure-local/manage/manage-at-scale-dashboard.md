@@ -4,7 +4,7 @@ description: Learn to monitor your Azure Local using dashboards in Azure portal.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 08/18/2025
+ms.date: 06/29/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article details how to manage at-scale your Azure Local via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
+This article explains how to use the dashboard in the Azure portal to manage your Azure Local systems at scale. You can view the status of the systems as charts or lists.
 
 ## View the dashboard charts
 
@@ -27,7 +27,7 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-overview.png" alt-text="Screenshot of the Azure Local dashboard." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-overview.png":::
 
-1. In each tile, you can select the **View details** link or other labeled hyperlinks to open the corresponding dashboard or view more details.
+1. In each tile, select the **View details** link or other labeled hyperlinks to open the corresponding dashboard or view more details.
 
    Here are some sample screens that appear when you select different links on the various tiles:
 
@@ -55,7 +55,7 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
 1. In Azure portal, go to **Azure Arc** > **Host environments** > **Azure Local** > **All systems**. The **All systems** page presents a hierarchical view of all your workloads within a system.
 
-   All columns can be sorted by selecting a column header. You can filter the dashboard display by subscription, resource group, region, and sites. You can also group display results by using the grouping control at the top right.
+   You can sort all columns by selecting a column header. Filter the dashboard display by subscription, resource group, region, and sites. You can also group display results by using the grouping control at the top right.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png" alt-text="Screenshot of the Azure Local dashboard list view." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png":::
 
@@ -69,10 +69,9 @@ Use the following information when no system data is displayed in the **All syst
 
 | Issue | Issue seen in | Resolution |
 |-------|---------------|-------|
-| *Microsoft.Edge* Resource Provider (RP) is not registered with your subscription. | Connection status | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace "Microsoft.Edge"` |
-| The *Microsoft.Edge* RP isn't able to process data for the system. | Connection status | No action is required on your part. Azure Local service will automatically detect this condition and raise a Support ticket.  |
+| *Microsoft.Edge* Resource Provider (RP) isn't registered with your subscription. | Connection status | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace "Microsoft.Edge"` |
+| The *Microsoft.Edge* RP can't process data for the system. | Connection status | No action is required. Azure Local service automatically detects this condition and raises a support ticket.  |
 | Your system isn't functioning. | Connection status | Your system is in **Needs attention** state. <br> Bring up the system. |
-| You have an older version system running Azure Local, version 22H2. This version can't be updated to Azure Local, version 23H2. | Updates and Connection status | Make sure to use an Azure Local, version 23H2 system. |
 
 ## Next steps
 

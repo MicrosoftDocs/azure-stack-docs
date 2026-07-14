@@ -4,16 +4,16 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 02/11/2026
+ms.date: 06/29/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
 # Manage system security with Microsoft Defender for Cloud (preview)
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article discusses how to use Microsoft Defender for Cloud to protect Azure Local from various cyber threats and vulnerabilities.
+This article explains how to use Microsoft Defender for Cloud to protect Azure Local from various cyber threats and vulnerabilities.
 
 Defender for Cloud helps improve the security posture of Azure Local, and can protect against existing and evolving threats.
 
@@ -23,7 +23,7 @@ For more information about Microsoft Defender for Cloud, see [Microsoft Defender
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed:
+Before you begin, make sure that you complete the following prerequisites:
 
 - You have access to Azure Local that is deployed, registered, and connected to Azure.
 - You have at least **Owner** or **Contributor** roles in your Azure subscription to turn on Foundational cloud security posture management (CSPM).
@@ -38,7 +38,7 @@ Follow these steps to enable Defender for Cloud for Azure Local.
 
 ### Step 1: Turn on Foundational CSPM
 
-This step turns on the basic Defender for Cloud plan—at no extra cost. This plan lets you monitor and identify the steps that you can take to secure Azure Local, along with other Azure and Arc resources. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
+This step turns on the basic Defender for Cloud plan - at no extra cost. This plan lets you monitor and identify the steps that you can take to secure Azure Local, along with other Azure and Arc resources. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
 
 ### Step 2: Turn on Defender for Servers for individual machines and Azure Local VMs
 
@@ -54,20 +54,20 @@ To do so, follow all the instructions in the [Enable the Defender for Servers pl
 
 ## Apply Microsoft Cloud Security Benchmark initiative
 
-After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, you must apply the Microsoft Cloud Security Benchmark (MCSB) initiative. You can view the security settings via the Azure portal only when the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
+After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, apply the Microsoft Cloud Security Benchmark (MCSB) initiative. You can view the security settings in the Azure portal only when the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
 
 - Apply the MCSB via the portal.
 - Manually apply the Azure compute security baseline in Azure policy to all cluster servers. See [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
 Follow these steps to apply the MCSB initiative at the subscription level:
 
-1. Sign into the Azure portal, and search for and select **Microsoft Defender for Cloud**.
+1. Sign in to the Azure portal, and search for and select **Microsoft Defender for Cloud**.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" alt-text="Screenshot that shows how to search for Defender for Cloud in the Azure portal." lightbox="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" :::
 
 1. On the left pane, scroll down to the **Management** section and select **Environment settings**.
 
-1. On the **Environment settings** page, select the subscription in use from the drop-down.
+1. On **Environment settings**, select the subscription in use from the drop-down.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/select-subscription.png" alt-text="Screenshot that shows how to select the Azure subscription." lightbox="./media/manage-security-with-defender-for-cloud/select-subscription.png" :::
 
@@ -97,9 +97,6 @@ After you [enable Defender for Cloud for Azure Local](#enable-defender-for-cloud
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" alt-text="Screenshot of the Recommendations page in the Defender for Cloud portal." lightbox="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" :::
 
-   > [!NOTE]
-   > Azure Local-exclusive recommendations are available only on Azure Local 2311 or later. Azure Stack HCI, version 22H2 shows recommendations that are also available on Windows Server.
-
    To learn more about the security recommendations specific to Azure Local, refer to the [Azure compute recommendations](/azure/defender-for-cloud/recommendations-reference-compute#azure-compute-recommendations) section in the [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) article.
 
 ### Security recommendation exclusions
@@ -124,11 +121,11 @@ Go to the Microsoft Defender for Cloud portal to monitor alerts for individual A
 Follow these steps to access the Microsoft Defender for Cloud portal's pages to monitor individual servers and Azure Local VMs:
 
 
-1. Sign into the Azure portal, and search for and select **Microsoft Defender for Cloud**.
+1. Sign in to the Azure portal, and search for and select **Microsoft Defender for Cloud**.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" alt-text="Screenshot that shows how to search for Defender for Cloud in the Azure portal." lightbox="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" :::
 
-1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view security recommendations for individual servers and VMs running on Azure Local, or **Security alerts** to monitor alerts for them.
+1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, you can go to various portal pages, such as **Recommendations** to view security recommendations for individual servers and VMs running on Azure Local, or **Security alerts** to monitor alerts for them.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" alt-text="Screenshot of the Defender for Cloud Overview page." lightbox="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" :::
 

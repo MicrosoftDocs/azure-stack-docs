@@ -22,8 +22,8 @@ AKS on Azure Local for multi-rack deployments supports the following GPU hardwar
 
 | GPU model                              | Supported VM sizes           | vCPU | Memory (GiB) | GPUs per VM |
 | -------------------------------------- | ---------------------------- | ---- | ------------ | ----------- |
-| NVIDIA RTX Pro 6000 Blackwell (48 GiB) | `Standard_NC16_RTX6000Pro_1` | 16   | 64           | 1           |
-| NVIDIA RTX Pro 6000 Blackwell (48 GiB) | `Standard_NC32_RTX6000Pro_1` | 32   | 128          | 1           |
+| NVIDIA RTX Pro 6000 Blackwell (96 GiB) | `Standard_NC16_RTX6000Pro_1` | 16   | 64           | 1           |
+| NVIDIA RTX Pro 6000 Blackwell (96 GiB) | `Standard_NC32_RTX6000Pro_1` | 32   | 128          | 1           |
 
 > [!NOTE]
 > Multi-GPU SKUs (such as `Standard_NC16_RTX6000Pro_2` and `Standard_NC32_RTX6000Pro_2`) are present in the catalog but aren't yet generally available.

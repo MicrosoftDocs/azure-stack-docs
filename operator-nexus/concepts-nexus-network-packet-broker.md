@@ -39,7 +39,7 @@ To use NPB, you need to create and manage the following resources:
 
 Network TAP rule can be created inline or via a file:
 
-Inline: Enter values directly using Azure CLI, Resource Manager, or the portal.
+Inline: Enter values (up to 2 MB) directly by using Azure CLI, Resource Manager, or the portal. 
 
 File-based: Upload a file containing the network TAP rule from a storage URL. The file can be updated periodically using a pull or push mechanism.
 

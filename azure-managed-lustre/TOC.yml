@@ -26,14 +26,14 @@
       href: export-with-archive-jobs.md
     - name: Export data using auto-export jobs
       href: auto-export.md
-- name: Data migration
+- name: Scenarios
   items:
     - name: Migrate data from on-premises POSIX file systems
       href: migrate-data-from-linux.md
+    - name: Tiered checkpoints for AI training
+      href: tiered-checkpoints.md
 - name: Access a file system
   items:
-    - name: Plan your client install
-      href: client-install-plan.md
     - name: Install Lustre client
       href: client-install.md
     - name: Upgrade Lustre client

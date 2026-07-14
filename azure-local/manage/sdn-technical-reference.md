@@ -4,17 +4,17 @@ description: This technical reference serves as a one-stop-shop to access learni
 ms.topic: overview
 author: ronmiab
 ms.author: robess
-ms.date: 09/05/2025
+ms.date: 06/29/2026
 ms.subservice: hyperconverged
 ---
 
 # Technical reference for Software Defined Networking in Azure Local
 
-Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This technical reference provides comprehensive learning resources to enhance your understanding of Software Defined Networking (SDN) in Azure Local.
 
-We continuously update these resources based on the latest information available and user feedback. Be sure to check back here often for fresh content.
+The product team continuously updates these resources based on the latest information and user feedback. Check back often for fresh content.
 
 ## SDN training resources: Self-paced, self-directed
 
