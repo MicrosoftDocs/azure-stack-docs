@@ -72,14 +72,14 @@ CVM deployment on Azure Local is validated on the following OEM server configura
 | Lenovo | ThinkAgile MX455 V3 Edge PR         |
 | Lenovo | ThinkSystem SR665 V3 Validated Node |
 
-Find these configurations in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
+You can find these configurations in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Limitations
 
-- Guest Management isn't supported, to maintain the security boundary.
+- To maintain the security boundary, guest management isn't supported.
 - Sections of the file system are read-only.
 - The entire file system is ephemeral.
-- Images must be custom-tailored to CVM.
+- You must custom-tailor images to CVM.
 - Clean-room image preparation is required. The username and password are fixed during image preparation.
 - Cloud connectivity is required for Azure Attestation and secure key release (Azure Key Vault).
 
