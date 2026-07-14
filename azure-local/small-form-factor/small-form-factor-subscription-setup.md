@@ -60,7 +60,8 @@ You can also register resource providers in the Azure portal. For step-by-step g
    - **Owner**
    - **Contributor** and **Role Based Access Control Administrator**
 1. Confirm that the role assignment is both **Active** and **Permanent**.
-
+1. Verify that you have a tenant-level Microsoft Entra role. The minimum required role is **Directory Reader**. Higher-privileged roles, such as **Cloud Administrator**, also satisfy this requirement.
+ 
 > [!IMPORTANT]
 > If your role assignment isn’t active and permanent, you might need to temporarily elevate your permissions before running deployment commands. These permissions must apply to the resource group where you’ll provision machines.
 
