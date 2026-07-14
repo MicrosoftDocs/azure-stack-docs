@@ -47,7 +47,7 @@ In this approach, customers design solutions specifically for stateless environm
 
 ## Trust boundary
 
-CVMs establish a strong trust boundary by excluding host administrators. This ensures that workload data and execution remain protected even from infrastructure operators. However, any azure resources are considered as part of trust boundary.
+CVMs establish a strong trust boundary by excluding host administrators. This trust boundary ensures that workload data and execution remain protected even from infrastructure operators. However, consider any Azure resources as part of the trust boundary.
 
 CVMs defend against threats such as remote attackers with host-level access, malicious datacenter personnel with console access, compromised host operating systems, and boot disk tampering through integrity verification mechanisms.
 
@@ -76,13 +76,13 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 
 ## Limitations
 
-- Guest Management is not supported to maintain security boundary.  
-- Sections of the file system are Read only.
+- Guest Management isn't supported to maintain security boundary.  
+- Sections of the file system are read-only.
 - The entire file system is ephemeral.
 - Images must be custom tailored to CVM.  
-- Clean-room image preparation is required; Username and password are fixed during image preparation.
+- Clean-room image preparation is required; username and password are fixed during image preparation.
 - Cloud connectivity is required for Azure Attestation and secure key release (Azure Key Vault).
 
 ## Next steps
 
-- [Deploy an Azure Local cluster via ARM template](index.yml)
+- [Deploy an Azure Local cluster via ARM template](../index.yml)
