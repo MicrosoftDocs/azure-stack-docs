@@ -201,6 +201,8 @@
             items:
             - name: Issues after deleting storage volumes
               href: delete-storage-volume.md
+            - name: Kubernetes version image not ready
+              href: aks-arc-image-not-ready.md
           - name: Security
             items:
             - name: Entra authentication prompts when running kubectl
