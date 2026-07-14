@@ -56,6 +56,17 @@ You need one IP address planned before deployment:
 > [!IMPORTANT]
 > If your role assignment isn't active and permanent, you might need to temporarily elevate your permissions before running deployment commands.
 
+### Check directory and subscription settings
+
+1. In the Azure portal, select **Settings** > **Directories + subscriptions**.
+1. If you have more than one directory, select the directory you're using for this deployment.
+1. Make sure your default subscription filter includes the subscription you're using for testing.
+
+For more information, see:
+
+- [Set subscription filters](/azure/azure-portal/set-preferences#subscription-filters)
+- [Manage directories and subscriptions](/azure/azure-portal/set-preferences#directories--subscriptions)
+
 ### Register resource providers
 
 Ensure Azure CLI is installed and signed in.
@@ -73,6 +84,11 @@ az provider register --namespace Microsoft.ExtendedLocation
 az feature register \
   --subscription <subscription_id> \
   --namespace Microsoft.HybridContainerService \
+  --name hiddenPreviewAccess
+
+az feature register \
+  --subscription <subscription_id> \
+  --namespace Microsoft.HybridConnectivity \
   --name hiddenPreviewAccess
 ```
 
