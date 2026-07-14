@@ -465,6 +465,8 @@ items:
           href: index.yml
         - name: Guest attestation for CVMs
           href: index.yml
+        - name: Troubleshooting
+          href: index.yml
 
     - name: Unmanaged VMs
       items:
