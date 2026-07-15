@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 02/23/2026
+ms.date: 07/15/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -14,7 +14,17 @@ This article identifies critical known issues and their workarounds in disconnec
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-::: moniker range=">=azloc-2604"
+::: moniker range=">=azloc-2605"
+
+## Known issues for version 2605
+
+### Update package for 2605
+
+There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately in version 2605.1. Release notes for the update package are added here when it's available.
+
+::: moniker-end
+
+::: moniker range="=azloc-2604"
 
 ## Known issues for version 2604
 
@@ -39,7 +49,7 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2603"
+::: moniker range=">=azloc-2602 <=azloc-2603"
 
 ## Known issues for version 2602 and 2603
 
