@@ -38,7 +38,7 @@ Details on ESU pricing and availability will be made available in the next few m
 
 ### Do ESUs have any limitations?
 
-Extended Security Updates do not include the following items:
+Extended Security Updates don't include the following items:
 
 - New features
 - Customer-requested nonsecurity updates
