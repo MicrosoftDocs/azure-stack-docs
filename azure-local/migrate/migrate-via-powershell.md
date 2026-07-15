@@ -627,7 +627,7 @@ Add one object to `disks_to_include` for each disk to replicate, and one object 
 - Disk objects set `disk_id` (the disk UUID for VMware or the instance ID for Hyper-V), `disk_size_gb`, `disk_file_format` (`VHDX` or `VHD`), `is_os_disk`, and `is_dynamic`.
 - NIC objects set `nic_id`, `target_network_id` (the target logical network ARM ID), and `selection_type` (for example, `SelectedByUser`).
 
-When `disks_to_include` is set, it takes precedence over `os_disk_id`. Likewise, `nics_to_include` takes precedence over `target_virtual_switch_id`.
+When you set `disks_to_include`, it takes precedence over `os_disk_id`. Likewise, `nics_to_include` takes precedence over `target_virtual_switch_id`.
 
 ### Key outputs
 
