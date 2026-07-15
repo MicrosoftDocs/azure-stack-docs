@@ -20,7 +20,7 @@ These release notes are updated continuously to include critical issues and requ
 
 ### Update package for 2605
 
-There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when it's available.
+There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when the update is available.
 
 ::: moniker-end
 
