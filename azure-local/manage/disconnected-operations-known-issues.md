@@ -14,7 +14,7 @@ This article identifies critical known issues and their workarounds in disconnec
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-::: moniker range="=azloc-2605"
+::: moniker range=">=azloc-2605"
 
 ## Known issues for version 2605
 
