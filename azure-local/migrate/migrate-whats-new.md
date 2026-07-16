@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 04/16/2026
+ms.date: 07/14/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -14,6 +14,13 @@ ms.subservice: hyperconverged
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## June 2026
+
+This release includes these features and improvements:
+
+- **New built-in roles for Azure Local migrations** – New [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) and [Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert) Azure role-based access control (Azure RBAC) roles provide purpose-built access for Azure Local-based Azure Migrate projects. Use the Owner role to create and manage projects and assign migration-specific roles. Use the Execute Expert role to run and monitor migrations with restricted access.
+- **Terraform support for replication and migration (Preview)** – You can now use Terraform to replicate and migrate VMs to Azure Local. This support enables infrastructure-as-code automation for repeatable migration workflows. For more information, see [Migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview)](migrate-via-powershell.md).
 
 ## May 2026
 
