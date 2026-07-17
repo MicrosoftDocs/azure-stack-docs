@@ -23,7 +23,7 @@ Before you begin, ensure that the following prerequisites are met:
     - For a Hyper-V source environment, complete the [Hyper-V prerequisites](migrate-hyperv-prerequisites.md) and [configure the source and target appliances](migrate-hyperv-replicate.md#step-1-create-and-configure-the-source-appliance).
     - For a VMware source environment, complete the [VMware prerequisites](migrate-vmware-prerequisites.md) and [configure the source and target appliances](migrate-vmware-replicate.md#step-1-create-and-configure-the-source-vmware-appliance).
 
-2. An Azure account with either the **Azure Local Migrate Owner** or **Azure Local Migrate Execute Expert** role at the Azure subscription scope. You need only one role. Because this workflow uses an existing, configured Azure Migrate project, the Execute Expert role is sufficient for replication and migration operations. For role details, see Azure account permissions for [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions) or [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions).
+1. An Azure account with either the **Azure Local Migrate Owner** or **Azure Local Migrate Execute Expert** role at the Azure subscription scope. You need only one role. Because this workflow uses an existing, configured Azure Migrate project, the Execute Expert role is sufficient for replication and migration operations. For role details, see Azure account permissions for [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions) or [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions).
 
 3. A configured Azure Migrate project with source appliance (VMware or Hyper-V) and target Azure Local appliance registered.
 
