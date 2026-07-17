@@ -36,13 +36,13 @@ To list VM images using Azure CLI, follow these steps:
 
     ```azurecli
     $subscription = "<Subscription ID associated with your Azure Local>"
-    $resource_group = "<Resource group name for your Azure Local>"
+    $resourceGroup = "<Resource group name for your Azure Local>"
     ```
 
 1. List all the VM images associated with your Azure Local. Run the following command:
 
     ```azurecli
-    az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
+    az stack-hci-vm image list --subscription $subscription --resource-group $resourceGroup
     ```
 
 The command returns different sets of images depending on the parameters you specify:
@@ -54,6 +54,9 @@ The command returns different sets of images depending on the parameters you spe
 The results include custom images that are in your Azure Storage account.
 
 Here's a sample output:
+
+<details>
+<summary>Expand this section to see an example output.</summary>
 
 ```console
 PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "<Resource group>"
@@ -84,10 +87,10 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
     "resourceGroup": "mylocal-rg",
     "systemData": {
       "createdAt": "2023-11-03T20:17:10.971662+00:00",
-      "createdBy": "guspinto@contoso.com",
+      "createdBy": "user@contoso.com",
       "createdByType": "User",
       "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
-      "lastModifiedBy": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+      "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "lastModifiedByType": "Application"
     },
     "tags": null,
@@ -95,6 +98,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
   }
 ]
 ```
+</details>
 
 For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
 
@@ -129,7 +133,7 @@ To view image properties using Azure CLI, follow these steps:
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Azure Local resource group>"
+    $resourceGroup = "<Azure Local resource group>"
     $imageName = "<Image name>"
     ```
 
@@ -151,6 +155,9 @@ To view image properties using Azure CLI, follow these steps:
 
         Here's a sample output:
 
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+
         ```console
         PS C:\Users\azcli> az stack-hci-vm image show --ids $imageID
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -170,23 +177,24 @@ To view image properties using Azure CLI, follow these steps:
           "resourceGroup": "mylocal-rg",
           "systemData": {
             "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
+            "createdBy": "user@contoso.com",
             "createdByType": "User",
             "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
+            "lastModifiedBy": "user@contoso.com",
             "lastModifiedByType": "User"
           },
           "tags": null,
           "type": "microsoft.azurestackhci/galleryimages"
         }
         ```
+        </details>
 
     - **Method 2: Using name and resource group**
 
         Run the command:
 
         ```azurecli
-        az stack-hci-vm image show --name $imageName --resource-group $resource_group
+        az stack-hci-vm image show --name $imageName --resource-group $resourceGroup
         ```
 
 ### [Azure portal](#tab/azureportal)
@@ -217,14 +225,14 @@ To delete a VM image using Azure CLI, follow these steps:
 
     ```azurecli
     $subscription = "<Subscription ID>"
-    $resource_group = "<Azure Local resource group>"
+    $resourceGroup = "<Azure Local resource group>"
     $imageName = "<Image name>"
     ```
 
 1. Remove an existing VM image. Run the following command:
 
     ```azurecli
-    az stack-hci-vm image delete --subscription $subscription --resource-group $resource_group --name $imageName
+    az stack-hci-vm image delete --subscription $subscription --resource-group $resourceGroup --name $imageName
     ```
 
 You can delete images using either:
@@ -236,17 +244,21 @@ After you delete an image, you can check that the image is removed.
 
 Here's a sample output showing deletion by name and resource group:
 
+<details>
+<summary>Expand this section to see an example output.</summary>
+
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "<Resource group>"
+PS C:\Users\azcli> $resourceGroup = "<Resource group>"
 PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
-PS C:\Users\azcli> az stack-hci-vm image delete --name $imageName --resource-group $resource_group
+PS C:\Users\azcli> az stack-hci-vm image delete --subscription $subscription --resource-group $resourceGroup --name $imageName
 
 Are you sure you want to perform this operation? (y/n): y
-PS C:\Users\azcli> az stack-hci-vm image show --name $imageName --resource-group $resource_group
+PS C:\Users\azcli> az stack-hci-vm image show --name $imageName --resource-group $resourceGroup
 
 ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/galleryimages/mylocal-storacctimage' under resource group '<resource group>' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 ```
+</details>
 
 ### [Azure portal](#tab/azureportal)
 
@@ -272,4 +284,4 @@ To delete a VM image in the Azure portal, follow these steps:
 
 ## Next steps
 
-- [Create logical networks](./multi-rack-create-logical-networks.md).
+- [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md)
