@@ -73,7 +73,7 @@ Complete the following steps to create a virtual network using Azure CLI. 
 
 ## Create virtual network via Azure CLI  
 
-To create a virtual network on your Azure Local instance use the `azstack-hci-vm network vnet` cmdlet. 
+To create a virtual network on your Azure Local instance, use the `az stack-hci-vm network vnet` cmdlet. 
 
 > [!NOTE]
 > Only IPv4 addresses are supported. There's no support for IPv6 addresses.
@@ -83,12 +83,13 @@ Complete these steps in Azure CLI to configure a virtual network: 
 1. Set the parameters. Here's an example:  
 
     ```powershell
-    $vnetName = "mylocal-vnet"  
-    $location = "eastus"  
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
-    $addressPrefixes = “10.0.0.0/16” 
-    $dnsServers = "192.168.200.222"  
-    $resourceGroup = "mylocal-rg" 
+    $subscription = "<Subscription ID>"
+    $location = "eastus"
+    $resourceGroup = "mylocal-rg"
+    $customLocationID = "<custom location ARM resource ID>"
+    $vnetName = "mylocal-vnet"
+    $addressPrefixes = "10.0.0.0/16"
+    $dnsServers = "192.168.200.222"
     ```
 
     The required parameters:  
@@ -104,21 +105,24 @@ Complete these steps in Azure CLI to configure a virtual network: 
 1. Create a virtual network. Run the following cmdlet:  
 
     ```azurecli
-    az stack-hci-vm network vnet create \ 
-      --resource-group $resourceGroup \ 
-      --name $vnetName \ 
-      --location $location \ 
-      --custom-location $customLocationID \ 
-      --address-prefixes $addressPrefixes \ 
-      --dns-servers $dnsServers \ 
+    az stack-hci-vm network vnet create `
+      --resource-group $resourceGroup `
+      --name $vnetName `
+      --location $location `
+      --custom-location $customLocationID `
+      --address-prefixes $addressPrefixes `
+      --dns-servers $dnsServers
     ```
 
     Here's a sample output:  
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<CustomLocation>",
+        "name": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/<CustomLocation>",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet",
@@ -132,7 +136,7 @@ Complete these steps in Azure CLI to configure a virtual network: 
         },
         "dhcpOptions": {
           "dnsServers": [
-            "10.X.X.X"
+            "192.168.200.222"
           ]
         },
         "provisioningState": "Succeeded",
@@ -151,13 +155,14 @@ Complete these steps in Azure CLI to configure a virtual network: 
         "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2025-11-10T16:35:12.499753+00:00",
-        "lastModifiedBy": "<lastModifiedBy>",
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "lastModifiedByType": "Application"
       },
       "tags": null,
       "type": "microsoft.azurestackhci/virtualnetworks"
     }
     ```  
+    </details>
 
     Once the virtual network is created, you can create a subnet.
 
@@ -173,15 +178,14 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
 1. Set the parameters. Here's an example:
 
     ```powershell
-    $subnetName = "mylocal-subnet"  
-    $vnetName = “mylocal-vnet” 
-    $location = "eastus"  
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
-    $addressPrefix = “10.0.0.0/24” 
-    $dnsServers = "192.168.200.222"  
-    $subscription = "<Subscription ID>"  
-    $resourceGroup = "mylocal-rg"  
-    $nsg = “mylocal-nsg” --- Optional 
+    $subscription = "<Subscription ID>"
+    $location = "eastus"
+    $resourceGroup = "mylocal-rg"
+    $customLocationID = "<custom location ARM resource ID>"
+    $vnetName = "mylocal-vnet"
+    $subnetName = "mylocal-subnet"
+    $addressPrefix = "10.0.0.0/24"
+    $nsg = "mylocal-nsg"   # Optional
     ```
 
     The required parameters:  
@@ -199,25 +203,28 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
 1. Create a virtual network subnet. Run the following cmdlet:  
 
     ```azurecli
-    az stack-hci-vm network vnet subnet create \ 
-    --resource-group $resourceGroup \ 
-    --vnet-name $vnetName \
-    --name $subnetName \ 
-    --location $location \ 
-    --custom-location $customLocationID \ 
-    --address-prefix $addressPrefix \ 
-    --network-security-group $nsg\ 
+    az stack-hci-vm network vnet subnet create `
+    --resource-group $resourceGroup `
+    --vnet-name $vnetName `
+    --name $subnetName `
+    --location $location `
+    --custom-location $customLocationID `
+    --address-prefix $addressPrefix `
+    --network-security-group $nsg
     ```
 
     Here's a sample output:  
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg>/providers/Microsoft.ExtendedLocation/customLocations/<customLocation>",
+        "name": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg/providers/Microsoft.ExtendedLocation/customLocations/<customLocation>",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<SubscriptionID>/resourceGroups/<mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet",
+      "id": "/subscriptions/<SubscriptionID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet",
       "name": "mylocal-subnet",
       "properties": {
         "addressPrefix": "10.0.0.0/24",
@@ -246,16 +253,18 @@ Complete these steps in Azure CLI to configure a virtual network subnet:
         "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2025-11-10T22:54:30.424794+00:00",
-        "lastModifiedBy": "<lastModifiedBy>",
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "lastModifiedByType": "Application"
       },
       "type": "microsoft.azurestackhci/virtualnetworks/subnets"
     }
     ```
+    </details>
 
     Once the virtual network subnet is created, you can start creating network interfaces and then, virtual machines. Additionally, you can also create other SDN services like NAT gateway and Software Load Balancer.
 
 
 ## Next steps  
 
-- Learn how to [Create a network interface](./multi-rack-create-network-interfaces.md).
+- [Create a network interface](./multi-rack-create-network-interfaces.md)
+- [Create network security groups](./multi-rack-create-network-security-groups.md)

@@ -92,14 +92,18 @@ The parameters are described in the following table:
 
 Here's a sample output:
 
+<details>
+<summary>Expand this section to see an example output.</summary>
+
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resourceGroup = "mylocal-rg"
 PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
 PS C:\Users\azcli> $imageName = "mylocal-storacctimage"
-PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D"'
+PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r&st=2022-08-05T18:41:41Z&se=2022-08-06T02:41:41Z&spr=https&sv=2021-06-08&sr=b&sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D"'
 ```
+</details>
 
 ### Create VM image from image in Azure Storage account
 
@@ -121,6 +125,9 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
     Here's a sample output:
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
     ```output
     PS > $customLocationID=(az customlocation show --resource-group $resourceGroup --name "mylocal-cl" --query id -o tsv)
     PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
@@ -133,7 +140,7 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-storacctimage",
       "location": "eastus",
-      "name": "windos",
+      "name": "mylocal-storacctimage",
       "properties": {
         "identifier": null,
         "imagePath": null,
@@ -155,10 +162,10 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
       "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2023-11-03T20:17:10.971662+00:00",
-        "createdBy": "guspinto@contoso.com",
+        "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "lastModifiedByType": "Application"
       },
       "tags": null,
@@ -166,6 +173,7 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
     }
     PS C:\Users\azcli>
     ```
+    </details>
 
 ## List VM images
 
@@ -196,16 +204,19 @@ To list VM images using Azure CLI:
 
     Here's a sample output:
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
     ```output
-    PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
+    PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "mylocal-rg"
     Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
     [
       {
         "extendedLocation": {
-          "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
           "type": "CustomLocation"
         },
-        "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
     inServer2022Az-01",
         "location": "eastus",
         "name": "winServer2022Az-01",
@@ -244,10 +255,10 @@ To list VM images using Azure CLI:
         "resourceGroup": "mylocal-rg",
         "systemData": {
           "createdAt": "2023-10-30T21:44:53.020512+00:00",
-          "createdBy": "guspinto@contoso.com",
+          "createdBy": "user@contoso.com",
           "createdByType": "User",
           "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
-          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "lastModifiedByType": "Application"
         },
         "tags": {},
@@ -256,6 +267,7 @@ To list VM images using Azure CLI:
     ]
     PS C:\Users\azcli>
     ```
+    </details>
 
     For more information on this CLI command, see [az stack-hci-vm image list](/cli/azure/stack-hci-vm/image#az-stack-hci-vm-image-list).
 
@@ -279,24 +291,29 @@ To use Azure CLI to view image properties:
     1. Set the following parameter.
 
         ```azurecli
-        $imageID = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
+        $imageID = "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage"
         ```
 
     1. To view the properties, run this command:
 
-        ```az stack-hci-vm image show --ids $imageID```
+        ```azurecli
+        az stack-hci-vm image show --ids $imageID
+        ```
 
         Here's sample output for this command:
 
+        <details>
+        <summary>Expand this section to see an example output.</summary>
+
         ```output
-        PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
+        PS C:\Users\azcli> az stack-hci-vm image show --ids $imageID
         Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: `https://aka.ms/CLI_refstatus`
         {
           "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/galleryimages/mylocal-marketplaceimage",
           "location": "eastus",
           "name": "mylocal-marketplaceimage",
           "properties": {
@@ -312,10 +329,10 @@ To use Azure CLI to view image properties:
           "resourceGroup": "mylocal-rg",
           "systemData": {
             "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
+            "createdBy": "user@contoso.com",
             "createdByType": "User",
             "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
+            "lastModifiedBy": "user@contoso.com",
             "lastModifiedByType": "User"
           },
           "tags": null,
@@ -323,6 +340,7 @@ To use Azure CLI to view image properties:
         }
         PS C:\Users\azcli> 
         ```
+        </details>
 
 ## Delete VM image
 
@@ -350,19 +368,22 @@ You can delete an image in two ways:
 
 After you delete an image, check that it's removed. Here's sample output when the image is deleted by specifying the name and the resource group.
 
+<details>
+<summary>Expand this section to see an example output.</summary>
+
 ```console
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resourceGroup = "mylocal-rg"
-PS C:\Users\azcli> $imageName = "mymylocal-marketplaceimage"
-PS C:\Users\azcli> az stack-hci-vm image delete --name $imageName --resource-group $resourceGroup
+PS C:\Users\azcli> $imageName = "mylocal-marketplaceimage"
+PS C:\Users\azcli> az stack-hci-vm image delete --subscription $subscription --resource-group $resourceGroup --name $imageName --yes
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: `https://aka.ms/CLI_refstatus`
-Are you sure you want to perform this operation? (y/n): y
 PS C:\Users\azcli> az stack-hci-vm image show --name $imageName --resource-group $resourceGroup
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
+ResourceNotFound: The Resource 'Microsoft.AzureStackHCI/marketplacegalleryimages/mylocal-marketplaceimage' under resource group 'mylocal-rg' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix
 PS C:\Users\azcli>
 ```
+</details>
 
 ## Next steps
 
-- [Create logical networks](./multi-rack-create-logical-networks.md).
+- [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md)

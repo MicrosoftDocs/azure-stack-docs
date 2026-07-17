@@ -112,6 +112,9 @@ az stack-hci-vm snapshot show --resource-group <resource-group> --name <snapshot
 
 Here is an example output:
 
+<details>
+<summary>Expand this section to see an example output.</summary>
+
 ```bash
 {
   "extendedLocation": {
@@ -142,6 +145,7 @@ Here is an example output:
   "type": "microsoft.azurestackhci/snapshots"
 }
 ```
+</details>
 
 ## Update snapshot tags
 
@@ -205,6 +209,11 @@ If you no longer need a snapshot, you can delete it to free up resources. Deleti
 ```azurecli
 az stack-hci-vm snapshot delete --resource-group <resource-group> --name <snapshot-name>
 ```
+
+## Next steps
+
+- [Download managed data disks](./multi-rack-manage-data-disks.md)
+- [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md)
 
 <!--## Related content
 
