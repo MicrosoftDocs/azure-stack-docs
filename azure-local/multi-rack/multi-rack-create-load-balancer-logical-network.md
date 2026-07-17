@@ -117,7 +117,7 @@ The example in this section demonstrates how to create a load balancer on a logi
 1. Set your subscription.
 
     ```powershell
-    az account set --subscription <Subscription ID>
+    az account set --subscription "<Subscription ID>"
     ```
   
 #### Set the parameters
@@ -126,14 +126,12 @@ The example in this section demonstrates how to create a load balancer on a logi
 
     ```powershell
     $location = "eastus"  
-    $subscriptionID = "<subscription ID>"
-    $resourceGroup = "my-mrg"  
-    $clusterResourceGroup = "<Cluster Resource Group>"
-    $customLocationName = "mylocal-cl"
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$clusterResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $subscription = "<subscription ID>"
+    $resourceGroup = "mylocal-rg"  
+    $customLocationID = "<custom location ARM resource ID>"
     $name = "mylocal-LNET-LB" 
     $frontendIPConfigName= "fe1"
-    $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
+    $frontendIPPublicIP = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicip"
     $lbRuleName = "rule1"
     $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
@@ -143,19 +141,18 @@ The example in this section demonstrates how to create a load balancer on a logi
     $lbRuleProbeName = "probe1"
     $lbRuleLoadDistribution = "Default"
     $probePort = 80
-    $probeName = "probe1"
     $probeProtocol = "Http"
     $probeInterval = 5
     $probeRequestPath = "/"
     $probeNumProbe = 2
     $backendPoolName = "web-backend"
-    $backendLNetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/logicalNetworks/mylocal-lnet"
+    $backendLNetID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/logicalNetworks/mylocal-lnet-static"
     ```
 
 1. Set backend pool addresses.
 
     ```powershell
-    $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
+    $backendPoolBEAddresses = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
 #### Create the load balancer
@@ -164,7 +161,7 @@ Create a load balancer. Run the following cmdlet:
 
 ```powershell
 az stack-hci-vm network lb create `
---subscription $subscriptionID `
+--subscription $subscription `
 --resource-group $resourceGroup `
 --name $name `
 --location $location `
@@ -174,3 +171,8 @@ az stack-hci-vm network lb create `
 --probe name=$lbRuleProbeName protocol=$probeProtocol port=$probePort path=$probeRequestPath interval=$probeInterval threshold=$probeNumProbe `
 --custom-location $customLocationID
 ```
+
+## Next steps
+
+- [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md)
+- [Monitor multi-rack deployments of Azure Local](./multi-rack-monitor-overview.md)

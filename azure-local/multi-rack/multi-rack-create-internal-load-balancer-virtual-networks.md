@@ -145,16 +145,14 @@ The example in this section shows how to create an internal load balancer on a v
 
     ```powershell
     $location = "eastus"
-    $subscriptionID = "<subscription-ID>"
+    $subscription = "<subscription-ID>"
     $resourceGroup = "mylocal-rg"
-    $clusterResourceGroup = "<Cluster Resource Group>"
-    $customLocationName = "<Custom Location Name>"
-    $customLocationID = "/subscriptions/$subscriptionID/resourceGroups/$clusterResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $customLocationID = "<custom location ARM resource ID>"
     $name = "mylocal-VNET-InternalLB"
     $frontendIPConfigName = "fe1"
     $frontendIPPrivateAddress = "10.0.0.4"
     $frontendIPAllocationMethod = "Static"
-    $frontendIPSubnetID = "/subscriptions/$subscriptionID/resourceGroups/mylocal-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/mylocal-subnet1"
+    $frontendIPSubnetID = "/subscriptions/$subscription/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet1"
     $lbRuleName = "rule1"
     $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
@@ -164,19 +162,18 @@ The example in this section shows how to create an internal load balancer on a v
     $lbRuleProbeName = "probe1"
     $lbRuleLoadDistribution = "Default"
     $probePort = 80
-    $probeName = "probe1"
     $probeProtocol = "Http"
     $probeInterval = 5
     $probeRequestPath = "/"
     $probeNumProbe = 2
     $backendPoolName = "web-backend"
-    $backendVNetID = "/subscriptions/$subscriptionID/resourceGroups/mylocal-rg/providers/Microsoft.Network/virtualNetworks/mylocal-vnet"
+    $backendVNetID = "/subscriptions/$subscription/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet"
     ```
 
 1. Set backend pool addresses.
 
     ```powershell
-    $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
+    $backendPoolBEAddresses = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
 #### Create the internal load balancer
@@ -185,7 +182,7 @@ Create a load balancer. Run the following cmdlet:
 
 ```powershell
 az stack-hci-vm network lb create `
-    --subscription $subscriptionID `
+    --subscription $subscription `
     --resource-group $resourceGroup `
     --name $name `
     --location $location `
@@ -195,3 +192,8 @@ az stack-hci-vm network lb create `
     --probe name=$lbRuleProbeName protocol=$probeProtocol port=$probePort path=$probeRequestPath interval=$probeInterval threshold=$probeNumProbe `
     --custom-location $customLocationID
 ```
+
+## Next steps
+
+- [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md)
+- [Monitor multi-rack deployments of Azure Local](./multi-rack-monitor-overview.md)

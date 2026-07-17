@@ -32,7 +32,7 @@ Before you begin, satisfy the following prerequisites:
 To create a VM with a GPU attached, include the `--gpus` parameter with the assignment type and partition size. The platform automatically places the VM on a GPU-capable host and handles all device passthrough configuration.
 
 ```azurecli
-az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuDDA,0
+az stack-hci-vm create --name $vmName --resource-group $resourceGroup --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --gpus GpuDDA,0
 ```
 
 The `--gpus` parameter takes one or more `assignmentType,partitionSizeMB` tokens. To attach multiple GPUs, repeat the token for each GPU:
