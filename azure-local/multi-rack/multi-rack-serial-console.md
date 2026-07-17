@@ -33,29 +33,33 @@ Serial console provides access to a text-based console for VMs running Linux or 
       **For a Microsoft Entra group:**
 
        ```azurecli
-       AAD_ENTITY_ID=$(az ad group show --group <group-name> --query id -o tsv)
+       $AAD_ENTITY_ID = (az ad group show --group "<group-name>" --query id -o tsv)
        ```
 
       **For a single user account (gets the user principal name):**
 
        ```azurecli
-       AAD_ENTITY_ID=$(az ad signed-in-user show --query userPrincipalName -o tsv)
+       $AAD_ENTITY_ID = (az ad signed-in-user show --query userPrincipalName -o tsv)
        ```
 
        **For a Microsoft Entra application:**
 
        ```azurecli
-       AAD_ENTITY_ID=$(az ad sp show --id <id> --query id -o tsv)
+       $AAD_ENTITY_ID = (az ad sp show --id "<id>" --query id -o tsv)
        ```
 
-   2. Create the role assignments:
+   1. Set the ARM resource ID of your Azure Local multi-rack cluster's Arc-connected Kubernetes resource. Replace the placeholders with your own values:
+
+       ```azurecli
+       $ARM_ID_CLUSTER = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>"
+       ```
+
+   1. Create the role assignments:
 
        ```azurecli
        az role assignment create --role "Azure Arc Kubernetes Viewer" --assignee $AAD_ENTITY_ID --scope $ARM_ID_CLUSTER
        az role assignment create --role "Azure Arc Enabled Kubernetes Cluster User Role" --assignee $AAD_ENTITY_ID --scope $ARM_ID_CLUSTER
        ```
-
-   3. Replace `$ARM_ID_CLUSTER` with the ARM resource ID of your Azure Local multi-rack cluster's Arc-connected Kubernetes resource (for example, `/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<cluster-name>`).
 
     > [!IMPORTANT]
     > You must have access to the VM serial console. Serial console access requires your Microsoft Entra identity to be explicitly granted permission on the VM serial console. To get access, open a support ticket with Microsoft Support and provide:

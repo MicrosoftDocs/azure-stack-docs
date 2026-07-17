@@ -91,6 +91,9 @@ az extension list --query "[].{Name:name,Version:version}" -o table
 
 Example output:
 
+<details>
+<summary>Expand this section to see an example output.</summary>
+
 ```output
 Name                     Version
 -----------------------  -------------
@@ -105,3 +108,4 @@ stack-hci-vm             1.11.5
 customlocation           0.1.3
 ssh                      2.0.6
 ```
+</details>

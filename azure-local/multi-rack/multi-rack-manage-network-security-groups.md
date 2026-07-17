@@ -54,16 +54,14 @@ Follow these steps to list network security groups:
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
-    $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $resourceGroup = "mylocal-rg"
     $nsgname = "examplensg"
     ```
 
 2. Run the following command to list network security groups on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nsg list -g $resource_group
+    az stack-hci-vm network nsg list -g $resourceGroup
     ```
 
     <details>
@@ -75,7 +73,7 @@ Follow these steps to list network security groups:
         "eTag": null,
         "extendedLocation": {
           "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft
-    .extendedlocation/customlocations/examplecl",
+    .extendedlocation/customlocations/mylocal-cl",
           "type": "CustomLocation"
         },
         "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.Azu
@@ -87,13 +85,13 @@ Follow these steps to list network security groups:
           "provisioningState": "Succeeded",
           "subnets": []
         },
-        "resourceGroup": "examplerg",
+        "resourceGroup": "mylocal-rg",
         "systemData": {
           "createdAt": "2025-04-24T17:33:49.304682+00:00",
-          "createdBy": "gus@contoso.com",
+          "createdBy": "user@contoso.com",
           "createdByType": "User",
           "lastModifiedAt": "2025-04-24T17:34:00.133215+00:00",
-          "lastModifiedBy": "<User ID>",
+          "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "lastModifiedByType": "Application"
         },
         "tags": {},
@@ -111,16 +109,14 @@ Follow these steps to show details of a network security group:
 1. Set the following parameters in your Azure CLI session.
   
       ```azurecli
-      $resource_group = "examplerg"
-      $location = "eastus"
-      $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+      $resourceGroup = "mylocal-rg"
       $nsgname = "examplensg"
       ```
 
 1. Run the following command to show details of a network security group (NSG) on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nsg show -g $resource_group --name $nsgname 
+    az stack-hci-vm network nsg show -g $resourceGroup --name $nsgname 
     ```
 
 1. The command outputs the details of a specified network security group (NSG).
@@ -134,10 +130,10 @@ Follow these steps to show details of a network security group:
         {
           "eTag": null,
           "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
           "location": "eastus",
           "name": "examplensg",
           "properties": {
@@ -145,13 +141,13 @@ Follow these steps to show details of a network security group:
             "provisioningState": "Succeeded",
             "subnets": []
           },
-          "resourceGroup": "examplerg",
+          "resourceGroup": "mylocal-rg",
           "systemData": {
             "createdAt": "2025-03-11T22:56:05.968402+00:00",
-            "createdBy": "gus@contoso.com",
+            "createdBy": "user@contoso.com",
             "createdByType": "User",
             "lastModifiedAt": "2025-03-11T22:56:13.438321+00:00",
-            "lastModifiedBy": "<User ID>",
+            "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "lastModifiedByType": "Application"
           },
           "tags": null,
@@ -170,29 +166,29 @@ Follow these steps to show details of a network security group:
         {
           "eTag": null,
           "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+            "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
             "type": "CustomLocation"
           },
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg",
           "location": "eastus",
           "name": "examplensg",
           "properties": {
             "networkInterfaces": [
               {
-                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic",
-                "resourceGroup": "examplerg"
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic",
+                "resourceGroup": "mylocal-rg"
               }
             ],
             "provisioningState": "Succeeded",
             "subnets": []
           },
-          "resourceGroup": "examplerg",
+          "resourceGroup": "mylocal-rg",
           "systemData": {
             "createdAt": "2025-03-11T22:56:05.968402+00:00",
-            "createdBy": "gus@contoso.com",
+            "createdBy": "user@contoso.com",
             "createdByType": "User",
             "lastModifiedAt": "2025-03-12T15:49:32.419759+00:00",
-            "lastModifiedBy": "User ID",
+            "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
             "lastModifiedByType": "Application"
           },
           "tags": null,
@@ -210,16 +206,14 @@ Follow these steps to delete a network security group:
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
-    $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $resourceGroup = "mylocal-rg"
     $nsgname = "examplensg"
     ```
 
 1. Run the following command to delete a network security group (NSG) on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nsg delete -g $resource_group --name $nsgname --yes
+    az stack-hci-vm network nsg delete -g $resourceGroup --name $nsgname --yes
     ```
 
     Use the `list` command to verify that the NSG is deleted.
@@ -232,9 +226,9 @@ In this example, we create a network interface with an existing network security
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = "examplensg"
     $lnetname="static-lnet" 
     $nicname="examplenic" 
@@ -243,7 +237,7 @@ In this example, we create a network interface with an existing network security
 1. Run the following command to create a network interface (NIC) on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network nic create --resource-group $resource_group --custom-location $customLocationId --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname 
+    az stack-hci-vm network nic create --resource-group $resourceGroup --custom-location $customLocationID --location $location --subnet-id $lnetname --name $nicname --network-security-group $nsgname 
     ```
 
     <details>
@@ -253,11 +247,11 @@ In this example, we create a network interface with an existing network security
     { 
     
       "extendedLocation": { 
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl", 
         "type": "CustomLocation" 
       }, 
     
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkInterfaces/examplenic", 
       "location": "eastus", 
       "name": "examplenic", 
       "properties": { 
@@ -270,8 +264,8 @@ In this example, we create a network interface with an existing network security
               "prefixLength": "24", 
               "privateIpAddress": "100.78.98.224", 
               "subnet": { 
-                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet", 
-                "resourceGroup": "examplerg" 
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet", 
+                "resourceGroup": "mylocal-rg" 
               } 
             } 
           } 
@@ -279,8 +273,8 @@ In this example, we create a network interface with an existing network security
     
         "macAddress": "<Mac Address>", 
         "networkSecurityGroup": { 
-          "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
-          "resourceGroup": "examplerg" 
+          "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
+          "resourceGroup": "mylocal-rg" 
         }, 
     
         "provisioningState": "Succeeded", 
@@ -291,13 +285,13 @@ In this example, we create a network interface with an existing network security
         } 
       }, 
     
-      "resourceGroup": "examplerg", 
+      "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2025-03-11T23:38:19.228090+00:00", 
-        "createdBy": "gus@contoso.com", 
+        "createdBy": "user@contoso.com", 
         "createdByType": "<User>", 
         "lastModifiedAt": "2025-03-12T15:49:32.143520+00:00", 
-        "lastModifiedBy": "<User ID>", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       }, 
     
@@ -318,24 +312,22 @@ In this example, we associate a static logical network with an existing network 
 
   
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = "examplensg"
-    $nicname="examplenic" 
     $lnetname="static-lnet3" 
-    $ipaddress="100.78.98.10" 
     $ipaddprefix="100.78.98.0/24" 
     $dnsservers="100.71.93.111" 
     $gateway="100.78.98.1" 
     $vlan="301"
-    $fabricResourceID = "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/<L3 Isolation Domain>/internalNetworks/<Internal Network>"
+    $fabricResourceID = "<L3 ISD internal network ARM ID>"
     ```
 
 1. Run the following command to associate a logical network with a network security group on your Azure Local instance.
 
     ```azurecli
-    az stack-hci-vm network lnet create --resource-group $resource_group --custom-location $customLocationId --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --dns-servers $dnsservers --gateway $gateway --vlan $vlan --network-security-group $nsgname --fabric-network-configuration-id $fabricResourceID
+    az stack-hci-vm network lnet create --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $lnetname --ip-allocation-method "static" --address-prefixes $ipaddprefix --dns-servers $dnsservers --gateway $gateway --vlan $vlan --network-security-group $nsgname --fabric-network-configuration-id $fabricResourceID
     ```
 
     <details>
@@ -346,15 +338,15 @@ In this example, we associate a static logical network with an existing network 
     
       "extendedLocation": { 
     
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/ 
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/ 
     
-    customlocations/examplecl", 
+    customlocations/mylocal-cl", 
     
         "type": "CustomLocation" 
     
       }, 
     
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/static-lnet3", 
       "location": "eastus", 
       "name": "static-lnet3", 
       "properties": { 
@@ -398,9 +390,9 @@ In this example, we associate a static logical network with an existing network 
               ], 
     
               "networkSecurityGroup": { 
-                "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg3", 
+                "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg3", 
     
-                "resourceGroup": "examplerg" 
+                "resourceGroup": "mylocal-rg" 
     
               }, 
     
@@ -431,13 +423,13 @@ In this example, we associate a static logical network with an existing network 
         ] 
       }, 
     
-      "resourceGroup": "examplerg", 
+      "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2025-03-13T01:04:07.645689+00:00", 
-        "createdBy": "gus@contoso.com", 
+        "createdBy": "user@contoso.com", 
         "createdByType": "User", 
         "lastModifiedAt": "2025-03-13T01:04:15.389109+00:00", 
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       }, 
     
@@ -457,9 +449,9 @@ Follow these steps to dissociate a network security group from logical network:
 1. Set the following parameters in your Azure CLI session. Make sure to pass the NSG name as an empty string encased in double quotes followed by single quotes ('""').
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = '""'
     $lnetname="static-lnet3" 
     ```
@@ -467,7 +459,7 @@ Follow these steps to dissociate a network security group from logical network:
 2. To dissociate a network security group from a logical network, run the following command:
 
     ```azurecli
-    az stack-hci-vm network lnet update -g $resource_group --name $lnetname --network-security-group '""'
+    az stack-hci-vm network lnet update -g $resourceGroup --name $lnetname --network-security-group '""'
     ```
 
     <details>
@@ -476,7 +468,7 @@ Follow these steps to dissociate a network security group from logical network:
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource Group Name>/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/microsoft.azurestackhci/logicalnetworks/static-lnet2",
@@ -541,10 +533,10 @@ Follow these steps to dissociate a network security group from logical network:
       "resourceGroup": "<Resource Group Name>",
       "systemData": {
         "createdAt": "2025-06-08T16:46:38.085581+00:00",
-        "createdBy": "gus@contoso.com",
+        "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2025-06-09T13:45:08.531262+00:00",
-        "lastModifiedBy": "<User ID>",
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "lastModifiedByType": "Application"
       },
       "tags": {},
@@ -563,9 +555,9 @@ Follow these steps to dissociate a network security group from a network interfa
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = '""'
     $nicname ="examplenic" 
     ```
@@ -573,7 +565,7 @@ Follow these steps to dissociate a network security group from a network interfa
 1. To dissociate a network security group from a network interface, run the following command:
 
     ```azurecli
-    az stack-hci-vm network nic update -g $resource_group --name $nicname --network-security-group '""'
+    az stack-hci-vm network nic update -g $resourceGroup --name $nicname --network-security-group $nsgname
     ```
 
   <details>
@@ -582,7 +574,7 @@ Follow these steps to dissociate a network security group from a network interfa
   ```output
   {
     "extendedLocation": {
-      "name": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ExtendedLocation/customLocations/examplecl",
+      "name": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.ExtendedLocation/customLocations/mylocal-cl",
       "type": "CustomLocation"
     },
     "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.AzureStackHCI/networkInterfaces/sdnbbnic-01",
@@ -614,10 +606,10 @@ Follow these steps to dissociate a network security group from a network interfa
     "resourceGroup": "{Resource Group Name}",
     "systemData": {
       "createdAt": "2025-06-08T17:01:05.701432+00:00",
-      "createdBy": "gus@contoso.com",
+      "createdBy": "user@contoso.com",
       "createdByType": "User",
       "lastModifiedAt": "2025-06-09T13:38:33.989674+00:00",
-      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+      "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "lastModifiedByType": "Application"
     },
     "tags": null,
@@ -637,9 +629,9 @@ This section describes the manage operations supported for network security rule
 1. Set the following parameters in your Azure CLI session:
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = "examplensg"
     $securityrulename = "examplerule"
     ```
@@ -647,7 +639,7 @@ This section describes the manage operations supported for network security rule
 1. Run this command to show details of a network security rule:
 
     ```azurecli
-    az stack-hci-vm network nsg rule show -g $resource_group -n $securityrulename --nsg-name $nsgname
+    az stack-hci-vm network nsg rule show -g $resourceGroup -n $securityrulename --nsg-name $nsgname
     ```
 
     <details>
@@ -657,10 +649,10 @@ This section describes the manage operations supported for network security rule
     
     {
       "extendedLocation": {
-        "name": "/subscriptions/{Subscription ID}/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "name": "/subscriptions/{Subscription ID}/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
       "name": "examplensr",
       "properties": {
         "access": "Deny",
@@ -682,13 +674,13 @@ This section describes the manage operations supported for network security rule
           "*"
         ]
       },
-      "resourceGroup": "examplerg",
+      "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2025-03-11T23:25:37.369940+00:00",
-        "createdBy": "gus@contoso.com",
+        "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2025-03-11T23:25:37.369940+00:00",
-        "lastModifiedBy": "gus@contoso.com",
+        "lastModifiedBy": "user@contoso.com",
         "lastModifiedByType": "User"
       },
       "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
@@ -703,9 +695,9 @@ This section describes the manage operations supported for network security rule
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = "examplensg"
     $securityrulename = "examplensr"
     $destinationport = "80"
@@ -714,7 +706,7 @@ This section describes the manage operations supported for network security rule
 1. Run this command to update a network security rule:
 
     ```azurecli
-    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resource_group --destination-port-ranges $destinationport
+    az stack-hci-vm network nsg rule update --name $securityrulename --nsg-name $nsgname --resource-group $resourceGroup --destination-port-ranges $destinationport
     ```
 
     <details>
@@ -723,10 +715,10 @@ This section describes the manage operations supported for network security rule
     ```output
     {
       "extendedLocation": {
-        "name": "/subscriptions/{Subscription ID}/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl",
+        "name": "/subscriptions/{Subscription ID}/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr",
       "name": "examplensr",
       "properties": {
         "access": "Allow",
@@ -748,13 +740,13 @@ This section describes the manage operations supported for network security rule
           "*"
         ]
       },
-      "resourceGroup": "examplerg",
+      "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2025-04-24T17:37:24.766786+00:00",
-        "createdBy": "gus@contoso.com",
+        "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
-        "lastModifiedBy": "gus@contoso.com",
+        "lastModifiedBy": "user@contoso.com",
         "lastModifiedByType": "User"
       },
       "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
@@ -780,7 +772,7 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
 ```output
 {
     "extendedLocation": {
-      "name": "/subscriptions/{Subscription ID}/resourcegroups/{Resource Group Name}/providers/microsoft.extendedlocation/customlocations/examplecl",
+      "name": "/subscriptions/{Subscription ID}/resourcegroups/{Resource Group Name}/providers/microsoft.extendedlocation/customlocations/mylocal-cl",
       "type": "CustomLocation"
     },
     "id": "/subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/contoso-retail-any-any-rule",
@@ -808,10 +800,10 @@ az stack-hci-vm network nsg rule list --resource-group "<Resource group name>" -
     "resourceGroup": "{Resource Group Name}",
     "systemData": {
       "createdAt": "2025-04-24T17:37:24.766786+00:00",
-      "createdBy": "gus@contoso.com",
+      "createdBy": "user@contoso.com",
       "createdByType": "User",
       "lastModifiedAt": "2025-04-24T18:21:13.803650+00:00",
-      "lastModifiedBy": "gus@contoso.com",
+      "lastModifiedBy": "user@contoso.com",
       "lastModifiedByType": "User"
     },
     "type": "microsoft.azurestackhci/networksecuritygroups/securityrules"
@@ -831,9 +823,9 @@ You may need to delete a network security rule if you no longer need it. You can
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group = "examplerg"
+    $resourceGroup = "mylocal-rg"
     $location = "eastus"
-    $customLocationId = "/subscriptions/{Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl"    
+    $customLocationID = "<custom location ARM resource ID>"
     $nsgname = "examplensg"
     $securityrulename = "examplensr"
     ```
@@ -841,7 +833,7 @@ You may need to delete a network security rule if you no longer need it. You can
 1. Run this command to delete a network security rule:
 
     ```azurecli
-    az stack-hci-vm network nsg rule delete --resource-group $resource_group --nsg-name $nsgname --name $securityrulename --yes
+    az stack-hci-vm network nsg rule delete --resource-group $resourceGroup --nsg-name $nsgname --name $securityrulename --yes
     ```
 
     Use the `list` command to verify that the network security rule is deleted.
