@@ -60,7 +60,7 @@ To view VM properties for your Azure Local instance, follow these steps in the A
 To view the properties of a VM, run the following command:
 
 ```azurecli
-az stack-hci-vm show --name $vmName --resource-group $resource_group
+az stack-hci-vm show --name $vmName --resource-group $resourceGroup
 ```
 
 ---
@@ -88,7 +88,7 @@ To start a VM, follow these steps in the Azure portal for your Azure Local insta
 To start a VM, run the following command:
 
 ```azurecli
-az stack-hci-vm start --name $vmName --resource-group $resource_group
+az stack-hci-vm start --name $vmName --resource-group $resourceGroup
 ```
 
 ---
@@ -116,7 +116,7 @@ To restart a VM, follow these steps in Azure portal for your Azure Local instanc
 To restart a VM, run the following command:
 
 ```azurecli
-az stack-hci-vm restart --name $vmName --resource-group $resource_group
+az stack-hci-vm restart --name $vmName --resource-group $resourceGroup
 ```
 
 ---
@@ -144,7 +144,7 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 To stop a VM, run the following command:
 
 ```azurecli
-az stack-hci-vm stop --name $vmName --resource-group $resource_group
+az stack-hci-vm stop --name $vmName --resource-group $resourceGroup
 ```
 
 ---
@@ -178,14 +178,14 @@ To delete a VM, follow these steps in the Azure portal for your Azure Local inst
 To delete a VM, run the following command:
 
 ```azurecli
-az stack-hci-vm delete --name $vmName --resource-group $resource_group --yes
+az stack-hci-vm delete --name $vmName --resource-group $resourceGroup --yes
 ```
 
 After deleting the VM, locate and delete the associated resources such as network interfaces and data disks:
 
 ```azurecli
-az stack-hci-vm network nic delete --name $nicName --resource-group $resource_group --yes
-az stack-hci-vm disk delete --name $diskName --resource-group $resource_group --yes
+az stack-hci-vm network nic delete --name $nicName --resource-group $resourceGroup --yes
+az stack-hci-vm disk delete --name $diskName --resource-group $resourceGroup --yes
 ```
 
 ---

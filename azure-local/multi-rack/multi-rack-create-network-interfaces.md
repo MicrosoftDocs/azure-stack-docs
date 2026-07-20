@@ -73,12 +73,11 @@ Follow these steps to create a network interface on your static logical network.
 
     ```powershell
     $lnetName = "mylocal-lnet-static"
-    $ipAddress ="100.68.180.6" 
+    $ipAddress ="10.1.2.15" 
     $nicName ="mylocal-nic-static"
     $subscription =  "<Subscription ID>"
-    $resource_group = "mylocal-rg"
-    $customLocationName = "mylocal-cl"
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $resourceGroup = "mylocal-rg"
+    $customLocationID = "<custom location ARM resource ID>"
     $location = "eastus"
     ```
 
@@ -97,10 +96,13 @@ Follow these steps to create a network interface on your static logical network.
 1. To create a network interface with a static IP address, run the following command:
 
     ```powershell
-    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $lnetName --ip-address $ipAddress
+    az stack-hci-vm network nic create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $nicName --subnet-id $lnetName --ip-address $ipAddress
     ```
 
     Here's a sample output:
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
     ```console
     {
@@ -119,9 +121,9 @@ Follow these steps to create a network interface on your static logical network.
           {
             "name": null,
             "properties": {
-              "gateway": "192.168.200.1",
+              "gateway": "10.1.2.1",
               "prefixLength": "24",
-              "privateIpAddress": "192.168.201.3",
+              "privateIpAddress": "10.1.2.15",
               "privateIpAllocationMethod": null,
               "subnet": {
                 "id": "/subscriptions/<subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/mylocal-lnet-static",
@@ -138,16 +140,17 @@ Follow these steps to create a network interface on your static logical network.
       "resourceGroup": "mylocal-rg",
       "systemData": {
         "createdAt": "2023-11-02T23:00:47.714910+00:00",
-        "createdBy": "guspinto@contoso.com",
+        "createdBy": "user@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-11-02T23:02:08.720545+00:00",
-        "lastModifiedBy": "<ID>",
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "lastModifiedByType": "Application"
       },
       "tags": null,
       "type": "microsoft.azurestackhci/networkinterfaces"
     } 
     ```
+    </details>
 
 You can use this network interface to create a VM. For more information, see [Create a VM](../manage/create-arc-virtual-machines.md).
 
@@ -159,19 +162,18 @@ You can use this network interface to create a VM. For more information, see [Cr
 
 Follow these steps to create a network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
 
-1. Set the required parameters. Here's a sample output:
+1. Set the required parameters. Here's an example:
 
-    ```output
-    $vnetName = "my-vnet-static"
-    $subnetName = "my-subnet-static" 
-    $vnetSubnet = "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnetName/subnets/$subnetName" 
-    $ipAddress ="100.68.180.6"  
-    $nicName ="mylocal-nic-static" 
-    $subscription =  "<Subscription ID>" 
-    $resource_group = "mylocal-rg" 
-    $customLocationName = "mylocal-cl"
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
-    $location = "eastus" 
+    ```powershell
+    $subscription = "<Subscription ID>"
+    $resourceGroup = "mylocal-rg"
+    $location = "eastus"
+    $customLocationID = "<custom location ARM resource ID>"
+    $vnetName = "mylocal-vnet"
+    $subnetName = "mylocal-subnet"
+    $vnetSubnet = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnetName/subnets/$subnetName"
+    $ipAddress = "10.0.0.6"
+    $nicName = "mylocal-nic-static"
     ```
 
     Here's a description of the parameters:
@@ -190,10 +192,13 @@ Follow these steps to create a network interface on your static virtual network.
 1. To create a network interface with static IP address, run the following command:
 
     ```powershell
-    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $nicName --subnet-id $vnetSubnet --ip-address $ipAddress 
+    az stack-hci-vm network nic create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $nicName --subnet-id $vnetSubnet --ip-address $ipAddress 
     ```
 
     Here's a sample output:
+
+    <details>
+    <summary>Expand this section to see an example output.</summary>
 
     ```output
     { 
@@ -212,12 +217,12 @@ Follow these steps to create a network interface on your static virtual network.
           { 
             "name": null, 
             "properties": { 
-              "gateway": "192.168.200.1", 
+              "gateway": "10.0.0.1", 
               "prefixLength": "24", 
-              "privateIpAddress": "192.168.201.3", 
+              "privateIpAddress": "10.0.0.6", 
               "privateIpAllocationMethod": null, 
               "subnet": { 
-                "id": "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/virtualNetworks/$vnet_name/subnets/$subnet_name", 
+                "id": "/subscriptions/<subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet", 
                 "resourceGroup": "mylocal-rg" 
               } 
             } 
@@ -231,16 +236,17 @@ Follow these steps to create a network interface on your static virtual network.
       "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2023-11-02T23:00:47.714910+00:00", 
-        "createdBy": "guspinto@contoso.com", 
+        "createdBy": "user@contoso.com", 
         "createdByType": "User", 
         "lastModifiedAt": "2023-11-02T23:02:08.720545+00:00", 
-        "lastModifiedBy": "<ID>", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       }, 
       "tags": null, 
       "type": "microsoft.azurestackhci/networkinterfaces" 
     }  
     ```
+    </details>
 
 You can use this network interface to create a VM. For more information, see [Create a VM](./multi-rack-create-arc-virtual-machines.md).
 
@@ -252,4 +258,6 @@ In the Azure portal, you create a network interface during the VM creation flow.
 
 ## Next steps
 
-- Use this network interface when you [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md).
+- [Create Azure Local VMs enabled by Azure Arc](./multi-rack-create-arc-virtual-machines.md)
+- [Download managed data disks](./multi-rack-manage-data-disks.md)
+- [Create a VM image from an Azure Storage account](./multi-rack-virtual-machine-image-storage-account.md)
