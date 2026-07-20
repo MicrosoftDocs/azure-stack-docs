@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/26/2026
+ms.date: 07/16/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -36,7 +36,7 @@ The following list contains the prerequisites and considerations that you must m
 |Verify and make a note of the custom location created during deployment on the Azure Local system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
 |Create a custom storage path for the Azure Arc resource bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
 |Create a logical network for the Azure Arc resource bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
-|Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
+|Configure Azure account permissions for project creation and appliance registration.|both|The account needs the **Azure Local Migrate Owner** role at the Azure subscription scope and the **Application Developer** role at the Microsoft Entra ID tenant scope. For more information, see [Azure account permissions](migrate-vmware-requirements.md#azure-account-permissions).|
 |Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
 
 ## Create an Azure Migrate project
