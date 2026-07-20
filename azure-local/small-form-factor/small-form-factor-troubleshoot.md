@@ -167,7 +167,7 @@ Typical symptoms include:
 
 - Deployment status shows **Failed**.
 - Edge Machine remains in **Transitioning** state.
-- ProvisionOS operations cannot continue.
+- ProvisionOS operations can't continue.
 - Extension installation failures are reported, often referencing **LinuxEdgeObservability**.
 - Standard recovery guidance recommends restarting deployment from the beginning.
 
