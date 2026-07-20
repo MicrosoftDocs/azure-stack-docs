@@ -84,17 +84,15 @@ Follow these steps in Azure CLI to create a load balancer:  
 
     ```powershell    
     $location = "eastus"  
-    $subscriptionID = "<subscription ID>"
-    $resourceGroup = "my-mrg"  
-    $clusterResourceGroup = "<Cluster Resource Group>"
-    $customLocationName = "<Custom Location Name>"
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$clusterResourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $subscription = "<subscription ID>"
+    $resourceGroup = "mylocal-rg"  
+    $customLocationID = "<custom location ARM resource ID>"
     $name = "mylocal-VNET-PublicLB"
     $frontendIPConfigName= "fe1"
-    $frontendIPPublicIP = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicIP"
+    $frontendIPPublicIP = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/publicIPAddresses/mylocal-publicip"
     $frontendIPPrivateAddress = "10.0.0.4"
     $frontendIPAllocationMethod = "Static"
-    $frontendIPSubnetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/mylocal-subnet1"
+    $frontendIPSubnetID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet/subnets/mylocal-subnet1"
     $lbRuleName = "rule1"
     $lbRuleBackendPoolName = "web-backend"
     $lbRuleFrontendIPConfigName = "fe1"
@@ -104,15 +102,14 @@ Follow these steps in Azure CLI to create a load balancer:  
     $lbRuleProbeName = "probe1"
     $lbRuleLoadDistribution = "Default"
     $probePort = 80
-    $probeName = "probe1"
     $probeProtocol = "Http"
     $probeInterval = 5
     $probeRequestPath = "/"
     $probeNumProbe = 2
     $backendPoolName = "web-backend"
-    $backendVNetID = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/mylocal-vnet"
+    $backendVNetID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/virtualNetworks/mylocal-vnet"
 
-    $backendPoolBEAddresses = "/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscriptionID/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
+    $backendPoolBEAddresses = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic1/ipConfigurations/ipconfig","/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/networkInterfaces/nic2/ipConfigurations/ipconfig"
     ```
 
     The *required* parameters are tabulated as follows:  
@@ -174,7 +171,7 @@ Follow these steps in Azure CLI to create a load balancer:  
 
     ```powershell        
     az stack-hci-vm network lb create `
-    --subscription $subscriptionID `
+    --subscription $subscription `
     --resource-group $resourceGroup `
     --name $name `
     --location $location `
@@ -195,3 +192,8 @@ In this example, you create a public load balancer on a virtual network with a b
 >   - `az stack-hci-vm network lb backend-pool add/update/delete`
 >   - `az stack-hci-vm network lb probe add/update/delete`
 >   - `az stack-hci-vm network lb lb-rule add/update/delete`
+
+## Next steps
+
+- [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md)
+- [Monitor multi-rack deployments of Azure Local](./multi-rack-monitor-overview.md)

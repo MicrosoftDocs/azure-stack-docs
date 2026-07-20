@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 07/14/2026
+ms.date: 07/16/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -19,7 +19,7 @@ This article lists the various features and improvements that are available in v
 
 This release includes these features and improvements:
 
-- **New built-in roles for Azure Local migrations** – New [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) and [Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert) Azure role-based access control (Azure RBAC) roles provide purpose-built access for Azure Local-based Azure Migrate projects. Use the Owner role to create and manage projects and assign migration-specific roles. Use the Execute Expert role to run and monitor migrations with restricted access.
+- **New built-in roles for Azure Local migrations** – New [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) and [Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert) Azure role-based access control (Azure RBAC) roles provide purpose-built access for Azure Local-based Azure Migrate projects. The Owner role provides full access, including creating projects, registering appliances, assigning migration-specific roles, and performing replication and migration operations. The Execute Expert role can perform and monitor replication and migration operations on an existing, configured project, but it can't create projects or register appliances.
 - **Terraform support for replication and migration (Preview)** – You can now use Terraform to replicate and migrate VMs to Azure Local. This support enables infrastructure-as-code automation for repeatable migration workflows. For more information, see [Migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview)](migrate-via-powershell.md).
 
 ## May 2026

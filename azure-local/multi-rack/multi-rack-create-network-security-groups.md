@@ -127,9 +127,9 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group="examplerg"      
+    $resourceGroup="mylocal-rg"      
     $nsgname="examplensg"     
-    $customLocationId="/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl" 
+    $customLocationID = "<custom location ARM resource ID>"
     $location="eastus"
     ```
 
@@ -147,7 +147,7 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
 1. Run the following command to create a network security group (NSG) on your instance.
 
     ```azurecli
-    az stack-hci-vm network nsg create -g $resource_group --name $nsgname --custom-location $customLocationId --location $location  
+    az stack-hci-vm network nsg create -g $resourceGroup --name $nsgname --custom-location $customLocationID --location $location  
     ```
 
 1. The command creates a network security group (NSG) with the specified name and associates it with the specified custom location.
@@ -160,12 +160,12 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
       "eTag": null, 
       "extendedLocation": { 
     
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl", 
         "type": "CustomLocation" 
     
       }, 
     
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg", 
     
       "location": "eastus", 
       "name": "examplensg", 
@@ -175,13 +175,13 @@ Create a network security group (NSG) to manage data traffic flow on Azure Local
         "subnets": [] 
       }, 
     
-      "resourceGroup": "examplerg", 
+      "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2025-03-11T22:56:05.968402+00:00", 
-        "createdBy": "gus@contoso.com", 
+        "createdBy": "user@contoso.com", 
         "createdByType": "User", 
         "lastModifiedAt": "2025-03-11T22:56:13.438321+00:00", 
-        "lastModifiedBy": "<User ID>", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       }, 
     
@@ -204,9 +204,9 @@ After you create a network security group, create network security rules. To app
 1. Set the following parameters in your Azure CLI session.
 
     ```azurecli
-    $resource_group="examplerg"      
+    $resourceGroup="mylocal-rg"      
     $nsgname="examplensg"     
-    $customLocationId="/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl" 
+    $customLocationID = "<custom location ARM resource ID>"
     $location="eastus"
     $securityrulename_in="examplensr" 
     $sportrange="*" 
@@ -239,7 +239,7 @@ After you create a network security group, create network security rules. To app
 1. Run the following command to create an inbound network security rule on your instance. This rule blocks all inbound ICMP traffic to Azure Local VMs (except the management ports you want enabled) and allows all outbound access.
 
     ```azurecli
-    az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_in --priority 400 --custom-location $customLocationId --access "Deny" --direction "Inbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
+    az stack-hci-vm network nsg rule create -g $resourceGroup --nsg-name $nsgname --name $securityrulename_in --priority 400 --custom-location $customLocationID --access "Deny" --direction "Inbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description  
     ```
 
 1. The command creates a network security rule and associates it with the specified network security group.
@@ -251,11 +251,11 @@ After you create a network security group, create network security rules. To app
     ```output
     { 
       "extendedLocation": { 
-        "name": "/subscriptions/<Subscription ID>/resourcegroups/examplerg/providers/microsoft.extendedlocation/customlocations/examplecl", 
+        "name": "/subscriptions/<Subscription ID>/resourcegroups/mylocal-rg/providers/microsoft.extendedlocation/customlocations/mylocal-cl", 
         "type": "CustomLocation" 
       }, 
     
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/examplerg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr", 
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/mylocal-rg/providers/Microsoft.AzureStackHCI/networkSecurityGroups/examplensg/securityRules/examplensr", 
       "name": "examplensr", 
       "properties": { 
         "access": "Deny", 
@@ -282,13 +282,13 @@ After you create a network security group, create network security rules. To app
     
       }, 
     
-      "resourceGroup": "examplerg", 
+      "resourceGroup": "mylocal-rg", 
       "systemData": { 
         "createdAt": "2025-03-11T23:25:37.369940+00:00", 
-        "createdBy": "gus@contoso.com", 
+        "createdBy": "user@contoso.com", 
         "createdByType": "User", 
         "lastModifiedAt": "2025-03-11T23:25:37.369940+00:00", 
-        "lastModifiedBy": "gus@contoso.com", 
+        "lastModifiedBy": "user@contoso.com", 
         "lastModifiedByType": "User" 
       }, 
     
@@ -304,18 +304,26 @@ After you create a network security group, create network security rules. To app
 
 ### Create an outbound security rule
 
+Set the outbound rule name and description. The other parameters come from the [inbound rule](#create-an-inbound-security-rule) you set previously.
+
+```azurecli
+$securityrulename_out="examplensr-out"
+$description="Outbound security rule"
+```
+
 Run the following command to create an outbound network security rule that denies traffic to destination `port 80` and the specified prefixes.
 
 ```azurecli
-az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
+az stack-hci-vm network nsg rule create -g $resourceGroup --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationID --access "Deny" --direction "Outbound" --location $location --protocol "*" --source-port-ranges $sportrange --source-address-prefixes $saddprefix --destination-port-ranges $dportrange --destination-address-prefixes $daddprefix --description $description
 ```
 
 Run the following command to block all outbound traffic:
 
 ```azurecli
-az stack-hci-vm network nsg rule create -g $resource_group --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationId --access "Deny" --direction "Outbound" --location $location --protocol "*" --destination-port-ranges '*' --description $description
+az stack-hci-vm network nsg rule create -g $resourceGroup --nsg-name $nsgname --name $securityrulename_out --priority 500 --custom-location $customLocationID --access "Deny" --direction "Outbound" --location $location --protocol "*" --destination-port-ranges '*' --description $description
 ```
   
-<!--## Next steps
+## Next steps
 
-- [Manage NSGs on Azure Local](../manage/manage-network-security-groups.md)-->
+- [Manage network security groups](./multi-rack-manage-network-security-groups.md)
+- [Create network interfaces](./multi-rack-create-network-interfaces.md)

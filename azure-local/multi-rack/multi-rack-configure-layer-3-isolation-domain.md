@@ -27,7 +27,7 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
 
 - Create an L3 isolation domain
 - Create one or more internal networks
-- Create an external network (optional) <!-- check with Vatsal -->
+- Create an external network (optional)
 - Enable an L3 isolation domain
 
 ## Prerequisites
@@ -36,7 +36,7 @@ The workflow for a successful provisioning of an L3 isolation domain is as follo
 
 - Install the latest version of the required [Azure CLI extensions](/azure/operator-nexus/howto-install-cli-extensions).
 
-- Use VLAN values between 501 and 4095. Azure Local reserves VLAN values less than or equal to 500 for platform use, so you can't use VLANs in this range for your workload networks.
+- Use VLAN values between 501 and 3000. Azure Local reserves VLAN values of 500 and below for platform use, so you can't use them for your workload networks.
 
 - Sign in to your Azure account and set the subscription to your Azure subscription ID. Use the same subscription ID for all the resources in your network fabric and cluster.
 
@@ -69,22 +69,17 @@ Use the following *required* parameters to provision and configure your L3 isola
 | --- | --- | --- |
 | `resource-group` | Use an appropriate resource group name specifically for the L3 isolation domain of your choice. | `ResourceGroupName` |
 | `resource-name` | Resource name of the L3 isolation domain. | `example-l3domain` |
-| `subscription` | Azure subscription ID for your instance. | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` |
-| `location` | Azure region used during NFC creation. | `eastus` |
-| `nf-Id` | Network fabric ID. | "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFresourcegroupname/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/NFname" |
-| `vlan-Id` | VLAN identifier value. The range is between 501-3000. <br><br> VLANs 1-500 are reserved for platform use and can't be used. <br><br> The VLAN identifier value can't be changed once specified. <br><br> To modify the VLAN identifier value, you must delete and recreate the isolation domain.  | 501 |
+| `nf-id` | ARM resource ID of the network fabric. | "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFresourcegroupname/providers/Microsoft.ManagedNetworkFabric/NetworkFabrics/NFname" |
 
 The following parameters for isolation domains are *optional*:
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `mtu` | Maximum transmission unit is 1500 by default, if not specified. | 1500-9000 |
-| `administrativeState` | `Enable/Disable` indicate the administrative state of the isolation domain. | Enable |
-| `provisioningState` | Indicates provisioning state. | |
-| `redistributeConnectedSubnet` | Advertise connected subnets default value is True. | True |
-| `redistributeStaticRoutes` | Advertised static routes can have value of True/False. Default value is False. | False |
-| `aggregateRouteConfiguration` | List of Ipv4 and Ipv6 route configurations. | |
-| `connectedSubnetRoutePolicy` | Route policy configuration for IPv4 or Ipv6 L3 ISD-connected subnets. Refer to the help file for using correct syntax. | |
+| `location` | Azure region for the resource. Defaults to the resource group location if not specified. | `eastus` |
+| `redistribute-connected-subnets` | Advertise connected subnets. Allowed values: `True`, `False`. Default is `True`. | True |
+| `redistribute-static-routes` | Advertise static routes. Allowed values: `True`, `False`. Default is `False`. | False |
+| `aggregate-route-configuration` | List of IPv4 and IPv6 aggregate route configurations. | |
+| `connected-subnet-route-policy` | Route policy configuration for IPv4 or IPv6 L3 ISD-connected subnets. Refer to the help file for the correct syntax. | |
 
 
 ### Create an L3 isolation domain
@@ -118,13 +113,13 @@ The following parameters for isolation domains are *optional*:
       "provisioningState": "Succeeded", 
       "redistributeConnectedSubnets": "True", 
       "redistributeStaticRoutes": "False", 
-      "resourceGroup": "ResourceGroupName", 
+      "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2022-XX-XXT06:23:43.372461+00:00", 
-        "createdBy": "email@example.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT09:40:38.815959+00:00", 
-        "lastModifiedBy": "d1bd24c7-b27f-477e-86dd-939e10787367", 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       },			    
     
@@ -133,6 +128,9 @@ The following parameters for isolation domains are *optional*:
     ```
 
     </details>
+
+    > [!NOTE]
+    > A newly created L3 isolation domain shows an administrative state of `Disabled`, both in the command output and in the Azure portal. This state is expected. You enable the domain after you create its internal and external networks.
 
 ## Show L3 isolation domain details
 
@@ -165,13 +163,13 @@ To get the L3 isolation domains details and administrative state:
       "provisioningState": "Succeeded", 
       "redistributeConnectedSubnets": "True", 
       "redistributeStaticRoutes": "False", 
-      "resourceGroup": "2023-XX-XXT09:40:38.815959+00:00", 
+      "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2023-XX-XXT09:40:38.815959+00:00", 
-        "createdBy": "email@example.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT09:40:46.923037+00:00", 
-        "lastModifiedBy": "d1bd24c7-b27f-477e-86dd-939e10787456", 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
         "lastModifiedByType": "Application" 
       },			    
     
@@ -210,11 +208,11 @@ To get the L3 isolation domains details and administrative state:
         "redistributeStaticRoutes": "False", 
         "resourceGroup": "example-resourcegroup", 
         "systemData": { 
-          "createdAt": "2023-XX-XXT09:40:38.815959+00:00", 
-          "createdBy": "email@example.com", 
-          "createdByType": "User", 
-          "lastModifiedAt": "2023-XX-XXT09:40:46.923037+00:00", 
-          "lastModifiedBy": "d1bd24c7-b27f-477e-86dd-939e10787890", 
+          "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+          "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+          "createdByType": "Application", 
+          "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+          "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
           "lastModifiedByType": "Application" 
         },			    
     
@@ -222,76 +220,6 @@ To get the L3 isolation domains details and administrative state:
       } 
     ```
     </details>
-
-## Update administrative state of an L3 isolation domain
-
-1. Set parameters as needed.
-
-    ```azurecli
-    $resourceGroupName = "example-resourcegroup"
-    $resourceName = "example-l3domain"
-    ```
-
-1. Use the following command to change the administrative state of an L3 isolation domain to enable or disable it:
-
-    > [!NOTE]
-    > To change the administrative state of an L3 isolation domain, include at least one internal network.
-    
-    ```azurecli
-    az networkfabric l3domain update-admin-state --resource-group $resourceGroupName --resource-name $resourceName --state Enable/Disable 
-    ```
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-    ```json
-    { 
-      "administrativeState": "Enabled", 
-      "configurationState": "Succeeded",		 
-      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/example-resourcegroup/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain",				  
-      "location": "eastus", 
-      "name": "example-l3domain", 
-      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/NFresourceGroups/NFexample-resourcegroup/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
-      "provisioningState": "Succeeded", 
-      "redistributeConnectedSubnets": "True", 
-      "redistributeStaticRoutes": "False", 
-      "resourceGroup": "NFexample-resourcegroup", 
-      "systemData": { 
-        "createdAt": "2023-XX-XXT06:23:43.372461+00:00", 
-        "createdBy": "email@address.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT06:25:53.240975+00:00", 
-        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx", 
-        "lastModifiedByType": "Application" 
-      },				  
-    
-      "type": "microsoft.managednetworkfabric/l3isolationdomains" 
-    } 
-    ```
-    </details>
-
-
-> [!NOTE]
-> Use the `az show` command to verify whether the administrative state changed to `Enabled`.
-
-## Delete an L3 isolation domain
-
-1. Set parameters as needed.
-
-    ```azurecli
-    $resourceGroupName = "example-resourcegroup"
-    $resourceName = "example-l3domain"
-    ```
-
-1. Use this command to delete an L3 isolation domain:
-
-    ```azurecli
-     az networkfabric l3domain delete --resource-group $resourceGroupName --resource-name $resourceName
-    ``` 
-
-
-> [!NOTE]
-> Use the `show` or `list` commands to validate that an isolation domain is deleted.
 
 ## Create an internal network
 
@@ -303,31 +231,40 @@ The following parameters are *required* for creating internal networks.
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `vlan-Id` | VLAN identifier with range from 501 to 4095. | 1001 |
+| `l3-isolation-domain-name` | Resource name of the L3 isolation domain. | example-l3domain |
 | `resource-group` | Use the corresponding NFC resource group name. | NFCresourcegroupname |
-| `l3-isolation-domain-name` | Resource name of the L3 isolation domain | example-l3domain |
-| `location` | The Azure region used during NFC creation | `eastus` |
-| `connectedIPv4Subnets` | IPv4 subnet to be used for the internal network. | 10.0.0.0/24 |
-| `peerASN` | Peer ASN of network function. | 65047 |
-| `ipv4ListenRangePrefixes`  | BGP IPv4 listen range, maximum range allowed in /28  | 10.1.0.0/26  |
-| `mtu` | L3 MTU to be configured for the internal network, maximum supported value is 9000 | 1500|
+| `resource-name` | Name of the internal network. | example-internalnetwork |
+| `vlan-id` | VLAN identifier with range from 501 to 3000. | 805 |
 
 The following parameters are *optional* for creating internal networks:
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `bgpConfiguration` | Captures all BGP relevant options. |  |
-| `connected-ipv6-subnets` | IPv6 subnet to be used for the internal network. | 10:101:1::1/64 |
-| `staticRouteConfiguration` | IPv4/IPv6 prefix of the static route. | IPv4 10.0.0.0/24 and Ipv6 10:101:1::1/64 |
-| `defaultRouteOriginate` | True/False. Enables default route to be originated when advertising routes via BGP. | True |
-| `allowAS` | Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. TO disable, input 0. <br>Possible values are 1 to 10 and the default is 2. | 2 |
-| `allowASOverride` | Enable or disable allowAS | Enable |
-| `extension` | extension flag for internal network. | NoExtension/NPB |
-| `ipv6ListenRangePrefixes`  |BGP IPv6 listen range, maximum range allowed in /127  |3FFE:FFFF:0:CD30::/127  |
-| `ipv4ListenRangePrefixes`  |BGP IPv4 listen range, maximum range allowed in /28  |10.1.0.0/26  |
-| `ipv4NeighborAddress`  |IPv4 neighbor address  |10.0.0.11  |
-| `ipv6NeighborAddress`  |IPv6 neighbor address  |10:101:1::11  |
-| `isMonitoringEnabled`  |To enable or disable Two-Way Active Measurement Protocol (TWAMP) monitoring on internal network  |False  |
+| `mtu` | L3 MTU to be configured for the internal network. Maximum supported value is 9000. Default is 1500. | 1500 |
+| `connected-ipv4-subnets` | IPv4 subnet to be used for the internal network. | 10.0.0.0/24 |
+| `extension` | Extension flag for the internal network. Allowed values: `NoExtension`, `NPB`. Default is `NoExtension`. | NoExtension |
+| `is-monitoring-enabled` | Enable or disable Two-Way Active Measurement Protocol (TWAMP) monitoring on the internal network. Allowed values: `True`, `False`. Default is `False`. | False |
+| `bgp-configuration` | BGP configuration properties. See [BGP configuration fields](#bgp-configuration-fields). | |
+| `static-route-configuration` | Static route configuration properties. | |
+| `import-route-policy` | Import route policy, either IPv4 or IPv6. | |
+| `export-route-policy` | Export route policy, either IPv4 or IPv6. | |
+| `ingress-acl-id` | ARM resource ID of the ingress access control list. | |
+| `egress-acl-id` | ARM resource ID of the egress access control list. | |
+| `native-ipv4-prefix-limit` | Native IPv4 prefix limit configuration properties. | |
+| `annotation` | Switch configuration description. | |
+
+#### BGP configuration fields
+
+The following fields are specified within the `--bgp-configuration` parameter:
+
+| Field | Description | Example |
+| --- | --- | --- |
+| `peerASN` | Peer ASN of the network function. | 65047 |
+| `defaultRouteOriginate` | Enables a default route to be originated when advertising routes via BGP. Allowed values: `True`, `False`. | True |
+| `allowAS` | Allows routes to be received and processed even if the router detects its own ASN in the AS-Path. To disable, input 0. Possible values are 1 to 10 and the default is 2. | 2 |
+| `allowASOverride` | Enable or disable allowAS. | Enable |
+| `ipv4ListenRangePrefixes` | BGP IPv4 listen range. Maximum range allowed is /28. | 10.1.2.0/28 |
+| `ipv4NeighborAddress` | IPv4 neighbor address. | 10.0.0.11 |
 
 
 ### Create an internal network with BGP configuration and specified peering address
@@ -337,16 +274,13 @@ You must create an internal network before you enable an L3 isolation domain. Th
 1. Set parameters as needed. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
 
     ```azurecli
-    $subscription =  "<Subscription ID>"
     $resourceGroupName = "example-resourcegroup"
     $isoDomainName = "example-l3domain"
     $resourceName = "example-internalnetwork"
-    $location = "eastus"
     $vLanId = "805"
-    $ConnectedIPv4Subnets = '[{"prefix":"10.1.2.0/24"}]'   
-    $ipv4ListenRangePrefixes = '["10.1.2.0/28"]'
+    $ConnectedIPv4Subnets = "[{prefix:'10.1.2.0/24'}]"   
     $mtu = "1500"
-    $bgpConfiguration =  '{"defaultRouteOriginate": "True", "allowAS": 2, "allowASOverride": "Enable", "PeerASN": 65535, "ipv4ListenRangePrefixes": ["10.1.2.0/28"]}'
+    $bgpConfiguration =  "{defaultRouteOriginate:True,allowAS:2,allowASOverride:Enable,peerASN:65047,ipv4ListenRangePrefixes:['10.1.2.0/28']}"
     ```
 
 1. Create the internal network with BGP configuration:
@@ -370,7 +304,7 @@ You must create an internal network before you enable an L3 isolation domain. Th
           "10.1.2.0/28" 
         ], 
     
-        "peerASN": 65535 
+        "peerASN": 65047 
       }, 
     
       "configurationState": "Succeeded", 
@@ -381,18 +315,19 @@ You must create an internal network before you enable an L3 isolation domain. Th
       ], 
     
       "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/internalNetworks/example-internalnetwork", 
-      "isMonitoringEnabled": "True", 
+      "isMonitoringEnabled": "False", 
       "mtu": 1500, 
       "name": "example-internalnetwork", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
       "provisioningState": "Succeeded", 
       "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2023-XX-XXT04:32:00.8159767Z", 
-        "createdBy": "email@example.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT04:32:00.8159767Z", 
-        "lastModifiedBy": "email@example.com", 
-        "lastModifiedByType": "User" 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
       }, 
     
       "type": "microsoft.managednetworkfabric/l3isolationdomains/internalnetworks", 
@@ -406,19 +341,18 @@ You must create an internal network before you enable an L3 isolation domain. Th
 1. Set parameters as needed. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
 
     ```azurecli
-    $subscription =  "<Subscription ID>"
     $resourceGroupName = "example-resourcegroup"
     $isoDomainName = "example-l3domain"
-    $resourceName = "example-internalnetwork"
+    $resourceName = "example-internalnetwork-2"
     $vLanId = "2600"
-    $ConnectedIPv4Subnets = '[{"prefix":"10.1.2.0/24"}]'   
+    $ConnectedIPv4Subnets = "[{prefix:'10.2.0.0/24'}]"   
     $mtu = "1500"
     ```
 
 1. Create the internal network with multiple static routes with a single next hop:
     
     ```azurecli
-    az networkfabric internalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --vlan-id $vLanId --mtu $mtu --connected-ipv4-subnets $ConnectedIPv4Subnets --static-route-configuration '{extension:NPB,bfdConfiguration:{multiplier:5,intervalInMilliSeconds:300},ipv4Routes:[{prefix:'10.3.0.0/24',nextHop:['10.5.0.1']},{prefix:'10.4.0.0/24',nextHop:['10.6.0.1']}]}' 
+    az networkfabric internalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --vlan-id $vLanId --mtu $mtu --connected-ipv4-subnets $ConnectedIPv4Subnets --static-route-configuration "{bfdConfiguration:{multiplier:5,intervalInMilliSeconds:300},ipv4Routes:[{prefix:'10.3.0.0/24',nextHop:['10.5.0.1']},{prefix:'10.4.0.0/24',nextHop:['10.6.0.1']}]}" 
     ```
      
     <details>
@@ -435,10 +369,11 @@ You must create an internal network before you enable an L3 isolation domain. Th
       ], 
     
       "extension": "NoExtension", 
-      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/internalNetworks/example-internalnetwork", 
-      "isMonitoringEnabled": "True", 
+      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/internalNetworks/example-internalnetwork-2", 
+      "isMonitoringEnabled": "False", 
       "mtu": 1500, 
-      "name": "example-internalNetwork", 
+      "name": "example-internalnetwork-2", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
       "provisioningState": "Succeeded", 
       "resourceGroup": "example-resourcegroup", 
       "staticRouteConfiguration": { 
@@ -468,12 +403,12 @@ You must create an internal network before you enable an L3 isolation domain. Th
       }, 
     
       "systemData": { 
-        "createdAt": "2023-XX-XXT13:46:26.394343+00:00", 
-        "createdBy": "email@example.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT13:46:26.394343+00:00", 
-        "lastModifiedBy": "email@example.com", 
-        "lastModifiedByType": "User" 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
       }, 
     
       "type": "microsoft.managednetworkfabric/l3isolationdomains/internalnetworks", 
@@ -482,66 +417,9 @@ You must create an internal network before you enable an L3 isolation domain. Th
     ```
     </details>
 
-    
-### Create internal network using IPv6 
-
-1. Set some parameters. Set parameters in angle brackets \< \> to your own values. Remove the angle brackets when you run the command.
-
-    ```azurecli
-    $subscription =  "<Subscription ID>"
-    $resourceGroupName = "example-resourcegroup"
-    $isoDomainName = "example-l3domain"
-    $resourceName = "example-internalnetwork"
-    $vLanId = "2600"
-    $connectedIPv6Subnets = '[{"prefix":"10:101:1::0/64"}]'   
-    $mtu = "1500"
-    ```
-
-1. Create the internal network using IPv6:
-
-    ```azurecli
-    az networkfabric internalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --vlan-id $vLanId --connected-ipv6-subnets $connectedIPv6Subnets --mtu $mtu
-    ```
-
-    <details>
-    <summary>Expand this section to see an example output.</summary>
-
-    ```json
-    { 
-      "administrativeState": "Enabled", 
-      "configurationState": "Succeeded", 
-      "connectedIPv6Subnets": [ 
-        { 
-          "prefix": "10:101:1::0/64" 
-        } 
-      ], 
-    
-      "extension": "NoExtension", 
-      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3domain2/internalNetworks/example-internalnetwork", 
-      "isMonitoringEnabled": "True", 
-      "mtu": 1500, 
-      "name": "example-internalnetwork", 
-      "provisioningState": "Succeeded", 
-      "resourceGroup": "ResourceGroupName", 
-      "systemData": { 
-        "createdAt": "2023-XX-XXT10:34:33.933814+00:00", 
-        "createdBy": "email@example.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT10:34:33.933814+00:00", 
-        "lastModifiedBy": "email@example.com", 
-        "lastModifiedByType": "User" 
-      }, 
-    
-      "type": "microsoft.managednetworkfabric/l3isolationdomains/internalnetworks", 
-    
-      "vlanId": 2800 
-    } 
-    ```
-    </details>
-
 ## Create an external network
 
-By using external networks, workloads can connect through Layer 3 to your provider edge devices. When you use external networks, workloads can interact with external services like firewalls and DNS. To create external networks, you need the fabric ASN that you created during network fabric creation.
+By using external networks, workloads can connect through Layer 3 to your provider edge devices. When you use external networks, workloads can interact with external services like firewalls and DNS. For Option A peering, you provide the peer ASN (`peerASN`) of your provider edge device. For Option B peering, you provide route targets.
 
 The commands for creating an external network by using Azure CLI include the following parameters.
 
@@ -551,18 +429,25 @@ The following parameters are *required* for creating external networks:
 
 | Parameter | Description | Example |
 | --- | --- | --- | 
-| `peeringOption` | Peering using either option A or option B. Possible values are `OptionA` and `OptionB`. | OptionB |
+| `l3-isolation-domain-name` | Resource name of the L3 isolation domain. | example-l3domain |
+| `resource-group` | Use the corresponding NFC resource group name. | NFCresourcegroupname |
+| `resource-name` | Name of the external network. | example-externalnetwork |
+| `peering-option` | Peering using either option A or option B. Possible values are `OptionA` and `OptionB`. | OptionB |
 
 The following parameters are *optional* for creating external networks:
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `optionBProperties` | OptionB properties configuration. To specify, use `exportIPv4/IPv6RouteTargets` or `importIpv4/Ipv6RouteTargets`. | `"exportIpv4/Ipv6RouteTargets": ["1234:1234"]` |
-| `optionAProperties` | Configuration of `OptionA` properties. Refer to `OptionA` example in a subsequent section. | |
-| `external` | This optional parameter inputs MPLS Option 10 (B) connectivity to external networks via provider edge devices. Using this option, you can input, import, and export route targets as shown in the example. | | 
+| `option-a-properties` | Configuration of `OptionA` properties. Refer to the `OptionA` example in a subsequent section. | |
+| `option-b-properties` | Configuration of `OptionB` properties. To specify, use `exportIpv4/Ipv6RouteTargets` or `importIpv4/Ipv6RouteTargets`. | `exportIpv4RouteTargets:['1234:1234']` |
+| `nni-id` | ARM resource ID of the network-to-network interconnect (NNI) of the external network. | |
+| `import-route-policy` | Import route policy, either IPv4 or IPv6. | |
+| `export-route-policy` | Export route policy, either IPv4 or IPv6. | |
+| `static-route-configuration` | Static route configuration. | |
+| `annotation` | Switch configuration description. | | 
 
 
-For Option A, you need to create an external network before you enable the L3 isolation domain. An external network is dependent on an internal network, so an external network can't be enabled without an internal network. The `vlan-id` value should be between 501 and 4095.
+For Option A, you need to create an external network before you enable the L3 isolation domain. An external network is dependent on an internal network, so you can't enable an external network without an internal network. The `vlan-id` value should be between 501 and 3000.
 
 
 ### Create an external network using Option B
@@ -581,7 +466,7 @@ For Option A, you need to create an external network before you enable the L3 is
 1. Create the external network using Option B:
     
     ```azurecli
-    az networkfabric externalnetwork create --resource-group $resourceGroupName --l3domain $isoDomainName --resource-name $resourceName --peering-option $peeringOption --option-b-properties "{routeTargets:{exportIpv4RouteTargets:['$exportIpv4RouteTargets'],importIpv4RouteTargets:['$importIpv4RouteTargets']}}" 
+    az networkfabric externalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --peering-option $peeringOption --option-b-properties "{routeTargets:{exportIpv4RouteTargets:['$exportIpv4RouteTargets'],importIpv4RouteTargets:['$importIpv4RouteTargets']}}" 
     ```
 
     <details>
@@ -590,8 +475,10 @@ For Option A, you need to create an external network before you enable the L3 is
     ```json
     { 
       "administrativeState": "Enabled", 
-      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/examplel3-externalnetwork", 
-      "name": "examplel3-externalnetwork", 
+      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/example3-externalnetwork", 
+      "name": "example3-externalnetwork", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
+      "networkToNetworkInterconnectId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName/networkToNetworkInterconnects/NNIName", 
       "optionBProperties": { 
         "exportRouteTargets": [ 
           "65045:2001" 
@@ -616,12 +503,12 @@ For Option A, you need to create an external network before you enable the L3 is
       "provisioningState": "Succeeded", 
       "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2023-XX-XXT15:45:31.938216+00:00", 
-        "createdBy": "email@address.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2023-XX-XXT15:45:31.938216+00:00", 
-        "lastModifiedBy": "email@address.com", 
-        "lastModifiedByType": "User" 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
       }, 
     
       "type": "microsoft.managednetworkfabric/l3isolationdomains/externalnetworks" 
@@ -648,7 +535,7 @@ For Option A, you need to create an external network before you enable the L3 is
 1. Create the external network using Option A:
 
     ```azurecli
-    az networkfabric externalnetwork create --resource-group $resourceGroupName --l3domain $isoDomainName --resource-name $resourceName --peering-option $peeringOption --option-a-properties '{"peerASN": $peerASN,"vlanId": $vlanId, "mtu": $mtu, "primaryIpv4Prefix": "$primaryIpv4Prefix", "secondaryIpv4Prefix": "$secondaryIpv4Prefix"}'
+    az networkfabric externalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --peering-option $peeringOption --option-a-properties "{peerASN:$peerASN,vlanId:$vlanId,mtu:$mtu,primaryIpv4Prefix:'$primaryIpv4Prefix',secondaryIpv4Prefix:'$secondaryIpv4Prefix'}" 
     ``` 
 
     <details>
@@ -659,25 +546,27 @@ For Option A, you need to create an external network before you enable the L3 is
       "administrativeState": "Enabled", 
       "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/example-externalipv4network", 
       "name": "example-externalipv4network", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
+      "networkToNetworkInterconnectId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName/networkToNetworkInterconnects/NNIName", 
       "optionAProperties": { 
         "fabricASN": 65050, 
         "mtu": 1500, 
         "peerASN": 65026, 
-        "primaryIpv4Prefix": "10.21.0.148/30", 
-        "secondaryIpv4Prefix": "10.21.0.152/30", 
+        "primaryIpv4Prefix": "10.18.0.148/30", 
+        "secondaryIpv4Prefix": "10.18.0.152/30", 
         "vlanId": 2423 
       }, 
     
       "peeringOption": "OptionA", 
       "provisioningState": "Succeeded", 
-      "resourceGroup": "ResourceGroupName", 
+      "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2023-07-19T09:54:00.4244793Z", 
-        "createdAt": "2023-XX-XXT07:23:54.396679+00:00",  
-        "createdBy": "email@address.com", 
-        "lastModifiedAt": "2023-XX-XX1T07:23:54.396679+00:00",  
-        "lastModifiedBy": "email@address.com", 
-        "lastModifiedByType": "User" 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
       }, 
     
       "type": "microsoft.managednetworkfabric/l3isolationdomains/externalnetworks" 
@@ -703,7 +592,7 @@ For Option A, you need to create an external network before you enable the L3 is
 1. Create the external network using IPv6:
     
     ```azurecli
-    az networkfabric externalnetwork create --resource-group "ResourceGroupName" --l3domain "example-l3domain" --resource-name "example-externalipv6network" --peering-option "OptionA" --option-a-properties '{"peerASN": 65026,"vlanId": 2423, "mtu": 1500, "primaryIpv6Prefix": "fda0:d59c:da16::/127", "secondaryIpv6Prefix": "fda0:d59c:da17::/127"}' 
+    az networkfabric externalnetwork create --resource-group $resourceGroupName --l3-isolation-domain-name $isoDomainName --resource-name $resourceName --peering-option $peeringOption --option-a-properties "{peerASN:$peerASN,vlanId:$vlanId,mtu:$mtu,primaryIpv6Prefix:'$primaryIpv6Prefix',secondaryIpv6Prefix:'$secondaryIpv6Prefix'}" 
     ```
     
     The supported primary and secondary IPv6 prefix size is /127. 
@@ -714,8 +603,10 @@ For Option A, you need to create an external network before you enable the L3 is
     ```json
     { 
       "administrativeState": "Enabled", 
-      "id": "/subscriptions//xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/example-externalipv6network", 
+      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/example-externalipv6network", 
       "name": "example-externalipv6network", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
+      "networkToNetworkInterconnectId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName/networkToNetworkInterconnects/NNIName", 
       "optionAProperties": { 
         "fabricASN": 65050, 
         "mtu": 1500, 
@@ -727,14 +618,14 @@ For Option A, you need to create an external network before you enable the L3 is
     
       "peeringOption": "OptionA", 
       "provisioningState": "Succeeded", 
-      "resourceGroup": "ResourceGroupName", 
+      "resourceGroup": "example-resourcegroup", 
       "systemData": { 
-        "createdAt": "2022-XX-XXT07:52:26.366069+00:00", 
-        "createdBy": "email@address.com", 
-        "createdByType": "User", 
-        "lastModifiedAt": "2022-XX-XXT07:52:26.366069+00:00", 
-        "lastModifiedBy": "email@address.com", 
-        "lastModifiedByType": "User" 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
       }, 
     
       "type": "microsoft.managednetworkfabric/l3isolationdomains/externalnetworks" 
@@ -757,3 +648,65 @@ For Option A, you need to create an external network before you enable the L3 is
     az networkfabric l3domain update-admin-state --resource-group $resourceGroupName --resource-name $resourceName --state Enable 
     ```
 
+    <details>
+    <summary>Expand this section to see an example output.</summary>
+
+    ```json
+    { 
+      "administrativeState": "Enabled", 
+      "configurationState": "Succeeded",		 
+      "id": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/example-resourcegroup/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain",				  
+      "location": "eastus", 
+      "name": "example-l3domain", 
+      "networkFabricId": "/subscriptions/xxxxxx-xxxxxx-xxxx-xxxx-xxxxxx/resourceGroups/NFResourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabrics/NFName", 
+      "provisioningState": "Succeeded", 
+      "redistributeConnectedSubnets": "True", 
+      "redistributeStaticRoutes": "False", 
+      "resourceGroup": "example-resourcegroup", 
+      "systemData": { 
+        "createdAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "createdByType": "Application", 
+        "lastModifiedAt": "2023-XX-XXT00:00:00.0000000Z", 
+        "lastModifiedBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+        "lastModifiedByType": "Application" 
+      },				  
+    
+      "type": "microsoft.managednetworkfabric/l3isolationdomains" 
+    } 
+    ```
+    </details>
+
+    > [!NOTE]
+    > Use the `az networkfabric l3domain show` command to verify that the administrative state changed to `Enabled`.
+
+    A newly created L3 isolation domain is in the `Disabled` state by default, so you create your internal and external networks first and then enable the domain.
+
+    To add more internal or external networks to an L3 isolation domain that's already enabled, first disable the domain, add the networks, and then enable it again. To disable the domain, use the same command with `--state Disable`:
+
+    ```azurecli
+    az networkfabric l3domain update-admin-state --resource-group $resourceGroupName --resource-name $resourceName --state Disable
+    ```
+
+## Delete an L3 isolation domain
+
+1. Set parameters as needed.
+
+    ```azurecli
+    $resourceGroupName = "example-resourcegroup"
+    $resourceName = "example-l3domain"
+    ```
+
+1. Use this command to delete an L3 isolation domain:
+
+    ```azurecli
+     az networkfabric l3domain delete --resource-group $resourceGroupName --resource-name $resourceName
+    ``` 
+
+
+> [!NOTE]
+> Use the `show` or `list` commands to validate that an isolation domain is deleted.
+
+## Next steps
+
+- [Create logical networks](./multi-rack-create-logical-networks.md)

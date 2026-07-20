@@ -1,12 +1,12 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Migrate FAQ
-  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Local instance using Azure Migrate.
+  description: Find answers to common questions about migrating Hyper-V and VMware virtual machines to Azure Local using Azure Migrate.
   ms.topic: faq
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 03/25/2026
+  ms.date: 07/16/2026
   ms.subservice: hyperconverged
 
 
@@ -26,6 +26,28 @@ sections:
         answer: |
 
           ## [VMware and Hyper-V VMs](#tab/vmware-and-hyper-v-vms)
+
+          ### What Azure account permissions do I need to migrate VMs to Azure Local?
+
+          At the Azure subscription scope, assign one of the following roles based on the user's responsibilities:
+
+          - **Azure Local Migrate Owner** provides full access, including creating and managing projects, registering source and target appliances, assigning migration-specific roles, and performing replication and migration operations.
+          - **Azure Local Migrate Execute Expert** can perform and monitor replication and migration operations on an existing, configured project. This role can't create projects, register source or target appliances, or assign roles.
+
+          A user needs only one of these Azure subscription roles, not both. An account that registers a source or target appliance also needs the **Application Developer** role at the Microsoft Entra ID tenant scope.
+
+          For complete requirements and links to the role definitions, see Azure account permissions for [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions) or [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions).
+
+          ### What options can I use to migrate VMs to Azure Local?
+
+          You can use any of the following methods:
+
+          - **Azure portal**: Use the guided workflow to configure appliances, replicate VMs, and perform migrations. Start with [Discover and replicate VMware VMs](migrate-vmware-replicate.md) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md).
+          - **PowerShell**: Automate replication and migration by using the Azure Migrate PowerShell module. See [Migrate VMs using PowerShell](migrate-via-powershell.md?tabs=powershell).
+          - **Azure CLI (Preview)**: Automate replication and migration by using Azure CLI commands. See [Migrate VMs using Azure CLI](migrate-via-powershell.md?tabs=azurecli).
+          - **Terraform (Preview)**: Define repeatable replication and migration workflows as infrastructure as code. See [Migrate VMs using Terraform](migrate-via-powershell.md?tabs=terraform).
+
+          The PowerShell, Azure CLI, and Terraform workflows require an existing Azure Migrate project with the source and target appliances already configured.
           
           ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Local instance?
       
