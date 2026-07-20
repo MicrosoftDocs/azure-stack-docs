@@ -37,7 +37,7 @@ Before you begin, complete these prerequisites:
 
 - Access to a resource group where you want to provision the public IP address.
 
-- Access to the ARM ID of the custom location associated with your Azure Local max instance where you want to provision the public IP resource.
+- Access to the ARM ID of the custom location associated with your Azure Local instance where you want to provision the public IP resource.
 
 - Access to the ARM ID of the logical network from which the public IP resource would be allocated its IP address.
 
@@ -59,7 +59,7 @@ You can create a public IP resource using the Azure Command-Line Interface (CLI)
 1. Set your subscription:
 
     ```azurecli
-    az account set --subscription <Subscription ID>
+    az account set --subscription "<Subscription ID>"
     ```
 
 ### Create the public IP address
@@ -74,12 +74,13 @@ Use the `az stack-hci-vm network public-ip create` command to create a public IP
 1. Set the parameters. Here's an example:
 
     ```azurecli
-    $location = "eastus"  
-    $resourceGroup = "mylocal-rg"  
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"  
-    $name = “mylocal-publicip” 
-    $allocationScope  ="/subscriptions/$subscription/resourceGroups/$resource_group/providers /Microsoft.AzureStackHCI/logicalNetworks/MyLnet” 
-    $ip = "20.30.40.50"  
+    $subscription = "<Subscription ID>"
+    $location = "eastus"
+    $resourceGroup = "mylocal-rg"
+    $customLocationID = "<custom location ARM resource ID>"
+    $name = "mylocal-publicip"
+    $allocationScope = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/logicalnetworks/mylocal-lnet-static"
+    $ip = "20.30.40.50"
     ```
 
     The *required* parameters are tabulated as follows:
@@ -88,7 +89,7 @@ Use the `az stack-hci-vm network public-ip create` command to create a public IP
     |------------|-------------|
     | `name`  |Name for the public IP resource that you create. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork). You can't rename a public IP resource after it's created. |
     | `resource-group` |Name of the resource group where you create the public IP resource. |
-    | `subscription` |ARM ID of the subscription you want to use to create your public IP resource. |
+    | `subscription` |Name or ID of the subscription you want to use to create your public IP resource. |
     | `custom-location` | ARM ID of the custom location associated with your Azure Local where you're creating this public IP resource. |
     | `location` | Azure regions as specified by `az locations`. |
     | `allocation-scope` | ARM ID of the LogicalNetwork resource from which the public IP should be allocated. |
@@ -97,14 +98,7 @@ Use the `az stack-hci-vm network public-ip create` command to create a public IP
 1. Create a public IP. Run the following command:
 
     ```azurecli
-    az stack-hci-vm network public-ip create 
-    --resource-group $resource_group 
-    --name $name
-    --location $location 
-    --version IPv4
-    --allocation-scope $allocationScope
-    --ip-address $ip
-    --custom-location $customLocationID
+    az stack-hci-vm network public-ip create --resource-group $resourceGroup --name $name --location $location --version IPv4 --allocation-scope $allocationScope --ip-address $ip --custom-location $customLocationID
     ```
 
     <!--Here's a sample output:
@@ -116,5 +110,5 @@ Use the `az stack-hci-vm network public-ip create` command to create a public IP
 
 ## Next steps
 
-- Create a NAT gateway <!--insert link-->
-- Create a Software Load Balancer <!--insert link-->
+- [Create a load balancer on a logical network](./multi-rack-create-load-balancer-logical-network.md)
+- [About NAT gateways for multi-rack deployments](./multi-rack-nat-gateway-overview.md)
