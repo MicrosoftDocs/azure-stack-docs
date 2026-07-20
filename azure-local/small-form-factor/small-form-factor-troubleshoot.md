@@ -184,7 +184,7 @@ When the failure occurs during target OS provisioning, attempt to manually resub
 **Known limitations**:
 
 - This recovery mechanism is intended for target OS provisioning failures.
-- Failures occurring during ROE extension installation may still require more disruptive recovery actions, including redeployment.
+- Failures occurring during ROE extension installation might still require more disruptive recovery actions, including redeployment.
 - Retry and rollback capabilities aren't currently available for every provisioning stage.
 
 ## Troubleshoot VM setup
