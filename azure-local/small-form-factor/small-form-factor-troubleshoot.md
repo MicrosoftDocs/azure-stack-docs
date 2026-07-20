@@ -173,7 +173,7 @@ Typical symptoms include:
 
 **Cause**:
 
-This issue occurs when extension installation fails during the target OS provisioning workflow. The provisioning service marks the Edge Machine as failed while still in the **Transitioning** state and does not continue with subsequent deployment steps. In earlier releases, recovery options were limited and often required a complete redeployment.
+This problem occurs when extension installation fails during the target OS provisioning workflow. The provisioning service marks the Edge Machine as failed while still in the **Transitioning** state and doesn't continue with subsequent deployment steps. In earlier releases, recovery options were limited and often required a complete redeployment.
 
 **Recommendation**:
 
