@@ -157,7 +157,7 @@ If the file permissions are too open, SSH rejects the key for security reasons.
 
 1. Review the verbose output for key authentication failures, permission issues, or mismatched key errors.
 
-## Reattempt failed Azure Linux OS Provisioning
+## Reattempt failed Azure Linux OS provisioning
 
 **Problem**:
 
