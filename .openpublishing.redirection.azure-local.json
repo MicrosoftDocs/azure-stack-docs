@@ -2004,10 +2004,11 @@
       "source_path": "azure-local/concepts/azure-hybrid-benefit-disaggregated.md",
       "redirect_url": "/azure/azure-local/concepts/azure-hybrid-benefit",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-local/rename-to-azure-local.md",
+      "redirect_url": "/azure/azure-local/overview",
+      "redirect_document_id": false
     }
-
-
-
-
   ]
 }
