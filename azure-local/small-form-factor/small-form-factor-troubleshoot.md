@@ -161,7 +161,7 @@ If the file permissions are too open, SSH rejects the key for security reasons.
 
 **Problem**:
 
-OS provisioning fails for an Azure Local Small Form Factor (SFF) deployment, leaving the Edge Machine in a **Transitioning** state and preventing the deployment from progressing. This problem commonly occurs during the **InstallExtensions** phase when the **LinuxEdgeObservability** extension fails to install on either the Edge Machine or the target Arc machine. As a result, the overall deployment is marked as failed and no further provisioning operations are performed.
+OS provisioning fails for a small form factor deployment, leaving the Edge machine in a **Transitioning** state and preventing the deployment from progressing. This problem commonly occurs during the **InstallExtensions** phase when the **LinuxEdgeObservability** extension fails to install on either the Edge machine or the target Arc machine. As a result, the overall deployment is marked as failed and no further provisioning operations are performed.
 
 Typical symptoms include:
 
