@@ -179,7 +179,7 @@ This problem occurs when extension installation fails during the target OS provi
 
 When the failure occurs during target OS provisioning, try manually resubmitting the ProvisionOS job before performing a full redeployment.
 
-1. Download and run [`troubleshoot-os-provisioning-failure.sh`](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/troubleshoot-os-provisioning-failure.sh), replacing `SUBSCRIPTION_ID`, `RESOURCE_GROUP`, and `PROVISIONED_MACHINE_NAME` in the input parameters section (Lines 8-10) with your information.
+- To resubmit the ProvisionOS job, download and run the [`troubleshoot-os-provisioning-failure.sh`](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/troubleshoot-os-provisioning-failure.sh) script. Replace the `<subscription-id>`, `<resource-group>`, and `<edge-machine-name>` placeholders in the input parameters section with your actual values.
 
 **Known limitations**:
 
