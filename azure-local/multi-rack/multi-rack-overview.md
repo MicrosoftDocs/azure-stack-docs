@@ -21,7 +21,7 @@ Multi-rack deployments extend the scale of Azure Local, supporting hundreds of s
 
 ## Overview
 
-Multi-rack deployments of Azure Local are delivered as preintegrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services through Azure Arc. For information on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local multi-rack deployments, see [AKS on Azure Local for multi-rack deployments](../../AKS-Arc/multi-rack/cluster-architecture.md).
+Multi-rack deployments of Azure Local are delivered as preintegrated racks with compute, storage, and networking included. You can use it to run Azure Local virtual machines and Azure services through Azure Arc. For information on Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local multi-rack deployments, see [AKS on Azure Local for multi-rack deployments](../../AKS-Arc/multi-rack/cluster-architecture).
 
 This capability is designed around a prescriptive hardware bill of materials (BOM) to deliver optimal performance and reliability. The setup features one main rack for network aggregation with SAN storage alongside several compute racks, which are installed at your on-premises location.
 
