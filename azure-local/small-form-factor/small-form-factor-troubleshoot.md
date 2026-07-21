@@ -166,7 +166,7 @@ OS provisioning fails for a small form factor deployment, leaving the Edge machi
 Typical symptoms include:
 
 - Deployment status shows **Failed**.
-- Edge Machine remains in **Transitioning** state.
+- Edge machine remains in **Transitioning** state.
 - ProvisionOS operations can't continue.
 - Extension installation failures are reported, often referencing **LinuxEdgeObservability**.
 - Standard recovery guidance recommends restarting deployment from the beginning.
