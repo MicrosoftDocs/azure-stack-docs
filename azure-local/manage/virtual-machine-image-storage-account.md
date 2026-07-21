@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 12/18/2025
+ms.date: 07/12/2026
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
@@ -14,9 +14,9 @@ ms.subservice: hyperconverged
 
 # Create Azure Local VM image using image in Azure Storage account
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc using source images from the Azure Storage account. You can create VM images by using the Azure portal or Azure CLI and then use these VM images to create Azure Local VMs.
+This article describes how to create Azure Local virtual machines (VMs) enabled by Azure Arc using source images from an Azure Storage account. You can create VM images by using the Azure portal or Azure CLI. Then use these VM images to create Azure Local VMs.
 
 ## Prerequisites
 
@@ -40,11 +40,11 @@ Before you begin, make sure that you complete the following prerequisites.
 
 ## Add VM image from Azure Storage account
 
-You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Local.
+You create a VM image starting from an image in an Azure Storage account. Then use this image to deploy VMs on your Azure Local.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps to create a VM image using the Azure CLI.
+Follow these steps to create a VM image by using the Azure CLI.
 
 ### Sign in and set subscription
 
@@ -64,7 +64,7 @@ $imageSourcePath = '"<Blob SAS URL path to the source image in the storage accou
 ```
 
 > [!NOTE]
-> For `$imageSourcePath`, you must escape the string with double quotes, then enclose it with single quotes as follows: `'""'`.
+> For `$imageSourcePath`, escape the string with double quotes, then enclose it with single quotes as follows: `'""'`.
 
 The parameters are described in the following table:
 
@@ -104,9 +104,9 @@ PS C:\Users\azcli> $imageSourcePath = '"https://vmimagevhdsa1.blob.core.windows.
 
     A deployment job starts for the VM image.
 
-In this example, the storage path was specified using the `--storage-path-id` flag. This flag ensures that the workload data (including the VM, VM image, and non-OS data disk) is placed in the specified storage path.
+In this example, you specify the storage path by using the `--storage-path-id` flag. This flag ensures that the workload data (including the VM, VM image, and non-OS data disk) goes to the specified storage path.
 
-If the flag isn't specified, the workload data is automatically placed in a high availability storage path.
+If you don't specify the flag, the workload data automatically goes to a high availability storage path.
 
 The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
@@ -157,19 +157,19 @@ PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --r
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Local resource, take the following steps:
+Follow these steps to create a VM image by using the Azure portal. In the Azure portal of your Azure Local resource, take the following steps:
 
 1. Go to **Resources** > **VM images**.
 
-1. Select **+ Add VM Image**, then from the dropdown list, select **Add VM image** from **Azure Storage Account**.
+1. Select **+ Add VM Image**, and then from the dropdown list, select **Add VM image** from **Azure Storage Account**.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png" alt-text="Screenshot showing the Add VM image from Azure Storage account option." lightbox="./media/virtual-machine-image-storage-account/add-image-from-azure-storage-account.png":::
 
-1. In the **Create an image** page, on the **Basics** tab, enter the following information:
+1. In **Create an image**, on the **Basics** tab, enter the following information:
 
     1. **Subscription**: Select a subscription to associate with your VM image.
 
-    1. **Resource group**: Create new or select an existing resource group that you associate with the VM image.
+    1. **Resource group**: Create new or select an existing resource group to associate with the VM image.
 
     1. **Save image as**: Enter a name for your VM image.
 
@@ -191,7 +191,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/virtual-machine-image-storage-account/create-an-image-storage-account-review-create.png":::
 
-1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
+1. The portal validates the input parameters. If the validations succeed, you can review the VM image details and select **Create**.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/virtual-machine-image-storage-account/create-an-image-create.png":::
 
@@ -207,7 +207,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/virtual-machine-image-storage-account/added-vm-image.png":::
 
-   If the download of the VM image fails, the error details are shown in the portal.
+   If the download of the VM image fails, the portal shows the error details.
 
    :::image type="content" source="./media/virtual-machine-image-storage-account/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/virtual-machine-image-storage-account/failed-deployment.png":::
 

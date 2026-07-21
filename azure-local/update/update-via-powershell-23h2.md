@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 03/04/2026
+ms.date: 07/12/2026
 ms.subservice: hyperconverged
 ---
 
@@ -20,7 +20,7 @@ The procedure in this article applies to both single node and multi-node systems
 
 ## About solution updates
 
-The Azure Local solution updates can include platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Local](../update/about-updates-23h2.md).
+Azure Local solution updates can include platform, service, and solution extension updates. For more information about each of these types of updates, see [About updates for Azure Local](../update/about-updates-23h2.md).
 
 [!INCLUDE [azure-local-banner-new-releases](../includes/azure-local-banner-new-releases.md)]
 
@@ -68,7 +68,7 @@ Before you begin, make sure that you meet the following prerequisites:
 
 Follow these steps on your client to connect to one of the machines in your Azure Local.
 
-1. Run PowerShell as administrator on the client that you're using to connect to your system.
+1. Run PowerShell as an administrator on the client that you're using to connect to your system.
 1. Open a remote PowerShell session to a machine on your Azure Local. Run the following command and provide the credentials of your machine when prompted:
 
     ```powershell
@@ -388,7 +388,7 @@ You can download the update and run checks to verify your cluster's update readi
 1. When the readiness checks finish, the system is ready to install updates. The `State` of the update shows as `ReadyToInstall`. If the `State` of the update shows as `HealthCheckFailed`, see [Troubleshoot readiness checks](update-troubleshooting-23h2.md) before you proceed.
 
 > [!NOTE]
-> If you performed the update readiness using the `-PrepareOnly` parameter, you must update using PowerShell. Moving to Azure portal to start the update isn't supported and might lead to unexpected issues.
+> If you performed the update readiness check by using the `-PrepareOnly` parameter, you must update by using PowerShell. Moving to Azure portal to start the update isn't supported and might lead to unexpected issues.
 
 
 ## Step 5: Start the update
@@ -592,5 +592,3 @@ After the updates are installed, verify the solution version of the environment 
 ## Next step
 
 - If you run into problems during the update process, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
-
-- To learn more about updating version 22H2 when the orchestrator isn't installed, see [Update version 22H2](../manage/update-cluster.md).
