@@ -157,6 +157,36 @@ If the file permissions are too open, SSH rejects the key for security reasons.
 
 1. Review the verbose output for key authentication failures, permission issues, or mismatched key errors.
 
+## Reattempt failed Azure Linux OS provisioning
+
+**Problem**:
+
+OS provisioning fails for a small form factor deployment, leaving the Edge machine in a **Transitioning** state and preventing the deployment from progressing. This problem commonly occurs during the **InstallExtensions** phase when the **LinuxEdgeObservability** extension fails to install on either the Edge machine or the target Arc machine. As a result, the overall deployment is marked as failed and no further provisioning operations are performed.
+
+Typical symptoms include:
+
+- Deployment status shows **Failed**.
+- Edge machine remains in **Transitioning** state.
+- ProvisionOS operations can't continue.
+- Extension installation failures are reported, often referencing **LinuxEdgeObservability**.
+- Standard recovery guidance recommends restarting deployment from the beginning.
+
+**Cause**:
+
+This problem occurs when extension installation fails during the target OS provisioning workflow. The provisioning service marks the Edge Machine as failed while still in the **Transitioning** state and doesn't continue with subsequent deployment steps. In earlier releases, recovery options were limited and often required a complete redeployment.
+
+**Recommendation**:
+
+When the failure occurs during target OS provisioning, try manually resubmitting the ProvisionOS job before performing a full redeployment.
+
+- To resubmit the ProvisionOS job, download and run the [`troubleshoot-os-provisioning-failure.sh`](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/troubleshoot-os-provisioning-failure.sh) script. Replace the `<subscription-id>`, `<resource-group>`, and `<edge-machine-name>` placeholders in the input parameters section with your actual values.
+
+**Known limitations**:
+
+- This recovery mechanism is intended for target OS provisioning failures.
+- Failures occurring during ROE extension installation might still require more disruptive recovery actions, including redeployment.
+- Retry and rollback capabilities aren't currently available for every provisioning stage.
+
 ## Troubleshoot VM setup
 
 ### The VM doesn't get an IP address
