@@ -2,7 +2,7 @@
 title: Use GPUs for compute-intensive workloads in AKS on Azure Local for multi-rack deployments
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Local for multi-rack deployments.
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 07/21/2026
 ms.author: sunnyyuan
 author: sunnyyuan
 
@@ -56,10 +56,10 @@ To create a GPU-enabled node pool, make sure the following requirements are met:
 
 - Install the [latest version of Azure CLI](/cli/azure/install-azure-cli) and the `aksarc` extension.
 - Configure either the tenant proxy or the logical network connectivity before proceeding to enable outbound access to NVIDIA software. For BYO proxy instructions, see [Add BYO proxy how-to for AKS on Azure Local multi-rack](../../AKS-Arc/multi-rack/aks-customer-proxy.md).
-- Ensure the AKS Arc cluster is created with SSH keys at cluster creation time and that you have access to these SSH keys. Steps 3 and 4 in this article require SSH access into each GPU worker VM to install the NVIDIA driver and Container Toolkit, and SSH keys can only be configured during cluster creation.
+- Ensure the AKS Arc cluster is created with SSH keys at cluster creation time and that you have access to these SSH keys. Steps 3 and 4 in this article require SSH access into each GPU worker VM to verify the NVIDIA driver and install the Container Toolkit, and SSH keys can only be configured during cluster creation.
 
 > [!NOTE]
-> You must manually install the NVIDIA driver, NVIDIA Container Toolkit, and NVIDIA Kubernetes device plugin so that the GPU is schedulable as `nvidia.com/gpu` from pod specs. Steps 3–5 in this article walk through each piece; Step 6 verifies end-to-end with a pod workload.
+> The NVIDIA driver is preinstalled in the worker VM image, so you don't need to install it manually. You must still install the NVIDIA Container Toolkit and NVIDIA Kubernetes device plugin so that the GPU is schedulable as `nvidia.com/gpu` from pod specs. Step 3 verifies the preinstalled driver, Steps 4–5 install the remaining components, and Step 6 verifies end-to-end with a pod workload.
 
 ## Step 1: List available GPU-enabled VM sizes
 
@@ -100,14 +100,11 @@ Add GPU node pools to an AKS Arc cluster. The control plane and system node pool
    az connectedk8s proxy --name <aks cluster name> --resource-group <resource group name>
    ```
 
-## Step 3: Install the NVIDIA driver inside the worker VM
+## Step 3: Verify the NVIDIA driver inside the worker VM
 
-The Azure Local platform delivers the physical GPU to the worker VM through PCI passthrough, but the NVIDIA driver inside the guest operating system isn't preinstalled. The worker VM runs Azure Linux 3, and the supported install path is the Microsoft-signed `cuda-open` RPM from `packages.microsoft.com`.
+The Azure Local platform delivers the physical GPU to the worker VM through PCI passthrough. The worker VM runs Azure Linux 3, and the NVIDIA driver - the Microsoft-signed `cuda-open` package with the open kernel modules required for the Blackwell architecture - is preinstalled in the worker VM image. You don't need to install the driver manually. Use the steps in this section to confirm the GPU and driver are present.
 
-> [!IMPORTANT]
-> The NVIDIA RTX Pro 6000 (Blackwell architecture) requires the **open kernel modules**. Use the `cuda-open` package. The NVIDIA `cuda` package can't be used because Azure Linux 3 prevents the `.run` installer from executing due to security enforcement that prevents unsigned module execution.
-
-Repeat the steps in this section on each worker VM in the GPU node pool. To open an in-guest shell, use SSH (see [Connect to Windows or Linux worker nodes with SSH](../ssh-connect-to-windows-and-linux-worker-nodes.md)).
+Run the verification steps in this section on each worker VM in the GPU node pool. To open an in-guest shell, use SSH (see [Connect to Windows or Linux worker nodes with SSH](../ssh-connect-to-windows-and-linux-worker-nodes.md)).
 
 1. Confirm the GPU device is visible to the guest:
 
@@ -121,71 +118,35 @@ Repeat the steps in this section on each worker VM in the GPU node pool. To open
    0e:00.0 3D controller [0302]: NVIDIA Corporation Device [10de:2bb5] (rev a1)
    ```
 
-1. Make sure the worker VM has outbound HTTPS access to `packages.microsoft.com`.
-
-   If your environment requires an HTTPS proxy for outbound traffic, configure `tdnf` to use it. Replace `<proxy-url>` with the proxy that's permitted to reach `packages.microsoft.com`.
+1. Verify the driver is loaded and can see the GPU. The first `nvidia-smi` invocation must run as root so the driver can create the `/dev/nvidia*` device nodes; subsequent unprivileged calls work because the nodes are created with mode `0666`.
 
    ```bash
-   echo 'proxy=<proxy-url>' | sudo tee -a /etc/tdnf/tdnf.conf
+   lsmod | grep '^nvidia'
+   sudo nvidia-smi
    ```
 
-   > [!NOTE]
-   > `tdnf` reads its proxy from `/etc/tdnf/tdnf.conf`. The same proxy is required for Step 4 and for any future package updates on the worker VM.
+   Successful output from `sudo nvidia-smi` lists the NVIDIA RTX Pro 6000 with the installed driver version, which confirms the preinstalled driver is working.
 
-   Verify connectivity to the repository. If you configured a proxy above, pass it explicitly with `-x`; otherwise omit the `-x` flag:
-
-   ```bash
-   curl -sI -x <proxy-url> https://packages.microsoft.com/azurelinux/3.0/prod/nvidia/x86_64/ | head -1
-   ```
-
-   Expected response: `HTTP/2 200`.
-
-1. Enable the Azure Linux NVIDIA repository. By default, only the base, `ms-oss`, and `ms-non-oss` repos are configured - the `cuda-open` package lives in a separate NVIDIA repo that you must add once:
-
-   ```bash
-   sudo tee /etc/yum.repos.d/azurelinux-nvidia.repo > /dev/null <<'EOF'
-   [azurelinux-official-nvidia]
-   name=Azure Linux Official NVIDIA 3.0 x86_64
-   baseurl=https://packages.microsoft.com/azurelinux/3.0/prod/nvidia/x86_64
-   gpgkey=https://packages.microsoft.com/keys/microsoft.asc
-   gpgcheck=1
-   enabled=1
-   sslverify=1
-   EOF
-
-   sudo tdnf makecache
-   ```
-
-1. Install the build prerequisites and the NVIDIA driver in a single `tdnf` transaction so the kernel package and `cuda-open` resolve to matching versions. Despite the package name, `cuda-open` is the **driver** package with open kernel modules - it doesn't include the CUDA toolkit (`nvcc`), which is installed separately in Step 4.
-
-   ```bash
-   sudo tdnf install -y \
-     kernel kernel-devel kernel-headers kernel-drivers-gpu \
-     libdrm-devel gcc make glibc-devel \
-     cuda-open
-   ```
-
-   `cuda-open` is signed by Mariner Trusted Base, so the kernel modules load even with `lockdown=integrity` enabled.
-
-   > [!IMPORTANT]
-   > `cuda-open` is built against a specific kernel ABI (see the version suffix, for example `cuda-open-580.105.08-4_6.6.139.1.1.azl3`). If the install pulls in a newer kernel than the one currently running, you **must** reboot before loading the modules, or `modprobe nvidia` fails with `Module nvidia not found in directory /lib/modules/<running-kernel>`. Check with `uname -r` against `rpm -q kernel`, and run `sudo reboot` if they differ.
-
-1. Load the NVIDIA kernel modules and verify with `nvidia-smi`. The first invocation must run as root so the driver can create the `/dev/nvidia*` device nodes; subsequent unprivileged calls work because the nodes are created with mode `0666`.
+   If `lsmod` shows no `nvidia` modules, load them manually and rerun `nvidia-smi`:
 
    ```bash
    sudo modprobe nvidia
    sudo modprobe nvidia_uvm
    sudo modprobe nvidia_drm
-
-   lsmod | grep '^nvidia'
-   sudo nvidia-smi
    ```
-
-   Successful output from `sudo nvidia-smi` lists the NVIDIA RTX Pro 6000 with the installed driver version. At this point the driver is fully validated inside the worker VM.
 
 ## Step 4: Install the NVIDIA Container Toolkit on each GPU worker VM
 
 The driver makes the GPU usable from the worker VM's host OS, but containers still need a runtime hook to see `/dev/nvidia*` and the matching user-space libraries (`libcuda.so`, `libnvidia-ml.so`). The `nvidia-container-toolkit` package provides that hook and registers it with `containerd`.
+
+The `nvidia-container-toolkit` package is installed from `packages.microsoft.com`, so the worker VM needs outbound HTTPS access. If your environment requires an HTTPS proxy for outbound traffic, configure `tdnf` to use it before installing. Replace `<proxy-url>` with the proxy that's permitted to reach `packages.microsoft.com`:
+
+```bash
+echo 'proxy=<proxy-url>' | sudo tee -a /etc/tdnf/tdnf.conf
+```
+
+> [!NOTE]
+> `tdnf` reads its proxy from `/etc/tdnf/tdnf.conf`. The same proxy is required for any future package updates on the worker VM.
 
 Run on each GPU worker VM:
 
