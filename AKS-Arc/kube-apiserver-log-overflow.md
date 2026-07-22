@@ -5,8 +5,7 @@ ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/17/2025
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
 ---
 
 # Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs
@@ -74,4 +73,4 @@ exit
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)

@@ -4,10 +4,9 @@ description: Learn about scale requirements for AKS on Azure Local.
 ms.topic: limits-and-quotas
 ms.date: 09/24/2025
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.reviewer: abha
+ms.author: davidsmatlak
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 03/26/2024
-
 ---
 
 # Scale requirements for AKS on Azure Local
@@ -91,5 +90,5 @@ For more worker node sizes with GPU support, see the next section.
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local prerequisites](network-system-requirements.md)
 - [What's new in AKS on Azure Local](aks-whats-new-local.md)

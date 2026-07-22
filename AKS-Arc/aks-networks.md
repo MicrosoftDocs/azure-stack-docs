@@ -4,9 +4,9 @@ description: Learn how to create Arc-enabled logical networks for AKS enabled by
 ms.topic: how-to
 author: davidsmatlak
 ms.date: 11/17/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 04/01/2024
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ---
 
 # Create logical networks for Kubernetes clusters on Azure Local
@@ -20,7 +20,7 @@ After you install and configure Azure Local, you must create Arc VM logical netw
 Before you begin, make sure you have the following prerequisites:
 
 - Install and configure Azure Local. Make sure you have the custom location Azure Resource Manager ID, as this ID is a required parameter for creating a logical network.
-- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local](aks-hci-network-system-requirements.md).
+- Make sure that the logical network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see [Networking concepts in AKS on Azure Local](network-system-requirements.md).
 - Make sure you have an external VM switch that all the machines in your Azure Local cluster can access. By default, an external switch is created during the deployment of your Azure Local cluster that you can use to associate with the logical network you create.
 
 Run the following command to get the name of the external VM switch on your Azure Local cluster:

@@ -4,11 +4,10 @@ description: Learn how to deploy container images from a private container regis
 ms.topic: how-to
 ms.date: 12/12/2023
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.reviewer: rbaziwane
+ms.author: davidsmatlak
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 12/11/2023
 ms.custom: sfi-ropc-nochange
-
 ---
 
 # Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
@@ -181,5 +180,5 @@ To confirm that the pod was successfully created using the container image from 
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local prerequisites](network-system-requirements.md)
 - [What's new in AKS on Azure Local](/azure/azure-local/whats-new)

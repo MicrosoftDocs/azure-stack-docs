@@ -6,6 +6,7 @@ ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
 ms.lastreviewed: 01/30/2024
+ms.reviewer: srikantsarwa
 ---
 
 # Deploy a Kubernetes cluster by using the Azure portal
@@ -20,13 +21,13 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 ## Before you begin
 
 - Make sure that you have the following details from your on-premises infrastructure administrator:
-
   - **Azure subscription ID**: The Azure subscription ID where the Azure Arc resource bridge, the Azure Kubernetes Service (AKS) extension enabled by Azure Arc, and the custom location are created.
   - **Custom location ID**: The Azure Resource Manager ID of the custom location. Your infrastructure admin should give you Contributor access to the custom location. Custom location is a required parameter to create Kubernetes clusters.
   - **AKS logical network ID enabled by Azure Arc**: The Azure Resource Manager ID of the Azure Arc logical network. Your infrastructure admin should give you Contributor access to an AKS logical network enabled by Azure Arc. The logical network ID is a required parameter to create Kubernetes clusters.
+
 - Create a Microsoft Entra group and add members to it so that you can connect to the cluster from anywhere. All the members in the Microsoft Entra group have cluster administrator access to the AKS cluster enabled by Azure Arc.
 
-   Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS cluster enabled by Azure Arc by using `kubectl`. For more information about how to create Microsoft Entra groups and add users, see [Create Microsoft Entra groups by using the Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+  Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS cluster enabled by Azure Arc by using `kubectl`. For more information about how to create Microsoft Entra groups and add users, see [Create Microsoft Entra groups by using the Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ## Create a Kubernetes cluster
 
@@ -39,7 +40,6 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 1. On the **Basics** tab, configure the following options.
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-create-portal.png" alt-text="Screenshot that shows the Basics tab for cluster creation in the portal." lightbox="media/aks-create-clusters-portal/cluster-create-portal.png":::
-
    - **Project details**:
      - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Azure Arc resource bridge, the AKS extension enabled by Azure Arc, and the custom location.
      - Select an Azure resource group, such as **myResourceGroup**.
@@ -56,7 +56,6 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 
 1. Select **Next: Node pools** after configuration is finished.
 1. On the **Node pools** page, configure the following options:
-
    - **Control plane nodes:**
      - ⁠Use control plane nodes to host Kubernetes components. These nodes make global decisions about the cluster, such as scheduling containers and detecting and responding to cluster events. An example is starting up a new pod. For simplicity and reliability, run these important Kubernetes components in separate control plane nodes.
      - Leave the default values selected.
@@ -86,5 +85,5 @@ This article describes how to create Kubernetes clusters in Azure Local by using
 
 ## Related content
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local prerequisites](network-system-requirements.md)
 - [What's new in AKS on Azure Local](aks-whats-new-local.md)

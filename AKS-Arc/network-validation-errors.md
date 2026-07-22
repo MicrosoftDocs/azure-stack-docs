@@ -7,7 +7,6 @@ ms.topic: troubleshooting
 ms.date: 07/17/2025
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/16/2025
-
 ---
 
 # Troubleshoot network validation errors
@@ -39,7 +38,7 @@ Logical network IP addresses can't connect to management IP pool addresses, due 
 To resolve this error, you can take the following steps:
 
 - Make sure that the DNS servers specified in the Arc VM logical network can resolve the MOC cloud agent FQDN.
-- Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements).
+- Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](network-system-requirements.md#network-port-and-cross-vlan-requirements).
 
 ## InternetConnectivityError
 
@@ -58,7 +57,7 @@ This error indicates that the required URLs are not reachable from the AKS clust
 
 ### Mitigation
 
-To resolve this error, ensure that the logical network IP addresses have outbound internet access. If there's a firewall, ensure that the [AKS required URLs](aks-hci-network-system-requirements.md#firewall-url-exceptions) are accessible from the Arc VM logical network.
+To resolve this error, ensure that the logical network IP addresses have outbound internet access. If there's a firewall, ensure that the [AKS required URLs](network-system-requirements.md#firewall-url-exceptions) are accessible from the Arc VM logical network.
 
 ## InternetConnectivityError (in Arc Gateway scenario)
 
@@ -84,7 +83,7 @@ To resolve this error, you can take the following steps:
 - Confirm that proxy settings (if used) are correct and that the proxy can forward requests to `https://mcr.microsoft.com`.  
 - Test connectivity to `https://mcr.microsoft.com` from the control plane VM, either directly or via the configured proxy.
 
-For more information, see [Use Azure Arc Gateway with Azure Local](aks-hci-network-system-requirements.md#use-azure-arc-gateway-preview-with-azure-local).
+For more information, see [Use Azure Arc Gateway with Azure Local](network-system-requirements.md#use-azure-arc-gateway-preview-with-azure-local).
 
 ## VMNotReachableError
 
@@ -105,7 +104,7 @@ The Arc VM logical network is not reachable from management IP pool addresses.
 To resolve this error, you can take the following steps:
 
 - Make sure that the management IP pool addresses can reach the logical network IP addresses.
-- For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements).
+- For a detailed list of ports that need to be opened, see [AKS network port and cross-VLAN requirements](network-system-requirements.md#network-port-and-cross-vlan-requirements).
 
 ## DNSResolutionError
 
