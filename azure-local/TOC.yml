@@ -308,12 +308,18 @@ items:
       href: update/solution-builder-extension.md
     - name: Understand update phases
       href: update/update-phases-23h2.md
+    - name: Manage update settings
+      href: update/update-settings.md
     - name: Update via PowerShell
       href: update/update-via-powershell-23h2.md
     - name: Update via PowerShell with limited connectivity
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
+    - name: Update via PowerShell
+      href: update/update-via-powershell-23h2.md
+    - name: Update with limited connectivity
+      href: update/import-discover-updates-offline-23h2.md
     - name: Review best practices 
       href: update/update-best-practices.md
     - name: Troubleshoot updates
@@ -839,6 +845,8 @@ items:
         href: plan/fiber-channel-no-backup-disaggregated-pattern.md
       - name: Fiber Channel disaggregated pattern with backup network
         href: plan/fiber-channel-with-backup-disaggregated-pattern.md
+      - name: iSCSI 6-NIC disaggregated pattern
+        href: plan/iscsi-6-network-adapters-disaggregated-pattern.md
     - name: Review Azure Arc gateway for Azure Local
       href: deploy/deployment-azure-arc-gateway-overview.md
     - name: Review Azure Private Endpoints for Azure Local
@@ -938,7 +946,7 @@ items:
       href: update/update-via-powershell-23h2.md
     - name: Opt in to update to 12.25xx from 11.xxxx
       href: update/update-opt-enable.md
-    - name: Update via PowerShell with limited connectivity
+    - name: Update with limited connectivity
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
@@ -1106,6 +1114,8 @@ items:
         href: manage/repair-server-disaggregated.md
       - name: Configure proxy 
         href: manage/configure-proxy-settings-23h2.md
+      - name: Configure local availability zones
+        href: manage/configure-local-availability-zones-disaggregated.md
       - name: Suspend and resume
         href: manage/suspend-resume-cluster-maintenance.md
       - name: Use dashboard to manage at-scale
