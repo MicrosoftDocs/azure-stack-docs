@@ -5,9 +5,9 @@ ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/21/2025
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
 ---
+
 # Troubleshoot issue where AKS Arc telemetry pod consumes too much memory and CPU
 
 ## Symptoms
@@ -101,4 +101,4 @@ kubectl get pods -l app=akshci-telemetry -n kube-system --kubeconfig "./kubeconf
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)

@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 06/30/2025
 ms.custom: fasttrack-edit
 ms.author: davidsmatlak 
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 06/30/2025
 
 # Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
