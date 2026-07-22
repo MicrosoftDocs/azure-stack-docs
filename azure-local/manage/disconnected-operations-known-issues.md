@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 07/15/2026
+ms.date: 07/22/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -22,6 +22,26 @@ These release notes are updated continuously to include critical issues and requ
 
 There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when the update is available.
 
+### Share credentials can be exposed in observability logs during indirect log collection
+
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet without filtering roles, the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters are captured by the observability component. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+
+**Mitigation:**
+
+When you run `Invoke-AzureLocalDisconnectedLogCollection`, always specify the `-FilterByRole` parameter and omit the observability roles (`ObservabilityLogmanTraces` and `ObservabilityVolume`) from the list of roles that you collect. For example:
+
+```powershell
+Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-2) `
+    -ToDate (Get-Date) `
+    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03") `
+    -AzureLocalNodeCredential (Get-Credential -UserName "Admin" -Message "Enter Azure Local node admin credentials") `
+    -FilterByRole "ALM","ArcAgent","BareMetal","CommonInfra","DeploymentLogs","ECE","Extension","FleetDiagnosticsAgent","HCICloudService","DownloadService","Health","HostNetwork","MOC_ARB","NC","OEMDiagnostics","OSUpdateLogs","RemoteSupportAgent","URP" `
+    -SaveToPath "\\fileserver\logshare\AzureLocalLogs" `
+    -ShareCredential (Get-Credential -UserName "fileuser" -Message "Enter SMB share credentials")
+```
+
+For the full list of available roles and their descriptions, see [Roles available for filtering logs](./collect-logs.md#roles-available-for-filtering-logs).
+
 ::: moniker-end
 
 ::: moniker range="=azloc-2604"
@@ -30,11 +50,11 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
-Workload clusters in air-gapped environments fail to deploy in rare conditions. 
+Workload clusters in air-gapped environments fail to deploy in rare conditions.
 
 **Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
 
-**Mitigation**: 
+**Mitigation**:
 
 1. Connect to the first node of the Azure Local cluster.
 1. Open an elevated PowerShell session (Run as Administrator).
@@ -45,6 +65,7 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
             -actionProviders "StorageContainer" `
             -actionOperations "all"
    ```
+
 1. Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
 
 ::: moniker-end
@@ -88,14 +109,14 @@ This error occurs because the update package is signed with a different certific
     & "$($targetFolder)\ImportCodeSignCertsOffline.ps1" -CertsFolder $targetFolder -BitLockerRecoveryKeys $recoveryKeys
 ```
 
- - Wait 10 minutes or more
- - From the same PowerShell context, run:
-   
+- Wait 10 minutes or more
+- From the same PowerShell context, run:
+
    ```powershell
         Get-ApplianceUpdateHistory                   
    ```
 
- - The update history after the appliance virtual machine (VM) restarts might show an error like this: 
+- The update history after the appliance virtual machine (VM) restarts might show an error like this:
 
    ```
     Type             : UpdatePreparation
@@ -109,16 +130,17 @@ This error occurs because the update package is signed with a different certific
     PendingTasks     : {}
     ErrorReports     : {}
    ```
-   
- - If the error *File signature on Manifest.xml is invalid* no longer appears, the issue is resolved and you can continue the update process.
- - To continue the update process, modify and run this command:
+
+- If the error *File signature on Manifest.xml is invalid* no longer appears, the issue is resolved and you can continue the update process.
+- To continue the update process, modify and run this command:
 
     ```powershell
         $updateTargetVersion = ""
         Wait-AppliancePreUpdate -TargetVersion $updateTargetVersion
         Start-ApplianceUpdate -TargetVersion $updateTargetVersion -Wait
      ```
- - The process takes about 3 hours to finish.
+
+- The process takes about 3 hours to finish.
 
 ### Bootstrap or deployment fails due to invalid certificates (exception)
 
