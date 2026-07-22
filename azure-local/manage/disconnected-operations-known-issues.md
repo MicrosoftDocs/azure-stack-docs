@@ -24,7 +24,7 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 ### Share credentials can be exposed in observability logs during indirect log collection
 
-When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet without filtering roles, the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters are captured by the observability component. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet without filtering roles, the observability component captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
 
 **Mitigation:**
 
@@ -674,7 +674,7 @@ The disconnected operations appliance uses 78 GB of memory. If your node has les
 
 ### Deployment failure
 
-In virtual environments, deployments can time out, and services might not reach 100% convergence, even after 8 hours.
+In virtual environments, deployments can time out, and services might not reach 100% convergence, even after eight hours.
 
 **Mitigation:**
 
@@ -807,11 +807,11 @@ az aksarc nodepool scale
 
 #### Scale limitation
 
-In the current Azure Local disconnected operations scale envelope, running more than 20 workload clusters can affect control plane stability. Under sustained load, the disconnected operations control plane may become less responsive over time, which can impact manageability and reliability at higher cluster counts.
+In the current Azure Local disconnected operations scale envelope, running more than 20 workload clusters can affect control plane stability. Under sustained load, the disconnected operations control plane might become less responsive over time, which can impact manageability and reliability at higher cluster counts.
 
 **Mitigation**:
 
-Until the supported scale range is expanded, Microsoft recommends limiting the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
+Until the supported scale range is expanded, Microsoft recommends you limit the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
 
 #### Kubernetes cluster list empty under Azure Local (Kubernetes clusters)
 
@@ -887,7 +887,7 @@ If the portal doesn't work, use Azure CLI or REST API to create and list subscri
 
 #### Manage clouds
 
-When you use the `az cloud` commands, such as `az cloud register`, `az cloud show`, or `az cloud set`, you might encounter issues if you use uppercase letters in the cloud name.
+If you use uppercase letters in the cloud name when you use the `az cloud` commands, such as `az cloud register`, `az cloud show`, or `az cloud set`, you might encounter issues.
 
 **Mitigation**:
 
@@ -895,7 +895,7 @@ Use only lowercase letters for cloud names in `az cloud` subcommands, such as `r
 
 #### Create subscriptions
 
-Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions. This makes the operator the default owner of newly created subscriptions without a way of changing the owner currently.
+Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions. This limitation means the operator is the default owner of newly created subscriptions without a way to change the owner.
 
 **Mitigation**:
 
