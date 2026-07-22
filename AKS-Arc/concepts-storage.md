@@ -6,8 +6,7 @@ ms.topic: concept-article
 ms.date: 06/16/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
 # Intent: As an IT Pro, I need to understand the storage options available for applications in AKS Arc so that I can optimize how to best to store and retrieve data.
 # Keyword: storage options PV claims
 

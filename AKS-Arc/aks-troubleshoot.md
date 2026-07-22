@@ -6,8 +6,7 @@ author: davidsmatlak
 ms.date: 09/30/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 07/29/2025
-ms.reviewer: rcheeran
-
+ms.reviewer: srikantsarwa
 ---
 
 # Troubleshoot issues in AKS enabled by Azure Arc
@@ -29,7 +28,6 @@ To open a support request, see the [Get support](help-support.md) article for in
 | Network configuration issues | [Use diagnostic checker](aks-arc-diagnostic-checker.md) |
 | Kubernetes steady state   | [Resolve issues due to out-of-band deletion of storage volumes](delete-storage-volume.md) |
 | Kubernetes steady state   | [Repeated Entra authentication prompts when running kubectl with Kubernetes RBAC](entra-prompts.md) |
-| Release validation     | [Azure Advisor upgrade recommendation message](azure-advisor-upgrade.md) |
 | Network validation | [Network validation error due to .local domain](network-validation-error-local.md) |
 | Network validation | [Troubleshoot BGP with FRR in AKS Arc environments](connectivity-troubleshoot.md) |
 | Disable Windows node pools | [Disable Windows node pools](disable-windows-nodepool.md) | 
