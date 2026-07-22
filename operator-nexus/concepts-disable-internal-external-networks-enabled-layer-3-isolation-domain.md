@@ -1,7 +1,7 @@
 ---
 title: Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
 description: Learn about disabling internal/external networks in an enabled layer 3 isolation domain in Azure Operator Nexus.
-author: bhumikashah
+author: MSbhumika-shah
 ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: concept-article

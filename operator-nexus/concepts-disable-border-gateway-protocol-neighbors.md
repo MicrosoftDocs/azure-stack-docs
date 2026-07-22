@@ -1,7 +1,7 @@
 ---
 title: Disable the Border Gateway Protocol neighbors
 description: Learn how to use read write commands in the Nexus Network Fabric to disable the Border Gateway Protocol.
-author: rmandawale
+author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli

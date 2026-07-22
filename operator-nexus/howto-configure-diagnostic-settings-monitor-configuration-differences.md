@@ -1,7 +1,7 @@
 ---
 title: Configure Diagnostic Settings and Monitor Configuration Differences in Azure Operator Nexus Network Fabric
 description: Learn about the process of configuring diagnostic settings and monitoring configuration differences in Azure Operator Nexus Network Fabric.
-author: soumyamaitra
+author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: how-to

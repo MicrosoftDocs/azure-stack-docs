@@ -6,7 +6,7 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 02/16/2026
-author: soumyamaitra
+author: neilverse
 ms.author: soumyamaitra
 ---
 

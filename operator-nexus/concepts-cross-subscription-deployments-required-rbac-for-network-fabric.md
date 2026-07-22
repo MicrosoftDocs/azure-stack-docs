@@ -1,7 +1,7 @@
 ---
 title: Azure Operator Nexus - Cross-subscription deployments and required permissions for Network Fabric
 description: Cross-subscription deployments and required permissions for Network Fabric
-author: rmandawale
+author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: concept-article

@@ -6,7 +6,7 @@ ms.custom: how-to
 ms.topic: how-to
 ms.date: 11/01/2024
 ms.author: soumyamaitra
-author: soumyamaitra
+author: neilverse
 ---
 
 # Gather trace IDs for pods stuck in 'ContainerCreating'

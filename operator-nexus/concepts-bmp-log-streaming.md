@@ -1,7 +1,7 @@
 ---
 title: BMP Log Streaming in Azure Operator Nexus Network Fabric 
 description: An overview of BGP Monitoring Protocol (BMP), its importance, and key components for effective log monitoring.
-author: soumyamaitra
+author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: concept-article

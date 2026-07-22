@@ -1,7 +1,7 @@
 ---
 title: "Azure Operator Nexus Network Fabric - Secret Rotation v1"
 description: Learn about the password rotation v1 process in Azure Operator Nexus Network Fabric.
-author: rmandawale
+author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: concept-article

@@ -1,7 +1,7 @@
 ---
 title: 'Azure Operator Nexus: Network Fabric Option A and Option B'
 description: Learn about Azure Operator Nexus - Network Fabric Option A and Option B.
-author: bhumikashah
+author: MSbhumika-shah
 ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: concept-article

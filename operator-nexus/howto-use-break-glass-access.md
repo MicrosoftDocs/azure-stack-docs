@@ -1,7 +1,7 @@
 ---
 title:  How to use Method D v2.0 secure break-glass access
 description: Process of using Method D v2.0 break glass access
-author: rmandawale
+author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to

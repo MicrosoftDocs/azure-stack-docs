@@ -5,7 +5,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/07/2024
-author: bhumikashah
+author: MSbhumika-shah
 ms.author: bhumikashah
 ---
 

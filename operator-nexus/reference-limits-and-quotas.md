@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus - Limits and Quotas
 description: Limits and quotas that apply to Azure Operator Nexus.
-author: adam
-ms.author: Adam
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/19/2026

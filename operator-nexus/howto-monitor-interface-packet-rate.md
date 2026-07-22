@@ -1,7 +1,7 @@
 ---
 title: How to monitor interface In and Out packet rate for Network Fabric Devices via Azure portal
 description: Learn how to track incoming and outgoing packet rates for network fabric devices on Azure portal for effective network monitoring.
-author: soumyamaitra
+author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: how-to

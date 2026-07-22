@@ -1,7 +1,7 @@
 ---
 title: "Azure Operator Nexus: observability using Azure Monitor"
 description: Operator Nexus uses Azure Monitor and collects and aggregates data in Azure Log Analytics Workspace (LAW). The analysis, visualization, and alerting is performed on this collected data.
-author: soumyamaitra
+author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: concept-article

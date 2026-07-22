@@ -2,7 +2,7 @@
 title: "Azure Operator Nexus: Availability"
 description: Overview of the availability features of Azure Operator Nexus.
 author: udchedalla
-ms.author: udchedalla
+ms.author: uchedalla
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 02/15/2024
