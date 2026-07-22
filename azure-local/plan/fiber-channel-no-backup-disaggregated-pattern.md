@@ -57,12 +57,12 @@ For the full list of switch capabilities required for leaf-spine Clos deployment
 
 ## Host NIC configuration
 
-Each server node connects to the network through four network adapter ports. Each server has a dual-port motherboard Open Compute Project (OCP) network adapter and a dual-port Peripheral Component Interconnect Express (PCIe) network adapter.
+Each server node connects to the network through four network adapter ports across two dual-port network adapters.
 
 In this pattern:
 
-- The **OCP dual-port adapter** is used for the management and compute intent.
-- The **PCIe dual-port adapter** is used for the cluster networks.
+- Use **two network adapter ports** for the management and compute intent.
+- Use **two network adapter ports** for the cluster networks.
 
 ### Baseboard Management Controller (BMC) network adapter
 
@@ -74,8 +74,8 @@ The following table shows the host network port allocation per leaf physical swi
 
 | Port range | Function | Leaf A VLANs | Leaf B VLANs | Notes |
 |---|---|---|---|---|
-| 1-16 | Management and compute OCP ports | VLAN 7 for management. VLANs 100 and 200 for tenants. | VLAN 7 for management. VLANs 100 and 200 for tenants. | Native VLAN 7 in access mode. VLANs 100 and 200 for tenants in trunk mode. |
-| 17-32 | Cluster network PCIe ports | VLAN 1711 for cluster network 1. | VLAN 1712 for cluster network 2. | PCIe port 1 for cluster network 1. PCIe port 2 for cluster network 2. Both VLANs in access mode. |
+| 1-16 | Management and compute ports | VLAN 7 for management. VLANs 100 and 200 for tenants. | VLAN 7 for management. VLANs 100 and 200 for tenants. | Native VLAN 7 in access mode. VLANs 100 and 200 for tenants in trunk mode. |
+| 17-32 | Cluster network ports | VLAN 1711 for cluster network 1. | VLAN 1712 for cluster network 2. | Port 1 for cluster network 1. Port 2 for cluster network 2. Both VLANs in access mode. |
 | 33-48 | Available for additional network intents | N/A | N/A | Not used in this pattern. |
 | 49 | Internal BGP (iBGP) peering between leaf switches | N/A | N/A | Layer 3 routing. |
 | 50 | Reserved | N/A | N/A | N/A |
@@ -84,15 +84,15 @@ The following table shows the host network port allocation per leaf physical swi
 
 ## Network ATC intents
 
-In disaggregated deployments, Network ATC manages only the management and compute intent. The cluster networks use standalone Peripheral Component Interconnect Express (PCIe) ports (not managed by Network ATC) to maximize Server Message Block (SMB) Multichannel for Cluster Shared Volume (CSV) and live migration traffic without requiring a storage intent.
+In disaggregated deployments, Network ATC manages only the management and compute intent. The cluster networks use standalone network ports (not managed by Network ATC) to maximize Server Message Block (SMB) Multichannel for Cluster Shared Volume (CSV) and live migration traffic without requiring a storage intent.
 
 - **Management and compute intent** — Switch Embedded Teaming (SET) switch with the management virtual network interface.
 
 > [!NOTE]
 > In disaggregated deployments, the cluster networks use standalone network ports and are not managed by any Network ATC intent. The configuration of these cluster networks is done automatically once the subnets and VLANs information are provided by the user, either through the Azure portal or via ARM template.
 
-- **Cluster network 1** — Standalone network adapter (PCIe port 1).
-- **Cluster network 2** — Standalone network adapter (PCIe port 2).
+- **Cluster network 1** — Standalone network adapter (port 1).
+- **Cluster network 2** — Standalone network adapter (port 2).
 
 ## Quality of Service (QoS) settings
 
