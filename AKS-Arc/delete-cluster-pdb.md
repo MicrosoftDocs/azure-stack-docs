@@ -6,7 +6,6 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 04/01/2025
 ms.reviewer: leslielin
-
 ---
 
 # Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
@@ -17,7 +16,7 @@ When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubern
 
 ## Mitigation
 
-This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-23h2.md#release-2503).
+This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-local.md#release-2503).
 
 - **For deleting an AKS cluster** with a PodDisruptionBudget: If you're on an older build, please update to Azure Local, version 2503. Once you update to 2503, you can retry deleting the AKS cluster. File a support case if you're on the 2503 release and your AKS cluster is not deleted after at least one retry.
 - **For deleting a nodepool** with a PodDisruptionBudget: By design, the nodepool isn't deleted if a PodDisruptionBudget exists, to protect applications. Use the following workaround to delete the PDB resources and then retry deleting the nodepool.
@@ -73,4 +72,4 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)
