@@ -5,8 +5,7 @@ ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/27/2025
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
 ---
 
 # Troubleshoot AKS Arc cluster stuck in "Upgrading" state

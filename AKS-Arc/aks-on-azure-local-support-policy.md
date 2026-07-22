@@ -91,7 +91,7 @@ Microsoft doesn't provide technical support for questions about how to use Kuber
 - How to apply third-party or open-source software packages or tools.
 - Third-party open-source projects that aren't provided as part of the Kubernetes control plane or deployed when AKS Arc clusters are created. These projects might include Istio, Helm, Envoy, or others.
 - Third-party closed-source software. This software can include security scanning tools and networking devices or software.
-- Network customizations other than the ones listed in the [AKS Arc documentation](aks-hci-network-system-requirements.md).
+- Network customizations other than the ones listed in the [AKS Arc documentation](network-system-requirements.md).
 
 > [!NOTE]
 > Microsoft Support can advise on cluster functionality, customization, and tuning in AKS Arc; for example, Kubernetes operations issues and procedures.
@@ -142,7 +142,7 @@ For node pools affected by a security flaw, Microsoft notifies you with details 
 
 Although you can sign into your Azure Local clusters change the node pool VMs, this operation is discouraged because changes can make an AKS Arc cluster unsupportable.
 
-You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](aks-hci-network-system-requirements.md).
+You can only customize network settings using AKS Arc defined logical networks. You can't customize network settings at the NIC level of the node pools. AKS Arc has egress requirements for specific endpoints, to control egress and ensure the necessary connectivity. For more information, see [AKS Arc system requirements](network-system-requirements.md).
 
 ## Stopped or disconnected AKS Arc clusters
 
