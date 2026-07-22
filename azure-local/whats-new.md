@@ -5,13 +5,69 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 07/10/2026
+ms.date: 07/21/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2607"
+
+## Features and improvements in 2607
+
+The July 2026 release of hyperconverged deployments of Azure Local is version **12.2607.1003.69**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2607 release, all new and existing deployments of Azure Local run the new OS version **26100.33158** (download from the Azure portal).
+  
+  - You also need a driver that's compatible with OS version **26100.33158** or Windows Server 2025.
+  
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.29** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.10** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **Azure Local VMs**:
+
+  - **DNS server and gateway appliances for workloads can be deployed as Azure Local VMs (GA)**: You can now assign Azure Local VMs the DNS server or gateway IP address of a workload logical network. This capability enables you to host Active Directory Domain Services (AD DS) and DNS services, or Network Virtual Appliance (NVA) gateway appliances, directly on Azure Local. This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc.
+
+  - **Full file system location displayed for storage paths**: The storage path property now displays the complete file system location, including the GUID folder, for both existing and new storage paths. This change helps you see exactly where workloads are placed.
+
+- **Azure Migrate**:
+
+  Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
+  - **New built-in roles for Azure Local migrations**: Azure Migrate introduces new Azure role-based access control (RBAC) roles that provide purpose-built access for configuring, performing, and monitoring Azure Local migrations. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md).
+
+  - **Terraform support for replication and migration (preview)**: You can now use Terraform to replicate and migrate VMs to Azure Local through Azure Migrate. This feature is currently in preview. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md).
+
+- **SAN integration using iSCSI is now generally available (GA) for hyperconverged deployment**: You can now integrate external storage area network (SAN) storage from supported vendors with Azure Local using Internet Small Computer Systems Interface (iSCSI), in addition to Fibre Channel (FC). For more information, see [Connect an external storage array to Azure Local](./deploy/enable-external-storage.md).
+
+- **Confidential VM on Azure Local (preview)**: Confidential VM functionality is now in public preview on Azure Local, powered by AMD SEV-SNP technology. This capability extends workload attestation and memory-encryption protections to your VMs.
+
+- **Security baseline enforces 14-character minimum password length**: Starting with this release, the security baseline enforces a 14-character minimum password length for local account password requirements. This change helps align with security industry standards and compliance with the Azure Security Baseline applicable to the solution.
+
+- **Disaggregated deployments**:
+
+  - **SAN integration using iSCSI is now generally available (GA) for disaggregated deployment**: Azure Local now supports iSCSI-connected external SAN storage in disaggregated deployments. This enables customers to connect and manage supported SAN arrays over iSCSI, expanding storage connectivity options beyond Fibre Channel. For more information, see [Install the Azure Local operating system for disaggregated deployments](./deploy/deployment-install-os-disaggregated.md).
+
+  - **Disaggregated deployment validation**: Machine validation now fails for disaggregated deployments that use external storage area networks (SANs) from unsupported vendors. The deployment wizard also prevents selection of unsupported vendor logical unit numbers (LUNs). For more information, see [Vendor array-side configuration](./deploy/enable-external-storage.md#vendor-array-side-configuration).
+
+  - **Configure local availability zones for disaggregated deployments**: You can now use PowerShell to configure local availability zones for disaggregated deployments, and use the Azure portal to create Azure Local VMs within those zones. For more information, see [Configure local availability zones for disaggregated deployments](./manage/configure-local-availability-zones-disaggregated.md).
+
+- **Update management**:
+
+  - **Download update packages directly from the Azure portal**: You can now download Azure Local update packages directly from the Azure portal. This capability improves support for limited-connectivity and offline update scenarios. For more information, see [Import and discover update packages for limited connectivity](./update/import-discover-updates-offline-23h2.md).
+
+  - **Updates for newer versions**: You might now see newer versions of your currently installed version offered as updates. You can review the changes to determine applicability.
+
+::: moniker-end
 
 ::: moniker range="=azloc-2606"
 
@@ -199,7 +255,7 @@ This release includes various reliability improvements and other bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2601"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2601
 
@@ -254,10 +310,6 @@ This release includes various reliability improvements and other bug fixes.
 
 - **Azure Migrate now supports registering a new target appliance**: If the original target appliance becomes unresponsive or enters a bad state, you can register a new one and continue migrations without creating a new Azure Migrate project. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#january-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 ## Features and improvements in 2512
 
 The December 2025 release of hyperconverged deployments of Azure Local is version **12.2512.1002.16**. For more information, see [Release information summary](./release-information-23h2.md).
@@ -266,7 +318,7 @@ This release includes various reliability improvements and other bug fixes.
 
 - **OS changes**:
 
-  - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all the new and existing deployments of Azure Local run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
+  - The 2504 release introduced a new operating system for Azure Local deployments. From 2512 onwards, all new and existing deployments of Azure Local run the new OS version **26100.7462**. You can download the 2512 OS image from the Azure portal.
 
     - You also need a driver that's compatible with OS version **26100.7462** or Windows Server 2025. If a compatible driver isn't available, you can use the 2503 image.
 

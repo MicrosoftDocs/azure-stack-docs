@@ -27,6 +27,9 @@ Before you begin, make sure you complete the following steps:
 - Create a LUN with a minimum size of 250 GB for the infrastructure volume.
 - Create a LUN with a minimum size of 20 GB for performance history.
 
+ > [!NOTE]
+ > Sysprep is not supported for the operating system.
+
 ## Boot and install the operating system
 
 To install the operating system, follow these steps:
@@ -46,7 +49,7 @@ To install the operating system, follow these steps:
     > [!NOTE]
     > Upgrade installations aren't supported in this release of the operating system.
 
-   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the type selection page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-which-type.png":::
 
 1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive on which the operating system is installed, and then select **Next**.
 
@@ -138,10 +141,10 @@ Follow these steps to configure the operating system using SConfig:
 
 1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
-1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
-
     > [!NOTE]
-    > This step doesn't apply to a machine repair operation.
+    > Using underscore "_" in the computer name is not supported as it impacts storage path creation.
+
+1. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
 1. Restart the machines.
 
@@ -169,6 +172,8 @@ If you don't domain join beforehand, the machines are automatically joined to a 
 
 You must complete the following steps for connecting to the SAN on every machine.
 
+# [FC](#tab/fc)
+
 1. Install the drivers for your fibre channel (FC) HBA vendor and model. Here's a generic example that uses `pnputil` to install the driver. Consult your hardware partner's documentation for details about driver installation.
 
     ```cmd
@@ -192,6 +197,102 @@ You must complete the following steps for connecting to the SAN on every machine
     ```
    > [!IMPORTANT]
    > Don't initialize the drives, as the deployment expects the drive type to be RAW!
+
+# [iSCSI](#tab/iscsi)
+
+Azure Local only supports dedicated adapters for iSCSI.
+
+1. Install the drivers for your network adapters that you will use for iSCSI. 
+
+   > [!IMPORTANT]
+   > Do not use the inbox drivers
+
+1. Assign an IP Address to each adapter and disable DNS client registration for that adapter.
+
+   ```powershell
+   $adapter1=get-netadapter |? name -eq "ethernet 3"
+   New-NetIPAddress -IPAddress 100.68.120.11 -PrefixLength 25 -InterfaceIndex $adapter1.ifindex
+   Set-DnsClient -InterfaceIndex $adapter1.ifindex -RegisterThisConnectionsAddress $false
+
+   $adapter2=get-netadapter |? name -eq "ethernet 4"
+   New-NetIPAddress -IPAddress 100.68.120.141 -PrefixLength 25 -InterfaceIndex $adapter2.ifindex
+   Set-DnsClient -InterfaceIndex $adapter2.ifindex -RegisterThisConnectionsAddress $false
+   ```
+
+1. Validate connectivity from each adapter to your target IP address.
+
+   ```powershell
+   ping -S <sourceIP A> TargetIPA
+   ping -S <sourceIP B> TargetIPB
+   ```
+
+1. (Optional) If routing is required for your iSCSI network, you must configure a static route for each adapter.
+
+   ```powershell
+   New-NetRoute -DestinationPrefix "100.68.121.0/24" -InterfaceIndex $adapter1.ifindex -NextHop "100.68.120.1"
+   New-NetRoute -DestinationPrefix "100.68.122.0/24" -InterfaceIndex $adapter2.ifindex -NextHop "100.68.120.129"
+   ```
+
+1. Configure the iSCSI service and enable automatic startup.
+
+   ```powershell
+   Start-Service MSiSCSI
+   Set-Service  MSiSCSI -StartupType Automatic
+   ```
+
+1. Enable MPIO for iSCSI using default policy (round robin). For more information, see [vendor specific MPIO configuration](./enable-external-storage.md).
+
+   ```powershell
+   Enable-MSDSMAutomaticClaim -BusType iSCSI
+   ```
+
+1. Configure the iscsi initiator.
+
+   ```powershell
+   $TargetIP1="100.68.121.100"     # iSCSI target portal 1
+   $TargetIP2="100.68.122.100"      # iSCSI target portal 2
+   $LocalIP1=get-netipaddress -InterfaceIndex $adapter1.ifindex    # local NIC/IP for path 1
+   $LocalIP2=get-netipaddress -InterfaceIndex $adapter2.ifindex    # local NIC/IP for path 2
+   ```
+
+1. Add the target portal for each network path.
+
+   ```powershell
+   New-IscsiTargetPortal -TargetPortalAddress $TargetIP1 -InitiatorPortalAddress $LocalIP1.IPAddress[1] 
+   New-IscsiTargetPortal -TargetPortalAddress $TargetIP2 -InitiatorPortalAddress $LocalIP2.IPAddress[1]
+   $targets = Get-IscsiTarget | Where-Object { $_.IsConnected -eq $false -or $_.IsConnected -eq $true } 
+   ```
+
+1. Collect initiator identifiers and connect with your SAN administrator to configure LUN masking.
+
+   ```powershell
+   (Get-InitiatorPort | Where-Object ConnectionType -eq 'iSCSI').NodeAddress
+   ```
+
+1. (Optional) Set credentials for CHAP authentication.
+
+   ```powershell
+   $ChapUser = "chap-user"
+   $ChapSecret = "change-me"
+   ```
+
+1. Connect to the target on each network path.
+
+   ```powershell
+   foreach ($target in $targets) {
+   Connect-IscsiTarget -NodeAddress $target.NodeAddress -TargetPortalAddress $TargetIP1 -InitiatorPortalAddress $LocalIP1.IPAddress[1]  -IsPersistent $true -IsMultipathEnabled $true #-AuthenticationType ONEWAYCHAP -ChapUsername $ChapUser -ChapSecret $ChapSecret
+   Connect-IscsiTarget -NodeAddress $target.NodeAddress -TargetPortalAddress $TargetIP2 -InitiatorPortalAddress $LocalIP2.IPAddress[1]  -IsPersistent $true -IsMultipathEnabled $true #-AuthenticationType ONEWAYCHAP -ChapUsername $ChapUser -ChapSecret $ChapSecret
+   }    
+   ```
+1. Confirm you can see the LUNs before you proceed with Arc registration.
+
+   ```powershell
+   Get-PhysicalDisk
+   ```
+   > [!IMPORTANT]
+   > Do not initialize the drives, as the deployment expects the drive type to be RAW!
+   
+---
 
 ## Next steps
 

@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 06/19/2026
+ms.date: 07/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 ::: moniker range=">=azloc-24113"
 
-This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. You can download Azure Local solution update as a static payload, then copy or transfer it to multiple instances, and import it using PowerShell. Do these actions before you start an update to reduce the amount of data downloaded during the update.
+This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. You can download the Azure Local solution update as a static payload by using the Azure portal or PowerShell. Then, copy or transfer it to multiple instances and import it by using PowerShell. To reduce the amount of data downloaded during the update, complete these steps before you start an update.
 
 The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Arc resource bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
@@ -74,23 +74,50 @@ For more information on the release cadence, see [Azure Local release informatio
 > [!NOTE]
 > You might need to wait up to 24 hours after the release for the latest version of the CombinedSolutionBundle and its SHA256 hash to be available.
 
-## Step 1: Download Solution update bundle
+## Download solution update bundle (Azure portal)
 
-1. Download the bundle and note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table. Run this command:
+Follow these steps to download the solution update bundle directly from the Azure portal.
+
+1. Sign in to the [Azure portal](https://portal.azure.com/) with your Azure account credentials.
+
+1. In the Azure portal search bar at the top, enter **Azure Local**. As you type, the portal suggests related resources and services. Select **Azure Local** under the **Services** category.
+
+   :::image type="content" source="./media/import-discover-updates-offline-23h2/search-azure-local.png" alt-text="Screenshot that shows how to search for Azure Local in the Azure portal." lightbox="./media/import-discover-updates-offline-23h2/search-azure-local.png":::
+
+   After you select **Azure Local**, you're directed to the Azure Local **Get started** page, with the **Get started** tab selected by default.
+
+1. On the **Get started** tab, under the **Download software** tile, select **Download**, and then select **Download Azure Local update**.
+
+   :::image type="content" source="./media/import-discover-updates-offline-23h2/download-azure-local-update.png" alt-text="Screenshot that shows the Download Azure Local update option under the Download software tile." lightbox="./media/import-discover-updates-offline-23h2/download-azure-local-update.png":::
+
+1. On the **Azure Local package** page, select your current solution version.
+
+   :::image type="content" source="./media/import-discover-updates-offline-23h2/select-solution-version.png" alt-text="Screenshot that shows the Azure Local package page with the option to select a solution version." lightbox="./media/import-discover-updates-offline-23h2/select-solution-version.png":::
+
+1. Select an eligible update, and then select **Download package**.
+
+1. Accept the notice, and then select **Download package**.
+
+## Download solution update bundle (PowerShell)
+
+Download the bundle from the [Solution update bundle](#solution-update-bundle) table. Run this command:
 
    ```PowerShell
    # Download the CombinedSolutionBundle
    Invoke-WebRequest -Uri "<download URI>" -OutFile "C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\CombinedSolutionBundle.<build number>.zip"
    ```
 
-1. Check the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
+## Import the solution update bundle
+
+> [!NOTE]
+> Complete these steps regardless of whether you downloaded the **CombinedSolutionBundle** by using the Azure portal or PowerShell.
+
+1. Note the SHA256 hash from the [Solution update bundle](#solution-update-bundle) table and check the SHA256 hash of the downloaded **CombinedSolutionBundle**. Run this command:
 
    ```PowerShell
    # Check the SHA256 hash of the downloaded CombinedSolutionBundle
    Get-FileHash -Path "<path to CombinedSolutionBundle.zip>"
    ```
-
-## Step 2: Import the Solution update bundle
 
 1. Create a folder for the update service to discover in the infrastructure volume of your system. Run this command:
 
@@ -99,9 +126,9 @@ For more information on the release cadence, see [Azure Local release informatio
    New-Item C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import -ItemType Directory
    ```
 
-1. Copy the CombinedSolutionBundle you downloaded to the folder you created.
+1. Copy the **CombinedSolutionBundle** you downloaded to the folder you created.
 
-1. Extract the contents of the CombinedSolutionBundle to the Solution subfolder. Run this command:
+1. Extract the contents of the **CombinedSolutionBundle** to the **Solution** subfolder. Run this command:
 
    ```PowerShell
    # Extract the contents of the CombinedSolutionBundle to the Solution subfolder
@@ -123,9 +150,9 @@ For more information on the release cadence, see [Azure Local release informatio
 
 ## Next steps
 
-- Learn more about [Understanding update phases](./update-phases-23h2.md)
+- Learn more about [Understanding update phases](./update-phases-23h2.md).
 
-- Review [Troubleshooting updates](./update-troubleshooting-23h2.md)
+- Review [Troubleshooting updates](./update-troubleshooting-23h2.md).
 
 ::: moniker-end
 
