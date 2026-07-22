@@ -4,12 +4,11 @@ description: Learn how to get kubelet logs in an Azure Kubernetes Service (AKS) 
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/17/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2024
-ms.reviewer: guanghu
-# Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
+ms.reviewer: srikantsarwa
+# Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.
 # Keyword: kubelet logs cluster nodes troubleshooting
-
 ---
 
 # Get kubelet logs from cluster nodes
@@ -47,5 +46,4 @@ You can get the full on-demand logs from the cluster, then contact Microsoft for
 ## Next steps
 
 - [Get on-demand logs](get-on-demand-logs.md)
-- [View logs to collect and review data](./view-logs.md)
 - [Monitor Kubernetes clusters in AKS](./aks-monitor-logging.md)

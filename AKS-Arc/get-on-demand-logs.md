@@ -4,9 +4,9 @@ description: Learn how to get full on-demand logs in AKS enabled by Arc and send
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/08/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 04/08/2025
-ms.reviewer: guanghu
+ms.reviewer: srikantsarwa
 
 # Intent: As an IT Pro, I need to learn how to obtain full on-demand logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
 # Keyword: on-demand logs cluster nodes troubleshooting
@@ -43,6 +43,5 @@ Contact Microsoft Support to send the logs to Microsoft. If the environment is d
 
 ## Next steps
 
-- [Get kubelet logs](get-kubelet-logs.md)
-- [View logs to collect and review data](./view-logs.md)
+- [Get kubelet logs](aks-get-kubelet-logs.md)
 - [Monitor Kubernetes clusters in AKS](./aks-monitor-logging.md)

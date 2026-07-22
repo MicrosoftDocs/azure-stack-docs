@@ -6,7 +6,7 @@ ms.custom: devx-track-azurecli
 ms.date: 07/03/2025
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.reviewer: xinyuhe
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/02/2024
 ---
 
@@ -19,7 +19,7 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 ## Prerequisites
 
 - An Azure Arc-enabled Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Local using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md). AKS on Azure Local clusters are Arc-enabled by default.
-- Make sure you have enough IP addresses for the load balancer. For AKS on Azure Local, ensure that the IP addresses reserved for the load balancer don't conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for Kubernetes](aks-hci-network-system-requirements.md) and [IP address planning for Kubernetes](aks-hci-ip-address-planning.md).
+- Make sure you have enough IP addresses for the load balancer. For AKS on Azure Local, ensure that the IP addresses reserved for the load balancer don't conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for Kubernetes](network-system-requirements.md) and [IP address planning for Kubernetes](aks-hci-ip-address-planning.md).
 - This how-to guide assumes you understand how MetalLB works. For more information, see the [overview for MetalLB for Kubernetes](load-balancer-overview.md).
 
 ## Install the Azure CLI extension
