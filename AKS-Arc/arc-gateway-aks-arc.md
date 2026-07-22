@@ -11,7 +11,7 @@ ms.lastreviewed: 04/20/2026
 
 # Simplify network configuration requirements with Azure Arc gateway
 
-If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity. Before using Arc gateway with AKS on Azure Local, ensure you complete the [prerequisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md).
+If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity. Before using Arc gateway with AKS on Azure Local, ensure you complete the [prerequisites for creating AKS clusters on Azure Local](network-system-requirements.md).
 
 The AKS Arc gateway lets you:
 

@@ -49,4 +49,4 @@ Run the `az connectedk8s show -g <resource_group> -n <cluster_name>` command to 
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)

@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 06/18/2026
+ms.date: 07/12/2026
 ms.subservice: hyperconverged
 ---
 
@@ -18,7 +18,7 @@ This article provides the release information for Azure Local, including the rel
 ## About Azure Local releases
 
 > [!NOTE]
-> Azure Local previously followed an annual release cadence for OS and feature updates, with versions like 23H2 and 22H2. The versioning model changed to align with a monthly release train, like 2507 and 2506. However, some documentation might still reference the older versioning.
+> Azure Local previously followed an annual release cadence for OS and feature updates. The versioning model changed to align with a monthly release train, like 2507 and 2506. However, some documentation might still reference the older versioning.
 
 Azure Local includes multiple release trains: 2411, 2503, 2504, 2505, and so forth. Each release train after 2411 is either a feature build or cumulative update.
 
@@ -56,7 +56,7 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
 ## End of support for Azure Local versions
 
 > [!IMPORTANT]
-> Versions not updated within six months are no longer supported. Running an unsupported version may expose your environment to security vulnerabilities, compliance issues, or regulatory requirements associated with using an unsupported version. Microsoft doesn't guarantee or provide remediation for risks resulting from the continued use of unsupported versions. For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
+> Versions not updated within six months are no longer supported. Running an unsupported version might expose your environment to security vulnerabilities, compliance issues, or regulatory requirements associated with using an unsupported version. Microsoft doesn't guarantee or provide remediation for risks resulting from the continued use of unsupported versions. For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
 
 ### OS version 23H2
 

@@ -784,8 +784,6 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Renaming to Azure Local
-      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing
@@ -1340,8 +1338,6 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Renaming to Azure Local
-      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing

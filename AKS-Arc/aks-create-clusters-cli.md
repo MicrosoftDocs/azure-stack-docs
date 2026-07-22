@@ -5,9 +5,9 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: davidsmatlak
 ms.date: 10/09/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 01/25/2024
-ms.reviewer: guanghu
+ms.reviewer: srikantsarwa
 ---
 
 # Create Kubernetes clusters using Azure CLI
@@ -50,7 +50,7 @@ az extension add -n connectedk8s --upgrade
 Use the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before you run this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command. With the `az aksarc create` command, we recommend that you use the `--validate` flag, which validates the input parameters that you intend to use. Once the input parameters are validated, you can run the `az aksarc create` command without the `--validate` flag to create the Kubernetes cluster.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys 
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
@@ -120,90 +120,90 @@ Two [Kubernetes services](concepts-container-networking.md#kubernetes-services)
 Create a file named **azure-vote.yaml**, and copy in the following manifest:
 
 ```yml
-apiVersion: apps/v1 
-    kind: Deployment 
-    metadata: 
-      name: azure-vote-back 
-    spec: 
-      replicas: 1 
-      selector: 
-        matchLabels: 
-          app: azure-vote-back 
-      template: 
-        metadata: 
-          labels: 
-            app: azure-vote-back 
-        spec: 
-          nodeSelector: 
-            "kubernetes.io/os": linux 
-          containers: 
-          - name: azure-vote-back 
-            image: <path to image>/oss/bitnami/redis:6.0.8 
-            env: 
-            - name: ALLOW_EMPTY_PASSWORD 
-              value: "yes" 
-            resources: 
-              requests: 
-                cpu: 100m 
-                memory: 128Mi 
-              limits: 
-                cpu: 250m 
-                memory: 256Mi 
-            ports: 
-            - containerPort: 6379 
-              name: redis 
+apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: azure-vote-back
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: azure-vote-back
+      template:
+        metadata:
+          labels:
+            app: azure-vote-back
+        spec:
+          nodeSelector:
+            "kubernetes.io/os": linux
+          containers:
+          - name: azure-vote-back
+            image: <path to image>/oss/bitnami/redis:6.0.8
+            env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 250m
+                memory: 256Mi
+            ports:
+            - containerPort: 6379
+              name: redis
     ---
     apiVersion: v1
-    kind: Service 
-    metadata: 
-      name: azure-vote-back 
-    spec: 
-      ports: 
-      - port: 6379 
-      selector: 
-        app: azure-vote-back 
-    --- 
-    apiVersion: apps/v1 
-    kind: Deployment 
-    metadata: 
-      name: azure-vote-front 
-    spec: 
-      replicas: 1 
-      selector: 
-        matchLabels: 
-          app: azure-vote-front 
-      template: 
-        metadata: 
-          labels: 
-            app: azure-vote-front 
-        spec: 
-          nodeSelector: 
-            "kubernetes.io/os": linux 
-          containers: 
-          - name: azure-vote-front 
-            image: <path to image>/azure-vote-front:v1 
-            resources: 
-              requests: 
-                cpu: 100m 
-                memory: 128Mi 
-              limits: 
-                cpu: 250m 
-                memory: 256Mi 
-            ports: 
-            - containerPort: 80 
-            env: 
-            - name: REDIS 
-              value: "azure-vote-back" 
-    --- 
-    apiVersion: v1 
-    kind: Service 
-    metadata: 
-      name: azure-vote-front 
-    spec: 
-      type: LoadBalancer 
-      ports: 
-      - port: 80 
-      selector: 
+    kind: Service
+    metadata:
+      name: azure-vote-back
+    spec:
+      ports:
+      - port: 6379
+      selector:
+        app: azure-vote-back
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: azure-vote-front
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: azure-vote-front
+      template:
+        metadata:
+          labels:
+            app: azure-vote-front
+        spec:
+          nodeSelector:
+            "kubernetes.io/os": linux
+          containers:
+          - name: azure-vote-front
+            image: <path to image>/azure-vote-front:v1
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 250m
+                memory: 256Mi
+            ports:
+            - containerPort: 80
+            env:
+            - name: REDIS
+              value: "azure-vote-back"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: azure-vote-front
+    spec:
+      type: LoadBalancer
+      ports:
+      - port: 80
+      selector:
         app: azure-vote-front
 ```
 
@@ -259,5 +259,5 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 
 ## Next steps
 
-- [Troubleshoot and known issues with cluster provisioning from Azure](aks-known-issues.md)
-6
+- [Troubleshoot and known issues with cluster provisioning from Azure](aks-arc-known-issues.md)
+  

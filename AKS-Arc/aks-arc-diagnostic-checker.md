@@ -5,10 +5,8 @@ ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/27/2025
-ms.reviewer: abha
-
-#Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure. 
-
+ms.reviewer: srikantsarwa
+#Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure.
 ---
 
 # Use the diagnostic checker to diagnose and fix environment issues for AKS cluster creation failure (preview)
@@ -23,7 +21,7 @@ It can be difficult to identify environment-related issues, such as networking c
 Before you begin, make sure you have the following prerequisites. If you don't meet the requirements for running the diagnostic checker tool, [file a support request](help-support.md):
 
 - Direct access to the Azure Local cluster where you created the AKS cluster. This access can be through remote desktop (RDP), or you can also sign in to one of the Azure Local physical nodes.
-- Review the [networking concepts for creating an AKS cluster](aks-hci-network-system-requirements.md) and the [AKS cluster architecture](cluster-architecture.md).
+- Review the [networking concepts for creating an AKS cluster](network-system-requirements.md) and the [AKS cluster architecture](cluster-architecture.md).
 - The name of the logical network attached to the AKS cluster.
 - An SSH private key for the AKS cluster, used to sign in to the AKS cluster [control plane node](cluster-architecture.md#control-plane-nodes) VM.
 
@@ -61,7 +59,7 @@ Copy the following PowerShell script named `run_diagnostic.ps1` into any one nod
     Runs diagnostic checker tool in target cluster control plane VM and returns the result.
 
     This script runs the following tests from target cluster control plane VM:
-    1. cloud-agent-connectivity-test: Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](hci/plan/cloud-deployment-network-considerations.md#management-ip-pool), on port 55000. The control plane node VM is given an IP address from the Arc VM logical network.
+    1. cloud-agent-connectivity-test: Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](/azure/azure-local/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given an IP address from the Arc VM logical network.
     2. gateway-icmp-ping-test: Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM.
     3. http-connectivity-required-url-test: Checks whether the required URLs are reachable from the AKS cluster control plane node VM.
 
@@ -124,7 +122,7 @@ try {
   exit
 }
 
-# retreiving LNET 
+# retreiving LNET
 $lnet=get-mocvirtualnetwork -group Default_Group -name $lnetName
 # getting gateway address from LNET
 $gateway=$lnet.properties.subnets[0].properties.routeTable.properties.routes[0].properties.nextHopIpAddress
@@ -135,7 +133,7 @@ if (-not $gateway) {
 
 # getting cloudfqdn from archciconfig
 $arcHCIConfig=get-archciconfig
-$cloudFqdn="http://"+$arcHCIConfig.Item('cloudFQDN')+":55000" 
+$cloudFqdn="http://"+$arcHCIConfig.Item('cloudFQDN')+":55000"
 
 $configContent = @"
 checks:
@@ -272,7 +270,7 @@ Sample output:
 TestName                            Outcome Recommendation
 --------                            ------- --------------
 cloud-agent-connectivity-test       Success
-gateway-icmp-ping-test              Success 
+gateway-icmp-ping-test              Success
 http-connectivity-required-url-test Failure Ensure that the logical network IP addresses have outbound internet access. If there's a firewall, ensure that AKS required URLs are accessible from Arc VM logical network.
 ```
 
@@ -280,11 +278,11 @@ http-connectivity-required-url-test Failure Ensure that the logical network IP a
 
 The following table provides a summary of each test performed by the script, including possible causes for failure and recommendations for mitigation:
 
-| Test name                        | Description                                                                 | Causes for failure                                                                                      | Mitigation Recommendations                                                                                                                                     |
-|--------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cloud-agent-connectivity-test        | Checks whether the DNS server can resolve the MOC cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. The cloud agent is created using one of the IP addresses from the [management IP pool](/azure-stack/hci/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given IP addresses from the Arc VM logical network. | Logical network IP addresses can't connect to management IP pool addresses due to: <br> - Incorrect DNS server resolution. <br> - Firewall rules. <br> - The logical network is in a different vlan than the management IP pool and there's no cross-vlan connectivity. | Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. Check the [AKS network port and cross vlan requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for a detailed list of ports that need to be opened. |
-| gateway-icmp-ping-test   | Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM. | - Gateway is down or unreachable. <br>- Network routing issues between the AKS cluster control plane node VM and the gateway. <br>- Firewall blocking ICMP traffic. | - Ensure the gateway is operational.<br>- Verify routing configurations.<br>- Adjust firewall rules to allow ICMP traffic.                                              |
-| http-connectivity-required-url-test  | Checks whether the required URLs are reachable from the AKS cluster control plane node VM.                         | - Control plane node VM has no outbound internet access. <br> - Required URLs aren't allowed through the firewall.                           | Ensure that the logical network IP addresses have outbound internet access. If there's a firewall, ensure that the [AKS required URLs](aks-hci-network-system-requirements.md#firewall-url-exceptions) are accessible from the Arc VM logical network.  |
+| Test name                           | Description                                                                                                                                                                                                                                                                                                                                                                                                          | Causes for failure                                                                                                                                                                                                                                                      | Mitigation Recommendations                                                                                                                                                                                                                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cloud-agent-connectivity-test       | Checks whether the DNS server can resolve the MOC cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. The cloud agent is created using one of the IP addresses from the [management IP pool](/azure/azure-local/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given IP addresses from the Arc VM logical network. | Logical network IP addresses can't connect to management IP pool addresses due to: <br> - Incorrect DNS server resolution. <br> - Firewall rules. <br> - The logical network is in a different vlan than the management IP pool and there's no cross-vlan connectivity. | Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. Check the [AKS network port and cross vlan requirements](network-system-requirements.md#network-port-and-cross-vlan-requirements) for a detailed list of ports that need to be opened. |
+| gateway-icmp-ping-test              | Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM.                                                                                                                                                                                                                                                                     | - Gateway is down or unreachable. <br>- Network routing issues between the AKS cluster control plane node VM and the gateway. <br>- Firewall blocking ICMP traffic.                                                                                                     | - Ensure the gateway is operational.<br>- Verify routing configurations.<br>- Adjust firewall rules to allow ICMP traffic.                                                                                                                                                                                        |
+| http-connectivity-required-url-test | Checks whether the required URLs are reachable from the AKS cluster control plane node VM.                                                                                                                                                                                                                                                                                                                           | - Control plane node VM has no outbound internet access. <br> - Required URLs aren't allowed through the firewall.                                                                                                                                                      | Ensure that the logical network IP addresses have outbound internet access. If there's a firewall, ensure that the [AKS required URLs](network-system-requirements.md#firewall-url-exceptions) are accessible from the Arc VM logical network.                                                                    |
 
 ## Next steps
 
