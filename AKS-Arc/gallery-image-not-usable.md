@@ -1,13 +1,12 @@
 ---
-title: Kubernetes cluster create or nodepool scale failing due to AKS Arc image issues  
+title: Kubernetes cluster create or nodepool scale failing due to AKS Arc image issues
 description: Learn about a known issue with Kubernetes cluster create or nodepool scale failing due to AKS Arc VHD image download issues.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/22/2025
-ms.reviewer: rcheeran
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/22/2025
-
 ---
 
 # Can't create AKS cluster or scale node pool because of issues with AKS Arc images
@@ -53,4 +52,4 @@ This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/wh
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)

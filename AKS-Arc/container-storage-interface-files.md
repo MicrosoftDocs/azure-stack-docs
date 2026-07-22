@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 06/16/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.custom: sfi-ropc-nochange
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS Arc.
