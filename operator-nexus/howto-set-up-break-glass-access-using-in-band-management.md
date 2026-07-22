@@ -1,8 +1,8 @@
 ---
 title: How to set up Break-Glass access using In-Band management in Azure Operator Nexus Network Fabric
 description: Learn how to How to set up Break-Glass access using In-Band management 
-author: dougbristow
-ms.author: dbristow
+author: rmandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/24/2025

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to run log collector script"
 description: Learn how to run the log collector script.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 03/25/2024

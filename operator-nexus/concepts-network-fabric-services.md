@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Network Fabric Services
 description: Overview of Network Fabric Services for Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: rmandawale
+ms.author: rmandawale
 ms.reviewer: jdasari
 ms.date: 12/21/2023
 ms.service: azure-operator-nexus

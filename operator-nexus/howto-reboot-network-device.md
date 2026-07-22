@@ -1,8 +1,8 @@
 ---
 title: Reboot a Network Device in Azure Operator Nexus Network Fabric
 description: Learn how to reboot a network device in Azure Operator Nexus Network Fabric by using graceful and ungraceful reboot methods.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/24/2025

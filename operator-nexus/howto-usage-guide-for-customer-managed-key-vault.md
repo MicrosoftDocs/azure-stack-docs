@@ -5,7 +5,7 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to
 ms.topic: how-to
 ms.date: 06/17/2026
-author: raghvendramandawale
+author: rmandawale
 ms.author: rmandawale
 ---
 

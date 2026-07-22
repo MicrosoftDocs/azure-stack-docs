@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Networking"
 description: Learn how to check LACP bonding on physical hosts.
-author: dougbristow
-ms.author: dbristow
+author: rakesh
+ms.author: rakesh
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting

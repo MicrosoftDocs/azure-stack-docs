@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Manage private endpoints for Arc Relay connectivity"
 description: Learn how to configure private endpoint connectivity for Azure Relay namespaces managed by Cluster Manager in Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 01/23/2026

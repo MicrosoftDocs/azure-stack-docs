@@ -1,8 +1,8 @@
 ---
 title: How to enable Micro-BFD on CE and PE devices
 description: Process of enabling Micro-BFD On CE and PE devices.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/12/2024

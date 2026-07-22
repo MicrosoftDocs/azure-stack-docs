@@ -1,8 +1,8 @@
 ---
 title: Connect to Azure Operator Nexus Kubernetes cluster
 description: Learn how to connect to Azure Operator Nexus Kubernetes cluster for interacting, troubleshooting, and maintenance tasks.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 01/21/2025 

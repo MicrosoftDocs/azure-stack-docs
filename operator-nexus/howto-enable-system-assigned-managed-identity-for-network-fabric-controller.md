@@ -1,8 +1,8 @@
 ---
 title: Enable a SAMI for the Network Fabric Controller in Azure Operator Nexus
 description: This article describes how to enable and validate a SAMI for the Network Fabric Controller in Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ms.date: 03/30/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus
