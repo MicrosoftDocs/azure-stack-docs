@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local, version 23H2
 description: This article introduces network considerations for cloud deployments of Azure Local, version 23H2.
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/10/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -385,7 +385,9 @@ Here are the summarized considerations for the IP addresses:
 
 Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it's required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it isn't supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
 
-The DNS servers used for Azure Local must be external and operational before deployment. It isn't supported to run them as Azure Local virtual machines.
+The DNS servers used by the Azure Local infrastructure must be external and operational before deployment. It isn't supported to run the infrastructure DNS servers as Azure Local virtual machines.
+
+Starting with Azure Local 2607, this restriction doesn't apply to DNS servers used only by workloads. You can run a workload DNS server as an Azure Local VM and assign it the DNS server IP address configured on its workload logical network. This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc. For more information, see [Create logical networks for Azure Local VMs enabled by Azure Arc](../manage/create-logical-networks.md).
 
 Here are the summarized considerations for DNS servers addresses:
 
