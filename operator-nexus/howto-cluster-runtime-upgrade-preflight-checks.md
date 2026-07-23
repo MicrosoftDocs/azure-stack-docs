@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Cluster runtime upgrade preflight checks"
 description: Reference for the preflight validation checks that run before a Cluster runtime upgrade in Operator Nexus.
-author: mbethi527
-ms.author: mbethi
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/22/2026

@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Network Fabric internal network BGP metrics
 description: Overview of internal network BGP metrics.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.reviewer: sushrao
 ms.date: 04/29/2024
 ms.service: azure-operator-nexus

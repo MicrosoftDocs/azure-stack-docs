@@ -3,7 +3,7 @@ title: Migrate VMs to Azure Local using PowerShell, Azure CLI, or Terraform
 description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI, or Terraform.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -832,6 +832,10 @@ For more information, see the [Azure Migrate to Azure Local Terraform module](ht
 ## Complete migration (clean up)
 
 After migration succeeds, remove the replication to clean up resources.
+
+The standard removal operation deletes the protected item and associated replication artifacts, including the seed disks, without deleting the migrated VM. Don't manually delete a seed disk while the protected item exists. The seed disk contains the replicated source data used to create the final migrated disk and can be reused if migration is retried.
+
+Use force removal only if the standard operation fails. Force removal might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer exists and that the artifact doesn't belong to another active replication. For more information, see the [Azure Migrate FAQ](migrate-faq.yml).
 
 # [PowerShell](#tab/powershell)
 

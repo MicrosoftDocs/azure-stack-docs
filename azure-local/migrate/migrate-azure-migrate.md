@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Local using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Local instance using Azure Migrate  (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/12/2025
+ms.date: 07/23/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -71,7 +71,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 ## Verify and complete migration
 
 > [!IMPORTANT]
-> After verifying the status of the migrated VM, be sure to **complete migration** as follows. Failing to do so may lead to unexpected behavior.
+> After verifying the status of the migrated VM, be sure to **complete migration** as follows. Don't manually delete the seed disks or other replication artifacts. Failing to complete migration or deleting these artifacts can cause unexpected behavior.
 
 1. In the Azure portal, go to your Azure Local resource, then select **Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMs that you migrated are present.
@@ -100,11 +100,11 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png":::
 
-    The **Complete migrate** action starts the **Delete protected item** job that you can track from the  **Jobs**  page. This job only cleans up the replication by deleting the delete protected item job - this won't affect your migrated VM.  
+    The **Complete migration** action starts the **Delete protected item** job, which you can track on the **Jobs** page. This job removes the replication state and service-managed replication artifacts without affecting the migrated VM.
     
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png":::
 
-    Completing the migration or deleting the protected item will automatically remove any leftover seed files, such as the seed.iso file attached to the migrated VM and seed disks used during replication. These files can occupy significant space on the target Azure Local system, so it's important to finalize the migration after verifying the VMs. If migrations aren't completed, these files continue to occupy space on the target system.
+    A seed disk is a temporary disk that contains the replicated source data used to create the final migrated disk. As part of its cleanup, the standard **Complete migration** operation deletes seed disks and other replication artifacts, such as a seed ISO attached to the migrated VM. If you don't complete migration, these artifacts remain on the target system and continue to use storage.
 
     After the migrate resource is deleted, it's also removed from the **Replications** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
 

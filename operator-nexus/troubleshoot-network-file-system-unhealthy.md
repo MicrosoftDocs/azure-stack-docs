@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot unhealthy NFS pods
 description: Troubleshooting Azure Resource Health alerts about NFS
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.date: 07/21/2025
 ms.topic: troubleshooting
 ms.service: azure-operator-nexus
