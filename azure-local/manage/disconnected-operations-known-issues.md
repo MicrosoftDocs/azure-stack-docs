@@ -24,11 +24,13 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 ### Share credentials can be exposed in observability logs during indirect log collection
 
-When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and include the `Observability` role in the `-CloudManagementFilterByRoles` parameter, the observability component on the Azure Local Disconnected Operations (ALDO) appliance captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and the `Observability` role is included in the roles that are collected, the observability component on the Azure Local Disconnected Operations appliance captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+
+If you don't specify the `-CloudManagementFilterByRoles` parameter, all cloud management roles, including `Observability`, are collected by default. The only way to exclude observability logs is to pass an explicit list of roles to `-CloudManagementFilterByRoles` that omits the observability roles.
 
 **Mitigation:**
 
-When you run `Invoke-AzureLocalDisconnectedLogCollection`, omit the observability roles (`ObservabilityLogmanTraces` and `ObservabilityVolume`) from the list of roles that you collect. For example:
+When you run `Invoke-AzureLocalDisconnectedLogCollection`, explicitly set `-CloudManagementFilterByRoles` to a list of roles that omits the observability role. Don't rely on the default behavior, because the default collects all roles, including observability. For example:
 
 ```powershell
 $nodeCred = Get-Credential -Message "Enter Azure Local node credentials"
