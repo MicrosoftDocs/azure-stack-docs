@@ -1,8 +1,8 @@
 ---
 title: "Use Certificate Rotation in Azure Operator Nexus"
 description: Learn the process for using certificate rotation in Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 3/31/2026

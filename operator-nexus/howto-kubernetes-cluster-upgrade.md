@@ -1,8 +1,8 @@
 ---
 title: Upgrade an Azure Operator Nexus Kubernetes cluster
 description: Learn how to upgrade an Azure Operator Nexus Kubernetes cluster to get the latest features and security updates.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 10/05/2023 

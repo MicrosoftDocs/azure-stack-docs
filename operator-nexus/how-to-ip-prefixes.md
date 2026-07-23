@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: How to create and manage IP prefixes"
 description: Learn to create, view, list, update, and delete IP prefixes and IP prefix rules.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/28/2024

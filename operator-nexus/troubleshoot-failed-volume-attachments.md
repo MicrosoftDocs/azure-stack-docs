@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot failed volume attachments
 description: Troubleshooting Azure Resource Health alerts about failed volume attachments
-author: dougbristow
-ms.author: dbristow
+author: VatsalShahMS
+ms.author: vatsalshah
 ms.date: 07/21/2025
 ms.topic: troubleshooting
 ms.service: azure-operator-nexus

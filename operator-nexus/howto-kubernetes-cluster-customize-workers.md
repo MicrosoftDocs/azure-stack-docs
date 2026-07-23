@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Customize Kubernetes worker nodes with a DaemonSet"
 description: How-to guide for customizing Kubernetes Worker Nodes with a DaemonSet.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 01/29/2024
