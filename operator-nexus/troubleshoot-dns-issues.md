@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: DNS Issues"
 description: Learn how to troubleshoot cluster DNS issues.
-author: dougbristow
-ms.author: dbristow
+author: RaghvendraMandawale
+ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
