@@ -1,8 +1,8 @@
 ---
 title: Update a Network-to-Network Interconnect (NNI) in Azure Operator Nexus
 description: Learn how to update a Network-to-Network Interconnect (NNI) resource in Azure Operator Nexus Managed Network Fabric, including prerequisites, updatable properties, and commit workflow.
-author: stalluri
-ms.author: stalluri
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 06/04/2026

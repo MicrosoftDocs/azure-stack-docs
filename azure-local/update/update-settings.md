@@ -1,9 +1,9 @@
 ---
-title: Update Settings
+title: Manage update settings for Azure Local
 description: Manage update setting for Azure Local
 author: troettinger
 ms.topic: overview
-ms.date: 04/12/2026
+ms.date: 07/18/2026
 ms.author: thoroet
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -47,6 +47,30 @@ To confirm the feature is disabled, run the following command:
    # Confirm setting status
    Get-UpdateSetting -Name SkipForceDrain
    ```
+
+## VM failback
+
+Azure Local update enables maintenance mode for each node to ensure no VMs run on it before patching. After patching, the process moves the VMs running on the node back to their original location before disabling maintenance mode. To optimize the total update duration, Azure Local update disables this setting for clusters larger than 16 nodes.
+
+For clusters up to 16 nodes, you can disable the VM failback to reduce the total update time.
+
+To change this behavior so that VMs no longer fail back before disabling maintenance mode, use the following steps.
+
+   ```PowerShell
+   # Prioritize workload uptime over update completion
+   Disable-UpdateSetting -Name VMFailback
+   ```
+
+To enable the VM failback, run the following command:
+
+   ```PowerShell
+   # Prioritize workload uptime over update completion
+   Enable-UpdateSetting -Name VMFailback
+   ```
+
+> [!NOTE]
+>
+> - These commands don't work on clusters with more than 16 nodes.
 
 ## Next steps
 

@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Accepted cluster"
 description: Learn how to troubleshoot accepted cluster resources.
-author: dougbristow
-ms.author: dbristow
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting

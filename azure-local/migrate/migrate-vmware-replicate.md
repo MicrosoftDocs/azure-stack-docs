@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -386,6 +386,10 @@ This step applies to using a .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
+> [!IMPORTANT]
+> During initial replication, Azure Migrate creates a temporary seed disk for each source disk on the selected Azure Local storage path. Replicated source data and subsequent changes are written to the seed disk. During migration, Azure Migrate uses it to create the final disk attached to the migrated VM.
+>
+> Don't rename, modify, or delete a seed disk. It remains part of the active replication and can be reused if migration is retried. Deleting it can cause replication or migration to fail and might require you to stop and enable replication again, which restarts initial replication. After you verify the migrated VM, use **Complete migration** to remove the protected item and its replication artifacts, including the seed disk. For more information, see the [Azure Migrate FAQ](migrate-faq.yml).
 
 ## Next steps
 
