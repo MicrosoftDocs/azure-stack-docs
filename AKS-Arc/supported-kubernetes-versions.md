@@ -5,7 +5,7 @@ services: container-service
 ms.topic: feature-availability
 ms.date: 07/23/2026
 author: davidsmatlak
-ms.author: davidsmatlak 
+ms.author: srikantsarwa
 ms.lastreviewed: 07/23/2026
 
 # Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
