@@ -65,7 +65,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround |
 |------|------|-------|
 | Update | After updating Azure Local to version 2607, the Azure Key Vault extension might remain in a **Failed** state. | There's no known workaround in this release. |
-| Azure Local VMs <!--38909895--> | TVMs created before the 2607 release fail to start after an Azure Local cluster is upgraded to 2607. | On each affected node, create the following registry entry:<br>`New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AszIGVmAgent" -Name "TvmWinServer" -PropertyType DWord -Value 1`<br><br>Start the TVMs that were failing.<br><br>Then remove the registry entry:<br>`Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AszIGVmAgent" -Name "TvmWinServer"` |
+| Azure Local VMs <!--38909895--> | TVM VMs created before the 2607 release fail to start after an Azure Local cluster is upgraded to 2607. | On each affected node, create the following registry entry:<br>`New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AszIGVmAgent" -Name "TvmWinServer" -PropertyType DWord -Value 1`<br><br>Start the TVMs that were failing.<br><br>Then remove the registry entry:<br>`Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\AszIGVmAgent" -Name "TvmWinServer"` |
 
 ## Known issues from previous releases
 
