@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 07/22/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -24,23 +24,30 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 ### Share credentials can be exposed in observability logs during indirect log collection
 
-When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet without filtering roles, the observability component captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and include the `Observability` role in the `-CloudManagementFilterByRoles` parameter, the observability component on the Azure Local Disconnected Operations (ALDO) appliance captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
 
 **Mitigation:**
 
-When you run `Invoke-AzureLocalDisconnectedLogCollection`, always specify the `-FilterByRole` parameter and omit the observability roles (`ObservabilityLogmanTraces` and `ObservabilityVolume`) from the list of roles that you collect. For example:
+When you run `Invoke-AzureLocalDisconnectedLogCollection`, omit the observability roles (`ObservabilityLogmanTraces` and `ObservabilityVolume`) from the list of roles that you collect. For example:
 
 ```powershell
-Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-2) `
-    -ToDate (Get-Date) `
-    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03") `
-    -AzureLocalNodeCredential (Get-Credential -UserName "Admin" -Message "Enter Azure Local node admin credentials") `
-    -FilterByRole "ALM","ArcAgent","BareMetal","CommonInfra","DeploymentLogs","ECE","Extension","FleetDiagnosticsAgent","HCICloudService","DownloadService","Health","HostNetwork","MOC_ARB","NC","OEMDiagnostics","OSUpdateLogs","RemoteSupportAgent","URP" `
-    -SaveToPath "\\fileserver\logshare\AzureLocalLogs" `
-    -ShareCredential (Get-Credential -UserName "fileuser" -Message "Enter SMB share credentials")
-```
+$nodeCred = Get-Credential -Message "Enter Azure Local node credentials"
 
-For the full list of available roles and their descriptions, see [Roles available for filtering logs](./collect-logs.md#roles-available-for-filtering-logs).
+# Supported roles: Agents, ArcControlPlane, ArcADiagnostics, Containers, CosmosDB, MASLogs, Messaging, Observability, Oplets, ServiceFabric, Storage, WindowsEventLogs
+# The Observability role can leak credentials. Don't include it in CloudManagementFilterByRoles.
+Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
+    -ToDate (Get-Date) `
+    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03", "ALNode04") `
+    -AzureLocalNodeCredential $nodeCred `
+    -SaveToPath "\\fileserver\share\FilteredLogs" `
+    -ShareCredential (Get-Credential) `
+    -CloudManagementEndpoint "192.168.1.100" `
+    -CloudManagementClientCertificatePath "C:\ManagementCert.pfx" `
+    -CloudManagementClientCertificatePassword $pfxPassword `
+    -AzureLocalFilterByRoles @("BareMetal", "ECE") `
+    -CloudManagementFilterByRoles @("Agents", "ArcControlPlane", "ArcADiagnostics", "Containers", "CosmosDB", "MASLogs", "Messaging", "Oplets", "WindowsEventLogs") `
+    -ForceRefreshCloudManagementPsModule
+```
 
 ::: moniker-end
 
