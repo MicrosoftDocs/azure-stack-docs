@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 07/22/2026
+ms.date: 07/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -40,6 +40,7 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | Notes / SHA256 |
 |--|--|--|
+| 26100.33158 | [12.2607.1003.69](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2607.1003.69/CombinedSolutionBundle.12.2607.1003.69.zip) <br><br> Availability date: 2026-07-22 | E67066277A057EA6B30BBB3AFF610CC7D45D1336BCAC6CD3C50B7F32F58E80FA |
 | 26100.32995 | [12.2606.1003.205](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2606.1003.205/CombinedSolutionBundle.12.2606.1003.205.zip) <br><br> Availability date: 2026-06-15 | 9A240D4310E04AE68395201EAE88233EAE6192D1B2DF1B849CBA0ECB80003490 |
 | 26100.32860 | [12.2605.1003.1003](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2605.1003.1003/CombinedSolutionBundle.12.2605.1003.1003.zip) <br><br> Availability date: 2026-06-18 | ED74E6D94FDB97495D8552E4E0BAA42B9914D7C8EA938EE3EAC35A7C259D4F88 |
 | 26100.32690 | [12.2604.1003.1006](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2604.1003.1006/CombinedSolutionBundle.12.2604.1003.1006.zip) <br><br> Availability date: 2026-05-28 | 4213E03B356463FBEBBF16073F10F2F245D0FCD0ABD1198EEC5D7CCA43CBFC54 |
