@@ -2,10 +2,10 @@
 title: Customize DNS for an Azure Operator Nexus Kubernetes cluster
 description: Learn how to customize DNS.
 ms.service: azure-operator-nexus
-author: dougbristow
+author: eak13
 ms.topic: how-to
 ms.date: 10/9/2023
-ms.author: dbristow
+ms.author: ekarandjeff
 
 ---
 

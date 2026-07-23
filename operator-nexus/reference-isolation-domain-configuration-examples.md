@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Isolation Domain configuration examples
 description: Isolation domain configuration examples.
-author: dougbristow
-ms.author: dbristow
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ms.reviewer: jdasari
 ms.date: 02/02/2024
 ms.service: azure-operator-nexus

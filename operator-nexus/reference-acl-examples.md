@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Access Control Lists Examples
 description: Examples of configuring and creating Azure Operator Nexus Access Control Lists.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.custom: devx-track-azurecli
 ms.topic: reference

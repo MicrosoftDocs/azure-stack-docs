@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Monitoring of Virtualized Network Function Virtual Machines"
 description: How-to guide for setting up monitoring of Virtualized Network Function Virtual Machines on Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: dramasamy
+ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 02/01/2023

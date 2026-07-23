@@ -1,8 +1,8 @@
 ---
 title: Prerequisites for deploying tenant workloads
 description: Learn the prerequisites for creating VMs for VNF workloads and for creating Kubernetes clusters for CNF workloads.
-author: dougbristow
-ms.author: dbristow
+author: dramasamy
+ms.author: dramasamy
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/22/2023

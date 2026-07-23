@@ -1,8 +1,8 @@
 ---
 title: Rotate cluster credentials on Azure Local
 description: Learn how to rotate Azure Local cluster credentials by using the az networkcloud cluster rotate-credential command.
-author: ghugo
-ms.author: gagehugo
+author: gregoberfield
+ms.author: goberfield
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 05/27/2026

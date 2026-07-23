@@ -1,8 +1,8 @@
 ---
 title: "How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus"
 description: Learn the process for configuring Network TAP Rules with User Assigned Managed Identity (UAMI) in Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ms.date: 09/26/2025
 ms.topic: how-to
 ms.service: azure-operator-nexus
