@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -431,11 +431,11 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     - Migrated (target) disk.
 
-    - Seed disk.
+    - Seed disk. This service-managed disk contains replicated source data and is reused if migration is retried. Deleting it can break the active replication and require initial replication to start again.
 
     - Network interfaces.
 
-    These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
+    These resources are reused automatically by Azure Migrate during subsequent migration attempts. For more information about the seed disk lifecycle, see the [Azure Migrate FAQ](migrate-faq.yml).
 
 ### Migrated VM data disks show as 1GB in Azure portal
 
