@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: azure-operator-nexus
 ms.topic: troubleshooting
 ms.date: 10/23/2025
-ms.author: dbristow
-author: dougbristow
+ms.author: dramasamy
+author: dramasamy
 ---
 
 # Troubleshoot issues with Azure Arc enrollment for virtual machines with managed identities

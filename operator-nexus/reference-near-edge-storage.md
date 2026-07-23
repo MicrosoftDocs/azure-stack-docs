@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus storage appliance overview
 description: Learn about storage appliance SKUs and resources available in near-edge Azure Operator Nexus instances.
-author: dougbristow
-ms.author: dbristow
+author: VatsalShahMS
+ms.author: vatsalshah
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/29/2023

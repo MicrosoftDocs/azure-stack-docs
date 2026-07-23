@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 04/17/2025
-ms.author: dbristow
-author: dougbristow
+ms.author: goberfield
+author: gregoberfield
 ---
 
 # Troubleshoot container memory limits

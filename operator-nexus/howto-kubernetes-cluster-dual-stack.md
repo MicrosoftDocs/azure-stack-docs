@@ -1,8 +1,8 @@
 ---
 title: Create dual-stack Azure Operator Nexus Kubernetes cluster
 description: Learn how to create dual-stack Azure Operator Nexus Kubernetes cluster.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 03/28/2024

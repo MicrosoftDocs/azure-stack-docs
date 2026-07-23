@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus Cluster management upgrade overview
 description: Get an overview of Cluster management upgrade for Azure Operator Nexus.
-author: dougbristow
-ms.author: dbristow
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 01/16/2026

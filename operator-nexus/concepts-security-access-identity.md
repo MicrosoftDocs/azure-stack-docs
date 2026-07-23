@@ -3,8 +3,8 @@ title: Azure Operator Nexus access and identity
 description: Learn about access and identity in Azure Operator Nexus.
 ms.topic: concept-article
 ms.date: 03/25/2024
-author: dougbristow
-ms.author: dbristow
+author: nstone-ms
+ms.author: nathanstone
 ms.service: azure-operator-nexus
 ---
 # Provide access to Azure Operator Nexus Resources with an Azure role-based access control

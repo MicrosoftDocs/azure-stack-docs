@@ -3,8 +3,8 @@ title: Azure Operator Nexus route policy configuration operations
 description: In this article, you learn about configuration operation details for route policies for Azure Operator Nexus.
 ms.topic: how-to
 ms.date: 02/14/2024
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ---
 

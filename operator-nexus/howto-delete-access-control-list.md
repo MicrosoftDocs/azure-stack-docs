@@ -1,8 +1,8 @@
 ---
 title: Delete ACLs associated with Network-to-Network Interconnects (NNI), L3 External Networks, and Network Fabrics
 description: Process of deleting ACLs associated with resources
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/18/2024
