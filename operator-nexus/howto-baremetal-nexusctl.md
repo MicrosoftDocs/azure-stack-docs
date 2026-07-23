@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Running bare metal actions directly with nexusctl"
 description: Learn how to bypass Azure and run bare metal actions directly in an emergency using nexusctl.
-author: dougbristow
-ms.author: dbristow
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 08/26/2024

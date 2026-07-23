@@ -36,7 +36,8 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 
 ## Supported configurations
 - Fibre Channel (FC) based SAN arrays 
-- iSCSI based SAN arrays (Preview)
+- iSCSI based SAN arrays
+
 - Software initiator (Dell PowerFlex)
 
 ## Fibre Channel or iSCSI based SAN arrays

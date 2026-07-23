@@ -3,8 +3,8 @@ title: Operator Nexus rack resiliency
 description: Document how rack resiliency works in Operator Nexus
 ms.topic: concept-article
 ms.date: 06/24/2026
-author: santhosh-kumar-cm
-ms.author: sacm
+author: udchedalla
+ms.author: uchedalla
 ms.service: azure-operator-nexus
 ---
 

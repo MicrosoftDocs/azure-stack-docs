@@ -1,9 +1,9 @@
 ---
-title: Deploy Azure Local Using the Azure Portal for Disaggregated Deployments
+title: Deploy Azure Local Using the Azure portal for Disaggregated Deployments
 description: Learn how to deploy an Azure Local instance from the Azure portal for disaggregated deployments.
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/31/2026
+ms.date: 06/12/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -134,6 +134,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    - For *Compute_Management* intent, provide an intent name.
       - In this case, we added two network adapters.
 1. For each cluster network, specify the cluster network name, network adapter, VLAN ID, and subnet.
+
+   > [!IMPORTANT]
+   > If you share the adapters, select the already configured iSCSI adapters for the cluster network, VLAN ID, and subnet. 
 
    :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png" alt-text="Screenshot of the deploy Azure Local parameters tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png":::      
    

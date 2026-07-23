@@ -94,7 +94,7 @@ Follow these steps to configure DNS for Azure Local:
 
 1. **Verify DNS configuration.**
 
-    Test the DNS configuration to ensure that DNS queries are resolved correctly. You can use tools like `Resolve-DnsName` in Windows PowerShell or `dig` to verify DNS resolution.
+    Test the DNS configuration to ensure that DNS queries are resolved correctly. You can use tools like `Resolve-DnsName` in Windows PowerShell or `dig` to verify DNS resolution.
 
 1. Restart the operating system on local and remote machines:
     
@@ -271,12 +271,12 @@ Tooling support in Azure Local environments configured with Azure Key Vault for 
 
 - **Microsoft Management Consoles (MMCs).** Compatibility varies. Tools such as Hyper-V Manager and Failover Cluster Manager may not be functional in all scenarios. Test critical workflows before relying on MMCs for production use.
 
-###  Generally available or supported services
+###  Generally available or supported services
 
 - [Rack aware clustering](../concepts/rack-aware-cluster-overview.md). Supports fault domain awareness and improved resiliency for Azure Local clusters configured with local identity and Azure Key Vault.
 - [Azure Virtual Desktop (AVD)](/azure/virtual-desktop/deploy-azure-virtual-desktop?tabs=portal-standard%2Cportal-session-host-configuration%2Cportal&pivots=host-pool-standard). AVD workloads are supported on Azure Local clusters using local identity with Azure Key Vault, enabling secure virtual desktop deployments without a dependency on Active Directory.
 
-###  Third-party compatibility
+###  Third-party compatibility
 
 Commvault is a third‑party data protection and backup solution that is compatible with Azure Local deployments using local identity and Azure Key Vault. In supported scenarios, Commvault can be used for backup and recovery without requiring a dependency on Active Directory.
 
@@ -288,7 +288,7 @@ This section provides answers to some frequently asked questions about using loc
 
 If the extension wasn't installed during deployment, you can manually install it on Arc-enabled servers by following these steps:
 
-1. Create a new Azure Key Vault if you don’t already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
+1. Create a new Azure Key Vault if you don't already have one. For instructions, see [Quickstart: Create a key vault using the Azure portal](/azure/key-vault/general/quick-create-portal).
 
 1. In the Key Vault page, navigate to **Access control (IAM)** > **Add role assignment**.
 
@@ -325,7 +325,7 @@ If the extension wasn't installed during deployment, you can manually install it
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](/windows-server/storage/storage-spaces/create-volumes) and [Create storage path for Azure Local](../manage/create-storage-path.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Local and Windows Server clusters](../manage/create-volumes.md).
 - [Get support for Azure Local deployment issues](../manage/get-support-for-deployment-issues.md).
 
 ::: moniker-end

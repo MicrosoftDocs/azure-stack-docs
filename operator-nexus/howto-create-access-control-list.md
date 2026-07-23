@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Create Access Control Lists (ACLs) for network-to-network interconnects and layer 3 isolation domain external networks "
 description: Create ACLs for network-to-network interconnects and layer 3 isolation domain external networks.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 04/18/2024

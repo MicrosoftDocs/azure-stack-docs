@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/07/2024
-author: dougbristow
-ms.author: dbristow
+author: rbhupatiraju-ms
+ms.author: rbhupatiraju
 ---
 
 # How to delete L3 isolation domains in Azure Nexus Network Fabric

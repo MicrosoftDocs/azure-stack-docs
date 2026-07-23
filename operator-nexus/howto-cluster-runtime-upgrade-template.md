@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Cluster runtime upgrade template"
 description: Learn the process for upgrading Cluster for Operator Nexus with step-by-step parameterized template.
-author: mbethi527
-ms.author: mbethi
+author: gregoberfield
+ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.date: 06/22/2026
 ms.topic: how-to

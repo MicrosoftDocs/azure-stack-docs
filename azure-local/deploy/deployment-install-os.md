@@ -43,7 +43,7 @@ To install the operating system, follow these steps:
     > [!NOTE]
     > Upgrade installations aren't supported in this release of the operating system.
 
-   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the type selection page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-which-type.png":::
 
 1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive on which the operating system is installed, and then select **Next**.
 
@@ -134,6 +134,9 @@ Follow these steps to configure the operating system using SConfig:
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each machine rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
 1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+
+   > [!NOTE]
+   > Using an underscore (`_`) in the computer name is not supported, as it impacts storage path creation.
 
 1. Clean all the non-OS drives for each machine that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
