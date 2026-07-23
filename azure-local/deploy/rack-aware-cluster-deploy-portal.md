@@ -149,23 +149,26 @@ On the **Configuration** tab, choose whether to create a new configuration for y
 
 ## Optionally change advanced settings and apply tags
 
-1. Select the only option available for rack aware cluster, which is for creating workload volumes and required infrastructure volumes (also known as Express mode). This option creates one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
+   * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates at least one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+   * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
 
-    > [!IMPORTANT]
-    > Don't delete the infrastructure volumes created during deployment.
+   > [!IMPORTANT]
+   > Don't delete the infrastructure volumes created during deployment.
 
-    Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and re-create them. Be careful not to delete the infrastructure volumes.
-
-    | # machines       | Volume resiliency | # Infrastructure volumes | # Workload volumes |
-    | ---------------- | ----------------- | ------------------------ | ------------------ |
-    | Single machine   | Two-way mirror    | 1                        | 1                  |
-    | Two machines     | Two-way mirror    | 1                        | 2                  |
-    | Three machines + | Three-way mirror  | 1                        | 1 per machine      |
-
+   Here's a summary of the volumes that are created based on the number of machines in your system.
+   
+   | # of machines in two zones       | Volume resiliency | # Infrastructure volumes | # Workload volumes |
+   | ---------------- | ----------------- | ------------------------ | ------------------ |
+   | 1+1 (2-node)   | Two-way mirror    | 1                        | 2                  |
+   | 2+2 (4-node)     | Four-way mirror    | 1                        | 4                  |
+   | 3+3 (6-node) | Four-way mirror  | 1                        | 6      |
+   | 4+4 (8-node) | Four-way mirror  | 1                        | 8      |
+   
 1. Specify the **Local availability zone** settings. Ensure servers in the same zone are physically in the same rack. This check isn't validated during the deployment process in this release so the correct configuration is critical. If misconfigured, a single rack failure could take down the entire cluster.
-
-    :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings.png" alt-text="Screenshot of local availability zone settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings.png":::
-
+   
+   :::image type="content" source="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings-2.png" alt-text="Screenshot of local availability zone settings in the Azure portal." lightbox="media/rack-aware-cluster-deploy-portal/rack-aware-cluster-advanced-settings-2.png":::
+   
 1. Select **Next: Tags**.
 1. Optionally add a tag to the Azure Local resource in Azure.
     Tags are name or value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a specific tag.
