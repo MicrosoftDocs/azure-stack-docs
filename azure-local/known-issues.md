@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 07/21/2026
+ms.date: 07/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -65,6 +65,7 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround |
 |------|------|-------|
 | Update | After updating Azure Local to version 2607, the Azure Key Vault extension might remain in a **Failed** state. | There's no known workaround in this release. |
+| Azure Local VMs <!--38909895--> | Trusted launch VMs (TVMs) created in earlier releases of Azure Local fail to start after the cluster is upgraded to 2607. | There's no known workaround in this release. If your Azure Local cluster has TVMs, don't upgrade to 2607. If you already upgraded to 2607, don't start any existing TVMs. |
 
 ## Known issues from previous releases
 
