@@ -17,9 +17,7 @@ This article provides an overview of confidential virtual machines (CVMs) on Azu
 
 CVMs on Azure Local bring hardware-based memory encryption and attestation to customer-owned edge infrastructure. They extend Azure's confidential computing platform to the edge to provide cryptographic assurance that protects and encrypts data in use, in RAM, and during computation.
 
-CVMs offer stronger security and confidentiality than standard virtual machines (VMs). They provide hardware-based isolation between virtual machines, the hypervisor, and host management code. The trust boundary excludes host administrators, infrastructure operators, and actors with host-level or administrative access from accessing workload data.
-
-The current release of CVMs on Azure Local supports only AMD Genoa (Gen 4) processors with Secure Encrypted Virtualization – Secure Nested Paging (SEV-SNP).
+CVMs offer stronger security and confidentiality than standard virtual machines (VMs). They provide hardware-based isolation between virtual machines, the hypervisor, and host management code.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -37,7 +35,7 @@ The current release of CVMs on Azure Local supports only AMD Genoa (Gen 4) proce
 
 ## Technical architecture
 
-The CVM architecture on Azure Local enables secure workload execution through a layered trust model. The process begins when you use the Azure portal or Azure CLI to check whether an Azure Local cluster is CVM-capable and, after confirmation, create a CVM on the host. Within the host, a guest environment runs the customer workload alongside the guest attestation library, which generates cryptographic evidence. This evidence passes through the Host Compatibility Layer (HCL) and vTPM layer to the Combined Asset Manager (IGVM Agent), which obtains platform certificates. The Azure Attestation service combined endpoint then attests the CVM report. After successful attestation, the Azure Key Vault relying party performs a secure key release based on the attestation evidence. This process ensures that secrets are released only to verified, confidential compute environments that run on trusted hardware and firmware.
+The CVM architecture on Azure Local enables secure workload execution through a layered trust model. The process begins when you use the Azure portal or Azure CLI to check whether an Azure Local cluster is CVM-capable and, after confirmation, create a CVM on the host. Within the host, a guest environment runs the customer workload alongside the guest attestation library. This library allows the user to obtain cryptographic evidence bound to the CVM allowing the workload to prove via attestation that it is running in a trusted environment. The Azure Attestation service combined endpoint then attests the CVM report. After successful attestation, the Azure Key Vault relying party performs a secure key release based on the attestation evidence. This process ensures that secrets are released only to verified, confidential compute environments that run on trusted hardware and firmware.
 
 The fundamental security model of CVMs on Azure Local involves hardware-based memory encryption, hardware-rooted firmware measurements, binding the vTPM implementation to the Trusted Execution Environment (TEE), and secure key release before accessing sensitive data.
 
@@ -65,7 +63,7 @@ Windows CVM guest support isn't available in this release.
 
 ## Supported OEM hardware
 
-CVM deployment on Azure Local is validated on the following OEM server configurations with AMD Genoa Gen 4 CPU:
+CVM deployment on Azure Local is validated on the following OEM server configurations with AMD EPYC 9004 Series (Genoa) processors. Example processors include AMD EPYC 9654, 9754, and 9684X.
 
 | OEM    | Server model                        |
 |--------|-------------------------------------|
