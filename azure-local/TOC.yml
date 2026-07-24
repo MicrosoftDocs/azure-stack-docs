@@ -466,7 +466,7 @@ items:
         - name: Create and connect to an Azure Local CVM
           href: manage/create-connect-confidential-vm.md
         - name: Guest attestation for CVMs
-          href: index.yml
+          href: manage/guest-attestation-confidential-vm.md
         - name: Troubleshooting
           href: manage/troubleshoot-confidential-vm.md
 
