@@ -23,7 +23,7 @@ A default infrastructure logical network *\<AzureLocalClusterName-InfraLNET\>* i
 > [!NOTE]
 > Azure Local VMs only support IPv4 addresses. IPv6 addresses aren't supported.
 >
-> Starting with Azure Local 2607, you can provision an Azure Local VM using the IP address configured as the DNS server or default gateway on the same workload logical network. This capability supports workload DNS server and NVA gateway VMs.
+> Starting with Azure Local 2607, you can provision an Azure Local VM and assign it the IP address configured as the DNS server or gateway on a workload logical network. This capability now allows you to run DNS or NVA gateway appliances as Azure Local VMs, serving workloads on the logical network. 
 >
 > This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc and doesn't apply to the infrastructure logical network. On Azure Local versions earlier than 2607, the DNS server and gateway IP addresses are reserved and can't be assigned to a VM.
 
