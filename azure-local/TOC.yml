@@ -462,7 +462,7 @@ items:
         - name: Deploy an Azure Local cluster via ARM template
           href: manage/confidential-vm-deploy-cluster-via-arm-template.md
         - name: Create and deploy an integrity-protected VM image
-          href: index.yml
+          href: manage/confidential-vm-create-deploy-integrity-protected-vm-image.md
         - name: Create and connect to an Azure Local CVM
           href: index.yml
         - name: Guest attestation for CVMs
