@@ -468,7 +468,7 @@ items:
         - name: Guest attestation for CVMs
           href: index.yml
         - name: Troubleshooting
-          href: index.yml
+          href: manage/troubleshoot-confidential-vm.md
 
     - name: Unmanaged VMs
       items:
