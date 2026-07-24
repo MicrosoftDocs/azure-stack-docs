@@ -24,7 +24,7 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 ### Share credentials can be exposed in observability logs during indirect log collection
 
-When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and the `Observability` role is included in the roles that are collected, the observability component on the Azure Local Disconnected Operations appliance captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If those observability logs are later collected and uploaded to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and include the `Observability` role in the roles that you collect, the observability component on the Azure Local Disconnected Operations appliance captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If you later collect those observability logs and upload them to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
 
 If you don't specify the `-CloudManagementFilterByRoles` parameter, all cloud management roles, including `Observability`, are collected by default. The only way to exclude observability logs is to pass an explicit list of roles to `-CloudManagementFilterByRoles` that omits the observability roles.
 
