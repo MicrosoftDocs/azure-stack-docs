@@ -387,8 +387,6 @@ Azure Local deployments based on Active Directory require a DNS server that can 
 
 The DNS servers used by the Azure Local infrastructure must be external and operational before deployment. It isn't supported to run the infrastructure DNS servers as Azure Local virtual machines.
 
-Starting with Azure Local 2607, this restriction doesn't apply to DNS servers used only by workloads. You can run a workload DNS server as an Azure Local VM and assign it the DNS server IP address configured on its workload logical network. This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc. For more information, see [Create logical networks for Azure Local VMs enabled by Azure Arc](../manage/create-logical-networks.md).
-
 Here are the summarized considerations for DNS servers addresses:
 
 |#  | Considerations  |
