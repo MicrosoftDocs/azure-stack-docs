@@ -41,7 +41,7 @@ The fundamental security model of CVMs on Azure Local involves hardware-based me
 
 In this approach, you design solutions specifically for stateless environments with a minimal Trusted Computing Base (TCB). Workloads fetch secrets post-boot through secure key release and process data entirely in encrypted RAM. This approach provides the tightest security boundary because it isolates only the data-handling components within the CVM boundary.
 
-:::image type="content" source="media/cvm-overview/confidential-virtual-machines-architecture.png" alt-text="Diagram that shows the CVM on Azure Local technical architecture." border="true" lightbox="media/cvm-overview/confidential-virtual-machines-architecture.png":::
+:::image type="content" source="media/cvm-overview/confidential-virtual-machines-architecture.jpg" alt-text="Diagram that shows the CVM on Azure Local technical architecture." border="true" lightbox="media/cvm-overview/confidential-virtual-machines-architecture.jpg":::
 
 ## Trust boundary
 
