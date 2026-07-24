@@ -464,7 +464,7 @@ items:
         - name: Create and deploy an integrity-protected VM image
           href: manage/confidential-vm-create-deploy-integrity-protected-vm-image.md
         - name: Create and connect to an Azure Local CVM
-          href: index.yml
+          href: manage/create-connect-confidential-vm.md
         - name: Guest attestation for CVMs
           href: index.yml
         - name: Troubleshooting
