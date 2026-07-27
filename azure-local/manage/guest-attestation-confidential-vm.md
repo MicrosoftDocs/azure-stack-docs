@@ -483,7 +483,7 @@ On success, the sample writes the released key material to stdout. Use the attes
 
 ## Related content
 
-- [Create and connect to an Azure Local confidential VM (preview)](../index.yml)
+- [Create and connect to an Azure Local confidential VM (preview)](create-connect-confidential-vm.md)
 - [Guest attestation for Trusted launch for Azure Local VMs (preview)](trusted-launch-guest-attestation.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
 
@@ -494,4 +494,3 @@ On success, the sample writes the released key material to stdout. Use the attes
 This feature is available only in Azure Local 2607 or later.
 
 ::: moniker-end
-

@@ -94,8 +94,8 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 
 ## Related content
 
-- [Create and connect to an Azure Local confidential VM (preview)](../index.yml)
-- [Guest attestation for confidential VMs on Azure Local (preview)](../index.yml)
+- [Create and connect to an Azure Local confidential VM (preview)](create-connect-confidential-vm.md)
+- [Guest attestation for confidential VMs on Azure Local (preview)](guest-attestation-confidential-vm.md)
 
 ::: moniker-end
 
@@ -104,4 +104,3 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 This feature is available only in Azure Local 2607 or later.
 
 ::: moniker-end
-

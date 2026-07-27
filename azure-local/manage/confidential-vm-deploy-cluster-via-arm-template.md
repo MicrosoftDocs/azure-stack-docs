@@ -149,10 +149,9 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
 
 1. Confirm that `ConfidentialVmIntent` is now set to `Enable` on the cluster.
 
-
 ## Next steps
 
-- [Create and deploy an integrity-protected VM image](../index.yml)
+- [Create and deploy an integrity-protected VM image](create-integrity-protected-vm-image.md)
 
 ::: moniker-end
 

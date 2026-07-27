@@ -85,7 +85,7 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 
 ## Next steps
 
-- [Deploy an Azure Local cluster via ARM template](../index.yml)
+- [Deploy an Azure Local cluster via ARM template for confidential VMs](confidential-vm-deploy-cluster-via-arm-template.md)
 
 ::: moniker-end
 

@@ -516,7 +516,7 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 
 ## Next steps
 
-- [Create and connect to an Azure Local confidential VM](../index.yml)
+- [Create and connect to an Azure Local confidential VM](create-connect-confidential-vm.md)
 
 ::: moniker-end
 

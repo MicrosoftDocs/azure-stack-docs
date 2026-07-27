@@ -172,4 +172,3 @@ $endpoint = $cluster.isolatedVmAttestationConfiguration.attestationServiceEndpoi
 This feature is available only in Azure Local 2607 or later.
 
 ::: moniker-end
-
