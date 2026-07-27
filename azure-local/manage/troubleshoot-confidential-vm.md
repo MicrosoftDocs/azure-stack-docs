@@ -15,9 +15,16 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot cluster deployment, VM creation, attestation, and image build problems with confidential VMs (CVMs) on Azure Local. It also lists the current limitations for this preview feature.
+This article lists the current limitations for confidential VMs (CVMs) on Azure Local, then describes how to troubleshoot cluster deployment, VM creation, attestation, and image build problems. Review the limitations first to rule out unsupported scenarios before you start troubleshooting.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+## Current limitations
+
+- Linux-only guest OS support. Windows CVM guests aren't available.
+- To maintain the security boundary, the service disables guest management features such as remote terminal and diagnostic logging.
+- You must prepare images in a clean room.
+- MAA-based attestation and AKV-based Secure Key Release (SKR) require cloud connectivity.
 
 ## Cluster deployment problems
 
@@ -84,13 +91,6 @@ If you encounter this error while you use WSL, run the command as your specific 
 ```powershell
 wsl -d "Ubuntu-24.04" -u <username> -- <command>
 ```
-
-## Current limitations
-
-- Linux-only guest OS support. Windows CVM guests aren't available.
-- To maintain the security boundary, the service disables guest management features such as remote terminal and diagnostic logging.
-- You must prepare images in a clean room.
-- Attestation (MAA) and Secure Key Release (AKV) require cloud connectivity.
 
 ## Related content
 

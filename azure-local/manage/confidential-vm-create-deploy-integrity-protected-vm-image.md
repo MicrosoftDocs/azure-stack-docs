@@ -3,7 +3,7 @@ title: Create and deploy an integrity-protected VM image for Azure Local confide
 description: Learn how to use the Integrity-Protected CVM Image Builder to create Ubuntu-based confidential VM (CVM) images for Azure Local (preview).
 author: sipastak
 ms.author: sipastak
-ms.date: 07/14/2026
+ms.date: 07/27/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
