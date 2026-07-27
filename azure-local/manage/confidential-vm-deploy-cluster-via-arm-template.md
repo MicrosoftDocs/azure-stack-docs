@@ -30,7 +30,7 @@ Before you begin, make sure that you meet the following requirements:
 
   Other Gen 4 systems might work but aren't currently supported.
 
-- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the Lenovo server. To apply the BIOS and UEFI settings, see [Configuring UEFI settings](https://github.com/Azure-Samples/AzureLocal/blob/main/confidential-virtual-machines/CVM_Configuring_UEF_settings_June20-2026.pdf).
+- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the Lenovo server. To apply the BIOS and UEFI settings, see [Configuring UEFI settings](https://github.com/Azure-Samples/AzureLocal/blob/main/confidential-virtual-machines/CVM_Configuring_UEFI_settings_June20-2026.pdf).
 
 ## Deploy the CVM-ready cluster
 

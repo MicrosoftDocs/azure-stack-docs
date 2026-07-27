@@ -80,7 +80,6 @@ Use the Azure portal to create a CVM interactively, with guided prompts for secu
 
     :::image type="content" source="./media/create-connect-confidential-vm/create-vm.png" alt-text="Screenshot of the review and create your virtual machine pane." lightbox="./media/create-connect-confidential-vm/create-vm.png":::
 
-
 ### Verify deployment (Azure portal)
 
 Go to your cluster > **Virtual machines** and verify that your CVM is running and shows **Security properties** on the **Overview** tab. Confirm that the CVM properties show `ConfidentialVmStatus: [Enabled]` in the cluster JSON view (using API version `2026-04-01-preview`).
@@ -89,7 +88,6 @@ Go to your cluster > **Virtual machines** and verify that your CVM is running an
 > Use attestation to verify the deployment status of your CVM. Attestation is the only reliable way to confirm a CVM's security state.
 
 :::image type="content" source="./media/create-connect-confidential-vm/verify-deployment.png" alt-text="Screenshot of your completed CVM deployment." lightbox="./media/create-connect-confidential-vm/verify-deployment.png":::
-
 
 # [Azure CLI](#tab/azurecli)
 
