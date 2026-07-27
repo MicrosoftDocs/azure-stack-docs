@@ -85,6 +85,8 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 
 ## Next steps
 
+- [Deploy an Azure Local cluster via ARM template](../index.yml)
+
 ::: moniker-end
 
 ::: moniker range="<=azloc-2606"
@@ -92,5 +94,3 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 This feature is available only in Azure Local 2607 or later.
 
 ::: moniker-end
-
-- [Deploy an Azure Local cluster via ARM template](../index.yml)
