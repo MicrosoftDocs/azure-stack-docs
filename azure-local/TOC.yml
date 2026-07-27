@@ -455,6 +455,21 @@ items:
         - name: Manual backup and recovery
           href: manage/trusted-launch-vm-import-key.md
 
+    - name: Confidential VMs
+      items:
+        - name: What are confidential VMs for Azure Local?
+          href: manage/confidential-vm-overview.md
+        - name: Deploy an Azure Local cluster via ARM template
+          href: manage/confidential-vm-deploy-cluster-via-arm-template.md
+        - name: Create and deploy an integrity-protected VM image
+          href: manage/confidential-vm-create-deploy-integrity-protected-vm-image.md
+        - name: Create and connect to an Azure Local CVM
+          href: manage/create-connect-confidential-vm.md
+        - name: Guest attestation for CVMs
+          href: manage/guest-attestation-confidential-vm.md
+        - name: Troubleshooting
+          href: manage/troubleshoot-confidential-vm.md
+
     - name: Unmanaged VMs
       items:
         - name: Manage VMs
