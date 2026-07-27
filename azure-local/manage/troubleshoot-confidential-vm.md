@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # Troubleshoot confidential VMs on Azure Local (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to troubleshoot cluster deployment, VM creation, attestation, and image build problems with confidential VMs (CVMs) on Azure Local. It also lists the current limitations for this preview feature.
@@ -94,3 +96,12 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 
 - [Create and connect to an Azure Local confidential VM (preview)](../index.yml)
 - [Guest attestation for confidential VMs on Azure Local (preview)](../index.yml)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end
+

@@ -13,6 +13,8 @@ ms.subservice: hyperconverged
 
 # Guest attestation for confidential VMs on Azure Local (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how guest attestation works for confidential VMs (CVMs) on Azure Local. It walks through two workflows: running the attestation sample client, and setting up secure key release (SKR).
@@ -484,3 +486,12 @@ On success, the sample writes the released key material to stdout. Use the attes
 - [Create and connect to an Azure Local confidential VM (preview)](../index.yml)
 - [Guest attestation for Trusted launch for Azure Local VMs (preview)](trusted-launch-guest-attestation.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end
+

@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # Deploy an Azure Local cluster via Azure Resource Manager deployment template for confidential VMs (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an [Azure Resource Manager template deployment for Azure Local](../deploy/deployment-azure-resource-manager-template.md).
@@ -151,3 +153,12 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
 ## Next steps
 
 - [Create and deploy an integrity-protected VM image](../index.yml)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end
+
