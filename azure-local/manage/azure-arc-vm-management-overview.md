@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 04/15/2026
+ms.date: 07/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -58,7 +58,8 @@ Consider the following limitations when you're managing VMs on Azure Local:
   - VLAN ID
   - Virtual switch name
 
-- Azure Local doesn't support provisioning an Azure Local VM using an IP address that is configured as the DNS server or a gateway on the same logical network.
+- Azure Local clusters configured with Software Defined Networking (SDN) enabled by Azure Arc don't support provisioning an Azure Local VM as a DNS server or NVA gateway appliance on a workload LNET.  
+
 > [!NOTE]
 > Taking a VM checkpoint locally is only supported for Azure Local 2504 and later.
 
