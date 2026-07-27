@@ -175,6 +175,8 @@ items:
         href: deploy/deployment-azure-resource-manager-template.md
     - name: Deploy using local identity with Key Vault
       items:
+      - name: Overview
+        href: deploy/deployment-local-identity-with-key-vault-overview.md
       - name: Deploy via Azure portal
         href: deploy/deployment-local-identity-with-key-vault.md
       - name: Deploy via ARM template
@@ -929,6 +931,8 @@ items:
         href: deploy/deployment-azure-resource-manager-template-disaggregated.md
     - name: Deploy using local identity with Key Vault
       items:
+      - name: Overview
+        href: deploy/deployment-local-identity-with-key-vault-overview.md
       - name: Deploy via Azure portal
         href: deploy/deployment-local-identity-with-key-vault.md
       - name: Deploy via ARM template
