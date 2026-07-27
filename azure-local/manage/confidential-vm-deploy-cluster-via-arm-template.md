@@ -1,9 +1,9 @@
 ---
-title:  Deploy an Azure Local cluster via Azure Resource Manager deployment template for confidential VMs (preview)
+title: Deploy an Azure Local Cluster via Azure Resource Manager deployment template for confidential VMs (preview)
 description: Learn how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an Azure Resource Manager deployment template (preview).
 author: sipastak
 ms.author: sipastak
-ms.date: 07/14/2026
+ms.date: 07/27/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
