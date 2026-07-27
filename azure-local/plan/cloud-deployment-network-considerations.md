@@ -385,7 +385,7 @@ Here are the summarized considerations for the IP addresses:
 
 Azure Local deployments based on Active Directory require a DNS server that can resolve the on-premises domain and the internet public endpoints. As part of the deployment it's required to define the same DNS servers for the infrastructure IP address range that is configured on the nodes. Azure Resource Bridge control plane VM and AKS control plane will use those same DNS servers for name resolution. Once deployment is completed, it isn't supported to change the DNS servers IPs and it will not be possible to update the addresses across the Azure Local platform stack.
 
-The DNS servers used by the Azure Local infrastructure must be external and operational before deployment. It isn't supported to run the infrastructure DNS servers as Azure Local virtual machines.
+The Azure Local infrastructure DNS servers must be external and operational before deployment. You can't run the infrastructure DNS servers as Azure Local virtual machines.
 
 Here are the summarized considerations for DNS servers addresses:
 
