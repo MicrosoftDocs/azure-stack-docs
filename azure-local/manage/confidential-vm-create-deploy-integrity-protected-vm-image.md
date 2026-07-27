@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # Create and deploy an integrity-protected VM image for Azure Local confidential VMs (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use the Integrity-Protected CVM Image Builder to create Ubuntu-based confidential virtual machine (CVM) images for Azure Local. The Integrity-Protected CVM Image Builder is available as part of the [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/master/ConfidentialComputing/CvmImageBuilder) repository.
@@ -45,7 +47,7 @@ In subsequent articles, use these measurements to:
 - Configure Azure Key Vault for secure key release.
 - Release secrets only to approved workloads.
 
-For more information, see [Guest attestation for confidential VMs](../index.yml).
+For more information, see [Guest attestation for confidential VMs](guest-attestation-confidential-vm.md).
 
 <!-- TODO: Add link to Create the Azure Local attestation sample application. -->
 <!-- TODO: Add link to Configure Azure Key Vault for secure key release. -->
@@ -514,4 +516,12 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 
 ## Next steps
 
-- [Create and connect to an Azure Local confidential VM](../index.yml)
+- [Create and connect to an Azure Local confidential VM](create-connect-confidential-vm.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end

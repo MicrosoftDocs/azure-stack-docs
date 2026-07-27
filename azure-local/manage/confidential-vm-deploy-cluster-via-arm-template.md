@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # Deploy an Azure Local cluster via Azure Resource Manager deployment template for confidential VMs (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an [Azure Resource Manager template deployment for Azure Local](../deploy/deployment-azure-resource-manager-template.md).
@@ -28,7 +30,7 @@ Before you begin, make sure that you meet the following requirements:
 
   Other Gen 4 systems might work but aren't currently supported.
 
-- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the Lenovo server. To apply the BIOS and UEFI settings, see [Configuring UEFI settings](https://github.com/Azure-Samples/AzureLocal/blob/main/confidential-virtual-machines/CVM_Configuring_UEF_settings_June20-2026.pdf).
+- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the Lenovo server. To apply the BIOS and UEFI settings, see [Configuring UEFI settings](https://github.com/Azure-Samples/AzureLocal/blob/main/confidential-virtual-machines/CVM_Configuring_UEFI_settings_June20-2026.pdf).
 
 ## Deploy the CVM-ready cluster
 
@@ -147,7 +149,14 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
 
 1. Confirm that `ConfidentialVmIntent` is now set to `Enable` on the cluster.
 
-
 ## Next steps
 
-- [Create and deploy an integrity-protected VM image](../index.yml)
+- [Create and deploy an integrity-protected VM image](confidential-vm-create-deploy-integrity-protected-vm-image.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end

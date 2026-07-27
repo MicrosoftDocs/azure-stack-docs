@@ -11,6 +11,8 @@ ms.subservice: hyperconverged
 
 # What are confidential VMs for Azure Local (preview)?
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of confidential virtual machines (CVMs) on Azure Local.
@@ -83,4 +85,12 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 
 ## Next steps
 
-- [Deploy an Azure Local cluster via ARM template](../index.yml)
+- [Deploy an Azure Local cluster via ARM template for confidential VMs](confidential-vm-deploy-cluster-via-arm-template.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end

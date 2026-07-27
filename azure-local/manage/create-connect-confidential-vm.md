@@ -13,6 +13,8 @@ ms.subservice: hyperconverged
 
 # Create and connect to an Azure Local confidential VM (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create a confidential VM (CVM) on Azure Local by using the Azure portal or the Azure CLI, and how to connect to the CVM after it's deployed. Confidential VMs use an integrity-protected VM image and stronger isolation guarantees than a standard VM.
@@ -78,7 +80,6 @@ Use the Azure portal to create a CVM interactively, with guided prompts for secu
 
     :::image type="content" source="./media/create-connect-confidential-vm/create-vm.png" alt-text="Screenshot of the review and create your virtual machine pane." lightbox="./media/create-connect-confidential-vm/create-vm.png":::
 
-
 ### Verify deployment (Azure portal)
 
 Go to your cluster > **Virtual machines** and verify that your CVM is running and shows **Security properties** on the **Overview** tab. Confirm that the CVM properties show `ConfidentialVmStatus: [Enabled]` in the cluster JSON view (using API version `2026-04-01-preview`).
@@ -87,7 +88,6 @@ Go to your cluster > **Virtual machines** and verify that your CVM is running an
 > Use attestation to verify the deployment status of your CVM. Attestation is the only reliable way to confirm a CVM's security state.
 
 :::image type="content" source="./media/create-connect-confidential-vm/verify-deployment.png" alt-text="Screenshot of your completed CVM deployment." lightbox="./media/create-connect-confidential-vm/verify-deployment.png":::
-
 
 # [Azure CLI](#tab/azurecli)
 
@@ -162,3 +162,11 @@ $endpoint = $cluster.isolatedVmAttestationConfiguration.attestationServiceEndpoi
 - [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtual-machines.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
 - [Connect to an Azure Local VM using SSH, RDP over SSH, or VM Connect (preview)](connect-arc-vm-using-ssh.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end
