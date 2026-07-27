@@ -478,6 +478,23 @@ To deploy the image, upload the VHDX file that you created to the Azure Local cl
 
 Path arguments, such as `-SshKey` and `-PackageDir`, must use Unix-style forward slashes (`/`) rather than Windows backslashes (`\`), because the build script runs inside a Linux container via WSL 2.
 
+### CRLF line endings in .sh files
+
+If the build script fails inside WSL with an error such as `/bin/bash^M: bad interpreter: No such file or directory` or `command not found` for a script name, the `.sh` files likely have Windows-style CRLF line endings. Git can convert LF to CRLF at checkout on Windows, which breaks Bash scripts inside WSL.
+
+To normalize all `.sh` files under the current folder to Unix-style LF line endings, run the following PowerShell command from the repository root:
+
+```powershell
+Get-ChildItem -Filter *.sh -Recurse | ForEach-Object {
+    $text = [System.IO.File]::ReadAllText($_.FullName)
+    $text = $text -replace "`r`n", "`n"
+    [System.IO.File]::WriteAllText($_.FullName, $text)
+    Write-Host "Converted: $($_.FullName)"
+}
+```
+
+Rerun the build script after conversion.
+
 ### Passphrase for SSH key
 
 If you're prompted for a passphrase when you use your SSH key, the key might be created with double quotes as the passphrase (`""`). Try entering two double quotes (`""`) as the passphrase. This behavior can happen if you generate the key pair by using PowerShell.

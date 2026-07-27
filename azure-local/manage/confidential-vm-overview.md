@@ -82,6 +82,8 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 - You must custom-tailor images to CVM.
 - Clean-room image preparation is required. The username and password are fixed during image preparation.
 - Cloud connectivity is required for Azure Attestation and secure key release (Azure Key Vault).
+- Migration of a running CVM isn't supported. Shut down all CVMs before you migrate them.
+- Windows Update isn't a supported update path. Take updates only through the Azure portal. For more information, see [Install a solution upgrade on Azure Local](../upgrade/install-solution-upgrade.md).
 
 ## Next steps
 
