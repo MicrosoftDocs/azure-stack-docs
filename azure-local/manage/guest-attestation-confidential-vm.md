@@ -119,7 +119,7 @@ In this section, you build binaries to include in the integrity-protected image.
 
 ### Build the CVM image and deploy it
 
-To build the integrity-protected VM image and deploy it to your cluster, see [create and deploy an integrity-protected VM image](../index.yml). The article covers the process from downloading the build scripts through generating the SSH key pair.
+To build the integrity-protected VM image and deploy it to your cluster, see [create and deploy an integrity-protected VM image](confidential-vm-create-deploy-integrity-protected-vm-image.md). The article covers the process from downloading the build scripts through generating the SSH key pair.
 
 ### Add packages to the image
 
@@ -311,7 +311,7 @@ In this section, you build the binaries to include in the integrity-protected im
 
 ### Build the CVM image and deploy it
 
-Build the integrity-protected VM image and deploy it to your cluster by following the same steps used to [create and deploy an integrity-protected VM image](../index.yml). You must include `AzureAttestSKR` in the rootfs overlay of your built image.
+Build the integrity-protected VM image and deploy it to your cluster by following the same steps used to [create and deploy an integrity-protected VM image](confidential-vm-create-deploy-integrity-protected-vm-image.md). You must include `AzureAttestSKR` in the rootfs overlay of your built image.
 
 ### Create an Azure Key Vault for SKR
 

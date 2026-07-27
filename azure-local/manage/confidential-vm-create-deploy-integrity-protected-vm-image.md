@@ -47,7 +47,7 @@ In subsequent articles, use these measurements to:
 - Configure Azure Key Vault for secure key release.
 - Release secrets only to approved workloads.
 
-For more information, see [Guest attestation for confidential VMs](../index.yml).
+For more information, see [Guest attestation for confidential VMs](guest-attestation-confidential-vm.md).
 
 <!-- TODO: Add link to Create the Azure Local attestation sample application. -->
 <!-- TODO: Add link to Configure Azure Key Vault for secure key release. -->
