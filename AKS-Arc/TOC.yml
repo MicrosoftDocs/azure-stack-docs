@@ -197,6 +197,8 @@
               href: network-validation-error-local.md
             - name: BGP with FRR not working
               href: connectivity-troubleshoot.md
+            - name: MetalLB speaker pods don't run on tainted nodes
+              href: troubleshoot-metallb-speaker-taint.md
           - name: Storage
             items:
             - name: Issues after deleting storage volumes
