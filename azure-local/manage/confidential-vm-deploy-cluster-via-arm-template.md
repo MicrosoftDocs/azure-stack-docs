@@ -160,4 +160,3 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
 This feature is available only in Azure Local 2607 or later.
 
 ::: moniker-end
-
