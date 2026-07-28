@@ -1,15 +1,17 @@
 ---
-title: What are confidential virtual machines for Azure Local (preview)? 
+title: What are Confidential Virtual Machines (VMs) for Azure Local (preview)?
 description: Learn how confidential virtual machines (CVMs) on Azure Local bring hardware-based memory encryption and attestation to customer-owned edge infrastructure for stateless, security-sensitive workloads (preview).
 author: sipastak
 ms.author: sipastak
-ms.date: 07/13/2026
+ms.date: 07/27/2026
 ms.topic: overview
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
 # What are confidential VMs for Azure Local (preview)?
+
+::: moniker range=">=azloc-2607"
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
@@ -80,7 +82,17 @@ You can find these configurations in the [Azure Local catalog](https://aka.ms/Az
 - You must custom-tailor images to CVM.
 - Clean-room image preparation is required. The username and password are fixed during image preparation.
 - Cloud connectivity is required for Azure Attestation and secure key release (Azure Key Vault).
+- Migration of a running CVM isn't supported. Shut down all CVMs before you migrate them.
+- Windows Update isn't a supported update path. Take updates only through the Azure portal. For more information, see [Install a solution upgrade on Azure Local](../upgrade/install-solution-upgrade.md).
 
 ## Next steps
 
-- [Deploy an Azure Local cluster via ARM template](../index.yml)
+- [Deploy an Azure Local cluster via ARM template for confidential VMs](confidential-vm-deploy-cluster-via-arm-template.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end
