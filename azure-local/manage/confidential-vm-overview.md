@@ -70,9 +70,8 @@ CVM deployment on Azure Local is validated on the following OEM server configura
 | OEM    | Server model                        |
 |--------|-------------------------------------|
 | Lenovo | ThinkAgile MX455 V3 Edge PR         |
-| Lenovo | ThinkSystem SR665 V3 Validated Node |
 
-You can find these configurations in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
+You can find this configuration in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Limitations
 
