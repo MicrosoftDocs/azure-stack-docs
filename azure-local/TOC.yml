@@ -495,7 +495,8 @@ items:
           href: manage/gpu-manage-via-device.md
         - name: Manage GPUs via partitioning
           href: manage/gpu-manage-via-partitioning.md
-
+        - name: REST APIs for GPU management
+          href: manage/gpu-rest-api-reference.md 
     - name: Rack aware cluster
       items:
       - name: What's a rack aware cluster?
