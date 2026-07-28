@@ -704,32 +704,10 @@
       href: aks-hybrid-preview-uninstall.md
     - name: Troubleshooting overview
       href: troubleshoot-overview.md
-    - name: Azure Arc-enabled Kubernetes
-      href: known-issues-arc.yml
     - name: Pre-installation validation tests
       href: validation-tests.md
-    - name: Install
-      href: known-issues-installation.yml
-    - name: Upgrade
-      href: known-issues-upgrade.yml
-    - name: Workload and clusters
-      items:
-      - name: Kubernetes clusters
-        href: known-issues-workload-clusters.yml
-      - name: Connect to nodes with SSH
-        href: ssh-connection.md
-    - name: Networking
-      href: known-issues-networking.yml
-    - name: Security
-      href: known-issues-security.yml
-    - name: Storage
-      href: known-issues-storage.yml
-    - name: Windows Admin Center
-      href: known-issues-windows-admin-center.yml
-    - name: Uninstall
-      href: known-issues-uninstall.yml
-    - name: Other
-      href: known-issues.yml
+    - name: Connect to nodes with SSH
+      href: ssh-connection.md
     - name: Support policies
       href: support-policies.md
     - name: File bugs
