@@ -13,6 +13,8 @@ ms.subservice: hyperconverged
 
 # Guest attestation for confidential VMs on Azure Local (preview)
 
+::: moniker range=">=azloc-2607"
+
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how guest attestation works for confidential VMs (CVMs) on Azure Local. It walks through two workflows: running the attestation sample client, and setting up secure key release (SKR).
@@ -117,7 +119,7 @@ In this section, you build binaries to include in the integrity-protected image.
 
 ### Build the CVM image and deploy it
 
-To build the integrity-protected VM image and deploy it to your cluster, see [create and deploy an integrity-protected VM image](../index.yml). The article covers the process from downloading the build scripts through generating the SSH key pair.
+To build the integrity-protected VM image and deploy it to your cluster, see [create and deploy an integrity-protected VM image](confidential-vm-create-deploy-integrity-protected-vm-image.md). The article covers the process from downloading the build scripts through generating the SSH key pair.
 
 ### Add packages to the image
 
@@ -309,7 +311,7 @@ In this section, you build the binaries to include in the integrity-protected im
 
 ### Build the CVM image and deploy it
 
-Build the integrity-protected VM image and deploy it to your cluster by following the same steps used to [create and deploy an integrity-protected VM image](../index.yml). You must include `AzureAttestSKR` in the rootfs overlay of your built image.
+Build the integrity-protected VM image and deploy it to your cluster by following the same steps used to [create and deploy an integrity-protected VM image](confidential-vm-create-deploy-integrity-protected-vm-image.md). You must include `AzureAttestSKR` in the rootfs overlay of your built image.
 
 ### Create an Azure Key Vault for SKR
 
@@ -481,6 +483,14 @@ On success, the sample writes the released key material to stdout. Use the attes
 
 ## Related content
 
-- [Create and connect to an Azure Local confidential VM (preview)](../index.yml)
+- [Create and connect to an Azure Local confidential VM (preview)](create-connect-confidential-vm.md)
 - [Guest attestation for Trusted launch for Azure Local VMs (preview)](trusted-launch-guest-attestation.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
+
+::: moniker-end
+
+::: moniker range="<=azloc-2606"
+
+This feature is available only in Azure Local 2607 or later.
+
+::: moniker-end

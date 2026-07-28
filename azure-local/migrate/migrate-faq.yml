@@ -144,7 +144,11 @@ sections:
         
           ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
 
-          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration fails with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
+          Yes, starting with Azure Local 2607, a migrated DNS server VM can use the IPv4 address configured as the DNS server on its destination workload logical network.
+
+          This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc. It applies only to workload logical networks. The DNS servers used by the Azure Local infrastructure must remain external to the Azure Local instance. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
+
+          On Azure Local versions earlier than 2607, assigning a logical network's DNS server IP address to a VM isn't supported and migration fails with an *address already in use* error.
 
           ### What is a seed disk, and can I delete it?
 
