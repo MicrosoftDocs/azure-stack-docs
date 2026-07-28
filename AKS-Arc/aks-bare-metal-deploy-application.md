@@ -26,7 +26,7 @@ Follow the steps below to deploy a nginx deployment on your AKS on bare metal cl
 ### Step 1: Create the deployment
 
 ```bash
-kubectl create deployment nginx --image=mcr.microsoft.com/cbl-mariner/base/nginx:1.24
+kubectl create deployment nginx --image=mcr.microsoft.com/cbl-mariner/base/nginx:1.22
 ```
 
 ### Step 2: Verify the pod is running
