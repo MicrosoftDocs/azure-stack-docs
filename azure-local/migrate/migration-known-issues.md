@@ -1,7 +1,7 @@
 ---
 title: Known issues in Azure Migrate for Azure Local
 description: Fix Azure Local migration issues in Azure Migrate. Review common causes and proven solutions, then troubleshoot failures faster—start resolving issues now.
-ms.date: 05/15/2026
+ms.date: 07/23/2026
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -16,9 +16,11 @@ This article identifies known issues and their workarounds in Azure Migrate for 
 
 These release notes are continuously updated, and as issues requiring a workaround are discovered, they're added.
 
-## Static IP address conflicts during migration
+## Migration fails when a VM uses the logical network DNS server or gateway IP address
 
-When you migrate a virtual machine (VM) from VMware to Azure Local and retain a static IP address, the migration fails and generates an `InUse` error if the IP address is already assigned to another resource. This problem is common when you migrate domain controller VMs or other role-based VMs.
+When you migrate a virtual machine (VM) with a static IP address to an Azure Local version earlier than 2607, migration fails if the IP address is configured as the DNS server or default gateway on the destination logical network. This problem commonly affects DNS server and network virtual appliance (NVA) gateway VMs.
+
+The same failure occurs on Azure Local 2607 or later on clusters that use Software Defined Networking (SDN) enabled by Azure Arc.
 
 **Symptoms**:
 
@@ -30,14 +32,16 @@ Common symptoms include:
 
 **Cause**:
 
-The migration process tries to assign a static IP that's already in use. This problem occurs because of current product limitations on network interface handling for certain roles, such as domain controllers.
+On Azure Local versions earlier than 2607, the platform reserves the DNS server and gateway IP addresses configured on a logical network and prevents a VM from using either address. This limitation also applies to Azure Local 2607 or later on clusters that use SDN enabled by Azure Arc.
 
 **Solution**:
 
-Use either of the following solutions:
+Use the solution that applies to your environment:
 
-- Create a separate static logical network that excludes affected servers, and then migrate the VM to that network.
-- Migrate the VM to a Dynamic Host Configuration Protocol (DHCP) network instead of retaining the static IP.
+- For a non-SDN Azure Local instance, update the target to version 2607 or later. You can then migrate the VM with the DNS server or gateway IP address configured on its destination workload logical network.
+- For an instance earlier than 2607 or a cluster that uses SDN enabled by Azure Arc, create a separate static logical network that doesn't reserve the VM's IP address, or migrate the VM to a Dynamic Host Configuration Protocol (DHCP) network and configure the static IP address in the guest after migration.
+
+This support applies only to workload logical networks. The DNS servers used by the Azure Local infrastructure must remain external to the Azure Local instance. Also verify that no other VM or network interface uses the IP address, because actual duplicate IP assignments remain unsupported.
 
 ## Replication failure because of storage account network settings
 
