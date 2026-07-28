@@ -94,7 +94,7 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: mcr.microsoft.com/cbl-mariner/base/nginx:1.24
+        image: mcr.microsoft.com/cbl-mariner/base/nginx:1.22
         ports:
         - containerPort: 80
         resources:
