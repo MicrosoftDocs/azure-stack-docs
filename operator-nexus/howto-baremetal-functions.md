@@ -308,7 +308,7 @@ az networkcloud baremetalmachine reimage \
 
 ## Replace a Bare Metal Machine
 
-The replace action integrates new or repaired physical hardware into the cluster. When the BMM already has an associated machine and that host is powered on, the controller starts by deprovisioning the old machine before it performs hardware validation. It validates the replacement hardware by testing BMC connectivity, verifying credentials, and checking network links, then waits for deprovisioning to finish before provisioning the replacement hardware with a fresh OS image.
+The replace action integrates new or repaired physical hardware into the cluster. When the BMM already has an associated machine and the host is powered on, the controller deprovisions the old machine before it performs hardware validation. It validates the replacement hardware by testing BMC connectivity, verifying credentials, and checking network links. The controller waits for deprovisioning to finish before provisioning the replacement hardware with a fresh OS image.
 
 After replacing components such as motherboard or Network Interface Card (NIC), the MAC address of Bare Metal Machine changes; however, the iDRAC IP address and hostname remain the same.
 A `replace` **must** be executed after each hardware maintenance operation, read through [Best practices for a Bare Metal Machine replace](./howto-bare-metal-best-practices.md#best-practices-for-a-bare-metal-machine-replace) for more details.
