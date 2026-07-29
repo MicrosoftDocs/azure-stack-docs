@@ -73,4 +73,3 @@ Important considerations for your Azure Stack deployment: -->
 ### Partner products
 
 - [Azure Stack Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
-- To learn more about the partner products that offer VM protection on Azure Stack, see [Protecting apps and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).

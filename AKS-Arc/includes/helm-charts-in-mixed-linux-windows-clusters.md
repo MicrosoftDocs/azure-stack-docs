@@ -1,7 +1,7 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.service: azure-stack
+ms.service: azure-kubernetes-service-hybrid
 ms.custom: linux-related-content
 ms.topic: include
 ms.date: 10/27/2022

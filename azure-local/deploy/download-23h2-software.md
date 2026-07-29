@@ -71,7 +71,7 @@ Follow these steps to download the software:
 
 | OEM | Download location |
 |--------------|------------------|
-| DELL EMC | [Download location](https://dell.github.io/azurestack-docs/docs/hci/supportmatrix/2509/goldenimages/). |
+| DELL EMC | [Download location](https://dell.github.io/azurestack-docs/docs/hci/supportmatrix/2606/goldenimages/). |
 | HPE | Contact your HPE support channel or OEM representative. |
 | Lenovo | Contact your Lenovo support channel or OEM representative. |
 
