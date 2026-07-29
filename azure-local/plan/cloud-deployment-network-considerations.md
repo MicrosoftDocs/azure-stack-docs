@@ -234,7 +234,7 @@ When you use an external SAN—Fiber Channel or IP-based SAN (for example, iSCSI
 The storage fabric differs by SAN type:
 
 - **Fiber Channel (FC)**: Storage runs entirely on the FC fabric, separate from the Ethernet network. No Ethernet storage QoS, Priority Flow Control (PFC), or lossless Ethernet is required—all cluster traffic is TCP over SMB Multichannel.
-- **iSCSI**: Storage runs over dedicated Ethernet adapters and an iSCSI storage fabric. iSCSI replaces Storage Spaces Direct and removes RDMA, and because all traffic (iSCSI, CSV, Live Migration, and cluster heartbeat) runs over TCP, lossless Ethernet and PFC aren't required. Validate that your SAN array model is supported before you deploy.
+- **IP based SAN**: Storage runs over dedicated Ethernet adapters to access the IP based SAN. It replaces Storage Spaces Direct and removes RDMA, and because all traffic (IP based SAN traffic, CSV, Live Migration, and cluster heartbeat) runs over TCP, lossless Ethernet and PFC aren't required. Validate that your SAN array model is supported before you deploy.
 
 iSCSI deployments follow this validated pattern, which you choose in [Decision 6](#decision-6-determine-network-adapter-ports-and-configuration):
 
