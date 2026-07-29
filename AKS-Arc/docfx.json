@@ -44,9 +44,9 @@
     "globalMetadata": {
       "uhfHeaderId": "Azure",
       "_op_documentIdPathDepotMapping": {
-        "./": { 
-          "depot_name": "Azure.azure-documents", 
-          "folder_relative_path_in_docset": "articles/azure-stack/aks-hci/" 
+        "./": {
+          "depot_name": "Azure.azure-documents",
+          "folder_relative_path_in_docset": "articles/azure-stack/aks-hci/"
         }
       },
       "feedback_system": "Standard",
@@ -56,9 +56,7 @@
       "breadcrumb_path": "/azure/aks/aksarc/breadcrumb/toc.json",
       "extendBreadcrumb": false,
       "manager":"kumud",
-      "recommendations": true,
-      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
-
+      "recommendations": true
     },
     "fileMetadata": {
       "ms.service": {
