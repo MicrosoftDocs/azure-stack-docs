@@ -1,7 +1,7 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.service: azure-stack
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 04/07/2025
 ms.reviewer: abha

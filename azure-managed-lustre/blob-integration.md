@@ -2,9 +2,9 @@
 title: Use Azure Blob Storage with an Azure Managed Lustre File System
 description: Understand storage concepts for using Azure Blob Storage with an Azure Managed Lustre file system. 
 ms.topic: how-to
-author: pauljewellmsft
-ms.author: pauljewell
-ms.date: 01/10/2025
+author: akashdubey
+ms.author: akashdubey
+ms.date: 07/29/2026
 ms.reviewer: brianl
 
 # Intent: As an IT Pro, I want to be able to seamlessly use Azure Blob Storage for long-term storage of files in my Azure Managed Lustre file system.
@@ -203,6 +203,7 @@ When you export files from your Azure Managed Lustre system, not all files are c
 - Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
 - Files that are deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
 - Blob names must conform to certain [naming rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names). Acceptable blob names differ slightly from acceptable POSIX file names. The export process preserves special characters in file names by properly escaping them when exporting to blobs. However, a file name that violates a blob-naming rule (for example, exceeding the maximum blob name length) results in an error when you attempt to export that file.
+- Azure Blob Storage doesn't support hard links like a POSIX file system. If you have hard links in the Azure Managed Lustre file system, each hard link is exported to your blob container as a unique blob. When you import those blobs back into a Managed Lustre file system, they're imported as independent files with no reference to each other.
 
 ### <a name = "running-export-jobs-in-active-file-systems"></a> Run export jobs in active file systems
 
