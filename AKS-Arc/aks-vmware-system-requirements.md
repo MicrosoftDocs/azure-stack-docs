@@ -8,7 +8,7 @@ ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 06/13/2025
 
-ms.custom: references_regions
+ms.custom: references_regions, vmware
 
 ---
 

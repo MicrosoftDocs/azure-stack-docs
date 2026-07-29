@@ -7,7 +7,7 @@ ms.date: 06/16/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: abha
-ms.custom:
+ms.custom: windows-server
   - mode-api
   - kr2b-contr-experiment
   - devx-track-azurepowershell

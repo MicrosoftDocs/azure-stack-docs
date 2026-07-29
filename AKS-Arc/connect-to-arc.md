@@ -3,7 +3,7 @@ title: Connect an Azure Kubernetes Service cluster to Azure Arc in AKS on Window
 description: Connect an Azure Kubernetes Service (AKS) cluster to Kubernetes.
 author: davidsmatlak
 ms.topic: how-to
-ms.custom:
+ms.custom: windows-server
   - devx-track-azurepowershell
 ms.date: 04/02/2025
 ms.author: davidsmatlak 

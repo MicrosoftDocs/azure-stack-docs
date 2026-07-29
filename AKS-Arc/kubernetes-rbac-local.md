@@ -6,7 +6,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 07/25/2025
 ms.reviewer: leslielin
 ms.topic: how-to
-ms.custom:
+ms.custom: local
   - devx-track-azurecli
 ms.date: 07/25/2025
 

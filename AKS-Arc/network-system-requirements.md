@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 08/12/2025
+ms.custom: local
 ---
 
 # AKS enabled by Azure Arc network requirements

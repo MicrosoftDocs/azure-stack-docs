@@ -7,6 +7,7 @@ ms.date: 07/03/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to deploy applications on AKS using Helm.
 # Keyword: Helm, Helm chart, Helm deployment

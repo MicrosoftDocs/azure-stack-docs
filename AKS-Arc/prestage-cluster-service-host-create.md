@@ -7,6 +7,7 @@ ms.date: 06/26/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to use PowerShell to use pre-staged cluster objects to deploy my AKS host.
 # Keyword: DNS records

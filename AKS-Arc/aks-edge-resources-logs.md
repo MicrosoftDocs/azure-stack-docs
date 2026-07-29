@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: end-user-help
 ms.date: 10/26/2023
-ms.custom: end-user-help
+ms.custom: end-user-help, edge-essentials
 ---
 
 # AKS Edge Essentials logs

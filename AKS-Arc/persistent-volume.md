@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 07/03/2024
 ms.reviewer: abha
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to create and use persistent storage volumes in a Windows container and prepare Windows nodes.
 # Keyword: persistent storage, persistent volume

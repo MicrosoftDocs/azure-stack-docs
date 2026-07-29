@@ -6,6 +6,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 05/25/2022
 ms.reviewer: abha
+ms.custom: windows-server
 author: davidsmatlak
 
 # Intent: As an IT Pro, I want to learn how to configure proxy server settings in my AKS deployments that require authentication.

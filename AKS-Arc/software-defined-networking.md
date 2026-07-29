@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
+ms.custom: windows-server
 
 # Intent: As an IT pro, I want to learn how to use PowerShell to deploy AKS on Windows Server on top of a software defined cluster.
 # Keyword: PowerShell networking software networking virtual networking

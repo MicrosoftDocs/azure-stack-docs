@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/20/2024
 ms.reviewer: srikantsarwa
+ms.custom: local
 # Customer intent: As an Azure Kubernetes user, I want to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" error code so that I can successfully start or create and deploy an Azure Kubernetes Service Arc cluster.
 
 ---

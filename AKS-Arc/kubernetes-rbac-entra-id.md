@@ -6,7 +6,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 05/29/2024
 ms.reviewer: abha
 ms.topic: how-to
-ms.custom:
+ms.custom: windows-server
   - devx-track-azurecli
 ms.date: 05/29/2024
 

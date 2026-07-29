@@ -7,6 +7,7 @@ ms.date: 04/04/2025
 ms.reviewer: abha
 ms.lastreviewed: 03/28/2025
 ms.topic: concept-article
+ms.custom: windows-server
 
 
 # Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.

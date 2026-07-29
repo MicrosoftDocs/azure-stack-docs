@@ -7,6 +7,7 @@ ms.date: 11/17/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to configure group Managed Service Accounts (gMSA) for containers
 # Keyword: group Managed Service Accounts (gMSA) for Windows containers

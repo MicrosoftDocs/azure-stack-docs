@@ -4,6 +4,7 @@ description: Learn how to deploy an AKS enabled by Azure Arc cluster on Azure Lo
 ms.topic: quickstart
 ms.date: 04/24/2026
 ms.author: davidsmatlak
+ms.custom: multi-rack
 author: sanjanamsft
 ---
 

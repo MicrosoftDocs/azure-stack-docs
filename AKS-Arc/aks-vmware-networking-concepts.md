@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: abha
 ms.lastreviewed: 03/25/2024
+ms.custom: vmware
 ---
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)

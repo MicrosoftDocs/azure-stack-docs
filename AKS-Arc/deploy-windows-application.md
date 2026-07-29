@@ -7,6 +7,7 @@ ms.date: 07/03/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to use a custom image to deploy a Windows.NET application. 
 # Keyword: Windows .NET application ASP.NET application

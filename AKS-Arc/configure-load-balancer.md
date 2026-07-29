@@ -7,6 +7,7 @@ ms.date: 06/24/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/30/2024
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to create a load balancer and use it as a Virtual Machine (VM).
 # Keyword: load balancer configure HAProxy + KeepAliveS

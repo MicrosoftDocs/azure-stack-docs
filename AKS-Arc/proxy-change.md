@@ -6,6 +6,7 @@ ms.date: 07/12/2024
 ms.author: davidsmatlak
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
+ms.custom: windows-server
 author: davidsmatlak
 
 # Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates for the proxy server.

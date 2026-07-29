@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/03/2024
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to restart, remove, and/or reinstall my AKS deployment when necessary.
 # Keyword: AKS restart AKS removal

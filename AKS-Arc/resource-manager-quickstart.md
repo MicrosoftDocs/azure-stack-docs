@@ -2,7 +2,7 @@
 title: Deploy a Kubernetes cluster using an Azure Resource Manager template
 description: Learn how to deploy a Kubernetes cluster in Azure Kubernetes Service (AKS) enabled by Azure Arc using an Azure Resource Manager template.
 ms.topic: quickstart-arm
-ms.custom: devx-track-arm-template, devx-track-azurecli
+ms.custom: devx-track-arm-template, devx-track-azurecli, local
 ms.date: 01/12/2026
 author: davidsmatlak
 ms.author: davidsmatlak 

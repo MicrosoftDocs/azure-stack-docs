@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.date: 11/13/2025
 ms.lastreviewed: 05/31/2023
+ms.custom: windows-server
 
 # Intent: As a subscription owner, I want to understand how the AKS Arc service is priced and what I am paying for.
 # Keyword: pricing

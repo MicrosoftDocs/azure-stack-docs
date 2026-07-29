@@ -7,6 +7,7 @@ ms.date: 04/08/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 04/08/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 
 # Intent: As an IT Pro, I need to learn how to obtain full on-demand logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
 # Keyword: on-demand logs cluster nodes troubleshooting

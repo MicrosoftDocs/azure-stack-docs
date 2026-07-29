@@ -336,3 +336,4 @@ commands:
 - az_aksarc_nodepool_show
 metadata:
   description: Manage nodepools in a provisioned cluster.
+  ms.custom: vmware
