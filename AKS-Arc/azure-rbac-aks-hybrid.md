@@ -2,7 +2,7 @@
 title: Use Azure RBAC for AKS clusters (preview)
 description: Use Azure RBAC with Microsoft Entra ID to control access to AKS clusters.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, windows-server
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 04/02/2025

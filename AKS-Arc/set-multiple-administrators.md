@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 10/12/2022
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS on Windows Server.
 # Keyword: administrator setup register users Microsoft on Cloud (MOC) service 

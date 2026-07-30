@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/28/2026
+ms.custom: local
 
 # Intent: As an IT Pro, I want to refresh my AKS on Azure Local cluster so it picks up updated HTTP proxy settings after I change the proxy configuration on Azure Local.
 # Keyword: httpProxy refresh update proxy settings

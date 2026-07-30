@@ -5,8 +5,8 @@ ms.topic: overview
 ms.date: 09/15/2025
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.reviewer: abha
 ms.lastreviewed: 03/25/2024
+ms.custom: vmware
 ---
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)
@@ -81,7 +81,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 |mcr.microsoft.com | HTTPS/443 |
 |.data.mcr.microsoft.com | HTTPS/443 |
 |msk8s.sb.tlu.dl.delivery.mp.microsoft.com | HTTPS/443 |
-|.prod.microsoftmetrics.com | HTTPS/443 | 
+|.prod.microsoftmetrics.com | HTTPS/443 |
 |login.microsoftonline.com | HTTPS/443 |
 |dc.services.visualstudio.com | HTTPS/443 |
 |ctldl.windowsupdate.com | HTTP/80 |

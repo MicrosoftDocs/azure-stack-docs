@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 11/17/2025
 ms.lastreviewed: 01/30/2024
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Deploy a Kubernetes cluster by using the Azure portal

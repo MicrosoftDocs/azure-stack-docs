@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 06/27/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
-ms.custom:
+ms.custom: windows-server
   - linux-related-content
   - sfi-ropc-nochange
 

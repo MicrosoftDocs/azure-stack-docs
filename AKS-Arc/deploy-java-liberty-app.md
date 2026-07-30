@@ -6,7 +6,7 @@ ms.author: davidsmatlak
 ms.topic: install-set-up-deploy
 ms.date: 06/27/2024
 ms.lastreviewed: 01/14/2022
-ms.custom:
+ms.custom: windows-server
   - devx-track-extended-java
   - devx-track-java
   - devx-track-javaee

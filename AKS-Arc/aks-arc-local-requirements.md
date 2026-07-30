@@ -5,6 +5,7 @@ ms.topic: concept-article
 author: xelu86
 ms.author: alalve
 ms.date: 12/08/2025
+ms.custom: local
 # Intent: As a system administrator, I want to understand the storage requirements needed to run my infrastructure.
 # Keyword: AKS Azure Local storage requirements
 ---

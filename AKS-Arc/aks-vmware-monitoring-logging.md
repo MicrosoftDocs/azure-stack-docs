@@ -7,6 +7,7 @@ ms.date: 03/21/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 03/21/2024
 ms.reviewer: leslielin
+ms.custom: vmware
 
 # Intent: As an IT Pro, I want to learn how to monitor and view Kubernetes object events for AKS on VMware.
 # Keyword: monitor and logging data, Prometheus

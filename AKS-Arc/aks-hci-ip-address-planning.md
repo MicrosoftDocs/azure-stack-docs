@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 10/08/2024
+ms.custom: local
 ---
 
 # IP address planning requirements

@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/21/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Troubleshoot issue where AKS Arc telemetry pod consumes too much memory and CPU

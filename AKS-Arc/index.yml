@@ -11,6 +11,7 @@ metadata:
   author: davidsmatlak
   ms.author: davidsmatlak 
   ms.date: 02/20/2025
+  ms.custom: landing
 
 landingContent:
   - title: About AKS enabled by Azure Arc

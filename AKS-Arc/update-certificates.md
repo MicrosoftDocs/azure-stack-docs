@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: leslielin
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to update certificates to secure communication between in-cluster components on my AKS deployment.
 # Keyword: control plane nodes secure communication certificate revocation

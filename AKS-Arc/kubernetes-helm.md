@@ -4,7 +4,7 @@ description: Learn how to use the Helm packaging tool to deploy containers on Az
 services: container-service
 author: davidsmatlak
 ms.topic: how-to
-ms.custom: linux-related-content
+ms.custom: linux-related-content, windows-server
 ms.date: 06/27/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022

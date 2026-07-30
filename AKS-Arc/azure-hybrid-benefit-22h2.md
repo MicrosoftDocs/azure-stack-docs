@@ -7,7 +7,7 @@ ms.date: 04/01/2025
 ms.topic: how-to
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
-ms.custom:
+ms.custom: windows-server
   - devx-track-azurepowershell
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   

@@ -4,9 +4,10 @@ description: Use a persistent volume in a Windows container and prepare Windows 
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 07/03/2024
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to create and use persistent storage volumes in a Windows container and prepare Windows nodes.
 # Keyword: persistent storage, persistent volume
@@ -32,7 +33,7 @@ Here's what you need to get started:
 
 ## Create a persistent volume claim
 
-A persistent volume claim (PVC) is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy and paste the following YAML definition. The PVC requires a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
+A persistent volume claim (PVC) is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy and paste the following YAML definition. The PVC requires a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).
 
 ```yaml
 apiVersion: v1
@@ -50,7 +51,7 @@ spec:
 To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Windows Server cluster. Use a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server.
 
 ```bash
-kubectl create -f pvc-akshci-csi.yaml 
+kubectl create -f pvc-akshci-csi.yaml
 ```
 
 The following output shows that your persistent volume claim was successfully created:
@@ -68,61 +69,61 @@ To use a persistent volume, create a file named `winwebserver.yaml`, and copy an
 In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**:
 
 ```yaml
-apiVersion: apps/v1 
-kind: Deployment 
-metadata: 
-  labels: 
-    app: win-webserver 
-  name: win-webserver 
-spec: 
-  replicas: 1 
-  selector: 
-    matchLabels: 
-      app: win-webserver 
-  template: 
-    metadata: 
-      labels: 
-        app: win-webserver 
-      name: win-webserver 
-    spec: 
-     containers: 
-      - name: windowswebserver 
-        image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019 
-        ports:  
-          - containerPort: 80    
-        volumeMounts: 
-            - name: akshciscsi 
-              mountPath: "/mnt/akshciscsi" 
-     volumes: 
-        - name: akshciscsi 
-          persistentVolumeClaim: 
-            claimName:  pvc-akshci-csi 
-     nodeSelector: 
-      kubernetes.io/os: windows 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: win-webserver
+  name: win-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: win-webserver
+  template:
+    metadata:
+      labels:
+        app: win-webserver
+      name: win-webserver
+    spec:
+     containers:
+      - name: windowswebserver
+        image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+        ports:
+          - containerPort: 80
+        volumeMounts:
+            - name: akshciscsi
+              mountPath: "/mnt/akshciscsi"
+     volumes:
+        - name: akshciscsi
+          persistentVolumeClaim:
+            claimName:  pvc-akshci-csi
+     nodeSelector:
+      kubernetes.io/os: windows
 ```
 
 To create a pod with this YAML definition, run:
 
 ```powershell
-kubectl create -f winwebserver.yaml 
+kubectl create -f winwebserver.yaml
 ```
 
 To make sure the pod is running, execute the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time:
 
 ```powershell
-kubectl get pods -o wide 
+kubectl get pods -o wide
 ```
 
 Once your pod is running, view the pod status by running the following command:
 
 ```powershell
-kubectl.exe describe pod %podName% 
+kubectl.exe describe pod %podName%
 ```
 
 To verify your volume has been mounted in the pod, run the following command:
 
 ```powershell
-kubectl exec -it %podname% cmd.exe 
+kubectl exec -it %podname% cmd.exe
 ```
 
 ## Delete a persistent volume claim

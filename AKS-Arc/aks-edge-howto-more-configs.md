@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/11/2024
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Additional configuration and scripts for AKS Edge Essentials
