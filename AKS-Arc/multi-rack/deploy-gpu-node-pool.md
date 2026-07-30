@@ -56,10 +56,10 @@ To create a GPU-enabled node pool, make sure the following requirements are met:
 
 - Install the [latest version of Azure CLI](/cli/azure/install-azure-cli) and the `aksarc` extension.
 - Configure either the tenant proxy or the logical network connectivity before proceeding to enable outbound access to NVIDIA software. For BYO proxy instructions, see [Add BYO proxy how-to for AKS on Azure Local multi-rack](../../AKS-Arc/multi-rack/aks-customer-proxy.md).
-- Ensure the AKS Arc cluster is created with SSH keys at cluster creation time and that you have access to these SSH keys. Steps 3 and 4 in this article require SSH access into each GPU worker VM to verify the NVIDIA driver and install the Container Toolkit, and SSH keys can only be configured during cluster creation.
+- Ensure the AKS Arc cluster is created with SSH keys at cluster creation time and that you have access to these SSH keys. Steps 3 and 4 in this article require SSH access to each GPU worker VM to verify the NVIDIA driver is installed correctly and to install the NVIDIA Container Toolkit. SSH keys can only be configured during cluster creation.
 
 > [!NOTE]
-> The NVIDIA driver is preinstalled in the worker VM image, so you don't need to install it manually. You must still install the NVIDIA Container Toolkit and NVIDIA Kubernetes device plugin so that the GPU is schedulable as `nvidia.com/gpu` from pod specs. Step 3 verifies the preinstalled driver, Steps 4–5 install the remaining components, and Step 6 verifies end-to-end with a pod workload.
+> The NVIDIA driver is preinstalled in the worker VM image, so you don't need to install it manually. You must still install the NVIDIA Container Toolkit and NVIDIA Kubernetes device plugin so that the GPU is schedulable as `nvidia.com/gpu` from pod specs. Step 3 verifies the preinstalled driver, Steps 4 and 5 install the remaining components, and Step 6 verifies end-to-end with a pod workload.
 
 ## Step 1: List available GPU-enabled VM sizes
 
@@ -118,7 +118,7 @@ Run the verification steps in this section on each worker VM in the GPU node poo
    0e:00.0 3D controller [0302]: NVIDIA Corporation Device [10de:2bb5] (rev a1)
    ```
 
-1. Verify the driver is loaded and can see the GPU. The first `nvidia-smi` invocation must run as root so the driver can create the `/dev/nvidia*` device nodes; subsequent unprivileged calls work because the nodes are created with mode `0666`.
+1. Verify the driver is loaded and can detect the GPU. The first `nvidia-smi` invocation must be run as root so the driver can create the required `/dev/nvidia*` device nodes. After the initial run, you can use `nvidia-smi` without elevated privileges.
 
    ```bash
    lsmod | grep '^nvidia'
