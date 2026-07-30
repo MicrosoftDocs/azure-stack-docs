@@ -1,9 +1,9 @@
-- name: Azure Kubernetes Service (AKS) enabled by Azure Arc
+- name: Azure Kubernetes Service (AKS) Hybrid and Edge
   href: index.yml
 - name: Overview
   expanded: true
   items:
-  - name: What is AKS enabled by Azure Arc?
+  - name: What is AKS Hybrid and Edge?
     href: aks-overview.md
   - name: Compare AKS across platforms
     href: aks-platforms-compare.md
@@ -15,8 +15,35 @@
     href: blogs-announcements.md
   - name: Security bulletins
     href: security-bulletins.md
-- name: AKS Arc on Azure Local
-  expanded: true
+- name: AKS on bare metal
+  items:
+  - name: Overview
+    items:
+    - name: What is AKS on bare metal?
+      href: aks-bare-metal-overview.md
+    - name: Public preview limitations
+      href: aks-bare-metal-preview-limitations.md
+  - name: Get started
+    items:
+    - name: System requirements and prerequisites
+      href: aks-bare-metal-system-requirements.md
+    - name: Create a cluster - Azure portal
+      href: aks-bare-metal-create-cluster-portal.md
+    - name: Create a cluster - ARM template
+      href: aks-bare-metal-create-cluster-arm-template.md
+    - name: Create a cluster - Bicep
+      href: aks-bare-metal-create-cluster-bicep.md
+  - name: How-to
+    items:
+    - name: Connect to your cluster
+      href: aks-bare-metal-connect-to-cluster.md
+    - name: Deploy an application
+      href: aks-bare-metal-deploy-application.md
+    - name: Upgrade Kubernetes clusters
+      href: aks-bare-metal-upgrade-cluster.md
+    - name: Delete cluster resources
+      href: aks-bare-metal-delete-cluster-resources.md
+- name: AKS on Azure Local
   items:
   - name: What's new in AKS on Azure Local
     href: aks-whats-new-local.md
@@ -223,7 +250,7 @@
             href: gpu-enabled-cluster-issue.md
           - name: Storage provisioning issue in cluster and node pool creation
             href: storage-provision-issue.md
-          - name: Deleted AKS Arc cluster still visible on Azure portal
+          - name: Deleted AKS cluster still visible on Azure portal
             href: deleted-cluster-visible.md
           - name: Telemetry pod consumes too much memory and CPU
             href: telemetry-pod-resources.md
@@ -233,7 +260,7 @@
             href: kube-apiserver-log-overflow.md
           - name: Cluster status stuck during upgrade
             href: cluster-upgrade-status.md
-          - name: Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+          - name: Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources
             href: delete-cluster-pdb.md
       - name: Security
         items:
@@ -404,83 +431,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md
-- name: AKS on bare metal
-  items:
-  - name: Overview
-    items:
-    - name: What is AKS on bare metal?
-      href: aks-bare-metal-overview.md
-    - name: Public preview limitations
-      href: aks-bare-metal-preview-limitations.md
-  - name: Get started
-    items:
-    - name: System requirements and prerequisites
-      href: aks-bare-metal-system-requirements.md
-    - name: Create a cluster - Azure portal
-      href: aks-bare-metal-create-cluster-portal.md
-    - name: Create a cluster - ARM template
-      href: aks-bare-metal-create-cluster-arm-template.md
-    - name: Create a cluster - Bicep
-      href: aks-bare-metal-create-cluster-bicep.md
-  - name: How-to
-    items:
-    - name: Connect to your cluster
-      href: aks-bare-metal-connect-to-cluster.md
-    - name: Deploy an application
-      href: aks-bare-metal-deploy-application.md
-    - name: Upgrade Kubernetes clusters
-      href: aks-bare-metal-upgrade-cluster.md
-    - name: Delete cluster resources
-      href: aks-bare-metal-delete-cluster-resources.md
-- name: AKS Arc on VMware
-  items:
-  - name: Overview
-    href: aks-vmware-overview.md
-  - name: System requirements
-    href: aks-vmware-system-requirements.md
-  - name: Network requirements
-    href: aks-vmware-networking-concepts.md
-  - name: Supported scale requirements
-    href: aks-vmware-scale-requirements.md
-  - name: Quickstart
-    items:
-    - name: Deploy an AKS cluster
-      href: aks-vmware-quickstart-deploy.md
-  - name: Concepts
-    items:
-    - name: Cluster architecture
-      href: aks-vmware-cluster-architecture.md
-  - name: How-to
-    items:
-    - name: Install Kubernetes Extension for Operators
-      href: aks-vmware-install-kubernetes-extension.md
-    - name: Retrieve certificate-based admin kubeconfig
-      href: aks-vmware-retrieve-kubeconfig.md
-    - name: Monitoring and logging
-      href: aks-vmware-monitoring-logging.md
-  - name: Troubleshooting
-    items:
-    - name: Troubleshooting and support
-      href: aks-vmware-support-troubleshoot.md
-    - name: Known issues
-      href: aks-vmware-known-issues.md
-    - name: Troubleshooting guide
-      href: aks-vmware-troubleshooting-guide.md
-  - name: Reference
-    items:
-    - name: aksarc CLI version 1.0.0b1
-      items:
-      - name: Commands
-        href: aksarc.yml
-      - name: logs
-        href: logs.yml
-      - name: nodepool
-        href: nodepool.yml
-      - name: vmsize
-        href: vmsize.yml
-      - name: vnet
-        href: vnet.yml
-- name: AKS Arc on Windows Server
+- name: AKS on Windows Server
   items:
   - name: AKS on Windows Server retirement
     href: aks-windows-server-retirement.md
@@ -490,7 +441,7 @@
     href: system-requirements.md
   - name: Quickstarts
     items:
-    - name: Deploy an AKS Arc cluster
+    - name: Deploy an AKS cluster
       items:
       - name: Use PowerShell
         href: kubernetes-walkthrough-powershell.md
@@ -560,7 +511,7 @@
     items:
     - name: Migrate from Windows Server 2019 to Windows Server 2022
       href: windows-server-migration-guide.md
-    - name: Install AKS Arc host with prestaged cluster service objects and DNS records
+    - name: Install AKS host with prestaged cluster service objects and DNS records
       href: prestage-cluster-service-host-create.md
     - name: Use manual (offline) download
       href: offline-download-22h2.md
@@ -570,7 +521,7 @@
       href: manage-node-pools-22h2.md
     - name: Upgrade
       items:
-      - name: Upgrade AKS Arc host
+      - name: Upgrade AKS host
         items:
         - name: Use PowerShell
           href: update-akshci-host-powershell.md
@@ -716,7 +667,7 @@
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
       href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: AKS Arc PowerShell
+    - name: AKS PowerShell
       href: ./reference/ps/index.md
     - name: Add-ons, extensions, and integrations
       href: add-ons.md
@@ -726,3 +677,51 @@
       href: /azure/architecture/example-scenario/hybrid/aks-baseline
     - name: Network architecture for AKS
       href: /azure/architecture/example-scenario/hybrid/aks-network
+- name: AKS on VMware
+  items:
+  - name: Overview
+    href: aks-vmware-overview.md
+  - name: System requirements
+    href: aks-vmware-system-requirements.md
+  - name: Network requirements
+    href: aks-vmware-networking-concepts.md
+  - name: Supported scale requirements
+    href: aks-vmware-scale-requirements.md
+  - name: Quickstart
+    items:
+    - name: Deploy an AKS cluster
+      href: aks-vmware-quickstart-deploy.md
+  - name: Concepts
+    items:
+    - name: Cluster architecture
+      href: aks-vmware-cluster-architecture.md
+  - name: How-to
+    items:
+    - name: Install Kubernetes Extension for Operators
+      href: aks-vmware-install-kubernetes-extension.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: aks-vmware-retrieve-kubeconfig.md
+    - name: Monitoring and logging
+      href: aks-vmware-monitoring-logging.md
+  - name: Troubleshooting
+    items:
+    - name: Troubleshooting and support
+      href: aks-vmware-support-troubleshoot.md
+    - name: Known issues
+      href: aks-vmware-known-issues.md
+    - name: Troubleshooting guide
+      href: aks-vmware-troubleshooting-guide.md
+  - name: Reference
+    items:
+    - name: aksarc CLI version 1.0.0b1
+      items:
+      - name: Commands
+        href: aksarc.yml
+      - name: logs
+        href: logs.yml
+      - name: nodepool
+        href: nodepool.yml
+      - name: vmsize
+        href: vmsize.yml
+      - name: vnet
+        href: vnet.yml
