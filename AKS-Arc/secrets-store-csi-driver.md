@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
 # Keyword: secrets stores CSI driver

@@ -6,6 +6,7 @@ ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
 ms.reviewer: leslielin
+ms.custom: edge-essentials
 
 ---
 

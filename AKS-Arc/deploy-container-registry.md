@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 12/11/2023
-ms.custom: sfi-ropc-nochange
+ms.custom: sfi-ropc-nochange, local
 ---
 
 # Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc

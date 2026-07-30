@@ -4,6 +4,7 @@ description: Learn about scale requirements for AKS on Azure Local, Rack Scale d
 ms.topic: limits-and-quotas
 ms.date: 04/24/2026
 ms.author: davidsmatlak
+ms.custom: multi-rack
 author: sanjanamsft
 ---
 

@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak
+ms.custom: windows-server
 
 ---
 

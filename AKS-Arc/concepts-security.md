@@ -7,6 +7,7 @@ ms.date: 03/31/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: leslielin
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure in AKS on Windows Server.
 # Keyword: security concepts infrastructure security

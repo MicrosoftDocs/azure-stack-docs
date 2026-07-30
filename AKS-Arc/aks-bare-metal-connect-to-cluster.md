@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Connect to an AKS on bare metal Cluster (preview)

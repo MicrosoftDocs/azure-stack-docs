@@ -6,6 +6,7 @@ ms.date: 06/27/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
+ms.custom: windows-server
 author: davidsmatlak
 
 # Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS host in AKS Arc.

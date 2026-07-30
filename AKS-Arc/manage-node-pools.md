@@ -2,7 +2,7 @@
 title: Manage node pools for an AKS cluster
 description: Learn how to manage multiple node pools in AKS on Azure Local.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, local
 ms.date: 07/03/2025
 author: davidsmatlak
 ms.author: davidsmatlak

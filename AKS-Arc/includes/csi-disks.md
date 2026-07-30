@@ -4,7 +4,6 @@ ms.author: davidsmatlak
 ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 10/02/2025
-ms.reviewer: abha
 ms.lastreviewed: 10/18/2022
 
 ---
@@ -41,7 +40,7 @@ parameters:
 provisioner: disk.csi.akshci.com
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
-allowVolumeExpansion: true  
+allowVolumeExpansion: true
 ```
 
 If you create a custom storage class, you can specify the location in which you want to store PVs. If the underlying infrastructure is Azure Local, this new location could be a volume that's backed by high-performing SSDs/NVMe, or a cost-optimized volume backed by HDDs.

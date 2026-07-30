@@ -5,7 +5,8 @@ ms.topic: how-to
 ms.date: 07/12/2024
 ms.author: davidsmatlak
 ms.lastreviewed: 05/31/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 author: davidsmatlak
 
 # Intent: As an IT Pro, I need to know how to update my proxy settings and upload new certificates for the proxy server.
@@ -48,7 +49,7 @@ You might occasionally need to update `noProxy` settings to exclude a private su
 
 1. Store your updated `noProxy` URL list in a PowerShell variable:
 
-   ```powershell  
+   ```powershell
    $noProxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
    ```
 
@@ -100,13 +101,13 @@ To apply the proxy updates:
 
 1. Check whether an update is available for your AKS host management cluster by running the following command:
 
-   ```powershell  
+   ```powershell
    Get-AksHciUpdates
    ```
 
 1. If an update is available, update your AKS host management cluster by running the following command. This command applies the proxy changes on your AKS host management cluster:
 
-   ```powershell  
+   ```powershell
    Update-AksHci
    ```
 
@@ -114,7 +115,7 @@ To apply the proxy updates:
 
    1. To check whether workload cluster updates are available, run the following command on each of your AKS workload clusters:
 
-      ```powershell  
+      ```powershell
       Get-AksHciClusterUpdates -name mycluster
       ```
 
@@ -122,13 +123,13 @@ To apply the proxy updates:
 
       - To update the Kubernetes version and OS version on a workload cluster, run the following command:
 
-        ```powershell  
+        ```powershell
         Update-AksHciCluster -name mycluster
         ```
 
       - To update the OS without updating the Kubernetes version, include the  `-operatingSystem` parameter:
 
-        ```powershell  
+        ```powershell
         Update-AksHciCluster -name mycluster -operatingSystem
         ```
 

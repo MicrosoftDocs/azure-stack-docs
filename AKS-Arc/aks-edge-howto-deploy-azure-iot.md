@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 09/25/2025
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Create and configure an AKS Edge Essentials cluster that can run Azure IoT Operations

@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/05/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Create an AKS on bare metal cluster using an ARM template (preview)
