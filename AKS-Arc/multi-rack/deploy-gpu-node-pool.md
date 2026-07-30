@@ -125,7 +125,29 @@ Run the verification steps in this section on each worker VM in the GPU node poo
    sudo nvidia-smi
    ```
 
-   Successful output from `sudo nvidia-smi` lists the NVIDIA RTX Pro 6000 with the installed driver version, which confirms the preinstalled driver is working.
+   Successful output from `sudo nvidia-smi` lists the NVIDIA RTX Pro 6000 with the installed driver version, which confirms the preinstalled driver is working. On an idle GPU worker VM, the output looks like this:
+
+   ```
+   +-----------------------------------------------------------------------------------------+
+   | NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
+   +-----------------------------------------+------------------------+----------------------+
+   | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+   |                                         |                        |               MIG M. |
+   |=========================================+========================+======================|
+   |   0  NVIDIA RTX PRO 6000 Blac...    Off |   00000000:0E:00.0 Off |                    0 |
+   | N/A   24C    P0             55W /  600W |       0MiB /  97887MiB |      3%      Default |
+   |                                         |                        |             Disabled |
+   +-----------------------------------------+------------------------+----------------------+
+
+   +-----------------------------------------------------------------------------------------+
+   | Processes:                                                                              |
+   |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+   |        ID   ID                                                               Usage      |
+   |=========================================================================================|
+   |  No running processes found                                                             |
+   +-----------------------------------------------------------------------------------------+
+   ```
 
    If `lsmod` shows no `nvidia` modules, load them manually and rerun `nvidia-smi`:
 
