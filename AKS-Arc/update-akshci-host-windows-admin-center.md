@@ -3,7 +3,7 @@ title: Update Azure Kubernetes Service host in AKS on Windows Server using Windo
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service host in AKS on Windows Server.
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, windows-server
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek

@@ -7,6 +7,7 @@ ms.date: 09/30/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 07/29/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Troubleshoot issues in AKS enabled by Azure Arc

@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.topic: limits-and-quotas
 ms.date: 11/17/2025
 ms.author: davidsmatlak 
-ms.custom: references_regions
+ms.custom: references_regions, windows-server
 
 #intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together for AKS on Windows Server.
 #keyword: Resource limits VM sizes

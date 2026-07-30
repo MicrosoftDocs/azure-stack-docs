@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 07/02/2025
+ms.custom: local
 ---
 
 # Connect to Windows or Linux worker nodes with SSH

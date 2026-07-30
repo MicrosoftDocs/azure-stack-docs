@@ -5,6 +5,7 @@ ms.date: 11/17/2025
 ms.topic: concept-article
 author: davidsmatlak
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS system requirements

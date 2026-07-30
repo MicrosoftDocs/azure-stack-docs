@@ -5,6 +5,7 @@ ms.topic: reference
 ms.date: 04/02/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 ---
 # Use offline download in AKS on Windows Server

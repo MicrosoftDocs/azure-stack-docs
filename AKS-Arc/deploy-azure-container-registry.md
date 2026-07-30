@@ -7,7 +7,7 @@ ms.date: 04/04/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
-ms.custom: sfi-ropc-nochange
+ms.custom: sfi-ropc-nochange, windows-server
 
 # Intent: As a developer, I want to deploy a container image from a private container registry to AKS on Windows Server.
 # Keyword: private container registry Kubernetes on-premises

@@ -4,6 +4,7 @@ description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on
 ms.topic: how-to
 ms.date: 05/19/2026
 ms.author: sunnyyuan
+ms.custom: multi-rack
 author: sunnyyuan
 
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools on AKS on Azure Local for multi-rack deployments.

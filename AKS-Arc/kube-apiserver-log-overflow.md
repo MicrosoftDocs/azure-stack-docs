@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/17/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs

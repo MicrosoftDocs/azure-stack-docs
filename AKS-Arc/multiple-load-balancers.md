@@ -7,6 +7,7 @@ ms.date: 06/26/2024
 ms.reviewer: rbaziwane
 ms.lastreviewed: 07/29/2022
 ms.topic: how-to
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn about using multiple load balancers in Azure Kubernetes Service (AKS).
 # Keyword: Kubernetes load balancer

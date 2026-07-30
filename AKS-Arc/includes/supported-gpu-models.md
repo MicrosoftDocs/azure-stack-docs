@@ -1,6 +1,7 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 03/18/2026
 ms.reviewer: rmody

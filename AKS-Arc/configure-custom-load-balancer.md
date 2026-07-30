@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to create a custom load balancer and use it to send requests to the Kubernetes API server.
 # Keyword: custom load balancer

@@ -7,6 +7,7 @@ ms.date: 01/17/2024
 ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2024
 ms.reviewer: srikantsarwa
+ms.custom: local
 # Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.
 # Keyword: kubelet logs cluster nodes troubleshooting
 ---
