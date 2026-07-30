@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: troubleshooting-general
 ms.date: 12/12/2024
-ms.custom: template-concept
+ms.custom: template-concept, edge-essentials
 ---
 
 # Troubleshoot common issues in AKS Edge Essentials

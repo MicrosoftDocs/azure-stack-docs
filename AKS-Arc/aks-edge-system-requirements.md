@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: limits-and-quotas
 ms.date: 04/17/2026
-ms.custom: template-concept
+ms.custom: template-concept, edge-essentials
 ---
 
 # AKS Edge Essentials requirements and support matrix

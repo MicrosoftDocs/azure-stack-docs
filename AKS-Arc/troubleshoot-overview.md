@@ -7,6 +7,7 @@ ms.date: 04/03/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 07/27/2026
 ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to troubleshoot issues with my AKS on Windows Server deployment
 # Keyword: troubleshooting

@@ -3,7 +3,7 @@ title: Node auto-repair
 description: Learn about automatic node repair of Windows and Linux nodes in AKS on Windows Server.
 author: davidsmatlak
 ms.topic: how-to
-ms.custom: linux-related-content
+ms.custom: linux-related-content, windows-server
 ms.date: 07/03/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/10/2023

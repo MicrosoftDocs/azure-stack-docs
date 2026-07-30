@@ -2,16 +2,16 @@
 title: Control access using Microsoft Entra ID and Kubernetes RBAC for Windows Server
 description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) for Windows Server
 author: davidsmatlak
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 05/29/2024
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.topic: how-to
-ms.custom:
+ms.custom: windows-server
   - devx-track-azurecli
 ms.date: 05/29/2024
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
-# Keyword: Kubernetes role-based access control 
+# Keyword: Kubernetes role-based access control
 ---
 
 # Control access using Microsoft Entra ID and Kubernetes RBAC for Windows Server
@@ -45,7 +45,7 @@ To demonstrate working with Microsoft Entra ID and Kubernetes RBAC, you can crea
 
 First, create the group in Microsoft Entra ID in your tenant for the application developers using the [`az ad group create`](/cli/azure/ad/group#az_ad_group_create) command. The following example prompts you to sign into your Azure tenant and then creates a group named **appdev**:
 
-```azurecli  
+```azurecli
 az login
 az ad group create --display-name appdev --mail-nickname appdev
 ```
@@ -56,7 +56,7 @@ With the example group created in Microsoft Entra ID for application developers,
 
 Add a user to the **appdev** group created in the previous section using the [`az ad group member add`](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you quit your session, reconnect to Azure using `az login`.
 
-```azurecli  
+```azurecli
 $AKSDEV_ID = az ad user create --display-name <name> --password <strongpassword> --user-principal-name <name>@contoso.onmicrosoft.com
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
@@ -73,7 +73,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 1. Create a namespace in the Kubernetes cluster using the [`kubectl create namespace`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
 
-   ```bash  
+   ```bash
    kubectl create namespace dev
    ```
 
@@ -108,13 +108,13 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 1. Get the resource ID for the **appdev** group using the [`az ad group show`](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
 
-    ```azurecli  
+    ```azurecli
     az ad group show --group appdev --query objectId -o tsv
     ```
 
     The `az ad group show` command returns the value you use as the `groupObjectId`:
 
-    ```output  
+    ```output
     38E5FA30-XXXX-4895-9A00-050712E3673A
     ```
 
@@ -136,16 +136,16 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
       name: groupObjectId
     ```
 
-    > [!TIP]  
+    > [!TIP]
     > If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the sample.
 
 1. Create the **RoleBinding** using the [`kubectl apply`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
 
-    ```powershell  
+    ```powershell
     kubectl apply -f rolebinding-dev-namespace.yaml
     ```
 
-    ```output  
+    ```output
     rolebinding.rbac.authorization.k8s.io/dev-user-access created
     ```
 
@@ -196,25 +196,25 @@ Now, test the expected permissions when you create and manage resources in a Kub
 
 1. After the proxy channel is established, open another session, and schedule an NGINX pod using the [`kubectl run`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run) command in the **dev** namespace:
 
-   ```bash  
+   ```bash
    kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
    ```
 
    When NGINX is successfully scheduled, you should see the following output:
 
-   ```output  
+   ```output
    pod/nginx-dev created
    ```
 
 1. Now, use the [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the `dev` namespace:
 
-   ```bash  
+   ```bash
    kubectl get pods --namespace dev
    ```
 
    When NGINX is successfully running, you should see the following output:
 
-    ```output  
+    ```output
     NAME        READY   STATUS    RESTARTS   AGE
     nginx-dev   1/1     Running   0          4m
     ```
@@ -223,17 +223,17 @@ Now, test the expected permissions when you create and manage resources in a Kub
 
 To attempt to view pods outside the **dev** namespace, use the [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command with the `--all-namespaces` flag:
 
-```bash  
+```bash
 kubectl get pods --all-namespaces
 ```
 
 The user's group membership doesn't have a Kubernetes role that allows this action. Without the permission, the command generates an error:
 
-```output  
+```output
 Error from server (Forbidden): pods is forbidden: User cannot list resource "pods" in API group "" at the cluster scope
 ```
 
 ## Next steps
 
 - [Learn more about security in AKS Arc on Windows Server](concepts-security.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- To help protect your cluster, see the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

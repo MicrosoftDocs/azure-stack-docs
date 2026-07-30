@@ -4,6 +4,7 @@ description: Learn how to upgrade an AKS cluster to a newer Kubernetes version o
 ms.topic: overview
 ms.date: 04/24/2026
 ms.author: davidsmatlak
+ms.custom: multi-rack
 author: sanjanamsft
 ---
 

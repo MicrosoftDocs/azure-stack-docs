@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Connect your AKS Edge Essentials cluster to Arc

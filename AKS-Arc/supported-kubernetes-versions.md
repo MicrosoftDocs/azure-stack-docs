@@ -8,6 +8,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/23/2026
+ms.custom: overview
 
 # Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
 # Keyword: supported Kubernetes versions

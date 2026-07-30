@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/21/2025
 ms.author: davidsmatlak 
+ms.custom: edge-essentials
 
 # Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
 # Keyword: AKS Edge Essentials support help requests

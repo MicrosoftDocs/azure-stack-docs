@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 03/21/2023
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes

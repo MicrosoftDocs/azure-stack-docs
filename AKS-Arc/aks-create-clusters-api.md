@@ -7,6 +7,7 @@ ms.date: 06/19/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 06/19/2025
 ms.reviewer: rjaini
+ms.custom: local
 ---
 
 # Create Kubernetes clusters using the REST API

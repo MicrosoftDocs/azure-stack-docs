@@ -2,7 +2,7 @@
 title: Overview of AKS on Windows Server
 description: Learn about AKS on Windows Server.
 ms.topic: overview
-ms.custom: linux-related-content
+ms.custom: linux-related-content, windows-server
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.date: 11/17/2025

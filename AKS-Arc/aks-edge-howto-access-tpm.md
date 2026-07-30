@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 07/12/2024
-ms.custom: template-how-to, linux-related-content
+ms.custom: template-how-to, linux-related-content, edge-essentials
 ---
 
 # TPM access for AKS Edge Essentials

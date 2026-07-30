@@ -4,6 +4,7 @@ description: Learn how to bring your own HTTPS proxy to provide internet connect
 ms.topic: how-to
 ms.date: 06/19/2026
 ms.author: jpalombo
+ms.custom: multi-rack
 author: jpalombo
 ---
 

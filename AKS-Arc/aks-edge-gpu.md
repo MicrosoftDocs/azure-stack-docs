@@ -7,6 +7,7 @@ ms.date: 01/15/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 06/05/2024
 ms.reviewer: guanghu
+ms.custom: edge-essentials
 
 # Intent: As an IT Pro, I want to learn how to expose a GPU to Linux
 # Keyword: GPU AKS Edge Essentials

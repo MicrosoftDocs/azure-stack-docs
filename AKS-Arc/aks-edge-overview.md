@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: overview
 ms.date: 10/24/2025
-ms.custom: template-overview
+ms.custom: template-overview, edge-essentials
 ---
 
 # AKS Edge Essentials
