@@ -3,9 +3,9 @@ title: Proxy server settings in AKS on Windows Server
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Windows Server.
 ms.topic: how-to
 ms.date: 04/02/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 05/25/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.custom: windows-server
 author: davidsmatlak
 
@@ -42,8 +42,8 @@ The proxy server configuration for your AKS deployment includes the following se
 
 The following table contains the list of addresses that you must exclude by using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
-|      IP address       |    Reason for exclusion    |  
-| ----------------------- | ------------------------------------ | 
+|      IP address       |    Reason for exclusion    |
+| ----------------------- | ------------------------------------ |
 | `localhost`, `127.0.0.1`  | localhost traffic  |
 | `.svc` | Internal Kubernetes service traffic, where `.svc` represents a wildcard name. This is similar to saying `*.svc`, but none is used in this schema. |
 | `10.0.0.0/8` | Private network address space. |
@@ -109,7 +109,7 @@ $proxyCred = Get-Credential
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com -credential $proxyCredential
 ```
 
-## Configure an AKS host for a proxy server without authentication  
+## Configure an AKS host for a proxy server without authentication
 
 If your proxy server doesn't require authentication, run the following command:
 

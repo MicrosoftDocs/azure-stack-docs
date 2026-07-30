@@ -4,9 +4,9 @@ description: Learn how to create and delete pods in Azure Kubernetes Service (AK
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/21/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.custom: windows-server
 
 # Intent: As an IT Pro I want to learn how to create and delete pods in AKS Arc.
@@ -32,7 +32,7 @@ To make sure you are connected to the Kubernetes cluster, run the following comm
 kubectl get nodes
 ```
 
-To create a pod, run the following command. In this example, a pod is created using an nginx image:  
+To create a pod, run the following command. In this example, a pod is created using an nginx image:
 
 ```powershell
 kubectl run nginx --image=nginx --restart=Never
@@ -65,20 +65,20 @@ kubectl delete pod
 The following YAML example describes the features of a pod, and shows how it's the smallest unit of Kubernetes that can be defined, deployed, and managed:
 
 ```yaml
-apiVersion: v1 
-kind: Pod 
-metadata: 
-      labels: 
-         app: nginx 
-      name: nginx 
-      namespace: calico-demo 
-spec: 
-      containers: 
-      - name: nginx 
-         image: nginx:1.8 
-         ports: 
-         - containerPort: 80 
-      nodeSelector: 
+apiVersion: v1
+kind: Pod
+metadata:
+      labels:
+         app: nginx
+      name: nginx
+      namespace: calico-demo
+spec:
+      containers:
+      - name: nginx
+         image: nginx:1.8
+         ports:
+         - containerPort: 80
+      nodeSelector:
           beta.kubernetes.io/os: linux
 ```
 

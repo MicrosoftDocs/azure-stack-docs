@@ -6,9 +6,9 @@ ms.topic: how-to
 ms.custom: windows-server
   - devx-track-azurepowershell
 ms.date: 04/02/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 
 # Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Service cluster to Kubernetes so I can extend those capabilities to my Kubernetes clusters.
 # Keyword: AKS cluster Kubernetes cluster
@@ -79,7 +79,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 Connect your AKS cluster to Kubernetes using the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace:
 
 ```powershell
-Enable-AksHciArcConnection -name $clusterName 
+Enable-AksHciArcConnection -name $clusterName
 ```
 
 ## Connect your AKS cluster to Azure Arc using a service principal

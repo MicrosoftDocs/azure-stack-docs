@@ -4,9 +4,9 @@ description: Learn how to set up an AKS host if you pre-staged cluster service o
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/26/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.custom: windows-server
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to use PowerShell to use pre-staged cluster objects to deploy my AKS host.
@@ -50,7 +50,7 @@ To create a virtual network for the nodes in your deployment to use, create an e
 
 ```powershell
 # static IP
-$vnet = New-AksHciNetworkSetting -name mgmt-vnet -vSwitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
+$vnet = New-AksHciNetworkSetting -name mgmt-vnet -vSwitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
 ```
 
 > [!NOTE]

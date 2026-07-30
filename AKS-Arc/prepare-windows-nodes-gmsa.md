@@ -4,9 +4,9 @@ description: Learn how to configure  Managed Service Accounts (gMSA) for contain
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to configure group Managed Service Accounts (gMSA) for containers
@@ -90,7 +90,7 @@ Before completing the following steps, make sure you install the **AksHci** Powe
    ```
 
    You should see one pod with the _gmsa-webhook_ prefix that is running.
-  
+
 1. Create the secret object that stores the Active Directory user credential. Complete the following configuration data and save the settings into a file named secret.yaml.
 
    ```yaml
@@ -113,30 +113,30 @@ Before completing the following steps, make sure you install the **AksHci** Powe
    ```
 
    > [!NOTE]
-   > If you create a secret under a namespace other than the default, remember to set the namespace of the deployment to the same namespace. 
+   > If you create a secret under a namespace other than the default, remember to set the namespace of the deployment to the same namespace.
 
-1. Use the [Add-AksHciGMSACredentialSpec](./reference/ps/add-akshcigmsacredentialspec.md) PowerShell cmdlet to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [Configure gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). 
+1. Use the [Add-AksHciGMSACredentialSpec](./reference/ps/add-akshcigmsacredentialspec.md) PowerShell cmdlet to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [Configure gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/).
 
-   Use the JSON credential spec as input for the following PowerShell command (parameters with asterisks * are mandatory): 
+   Use the JSON credential spec as input for the following PowerShell command (parameters with asterisks * are mandatory):
 
    ```powershell
-   Add-AksHciGMSACredentialSpec -Name <cluster name>*  
-     -credSpecFilePath <path to JSON credspec>* 
-     -credSpecName <name for credspec as the k8s GMSACredentialSpec object>* 
-     -secretName <name of secret>* 
-     -secretNamespace <namespace of secret>  
-     -serviceAccount <name of service account to bind to clusterrole>  
-     -clusterRoleName <name of clusterrole to use the credspec>*  
-     -overwrite 
+   Add-AksHciGMSACredentialSpec -Name <cluster name>*
+     -credSpecFilePath <path to JSON credspec>*
+     -credSpecName <name for credspec as the k8s GMSACredentialSpec object>*
+     -secretName <name of secret>*
+     -secretNamespace <namespace of secret>
+     -serviceAccount <name of service account to bind to clusterrole>
+     -clusterRoleName <name of clusterrole to use the credspec>*
+     -overwrite
    ```
 
    To view an example, see the following code:
 
    ```powershell
-   Add-AksHciGMSACredentialSpec -Name mynewcluster 
-     -credSpecFilePath .\credspectest.json 
-     -credSpecName credspec-mynewcluster 
-     -secretName mysecret 
+   Add-AksHciGMSACredentialSpec -Name mynewcluster
+     -credSpecFilePath .\credspectest.json
+     -credSpecName credspec-mynewcluster
+     -secretName mysecret
      -clusterRoleName clusterrole-mynewcluster
    ```
 
@@ -148,16 +148,16 @@ Create the deployment YAML file using the following example settings. The requir
 
    ```yaml
    serviceAccountName: default
-      securityContext: 
-        windowsOptions: 
+      securityContext:
+        windowsOptions:
           gmsaCredentialSpecName:
    ```
 
 1. Add the credential spec object:
 
    ```yaml
-   securityContext: 
-        windowsOptions: 
+   securityContext:
+        windowsOptions:
           gmsaCredentialSpecName: <cred spec name>
    ```
 
@@ -176,14 +176,14 @@ Create the deployment YAML file using the following example settings. The requir
               - key: username
                 path: my-group/my-username
    ```
-  
+
 1. Add the IP address of the domain controller and domain name under dnsConfig:
 
    ```yaml
-   dnsConfig: 
+   dnsConfig:
         nameservers:
           - <IP address for domain controller>
-        searches: 
+        searches:
           - <domain>
    ```
 
@@ -206,12 +206,12 @@ After you deploy the container, use the following steps to verify that it's work
 1. Once you're in the container, run the following command:
 
    ```console
-   Nltest /parentdomain 
-   Nltest /sc_verify:<domain> 
+   Nltest /parentdomain
+   Nltest /sc_verify:<domain>
    ```
 
    ```output
-   Connection Status = 0 0x0 NERR_Success The command completed successfully. 
+   Connection Status = 0 0x0 NERR_Success The command completed successfully.
    ```
 
    This output shows that the computer was authenticated by a domain controller, and a secure channel exists between the client computer and the domain controller.

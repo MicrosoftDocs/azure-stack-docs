@@ -5,11 +5,11 @@ author: davidsmatlak
 ms.topic: how-to
 ms.custom: linux-related-content, windows-server
 ms.date: 07/03/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 
-# Intent: As an IT Pro, I want to learn how to use SSH to connect to my Windows and Linux worker nodes when I need to perform maintenance and troubleshoot issues. 
+# Intent: As an IT Pro, I want to learn how to use SSH to connect to my Windows and Linux worker nodes when I need to perform maintenance and troubleshoot issues.
 # Keyword: SSH connection maintenance worker nodes
 ---
 
@@ -32,14 +32,14 @@ To obtain the IP address of the Windows worker node, run the following command:
 
 ```cmd
 kubectl --kubeconfig=yourkubeconfig get nodes -o wide
-```  
+```
 
-Next, run `ssh Administrator@ip` to connect to a Windows node:  
+Next, run `ssh Administrator@ip` to connect to a Windows node:
 
 ```cmd
 ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa administrator@<IP Address of the Node>
 ```
-  
+
 After you use SSH to connect to the node, you can run `net user administrator *` to update your administrator password.
 
 ## Use SSH to connect to Linux worker nodes
@@ -49,17 +49,17 @@ To use SSH to sign in to a Linux worker node, first run `kubectl get` to obtain 
 > [!NOTE]
 > You must pass the correct location to your SSH private key. The following example uses the default location of **%systemdrive%\akshci\.ssh\akshci_rsa**, but you might need to change this location if you requested a different path. To change the location, specify the `-sshPublicKey` parameter for [Set-AksHciConfig](./reference/ps/set-akshciconfig.md).
 
-To obtain the IP address of the Linux worker node:  
+To get the IP address of the Linux worker node:
 
 ```cmd
 kubectl --kubeconfig=yourkubeconfig get nodes -o wide
-```  
+```
 
 Use `ssh clouduser@ip` to connect to the Linux node:
 
 ```cmd
 ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node>
-```  
+```
 
 After you use SSH to connect to the node, you can run `net user administrator *` to update your administrator password.
 

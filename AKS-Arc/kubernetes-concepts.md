@@ -2,9 +2,9 @@
 title: Kubernetes cluster architecture for AKS on Windows Server
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS on Windows Server.
 author: davidsmatlak
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.date: 04/04/2025
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 03/28/2025
 ms.topic: concept-article
 ms.custom: windows-server
