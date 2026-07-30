@@ -21,6 +21,9 @@ For more information, see [Disconnected operations for Azure Local](/azure/azure
 > [!IMPORTANT]
 > The restore operation supports restoring the backup to the same version of Azure Local disconnected environment.
 
+> [!TIP]
+> Restore ALDO before cloud deployment on the new instance in order to avoid repair registration of management cluster. In case of restoring on same instance as backup, restore can be performed after cloud deployment post which follow (reconnect sequence)[disconnected-operations-post-restore-reconnect-cluster.md] for management cluster rehydration.
+
 ## Overview
 
 The backup feature currently backs up only the control plane VM data. It doesn't include associated workloads or configured clusters. The restore functionality restores the control plane data from the backup. So, ensure that you configure the same version of Azure Local disconnected where you restore the backup.
@@ -97,6 +100,12 @@ To trigger and monitor the restore, follow these steps:
 - **Drifted resources**: Restored environment reflects old state for resources that you updated after backup. This state might break authentication or management until remediated.
 - **Azure Local cluster infra drift**: You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup.
 - **Certificate expiry / rotation**: Older backups might contain expired certificates or mismatched client authentication certificate. You need manual remediation and rotation.
+
+## Next steps
+
+- To reconnect an existing data cluster from backup to the restored environment: [Reconnect a data cluster after a disconnected operations restore](disconnected-operations-post-restore-reconnect-cluster.md).
+- To re-register a management cluster (if restore was initiated after cloud deployment): [Re-register the management or data cluster (created post backup) on a restored ALDO setup](disconnected-operations-post-restore-repair-register-management-cluster.md).
+- To re-register data cluster created after backup, do this: [Recover a data cluster created after backup following a disconnected operations restore](disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md).
 
 ::: moniker-end
 
