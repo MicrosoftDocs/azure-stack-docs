@@ -148,7 +148,7 @@ This step applies only if you downloaded the .vhd zipped file.
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Local appliance |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416` |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb |
+    |Azure Local appliance |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847` |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb |
 
 1. Extract the zipped file to a folder. 
 
