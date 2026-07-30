@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Upgrade Kubernetes clusters (preview)

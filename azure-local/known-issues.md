@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 07/23/2026
+ms.date: 07/29/2026
 ms.subservice: hyperconverged
 ---
 
@@ -27,10 +27,10 @@ For the 2607 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 |--|--|
-| 12.2607.1003.69 | 26100.33158 |
+| 12.2607.1003.71 | 26100.33158 |
 
 > [!IMPORTANT]
-> The new deployments of this software use the **12.2607.1003.69** build.
+> The new deployments of this software use the **12.2607.1003.71** build.
 The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -42,6 +42,7 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |
 |------|------|-------|
+|Azure Local VMs <!--38909895--> | Trusted launch VMs (TVMs) created in earlier releases of Azure Local failed to start after the cluster was upgraded to 2607. | TVMs created in earlier releases now start successfully after upgrading to 2607. |
 |Azure Local VMs <!--37540842--> | Deleting a VM could fail with the error `An invalid IP address was specified`, leaving the VM and its network interface stuck and unable to be removed. |VM deletion now completes reliably, even for VMs whose network interface has no assigned private IP.|
 |Azure Local VMs <!--37773461--> | When updating a VM through an older API or tool version, the VM’s placement settings could be silently cleared, which could affect where the VM is scheduled. | Placement settings are now preserved automatically during updates, so they are no longer lost. |
 |Azure Local VMs <!--38576202--> | If a networking step failed while the system was reconciling a VM, the VM’s underlying cluster resource could be removed, putting the VM’s availability at risk. | The system now protects the VM’s cluster resource when a networking step fails, preserving VM availability. |
@@ -65,7 +66,6 @@ The following table lists the known issues in this release:
 |Feature  |Issue    |Workaround |
 |------|------|-------|
 | Update | After updating Azure Local to version 2607, the Azure Key Vault extension might remain in a **Failed** state. | There's no known workaround in this release. |
-| Azure Local VMs <!--38909895--> | Trusted launch VMs (TVMs) created in earlier releases of Azure Local fail to start after the cluster is upgraded to 2607. | There's no known workaround in this release. If your Azure Local cluster has TVMs, don't upgrade to 2607. If you already upgraded to 2607, don't start any existing TVMs. |
 
 ## Known issues from previous releases
 

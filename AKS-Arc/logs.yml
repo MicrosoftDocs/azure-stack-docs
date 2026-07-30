@@ -73,3 +73,4 @@ commands:
 - az_aksarc_logs_hci
 metadata:
   description: Collect logs from provisioned clusters.
+  ms.custom: vmware

@@ -5,6 +5,7 @@ ms.topic: upgrade-and-migration-article
 ms.date: 04/02/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to use PowerShell to upgrade the Kubernetes version of AKS workload clusters.
 # Keyword: Upgrade the Kubernetes version 

@@ -6,6 +6,7 @@ ms.topic: concept-article
 ms.date: 04/07/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn about virtual machine networking in AKS Arc.
 # Keyword: virtual machine networking

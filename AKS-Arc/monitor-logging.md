@@ -4,9 +4,10 @@ description: Learn how to create and access monitor and logging data for AKS on 
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/26/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
 # Keyword: monitor and logging data, Prometheus
@@ -93,11 +94,11 @@ The monitoring solution is installed in a separate namespace called `monitoring`
 
 Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the AKS Arc monitoring solution, as follows:
 
-```powershell  
+```powershell
 Uninstall-AksHciMonitoring -Name <target cluster name>
 ```
 
-The uninstall process removes everything, including the namespace, the StorageClass, and the actual data and metrics of the persistent volume.  
+The uninstall process removes everything, including the namespace, the StorageClass, and the actual data and metrics of the persistent volume.
 
 ## Deploy Grafana, and configure it to use Prometheus
 
@@ -108,7 +109,7 @@ You can follow any guidance for deploying Grafana that's publicly available. You
 Logging is crucial for troubleshooting and diagnostics. The logging solution in AKS Arc is based on Elasticsearch, Fluent Bit, and Kibana (EFK). These components are all deployed as containers:
 
 - Fluent Bit is the log processor and forwarder that collects data and logs from different sources. It then formats, unifies, and stores them in Elasticsearch.
-- Elasticsearch is a distributed search and analytics engine capable of centrally storing the logs for fast searches and data analytics.  
+- Elasticsearch is a distributed search and analytics engine capable of centrally storing the logs for fast searches and data analytics. 
 - Kibana provides interactive visualizations on a web dashboard. This tool lets you view and query logs stored in Elasticsearch, and then you can visualize them through graphs and dashboards.
 
 To set up an on-premises logging solution, see the steps to [set up logging to access Kibana](https://github.com/microsoft/AKS-Arc-Apps/tree/main/Logging#easy-steps-to-setup-logging-to-use-local-port-forward-to-access-kibana). This article includes all the components required to collect, aggregate, and query container logs across the cluster.

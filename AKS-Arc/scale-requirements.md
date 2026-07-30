@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 03/26/2024
+ms.custom: local
 ---
 
 # Scale requirements for AKS on Azure Local

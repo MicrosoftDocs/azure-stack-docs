@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
+ms.custom: windows-server
 
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS on Windows Server.

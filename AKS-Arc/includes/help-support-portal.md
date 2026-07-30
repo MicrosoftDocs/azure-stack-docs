@@ -1,6 +1,7 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 07/21/2025
 ms.reviewer: sumsmith
@@ -51,7 +52,7 @@ ms.lastreviewed: 07/21/2025
 
 1. Select **Next**.
 
-1. Fill in the problem details and description in the appropriate fields: 
+1. Fill in the problem details and description in the appropriate fields:
 
     :::image type="content" source="../media/help-support/service-request-details.png" alt-text="Screenshot showing details of service request." lightbox="../media/help-support/service-request-details.png":::
 

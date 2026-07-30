@@ -7,6 +7,7 @@ ms.date: 06/27/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
+ms.custom: windows-server
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 
 # Keyword: etcd secrets AKS Windows Server
 

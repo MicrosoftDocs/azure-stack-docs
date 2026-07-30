@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/07/2025
 ms.date: 10/21/2022
+ms.custom: windows-server
 
 # Intent: As a Kubernetes user, I want to use increase my VM size in place to grow my nodes to keep up with application demand.
 # Keyword: vertical node scaling Kubernetes

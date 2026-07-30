@@ -2,7 +2,7 @@
 title: Manage node pools for a cluster in AKS on Windows Server
 description: Learn how to manage multiple node pools in AKS on Windows Server.
 ms.topic: how-to
-ms.custom:
+ms.custom: windows-server
 ms.date: 04/02/2025
 author: davidsmatlak
 ms.author: davidsmatlak 

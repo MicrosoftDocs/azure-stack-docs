@@ -7,6 +7,7 @@ ms.date: 04/07/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to understand how disruptions can impact the availability of applications on my AKS deployments on Windows Server.
 # Keyword: AKS on Windows Server architecture live migration disruption Kubernetes container orchestration

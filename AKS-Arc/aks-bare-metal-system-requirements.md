@@ -5,6 +5,7 @@ ms.topic: concept-article
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # System requirements and prerequisites (preview)

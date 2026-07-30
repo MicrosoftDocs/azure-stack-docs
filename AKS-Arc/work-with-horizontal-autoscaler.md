@@ -7,6 +7,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 06/27/2024
 ms.reviewer: mikek
 ms.date: 11/07/2022
+ms.custom: windows-server
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
