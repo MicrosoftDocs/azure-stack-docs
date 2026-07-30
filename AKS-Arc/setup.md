@@ -7,7 +7,7 @@ ms.date: 11/17/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
-ms.custom: mode-portal
+ms.custom: mode-portal, windows-server
 
 # Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up AKS on Windows Server.
 # Keyword: Windows Admin Center Kubernetes

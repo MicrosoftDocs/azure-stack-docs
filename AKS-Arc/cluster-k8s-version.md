@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 11/22/2024
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Troubleshoot K8sVersionValidation error code

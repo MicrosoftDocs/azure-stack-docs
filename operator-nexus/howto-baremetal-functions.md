@@ -308,7 +308,7 @@ az networkcloud baremetalmachine reimage \
 
 ## Replace a Bare Metal Machine
 
-The replace action integrates new or repaired physical hardware into the cluster. Before the system begins provisioning the new hardware, it validates that the replacement hardware meets requirements by testing BMC connectivity, verifying credentials, and checking network links. After validation passes, the old machine is deprovisioned and the replacement hardware is provisioned with a fresh OS image. The machine then rejoins the cluster with the same logical identity.
+The replace action integrates new or repaired physical hardware into the cluster. When the BMM already has an associated machine and the host is powered on, the controller deprovisions the old machine before it performs hardware validation. It validates the replacement hardware by testing BMC connectivity, verifying credentials, and checking network links. The controller waits for deprovisioning to finish before provisioning the replacement hardware with a fresh OS image.
 
 After replacing components such as motherboard or Network Interface Card (NIC), the MAC address of Bare Metal Machine changes; however, the iDRAC IP address and hostname remain the same.
 A `replace` **must** be executed after each hardware maintenance operation, read through [Best practices for a Bare Metal Machine replace](./howto-bare-metal-best-practices.md#best-practices-for-a-bare-metal-machine-replace) for more details.
@@ -352,10 +352,11 @@ For detailed troubleshooting workflows including pre/post-checks and hardware re
 
 During a replace operation, the system progresses through the following phases:
 
-1. **Hardware Validation**: Validates replacement hardware meets requirements (BMC credentials, serial number, MAC addresses)
-1. **Deprovisioning**: Removes the old machine from cluster control and deletes associated resources
-1. **Provisioning**: Registers, inspects, and provisions the replacement hardware
-1. **Cloud Init**: Waits for the replacement machine to join the cluster and become ready
+1. **Deprovisioning**: If the BMM already has an associated machine, delete the machine and allow workloads to drain gracefully
+2. **Hardware Validation**: Validates the replacement hardware by testing BMC connectivity, verifying credentials, checking serial number and MAC addresses, and testing network links
+3. **Wait for Deprovisioning**: Verifies that the machine is fully deleted before provisioning begins
+4. **Provisioning**: Updates BMM hardware parameters and waits for the replacement hardware to be provisioned with a fresh OS image
+5. **Cloud Init**: Waits for the replacement machine to join the cluster and become ready
 
 As of the 2506.2 release, the password value for iDRAC can be provided as a Key Vault Uniform Resource Identifier (URI) or password value. See [Key Vault Credential Reference](reference-key-vault-credential.md). Using a URI instead of a plaintext password provides extra security.
 

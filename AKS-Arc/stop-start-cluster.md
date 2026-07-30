@@ -7,6 +7,7 @@ ms.date: 06/26/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to stop and restart a cluster in order to optimize resource costs on my AKS deployment.
 # Keyword: stop cluster start cluster cluster service

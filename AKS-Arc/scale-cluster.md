@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/25/2024
 author: davidsmatlak
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to scale the number of nodes in an AKS cluster in order to run control plane nodes and worker nodes.
 # Keyword: node count scale clusters control plane nodes

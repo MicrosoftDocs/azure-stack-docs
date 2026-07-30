@@ -7,6 +7,7 @@ ms.date: 02/15/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 02/15/2023
 ms.reviewer: baziwane
+ms.custom: windows-server
 ---
 
 # Add-ons, extensions, and other integrations with AKS on Windows Server

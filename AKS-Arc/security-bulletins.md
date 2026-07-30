@@ -5,6 +5,7 @@ author: leslielin
 ms.author: leslielin
 ms.topic: concept-article
 ms.date: 05/18/2026
+ms.custom: overview
 ---
 
 # Security bulletins for AKS enabled by Azure Arc

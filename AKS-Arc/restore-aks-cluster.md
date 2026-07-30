@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to restore AKS Arc following a disaster.
 # Keyword: Disaster Recovery

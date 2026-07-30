@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 02/25/2025
-ms.custom: template-how-to, linux-related-content
+ms.custom: template-how-to, linux-related-content, edge-essentials
 ---
 
 # AKS Edge Essentials multiple NIC configurations

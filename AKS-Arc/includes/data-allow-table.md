@@ -4,7 +4,6 @@ ms.author: davidsmatlak
 ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 04/07/2025
-ms.reviewer: abha
 ms.lastreviewed: 08/15/2022
 
 # Created from build at the repo: edge modules

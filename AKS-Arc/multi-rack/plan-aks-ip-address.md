@@ -4,6 +4,7 @@ description: Plan the IP addresses needed to deploy AKS enabled by Azure Arc clu
 ms.topic: concept-article
 ms.date: 04/24/2026
 ms.author: davidsmatlak
+ms.custom: multi-rack
 author: sanjanamsft
 ---
 

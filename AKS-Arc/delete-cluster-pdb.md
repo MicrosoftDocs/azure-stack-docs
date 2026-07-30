@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 04/01/2025
 ms.reviewer: leslielin
+ms.custom: local
 ---
 
 # Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources

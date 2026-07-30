@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: feature-availability
 ms.date: 01/09/2024
+ms.custom: windows-server
 ---
 
 # Availability scenarios for Azure Kubernetes Service (AKS) on Windows Server on two-node Azure Local

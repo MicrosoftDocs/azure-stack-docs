@@ -7,6 +7,7 @@ ms.author: davidsmatlak
 ms.date: 07/22/2025
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/22/2025
+ms.custom: local
 ---
 
 # Can't create AKS cluster or scale node pool because of issues with AKS Arc images

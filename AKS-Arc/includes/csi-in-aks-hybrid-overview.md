@@ -4,7 +4,6 @@ ms.author: davidsmatlak
 ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 07/03/2025
-ms.reviewer: abha
 ms.lastreviewed: 10/18/2022
 
 # Overview of CSI file and driver functionality in AKS enabled by Azure Arc

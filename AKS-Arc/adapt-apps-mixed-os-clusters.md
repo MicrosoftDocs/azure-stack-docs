@@ -4,11 +4,12 @@ description: Learn how to use node selectors or taints and tolerations on Azure 
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters. 
+# Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters.
 # Keyword: Node Selector mixed-OS clusters taints tolerations
 
 ---

@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/17/2023
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Discover OPC UA servers with Akri
