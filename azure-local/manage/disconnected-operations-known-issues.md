@@ -17,7 +17,15 @@ These release notes are updated continuously to include critical issues and requ
 ::: moniker range=">=azloc-2605"
 
 ## Known issues for version 2605
+### Missing signing cert in air-gapped environments 
+Cloud deployment will not succeed in air-gapped environments for Azure Local disconnected operations release 2605, unless the following steps are taken:
 
+- From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2011 certificate](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt)
+- Copy the downloaded certificate file (MicCodSigPCA2011_2011-07-08.crt) to each Azure Local node.
+- On each node, open an elevated PowerShell session and run:
+```powershell
+Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
+```
 ### Update package for 2605
 
 There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when the update is available.
