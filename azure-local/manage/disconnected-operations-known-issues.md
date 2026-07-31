@@ -17,6 +17,19 @@ These release notes are updated continuously to include critical issues and requ
 ::: moniker range=">=azloc-2605"
 
 ## Known issues for version 2605
+### Workload clusters patch and update failing
+**Applies to:** First time Azure Local patch and update for a data-cluster.
+**Note** : This is a one-time remediation. After the InfraLocal_1 volue is created, the same cluster would not require these steps for subsequent Azure Local updates.
+
+**Mitigation**:
+- Log in to any Azure Local cluster node with administrative privileges.
+- Run the following PowerShell command to create the InfraLocal_1 volume:
+```powershell
+New-Volume -FriendlyName "InfraLocal_1" -Size 10GB -ProvisioningType Thin
+```
+- Verify that the command completes successfully without errors.
+- Proceed with the Azure Local patch and update.
+
 ### Missing signing cert in air-gapped environments 
 Cloud deployment will not succeed in air-gapped environments for Azure Local disconnected operations release 2605, unless the following steps are taken:
 
