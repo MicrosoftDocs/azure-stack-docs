@@ -1,24 +1,24 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
-summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+title: Azure Kubernetes Service (AKS) Hybrid and Edge
+summary: Azure Kubernetes Service (AKS) Hybrid Edge extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
 
 metadata:
-  title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
-  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
+  title: Azure Kubernetes Service (AKS) Hybrid and Edge
+  description: Azure Kubernetes Service (AKS) Hybrid and Edge extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Local, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
   ms.service: azure-kubernetes-service-hybrid
   ms.topic: landing-page
   author: davidsmatlak
-  ms.author: davidsmatlak 
-  ms.date: 02/20/2025
+  ms.author: davidsmatlak
+  ms.date: 07/29/2026
   ms.custom: landing
 
 landingContent:
-  - title: About AKS enabled by Azure Arc
+  - title: About AKS Hybrid and Edge
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS enabled by Azure Arc?
+          - text: What is AKS Hybrid and Edge?
             url: aks-overview.md
       - linkListType: concept
         links:
@@ -61,14 +61,6 @@ landingContent:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
 
-  - title: Integrate with Azure
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Monitor Arc-enabled Kubernetes clusters
-            url: aks-monitor-logging.md
-          - text: Enforce threat protection using Azure Defender
-            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
   - title: Get started with AKS on bare metal
     linkLists:
@@ -85,20 +77,15 @@ landingContent:
           - text: Deploy an AKS on bare metal cluster
             url: aks-bare-metal-create-cluster-portal.md
 
-  - title: Get started with AKS enabled by Azure Arc on VMware
+
+  - title: Integrate with Azure
     linkLists:
-      - linkListType: overview
+      - linkListType: how-to-guide
         links:
-          - text: What is AKS enabled by Azure Arc on VMware?
-            url: aks-vmware-overview.md
-      - linkListType: quickstart
-        links:
-          - text: Deploy an AKS cluster
-            url: aks-vmware-quickstart-deploy.md
-      - linkListType: concept
-        links:
-          - text: Cluster architecture
-            url: aks-vmware-cluster-architecture.md
+          - text: Monitor Arc-enabled Kubernetes clusters
+            url: aks-monitor-logging.md
+          - text: Enforce threat protection using Azure Defender
+            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
   - title: Develop and debug applications with Bridge to Kubernetes
     linkLists:

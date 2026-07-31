@@ -1584,12 +1584,24 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Billing
+      href: manage/disconnected-operations-billing.md
+  - name: BCDR
+    items:
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
     - name: Restore disconnected operations
       href: manage/disconnected-operations-restore.md
-    - name: Billing
-      href: manage/disconnected-operations-billing.md
+    - name: Reconnect data cluster after restore
+      href: manage/disconnected-operations-post-restore-reconnect-cluster.md
+    - name: Reconnect Azure Arc on cluster machines after restore
+      href: manage/disconnected-operations-post-restore-reconnect-arc.md
+    - name: Re-register management cluster after restore
+      href: manage/disconnected-operations-post-restore-repair-register-management-cluster.md
+    - name: Recover ARB and associated resources after cluster re-registration
+      href: manage/disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md
+    - name: Recover data cluster created after backup
+      href: manage/disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md
 
   - name: Monitor
     items:
