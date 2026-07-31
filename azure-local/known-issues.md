@@ -376,7 +376,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2602"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2602
 
@@ -393,7 +393,7 @@ The release notes for this version include the issues fixed in this release, kno
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -405,7 +405,7 @@ The following table lists the fixed issues in this release:
 | Update <!--36581165--> | Fixed issue with SBE update failing due to invalid argument. | |
 | Azure Local VMs | Fixed issue where VM start or stop operation was blocked with an error after attaching or detaching GPU to the VM. | |
 
-## Known issues
+### Known issues
 
 The following table lists the known issues in this release:
 
@@ -414,7 +414,7 @@ The following table lists the known issues in this release:
 | Azure Local VMs <!--37983058--> | Instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | To protect your Azure Local instances from potential unintended VM deletion, update the Microsoft On-Premises Cloud (MOC) component by using the [Remediation Support Tool for Azure Local infrastructure component issues](/azure/azure-local/manage/remediate-support-tool-infrastructure?view=azloc-2604&preserve-view=true). After you apply the MOC component update, the Azure Local instance is no longer exposed to this issue. For the latest update, see [Release information summary](release-information-23h2.md). |
 | Deployment | If an IP address conflict is detected with the default AKS Arc IP ranges `10.244.0.0/16` or `10.96.0.0/12`, a new validator in version 2602 blocks the deployment or solution upgrade. | - Deployment: If the IP address conflict can't be resolved, you must deploy Azure Local using version 2601. Once deployed, you can update to version 2602 using the solution update process.<br>- Solution upgrade: There's no workaround available for solution upgrade. |
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -436,17 +436,13 @@ The following table lists the known issues from previous releases:
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This action gets the node agent running again and unblocks the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2601
 

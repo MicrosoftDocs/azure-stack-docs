@@ -219,7 +219,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2602"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2602
 
@@ -252,10 +252,6 @@ This release includes various reliability improvements and other bug fixes.
 - **Drift detection**: Starting with this release, the drift detection framework identifies configuration deviations, improves troubleshooting, and helps reduce configuration-related issues in your Azure Local environment. For more information, see [Drift detection](./manage/drift-detection.md).
 
 - **Azure Migrate now preserves Secure Boot settings during migration**: For eligible UEFI (Generation 2) VMs, Secure Boot settings are preserved when you migrate to Azure Local, helping maintain workload security posture. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#february-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2601
 
