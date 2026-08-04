@@ -274,6 +274,8 @@ items:
           href: manage/configure-software-load-balancer.md
         - name: Load balance multiple logical networks
           href: manage/load-balance-multiple-networks.md
+        - name: Optimize SDN availability and performance
+          href: manage/optimize-sdn-availability-performance.md
         - name: Manage SDN security
           items:
           - name: Manage certificates for SDN
