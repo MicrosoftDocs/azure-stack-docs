@@ -25,7 +25,7 @@ Deploying AKS on Windows Server target clusters on different [software defined n
 - **Service segmentation**: Isolated networks enable you to logically segregate services or applications based on their function or the business they serve, especially O/T networks with high compliance and regulatory requirements. This segmentation simplifies management, monitoring, and troubleshooting.
 - **Regulatory compliance**: For organizations that operate under strict guidelines such as manufacturing, healthcare, and finance, isolated networks can help achieve compliance with little increase in physical IP address space such as VLANs, subnets, and so on.
 
-The following image shows the deployment of AKS target clusters. The image shows that the AKS Arc management cluster and target clusters are on different SDN VNets:
+The following image shows the deployment of AKS target clusters. The image shows that the AKS management cluster and target clusters are on different SDN VNets:
 
 :::image type="content" source="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy.png" alt-text="Diagram showing the architecture of AKS target clusters on different SDN virtual networks." lightbox="media/deploy-target-clusters-virtual-networks/sdn-aks-deploy-large.png":::
 

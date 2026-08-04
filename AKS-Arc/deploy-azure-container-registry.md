@@ -178,7 +178,7 @@ To confirm that the pod was successfully created using the container image from 
 
 ## Next steps
 
-In this article, you learned how to deploy a container image from the Azure Container Registry to AKS Arc. Next, you can:
+In this article, you learned how to deploy a container image from the Azure Container Registry to AKS. Next, you can:
 
 - [Create and manage node pools for a cluster](./manage-node-pools-22h2.md)
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
