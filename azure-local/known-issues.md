@@ -43,7 +43,7 @@ The following table lists the fixed issues in this release:
 |Feature  |Issue    |Comments |
 |------|------|-------|
 | Update <!--39016090--> | During solution updates on Storage Area Network (SAN)-only deployed clusters, the `UpdateStorage` step could run unexpectedly. | Fixed an issue where the `UpdateStorage` step could run during solution updates on SAN-only deployed clusters. |
-|Update <!--39028679--> | The SBE download connector wrapper could generate warnings for responses that were not failures. | Fixed an issue where the SBE download connector wrapper generated unnecessary warnings. Warnings are now logged only for blank responses. |
+|Update <!--39028679--> | The SBE download connector wrapper could generate warnings for responses that weren't failures. | Fixed an issue where the SBE download connector wrapper generated unnecessary warnings. Warnings are now logged only for blank responses. |
 |Update <!--39044132--> | OS Cluster-Aware Updating (CAU) solution updates could fail with the error: `Prior Attempt Count: {3} is greater than Max Allowed Retries {2}`. | Fixed an issue that could cause OS CAU solution updates to fail due to incorrect retry count validation. |
 |Update <!--38857483--> | Update preparation could fail with a `mismatch between update components and content` error when a child component version was already installed. | Fixed an issue where update preparation could fail when a child component version was already installed, resulting in a component and content mismatch error. |
 |Azure Local VMs <!--38909895--> | Trusted launch VMs (TVMs) created in earlier releases of Azure Local failed to start after the cluster was upgraded to 2607. | TVMs created in earlier releases now start successfully after upgrading to 2607. |
