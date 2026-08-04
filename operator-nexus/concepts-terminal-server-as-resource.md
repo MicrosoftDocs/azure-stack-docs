@@ -1,5 +1,5 @@
 ---
-title: Terminal Server as an Azure Operator Nexus Resource
+title: Terminal server as an Azure Operator Nexus Resource
 description: Learn how Terminal Servers (Bootstrap Devices) are modeled as ARM resources in Azure Operator Nexus for observability, automation, and lifecycle management.
 author: RaghvendraMandawale
 ms.author: rmandawale
@@ -9,7 +9,7 @@ ms.date: 04/09/2026
 ms.custom: template-concept
 ---
 
-# Terminal Server as an Azure Operator Nexus Resource
+# Terminal server as an Azure Operator Nexus resource
 
 Terminal Servers (Bootstrap Devices) are modeled as Azure Resource Manager (ARM) resources within the Azure Operator Nexus (AON) platform to enable observability, automation, and lifecycle management.
 
@@ -23,8 +23,7 @@ The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBo
 These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They're also available in the Azure Resource Graph.
 
 > [!NOTE]
-> - The Terminal Server (`NetworkBootstrapDevice`) doesn't support patchable properties or post-action workflows. Only read-only GET operations are supported, and no post actions are available as of the NNF `2604.1` release.
-> - The Net2 interface can be created; however, it won't be operational as a backup for Net1 in the NNF 2604 release.
+> - You can create the Net2 interface, but it isn't operational as a backup for Net1 in the NNF 2608 release.
 
 ## Prerequisites
 
@@ -63,7 +62,7 @@ The `NetworkBootstrapDevice` resource captures device-level metadata for each Te
 
 ### NetworkBootstrapInterface
 
-The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It's exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as ARM resources. All properties listed below are **read-only** and are hydrated by the service during creation.
+The `NetworkBootstrapInterface` resource captures interface-level details for each Terminal Server interface. It's exposed as a child-resource of `NetworkBootstrapDevice`. `Net1`, `Net2`, and `Net3` are each modeled as ARM resources. All properties listed below are **read-only** and the service sets them during creation.
 
 | Property | Type | Description |
 |---|---|---|
@@ -80,7 +79,7 @@ The `NetworkBootstrapInterface` resource captures interface-level details for ea
 
 ## API Reference
 
-The following section provides sample response payloads for `NetworkBootstrapDevice` and `NetworkBootstrapInterface` resources using the `2026-01-15-preview` API version.
+The following section provides sample response payloads for `NetworkBootstrapDevice` and `NetworkBootstrapInterface` resources by using the `2026-01-15-preview` API version.
 
 ### GET NetworkBootstrapDevice
 
@@ -224,6 +223,142 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 }
 ```
 
+## Post Actions
+
+Users can invoke the following post actions:
+
+- Reboot
+- Interface Admin Down / Up for `Net3` only
+- Refresh Configuration
+- Resync Password
+
+All post actions are auditable, state-driven, and security-bounded. Use the `2026-01-15-preview` API version to invoke these post actions.
+
+### Reboot
+
+Reboot performs a controlled restart of the Terminal Server OS for recovery or maintenance.
+
+#### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot?api-version=2026-01-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the Terminal Server (`NetworkBootstrapDevice`) resource. |
+
+**Request Body:** None.
+
+#### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
+### Update administrative state
+
+This post action updates the administrative state of the Terminal Server `Net3` interface. Use this action to administratively enable or disable `Net3` for troubleshooting or isolation.
+
+#### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/net3/updateAdministrativeState?api-version=2026-01-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the parent Terminal Server (`NetworkBootstrapDevice`) resource. |
+| `networkBootstrapInterfaceName` | The name of the interface resource. For this release, use `net3`. |
+
+#### Request Body
+
+Use `Enable` to administratively enable the interface and `Disable` to administratively disable the interface.
+
+```json
+{
+  "state": "Enable"
+}
+```
+
+#### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
+### Refresh Configuration
+
+This post action re-applies Microsoft-managed Terminal Server configuration. This action refreshes the software package, regenerates configuration for the current fabric version, copies required certificates and Network Fabric configuration, and restarts required components. It doesn't modify customer-managed configuration.
+
+#### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration?api-version=2026-01-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the Terminal Server (`NetworkBootstrapDevice`) resource. |
+
+**Request Body:** None.
+
+#### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
+### Resync Passwords
+
+This post action synchronizes the Terminal Server with the latest device credential reference. The response never includes credentials. If the operation fails, the prior credential remains active, and the response provides error details through operation status.
+
+#### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords?api-version=2026-01-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the Terminal Server (`NetworkBootstrapDevice`) resource. |
+
+**Request Body:** None.
+
+#### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-01-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
 ### Response Codes
 
 | Code | Description |
@@ -231,3 +366,4 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 | `200 OK` | The request succeeded. The response body contains the NetworkBootstrapInterface resource. |
 | `400 Bad Request` | The request was malformed or contained invalid parameters. |
 | `404 Not Found` | The specified resource doesn't exist. |
+| `202 Accepted` | The post action request is accepted. |

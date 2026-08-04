@@ -157,7 +157,9 @@ Get-SolutionUpdate -Id "redmond/Solution$($solutionVersion)" | Start-SolutionUpd
 $actionPlanInstanceId = 'ReplaceMe' # Copy output from previous step
 Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
 ```
-
+> [!IMPORTANT]
+> ** Make sure to set the following on each Azure Local node before running patch and update for the first time on Azure Local disconnected operations: 
+> **[System.Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", "Machine")** 
 ## Related content
 
 - [Backup for disconnected operations for Azure Local](./disconnected-operations-back-up-restore.md).
