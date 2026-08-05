@@ -23,7 +23,7 @@ This article describes how to upgrade the Azure Kubernetes Service (AKS) host co
 
 Several types of updates can be made independently or in certain supported combinations:
 
-- Update the AKS Arc core system to the latest version.
+- Update the AKS core system to the latest version.
 - Update an AKS workload cluster to a new Kubernetes version.
 - Update the container hosts of AKS workload clusters to a newer version of the operating system.
 - Combined update of the operating system and Kubernetes version of AKS workload clusters.

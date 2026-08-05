@@ -48,4 +48,4 @@ Follow these steps to customize the MetalLB configuration by reinstalling the Ar
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)
