@@ -1,10 +1,10 @@
 ---
-title:  Run N-tier application in multiple Azure Stack Hub regions for high availability 
-description: Learn how to run an N-tier application in multiple Azure Stack Hub regions for high availability.
+title: Run N-tier application in multiple Azure Stack Hub regions for high availability
+description: Learn how to architect N-tier applications across Azure Stack Hub regions for maximum uptime. Get step-by-step guidance on failover, routing, and SQL configuration.
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 2/1/2021
+ms.date: 07/09/2026
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -17,26 +17,26 @@ ms.lastreviewed: 11/01/2019
 
 # Run an N-tier application in multiple Azure Stack Hub regions for high availability
 
-This reference architecture shows a set of proven practices for running across an N-tier application multiple Azure Stack Hub regions, in order to achieve availability and a robust disaster recovery infrastructure. In this document, Traffic Manager is used to achieve high availability, however if Traffic Manager is not a preferred choice in your environment, a pair of highly available load balancers could also be substituted in.
+This reference architecture shows a set of proven practices for running an N-tier application across multiple Azure Stack Hub regions to achieve availability and a robust disaster recovery infrastructure. In this architecture, Azure Traffic Manager is used to achieve high availability. However, if Traffic Manager isn't a preferred choice in your environment, you can substitute a pair of highly available load balancers.
 
 > [!NOTE]  
-> Please note the Traffic Manager used in the architecture below needs to be configured in Azure and the endpoints used to configure the Traffic Manager profile need to be publicly routable IPs.
+> You need to configure the Traffic Manager used in the following architecture in Azure. The endpoints you use to configure the Traffic Manager profile need to be publicly routable IPs.
 
 ## Architecture
 
 This architecture builds on the one shown in [N-tier application with SQL Server](iaas-architecture-windows-sql-n-tier.md).
 
-![Highly available network architecture for Azure N-tier applications](./media/iaas-architecturesql-n-tier-multi-region/image1.png)
+:::image type="content" source="./media/iaas-architecturesql-n-tier-multi-region/image1.png" alt-text="Diagram shows highly available network architecture for Azure N-tier applications.":::
 
--   **Primary and secondary regions**. Use two regions to achieve higher availability. One is the primary region. The other region is for failover.
+-   **Primary and secondary regions**. Use two regions to achieve higher availability. One region is the primary region. Use the other region for failover.
 
 -   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
 
--   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. Link the resource groups, so that you can run a query to list all the resources for the application.
+-   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region and the secondary region. This approach gives you the flexibility to manage each region as a single collection of resources. For example, you can redeploy one region without taking down the other region. Link the resource groups, so that you can run a query to list all the resources for the application.
 
 -   **Virtual networks**. Create a separate virtual network for each region. Make sure the address spaces do not overlap.
 
--   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
+-   **SQL Server Always On Availability Group**. If you're using SQL Server, use [SQL Always On Availability Groups](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-ver15&preserve-view=true) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
 
 -   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](./azure-stack-network-howto-vnet-to-vnet.md) for more information.
 
@@ -135,18 +135,18 @@ Traffic Manager is a possible failure point in the system. If the Traffic Manage
 
 For the SQL Server cluster, there are two failover scenarios to consider:
 
--   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
+-   All of the SQL Server database replicas in the primary region fail. For example, this failure can happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver15&preserve-view=true), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
 
     > [!Warning]  
-    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15&preserve-view=true) to find the differences.
+    > With forced failover, there's a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](/sql/tools/tablediff-utility?view=sql-server-ver15&preserve-view=true) to find the differences.
 
--   Traffic Manager fails over to the secondary region, but the primary SQL Server database replica is still available. For example, the front-end tier might fail, without affecting the SQL Server VMs. In that case, Internet traffic is routed to the secondary region, and that region can still connect to the primary replica. However, there will be increased latency, because the SQL Server connections are going across regions. In this situation, you should perform a manual failover as follows:
+-   Traffic Manager fails over to the secondary region, but the primary SQL Server database replica is still available. For example, the front-end tier might fail, without affecting the SQL Server VMs. In this case, Internet traffic is routed to the secondary region, and that region can still connect to the primary replica. However, there's increased latency, because the SQL Server connections go across regions. In this situation, perform a manual failover as follows:
 
-    1.  Temporarily switch a SQL Server database replica in the secondary region to *synchronous* commit. This ensures there won't be data loss during the failover.
+    1.  Temporarily switch a SQL Server database replica in the secondary region to *synchronous* commit. This change ensures there's no data loss during the failover.
 
-    2.  Fail over to that replica.
+    1.  Fail over to that replica.
 
-    3.  When you fail back to the primary region, restore the asynchronous commit setting.
+    1.  When you fail back to the primary region, restore the asynchronous commit setting.
 
 ## Manageability considerations
 
@@ -158,7 +158,7 @@ Test the resiliency of the system to failures. Here are some common failure scen
 
 -   Pressure resources such as CPU and memory.
 
--   Disconnect/delay network.
+-   Disconnect or delay network.
 
 -   Crash processes.
 

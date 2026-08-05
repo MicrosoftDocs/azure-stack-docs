@@ -1,9 +1,9 @@
 ---
-title: Configure VPN gateway settings for Azure Stack Hub 
-description: Learn about and configure VPN gateways settings for Azure Stack Hub.
+title: Configure VPN gateway settings for Azure Stack Hub
+description: Configure Azure Stack VPN gateway settings including gateway SKUs, VPN types, and IPsec/IKE parameters. Start building secure S2S connections.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/24/2022
+ms.date: 07/09/2026
 ms.author: sethm
 ms.reviewer: cedward
 ms.lastreviewed: 02/03/2022
@@ -38,7 +38,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### Gateway SKUs without VPN Fast Path Enabled
 
-When you create a virtual network gateway, you must specify the SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughput, features, and SLAs.
+When you create a virtual network gateway, specify the SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughput, features, and SLAs.
 
 You can have 10 high performance gateways or 20 basic and standard before you reach the maximum capacity.
 
@@ -50,11 +50,11 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 |**Standard** | 100 Mbps Tx/Rx | 10 | 20 |
 |**High Performance** | 200 Mbps Tx/Rx | 5 | 10 |
 
-### Gateway SKUs with VPN Fast Path Enabled
+### Gateway SKUs with VPN Fast Path enabled
 
-With the release of the VPN Fast Path public preview, Azure Stack Hub supports three new SKUs with higher throughput.
+When Microsoft released the VPN Fast Path public preview, Azure Stack Hub added support for three new SKUs with higher throughput.
 
-New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack stamp.
+When you enable VPN Fast Path on your Azure Stack stamp, you get new limits and throughput.
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
@@ -67,17 +67,17 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 |**VPNGw2**| 1000 Mbps Tx/Rx | 2 | 4 |
 |**VPNGw3**| 1250 Mbps Tx/Rx | 2 | 4 |
 
-### Resizing virtual network gateways SKUs
+### Resizing virtual network gateway SKUs
 
-Azure Stack Hub does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
+Azure Stack Hub doesn't support resizing from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
 
-New virtual network gateways and connections must be created in order to use the new SKUs enabled by VPN Fast Path.
+To use the new SKUs enabled by VPN Fast Path, you need to create new virtual network gateways and connections.
 
 ### Configure the virtual network gateway SKU
 
 #### Azure Stack Hub portal
 
-If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) will only be visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
+If you use the Azure Stack Hub portal to create a virtual network gateway, select the SKU from the dropdown list. To see the new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**), add the query parameter **"?azurestacknewvpnskus=true"** to the URL and refresh the page.
 
 The following URL example makes the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
 
@@ -85,9 +85,9 @@ The following URL example makes the new virtual network gateway SKUs visible in 
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For more information, see [VPN Fast Path for operators](../operator/azure-stack-vpn-fast-path-operators.md).
+Before creating these resources, the operator must enable VPN Fast Path on the Azure Stack Hub stamp. For more information, see [VPN Fast Path for operators](../operator/azure-stack-vpn-fast-path-operators.md).
 
-![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
+:::image type="content" source="media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png" alt-text="Screenshot shows Azure VNG new SKUs.":::
 
 #### PowerShell
 
@@ -103,7 +103,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 In the Resource Manager deployment model, each configuration requires a specific virtual network gateway connection type. The available Resource Manager PowerShell values for `-ConnectionType` are **IPsec**.
 
-In the following PowerShell example, a S2S connection is created that requires the IPsec connection type:
+In the following PowerShell example, you create a S2S connection that requires the IPsec connection type:
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
@@ -116,18 +116,18 @@ New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 When you create the virtual network gateway for a VPN gateway configuration, you must specify a VPN type. The VPN type that you choose depends on the connection topology that you want to create. A VPN type can also depend on the hardware that you're using. S2S configurations require a VPN device. Some VPN devices only support a certain VPN type.
 
 > [!IMPORTANT]  
-> Currently, Azure Stack Hub only supports the route-based VPN type. If your device only supports policy-based VPNs, then connections to those devices from Azure Stack Hub are not supported.  
+> Currently, Azure Stack Hub only supports the route-based VPN type. If your device only supports policy-based VPNs, connections to those devices from Azure Stack Hub aren't supported.  
 >
-> In addition, Azure Stack Hub does not support using policy-based traffic selectors for route-based gateways at this time, because Azure Stack Hub does not support policy-based traffic selectors, although they are supported in Azure.
+> In addition, Azure Stack Hub doesn't support using policy-based traffic selectors for route-based gateways at this time, because Azure Stack Hub doesn't support policy-based traffic selectors, although they're supported in Azure.
 
-* **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies that are configured with the combinations of address prefixes between your on-premises network and the Azure Stack Hub VNet. The policy, or traffic selector, is usually an access list in the VPN device configuration.
+* **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies that you configure with combinations of address prefixes between your on-premises network and the Azure Stack Hub VNet. The policy, or traffic selector, is usually an access list in the VPN device configuration.
 
   >[!NOTE]
   >**PolicyBased** is supported in Azure, but not in Azure Stack Hub.
 
-* **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs are configured as any-to-any (or use wild cards). By default, they cannot be changed. The value for a **RouteBased** VPN type is **RouteBased**.
+* **RouteBased**: Route-based VPNs use routes that you configure in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. You configure the policy, or traffic selector, for **RouteBased** VPNs as any-to-any (or use wild cards). By default, you can't change it. The value for a **RouteBased** VPN type is **RouteBased**.
 
-The following PowerShell example specifies the `-VpnType` as **RouteBased**. When you create a gateway, you must make sure that the `-VpnType` is correct for your configuration.
+The following PowerShell example specifies the `-VpnType` as **RouteBased**. When you create a gateway, make sure that the `-VpnType` is correct for your configuration.
 
 ```powershell
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -157,14 +157,14 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### Gateway subnet
 
-Before you create a VPN gateway, you must create a gateway subnet. The gateway subnet has the IP addresses that the virtual network gateway VMs and services use. When you create your virtual network gateway and the connection, the Gateway VM owning the connection will be linked to the gateway subnet and will be configured with the required VPN gateway settings. Don't deploy anything else (for example, additional VMs) to the gateway subnet.
+Before you create a VPN gateway, you must create a gateway subnet. The gateway subnet has the IP addresses that the virtual network gateway VMs and services use. When you create your virtual network gateway and the connection, the Gateway VM owning the connection is linked to the gateway subnet and is configured with the required VPN gateway settings. Don't deploy anything else (for example, additional VMs) to the gateway subnet.
 
 >[!IMPORTANT]
 >The gateway subnet must be named **GatewaySubnet** to work properly. Azure Stack Hub uses this name to identify the subnet to which to deploy the virtual network gateway VMs and services.
 
 When you create the gateway subnet, you specify the number of IP addresses that the subnet contains. The IP addresses in the gateway subnet are allocated to the gateway VMs and gateway services. Some configurations require more IP addresses than others. Look at the instructions for the configuration that you want to create and verify that the gateway subnet you want to create meets those requirements.
 
-Additionally, you should make sure your gateway subnet has enough IP addresses to handle additional future configurations. Although you can create a gateway subnet as small as /29, we recommend you create a gateway subnet of /28 or larger (/28, /27, /26, and so on.) That way, if you add functionality in the future, you do not have to tear down your gateway, then delete and recreate the gateway subnet to allow for more IP addresses.
+Additionally, make sure your gateway subnet has enough IP addresses to handle additional future configurations. Although you can create a gateway subnet as small as /29, create a gateway subnet of /28 or larger (/28, /27, /26, and so on.) That way, if you add functionality in the future, you don't have to tear down your gateway, then delete and recreate the gateway subnet to allow for more IP addresses.
 
 The following Resource Manager PowerShell example shows a gateway subnet named **GatewaySubnet**. You can see the CIDR notation specifies a /27, which allows for enough IP addresses for most configurations that currently exist.
 
@@ -177,9 +177,9 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ### Local network gateways
 
-When creating a VPN gateway configuration in Azure, the local network gateway often represents your on-premises location. In Azure Stack Hub, it represents any remote VPN device that sits outside Azure Stack Hub. This device could be a VPN device in your datacenter (or a remote datacenter), or a VPN gateway in Azure.
+When you create a VPN gateway configuration in Azure, the local network gateway often represents your on-premises location. In Azure Stack Hub, it represents any remote VPN device that sits outside Azure Stack Hub. This device could be a VPN device in your datacenter (or a remote datacenter), or a VPN gateway in Azure.
 
-You give the local network gateway a name, the public IP address of the remote VPN device, and specify the address prefixes that are on the on-premises location. Azure Stack Hub looks at the destination address prefixes for network traffic, consults the configuration that you've specified for your local network gateway, and routes packets accordingly.
+You give the local network gateway a name, the public IP address of the remote VPN device, and specify the address prefixes that are on the on-premises location. Azure Stack Hub looks at the destination address prefixes for network traffic, consults the configuration that you specified for your local network gateway, and routes packets accordingly.
 
 This PowerShell example creates a new local network gateway:
 
@@ -188,16 +188,16 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
    -Location 'West US' -GatewayIpAddress '198.51.100.101' -AddressPrefix '10.5.51.0/24'
 ```
 
-Sometimes you need to modify the local network gateway settings; for example, when you add or modify the address range, or if the IP address of the VPN device changes. For more info, see [Modify local network gateway settings using PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
+Sometimes you need to modify the local network gateway settings. For example, you might need to change the address range or if the IP address of the VPN device changes. For more info, see [Modify local network gateway settings using PowerShell](/azure/vpn-gateway/vpn-gateway-modify-local-network-gateway).
 
 ## IPsec/IKE parameters
 
-When you set up a VPN connection in Azure Stack Hub, you must configure the connection at both ends. If you're configuring a VPN connection between Azure Stack Hub and a hardware device such as a switch or router that is acting as a VPN gateway, that device might ask you for additional settings.
+When you set up a VPN connection in Azure Stack Hub, you must configure the connection at both ends. If you're configuring a VPN connection between Azure Stack Hub and a hardware device such as a switch or router that acts as a VPN gateway, that device might require additional settings.
 
-Unlike Azure, which supports multiple offers as both an initiator and a responder, Azure Stack Hub supports only one offer by default. If you need to use different IPSec/IKE settings to work with your VPN device, there are more settings available to you to configure your connection manually. For more information, see [Configure IPsec/IKE policy for site-to-site VPN connections](azure-stack-vpn-s2s.md).
+Unlike Azure, which supports multiple offers as both an initiator and a responder, Azure Stack Hub supports only one offer by default. If you need to use different IPSec/IKE settings to work with your VPN device, you can configure your connection manually. For more information, see [Configure IPsec/IKE policy for site-to-site VPN connections](azure-stack-vpn-s2s.md).
 
 > [!IMPORTANT] 
-> When using the S2S tunnel, packets are further encapsulated with additional headers which increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. Or, if your VPN devices do not support MSS clamping, you can alternatively set the **MTU** on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
+> When you use the S2S tunnel, packets are further encapsulated with additional headers which increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. Or, if your VPN devices don't support MSS clamping, you can alternatively set the **MTU** on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
 >
 
 ### IKE Phase 1 (Main Mode) parameters
