@@ -7,6 +7,7 @@ ms.date: 01/16/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/16/2024
 ms.reviewer: guanghu
+ms.custom: local
 
 # Intent: As an IT Pro, I want to learn how to monitor and view Kubernetes object events for AKS.
 # Keyword: monitor and logging data, Prometheus

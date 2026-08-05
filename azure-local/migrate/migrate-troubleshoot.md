@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/01/2025
+ms.date: 07/23/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -153,8 +153,9 @@ The Azure Migrate project creation fails if the Azure subscription isn't registe
 **Recommended resolution** 
 
 Verify the following:
-- Make sure that you have **Application Administrator** role on the Azure AD tenant.
-- Make sure that you have the **Contributor** and **User Access Administrator** roles on the Azure subscription.
+
+- Make sure that you have the [Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer) role at the Microsoft Entra ID tenant scope.
+- Make sure that you have the [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) role at the Azure subscription scope. The Azure Local Migrate Execute Expert role doesn't allow users to create projects.
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
 
@@ -430,11 +431,11 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     - Migrated (target) disk.
 
-    - Seed disk.
+    - Seed disk. This service-managed disk contains replicated source data and is reused if migration is retried. Deleting it can break the active replication and require initial replication to start again.
 
     - Network interfaces.
 
-    These resources will be reused automatically by Azure Migrate during subsequent migration attempts.
+    These resources are reused automatically by Azure Migrate during subsequent migration attempts. For more information about the seed disk lifecycle, see the [Azure Migrate FAQ](migrate-faq.yml).
 
 ### Migrated VM data disks show as 1GB in Azure portal
 

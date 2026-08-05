@@ -1,8 +1,8 @@
 ---
 title: "Azure Operator Nexus: Nexus Kubernetes Cluster Service"
 description: Introduction to Nexus Kubernetes Cluster Service.
-author: dougbristow
-ms.author: dbristow
+author: eak13
+ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 06/28/2023
@@ -32,7 +32,7 @@ Each Nexus AKS cluster has at least one node. Node is hosted in virtual machine 
 VM is created as part of Nexus AKS cluster deployment on Nexus instance. There are two types of node pools in Nexus Kubernetes Clusters
 
   * When you create a Nexus AKS cluster, you define the initial number of nodes and their size (SKU), which creates a system node pool. System node pools host critical system pods.
-  * On the other hand, to support applications that have different compute or storage demands, you can create user node pools, also known as Nexus Agent pool. Each VM in a Nexus Agent pool adheres to a uniform configuration, such as CPU, memory, disk and so on. Once an Agent pool is established, the number of VMs within it remains fixed. To scale the capacity of a Nexus Kubernetes cluster, more Agent pools can be created and integrated into the existing cluster. In other words, the Nexus Agent pool supports horizontal scaling by allowing the addition or removal of Agent pools within the Nexus Kubernetes cluster.
+  * On the other hand, to support applications that have different compute or storage demands, you can create user node pools, also known as Nexus Agent pool. Each VM in a Nexus Agent pool adheres to a uniform configuration, such as CPU, memory, disk and so on. After an Agent pool is established, you can change the number of VMs within it to scale the pool up or down. You can also scale the capacity of a Nexus Kubernetes cluster by creating more Agent pools and integrating them into the existing cluster. In other words, the Nexus Agent pool supports horizontal scaling both by resizing an existing Agent pool and by adding or removing Agent pools within the Nexus Kubernetes cluster.
 
 However, application pods can be scheduled on system node pools in case user wants only one node pool in their cluster. Every Nexus Kubernetes Cluster must
 contain at least one system node pool with at least one node.

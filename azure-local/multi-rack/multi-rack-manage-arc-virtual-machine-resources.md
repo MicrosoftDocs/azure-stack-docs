@@ -35,13 +35,13 @@ To add a data disk to a VM, complete the following steps using Azure CLI from th
 1. Create a data disk:
 
    ```azurecli
-   az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1
+   az stack-hci-vm disk create --resource-group $resourceGroup --name $diskName --custom-location $customLocationID --location $location --size-gb 1
    ```
 
 1. Attach the disk to the VM:
 
    ```azurecli
-   az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+   az stack-hci-vm disk attach --resource-group $resourceGroup --vm-name $vmName --disks $diskName --yes
    ```
 
 ### [Azure portal](#tab/azureportal)
@@ -83,10 +83,13 @@ You can expand an existing data disk to your desired size using Azure CLI.
 To expand the size of your data disk using Azure CLI, run the following command:
 
 ```azurecli
-az stack-hci-vm disk update --name $diskName --resource-group $resource_group --size-gb $size_in_gb
+az stack-hci-vm disk update --name $diskName --resource-group $resourceGroup --size-gb $size_in_gb
 ```
 
 Here's a sample output that indicates successful resizing of the data disk:
+
+<details>
+<summary>Expand this section to see an example output.</summary>
 
 ```Output
 {
@@ -105,6 +108,7 @@ Here's a sample output that indicates successful resizing of the data disk:
  "type": null
 }
 ```
+</details>
 
 ## Delete a data disk
 
@@ -118,13 +122,13 @@ To delete a data disk from a VM, complete the following steps using Azure CLI fr
 1. Detach disk from the VM:
 
     ```azurecli
-    az stack-hci-vm disk detach --resource-group $resource_group --vm-name $vmName --name $diskName
+    az stack-hci-vm disk detach --resource-group $resourceGroup --vm-name $vmName --name $diskName
     ```
 
 1. Delete the disk (optional):
 
     ```azurecli
-    az stack-hci-vm disk delete --resource-group $resource_group --name $diskName
+    az stack-hci-vm disk delete --resource-group $resourceGroup --name $diskName
     ```
 
 ### [Azure portal](#tab/azureportal)

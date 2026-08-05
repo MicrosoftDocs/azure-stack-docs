@@ -7,6 +7,7 @@ ms.date: 07/03/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 07/30/2024
 ms.reviewer: leslielin
+ms.custom: local
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Local deployment(s).
 # Keyword: security concepts infrastructure security

@@ -195,6 +195,8 @@
               href: howto-cluster-runtime-upgrade-with-pauseafterrack-strategy.md
             - name: Cluster Upgrades Template
               href: howto-cluster-runtime-upgrade-template.md
+            - name: Cluster Upgrades Preflight Validations
+              href: howto-cluster-runtime-upgrade-preflight-checks.md
             - name: Network Fabric Upgrades
               href: howto-upgrade-nexus-fabric.md
             - name: Network Fabric Upgrades Template

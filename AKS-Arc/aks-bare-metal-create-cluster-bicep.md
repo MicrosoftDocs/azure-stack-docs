@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Create an AKS on bare metal cluster using Bicep (preview)
@@ -60,7 +61,7 @@ az deployment group create \
 After the deployment completes, connect to your cluster:
 
 ```azurecli
-az connectedk8s proxy --name <clusterName> --resource-group <RESOURCE_GROUP>
+az aksarc get-credentials --name <clusterName> --resource-group <RESOURCE_GROUP>
 ```
 
 Then in a new terminal:

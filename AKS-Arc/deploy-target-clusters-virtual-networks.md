@@ -7,6 +7,7 @@ ms.date: 12/28/2023
 ms.author: davidsmatlak 
 ms.lastreviewed: 06/07/2023
 ms.reviewer: kybisnet
+ms.custom: windows-server
 
 # Intent: As an IT pro, I want to learn how to deploy AKS target clusters on different SDN virtual networks.
 # Keyword: networking software defined networking virtual networking

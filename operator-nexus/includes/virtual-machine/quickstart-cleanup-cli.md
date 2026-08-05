@@ -1,6 +1,6 @@
 ---
-author: dougbristow
-ms.author: dbristow
+author: dramasamy
+ms.author: dramasamy
 ms.date: 09/19/2023
 ms.topic: include
 ms.service: azure-operator-nexus

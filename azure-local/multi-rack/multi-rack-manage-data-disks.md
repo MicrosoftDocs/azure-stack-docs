@@ -30,13 +30,12 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Set parameters
 
-Set parameters for `subscription`, `resource-group`, `name`, and `custom-location`. Replace the parameters in `< >` with the appropriate values:
+Set parameters for `resource-group`, `name`, and `custom-location`. Replace the parameters in `< >` with the appropriate values:
 
 ```azurecli
-$subscription = "<Subscription ID>"
 $resourceGroup = "<Resource group>"
 $name = "<Data disk name>"
-$customLocation = "<Custom location resource ID>"
+$customLocationID = "<Custom location resource ID>"
 ```
 
 ## Download the managed disk
@@ -50,14 +49,13 @@ $customLocation = "<Custom location resource ID>"
 1. Once the SAS URL is generated, use the following command to download it to your Azure Local multi-rack instance:
 
     ```azurecli
-    az stack-hci-vm disk create --resource-group $resourceGroup --custom-location $customLocation --download-url $downloadUrl --name $name
+    az stack-hci-vm disk create --resource-group $resourceGroup --custom-location $customLocationID --download-url $downloadUrl --name $name
     ```
 
 The parameters are described in the following table:
 
 | Parameter | Description |
 | --- | --- |
-| `subscription` | Subscription associated with your Azure Local. |
 | `resource-group` | Resource group for Azure Local that you associate with this disk. |
 | `name` | Name of the data disk for Azure Local. |
 | `custom-location` | Resource ID of the custom location for Azure Local. |
@@ -65,5 +63,5 @@ The parameters are described in the following table:
 
 ## Next steps
 
-- [Manage Azure Local VM resources for multi-rack deployments](multi-rack-manage-arc-virtual-machine-resources.md)
 - [Create Azure Local VMs enabled by Azure Arc for multi-rack deployments](multi-rack-create-arc-virtual-machines.md)
+- [Manage Azure Local VM resources for multi-rack deployments](multi-rack-manage-arc-virtual-machine-resources.md)

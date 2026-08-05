@@ -6,6 +6,7 @@ ms.topic: concept-article
 ms.date: 06/16/2025
 ms.author: davidsmatlak
 ms.reviewer: rmody
+ms.custom: overview
 ---
 
 # Compare AKS features across cloud, edge, and on-premises platforms

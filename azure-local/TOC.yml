@@ -175,6 +175,8 @@ items:
         href: deploy/deployment-azure-resource-manager-template.md
     - name: Deploy using local identity with Key Vault
       items:
+      - name: Overview
+        href: deploy/deployment-local-identity-with-key-vault-overview.md
       - name: Deploy via Azure portal
         href: deploy/deployment-local-identity-with-key-vault.md
       - name: Deploy via ARM template
@@ -272,6 +274,8 @@ items:
           href: manage/configure-software-load-balancer.md
         - name: Load balance multiple logical networks
           href: manage/load-balance-multiple-networks.md
+        - name: Optimize SDN availability and performance
+          href: manage/optimize-sdn-availability-performance.md
         - name: Manage SDN security
           items:
           - name: Manage certificates for SDN
@@ -308,12 +312,14 @@ items:
       href: update/solution-builder-extension.md
     - name: Understand update phases
       href: update/update-phases-23h2.md
-    - name: Update via PowerShell
-      href: update/update-via-powershell-23h2.md
-    - name: Update via PowerShell with limited connectivity
-      href: update/import-discover-updates-offline-23h2.md
+    - name: Manage update settings
+      href: update/update-settings.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
+    - name: Update via PowerShell
+      href: update/update-via-powershell-23h2.md
+    - name: Update with limited connectivity
+      href: update/import-discover-updates-offline-23h2.md
     - name: Review best practices 
       href: update/update-best-practices.md
     - name: Troubleshoot updates
@@ -453,6 +459,21 @@ items:
         - name: Manual backup and recovery
           href: manage/trusted-launch-vm-import-key.md
 
+    - name: Confidential VMs
+      items:
+        - name: What are confidential VMs for Azure Local?
+          href: manage/confidential-vm-overview.md
+        - name: Deploy an Azure Local cluster via ARM template
+          href: manage/confidential-vm-deploy-cluster-via-arm-template.md
+        - name: Create and deploy an integrity-protected VM image
+          href: manage/confidential-vm-create-deploy-integrity-protected-vm-image.md
+        - name: Create and connect to an Azure Local CVM
+          href: manage/create-connect-confidential-vm.md
+        - name: Guest attestation for CVMs
+          href: manage/guest-attestation-confidential-vm.md
+        - name: Troubleshooting
+          href: manage/troubleshoot-confidential-vm.md
+
     - name: Unmanaged VMs
       items:
         - name: Manage VMs
@@ -476,7 +497,8 @@ items:
           href: manage/gpu-manage-via-device.md
         - name: Manage GPUs via partitioning
           href: manage/gpu-manage-via-partitioning.md
-
+        - name: REST APIs for GPU management
+          href: manage/gpu-rest-api-reference.md 
     - name: Rack aware cluster
       items:
       - name: What's a rack aware cluster?
@@ -693,7 +715,7 @@ items:
           href: migrate/migrate-vmware-replicate.md
         - name: Migrate, verify
           href: migrate/migrate-vmware-migrate.md
-      - name: Migrate via PowerShell or Azure CLI
+      - name: Migrate via PowerShell, Azure CLI, or Terraform
         href: migrate/migrate-via-powershell.md
       - name: Enable guest management
         href: migrate/migrate-enable-guest-management.md
@@ -769,8 +791,6 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Renaming to Azure Local
-      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing
@@ -841,6 +861,8 @@ items:
         href: plan/fiber-channel-no-backup-disaggregated-pattern.md
       - name: Fiber Channel disaggregated pattern with backup network
         href: plan/fiber-channel-with-backup-disaggregated-pattern.md
+      - name: iSCSI 6-NIC disaggregated pattern
+        href: plan/iscsi-6-network-adapters-disaggregated-pattern.md
     - name: Review Azure Arc gateway for Azure Local
       href: deploy/deployment-azure-arc-gateway-overview.md
     - name: Review Azure Private Endpoints for Azure Local
@@ -912,6 +934,8 @@ items:
         href: deploy/deployment-azure-resource-manager-template-disaggregated.md
     - name: Deploy using local identity with Key Vault
       items:
+      - name: Overview
+        href: deploy/deployment-local-identity-with-key-vault-overview.md
       - name: Deploy via Azure portal
         href: deploy/deployment-local-identity-with-key-vault.md
       - name: Deploy via ARM template
@@ -926,12 +950,6 @@ items:
         href: manage/create-arc-virtual-machines.md
       - name: Run SQL Server
         href: deploy/sql-server-23h2.md
-
-  - name: Enable
-    items:
-    - name: Connect External Storage (SAN)
-      href: deploy/enable-external-storage.md
-
   - name: Update 
     items:
     - name: About Updates
@@ -946,7 +964,7 @@ items:
       href: update/update-via-powershell-23h2.md
     - name: Opt in to update to 12.25xx from 11.xxxx
       href: update/update-opt-enable.md
-    - name: Update via PowerShell with limited connectivity
+    - name: Update with limited connectivity
       href: update/import-discover-updates-offline-23h2.md
     - name: Update via Azure portal
       href: update/azure-update-manager-23h2.md
@@ -1114,6 +1132,8 @@ items:
         href: manage/repair-server-disaggregated.md
       - name: Configure proxy 
         href: manage/configure-proxy-settings-23h2.md
+      - name: Configure local availability zones
+        href: manage/configure-local-availability-zones-disaggregated.md
       - name: Suspend and resume
         href: manage/suspend-resume-cluster-maintenance.md
       - name: Use dashboard to manage at-scale
@@ -1255,7 +1275,7 @@ items:
           href: migrate/migrate-vmware-replicate.md
         - name: Migrate, verify
           href: migrate/migrate-vmware-migrate.md
-      - name: Migrate via PowerShell
+      - name: Migrate via PowerShell, Azure CLI, or Terraform
         href: migrate/migrate-via-powershell.md
       - name: Enable guest management
         href: migrate/migrate-enable-guest-management.md
@@ -1331,8 +1351,6 @@ items:
       href: /system-center/
   - name: Resources
     items:
-    - name: Renaming to Azure Local
-      href: rename-to-azure-local.md
     - name: Azure Local product page
       href: https://azure.com/hci
     - name: Pricing
@@ -1426,7 +1444,8 @@ items:
       items:
       - name: Manage NSGs
         href: ./multi-rack/multi-rack-manage-network-security-groups.md
-
+    - name: Run AKS on Azure Local 
+      href: /azure/aks/aksarc/multi-rack/resource-manager-quickstart
 
   - name: Monitor
     items:
@@ -1450,6 +1469,13 @@ items:
       - name: Security concepts
         href: ./multi-rack/multi-rack-security.md
         
+  - name: GPUs
+    items:
+      - name: Prepare GPUs
+        href: ./multi-rack/multi-rack-gpu-preparation.md
+      - name: Manage GPUs using Discrete Device Assignment
+        href: ./multi-rack/multi-rack-gpu-manage-via-device.md
+
   - name: Reference
     items:
       - name: Network cloud REST API reference
@@ -1524,6 +1550,8 @@ items:
       href: manage/disconnected-operations-known-issues.md
   - name: Plan
     items:
+    - name: Hardware
+      href: manage/disconnected-operations-control-plane-appliance.md
     - name: Network
       href: manage/disconnected-operations-network.md
     - name: Identity
@@ -1532,8 +1560,6 @@ items:
       href: manage/disconnected-operations-security.md
     - name: Public key infrastructure
       href: manage/disconnected-operations-pki.md
-    - name: Dedicated management cluster
-      href: manage/disconnected-operations-control-plane-appliance.md
   - name: Deploy
     items:
     - name: Acquire disconnected operations
@@ -1560,12 +1586,24 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Billing
+      href: manage/disconnected-operations-billing.md
+  - name: BCDR
+    items:
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
     - name: Restore disconnected operations
       href: manage/disconnected-operations-restore.md
-    - name: Billing
-      href: manage/disconnected-operations-billing.md
+    - name: Reconnect data cluster after restore
+      href: manage/disconnected-operations-post-restore-reconnect-cluster.md
+    - name: Reconnect Azure Arc on cluster machines after restore
+      href: manage/disconnected-operations-post-restore-reconnect-arc.md
+    - name: Re-register management cluster after restore
+      href: manage/disconnected-operations-post-restore-repair-register-management-cluster.md
+    - name: Recover ARB and associated resources after cluster re-registration
+      href: manage/disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md
+    - name: Recover data cluster created after backup
+      href: manage/disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md
 
   - name: Monitor
     items:

@@ -49,7 +49,21 @@ For a list of hardware solutions that support running as a management cluster fo
 
 These solutions meet the support requirements and are validated by the hardware solution providers to use as the control plane for disconnected operations.
 
-For detailed and current hardware requirements, review the [minimum configurations](/azure/azure-local/manage/disconnected-operations-overview#eligibility-criteria) for a management cluster with the disconnected operations control plane appliance.
+### Management cluster hardware requirements 
+You must deploy a dedicated management cluster for Azure Local disconnected operations. Review the minimum production specifications for setting up a management cluster with the disconnected operations appliance:
+
+| Specification                | Minimum configuration           |
+| -----------------------------| ---------------------------------|
+| Number of nodes              | 3 nodes                          |
+| Memory per node              | 512 GB                           |
+| Cores per node               | 24 physical cores                |
+| Storage per node             | 8 drives/min 2 TB each (SSD/NVME)|
+| Boot disk drive storage      | 960 GB SSD/NVME **               |
+
+> [!NOTE]
+> The recommended configuration allows for additional capabilities and higher scalepoints for your private cloud. If you're looking for smaller configurations for the dedicated management cluster, contact your account team to discuss your options.
+> 
+> ** For systems with boot disks smaller than 960 GB, you must use extra data disks from the nodes (capacity) to install the appliance. Ensure you have enough data drives. A 960-GB boot drive is recommended as the minimum to reduce deployment complexity if your OEM configuration allows for a larger boot drive.
 
 ## Topology and workload separation
 
@@ -97,6 +111,7 @@ This option uses:
 
 - One-node management cluster that hosts the disconnected operations control plane for testing purposes
 - Three-node Azure Local workload cluster used to evaluate workload placement, resiliency, and management at small scale
+    - Or a single node Azure Local workload cluster to evaluate workload capabilities without resiliency options to minimize costs
 
 :::image type="content" source="media/disconnected-operations-control-plane-appliance/workload-focused.png" alt-text="Diagram of a workload focused proof-of-concept." lightbox="media/disconnected-operations-control-plane-appliance/workload-focused.png":::
 

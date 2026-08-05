@@ -4,7 +4,7 @@ description: Learn how to deploy an AKS cluster in AKS on VMware.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, vmware
 ms.date: 09/15/2025
 ms.lastreviewed: 09/15/2025
 ms.reviewer: leslielin

@@ -4,9 +4,9 @@ description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service 
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 07/26/2024
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.topic: how-to
-ms.custom:
+ms.custom: local
   - devx-track-azurecli
 ms.date: 07/26/2024
 

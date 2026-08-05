@@ -1514,6 +1514,61 @@
       "source_path": "AKS-Arc/load-balancer-issues.md",
       "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-arc.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-installation.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-networking.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-security.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-storage.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-uninstall.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-upgrade.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-windows-admin-center.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/known-issues-workload-clusters.yml",
+      "redirect_url": "/azure/aks/aksarc/troubleshoot-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/refresh-cluster-proxy-settings.md",
+      "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
+      "redirect_document_id": false
     }
   ]
 }

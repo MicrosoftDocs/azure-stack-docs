@@ -57,7 +57,6 @@ This release includes the following features and improvements:
 
 - **Renaming of Azure Stack HCI to Azure Local** - Azure Stack HCI is now a part of Azure Local. Microsoft renamed Azure Stack HCI to Azure Local to communicate a single brand that unifies the entire distributed infrastructure portfolio.
 
-    For more information, see [Renaming Azure Stack HCI to Azure Local](../rename-to-azure-local.md).
 - **Azure Local for Small Form Factor (Preview)**- Beginning this release, Azure Local supports a new class of *small* devices with reduced hardware requirements. These low cost devices are suitable for edge scenarios across the industry horizontals. The devices must meet the Windows Server certification requirements and relaxed requirements from Software Defined Data Center (SDDC) and Windows Server Software-Defined (WSSD) program.
 
     For more information about this Preview feature, see [System requirements for Azure Local for small form factor (Preview)](../concepts/system-requirements-small-23h2.md).

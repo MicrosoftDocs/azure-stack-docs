@@ -11,7 +11,7 @@ ms.subservice: hyperconverged
 
 # Physical network requirements for Azure Local disaggregated deployments
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Local disaggregated architectures, particularly for network switches.
 
@@ -20,7 +20,7 @@ This article discusses physical (fabric) network considerations and requirements
 
 ## Network switches for Azure Local
 
-Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section. While Microsoft doesn't certify network switches, we do work with vendors to identify devices that support Azure Local requirements.
+Microsoft tests Azure Local to the standards and protocols identified in the **Network switch requirements** section. While Microsoft doesn't certify network switches, it works with vendors to identify devices that support Azure Local requirements.
 
 > [!IMPORTANT]
 > While other network switches that use technologies and protocols not listed here may work, Microsoft can't guarantee they work with Azure Local. Microsoft may be unable to assist in troubleshooting problems that occur.
@@ -34,7 +34,7 @@ To see validated switches for each of the Azure Local traffic types, select and 
 If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 > [!IMPORTANT]
-> We update these lists as we're informed of changes by network switch vendors.
+> Microsoft updates these lists as it is informed of changes by network switch vendors.
 
 <details>
 <summary><strong>Alcatel-Lucent</strong></summary>
@@ -55,6 +55,31 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [OmniSwitch 6900](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
 | [OmniSwitch 6920](https://www.al-enterprise.com/-/media/assets/internet/documents/omniswitch-6900-datasheet-en.pdf) <br>(10, 25, 100, 400 GbE)|AOS version 8.10R4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+</details>
+
+<details>
+<summary><strong>Allied Telesis</strong></summary>
+
+### 24H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|Alliedware+ 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+### 23H2
+
+|Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [x560-Series](https://www.alliedtelesis.com/sites/default/files/file/2025-12/ati-x560-28ysq-ds.pdf) <br>(10, 25, 40, 100 GbE)|Alliedware+ 5.5.6-0.1 or later|&check;| &check;| &check;| &check; |
+| [x980 Series](https://www.alliedtelesis.com/sites/default/files/file/2026-05/at-x980series-ds.pdf) <br>(40, 100, 400 GbE)|AlliedWare+ v 5.5.6-0.4 or later|&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -181,8 +206,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S4348T](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S4348F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5212F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S5224F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
@@ -198,8 +227,12 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
 | [S41xx series](https://www.dell.com/en-us/learn/assets/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S4348T](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S4348F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell-powerswitch-s4300-series-spec-sheet.pdf) <br>(10, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
 | [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S5212F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
+| [S5224F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.6.0 or later |&check;| &check;| &check;| &check; |
 | [S5232F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5248F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
 | [S5296F](https://www.delltechnologies.com/asset/en-in/products/networking/technical-support/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SONiC 4.5.0 or later |&check;| &check;| &check;| &check; |
@@ -219,8 +252,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
-| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5720-Series-Data-Sheet?v=25a4737c) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -229,8 +262,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Data-Sheet?v=dbd7924d) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
-| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/979a3f1300054000936182331a617072?v=0997083d) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5420 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5420-Series-Data-Sheet?v=cf246124) <br>(1, 10, 25 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
+| [5720 series](https://extr-p-001.sitecorecontenthub.cloud/api/public/content/5720-Series-Data-Sheet?v=25a4737c) <br>(10, 25, 100 GbE)|Version 33.5.1 or later |&check;| &check;| &check;| &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -354,8 +387,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
-| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
+| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -364,8 +397,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
 |-----  |---| :-:  | :-:  | :-:   | :-:   |
-| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
-| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
+| [SSE-T8032](https://www.supermicro.com/datasheet/datasheet_SSE-T8032S.pdf) <br>(10, 25, 100, 400 GbE) | Broadcom Advanced Enterprise SONiC OS 4.2.1 or later | &check; | &check; | &check; | &check; |
 
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
@@ -412,13 +445,13 @@ Ethernet switches used for Azure Local storage traffic must comply with the IEEE
 
 ### Standard: IEEE 802.1Qaz
 
-A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, don't configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 ### Standard: IEEE 802.1AB
 
 Ethernet switches must comply with the IEEE 802.1AB specification that defines the Link Layer Discovery Protocol (LLDP). Azure Local requires LLDP and enables troubleshooting of physical networking configurations.
 
-Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled. Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
+You must dynamically enable configuration of the LLDP Type-Length-Values (TLVs). Switches must not require additional configuration beyond enablement of a specific TLV. For example, enabling 802.1 Subtype 3 should automatically advertise all VLANs available on switch ports.
 
 ### Custom TLV requirements
 
@@ -434,12 +467,15 @@ LLDP allows organizations to define and encode their own custom TLVs. These cust
 | IEEE 802.1   | PFC Configuration (Subtype = B)  |
 | IEEE 802.3   | Maximum Frame Size (Subtype = 4) |
 
-### Maximum Transmission Unit 
-The maximum transmission unit (MTU) is the largest size frame or packet that can be transmitted across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
-### Border Gateway Protocol 
+### Maximum transmission unit
+
+The maximum transmission unit (MTU) is the largest size frame or packet that you can transmit across a data link. SDN encapsulation requires an MTU in the range of 1514 to 9174.
+
+### Border Gateway Protocol
+
 Ethernet switches must support Border Gateway Protocol (BGP). BGP is a standard routing protocol used to exchange routing and reachability information between two or more networks. Routes are automatically added to the route table of all subnets with BGP propagation enabled. This requirement enables tenant workloads with SDN and dynamic peering. [RFC 4271: Border Gateway Protocol 4](https://www.rfc-editor.org/rfc/rfc4271)
 
-### DHCP Relay Agent 
+### DHCP relay agent
 
 Ethernet switches used for Azure Local management traffic must support DHCP relay agent. The DHCP relay agent is any TCP/IP host used to forward requests and replies between the DHCP server and client when the server is on a different network. It's required for PXE boot services. [RFC 3046: DHCPv4](https://www.rfc-editor.org/rfc/rfc3046) or [RFC 6148: DHCPv4](https://www.rfc-editor.org/rfc/rfc6148.html#:~:text=RFC%204388%20defines%20a%20mechanism%20for%20relay%20agents,starts%20receiving%20data%20to%20and%20from%20the%20clients.)
 
@@ -451,10 +487,7 @@ Azure Local can function in various data center architectures, including 2-tier 
 
 ## Network models
 
-Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary.
-
-> [!NOTE]
-> Stretched cluster functionality is only available in Azure Local, version 22H2.
+You can classify network traffic by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary.
 
 ### North-South traffic for Azure Local
 
@@ -462,7 +495,7 @@ North-South traffic has the following characteristics:
 
 - Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch.
 - Traffic leaves the physical rack or crosses a Layer-3 boundary (IP).
-- Includes management (PowerShell, Windows Admin Center), compute (VM), and inter-site stretched cluster traffic.
+- Includes management (PowerShell, Windows Admin Center) and compute (VM) traffic.
 - Uses an Ethernet switch for connectivity to the physical network.
 
 ### East-West traffic for Azure Local
@@ -482,15 +515,15 @@ For more information, see [Azure Local - QoS Policy](https://github.com/Azure/Az
 
 North-South traffic requires the use of switches. Besides using an Ethernet switch that supports the required protocols for Azure Local, the most important aspect is the proper sizing of the network fabric.
 
-It's necessary to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
+You need to understand the "non-blocking" fabric bandwidth that your Ethernet switches can support and that you minimize (or preferably eliminate) oversubscription of the network.
 
-Common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, can be eliminated through proper use of subnets and VLANs. For more information, see [Host network requirements for Azure Local disaggregated architectures](host-network-requirements-disaggregated.md).
+You can eliminate common congestion points and oversubscription, such as the [Multi-Chassis Link Aggregation Group](https://en.wikipedia.org/wiki/Multi-chassis_link_aggregation_group) used for path redundancy, through proper use of subnets and VLANs. For more information, see [Host network requirements for Azure Local disaggregated architectures](host-network-requirements-disaggregated.md).
 
 Work with your network vendor or network support team to ensure your network switches are properly sized for the workload you're intending to run.
 
 ## Switchless configurations on disaggregated architectures
 
-Storage switchless configurations are not supported with Azure Local disaggregated architectures.
+Storage switchless configurations aren't supported with Azure Local disaggregated architectures.
 
 ## Next steps
 

@@ -117,7 +117,6 @@ You will need to make some changes to your VM after restoring the machine from b
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, see:
 
-- [Azure Stack IaaS - part four - Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
 - [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
 - [Azure Backup Server support for Azure Stack Hub](/azure/backup/)
 - [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  

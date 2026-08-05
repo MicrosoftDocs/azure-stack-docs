@@ -3,7 +3,7 @@ title: Set Up Your Azure Subscription for Small Form Factor Deployments of Azure
 description: Set up your Azure subscription for small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.author: sipastak
-ms.date: 05/04/2026
+ms.date: 07/20/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -34,6 +34,7 @@ Your subscription must have the following resource providers registered. Some pr
 | `Microsoft.Edge` | All use cases | [Site, site configuration](/azure/templates/microsoft.edge/sites?pivots=deployment-language-bicep) |
 | `Microsoft.AzureStackHCI` | All use cases | [Edge machine (also known as provisioned machine)](/azure/templates/microsoft.azurestackhci/edgemachines?pivots=deployment-language-bicep) |
 | `Microsoft.HybridCompute` | All use cases | [Arc-connected machines in the managed resource group](/azure/templates/microsoft.hybridcompute/machines?pivots=deployment-language-bicep) |
+| `Microsoft.Compute` | All use cases | [VM resources](/azure/templates/microsoft.compute/virtualmachines?pivots=deployment-language-bicep) |
 | `Microsoft.GuestConfiguration` | All use cases | [Guest configuration assignments in the managed resource group](/azure/templates/microsoft.guestconfiguration/guestconfigurationassignments?pivots=deployment-language-bicep) |
 | `Microsoft.HybridConnectivity` | All use cases | [Connectivity endpoints for Arc-connected machines](/azure/templates/microsoft.hybridconnectivity/endpoints?pivots=deployment-language-bicep) |
 | `Microsoft.KeyVault` | All use cases | [Key vault for managing secrets](/azure/templates/microsoft.keyvault/vaults?pivots=deployment-language-bicep) |
@@ -60,7 +61,8 @@ You can also register resource providers in the Azure portal. For step-by-step g
    - **Owner**
    - **Contributor** and **Role Based Access Control Administrator**
 1. Confirm that the role assignment is both **Active** and **Permanent**.
-
+1. Verify that you have a tenant-level Microsoft Entra role. The minimum required role is **Directory Reader**. Higher-privileged roles, such as **Cloud Administrator**, also satisfy this requirement.
+ 
 > [!IMPORTANT]
 > If your role assignment isn’t active and permanent, you might need to temporarily elevate your permissions before running deployment commands. These permissions must apply to the resource group where you’ll provision machines.
 

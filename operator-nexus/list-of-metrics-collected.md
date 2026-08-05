@@ -1,8 +1,8 @@
 ---
 title: List of Metrics Collected in Azure Operator Nexus.
 description: List of metrics emitted by the resource types in Azure Operator Nexus and observed in Azure Monitor.
-author: MSbhumika-shah
-ms.author: BhumikaShah
+author: neilverse
+ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/17/2026

@@ -1,10 +1,9 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.service: azure-stack
+ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 04/07/2025
-ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
 ---
@@ -16,8 +15,8 @@ Follow these steps on all nodes in your Windows Server cluster:
 
 1. Close all open PowerShell windows, open a new PowerShell session as administrator, and run the following command on all nodes in your Windows Server cluster:
 
-   ```powershell  
-   Install-PackageProvider -Name NuGet -Force 
+   ```powershell
+   Install-PackageProvider -Name NuGet -Force
    Install-Module -Name PowershellGet -Force -Confirm:$false
    ```
 

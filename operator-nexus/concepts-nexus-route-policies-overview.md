@@ -1,8 +1,8 @@
 ---
 title: Route policies in the Azure Operator Nexus managed network fabric
 description: This article introduces you to route policies in the Azure Operator Nexus managed network fabric.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: concept-article
 ms.date: 02/12/2024

@@ -4,9 +4,10 @@ description: Learn how to upgrade the Kubernetes version of AKS workload cluster
 ms.topic: upgrade-and-migration-article
 ms.date: 06/26/2024
 author: davidsmatlak
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 # Intent: As an IT Pro, I want to learn how to use Windows Admin Center to upgrade my AKS clusters.
 # Keyword: upgrade version Kubernetes upgrade Windows Admin Center
 ---

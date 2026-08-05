@@ -2,7 +2,7 @@
 title: Install and uninstall Kubernetes Extension for AKS Arc Operators (preview)
 description: Learn how to install and uninstall the Kubernetes Extension for AKS Arc Operators.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, vmware
 ms.date: 03/21/2024
 author: davidsmatlak
 ms.author: davidsmatlak 

@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
 # Keyword: workload cluster backup restore Velero Azure Blob MinIO

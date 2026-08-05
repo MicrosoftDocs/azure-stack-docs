@@ -1,8 +1,8 @@
 ---
 title: List of logs available in Azure Operator Nexus
 description: List of logs available in Azure Operator Nexus for streaming to customer's subscription by creating diagnostic settings.
-author: dougbristow
-ms.author: dbristow
+author: neilverse
+ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 06/13/2024
@@ -46,6 +46,7 @@ Logs emitted by Nexus Resources provide insight in the detailed operations of Ne
 | Log categories      | Description |
 |-------------|:--------------|
 | Cluster Manager Deploy or Upgrade Logs | Logs emitted during the deployment or upgrade of the Cluster from Cluster Manager |
+| Cloud Init Diagnostics Logs | Structured diagnostics emitted during host bootstrap to summarize cloud-init status, network readiness, pNIC health, and related system state. |
 
 ## Target for streaming the logs
 

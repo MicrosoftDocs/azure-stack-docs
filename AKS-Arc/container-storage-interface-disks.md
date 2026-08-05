@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak
+ms.custom: local
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS Arc.
 # Keyword: container storage interface drivers, CSI drivers

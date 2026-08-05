@@ -4,7 +4,7 @@ description: Learn how to prepare for and complete Secure Boot certificate-relat
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: mlawindi
-ms.date: 05/13/2026
+ms.date: 07/01/2026
 ms.topic: how-to
 
 ---
@@ -23,19 +23,19 @@ All Windows-based devices include a standard set of Microsoft certificates in th
 
 | **Expiring certificate** | **Expiration date** | **New certificate** | **Storing location** | **Purpose** |
 |----|----|----|----|----|
-| **Microsoft Corporation KEK CA 2011** | June 2026 | Microsoft Corporation KEK 2K CA 2023 | Stored in KEK | Signs updates to DB and DBX. |
-| **Microsoft Windows Production PCA 2011** | Oct 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the Windows boot loader. |
-| **Microsoft UEFI CA 2011** | June 2026 | Microsoft UEFI CA 2023 | Stored in DB | Signs third-party boot loaders and EFI applications. |
-| **Microsoft UEFI CA 2011** | June 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
+| **Microsoft Corporation KEK CA 2011** | June 24, 2026 | Microsoft Corporation KEK 2K CA 2023 | Stored in KEK | Signs updates to DB and DBX. |
+| **Microsoft Windows Production PCA 2011** | October 19, 2026 | Windows UEFI CA 2023 | Stored in DB | Used for signing the Windows boot loader. |
+| **Microsoft UEFI CA 2011** * | June 27, 2026 | Microsoft UEFI CA 2023 | Stored in DB | Signs third-party boot loaders and EFI applications. |
+| **Microsoft UEFI CA 2011** * | June 27, 2026 | Microsoft Option ROM UEFI CA 2023 | Stored in DB | Signs third-party option ROMs |
+
+\* During renewal of the Microsoft Corporation UEFI CA 2011 certificate, two certificates separate boot loader signing from option ROM signing. This separation allows finer control over system trust. For example, systems that need to trust option ROMs can add the Microsoft Option ROM UEFI CA 2023 without adding trust for third-party boot loaders.
 
 > [!IMPORTANT]
 > Azure Stack Hub systems continue to operate without immediate disruption if Secure Boot certificates aren't updated. However, systems that don't update their platform trust anchors might not be able to apply future security updates that rely on updated Secure Boot signing authorities. Over time, this condition can result in a weakening of the system's security posture.
 
-## Before you begin
+## Prerequisites
 
 Before you begin, make sure you have the following prerequisites in place:
-
-## Prerequisites
 
 - Install the most recent OEM firmware package that refreshes the Secure Boot certificates recommended for your Azure Stack Hub integrated system.
 - Apply the Azure Stack Hub hotfix or platform update that contains Secure Boot mitigation logic (see [Supported release paths](#supported-release-paths)).
@@ -45,7 +45,8 @@ Before you begin, make sure you have the following prerequisites in place:
 
 Azure Stack Hub platform updates and corresponding hotfixes provide Secure Boot mitigation support. 
 
-- Azure Stack Hub version 2601 supports Secure Boot mitigation by applying the most recent 2601 hotfix that includes Secure Boot mitigation ([hotfix 1.2601.1.14](hotfix-1-2601-1-14.md) or later).
+- Azure Stack Hub version 2604 supports Secure Boot mitigation.
+- Azure Stack Hub version 2601 supports Secure Boot mitigation by updating to the most recent 2604 build, or applying the most recent 2601 hotfix that includes Secure Boot mitigation ([hotfix 1.2601.1.16](hotfix-1-2601-1-16.md) or later).
 - Azure Stack Hub version 2506 supports Secure Boot mitigation by updating to the most recent 2601 build that includes Secure Boot mitigation, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 - Azure Stack Hub version 2501 supports Secure Boot mitigation by updating to a supported 2506 release that includes Secure Boot mitigation, when available, or by applying the version-specific hotfix that includes Secure Boot mitigation, when available.
 
@@ -55,8 +56,9 @@ These updates and hotfixes enable the platform to:
 - Raise alerts when Secure Boot 2023 certificates aren't present.
 - Detect when the boot manager isn't yet updated to use the new certificate chain.
 - Finalize the boot manager update when prerequisites are satisfied.
-- If you apply updates or hotfixes after the platform updates the certificates through the OEM firmware package, the boot manager updates automatically as part of the update or hotfix process.
 - Prompt administrators, through platform alerts, to run a Privileged Endpoint (PEP) cmdlet to finalize the boot manager update when the OEM firmware package is applied after hotfixes or updates.
+
+If you apply updates or hotfixes *after* the platform updates the certificates through the OEM firmware package, the boot manager updates automatically as part of the update or hotfix process. 
 
 > [!IMPORTANT]
 > If you apply an Azure Stack Hub update or hotfix before installing the updated OEM firmware package that contains the required Secure Boot 2023 certificates, the platform surfaces alerts providing guidance to apply the appropriate OEM firmware package. After you successfully apply the OEM firmware package update, operators can run the following PEP cmdlet to apply the final mitigation step to the boot manager, as indicated by the platform alerts: `Start-SecretRotation -UpdateBootManager`.
@@ -146,7 +148,7 @@ The PEP enforcement flow is designed to reboot nodes one at a time during the fi
 
 ## Troubleshooting
 
-This section provides troubleshooting steps for common issues that might arise during the mitigation process.
+This section provides troubleshooting steps for common problems that might arise during the mitigation process.
 
 ### Alert indicates missing certificates
 

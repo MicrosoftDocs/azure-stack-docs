@@ -87,6 +87,9 @@ To add your machine:
 
 1. In the **Operating system** dropdown list, select **Azure Linux 2604**.
 
+   > [!NOTE]
+   > You must select **Azure Linux 2604** to deploy Azure Local small form factor. Selecting a different option results in deployment failures later on.
+
 1. Enter a name for the SSH key that you use later.
 
 1. Select **Review + create**.
@@ -97,7 +100,7 @@ During provisioning, the machine moves through several lifecycle states. The fol
 
    :::image type="content" source="media/small-form-factor-connect-portal.png" alt-text="Screenshot of diagram showing machine provisioning." border="true" lightbox="media/small-form-factor-connect-portal.png":::
 
-Provisioning can take up to 25 minutes to complete.
+Provisioning can take 40-60 minutes to complete.
 
 1. Open the **Provisioned machines** tab.
 1. Wait until **Status** changes to **Provisioned**.

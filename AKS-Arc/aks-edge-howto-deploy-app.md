@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 05/01/2024
-ms.custom: template-how-to, linux-related-content
+ms.custom: template-how-to, linux-related-content, edge-essentials
 ---
 
 # Deploy an application

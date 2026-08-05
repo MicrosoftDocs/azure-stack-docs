@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/05/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Create an AKS on bare metal cluster using an ARM template (preview)
@@ -66,7 +67,7 @@ ms.author: sumsmith
 After the deployment finishes, connect to your cluster:
 
 ```azurecli
-az connectedk8s proxy --name <clusterName> --resource-group <RESOURCE_GROUP>
+az aksarc get-credentials --name <clusterName> --resource-group <RESOURCE_GROUP>
 ```
 
 Then, in a new terminal:

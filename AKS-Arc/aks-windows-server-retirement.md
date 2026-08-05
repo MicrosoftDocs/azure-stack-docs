@@ -2,7 +2,7 @@
 title: Retirement of AKS architecture on Windows Server
 description: Learn about the retirement of AKS on Windows Server.
 ms.topic: how-to
-ms.custom: linux-related-content
+ms.custom: linux-related-content, windows-server
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 11/19/2025

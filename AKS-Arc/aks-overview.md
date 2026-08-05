@@ -1,6 +1,6 @@
 ---
-title: What is AKS enabled by Azure Arc?
-description: Learn about AKS enabled by Azure Arc and available deployment options.
+title: What is AKS Hybrid and Edge?
+description: Learn about AKS Hybrid and Edge and available deployment options.
 ms.topic: overview
 ms.date: 11/13/2025
 ai-usage: ai-assisted
@@ -8,12 +8,13 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.reviewer: rcheeran
 ms.lastreviewed: 07/16/2025
+ms.custom: overview
 
 ---
 
-# What is AKS enabled by Azure Arc?
+# What is AKS Hybrid and Edge?
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local is a managed Kubernetes service that lets you deploy and manage containerized applications on-premises, in datacenters, or at edge locations like retail stores or manufacturing plants. You need minimal Kubernetes expertise to get started with AKS. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is a good platform for deploying and managing containerized applications that need high availability, scalability, and portability. It's also good for deploying applications to multiple locations, using open-source tools, and integrating with existing DevOps tools.
+Azure Kubernetes Service (AKS) Hybrid and Edge on Azure Local is a managed Kubernetes service that lets you deploy and manage containerized applications on-premises, in datacenters, or at edge locations like retail stores or manufacturing plants. You need minimal Kubernetes expertise to get started with AKS. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is a good platform for deploying and managing containerized applications that need high availability, scalability, and portability. It's also good for deploying applications to multiple locations, using open-source tools, and integrating with existing DevOps tools.
 
 ## About AKS on Azure Local
 
@@ -37,11 +38,11 @@ By integrating these components, Azure Arc gives you a unified and efficient way
 
 **Kubernetes operator**: Kubernetes operators create and manage Kubernetes clusters on Azure Local to run applications without coordinating with infrastructure admins. The admin gives the operator access to the Azure subscription, Azure custom location, and virtual network. The operator doesn't need access to the underlying on-premises infrastructure. After getting the required access, the operator creates Kubernetes clusters based on application needs, like Windows or Linux node pools and Kubernetes versions.
 
-## Overview of AKS enabled by Azure Arc
+## Overview of AKS Hybrid and Edge
 
-AKS enabled by Azure Arc reduces the complexity and operational overhead of managing Kubernetes by shifting that responsibility to Azure. When you create an AKS enabled by Azure Arc cluster, you automatically connect it to Azure Arc for centralized management. By managing all your Kubernetes resources in a single control plane on Azure, you enable a more consistent development and operator experience to run cloud-native apps anywhere and on any infrastructure option.
+AKS Hybrid and Edge reduces the complexity and operational overhead of managing Kubernetes by shifting that responsibility to Azure. When you create an AKS Hybrid and Edge cluster, you automatically connect it to Azure Arc for centralized management. By managing all your Kubernetes resources in a single control plane on Azure, you enable a more consistent development and operator experience to run cloud-native apps anywhere and on any infrastructure option.
 
-AKS enabled by Azure Arc provides the following features:
+AKS Hybrid and Edge provides the following features:
 
 - Run Kubernetes clusters on-premises, at the edge, or in other cloud environments. This flexibility helps meet specific business or technical needs.
 - Get a consistent experience for managing Kubernetes clusters across different infrastructures, similar to AKS in Azure.
@@ -50,15 +51,15 @@ AKS enabled by Azure Arc provides the following features:
 - Integrate with Azure services like Azure Monitor, Azure Policy, and Azure Security Center for a seamless operations and management experience.
 - Use GitOps for configuration management and continuous deployment. This approach enables automated and consistent deployment processes.
 
-## When to use AKS enabled by Azure Arc
+## When to use AKS Hybrid and Edge
 
-Here are some common use cases for AKS enabled by Azure Arc:
+Here are some common use cases for AKS Hybrid and Edge:
 
 - **Hybrid cloud deployments**: Run applications across on-premises and Azure environments with a consistent management layer.
 - **Edge computing**: Deploy applications at the edge for low latency and local processing in places like retail stores, manufacturing floors, or remote locations.
 - **Regulatory and compliance**: Meet regulatory and compliance requirements by deploying and managing Kubernetes clusters locally.
 
-## AKS enabled by Azure Arc deployment options
+## AKS Hybrid and Edge deployment options
 
 Here are the available deployment options:
 
@@ -68,9 +69,9 @@ Here are the available deployment options:
 - [**AKS on VMWare (preview)**](aks-vmware-overview.md): AKS on VMware (preview) enables you to use Azure Arc to create new Kubernetes clusters on VMware vSphere. With AKS on VMware, you can manage your AKS clusters running on VMware vSphere using familiar tools like Azure CLI.
 - [**AKS on Windows Server**](overview.md): AKS on Windows Server is an on-premises Kubernetes implementation of AKS that automates running containerized applications at scale, using Windows PowerShell and Windows Admin Center. It simplifies deploying and managing AKS on Windows Server 2019 or 2022 Datacenter.
 
-## AKS enabled by Azure Arc and the adaptive cloud approach
+## AKS Hybrid and Edge and the adaptive cloud approach
 
-AKS enabled by Azure Arc is part of Microsoft's [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed, like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
+AKS Hybrid and Edge is part of Microsoft's [adaptive cloud](https://azure.microsoft.com/solutions/adaptive-cloud) approach. This approach helps organizations run and manage apps in many environments, including Azure, other cloud providers, on-premises systems, and edge locations. AKS supports this approach by making it easier to deploy and manage Kubernetes clusters wherever they are needed, like on Azure Local. With Azure Arc, you can use the same tools and policies to manage clusters across all these environments, which helps you keep operations consistent and secure.
 
 ## Next steps
 

@@ -7,6 +7,7 @@ ms.date: 06/25/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+ms.custom: windows-server
 ---
 
 # Deploy an ingress controller

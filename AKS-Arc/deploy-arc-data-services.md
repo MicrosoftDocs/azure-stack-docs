@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data.
 # Keyword: Azure Arc data services

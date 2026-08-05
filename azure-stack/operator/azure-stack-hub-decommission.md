@@ -10,26 +10,26 @@ ms.custom: template-how-to
 
 # Decommission an Azure Stack Hub system
 
-This article describes how to properly decommission an Azure Stack Hub system. Prior to reclaiming the system hardware, follow this procedure to ensure tenant workloads are secured, sensitive information is removed, and the system is unregistered with Azure.
+This article describes how to decommission an Azure Stack Hub system. Before you reclaim the system hardware, follow this procedure to make sure that tenant workloads are secured, sensitive information is removed, and the system is unregistered with Azure.
 
 ## Prerequisites
 
-Before you begin, ensure that the following prerequisites are met:
+Before you begin, make sure that the following prerequisites are met:
 
-- Ensure that all workloads have been removed from the system with appropriate backups.
-- It's not necessary that you fully stop or remove all resources (VMs, web apps, etc.) from the system. However, you can stop or remove these resources to manage usage and costs during the decommission process.
-- Once the system is permanently shut down, no further usage information is reported.
+- Remove all workloads from the system with appropriate backups.
+- You don't need to fully stop or remove all resources (VMs, web apps, and so on) from the system. However, you can stop or remove these resources to manage usage and costs during the decommission process.
+- After the system is permanently shut down, it doesn't report any further usage information.
 
 <a name='connected-azure-ad-scenarios'></a>
 
 ## Connected (Microsoft Entra ID) scenarios
 
-Follow these steps in a connected (Microsoft Entra ID) environment:
+Follow these steps in a connected (Entra ID) environment:
 
-1. Disable multi-tenancy by removing secondary directories: [Unregister a guest directory](enable-multitenancy.md#unregister-a-guest-directory).
-1. Verify any additional guest directories have been removed: [Retrieve identity health report](enable-multitenancy.md#retrieve-azure-stack-hub-identity-health-report).
+1. Disable multitenancy by removing secondary directories: [Unregister a guest directory](enable-multitenancy.md#unregister-a-guest-directory).
+1. Verify you removed any additional guest directories: [Retrieve identity health report](enable-multitenancy.md#retrieve-azure-stack-hub-identity-health-report).
 1. Remove any tenant registrations for usage billing: [Remove a tenant mapping](azure-stack-csp-ref-operations.md#remove-a-tenant-mapping).
-1. Remove Azure Stack Hub registration and prevent usage data being pushed to Azure billing.
+1. Remove Azure Stack Hub registration and prevent usage data from being pushed to Azure billing.
 
    1. Follow the steps from [Register Azure Stack Hub](azure-stack-registration.md?pivots=state-connected#renew-or-change-registration) to import the **RegisterWithAzure.psm1** module.
    1. Use the following script to remove the registration resource.
@@ -72,10 +72,10 @@ Follow these steps in a connected (Microsoft Entra ID) environment:
        $applicationRegistrations.appId | Write-Host
        ```
 
-   1. Work with your Microsoft Entra administrator to remove the app registrations in the previously generated list.
+   1. Work with your Entra administrator to remove the app registrations in the previously generated list.
 
       > [!NOTE]
-      > Proceed with app registration cleanup with caution. Outside of the Privileged Endpoint (PEP), your Azure Stack Hub system becomes unusable once these are removed. The app registrations cannot be restored, and your system will not function without being redeployed.
+      > Proceed with app registration cleanup with caution. Outside of the Privileged Endpoint (PEP), your Azure Stack Hub system becomes unusable after these app registrations are removed. You can't restore the app registrations, and your system won't function without being redeployed.
 
 ## Disconnected scenarios
 
@@ -83,16 +83,16 @@ For disconnected environments, follow the [Remove the activation resource from A
 
 ## Shut down Azure Stack Hub
 
-There are two options to shut down your Azure Stack Hub system. Both commands require the cloud administrator to connect to the [Privileged Endpoint](azure-stack-privileged-endpoint.md):
+You can shut down your Azure Stack Hub system in two ways. Both options require the cloud administrator to connect to the [Privileged Endpoint](azure-stack-privileged-endpoint.md):
 
 1. Shut down Azure Stack Hub (recoverable): run the [Stop-AzureStack](../reference/pep/Stop-AzureStack.md) PowerShell cmdlet from the Privileged Endpoint.
 1. Shut down Azure Stack Hub (non-recoverable, data is wiped): run the [Start-AzsCryptoWipe](../reference/pep/start-azscryptowipe.md) cmdlet from the Privileged Endpoint.
 
    > [!IMPORTANT]
-   > After this command is executed, the stamp is not recoverable.
+   > After you run this command, the stamp isn't recoverable.
 
 ## Next steps
 
-- Learn about [Azure Stack Hub diagnostic tools](diagnostic-log-collection.md)
-- [Stop-AzureStack](../reference/pep/Stop-AzureStack.md)
-- [Start-AzsCryptoWipe](../reference/pep/start-azscryptowipe.md)
+- Learn about [Azure Stack Hub diagnostic tools](diagnostic-log-collection.md).
+- [Stop-AzureStack](../reference/pep/Stop-AzureStack.md).
+- [Start-AzsCryptoWipe](../reference/pep/start-azscryptowipe.md).

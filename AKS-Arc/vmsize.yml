@@ -64,3 +64,4 @@ commands:
 - az_aksarc_vmsize_list
 metadata:
   description: Manage virtual machine SKUs for provisioned clusters.
+  ms.custom: vmware

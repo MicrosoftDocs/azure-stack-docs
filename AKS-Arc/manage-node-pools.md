@@ -2,11 +2,11 @@
 title: Manage node pools for an AKS cluster
 description: Learn how to manage multiple node pools in AKS on Azure Local.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, local
 ms.date: 07/03/2025
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.reviewer: rbaziwane
+ms.author: davidsmatlak
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 06/03/2024
 
 ---
@@ -111,5 +111,5 @@ az aksarc nodepool delete --cluster-name <cluster name> -n <node pool name> -g <
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local prerequisites](network-system-requirements.md)
 - [What's new in AKS on Azure Local](/azure/azure-local/whats-new)

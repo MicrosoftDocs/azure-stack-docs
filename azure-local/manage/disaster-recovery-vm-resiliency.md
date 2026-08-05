@@ -93,7 +93,7 @@ NetBackup uses its mature Hyper-V integration and Microsoft Resilient Change Tra
 
 - [Cohesity NetBackup](https://www.cohesity.com/platform/netbackup/)
 - [NetBackup 11.x Software Compatibility List - Hyper-V and Azure Local](https://download.veritas.com/resources/content/live/OSVC/100046000/100046445/en_US/nbu_110_scl.html?__gda__=1773217766_26de4c82ef9cf21129270ea97531abe9#Hyper-V_and_Azure_Local)
-- [NetBackup Compatibility List for all Versions](https://www.veritas.com/support/en_US/article.100040093)
+- [NetBackup Compatibility List for all Versions](https://sort.veritas.com/netbackup)
 
 #### Commvault
 

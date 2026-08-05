@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 05/01/2026
+ms.date: 06/29/2026
 ms.lastreviewed: 02/23/2024
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -13,7 +13,7 @@ ms.subservice: hyperconverged
 
 # Extended Security Updates on Azure Local
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 The Extended Security Update (ESU) program allows you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Local comes with additional benefits and implementation steps. This article explains the specifics for Azure Local.
 
@@ -35,6 +35,15 @@ All existing ESU products, including Windows Server 2012, Windows 10 version 2
 ### How can I get ESUs under the new pricing model?
 
 Details on ESU pricing and availability will be made available in the next few months, and this article will be updated. 
+
+### Do ESUs have any limitations?
+
+Extended Security Updates don't include the following items:
+
+- New features
+- Customer-requested nonsecurity updates
+- Design change requests
+- General support won't be provided for Windows versions past the end of support date. To get technical support for issues related to the ESU, organizations must have an active support plan. For more information, see [Lifecycle FAQ - Extended Security Updates](/lifecycle/faq/extended-security-updates#support-questions-for-esus).
 
 ### Does my VM need to be connected to get ESUs?
 

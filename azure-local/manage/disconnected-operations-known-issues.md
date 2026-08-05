@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 02/23/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -14,17 +14,77 @@ This article identifies critical known issues and their workarounds in disconnec
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-::: moniker range=">=azloc-2604"
+::: moniker range=">=azloc-2605"
+
+## Known issues for version 2605
+### Workload clusters patch and update failing
+**Applies to:** First time Azure Local patch and update for a data-cluster.
+**Note** : This fix is a one-time remediation. After the InfraLocal_1 volume is created, the same cluster doesn't require these steps for subsequent Azure Local updates.
+
+**Mitigation**:
+- Log in to any Azure Local cluster node with administrative privileges.
+- Run the following PowerShell command to create the InfraLocal_1 volume:
+```powershell
+New-Volume -FriendlyName "InfraLocal_1" -Size 10GB -ProvisioningType Thin
+```
+- Verify that the command completes successfully without errors.
+- Proceed with the Azure Local patch and update.
+
+### Missing signing cert in air-gapped environments 
+Cloud deployment doesn't succeed in air-gapped environments for Azure Local disconnected operations release 2605, unless you take the following steps:
+
+- From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2011 certificate](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt).
+- Copy the downloaded certificate file (MicCodSigPCA2011_2011-07-08.crt) to each Azure Local node.
+- On each node, open an elevated PowerShell session and run:
+```powershell
+Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
+```
+### Update package for 2605
+
+There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when the update is available.
+
+### Share credentials can be exposed in observability logs during indirect log collection
+
+When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and include the `Observability` role in the roles that you collect, the observability component on the disconnected operations appliance for Azure Local captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If you later collect those observability logs and upload them to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
+
+If you don't specify the `-CloudManagementFilterByRoles` parameter, all cloud management roles, including `Observability`, are collected by default. The only way to exclude observability logs is to pass an explicit list of roles to `-CloudManagementFilterByRoles` that omits the observability roles.
+
+**Mitigation:**
+
+When you run `Invoke-AzureLocalDisconnectedLogCollection`, explicitly set `-CloudManagementFilterByRoles` to a list of roles that omits the observability role. Don't rely on the default behavior, because the default collects all roles, including observability. For example:
+
+```powershell
+$nodeCred = Get-Credential -Message "Enter Azure Local node credentials"
+
+# Supported roles: Agents, ArcControlPlane, ArcADiagnostics, Containers, CosmosDB, MASLogs, Messaging, Observability, Oplets, ServiceFabric, Storage, WindowsEventLogs
+# The Observability role can leak credentials. Don't include it in CloudManagementFilterByRoles.
+Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
+    -ToDate (Get-Date) `
+    -AzureLocalNodeNames @("ALNode01", "ALNode02", "ALNode03", "ALNode04") `
+    -AzureLocalNodeCredential $nodeCred `
+    -SaveToPath "\\fileserver\share\FilteredLogs" `
+    -ShareCredential (Get-Credential) `
+    -CloudManagementEndpoint "192.168.1.100" `
+    -CloudManagementClientCertificatePath "C:\ManagementCert.pfx" `
+    -CloudManagementClientCertificatePassword $pfxPassword `
+    -AzureLocalFilterByRoles @("BareMetal", "ECE") `
+    -CloudManagementFilterByRoles @("Agents", "ArcControlPlane", "ArcADiagnostics", "Containers", "CosmosDB", "MASLogs", "Messaging", "Oplets", "WindowsEventLogs") `
+    -ForceRefreshCloudManagementPsModule
+```
+
+::: moniker-end
+
+::: moniker range="=azloc-2604"
 
 ## Known issues for version 2604
 
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
-Workload clusters in air-gapped environments fail to deploy in rare conditions. 
+Workload clusters in air-gapped environments fail to deploy in rare conditions.
 
 **Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
 
-**Mitigation**: 
+**Mitigation**:
 
 1. Connect to the first node of the Azure Local cluster.
 1. Open an elevated PowerShell session (Run as Administrator).
@@ -35,11 +95,12 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
             -actionProviders "StorageContainer" `
             -actionOperations "all"
    ```
+
 1. Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2603"
+::: moniker range=">=azloc-2602 <=azloc-2603"
 
 ## Known issues for version 2602 and 2603
 
@@ -78,14 +139,14 @@ This error occurs because the update package is signed with a different certific
     & "$($targetFolder)\ImportCodeSignCertsOffline.ps1" -CertsFolder $targetFolder -BitLockerRecoveryKeys $recoveryKeys
 ```
 
- - Wait 10 minutes or more
- - From the same PowerShell context, run:
-   
+- Wait 10 minutes or more
+- From the same PowerShell context, run:
+
    ```powershell
         Get-ApplianceUpdateHistory                   
    ```
 
- - The update history after the appliance virtual machine (VM) restarts might show an error like this: 
+- The update history after the appliance virtual machine (VM) restarts might show an error like this:
 
    ```
     Type             : UpdatePreparation
@@ -99,16 +160,17 @@ This error occurs because the update package is signed with a different certific
     PendingTasks     : {}
     ErrorReports     : {}
    ```
-   
- - If the error *File signature on Manifest.xml is invalid* no longer appears, the issue is resolved and you can continue the update process.
- - To continue the update process, modify and run this command:
+
+- If the error *File signature on Manifest.xml is invalid* no longer appears, the issue is resolved and you can continue the update process.
+- To continue the update process, modify and run this command:
 
     ```powershell
         $updateTargetVersion = ""
         Wait-AppliancePreUpdate -TargetVersion $updateTargetVersion
         Start-ApplianceUpdate -TargetVersion $updateTargetVersion -Wait
      ```
- - The process takes about 3 hours to finish.
+
+- The process takes about 3 hours to finish.
 
 ### Bootstrap or deployment fails due to invalid certificates (exception)
 
@@ -642,7 +704,7 @@ The disconnected operations appliance uses 78 GB of memory. If your node has les
 
 ### Deployment failure
 
-In virtual environments, deployments can time out, and services might not reach 100% convergence, even after 8 hours.
+In virtual environments, deployments can time out, and services might not reach 100% convergence, even after eight hours.
 
 **Mitigation:**
 
@@ -775,11 +837,11 @@ az aksarc nodepool scale
 
 #### Scale limitation
 
-In the current Azure Local disconnected operations scale envelope, running more than 20 workload clusters can affect control plane stability. Under sustained load, the disconnected operations control plane may become less responsive over time, which can impact manageability and reliability at higher cluster counts.
+In the current Azure Local disconnected operations scale envelope, running more than 20 workload clusters can affect control plane stability. Under sustained load, the disconnected operations control plane might become less responsive over time, which can impact manageability and reliability at higher cluster counts.
 
 **Mitigation**:
 
-Until the supported scale range is expanded, Microsoft recommends limiting the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
+Until the supported scale range is expanded, Microsoft recommends you limit the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
 
 #### Kubernetes cluster list empty under Azure Local (Kubernetes clusters)
 
@@ -855,7 +917,7 @@ If the portal doesn't work, use Azure CLI or REST API to create and list subscri
 
 #### Manage clouds
 
-When you use the `az cloud` commands, such as `az cloud register`, `az cloud show`, or `az cloud set`, you might encounter issues if you use uppercase letters in the cloud name.
+If you use uppercase letters in the cloud name when you use the `az cloud` commands, such as `az cloud register`, `az cloud show`, or `az cloud set`, you might encounter issues.
 
 **Mitigation**:
 
@@ -863,7 +925,7 @@ Use only lowercase letters for cloud names in `az cloud` subcommands, such as `r
 
 #### Create subscriptions
 
-Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions. This makes the operator the default owner of newly created subscriptions without a way of changing the owner currently.
+Azure CLI doesn't support providing `subscriptionOwnerId` for new subscriptions. This limitation means the operator is the default owner of newly created subscriptions without a way to change the owner.
 
 **Mitigation**:
 

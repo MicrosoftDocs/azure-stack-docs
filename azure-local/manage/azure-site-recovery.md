@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 04/05/2026
+ms.date: 06/29/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -12,11 +12,9 @@ ms.subservice: hyperconverged
 
 # Protect VM workloads with Azure Site Recovery on Azure Local (preview)
 
-[!INCLUDE [hci-applies-to-22h2-later](../includes/hci-applies-to-22h2-later.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This guide describes how to protect Windows and Linux VM workloads running on your Azure Local if there's a disaster. You can use Azure Site Recovery to replicate your on-premises Azure Local virtual machines (VMs) into Azure and protect your business critical workloads.
-
-This feature is enabled on Azure Local running the May 2023 cumulative update of version 22H2 and later.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -74,7 +72,6 @@ Before you begin, make sure to complete the following prerequisites:
 - Make sure that Hyper-V is set up on the Azure Local.
 - The machines hosting the VMs you want to protect must have internet access to replicate to Azure.
 - The Azure Local must already be registered.
-    - The system must be running May cumulative update for Azure Local, version 22H2.
     - If you're running an earlier build, the Azure portal indicates that the disaster recovery isn't supported as managed identity isn't enabled for older versions.
 
         Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Local resource and then retry the workflow. For more information, go to [Enable enhanced management from Azure for Azure Local](/azure-stack/hci).

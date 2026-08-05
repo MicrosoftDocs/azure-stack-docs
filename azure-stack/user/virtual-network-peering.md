@@ -57,7 +57,7 @@ You can also configure the gateway in the peered virtual network as a transit po
 Note that a **Connection** object must be created in the VPN gateway prior to enabling the **UseRemoteGateways** options in the peering.
 
 > [!IMPORTANT]
-> Azure Stack Hub configures system routes based on the peered virtual networks subnets, not the virtual network address prefix. This is different from the Azure implementation. If you want to override the system default routes, such as the scenario described in [Scenario: Route traffic through a Network Virtual Appliance (NVA)](/azure/virtual-wan/scenario-route-through-nva) or [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli), in which you want to route traffic to an NVA or firewall appliance, you must create a route entry for each subnet within the virtual network.
+> Azure Stack Hub configures system routes based on the peered virtual networks subnets, not the virtual network address prefix. This is different from the Azure implementation. If you want to override the system default routes, such as the scenario described in [Scenario: Route traffic through a Network Virtual Appliance (NVA)](/azure/virtual-wan/about-virtual-hub-routing) or [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli), in which you want to route traffic to an NVA or firewall appliance, you must create a route entry for each subnet within the virtual network.
 
 ## Virtual network peering configuration
 

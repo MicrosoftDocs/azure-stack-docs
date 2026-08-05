@@ -12,7 +12,7 @@ zone_pivot_groups: windows-os
 
 :::zone pivot="azure-local"
 
-[!INCLUDE [hci-applies-to-23h2-22h2](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 Deployment and operation of Azure Local networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across Azure Local machines is important as it leads to a more reliable experience.
 
@@ -47,7 +47,7 @@ Network ATC provides the following features:
 
 :::zone pivot="azure-local"
 
-- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Beginning with Azure Local, version 22H2, Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
+- **Network symmetry**: Network ATC configures and optimizes all adapters identically based on your configuration. Network ATC also verifies the make, model, and speed of your network adapter to ensure network symmetry across all nodes of the cluster.
 
 ::: zone-end
 
@@ -67,13 +67,13 @@ Network ATC provides the following features:
 
   :::zone pivot="azure-local"
 
-  - Beginning with Azure Local, version 22H2, Network ATC automatically assigns IP Addresses for storage adapters.
+  - Network ATC automatically assigns IP addresses for storage adapters.
 
   :::zone-end
 
   :::zone pivot="windows-server"
 
-  - Network ATC automatically assigns IP Addresses for storage adapters.
+  - Network ATC automatically assigns IP addresses for storage adapters.
 
   :::zone-end
 
@@ -94,9 +94,7 @@ Network ATC provides the following features:
 
 :::zone-end
 
-- **Scope detection**: Beginning with Azure Local, version 22H2, Network ATC automatically detects if you're running the command on a cluster node. Meaning, you don't need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
-
-To learn more about the features in Network ATC, see [Network ATC: What's coming](https://techcommunity.microsoft.com/t5/networking-blog/network-atc-what-s-coming-in-azure-stack-hci-22h2/ba-p/3598442).
+- **Scope detection**: Network ATC automatically detects if you're running the command on a cluster node. Meaning, you don't need to use the `-ClusterName` parameter because it automatically detects the cluster that you're on.
 
 ## Terminology
 
