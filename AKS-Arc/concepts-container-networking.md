@@ -8,7 +8,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 05/31/2022
 ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to learn about the advantages of using conainer networking in AKS Arc.
+# Intent: As an IT Pro, I want to learn about the advantages of using conainer networking in AKS.
 # Keyword: Container applications networking
 
 ---
@@ -64,7 +64,7 @@ When you create an AKS cluster, we also create and configure an underlying `HAPr
 
 ## IP address resources
 
-To simplify the network configuration for application workloads, AKS Arc assigns IP addresses to the following objects in a deployment:
+To simplify the network configuration for application workloads, AKS assigns IP addresses to the following objects in a deployment:
 
 - **Kubernetes cluster API server**: the API server is a component of the Kubernetes control plane that exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane. Static IP addresses are always allocated to API servers irrespective of the underlying networking model.
 - **Kubernetes nodes (virtual machines)**: a Kubernetes cluster consists of a set of worker machines, called nodes, and the nodes host containerized applications. In addition to the control plane nodes, every cluster has at least one worker node. For an AKS cluster, Kubernetes nodes are configured as virtual machines. These virtual machines are created as highly available virtual machines. For more information, see [Node networking concepts](concepts-node-networking.md).

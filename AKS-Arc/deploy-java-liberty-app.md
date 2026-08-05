@@ -44,7 +44,7 @@ This article is divided into two parts:
 * Install [Maven](https://maven.apache.org/download.cgi) 3.5.0 or higher.
 * Install [Docker](https://docs.docker.com/get-docker/) for your operating system.
 
-**Part 2** focuses on deploying the application from your Azure Container Registry down into the AKS Arc environment. For this section, you cannot use Azure Cloud Shell. For the AKS Arc environment, the following items are required:
+**Part 2** focuses on deploying the application from your Azure Container Registry down into the AKS environment. For this section, you cannot use Azure Cloud Shell. For the AKS environment, the following items are required:
 
 * An [AKS cluster](./setup.md) with at least one Linux worker node that's up and running.
 * A configured local `kubectl` environment that points to your AKS cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.

@@ -34,7 +34,7 @@ Before you begin, make sure the following prerequisites are met:
 
 ## Enable Managed Prometheus extension
 
-Azure Monitor collects and aggregates important metrics from your AKS Arc running on Azure Local instance. In addition to [platform metrics](kubernetes-monitor-metrics.md#metrics) collected from your cluster, you can view granular Kubernetes metrics using the managed Prometheus extension. This extension collects Prometheus metrics from your deployment and stores them in an Azure Monitor workspace in Azure. Once they are ingested, you can analyze them in Metrics Explorer or use prebuilt dashboards in Azure Managed Grafana.
+Azure Monitor collects and aggregates important metrics from your AKS running on Azure Local instance. In addition to [platform metrics](kubernetes-monitor-metrics.md#metrics) collected from your cluster, you can view granular Kubernetes metrics using the managed Prometheus extension. This extension collects Prometheus metrics from your deployment and stores them in an Azure Monitor workspace in Azure. Once they are ingested, you can analyze them in Metrics Explorer or use prebuilt dashboards in Azure Managed Grafana.
 
 ### Step 1: Install the managed Prometheus extension
 
@@ -143,5 +143,5 @@ Ensure that the data source and cluster names are correct. You can view the metr
 
 ## Next steps
 
-- [AKS Arc monitoring data reference](kubernetes-monitor-metrics.md)
+- [AKS monitoring data reference](kubernetes-monitor-metrics.md)
 - [Prometheus scrape configuration](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration)
