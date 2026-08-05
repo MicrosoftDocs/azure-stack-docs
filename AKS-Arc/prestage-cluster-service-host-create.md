@@ -38,7 +38,7 @@ The AKS deployment attempts to locate the specified `clusterRoleName` in Active 
 
 ## Step 2: Prepare your machines for deployment
 
-Run checks on every physical node to see if all the requirements are satisfied to install AKS Arc. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command:
+Run checks on every physical node to see if all the requirements are satisfied to install AKS. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command:
 
 ```powershell
 Initialize-AksHciNode

@@ -241,7 +241,7 @@ Reboot performs a controlled restart of the Terminal Server OS for recovery or m
 #### Request
 
 ```http
-POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot?api-version=2026-01-15-preview
+POST "/subscriptions/<subscriptionId>/resourceGroups/<resourcegroup> /providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/reboot?api-version=<api-version>"
 ```
 
 | Parameter | Description |
@@ -270,7 +270,7 @@ This post action updates the administrative state of the Terminal Server `Net3` 
 #### Request
 
 ```http
-POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/net3/updateAdministrativeState?api-version=2026-01-15-preview
+post "/subscriptions/<subscriptionId>/resourceGroups/f<resourcegroup>/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/networkBootstrapInterfaces/net3/UpdateAdministrativeState?api-version=<api-version>" "{""state"":""Enable""}"
 ```
 
 | Parameter | Description |
@@ -308,7 +308,7 @@ This post action re-applies Microsoft-managed Terminal Server configuration. Thi
 #### Request
 
 ```http
-POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration?api-version=2026-01-15-preview
+ post "/subscriptions/<subscriptionId>/resourceGroups/<resourcegroup>/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/refreshConfiguration?api-version=<api-version>"
 ```
 
 | Parameter | Description |
@@ -337,7 +337,7 @@ This post action synchronizes the Terminal Server with the latest device credent
 #### Request
 
 ```http
-POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords?api-version=2026-01-15-preview
+post "/subscriptions/<subscriptionId>/resourceGroups/<resourcegroup>/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/resyncPasswords?api-version=<api-version>" 
 ```
 
 | Parameter | Description |

@@ -1,5 +1,5 @@
 ---
-title: Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
+title: Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS
 description: Learn how to deploy container images from a private container registry using Azure Container Registry.
 ms.topic: how-to
 ms.date: 12/12/2023
@@ -10,13 +10,13 @@ ms.lastreviewed: 12/11/2023
 ms.custom: sfi-ropc-nochange, local
 ---
 
-# Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
+# Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy container images from a private container registry using Azure Container Registry, which you can run in your own datacenter in AKS Arc deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
+This article describes how to deploy container images from a private container registry using Azure Container Registry, which you can run in your own datacenter in AKS deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
 
-The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS Arc.
+The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS.
 
 For more information about Azure Container Registry, see the [Azure Container Registry documentation](/azure/container-registry/).
 

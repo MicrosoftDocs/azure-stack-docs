@@ -16,19 +16,19 @@ ms.custom: windows-server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-After you deploy AKS Arc, you can restart, remove, or reinstall your deployment if necessary.
+After you deploy AKS, you can restart, remove, or reinstall your deployment if necessary.
 
-## Restart AKS Arc
+## Restart AKS
 
-Restarting AKS Arc removes all of your Kubernetes clusters (if any) and the Azure Kubernetes Service host. The restart process also uninstalls the AKS agents and services from the nodes. Then, it repeats the original install process steps until the host is recreated. The AKS configuration that you configured via [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and the downloaded VHDX images are preserved. The `Set-AksHciConfig` command removes the current VMs and creates new ones.
+Restarting AKS removes all of your Kubernetes clusters (if any) and the Azure Kubernetes Service host. The restart process also uninstalls the AKS agents and services from the nodes. Then, it repeats the original install process steps until the host is recreated. The AKS configuration that you configured via [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) and the downloaded VHDX images are preserved. The `Set-AksHciConfig` command removes the current VMs and creates new ones.
 
-To restart AKS Arc with the same configuration settings, run the following command:
+To restart AKS with the same configuration settings, run the following command:
 
 ```powershell
 Restart-AksHci
 ```
 
-## Remove AKS Arc
+## Remove AKS
 
 To remove AKS, run the following [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) command. This command removes the old configuration, and you must run [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) again when you reinstall.
 
@@ -44,9 +44,9 @@ If you want to retain the old configuration, run the following command:
 Uninstall-AksHci -SkipConfigCleanup
 ```
 
-## Reinstall configuration settings and AKS Arc
+## Reinstall configuration settings and AKS
 
-To reinstall AKS Arc after uninstalling it, follow these instructions.
+To reinstall AKS after uninstalling it, follow these instructions.
 
 If you ran the `Uninstall-AksHci` command with the `-SkipConfigCleanup` parameters, your old configuration settings were retained. To reinstall, run the following command:
 
@@ -68,7 +68,7 @@ Install-AksHci
 
 ## Next steps
 
-In this article, you learned how to restart, remove, or reinstall Azure Kubernetes Service in AKS Arc. Next, you can:
+In this article, you learned how to restart, remove, or reinstall Azure Kubernetes Service in AKS. Next, you can:
 
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

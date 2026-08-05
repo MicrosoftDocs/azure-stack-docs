@@ -29,7 +29,7 @@ This article provides information about the KMS provider, verifying encryption a
 
 KMS v1 was [deprecated with Kubernetes v1.28](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/), and it's recommended that you migrate to KMS v2. The [KMS v2 standard](https://kubernetes.io/blog/2022/09/09/kms-v2-improvements/) eliminates the performance bottlenecks seen in KMS v1 by removing the need for serial decryption during cluster startup, reducing API call overhead and avoiding external key service rate limits. This results in faster cluster initialization and smoother application startup. Other benefits include improved reliability, scalability beyond 2,000 secrets, and enhanced observability through richer health checks.
 
-The KMS Provider v2 is automatically enabled for all new clusters that you create on AKS Arc: there's no action you need to take. The provider generates a new KEK immediately, and then automatically rotates it every 30 days, reducing the risk of key compromise. After each rotation, it uses this new KEK to encrypt the DEK for any subsequent secrets you create. Existing secrets in the cluster aren't automatically re-encrypted. For now, existing clusters continue to use the KMS v1 provider.
+The KMS Provider v2 is automatically enabled for all new clusters that you create on AKS: there's no action you need to take. The provider generates a new KEK immediately, and then automatically rotates it every 30 days, reducing the risk of key compromise. After each rotation, it uses this new KEK to encrypt the DEK for any subsequent secrets you create. Existing secrets in the cluster aren't automatically re-encrypted. For now, existing clusters continue to use the KMS v1 provider.
 
 ## Before you begin
 
@@ -119,6 +119,6 @@ If you encounter any errors with the KMS provider, follow the procedure on the [
 
 ## Next steps
 
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
 - [Create Kubernetes clusters](aks-create-clusters-cli.md)
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)

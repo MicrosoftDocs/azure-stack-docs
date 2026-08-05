@@ -20,7 +20,7 @@ ms.lastreviewed: 08/15/2022
 | gbl.his.arc.azure.com | 443 | Required to get the regional endpoint for pulling system-assigned Managed Identity certificates. |
 | \*.his.arc.azure.com | 443 | Required to pull system-assigned Managed Identity certificates. |
 | k8connecthelm.download.prss.microsoft.com    | 443 | Arc-enabled Kubernetes uses Helm 3 to deploy Azure Arc agents on the AKS on Windows Server management cluster. This endpoint is needed for the Helm client download to facilitate deployment of the agent helm chart. |
-| \*.arc.azure.net| 443 | Required to manage AKS Arc clusters in the Azure portal. |
+| \*.arc.azure.net| 443 | Required to manage AKS clusters in the Azure portal. |
 | dl.k8s.io | 443 | Required to download and update Kubernetes binaries for Azure Arc. |
 |  akshci.azurefd.net | 443 | Required for AKS on Windows Server billing when running `Install-AksHci`. |
 |  v20.events.data.microsoft.com </br> gcs.prod.monitoring.core.windows.net | 443 | Used to periodically send Microsoft required diagnostic data from the Windows Server host. |
