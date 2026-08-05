@@ -14,7 +14,7 @@ ms.custom: local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating a [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the **MetalLB extension for Azure Arc enabled Kubernetes**.
+The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS Hybrid and Edge supports creating a [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the **MetalLB extension for Azure Arc enabled Kubernetes**.
 
 ## Prerequisites
 

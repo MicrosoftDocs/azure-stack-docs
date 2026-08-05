@@ -1,6 +1,6 @@
 ---
-title: Monitoring and logging object events in AKS enabled by Azure Arc on VMware
-description: Learn how to monitor real-time Kubernetes object events in AKS enabled by Arc on VMware.
+title: Monitoring and logging object events in AKS Hybrid and Edge on VMware
+description: Learn how to monitor real-time Kubernetes object events in AKS Hybrid and Edge on VMware.
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/21/2024
@@ -14,13 +14,13 @@ ms.custom: vmware
 
 ---
 
-# Monitor and log data in AKS enabled by Azure Arc on VMware (preview)
+# Monitor and log data in AKS Hybrid and Edge on VMware (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-See the [Monitoring and logging section of the AKS enabled by Azure Arc documentation](aks-monitor-logging.md) for information about monitoring and logging in AKS enabled by Azure Arc on VMware. The articles in that section also apply to AKS enabled by Azure Arc on VMware.
+See the [Monitoring and logging section of the AKS Hybrid and Edge documentation](aks-monitor-logging.md) for information about monitoring and logging in AKS Hybrid and Edge on VMware. The articles in that section also apply to AKS Hybrid and Edge on VMware.
 
 ## Next steps
 
 - [Monitor Kubernetes object events](kubernetes-monitor-object-events.md)
-- [AKS Arc on VMware overview](aks-vmware-overview.md)
+- [AKS on VMware overview](aks-vmware-overview.md)

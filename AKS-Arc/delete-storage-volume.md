@@ -17,7 +17,7 @@ This article describes how to mitigate cluster issues if a storage volume is del
 
 ## Symptoms
 
-AKS Arc workload data is stored on Azure Local storage volumes, including the AKS Arc node disks and persistent volumes of data disks. If the storage volume is accidentally deleted, the AKS Arc cluster doesn't work properly, as its data is removed as well.
+AKS workload data is stored on Azure Local storage volumes, including the AKS node disks and persistent volumes of data disks. If the storage volume is accidentally deleted, the AKS cluster doesn't work properly, as its data is removed as well.
 
 ## Workaround
 
@@ -40,4 +40,4 @@ Once the storage path is recreated, the [MOC service](concepts-node-networking.m
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)
