@@ -1,7 +1,7 @@
 ---
-author: eak13
-ms.author: ekarandjeff
-ms.date: 10/03/2023
+author: dougbristow
+ms.author: dbristow
+ms.date: 07/09/2026
 ms.topic: include
 ms.service: azure-operator-nexus
 ---
@@ -11,7 +11,7 @@ ms.service: azure-operator-nexus
 
 To access your cluster, you need to set up the cluster connect `kubeconfig`. After logging into Azure PowerShell with the relevant Microsoft Entra entity, you can obtain the `kubeconfig` necessary to communicate with the cluster from anywhere, even outside the firewall that surrounds it.
 
-1. Set CLUSTER_NAME, RESOURCE_GROUP, LOCATION and SUBSCRIPTION_ID variables.
+1. Set CLUSTER_NAME, RESOURCE_GROUP, LOCATION, and SUBSCRIPTION_ID variables.
 
     ```azurepowershell
     $CLUSTER_NAME="myNexusK8sCluster"
@@ -22,12 +22,12 @@ To access your cluster, you need to set up the cluster connect `kubeconfig`. Aft
     |Select-Object -Property ManagedResourceGroupConfigurationName)
     ```
     
-2. Run the following command to connect to the cluster.
+1. Run the following command to connect to the cluster.
     ```azurepowershell
     New-AzConnectedKubernetes -ClusterName $CLUSTER_NAME -ResourceGroupName $MANAGED_RESOURCE_GROUP -Location $LOCATION
     ```
 
-2. Use `kubectl` to send requests to the cluster:
+1. Use `kubectl` to send requests to the cluster:
 
     ```console
     kubectl get pods -A
@@ -35,4 +35,4 @@ To access your cluster, you need to set up the cluster connect `kubeconfig`. Aft
     You should now see a response from the cluster containing the list of all nodes.
 
 > [!NOTE]
-> If you see the error message "Failed to post access token to client proxyFailed to connect to MSI", you may need to perform an `az login` to re-authenticate with Azure.
+> If you see the error message "Failed to post access token to client proxyFailed to connect to MSI", you might need to perform an `az login` to re-authenticate with Azure.
