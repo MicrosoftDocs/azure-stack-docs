@@ -1,5 +1,5 @@
 ---
-title: Monitor Kubernetes object events in AKS enabled by Azure Arc
+title: Monitor Kubernetes object events in AKS Hybrid and Edge
 description: Learn how to monitor real-time Kubernetes object events.
 author: davidsmatlak
 ms.topic: how-to

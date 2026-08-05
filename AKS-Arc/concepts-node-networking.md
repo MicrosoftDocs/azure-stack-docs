@@ -1,6 +1,6 @@
 ---
 title: Node virtual machine networking in AKS on Windows Server
-description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
+description: Learn about virtual machine networking in AKS, including static IP and DHCP networking and load balancers.
 author: davidsmatlak
 ms.topic: concept-article
 ms.date: 04/07/2025
@@ -8,7 +8,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
 ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to learn about virtual machine networking in AKS Arc.
+# Intent: As an IT Pro, I want to learn about virtual machine networking in AKS.
 # Keyword: virtual machine networking
 
 ---
@@ -22,11 +22,11 @@ You can choose between two IP address assignment models for your networking arch
 - **DHCP networking**: the virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
 > [!NOTE]  
-> The virtual networking architecture defined here for AKS Arc might be different from the underlying physical networking architecture in a data center.
+> The virtual networking architecture defined here for AKS might be different from the underlying physical networking architecture in a data center.
 
 ## Virtual IP pool
 
-A Virtual IP (VIP) pool is set of IP addresses that are mandatory for any deployment in AKS Arc. The VIP pool is a range of reserved IP addresses used to allocate IP addresses to the Kubernetes cluster API server. It guarantees that your applications on Kubernetes services are always reachable. Keep in mind that regardless of the virtual networking model and the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
+A Virtual IP (VIP) pool is set of IP addresses that are mandatory for any deployment in AKS. The VIP pool is a range of reserved IP addresses used to allocate IP addresses to the Kubernetes cluster API server. It guarantees that your applications on Kubernetes services are always reachable. Keep in mind that regardless of the virtual networking model and the address assignment model you choose, you must provide a VIP pool for your AKS host deployment.
 
 The number of IP addresses in the VIP pool depends on the number of workload clusters and Kubernetes services planned for your deployment.
 
@@ -37,7 +37,7 @@ Depending on your networking model, the VIP pool definition differs in the follo
 
 ## Kubernetes node VM IP pool
 
-Kubernetes nodes are deployed as specialized virtual machines in AKS Arc. AKS allocates IP addresses to these virtual machines to enable communication between Kubernetes nodes.
+Kubernetes nodes are deployed as specialized virtual machines in AKS. AKS allocates IP addresses to these virtual machines to enable communication between Kubernetes nodes.
 
 - Static IP: you must specify a Kubernetes node VM IP pool range. The number of IP addresses in this range depends on the total number of Kubernetes nodes you plan to use to deploy across your AKS host and workload Kubernetes clusters. Keep in mind that updates consume one to three additional IP addresses during the update.
 - DHCP: you don't need to specify a Kubernetes node VM pool, as IP addresses to the Kubernetes nodes are dynamically allocated by the DHCP server on your network.
@@ -121,7 +121,7 @@ The following table compares IP address allocation for resources between static 
 
 ## Minimum IP address reservations for an AKS deployment
 
-Regardless of your deployment model, the number of IP addresses reserved remains the same. This section describes the number of IP addresses you need to reserve based on your AKS Arc deployment model.
+Regardless of your deployment model, the number of IP addresses reserved remains the same. This section describes the number of IP addresses you need to reserve based on your AKS deployment model.
 
 ### Minimum IP address reservation
 

@@ -185,7 +185,7 @@ You can use node affinity rules to enable the Kubernetes scheduler to run pods o
 
 Prerequisites:
 
-* AKS Arc is installed.
+* AKS is installed.
 * Target cluster is installed and connected to Azure.
 * One Linux node pool is deployed, with at least one active Linux Worker node.
 * Horizontal Node Autoscaler is enabled on the target cluster, and the Linux node pool, as described previously.

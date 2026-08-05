@@ -14,7 +14,7 @@ ms.custom: local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to create Kubernetes clusters on Azure Local using the REST API. The Azure resource type for [AKS Arc provisioned clusters](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template) is **"Microsoft.HybridContainerService/provisionedClusterInstances"**. This resource is an extension of the [connected clusters](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-arm-template) resource type, **"Microsoft.Kubernetes/connectedClusters"**. Due to this dependency, you must first create a connected cluster resource before creating an AKS Arc resource.
+This article describes how to create Kubernetes clusters on Azure Local using the REST API. The Azure resource type for [AKS provisioned clusters](/azure/templates/microsoft.hybridcontainerservice/provisionedclusterinstances?pivots=deployment-language-arm-template) is **"Microsoft.HybridContainerService/provisionedClusterInstances"**. This resource is an extension of the [connected clusters](/azure/templates/microsoft.kubernetes/connectedclusters?pivots=deployment-language-arm-template) resource type, **"Microsoft.Kubernetes/connectedClusters"**. Due to this dependency, you must first create a connected cluster resource before creating an AKS resource.
 
 ## Before you begin
 
@@ -157,4 +157,4 @@ moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 
 ## Next steps
 
-[AKS Arc overview](overview.md)
+[AKS overview](overview.md)
