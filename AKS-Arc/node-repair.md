@@ -15,11 +15,11 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-To help minimize service disruptions for clusters, AKS on Windows Server continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. This article describes how AKS Arc checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. The article also shows how to manually check node health.
+To help minimize service disruptions for clusters, AKS on Windows Server continuously monitors the health state of worker nodes, and performs automatic node repair if issues arise or if they become unhealthy. This article describes how AKS checks for unhealthy nodes and automatically repairs both Windows and Linux nodes. The article also shows how to manually check node health.
 
 ## How AKS checks for unhealthy nodes
 
-AKS Arc uses the following rules to determine if a node is unhealthy and needs repair:
+AKS uses the following rules to determine if a node is unhealthy and needs repair:
 
 - The node reports a **NotReady** status on consecutive checks.
 - The node doesn't report any status within 20-30 minutes.
@@ -44,9 +44,9 @@ moc-wvt025q406z   Ready    <none>   47h   v1.19.7
 
 ## How automatic repair works
 
-If AKS Arc identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, it creates and reimages a new node.
+If AKS identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, it creates and reimages a new node.
 
-It usually takes 20 to 30 minutes to repair the node. If AKS Arc finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
+It usually takes 20 to 30 minutes to repair the node. If AKS finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
 
 ## Next steps
 

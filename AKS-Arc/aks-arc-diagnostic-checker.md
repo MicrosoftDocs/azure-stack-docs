@@ -1,6 +1,6 @@
 ---
 title: Use diagnostic checker to identify common causes for failures (preview)
-description: Learn how to diagnose common causes for failures in AKS Arc.
+description: Learn how to diagnose common causes for failures in AKS.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak

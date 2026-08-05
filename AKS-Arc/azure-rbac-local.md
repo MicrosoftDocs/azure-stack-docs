@@ -24,7 +24,7 @@ When you use integrated authentication between Microsoft Entra ID and AKS, you c
 
 This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Entra ID and Azure role assignments.
 
-For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-identity.md) for AKS enabled by Azure Arc.
+For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-identity.md) for AKS Hybrid and Edge.
 
 ## Before you begin
 
@@ -229,7 +229,7 @@ az role definition delete -n "AKS Arc Deployment Reader"
 ## Next steps
 
 - [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- [Access and identity options](concepts-security-access-identity.md) for AKS enabled by Azure Arc
+- [Access and identity options](concepts-security-access-identity.md) for AKS Hybrid and Edge
 - [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
 - Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

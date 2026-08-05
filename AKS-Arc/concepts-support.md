@@ -37,7 +37,7 @@ The recommended limits were tested with the default virtual machine (VM) sizes, 
 |Target Cluster Linux worker node| **Standard_K8S3_v1**|
 |Target Cluster Windows worker node| **Standard_K8S3_v1**|
 
-The hardware configuration of each physical node in the AKS Arc cluster is as follows:
+The hardware configuration of each physical node in the AKS cluster is as follows:
 
 - Chassis: Dell PowerEdge R650 Server or similar.
 - RAM: RDIMM, 3200 MT/s, Dual Rank, total of 256 GB.

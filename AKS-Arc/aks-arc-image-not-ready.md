@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot AKS on Azure Local issues when Kubernetes version image isn't ready
-description: Learn how to mitigate cluster and node pool issues when a Kubernetes version reports image not ready on AKS enabled by Azure Arc on Azure Local.
+description: Learn how to mitigate cluster and node pool issues when a Kubernetes version reports image not ready on AKS Hybrid and Edge on Azure Local.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
@@ -14,11 +14,11 @@ ms.custom: local
 
 # Troubleshoot AKS on Azure Local issues when Kubernetes version image isn't ready
 
-This article describes how to mitigate cluster and node pool issues when a Kubernetes version reports image not ready on AKS enabled by Azure Arc on Azure Local.
+This article describes how to mitigate cluster and node pool issues when a Kubernetes version reports image not ready on AKS Hybrid and Edge on Azure Local.
 
 ## Symptoms
 
-You might observe one or more of the following error scenarios when creating or updating an AKS Arc cluster:
+You might observe one or more of the following error scenarios when creating or updating an AKS cluster:
 
 ### Error 1: Gallery image not found during cluster creation
 
@@ -118,7 +118,7 @@ Include the following information:
 
 To prevent this issue:
 
-- Keep at least one storage path for AKS Arc cluster to work.
+- Keep at least one storage path for AKS cluster to work.
 - Validate storage path status is healthy (green status).
 - Never rename or change the folder path name locally on the Azure Local machine.
 - Avoid deleting storage volumes or storage paths used by AKS on Azure Local.
@@ -130,4 +130,4 @@ To prevent this issue:
 
 - [Troubleshoot AKS on Azure Local issues after deleting storage volumes](delete-storage-volume.md)
 - [Create storage path for Azure Local](/azure/azure-local/manage/create-storage-path)
-- [AKS Arc troubleshooting](aks-troubleshoot.md)
+- [AKS troubleshooting](aks-troubleshoot.md)

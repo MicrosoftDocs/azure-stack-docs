@@ -13,14 +13,14 @@ ms.custom: overview
 
 Azure Kubernetes Service (AKS) is a fully managed Kubernetes platform that simplifies how organizations deploy, scale, and manage containerized applications in the cloud. As customer needs evolve to span cloud, on-premises, and edge environments, AKS expands its footprint and brings the same trusted Kubernetes capabilities to a broader range of edge and on-premises infrastructure.
 
-With solutions like AKS enabled by Azure Arc on Azure Local, organizations can now run AKS clusters closer to where their workloads and data reside, whether in remote edge sites or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
+With solutions like AKS Hybrid and Edge on Azure Local, organizations can now run AKS clusters closer to where their workloads and data reside, whether in remote edge sites or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
 
 The focus is on delivering a cohesive and adaptable AKS offering that meets customers across cloud and edge, while preserving the simplicity and power that define the AKS experience.
 
 This article describes how AKS extends features across multiple platforms and highlights the unique advantages and capabilities it brings to cloud, on-premises, and edge environments.
 
 > [!NOTE]
-> AKS enabled by Azure Arc architecture on Windows Server (2019 and 2022) isn't supported after April 2025. AKS support on Windows Server continues to evolve. For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
+> AKS Hybrid and Edge architecture on Windows Server (2019 and 2022) isn't supported after April 2025. AKS support on Windows Server continues to evolve. For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
 
 ## General comparison of AKS across platforms
 

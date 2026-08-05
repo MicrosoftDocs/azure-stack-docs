@@ -10,7 +10,7 @@ ms.lastreviewed: 01/30/2024
 ms.custom: local
 ---
 
-# Use node taints in an AKS enabled by Azure Arc cluster
+# Use node taints in an AKS Hybrid and Edge cluster
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
