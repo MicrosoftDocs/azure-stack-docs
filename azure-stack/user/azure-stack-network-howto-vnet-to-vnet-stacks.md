@@ -1,9 +1,9 @@
 ---
-title: Establish Azure Stack Hub VNET to VNET connection with Fortinet FortiGate NVA 
-description: Learn how to establish a VNET to VNET connection in Azure Stack Hub with Fortinet FortiGate NVA
+title: Establish Azure Stack Hub VNET to VNET connection with Fortinet FortiGate NVA
+description: Learn how to establish VNet to VNet connectivity between two Azure Stack Hub instances using the Fortinet FortiGate NVA. Follow this step-by-step guide.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/06/2025
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
@@ -79,14 +79,14 @@ Repeat these steps for both Azure Stack Hub environments.
 1. Open the Azure Stack Hub user portal. Be sure to use credentials that have at least Contributor rights to a subscription.
 1. Select **Create a resource** and search for `FortiGate`.
 
-   ![The screenshot shows a single line of results from the search for "fortigate". The name of the found item is "FortiGate NGFW - Single VM Deployment (BYOL)".](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image6.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image6.png" alt-text="Screenshot shows a single line of results from the search for fortigate, with the name of found item FortiGate NGFW - Single VM Deployment (BYOL).":::
 
 1. Select the **FortiGate NGFW** and select the **Create**.
 1. Complete **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
 
    Your form should contain the following information:
 
-   ![The text boxes (such as Instance Name and BYOL License) of the Basics dialog box have been filled in with values from the Deployment Table.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image7.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image7.png" alt-text="Screenshot shows the text boxes (such as Instance Name and BYOL License) of the Basics dialog box filled in with values from the Deployment Table.":::
 
 1. Select **OK**.
 1. Provide the virtual network, subnets, and VM size details from the [Deployment parameters](#deployment-parameters).
@@ -96,7 +96,7 @@ Repeat these steps for both Azure Stack Hub environments.
 1. Select **OK**.
 1. Configure the public IP to be used for the FortiGate NVA:
 
-   ![The "Public IP address name" text box of the IP Assignment dialog box shows a value of "forti1-publicip1" (from the Deployment Table).](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png" alt-text="Screenshot shows the Public IP address name text box of the IP Assignment dialog box shows a value of forti1-publicip1 (from the Deployment Table).":::
 
 1. Select **OK** and then Select **OK**.
 1. Select **Create**.
@@ -107,18 +107,18 @@ The deployment takes about 10 minutes. You can now repeat the steps to create th
 
 Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
-1. Navigate to the forti1-rg1 Resource Group in the Azure Stack Hub portal.
+1. Go to the forti1-rg1 resource group in the Azure Stack Hub portal.
 
-   ![This is a screenshot of the list of resources in the forti1-rg1 resource group.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image9.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image9.png" alt-text="Screenshot shows the list of resources in the forti1-rg1 resource group.":::
 
-1. Select on the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
+1. Select the `forti1-forti1-InsideSubnet-routes-xxxx` resource.
 1. Select **Routes** under **Settings**.
 
-   ![The screenshot shows the highlighted Routes item of Settings.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image10.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image10.png" alt-text="Screenshot shows the highlighted Routes item of Settings.":::
 
-1. Delete the **to-Internet** Route.
+1. Delete the **to-Internet** route.
 
-   ![The screenshot shows the highlighted to-Internet route. There is a delete button.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image11.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image11.png" alt-text="Screenshot shows the highlighted to-Internet route. There is a delete button.":::
 
 1. Select **Yes**.
 1. Select **Add**.
@@ -137,13 +137,13 @@ Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
    If you use a different IP range, enter your IP range.
 
-   ![The Edit route dialog box for to-forti2 has text boxes with values. "Address prefix" is 172.17.0.0/16, "Next hop type" is "Virtual appliance", and "Next hop address" is 172.16.1.4.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image12.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image12.png" alt-text="Screenshot shows the Edit route dialog box for to-forti2 has text boxes with values: Address prefix is 172.17.0.0/16, Next hop type is Virtual appliance, and Next hop address is 172.16.1.4.":::
 
 1. Select **Save**.
 
 Repeat these steps for each **InsideSubnet** route in each resource group.
 
-## Activate the FortiGate NVAs and Configure an IPSec VPN connection on each NVA
+## Activate the FortiGate NVAs and configure an IPSec VPN connection on each NVA
 
 You need a valid license file from Fortinet to activate each FortiGate NVA. The NVAs can't function until you activate each NVA. For more information about how to get a license file and the steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/19071/registering-and-downloading-your-license).
 
@@ -151,29 +151,29 @@ You must acquire two license files: one for each NVA.
 
 ## Create an IPSec VPN between the two NVAs
 
-Once the NVAs are activated, follow these steps to create an IPSec VPN between the two NVAs. Follow the steps for both the **forti1** NVA and **forti2** NVA:
+After you activate the NVAs, create an IPSec VPN between the two NVAs. Follow the steps for both the **forti1** NVA and **forti2** NVA:
 
-1. Get the assigned Public IP address by navigating to the fortiX VM Overview page:
+1. Go to the fortiX VM Overview page to get the assigned public IP address:
 
-   ![The forti1 overview page shows the resource group, status, and so on.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image13.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image13.png" alt-text="Screenshot shows the forti1 overview page shows the resource group, status, and so on.":::
 
-1. Copy the assigned IP address, open a browser, and paste the address into the address bar. Your browser might warn you that the security certificate is not trusted. Continue anyway.
+1. Copy the assigned IP address, open a browser, and paste the address into the address bar. Your browser might warn you that the security certificate isn't trusted. Continue anyway.
 1. Enter the FortiGate administrative user name and password you provided during the deployment.
 
-   ![The screenshot is of the login screen, which has a Login button and text boxes for user name and password.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image14.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image14.png" alt-text="Screenshot shows the login screen, which has a Login button and text boxes for user name and password.":::
 
 1. Select **System** > **Firmware**.
-1. Select the box showing the latest firmware; for example, `FortiOS v6.2.0 build0866`.
+1. Select the box showing the latest firmware, such as `FortiOS v6.2.0 build0866`.
 
-   ![The screenshot for the "FortiOS v6.2.0 build0866" firmware has a link to release notes, and two buttons: "Backup config and upgrade", and "Upgrade".](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image15.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image15.png" alt-text="Screenshot shows the FortiOS v6.2.0 build0866 firmware has a link to release notes, and two buttons: Backup config and upgrade and Upgrade.":::
 
 1. Select **Backup config and upgrade** and **Continue** when prompted.
 1. The NVA updates its firmware to the latest build, then reboots. The process takes about five minutes. Log back into the FortiGate web console.
 1. Select **VPN** > **IPSec Wizard**.
-1. Enter a name for the VPN, for example, `conn1` in the **VPN Creation Wizard**.
+1. Enter a name for the VPN, such as `conn1` in the **VPN Creation Wizard**.
 1. Select **This site is behind NAT**.
 
-   ![The screenshot of the VPN Creation Wizard shows it to be on the first step, VPN Setup. The following values are selected: "Site to Site" for Template Type, "FortiGate" for Remote Device Type, and "This site is behind NAT" for NAT Configuration.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image16.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image16.png" alt-text="Screenshot of the VPN Creation Wizard shows it to be on the first step, VPN Setup with Site to Site for Template Type, FortiGate for Remote Device Type, and This site is behind NAT for NAT Configuration.":::
 
 1. Select **Next**.
 1. Enter the remote IP address of the on-premises VPN device to which you're going to connect.
@@ -181,9 +181,9 @@ Once the NVAs are activated, follow these steps to create an IPSec VPN between t
 1. Select **Pre-shared Key** and enter (and record) a pre-shared key.
 
    > [!NOTE]  
-   > You need this key to set up the connection on the on-premises VPN device; that is, they must match exactly.
+   > You need this key to set up the connection on the on-premises VPN device. The key must match exactly.
 
-   ![The screenshot of the VPN Creation Wizard shows it to be on the second step, Authentication, and the selected values are highlighted.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image17.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image17.png" alt-text="Screenshot shows the VPN Creation Wizard shows it to be on the second step, Authentication, and the selected values are highlighted.":::
 
 1. Select **Next**.
 1. Select **port2** for the **Local Interface**.
@@ -201,12 +201,12 @@ Once the NVAs are activated, follow these steps to create an IPSec VPN between t
 
    If you use a different IP range, enter your IP range.
 
-   ![The screenshot of the VPN Creation Wizard shows it to be on the third step, Policy & Routing, showing the selected and entered values.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image18.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image18.png" alt-text="Screenshot shows the VPN Creation Wizard on the third step, Policy & Routing, showing the selected and entered values.":::
 
 1. Select **Create**
 1. Select **Network** > **Interfaces**.  
 
-   ![The interface list shows two interfaces: port1, which has been configured, and port2, which hasn't. There are buttons to create, edit, and delete interfaces.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image19.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image19.png" alt-text="Screenshto shows the interface list with two interfaces: port1, which is configured, and port2, which isn't. There are buttons to create, edit, and delete interfaces.":::
 
 1. Double-click **port2**.
 1. Choose **LAN** in the **Role** list and **DHCP** for the Addressing mode.
@@ -216,23 +216,23 @@ Repeat the steps for the other NVA.
 
 ## Bring up all phase 2 selectors
 
-Once this procedure is complete for both NVAs:
+When you complete this procedure for both NVAs:
 
 1. On the **forti2** FortiGate web console, select **Monitor** > **IPsec Monitor**.
 
-   ![The monitor for VPN connection conn1 is listed. It is shown as being down, as is the corresponding Phase 2 Selector.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image20.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image20.png" alt-text="The monitor for VPN connection conn1 is listed. It is shown as being down, as is the corresponding Phase 2 Selector.":::
 
 1. Highlight `conn1` and select **Bring Up** > **All Phase 2 Selectors**.
 
-   ![The monitor and Phase 2 Selector are both shown as up.](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image21.png)
+   :::image type="content" source="./media/azure-stack-network-howto-vnet-to-vnet-stacks/image21.png" alt-text="Screenshot shows that monitor and Phase 2 Selector are both shown as up.":::
 
 ## Test and validate connectivity
 
-You should now be able to route in between each VNET via the FortiGate NVAs. To validate the connection, create an Azure Stack Hub VM in each VNET's InsideSubnet. You can create an Azure Stack Hub VM via the portal, Azure CLI, or PowerShell. When creating the VMs:
+You can now route between each VNET through the FortiGate NVAs. To validate the connection, create an Azure Stack Hub VM in each VNET's InsideSubnet. You can create an Azure Stack Hub VM through the portal, Azure CLI, or PowerShell. When creating the VMs:
 
-- The Azure Stack Hub VMs are placed on the **InsideSubnet** of each VNET.
-- You don't apply any NSGs to the VM upon creation; that is, remove the NSG that gets added by default if creating the VM from the portal.
-- Ensure that the VM firewall rules allow the communication you're going to use to test connectivity. For testing purposes, it's recommended that you disable the firewall completely within the OS, if at all possible.
+- Place the Azure Stack Hub VMs on the **InsideSubnet** of each VNET.
+- Don't apply any NSGs to the VM upon creation. Remove the NSG that gets added by default if you create the VM from the portal.
+- Ensure that the VM firewall rules allow the communication you're going to use to test connectivity. For testing purposes, disable the firewall completely within the OS, if possible.
 
 ## Next steps
 
