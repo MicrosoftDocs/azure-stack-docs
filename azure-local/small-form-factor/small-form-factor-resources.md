@@ -35,7 +35,7 @@ Two modes are supported for Ethernet interfaces in Azure Local, DHCP and Static.
     > Following a networking configuration change, it can take up to 5 minutes to refresh the portal view for 2607 preview. 
 
 #### DHCP
-When using DHCP, IP address information is supplied by the DHCP service and is not availeble for modification. 
+When using DHCP, IP address information is supplied by the DHCP service and is not available for modification. 
 When DHCP is selected, you may chage the network adapter to use static assignment. 
 When in DHCP you may provide DNS server(s), up to 16, to supplement or override the addresses DHCP has provided. 
 <image>
