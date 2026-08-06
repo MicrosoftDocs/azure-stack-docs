@@ -9,9 +9,19 @@ ms.service: azure-local
 ms.subservice: small-form-factor
 ---
 
-# Resoruce Management
+# Resource Management
 
-This page will explain how to manage the internal resources on your Azure Local small form factor device. 
+This page will explain how to manage the internal resources on your Azure Local small form factor device.
+This interface allows you to change the networking configuration for the primary interface as well as configure additional interfaces for multi-homed networking. 
+
+## Prerequisites
+
+- A completed small form factor deployment of Azure Local.
+- Network access from the Azure Public Cloud to the Azure Local deployment.
+- Network parameters to be set on the ethernet networking interface. (DHCP or IP Address, Netmask, Gateway, and DNS servers)
+
+    > [!NOTE]
+    > If network access to the public cloud is interrupted, you must use the Configurator App to restore management connectivity
 
 ## Network Interfaces
 Azure Local small form factor allows for management of your Ethernet network interfaces from the Azure portal. 
