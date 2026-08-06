@@ -22,7 +22,7 @@ When viewing the network interfaces, you can select an interface and click the "
 Two modes are supported for Ethernet interfaces in Azure Local, DHCP and Static. 
 
     > [!NOTE]
-    > 5 Minute for portal update
+    > Following a networking configuration change, it can take up to 5 minutes to refresh the portal view for 2607 preview. 
 
 #### DHCP
 When using DHCP, IP address information is supplied by the DHCP service and is not availeble for modification. 
