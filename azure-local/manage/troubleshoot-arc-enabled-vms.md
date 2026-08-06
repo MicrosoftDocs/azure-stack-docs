@@ -263,7 +263,7 @@ In Hyper-V Manager or Windows Admin Center, the Azure Arc resource bridge VM mig
 
 **Cause:**
 
-The Arc resource bridge is a Linux VM that runs containerized workloads. Hyper-V Estimated Memory Demand is a conservative estimate based on memory allocation and page-fault behavior; it isn't a measure of the memory actively used inside the VM. Linux caches and container allocation patterns can therefore cause a high estimate even when the VM has no memory pressure. A high value by itself doesn't indicate excessive memory use, a memory leak, or a performance problem.
+The Arc resource bridge is a Linux VM that runs containerized workloads. Hyper-V Estimated Memory Demand is a conservative estimate based on memory allocation and page-fault behavior. It isn't a measure of the memory actively used inside the VM. Linux caches and container allocation patterns can cause a high estimate even when the VM has no memory pressure. A high value by itself doesn't indicate excessive memory use, a memory leak, or a performance problem.
 
 **Resolution:**
 
