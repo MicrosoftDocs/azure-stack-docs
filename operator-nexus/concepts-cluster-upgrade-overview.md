@@ -47,6 +47,8 @@ The runtime upgrade starts by upgrading the three management servers designated 
 
 Once all management servers are upgraded, the upgrade progresses to the compute servers. Each rack is upgraded in alphanumeric order, and there are various configurations customers can use to dictate how the computes are upgrade to best limit disruption. As each rack progresses, there are various health checks performed in order to ensure the release successfully upgrades and a sufficient number of computes in a rack returns to operational status. When a rack completes, a customer defined waits time starts to provide extra time for workloads to come online. Once each rack upgrades, the upgrade completes and the cluster returns to `Running` status. 
 
+Before a compute rack upgrade starts, the platform cordons all provisioned and ready Bare Metal Machines (BMMs) in that rack. The rack upgrade doesn't proceed until all eligible BMMs are cordoned. Cordoning the entire rack first prevents workloads evacuated from one server from being scheduled onto another server in the same rack that is about to be upgraded. 
+
 The steps to run a cluster runtime upgrade is located [here](./howto-cluster-runtime-upgrade.md).
 
 ## Runtime upgrade strategies
