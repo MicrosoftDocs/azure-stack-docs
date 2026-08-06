@@ -18,6 +18,14 @@ sections:
     questions:
     
     - question: |
+        Why does the Azure Arc resource bridge VM show high estimated memory demand?
+      answer: |
+        The Azure Arc resource bridge VM might display an Estimated Memory Demand value in Hyper-V Manager or Windows Admin Center that is significantly higher than its assigned memory. The Arc resource bridge runs Linux and hosts several containerized services required for Azure Local and Azure Arc integration. 
+        The Estimated Memory Demand value reported by Hyper-V is a conservative calculation based on memory allocation patterns and page-fault activity. It doesn't represent the amount of memory actively consumed inside the guest operating system. Linux memory management and container workloads can cause Hyper-V to report a high estimated memory demand even when the Arc resource bridge VM isn't experiencing memory pressure.
+        As a result, a high estimated value alone doesn't indicate excessive memory usage, a memory leak, or a performance issue. You shouldn't resize the Arc resource bridge VM or modify its memory settings based solely on the Estimated Memory Demand value. These changes don't increase the memory available to the resource bridge services running inside the VM. If Azure Local VM management and Arc resource bridge functionality continue to operate normally, no action is required.
+        If you experience persistent Arc resource bridge failures or service disruptions, contact Microsoft Support. Support engineers can review internal diagnostics and performance metrics to determine whether the Arc resource bridge VM is experiencing actual memory pressure.
+        
+    - question: |
         How do I update my infrastructure components for VM management?
       answer: |
         Updates for virtual machine (VM) management infrastructure components are handled automatically. These components include MOC, Azure Arc resource bridge, and Kubernetes extensions on Azure Local 2311.2 or later. For more information, see [Update overview for Azure Local](../update/about-updates-23h2.md).
@@ -27,8 +35,6 @@ sections:
       answer: |
         No. You can update VMs for free when you use Azure Update Manager. However, updating unmanaged VMs that you created by using Windows Admin Center or Hyper-V Manager, and that were Azure Arc-enabled independently (these are now Arc-enabled servers), does incur a charge. For more information, see the [Azure Update Manager pricing for Azure Arc-enabled servers](/azure/update-manager/update-manager-faq#pricing).
         
-
-   
     - question: |
         I used to be able to create virtual networks for my VMs in past releases. Now, I can create only logical networks. What changed?
       answer: |
