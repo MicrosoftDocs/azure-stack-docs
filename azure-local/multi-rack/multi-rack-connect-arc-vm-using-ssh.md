@@ -65,16 +65,15 @@ Use the following steps to install the OpenSSH Server Extension via Azure CLI:
    ```azurecli
    $resourceGroup="<your resource group>"
    $serverName = "<your server name>"
-   $location = "<your location>"
    $localUser = "<your username>" # Use a local admin account for testing        
    ```
 
 1. Install the `OpenSSH` Arc Extension:
 
    ```azurecli
-   az connectedmachine extension create --name WindowsOpenSSH \
-     --type WindowsOpenSSH --publisher Microsoft.Azure.OpenSSH \
-     --type-handler-version 3.0.1.0 --machine-name $serverName \
+   az connectedmachine extension create --name WindowsOpenSSH `
+     --type WindowsOpenSSH --publisher Microsoft.Azure.OpenSSH `
+     --type-handler-version 3.0.1.0 --machine-name $serverName `
      --resource-group $resourceGroup
    ```
 

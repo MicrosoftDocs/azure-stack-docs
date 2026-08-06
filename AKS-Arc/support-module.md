@@ -1,18 +1,19 @@
 ---
 title: Support.AksArc diagnostic and remediation tool
-description: Learn how to run commands in the Support.AksArc PowerShell module to diagnose and remediate issues in AKS Arc environments.
+description: Learn how to run commands in the Support.AksArc PowerShell module to diagnose and remediate issues in AKS environments.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 09/24/2025
 ms.reviewer: sumsmith
 ms.lastreviewed: 07/22/2025
+ms.custom: local
 
 ---
 
-# Use the Support Tool to troubleshoot and fix AKS Arc related issues
+# Use the Support Tool to troubleshoot and fix AKS related issues
 
-The [**Support Tool**](https://www.powershellgallery.com/packages/Support.AksArc) is a PowerShell module that provides diagnostic and remediation capabilities for AKS Arc environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues. 
+The [**Support Tool**](https://www.powershellgallery.com/packages/Support.AksArc) is a PowerShell module that provides diagnostic and remediation capabilities for AKS environments. Before you open a support request, you can run the specified commands in this module to help diagnose and potentially resolve issues. 
 
 ## Benefits
 
@@ -21,7 +22,7 @@ The Support Tool uses simple commands to identify issues without expert product 
 - **Fixes for installation and upgrade issues**: Identifies and attempts to remediate common issues that occur during the installation and upgrade process.
 - **Diagnostic checks**: Provides diagnostic health checks based on common issues, incidents, and telemetry data.
 - **Enables Windows node pool feature**: Allows users to enable Windows node pools and download the required VHDs before creating Windows node pools.
-- **Regular updates**: Updates with new checks and useful commands to manage, troubleshoot, and diagnose issues in AKS Arc.
+- **Regular updates**: Updates with new checks and useful commands to manage, troubleshoot, and diagnose issues in AKS.
 
 ## Common issues where the Support tool might help
 
@@ -98,7 +99,7 @@ Remove-Module -Name Support.AksArc
 Import-Module -Name Support.AksArc
 ```
 
-## Use the AKS Arc Support Tool
+## Use the AKS Support Tool
 
 This section provides examples of the different cmdlets available in the Support Tool.
 
@@ -173,7 +174,7 @@ Invoke-SupportAksArcRemediation
 
 ### Enable Windows node pool feature
 
-This command enables the Windows node pool feature on your AKS Arc cluster:
+This command enables the Windows node pool feature on your AKS cluster:
 
 ```powershell
 Invoke-SupportAksArcRemediation_EnableWindowsNodepool -Verbose
@@ -181,7 +182,7 @@ Invoke-SupportAksArcRemediation_EnableWindowsNodepool -Verbose
 
 ### Disable Windows node pool feature
 
-This command disables the Windows node pool feature on your AKS Arc cluster. Before running this command, ensure that you have no Windows node pools running on your cluster:
+This command disables the Windows node pool feature on your AKS cluster. Before running this command, ensure that you have no Windows node pools running on your cluster:
 
 ```powershell
 Invoke-SupportAksArcRemediation_DisableWindowsNodepool -Verbose

@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/04/2025
-ms.custom: template-how-to, linux-related-content
+ms.custom: template-how-to, linux-related-content, edge-essentials
 ---
 
 # Scale out on multiple machines (preview)

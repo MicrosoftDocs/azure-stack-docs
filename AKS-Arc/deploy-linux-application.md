@@ -3,11 +3,11 @@ title: Deploy a Linux app in AKS on Windows Server
 description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS on Windows Server using a custom image stored in Azure Container Registry.
 author: davidsmatlak
 ms.topic: how-to
-ms.custom: linux-related-content
+ms.custom: linux-related-content, windows-server
 ms.date: 09/24/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 06/27/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my AKS cluster.
 # Keyword: deploy an app
@@ -34,7 +34,7 @@ When you perform the procedures:
 * Run the commands in a PowerShell window opened with administrative privileges.
 * Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
-> [!NOTE]  
+> [!NOTE]
 > Deploying a target cluster that shares a network with another target cluster can lead to load balancer IP address conflicts.
 > IP address conflicts can happen if you deploy two workloads that use different ports in target clusters sharing the same `AksHciClusterNetwork` object. Because of the way the IP addresses and port mappings are allocated inside HA Proxy, it can lead to assignment of duplicate IP addresses. If this occurs, one or both workloads can encounter random network connectivity issues until you re-deploy your workloads. When you re-deploy your workloads, you can either use the same port, which assigns a service IP address to each workload, or you can re-deploy your workloads on target clusters that use different `AksHciClusterNetwork` objects.
 

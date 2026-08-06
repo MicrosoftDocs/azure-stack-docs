@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.topic: limits-and-quotas
 ms.date: 11/17/2025
 ms.author: davidsmatlak 
-ms.custom: references_regions
+ms.custom: references_regions, windows-server
 
 #intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together for AKS on Windows Server.
 #keyword: Resource limits VM sizes
@@ -37,7 +37,7 @@ The recommended limits were tested with the default virtual machine (VM) sizes, 
 |Target Cluster Linux worker node| **Standard_K8S3_v1**|
 |Target Cluster Windows worker node| **Standard_K8S3_v1**|
 
-The hardware configuration of each physical node in the AKS Arc cluster is as follows:
+The hardware configuration of each physical node in the AKS cluster is as follows:
 
 - Chassis: Dell PowerEdge R650 Server or similar.
 - RAM: RDIMM, 3200 MT/s, Dual Rank, total of 256 GB.

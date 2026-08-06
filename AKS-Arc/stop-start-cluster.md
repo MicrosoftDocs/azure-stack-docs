@@ -7,6 +7,7 @@ ms.date: 06/26/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I need to learn how to stop and restart a cluster in order to optimize resource costs on my AKS deployment.
 # Keyword: stop cluster start cluster cluster service
@@ -21,7 +22,7 @@ In AKS on Windows Server, your workloads might not need to run continuously. To 
 
 ## Before you begin
 
-This article assumes you have an existing Kubernetes cluster installed and configured on your machine. If you need to install a cluster, see the AKS Arc quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md).
+This article assumes you have an existing Kubernetes cluster installed and configured on your machine. If you need to install a cluster, see the AKS quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md).
 
 ## Stop a cluster
 

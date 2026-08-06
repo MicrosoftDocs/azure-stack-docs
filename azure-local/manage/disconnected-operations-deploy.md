@@ -559,7 +559,30 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 
     :::image type="content" source="./media/disconnected-operations-deploy/boot-strap-service-update.png" alt-text="Screenshot showing the bootstrap service update." lightbox=" ./media/disconnected-operations-deploy/boot-strap-service-update.png":::
 
-1. Verify that the bootstrap service update completes successfully.
+1. Stop the bootstrap service
+```powershell
+stop-service *bootstrap*
+```
+1. Verify services are stopped
+```powershell
+Get-Service *bootstrap*
+```
+1. Modify the bootstrap configuration file 
+
+Edit the following file: C:\Windows\System32\Bootstrap\content_10.3342.1.3008\Microsoft.Azure.Edge.Bootstrap.ManagementService\windows.mae.config.json
+
+- Locate the line saying:  "EnableNodeAddValidation": true
+- Modify the line to : "EnableNodeAddValidation": false
+- Save the file.
+
+1. Start the bootstrap service
+```powershell
+start-service *bootstrap*
+```
+1. Verify services are running
+```powershell
+Get-Service *bootstrap*
+```
 
 ### Initialize Azure Arc
 

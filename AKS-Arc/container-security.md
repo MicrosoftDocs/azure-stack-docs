@@ -7,8 +7,9 @@ ms.date: 01/10/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to learn how to secure containers in AKS Arc.
+# Intent: As an IT Pro, I want to learn how to secure containers in AKS.
 # Keyword: container security
 
 ---

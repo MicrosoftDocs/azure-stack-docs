@@ -1,13 +1,13 @@
 ---
 title: Use GPUs for compute-intensive workloads in AKS on Azure Local
-description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Local.
+description: Learn how to deploy GPU-enabled node pools in AKS Hybrid and Edge on Azure Local.
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/17/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 03/21/2025
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
+ms.custom: local
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes
 ---
@@ -19,13 +19,13 @@ ms.reviewer: abha
 > [!NOTE]
 > For information about GPUs in AKS on Windows Server, see [Use GPUs in AKS on Windows Server](deploy-gpu-node-pool-22h2.md).
 
-*Graphical Processing Units* (GPUs) are useful for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
+*Graphical Processing Units* (GPUs) are useful for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS Hybrid and Edge.
 
 [!INCLUDE [supported-gpu-models](includes/supported-gpu-models.md)]
 
 ## Before you begin
 
-To use GPUs in AKS Arc, make sure you install the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
+To use GPUs in AKS, make sure you install the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
 
 ### Step 1: install the OS
 

@@ -7,6 +7,7 @@ ms.date: 06/25/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+ms.custom: windows-server
 ---
 
 # Deploy an ingress controller
@@ -17,7 +18,7 @@ An *ingress controller* is a Kubernetes resource that allows external access to 
 
 An ingress controller is software that provides configurable traffic routing for Kubernetes services. Kubernetes ingress resources are used to configure the ingress rules and routes for individual Kubernetes services. By using an ingress controller and ingress rules, you can use a single IP address to route traffic to multiple services in a Kubernetes cluster.
 
-After you deploy the controller in your environment, you can then create and deploy the ingress manifest. Currently, you use ingress in AKS Arc by using the NGINX ingress controller. For information about how to install, configure, and use the NGINX ingress controller, see [Installation with Manifests](https://kubernetes.github.io/ingress-nginx/deploy/#azure).
+After you deploy the controller in your environment, you can then create and deploy the ingress manifest. Currently, you use ingress in AKS by using the NGINX ingress controller. For information about how to install, configure, and use the NGINX ingress controller, see [Installation with Manifests](https://kubernetes.github.io/ingress-nginx/deploy/#azure).
 
 Ingress differs from the [NodePort and LoadBalancer](concepts-container-networking.md#kubernetes-services) in a unique way, and it improves traffic routing to your cluster in a less costly way. Defining NodePort services creates numerous random ports, and defining LoadBalancer services increases the cost for cloud resources more than you might want. When you define an ingress controller, you consolidate the traffic-routing rules into a single resource that runs as part of your cluster. The NodePort and LoadBalancer let you expose a service by specifying that value in the service's type, whereas ingress is an independent resource for the service. Ingress is defined, created, and destroyed separately from the service.
 

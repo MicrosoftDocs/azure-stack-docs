@@ -1,29 +1,29 @@
 ---
-title: Concepts - Storage options for applications in AKS enabled by Azure Arc
-description: Storage options for applications in AKS enabled by Azure Arc.
+title: Concepts - Storage options for applications in AKS Hybrid and Edge
+description: Storage options for applications in AKS Hybrid and Edge.
 author: davidsmatlak
 ms.topic: concept-article
 ms.date: 06/16/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
-
-# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS Arc so that I can optimize how to best to store and retrieve data.
+ms.reviewer: srikantsarwa
+ms.custom: local
+# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS so that I can optimize how to best to store and retrieve data.
 # Keyword: storage options PV claims
 
 ---
 
-# Storage options for applications in AKS enabled by Azure Arc
+# Storage options for applications in AKS Hybrid and Edge
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Applications that run in AKS deployments using Azure Kubernetes Service enabled by Azure Arc might need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application).
+Applications that run in AKS deployments using Azure Kubernetes Service Hybrid and Edge might need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application).
 
 Other workloads might require storage that persists on more regular data volumes. Multiple pods might need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you might need a storage option if the pods contain sensitive data or application configuration information.
 
 :::image type="content" source="media/concepts-storage/storage-architecture.png" alt-text="Architectural storage image showing a cluster master and node." lightbox="media/concepts-storage/storage-architecture.png":::
 
-This article introduces the core concepts that provide storage to your applications in AKS Arc, including:
+This article introduces the core concepts that provide storage to your applications in AKS, including:
 
 - Volumes
 - Persistent volumes
@@ -54,13 +54,13 @@ A cluster administrator can statically create a persistent volume, or the volume
 
 To define different tiers (and location) of storage you can create a **StorageClass**. The **StorageClass** also defines the **reclaimPolicy**. This **reclaimPolicy** controls the behavior of the underlying storage resource when the pod is deleted and the persistent volume might no longer be required. The underlying storage resource can be deleted or retained for use with a future pod.
 
-In AKS Arc, the **default** storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size.
+In AKS, the **default** storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size.
 
 If no **StorageClass** is specified for a persistent volume, the default **StorageClass** is used. When requesting persistent volumes, make sure they use the appropriate storage. You can create a **StorageClass** for additional needs.
 
 ## Persistent volume claims
 
-A **PersistentVolumeClaim** requests either **ReadWriteOnce** or **ReadWriteMany** storage of a particular **StorageClass** and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS Arc if there is no existing resource to fulfill the claim based on the defined **StorageClass**. The pod definition includes the volume mount once the volume has been connected to the pod.
+A **PersistentVolumeClaim** requests either **ReadWriteOnce** or **ReadWriteMany** storage of a particular **StorageClass** and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS if there is no existing resource to fulfill the claim based on the defined **StorageClass**. The pod definition includes the volume mount once the volume has been connected to the pod.
 
 A **PersistentVolume** is bound to a **PersistentVolumeClaim** once an available storage resource is assigned to the pod requesting it. There is a 1:1 mapping of persistent volumes to claims.
 

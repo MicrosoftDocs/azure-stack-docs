@@ -5,8 +5,8 @@ ms.service: azure-operator-nexus
 ms.custom: troubleshooting
 ms.topic: troubleshooting
 ms.date: 11/18/2025
-ms.author: dbristow
-author: dougbristow
+ms.author: ekarandjeff
+author: eak13
 ---
 # Troubleshoot a Kubernetes Cluster node in Ready, Scheduling Disabled state
 

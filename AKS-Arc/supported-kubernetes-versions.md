@@ -1,21 +1,23 @@
 ---
-title: Supported Kubernetes versions for AKS enabled by Azure Arc
-description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
+title: Supported Kubernetes versions for AKS Hybrid and Edge
+description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service Hybrid and Edge.
 services: container-service
 ms.topic: feature-availability
-ms.date: 10/24/2025
+ms.date: 07/23/2026
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.lastreviewed: 10/24/2025
+ms.author: davidsmatlak
+ms.reviewer: srikantsarwa
+ms.lastreviewed: 07/23/2026
+ms.custom: overview
 
-# Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
+# Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS Hybrid and Edge.
 # Keyword: supported Kubernetes versions
 
 ---
 
-# Supported Kubernetes versions in AKS Arc
+# Supported Kubernetes versions in AKS
 
-This article describes the supported Kubernetes versions for Azure Kubernetes Service enabled by Azure Arc. AKS Arc releases new Kubernetes minor versions approximately every three months.
+This article describes the supported Kubernetes versions for Azure Kubernetes Service Hybrid and Edge. AKS releases new Kubernetes minor versions approximately every three months.
 
 ## Kubernetes versions
 
@@ -38,9 +40,9 @@ Each number in the version indicates general compatibility with the previous ver
 You should install the latest patch release of the minor version you're running. For example, if your production cluster is on **`1.29.2`**. **`1.29.5`** is the latest available patch version available for the **1.29** series. You should upgrade to **1.29.5** as soon as possible to ensure your Kubernetes cluster is fully patched and supported.
 
 > [!WARNING]
-> **AKS Arc on Azure Local – Kubernetes version compatibility**
+> **AKS on Azure Local – Kubernetes version compatibility**
 >
-> If you're running Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Local, you must ensure your Kubernetes clusters are on a supported version before upgrading Azure Local.
+> If you're running Azure Kubernetes Service (AKS) Hybrid and Edge on Azure Local, you must ensure your Kubernetes clusters are on a supported version before upgrading Azure Local.
 >
 > * Azure Local solution upgrades don't automatically upgrade Kubernetes versions.
 > * Kubernetes follows a strict, sequential minor version upgrade policy and defines end-of-life timelines.
@@ -53,23 +55,26 @@ You should install the latest patch release of the minor version you're running.
 >
 > For Kubernetes upgrade sequencing and lifecycle timelines, see [Kubernetes End of Life](https://endoflife.date/kubernetes).
 
-## AKS Arc Kubernetes release calendar
+## AKS Kubernetes release calendar
 
 |  K8s minor version | Supported Azure Local versions | Current status |
 |--------------|-------------------|--------------|
-| 1.33 | [2603, 2602](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
-| 1.32 | [2603, 2602, 2601, 2512, 2511, 2510](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
-| 1.31 | [2603, 2602, 2601, 2512, 2511, 2510, 2509, 2508](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | Supported |
-| 1.30 | [2601, 2512, 2511, 2510, 2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases) | No more patch versions/CVE updates |
-| 1.29 | [2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408) | No more patch versions/CVE updates |
-| 1.28 | [2507, 2503](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates |
-| 1.27 | [2411](aks-whats-new-local.md#aks-enabled-by-azure-arc-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405), 2402 | No more patch versions/CVE updates |
+| 1.33 | [2607, 2606, 2605, 2604, 2603, 2602](aks-whats-new-local.md#aks-hybrid-and-edge-releases) | Supported |
+| 1.32 | [2607, 2606, 2605, 2604, 2603, 2602, 2601, 2512, 2511, 2510](aks-whats-new-local.md#aks-hybrid-and-edge-releases) | Supported |
+| 1.31 | [2607, 2606, 2605, 2604, 2603, 2602, 2601, 2512, 2511, 2510, 2509, 2508](aks-whats-new-local.md#aks-hybrid-and-edge-releases) | Supported |
+| 1.30 | [2601, 2512, 2511, 2510, 2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-hybrid-and-edge-releases) | No more patch versions/CVE updates |
+| 1.29 | [2509, 2508, 2507, 2503](aks-whats-new-local.md#aks-hybrid-and-edge-releases), [2411](aks-whats-new-local.md#aks-hybrid-and-edge-releases), [2408](aks-whats-new-local.md#release-2408) | No more patch versions/CVE updates |
+| 1.28 | [2507, 2503](aks-whats-new-local.md#aks-hybrid-and-edge-releases), [2411](aks-whats-new-local.md#aks-hybrid-and-edge-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405) | No more patch versions/CVE updates |
+| 1.27 | [2411](aks-whats-new-local.md#aks-hybrid-and-edge-releases), [2408](aks-whats-new-local.md#release-2408), [2405](aks-whats-new-local.md#release-2405), 2402 | No more patch versions/CVE updates |
 | 1.26 | [2405](aks-whats-new-local.md#release-2405), 2402 and older | No more patch versions/CVE updates |
 
 > [!NOTE]
 > Kubernetes version 1.30 is no longer supported.
 
-### AKS Arc supported Kubernetes minor and patch versions per release
+### AKS supported Kubernetes minor and patch versions per release
+
+> [!NOTE]
+> This table lists a release only when its supported Kubernetes versions change. Releases 2603 through 2607 include the same Kubernetes versions as 2602.
 
 | Release             | Supported minor & patch versions                 |
 |---------------------|--------------------------------------------------|
@@ -87,8 +92,8 @@ You should install the latest patch release of the minor version you're running.
 
 ## Kubernetes version support policy
 
-AKS Arc defines a generally available (GA) version as a version that's available for download when deploying or updating clusters.
-AKS Arc supports three GA minor versions:
+AKS defines a generally available (GA) version as a version that's available for download when deploying or updating clusters.
+AKS supports three GA minor versions:
 
 * The latest GA version (N).
 * The two previous minor versions (N-1 and N-2).
@@ -107,7 +112,7 @@ When a new minor version is introduced, the oldest minor version and patch relea
 
 When AKS releases 1.30.\*, all the 1.27.\* versions are removed and go out of support in 30 days.
 
-In addition to this policy, AKS Arc supports a maximum of two patch releases of a given minor version. Given the following supported versions:
+In addition to this policy, AKS supports a maximum of two patch releases of a given minor version. Given the following supported versions:
 
 ```output
 Current Supported Version List
@@ -123,12 +128,12 @@ New Supported Version List
 1.32.*10*, 1.32.*9*, 1.31.*14*, 1.31.*13*
 ```
 
-AKS Arc reserves the right to deprecate patches if a critical CVE or security vulnerability is detected. For awareness on patch availability and any ad-hoc deprecation, see the version release notes.  
+AKS reserves the right to deprecate patches if a critical CVE or security vulnerability is detected. For awareness on patch availability and any ad-hoc deprecation, see the version release notes.  
 
-AKS Arc might also support preview versions, which are explicitly labeled as previews.
+AKS might also support preview versions, which are explicitly labeled as previews.
 
 > [!NOTE]
-> If you're running an unsupported Kubernetes version, you're asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases aren't covered by the [AKS Arc support policies](./support-policies.md).
+> If you're running an unsupported Kubernetes version, you're asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases aren't covered by the [AKS support policies](./support-policies.md).
 
 ### Supported `kubectl` versions
 
@@ -141,12 +146,12 @@ To install or update your version of `kubectl`, run `az aks install-cli`.
 
 For new minor versions of Kubernetes:
 
-* AKS Arc publishes a preannouncement with the planned date of a new version release and respective old version deprecation in the [AKS release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
+* AKS publishes a preannouncement with the planned date of a new version release and respective old version deprecation in the [AKS release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
 * Users have 30 days from version removal to upgrade to a supported minor version release to continue receiving support.
 
 ### Supported versions policy exceptions
 
-AKS Arc reserves the right to add or remove new/existing versions with one or more critical production-impacting bugs or security issues without advance notice.
+AKS reserves the right to add or remove new/existing versions with one or more critical production-impacting bugs or security issues without advance notice.
 
 Specific patch releases might be skipped or rollout accelerated, depending on the severity of the bug or security issue.
 
@@ -154,11 +159,11 @@ Specific patch releases might be skipped or rollout accelerated, depending on th
 
 ### How does Microsoft notify me of new Kubernetes versions?
 
-The AKS Arc team publishes preannouncements with planned dates of new Kubernetes versions in the AKS Arc documentation.
+The AKS team publishes preannouncements with planned dates of new Kubernetes versions in the AKS documentation.
 
 ### How often should I expect to upgrade Kubernetes versions to stay in support?
 
-Starting with Kubernetes 1.19, the [open source community expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS Arc commits to enabling patches and support matching the upstream commitments. For Kubernetes clusters on 1.19 and greater, you are able to upgrade a minimum of once a year to stay on a supported version.
+Starting with Kubernetes 1.19, the [open source community expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS commits to enabling patches and support matching the upstream commitments. For Kubernetes clusters on 1.19 and greater, you are able to upgrade a minimum of once a year to stay on a supported version.
 
 ### What happens when a user upgrades a Kubernetes cluster with a minor version that isn't supported?
 
@@ -176,11 +181,11 @@ Downgrades aren't supported.
 * The version you're running is outside of the supported versions list.
 * You'll be asked to upgrade the cluster to a supported version when requesting support, unless you're within the 30-day grace period after version deprecation.
 
-Additionally, AKS Arc doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
+Additionally, AKS doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
 
 ### What happens when I scale a Kubernetes cluster with a minor version that isn't supported?
 
-For minor versions not supported by AKS Arc, scaling in or out should continue to work. Since there is no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
+For minor versions not supported by AKS, scaling in or out should continue to work. Since there is no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
 
 ### Can I skip multiple Kubernetes versions during a cluster upgrade?
 

@@ -7,7 +7,7 @@ ms.date: 07/03/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
-ms.custom: mode-portal
+ms.custom: mode-portal, windows-server
 
 # Intent: As an IT Pro, I want to learn how to use Windows Admin Center to create a local Kubernetes cluster.
 # Keyword: local Kubernetes cluster

@@ -7,12 +7,13 @@ ms.author: davidsmatlak
 ms.date: 07/23/2025
 ms.reviewer: rcheeran
 ms.lastreviewed: 07/23/2025
+ms.custom: local
 
 ---
 
 # Troubleshoot storage provisioning issue during cluster and node pool creation
 
-This article describes an issue in which new AKS Arc nodes are created on a single storage path/volume of the Azure Local cluster, breaking the expected round-robin distribution among volumes. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures.
+This article describes an issue in which new AKS nodes are created on a single storage path/volume of the Azure Local cluster, breaking the expected round-robin distribution among volumes. Over time, this might cause insufficient disk space on that path, potentially resulting in deployment failures.
 
 ## Symptoms
 
@@ -34,7 +35,7 @@ This issue was fixed in AKS on [Azure Local, version 2507](/azure/azure-local/wh
 
 This issue only affects clusters in Azure Local version 2506. Install the [support module](support-module.md) and run the commands provided in this module.
 
-First, run the following command to check for known issues in your AKS Arc environment:
+First, run the following command to check for known issues in your AKS environment:
 
 ```powershell
 Test-SupportAksArcKnownIssues

@@ -5,6 +5,7 @@ ms.topic: concept-article
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.date: 04/07/2025
+ms.custom: windows-server
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling
@@ -15,7 +16,7 @@ ms.date: 04/07/2025
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can adjust the number of nodes that run application workloads in AKS Arc by using Azure Kubernetes Service (AKS) to keep up with demand. You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters.
+You can adjust the number of nodes that run application workloads in AKS by using Azure Kubernetes Service (AKS) to keep up with demand. You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters.
 
 This article describes the context of the autoscaler in AKS on Windows Server, and how the autoscaler works. For cluster autoscaling to work effectively, you can also use the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal pod autoscaler, see [Horizontal pod autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
@@ -23,7 +24,7 @@ This article describes the context of the autoscaler in AKS on Windows Server, a
 
 In AKS, the cluster autoscaler watches for pods in your cluster that can't be scheduled because of resource constraints. When issues are detected, the number of nodes in a node pool increases to meet application demand. Nodes are also regularly checked for a lack of running pods, and then the number of nodes decreases, as needed. This ability to automatically scale up or scale down the number of nodes in your AKS cluster lets you run efficient, cost-effective clusters. *Autoscaling* is the ability of the system to automatically adjust your workloads through automation and configuration that contains specific parameters based on input, measures, and rules.
 
-To enable the cluster autoscaler, AKS needs to implement basic resource management. AKS estimates resource requirements that will trigger autoscaling events at a point in time. AKS won't take into account resource consumption from outside AKS Arc. For example, when you add VMs after enabling the autoscaler, this event occurs outside the context of the autoscaler.
+To enable the cluster autoscaler, AKS needs to implement basic resource management. AKS estimates resource requirements that will trigger autoscaling events at a point in time. AKS won't take into account resource consumption from outside AKS. For example, when you add VMs after enabling the autoscaler, this event occurs outside the context of the autoscaler.
 
 ## Purpose of cluster autoscaling
 
@@ -31,7 +32,7 @@ The autoscaler automatically increases the size of a node pool from the minimum 
 
 The autoscaler tracks available and promised resources across all deployed target clusters and node pools. The scaler uses this data to make an informed decision. As the autoscaler increases the node pool, the autoscaler checks for the availability of resources.
 
-AKS Arc uses the built-in Kubernetes autoscaling feature to support operations similar to the Azure autoscaler.
+AKS uses the built-in Kubernetes autoscaling feature to support operations similar to the Azure autoscaler.
 
 ## How cluster autoscaling works
 

@@ -1,9 +1,9 @@
 ---
 title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
-description: Learn about working with Azure Kubernetes Service on Azure Stack Hub.
+description: Explore known issues and FAQs for Azure Kubernetes Service on Azure Stack Hub. Get answers about preview support, node limits, and cluster management best practices.
 author: sethmanheim
 ms.topic: troubleshooting-known-issue
-ms.date: 02/24/2021
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 12/8/2021
@@ -14,63 +14,63 @@ ms.lastreviewed: 12/8/2021
 
 # Common questions and known issues for the Azure Kubernetes Service on Azure Stack Hub
 
-This article looks at common questions and a list of known issues about the public preview of Azure Kubernetes Service (AKS) on Azure Stack Hub.
+This article addresses common questions and known issues about the preview of AKS on Azure Stack Hub.
 
 ## Common questions about AKS
 
-### Can I use AKS to deploy applications on production environments?
+### Can I use AKS to deploy applications in production environments?
 
-AKS on Hub is on public preview, no production support is offered for this feature. If you are testing your application and run into an issue create a support ticket. You can provide feedback about your experience using AKS on Azure Stack Hub using the [Azure Stack Hub Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
+AKS on Azure Stack Hub is in preview, and Microsoft doesn't offer production support for this feature. If you're testing your application and encounter an issue, create a support ticket. To provide feedback about your experience using AKS on Azure Stack Hub, use the [Azure Stack Hub Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
 
 ### Why can't I run some of the AKS commands I use in Azure?
 
-Not all Azure AKS features, APIs, and Azure CLI commands are supported by AKS on Azure Stack Hub, see [the overview article](aks-overview.md). and the table of [supported commands](aks-commands.md). You can use the Azure documentation, but you should be mindful of the limitations on Azure Stack Hub.
+AKS on Azure Stack Hub doesn't support all Azure Kubernetes Service features, APIs, and Azure CLI commands. For more information, see [the overview article](aks-overview.md) and the table of [supported commands](aks-commands.md). You can use the Azure documentation, but be mindful of the limitations on Azure Stack Hub.
 
 <a name='can-i-use-azure-ad-or-ad-fs-integrated-with-my-aks-clusters'></a>
 
 ### Can I use Microsoft Entra ID or AD FS integrated with my AKS clusters?
 
-There is no support for Azure Active Director (Microsoft Entra ID) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview. 
+The preview doesn't support Microsoft Entra ID (Entra ID) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration. 
 
 ### Can I use AKS cluster Autoscaler in AKS on Azure Stack Hub?
 
-There is no support for cluster Autoscaler in the public preview.
+The preview doesn't support cluster Autoscaler.
 
-### Do I need to uninstall the preview of AKS and ACR before installing the Azure Stack Hub 2108 Update?
+### Do I need to uninstall the preview of AKS and Azure Container Registry (ACR) before installing the Azure Stack Hub 2108 Update?
 
-Yes, the preview for AKS and Azure Container Registry (ACR) must be uninstalled before installing Azure Stack Hub 2108.
+Yes, you must uninstall the preview for AKS and ACR before installing Azure Stack Hub.
 
-### After installing Azure Stack Hub Update 2108, would I need to uninstall AKS or ACR again for any Azure Stack Hub Update?
+### After installing Azure Stack Hub Update 2108, do I need to uninstall AKS or ACR for any Azure Stack Hub Update?
 
-No, you will not need to uninstall AKS or ACR again. These two services are integrated into the infrastructure of Azure Stack Hub, they will be updated, maintained, and monitored and all other infrastructure services.
+No, you don't need to uninstall AKS or ACR. These two services are integrated into the infrastructure of Azure Stack Hub. The infrastructure updates, maintains, and monitors these services along with all other infrastructure services.
 
 ### Is the service principal automatically created?
 
-No. The service principal (SPN) is not automatically created as in Azure (no MSI).
+No. The service principal (SPN) isn't automatically created as in Azure (no MSI).
 
-### Are the Azure Container Service (ACR) and Azure Kubernetes Service (AKS) public previews available on the Azure Stack Development Kit (ASDK)?
+### Are the Container Registry (ACR) and Azure Kubernetes Service (AKS) previews available on the Azure Stack Development Kit (ASDK)?
 
-The Azure Container Service (ACR) and Azure Kubernetes Service (AKS) are not available for the Azure Stack Development Kit (ASDK). You must use a multi-node Azure Stack Hub to use the ACR and AKS while in public preview.
+The Container Registry (ACR) and Azure Kubernetes Service (AKS) aren't available for the Azure Stack Development Kit (ASDK). You must use a multinode Azure Stack Hub to use the ACR and AKS while in preview.
 
 ## Known issues
 
- - The AKS service is limited to 50 nodes per subscription in the public preview.
+ - The AKS service is limited to 50 nodes per subscription in the preview.
  
- - [Azure Kubernetes Service (AKS) PowerShell](/powershell/module/az.aks) is not supported in the public preview.
+ - [Azure Kubernetes Service (AKS) PowerShell](/powershell/module/az.aks) isn't supported in the preview.
 
- - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added. This means that only Windows containers can be deployed to these clusters, no Linux containers can be deployed. For example, a Linux based Ingress Controller will not work in Windows clusters.
+ - For the preview, you can create only one node pool per AKS cluster. Windows clusters are limited to a single node pool, and you can't add a Linux pool. This limitation means that you can deploy only Windows containers to these clusters, and you can't deploy Linux containers. For example, a Linux based Ingress Controller doesn't work in Windows clusters.
 
- - For the public preview, there is no rotation of the AKS cluster SPN credential assigned at creation time.
+ - For the preview, there's no rotation of the AKS cluster SPN credential assigned at creation time.
 
- - In the Azure Stack Hub Administrative portal, the cloud operator will see that multiple AKS Base images are available from Azure Marketplace, not all of them will work with the particular version of Azure Stack Hub AKS, refer to the Azure Stack Hub release notes for the specific version of the image that works with AKS.
+ - In the Azure Stack Hub Administrative portal, the cloud operator sees that multiple AKS Base images are available from Azure Marketplace, but not all of them work with the particular version of Azure Stack Hub AKS. Refer to the Azure Stack Hub release notes for the specific version of the image that works with AKS.
 
- - A user subscription with AKS clusters associated to it could be deleted by the user leaving behind the AKS clusters in an orphaned state. As a result, the Azure Stack Hub Administrative portal to display a sad cloud in the AKS blade. The only way to fix it is by contacting Microsoft Support.
+ - A user subscription with AKS clusters associated to it can be deleted by the user, which leaves the AKS clusters in an orphaned state. As a result, the Azure Stack Hub Administrative portal displays a sad cloud in the AKS blade. The only way to fix it is by contacting Microsoft Support.
 
-  - If you try to create a cluster through the Azure Stack Hub user portal using a subscription without the AKS enabled by the cloud operator, then the portal will let display the following error: `containers namespace not found error`.
+  - If you try to create a cluster through the Azure Stack Hub user portal by using a subscription without the AKS enabled by the cloud operator, the portal displays the following error: `containers namespace not found error`.
 
- - If you name a cluster in the portal using upper case letters, then the portal will accept the request, and return the following error: `invalid DNS name error`.
+ - If you name a cluster in the portal by using uppercase letters, the portal accepts the request and returns the following error: `invalid DNS name error`.
 
- - You cannot create clusters that use Windows containers in the portal.
+ - You can't create clusters that use Windows containers in the portal.
 
 [!INCLUDE [Applications deployed to AKS clusters fail to access persistent volumes](../includes/known-issue-aks-1.md)]
 

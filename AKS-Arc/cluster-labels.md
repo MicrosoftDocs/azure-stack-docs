@@ -1,22 +1,23 @@
 ---
-title: Use cluster labels in AKS enabled by Azure Arc
-description: Learn how to use labels in Kubernetes clusters in AKS enabled by Arc.
+title: Use cluster labels in AKS Hybrid and Edge
+description: Learn how to use labels in Kubernetes clusters in AKS Hybrid and Edge.
 ms.topic: how-to
 ms.date: 08/01/2024
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 08/01/2024
 ms.reviewer: guanghu
+ms.custom: local
 
 ---
 
-# Use cluster labels in AKS enabled by Azure Arc
+# Use cluster labels in AKS Hybrid and Edge
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 If you have multiple node pools, you might want to add a label during node pool creation. Kubernetes labels handle the scheduling rules for nodes.
 
-This article describes how to use labels in a Kubernetes cluster on AKS enabled by Arc.
+This article describes how to use labels in a Kubernetes cluster on AKS Hybrid and Edge.
 
 ## Create a Kubernetes cluster with a label
 
@@ -87,7 +88,7 @@ This article describes how to use labels in a Kubernetes cluster on AKS enabled 
 
 ## Unavailable labels
 
-AKS enabled by Azure Arc follows the same rules as AKS:
+AKS Hybrid and Edge follows the same rules as AKS:
 
 - You can't change the reserved system label. If you attempt to do so, an error is returned.
 - The Kubernetes and AKS reserved prefixes can't be used for any node.

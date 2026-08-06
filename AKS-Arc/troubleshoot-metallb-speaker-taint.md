@@ -7,6 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 08/21/2025
+ms.custom: local
 ---
 
 # MetalLB speaker pods don't run on nodes tainted with CriticalAddonsOnly=true:NoSchedule
@@ -47,4 +48,4 @@ Follow these steps to customize the MetalLB configuration by reinstalling the Ar
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)

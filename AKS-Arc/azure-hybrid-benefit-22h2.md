@@ -7,7 +7,7 @@ ms.date: 04/01/2025
 ms.topic: how-to
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
-ms.custom:
+ms.custom: windows-server
   - devx-track-azurepowershell
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   
@@ -26,8 +26,8 @@ Azure Hybrid Benefit for AKS on Windows Server is a new benefit that can help yo
 
 - Azure Hybrid Benefit for AKS is enabled at the management cluster (or AKS host) level. You don't need to enable the benefit for workload clusters.
 - If you have multiple AKS on Windows Server deployments, you must enable Azure Hybrid Benefit individually for each deployment.
-- If you enable Azure Hybrid Benefit on an AKS Arc deployment during the trial period, it doesn't nullify your trial period. The benefit is activated immediately, and is applied at the end of the trial period.
-- Reinstalling AKS Arc doesn't automatically reinstate the benefit. You must reactivate this benefit for the new deployment.
+- If you enable Azure Hybrid Benefit on an AKS deployment during the trial period, it doesn't nullify your trial period. The benefit is activated immediately, and is applied at the end of the trial period.
+- Reinstalling AKS doesn't automatically reinstate the benefit. You must reactivate this benefit for the new deployment.
 
 For more information about Software Assurance and with which agreements it's available, see [Benefits of Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-by-benefits).
 

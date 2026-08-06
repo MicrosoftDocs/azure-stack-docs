@@ -1,10 +1,11 @@
 ---
 title: Use Container Storage Interface (CSI) disk drivers in AKS on Windows Server
-description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc on Windows Server.
+description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS Hybrid and Edge on Windows Server.
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak
+ms.custom: windows-server
 
 ---
 
@@ -12,7 +13,7 @@ ms.author: davidsmatlak
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Arc.
+This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS Hybrid and Edge.
 
 ## Overview of CSI in AKS on Windows Server
 

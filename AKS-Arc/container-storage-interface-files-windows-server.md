@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak 
-ms.custom: sfi-ropc-nochange
+ms.custom: sfi-ropc-nochange, windows-server
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS on Windows Server.
 # Keyword: container storage interface drivers, CSI drivers
@@ -24,7 +24,7 @@ This article describes how to use Container Storage Interface (CSI) drivers for 
 
 ## Use persistent volumes using ReadWriteMany CSI drivers
 
-If multiple nodes need concurrent access to the same storage volumes in AKS Arc, you can use CSI drivers for files to mount SMB or NFS shares as **ReadWriteMany**. You must provision the SMB or NFS shares in advance.
+If multiple nodes need concurrent access to the same storage volumes in AKS, you can use CSI drivers for files to mount SMB or NFS shares as **ReadWriteMany**. You must provision the SMB or NFS shares in advance.
 
 ### Use SMB drivers
 

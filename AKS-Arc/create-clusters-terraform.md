@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 08/11/2025
+ms.custom: local
 
 ---
 
@@ -17,7 +18,7 @@ This article describes how to create Kubernetes clusters in Azure Local using Te
 - Validate the deployment and connect to the cluster.
 
 > [!IMPORTANT]
-> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
+> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, Hybrid and Edge previews are partially covered by customer support on a best-effort basis.
 
 ## Before you begin
 
@@ -89,7 +90,7 @@ az login
    }
    ```
 
-1. Create another file named **main.tf** that points to the latest AKS Arc AVM module, and insert the following code. You can read the comments in the the module and edit parameters as needed. Please make sure all the values are correctly entered to avoid failures during cluster creation. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
+1. Create another file named **main.tf** that points to the latest AKS AVM module, and insert the following code. You can read the comments in the the module and edit parameters as needed. Please make sure all the values are correctly entered to avoid failures during cluster creation. To find the admin group object ID, see [Enable Microsoft Entra authentication for Kubernetes clusters](enable-authentication-microsoft-entra-id.md). To enable Azure RBAC, update the corresponding parameter and see [Enable Azure RBAC for Kubernetes Authorization](azure-rbac-local.md) for prerequisites.
 
    ```terraform
    module "aks_arc" { 

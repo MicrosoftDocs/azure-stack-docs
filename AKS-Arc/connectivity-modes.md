@@ -1,27 +1,27 @@
 ---
-title: Connectivity modes in AKS Arc on Azure Local
+title: Connectivity modes in AKS on Azure Local
 description: Learn about running AKS on Azure Local in disconnected and semi-connected mode.
 ms.topic: overview
 ms.date: 04/16/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/08/2025
-ms.custom: conceptual
+ms.custom: conceptual, local
 
 ---
 
 # Connectivity modes in AKS on Azure Local
 
-AKS on Azure Local requires connectivity to Azure in order to use features such as Kubernetes cluster upgrades, and identity and access options such as Azure Entra ID. Also, Azure Arc agents on the AKS Arc cluster must remain connected to enable functionality such as [configuring (GitOps)](/azure/azure-arc/kubernetes/conceptual-gitops-flux2), Arc extensions, and [cluster connect](/azure/azure-arc/kubernetes/conceptual-cluster-connect). Since AKS on Azure Local clusters deployed at the edge might not always have stable network access, the Kubernetes cluster might occasionally be unable to reach Azure when it operates in a semi-connected state.
+AKS on Azure Local requires connectivity to Azure in order to use features such as Kubernetes cluster upgrades, and identity and access options such as Azure Entra ID. Also, Azure Arc agents on the AKS cluster must remain connected to enable functionality such as [configuring (GitOps)](/azure/azure-arc/kubernetes/conceptual-gitops-flux2), Arc extensions, and [cluster connect](/azure/azure-arc/kubernetes/conceptual-cluster-connect). Since AKS on Azure Local clusters deployed at the edge might not always have stable network access, the Kubernetes cluster might occasionally be unable to reach Azure when it operates in a semi-connected state.
 
 ## Understand connectivity modes
 
 When working with AKS on Azure Local clusters, it's important to understand how network connectivity modes impact your operations.
 
-- **Fully connected**: With ongoing network connectivity, AKS and Arc agents can consistently communicate with Azure. In this mode, there is typically little delay with tasks such as scaling out your AKS Arc cluster, upgrading the Kubernetes version, propagating GitOps configurations, enforcing Azure Policy and Gatekeeper policies, or collecting workload metrics and logs in Azure Monitor.
+- **Fully connected**: With ongoing network connectivity, AKS and Arc agents can consistently communicate with Azure. In this mode, there is typically little delay with tasks such as scaling out your AKS cluster, upgrading the Kubernetes version, propagating GitOps configurations, enforcing Azure Policy and Gatekeeper policies, or collecting workload metrics and logs in Azure Monitor.
 
-- **Semi-connected**:  Refers to a temporary loss of connectivity with Azure, which is supported for a duration of up to 30 days. This constraint is due to the 30-day validity period of certificates managed by AKS on Azure Local. If network connectivity is not restored within this timeframe, the AKS Arc cluster may cease to function. To maintain cluster operability, it is recommended that the AKS Arc cluster establish connectivity with Azure at least once every 30 days. Failure to do so may result in certificate expiration, requiring the cluster to be deleted and redeployed.
+- **Semi-connected**:  Refers to a temporary loss of connectivity with Azure, which is supported for a duration of up to 30 days. This constraint is due to the 30-day validity period of certificates managed by AKS on Azure Local. If network connectivity is not restored within this timeframe, the AKS cluster may cease to function. To maintain cluster operability, it is recommended that the AKS cluster establish connectivity with Azure at least once every 30 days. Failure to do so may result in certificate expiration, requiring the cluster to be deleted and redeployed.
 
 - **Disconnected**: We currently do not support running AKS on Azure Local in a disconnected environment beyond 30 days.
 

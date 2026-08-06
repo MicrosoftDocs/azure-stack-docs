@@ -5,6 +5,7 @@ ms.date: 11/17/2025
 ms.topic: concept-article
 author: davidsmatlak
 ms.author: davidsmatlak 
+ms.custom: windows-server
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS system requirements
@@ -285,9 +286,9 @@ You must have an Azure resource group in the Australia East, East US, Southeast 
 ### Azure regions
 
 > [!WARNING]
-> AKS Arc currently supports cluster creation exclusively within the following specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
+> AKS currently supports cluster creation exclusively within the following specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
 
-The AKS Arc service is used for registration, billing, and management. It currently supports the following regions:
+The AKS service is used for registration, billing, and management. It currently supports the following regions:
 
 - East US
 - South Central US

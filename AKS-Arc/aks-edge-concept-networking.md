@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: concept-article
 ms.date: 03/10/2025
-ms.custom: template-concept
+ms.custom: template-concept, edge-essentials
 ---
 
 # AKS Edge Essentials networking

@@ -58,7 +58,7 @@ Before you create an Azure Local VM, make sure that the following prerequisites 
 
 [!INCLUDE [hci-vm-prerequisites](../includes/hci-vm-prerequisites.md)]
 
-- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./create-logical-networks.md).
+- Access to a logical network that you associate with the VM on your Azure Local. For more information, see how to [Create logical network](./multi-rack-create-logical-networks.md).
 - [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
 
 --- -->
@@ -100,17 +100,17 @@ Here we create a VM that uses specific memory and processor counts.
     ```azurecli
     $vmName ="local-vm"
     $subscription =  "<Subscription ID>"
-    $resource_group = "local-rg"
-    $customLocationName = "local-cl"
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $resourceGroup = "mylocal-rg"
+    $customLocationID = "<custom location ARM resource ID>"
     $location = "eastus"
     $computerName = "mycomputer"
     $userName = "local-user"
     $password = "<Password for the VM>"
-    $imageName = "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/galleryImages/ws22server"
+    $imageName = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/galleryImages/ws22server"
     $nicName ="local-vnic" 
     $httpProxy = "<Proxy server address>"
     $httpsProxy = "<Proxy server address>"
+    $zone = "<Availability zone name>"
     ```
 
     The parameters for VM creation are tabulated as follows:
@@ -136,8 +136,11 @@ Here we create a VM that uses specific memory and processor counts.
 1. Run the following command to create the VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone --strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8" cert_file_path=""
+    az stack-hci-vm create --subscription $subscription --name $vmName --resource-group $resourceGroup --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --zone $zone --strict-placement true --enable-agent true --enable-vm-config-agent true --proxy-configuration http_proxy=$httpProxy https_proxy=$httpsProxy no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8"
    ```
+
+   > [!NOTE]
+   > Include the `cert_file_path` sub-parameter under `--proxy-configuration` only when you have a certificate to establish trust with your proxy server, and set it to a valid file path (for example, `cert_file_path="C:\path\to\proxycert.crt"`). Don't pass `cert_file_path=""` (an empty value), because the command fails when it tries to open a nonexistent file.
 
    The VM is successfully created when the `provisioningState` shows as `succeeded` in the output.
 
@@ -253,7 +256,7 @@ Follow these steps in Azure portal for Azure Local.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
 
-        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *<guspinto@contoso.com>* would get the default domain name *contoso.com*.
+        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *<user@contoso.com>* gets the default domain name *contoso.com*.
 
         For Linux VM, provide root user details.
 
@@ -637,4 +640,5 @@ For  more information, see [system-assigned managed identities](/entra/identity/
 
 ## Next steps
 
-- Learn how to [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md).
+- [Manage Azure Local VMs](./multi-rack-manage-arc-virtual-machines.md)
+- [Connect to an Azure Local VM using SSH](./multi-rack-connect-arc-vm-using-ssh.md)

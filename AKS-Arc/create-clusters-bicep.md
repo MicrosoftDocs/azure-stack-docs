@@ -2,7 +2,7 @@
 title: Create Kubernetes clusters using Bicep
 description: Learn how to create Kubernetes clusters in Azure Local using Bicep.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, local
 ms.date: 01/12/2026
 author: davidsmatlak
 ms.author: davidsmatlak 
@@ -49,7 +49,7 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 
 ## Deploy the cluster using Bicep templates
 
-For detailed instructions on deploying an AKS Arc cluster using Bicep templates, see the [AKSArc Bicep deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Cluster). The repository includes:
+For detailed instructions on deploying an AKS cluster using Bicep templates, see the [AKSArc Bicep deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Cluster). The repository includes:
 
 - **CreateWithExistingLnet**: Deploy a cluster using an existing logical network.
 - **CreateWithoutExistingLnet**: Deploy a cluster and create a new logical network.
@@ -64,7 +64,7 @@ After deployment, you can connect to your Kubernetes cluster by running the `az 
 
 ## Deploy node pools (optional)
 
-To add more node pools to your cluster using Bicep templates, see the [Bicep template to deploy/update an AKS Arc node pool](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
+To add more node pools to your cluster using Bicep templates, see the [Bicep template to deploy/update an AKS node pool](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-bicep-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
 
 ## Related content
 

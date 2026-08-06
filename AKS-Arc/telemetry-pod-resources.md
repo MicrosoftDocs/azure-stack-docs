@@ -1,18 +1,19 @@
 ---
-title: AKS Arc telemetry pod consumes too much memory and CPU
-description: Learn how to troubleshoot when AKS Arc telemetry pod consumes too much memory and CPU.
+title: AKS telemetry pod consumes too much memory and CPU
+description: Learn how to troubleshoot when AKS telemetry pod consumes too much memory and CPU.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/21/2025
-ms.reviewer: abha
-
+ms.reviewer: srikantsarwa
+ms.custom: local
 ---
-# Troubleshoot issue where AKS Arc telemetry pod consumes too much memory and CPU
+
+# Troubleshoot issue where AKS telemetry pod consumes too much memory and CPU
 
 ## Symptoms
 
-The **akshci-telemetry** pod in a AKS Arc cluster can over time consume a lot of CPU and memory resources. If metrics are enabled, you can verify the CPU and memory usage using the following `kubectl` command:
+The **akshci-telemetry** pod in a AKS cluster can over time consume a lot of CPU and memory resources. If metrics are enabled, you can verify the CPU and memory usage using the following `kubectl` command:
 
 ```bash
 kubectl -n kube-system top pod -l app=akshci-telemetry
@@ -101,4 +102,4 @@ kubectl get pods -l app=akshci-telemetry -n kube-system --kubeconfig "./kubeconf
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-known-issues.md)
+[Known issues in AKS Hybrid and Edge](aks-arc-known-issues.md)

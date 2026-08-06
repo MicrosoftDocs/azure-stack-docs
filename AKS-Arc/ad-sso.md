@@ -7,6 +7,7 @@ ms.date: 01/21/2026
 ms.author: davidsmatlak 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: leslielin
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
 # Keyword: secure connection to Kubernetes API server
@@ -23,7 +24,7 @@ You can create a secure connection to your Kubernetes API server in AKS on Windo
 
 Without Active Directory authentication, you must rely on a certificate-based *kubeconfig* file when you connect to the API server via the `kubectl` command. The **kubeconfig** file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
-As an alternative to using certificate-based **kubeconfig**, you can use AD SSO credentials as a secure way to connect to the API server. AD integration with AKS Arc lets users on a Windows domain-joined machine connect to the API server via `kubectl` using their SSO credentials. This removes the need to manage and distribute certificate-based **kubeconfig** files that contain private keys.
+As an alternative to using certificate-based **kubeconfig**, you can use AD SSO credentials as a secure way to connect to the API server. AD integration with AKS lets users on a Windows domain-joined machine connect to the API server via `kubectl` using their SSO credentials. This removes the need to manage and distribute certificate-based **kubeconfig** files that contain private keys.
 
 AD integration uses AD **kubeconfig**, which is distinct from the certificate-based **kubeconfig** files and doesn't contain any secrets. However, the certificate-based **kubeconfig** file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 

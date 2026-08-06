@@ -1,8 +1,8 @@
 ---
 title: Azure Operator Nexus neighbor group configuration
 description: Configuration details and examples for Azure Operator Nexus neighbor groups.
-author: dougbristow
-ms.author: dbristow
+author: MSbhumika-shah
+ms.author: bhumikashah
 ms.service: azure-operator-nexus
 ms.topic: reference
 ms.date: 02/19/2024

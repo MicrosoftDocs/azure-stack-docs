@@ -4,9 +4,9 @@ description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service 
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 07/26/2024
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
 ms.topic: how-to
-ms.custom:
+ms.custom: local
   - devx-track-azurecli
 ms.date: 07/26/2024
 
@@ -18,9 +18,9 @@ ms.date: 07/26/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-AKS enabled by Azure Arc simplifies the authentication process with Microsoft Entra ID integration. For authorization, cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) or Azure role-based access control (Azure RBAC) based on the directory group membership of the Microsoft Entra ID integration.
+AKS Hybrid and Edge simplifies the authentication process with Microsoft Entra ID integration. For authorization, cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) or Azure role-based access control (Azure RBAC) based on the directory group membership of the Microsoft Entra ID integration.
 
-Microsoft Entra authentication is provided to AKS Arc clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc). For more information about the Microsoft Entra integration flow, see the [Microsoft Entra documentation](concepts-security-access-identity.md#microsoft-entra-integration).
+Microsoft Entra authentication is provided to AKS clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc). For more information about the Microsoft Entra integration flow, see the [Microsoft Entra documentation](concepts-security-access-identity.md#microsoft-entra-integration).
 
 This article describes how to enable and use Microsoft Entra ID authentication for Kubernetes clusters.
 
@@ -42,7 +42,7 @@ This article describes how to enable and use Microsoft Entra ID authentication f
    az group create --name $resource_group --location centralus
    ```
 
-1. Create an AKS Arc cluster and enable admin access for your Microsoft Entra group using the `--aad-admin-group-object-ids` parameter in the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command:
+1. Create an AKS cluster and enable admin access for your Microsoft Entra group using the `--aad-admin-group-object-ids` parameter in the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command:
 
     ```azurecli
     az aksarc create -n $aks_cluster_name -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys
@@ -72,7 +72,7 @@ Enable Microsoft Entra authentication on your existing Kubernetes cluster using 
 
 ## Next steps
 
-- [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
+- [Access and identity options for AKS Hybrid and Edge](concepts-security-access-identity.md)
 - [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-local.md)
 - [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-local.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: troubleshooting-general
 ms.date: 12/12/2024
-ms.custom: template-concept
+ms.custom: template-concept, edge-essentials
 ---
 
 # Troubleshoot common issues in AKS Edge Essentials
@@ -59,9 +59,9 @@ This script checks for the missing images and reimports them as needed.
 
    :::image type="content" source="media/aks-edge/aks-edge-azure-arc-proxy.png" alt-text="Screenshot showing internet options." lightbox="media/aks-edge/aks-edge-azure-arc-proxy.png":::
 
-## Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+## Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources
 
-For information about this known issue, see [Can't fully delete AKS Arc cluster with PDB resources](delete-cluster-pdb.md) in the AKS Arc documentation.
+For information about this known issue, see [Can't fully delete AKS cluster with PDB resources](delete-cluster-pdb.md) in the AKS documentation.
 
 ## Offline deployments
 

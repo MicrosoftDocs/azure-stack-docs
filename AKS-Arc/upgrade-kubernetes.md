@@ -4,9 +4,10 @@ description: Learn how to upgrade the Kubernetes version of AKS workload cluster
 ms.topic: upgrade-and-migration-article
 ms.date: 06/26/2024
 author: davidsmatlak
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 # Intent: As an IT Pro, I want to learn how to use Windows Admin Center to upgrade my AKS clusters.
 # Keyword: upgrade version Kubernetes upgrade Windows Admin Center
 ---
@@ -20,7 +21,7 @@ This article describes how to upgrade an Azure Kubernetes Service (AKS) workload
 > [!NOTE]
 > You can also use PowerShell to [upgrade AKS workload clusters](upgrade.md).
 
-We recommend updating an AKS workload cluster in AKS Arc at least once every 60 days. New updates are available every 30 days. To avoid outages in workload availability, rolling updates are performed.
+We recommend updating an AKS workload cluster in AKS at least once every 60 days. New updates are available every 30 days. To avoid outages in workload availability, rolling updates are performed.
 
 When you bring a new node with a newer build into the cluster, resources move from the old node to the new node, and when the resources are successfully moved, the old node is decommissioned and removed from the cluster.
 

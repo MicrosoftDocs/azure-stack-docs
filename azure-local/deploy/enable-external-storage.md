@@ -38,9 +38,6 @@ You can present multiple volumes from the SAN array as Cluster Shared Volumes (C
 - Fibre Channel (FC)
 - iSCSI (over TCP/IP)
 
-> [!IMPORTANT]
-> SAN integration using FC is generally available. However, SAN integration using iSCSI is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
 ## Azure Local Storage Architecture (Storage Spaces Direct + SAN)
 
 Bring your Fibre Channel or iSCSI-based SAN arrays from leading vendors and directly integrate them into Azure Local clusters for consistent management, high throughput, and low-latency I/O. Each Azure Local node connects to the SAN by using Fibre Channel fabrics or iSCSI network paths, ensuring high availability, resiliency, and performance. Host Bus Adapters (HBAs) for Fibre Channel or Ethernet network adapters for iSCSI enable reliable connectivity to external SAN storage.

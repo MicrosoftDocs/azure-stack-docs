@@ -3,15 +3,15 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 12/9/2020
+ms.date: 07/08/2026
 ms.reviewer: raymondl
 ms.lastreviewed: 12/9/2020
 
 ---
 
-### When installing Az module falsely throws Admin rights required error
+### Installing the Az module falsely throws an admin rights required error
 
-- Applicable: This issue applies to 2002 and later
-- Cause: When installing the module from an elevated prompt, an error is thrown. The error says, `Administrator rights required`.
-- Remediation: Close your session and start a new elevated PowerShell session. Make sure there isn't an existing Az. Accounts module loaded in the session.
+- Applies to: 2002 and later.
+- Cause: When you install the module from an elevated prompt, the process returns an error. The error message says, `Administrator rights required`.
+- Remediation: Close your session and start a new elevated PowerShell session. Make sure the session doesn't already have the Az.Accounts module loaded.
 - Occurrence: Common

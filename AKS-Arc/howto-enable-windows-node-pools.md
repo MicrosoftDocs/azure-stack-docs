@@ -6,6 +6,7 @@ ms.date: 06/19/2026
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 09/24/2025
+ms.custom: local
 
 ---
 
@@ -13,7 +14,7 @@ ms.lastreviewed: 09/24/2025
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)] release 2509 or later.
 
-Virtual hard disks (VHDs) serve as the base operating system images for the Kubernetes nodes within your AKS cluster. Starting with Azure Local version 2509, only the Azure Linux VHDs are downloaded by default on the Azure Local instance. The Azure Linux VHDs are used to create the default Linux node pool on the AKS Arc cluster. For Windows-based workloads, AKS Arc supports Windows Server 2019 and Windows Server 2022 images that you can use to create corresponding Windows node pools; however, these VHDs are not available by default and must be downloaded before you can create your Windows-based node pools. Having the Windows node pool feature disabled by default ensures that the Windows-based OS images are not downloaded unnecessarily, and helps to save bandwidth and storage space.
+Virtual hard disks (VHDs) serve as the base operating system images for the Kubernetes nodes within your AKS cluster. Starting with Azure Local version 2509, only the Azure Linux VHDs are downloaded by default on the Azure Local instance. The Azure Linux VHDs are used to create the default Linux node pool on the AKS cluster. For Windows-based workloads, AKS supports Windows Server 2019 and Windows Server 2022 images that you can use to create corresponding Windows node pools; however, these VHDs are not available by default and must be downloaded before you can create your Windows-based node pools. Having the Windows node pool feature disabled by default ensures that the Windows-based OS images are not downloaded unnecessarily, and helps to save bandwidth and storage space.
 
 > [!IMPORTANT]
 > With the Windows node pool feature disabled by default in Azure Local release 2509 and later, if you have a Windows node pool and you attempt to issue commands like `aksarc upgrade`, `aksarc update`,  `aksarc nodepool update`, or `aksarc nodepool add`, they fail with an error message stating that "The Windows node pool feature is disabled." You are then explicitly asked to enable this feature before you proceed with these operations.
@@ -32,9 +33,9 @@ Before you begin creating Windows node pools, make sure you have the following p
 
 [!INCLUDE [gmsa-windows-node-pools-not-supported](includes/gmsa-windows-node-pools-not-supported.md)]
 
-## Enable the Windows node pool feature on AKS Arc clusters
+## Enable the Windows node pool feature on AKS clusters
 
-To enable the Windows node pool feature on your AKS Arc cluster, use the **Support.AksArc** PowerShell module. This module provides tools for diagnostics and remediation in AKS Arc environments. By running its commands, you can activate the Windows node pool feature and initiate the download of the required Windows VHDs, making it possible to create Windows-based node pools.
+To enable the Windows node pool feature on your AKS cluster, use the **Support.AksArc** PowerShell module. This module provides tools for diagnostics and remediation in AKS environments. By running its commands, you can activate the Windows node pool feature and initiate the download of the required Windows VHDs, making it possible to create Windows-based node pools.
 
 ### Step 1: Connect to an Azure Local node
 
@@ -139,9 +140,9 @@ For the Kubernetes version you intend to use, find the right Windows SKU by look
 
 Once the VHDs show `ready` as **true**, you can proceed to [create a Windows node pool](howto-create-windows-node-pools.md), and deploy your Windows-based workloads.
 
-## Disable the Windows node pool feature on AKS Arc clusters
+## Disable the Windows node pool feature on AKS clusters
 
-If you no longer need to use Windows node pools on your AKS Arc cluster, you can disable the Windows node pool feature. Disabling this feature removes the Windows VHDs from your Azure Local instance, and prevents any further operations on Windows node pools. If you have existing Windows node pools, you must delete them before you can disable this feature.
+If you no longer need to use Windows node pools on your AKS cluster, you can disable the Windows node pool feature. Disabling this feature removes the Windows VHDs from your Azure Local instance, and prevents any further operations on Windows node pools. If you have existing Windows node pools, you must delete them before you can disable this feature.
 
 ### Step 1: Delete existing Windows node pools
 

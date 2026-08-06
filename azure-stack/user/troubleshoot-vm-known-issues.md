@@ -1,10 +1,10 @@
 ---
 title: Troubleshooting VM known issues on Azure Stack Hub
-description: Learn how to troubleshoot virtual machine known issues on Azure Stack Hub
+description: Troubleshoot VM known issues on Azure Stack Hub. Learn how to resolve common virtual machine and scale set errors quickly.
 author: sethmanheim
 
 ms.topic: troubleshooting
-ms.date: 07/30/2021
+ms.date: 07/09/2026
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 07/09/2020
@@ -16,15 +16,15 @@ ms.lastreviewed: 07/09/2020
 
 # Known issues: VMs on Azure Stack Hub
 
-You can find known issues for troubleshooting the Azure Stack Hub compute resource provider when working with virtual machines (VM)s and scale sets in this article.
+This article lists known issues for troubleshooting the Azure Stack Hub compute resource provider when working with virtual machines (VMs) and scale sets.
 
 ## Portal doesn't show correct VM name
 - **Applicable**  
     This issue applies to all releases.  
 - **Cause**  
-    When viewing details of a VM in the overview blade, the computer name shows as (not available). The display is by design for VMs created from specialized disks/disk snapshots.  
+    When you view details of a VM in the overview pane, the computer name shows as (not available). The display is by design for VMs created from specialized disks or disk snapshots.  
 - **Remediation**  
-    In the portal select **Settings** > **Properties**.
+    In the portal, select **Settings** > **Properties**.
 - **Occurrence**  
     Common  
 
@@ -32,7 +32,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Applicable**  
     This issue applies to all supported releases.  
 - **Cause**  
-    When creating a new virtual machine (VM), the following error might be displayed: Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.  
+    When you create a new virtual machine (VM), you might see the following error message: Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.  
 - **Remediation**  
     Recreate the storage account with the same name you previously used.
 - **Occurrence**  
@@ -42,7 +42,7 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Applicable**  
     This issue applies to all supported releases.  
 - **Cause**  
-    When trying to start a stop-deallocated virtual machine, the following error might be displayed: VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.  
+    When you try to start a stop-deallocated virtual machine, you might see the following error message: VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted. This error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.  
 - **Remediation**  
     Recreate the storage account with the same name you previously used.  
 - **Occurrence**
@@ -52,9 +52,9 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
 - **Applicable**  
     This issue applies to all supported releases.  
 - **Cause**   
-    When creating a new virtual machine, you may receive an error such as This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available. This indicates that the quota for total cores available to you has been reached.  
+    When you create a new virtual machine, you might receive an error such as This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available. This error indicates that you reached the quota for total cores available to you.  
 - **Remediation**  
-    Ask your operator for an add-on plan with additional quota. Changing the current plan's quota will not work or reflect increased quota.
+    Ask your operator for an add-on plan with additional quota. Changing the current plan's quota doesn't work or reflect increased quota.
 - **Occurrence**  
     Rare  
 

@@ -5,6 +5,7 @@ ms.topic: concept-article
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # System requirements and prerequisites (preview)
@@ -67,17 +68,6 @@ For more information, see:
 - [Set subscription filters](/azure/azure-portal/set-preferences#subscription-filters)
 - [Manage directories and subscriptions](/azure/azure-portal/set-preferences#directories--subscriptions)
 
-### Register resource providers
-
-Ensure Azure CLI is installed and signed in.
-
-```azurecli
-az provider register --namespace Microsoft.HybridCompute
-az provider register --namespace Microsoft.HybridContainerService
-az provider register --namespace Microsoft.Kubernetes
-az provider register --namespace Microsoft.ExtendedLocation
-```
-
 ### Register feature
 
 ```azurecli
@@ -90,6 +80,17 @@ az feature register \
   --subscription <subscription_id> \
   --namespace Microsoft.HybridConnectivity \
   --name hiddenPreviewAccess
+```
+
+### Register resource providers
+
+Ensure Azure CLI is installed and signed in.
+
+```azurecli
+az provider register --namespace Microsoft.HybridCompute
+az provider register --namespace Microsoft.HybridContainerService
+az provider register --namespace Microsoft.Kubernetes
+az provider register --namespace Microsoft.ExtendedLocation
 ```
 
 ### Azure CLI extensions

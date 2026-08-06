@@ -1,12 +1,12 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Migrate FAQ
-  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Local instance using Azure Migrate.
+  description: Find answers to common questions about migrating Hyper-V and VMware virtual machines to Azure Local using Azure Migrate.
   ms.topic: faq
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 03/25/2026
+  ms.date: 07/23/2026
   ms.subservice: hyperconverged
 
 
@@ -26,6 +26,28 @@ sections:
         answer: |
 
           ## [VMware and Hyper-V VMs](#tab/vmware-and-hyper-v-vms)
+
+          ### What Azure account permissions do I need to migrate VMs to Azure Local?
+
+          At the Azure subscription scope, assign one of the following roles based on the user's responsibilities:
+
+          - **Azure Local Migrate Owner** provides full access, including creating and managing projects, registering source and target appliances, assigning migration-specific roles, and performing replication and migration operations.
+          - **Azure Local Migrate Execute Expert** can perform and monitor replication and migration operations on an existing, configured project. This role can't create projects, register source or target appliances, or assign roles.
+
+          A user needs only one of these Azure subscription roles, not both. An account that registers a source or target appliance also needs the **Application Developer** role at the Microsoft Entra ID tenant scope.
+
+          For complete requirements and links to the role definitions, see Azure account permissions for [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions) or [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions).
+
+          ### What options can I use to migrate VMs to Azure Local?
+
+          You can use any of the following methods:
+
+          - **Azure portal**: Use the guided workflow to configure appliances, replicate VMs, and perform migrations. Start with [Discover and replicate VMware VMs](migrate-vmware-replicate.md) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md).
+          - **PowerShell**: Automate replication and migration by using the Azure Migrate PowerShell module. See [Migrate VMs using PowerShell](migrate-via-powershell.md?tabs=powershell).
+          - **Azure CLI (Preview)**: Automate replication and migration by using Azure CLI commands. See [Migrate VMs using Azure CLI](migrate-via-powershell.md?tabs=azurecli).
+          - **Terraform (Preview)**: Define repeatable replication and migration workflows as infrastructure as code. See [Migrate VMs using Terraform](migrate-via-powershell.md?tabs=terraform).
+
+          The PowerShell, Azure CLI, and Terraform workflows require an existing Azure Migrate project with the source and target appliances already configured.
           
           ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Local instance?
       
@@ -122,7 +144,21 @@ sections:
         
           ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
 
-          Migration is not supported if the VM IP address is configured as the DNS server for the logical network it will join. In this case, migration fails with an *address already in use* error. Additionally, Azure Local doesn't support running DNS server infrastructure as a VM on the system. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations). 
+          Yes, starting with Azure Local 2607, a migrated DNS server VM can use the IPv4 address configured as the DNS server on its destination workload logical network.
+
+          This capability isn't supported on clusters that use Software Defined Networking (SDN) enabled by Azure Arc. It applies only to workload logical networks. The DNS servers used by the Azure Local infrastructure must remain external to the Azure Local instance. For more information, see [DNS server considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
+
+          On Azure Local versions earlier than 2607, assigning a logical network's DNS server IP address to a VM isn't supported and migration fails with an *address already in use* error.
+
+          ### What is a seed disk, and can I delete it?
+
+          During initial replication, Azure Migrate creates a temporary seed disk for each source disk on the selected Azure Local storage path. The seed disk contains the replicated source data and subsequent changes. During migration, Azure Migrate uses it to create the final disk attached to the migrated VM.
+
+          Don't rename, modify, or delete a seed disk. It is a service-managed part of the active replication and can be reused if migration is retried. If the seed disk is deleted, replication or migration can fail, and you might have to stop and enable replication again, which restarts initial replication.
+
+          After you verify that the migrated VM works as expected, use the standard **Complete migration** operation. This operation deletes the protected item and its replication artifacts, including seed disks and any seed ISO attached to the migrated VM, without deleting the migrated VM. If you don't complete migration, these artifacts remain on the target system and continue to use storage.
+
+          A forceful completion might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Replications** view and that the artifact doesn't belong to another active replication.
 
           ### Can I forcefully stop replications or complete migrations?
 
@@ -130,7 +166,7 @@ sections:
           In the Azure portal, this option appears as “Forcefully stop replication” or “Forcefully complete migration”, and is only available after a normal stop or complete operation fails.
           From PowerShell, you can use the [Remove-AzMigrateLocalServerReplication (Az.Migrate) cmdlet](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) to forcefully stop replication or complete migration only when standard operations don’t succeed.
           
-          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Review and manually delete any leftover replication artifacts in your resource group and on-premises environment.
+          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Replications** view and that the artifact doesn't belong to another active replication.
           
           ### How can I migrate the same source VM again after initial migration?
           

@@ -7,6 +7,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 06/27/2024
 ms.reviewer: mikek
 ms.date: 11/07/2022
+ms.custom: windows-server
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
@@ -184,7 +185,7 @@ You can use node affinity rules to enable the Kubernetes scheduler to run pods o
 
 Prerequisites:
 
-* AKS Arc is installed.
+* AKS is installed.
 * Target cluster is installed and connected to Azure.
 * One Linux node pool is deployed, with at least one active Linux Worker node.
 * Horizontal Node Autoscaler is enabled on the target cluster, and the Linux node pool, as described previously.

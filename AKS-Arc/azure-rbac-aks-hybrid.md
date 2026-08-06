@@ -2,7 +2,7 @@
 title: Use Azure RBAC for AKS clusters (preview)
 description: Use Azure RBAC with Microsoft Entra ID to control access to AKS clusters.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, windows-server
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 04/02/2025
@@ -32,7 +32,7 @@ Before you deploy a Kubernetes cluster with Azure Arc enabled, you must complete
 
 ### Install the Azure CLI extension
 
-The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Windows Server. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To install the extension, run the following command:
+The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Windows Server. Using a higher version can cause incompatibility issues with Azure RBAC and AKS. To install the extension, run the following command:
 
 ```azurecli
 az extension add -n connectedk8s --version 1.5.4
@@ -61,7 +61,7 @@ When you register the Microsoft Entra application, it stores configuration infor
 Register your server app and secret, and your client app and secret, by performing the following steps:
 
 > [!NOTE]
-> These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS Arc.  
+> These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS.  
 
 To perform these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Microsoft Entra ID. For instructions, see [Assign Microsoft Entra roles to users](/azure/active-directory/roles/manage-roles-portal).
 

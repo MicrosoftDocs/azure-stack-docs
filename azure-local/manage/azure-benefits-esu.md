@@ -39,7 +39,7 @@ You can acquire Extended Security Updates on Azure Local the same way as for oth
 
 ### Do ESUs have any limitations?
 
-Extended Security Updates do not include the following items:
+Extended Security Updates don't include the following items:
 
 - New features
 - Customer-requested nonsecurity updates

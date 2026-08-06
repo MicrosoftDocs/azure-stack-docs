@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/25/2026
+ms.date: 07/23/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -148,7 +148,7 @@ This step applies only if you downloaded the .vhd zipped file.
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Local appliance |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416` |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb |
+    |Azure Local appliance |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847` |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb |
 
 1. Extract the zipped file to a folder. 
 
@@ -321,6 +321,11 @@ This step applies to using a .zip file.
 1. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
     :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
+
+> [!IMPORTANT]
+> During initial replication, Azure Migrate creates a temporary seed disk for each source disk on the selected Azure Local storage path. Replicated source data and subsequent changes are written to the seed disk. During migration, Azure Migrate uses it to create the final disk attached to the migrated VM.
+>
+> Don't rename, modify, or delete a seed disk. It remains part of the active replication and can be reused if migration is retried. Deleting it can cause replication or migration to fail and might require you to stop and enable replication again, which restarts initial replication. After you verify the migrated VM, use **Complete migration** to remove the protected item and its replication artifacts, including the seed disk. For more information, see the [Azure Migrate FAQ](migrate-faq.yml).
 
 ## Next steps
 

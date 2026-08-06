@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/25/2025
+ms.date: 07/16/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -47,14 +47,18 @@ Keep in mind the following information as you create a project:
 - Project geography only stores the discovered metadata.
 - When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. The service allocates the region. Azure Migrate doesn't move or store customer data outside of the allocated region.
 
-## Azure portal requirements
+## Azure account permissions
 
-For more information on Azure subscriptions and roles, see [Azure roles, Azure AD roles, and classic subscription administrator roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
+For more information on Azure subscriptions and roles, see [Azure roles, Microsoft Entra roles, and classic subscription administrator roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
-|Level|Permissions|
-|-|-|
-|Tenant|[Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer)|
-|Subscription|Contributor, User Access Administrator|
+At the Microsoft Entra ID tenant scope, an account that registers a source or target appliance needs the [Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer) role.
+
+At the Azure subscription scope, assign one of the following roles based on the user's responsibilities:
+
+- **[Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner)**: Provides full access to the Azure Migrate project, including creating and managing the project, registering source and target appliances, assigning migration-specific roles, and performing replication and migration operations.
+- **[Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert)**: Provides access to perform replication and migration operations and to track and monitor migration progress on an existing, configured project. This role doesn't allow users to create Azure Migrate projects, register source or target appliances, or assign roles.
+
+A user needs only one of these Azure subscription roles, not both. A user who only performs replication and migration with the Azure Local Migrate Execute Expert role and doesn't register appliances doesn't need the Application Developer role.
 
 For any subscriptions that host resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, register the **Microsoft.DataReplication** resource provider. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1).
 

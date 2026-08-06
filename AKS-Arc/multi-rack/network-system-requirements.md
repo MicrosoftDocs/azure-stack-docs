@@ -4,6 +4,7 @@ description: Learn about the network requirements for deploying AKS enabled by A
 ms.topic: concept-article
 ms.date: 04/24/2026
 ms.author: davidsmatlak
+ms.custom: multi-rack
 author: sanjanamsft
 ---
 

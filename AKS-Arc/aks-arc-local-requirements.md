@@ -5,6 +5,7 @@ ms.topic: concept-article
 author: xelu86
 ms.author: alalve
 ms.date: 12/08/2025
+ms.custom: local
 # Intent: As a system administrator, I want to understand the storage requirements needed to run my infrastructure.
 # Keyword: AKS Azure Local storage requirements
 ---
@@ -17,23 +18,23 @@ centralized governance and secure access through Microsoft Entra ID.
 
 ## System requirements
 
-Microsoft and trusted hardware partners preconfigure and validate certified Azure Local platforms to deliver dependable AKS Arc deployments. These platforms feature the following essential infrastructure components:
+Microsoft and trusted hardware partners preconfigure and validate certified Azure Local platforms to deliver dependable AKS deployments. These platforms feature the following essential infrastructure components:
 
 - **Hardware:** Enterprise-grade servers and devices designed for high availability and performance.
 - **Networking:** Integrated network fabric supporting redundancy, security, and scalable connectivity.
 - **Storage:** Robust storage solutions optimized for Kubernetes workloads and data durability.
-- **Operating systems:** Supported and secure OS images tailored for AKS Arc compatibility.
+- **Operating systems:** Supported and secure OS images tailored for AKS compatibility.
 - **Management tools:** Built-in monitoring, automation, and lifecycle management utilities for streamlined operations.
 
 The platform delivers out-of-the-box Azure Arc integration, allowing administrators to focus on workload operations while underlying maintenance and optimizations are handled automatically. While the hardware provides baseline requirements, the cluster and workload sizing should be tailored to your specific environment needs.
 
 ## Storage requirements
 
-Storage sizing requirements for AKS Arc on Azure Local depend primarily on hardware configuration, expected AKS workloads, and overall cluster sizing. While certified Azure Local platforms provide built-in baseline hardware, it’s important to assess your storage needs according to the types and scale of applications you plan to run.
+Storage sizing requirements for AKS on Azure Local depend primarily on hardware configuration, expected AKS workloads, and overall cluster sizing. While certified Azure Local platforms provide built-in baseline hardware, it’s important to assess your storage needs according to the types and scale of applications you plan to run.
 
 - **Single storage path:** Ensure at least one storage path is configured in your Azure Local environment. To learn more, see [Create storage path for Azure Local](/azure/azure-local/manage/create-storage-path).
 
-- **Storage per AKS Arc cluster:** For a standard AKS Arc cluster with a single control plane, such as a virtual machine (VM) with one node pool and one control plane running Azure on Linux:
+- **Storage per AKS cluster:** For a standard AKS cluster with a single control plane, such as a virtual machine (VM) with one node pool and one control plane running Azure on Linux:
 
   - **Minimum required:** A total of 10 GB of storage per node.
 
@@ -51,4 +52,4 @@ Storage sizing requirements for AKS Arc on Azure Local depend primarily on hardw
 
 - [AKS on Azure Local architecture](cluster-architecture.md)
 - [How to deploy a Kubernetes cluster using the Azure portal](aks-create-clusters-portal.md)
-- [Storage options for applications in AKS enabled by Azure Arc](concepts-storage.md)
+- [Storage options for applications in AKS Hybrid and Edge](concepts-storage.md)

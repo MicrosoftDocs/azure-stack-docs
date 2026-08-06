@@ -1,29 +1,29 @@
 ---
 title: Customize DNS for an Azure Operator Nexus Kubernetes cluster
-description: Learn how to customize DNS.
+description: Learn how to override CoreDNS defaults on Nexus Kubernetes clusters using ConfigMaps. Configure forward servers, custom domains, and the hosts plugin step by step.
 ms.service: azure-operator-nexus
-author: dougbristow
+author: eak13
 ms.topic: how-to
-ms.date: 10/9/2023
+ms.date: 07/09/2026
 ms.author: dbristow
 
 ---
 
 # Customize DNS on a Nexus Kubernetes cluster
 
-Nexus Kubernetes clusters use a combination of CoreDNS and [node-local-dns](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/) for cluster DNS management and resolution, with node-local-dns taking precedence for name resolution outside the cluster. 
+Nexus Kubernetes clusters use a combination of CoreDNS and [node-local-dns](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/) for cluster DNS management and resolution. The node-local-dns service takes precedence for name resolution outside the cluster. 
 
-Azure Operator Nexus is a managed service, so you can't modify the main configuration for CoreDNS or node-local-dns. Instead, you use a Kubernetes *ConfigMap* to override the default settings. To see the default CoreDNS and node-local-dns ConfigMaps, use the `kubectl get configmaps --namespace=kube-system coredns -o yaml` or `kubectl get configmaps --namespace=kube-system node-local-dns -o yaml`command.
+Azure Operator Nexus is a managed service, so you can't modify the main configuration for CoreDNS or node-local-dns. Instead, use a Kubernetes *ConfigMap* to override the default settings. To see the default CoreDNS and node-local-dns ConfigMaps, use the `kubectl get configmaps --namespace=kube-system coredns -o yaml` or `kubectl get configmaps --namespace=kube-system node-local-dns -o yaml` command.
 
 This article shows you how to use ConfigMaps for basic DNS customization options in your Nexus Kubernetes cluster.
 
 ## Prerequisites
 
-Before proceeding with this how-to guide, it's recommended that you:
+Before proceeding with this how-to guide, make sure that you:
 
    * Refer to the Nexus Kubernetes cluster [QuickStart guide][qs] for a
      comprehensive overview and steps involved.
-   * Ensure that you meet the outlined prerequisites to ensure smooth
+   * Meet the outlined prerequisites to ensure smooth
      implementation of the guide.
 
 [qs]: ./quickstarts-kubernetes-cluster-deployment-bicep.md
@@ -36,7 +36,7 @@ kubectl get configmaps --namespace=kube-system coredns -o yaml
 kubectl get configmaps --namespace=kube-system node-local-dns -o yaml
 <code>```</code>
 
-When you create configurations like the examples below, the names in the `data` field *must* end in `.server` or `.override`.
+When you create configurations like the examples in the following section, the names in the `data` field *must* end in `.server` or `.override`.
 
 <!-- ## Plugin support
 
@@ -70,19 +70,19 @@ You can customize CoreDNS with AKS to perform on-the-fly DNS name rewrites.
      > [!IMPORTANT]
      > If you redirect to a DNS server, such as the CoreDNS service IP, that DNS server must be able to resolve the rewritten domain name.
 
-2. Create the ConfigMap using the [`kubectl apply configmap`][kubectl-apply] command and specify the name of your YAML manifest.
+1. Create the ConfigMap by using the [`kubectl apply configmap`][kubectl-apply] command and specify the name of your YAML manifest.
 
      ```console
      kubectl apply -f corednsms.yaml
      ```
 
-3. Verify the customizations have been applied using the [`kubectl get configmaps`][kubectl-get] and specify your *coredns-custom* ConfigMap.
+1. Verify the customizations are applied by using the [`kubectl get configmaps`][kubectl-get] command and specify your *coredns-custom* ConfigMap.
 
      ```console
      kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
      ```
 
-4. To reload the ConfigMap and enable Kubernetes Scheduler to restart CoreDNS without downtime, perform a rolling restart using [`kubectl rollout restart`][kubectl-rollout].
+1. To reload the ConfigMap and enable Kubernetes Scheduler to restart CoreDNS without downtime, perform a rolling restart using [`kubectl rollout restart`][kubectl-rollout].
 
      ```console
      kubectl -n kube-system rollout restart deployment coredns
@@ -90,9 +90,9 @@ You can customize CoreDNS with AKS to perform on-the-fly DNS name rewrites.
 
 ## Custom forward server
 
-If you need to specify a forward server for your network traffic, you can create a `ConfigMap` to customize DNS.
+If you need to specify a forward server for your network traffic, create a `ConfigMap` to customize DNS.
 
-1. Create a file named `customdns.yaml` and paste the following example configuration. Make sure to replace the `forward` name and the address with the values for your own environment.  The `bind 169.254.20.10` line is required and should not be changed. 
+1. Create a file named `customdns.yaml` and paste the following example configuration. Replace the `forward` name and the address with the values for your own environment. The `bind 169.254.20.10` line is required and shouldn't be changed. 
 
      ```yaml
      apiVersion: v1
@@ -108,13 +108,13 @@ If you need to specify a forward server for your network traffic, you can create
          }
      ```
 
-2. Create the `ConfigMap`.
+1. Create the `ConfigMap`.
 
      ```console
      kubectl apply -f customdns.yaml
      ```
 
-3. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
+1. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
 
      ```console
      kubectl rollout restart -n kube-system daemonset/node-local-dns
@@ -124,7 +124,7 @@ If you need to specify a forward server for your network traffic, you can create
 
 You might want to configure custom domains that can only be resolved internally. For example, you might want to resolve the custom domain `puglife.local`, which isn't a valid top-level domain. Without a custom domain `ConfigMap`, the Nexus Kubernetes cluster can't resolve the address.
 
-1. Create a new file named `customdns.yaml` and paste the following example configuration. Make sure to update the custom domain and IP address with the values for your own environment.  The `bind 169.254.20.10` line is required and should not be modified. 
+1. Create a new file named `customdns.yaml` and paste the following example configuration. Update the custom domain and IP address with the values for your own environment. The `bind 169.254.20.10` line is required and shouldn't be modified. 
 
      ```yaml
      apiVersion: v1
@@ -142,13 +142,13 @@ You might want to configure custom domains that can only be resolved internally.
          }
      ```
 
-2. Create the `ConfigMap`.
+1. Create the `ConfigMap`.
 
      ```console
      kubectl apply -f customdns.yaml
      ```
 
-3. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
+1. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
 
      ```console
      kubectl rollout restart -n kube-system daemonset/node-local-dns
@@ -156,9 +156,9 @@ You might want to configure custom domains that can only be resolved internally.
 
 ## Stub domains
 
-CoreDNS can also be used to configure stub domains.
+You can also use CoreDNS to configure stub domains.
 
-1. Create a file named `customdns.yaml` and paste the following example configuration. Make sure to update the custom domains and IP addresses with the values for your own environment.  The `bind 169.254.20.10` line is required and should not be modified. 
+1. Create a file named `customdns.yaml` and paste the following example configuration. Make sure to update the custom domains and IP addresses with the values for your own environment. The `bind 169.254.20.10` line is required and shouldn't be modified. 
 
      ```yaml
      apiVersion: v1
@@ -183,13 +183,13 @@ CoreDNS can also be used to configure stub domains.
 
      ```
 
-2. Create the `ConfigMap`.
+1. Create the `ConfigMap`.
 
      ```console
      kubectl apply -f customdns.yaml
      ```
 
-3. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
+1. Restart CoreDNS without downtime by performing a `Daemonset` rollout.
 
      ```console
      kubectl rollout restart -n kube-system daemonset/node-local-dns
@@ -197,7 +197,7 @@ CoreDNS can also be used to configure stub domains.
 
 ## Hosts plugin
 
-The hosts plugin is available to customize as well.
+You can also customize the hosts plugin.
 
 ```yaml
 apiVersion: v1
@@ -235,7 +235,7 @@ For general CoreDNS troubleshooting steps, such as checking the endpoints or res
            log
    ```
 
-2. Apply the configuration changes, and restart CoreDNS without downtime by performing a `Daemonset` rollout.:
+1. Apply the configuration changes, and restart CoreDNS without downtime by performing a `Daemonset` rollout.
 
      ```console
      # Apply configuration changes
@@ -245,7 +245,7 @@ For general CoreDNS troubleshooting steps, such as checking the endpoints or res
      kubectl rollout restart -n kube-system daemonset/node-local-dns
      ```
 
-3. View the CoreDNS debug logging using the `kubectl logs` command.
+1. View the CoreDNS debug logging by using the `kubectl logs` command.
 
    ```console
    kubectl logs --namespace kube-system -l k8s-app=node-local-dns

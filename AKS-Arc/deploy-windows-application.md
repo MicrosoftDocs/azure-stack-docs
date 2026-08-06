@@ -4,11 +4,12 @@ description: Learn how to deploy a Windows.NET application to your Kubernetes cl
 author: davidsmatlak
 ms.topic: tutorial
 ms.date: 07/03/2025
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to use a custom image to deploy a Windows.NET application. 
+# Intent: As an IT Pro, I want to use a custom image to deploy a Windows.NET application.
 # Keyword: Windows .NET application ASP.NET application
 
 ---
@@ -38,7 +39,7 @@ When you follow the procedures:
 
 A Kubernetes manifest file defines a desired state for the cluster, such as which container images to run. In these procedures, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
 
-The ASP.NET sample application is provided as part of the .NET Framework samples and runs in a Windows Server container. AKS Arc requires that Windows Server containers are based on images of Windows Server 2019.
+The ASP.NET sample application is provided as part of the .NET Framework samples and runs in a Windows Server container. AKS requires that Windows Server containers are based on images of Windows Server 2019.
 
 The Kubernetes manifest file must also define a node selector to tell your cluster to run your ASP.NET sample application's pod on a node that can run Windows Server containers.
 

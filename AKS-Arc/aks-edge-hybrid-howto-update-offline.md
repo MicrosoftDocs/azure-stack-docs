@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 11/30/2023
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Update your AKS Edge Essentials cluster (offline)

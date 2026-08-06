@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.date: 11/13/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 06/27/2024
+ms.custom: windows-server
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: configure cluster autoscaling
@@ -24,7 +25,7 @@ Cluster autoscaler profiles have the following attributes:
 
 - Autoscaler profiles apply to all node pools in a cluster.
 - Profiles are global deployment-level objects.
-- Multiple profiles are available in AKS Arc.
+- Multiple profiles are available in AKS.
 - Only one profile is assigned to a given cluster. The profile is used for all node pools in the cluster.
 - Changes to the profile are applied to all node pools that have the autoscaler function enabled.
 

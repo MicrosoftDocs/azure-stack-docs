@@ -7,13 +7,14 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/20/2026
+ms.custom: local
 ---
 
 # Simplify network configuration requirements with Azure Arc gateway
 
-If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity. Before using Arc gateway with AKS on Azure Local, ensure you complete the [prerequisites for creating AKS clusters on Azure Local](aks-hci-network-system-requirements.md).
+If you use enterprise proxies to manage outbound traffic, Azure Arc gateway can help simplify the process of enabling connectivity. Before using Arc gateway with AKS on Azure Local, ensure you complete the [prerequisites for creating AKS clusters on Azure Local](network-system-requirements.md).
 
-The AKS Arc gateway lets you:
+The AKS gateway lets you:
 
 - Connect to Azure Arc by opening public network access to only seven fully qualified domain names (FQDNs).
 - View and audit all traffic that the Arc agents send to Azure via the Arc gateway.
@@ -30,11 +31,11 @@ For the complete list of required URLs and endpoints that must be allowed throug
 
 ## Using Arc gateway with AKS clusters
 
-If Arc gateway is enabled in your environment, newly created AKS Arc clusters automatically utilize it to simplify network connectivity.
+If Arc gateway is enabled in your environment, newly created AKS clusters automatically utilize it to simplify network connectivity.
 
 ## Other scenarios
 
-Arc gateway covers endpoints required for AKS Arc clusters, and a portion of endpoints required for more Arc-enabled scenarios. Based on the scenarios you adopt, more endpoints must still be allowed in your proxy.
+Arc gateway covers endpoints required for AKS clusters, and a portion of endpoints required for more Arc-enabled scenarios. Based on the scenarios you adopt, more endpoints must still be allowed in your proxy.
 
 All endpoints listed for the following scenarios must be allowed in your enterprise proxy when Arc gateway is in use:
 

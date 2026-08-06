@@ -4,10 +4,10 @@ description: Learn about scale requirements for AKS on Azure Local.
 ms.topic: limits-and-quotas
 ms.date: 09/24/2025
 author: davidsmatlak
-ms.author: davidsmatlak 
-ms.reviewer: abha
+ms.author: davidsmatlak
+ms.reviewer: srikantsarwa
 ms.lastreviewed: 03/26/2024
-
+ms.custom: local
 ---
 
 # Scale requirements for AKS on Azure Local
@@ -58,11 +58,11 @@ If you operate at enterprise scale and have scenarios that require higher cluste
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS Arc control plane nodes     | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
-| AKS Arc Linux worker node       | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
-| AKS Arc Windows worker node     | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS control plane nodes     | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS Linux worker node       | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS Windows worker node     | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
-Starting with the Azure Local 2509 release, the default OS disk size for VMs used as AKS Arc nodes is set to 200 GB. These are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS Arc. 
+Starting with the Azure Local 2509 release, the default OS disk size for VMs used as AKS nodes is set to 200 GB. These are dynamically expanding virtual hard disks and you should [ensure sufficient physical disk space is available](/windows-server/virtualization/hyper-v/best-practices-analyzer/ensure-sufficient-physical-disk-space-is-available-when-virtual-machines-use-dynamically?source=recommendations) for the node pools that you create on AKS. 
 
 ## Supported values for control plane node sizes
 
@@ -91,5 +91,5 @@ For more worker node sizes with GPU support, see the next section.
 
 ## Next steps
 
-- [Review AKS on Azure Local prerequisites](aks-hci-network-system-requirements.md)
+- [Review AKS on Azure Local prerequisites](network-system-requirements.md)
 - [What's new in AKS on Azure Local](aks-whats-new-local.md)

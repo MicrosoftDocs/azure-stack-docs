@@ -2,7 +2,7 @@
 title: Deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters using Azure CLI
 description: Learn how to deploy the MetalLB extension for Azure Arc-enabled Kubernetes clusters on Azure Local.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, multi-rack
 ms.date: 04/24/2026
 ms.author: davidsmatlak
 author: sanjanamsft

@@ -5,6 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 02/26/2025
+ms.custom: local
 
 ---
 
@@ -14,7 +15,7 @@ This article describes how to identify and resolve [ControlPlaneConfigurationVal
 
 ## Symptoms
 
-When you try to create an AKS Arc cluster, you receive an error message that appears as follows:
+When you try to create an AKS cluster, you receive an error message that appears as follows:
 
 ```json
 admission webhook "vhybridakscluster.kb.io" denied the request: { 
@@ -46,8 +47,8 @@ To mitigate the issue, see [Generate and store SSH keys with the Azure CLI](/azu
 
 In Kubernetes, control plane nodes manage and orchestrate the cluster. They run key components such as API Server, etcd, scheduler, etc. Control plane nodes maintain cluster state, schedule workloads, and ensure high availability, often using multiple nodes for redundancy.
 
-To successfully create an AKS Arc cluster, you must specify at least one control plane node count. Also, to maintain etcd quorum, the control plane node count should be an odd number. For more information about supported count and VM SKU options, see [Scale requirements for AKS on Azure Local](scale-requirements.md#support-count-for-aks-on-azure-local).
+To successfully create an AKS cluster, you must specify at least one control plane node count. Also, to maintain etcd quorum, the control plane node count should be an odd number. For more information about supported count and VM SKU options, see [Scale requirements for AKS on Azure Local](scale-requirements.md#support-count-for-aks-on-azure-local).
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)
