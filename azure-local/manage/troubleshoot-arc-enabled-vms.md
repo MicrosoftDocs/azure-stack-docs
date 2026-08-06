@@ -254,6 +254,24 @@ If you use an ARM template that creates multiple VMs in one deployment:
     }
     ```
 
+
+## High estimated memory demand for the Arc resource bridge VM
+
+**Problem:**
+
+In Hyper-V Manager or Windows Admin Center, the Azure Arc resource bridge VM might show an **Estimated Memory Demand** value that is greater than its assigned memory. You might see similar readings for Linux VMs used by Azure Kubernetes Service (AKS) enabled by Azure Arc.
+
+**Cause:**
+
+The Arc resource bridge is a Linux VM that runs containerized workloads. Hyper-V Estimated Memory Demand is a conservative estimate based on memory allocation and page-fault behavior; it isn't a measure of the memory actively used inside the VM. Linux caches and container allocation patterns can therefore cause a high estimate even when the VM has no memory pressure. A high value by itself doesn't indicate excessive memory use, a memory leak, or a performance problem.
+
+**Resolution:**
+
+Don't resize the Arc resource bridge VM or change its memory settings based only on this value. Making these changes does not change the in-guest memory for the resource bridge VM. If the resource bridge and Azure Local VM management remain healthy, no action is required.
+
+If you experience sustained resource bridge or VM management failures, run the [Support Tool for Azure Local infrastructure component issues](remediate-support-tool-infrastructure?view=azloc-2607). If the issue persists, contact Microsoft Support. Support can review internal metrics to determine whether the VM is experiencing actual memory pressure.
+
+
 ---
 
 ## Related steps
