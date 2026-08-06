@@ -157,7 +157,7 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 Because the syslog forwarder emits standard RFC3164 messages with a CEF payload, you can integrate Azure Local with virtually any SIEM that supports syslog and CEF. This flexibility is especially important for disconnected deployments, where cloud-based services such as Microsoft Sentinel aren't available and a customer-managed, on-premises SIEM is required.
 
-The following SIEM solutions have partnered with Microsoft and documented their support for Azure Local, especially disconnected:
+The following SIEM solutions partnered with Microsoft and documented their support for Azure Local, especially disconnected:
 
 - [IBM QRadar](https://aka.ms/azlocal-siem-options-qradar)
 - [Splunk](https://aka.ms/azlocal-siem-options-splunk)
