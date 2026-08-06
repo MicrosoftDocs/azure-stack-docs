@@ -259,7 +259,7 @@ If you use an ARM template that creates multiple VMs in one deployment:
 
 **Problem:**
 
-In Hyper-V Manager or Windows Admin Center, the Azure Arc resource bridge VM might show an **Estimated Memory Demand** value that is greater than its assigned memory. You might see similar readings for Linux VMs used by Azure Kubernetes Service (AKS) enabled by Azure Arc.
+In Hyper-V Manager or Windows Admin Center, the Azure Arc resource bridge VM might show an **Estimated Memory Demand** value that's greater than its assigned memory. You might see similar readings for Linux VMs used by Azure Kubernetes Service (AKS) enabled by Azure Arc.
 
 **Cause:**
 
