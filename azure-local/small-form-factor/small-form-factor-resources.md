@@ -36,7 +36,7 @@ When using Static IP addressing, you must provide the netmask for your IP networ
 | -------------- | ------------------------------------------------------------------------------------------------------------------- |
 |IP Address      | The IP Address to be assigned to this host                                                                          |
 |Netmask         | The mask applied to the IP Address segment for this host in order to define the network size and broascast domain   |
-|Default Gateway | The IP Address of the host which is the gateway to external networks                                                |
+|Default Gateway | The IP Address of the host which is the gateway to external networks. This is usually a router address              |
 |DNS             | Domain Name Servers (up to 16) to be used to resolve hostnames to IP addresses for this host                        |
 
 <image>
