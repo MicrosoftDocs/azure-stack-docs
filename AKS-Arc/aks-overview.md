@@ -18,17 +18,17 @@ Azure Kubernetes Service (AKS) Hybrid and Edge on Azure Local is a managed Kuber
 
 ## About AKS on Azure Local
 
-AKS Arc on Azure Local uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Local directly from Azure. It lets you use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage Kubernetes clusters running on Azure Local. Because clusters connect to Arc automatically when they're created, you can use your Microsoft Entra ID to connect to your clusters from anywhere. This way, your developers and app operators can set up and manage Kubernetes clusters according to company policies.
+AKS on Azure Local uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Local directly from Azure. It lets you use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage Kubernetes clusters running on Azure Local. Because clusters connect to Arc automatically when they're created, you can use your Microsoft Entra ID to connect to your clusters from anywhere. This way, your developers and app operators can set up and manage Kubernetes clusters according to company policies.
 
 Microsoft focuses on delivering a consistent experience for all your AKS clusters. If you've created and managed Kubernetes clusters using Azure, you'll feel at home managing Kubernetes clusters running on Azure Local with Azure portal or Azure CLI.
 
 ## Simplified AKS component management on Azure Local
 
-AKS Arc on Azure Local includes several infrastructure components that give you Azure experiences, like Arc Resource Bridge, Custom Location, and the Kubernetes extension for the AKS Arc operator. These infrastructure components are now part of Azure Local:
+AKS on Azure Local includes several infrastructure components that give you Azure experiences, like Arc Resource Bridge, Custom Location, and the Kubernetes extension for the AKS operator. These infrastructure components are now part of Azure Local:
 
 - **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy Azure Local. This lightweight Kubernetes VM connects your Azure Local to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
 - **Custom Location**: Like Arc Resource Bridge, a custom location is created automatically when you deploy Azure Local. A custom location is the on-premises equivalent of an Azure region and extends the Azure location concept. Custom locations let tenant admins use their data center with the right extensions installed as target locations for deploying AKS.
-- **Kubernetes extension for AKS Arc operators**: The Kubernetes extension for AKS Arc operators is installed automatically on Arc Resource Bridge when you deploy Azure Local. It's the on-premises equivalent of an Azure Resource Manager resource provider and helps you manage AKS through Azure.
+- **Kubernetes extension for AKS operators**: The Kubernetes extension for AKS operators is installed automatically on Arc Resource Bridge when you deploy Azure Local. It's the on-premises equivalent of an Azure Resource Manager resource provider and helps you manage AKS through Azure.
 
 By integrating these components, Azure Arc gives you a unified and efficient way to provision and manage Kubernetes, bridging the gap between on-premises and cloud infrastructure.
 

@@ -1,6 +1,6 @@
 ---
-title: Deploy and configure Workload Identity on an AKS enabled by Azure Arc cluster (preview)
-description: Learn how to deploy and configure an AKS Arc cluster with workload identity.
+title: Deploy and configure Workload Identity on an AKS Hybrid and Edge cluster (preview)
+description: Learn how to deploy and configure an AKS cluster with workload identity.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
@@ -10,15 +10,15 @@ ms.custom: local
 
 ---
 
-# Deploy and configure Workload Identity on an AKS enabled by Azure Arc cluster (preview)
+# Deploy and configure Workload Identity on an AKS Hybrid and Edge cluster (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Workload identity federation allows you to configure a user-assigned managed identity or app registration in Microsoft Entra ID to trust tokens from an external identity provider (IdP), such as Kubernetes, enabling access to resources protected by Microsoft Entra, like Azure Key Vault or Azure Blob storage.
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that lets you easily deploy workload identity enabled Kubernetes clusters. This article describes how to perform the following tasks:
+Azure Kubernetes Service (AKS) Hybrid and Edge is a managed Kubernetes service that lets you easily deploy workload identity enabled Kubernetes clusters. This article describes how to perform the following tasks:
 
-- Create an AKS Arc cluster with workload identity enabled (preview).
+- Create an AKS cluster with workload identity enabled (preview).
 - Create a Kubernetes service account and bind it to the Azure Managed Identity.
 - Create a federated credential on the managed identity to trust the OIDC issuer.
 - Deploy your application.
@@ -27,10 +27,10 @@ Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes serv
 For a conceptual overview of Workload identity federation, see [Workload identity federation in Azure Arc-enabled Kubernetes (preview)](/azure/azure-arc/kubernetes/conceptual-workload-identity).
 
 > [!IMPORTANT]
-> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, enabled by Azure Arc previews are partially covered by customer support on a best-effort basis.
+> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Kubernetes Service, Hybrid and Edge previews are partially covered by customer support on a best-effort basis.
 
 > [!NOTE]
-> In public preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward isn't currently supported.
+> In preview, AKS on Azure Local supports enabling workload identity during AKS cluster creation. However, enabling workload identity after cluster creation or disabling it afterward isn't currently supported.
 
 ## Prerequisites
 
@@ -95,9 +95,9 @@ The following example output shows the successful creation of a resource group:
 }
 ```
 
-## Step 1: Create an AKS Arc cluster with workload identity enabled
+## Step 1: Create an AKS cluster with workload identity enabled
 
-To create an AKS Arc cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
+To create an AKS cluster, you need both the `$customlocation_ID` and `$logicnet_Id` values.
 
 - `$customlocation_ID`: The Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Local cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. You can also get the Resource Manager ID by running `$customlocation_ID = $(az customlocation show --name "<your-custom-location-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a custom location name and resource group name.
 - `$logicnet_Id`: The Azure Resource Manager ID of the Azure Local logical network created [following these steps](/azure/aks/hybrid/aks-networks?tabs=azurecli). Your infrastructure admin should give you the Resource Manager ID of the logical network. You can also get the Resource Manager ID by running `$logicnet_Id = $(az stack-hci-vm network lnet show --name "<your-lnet-name>" --resource-group $resource_group_name --query "id" -o tsv)`, if the infrastructure admin provides a logical network name and resource group name.
@@ -142,7 +142,7 @@ az connectedk8s show -n $aks_cluster_name -g $resource_group_name
 In the Azure portal, you can view the **wiextension** extension under the **Properties** section of your Kubernetes cluster.
 
 > [!IMPORTANT]
-> As part of the security enhancement for AKS Arc clusters, workload identity enablement triggers two changes. First, the Kubernetes service account signing key automatically rotates every 45 days. Second, the `--service-account-extend-token-expiration` flag is disabled, reducing token validity from one year to a maximum of 24 hours.
+> As part of the security enhancement for AKS clusters, workload identity enablement triggers two changes. First, the Kubernetes service account signing key automatically rotates every 45 days. Second, the `--service-account-extend-token-expiration` flag is disabled, reducing token validity from one year to a maximum of 24 hours.
 
 ### Save the OIDC issuer URL to an environment variable
 
@@ -335,22 +335,22 @@ The following example shows how to use the Azure role-based access control (Azur
    $yaml | kubectl --kubeconfig <path-to-aks-cluster-kubeconfig> apply -f -
    ```
 
-## Delete AKS Arc cluster
+## Delete AKS cluster
 
-To delete the AKS Arc cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command:
+To delete the AKS cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command:
 
 ```azurecli
 az aksarc delete -n $aks_cluster_name -g $resource_group_name
 ```
 
 > [!NOTE]
-> When you delete an AKS Arc cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
+> When you delete an AKS cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
 >
-> PDB is installed by default in workload identity-enabled AKS Arc clusters. To delete a workload identity enabled AKS Arc cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
+> PDB is installed by default in workload identity-enabled AKS clusters. To delete a workload identity enabled AKS cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
 
 ## Next steps
 
 In this article, you deployed a Kubernetes cluster and configured it to use a workload identity in preparation for application workloads to
 authenticate with that credential. Now you're ready to deploy your application and configure it to use the workload identity with the latest version of the [Azure Identity client library](/azure/active-directory/develop/reference-v2-libraries).
 
-You can also help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+You can also help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

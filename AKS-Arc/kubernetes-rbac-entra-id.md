@@ -20,18 +20,18 @@ ms.date: 05/29/2024
 
 Azure Kubernetes Service (AKS) can be configured to use Microsoft Entra ID for user authentication. In this configuration, you sign in to a Kubernetes cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 
-This article describes how to control access using Kubernetes RBAC in a Kubernetes cluster based on Microsoft Entra group membership in AKS Arc. You create a demo group and users in Microsoft Entra ID. Then, you create roles and role bindings in the cluster to grant the appropriate permissions to create and view resources.
+This article describes how to control access using Kubernetes RBAC in a Kubernetes cluster based on Microsoft Entra group membership in AKS. You create a demo group and users in Microsoft Entra ID. Then, you create roles and role bindings in the cluster to grant the appropriate permissions to create and view resources.
 
 ## Prerequisites
 
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you need the following prerequisites:
 
-- **A Kubernetes cluster created in AKS Arc**. If you need to set up your cluster, see the instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
+- **A Kubernetes cluster created in AKS**. If you need to set up your cluster, see the instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
 - **Azure Arc connection**. You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Windows Server cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
 - You need access to the following command-line tools:
   - **Azure CLI and the connectedk8s extension**. Azure CLI is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster. For installation instructions, see [How to install Azure CLI](/cli/azure/install-azure-cli).
   - **Kubectl**. This Kubernetes command-line tool enables you to run commands targeting your Kubernetes clusters. To check whether you installed kubectl, open a command prompt and type: `kubectl version --client`. Make sure your kubectl client version is at least version v1.24.0. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
-  - **PowerShell and the AksHci PowerShell module**. PowerShell is a cross-platform task automation solution comprised of a command-line shell, a scripting language, and a configuration management framework. If you installed AKS Arc, you have access to the **AksHci** PowerShell module.
+  - **PowerShell and the AksHci PowerShell module**. PowerShell is a cross-platform task automation solution comprised of a command-line shell, a scripting language, and a configuration management framework. If you installed AKS, you have access to the **AksHci** PowerShell module.
   - To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in the **Azure Arc-enabled Kubernetes Cluster User** role permission. Meanwhile, you need to verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
 
 
@@ -235,5 +235,5 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-- [Learn more about security in AKS Arc on Windows Server](concepts-security.md)
-- To help protect your cluster, see the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- [Learn more about security in AKS on Windows Server](concepts-security.md)
+- To help protect your cluster, see the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

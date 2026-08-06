@@ -1,11 +1,11 @@
 ---
-title: Azure Stack Hub managed disks differences and considerations 
+title: Azure Stack Hub managed disks differences and considerations
 description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 01/24/2025
+ms.date: 07/08/2026
 ms.author: sethm
 ms.lastreviewed: 11/22/2020
 
@@ -45,8 +45,8 @@ Managed disks simplify disk management for IaaS virtual machines (VMs) by managi
 
 There are also differences with storage metrics:
 
-- With Azure Stack Hub, the transaction data in storage metrics does not differentiate internal or external network bandwidth.
-- Azure Stack Hub transaction data in storage metrics does not include virtual machine access to the mounted disks.
+- With Azure Stack Hub, the transaction data in storage metrics doesn't differentiate internal or external network bandwidth.
+- Azure Stack Hub transaction data in storage metrics doesn't include virtual machine access to the mounted disks.
 
 ## API versions
 
@@ -73,9 +73,9 @@ Azure Stack Hub managed disks support the following API versions:
 ## Convert to managed disks
 
 > [!NOTE]  
-> The Azure PowerShell cmdlet `ConvertTo-AzVMManagedDisk` cannot be used to convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub does not currently support this cmdlet.
+> The Azure PowerShell cmdlet `ConvertTo-AzVMManagedDisk` can't convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub doesn't currently support this cmdlet.
 
-You can use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values.
+Use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values.
 
 ```powershell
 $SubscriptionId = "SubId"
@@ -141,7 +141,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Location $Lo
 
 ## Managed images
 
-Azure Stack Hub supports *managed images*, which enable you to create a managed image object on a generalized VM (both unmanaged and managed) that can only create managed disk VMs going forward. Managed images enable the following two scenarios:
+Azure Stack Hub supports *managed images*, which you use to create a managed image object on a generalized VM (both unmanaged and managed) that can only create managed disk VMs going forward. Managed images enable the following two scenarios:
 
 - You have generalized unmanaged VMs and want to use managed disks going forward.
 - You have a generalized managed VM and want to create multiple, similar managed VMs.
@@ -151,7 +151,7 @@ Azure Stack Hub supports *managed images*, which enable you to create a managed 
 For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) section. For Linux, follow step 1 [here](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
 
 > [!NOTE]
-> Make sure to generalize your VM. Creating a VM from an image that hasn't been properly generalized can produce a **VMProvisioningTimeout** error.
+> Make sure to generalize your VM. Creating a VM from an image that isn't properly generalized can produce a **VMProvisioningTimeout** error.
 
 ### Step 2: Create the managed image
 
@@ -161,17 +161,17 @@ You can use the portal, PowerShell, or Azure CLI to create the managed image. Fo
 
 #### Case 1: Migrate unmanaged VMs to managed disks
 
-Make sure to generalize your VM correctly before doing this step. After generalization, you can no longer use this VM. Creating a VM from an image that hasn't been properly generalized produces a **VMProvisioningTimeout** error.
+Make sure you generalize your VM correctly before this step. After you generalize the VM, you can't use it. If you create a VM from an image that isn't properly generalized, you get a **VMProvisioningTimeout** error.
 
-Follow the instructions in [Create an image from a VM that uses a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vm-that-uses-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image in the future to create managed VMs.
+To create a managed image from a generalized VHD in a storage account, see [Create an image from a VM that uses a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vm-that-uses-a-storage-account). You can use this image in the future to create managed VMs.
 
 #### Case 2: Create managed VM from managed image using PowerShell
 
-After you create an image from an existing managed disk VM using the script in [Create an image from a managed disk using PowerShell](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), use the following example script to create a similar Linux VM from an existing image object.
+After you create an image from an existing managed disk VM by using the script in [Create an image from a managed disk using PowerShell](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), use the following example script to create a similar Linux VM from an existing image object.
 
-Azure Stack Hub PowerShell module 1.7.0 or later: Follow the instructions in [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
+- **Azure Stack Hub PowerShell module 1.7.0 or later**: Follow the instructions in [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
-Azure Stack Hub PowerShell module 1.6.0 or earlier:
+- **Azure Stack Hub PowerShell module 1.6.0 or earlier**:
 
 ```powershell
 # Variables for common values
@@ -228,12 +228,12 @@ You can also use the portal to create a VM from a managed image. For more inform
 
 ## Configuration
 
-After applying the 1808 update or later, you must make the following configuration change before using managed disks:
+After you apply the 1808 update or later, make the following configuration change before using managed disks:
 
-- If a subscription was created before the 1808 update, follow below steps to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
-   1. In the Azure Stack Hub user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
+- If you created the subscription before the 1808 update, follow the steps in the following section to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
+   1. In the Azure Stack Hub user portal, go to **Subscriptions** and find the subscription. Select **Resource Providers**, and then select **Microsoft.Compute**. Select **Re-register**.
    1. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack Hub - Managed Disk** is listed.
-- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [Configure multi-tenancy in Azure Stack Hub](../operator/enable-multitenancy.md#configure-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
+- If you use a multitenant environment, ask your cloud operator (who might be in your own organization, or from the service provider) to reconfigure each of your guest directories by following the steps in [Configure multi-tenancy in Azure Stack Hub](../operator/enable-multitenancy.md#configure-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
 
 ## Next steps
 

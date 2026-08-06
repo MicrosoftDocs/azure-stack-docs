@@ -1,9 +1,9 @@
 ---
-title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub 
-description: Learn how to collect logs and troubleshoot your AKS cluster on Azure Stack Hub.
+title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub
+description: Learn how to troubleshoot AKS clusters on Azure Stack Hub. Collect diagnostic logs, use scripts, and resolve common Kubernetes issues with our step-by-step guide.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
@@ -12,15 +12,13 @@ ms.lastreviewed: 10/26/2021
 # Keyword: Kubernetes AKS difference
 ---
 
-# Troubleshoot the Azure Kubernetes Service on Azure Stack Hub
+# Troubleshoot Azure Kubernetes Service on Azure Stack Hub
 
-## Overview of troubleshooting
-
-Troubleshooting Azure Kubernetes Service (AKS) clusters in most respects are no different than troubleshooting most Kubernetes clusters. You can find information on the Kubernetes site, [Troubleshooting](https://kubernetes.io/docs/tasks/debug/debug-cluster/). Another resource you may find useful in Azure Stack Hub is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
+Troubleshooting Azure Kubernetes Service (AKS) clusters isn't much different from troubleshooting most Kubernetes clusters. For more information, see the Kubernetes site, [Troubleshooting](https://kubernetes.io/docs/tasks/debug/debug-cluster/). Another useful resource in Azure Stack Hub is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
 
 ![Diagnostic Settings to collect Kubernetes logs](media/aks-troubleshoot/diagnostic-settings.png)
 
-From this blade, you can collect information on:
+From this page, you can collect information on:
 
 * kube-apiserver
 * kube-audit
@@ -31,49 +29,49 @@ From this blade, you can collect information on:
 
 ## Collect logs from cluster nodes
 
-In order to troubleshoot some AKS cluster issues, you may need to collect logs directly from the cluster nodes. You can use the script in the GitHub repository **[msazurestackworkloads/azurestack-gallery](https://github.com/msazurestackworkloads/azurestack-gallery)** to collect logs from cluster nodes. Without these scripts, you would need to connect to each node in the cluster, locate, and download the logs manually.
+To troubleshoot some AKS cluster problems, you might need to collect logs directly from the cluster nodes. Use the script in the GitHub repository **[msazurestackworkloads/azurestack-gallery](https://github.com/msazurestackworkloads/azurestack-gallery)** to collect logs from cluster nodes. Without these scripts, you'd need to connect to each node in the cluster, locate, and download the logs manually.
 
-The scripts aim to simplify the collection of relevant logs from your Kubernetes cluster. The script will automatically create a snapshot of the cluster, and connect to each node to collect logs. In addition, the script can, optionally, upload the collected logs to a storage account.
+The scripts simplify the collection of relevant logs from your Kubernetes cluster. The script automatically creates a snapshot of the cluster, and connects to each node to collect logs. In addition, the script can, optionally, upload the collected logs to a storage account.
 
 This tool is designed for the Microsoft support team to collect comprehensive cluster logs.
 
 ### Script requirements
 
-- Make sure the Network Security Group (NSG) for control plane nodes has exposed SSH port 22.
-- A machine that has access to your Kubernetes cluster, or the same machine you used to deploy your cluster. For Windows machine, install [Git Bash](https://gitforwindows.org/) in order to run bash scripts.
-- Azure CLI installed on the machine where the script will be run. Make sure that you can log in to your Azure Stack environment using `Azure CLI` from the machine. You can find instructions at [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2) on how to learn to install and configure Azure CLI to manage your Azure Stack cloud.
-- Switch to the subscription where the Kubernetes cluster is deployed, by using `az account set --subscription <Subscription ID>`.
-- Download the latest [release](https://github.com/msazurestackworkloads/azurestack-gallery/releases) of the script into your machine and extract the scripts.
+- Make sure the Network Security Group (NSG) for control plane nodes exposes SSH port 22.
+- A machine that has access to your Kubernetes cluster, or the same machine you used to deploy your cluster. For Windows machine, install [Git Bash](https://gitforwindows.org/) to run bash scripts.
+- Azure CLI installed on the machine where you run the script. Make sure that you can log in to your Azure Stack environment by using `Azure CLI` from the machine. For instructions, see [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+- Switch to the subscription where you deployed the Kubernetes cluster by using `az account set --subscription <Subscription ID>`.
+- Download the latest [release](https://github.com/msazurestackworkloads/azurestack-gallery/releases) of the script to your machine and extract the scripts.
 
 ### Logs
 
-The script automates the process of gathering the following logs:
+The script automates gathering the following logs:
 
-- Log files in directory `/var/log/azure/`
-- Log files in directory `/var/log/kubeaudit` (kube audit logs)
-- Log file `/var/log/waagent.log` (waagent)
-- Log file `/var/log/azure/deploy-script-dvm.log` (if deployed using Azure Stack's Kubernetes Cluster marketplace item)
-- Static manifests in directory `/etc/kubernetes/manifests`
-- Static addons in directory `/etc/kubernetes/addons`
-- Waagent logs
-- kube-system containers metadata and logs
-- kubelet status and journal
-- etcd status and journal
-- docker status and journal
-- containerd status and journal
-- kube-system snapshot
-- Azure CNI config files
-- kubelet config files
+- Log files in the `/var/log/azure/` directory.
+- Log files in the `/var/log/kubeaudit` directory (kube audit logs).
+- Log file `/var/log/waagent.log` (waagent).
+- Log file `/var/log/azure/deploy-script-dvm.log` (if deployed by using Azure Stack's Kubernetes Cluster marketplace item).
+- Static manifests in the `/etc/kubernetes/manifests` directory.
+- Static addons in the `/etc/kubernetes/addons` directory.
+- Waagent logs.
+- kube-system containers metadata and logs.
+- kubelet status and journal.
+- etcd status and journal.
+- docker status and journal.
+- containerd status and journal.
+- kube-system snapshot.
+- Azure CNI config files.
+- kubelet config files.
 
-Some more logs are retrieved for Windows nodes:
+The script retrieves some more logs for Windows nodes:
 
- - Log file `c:\Azure\CustomDataSetupScript.log`
- - kube-proxy status and journal
- - containerd status and journal
- - azure-vnet log and azure-vnet-telemetry log
- - ETW events for docker
- - ETW events for Hyper-V
- - Azure CNI config files
+ - Log file `c:\Azure\CustomDataSetupScript.log`.
+ - kube-proxy status and journal.
+ - containerd status and journal.
+ - azure-vnet log and azure-vnet-telemetry log.
+ - ETW events for docker.
+ - ETW events for Hyper-V.
+ - Azure CNI config files.
 
 ### Parameters
 
