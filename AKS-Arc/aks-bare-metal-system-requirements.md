@@ -17,13 +17,22 @@ This article describes the hardware, network, and Azure requirements for deployi
 
 ## Hardware requirements
 
-Use one of the [supported devices for small form factor deployments of Azure Local.](/azure/azure-local/small-form-factor/small-form-factor-overview#supported-devices)
+We require the use of the following certified devices for small form factor deployments of Azure Local.
 
+
+- [ASUS NUC 14 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-14-pro/)
+- [ASUS NUC 15 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-15-pro/)
+- [Lenovo ThinkEdge SE30](https://www.lenovo.com/us/en/p/desktops/thinkedge/thinkedge-se30/len102c0004)
+- [Lenovo ThinkEdge SE100](https://www.lenovo.com/us/en/p/servers-storage/servers/edge/thinkedge-se100/len21te0020)
+- [OnLogic HX521](https://www.onlogic.com/store/hx521-azurelocal/)
+- [OnLogic K521](https://www.onlogic.com/store/k521-azurelocal/)
+
+[Azure small form factor documentation](/azure/azure-local/small-form-factor/small-form-factor-overview).
 ## Network requirements
 
 ### Outbound internet connectivity
 
-The bare metal host requires outbound internet access to the following endpoints:
+The bare metal host requires outbound internet access to the following endpoints. Please ensure the device is conencted to the network and upstream device firewalls do not block these endpoints. For now we require a physical connection, but do plan on enabling WIFI connectivity in a future release.
 
 | Endpoint | Purpose |
 |----------|---------|
