@@ -269,7 +269,7 @@ The Arc resource bridge is a Linux VM that runs containerized workloads. Hyper-V
 
 Don't resize the Arc resource bridge VM or change its memory settings based only on this value. Making these changes doesn't change the in-guest memory for the resource bridge VM. If the resource bridge and Azure Local VM management remain healthy, no action is required.
 
-If you experience sustained resource bridge or VM management failures, run the [Support Tool for Azure Local infrastructure component issues](remediate-support-tool-infrastructure?view=azloc-2607). If the issue persists, contact Microsoft Support. Support can review internal metrics to determine whether the VM is experiencing actual memory pressure.
+If you experience sustained resource bridge or VM management failures, run the [Support Tool for Azure Local infrastructure component issues](remediate-support-tool-infrastructure). If the issue persists, contact Microsoft Support. Support can review internal metrics to determine whether the VM is experiencing actual memory pressure.
 
 
 ---
