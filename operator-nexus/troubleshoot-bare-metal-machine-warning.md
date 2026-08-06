@@ -32,6 +32,7 @@ The Detailed status message of the Bare Metal Machine (Operator Nexus) resource 
 | `Warning: Health monitoring agent is not responding`                  | [`Warning: Health monitoring agent is not responding`](#warning-node-problem-detector-heartbeat-failures-detected)                           |
 | `Warning: This machine has failed hardware validation`                | [`Warning: This machine has failed hardware validation`](#warning-this-machine-has-failed-hardware-validation)                               |
 | `Warning: BMM Node is unhealthy and may require hardware replacement` | [`Warning: BMM Node is unhealthy and may require hardware replacement`](#warning-bmm-node-is-unhealthy-and-may-require-hardware-replacement) |
+| `Warning: BMM has been deprovisioning for longer than expected`       | [`Warning: BMM has been deprovisioning for longer than expected`](#warning-bmm-has-been-deprovisioning-for-longer-than-expected)             |
 
 ## Troubleshooting
 
@@ -194,6 +195,37 @@ For more information about logging into the BMC, see [Troubleshoot Hardware Vali
       "status": "False",
       "type": "BmmInExpectedPowerState"
     },
+],
+```
+## `Warning: BMM has been deprovisioning for longer than expected`
+
+This message indicates that a BMM deprovisioning operation hasn't made progress within the expected 45-minute interval. The warning is reported in either of these situations:
+
+- The underlying `BareMetalHost` has remained in the `deprovisioning` state for more than 45 minutes.
+- The associated Cluster API `Machine` has been deleting for more than 45 minutes, but the `BareMetalHost` hasn't entered the `deprovisioning` state.
+
+To troubleshoot this issue:
+
+- Review the `BmmDeprovisioningHealthy` condition on the Kubernetes `bmm` object, as described in the [Troubleshooting](#troubleshooting) section. Its `message` identifies which of the preceding situations triggered the warning.
+- Check the status of the BMM lifecycle action that initiated deprovisioning, such as Reimage or Replace, and note the step where progress stopped.
+- If the `BareMetalHost` is in `deprovisioning`, check for PXE connectivity, BMC communication, Ironic cleaning, or disk-wipe failures. Also investigate any other warning conditions reported for the BMM.
+- If deprovisioning hasn't started, check whether the Cluster API `Machine`, `Metal3Machine`, or `BareMetalHost` is paused or blocked from deletion.
+- Don't start another lifecycle action while the existing action or machine deletion is still in progress. If the underlying issue can't be resolved or the warning persists, collect the BMM conditions and lifecycle action details and contact Microsoft support.
+
+The warning clears automatically after deprovisioning progresses or the blocked machine deletion is resolved.
+
+**Example `conditions` output for deprovisioning taking longer than expected**
+
+```json
+"conditions": [
+  {
+    "lastTransitionTime": "2026-07-21T12:58:02Z",
+    "message": "Machine has deleteTimestamp but deprovisioning not started for 46m10.852189903s, which exceeds the threshold of 45m0s.",
+    "reason": "BmmDeprovisioningStuck",
+    "severity": "Error",
+    "status": "False",
+    "type": "BmmDeprovisioningHealthy"
+  }
 ],
 ```
 
