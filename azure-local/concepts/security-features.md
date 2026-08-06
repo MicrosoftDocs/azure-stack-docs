@@ -159,7 +159,7 @@ Because the syslog forwarder emits standard RFC3164 messages with a CEF payload,
 
 The following SIEM solutions partnered with Microsoft and documented their support for Azure Local, especially disconnected:
 
-- [IBM QRadar](https://www.ibm.com/docs/en/dsm?topic=microsoft-azure-local-azure-local-disconnectedr)
+- [IBM QRadar](https://www.ibm.com/docs/en/dsm?topic=microsoft-azure-local-azure-local-disconnected)
 - [Splunk](https://lantern.splunk.com/Platform_Data_Management/Unlock_Insights/Following_best_practices_for_ingesting_data_from_your_Azure_environment)
 
 ## Microsoft Defender Antivirus
