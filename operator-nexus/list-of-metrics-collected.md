@@ -35,6 +35,9 @@ This section provides the list of metrics collected from the different component
     - [***storage***](#storage)
     - [***telegraf***](#telegraf)
     - [***Platform Cluster***](#platform-cluster)
+    - [***Saturation Metrics***](#saturation-metrics)
+    - [***Availability Metrics***](#availability-metrics)
+    - [***Traffic Metrics***](#traffic-metrics)
   - [Baremetal servers](#baremetal-servers)
     - [***node metrics***](#node-metrics)
   - [Storage Appliances](#storage-appliances)
@@ -90,7 +93,6 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 |ContainerMemoryFailcnt|Container|Container Memory Fail Count|Count|Number of times a container's memory usage limit is hit. In the absence of data, this metric defaults to 0|Container, Host, Namespace, Pod|
 |ContainerMemoryUsageBytes|Container|Container Memory Usage Bytes|Bytes|Current memory usage, including all memory regardless of when it was accessed. In the absence of data, this metric defaults to 0|Container, Host, Namespace, Pod|
 |ContainerScrapeError|Container|Container Scrape Error|Unspecified|Indicates whether there was an error while getting container metrics. In the absence of data, this metric retains the most recent value emitted|Host|
-|ContainerTasksState|Container|Container Tasks State|Count|Number of tasks or processes in a given state (sleeping, running, stopped, uninterruptible, or waiting) in a container. In the absence of data, this metric retains the most recent value emitted|Container, Host, Namespace, Pod, State|
 
 ### ***Kubernetes Controllers***
 
@@ -156,10 +158,14 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 
 | Metric      | Category | Display Name  | Unit | Description | Dimensions   |
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
-|KubeletRunningContainers|Kubelet|Kubelet Running Containers|Count|Number of containers currently running. In the absence of data, this metric retains the most recent value emitted|Container State, Host|
-|KubeletRunningPods|Kubelet|Kubelet Running Pods|Count|Number of pods running on the node. In the absence of data, this metric retains the most recent value emitted|Host|
-|KubeletRuntimeOperationsErrorsTotal|Kubelet|Kubelet Runtime Operations Errors Total|Count|Cumulative number of runtime operation errors by operation type. In the absence of data, this metric retains the most recent value emitted|Host, Operation Type|
-|KubeletStartedPodsErrorsTotal|Kubelet|Kubelet Started Pods Errors Total|Count|Cumulative number of errors when starting pods. In the absence of data, this metric retains the most recent value emitted|Host|
+|KubeletRunningContainers|Kubelet|Kubelet Running Containers (Deprecated)|Count|Number of containers currently running. In the absence of data, this metric retains the most recent value emitted|Container State, Host|
+|KubeletRunningContainers2|Kubelet|Kubelet Running Containers|Count|Number of containers currently running. In the absence of data, this metric retains the most recent value emitted|Container State, Host|
+|KubeletRunningPods|Kubelet|Kubelet Running Pods (Deprecated)|Count|Number of pods running on the node. In the absence of data, this metric retains the most recent value emitted|Host|
+|KubeletRunningPods2|Kubelet|Kubelet Running Pods|Count|Number of pods running on the node. In the absence of data, this metric retains the most recent value emitted|Host|
+|KubeletRuntimeOperationsErrorsTotal|Kubelet|Kubelet Runtime Operations Errors Total (Deprecated)|Count|Cumulative number of runtime operation errors by operation type. In the absence of data, this metric retains the most recent value emitted|Host, Operation Type|
+|KubeletRuntimeOperationsErrorsTotal2|Kubelet|Kubelet Runtime Operations Errors Total|Count|Cumulative number of runtime operation errors by operation type. In the absence of data, this metric retains the most recent value emitted|Host, Operation Type|
+|KubeletStartedPodsErrorsTotal|Kubelet|Kubelet Started Pods Errors Total (Deprecated)|Count|Cumulative number of errors when starting pods. In the absence of data, this metric retains the most recent value emitted|Host|
+|KubeletStartedPodsErrorsTotal2|Kubelet|Kubelet Started Pods Errors Total|Count|Cumulative number of errors when starting pods. In the absence of data, this metric retains the most recent value emitted|Host|
 
 ### ***Kubernetes Node***
 
@@ -209,13 +215,12 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 | Metric      | Category | Display Name  | Unit | Description | Dimensions   |
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
 |KubevirtInfo|VMOrchestrator|Kubevirt Info|Unspecified|Kubevirt version information. In the absence of data, this metric retains the most recent value emitted|Kube Version|
-|KubevirtVirtControllerLeadingiStatus|VMOrchestrator|Kubevirt Virt Controller Leading|Unspecified|Indication of whether the virt-controller is leading. The value is 1 if the virt-controller is leading, 0 otherwise. In the absence of data, this metric defaults to 0|Pod Name|
+|KubevirtVirtControllerLeadingStatus|VMOrchestrator|Kubevirt Virt Controller Leading|Unspecified|Indication of whether the virt-controller is leading. The value is 1 if the virt-controller is leading, 0 otherwise. In the absence of data, this metric defaults to 0|Pod Name|
 |KubevirtVirtControllerReadyStatus|VMOrchestrator|Kubevirt Virt Controller Ready|Unspecified|Indication for a virt-controller that is ready to take the lead. The value is 1 if the virt-controller is ready, 0 otherwise. In the absence of data, this metric defaults to 0|Pod Name|
 |KubevirtVirtOperatorReadyStatus|VMOrchestrator|Kubevirt Virt Operator Ready|Unspecified|Indication for a virt operator being ready. The value is 1 if the virt operator is ready, 0 otherwise. In the absence of data, this metric defaults to 0|Pod Name|
 |KubevirtVmiMemoryActualBalloonBytes|VMOrchestrator|Kubevirt VMI Memory Balloon Bytes|Bytes|Current balloon size. In the absence of data, this metric defaults to 0|Name, Node|
 |KubevirtVmiMemoryAvailableBytes|VMOrchestrator|Kubevirt VMI Memory Available Bytes|Bytes|Amount of usable memory as seen by the domain. This value may not be accurate if a balloon driver is in use or if the guest OS doesn't initialize all assigned pages. In the absence of data, this metric defaults to 0|Name, Node|
 |KubevirtVmiMemorySwapInTrafficBytes|VMOrchestrator|Kubevirt VMI Mem Swp In Traffic Bytes|Bytes|The total amount of data read from swap space of the guest. In the absence of data, this metric retains the most recent value emitted|Name, Node|
-|KubevirtVmiMemoryDomainBytes|VMOrchestrator|Kubevirt VMI Mem Dom Bytes (Preview)|Bytes|The amount of memory allocated to the domain. The memory value in the domain XML file. In the absence of data, this metric retains the most recent value emitted|Node|
 |KubevirtVmiMemoryDomainBytes|VMOrchestrator|Kubevirt VMI Mem Dom Bytes|Bytes|The amount of memory allocated to the domain. The memory value in the domain XML file. In the absence of data, this metric retains the most recent value emitted|Node|
 |KubevirtVmiMemorySwapOutTrafficBytes|VMOrchestrator|Kubevirt VMI Mem Swp Out Traffic Bytes|Bytes|The total amount of memory written out to swap space of the guest. In the absence of data, this metric retains the most recent value emitted|Name, Node|
 |KubevirtVmiMemoryUnusedBytes|VMOrchestrator|Kubevirt VMI Memory Unused Bytes|Bytes|The amount of memory left unused by the system. Memory that is available but used for reclaimable caches should NOT be reported as free. In the absence of data, this metric defaults to 0|Name, Node|
@@ -223,8 +228,8 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 |KubevirtVmiNumberOfOutdatedInstances|VMOrchestrator|Kubevirt VMI Outdated Count|Count|Indication for the total number of VirtualMachineInstance (VMI) workloads that aren't running within the most up-to-date version of the virt-launcher environment. In the absence of data, this metric defaults to 0||
 |KubevirtVmiStorageIopsReadTotal|VMOrchestrator|Kubevirt VMI Storage IOPS Read Total|Count|Total number of Input/Output (I/O) read operations. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
 |KubevirtVmiStorageIopsWriteTotal|VMOrchestrator|Kubevirt VMI Storage IOPS Write Total|Count|Total number of Input/Output (I/O) write operations. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
-|KubevirtVmiStorageReadTimesSecondsTotal|VMOrchestrator|Kubevirt VMI Storage Read Times Total (Preview)|Seconds|Total time spent on read operations from storage. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
-|KubevirtVmiStorageWriteTimesSecondsTotal|VMOrchestrator|Kubevirt VMI Storage Write Times Total (Preview)|Seconds|Total time spent on write operations to storage. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
+|KubevirtVmiStorageReadTimesSecondsTotal|VMOrchestrator|Kubevirt VMI Storage Read Times Total|Seconds|Total time spent on read operations from storage. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
+|KubevirtVmiStorageWriteTimesSecondsTotal|VMOrchestrator|Kubevirt VMI Storage Write Times Total|Seconds|Total time spent on write operations to storage. In the absence of data, this metric retains the most recent value emitted|Drive, Name, Node|
 |NcVmiCpuAffinity|Network Cloud|CPU Pinning Map (Preview)|Count|Pinning map of virtual CPUs (vCPUs) to CPUs. In the absence of data, this metric retains the most recent value emitted|CPU, NUMA Node, VMI Namespace, VMI Node, VMI Name|
 
 ### ***storage***
@@ -250,8 +255,41 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 
 | Metric      | Category | Display Name  | Unit | Description | Dimensions   |
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
-|NexusClusterHeartbeatConnectionStatus|Nexus Cluster|Cluster Heartbeat Connection Status|Count|Indicates whether the Cluster is having issues communicating with the Cluster Manager. The value of the metric is 0 when the connection is healthy and 1 when it's unhealthy. In the absence of data, this metric retains the most recent value emitted|Reason|
 |NexusClusterMachineGroupUpgrade|Nexus Cluster|Cluster Machine Group Upgrade|Count|Tracks Cluster Machine Group Upgrades performed. The value of the metric is 0 when the result is successful and 1 for all other results. In the absence of data, this metric retains the most recent value emitted|Machine Group, Result, Upgraded From Version, Upgraded To Version|
+
+### ***Saturation Metrics***
+
+| Metric      | Category | Display Name  | Unit | Description | Dimensions   |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|Cluster Node CPU Utilization|Saturation|Percentage CPU (Preview)|Percent|The percentage of processor time that is not idle.|Node|
+|Cluster Node Memory Usage|Saturation|Percentage Memory (Preview)|Percent|The memory usage of the node, including unused allocated memory.|Node|
+|VmMemoryAvailable|Saturation|VM Memory Available (Preview)|Percent|Amount of virtual machine memory that is available.|Node, VM|
+|VmMemoryUsedPercentage|Saturation|VM Memory Used Percentage (Preview)|Percent|Percentage of virtual machine memory that is in use.|Node, VM|
+|VmPercentageCPU|Saturation|VM Percentage CPU (Preview)|Percent|Virtual machine memory CPU Utilization.|Node, VM|
+
+### ***Availability Metrics***
+
+| Metric      | Category | Display Name  | Unit | Description | Dimensions   |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|Cluster Node Memory Used|Availability|Memory Used (Preview)|Bytes|The used memory of the node.|Node|
+|Memory Available Bytes|Availability|Memory Available (Preview)|Bytes|The available memory of the node.|Node|
+|Memory Total Bytes|Availability|Memory Total (Preview)|Bytes|The total physical memory of the node.|Node|
+|VmMemoryUsed|Availability|Vm Memory Used (Preview)|Bytes|Amount of virtual memory that is in use.|Node, VM|
+
+### ***Traffic Metrics***
+
+| Metric      | Category | Display Name  | Unit | Description | Dimensions   |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|Network Device Bytes Received/sec|Traffic|Network In/Sec (Preview)|BytesPerSecond|Rate of data received by the network device|Node, Network Device|
+|Network Device Bytes Sent/sec|Traffic|Network Out/Sec (Preview)|BytesPerSecond|Rate of data sent by the network device|Node, Network Device|
+|Network Device Packets Received/sec|Traffic|Network Packets In/Sec (Preview)|CountPerSecond|Rate of packets received by the network device|Node, Network Device|
+|Network Device Packets Sent/sec|Traffic|Network Packets Out/Sec (Preview)|CountPerSecond|Rate of packets sent by the network device|Node, Network Device|
+|Storage Endpoint Read Bytes/sec|Traffic|Storage Read Bytes/Sec (Preview)|BytesPerSecond|Rate of data read by the host from the storage endpoint|Node, Storage Endpoint|
+|Storage Endpoint Read Operations/sec|Traffic|Storage Read Operations/Sec (Preview)|CountPerSecond|Rate of read operations by the host from the storage endpoint|Node, Storage Endpoint|
+|Storage Endpoint Write Bytes/sec|Traffic|Storage Write Bytes/Sec (Preview)|BytesPerSecond|Rate of data written by the host to the storage endpoint|Node, Storage Endpoint|
+|Storage Endpoint Write Operations/sec|Traffic|Storage Write Operations/Sec (Preview)|CountPerSecond|Rate of write operations by the host to the storage endpoint|Node, Storage Endpoint|
+|VmNetworkReceiveBytesPerSecond|Traffic|VM Network In/Sec (Preview)|BytesPerSecond|Rate of network bytes received by the virtual machine interfaces per second|Node, VM|
+|VmNetworkTransmitBytesPerSecond|Traffic|VM Network Out/Sec (Preview)|BytesPerSecond|Rate of network bytes transmitted by the virtual machine interfaces per second|Node, VM|
 
 ## Baremetal servers
 
@@ -302,21 +340,21 @@ Baremetal server metrics are collected and delivered to Azure Monitor per minute
 |NcTotalWorkloadCpusAvailablePerNuma|CPU|CPUs per NUMA Available for Nexus K8s|Count|Total number of CPUs per NUMA available for use by Nexus Kubernetes and Tenant Workloads. In the absence of data, this metric retains the most recent value emitted|Hostname, NUMA Node, Machine Role|
 |NodeBondingActive|Network|Node Bonding Active (Preview)|Count|Total number of active network interfaces per bonding interface. In the absence of data, this metric retains the most recent value emitted|Primary, Machine Role|
 |NodeBondingAggregateIdMismatch|Network|Node Bond Aggregate ID Mismatch|Count|Total number of mismatches between the expected and actual link-aggregator IDs. In the absence of data, this metric retains the most recent value emitted|Host, Interface Name, Machine Role|
+|NodeFailedIscsiSessions|Storage|Node Failed iSCSI Sessions|Count|Total number of failed iSCSI sessions on the node.|Host, Machine Role, Storage Appliance|
 |NodeMemHugePagesFree|Memory|Node Memory Huge Pages Free (Preview)|Bytes|Free memory in NUMA huge pages. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role|
 |NodeMemHugePagesTotal|Memory|Node Memory Huge Pages Total|Bytes|Total memory in NUMA huge pages. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role|
 |NodeMemNumaFree|Memory|Node Memory NUMA (Free Memory)|Bytes|Total amount of free NUMA memory. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role|
 |NodeMemNumaShem|Memory|Node Memory NUMA (Shared Memory)|Bytes|Total amount of NUMA memory that is shared between nodes. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role|
-|NodeMemNumaUsed|Memory|Node Memory NUMA (Used Memory)|Bytes|Total amount of used NUMA memory. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role|
+|NodeMemNumaUsed|Memory|Node Memory NUMA (Used Memory)|Bytes|Total amount of used NUMA memory. In the absence of data, this metric retains the most recent value emitted|Host, Node, Machine Role, Storage Appliance|
 |NodeNetworkCarrierChanges|Network|Node Network Carrier Changes|Count|Total number of network carrier changes. In the absence of data, this metric retains the most recent value emitted|Device, Host, Machine Role|
 |NodeNetworkMtuBytes|Network|Node Network Max Transmission|Bytes|Maximum Transmission Unit (MTU) for node network interfaces. In the absence of data, this metric defaults to 0|Device, Host, Machine Role|
 |NodeNetworkReceiveMulticastTotal|Network|Node Network Received Multicast Total|Bytes|Total amount of multicast traffic received by the node network interfaces. In the absence of data, this metric retains the most recent value emitted|Device, Host, Machine Role|
 |NodeNetworkReceivePackets|Network|Node Network Received Packets|Count|Total number of packets received by the node network interfaces. In the absence of data, this metric retains the most recent value emitted|Device, Host, Machine Role|
-|NodeNetworkSpeedBytes|Network|Node Network Speed Bytes|Bytes|Current network speed, in bytes per second, for the node network interfaces. In the absence of data, this metric defaults to 0|Device, Host, Machine Role|
+|NodeNetworkSpeedBytes|Network|Node Network Speed Bytes|Bytes|Current network speed, in bytes per second, for the node network interfaces.|Device, Host, Machine Role|
 |NodeNetworkTransmitPackets|Network|Node Network Transmitted Packets|Count|Total number of packets transmitted by the node network interfaces. In the absence of data, this metric retains the most recent value emitted|Device, Host, Machine Role|
 |NodeNetworkStatus|Network|Node Network Up|Count|Indicates the operational status of the nodes network interfaces. Value is 1 if operational state is 'up', 0 otherwise. In the absence of data, this metric retains the most recent value emitted|Device, Host, Machine Role|
 |NodeNtpLeap|System|Node NTP Leap|Count|The raw leap flag value of the local NTP daemon. This indicates the status of leap seconds. Value is 0 if no adjustment is needed, 1 to add a leap second, 2 to delete a leap second, and 3 if the clock is unsynchronized. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeNtpRootDelaySeconds|System|Node NTP Root Delay Seconds|Seconds|Indicates the delay to synchronize with the root server. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
-|NodeNtpRtt|System|Node NTP RTT (Deprecated)|Seconds|Deprecated - Round-trip time from node exporter collector to local NTP daemon. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeNtpSanity|System|Node NTP Sanity|Count|The aggregate health of the local NTP daemon. This includes checks for stratum, leap flag, freshness, root distance, and causality violations. Value is 1 if all checks pass, 0 otherwise. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeNtpStratum|System|Node NTP Stratum|Count|The stratum level of the local NTP daemon. This indicates the distance from the reference clock, with lower numbers representing closer proximity and higher accuracy. Values range from 1 (directly connected to reference clock) to 15 (further away), with 16 indicating the clock is unsynchronized. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeOsInfo|System|Node OS Info|Count|Node OS information, value is always 1. Provides name and version for a device. In the absence of data, this metric retains the most recent value emitted|Host, Name, Version, Machine Role|
@@ -327,17 +365,10 @@ Baremetal server metrics are collected and delivered to Azure Monitor per minute
 |NodeVmOomKill|VM Stat|Node VM Out Of Memory Kill|Count|Total number of times a process has been terminated due to a critical lack of memory. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeVmstatPswpIn|VM Stat|Node VM PSWP In|Count|Total number of pages swapped in from disk to memory on the node. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
 |NodeVmstatPswpout|VM Stat|Node VM PSWP Out|Count|Total number of pages swapped out from memory to disk on the node. In the absence of data, this metric retains the most recent value emitted|Host, Machine Role|
-|CpuUsageGuest|CPU|CPU Guest Usage|Count|Percentage of time that the CPU is running a virtual CPU for a guest operating system. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageGuestNice|CPU|CPU Guest Nice Usage|Count|Percentage of time that the CPU is running low-priority processes on a virtual CPU for a guest operating system. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageIdle|CPU|CPU Usage Idle|Count|Percentage of time that the CPU is idle. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageIowait|CPU|CPU Usage IO Wait|Count|Percentage of time that the CPU is waiting for I/O operations to complete. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageIrq|CPU|CPU Usage IRQ|Count|Percentage of time that the CPU is servicing hardware interrupt requests. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageNice|CPU|CPU Usage Nice|Count|Percentage of time that the CPU is in user mode, running low-priority processes. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageSoftirq|CPU|CPU Usage Soft IRQ|Count|Percentage of time that the CPU is servicing software interrupt requests. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageSteal|CPU|CPU Usage Steal|Count|Percentage of time that the CPU is in stolen time, which is time spent in other operating systems in a virtualized environment. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
-|CpuUsageSystem|CPU|CPU Usage System|Count|Percentage of time that the CPU is in system mode. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
+|CpuUsageIdle|CPU|CPU Usage Idle|Percent|Percentage of time that the CPU is idle. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
+|CpuUsageSystem|CPU|CPU Usage System|Percent|Percentage of time that the CPU is in system mode. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
 |CpuUsageTotal|CPU|CPU Usage Total|Percent|Percentage of time that the CPU is active (not idle). In the absence of data, this metric defaults to 150|Host, CPU, Machine Role|
-|CpuUsageUser|CPU|CPU Usage User|Count|Percentage of time that the CPU is in user mode. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
+|CpuUsageUser|CPU|CPU Usage User|Percent|Percentage of time that the CPU is in user mode. In the absence of data, this metric defaults to 0|Host, CPU, Machine Role|
 | MellanoxEffectivePhysicalBer | Mellanox | Effective Physical BER | Count | This point in time metric represents the rate of error bits by total bits in the physical layer since the last collection. For readability, the displayed value is the negation of the base-10 logarithm of the effective physical BER. Expected displayed range is 0–255, where 255 represents no errored bits and 0 represents 100% errored bits. In the absence of data, this metric retains the most recent value emitted. | Host, Interface Name, Machine Role |
 | MellanoxEffectivePhysicalErrors | Mellanox | Effective Physical Errors | Count | This point in time metric represents the number of physical layer errors that have been detected and could not be corrected by error correction mechanisms since the last collection. These errors are critical for assessing the quality and reliability of the network link. In the absence of data, this metric retains the most recent value emitted. | Host, Interface Name, Machine Role |
 | MellanoxMstregTemperature | Mellanox | MST Register Temperature | Unspecified | Temperature (in Celsius) reported by the MST (Mellanox Software Tools) register. In the absence of data, this metric retains the most recent value emitted. | Host, Interface Name, Machine Role |
@@ -391,7 +422,7 @@ All the metrics from Cluster Management are collected and delivered to Azure Mon
 
 | Metric      | Category | Display Name  | Unit | Description | Dimensions   |
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
-|NexusClusterDeployClusterRequests|Nexus Cluster|Cluster Deploy Requests|Count|Number of cluster deploy requests|Cluster Version|
+|NexusClusterDeploymentClusterRequests|Nexus Cluster|Cluster Deploy Requests|Count|Number of cluster deploy requests|Cluster Version, Result|
 |NexusClusterConnectionStatus|Nexus Cluster|Cluster Connection Status|Count|Tracks changes in the connection status of the Cluster(s) managed by the Cluster Manager. The reason filter describes the connection status. In the absence of data, this metric defaults to 0.|Cluster Name, Reason|
 |NexusClusterMachineUpgrade|Nexus Cluster|Cluster Machine Upgrade|Count|Nexus machine upgrade request, successful will have a value of 0 while unsuccessful will have a value of 1.|Cluster Name, Cluster Version, Result, Upgraded From Version, Upgraded To Version, Upgrade Strategy|
 |NexusClusterManagementBundleUpgrade|Nexus Cluster|Cluster Management Bundle Upgrade|Count|Nexus Cluster management bundle upgrade, successful will have a value of 0 while unsuccessful will have a value of 1.|Cluster Name, Cluster Version, Result, Upgraded From Version, Upgraded To Version|

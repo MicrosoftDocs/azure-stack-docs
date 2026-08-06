@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) on Windows Server offers a fully supported contai
 
 The AKS architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This architecture means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Windows Server, gets similar (or better) uptime than what's currently experienced on a legacy VM application.
 
-This article describes some fundamental concepts for users who want to run containerized applications on AKS Arc with live migration enabled in order to ensure applications are available during a disruption. Kubernetes terminology, such as *voluntary disruption* and *involuntary disruption*, is used to refer to downtime of an application running in a pod.
+This article describes some fundamental concepts for users who want to run containerized applications on AKS with live migration enabled in order to ensure applications are available during a disruption. Kubernetes terminology, such as *voluntary disruption* and *involuntary disruption*, is used to refer to downtime of an application running in a pod.
 
 ## What is live migration?
 

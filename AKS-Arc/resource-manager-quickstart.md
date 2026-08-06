@@ -1,6 +1,6 @@
 ---
 title: Deploy a Kubernetes cluster using an Azure Resource Manager template
-description: Learn how to deploy a Kubernetes cluster in Azure Kubernetes Service (AKS) enabled by Azure Arc using an Azure Resource Manager template.
+description: Learn how to deploy a Kubernetes cluster in Azure Kubernetes Service (AKS) Hybrid and Edge using an Azure Resource Manager template.
 ms.topic: quickstart-arm
 ms.custom: devx-track-arm-template, devx-track-azurecli, local
 ms.date: 01/12/2026
@@ -63,7 +63,7 @@ Create an SSH key pair in Azure and store the private key file for troubleshooti
 
 ## Step 3: Deploy the cluster using ARM templates
 
-For detailed instructions on deploying an AKS Arc cluster using ARM templates, see the [AKSArc deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Cluster). The repository includes:
+For detailed instructions on deploying an AKS cluster using ARM templates, see the [AKSArc deployment templates repository](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Cluster). The repository includes:
 
 - **CreateWithExistingLnet**: Deploy a cluster using an existing logical network.
 - **CreateWithoutExistingLnet**: Deploy a cluster and create a new logical network.
@@ -105,8 +105,8 @@ To deploy your cluster, follow the instructions in the repository's [README](htt
 
 ## Deploy node pools (optional)
 
-To add more node pools to your cluster using ARM templates, see the [ARM template to deploy/update an AKS Arc node pool](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
+To add more node pools to your cluster using ARM templates, see the [ARM template to deploy/update an AKS node pool](https://github.com/Azure/aksArc/tree/main/deploymentTemplates/aksarc-ARM-azlocal/Nodepool). The repository includes complete instructions for deploying and managing node pools.
 
 ## Related content
 
-[AKS Arc overview](overview.md).
+[AKS overview](overview.md).

@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: srikantsarwa
 ms.custom: windows-server
 
-# Intent: As an IT Pro I want to learn how to create and delete pods in AKS Arc.
+# Intent: As an IT Pro I want to learn how to create and delete pods in AKS.
 # Keyword: create and delete pods
 
 ---

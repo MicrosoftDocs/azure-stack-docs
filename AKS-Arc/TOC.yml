@@ -291,7 +291,7 @@
           href: /azure/adaptive-cloud
         - name: Azure Arc Jumpstart
           href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-        - name: AKS enabled by Arc roadmap
+        - name: AKS Hybrid and Edge roadmap
           href: https://github.com/Azure/aksArc/projects
   - name: Multi-rack
     items:

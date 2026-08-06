@@ -9,4 +9,4 @@ ms.lastreviewed: 03/21/2024
 
 ---
 
-> Applies to: AKS enabled by Azure Arc on VMware (preview)
+> Applies to: AKS Hybrid and Edge on VMware (preview)
