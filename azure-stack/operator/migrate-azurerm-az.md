@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: upgrade-and-migration-article
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 12/2/2020
+ms.date: 07/08/2026
 ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 ---
@@ -19,12 +19,12 @@ module. To make the transition easier, Az offers tools to allow you to run your 
 using AzureRM. No migration to a new command set is ever convenient, but this article will help
 you get started on transitioning to the new module.
 
-To see the full list of breaking changes between AzureRM and Az, see the [Migration guide for Az 1.0.0](/powershell/azure/migrate-az-1.0.0)
+To see the full list of breaking changes between AzureRM and Az, see the [Migration guide for Az 1.0.0](/powershell/azure/migrate-az-1.0.0).
 
 ## Check for installed versions of AzureRM
 
 Before taking any migration steps, check which versions of AzureRM are installed on your system. Doing so
-allows you to make sure scripts are already running on the latest release, and let you know
+allows you to make sure scripts are already running on the latest release, and lets you know
 if you can enable command aliases without uninstalling AzureRM.
 
 To check which version(s) of AzureRM you have installed, run the command:
@@ -81,12 +81,12 @@ Once the alias mode is enabled, run your scripts again to confirm that they stil
 ## Change module and cmdlet names
 
 In general, the module names have been changed so that `AzureRM` and `Azure` become `Az`, and the same for cmdlets.
-For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`. `New-AzureRMVM` has become `New-AzVM`,
+For example, the `AzureRM.Compute` module is renamed to `Az.Compute`. `New-AzureRMVM` becomes `New-AzVM`,
 and `Get-AzureStorageBlob` is now `Get-AzStorageBlob`.
 
-There are exceptions to this naming change that you should be aware of. Some modules were renamed or merged into
-existing modules without this affecting the suffix of their cmdlets, other than changing `AzureRM` or `Azure`
-to `Az`. Otherwise, the full cmdlet suffix was changed to reflect the new module name.
+Be aware of exceptions to this naming change. Some modules are renamed or merged into
+existing modules without affecting the suffix of their cmdlets, other than changing `AzureRM` or `Azure`
+to `Az`. Otherwise, change the full cmdlet suffix to reflect the new module name.
 
 | AzureRM module | Az module | Cmdlet suffix changed? |
 |----------------|-----------|------------------------|
@@ -98,21 +98,21 @@ to `Az`. Otherwise, the full cmdlet suffix was changed to reflect the new module
 
 ## Summary
 
-By following these steps, you can update all of your existing scripts to use the new module. If you have any questions or problems with these steps that made your migration difficult, please comment on this article so that we can improve the instructions.
+By following these steps, you can update all of your existing scripts to use the new module. If you have any questions or problems with these steps that make your migration difficult, please comment on this article so that we can improve the instructions.
 
 ## Breaking changes for Az 1.0.0
 
 This document provides detailed information on the changes between AzureRM 6.x and the new Az
-module, version 1.x and later. The table of contents will help guide you through a full migration
-path, including module-specific changes that may affect your scripts.
+module, version 1.x and later. The table of contents helps guide you through a full migration
+path, including module-specific changes that might affect your scripts.
 
 ## General breaking changes
 
-This section details the general breaking changes that are part of the redesign of the Az module.
+This section describes the general breaking changes that are part of the redesign of the Az module.
 
 ### Cmdlet noun prefix changes
 
-In the AzureRM module, cmdlets used either `AzureRM` or `Azure` as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. For example:
+In the AzureRM module, cmdlets use either `AzureRM` or `Azure` as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use `Az` as their cmdlet noun prefix. For example:
 
 ```powershell  
 Get-AzureRMVM
@@ -126,7 +126,7 @@ Get-AzVM
 Get-AzKeyVaultSecret
 ```
 
-To make the transition to these new cmdlet names simpler, Az introduces two new cmdlets, [Enable-AzureRmAlias](/powershell/module/az.accounts/enable-azurermalias) and [Disable-AzureRmAlias](/powershell/module/az.accounts/disable-azurermalias).  `Enable-AzureRmAlias` creates aliases for the older cmdlet names in AzureRM that map to the newer Az cmdlet names. Using the `-Scope` argument with `Enable-AzureRmAlias` allows you to choose where aliases are enabled.
+To make the transition to these new cmdlet names simpler, Az introduces two new cmdlets, [Enable-AzureRmAlias](/powershell/module/az.accounts/enable-azurermalias) and [Disable-AzureRmAlias](/powershell/module/az.accounts/disable-azurermalias).  `Enable-AzureRmAlias` creates aliases for the older cmdlet names in AzureRM that map to the newer Az cmdlet names. By using the `-Scope` argument with `Enable-AzureRmAlias`, you can choose where to enable aliases.
 
 For example, the following script in AzureRM:
 
@@ -135,7 +135,7 @@ For example, the following script in AzureRM:
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
 
-Can be run with minimal changes using `Enable-AzureRmAlias`:
+You can run it with minimal changes by using `Enable-AzureRmAlias`:
 
 ```powershell  
 #Requires -Modules Az.Storage
@@ -143,7 +143,7 @@ Enable-AzureRmAlias -Scope Process
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
 
-Running `Enable-AzureRmAlias -Scope CurrentUser` will enable the aliases for all PowerShell sessions you open, so that after executing this cmdlet, a script like this would not need to be changed at all:
+Running `Enable-AzureRmAlias -Scope CurrentUser` enables the aliases for all PowerShell sessions you open. After you execute this cmdlet, a script like this doesn't need to change at all:
 
 ```powershell  
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
@@ -155,11 +155,11 @@ When you're ready to disable aliases, `Disable-AzureRmAlias` removes the created
 see the [Disable-AzureRmAlias reference](/powershell/module/az.accounts/disable-azurermalias).
 
 > [!IMPORTANT]
-> When disabling aliases, make sure that they are disabled for _all_ scopes which had aliases enabled.
+> When disabling aliases, make sure that you disable them for _all_ scopes that had aliases enabled.
 
 ### Module name changes
 
-The module names have changed from `AzureRM.*` to `Az.*`, except for the following modules:
+The module names changed from `AzureRM.*` to `Az.*`, except for the following modules:
 
 | AzureRM module | Az module |
 |----------------|-----------|
@@ -174,18 +174,18 @@ The module names have changed from `AzureRM.*` to `Az.*`, except for the followi
 | AzureRM.UsageAggregates | Az.Billing |
 | AzureRM.Consumption | Az.Billing |
 
-The changes in module names mean that any script that uses `#Requires` or `Import-Module` to load specific modules will need to be changed to use the new module instead. For modules where the cmdlet suffix has not changed,
-this means that although the module name has changed, the suffix indicating the operation space has _not_.
+Because of these changes, you need to update any script that uses `#Requires` or `Import-Module` to load specific modules. For modules where the cmdlet suffix didn't change,
+although the module name changed, the suffix that indicates the operation space stays the same.
 
 #### Migrating requires and import module statements
 
-Scripts that use `#Requires` or `Import-Module` to declare a dependency on AzureRM modules must be updated to use the new module names. For example:
+Update scripts that use `#Requires` or `Import-Module` to declare a dependency on AzureRM modules to use the new module names. For example:
 
 ```powershell  
 #Requires -Module AzureRM.Compute
 ```
 
-Should be changed to:
+Change to:
 
 ```powershell  
 #Requires -Module Az.Compute
@@ -197,7 +197,7 @@ For `Import-Module`:
 Import-Module -Name AzureRM.Compute
 ```
 
-Should be changed to:
+Change to:
 
 ```powershell  
 Import-Module -Name Az.Compute
@@ -205,13 +205,13 @@ Import-Module -Name Az.Compute
 
 ### Migrating fully qualified cmdlet invocations
 
-Scripts that use module-qualified cmdlet invocations, such as:
+Change scripts that use module-qualified cmdlet invocations, such as:
 
 ```powershell  
 AzureRM.Compute\Get-AzureRmVM
 ```
 
-Must be changed to use the new module and cmdlet names:
+To use the new module and cmdlet names:
 
 ```powershell  
 Az.Compute\Get-AzVM
@@ -219,13 +219,13 @@ Az.Compute\Get-AzVM
 
 ### Migrating module manifest dependencies
 
-Modules that express dependencies on AzureRM modules through a module manifest (.psd1) file will need to updated the module names in their `RequiredModules` section:
+Update the module names in the `RequiredModules` section of the module manifest (.psd1) file for modules that express dependencies on AzureRM modules:
 
 ```powershell
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; ModuleVersion="5.8.2"})
 ```
 
-Must be changed to:
+Change to:
 
 ```powershell
 RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
@@ -233,13 +233,13 @@ RequiredModules = @(@{ModuleName="Az.Accounts"; ModuleVersion="1.0.0"})
 
 ### Removed modules
 
-The following modules have been removed:
+The following modules are removed:
 
 - `AzureRM.Backup`
 - `AzureRM.Compute.ManagedService`
 - `AzureRM.Scheduler`
 
-The tools for these services are no longer actively supported.  Customers are encouraged to move to alternative services as soon as it is convenient.
+The tools for these services aren't actively supported. Move to alternative services as soon as it is convenient.
 
 ### Windows PowerShell 5.1 and .NET 4.7.2
 
@@ -273,7 +273,7 @@ This section details specific breaking changes for individual modules and cmdlet
 
 ### Az.Billing (previously AzureRM.Billing, AzureRM.Consumption, and AzureRM.UsageAggregates)
 
-- The `InvoiceName` parameter was removed from the `Get-AzConsumptionUsageDetail` cmdlet.  Scripts will need to use other identity parameters for the invoice.
+- The `InvoiceName` parameter was removed from the `Get-AzConsumptionUsageDetail` cmdlet.  Scripts need to use other identity parameters for the invoice.
 
 ### Az.Compute (previously AzureRM.Compute)
 
@@ -287,7 +287,7 @@ This section details specific breaking changes for individual modules and cmdlet
 ### Az.KeyVault (previously AzureRM.KeyVault)
 
 - The `PurgeDisabled` property was removed from the `PSKeyVaultKeyAttributes`, `PSKeyVaultKeyIdentityItem`, and `PSKeyVaultSecretAttributes` objects
-  Scripts should no longer reference the ```PurgeDisabled``` property to make processing decisions.
+  Scripts should no longer reference the `PurgeDisabled` property to make processing decisions.
 
 ### Az.Monitor (previously AzureRM.Insights)
 
@@ -330,10 +330,10 @@ Scripts should no longer make processing decisions based on the values fo these 
 
 ### Az.Storage (previously Azure.Storage and AzureRM.Storage)
 
-- To support creating an Oauth storage context with only the storage account name, the default parameter set has been changed to `OAuthParameterSet`
+- To support creating an OAuth storage context with only the storage account name, the default parameter set is now `OAuthParameterSet`.
   - Example: `$ctx = New-AzureStorageContext -StorageAccountName $accountName`
-- The `Location` parameter has become mandatory in the `Get-AzStorageUsage` cmdlet
-- The Storage API methods now use the Task-based Asynchronous Pattern (TAP), instead of synchronous API calls. The following examples demonstrate the new asynchronous commands:
+- The `Location` parameter is now required in the `Get-AzStorageUsage` cmdlet.
+- Storage API methods now use the Task-based Asynchronous Pattern (TAP), instead of synchronous API calls. The following examples demonstrate the new asynchronous commands:
 
 #### Blob snapshot
 
@@ -418,5 +418,5 @@ $task.Wait()
 
 ## Next steps
 
-- Learn more about PowerShell on Azure Stack Hub, see [Get started with PowerShell in Azure Stack Hub](../user/azure-stack-powershell-overview.md)
-- Install the PowerShell Az module, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md)
+- To learn more about PowerShell on Azure Stack Hub, see [Get started with PowerShell in Azure Stack Hub](../user/azure-stack-powershell-overview.md).
+- To install the PowerShell Az module, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).

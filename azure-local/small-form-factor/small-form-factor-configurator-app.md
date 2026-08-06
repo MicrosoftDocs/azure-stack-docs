@@ -81,4 +81,4 @@ The same device might require different credentials over time. For example, befo
 
 ## Next steps
 
-- [Machine installation](small-form-factor-installation.md).
+- [Install the maintenance environment on your machine](small-form-factor-installation.md).
