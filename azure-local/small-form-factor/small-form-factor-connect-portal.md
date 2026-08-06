@@ -19,7 +19,7 @@ This article describes how to create an Azure Arc site, upload an ownership vouc
 
 Before you begin, make sure you complete the following prerequisites:
 
-- [Set up your subscription](small-form-factor-subscription-setup.md).
+- [Set up your subscription](small-form-factor-prepare-to-deploy.md#set-up-your-azure-subscription).
 - Install small form factor on your [machines](small-form-factor-installation.md) or [virtual machines (VMs)](small-form-factor-vm-installation.md).
 - Have a Windows PC with the [Configurator App](small-form-factor-configurator-app.md) installed.
 - Have the ownership voucher (`.pem`) files for your machines.
@@ -83,7 +83,7 @@ To add your machine:
 
 1. Under **Provisioned machines**, select **Add**.
 
-1. In the **Add machines using ownership vouchers** pane, upload the ownership voucher that you created in [Install small form factor deployments of Azure Local on a machine](small-form-factor-installation.md). Select **Add**.
+1. In the **Add machines using ownership vouchers** pane, upload the ownership voucher that you created in [Install the maintenance environment on your machine](small-form-factor-installation.md). Select **Add**.
 
 1. In the **Operating system** dropdown list, select **Azure Linux 2604**.
 

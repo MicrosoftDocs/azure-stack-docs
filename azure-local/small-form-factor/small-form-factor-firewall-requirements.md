@@ -54,4 +54,4 @@ The following table lists the outbound endpoints and ports required for small fo
 
 ## Next steps
 
-- [Set up your Azure subscription for small form factor deployments of Azure Local](small-form-factor-subscription-setup.md).
+- [Prepare to deploy Azure Local on small form factor devices](small-form-factor-prepare-to-deploy.md).
