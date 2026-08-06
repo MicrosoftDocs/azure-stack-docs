@@ -47,7 +47,7 @@ The security posture of Azure Local small form factor is built on four core pill
 
 Small form factor deployments use hardware-anchored identity and integrity capabilities to help establish device trust at startup and maintain platform integrity during operation. These capabilities reduce the risk of unauthorized changes to the platform across distributed edge deployments.
 
-For details on provisioning, see [Install small form factor deployments of Azure Local](small-form-factor-installation.md).
+For details on provisioning, see [Install the maintenance environment on your machine](small-form-factor-installation.md).
 
 **Establishing a trusted boot process:**
 
@@ -135,5 +135,5 @@ This document is provided "as-is". Information, views, URLs, and other Internet 
 
 ## Next steps
 
-- [Set up your Azure subscription for small form factor deployments of Azure Local](small-form-factor-subscription-setup.md).
-- [Install small form factor deployments of Azure Local](small-form-factor-installation.md).
+- [Prepare to deploy Azure Local on small form factor devices](small-form-factor-prepare-to-deploy.md).
+- [Install the maintenance environment on your machine](small-form-factor-installation.md).

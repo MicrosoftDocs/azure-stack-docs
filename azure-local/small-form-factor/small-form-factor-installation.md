@@ -1,25 +1,25 @@
 ---
-title: Install Azure Local Small Form Factor On Your Machines (preview)
-description: Learn how to install Azure Local small form factor on your machines (preview).
+title: Install the maintenance environment for small form factor deployments of Azure Local (Preview)
+description: Learn how to install the maintenance environment for small form factor deployments of Azure Local and extract ownership vouchers to connect your machine to Azure (preview).
 author: sipastak
 ms.topic: how-to
-ms.date: 05/04/2026
+ms.date: 07/30/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---
 
-# Install small form factor deployments of Azure Local on a machine (preview)
+# Install the maintenance environment on your machine for small form factor deployments of Azure Local (preview)
 
-This article describes how to install small form factor deployments of Azure Local on supported hardware and extract the ownership vouchers required to connect your machine to Azure.
+This article describes how to install the maintenance environment for small form factor deployments of Azure Local on supported hardware and extract the ownership vouchers required to connect your machine to Azure. The maintenance environment is a restricted operating system that supports Azure-based management of the machine, once it registers with Azure.
 
-If you don't have access to physical hardware, you can test small form factor deployments of Azure Local in a Hyper-V virtual machine (VM). For more information, see [Test small form factor deployments of Azure Local in a Hyper-V virtual machine](small-form-factor-vm-installation.md).
+If you don't have access to physical hardware, you can test in a Hyper-V virtual machine (VM). For more information, see [Test small form factor deployments of Azure Local in a Hyper-V virtual machine](small-form-factor-vm-installation.md).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
-[Set up your subscription](small-form-factor-subscription-setup.md) and make sure you have the following items.
+[Set up your subscription](small-form-factor-prepare-to-deploy.md#set-up-your-azure-subscription) and make sure you have the following items.
 
 > [!IMPORTANT]
 > If your environment uses firewall restrictions, review [Outbound connectivity](small-form-factor-firewall-requirements.md) before you start.
@@ -36,7 +36,7 @@ Use one of these supported devices:
 - [OnLogic K521](https://www.onlogic.com/store/k521-azurelocal/)
 
 > [!NOTE]
-> Securing the Baseboard Management Controller (BMC) is essential to protect the integrity of your hardware and the systems running on it. You should always set a strong, unique password and replace any default credentials immediately. The BMC must also be kept off untrusted or public networks and placed instead on a restricted, dedicated management network with strict access controls. Because BMC implementations can vary across manufacturers, we recommend consulting your hardware vendor for their specific security guidance and best practices to ensure your environment is fully protected.
+> Securing the Baseboard Management Controller (BMC) is essential to protect the integrity of your hardware and the systems running on it. Always set a strong, unique password and replace any default credentials immediately. Keep the BMC off untrusted or public networks, and place it instead on a restricted, dedicated management network with strict access controls. Because BMC implementations can vary across manufacturers, consult your hardware vendor for their specific security guidance and best practices to ensure your environment is fully protected.
 
 ### Software and tools
 
@@ -53,7 +53,7 @@ Use one of these supported devices:
 - An HDMI cable and monitor
 - A direct Ethernet connection with internet access
 
-## Download the ISO and Configurator App
+## Download the maintenance OS ISO and Configurator App
 
 Download the following artifacts from the Azure portal:
 
@@ -70,7 +70,7 @@ To download the files:
 
     :::image type="content" source="media/small-form-factor-download-install.png" alt-text="Screenshot of the Download and Install pane in the Azure portal." border="true" lightbox="media/small-form-factor-download-install.png":::
 
-1. Wait for the downloads to complete. For the Configurator App, select **Open** or **Save as** if prompted by your browser.
+1. Wait for the downloads to complete. For the Configurator App, select **Open** or **Save as** if your browser prompts you.
 
     > [!NOTE]
     > Make sure your browser allows multiple downloads. Each file downloads separately.
@@ -86,7 +86,7 @@ To download the files:
 1. Enter `rufus`, then select **OK**.
 
    > [!NOTE]
-   > If Rufus isn't installed, download it from [Rufus.ie](https://rufus.ie/en/#download).
+   > If Rufus isn't installed, download it from the [Rufus download page](https://rufus.ie/en/#download).
 
 1. In Rufus, configure the following settings:
    - **Device**: Your USB drive
@@ -105,7 +105,7 @@ To download the files:
 
 ## Prepare the physical device
 
-1. Ensure the device can access a network with internet connectivity.
+1. Make sure the device can access a network with internet connectivity.
 1. If you plan to assign static IP addresses later, reserve the required IPs on the network.
 
     :::image type="content" source="media/small-form-factor-network-setup.png" alt-text="Diagram of the device network." border="true" lightbox="media/small-form-factor-network-setup.png":::
@@ -113,7 +113,7 @@ To download the files:
 1. Connect the Ethernet cable to the device.
 1. Connect power and turn on the device.
 
-## Install the operating environment
+## Install the maintenance environment
 
 ### Boot from the USB drive
 
@@ -122,11 +122,11 @@ To download the files:
 1. Connect the Ethernet cable.
 1. Power on the device.
 1. Repeatedly press the boot menu key:
-   - **ASUS NUC** devices: `F10`
-   - **Lenovo** devices: `F12`
+   - **ASUS NUC** devices: <kbd>F10</kbd>
+   - **Lenovo** devices: <kbd>F12</kbd>
 1. From the boot menu, select the USB drive (usually labeled with `UEFI:`).
 
-### Complete the installation
+### Complete the maintenance environment installation
 
 1. Wait for the installer to start.
 1. Allow the installation to complete automatically.
@@ -143,13 +143,13 @@ The ownership voucher is a `.pem` file that proves the identity of the machine w
 
 Use the `.pem` file in the next step when you connect the provisioned machine from the Azure portal. Treat this file as required deployment material for that machine.
 
-If the `.pem` file is lost before the machine is connected to Azure, you can't recreate or redownload the same voucher later. In that case, you must redeploy the operating system on the machine to generate a new ownership voucher.
+If the `.pem` file is lost before you connect the machine to Azure, you can't recreate or redownload the same voucher later. In that case, you must redeploy the operating system on the machine to generate a new ownership voucher.
 
 By default, the ownership voucher is written to your USB drive, and the local file on the device is then deleted for security. In that case, obtain the voucher by copying it from the USB drive.
 
-If no USB drive is present when the voucher is written, the voucher remains on the device. In that case, you can obtain it by downloading it with the Configurator App or by using SSH or SCP.
+If no USB drive is present when the voucher is written, the voucher remains on the device. In that case, you can download it by using the Configurator App, SSH, or SCP.
 
-You can obtain the ownership voucher in one of the following ways:
+Obtain the ownership voucher in one of the following ways:
 
 - Copy it from the USB drive
 - Download it by using the Configurator App
@@ -163,7 +163,7 @@ Use this option for the default flow, where the voucher was written to the USB d
 
 1. Insert the USB drive into your Windows PC.
 1. Open the `vouchers` folder.
-1. Open the folder named after the machine’s serial number.
+1. Open the folder named after the machine's serial number.
 1. Copy the `.pem` file to a secure location.
 1. Repeat for each machine.
 
@@ -177,12 +177,12 @@ Use this option for the default flow, where the voucher was written to the USB d
 
 ### Download the voucher by using Configurator App
 
-Use this option if the voucher remained on the device and you prefer a Windows UI, need to verify the device status, or want to download the voucher without using command-line tools.
+Use this option if the voucher stays on the device and you prefer a Windows UI, need to verify the device status, or want to download the voucher without using command-line tools.
 
 1. Install Configurator App on your Windows PC.
 1. Open **Configurator App**.
 1. Connect to the device using either:
-    - ROE-{device-serial-number}.local, or
+    - `ROE-{device-serial-number}.local`, or
     - The device IP address
 1. Sign in with the local administrator credentials.
    - Username: `edgeuser`
@@ -195,7 +195,7 @@ Use this option if the voucher remained on the device and you prefer a Windows U
 
 ### Download the voucher by using SSH or SCP
 
-Use this option if the voucher remained on the device and you prefer a command-line approach. You can copy the vouchers from the device file system:
+Use this option if the voucher stays on the device and you prefer a command-line approach. Copy the vouchers from the device file system:
 
 ```bash
 /var/staging/export/vouchers/<serial-number>/<serial-number>.pem
@@ -217,7 +217,7 @@ When you're prompted, enter `Password1`.
 
 #### Example using PSCP (Windows)
 
-If you’re using PuTTY’s PSCP tool on Windows:
+If you're using PuTTY's PSCP tool on Windows:
 
 ```powershell
 # Set variables for your environment
@@ -251,10 +251,10 @@ foreach ($ip in $devices) {
 Before you continue, confirm that:
 
 - The bootable USB drive was created successfully.
-- Small form factor deployments of Azure Local are installed on the target machines.
+- You installed the maintenance environment on the target machines.
 - The installation completion message appeared.
-- Ownership vouchers were extracted and stored securely.
+- You extracted and securely stored the ownership vouchers.
 
-## Next steps
+## Next step
 
 - Continue to [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md).
