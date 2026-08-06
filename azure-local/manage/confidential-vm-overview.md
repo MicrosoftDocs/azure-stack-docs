@@ -65,11 +65,12 @@ Windows CVM guest support isn't available in this release.
 
 ## Supported OEM hardware
 
-CVM deployment on Azure Local is validated on the following OEM server configurations with AMD EPYC 9004 Series (Genoa) processors. Example processors include AMD EPYC 9654, 9754, and 9684X.
+CVM deployment on Azure Local is validated on the following OEM server configurations with AMD Gen 4 EPYC processors with SEV-SNP technology.
 
 | OEM    | Server model                        |
 |--------|-------------------------------------|
 | Lenovo | ThinkAgile MX455 V3 Edge PR         |
+| HPE    | ProLiant DL145 Gen11                |
 
 You can find this configuration in the [Azure Local catalog](https://aka.ms/AzureStackHCICatalog).
 

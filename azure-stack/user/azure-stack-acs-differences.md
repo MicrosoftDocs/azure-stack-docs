@@ -5,7 +5,7 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/02/2022
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviwer: jiahan
 ms.lastreviewed: 5/7/2021
@@ -17,7 +17,7 @@ ms.lastreviewed: 5/7/2021
 
 # Azure Stack Hub storage: Differences and considerations
 
-Azure Stack Hub storage is the set of storage cloud services in Microsoft Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
+Azure Stack Hub storage is the set of storage cloud services in Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
 
 This article summarizes the known Azure Stack Hub Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack Hub. To learn about high-level differences between global Azure and Azure Stack Hub, see the [Key considerations](azure-stack-considerations.md) article.
 
@@ -26,7 +26,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 | Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported. | Not yet supported.
-|Azure Storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.| Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption.
+|Azure Storage service encryption for data at rest|256-bit AES encryption. Support encryption using customer-managed keys in Azure Key Vault.| Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts. |General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage. |Locally redundant storage.
 |Premium storage|Provide high-performance and low-latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Wouldn't block using block blobs, append blobs, tables, and queues in premium storage accounts.
@@ -169,11 +169,11 @@ Previous versions:
 
 ## PowerShell version
 
-For the storage module PowerShell, be aware of the version that's compatible with the REST API.
+For the storage module in PowerShell, check the version that's compatible with the REST API.
 
 | Module | Supported version | Usage |
 |---|---|---|
-| Azure.Storage | [4.5.0](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0) | Manages blobs, queues, tables in Azure Stack Hub storage accounts. |
+| Azure.Storage | [4.5.0](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0) | Manages blobs, queues, and tables in Azure Stack Hub storage accounts. |
 | Az.Storage | [5.0.4](https://www.powershellgallery.com/packages/Az.Storage/5.0.4) | Creates and manages storage accounts in Azure Stack Hub. |
 
 For more information about Azure Stack Hub supported storage client libraries, see: [Get started with Azure Stack Hub storage development tools](azure-stack-storage-dev.md).
