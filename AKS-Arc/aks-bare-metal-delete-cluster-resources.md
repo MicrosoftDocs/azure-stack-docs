@@ -32,7 +32,7 @@ This article shows you how to delete AKS on bare metal cluster and edge machine 
 
 ## Step 1: Delete the AKS cluster
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your resource group.
+1. In the [Azure portal](https://portal.azure.com), navigate to resource groups and then select the resource group that was created for the cluster.
 1. Select the AKS cluster resource.
 1. Select **Delete** and confirm.
 1. **Wait** for the deletion to complete before proceeding.
@@ -43,9 +43,9 @@ This article shows you how to delete AKS on bare metal cluster and edge machine 
 az resource delete --ids <cluster-resource-id>
 ```
 
-## Step 2: Delete the Logical Network (LNET)
+## Step 2: Delete the Azure Local Logical Network (LNET)
 
-1. In the resource group, select the Logical Network resource.
+1. In the resource group, select the Azure Local Logical Network resource.
 1. Select **Delete** and confirm.
 
 **CLI alternative:**
