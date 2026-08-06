@@ -9,7 +9,7 @@ ms.lastreviewed: 07/31/2024
 
 ---
 
-AKS Arc provides the following five built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
+AKS provides the following five built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles), with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
 
 | Role                                                     | Description                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

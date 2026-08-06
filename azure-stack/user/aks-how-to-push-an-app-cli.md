@@ -1,9 +1,9 @@
 ---
 title: Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
-description: Learn how to deploy test applications to Azure Kubernetes Service on Azure Stack Hub.
+description: Learn how to deploy Prometheus and Grafana test apps to AKS on Azure Stack Hub. Follow this step-by-step guide to configure your cluster.
 author: sethmanheim
 ms.topic: install-set-up-deploy
-ms.date: 10/26/2021
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
@@ -15,13 +15,13 @@ ms.custom: sfi-ropc-nochange
 
 # Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
 
-This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes how to deploy some test apps to your cluster so that you can get familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
+This article helps you get started with Azure Kubernetes Service (AKS) on Azure Stack Hub. It describes how to deploy test apps to your cluster so that you can become familiar with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 
-Before you get started, make sure that can create an AKS cluster on your Azure Stack Hub instance. For instruction on getting set-up and creating your first cluster, see [Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md).
+Before you get started, make sure that you can create an AKS cluster on your Azure Stack Hub instance. For instructions on getting set up and creating your first cluster, see [Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md).
 
 ## Deploy test apps
 
-If your stamp is connected, you can follow these instructions to deploy Prometheus and Grafana to the cluster.
+If your stamp is connected, follow these instructions to deploy Prometheus and Grafana to the cluster.
 
 1.  Download and install Helm 3:
 
@@ -32,12 +32,12 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
     ```
 
     > [!NOTE]  
-    > For Windows user use [Chocolatey](https://chocolatey.org/install) to install Helm:
+    > For Windows users, use [Chocolatey](https://chocolatey.org/install) to install Helm:
     >```powershell  
     >choco install kubernetes-helm
     >```
 
-1.  Ensure you have the latest stabled helm repository:
+1.  Ensure you have the latest stable Helm repository.
 
     ```bash  
     helm repo add stable https://charts.helm.sh/stable
@@ -50,7 +50,7 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
     helm install my-prometheus stable/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
     ```
 
-1.  Give cluster administrative access to Prometheus account. Lower permissions are better for security reasons.
+1.  Give cluster administrative access to the Prometheus account. Lower permissions are better for security reasons.
 
     ```bash  
     kubectl create clusterrolebinding my-prometheus-server --clusterrole=cluster-admin --serviceaccount=default:my-prometheus-server
@@ -62,14 +62,14 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
     helm install my-grafana stable/grafana --set service.type=LoadBalancer --set rbac.create=false
     ```
 
-1.  Get secret for Grafana portal.
+1.  Get the secret for the Grafana portal.
 
     ```bash  
     kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
     ```
 
 > [!NOTE]  
-> On Windows use the following PowerShell cmdlets to get the secret:
+> On Windows, use the following PowerShell cmdlets to get the secret:
 > ```powershell  
 > \$env:Path = \$env:Path + ";\$env:USERPROFILE\\.azure-kubectl"
 > [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(\$(kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}")))
@@ -77,18 +77,18 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 
 ## Deploy apps to AKS using ACR
 
-At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below.
+At this point, your client machine is connected to the cluster and you can use **kubectl** to configure the cluster and deploy your applications. If you're also testing the Azure Container Registry (ACR) service, follow the instructions in the next section.
 
 ### Docker registry secret for accessing local ACR
 
-If you are deploying application images from a local ACR, you will need to store a secret in order for the Kubernetes cluster to have access to pull the images from the registry. To do this you will need to provide a service principal ID (SPN) and Secret, add the SPN as a contributor to the source registry and create the Kubernetes secret. You will also need to update your YAML file to reference the secret.
+If you're deploying application images from a local ACR, you need to store a secret so the Kubernetes cluster can access and pull the images from the registry. To create this secret, provide a service principal ID (SPN) and secret, add the SPN as a contributor to the source registry, and create the Kubernetes secret. You also need to update your YAML file to reference the secret.
 
 ### Add the SPN to the ACR
 
 Add the SPN as a contributor to the ACR. 
 
 > [!NOTE]  
-> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/create-registry/create-registry-service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
+> This script is modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/create-registry/create-registry-service-principal-assign-role.sh)) as Azure Stack Hub doesn't yet have the ACRPULL role. This sample is a PowerShell script. You can write an equivalent script in bash. Be sure to add the values for your system.
 
 ```azurecli  
 # Modify for your environment. The ACR_NAME is the name of your Azure Container

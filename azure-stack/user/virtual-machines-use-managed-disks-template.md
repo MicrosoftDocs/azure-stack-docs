@@ -3,7 +3,7 @@ title: Use Resource Manager templates for managed disks in Azure Stack Hub
 description: Learn about the differences and how to use managed and unmanaged disks with Azure Resource Manager templates.
 author: sethmanheim
 ms.author: sethm
-ms.date: 10/14/2021
+ms.date: 07/09/2026
 ms.topic: how-to
 ms.reviewer: wellsluo
 ms.lastreviewed: 8/25/2020
@@ -14,14 +14,14 @@ ms.custom:
 
 # Use VM managed disks templates
 
-This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines (VMs) in Azure Stack Hub. The examples help you to convert existing templates that use unmanaged disks to managed disks.
+This article describes the differences between managed and unmanaged disks when using Azure Resource Manager templates to provision virtual machines (VMs) in Azure Stack Hub. The examples help you convert existing templates that use unmanaged disks to managed disks.
 
 > [!NOTE]
-> Unmanaged disks are no longer supported, migrate to managed disks. For details, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
+> Unmanaged disks are deprecated. Migrate to managed disks. For details, see [Unmanaged disks deprecation](/azure/virtual-machines/unmanaged-disks-deprecation).
 
 ## Unmanaged disks template formatting
 
-To begin, let's take a look at how unmanaged disks are deployed. When creating unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use one that already exists. Create a new storage account resource in the resources block of the template, as follows:
+To begin, let's look at how to deploy unmanaged disks. When you create unmanaged disks, you need a storage account to hold the VHD files. You can create a new storage account or use an existing one. Create a new storage account resource in the `resources` block of the template, as follows:
 
 ```json
 {
@@ -86,19 +86,19 @@ Within the virtual machine object, add a dependency on the storage account so it
 
 ## Managed disks template formatting
 
-With Azure managed disks, the disk becomes a top-level resource and doesn't require you to create and manage storage accounts. Managed disks also offer many features that unmanaged disks don't. Managed disks were introduced in the `2017-03-30` API version. The following sections walk through the default settings and explain how to further customize your disks.
+With Azure managed disks, the disk becomes a top-level resource and you don't need to create or manage storage accounts. Managed disks also offer many features that unmanaged disks don't. Managed disks were introduced in the `2017-03-30` API version. The following sections walk through the default settings and explain how to further customize your disks.
 
 ### Default managed disk settings
 
-To create a VM with managed disks, you no longer need to create the storage account resource. In the following template example, there are some differences from the previous unmanaged disk examples:
+To create a VM with managed disks, you no longer need to create the storage account resource. In the following template example, some differences exist from the previous unmanaged disk examples:
 
 - The `apiVersion` is a version for a "virtualMachines" resource type, which supports managed disks.
-- `osDisk` and `dataDisks` no longer refer to a specific URI for the VHD.
-- When deploying without specifying additional properties, the disk uses a storage type based on the size of the VM. For example, if you are using a VM size that supports premium storage (sizes with "s" in their name such as Standard_DS2_v2), then premium disks are configured by default. You can change this by using the sku setting of the disk to specify a storage type.
-- If no name for the disk is specified, it takes the format of `<VMName>_OsDisk_1_<randomstring>` for the OS disk and `<VMName>_disk<#>_<randomstring>` for each data disk.
-  - If a VM is being created from a custom image, then the default settings for storage account type and disk name are retrieved from the disk properties defined in the custom image resource. These can be overridden by specifying values for these in the template.
+- The `osDisk` and `dataDisks` settings no longer refer to a specific URI for the VHD.
+- When you deploy without specifying additional properties, the disk uses a storage type based on the size of the VM. For example, if you're using a VM size that supports premium storage (sizes with "s" in their name such as Standard_DS2_v2), the deployment configures premium disks by default. You can change this default by using the `sku` setting of the disk to specify a storage type.
+- If you don't specify a name for the disk, it takes the format of `<VMName>_OsDisk_1_<randomstring>` for the OS disk and `<VMName>_disk<#>_<randomstring>` for each data disk.
+  - If you create a VM from a custom image, the default settings for storage account type and disk name come from the disk properties defined in the custom image resource. You can override these settings by specifying values for them in the template.
 - By default, disk caching is **read/write** for the OS disk and **None** for data disks.
-- In the following example, there is still a storage account dependency, though this is only for storage of diagnostics and is not needed for disk storage:
+- In the following example, there's still a storage account dependency, though this dependency is only for storage of diagnostics and isn't needed for disk storage:
 
 ```json
 {
@@ -159,7 +159,7 @@ As an alternative to specifying the disk configuration in the virtual machine ob
 }
 ```
 
-Within the VM object, reference the disk object to be attached. Specifying the resource ID of the managed disk created in the `managedDisk` property allows the attachment of the disk as the VM is created. The `apiVersion` for the VM resource is set to `2017-12-01`. A dependency on the disk resource is added to ensure it's successfully created before VM creation:
+Within the VM object, reference the disk object to be attached. By specifying the resource ID of the managed disk you created in the `managedDisk` property, you can attach the disk as the VM is created. Set the `apiVersion` for the VM resource to `2017-12-01`. Add a dependency on the disk resource to ensure it's successfully created before VM creation:
 
 ```json
 {
@@ -224,6 +224,6 @@ To create managed availability sets with VMs using managed disks, add the `sku` 
 
 ## Next steps
 
-- See [Azure Stack Hub managed disks](azure-stack-managed-disk-considerations.md) to learn more about managed disks.
+- To learn more about managed disks, see [Azure Stack Hub managed disks](azure-stack-managed-disk-considerations.md).
 - Review the template reference documentation for virtual machine resources at the [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/2022-08-01/virtualmachines).
-- Review the template reference documentation for disk resources at the [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/2022-07-02/disks) document.
+- Review the template reference documentation for disk resources at the [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/2022-07-02/disks).

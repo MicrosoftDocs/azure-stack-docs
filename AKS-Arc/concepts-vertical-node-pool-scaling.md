@@ -20,11 +20,11 @@ You can change the size of the virtual machines in a given node pool, to increas
 
 To keep up with app demands in Azure Kubernetes Service (AKS), you might need to adjust the number of nodes that run your workloads. In some cases, scaling a cluster horizontally by adding nodes isn't sufficient to meet the demands from your app for more CPU cores or memory.
 
-Without vertical node scaling, you must redeploy to a new node pool and move the app. This situation might not be ideal in resource limited edge environments. To enable this flexibility, AKS Arc introduces the capability to change the virtual machine (VM) size (SKU) of the VMs in a given node pool.
+Without vertical node scaling, you must redeploy to a new node pool and move the app. This situation might not be ideal in resource limited edge environments. To enable this flexibility, AKS introduces the capability to change the virtual machine (VM) size (SKU) of the VMs in a given node pool.
 
-## How vertical node scaling in AKS Arc works
+## How vertical node scaling in AKS works
 
-In AKS Arc, target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
+In AKS, target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
 
 To change the node pool to a different VM size (SKU), you can use the `Set-AksHciNodePool` command for changing the VM size for worker nodes and the `Set-AksHciCluster` command to change the VM size for control plane nodes.
 

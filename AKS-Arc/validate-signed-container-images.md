@@ -23,7 +23,7 @@ This article describes how to validate signed container images for AKS on Azure 
 
 Before you begin, ensure you have the following prerequisites:
 
-1. **Cluster configuration:** Deploy an AKS Arc cluster with these requirements
+1. **Cluster configuration:** Deploy an AKS cluster with these requirements
 
    - One control plane node.
    - At least one Linux node.
@@ -31,7 +31,7 @@ Before you begin, ensure you have the following prerequisites:
 
 1. **A Windows machine jump box** is required to run the image validation script. The machine must meet these prerequisites:
 
-   - **Network access**: The jump box must be able to communicate with the Azure Local physical boxes where the AKS Arc cluster is deployed and route traffic to the IP addresses assigned to the AKS Arc cluster, including all control plane and worker nodes.
+   - **Network access**: The jump box must be able to communicate with the Azure Local physical boxes where the AKS cluster is deployed and route traffic to the IP addresses assigned to the AKS cluster, including all control plane and worker nodes.
    - **Required tools installed**: Install these tools on the jump box: **curl**, **ssh**, and **scp**. These tools enable secure remote access, file transfers, and HTTP-based interactions with your cluster or management endpoints.
    - **SSH access**: The private SSH key used during cluster creation must be present on the jump box.
      - This key enables connections to individual nodes (Linux or Windows).

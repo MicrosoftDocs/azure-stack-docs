@@ -66,4 +66,4 @@ Azure Local small form factor deployments are validated on the following devices
 
 ## Next steps
 
-- [Set up your Azure subscription](small-form-factor-subscription-setup.md).
+- [Prepare to deploy Azure Local on small form factor devices](small-form-factor-prepare-to-deploy.md).

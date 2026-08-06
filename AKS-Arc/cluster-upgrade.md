@@ -14,7 +14,7 @@ ms.custom: local
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS Arc supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
+As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
 
 All upgrades run in a continuous, rolling manner to ensure uninterrupted availability of workloads. When a new Kubernetes worker node with a newer build joins the cluster, the process moves resources from the old node to the new node. After this step completes successfully, the process decommissions and removes the old node from the cluster.
 
@@ -134,7 +134,7 @@ During an upgrade operation, both the `provisioningState` and `currentState` ind
 
 ## Update operating system (OS) version
 
-You can update worker nodes to a newer version of the node image without changing the Kubernetes version only if the new image doesn't require a different Kubernetes version. Currently, AKS Arc doesn't support node-image-only updates across all supported Kubernetes versions. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
+You can update worker nodes to a newer version of the node image without changing the Kubernetes version only if the new image doesn't require a different Kubernetes version. Currently, AKS doesn't support node-image-only updates across all supported Kubernetes versions. If you need to update the node image, you must upgrade the cluster to the latest Kubernetes version to ensure that all node image updates are incorporated.
 
 > [!IMPORTANT]
 > If you try to use the `node-image-only` flag, you receive a message indicating that this feature isn't yet supported.

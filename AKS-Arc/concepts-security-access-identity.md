@@ -15,7 +15,7 @@ ms.custom: local
 
 ---
 
-# Access and identity options for AKS enabled by Azure Arc
+# Access and identity options for AKS Hybrid and Edge
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -85,10 +85,10 @@ With Azure RBAC, you create a *role definition* that outlines the permissions to
 
 For more information, see [What is Azure role-based access control (Azure RBAC)?](/azure/role-based-access-control/overview).
 
-There are two required levels of access to fully operate an AKS Arc cluster:
+There are two required levels of access to fully operate an AKS cluster:
 
 - Access the AKS resource in your Azure subscription.
-  - Control scaling or upgrading your cluster using the AKS enabled by Azure Arc APIs.
+  - Control scaling or upgrading your cluster using the AKS Hybrid and Edge APIs.
   - Pull your **admin, certificate-based kubeconfig**.
   - Pull your **Entra ID enabled kubeconfig**.
 - Access to the Kubernetes API. This access is controlled by either:
@@ -155,4 +155,4 @@ The following table contains a summary of how users can authenticate to Kubernet
 
 - To get started with Kubernetes RBAC for Kubernetes authorization, see [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-local.md)
 - To get started with Azure RBAC for Kubernetes authorization, see [Use Azure RBAC for Kubernetes Authorization](azure-rbac-local.md)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

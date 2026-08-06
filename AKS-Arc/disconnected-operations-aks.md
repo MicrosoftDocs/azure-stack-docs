@@ -1,5 +1,5 @@
 ---
-title: Manage AKS Arc for Azure Local with disconnected operations (preview)
+title: Manage AKS for Azure Local with disconnected operations (preview)
 description: Manage Azure Kubernetes Service (AKS) Arc for Azure Local with disconnected operations (preview).
 ms.topic: how-to
 author: davidsmatlak
@@ -9,7 +9,7 @@ ms.custom: local
 ai-usage: ai-assisted
 ---
 
-# Manage AKS Arc for Azure Local with disconnected operations (preview)
+# Manage AKS for Azure Local with disconnected operations (preview)
 
 This article gives you an overview of Azure Kubernetes Service (AKS) Arc for disconnected operations for Azure Local (preview). It closely mirrors AKS capabilities on Azure Local and includes many references to Azure Local AKS articles. You learn how to deploy and manage AKS clusters in disconnected environments, understand key differences, and review limitations to ensure successful implementation.
 
@@ -17,7 +17,7 @@ This article gives you an overview of Azure Kubernetes Service (AKS) Arc for dis
 
 ## Overview
 
-AKS Arc for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain consistent management and operational experience of AKS on Azure Local using a local control plane.
+AKS for disconnected operations allows you to manage Kubernetes clusters and deploy applications across various environments using disconnected operations. This capability ensures you can maintain consistent management and operational experience of AKS on Azure Local using a local control plane.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ AKS Arc for disconnected operations allows you to manage Kubernetes clusters and
 
 ## Limitations
 
-Limitations for disconnected operations with AKS Arc include:
+Limitations for disconnected operations with AKS include:
 
 - Support for disconnected operations begins with the 2408 release.
 - Supported Kubernetes versions: 1.33.4 and 1.33.5.
@@ -115,7 +115,7 @@ az aksarc create \
 > [!NOTE]
 > You should get JSON formatted information about the cluster once the creation is complete.
 
-Here's an example script to create logical networks and an AKS Arc cluster.
+Here's an example script to create logical networks and an AKS cluster.
 
 ```azurecli
 # Check and update variables according to your environment.
@@ -179,7 +179,7 @@ Here's an example:
 az aksarc get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-To retrieve the certificate-based admin kubeconfig for an AKS cluster enabled by Azure Arc.
+To retrieve the certificate-based admin kubeconfig for an AKS cluster Hybrid and Edge.
 
 Here's an example:
 
@@ -205,6 +205,6 @@ az aksarc delete --name $aksclustername --resource-group $resource_group
 ## Related content
 
 - [AKS on Azure Local architecture](cluster-architecture.md)
-- [AKS enabled by Azure Arc network requirements](network-system-requirements.md)
+- [AKS Hybrid and Edge network requirements](network-system-requirements.md)
 - [Manage node pools for an AKS cluster](manage-node-pools.md)
 - [Use cluster autoscaler on an AKS arc cluster](auto-scale-aks-arc.md)

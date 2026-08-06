@@ -33,8 +33,8 @@ To use Azure Monitor with Kubernetes clusters, see the [Azure Monitor overview](
 
 It's crucial that you monitor the health, performance, and resource usage of the control plane nodes and workloads on your cluster when running apps in production. The recommended monitoring solution includes the following two tools:
 
-- **Prometheus** is a monitoring and alerting toolkit that you can use for monitoring containerized workloads. Prometheus works with different types of collectors and agents to collect metrics and store them in a database where you can query the data and view reports. AKS Arc makes it easy to deploy Prometheus, which is described later in this article.
-- [**Grafana**](https://github.com/grafana/grafana) is a tool used to view, query, and visualize metrics on the Grafana dashboards. You can also configure Grafana to use Prometheus as the data source. You must have your own licensed copy of Grafana with AKS Arc.
+- **Prometheus** is a monitoring and alerting toolkit that you can use for monitoring containerized workloads. Prometheus works with different types of collectors and agents to collect metrics and store them in a database where you can query the data and view reports. AKS makes it easy to deploy Prometheus, which is described later in this article.
+- [**Grafana**](https://github.com/grafana/grafana) is a tool used to view, query, and visualize metrics on the Grafana dashboards. You can also configure Grafana to use Prometheus as the data source. You must have your own licensed copy of Grafana with AKS.
 
 ## Monitoring solution overview
 
@@ -59,7 +59,7 @@ The objects and endpoints that the Prometheus solution scrapes include the follo
 - Node exporter to collect metrics for Linux nodes
 - Windows exporter to collect metrics for Windows nodes
 
-To view the Grafana dashboards available in AKS Arc, see [Grafana dashboards available in AKS Arc](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
+To view the Grafana dashboards available in AKS, see [Grafana dashboards available in AKS](https://github.com/microsoft/AKS-Arc-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
 
 ## Deploy monitoring solution using PowerShell
 
@@ -92,7 +92,7 @@ The monitoring solution is installed in a separate namespace called `monitoring`
 
 ## Uninstall monitoring solution using PowerShell
 
-Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the AKS Arc monitoring solution, as follows:
+Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the AKS monitoring solution, as follows:
 
 ```powershell
 Uninstall-AksHciMonitoring -Name <target cluster name>
@@ -106,7 +106,7 @@ You can follow any guidance for deploying Grafana that's publicly available. You
 
 ## On-premises logging
 
-Logging is crucial for troubleshooting and diagnostics. The logging solution in AKS Arc is based on Elasticsearch, Fluent Bit, and Kibana (EFK). These components are all deployed as containers:
+Logging is crucial for troubleshooting and diagnostics. The logging solution in AKS is based on Elasticsearch, Fluent Bit, and Kibana (EFK). These components are all deployed as containers:
 
 - Fluent Bit is the log processor and forwarder that collects data and logs from different sources. It then formats, unifies, and stores them in Elasticsearch.
 - Elasticsearch is a distributed search and analytics engine capable of centrally storing the logs for fast searches and data analytics. 

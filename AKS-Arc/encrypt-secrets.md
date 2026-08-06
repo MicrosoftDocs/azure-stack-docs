@@ -19,7 +19,7 @@ ms.custom: windows-server
 
 This article describes how to monitor and troubleshoot the encryption of etcd secrets for Azure Kubernetes Service (AKS) management clusters and workload clusters in AKS on Windows Server.
 
-A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in *etcd*, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS Arc comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
+A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in *etcd*, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
 
 ## Monitor and troubleshoot
 
