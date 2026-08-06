@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2607
 
-The July 2026 release of hyperconverged deployments of Azure Local is version **12.2607.1003.71**. For more information, see [Release information summary](./release-information-23h2.md).
+The July 2026 release of hyperconverged deployments of Azure Local is version **12.2607.1003.73**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
