@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 08/04/2026
+ms.date: 08/05/2026
 ms.subservice: hyperconverged
 ---
 
@@ -42,10 +42,10 @@ The following table lists the fixed issues in this release:
 
 |Feature  |Issue    |Comments |Solution version|
 |------|------|-------| -------- |
-| Update <!--39016090--> | During solution updates on Storage Area Network (SAN)-only deployed clusters, the `UpdateStorage` step could run unexpectedly. | Fixed an issue where the `UpdateStorage` step could run during solution updates on SAN-only deployed clusters. | <!--hotfix#2--> |
-|Update <!--39028679--> | The SBE download connector wrapper could generate warnings for responses that were not failures. | Fixed an issue where the SBE download connector wrapper generated unnecessary warnings. Warnings are now logged only for blank responses. |  <!--hotfix#2--> |
-|Update <!--39044132--> | OS Cluster-Aware Updating (CAU) solution updates could fail with the error: `Prior Attempt Count: {3} is greater than Max Allowed Retries {2}`. | Fixed an issue that could cause OS CAU solution updates to fail due to incorrect retry count validation. |  <!--hotfix#2--> |
-|Update <!--38857483--> | Update preparation could fail with a `mismatch between update components and content` error when a child component version was already installed. | Fixed an issue where update preparation could fail when a child component version was already installed, resulting in a component and content mismatch error. |  <!--hotfix#2--> |
+| Update <!--39016090--> | During solution updates on Storage Area Network (SAN)-only deployed clusters, the `UpdateStorage` step could run unexpectedly. | Fixed an issue where the `UpdateStorage` step could run during solution updates on SAN-only deployed clusters. | 12.2607.1003.71 |
+|Update <!--39028679--> | SBE download operations could fail on HPE clusters after installing the HPE 2604 SBE due to a download connector wrapper error. | Fixed an issue in the SBE download connector wrapper that could incorrectly treat non-failure responses as errors and block SBE download operations. |  12.2607.1003.71 |
+|Update <!--39044132--> | OS Cluster-Aware Updating (CAU) solution updates could fail with the error: `Prior Attempt Count: {3} is greater than Max Allowed Retries {2}`. | Fixed an issue that could cause OS CAU solution updates to fail due to incorrect retry count validation. |  12.2607.1003.71 |
+|Update <!--38857483--> | Solution update preparation could fail with a `mismatch between update components and content` error when a child component version was already installed. | Fixed an issue where update preparation could fail when a child component version was already installed, resulting in a component and content mismatch error. |  12.2607.1003.71 |
 |Azure Local VMs <!--38909895--> | Trusted launch VMs (TVMs) created in earlier releases of Azure Local failed to start after the cluster was upgraded to 2607. | TVMs created in earlier releases now start successfully after upgrading to 2607. |12.2607.1003.71 |
 |Azure Local VMs <!--37540842--> | Deleting a VM could fail with the error `An invalid IP address was specified`, leaving the VM and its network interface stuck and unable to be removed. |VM deletion now completes reliably, even for VMs whose network interface has no assigned private IP.|12.2607.1003.69|
 |Azure Local VMs <!--37773461--> | When updating a VM through an older API or tool version, the VM’s placement settings could be silently cleared, which could affect where the VM is scheduled. | Placement settings are now preserved automatically during updates, so they are no longer lost. |12.2607.1003.69|
