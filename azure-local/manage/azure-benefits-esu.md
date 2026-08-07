@@ -30,11 +30,12 @@ ESU covers Windows Server and Windows client products under the ESU program. For
 
 ### Which ESU products remain free on Azure Local?
 
-All existing ESU products, including Windows Server 2012, Windows 10 version 22H2, and SQL Server 2014, remain free on Azure Local. You can get these products through Azure verification for VMs by following the instructions in this article.
+ESUs for Windows editions that have gone out of support before April 1, 2026, including Windows Server 2012, Windows 10 version 22H2, and SQL Server 2014, remain free on Azure Local. You can get these products through Azure verification for VMs by following the instructions in this article. ESUs that are released after April 1, 2026, including Windows Server 2016 and Windows Enterprise 2016 LTSB, will be subject to the new pricing guidelines. Learn more at [Prepare to deliver Extended Security Updates](/azure/azure-arc/servers/prepare-extended-security-updates).
 
 ### How can I get ESUs under the new pricing model?
 
-Details on ESU pricing and availability will be made available in the next few months, and this article will be updated. 
+You can acquire Extended Security Updates on Azure Local the same way as for other Arc-enabled servers. Details can be found at [Prepare to deliver Extended Security Updates](/azure/azure-arc/servers/prepare-extended-security-updates).
+
 
 ### Do ESUs have any limitations?
 
