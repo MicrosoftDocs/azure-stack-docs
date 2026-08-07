@@ -10,7 +10,7 @@ ms.date: 3/31/2026
 
 
 # Use certificate rotation in Azure Operator Nexus
-API-driven Certificate Rotation enables customers to self-serve certificate rotation and resynchronization for Nexus Network Fabric. This capability allows customers to manage certificate lifecycle operations directly, while preserving existing operational safeguards.
+API-driven certificate rotation enables you to self-serve certificate rotation and resynchronization for Nexus Network Fabric. This capability allows you to manage certificate lifecycle operations directly while preserving existing operational safeguards. 
 
 ## Key capabilities
 
