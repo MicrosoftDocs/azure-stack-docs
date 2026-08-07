@@ -17,6 +17,22 @@ ms.subservice: hyperconverged
 
 This article describes how to collect logs and troubleshoot problems with Azure Local Virtual Machines enabled by Azure Arc. It also lists the current limitations and known problems with Azure Local VM management, along with recommended resolutions.
 
+## High estimated memory demand for the Arc resource bridge VM
+
+**Problem:**
+
+In Hyper-V Manager or Windows Admin Center, the Azure Arc resource bridge VM might show an **Estimated Memory Demand** value that's greater than its assigned memory. 
+
+**Cause:**
+
+The Arc resource bridge is a Linux VM that runs containerized workloads. Hyper-V Estimated Memory Demand is a conservative estimate based on memory allocation and page-fault behavior. It isn't a measure of the memory actively used inside the VM. Linux caches and container allocation patterns can cause a high estimate even when the VM has no memory pressure. A high value by itself doesn't indicate excessive memory use, a memory leak, or a performance problem.
+
+**Resolution:**
+
+Don't resize the Arc resource bridge VM or change its memory settings based only on this value. Making these changes doesn't change the in-guest memory for the resource bridge VM. If the resource bridge and Azure Local VM management remain functional, no action is required.
+
+If you experience sustained Arc resource bridge failures, run the [Support Tool for Azure Local infrastructure component issues](remediate-support-tool-infrastructure.md). If the issue persists, contact Microsoft Support. Support can review internal metrics to determine whether the Arc resource bridge VM is experiencing actual memory pressure.
+
 ## Infrastructure logical network isn't visible in Azure portal
 
 **Problem:**
@@ -81,7 +97,7 @@ Follow these steps to verify that the managed identity doesn't exist for this VM
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
-1. To create managed identity, connect to the Azure local machine via Remote Desktop Protocol (RDP). Run the following command:
+1. To create a managed identity, connect to the Azure local machine via Remote Desktop Protocol (RDP). Run the following command:
     
     ```azurecli
     az extension add --name connectedmachine
