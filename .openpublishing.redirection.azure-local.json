@@ -2009,6 +2009,11 @@
       "source_path": "azure-local/rename-to-azure-local.md",
       "redirect_url": "/azure/azure-local/overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/small-form-factor/small-form-factor-subscription-setup.md",
+      "redirect_url": "/azure/azure-local/small-form-factor/small-form-factor-prepare-to-deploy",
+      "redirect_document_id": false
     }
   ]
 }
