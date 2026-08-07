@@ -25,7 +25,7 @@ This article explains the prerequisites for rotating certificates for a network 
 
 ## Prerequisites
 
-* Enable the environment on supported NF version with supported API.
+* Enable the environment on a supported NF version with a supported API. 
 * Install and authenticate the Azure CLI to the correct subscription.
 * Confirm that the Network Fabric resource and its devices are in the states described in the following section.
 * Run outside commit or upgrade workflows.
