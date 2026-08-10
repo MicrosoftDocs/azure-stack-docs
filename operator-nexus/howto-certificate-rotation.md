@@ -73,9 +73,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T09:58:29.5174661Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
   "startTime": "2026-04-22T09:40:13.3419824Z",
   "status": "Succeeded"
 }
@@ -105,9 +105,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T10:24:12.6499675Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
   "startTime": "2026-04-22T10:06:15.1423306Z",
   "status": "Succeeded"
 }
@@ -129,9 +129,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T10:31:03.7090686Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-device",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-device",
   "startTime": "2026-04-22T10:27:43.7739143Z",
   "status": "Succeeded"
 }
