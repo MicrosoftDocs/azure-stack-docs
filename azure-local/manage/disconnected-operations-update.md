@@ -16,6 +16,9 @@ ai-usage: ai-assisted
 
 This article explains how to update disconnected operations for Azure Local. Learn how to apply updates to the appliance to ensure optimal performance and reliability in disconnected environments.
 
+> [!NOTE]
+> You must update Azure Local disconnected operations regularly to stay supported. Establish an update routine as part of your production planning.
+
 ## Get updates
 
 Keep your disconnected operations appliance up to date. Follow these steps to download and apply the latest updates.
@@ -34,6 +37,9 @@ To prepare the seed node for managing disconnected operations, run the following
 $applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
 # Import the OperationsModule
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
+$password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
+$managementIp = "169.254.53.25"
+$context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress $managementIp 
 ```
 
 ## Upload the update

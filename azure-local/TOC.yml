@@ -1586,6 +1586,8 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Rotate certificates
+      href: manage/disconnected-operations-certificate-rotation.md      
     - name: Billing
       href: manage/disconnected-operations-billing.md
   - name: BCDR
