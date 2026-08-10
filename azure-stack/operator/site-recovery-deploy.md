@@ -4,9 +4,7 @@ description: Learn how to deploy virtual machines in Azure Site Recovery on Azur
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 04/15/2024
-ms.reviewer: rtiberiu
-ms.lastreviewed: 04/15/2024
+ms.date: 08/10/2026
 ---
 
 
@@ -29,6 +27,7 @@ The following table shows the complete list of currently available images:
 | [source] Extension (Linux general) | microsoft.azure-recoveryservices-siterecovery-linux           | 1.0.31.754    |
 | [source] Extension (RHEL 7)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL7      | 1.0.31.763    |
 | [source] Extension (RHEL 8)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL8      | 1.0.31.763    |
+| [source] Extension (RHEL 9)        | microsoft.azure-recoveryservices-siterecovery-linuxRHEL9      | 1.0           |
 | [source] Extension (Debian 8)      | microsoft.azure-recoveryservices-siterecovery-linuxdebian8    | 1.0.31.763    |
 | [source] Extension (Debian 9)      | microsoft.azure-recoveryservices-siterecovery-linuxDEBIAN9    | 1.0.31.763    |
 | [source] Extension (Debian 10)     | microsoft.azure-recoveryservices-siterecovery-linuxdebian10   | 1.0.31.763    |
