@@ -12,6 +12,13 @@ ai-usage: ai-assisted
 # What's new in disconnected operations for Azure Local
 
 This article describes new features and improvements in disconnected operations for Azure Local. Before you deploy disconnected operations with Azure Local, review the [Known issues](./disconnected-operations-known-issues.md) to understand current limitations and available workarounds.
+::: moniker range="=azloc-2606"
+## Features and improvements in 2606
+ - Quality and security improvements.
+ - Added documentation for certificate renewal.
+ - Update supported from 2604 to 2606.
+  
+::: moniker-end
 
 ::: moniker range="=azloc-2605"
 ## Features and improvements in 2605

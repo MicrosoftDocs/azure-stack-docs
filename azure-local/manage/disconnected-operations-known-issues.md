@@ -10,19 +10,24 @@ ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
+
+::: moniker range=">=azloc-2605"
+
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
 
-::: moniker range=">=azloc-2605"
-
 ## Known issues for version 2605
+
 ### Workload clusters patch and update failing
-**Applies to:** First time Azure Local patch and update for a data-cluster.
-**Note** : This fix is a one-time remediation. After the InfraLocal_1 volume is created, the same cluster doesn't require these steps for subsequent Azure Local updates.
+
+**Applies to**: First time Azure Local patch and update for a data-cluster.
+
+> [!NOTE]
+> This fix is a one-time remediation. After the InfraLocal_1 volume is created, the same cluster doesn't require these steps for subsequent Azure Local updates.
 
 **Mitigation**:
-- Log in to any Azure Local cluster node with administrative privileges.
+- Sign in to any Azure Local cluster node with administrative privileges.
 - Run the following PowerShell command to create the InfraLocal_1 volume:
 ```powershell
 New-Volume -FriendlyName "InfraLocal_1" -Size 10GB -ProvisioningType Thin
@@ -30,7 +35,8 @@ New-Volume -FriendlyName "InfraLocal_1" -Size 10GB -ProvisioningType Thin
 - Verify that the command completes successfully without errors.
 - Proceed with the Azure Local patch and update.
 
-### Missing signing cert in air-gapped environments 
+### Missing signing certificate in air-gapped environments
+
 Cloud deployment doesn't succeed in air-gapped environments for Azure Local disconnected operations release 2605, unless you take the following steps:
 
 - From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2011 certificate](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt).
@@ -39,6 +45,7 @@ Cloud deployment doesn't succeed in air-gapped environments for Azure Local disc
 ```powershell
 Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
 ```
+
 ### Update package for 2605
 
 There's a known issue with the BitLocker key protector in this release, and only the base deployment package is available. The 2605 update package ships separately from the deployment release. Release notes for the update package are added here when the update is available.
@@ -77,6 +84,14 @@ Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
 ::: moniker range="=azloc-2604"
 
 ## Known issues for version 2604
+
+### AKS Arc deployment fails via Azure portal and Azure CLI
+
+Deployment fails with the following error: `invalid transformation contained in extension package`.
+
+**Root cause**: Upgrading from 2602 to 2604 triggered an update issue in a backend service.
+
+**Mitigation**: Redeploy the latest version, or contact Microsoft Support for steps specific to the 2604 build.
 
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
@@ -647,7 +662,7 @@ During the validate or cloud deployment flow, the first machine (seed node) rest
    Start-Service HIMDS
    ```
 
-1. Check the logs in the first mode at `C:\CloudDeployment\Logs`.
+1. Check the logs in the first node at `C:\CloudDeployment\Logs`.
 1. Review the appropriate log file:
    - Validate stage: Check the latest file with a name starting with *EnvironmentValidator*.
    - Deploy stage: Check the latest file with a name starting with *CloudDeployment*.
