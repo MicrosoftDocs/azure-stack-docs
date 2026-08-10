@@ -5,7 +5,7 @@ author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 06/17/2026
+ms.date: 08/10/2026
 ms.custom: template-reference
 ---
 
@@ -438,32 +438,39 @@ The collection interval for Network Fabric device metrics varies and you can fin
 |-------------|:-------------:|:-------------:|:-----:|:----------:|-------------------------------------|:---------------------:|:-------:|:-------:|
 | AclMatchedPackets | Acl Matched Packets | ACL State Counters | Count | Average | Count of the number of packets matching the current ACL entry | AclSetName | Yes | Every 5 mins |
 | ComponentOperStatus | Component Operational State | Component Operational State | NA | NA | The current operational status of the component | Component Name | Yes | Every 5 mins and on state change |
+| DiskAvailableSize | Disk Available Size | Disk Utilization | Bytes | Average | Current available size of the disk in bytes | FabricId, MountPointName | Yes | Per minute |
+| DiskSize | Disk Size | Disk Utilization | Bytes | Average | Current size of the disk in bytes | FabricId, MountPointName | Yes | Per minute |
+| DiskUtilPercent | Disk Utilization Percent | Disk Utilization | Percent | Average | Percentage of currently utilized disk space compared to the total disk size | FabricId, MountPointName | Yes | Per minute |
+| DiskUtilSize | Disk Utilized Size | Disk Utilization | Bytes | Average | Current utilized disk space in bytes | FabricId, MountPointName | Yes | Per minute |
 | CpuUtilizationMax | Cpu Utilization Max | Resource Utilization | % | Average | Maximum CPU utilization of the device over a given interval | CPU Cores | Yes | Per minute |
 | CpuUtilizationMin | Cpu Utilization Min | Resource Utilization | % | Average | Minimum CPU utilization of the device over a given interval | CPU Cores | Yes | Per minute |
 | CpuUtilizationAvg | Cpu Utilization Avg | Resource Utilization | % | Average | Avg cpu utilization. The Avg value of the percentage measure of the statistic over the time interval. | CPU Cores | Yes | Per minute |
 | CpuUtilizationInstant | Cpu Utilization Instant | Resource Utilization | % | Average | Instantaneous Cpu utilization. The instantaneous value of the percentage measure of the statistic over the time interval. | CPU Cores | Yes | Per minute |
 | FanSpeed | Fan Speed | Resource Utilization | RPM | Average | Running speed of the fan at any given point of time | Fan number | Yes | Per minute |
 | MemoryAvailable | Memory Available | Resource Utilization | GiB | Average | The amount of memory available or allocated to the device at a given point in time | NA | Yes | Per minute |
+| MemoryFree | Memory Free | Resource Utilization | Bytes | Average | Memory that isn't used and is available for allocation | FabricId, ComponentName | Yes | Per minute |
+| MemoryUtilizationPercentage | Memory Utilization Percentage | Resource Utilization | Percent | Average | Percentage of memory currently in use by processes running on the component, excluding reserved memory that isn't available for use | FabricId, ComponentName | Yes | Per minute |
 | MemoryUtilized | Memory Utilized | Resource Utilization | GiB | Average | The amount of memory utilized by the device at a given point in time | NA | Yes | Per minute |
 | TemperatureMax | Temperature Max | Resource Utilization | NA | Maximum | Max temperature in degrees Celsius of the component. The maximum value of the statistic over the sampling period | NA | Yes | Per minute |
 | TemperatureInstant | Temperature Instantaneous | Resource Utilization | NA | NA | The instantaneous value of temperature in degrees Celsius of the component. | NA | Yes | Per minute |
 | PowerSupplyInputCurrent | Power Supply Input Current | Resource Utilization | Amps | Average | The input current draw of the power supply | NA | Yes | Per minute |
 | PowerSupplyInputVoltage | Power Supply Input Voltage | Resource Utilization | Volts | Average | The input voltage of the power supply | NA | Yes | Per minute |
-| PowerSupplyCapacity | Power Supply Maximum Power Capacity | Resource Utilization | Watts | Average | Maximum power capacity of the power supply | NA | Yes | Per minute |
+| PowerSupplyCapacity | Power Supply Max Power Capacity | Resource Utilization | Watts | Average | Maximum power capacity of the power supply | NA | Yes | Per minute |
 | PowerSupplyOutputCurrent | Power Supply Output Current | Resource Utilization | Amps | Average | The output current supplied by the power supply | NA | Yes | Per minute |
 | PowerSupplyOutputPower| Power Supply Output Power | Resource Utilization | Watts | Average | The output power supplied by the power supply | NA | Yes | Per minute |
 | PowerSupplyOutputVoltage | Power Supply Output Voltage | Resource Utilization | Volts | Average | The output voltage supplied the power supply | NA | Yes | Per minute |
 | BgpPeerStatus | BGP Peer Status | BGP Status | Count | Minimum, Maximum, Average | Operational state of the BGP Peer represented in numerical form. 1-Idle, 2-Connect, 3-Active, 4-OpenSent, 5-OpenConfirm, 6-Established <br><br>*While `Average` provides insight into overall trends, `Minimum` and `Maximum` values are also useful for identifying state transitions during a period.* <sup>[1](#footnote1)</sup> | NA | Yes | Every 5 mins and on state change |
+| InterfaceAdminStatus | Interface Admin Status | Interface State | Unspecified | Minimum, Maximum, Average | Administrative status of the device interface represented in numerical form. 1-Up, 2-Down, 3-Testing | InterfaceName | Yes | Per minute |
 | InterfaceOperStatus | Interface Operational State | Interface Operational State | Count | Minimum, Maximum, Average | Operational state of the Interface represented in numerical form. 0-Up, 1-Down, 2-Lower Layer Down, 3-Testing, 4-Unknown, 5-Dormant, 6-Not Present <br><br>*`Average` can indicate trends over time, while `Minimum` and `Maximum` values provide more accurate detection of state transitions during a monitoring window.* | NA | Yes | Every 5 mins and on state change |
-| IfEthInCrcErrors | Ethernet Interface In CRC Errors | Interface State Counters | Count | Average | The count of incoming CRC errors caused by several factors for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthInFragmentFrames | Ethernet Interface In Fragment Frames | Interface State Counters | Count | Average | The count of incoming fragmented frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthInJabberFrames | Ethernet Interface In Jabber Frames | Interface State Counters | Count | Average | The count of incoming jabber frames. Jabber frames are typically oversized frames with invalid CRC | Interface name | Yes | Every 5 mins |
-| IfEthInMacControlFrames | Ethernet Interface In MAC Control Frames | Interface State Counters | Count | Average | The count of incoming MAC layer control frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthInMacPauseFrames | Ethernet Interface In MAC Pause Frames | Interface State Counters | Count | Average | The count of incoming MAC layer pause frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthInMaxsizeExceeded | Ethernet Interface In Maxsize Exceeded | Interface State Counters | Count | Average | The total number frames received that are well-formed dropped due to exceeding the maximum frame size on the interface | Interface name | Yes | Every 5 mins |
-| IfEthInOversizeFrames | Ethernet Interface In Oversize Frames | Interface State Counters | Count | Average | The count of incoming oversized frames (larger than 1518 octets) for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthOutMacControlFrames | Ethernet Interface Out MAC Control Frames | Interface State Counters | Count | Average | The count of outgoing MAC layer control frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| IfEthOutMacPauseFrames | Ethernet Interface Out MAC Pause Frames | Interface State Counters | Count | Average | Shows the count of outgoing MAC layer pause frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthInCrcErrors | Eth Interface In CRC Errors | Interface State Counters | Count | Average | The count of incoming CRC errors caused by several factors for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthInFragmentFrames | Eth Interface In Fragment Frames | Interface State Counters | Count | Average | The count of incoming fragmented frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthInJabberFrames | Eth Interface In Jabber Frames | Interface State Counters | Count | Average | The count of incoming jabber frames. Jabber frames are typically oversized frames with invalid CRC | Interface name | Yes | Every 5 mins |
+| IfEthInMacControlFrames | Eth Interface In MAC Control Frames | Interface State Counters | Count | Average | The count of incoming MAC layer control frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthInMacPauseFrames | Eth Interface In MAC Pause Frames | Interface State Counters | Count | Average | The count of incoming MAC layer pause frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthInMaxsizeExceeded | Eth Interface In Maxsize Exceeded | Interface State Counters | Count | Average | The total number frames received that are well-formed dropped due to exceeding the maximum frame size on the interface | Interface name | Yes | Every 5 mins |
+| IfEthInOversizeFrames | Eth Interface In Oversize Frames | Interface State Counters | Count | Average | The count of incoming oversized frames (larger than 1518 octets) for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthOutMacControlFrames | Eth Interface Out MAC Control Frames | Interface State Counters | Count | Average | The count of outgoing MAC layer control frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthOutMacPauseFrames | Eth Interface Out MAC Pause Frames | Interface State Counters | Count | Average | Shows the count of outgoing MAC layer pause frames for an ethernet interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfInBroadcastPkts | Interface In Broadcast Pkts | Interface State Counters | Count | Average | The count of incoming broadcast packets for an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfInDiscards | Interface In Discards | Interface State Counters | Count | Average | The count of incoming discarded packets for an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfInErrors | Interface In Errors | Interface State Counters | Count | Average | The count of incoming packets with errors for an interface over a given interval of time | Interface name | Yes | Every 5 mins |
@@ -479,16 +486,43 @@ The collection interval for Network Fabric device metrics varies and you can fin
 | IfOutOctets | Interface Out Octets | Interface State Counters | Count | Average | The total number of outgoing octets sent from an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfOutUnicastPkts | Interface Out Unicast Pkts | Interface State Counters | Count | Average | The count of outgoing unicast packets for an interface over a given interval of time | Interface name | Yes | Every 5 mins |
 | IfOutPkts | Interface Out Pkts | Interface State Counters | Count | Average | The total number of outgoing packets sent from an interface over a given interval of time. Includes all packets - unicast, multicast, broadcast, bad packets, etc. | Interface name | Yes | Every 5 mins |
-| LacpErrors | LACP Errors | LACP State Counters | Count | Average | The count of LACPDU illegal packet errors | Interface name | Yes | Every 5 mins |
-| LacpInPkts | LACP In Pkts | LACP State Counters | Count | Average | The count of LACPDU packets received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LacpOutPkts | LACP Out Pkts | LACP State Counters | Count | Average | The count of LACPDU packets sent by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LacpRxErrors | LACP Rx Errors | LACP State Counters | Count | Average | The count of LACPDU packets with errors received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LacpTxErrors | LACP Tx Errors | LACP State Counters | Count | Average | The count of LACPDU packets with errors transmitted by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LacpUnknownErrors | LACP Unknown Errors | LACP State Counters | Count | Average | The count of LACPDU packets with unknown errors over a given interval of time | Interface name | Yes | Every 5 mins |
-| LldpFrameIn | LLDP Frame In | LLDP State Counters | Count | Average | The count of LLDP frames received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LldpFrameOut | LLDP Frame Out | LLDP State Counters | Count | Average | The count of LLDP frames transmitted from an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LldpTlvUnknown | LLDP Tlv Unknown | LLDP State Counters | Count | Average | The count of LLDP frames received with unknown TLV by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
-| LldpTlvDiscard | LLDP Tlv Discard | LLDP State Counters | Count | Average | The count of LLDP TLV frames received and discarded by an interface over a given interval of time. A null value indicates the device reported no discards, which is expected behavior. | Interface name | Yes | Every 5 mins |
+| IfInBitsRate | Interface In Bits Rate | Interface State Rate | BitsPerSecond | Average | Calculated received rate of the interface, measured in bits per second | FabricId, InterfaceName | Yes | Per minute |
+| IfInBitsRatePercent | Interface In Bits Rate Percent | Interface State Rate | Percent | Average | Current input bits rate on the interface as a percentage of the port speed | FabricId, InterfaceName | Yes | Per minute |
+| IfInDiscardsRate | Interface In Discards Rate | Interface State Rate | Count | Average | Rate of inbound packets discarded even though no errors prevented delivery to a higher-layer protocol | FabricId, InterfaceName | Yes | Per minute |
+| IfInErrorsRate | Interface In Errors Rate | Interface State Counters | Count | Average | Rate of inbound packets containing errors that prevent delivery to a higher-layer protocol | FabricId, InterfaceName | Yes | Per minute |
+| IfInPktsRate | Interface In Pkts Rate | Interface State Rate | Count | Average | Calculated received rate of the interface, measured in packets per second | FabricId, InterfaceName | Yes | Per minute |
+| IfOutBitsRate | Interface Out Bits Rate | Interface State Rate | BitsPerSecond | Average | Calculated transmitted rate of the interface, measured in bits per second | FabricId, InterfaceName | Yes | Per minute |
+| IfOutBitsRatePercent | Interface Out Bits Rate Percent | Interface State Rate | Percent | Average | Current output bits rate on the interface as a percentage of the port speed | FabricId, InterfaceName | Yes | Per minute |
+| IfOutDiscardsRate | Interface Out Discards Rate | Interface State Rate | Count | Average | Rate of outbound packets discarded even though no errors prevented transmission | FabricId, InterfaceName | Yes | Per minute |
+| IfOutErrorsRate | Interface Out Errors Rate | Interface State Counters | Count | Average | Rate of outbound packets that couldn't be transmitted because of errors | FabricId, InterfaceName | Yes | Per minute |
+| IfOutPktsRate | Interface Out Pkts Rate | Interface State Rate | Count | Average | Calculated transmitted rate of the interface, measured in packets per second | FabricId, InterfaceName | Yes | Per minute |
+| IfDroppedOctets | Interface Dropped Octets | Interface QoS State Counters | Count | Average | Number of octets dropped by the queue because of overrun or queue-management policies | FabricId, InterfaceName | Yes | Per minute |
+| IfDroppedOctetsRate | Interface Dropped Octets Rate | Interface QoS State Counters | Count | Average | Calculated rate of octets dropped from the queue | FabricId, InterfaceName | Yes | Per minute |
+| IfDroppedPkts | Interface Dropped Pkts | Interface QoS State Counters | Count | Average | Number of packets dropped by the queue because of overrun or queue-management policies | FabricId, InterfaceName | Yes | Per minute |
+| IfDroppedPktsRate | Interface Dropped Pkts Rate | Interface QoS State Counters | Count | Average | Calculated rate of packets dropped from the queue | FabricId, InterfaceName | Yes | Per minute |
+| LacpErrors | Lacp Errors | LACP State Counters | Count | Average | The count of LACPDU illegal packet errors | Interface name | Yes | Every 5 mins |
+| LacpInPkts | Lacp In Pkts | LACP State Counters | Count | Average | The count of LACPDU packets received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LacpOutPkts | Lacp Out Pkts | LACP State Counters | Count | Average | The count of LACPDU packets sent by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LacpRxErrors | Lacp Rx Errors | LACP State Counters | Count | Average | The count of LACPDU packets with errors received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LacpTxErrors | Lacp Tx Errors | LACP State Counters | Count | Average | The count of LACPDU packets with errors transmitted by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LacpUnknownErrors | Lacp Unknown Errors | LACP State Counters | Count | Average | The count of LACPDU packets with unknown errors over a given interval of time | Interface name | Yes | Every 5 mins |
+| IfEthPhyIngFecCCW | L1 - Interface FEC Corrected Codewords | Layer 1 Metrics | Count | Average | FEC corrected codewords on the interface | FabricId, InterfaceName | Yes | Per minute |
+| IfEthPhyIngFecPreFecBer | L1 - Interface FEC Pre-FEC BER | Layer 1 Metrics | Count | Average | FEC pre-FEC bit error rate on the interface | FabricId, InterfaceName | Yes | Per minute |
+| IfEthPhyIngFecUCW | L1 - Interface FEC Uncorrected Codewords | Layer 1 Metrics | Count | Average | FEC uncorrected codewords on the interface | FabricId, InterfaceName | Yes | Per minute |
+| IfEthPhyIngPcsErrBlcks | L1 - Interface PCS Error Blocks | Layer 1 Metrics | Count | Average | PCS error blocks on the interface | FabricId, InterfaceName | Yes | Per minute |
+| LaneFaultRxCdrLol | L1 - Lane Fault Rx CDR LoL | Layer 1 Metrics | Unspecified | Average | Lane reception Clock and Data Recovery Loss of Lock fault. Possible values are 0 (no fault) and 1 (fault) | FabricId, ComponentName | Yes | Per minute |
+| LaneFaultRxLos | L1 - Lane Fault Rx LoS | Layer 1 Metrics | Unspecified | Average | Lane reception Loss of Signal fault. Possible values are 0 (no fault) and 1 (fault) | FabricId, ComponentName | Yes | Per minute |
+| LaneFaultTxCdrLol | L1 - Lane Fault Tx CDR LoL | Layer 1 Metrics | Unspecified | Average | Lane transmission Clock and Data Recovery Loss of Lock fault. Possible values are 0 (no fault) and 1 (fault) | FabricId, ComponentName | Yes | Per minute |
+| LaneFaultTxFailure | L1 - Lane Fault Tx Failure | Layer 1 Metrics | Unspecified | Average | Lane transmission failure. Possible values are 0 (no fault) and 1 (fault) | FabricId, ComponentName | Yes | Per minute |
+| LaneFaultTxLos | L1 - Lane Fault Tx LoS | Layer 1 Metrics | Unspecified | Average | Lane transmission Loss of Signal fault. Possible values are 0 (no fault) and 1 (fault) | FabricId, ComponentName | Yes | Per minute |
+| TransceiverInputPowerInstant | L1 - Transceiver Input Power Instant | Layer 1 Metrics | Unspecified | Average | Instantaneous input power for the transceiver in watts | FabricId, ComponentName | Yes | Per minute |
+| TransceiverLaserBiasCurrentInstant | L1 - Transceiver Laser Bias Current Instant | Layer 1 Metrics | Unspecified | Average | Instantaneous laser bias current for the transceiver in amps | FabricId, ComponentName | Yes | Per minute |
+| TransceiverOutputPowerInstant | L1 - Transceiver Output Power Instant | Layer 1 Metrics | Unspecified | Average | Instantaneous output power for the transceiver in watts | FabricId, ComponentName | Yes | Per minute |
+| TransceiverSupplyVoltage | L1 - Transceiver Supply Voltage | Layer 1 Metrics | Unspecified | Average | Instantaneous supply voltage for the transceiver in volts | FabricId, ComponentName | Yes | Per minute |
+| LldpFrameIn | Lldp Frame In | LLDP State Counters | Count | Average | The count of LLDP frames received by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LldpFrameOut | Lldp Frame Out | LLDP State Counters | Count | Average | The count of LLDP frames transmitted from an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LldpTlvUnknown | Lldp Tlv Unknown | LLDP State Counters | Count | Average | The count of LLDP frames received with unknown TLV by an interface over a given interval of time | Interface name | Yes | Every 5 mins |
+| LldpTlvDiscard | Lldp Tlv Discards | LLDP State Counters | Count | Average | The count of LLDP TLV frames received and discarded by an interface over a given interval of time. A null value indicates the device reported no discards, which is expected behavior. | Interface name | Yes | Every 5 mins |
 
 >[!Note]
 > Arista devices use interface names in the a/b format (for example, Ethernet1/1). However, because ARM resource IDs use / as a delimiter, this format is not permitted in ARM‑based resource names. As a workaround, NNF employs an a‑b convention for interface resource naming (such as Ethernet1‑1) in ARM contexts.
