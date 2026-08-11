@@ -199,7 +199,7 @@ For more information about logging into the BMC, see [Troubleshoot Hardware Vali
 ```
 ## `Warning: BMM has been deprovisioning for longer than expected`
 
-This message indicates that a BMM deprovisioning operation hasn't made progress within the expected 45-minute interval. The warning is reported in either of these situations:
+This message indicates that a BMM deprovisioning operation didn't make progress within the expected 45-minute interval. The warning is reported in either of these situations:
 
 - The underlying `BareMetalHost` has remained in the `deprovisioning` state for more than 45 minutes.
 - The associated Cluster API `Machine` has been deleting for more than 45 minutes, but the `BareMetalHost` hasn't entered the `deprovisioning` state.
