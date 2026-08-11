@@ -210,7 +210,7 @@ To troubleshoot this issue:
 - Check the status of the BMM lifecycle action that initiated deprovisioning, such as Reimage or Replace, and note the step where progress stopped.
 - If the `BareMetalHost` is in `deprovisioning`, check for PXE connectivity, BMC communication, Ironic cleaning, or disk-wipe failures. Also investigate any other warning conditions reported for the BMM.
 - If deprovisioning hasn't started, check whether the Cluster API `Machine`, `Metal3Machine`, or `BareMetalHost` is paused or blocked from deletion.
-- Don't start another lifecycle action while the existing action or machine deletion is still in progress. If the underlying issue can't be resolved or the warning persists, collect the BMM conditions and lifecycle action details and contact Microsoft support.
+- Don't start another lifecycle action while the existing action or machine deletion is still in progress. If you can't resolve the underlying issue or the warning persists, collect the BMM conditions and lifecycle action details and contact Microsoft support.
 
 The warning clears automatically after deprovisioning progresses or the blocked machine deletion is resolved.
 
