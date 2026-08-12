@@ -635,6 +635,7 @@ For dynamic provisioning specific issues:
 - **Quota limitations** - check both Kubernetes resource quotas and Azure subscription quotas for Azure Managed Lustre clusters
 
 For additional troubleshooting resources, see:
+- [Troubleshoot Azure Managed Lustre CSI driver extension errors](/troubleshoot/azure/azure-kubernetes/extensions/troubleshoot-azurelustre-csi-extension-errors)
 - [Azure Managed Lustre troubleshooting](troubleshoot-deployment.md)
 - [Azure Lustre CSI Driver GitHub repository](https://github.com/kubernetes-sigs/azurelustre-csi-driver)
 
