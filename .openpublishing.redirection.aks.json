@@ -1569,6 +1569,11 @@
       "source_path": "AKS-Arc/refresh-cluster-proxy-settings.md",
       "redirect_url": "/azure/aks/aksarc/aks-troubleshoot",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-windows-server-retirement.md",
+      "redirect_url": "/azure/aks/aksarc/overview",
+      "redirect_document_id": false
     }
   ]
 }
