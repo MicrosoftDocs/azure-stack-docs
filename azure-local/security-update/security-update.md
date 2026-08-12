@@ -84,11 +84,11 @@ This section provides key notifications related to this release, including annou
 
 ## Improvements
 
-This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/topic/aaaabbbb-0000-cccc-1111-dddd2222eeee) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/KB5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
-- **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/topic/june-9-2026-kb5094125-os-build-26100-32995-aaaabbbb-0000-cccc-1111-dddd2222eeee)), these apps might fail to launch Office or open documents.
+- **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/KB5094125)), these apps might fail to launch Office or open documents.
 
 - **[Containers]** This update improves startup performance for Hyper-V–isolated Windows Server containers on Windows Server 2025. The updated Windows Server 2025 container base images (nanoserver, servercore, and windowsservercore) include this improvement and are available through the Microsoft Container Registry (MCR). Pull the latest image tag to get the update.
 
@@ -102,7 +102,7 @@ This security update includes fixes and quality improvements from [KB5094125](
 
 - **[Event Log]** This update improves the reliability of the Windows Event Log service on event collector servers that forward events to custom log channels configured with a manifest.
 
-- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer is run with administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/topic/june-9-2026-kb5094125-os-build-26100-32995-aaaabbbb-0000-cccc-1111-dddd2222eeee)).
+- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer is run with administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/KB5094125)).
 
 - **[Input]** This update changes hotkey unregister and cleanup behavior. In rare cases, some built-in Windows experiences that rely on previous hotkey lifecycle behavior might temporarily stop responding to certain keyboard shortcuts. This issue can typically be resolved by restarting the app affected. If the issue isn't resolved, report it through the [Feedback Hub](https://support.microsoft.com/Windows/Apps/send-feedback-to-microsoft-with-the-feedback-hub-app).
 
