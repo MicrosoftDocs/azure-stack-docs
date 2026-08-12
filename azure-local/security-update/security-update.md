@@ -27,21 +27,21 @@ This section provides key notifications related to this release, including annou
 ## Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft has been updating these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Updated certificates are delivered through Windows Update in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
 
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5099536](https://support.microsoft.com/en-us/servicing/os/windows-server/2026/07/july-14-2026-kb5099536-os-build-26100-33158) (released July 14, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5099536](https://support.microsoft.com/en-us/servicing/os/windows-server/2026/07/july-14-2026-kb5099536-os-build-26100-33158) (released July 14, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[File Explorer]** This update improves File Explorer for files stored on DFS mapped drives, helping previews and copied files work as expected after reconnecting to the network.
 
 - **[Windows]** This update improves support for post‑quantum cryptography (PQC) certificates by restoring PQC options during Certificate Authority configuration and enabling successful enrollment with newly created PQC certificate templates.
 
-- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
+- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
 - **[Emoji Panel]** The emoji panel (Windows key + period (.)) now supports GIPHY following the deprecation of Google's Tenor API.
 
-If you've already installed previous updates, your device downloads and installs only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
