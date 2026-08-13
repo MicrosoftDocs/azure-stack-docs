@@ -497,6 +497,8 @@ items:
           href: manage/gpu-manage-via-device.md
         - name: Manage GPUs via partitioning
           href: manage/gpu-manage-via-partitioning.md
+        - name: Manage GPU fabric resources
+          href: manage/gpu-manage-fabric-resources.md
         - name: REST APIs for GPU management
           href: manage/gpu-rest-api-reference.md 
     - name: Rack aware cluster
@@ -1108,6 +1110,10 @@ items:
           href: manage/gpu-manage-via-device.md
         - name: Manage GPUs via partitioning
           href: manage/gpu-manage-via-partitioning.md
+        - name: Manage GPU fabric resources
+          href: manage/gpu-manage-fabric-resources.md
+        - name: REST APIs for GPU management
+          href: manage/gpu-rest-api-reference.md 
 
     - name: Security
       items:
