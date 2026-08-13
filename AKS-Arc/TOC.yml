@@ -11,8 +11,6 @@
     href: supported-kubernetes-versions.md
   - name: Data collection
     href: data-collection.md
-  - name: Blogs and announcements
-    href: blogs-announcements.md
   - name: Security bulletins
     href: security-bulletins.md
 - name: AKS on bare metal
