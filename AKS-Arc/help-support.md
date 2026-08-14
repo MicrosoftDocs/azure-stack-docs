@@ -39,4 +39,4 @@ If you encounter an issue with AKS on Azure Local, this article describes how to
 
 ## Next steps
 
-- [Review support policies for AKS Arc](support-policies.md)
+- [Review support policies for AKS](support-policies.md)

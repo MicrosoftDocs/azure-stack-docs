@@ -1,23 +1,23 @@
 ---
-title: Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azure Arc
-description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc.
+title: Use Container Storage Interface (CSI) disk drivers in AKS Hybrid and Edge
+description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS Hybrid and Edge.
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak
 ms.custom: local
 
-# Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS Arc.
+# Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS.
 # Keyword: container storage interface drivers, CSI drivers
 ---
 
-# Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azure Arc
+# Use Container Storage Interface (CSI) disk drivers in AKS Hybrid and Edge
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Arc.
+This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS Hybrid and Edge.
 
-## Overview of CSI in AKS enabled by Arc
+## Overview of CSI in AKS Hybrid and Edge
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]
 

@@ -15,17 +15,17 @@ ms.reviewer: leslielin
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 > [!IMPORTANT]
-> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS Hybrid and Edge GitHub repository](https://aka.ms/aksarc-github).
 
-This quickstart shows you how to deploy an AKS cluster in AKS enabled by Azure Arc on VMware using the Azure CLI.
+This quickstart shows you how to deploy an AKS cluster in AKS Hybrid and Edge on VMware using the Azure CLI.
 
 ## Prerequisites
 
 To complete this quickstart, you need to do these things:
 
 - Make sure you review and satisfy all the requirements in [System requirements and support matrix](aks-vmware-system-requirements.md) and [networking requirements](aks-vmware-networking-concepts.md).
-- Make sure you [deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) by connecting vCenter to Azure with the Kubernetes Extension for AKS Arc Operators.
-- If you have an existing Arc-enabled VMware vSphere deployment, follow the process to [enable Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
+- Make sure you [deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) by connecting vCenter to Azure with the Kubernetes Extension for AKS Operators.
+- If you have an existing Arc-enabled VMware vSphere deployment, follow the process to [enable Kubernetes Extension for AKS Operators](aks-vmware-install-kubernetes-extension.md).
 
 ### Azure parameters
 

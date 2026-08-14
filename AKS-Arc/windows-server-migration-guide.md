@@ -1,6 +1,6 @@
 ---
 title: Migrate from Windows Server 2019 to Windows Server 2022
-description: Learn how to migrate AKS Arc from Windows Server 2019 to 2022.
+description: Learn how to migrate AKS from Windows Server 2019 to 2022.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 11/19/2025
@@ -10,11 +10,11 @@ ms.custom: windows-server
 
 ---
 
-# Migration guide: Windows Server 2019 to 2022 on AKS Arc
+# Migration guide: Windows Server 2019 to 2022 on AKS
 
-To continue ensuring Azure remains the best possible experience with the highest standards of safety and reliability, [we are retiring the current architecture of AKS enabled by Azure Arc on Windows Server 2019 in March 2026, and on Windows Server 2022 in 3 years, on March 27, 2028](aks-windows-server-retirement.md).
+To help ensure Azure remains the best possible experience with the highest standards of safety and reliability, migrate AKS Hybrid and Edge workloads from Windows Server 2019 to Windows Server 2022.
 
-This guide helps you migrate your AKS enabled by Azure Arc workloads from Windows Server 2019 to Windows Server 2022. The migration involves updating container images, creating new node pools, and redeploying applications to ensure compatibility with the newer operating system.
+This guide helps you migrate your AKS Hybrid and Edge workloads from Windows Server 2019 to Windows Server 2022. The migration involves updating container images, creating new node pools, and redeploying applications to ensure compatibility with the newer operating system.
 
 ## What you'll accomplish
 
@@ -28,7 +28,7 @@ This guide helps you migrate your AKS enabled by Azure Arc workloads from Window
 Before you begin the migration, ensure you have the following prerequisites in place:
 
 - Azure CLI and `kubectl` installed
-- Access to AKS Arc clusters
+- Access to AKS clusters
 - Permissions to create and delete node pools
 
 ## Step 1: identify affected clusters
@@ -58,7 +58,7 @@ docker push myregistry.azurecr.io/myapp:ws2022
 
 ## Step 3: create Windows Server 2022 node pool
 
-Add a new Windows Server 2022 node pool to your AKS Arc cluster:
+Add a new Windows Server 2022 node pool to your AKS cluster:
 
 ```azurecli
 az aksarc nodepool add \
@@ -112,7 +112,7 @@ kubectl get pods -l app=my-windows-app -o wide
 kubectl logs deployment/my-windows-app
 ```
 
-## Step 6: remove old node pools
+## Step 6: Remove old node pools
 
 Drain nodes:
 
@@ -130,7 +130,7 @@ az aksarc nodepool delete \
   --yes
 ```
 
-## Step 7: validate
+## Step 7: Validate
 
 Confirm migration success:
 
@@ -169,6 +169,6 @@ Before production migration:
 
 ## Next steps
 
-- [AKS Arc overview](aks-overview.md)
+- [AKS overview](aks-overview.md)
 - [Windows container upgrade guide](/azure/aks/upgrade-windows-2019-2022)
 - [Azure Local](/azure/azure-local)

@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) Cloud, Edge, and On-Premises Comparison
 description: Learn about Azure Kubernetes Service (AKS) features, capabilities, and pricing across cloud, edge, and on-premises environments to choose the best deployment for your needs.
 author: davidsmatlak
 ms.topic: concept-article
-ms.date: 06/16/2025
+ms.date: 08/12/2026
 ms.author: davidsmatlak
 ms.reviewer: rmody
 ms.custom: overview
@@ -13,14 +13,11 @@ ms.custom: overview
 
 Azure Kubernetes Service (AKS) is a fully managed Kubernetes platform that simplifies how organizations deploy, scale, and manage containerized applications in the cloud. As customer needs evolve to span cloud, on-premises, and edge environments, AKS expands its footprint and brings the same trusted Kubernetes capabilities to a broader range of edge and on-premises infrastructure.
 
-With solutions like AKS enabled by Azure Arc on Azure Local, organizations can now run AKS clusters closer to where their workloads and data reside, whether in remote edge sites or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
+With solutions like AKS on bare metal and AKS on Azure Local, organizations can now run AKS clusters closer to where their workloads and data reside, whether directly on edge hardware, in remote edge sites, or within their own datacenters, while maintaining a consistent operational and developer experience. While AKS is delivered differently across environments, the underlying platform stays aligned in its goals, behavior, and experience.
 
 The focus is on delivering a cohesive and adaptable AKS offering that meets customers across cloud and edge, while preserving the simplicity and power that define the AKS experience.
 
 This article describes how AKS extends features across multiple platforms and highlights the unique advantages and capabilities it brings to cloud, on-premises, and edge environments.
-
-> [!NOTE]
-> AKS enabled by Azure Arc architecture on Windows Server (2019 and 2022) isn't supported after April 2025. AKS support on Windows Server continues to evolve. For more information, see [Retirement of AKS architecture on Windows Server 2019 and Windows Server 2022](aks-windows-server-retirement.md).
 
 ## General comparison of AKS across platforms
 
@@ -29,12 +26,12 @@ This article describes how AKS extends features across multiple platforms and hi
 | Supported infrastructure for Kubernetes cluster | Azure cloud | Azure Local, version 23H2 or later | - Windows 10/11 IoT Enterprise<br>- Windows 10/11 Enterprise<br>- Windows 10/11 Pro<br>- Windows Server 2019/2022 | - Windows Server 2019<br>- Windows Server 2022 |
 | CNCF conformant | Yes | Yes | Yes | Yes |
 | Kubernetes cluster lifecycle management tools (create, scale, upgrade, and delete clusters) | - Azure CLI<br>- Azure PowerShell<br>- Azure portal<br>- Azure Resource Manager (ARM) templates<br>- Bicep<br>- Bicep Kubernetes Provider<br>- Azure Developer CLI | - Azure portal<br>- Azure CLI<br>- ARM templates<br>- Bicep templates | PowerShell | - PowerShell<br>- Windows Admin Center |
-| Kubernetes cluster management plane | AKS is a managed Kubernetes offering. The AKS control plane is hosted and managed by Microsoft. AKS worker nodes are created in customer subscriptions. | Kubernetes clusters are managed through Arc Resource Bridge which is automatically created when Azure local gets deployed. | Kubernetes clusters are self-managed, to preserve resources. | Kubernetes clusters are managed using a *management cluster* that's installed using PowerShell before you can create Kubernetes workload clusters. |
+| Kubernetes cluster management plane | AKS is a managed Kubernetes offering. The AKS control plane is hosted and managed by Microsoft. AKS worker nodes are created in customer subscriptions. | Kubernetes clusters are managed through a lightweight management appliance that's automatically created when Azure Local gets deployed. | Kubernetes clusters are self-managed, to preserve resources. | Kubernetes clusters are managed using a *management cluster* that's installed using PowerShell before you can create Kubernetes workload clusters. |
 | Support for Kubectl or other open source Kubernetes tool | Yes | Yes | Yes | Yes |
 | Supported K8s versions | Continuous updates to supported Kubernetes versions. For the latest version support, run [az aks get-versions](/cli/azure/aks#az_aks_get_versions). | Supports K8s only.<br>For the latest version support, run [az aksarc get-versions](/cli/azure/aks#az_aks_get_versions). | Supports K3s and K8s. For the latest K8s version support, see [steps to prepare your machine for AKS Edge Essentials](aks-edge-howto-setup-machine.md#download-aks-edge-essentials). | - Supports K8s only.<br>- Continuous updates to supported Kubernetes versions. For the latest version support, see [AKS hybrid releases on GitHub](https://github.com/Azure/aksArc/releases). |
 | Azure Fleet Manager integration | Yes | No | No | No |
 | Terraform integration | Yes | Yes (Preview) | No | No |
-| Support for Taints and Labels | Yes | Yes | Not validated. These settings do not persist when cluster is upgraded. | Yes |
+| Support for Taints and Labels | Yes | Yes | Not validated. These settings don't persist when cluster is upgraded. | Yes |
 | AKS automatic | Yes | No | No | No |
 
 ## Monitoring and diagnostic capabilities
@@ -71,11 +68,11 @@ This article describes how AKS extends features across multiple platforms and hi
 |   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
 | Network creation and management | By default, Azure creates a virtual network and subnet for you. You can also choose an existing virtual network in which to create your AKS clusters. | Setting up networking parameters is a required prerequisite to deploy AKS on Azure Local. Network must have connectivity and IP address availability for successful operation of the cluster. | You must provide the IP address range for node IPs and service IPs that are available and have the right connection. The network configuration needed for the cluster is handled by AKS. See [AKS Edge Essentials networking](aks-edge-concept-networking.md). | You must create the network in Windows Server before creating an AKS cluster. Network must have connectivity and IP address availability for successful operation of the cluster. |
-| Supported networking option    | Bring your own Azure virtual network for AKS clusters. | Static IP networks with/without VLAN ID. | Static IP address or use reserved IPs when using DHCP. | - DHCP networks with/without VLAN ID.<br>- Static IP networks with/without VLAN ID. |
+| Supported networking option    | Bring your own Azure virtual network for AKS clusters. | Static IP networks with or without VLAN ID. | Static IP address or use reserved IPs when using DHCP. | - DHCP networks with or without VLAN ID.<br>- Static IP networks with or without VLAN ID. |
 | SDN support                   | Not applicable since the cluster runs on Azure. | No                    | No                                              | Yes                  |
 | Support for Arc Gateway        | N/A (works with Azure Application Gateway) | Yes                        | Yes – support for Azure IoT Operations only                    | No                   |
 | Supported CNIs                | - Azure CNI<br>- Calico<br>- Azure CNI overlay (Cillium)<br>- Bring your own CNI | Calico                     | - Calico (K8s)<br>- Flannel (K3s)                   | Calico               |
-| Service Mesh                  | Istio addon      | Open Service Mesh, via Arc extensions. | Open Service Mesh, via Arc extensions.           | Open Service Mesh, via Arc extensions. |
+| Service Mesh                  | Istio add-on      | Open Service Mesh, via Arc extensions. | Open Service Mesh, via Arc extensions.           | Open Service Mesh, via Arc extensions. |
 | Load Balancer                 | - Azure load balancer – Basic SKU or Standard SKU<br>- Internal load balancer<br>- Bring your own load balancer (BYOLB) | - Bring your own load balancer (BYOLB)<br>- MetalLB Arc Extension | - KubeVIP<br>- Bring your own load balancer (BYOLB) | - HAProxy<br>- SDN load balancer<br>- Bring your own load balancer (BYOLB) |
 
 ## Storage features
@@ -114,7 +111,7 @@ This article describes how AKS extends features across multiple platforms and hi
 | Azure Hybrid Benefit support       | Not applicable                                                                            | Not applicable - AKS already included at no extra cost. | No                                              | Yes                                                               |
 | SLA                               | Paid uptime SLA clusters for production with fixed cost on the API + worker node compute, storage and networking costs. | No SLA offered as the Kubernetes cluster is running on premises. | No SLA offered as the Kubernetes cluster is running on premises. | No SLA offered as the Kubernetes cluster is running on premises.           |
 
-### AI/ML capabilities offered in each platform
+### AI and machine learning capabilities offered in each platform
 
 |   Feature       | Azure (Cloud) | Azure Local (Edge/On-premises) | Edge Essentials (Edge/On-premises, Windows IoT client/server) | Windows Server (Edge/On-premises) |
 | --- | --- | --- | --- | --- |
@@ -125,5 +122,7 @@ This article describes how AKS extends features across multiple platforms and hi
 ## Next steps
 
 - Overview of [Azure Kubernetes Service (AKS)](aks-overview.md)
+- [What is AKS on bare metal (preview)?](aks-bare-metal-overview.md)
+- [What is AKS on Azure Local?](aks-local-overview.md)
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](deploy-windows-application.md)

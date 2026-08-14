@@ -7,19 +7,19 @@ ms.date: 06/03/2024
 ms.lastreviewed: 06/03/2024
 ms.reviewer: leslielin
 
-# Common content between AKS Arc and AKS on VMware
+# Common content between AKS and AKS on VMware
 
 ---
 
 ## Get certificate-based admin kubeconfig
 
-An AKS enabled by Azure Arc cluster administrator can retrieve the certificate-based admin kubeconfig using the following command.
+An AKS Hybrid and Edge cluster administrator can retrieve the certificate-based admin kubeconfig using the following command.
 
 ### Before you begin
 
 Ensure you meet the following prerequisites:
 
-- An AKS enabled by Azure Arc cluster.
+- An AKS Hybrid and Edge cluster.
 - You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extension:
 

@@ -58,7 +58,7 @@ In this output, `sanjose-arcbridge` is the name of the Arc resource bridge you d
 $clusterName = <Name of Arc resource bridge deployed on the Azure Local cluster>
 ```
 
-Next, obtain the name of the AKS Arc extension you deployed to the custom location. To get this name, run the following command to list the extensions installed on the custom location:
+Next, obtain the name of the AKS extension you deployed to the custom location. To get this name, run the following command to list the extensions installed on the custom location:
 
 ```azurecli
 az customlocation show -n $customlocationID -g $resourceGroup --query clusterExtensionIds -o tsv
@@ -71,7 +71,7 @@ Expected output:
 /subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/SanJose/providers/Microsoft.ResourceConnector/appliances/sanjose-arcbridge/providers/Microsoft.KubernetesConfiguration/extensions/vmss-hci
 ```
 
-You should have two extensions installed on your custom location: AKS Arc and Arc VM management. Copy the extension name for AKS into an environment variable. In the example output, the extension name is `hybridaksextension`. It might be different from what you see:
+You should have two extensions installed on your custom location: AKS and Arc VM management. Copy the extension name for AKS into an environment variable. In the example output, the extension name is `hybridaksextension`. It might be different from what you see:
 
 ```azurecli
 $extensionName = <Name of AKS Arc extension you deployed on the custom location>
@@ -153,7 +153,7 @@ The output for `osType=Windows` should say "Windows node pool feature is disable
 
 Starting with [release 2509](aks-whats-new-local.md#release-2509), the Windows node pool feature is disabled by default. This change improves the download experience by avoiding unnecessary downloads of the Windows VHD when it's not required.
 
-If you have existing clusters created before this build that include Windows node pools, you can re-enable the feature as needed. However, if the feature remains disabled, cluster upgrades won't succeed while Windows node pools still exist. It's recommended that you delete all Windows node pools before upgrading Azure Local or AKS Arc.
+If you have existing clusters created before this build that include Windows node pools, you can re-enable the feature as needed. However, if the feature remains disabled, cluster upgrades won't succeed while Windows node pools still exist. It's recommended that you delete all Windows node pools before upgrading Azure Local or AKS.
 
 To ensure a smooth upgrade experience, either re-enable the Windows node pool feature if you plan to continue using Windows node pools, or remove all Windows node pools from your clusters.
 

@@ -9,8 +9,8 @@ ms.reviewer: mikek
 ms.custom: windows-server
 author: davidsmatlak
 
-# Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS host in AKS Arc.
-# Keyword: PowerShell AKS Arc updates
+# Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS host in AKS.
+# Keyword: PowerShell AKS updates
 
 ---
 
@@ -36,7 +36,7 @@ The first step in any update flow is to run the [Update-AksHci](./reference/ps/u
 > [!IMPORTANT]
 > The update command only works if you have installed the GA release or later. It does not work for earlier releases. This update command updates the AKS host and the on-premises Microsoft-operated cloud platform. This command does not update any existing AKS workload clusters. New AKS workload clusters created after updating the AKS host might differ from existing AKS workload clusters in their OS version and Kubernetes version.
 
-We recommend updating AKS workload clusters immediately after updating the AKS host to get the newest OS versions and recent fixes. If a workload cluster is on an unsupported Kubernetes version in the next version of AKS Arc, the upgrade fails.
+We recommend updating AKS workload clusters immediately after updating the AKS host to get the newest OS versions and recent fixes. If a workload cluster is on an unsupported Kubernetes version in the next version of AKS, the upgrade fails.
 
 ## Example flow for updating an AKS host
 
@@ -51,7 +51,7 @@ Make sure you always have the latest PowerShell modules installed on the AKS nod
 Update-Module -Name AksHci -Force -AcceptLicense
 ```
 
-### Get the current AKS Arc version
+### Get the current AKS version
 
 ```powershell
 Get-AksHciVersion                    
@@ -61,7 +61,7 @@ Get-AksHciVersion
 1.0.0.10517
 ```
 
-### Get the available AKS Arc updates
+### Get the available AKS updates
 
 ```powershell
 Get-AksHciUpdates
@@ -75,7 +75,7 @@ The output shows the available versions to which this AKS host can be updated:
 
 #### Versioning
 
-Using version 1.0.2.10723 as an example, the following table shows how version numbers are constructed for AKS Arc releases.
+Using version 1.0.2.10723 as an example, the following table shows how version numbers are constructed for AKS releases.
 
 | Value | Meaning                                                                                             |
 | ----- | --------------------------------------------------------------------------------------------------- |
@@ -85,7 +85,7 @@ Using version 1.0.2.10723 as an example, the following table shows how version n
 | 1     | Build type: Always 1 for public-facing builds.                                                       |
 | 0723  | Build creation date: Build creation date in mmdd format.                                             |
 
-### Initiate the AKS Arc update
+### Initiate the AKS update
 
 ```powershell
 Update-AksHci

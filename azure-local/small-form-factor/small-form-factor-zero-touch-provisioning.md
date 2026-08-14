@@ -64,7 +64,7 @@ The local preparation phase gets the physical device into a bootstrap state. Thi
 
 The maintenance environment is a lightweight bootstrap environment. It's not the final workload operating system. Its job is to prepare the device for secure onboarding and make the ownership voucher available for upload to Azure.
 
-For the step-by-step procedure, see [Machine installation](small-form-factor-installation.md).
+For the step-by-step procedure, see [Install the maintenance environment on your machine](small-form-factor-installation.md).
 
 ### 2. Extract the ownership voucher
 

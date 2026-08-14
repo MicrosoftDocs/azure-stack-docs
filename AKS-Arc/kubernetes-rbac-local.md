@@ -1,6 +1,6 @@
 ---
-title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
-description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS Arc.
+title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS Hybrid and Edge
+description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS.
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.lastreviewed: 07/25/2025
@@ -26,7 +26,7 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
-- An AKS Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
+- An AKS cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
 - Azure CLI installed and configured. If you need to install CLI or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - Azure CLI and the **connectedk8s** extension. The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command prompt and type `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster. For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - **Kubectl**. The Kubernetes command line tool, **kubectl**, enables you to run commands that target your Kubernetes clusters. To check whether you installed **kubectl**, open a command prompt and type `kubectl version --client`. Make sure your **kubectl** client version is at least **v1.24.0**. You can use the following Azure CLI or Azure PowerShell commands to install **kubectl**:
@@ -258,4 +258,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 ## Next steps
 
 - [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- Help to protect your cluster in other ways by following the guidance in the [security book for AKS enabled by Azure Arc](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).
+- Help to protect your cluster in other ways by following the guidance in the [security book for AKS Hybrid and Edge](/azure/azure-arc/kubernetes/conceptual-security-book?toc=/azure/aks/aksarc/toc.json&bc=/azure/aks/aksarc/breadcrumb/toc.json).

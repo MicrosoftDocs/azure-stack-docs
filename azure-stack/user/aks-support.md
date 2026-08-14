@@ -1,9 +1,9 @@
 ---
 title: Azure Kubernetes Service on Azure Stack Hub support
-description: Learn about support options for Azure Kubernetes Service (ASK) on Azure Stack Hub.
+description: Learn how to get support for Azure Kubernetes Service (AKS) on Azure Stack Hub, including preview limitations and feedback options. Read now.
 author: sethmanheim
 ms.topic: install-set-up-deploy
-ms.date: 10/26/2021
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
@@ -14,55 +14,55 @@ ms.lastreviewed: 10/26/2021
 
 # Azure Kubernetes Service on Azure Stack Hub support
 
-Azure Kubernetes Service (AKS) for Azure Stack Hub is in public preview. AKS is available for non-production workloads. The goal for the preview is to allow you to test applications on AKS and gather customer feedback. Provide [feedback](https://aka.ms/aks-ash-feedback).
+Azure Kubernetes Service (AKS) for Azure Stack Hub is in preview. AKS is available for non-production workloads. The goal of the preview is to allow you to test applications on AKS and gather customer feedback. Provide [feedback](https://aka.ms/aks-ash-feedback).
 
-Take advantage of the feedback page above to communicate questions, issues, and suggestions to the AKS on Azure Stack Hub team. The product team monitors the [feedback](https://aka.ms/aks-ash-feedback) posts and reply on a best effort basis. When the feedback page can't resolve the issue or if your application test is blocked by an issue, you can raise a non-production [support case](../operator/azure-stack-help-and-support-overview.md). When creating a support case with Microsoft Support team note that the scope of what Support Engineers can do is defined by what is documented in the AKS on Azure Stack Hub [documentation](aks-overview.md).
+Use the feedback page to communicate questions, issues, and suggestions to the AKS on Azure Stack Hub team. The product team monitors the [feedback](https://aka.ms/aks-ash-feedback) posts and replies on a best effort basis. When the feedback page can't resolve the issue or if your application test is blocked by an issue, you can raise a non-production [support case](../operator/azure-stack-help-and-support-overview.md). When creating a support case with Microsoft Support team, note that the scope of what Support Engineers can do is defined by what is documented in the AKS on Azure Stack Hub [documentation](aks-overview.md).
 
-During the public preview of AKS on Azure Stack Hub, note:
+During the preview of AKS on Azure Stack Hub, note:
 
  - **Missing functionality**.  
    See the [overview documents](aks-overview.md) for a feature area comparison with global Azure AKS.
  - **Potential bugs**  
-   Bug could affect your Kubernetes clusters, container registries, and the overall functionality of the AKS, Azure Container Registry, or even the Azure Stack Hub platform.
+   Bugs can affect your Kubernetes clusters, container registries, and the overall functionality of the AKS, Azure Container Registry, or even the Azure Stack Hub platform.
  - **Differences in guidance**  
-   Global Azure AKS or global Azure Container Registry guidance may work on global Azure but doesn't work in Azure Stack Hub.
- - **Support for the public preview**  
-   Support for the public preview is done through a best effort from the Microsoft Support and Product Group teams.
+   Global Azure AKS or global Container Registry guidance might work on global Azure but doesn't work in Azure Stack Hub.
+ - **Support for the preview**  
+   Microsoft Support and Product Group teams provide best-effort support for the preview.
  - **Support cases**  
-   Support cases of services in preview mode can't be created and addressed as production support cases.
+   You can't create support cases for services in preview mode. These cases can't be addressed as production support cases.
 
 ## Reporting bugs
 
  - Go to [feedback](https://aka.ms/aks-ash-feedback) to report the bug.
  - Provide description, reproductive steps, and description of expected behavior.
- - In some cases, we may ask you to collect Azure Stack Hub logs. Microsoft Support will need to open a [support case](../operator/azure-stack-help-and-support-overview.md).
- - In some cases, you may need to collect [Kubernetes logs](aks-troubleshoot.md).
+ - In some cases, Microsoft might ask you to collect Azure Stack Hub logs. Microsoft Support needs to open a [support case](../operator/azure-stack-help-and-support-overview.md).
+ - In some cases, you might need to collect [Kubernetes logs](aks-troubleshoot.md).
 
 ## Providing feedback
 
-Use the links below to submit your feedback.
+Use the following links to submit your feedback:
 
- - Report a security vulnerability, go to [https://msrc.microsoft.com/create-report](https://msrc.microsoft.com/create-report).
- - Suggest an improvement, go to [feedback](https://aka.ms/aks-ash-feedback).
- - Update documentation, go to [feedback](https://aka.ms/aks-ash-feedback).
+ - To report a security vulnerability, go to [https://msrc.microsoft.com/create-report](https://msrc.microsoft.com/create-report).
+ - To suggest an improvement, go to [feedback](https://aka.ms/aks-ash-feedback).
+ - To update documentation, go to [feedback](https://aka.ms/aks-ash-feedback).
 
 ## Service updates
 
-Public review updates will be made available following the standard Azure Stack Patch and Update (PNU) process outlined in the article [Manage updates in Azure Stack Hub](../operator/azure-stack-updates.md). Besides the service, which updates through the Azure Stack Hub Patch and Update process, you may also need to update the AKS base image. If such is the case the extra step of [downloading the image](../operator/azure-stack-download-azure-marketplace-item.md) from the Azure Stack Hub Marketplace will be required.
+Preview updates are available through the standard Azure Stack Patch and Update (PNU) process outlined in the article [Manage updates in Azure Stack Hub](../operator/azure-stack-updates.md). Besides the service, which updates through the Azure Stack Hub Patch and Update process, you might also need to update the AKS base image. If such is the case, you need to [download the image](../operator/azure-stack-download-azure-marketplace-item.md) from the Azure Stack Hub Marketplace.
 
-As participants in the public preview, you may also need to:
+As participants in the preview, you might also need to:
 
- - Kubernetes cluster might need to be redeployed if certain operations are desired.
- - Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
- - In an extreme situation, a support case might be required to break glass and operate on the service components directly.
+ - Redeploy the Kubernetes cluster if certain operations are desired.
+ - Perform manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as primary nodes and worker nodes.
+ - In an extreme situation, create a support case to break glass and operate on the service components directly.
 
 ### Azure AKS version
 
- AKS on Azure Stack Hub is the actual AKS service code, therefore the AKS API is supported on Azure Stack Hub, it is maintained through Azure Stack Hub updates. However, you should expect that the version of the API on Azure will always be newer than the version available in Azure Stack Hub. This is because Azure can update their service with a higher frequency than Azure Stack Hub. For the public preview, the supported API is version "2020-11-01".
+ AKS on Azure Stack Hub is the actual AKS service code. Therefore, the AKS API is supported on Azure Stack Hub and maintained through Azure Stack Hub updates. However, you should expect that the version of the API on Azure is always newer than the version available on Azure Stack Hub. This difference exists because Azure can update their service with a higher frequency than Azure Stack Hub. For the preview, the supported API is version "2020-11-01".
 
 ### Kubernetes version
 
-As is the case for the AKS API, Kubernetes versions are maintained through Azure Stack Hub updates. The specific versions of Azure Stack Hub updates provide support for specific versions of Kubernetes, this is done through upgrading the stamp and also downloading the new version of the AKS base images (Linux and Windows). Kubernetes versions on Azure Stack Hub will often be lower than the Kubernetes versions available on Azure. For the private preview, the highest Kubernetes version supported is 1.20.7.
+As is the case for the AKS API, Azure Stack Hub updates maintain Kubernetes versions. Specific versions of Azure Stack Hub updates provide support for specific versions of Kubernetes. This support happens through upgrading the stamp and also downloading the new version of the AKS base images (Linux and Windows). Kubernetes versions on Azure Stack Hub are often lower than the Kubernetes versions available on Azure.
 
 ## Next steps
 

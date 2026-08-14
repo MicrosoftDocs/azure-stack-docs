@@ -1,11 +1,11 @@
 ---
 title: "Azure Operator Nexus: Configure the network packet broker"
-description: Learn commands to create, view network packet broker's TAPRule.
-author: rbhupatiraju-ms
-ms.author: rbhupatiraju
+description: Learn how to configure a Network Packet Broker in Azure Operator Nexus to mirror and forward network traffic. Includes troubleshooting for common errors.
+author: dougbristow
+ms.author: dbristow
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 10/20/2023
+ms.date: 07/09/2026
 ms.custom: template-how-to, devx-track-Azurecli
 ---
 
@@ -17,14 +17,14 @@ This guide explains how to set up a Network Packet Broker (NPB) to capture, filt
 
 - **Provisioned NPB devices**: Ensure NPB devices are correctly racked, stacked, and provisioned. For details, see [Network Fabric Provisioning](./howto-configure-network-fabric.md).
 
-- **vProbes configuration**: Respective vProbes should be set up with dedicated IPs.
+- **vProbes configuration**: Set up each vProbe with dedicated IPs.
 
-- **Internal vProbes (optional)**: If using internal vProbes, create Layer 3 isolation domains with internal networks. Required subnets must be configured, and the **NPB extension flag** must be set for internal networks. For details, see [Isolation Domains](./howto-configure-isolation-domain.md).
+- **Internal vProbes (optional)**: If you use internal vProbes, create Layer 3 isolation domains with internal networks. Configure required subnets, and set the **NPB extension flag** for internal networks. For details, see [Isolation Domains](./howto-configure-isolation-domain.md).
 
 - **Network-to-Network Interconnect (NNI) use case**: If applicable, create an NNI of type `NPB`. Ensure appropriate Layer 2 and Layer 3 properties are defined during creation. For details, see [Network Fabric Provisioning](./howto-configure-network-fabric.md).
 
 
-## Step 1: Create a Network TAP Rule
+## Step 1: Create a network TAP rule
 
 A **network TAP rule** defines the traffic you want to capture and the actions to perform once a packet matches.
 
@@ -32,9 +32,9 @@ A **network TAP rule** defines the traffic you want to capture and the actions t
 
 * A TAP rule consists of one or more **matching configurations**.
 
-* **Match conditions** are evaluated as logical **“AND”** tuples; all conditions must be satisfied for a packet to match.
+* The system evaluates **match conditions** as logical **“AND”** tuples, so all conditions must be satisfied for a packet to match.
 
-* **Actions** are executed once a packet matches a configuration.
+* The system executes **actions** when a packet matches a configuration.
 
 * You can create TAP rules **inline** (Azure CLI, portal, or Azure Resource Manager) for content up to 2 MB or **file-based** (upload from a storage URL). File updates support **push or pull mechanisms**.
 
@@ -64,14 +64,14 @@ az networkfabric taprule show --name <taprule-name> --resource-group <rg-name> -
 Refer to [How to Configure Network TAP Rules with User Assigned Managed Identity (UAMI)](./howto-configure-network-tap-rules-with-user-assigned-managed-identity.md).
 
 
-## Step 2: Create a Neighbor Group
+## Step 2: Create a neighbor group
 
-A **neighbor group** defines **destinations** for the traffic forwarded by a TAP.
+A **neighbor group** defines **destinations** for the traffic that a TAP forwards.
 
 **Key points:**
 
 * Destinations can include **network interfaces** or monitoring tools like **vProbes**.
-* IP addresses behind load balancers can also be used as destinations, but traffic is sent directly to the specified addresses.
+* You can also use IP addresses behind Azure Load Balancer as destinations, but traffic goes directly to the specified addresses.
 * Grouping multiple destinations simplifies configuration.
 
 **CLI examples:**
@@ -95,17 +95,17 @@ az networkfabric neighborgroup show --name <neighborgroup-name> --resource-group
 ```
 
 > [!Note]
-> Update operations are not currently supported for Neighbor Groups. Changes made via `CLI` or `API` will not reflect on the network device.
+> Update operations aren't currently supported for neighbor groups. Changes you make through `CLI` or `API` don't appear on the network device.
 
-## Step 3: Create a Network TAP
+## Step 3: Create a network TAP
 
 A **network TAP** captures traffic from a specified **source network interface** and forwards it according to a TAP rule and neighbor group.
 
 **Key points:**
 
-* Associate the TAP rule and neighbor group created in previous steps.
+* Associate the TAP rule and neighbor group that you created in previous steps.
 * Use Azure CLI, portal, or Azure Resource Manager to create the TAP.
-* The TAP can be **enabled or disabled** to start or stop traffic forwarding.
+* You can **enable or disable** the TAP to start or stop traffic forwarding.
 
 **CLI examples:**
 
@@ -130,9 +130,9 @@ az networkfabric tap show --name <tap-name> --resource-group <rg-name> --fabric-
 ```
 
 
-## Step 4: Enable or Disable a Network TAP
+## Step 4: Enable or disable a network TAP
 
-After creating a TAP, it is necessary enable it to start the NPB NNI's packet brokering process. You can disable it at any time to stop forwarding traffic.
+After creating a TAP, you need to enable it to start the NPB NNI's packet brokering process. You can disable it at any time to stop forwarding traffic.
 
 **CLI example:**
 
@@ -154,13 +154,13 @@ az networkfabric tap update-admin-state \
 
 ## Operational notes
 
-* NPB **does not analyze traffic**; it only captures, filters, and forwards packets.
+* NPB **doesn't analyze traffic**; it only captures, filters, and forwards packets.
 
-* Multiple TAPs can be configured to monitor different sources simultaneously.
+* You can configure multiple TAPs to monitor different sources simultaneously.
 
-* Updates to TAP rules or neighbor groups can be applied dynamically without disrupting other flows.
+* You can apply updates to TAP rules or neighbor groups dynamically without disrupting other flows.
 
-* NPB NNIs are disabled until a TAP rule is created and enabled.
+* NPB NNIs are disabled until you create and enable a TAP rule.
 
 ## Common errors for NPB
 
@@ -171,7 +171,7 @@ az networkfabric tap update-admin-state \
 | Network tap creation failed as the API request is not valid                                   | Fix the request following the error message and retry the operation.         |
 | REPUT on network tap failed as the tap resource is in Enabled Administrative state            | Disable the tap resource and retry the operation.                            |
 | Network tap creation failed as the tap resource registration with Azure ARM failed            | Retry the operation. If the error persists, contact Microsoft support               |
-| REPUT on network tap failed as the tap resource is in Accepted Configuration state            | Re-put request is not allowed as Configuration State is Accepted.            |
+| REPUT on network tap failed as the tap resource is in Accepted Configuration state            | Re-put request isn't allowed as Configuration State is Accepted.            |
 | Network tap creation failed as the Administrative state is Enabled in the request payload     | Fix the request payload and retry the operation.                             |
 | Network tap creation failed as the network fabric resource is in Administrative locked state. | Remove the lock on fabric before proceeding with the tap creation operation. |
 
@@ -198,21 +198,21 @@ az networkfabric tap update-admin-state \
 | Network tap POST action failed as the action is not supported for Network tap | Check if the POST action is allowed on the tap resource for the given API-version. |
 
 
-### Other Error Codes
+### Other error codes
 | ErrorCode                             | Error Message                                                                                                                 | User Action                                                                                                                |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | NFNPBIsdConfigError                   | Failed to ProcessNPBConfig due to: \<err> for device: \<device>                                                               | Make sure L3 ISD payload is free from validation errors. The payload errors are contained in \<err>.                                                                   |
 | NFNPBNniConfigError                   | Failed to ProcessNPBConfig due to: \<err> for device: \<device>                                                               | Make sure NNI payload is free from validation errors. The payload errors are contained in \<err>.                                                                       |
-| NFTapValidateDstEmptyInfoError        | Network Tap destination received with empty info                                                                              | Make sure Destination name, type, NNI, Internal Network ID, and Encapsulation are not empty.                               |
+| NFTapValidateDstEmptyInfoError        | Network Tap destination received with empty info                                                                              | Make sure Destination name, type, NNI, Internal Network ID, and Encapsulation aren't empty.                               |
 | NFTapValidateDstNghGroupsMissingError | Network Tap destination NeighborGroups is nil/empty</br>Neighbor group definition is not found                                | Ensure Neighbor group definition is not empty.                                                                             |
 | NFTapValidateDstEncapInvalidError     | Network Tap ISD destination Encapsulation type is invalid<br>network Tap NNI Direct destination Encapsulation type is invalid | Make sure the Encapsulation type for the ISD is GRE                                                                        |
 | NFTapValidateDstNghGroupDestIpv4Error | Neighbor group \<name> destination v4 should not be empty<br>Neighbor group \<name> destination count exceeds max limit       | Provide non-empty IPv4 destinations and keep count <= 16.                                                                  |
 | NFTapValidateDstNghGroupDestIpv6Error | Neighbor group \<name> destination v6 should not be empty<br>Neighbor group \<name> destination v6 count exceeds max limit    | Provide non-empty IPv4 destinations and keep count <= 16.                                                                  |
-| GnmiConnectionError                   | GNMI connection to device failed: \<err>                                                                                      | Failure in connecting to the device. Please check if device is connected to Azure or reach out to support.                 |
-| GnmiSetError                          | GNMI SET failed: \<err>                                                                                                       | Failure in pushing configuring to the device. Please check if device is connected to Azure or reach out to support.        |
-| GnoiConnectionError                   | GNOI connection to device failed: \<err>                                                                                      | Failure in connecting to the device. Please check if device is connected to Azure or reach out to support.                 |
-| GnoiOsActivateError                   | Image activation failed. \<err>                                                                                               | Failed to activate the image during device upgrade. Please contact support.                                                |
-| GNMI GET failed \<err>                | GNMI GET failed: \<err>                                                                                                       | Failure in retrieving configuration from the device. Please check if device is connected to Azure or reach out to support. |
+| GnmiConnectionError                   | GNMI connection to device failed: \<err>                                                                                      | Failure in connecting to the device. Check if device is connected to Azure or reach out to support.                 |
+| GnmiSetError                          | GNMI SET failed: \<err>                                                                                                       | Failure in pushing configuring to the device. Check if device is connected to Azure or reach out to support.        |
+| GnoiConnectionError                   | GNOI connection to device failed: \<err>                                                                                      | Failure in connecting to the device. Check if device is connected to Azure or reach out to support.                 |
+| GnoiOsActivateError                   | Image activation failed. \<err>                                                                                               | Failed to activate the image during device upgrade. Contact support.                                                |
+| GNMI GET failed \<err>                | GNMI GET failed: \<err>                                                                                                       | Failure in retrieving configuration from the device. Check if device is connected to Azure or reach out to support. |
 
 
 ### ErrorCode: BadRequest

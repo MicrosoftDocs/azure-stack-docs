@@ -5,7 +5,7 @@ description: Reference for PowerShell Azure Stack privileged endpoint - Get-Azur
 author: sethmanheim
 
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
@@ -15,7 +15,7 @@ ms.lastreviewed: 04/27/2020
 
 ## Synopsis
 Get logs from various roles of Azure Stack Hub with timeout.
-Works for both multi-node or one node environments.
+Works for both multinode or single-node environments.
 
 ## Syntax
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -FromDate
-This will get the logs starting from last hour.
+Gets the logs starting from the last hour.
 
 ```yaml
 Type: Object
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ToDate
-This will get the logs until the current date
+Gets the logs up to the current date.
 
 ```yaml
 Type: Object
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputSasUri
-Blob service SAS Uri to download the logs from.
+Blob service SAS URI to download the logs from.
 
 ```yaml
 Type: Object

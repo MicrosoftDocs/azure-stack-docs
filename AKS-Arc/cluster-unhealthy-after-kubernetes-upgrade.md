@@ -1,5 +1,5 @@
 ---
-title: AKS Arc Cluster unhealthy after Kubernetes Upgrade
+title: AKS Cluster unhealthy after Kubernetes Upgrade
 description: Learn how to troubleshoot and mitigate an issue that causes AKS cluster to become unhealthy after Kubernetes upgrade
 ms.topic: troubleshooting
 author: davidsmatlak
@@ -9,9 +9,9 @@ ms.lastreviewed: 1/13/2026
 ms.custom: local
 ---
 
-# AKS Arc cluster becomes unhealthy after upgrading to Kubernetes v1.31 with Azure Policy or Gatekeeper enabled
+# AKS cluster becomes unhealthy after upgrading to Kubernetes v1.31 with Azure Policy or Gatekeeper enabled
 
-After upgrading an AKS Arc cluster to Kubernetes v1.31 or later, the cluster might enter a degraded or unhealthy state.
+After upgrading an AKS cluster to Kubernetes v1.31 or later, the cluster might enter a degraded or unhealthy state.
 
 ## Symptoms
 
@@ -32,7 +32,7 @@ When Azure Policy or Gatekeeper is enabled, these updates can cause the control 
 
 ## Affected configurations
 
-- AKS Arc clusters with Kubernetes version v1.31 and later.
+- AKS clusters with Kubernetes version v1.31 and later.
 - Azure Policy and/or Gatekeeper enabled.
 
 ## Workaround

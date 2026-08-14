@@ -1511,9 +1511,9 @@ items:
       href: ./small-form-factor/small-form-factor-firewall-requirements.md
   - name: Deploy
     items:
-    - name: Set up subscription
-      href: ./small-form-factor/small-form-factor-subscription-setup.md
-    - name: Install small form factor
+    - name: Prepare to deploy small form factor
+      href: ./small-form-factor/small-form-factor-prepare-to-deploy.md
+    - name: Install the maintenance environment
       href: ./small-form-factor/small-form-factor-installation.md
     - name: Connect via Azure portal
       href: ./small-form-factor/small-form-factor-connect-portal.md
@@ -1586,6 +1586,8 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Rotate certificates
+      href: manage/disconnected-operations-certificate-rotation.md      
     - name: Billing
       href: manage/disconnected-operations-billing.md
   - name: BCDR
