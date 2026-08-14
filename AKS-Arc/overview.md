@@ -15,9 +15,6 @@ ms.date: 11/17/2025
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-> [!IMPORTANT]
-> Microsoft is retiring the current architecture of AKS on Windows Server 2019 in March 2026. We recommend that you deploy [AKS on Azure Local](aks-whats-new-23h2.md). For more information, see [Retirement of AKS architecture on Windows Server](aks-windows-server-retirement.md).
-
 Azure Kubernetes Service (AKS) on Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Windows Server automates running containerized applications at scale. AKS on Windows Server makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 To get started with on-premises Kubernetes using AKS, [set up AKS on Windows Server](setup.md).
@@ -40,7 +37,7 @@ Some of the functionality AKS provides on Windows Server includes:
 - Manage storage and networking on your Kubernetes cluster.
 - Provide regular Kubernetes updates and security fixes for your Kubernetes deployment.
 - Keep up-to-date with the latest available Kubernetes versions.
-- Use the popular Azure services through Azure Arc for Kubernetes.
+- Use popular Azure services for Kubernetes.
 
 ## Simplify setting up on-premises Kubernetes
 
@@ -54,12 +51,12 @@ View the following image to familiarize yourself with the deployment process:
 
 :::image type="content" source="media/overview/aks-hci-deployment.gif" alt-text="GIF showing AKS deployment." lightbox="media/overview/aks-hci-deployment.gif":::
 
-## View and manage on-premises Kubernetes by using tools or Azure Arc
+## View and manage on-premises Kubernetes by using tools or the Azure portal
 
 After you set up on-premises Kubernetes by using AKS and create a Kubernetes cluster, you can manage and monitor your Kubernetes infrastructure with the following options:
 
-- **The Azure portal using Azure Arc**: Use Azure Arc to manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments.  
-  Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
+- **The Azure portal**: Manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments.  
+  You can also manage your Kubernetes clusters with other Azure services including:
   - Azure Monitor
   - Azure Policy
 - **On-premises by using popular tools such as Kubectl**: Many open-source tools allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with AKS on Windows Server.
@@ -99,15 +96,15 @@ The Windows Server cluster or Windows Server 2019/2022 Datacenter failover clust
 
 ## AKS on Windows Server functionality
 
-The following sections describe some of the functionality AKS provides:
+The following sections describe some of the functionality that AKS provides:
 
-### Native integration using Azure Arc
+### Native integration with Azure
 
-With AKS, you can connect your Kubernetes clusters to Azure. Once connected to Azure Arc-enabled Kubernetes, you can access your Kubernetes clusters running on-premises via the Azure portal, and deploy management services such as GitOps and Azure Policy. You can also deploy data services such as SQL Managed Instance and PostgreSQL Hyperscale. For more information about Azure Arc-enabled Kubernetes, see the [Azure Arc overview](/azure/azure-arc/kubernetes/overview).
+With AKS, you can connect your Kubernetes clusters to Azure. Once connected, you can access your Kubernetes clusters running on-premises via the Azure portal, and deploy management services such as GitOps and Azure Policy. You can also deploy data services such as SQL Managed Instance and PostgreSQL Hyperscale. For more information, see the [Azure Arc overview](/azure/azure-arc/kubernetes/overview).
 
 ### Integrated logging and monitoring
 
-Once you connect your cluster to Azure Arc, you can use Azure Monitor for monitoring the health of your Kubernetes cluster and applications. Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers. Metrics and container logs are automatically collected for you and are sent to the metrics database in Azure Monitor, while log data is sent to your Log Analytics workspace. For more information about Azure Monitor, see the [container insights overview](/azure/azure-monitor/containers/container-insights-overview).
+Once you connect your cluster to Azure, you can use Azure Monitor for monitoring the health of your Kubernetes cluster and applications. Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers. Metrics and container logs are automatically collected for you and are sent to the metrics database in Azure Monitor, while log data is sent to your Log Analytics workspace. For more information about Azure Monitor, see the [container insights overview](/azure/azure-monitor/containers/container-insights-overview).
 
 ### Automatically resize your Kubernetes node pools
 
