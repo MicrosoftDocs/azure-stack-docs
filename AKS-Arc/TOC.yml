@@ -11,8 +11,6 @@
     href: supported-kubernetes-versions.md
   - name: Data collection
     href: data-collection.md
-  - name: Blogs and announcements
-    href: blogs-announcements.md
   - name: Security bulletins
     href: security-bulletins.md
 - name: AKS on bare metal
@@ -45,6 +43,8 @@
       href: aks-bare-metal-delete-cluster-resources.md
 - name: AKS on Azure Local
   items:
+  - name: What is AKS on Azure Local?
+    href: aks-local-overview.md
   - name: What's new in AKS on Azure Local
     href: aks-whats-new-local.md
   - name: System requirements for AKS on Azure Local
@@ -431,8 +431,6 @@
       href: aks-edge-software-license-terms.md
 - name: AKS on Windows Server
   items:
-  - name: AKS on Windows Server retirement
-    href: aks-windows-server-retirement.md
   - name: Overview
     href: overview.md
   - name: System requirements
