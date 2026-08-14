@@ -100,7 +100,7 @@ This security update includes fixes and quality improvements from [KB5094125](
 
 - **[Event Log]** This update improves the reliability of the Windows Event Log service on event collector servers that forward events to custom log channels configured with a manifest.
 
-- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer is run with administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)).
+- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer runs in administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)).
 
 - **[Input]** This update changes hotkey unregister and cleanup behavior. In rare cases, some built-in Windows experiences that rely on previous hotkey lifecycle behavior might temporarily stop responding to certain keyboard shortcuts. This issue can typically be resolved by restarting the app affected. If the issue isn't resolved, report it through the [Feedback Hub](https://support.microsoft.com/Windows/Apps/send-feedback-to-microsoft-with-the-feedback-hub-app).
 
