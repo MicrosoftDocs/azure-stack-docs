@@ -39,8 +39,6 @@ This security update includes fixes and quality improvements from [KB5099536](ht
 
 - **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
-- **[Emoji Panel]** The emoji panel (Windows key + period (.)) now supports GIPHY following the deprecation of Google's Tenor API.
-
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
