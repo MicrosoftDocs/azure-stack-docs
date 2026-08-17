@@ -1540,9 +1540,9 @@ items:
     - name: Encrypt Kubernetes secrets (KMS)
       href: index.yml
     - name: Configure JIT access
-      href: index.yml
+      href: ./small-form-factor/small-form-factor-configure-jit.md
     - name: Connect using JIT access
-      href: index.yml
+      href: ./small-form-factor/small-form-factor-connect-jit.md
   - name: Troubleshoot
     items:
     - name: Collect system logs
