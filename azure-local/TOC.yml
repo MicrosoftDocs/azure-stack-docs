@@ -1523,10 +1523,6 @@ items:
       href: ./small-form-factor/small-form-factor-installation.md
     - name: Create a small form factor provisioned machine via Azure portal
       href: ./small-form-factor/small-form-factor-connect-portal.md
-    - name: Configure JIT access
-      href: index.yml
-    - name: SSH into the machine
-      href: index.yml
     - name: Deploy container workloads
       items:
       - name: Container deployment options
@@ -1544,7 +1540,7 @@ items:
     - name: Reset and reinstall OS
       href: index.yml
     - name: Manage network interfaces
-      href: index.yml
+      href: ./small-form-factor/small-form-factor-network-interfaces.md
     - name: Encrypt Kubernetes secrets (KMS)
       href: index.yml
     - name: Configure JIT access
