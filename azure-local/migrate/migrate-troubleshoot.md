@@ -158,6 +158,15 @@ Verify the following:
 - Make sure that you have the [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) role at the Azure subscription scope. The Azure Local Migrate Execute Expert role doesn't allow users to create projects.
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
+### Can't replicate to Azure Local because the project wasn't created in the Azure portal
+
+**Root cause**
+
+The Azure Migrate project wasn't created in the Azure portal. Projects created by other methods - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, or Azure PowerShell - aren't yet configured for Azure Local migrations. Examples include the [Create and manage Azure Migrate projects](/azure/migrate/quickstart-create-migrate-project) and [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstarts. In these projects, Azure Local isn't available as a replication target, so you can't register the target appliance or start replication.
+
+**Recommended resolution**
+
+Create a new Azure Migrate project in the Azure portal, then rerun discovery and replication against the new project. You can't convert an existing project into one that supports Azure Local. For more information, see [Create an Azure Migrate project for Hyper-V](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) or [Create an Azure Migrate project for VMware](migrate-vmware-prerequisites.md#create-an-azure-migrate-project).
 
 ### Target system validation fails on appliance
 

@@ -4,7 +4,7 @@ description: Learn about new features in Azure Migrate for Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 08/13/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -14,6 +14,19 @@ ms.subservice: hyperconverged
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## July 2026
+
+This release includes these features and improvements:
+
+- **Continue replicating in the same project after initial replication setup fails** – If the first replication in an Azure Migrate project fails while the underlying replication resources are being set up, you can now fix the underlying issue and start a new replication in the same project. Azure Migrate detects the failed resources and reprovisions them automatically when you start the new replication. Previously, these resources were left in a failed state and you had to create a new Azure Migrate project to continue. Check the **Jobs** page for the failure reason, resolve the issue, and then start a new replication.
+- **Fixed Azure Connected Machine agent removal during target appliance installation** – Fixed a bug where the appliance installation script removed the Azure Connected Machine agent (`azcmagent`) and deboarded existing Azure Arc registrations when you installed a target appliance on Azure Local. This broke guest management on Arc-enabled Azure Local VMs used as target appliances. The installation script no longer performs this step for Azure Local target appliances. This fix is only in newly downloaded installers, so download the target appliance installer again from the Azure portal to get it. [Latest appliance version download.](https://go.microsoft.com/fwlink/?linkid=2191847)
+- **Source VM shutdown fix on retried migrations** – Fixed an issue where the source VM wasn't powered off on a second migration attempt, even though **Yes, shut down virtual machines (ensures no data loss)** was selected. The workflow already completed the shutdown step during the first attempt, so it skipped the step on retry, which could leave the source VM running and the final data sync incomplete. Retried migrations now shut down the source VM and correctly synchronize the final replication cycle to the target.
+- **Non-ASCII character validation for VM names in the Azure portal** – The Azure portal now blocks target VM names that contain non-ASCII characters during replication setup. Previously, these names were accepted and replication failed later in the workflow.
+- **Azure portal UX improvements** – Fixed a set of minor issues across Azure Migrate blades for Azure Local:
+
+    - Timestamps on the **Events** page now use a localized, portal-friendly date and time format instead of raw UTC/ISO format.
+    - Removed unnecessary no-op template deployments from the replication flow, which reduces noise in the Activity Log and in the target resource group.
 
 ## June 2026
 
