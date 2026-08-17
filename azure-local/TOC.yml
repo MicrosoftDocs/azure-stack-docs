@@ -1510,7 +1510,7 @@ items:
     - name: Firewall requirements
       href: ./small-form-factor/small-form-factor-firewall-requirements.md
     - name: Connectivity modes
-      href: index.yml
+      href: ./small-form-factor/connectivity-modes.md
   - name: Evaluate
     items:
     - name: Install small form factor on a VM
@@ -1521,14 +1521,22 @@ items:
       href: ./small-form-factor/small-form-factor-prepare-to-deploy.md
     - name: Install the maintenance environment
       href: ./small-form-factor/small-form-factor-installation.md
-    - name: Connect via Azure portal
+    - name: Create a small form factor provisioned machine via Azure portal
       href: ./small-form-factor/small-form-factor-connect-portal.md
-    - name: Run containerized workloads
-      href: ./small-form-factor/small-form-factor-containerized-workloads.md
-    - name: Deploy GPU-enabled workloads
-      href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
-    - name: Deploy applications
-      href: ./small-form-factor/small-form-factor-deploy-applications.md
+    - name: Configure JIT access
+      href: index.yml
+    - name: SSH into the machine
+      href: index.yml
+    - name: Deploy container workloads
+      items:
+      - name: Container deployment options
+        href: ./small-form-factor/small-form-factor-containerized-workloads.md
+      - name: Deploy GPU-enabled workloads
+        href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
+      - name: Deploy applications
+        href: ./small-form-factor/small-form-factor-deploy-applications.md
+      - name: Encrypt Kubernetes secrets
+        href: ./small-form-factor/small-form-factor-encrypt-kubernetes-secrets.md
   - name: Manage
     items:
     - name: Update operating system

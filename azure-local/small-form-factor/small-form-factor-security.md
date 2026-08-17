@@ -29,7 +29,7 @@ These conditions increase exposure to risks such as device tampering, unauthoriz
 
 ## Security approach
 
-Small form factor deployments are designed with these constraints in mind. Microsoft built security into the platform from the ground up - anchored in secure device provisioning, reinforced through platform protections, and extended into cloud-based management. This approach helps devices start in a known, trusted state, protect sensitive data, and support secure management at scale when deployed and configured according to Microsoft guidance.
+Small form factor deployments are designed with these constraints in mind. Microsoft built security into the platform from the ground up - anchored in secure device provisioning, reinforced through platform protections, and extended into cloud-based management. This approach helps devices start in a known, trusted state, protect sensitive data, and support secure management at scale when you deploy and configure the devices according to Microsoft guidance.
 
 As deployments grow across locations, Azure Arc provides centralized governance capabilities to help you control access, apply policies, and collect diagnostics across a distributed fleet, subject to connectivity and configuration.
 
@@ -115,8 +115,8 @@ Use these capabilities to apply consistent access controls and security policies
 
 - Direct device access, such as SSH, is supported as an operational option for specific administrative or troubleshooting scenarios. Where enabled, restrict and control direct access by using strong authentication methods, least‑privilege access, and limited network exposure.
 
-- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements. For step-by-step instructions on how to connect, see [Connect to the machine over SSH](small-form-factor-connect-portal.md#connect-to-the-machine-over-ssh).
-
+- SSH access isn't required for routine platform management and should be enabled only when operationally necessary. Scope access tightly, apply network restrictions, and disable direct access when it's no longer needed, consistent with your security policies and operational requirements.
+  
 **Security baselines and best practices enabled by default:**
 
 - By default, small form factor deployments enable security baseline settings and security best practices based on Microsoft recommendations and industry best practices. The tailored security baseline is applied during provisioning to help establish a secure foundation. These protections include controls for network configuration hardening, authentication policy enforcement, and secure system configuration settings. Together, these controls help reduce the risk of misconfiguration and limit exposure to common host-level risks, such as unauthorized data access, weak credential use, and certain network-based attacks.
@@ -131,7 +131,7 @@ Use these capabilities to apply consistent access controls and security policies
 
 ## Endnotes
 
-This document is provided "as-is". Information, views, URLs, and other Internet Web site references might change without notice. Some information relates to prereleased product, which might be substantially modified before it's commercially released.
+This document is provided "as-is". Information, views, URLs, and other Internet website references might change without notice. Some information relates to prereleased product, which might be substantially modified before it's commercially released.
 
 ## Next steps
 
