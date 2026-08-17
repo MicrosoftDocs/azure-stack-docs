@@ -366,8 +366,10 @@ Save the following parameter file and update the placeholder values with your en
 ```
 
 >[!WARNING]
-> - Ensure that Azure role-based access control (Azure RBAC) is set to `false`. Azure RBAC isn't supported on AKS Azure Local for multi-rack deployments currently.
 > - Pod CIDR is a required field. Ensure it's specified at time of cluster creation.
+
+> [!NOTE]
+> AKS on Azure Local for multi-rack deployments supports Azure role-based access control (Azure RBAC). This quickstart sets `enableAzureRBAC` to `false`. To enable Azure RBAC, set `enableAzureRBAC` to `true` in the `aadProfile` when you create the cluster. You can only enable Azure RBAC when you create the cluster. You can't change it on an existing cluster. For more information, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md).
 
 ### Parameter reference
 
@@ -432,30 +434,58 @@ Save the following parameter file and update the placeholder values with your en
 
 ## Step 7: Connect to the cluster
 
-1. To connect to the cluster, run the [az connectedk8s proxy](/cli/azure/connectedk8s) command. The command downloads and runs a proxy binary on the client machine, and fetches a `kubeconfig` file associated with the cluster.
+You can now access your Kubernetes cluster with the given permissions, using either direct mode or proxy mode.
 
-   ```azurecli
-   az connectedk8s proxy --name <cluster name> -g <resource group>
+### Access your cluster with kubectl (direct mode)
+
+To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get by using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
+
+To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action** permission, which is included in the **Azure Kubernetes Service Arc Cluster User** role:
+
+```azurecli
+az aksarc get-credentials -g "$resource_group_name" -n $aks_cluster_name --file <file-name>
+```
+
+Now you can use kubectl to manage your cluster. For example, list the nodes in your cluster by using `kubectl get nodes`. The first time you run it, you must sign in, as shown in the following example:
+
+```azurecli
+kubectl get nodes
+```
+
+The following example output shows the three nodes created in the previous steps. Ensure the node status is `Ready`.
+
+```output
+NAME                                          STATUS   ROLES           AGE    VERSION
+haks-9be0b433-control-plane-tvmbn             Ready    control-plane   106m   v1.33.7
+haks-9be0b433-nodepool1-md-64scc-gfknc        Ready    <none>          102m   v1.33.7
+haks-9be0b433-nodepool1-md-64scc-m9lqp        Ready    <none>          102m   v1.33.7
+```
+
+### Access your cluster from a client device (proxy mode)
+
+To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc enabled Kubernetes Cluster User** role permission.
+
+Run the following steps on another client device:
+
+1. Sign in using Microsoft Entra authentication
+1. Get the cluster connect **kubeconfig** needed to communicate with the cluster from anywhere (even from outside the firewall surrounding the cluster):
+
+     ```azurecli
+     az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
+     ```
+
+     > [!NOTE]
+     > This command opens the proxy and blocks the current shell.
+
+1. In a different shell session, use `kubectl` to send requests to the cluster.
+
+   ```powershell
+   kubectl get pods -A
    ```
 
-   With the proxy running, you can use the Kubernetes command-line client, `kubectl`. If you use Azure Cloud Shell, `kubectl` is already installed. To install and run `kubectl` locally, run [az-aks-install-cli](/cli/azure/aks#az-aks-install-cli) or download from the [Kubernetes](https://kubernetes.io/docs/tasks/tools/#kubectl) website.
+You should now see a response from the cluster containing the list of all pods under the `default` namespace.
 
-
-
-1. Verify the connection to your cluster using the `kubectl get` command. This command returns a list of the cluster nodes.
-
-   ```cmd
-   kubectl get nodes -A --kubeconfig .\<path to kubecofig>
-   ```
-
-   The following example output shows the three nodes created in the previous steps. Make sure the node status is `Ready`.
-
-   ```output
-   NAME                                          STATUS   ROLES           AGE    VERSION
-   haks-9be0b433-control-plane-tvmbn             Ready    control-plane   106m   v1.33.7
-   haks-9be0b433-nodepool1-md-64scc-gfknc        Ready    <none>          102m   v1.33.7
-   haks-9be0b433-nodepool1-md-64scc-m9lqp        Ready    <none>          102m   v1.33.7
-   ```
+For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device).
 
 ## Related content
 
