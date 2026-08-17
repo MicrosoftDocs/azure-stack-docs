@@ -167,20 +167,12 @@ az role assignment create \
 
 ## Step 3: Connect to the cluster
 
-Users can use the **Azure Arc connected cluster proxy** to connect to an AKS Arc cluster enabled with Azure RBAC. The proxy authenticates the user with Microsoft Entra ID and tunnels `kubectl` traffic through Azure to the workload cluster, where the API server enforces Azure RBAC on each request.
+You connect to an Azure RBAC-enabled cluster the same way as any other multi-rack cluster, using either `az aksarc get-credentials` (direct mode) or `az connectedk8s proxy` (proxy mode). For the full connection steps and how to install `kubectl`, see [Connect to the cluster](resource-manager-quickstart.md#step-7-connect-to-the-cluster).
 
-```azurecli
-az connectedk8s proxy -n "$CLUSTER_NAME" -g "$RESOURCE_GROUP"
-```
+The following details are specific to Azure RBAC:
 
-In another terminal, run `kubectl` against the local proxy:
-
-```bash
-kubectl get pods --all-namespaces
-```
-
-> [!NOTE]
-> `az aksarc get-credentials` isn't supported for multi-rack clusters. Use `az connectedk8s proxy` for all interactive cluster access.
+- **Authentication and authorization.** The first time you run a `kubectl` command, you're prompted to sign in with Microsoft Entra ID, and the API server authorizes the request based on your Azure role assignments (for example, **Azure Arc Kubernetes Viewer**).
+- **Admin kubeconfig bypasses Azure RBAC.** If you pass the `--admin` flag to `az aksarc get-credentials`, the command downloads a certificate-based admin kubeconfig that contains secrets and bypasses Microsoft Entra ID sign-in and Azure RBAC. Store it securely and rotate it periodically. For more information, see [Retrieve certificate-based admin kubeconfig in AKS Arc](../retrieve-admin-kubeconfig.md).
 
 ### Admin group access (optional)
 
@@ -221,7 +213,6 @@ For deeper investigation, check the `guard` pod logs and the kube-apiserver audi
 ## Known limitations
 
 - **Enable-only at creation.** Azure RBAC can't be turned on or off on an existing multi-rack cluster. To change this setting, you must create a new cluster.
-- **`az aksarc get-credentials` isn't supported.** All interactive access goes through `az connectedk8s proxy`.
 - **Admin group flag is optional.** Pre-seeding cluster admins via `--aad-admin-group-object-ids` is supported but not required. For more information, see [Admin group access (optional)](#admin-group-access-optional).
 
 ## End-to-end example
