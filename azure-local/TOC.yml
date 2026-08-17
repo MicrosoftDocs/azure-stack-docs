@@ -1536,7 +1536,7 @@ items:
   - name: Manage
     items:
     - name: Update operating system
-      href: index.yml
+      href: ./small-form-factor/small-form-factor-upgrade.md
     - name: Reset and reinstall OS
       href: ./small-form-factor/small-form-factor-os.md
     - name: Manage network interfaces
