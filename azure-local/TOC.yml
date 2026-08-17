@@ -1631,6 +1631,8 @@ items:
     items:
     - name: Overview
       href: manage/disconnected-operations-monitoring.md
+    - name: Monitor with Grafana
+      href: manage/disconnected-operations-grafana-monitoring.md
   - name: Troubleshoot
     items:
     - name: On-demand log collection
