@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/12/2026
+ms.date: 08/14/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -205,12 +205,10 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
     
    To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
-# [Via Configurator app (Preview)](#tab/app)
+# [Via Configurator app](#tab/app)
 
 
 If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -506,12 +504,9 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
     
    To view gateway router logs on Windows, run the `azcmagent logs` command in PowerShell. In the resulting .zip file, the logs are located in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
-# [Via Configurator app (Preview)](#tab/app)
+# [Via Configurator app](#tab/app)
 
 If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc gateway.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
-
 
 ## Prerequisites
 
