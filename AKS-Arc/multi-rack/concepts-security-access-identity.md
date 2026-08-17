@@ -20,7 +20,7 @@ Kubernetes RBAC and Azure RBAC help you secure your cluster access and provide o
 This article introduces the core concepts that help you authenticate and assign permissions in AKS.
 
 > [!NOTE]
-> On multi-rack deployments, the `az aksarc get-credentials` API isn't supported. Interactive access to an Azure RBAC-enabled cluster is provided through `az connectedk8s proxy` rather than a `get-credentials`-based Microsoft Entra integration. For step-by-step guidance, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md).
+> On multi-rack deployments, use `az aksarc get-credentials` to retrieve a `kubeconfig` file. You can also use `az connectedk8s proxy` for interactive access to an Azure RBAC-enabled cluster. For step-by-step guidance, see [Use Azure RBAC for AKS on Azure Local for multi-rack deployments](use-azure-rbac.md). To retrieve the certificate-based admin `kubeconfig`, see [Retrieve certificate-based admin kubeconfig in AKS Arc](../retrieve-admin-kubeconfig.md).
 
 ## Kubernetes RBAC
 
@@ -124,6 +124,19 @@ AKS Arc provides the following five built-in roles. They're similar to the [Kube
 | [Azure Arc Kubernetes Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-admin) | Allows admin access. It's intended to be granted within a namespace through **RoleBinding**. If you use it in **RoleBinding**, it allows read/write access to most resources in a namespace, including the ability to create roles and role bindings within the namespace. This role doesn't allow write access to resource quota or to the namespace itself. |
 | [Azure Arc Kubernetes Cluster Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-cluster-admin) | Allows "superuser" access to execute any action on any resource. When you use it in **ClusterRoleBinding**, it gives full control over every resource in the cluster and in all namespaces. When you use it in **RoleBinding**, it gives full control over every resource in the role binding namespace, including the namespace itself. |
 
+## Microsoft Entra integration
+
+Microsoft Entra integration can help to enhance your AKS cluster security. Built on enterprise identity management experience, Microsoft Entra ID is a multitenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS clusters to provide a single source for account management and security.
+
+:::image type="content" source="media/concepts-security-access-identity/entra-integration.png" alt-text="Flowchart showing Entra integration." lightbox="media/concepts-security-access-identity/entra-integration.png":::
+
+With Microsoft Entra-integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
+
+- To obtain a **kubectl** configuration context, run the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command.
+- When a user interacts with the AKS cluster using **kubectl**, they're prompted to sign in with their Microsoft Entra credentials.
+
+This approach provides a single source for user account management and password credentials. The user can only access the resources as defined by the Kubernetes cluster administrator.
+
 ## Current limitations
 
 The following security features aren't currently available on AKS on Azure Local for multi-rack deployments:
@@ -132,14 +145,13 @@ The following security features aren't currently available on AKS on Azure Local
 |---|---|---|
 | OIDC issuer / Workload identity | Not available | Workload identity federation isn't currently supported on AKS on Azure Local for multi-rack deployments. |
 | SSH access restriction (`authorizedIPRanges`) | Not available | The `clusterVMAccessProfile.authorizedIPRanges` field is accepted in the API schema but isn't currently enforced. |
-| Microsoft Entra integration via `az aksarc get-credentials` | Not available | The `get-credentials`-based Microsoft Entra integration isn't currently available. Use `az connectedk8s proxy` together with Azure RBAC for Microsoft Entra ID-based access. |
 
 ## Summary
 
 The following steps show how users can authenticate to Kubernetes when Azure RBAC is enabled.
 
 1. Run `az login` and authenticate to Azure.
-1. Connect to the cluster using `az connectedk8s proxy`.
+1. Connect to the cluster by using `az aksarc get-credentials` or `az connectedk8s proxy`.
 1. Run `kubectl` commands.
    The first command can trigger browser-based authentication to authenticate to the Kubernetes cluster.
 
