@@ -1,8 +1,8 @@
 ---
-title: Troubleshooting guide for issues in AKS enabled by Azure Arc on VMware (preview)
-description: Learn how to troubleshoot issues and errors in AKS enabled by Arc on VMware.
+title: Troubleshooting guide for issues in AKS Hybrid and Edge on VMware (preview)
+description: Learn how to troubleshoot issues and errors in AKS Hybrid and Edge on VMware.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, vmware
 author: davidsmatlak
 ms.date: 03/19/2025
 ms.author: davidsmatlak 
@@ -10,13 +10,13 @@ ms.lastreviewed: 03/19/2025
 ms.reviewer: leslielin
 ---
 
-# Troubleshooting guide for issues in AKS enabled by Azure Arc on VMware
+# Troubleshooting guide for issues in AKS Hybrid and Edge on VMware
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article outlines troubleshooting steps for known issues and errors that can occur when deploying the AKS enabled by Azure Arc on VMware preview. You can also [review the known issues here](aks-vmware-known-issues.md) or follow the [troubleshooting overview](aks-vmware-support-troubleshoot.md) to report bugs or provide product feedback.
+This article outlines troubleshooting steps for known issues and errors that can occur when deploying the AKS Hybrid and Edge on VMware preview. You can also [review the known issues here](aks-vmware-known-issues.md) or follow the [troubleshooting overview](aks-vmware-support-troubleshoot.md) to report bugs or provide product feedback.
 
-This page is continually updated, so check back here for new information. As we identify critical problems that require workarounds, we add them. Please review this information carefully before deploying your AKS Arc on VMware preview.
+This page is continually updated, so check back here for new information. As we identify critical problems that require workarounds, we add them. Please review this information carefully before deploying your AKS on VMware preview.
 
 ## Arc Resource Bridge
 

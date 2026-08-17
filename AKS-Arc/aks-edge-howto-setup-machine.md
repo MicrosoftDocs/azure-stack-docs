@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/17/2026
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Prepare your machines for AKS Edge Essentials

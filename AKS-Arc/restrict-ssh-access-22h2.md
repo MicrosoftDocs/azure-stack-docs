@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
+ms.custom: windows-server
 
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS on Windows Server.
@@ -17,14 +18,14 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes a new security feature in AKS Arc that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs). The feature limits access to only certain IP addresses, and restricts the set of commands that you can run over SSH.
+This article describes a new security feature in AKS that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs). The feature limits access to only certain IP addresses, and restricts the set of commands that you can run over SSH.
 
 ## Overview
 
 Currently, anyone with administrator access to AKS on Windows Server has access to VMs through SSH on any machine. In some scenarios, you might want to limit that access, because unlimited access makes it difficult to pass compliance.
 
 > [!NOTE]
-> Currently, this capability is available only for a new installation of AKS Arc, and not for upgrades. Only a new installation of AKS Arc can pass the restricted IPs and restrict the commands that run over SSH.
+> Currently, this capability is available only for a new installation of AKS, and not for upgrades. Only a new installation of AKS can pass the restricted IPs and restrict the commands that run over SSH.
 
 ## Enable SSH restrictions
 
@@ -85,7 +86,7 @@ Get-AksHciLogs –virtualMachineLogs
 
 - Individual SSH configuration for workload clusters is now available. The configuration for workload clusters uses the [New-AksHciSSHConfiguration](reference/ps/new-akshcisshconfiguration.md) PowerShell cmdlet.
 - The restriction is only for Linux. Windows nodes don't have this restriction; you should be able to SSH successfully.
-- You can only set the configuration during the installation phase of AKS Arc.
+- You can only set the configuration during the installation phase of AKS.
 - You must perform a reinstall if you incorrectly configure any SSH settings.
 - There is no support for upgrades.
 - You can add CIDRs or IP addresses to which the SSH access can be restricted.

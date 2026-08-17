@@ -7,7 +7,7 @@ ms.date: 04/04/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
-ms.custom: sfi-ropc-nochange
+ms.custom: sfi-ropc-nochange, windows-server
 
 # Intent: As a developer, I want to deploy a container image from a private container registry to AKS on Windows Server.
 # Keyword: private container registry Kubernetes on-premises
@@ -178,7 +178,7 @@ To confirm that the pod was successfully created using the container image from 
 
 ## Next steps
 
-In this article, you learned how to deploy a container image from the Azure Container Registry to AKS Arc. Next, you can:
+In this article, you learned how to deploy a container image from the Azure Container Registry to AKS. Next, you can:
 
 - [Create and manage node pools for a cluster](./manage-node-pools-22h2.md)
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)

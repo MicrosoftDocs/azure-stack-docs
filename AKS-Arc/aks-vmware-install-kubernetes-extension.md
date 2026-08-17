@@ -1,8 +1,8 @@
 ---
-title: Install and uninstall Kubernetes Extension for AKS Arc Operators (preview)
-description: Learn how to install and uninstall the Kubernetes Extension for AKS Arc Operators.
+title: Install and uninstall Kubernetes Extension for AKS Operators (preview)
+description: Learn how to install and uninstall the Kubernetes Extension for AKS Operators.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, vmware
 ms.date: 03/21/2024
 author: davidsmatlak
 ms.author: davidsmatlak 
@@ -10,14 +10,14 @@ ms.reviewer: leslielin
 ms.lastreviewed: 03/21/2024
 ---
 
-# Enable the Kubernetes Extension for AKS Arc Operators (preview)
+# Enable the Kubernetes Extension for AKS Operators (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
+To use the AKS on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 
-- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, you should only follow [Step #1: register feature/provider for the first time user](#step-1-register-featureprovider-for-the-first-time-user), and [Step #2: install the `aksarc` CLI extension](#step-2-install-the-aksarc-cli-extension).
-- If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, follow all the steps in this article.
+- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Operators installed, you should only follow [Step #1: register feature/provider for the first time user](#step-1-register-featureprovider-for-the-first-time-user), and [Step #2: install the `aksarc` CLI extension](#step-2-install-the-aksarc-cli-extension).
+- If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Operators, follow all the steps in this article.
 
 ## Before you begin
 
@@ -25,7 +25,7 @@ Before you begin, [install the Azure CLI](/cli/azure/install-azure-cli-windows?t
 
 ## Step 1. Register feature/provider for the first time user
 
-If your subscription is deploying the Kubernetes Extension for AKS Arc Operators (preview) for the first time, you must register the preview features.
+If your subscription is deploying the Kubernetes Extension for AKS Operators (preview) for the first time, you must register the preview features.
 
 1. Prepare your Azure account:
 
@@ -68,9 +68,9 @@ az extension add -n arcappliance
 az extension add -n customlocation
 ```
 
-## Step 3. Install the Kubernetes Extension for AKS Arc Operators
+## Step 3. Install the Kubernetes Extension for AKS Operators
 
-1. Specify the version of the Kubernetes extension for AKS Arc operators:
+1. Specify the version of the Kubernetes extension for AKS operators:
 
    ```PowerShell
    $extension_name = 'hybridaksopext'
@@ -91,7 +91,7 @@ az extension add -n customlocation
    $appliance_name = '$applianceName from Arc Resource Bridge deployment'
    ```
 
-1. Install the Kubernetes extension for AKS Arc operators:
+1. Install the Kubernetes extension for AKS operators:
 
    ```azurecli
    az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
@@ -129,11 +129,11 @@ The custom location was created during the Arc Resource Bridge deployment.
    az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
    ```
 
-Now that you successfully enabled the Kubernetes Extension for AKS Arc Operators (preview), you can proceed to the next steps to create a Kubernetes cluster.
+Now that you successfully enabled the Kubernetes Extension for AKS Operators (preview), you can proceed to the next steps to create a Kubernetes cluster.
 
-## Clean up environment from deployments of AKS Arc on VMware
+## Clean up environment from deployments of AKS on VMware
 
-Once you complete the evaluation of the AKS Arc on VMware preview, you can follow these steps to clean up your environment:
+Once you complete the evaluation of the AKS on VMware preview, you can follow these steps to clean up your environment:
 
 1. Delete the AKS cluster. To delete the workload cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command, or go to the Azure portal:
 
@@ -141,7 +141,7 @@ Once you complete the evaluation of the AKS Arc on VMware preview, you can follo
    az aksarc delete -n '<cluster name>' -g $applianceResourceGroupName
    ```
 
-1. Uninstall the Kubernetes Extension. You can uninstall the Kubernetes Extension for AKS Arc Operators by using the [az extension remove](/cli/azure/extension#az-extension-remove) command:
+1. Uninstall the Kubernetes Extension. You can uninstall the Kubernetes Extension for AKS Operators by using the [az extension remove](/cli/azure/extension#az-extension-remove) command:
 
    ```azurecli
    az extension remove -n aksarc
@@ -150,5 +150,5 @@ Once you complete the evaluation of the AKS Arc on VMware preview, you can follo
 
 ## Next steps
 
-- If you're beginning to evaluate the AKS Arc on VMware preview and finished enabling the Kubernetes Extension for AKS Arc Operators, you can create a Kubernetes cluster by following the instructions in the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
-- If you completed the evaluation of AKS Arc on VMware, you can share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).
+- If you're beginning to evaluate the AKS on VMware preview and finished enabling the Kubernetes Extension for AKS Operators, you can create a Kubernetes cluster by following the instructions in the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
+- If you completed the evaluation of AKS on VMware, you can share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).

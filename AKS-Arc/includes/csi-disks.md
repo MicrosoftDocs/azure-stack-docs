@@ -4,7 +4,6 @@ ms.author: davidsmatlak
 ms.service: azure-kubernetes-service-hybrid
 ms.topic: include
 ms.date: 10/02/2025
-ms.reviewer: abha
 ms.lastreviewed: 10/18/2022
 
 ---
@@ -13,7 +12,7 @@ ms.lastreviewed: 10/18/2022
 
 A *storage class* is used to define how a unit of storage is dynamically created with a persistent volume. For more information about how to use storage classes, see [Kubernetes storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/).
 
-In AKS Arc, the default storage class uses CSI to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
+In AKS, the default storage class uses CSI to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
 
 To use this storage class, create a [Persistent Volume Claim (PVC)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses it. A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
 
@@ -41,7 +40,7 @@ parameters:
 provisioner: disk.csi.akshci.com
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
-allowVolumeExpansion: true  
+allowVolumeExpansion: true
 ```
 
 If you create a custom storage class, you can specify the location in which you want to store PVs. If the underlying infrastructure is Azure Local, this new location could be a volume that's backed by high-performing SSDs/NVMe, or a cost-optimized volume backed by HDDs.

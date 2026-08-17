@@ -4,7 +4,7 @@ description: Reference for PowerShell Azure Stack Hub privileged endpoint - Star
 author: sethmanheim
 
 ms.topic: reference
-ms.date: 07/29/2020
+ms.date: 07/08/2026
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 
 ### -PfxFilesPath
 Path of the new pfx files shared for external certs rotation.
-It's mandatory if external certs rotation is desired.
+Include this parameter if you want to rotate external certificates.
 
 ```yaml
 Type: Object
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 
 ### -PathAccessCredential
 Credentials to access PfxFilesPath.
-It's mandatory if external certs rotation is desired.
+Include this parameter if you want to rotate external certificates.
 
 ```yaml
 Type: Object
@@ -75,10 +75,10 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-Password for the new pfx files provided.
-It's mandatory if external certs rotation is desired.
-It can be different from the original pfx password provided at initial deployment time.
-We will regenerate the pfx files with correct CA password.
+Password for the new PFX files.
+Include this parameter if you want to rotate external certificates.
+This password can be different from the original PFX password that you provided during deployment.
+The process regenerates the PFX files with the correct CA password.
 
 Usage ::
 

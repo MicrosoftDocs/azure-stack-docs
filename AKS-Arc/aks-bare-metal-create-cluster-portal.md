@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Create an AKS on bare metal cluster using the Azure portal (preview)
@@ -23,9 +24,9 @@ Complete all [system requirements and prerequisites](aks-bare-metal-system-requi
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. In the search bar, enter **Azure Arc** and select it from the results.
 1. In the left menu, expand **Operations** and select **Machine provisioning (preview)**.
-1. Under **3. Deploy cluster**, select **Deploy** > **AKS Arc for Azure Local on Linux**.
+1. Under **3. Deploy cluster**, select **Deploy** > **AKS for Azure Local on Linux**.
 
-   :::image type="content" source="./media/aks-bare-metal-create-cluster-portal/create-cluster.png" alt-text="Screenshot of Azure Arc Machine provisioning to deploy a cluster for AKS Arc for Azure Local on Linux." lightbox="./media/aks-bare-metal-create-cluster-portal/create-cluster.png":::
+   :::image type="content" source="./media/aks-bare-metal-create-cluster-portal/create-cluster.png" alt-text="Screenshot of Azure Arc Machine provisioning to deploy a cluster for AKS for Azure Local on Linux." lightbox="./media/aks-bare-metal-create-cluster-portal/create-cluster.png":::
 
 ## Step 2: Configure basics
 

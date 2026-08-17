@@ -7,6 +7,7 @@ ms.date: 04/02/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
+ms.custom: windows-server
 
 # Intent: As an IT pro, I want to learn how to use PowerShell to deploy AKS on Windows Server on top of a software defined cluster.
 # Keyword: PowerShell networking software networking virtual networking
@@ -17,7 +18,7 @@ ms.reviewer: anpaul
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load Balancer][] for all AKS Arc load balancing scenarios. AKS on Windows Server offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
+This article describes how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load Balancer][] for all AKS load balancing scenarios. AKS on Windows Server offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 ## Limitations
 
@@ -26,22 +27,22 @@ The following features are out of scope and not supported in this GA release:
 - Attaching pods and containers to an SDN virtual network.
   - Pods use Flannel or Calico (default) as the network provider.
 - Network policy enforcement using the SDN Network Security Groups.
-  - The SDN Network Security Groups can still be configured outside of AKS Arc using SDN tools (REST/PowerShell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects don't configure them.
-- Attaching AKS Arc VM NICs to SDN logical networks.
+  - The SDN Network Security Groups can still be configured outside of AKS using SDN tools (REST/PowerShell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects don't configure them.
+- Attaching AKS VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
-- Physical host to AKS Arc VM connectivity: VM NICs are joined to an SDN virtual network and thus aren't accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
+- Physical host to AKS VM connectivity: VM NICs are joined to an SDN virtual network and thus aren't accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
 
 ## Prerequisites
 
-To deploy AKS on Windows Server with SDN, make sure your environment satisfies the deployment criteria of both AKS Arc and SDN.
+To deploy AKS on Windows Server with SDN, make sure your environment satisfies the deployment criteria of both AKS and SDN.
 
-- [AKS Arc requirements](system-requirements.md)
+- [AKS requirements](system-requirements.md)
 - SDN requirements: [Plan a Software Defined Network infrastructure][]
 
 > [!NOTE]
-> SDN integration with AKS Arc only requires Network Controller and Software Load Balancer. Gateway VMs are optional.
+> SDN integration with AKS only requires Network Controller and Software Load Balancer. Gateway VMs are optional.
 
-## Install and prepare SDN for AKS Arc
+## Install and prepare SDN for AKS
 
 The first step is to install SDN. To install SDN, we recommend [SDN Express][] or [Windows Admin Center][]. A reference configuration file that deploys all the needed SDN infrastructure components can be found here: [Software Load Balancer.psd1][].
 
@@ -53,7 +54,7 @@ It's important that SDN is healthy before proceeding. If you deploy SDN in a new
 
 ## Steps to install AKS
 
-Initialize and prepare all the physical host machines for AKS Arc. See [Deploy an AKS host](prestage-cluster-service-host-create.md) for the most up-to-date instructions.
+Initialize and prepare all the physical host machines for AKS. See [Deploy an AKS host](prestage-cluster-service-host-create.md) for the most up-to-date instructions.
 
 ### Install the AKS-HCI PowerShell module
 
@@ -72,7 +73,7 @@ For information about how to prepare your machines for deployment, see [Prepare 
 
 ### Configure AKS for installation
 
-Choose one of your Windows Server machines to drive the creation of AKS Arc. There are three steps that need to be done prior to installation:
+Choose one of your Windows Server machines to drive the creation of AKS. There are three steps that need to be done prior to installation:
 
 1. Configure the AKS network settings for SDN; for example, using:
    1. SDN Virtual network "10.20.0.0/24" (10.20.0.0 – 10.20.0.255). A virtualized network, and you can use any IP subnet. This subnet does not need to exist on your physical network.
@@ -121,13 +122,13 @@ Choose one of your Windows Server machines to drive the creation of AKS Arc. The
    -vipPool $vipPool
    ```
 
-   The HNVPA logical network is used as the underlying provider for the AKS Arc virtual network.
+   The HNVPA logical network is used as the underlying provider for the AKS virtual network.
 
    If you use a static IP address assignment for your Windows Server cluster nodes, you must also provide the `CloudServiceCidr` parameter. This parameter is the IP address of the MOC cloud service, and must be in the same subnet as Windows Server cluster nodes. For more information, see [Microsoft On-premises Cloud service](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
       | Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                             |
       |-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-      | `–imageDir`                         | The path to where AKS Arc stores its VHD images. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                                      |
+      | `–imageDir`                         | The path to where AKS stores its VHD images. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                                      |
       | `–workingDir`                       | The path to where small files for the module are stored. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                                              |
       | `-cloudConfigLocation`              | The path to the directory where cloud agent configuration is stored. This path must be a shared storage path, or an SMB share.                                                                                                                                                                                                                                               |
       | `-vnet`                             | Name of `AksHciNetworkSetting` variable created in the previous step                                                                                                                                                                                                                                                                                                      |

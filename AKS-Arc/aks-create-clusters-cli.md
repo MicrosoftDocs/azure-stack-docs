@@ -2,7 +2,7 @@
 title: Create Kubernetes clusters using Azure CLI
 description: Learn how to create Kubernetes clusters in Azure Local using Azure CLI.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, local
 author: davidsmatlak
 ms.date: 10/09/2025
 ms.author: davidsmatlak
@@ -47,7 +47,7 @@ az extension add -n connectedk8s --upgrade
 
 ## Create a Kubernetes cluster
 
-Use the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before you run this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command. With the `az aksarc create` command, we recommend that you use the `--validate` flag, which validates the input parameters that you intend to use. Once the input parameters are validated, you can run the `az aksarc create` command without the `--validate` flag to create the Kubernetes cluster.
+Use the [az aksarc create](/cli/azure/aksarc#az-aksarc-create) command to create a Kubernetes cluster in AKS. Make sure you sign in to Azure before you run this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command. With the `az aksarc create` command, we recommend that you use the `--validate` flag, which validates the input parameters that you intend to use. Once the input parameters are validated, you can run the `az aksarc create` command without the `--validate` flag to create the Kubernetes cluster.
 
 ```azurecli
 az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys

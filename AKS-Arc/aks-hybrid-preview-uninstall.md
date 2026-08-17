@@ -2,7 +2,7 @@
 title: Before you begin - uninstall the AKS cluster provisioning preview
 description: Learn how to uninstall the AKS cluster provisioning from Azure preview.
 ms.topic: overview
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, windows-server
 ms.date: 04/03/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
@@ -14,7 +14,7 @@ ms.lastreviewed: 01/30/2024
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This step is only required if you installed the AKS cluster provisioning from Azure preview. The preview ended with the release of [AKS on Azure Local](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to AKS Arc.
+This step is only required if you installed the AKS cluster provisioning from Azure preview. The preview ended with the release of [AKS on Azure Local](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to AKS.
 
 ## Step 1: delete all preview AKS clusters and Azure vnets created using Az CLI
 
@@ -49,4 +49,4 @@ Remove-ArcHciAksConfigFiles -workDirectory <path to working directory>
 
 ## Next steps
 
-[AKS Arc overview](aks-overview.md)
+[AKS overview](aks-overview.md)

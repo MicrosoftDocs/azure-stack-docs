@@ -1,12 +1,13 @@
 ---
 title: Troubleshoot network validation errors
-description: Learn how to troubleshoot general network validation errors in AKS Arc.
+description: Learn how to troubleshoot general network validation errors in AKS.
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.date: 07/17/2025
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 07/16/2025
+ms.custom: local
 ---
 
 # Troubleshoot network validation errors
@@ -124,4 +125,4 @@ If problems persist, [collect AKS cluster logs](get-on-demand-logs.md) befor
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)

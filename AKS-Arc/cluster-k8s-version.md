@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 11/22/2024
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Troubleshoot K8sVersionValidation error code
@@ -14,11 +15,11 @@ This article describes how to identify and resolve the K8sVersionValidation erro
 
 ## Symptoms
 
-When you try to create an AKS Arc cluster, you receive one of the following error messages:
+When you try to create an AKS cluster, you receive one of the following error messages:
 
-- `Kubernetes version 1.27.7 is not ready for use on Linux. Please go to https://aka.ms/aksarccheckk8sversions for details of how to check the readiness of Kubernetes versions`
-- `Kubernetes version 1.26.12 is not supported. Please go to https://aka.ms/aksarcsupportedversions for details about the supported Kubernetes version on this platform.`
-- `Admission webhook \'vhybridakscluster.kb.io\' denied the request: Kubernetes version 1.26.12 is not available`
+- `Kubernetes version 1.27.7 isn't ready for use on Linux. To check the readiness of Kubernetes versions, visit https://aka.ms/aksarccheckk8sversions.`
+- `Kubernetes version 1.26.12 isn't supported. To learn about the supported Kubernetes versions on this platform, visit https://aka.ms/aksarcsupportedversions.`
+- `Admission webhook 'vhybridakscluster.kb.io' denied the request: Kubernetes version 1.26.12 isn't available.`
 
 ## Error messages
 
@@ -28,7 +29,7 @@ This section describes the error messages that you might see when you encounter 
 
 This error message is caused by an incomplete Linux VHD download.
 
-When you install Azure Local, you download a Linux VHD of approximately 4-5 GB in size. This Linux VHD is used to create the underlying VMs for the Kubernetes nodes in your AKS Arc cluster. The error message can occur when your Linux VHD didn't finish downloading. To resolve this issue, you should wait until your internet connection finishes downloading the Linux VHD image.
+When you install Azure Local, you download a Linux VHD of approximately 4-5 GB in size. This Linux VHD is used to create the underlying VMs for the Kubernetes nodes in your AKS cluster. The error message can occur when your Linux VHD didn't finish downloading. To resolve this issue, wait until your internet connection finishes downloading the Linux VHD image.
 
 To check if the image download is in progress or finished, run the following command:
 
@@ -39,9 +40,9 @@ $cl_id = "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/
 az aksarc get-versions --custom-location $cl_id
 ```
 
-If this command says that the K8s versions are ready, and you're running Azure Local [release 2411](/azure/aks/hybrid/aks-whats-new-23h2#release-2411) or newer, file a [support request](help-support.md).
+If this command says that the K8s versions are ready, and you're running Azure Local [release 2411](/azure/aks/aksarc/aks-whats-new-local#release-2411) or newer, file a [support request](help-support.md).
 
-If you're running Azure Local release 2408 or older, proceed to the next section. We strongly recommend that you upgrade your Azure Local deployment to the latest version, in order to get the latest bug fixes and security updates.
+If you're running Azure Local release 2408 or older, proceed to the next section. We strongly recommend that you upgrade your Azure Local deployment to the latest version to get the latest bug fixes and security updates.
 
 #### Recreate kubernetesVersions/default
 
@@ -68,7 +69,7 @@ az aksarc get-versions --custom-location $cl_id
 
 #### Can't see the Kubernetes versions or VM size options on the Azure portal
 
-This scenario can happen in Azure Local releases 2408 or older, when the default resource for Kubernetes version (or VM sizes) was not created as a part of the Azure Local deployment.
+This scenario can happen in Azure Local releases 2408 or older, when the default resource for Kubernetes version (or VM sizes) wasn't created as part of the Azure Local deployment.
 
 To resolve this issue, run the following command:
 
@@ -86,4 +87,4 @@ Azure Local supports specific Kubernetes versions in each of its releases. As st
 
 ## Next steps
 
-[Troubleshoot issues in AKS enabled by Azure Arc](aks-troubleshoot.md)
+[Troubleshoot issues in AKS Hybrid and Edge](aks-troubleshoot.md)

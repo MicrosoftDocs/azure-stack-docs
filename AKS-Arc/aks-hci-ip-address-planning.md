@@ -1,19 +1,20 @@
 ---
-title: IP address planning for AKS enabled by Azure Arc
-description: Learn about how to plan for IP addresses and reservation, to deploy AKS Arc in production.
+title: IP address planning for AKS Hybrid and Edge
+description: Learn about how to plan for IP addresses and reservation, to deploy AKS in production.
 ms.topic: concept-article
 ms.date: 08/13/2025
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 10/08/2024
+ms.custom: local
 ---
 
 # IP address planning requirements
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-IP address planning for AKS enabled by Azure Arc involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](network-system-requirements.md) before reading this article.
+IP address planning for AKS Hybrid and Edge involves designing a network that supports applications, node pools, pod networks, service communication, and external access. This article walks you through some key considerations for effective IP address planning, and minimum number of IP addresses required to deploy AKS in production. See the [AKS networking concepts and requirements](network-system-requirements.md) before reading this article.
 
 ## Simple IP address planning for Kubernetes clusters and applications
 
@@ -21,14 +22,14 @@ In the following scenario walkthrough, you reserve IP addresses from a single ne
 
 | IP address requirement    | Minimum number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
-| AKS Arc VM IPs | Reserve one IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 IP addresses in your IP pool. | Reserve IP addresses through IP pools in the Arc VM logical network. |
-| AKS Arc K8s version upgrade IPs | Because AKS Arc performs rolling upgrades, reserve one IP address for every AKS Arc cluster for Kubernetes version upgrade operations. | Reserve IP addresses through IP pools in the Arc VM logical network. |
+| AKS VM IPs | Reserve one IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 IP addresses in your IP pool. | Reserve IP addresses through IP pools in the Arc VM logical network. |
+| AKS K8s version upgrade IPs | Because AKS performs rolling upgrades, reserve one IP address for every AKS cluster for Kubernetes version upgrade operations. | Reserve IP addresses through IP pools in the Arc VM logical network. |
 | Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you want to create 5 clusters in total, reserve 5 IP addresses, one for each Kubernetes cluster. | Reserve IP addresses through IP pools in the Arc VM logical network. |
 | Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve one IP address for every Kubernetes service. | Reserve IP addresses in the same subnet as the Arc VM logical network, but outside the IP pool. |
 
 ### Example walkthrough for IP address reservation for Kubernetes clusters and applications
 
-Jane is an IT administrator just starting with AKS enabled by Azure Arc. Jane wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on the Azure Local cluster. Jane also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All the AKS clusters and services are running in a single network, with a single subnet.
+Jane is an IT administrator just starting with AKS Hybrid and Edge. Jane wants to deploy two Kubernetes clusters: Kubernetes cluster A and Kubernetes cluster B on the Azure Local cluster. Jane also wants to run a voting application on top of cluster A. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database. All the AKS clusters and services are running in a single network, with a single subnet.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes.
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes.
@@ -37,17 +38,17 @@ Jane is an IT administrator just starting with AKS enabled by Azure Arc. Jane wa
 
 Based on the previous table, Jane must reserve a total of 19 IP addresses in Jane's subnet:
 
-- 8 IP addresses for the AKS Arc node VMs in cluster A (one IP per K8s node VM).
-- 4 IP addresses for the AKS Arc node VMs in cluster B (one IP per K8s node VM).
-- 2 IP addresses for running AKS Arc upgrade operation (one IP address per AKS Arc cluster).
-- 2 IP addresses for the AKS Arc control plane (one IP address per AKS Arc cluster)
+- 8 IP addresses for the AKS node VMs in cluster A (one IP per K8s node VM).
+- 4 IP addresses for the AKS node VMs in cluster B (one IP per K8s node VM).
+- 2 IP addresses for running AKS upgrade operation (one IP address per AKS cluster).
+- 2 IP addresses for the AKS control plane (one IP address per AKS cluster)
 - 3 IP addresses for the Kubernetes service (one IP address per instance of the front-end UI, since they all use the same port. The backend database can use any one of the three IP addresses as long as it uses a different port).
 
 Continuing with this example, and adding it to the following table, you get:
 
 | Parameter    | Number of IP addresses | How and where to make this reservation |
 |------------------|---------|---------------|
-| AKS Arc VMs, K8s version upgrade and control plane IP  | Reserve 16 IP addresses | Make this reservation through IP pools in the Azure Local logical network. |
+| AKS VMs, K8s version upgrade and control plane IP  | Reserve 16 IP addresses | Make this reservation through IP pools in the Azure Local logical network. |
 | Load balancer IPs | 3 IP address for Kubernetes services, for Jane's voting application. | These IP addresses are used when you install a load balancer on cluster A. You can use the MetalLB Arc extension, or bring your own 3rd party load balancer. Ensure that this IP is in the same subnet as the Arc logical network, but outside the IP pool defined in the Arc VM logical network. |
 
 #### Example CLI commands for IP address reservation for Kubernetes clusters and applications
@@ -60,7 +61,7 @@ $ipPoolEnd = "10.220.32.37"
 az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```
 
-Next, create an AKS Arc cluster with the previous logical network:
+Next, create an AKS cluster with the previous logical network:
 
 ```azurecli
 az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $lnetName --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys

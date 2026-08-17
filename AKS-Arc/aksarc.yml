@@ -509,3 +509,4 @@ commands:
 - az_aksarc_vnet_show
 metadata:
   description: Manage provisioned clusters.
+  ms.custom: vmware

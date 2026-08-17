@@ -1,4 +1,4 @@
-﻿---
+---
 title: Use Key Manager for Kubernetes clusters on AKS Edge Essentials (preview)
 description: Learn how to use the Key Manager for Kubernetes extension to rotate service account keys in Azure Kubernetes Service (AKS) Edge Essentials clusters.
 ms.topic: how-to
@@ -6,12 +6,13 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 03/10/2025
 ms.reviewer: leslielin
+ms.custom: edge-essentials
 ---
 
 # How-to: use Key Manager for Kubernetes on an AKS Edge Essentials cluster (preview)
 
 > [!IMPORTANT]
-> Microsoft is retiring the Key Manager for Kubernetes extension (preview) on April 15, 2026. After this date, the extension will no longer be available for deployment, and no further updates or support will be provided. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
+> Microsoft is retiring the Key Manager for Kubernetes extension (preview) on April 15, 2026. After this date, the extension will no longer be available for deployment, and no further updates or support will be provided. If you have additional questions, please contact us through the [AKS Hybrid and Edge GitHub repository](https://aka.ms/aksarc-github).
 
 The [Kubernetes service account](https://kubernetes.io/docs/concepts/security/service-accounts/) is a a non-human account that provides a unique identity within a Kubernetes cluster. Service account tokens serve important security and authentication functions in Kubernetes.
 

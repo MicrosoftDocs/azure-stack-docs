@@ -1,11 +1,10 @@
 ---
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.service: azure-stack
+ms.service: azure-kubernetes-service-hybrid
 ms.custom: linux-related-content
 ms.topic: include
 ms.date: 10/27/2022
-ms.reviewer: abha
 ms.lastreviewed: 10/24/2022
 # Guidance to ensure Helm charts install on Linux nodes in a cluster with a mix of Linux and Windows nodes
 ---

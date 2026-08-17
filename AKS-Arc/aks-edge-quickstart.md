@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: quickstart
 ms.date: 11/17/2025
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # AKS Edge Essentials quickstart guide

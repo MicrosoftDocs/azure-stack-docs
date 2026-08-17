@@ -1,20 +1,21 @@
 ---
 title: Troubleshoot issue in which the cluster is stuck in Upgrading state
-description: Learn how to troubleshoot and mitigate the issue when an AKS enabled by Arc cluster is stuck in 'Upgrading' state.
+description: Learn how to troubleshoot and mitigate the issue when an AKS Hybrid and Edge cluster is stuck in 'Upgrading' state.
 ms.topic: troubleshooting
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/27/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
-# Troubleshoot AKS Arc cluster stuck in "Upgrading" state
+# Troubleshoot AKS cluster stuck in "Upgrading" state
 
-This article describes how to fix an issue in which your Azure Kubernetes Service enabled by Arc (AKS Arc) cluster is stuck in the **Upgrading** state. This issue typically occurs after you update Azure Local to version 2503 or 2504, and you then try to upgrade the Kubernetes version on your cluster.
+This article describes how to fix an issue in which your Azure Kubernetes Service Hybrid and Edge cluster is stuck in the **Upgrading** state. This issue typically occurs after you update Azure Local to version 2503 or 2504, and you then try to upgrade the Kubernetes version on your cluster.
 
 ## Symptoms
 
-When you try to upgrade an AKS Arc cluster, you notice that the `currentState` property of the cluster remains in the **Upgrading** state.
+When you try to upgrade an AKS cluster, you notice that the `currentState` property of the cluster remains in the **Upgrading** state.
 
 ```azurecli
 az aksarc upgrade --name "cluster-name" --resource-group "rg-name"
@@ -48,7 +49,7 @@ Upgrading the AKSArc cluster. This operation might take a while...
 ## Cause
 
 - The issue is caused by a recent change introduced in Azure Local version 2503. Under certain conditions, if there are transient or intermittent failures during the Kubernetes upgrade process, they're not correctly detected or recovered from. This can cause the cluster state to remain in the **Upgrading** state.
-- You see this issue if the AKS Arc custom location extension `hybridaksextension` version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
+- You see this issue if the AKS custom location extension `hybridaksextension` version is 2.1.211 or 2.1.223. You can run the following command to check the extension version on your cluster:
 
   ```azurecli
   az login --use-device-code --tenant <Azure tenant ID> 
@@ -76,9 +77,9 @@ This issue was fixed in AKS on [Azure Local, version 2505](/azure/azure-local/wh
 
 ### Workaround for Azure Local versions 2503 or 2504
 
-This issue only affects clusters in Azure Local version 2503 or 2504, and on AKS Arc extension versions 2.1.211 or 2.1.223. The mitigation described here is applicable only when you are unable to upgrade to 2505.
+This issue only affects clusters in Azure Local version 2503 or 2504, and on AKS extension versions 2.1.211 or 2.1.223. The mitigation described here is applicable only when you are unable to upgrade to 2505.
 
-You can resolve the issue by running the AKS Arc `update` command. The `update` command restarts the upgrade flow. You can run the `aksarc update` command with placeholder parameters, which do not impact the state of the cluster. So in this case, you can run the `update` command to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
+You can resolve the issue by running the AKS `update` command. The `update` command restarts the upgrade flow. You can run the `aksarc update` command with placeholder parameters, which do not impact the state of the cluster. So in this case, you can run the `update` command to enable NFS or SMB drivers if those features aren't already enabled. First, check if any of the storage drivers are already enabled:
 
 ```azurecli
 az login --use-device-code --tenant <Azure tenant ID> 

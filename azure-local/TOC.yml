@@ -274,6 +274,8 @@ items:
           href: manage/configure-software-load-balancer.md
         - name: Load balance multiple logical networks
           href: manage/load-balance-multiple-networks.md
+        - name: Optimize SDN availability and performance
+          href: manage/optimize-sdn-availability-performance.md
         - name: Manage SDN security
           items:
           - name: Manage certificates for SDN
@@ -1509,9 +1511,9 @@ items:
       href: ./small-form-factor/small-form-factor-firewall-requirements.md
   - name: Deploy
     items:
-    - name: Set up subscription
-      href: ./small-form-factor/small-form-factor-subscription-setup.md
-    - name: Install small form factor
+    - name: Prepare to deploy small form factor
+      href: ./small-form-factor/small-form-factor-prepare-to-deploy.md
+    - name: Install the maintenance environment
       href: ./small-form-factor/small-form-factor-installation.md
     - name: Connect via Azure portal
       href: ./small-form-factor/small-form-factor-connect-portal.md
@@ -1584,12 +1586,26 @@ items:
       href: manage/disconnected-operations-powershell.md
     - name: Update disconnected operations
       href: manage/disconnected-operations-update.md
+    - name: Rotate certificates
+      href: manage/disconnected-operations-certificate-rotation.md      
+    - name: Billing
+      href: manage/disconnected-operations-billing.md
+  - name: BCDR
+    items:
     - name: Back up disconnected operations
       href: manage/disconnected-operations-back-up-restore.md
     - name: Restore disconnected operations
       href: manage/disconnected-operations-restore.md
-    - name: Billing
-      href: manage/disconnected-operations-billing.md
+    - name: Reconnect data cluster after restore
+      href: manage/disconnected-operations-post-restore-reconnect-cluster.md
+    - name: Reconnect Azure Arc on cluster machines after restore
+      href: manage/disconnected-operations-post-restore-reconnect-arc.md
+    - name: Re-register management cluster after restore
+      href: manage/disconnected-operations-post-restore-repair-register-management-cluster.md
+    - name: Recover ARB and associated resources after cluster re-registration
+      href: manage/disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md
+    - name: Recover data cluster created after backup
+      href: manage/disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md
 
   - name: Monitor
     items:

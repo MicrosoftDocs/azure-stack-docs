@@ -1,18 +1,19 @@
 ---
-title: Availability sets in AKS enabled by Azure Arc
-description: Learn how to enable availability sets in AKS Arc to improve the availability and distribution of your Kubernetes workloads.
+title: Availability sets in AKS Hybrid and Edge
+description: Learn how to enable availability sets in AKS to improve the availability and distribution of your Kubernetes workloads.
 ms.topic: how-to
 author: davidsmatlak
 ms.date: 11/19/2024
 ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 08/15/2024
+ms.custom: local
 
 ---
 
-# Availability sets in AKS enabled by Azure Arc
+# Availability sets in AKS Hybrid and Edge
 
-*Availability sets* are logical groups of VMs that have weak anti-affinity relationships with each other, to ensure that they are spread evenly across the available fault domains in a physical cluster. A fault domain in this context is a physical host or a group of physical hosts. By using availability sets, AKS Arc can improve the availability and distribution of your Kubernetes workloads. Availability sets can avoid scenarios in which a single node failure can cause multiple VMs to go down or become unbalanced.
+*Availability sets* are logical groups of VMs that have weak anti-affinity relationships with each other, to ensure that they are spread evenly across the available fault domains in a physical cluster. A fault domain in this context is a physical host or a group of physical hosts. By using availability sets, AKS can improve the availability and distribution of your Kubernetes workloads. Availability sets can avoid scenarios in which a single node failure can cause multiple VMs to go down or become unbalanced.
 
 ## Overview
 
@@ -26,9 +27,9 @@ Availability sets offer several benefits for AKS on Azure Local users, such as:
 
 With AKS on Azure Local, the availability sets feature is enabled by default when you create a node pool. With AKS on Windows Server, you can enable the availability sets feature by adding the `-enableAvailabilitySet` parameter when you create an AKS cluster; for example, `New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernetesVersion $kubernetesVersion -enableAvailabilitySet`.
 
-## How availability sets work in AKS enabled by Azure Arc
+## How availability sets work in AKS Hybrid and Edge
 
-When you create a new AKS Arc cluster, AKS Arc automatically creates availability sets, one for the control plane VMs and another one for each of the node pools in the Kubernetes cluster. Each node pool has its own availability set. With this layout, AKS Arc ensures that VMs of the same role (control plane or node pool) are never located on the same physical host and that they're distributed across the available nodes in a cluster.
+When you create a new AKS cluster, AKS automatically creates availability sets, one for the control plane VMs and another one for each of the node pools in the Kubernetes cluster. Each node pool has its own availability set. With this layout, AKS ensures that VMs of the same role (control plane or node pool) are never located on the same physical host and that they're distributed across the available nodes in a cluster.
 
 Once the availability sets are created and the VMs assigned, the system automatically places them on the appropriate physical nodes. If a node fails, the system also automatically fails over the VMs to other nodes and rebalances them when the node recovers. This way, you can achieve high availability and optimal distribution of your Kubernetes workloads without manual intervention.
 
@@ -46,12 +47,12 @@ In the old architecture, if **Host B** came back online after a reboot, there wa
 
 :::image type="content" source="media/availability-sets/anti-affinity-3.png" alt-text="Diagram showing no rebalancing.":::
 
-Availability sets for AKS Arc can help to rebalance VMs once a host recovers from temporary outage. In this example, **ControlPlaneVM2**, **ControlPlaneVM3**, and **Nodepool1VM2** automatically move to **Host B**, as shown here:
+Availability sets for AKS can help to rebalance VMs once a host recovers from temporary outage. In this example, **ControlPlaneVM2**, **ControlPlaneVM3**, and **Nodepool1VM2** automatically move to **Host B**, as shown here:
 
 :::image type="content" source="media/availability-sets/anti-affinity-1.png" alt-text="Diagram showing hosts in anti-affinity group.":::
 
 > [!IMPORTANT]
-> Availability sets in AKS Arc is a new feature that's still evolving and improving. We do not yet support manual configuration of the fault domains or availability sets. You can't change the fault domains of an availability set after it's created. VMs are assigned to an availability set at cluster creation, and can't be migrated to a different availability set.
+> Availability sets in AKS is a new feature that's still evolving and improving. We do not yet support manual configuration of the fault domains or availability sets. You can't change the fault domains of an availability set after it's created. VMs are assigned to an availability set at cluster creation, and can't be migrated to a different availability set.
 
 ## Add or delete machines
 

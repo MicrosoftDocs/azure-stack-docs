@@ -2,7 +2,7 @@
 title: Use auto-scaling in a Kubernetes cluster
 description: Learn how to use Azure CLI for cluster autoscaling.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, local
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/09/2025
@@ -13,18 +13,18 @@ ms.lastreviewed: 06/09/2025
 # Keyword: cluster autoscaling Kubernetes
 ---
 
-# Use cluster autoscaler on an AKS Arc cluster
+# Use cluster autoscaler on an AKS cluster
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-To keep up with application demands in Kubernetes, you might need to adjust the number of nodes that run your workloads. The cluster autoscaler component watches for pods in your cluster that can't be scheduled because of resource constraints. When the cluster autoscaler detects issues, it scales up the number of nodes in the node pool to meet the application demands. It also regularly checks nodes for a lack of running pods and scales down the number of nodes as needed. This article shows you how to enable and manage the cluster autoscaler in AKS Arc.
+To keep up with application demands in Kubernetes, you might need to adjust the number of nodes that run your workloads. The cluster autoscaler component watches for pods in your cluster that can't be scheduled because of resource constraints. When the cluster autoscaler detects issues, it scales up the number of nodes in the node pool to meet the application demands. It also regularly checks nodes for a lack of running pods and scales down the number of nodes as needed. This article shows you how to enable and manage the cluster autoscaler in AKS.
 
 > [!NOTE]
 > Before enabling autoscaling on your Azure Local cluster, review the [Scale requirements for AKS on Azure Local](/azure/aks/aksarc/scale-requirements#scale-requirements-when-using-autoscaler-with-aks-on-azure-local) to ensure your environment meets the required limits.
 
 ## Enable the cluster autoscaler on a new cluster
 
-Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command, and enable and configure the cluster autoscaler on the node pool for the cluster using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command creates a cluster with a single node, enables the cluster autoscaler, and sets a minimum of one and maximum of three nodes:
+Create an AKS cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command, and enable and configure the cluster autoscaler on the node pool for the cluster using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command creates a cluster with a single node, enables the cluster autoscaler, and sets a minimum of one and maximum of three nodes:
 
 ```azurecli-interactive
 az aksarc create \
@@ -44,7 +44,7 @@ It takes a few minutes to create the cluster and configure the cluster autoscale
 
 ### Enable the cluster autoscaler on an existing cluster
 
-Update an existing cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command, and enable and configure the cluster autoscaler using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command updates an existing AKS Arc cluster to enable the cluster autoscaler on the cluster and sets a minimum of one and maximum of three nodes:
+Update an existing cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command, and enable and configure the cluster autoscaler using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command updates an existing AKS cluster to enable the cluster autoscaler on the cluster and sets a minimum of one and maximum of three nodes:
 
 ```azurecli-interactive
 az aksarc update \
@@ -112,7 +112,7 @@ The following table lists the available settings for the cluster autoscaler prof
 
 ### Set the cluster autoscaler profile on a new cluster
 
-Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command and set the cluster autoscaler profile using the `cluster-autoscaler-profile` parameter:
+Create an AKS cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command and set the cluster autoscaler profile using the `cluster-autoscaler-profile` parameter:
 
 ```azurecli-interactive
 az aksarc create \
@@ -161,4 +161,4 @@ There are two methods available for workload scaling:
 
 ## Next steps
 
-This article showed you how to automatically scale the number of AKS Arc nodes. To scale node pools manually, see [manage node pools in AKS Arc clusters](manage-node-pools.md).
+This article showed you how to automatically scale the number of AKS nodes. To scale node pools manually, see [manage node pools in AKS clusters](manage-node-pools.md).

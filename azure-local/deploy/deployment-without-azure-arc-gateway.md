@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/12/2026
+ms.date: 08/14/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -20,7 +20,7 @@ This article details how to register Azure Local machines with Azure Arc without
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
-- **Set up via the Configurator app (Preview)**: Using this method, you can configure Azure Local registration via a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
+- **Set up by using the Configurator app**: By using this method, you can configure Azure Local registration by using a user interface. This method is useful if you prefer not to use scripts or if you want to configure the settings interactively.
 
 For instructions on registering Azure Local machines with Azure Arc using an Arc gateway and with proxy configuration enabled, see [Register Azure Local with Azure Arc using Arc gateway](./deployment-with-azure-arc-gateway.md?pivots=register-proxy).
 
@@ -212,11 +212,9 @@ After the script completes successfully on all the machines, verify that your ma
 > [!NOTE]
 > If the Azure Local machine fails to register, you can deregister and then register your cluster again. For detailed instructions, see [Re-register Azure Local machines](../manage/unregister-register-machine.md).
 
-# [Via Configurator app (Preview)](#tab/app)
+# [Via Configurator app](#tab/app)
 
 If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -496,11 +494,9 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 > Once an Azure Local machine is registered with Azure Arc, the only way to undo the registration is to install the operating system again on the machine.
 
 
-# [Via Configurator app (Preview)](#tab/app)
+# [Via Configurator app](#tab/app)
 
 If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
-
-[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## Prerequisites for registration without proxy configuration
 

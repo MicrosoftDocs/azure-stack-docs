@@ -1,20 +1,21 @@
 ---
-title: Troubleshoot BGP with FRR in AKS Arc environments
-description: Learn how to troubleshoot BGP connectivity issues when using MetalLB with FRR in AKS Arc deployments.
+title: Troubleshoot BGP with FRR in AKS environments
+description: Learn how to troubleshoot BGP connectivity issues when using MetalLB with FRR in AKS deployments.
 author: davidsmatlak
 ms.date: 06/19/2025
 ms.author: davidsmatlak
 ms.topic: troubleshooting
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 06/19/2025
+ms.custom: local
 
 ---
 
-# BGP with FRR not working in AKS Arc environment
+# BGP with FRR not working in AKS environment
 
 This article helps you identify and resolve Border Gateway Protocol (BGP) connectivity issues when using MetalLB with Free Range Routing (FRR) in Azure Kubernetes Service (AKS) Arc environments.
 
-Use this guidance when BGP sessions fail to establish, external IP routing doesn't work correctly, or network connectivity to exposed services becomes unreliable in your AKS Arc deployment.
+Use this guidance when BGP sessions fail to establish, external IP routing doesn't work correctly, or network connectivity to exposed services becomes unreliable in your AKS deployment.
 
 ## Symptoms
 
@@ -48,7 +49,7 @@ az k8s-extension update \
 
 ## Troubleshooting steps
 
-Use the following steps to diagnose and resolve BGP issues with MetalLB and FRR in your AKS Arc environment.
+Use the following steps to diagnose and resolve BGP issues with MetalLB and FRR in your AKS environment.
 
 ### Check BGP configuration
 

@@ -1,24 +1,24 @@
 ---
-title: AKS enabled by Azure Arc on VMware network requirements (preview)
-description: Learn about AKS enabled by Arc on VMware network prerequisites.
+title: AKS Hybrid and Edge on VMware network requirements (preview)
+description: Learn about AKS Hybrid and Edge on VMware network prerequisites.
 ms.topic: overview
 ms.date: 09/15/2025
 author: davidsmatlak
 ms.author: davidsmatlak
-ms.reviewer: abha
 ms.lastreviewed: 03/25/2024
+ms.custom: vmware
 ---
 
-# AKS enabled by Azure Arc on VMware network requirements (preview)
+# AKS Hybrid and Edge on VMware network requirements (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 > [!IMPORTANT]
-> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS enabled by Azure Arc GitHub repository](https://aka.ms/aksarc-github).
+> Microsoft is retiring AKS on VMware (preview) on March 16, 2026. We recommend deploying [AKS on Azure Local](aks-whats-new-23h2.md) to benefit from its enhanced capabilities. After March 16, 2026, you will no longer be able to deploy or receive support for Azure Kubernetes Service on VMware. If you have additional questions, please contact us through the [AKS Hybrid and Edge GitHub repository](https://aka.ms/aksarc-github).
 
-This article introduces the core concepts that provide networking to your VMs and applications in Azure Kubernetes Service (AKS) enabled by Azure Arc on VMware:
+This article introduces the core concepts that provide networking to your VMs and applications in Azure Kubernetes Service (AKS) Hybrid and Edge on VMware:
 
-- Logical networks for AKS enabled by Arc VMs
+- Logical networks for AKS Hybrid and Edge VMs
 - Control plane IP
 - Kubernetes load balancers
 
@@ -34,7 +34,7 @@ Ensure that you set up networking correctly for the following components in your
 
 ## Network for AKS cluster VMs
 
-Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS uses VMware logical network segments to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For this preview, only DHCP-based VMware logical network segments are supported. Once the VMware network segment is provided during AKS Arc cluster creation, IP addresses are dynamically allocated to the underlying VMs of the Kubernetes clusters.
+Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS uses VMware logical network segments to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For this preview, only DHCP-based VMware logical network segments are supported. Once the VMware network segment is provided during AKS cluster creation, IP addresses are dynamically allocated to the underlying VMs of the Kubernetes clusters.
 
 ## Control plane IP
 
@@ -56,7 +56,7 @@ At a minimum, you should have the following number of IP addresses available per
 
 ## Proxy settings
 
-For this preview, creating AKS Arc clusters in a proxy enabled VMware environment isn't supported.
+For this preview, creating AKS clusters in a proxy enabled VMware environment isn't supported.
 
 ## Firewall URL exceptions
 
@@ -81,7 +81,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 |mcr.microsoft.com | HTTPS/443 |
 |.data.mcr.microsoft.com | HTTPS/443 |
 |msk8s.sb.tlu.dl.delivery.mp.microsoft.com | HTTPS/443 |
-|.prod.microsoftmetrics.com | HTTPS/443 | 
+|.prod.microsoftmetrics.com | HTTPS/443 |
 |login.microsoftonline.com | HTTPS/443 |
 |dc.services.visualstudio.com | HTTPS/443 |
 |ctldl.windowsupdate.com | HTTP/80 |

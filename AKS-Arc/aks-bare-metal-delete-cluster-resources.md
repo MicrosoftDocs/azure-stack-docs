@@ -5,6 +5,7 @@ ms.topic: how-to
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # Delete AKS on bare metal cluster resources (preview)
@@ -22,12 +23,9 @@ This article shows you how to delete AKS on bare metal cluster and edge machine 
 | Step | Resource | Wait required | Notes |
 |------|----------|:---:|-------|
 | 1 | AKS cluster | ✅ **Yes** | Must fully complete before continuing. |
+| 1b (optional) | Data Collection Rule | No | Only if you created a data collection rule during cluster creation. |
 | 2 | Logical Network (LNET) | No | — |
 | 3 | Device Pool | ✅ **Yes** | Automatically deletes the Custom Location. Must fully complete before continuing. |
-| 4 | Provisioned Machine | No | — |
-| 5 | Resource Group | No | — |
-| 6 | Site | No | Automatically deletes the managed resource group. |
-| — | SSH Key | — | Can be deleted at any time. |
 
 ## Step 1: Delete the AKS cluster
 
@@ -53,11 +51,33 @@ az resource delete --ids <cluster-resource-id>
 az resource delete --ids <lnet-resource-id>
 ```
 
+If you created a data collection rule during cluster creation, delete it now.
+
+1. In the resource group, select the Data Collection Rule resource.
+1. Select **Delete** and confirm.
+
+**CLI alternative:**
+
+```azurecli
+az resource delete --ids <data-collection-rule-resource-id>
+```
+
+## Step 2: Delete the Logical Network (LNET)
+
+1. In the resource group, select the Logical Network resource.
+1. Select **Delete** and confirm.
+
+**CLI alternative:**
+
+```azurecli
+az resource delete --ids <lnet-resource-id>
+```
+
 ## Step 3: Delete the Device Pool
 
-1. In the resource group, select the Device Pool resource.
+1. In the resource group, select the resource with a name ending in **mset** and type **Azure Stack | Preview**.
 1. Select **Delete** and confirm.
-1. **Wait** for the deletion to complete. This automatically deletes the Custom Location.
+1. **Wait** for the deletion to complete. This action automatically deletes the Custom Location.
 
 **CLI alternative:**
 
@@ -68,47 +88,7 @@ az resource delete --ids <device-pool-resource-id>
 > [!NOTE]
 > You don't need to manually delete the Custom Location. It's removed automatically when the Device Pool is deleted.
 
-## Step 4: Delete the Provisioned Machine
-
-1. In the resource group, select the Provisioned Machine resource.
-1. Select **Delete** and confirm.
-
-**CLI alternative:**
-
-```azurecli
-az resource delete --ids <provisioned-machine-resource-id>
-```
-
-## Step 5: Delete the Resource Group
-
-1. Navigate to the resource group.
-1. Select **Delete resource group** and confirm by typing the resource group name.
-
-**CLI alternative:**
-
-```azurecli
-az group delete --name <resource-group> --yes --no-wait
-```
-
-## Step 6: Delete the Site
-
-1. Navigate to the Site resource. It might be in a different resource group.
-1. Select **Delete** and confirm.
-1. This automatically deletes the managed resource group.
-
-**CLI alternative:**
-
-```azurecli
-az resource delete --ids <site-resource-id>
-```
-
-## Delete the SSH Key (anytime)
-
-The SSH Key resource has no dependency on other resources and can be deleted at any point during this process.
-
-```azurecli
-az resource delete --ids <ssh-key-resource-id>
-```
+At this point, you deleted all your AKS on bare metal cluster resources. If you also want to delete the Azure Local Small Form Factor resources, follow the guidance at [How do I delete all the resources from a test?](/azure/azure-local/small-form-factor/small-form-factor-faq#how-do-i-delete-all-the-resources-from-a-test).
 
 ## Troubleshooting
 
@@ -116,8 +96,6 @@ az resource delete --ids <ssh-key-resource-id>
 |-------|-------|-----|
 | Resource stuck in "Deleting" state | Dependency not deleted first. | Verify you followed the order above. Wait and retry. |
 | Custom Location still exists after Device Pool delete | Deletion still in progress. | Wait a few more minutes. The deletion cascades automatically. |
-| Resource group delete fails | Resources still present inside. | Ensure steps 1–4 completed successfully first. |
-| Site delete doesn't remove managed resource group | Permissions issue. | Verify you have Owner or Contributor role on the managed resource group. |
 
 ## Next steps
 

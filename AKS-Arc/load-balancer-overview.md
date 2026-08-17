@@ -1,19 +1,20 @@
 ---
 title: Overview of MetalLB for Kubernetes clusters
-description: Learn the basic concepts of MetalLB load balancing for AKS enabled by Arc Kubernetes clusters.
+description: Learn the basic concepts of MetalLB load balancing for AKS Hybrid and Edge Kubernetes clusters.
 ms.topic: concept-article
 ms.date: 07/03/2025
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
+ms.custom: local
 ---
 
 # Overview of MetalLB for Kubernetes clusters
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-When you set up your AKS Arc cluster, you need a way to make your services accessible outside the cluster. The `LoadBalancer` type is ideal for this accessibility, but the external IP remains pending. The *MetalLB extension for Azure Arc enabled Kubernetes* is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the extension for MetalLB for Azure Arc enabled Kubernetes.
+When you set up your AKS cluster, you need a way to make your services accessible outside the cluster. The `LoadBalancer` type is ideal for this accessibility, but the external IP remains pending. The *MetalLB extension for Azure Arc enabled Kubernetes* is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the extension for MetalLB for Azure Arc enabled Kubernetes.
 
 To make your services accessible outside the cluster, MetalLB needs IP addresses. MetalLB takes care of assigning and releasing these addresses as needed when you create services, but it only distributes IPs that are in its configured pools. When MetalLB assigns an external IP address to a service, it informs the network outside the cluster that this IP belongs to the cluster. This communication is done using standard network protocols like Address Resolution Protocol (ARP) or Border Gateway Protocol (BGP).
 
@@ -51,9 +52,9 @@ The choice between L2 and BGP mode with MetalLB depends on your specific require
 
 ## FAQ
 
-### Can a MetalLB instance be reused across AKS Arc clusters?
+### Can a MetalLB instance be reused across AKS clusters?
 
-No, MetalLB can't be reused across AKS Arc clusters. MetalLB lives as pods in a Kubernetes cluster, and load balancers are custom resources (CRs). You must install the MetalLB Arc **k8s-extension** using Azure CLI, the Azure portal or Azure Resource Manager templates, and create load balancers for every AKS Arc cluster.
+No, MetalLB can't be reused across AKS clusters. MetalLB lives as pods in a Kubernetes cluster, and load balancers are custom resources (CRs). You must install the MetalLB Arc **k8s-extension** using Azure CLI, the Azure portal or Azure Resource Manager templates, and create load balancers for every AKS cluster.
 
 ## Next steps
 

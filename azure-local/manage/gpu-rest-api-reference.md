@@ -20,6 +20,8 @@ GPU inventory and discovery operations are performed at the edge machine level. 
 
 ## Prerequisites
 
+- [Prepare GPUs for an Azure Local instance](./gpu-preparation.md).
+- You must be assigned the **Azure Stack HCI Administrator** role to run the API. For more information, see [Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md)
 - Ensure that your machine has a supported GPU model. For more information, see [Supported GPU models](./gpu-preparation.md#supported-gpu-models).
 - GPU APIs are supported only on edge machines. If needed, run the [Edge machine creation script](https://github.com/Azure-Samples/AzureLocal/tree/main/GpuFabricManagement/EdgeMachineCreationScript) before proceeding.
 - Run the `Sync-AzureStackHci` cmdlet on one of the cluster nodes to ensure that GPU capabilities appear on the cluster.
@@ -313,5 +315,4 @@ Contains properties for a GPU job resource.
 
 ## Next steps
 
-- [Prepare GPUs for Azure Local instance](./gpu-preparation.md)
 - [Manage GPUs using partitioning for Azure Local](./gpu-manage-via-partitioning.md)

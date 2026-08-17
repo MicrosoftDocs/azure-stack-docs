@@ -6,6 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/17/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 ---
 
 # Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs
@@ -49,7 +50,7 @@ This issue was fixed in [AKS on Azure Local, version 2507](/azure/azure-local/wh
 
 To resolve the issue temporarily, you must manually clean up the old audit logs. Follow these steps:
 
-- SSH into the control plane virtual machine (VM) of your AKS Arc cluster.
+- SSH into the control plane virtual machine (VM) of your AKS cluster.
 - Remove the old audit logs from the **/var/log/kube-apiserver** folder.
 - If you have multiple control plane nodes, you must repeat this process on each control plane VM.
 
@@ -73,4 +74,4 @@ exit
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)
+[Known issues in AKS Hybrid and Edge](aks-arc-known-issues.md)

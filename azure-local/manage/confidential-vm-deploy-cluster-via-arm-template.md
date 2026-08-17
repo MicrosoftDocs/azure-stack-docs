@@ -23,15 +23,19 @@ This article describes how to deploy a confidential virtual machine (CVM) ready 
 
 Before you begin, make sure that you meet the following requirements:
 
-- **Validated hardware.** CVM deployment is validated on a Lenovo server configuration that uses an AMD Genoa Gen 4 CPU. The following configuration is listed in the Azure Local catalog:
+- **Validated hardware.** CVM deployment is validated on both Lenovo and HPE server configurations that use an AMD Genoa Gen 4 CPU. The following configurations are listed in the Azure Local catalog:
 
     | OEM    | Server model                        |
     |--------|-------------------------------------|
     | Lenovo | ThinkAgile MX455 V3 Edge PR         |
+    | HPE    | ProLiant DL145 Gen11                |
 
     Other Gen 4 systems might work but aren't currently supported.
 
-- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the Lenovo server. To apply the BIOS and UEFI settings, see [Configuring UEFI settings](https://github.com/Azure-Samples/AzureLocal/blob/main/confidential-virtual-machines/CVM_Configuring_UEFI_settings_June20-2026.pdf).
+- **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the following OEM servers:
+
+    - **Lenovo server**: To apply the BIOS and UEFI settings, see [Lenovo Configuration Guide for Confidential Computing and CVM](https://lenovopress.com/lp2484).
+    <!-- - **HPE server**: (TBD) - hidden until HPE UEFI configuration guide link is available. -->
 
 ## Deploy the CVM-ready cluster
 

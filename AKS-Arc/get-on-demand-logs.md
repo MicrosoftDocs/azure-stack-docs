@@ -1,14 +1,15 @@
 ---
 title: Get on-demand logs for troubleshooting
-description: Learn how to get full on-demand logs in AKS enabled by Arc and send them to Microsoft.
+description: Learn how to get full on-demand logs in AKS Hybrid and Edge and send them to Microsoft.
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 04/08/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 04/08/2025
 ms.reviewer: srikantsarwa
+ms.custom: local
 
-# Intent: As an IT Pro, I need to learn how to obtain full on-demand logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
+# Intent: As an IT Pro, I need to learn how to obtain full on-demand logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS Hybrid and Edge.  
 # Keyword: on-demand logs cluster nodes troubleshooting
 
 ---
@@ -17,7 +18,7 @@ ms.reviewer: srikantsarwa
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to collect full on-demand logs and send them to Microsoft support for troubleshooting issues with AKS enabled by Azure Arc.
+This article describes how to collect full on-demand logs and send them to Microsoft support for troubleshooting issues with AKS Hybrid and Edge.
 
 ## Prepare the SSH key
 

@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: concept-article
 ms.date: 07/03/2025
-ms.custom: template-concept
+ms.custom: template-concept, edge-essentials
 ---
 
 # AKS Edge Essentials clusters and nodes key concepts

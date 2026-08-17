@@ -1,16 +1,16 @@
 ---
-title: Event Hubs on Azure Stack Hub 1.2012.1.0 release notes 
+title: Event Hubs on Azure Stack Hub 1.2012.1.0 release notes
 description: Learn about the 1.2012.1.0 release for Event Hubs on Azure Stack Hub, including bug fixes, features, and how to install the update.
 author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: release-notes
-ms.date: 02/15/2021
+ms.date: 07/08/2026
 ms.reviewer: kalkeea
 ms.lastreviewed: 02/15/2021
 ---
 
-# Event Hubs on Azure Stack Hub 1.2012.1.0 release notes
+# Azure Event Hubs on Azure Stack Hub 1.2012.1.0 release notes
 
 These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2012.1.0, and any known issues. 
 
@@ -28,9 +28,9 @@ This release includes the following updates:
 This release includes the following fixes:
 
 - A fix to the upgrade order for Event Hubs clusters, to address an upgrade issue.
-- The cluster health and backup health check for Event Hubs clusters were not running
-when clusters were in "Upgrading" or "Upgrade Failed" state. The issue has been fixed in this release.
-- Fixed a bug causing usage records to contain the wrong quantity. Instead of cores, we were emitting capacity units (CU). Previously, a 1CU cluster would show 1 core in hourly usage. Users will now see the correct quantity of 10 cores for a 1 CU cluster in their hourly usage.
+- The cluster health and backup Health Check for Event Hubs clusters weren't running
+when clusters were in "Upgrading" or "Upgrade Failed" state. The issue is fixed in this release.
+- Fixed a bug causing usage records to contain the wrong quantity. Instead of cores, the system was emitting capacity units (CU). Previously, a 1CU cluster showed 1 core in hourly usage. Users now see the correct quantity of 10 cores for a 1 CU cluster in their hourly usage.
 
 ## Known issues 
 

@@ -1,11 +1,12 @@
 ---
 title: Create Windows node pools
-description: Learn how to create Windows node pools in AKS enabled by Azure Arc on Azure Local.
+description: Learn how to create Windows node pools in AKS Hybrid and Edge on Azure Local.
 ms.topic: how-to
 author: davidsmatlak
 ms.date: 06/19/2026
 ms.author: davidsmatlak
 ms.lastreviewed: 09/22/2025
+ms.custom: local
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
-description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
+title: System requirements and support matrix for AKS Hybrid and Edge on VMware (preview)
+description: Learn about system requirements and the support matrix for AKS Hybrid and Edge on VMware.
 ms.date: 06/13/2025
 ms.topic: concept-article
 author: davidsmatlak
@@ -8,7 +8,7 @@ ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 06/13/2025
 
-ms.custom: references_regions
+ms.custom: references_regions, vmware
 
 ---
 
@@ -16,11 +16,11 @@ ms.custom: references_regions
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article describes the system requirements for setting up AKS enabled by Azure Arc on VMware, and the support matrix. For an overview of AKS Arc on VMware, [see the overview article](aks-vmware-overview.md).
+This article describes the system requirements for setting up AKS Hybrid and Edge on VMware, and the support matrix. For an overview of AKS on VMware, [see the overview article](aks-vmware-overview.md).
 
 ## Arc-enabled VMware vSphere requirements
 
-To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS Arc operators installed. If you already completed this step, you can proceed with the AKS Arc on VMware requirements.
+To use the AKS on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS operators installed. If you already completed this step, you can proceed with the AKS on VMware requirements.
 
 ### Support matrix
 
@@ -34,9 +34,9 @@ For the prerequisites to onboard Arc-enabled VMware vSphere, see [Quickstart: Co
 
 A typical onboarding process that uses the script takes 30 minutes. During this process, you are prompted for the details specified in [Inputs for the script to deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script#inputs-for-the-script).
 
-## AKS enabled by Azure Arc on VMware requirements
+## AKS Hybrid and Edge on VMware requirements
 
-This section describes the requirements for deploying AKS enabled by Azure Arc on VMware.
+This section describes the requirements for deploying AKS Hybrid and Edge on VMware.
 
 ### VMware vCenter requirements
 
@@ -46,7 +46,7 @@ Before you deploy AKS on VMware, you must set up a few things in VMware vCenter.
 
 You need a designated VMware administration user for the AKS clusters. This user should have the following permissions:
 
-- This role can read all inventory, deploy, and update virtual machines (VMs) to all the resource pools (or clusters), networks, and virtual machine templates that you plan to use with AKS Arc on VMware.
+- This role can read all inventory, deploy, and update virtual machines (VMs) to all the resource pools (or clusters), networks, and virtual machine templates that you plan to use with AKS on VMware.
 
 #### Resource pool
 
@@ -58,11 +58,11 @@ In this preview release, the Arc Resource Bridge and the target clusters share a
 | Target cluster control plane  |  8 GB  | 4     | 100 GB  |
 | Target cluster worker node    |  8 GB  | 4     | 100 GB  |
 
-For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
+For information about supported VM size options, see the [AKS on VMware scale requirements](aks-vmware-scale-requirements.md).
 
 > [!NOTE]
-> In the previous version of Arc Resource Bridge, there was a known issue in which the VM size was deployed with incorrect specifications. This issue was resolved in the Arc Resource Bridge version 1.1.0 and later releases. [See this article](/azure/azure-arc/resource-bridge/upgrade) to upgrade your Arc Resource Bridge. For more information, see the [Arc Resource Bridge release notes](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see the [known issues in AKS enabled by Azure Arc on VMware](aks-vmware-known-issues.md).
-> For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
+> In the previous version of Arc Resource Bridge, there was a known issue in which the VM size was deployed with incorrect specifications. This issue was resolved in the Arc Resource Bridge version 1.1.0 and later releases. [See this article](/azure/azure-arc/resource-bridge/upgrade) to upgrade your Arc Resource Bridge. For more information, see the [Arc Resource Bridge release notes](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see the [known issues in AKS Hybrid and Edge on VMware](aks-vmware-known-issues.md).
+> For more information about support size options, see the [AKS on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
 
@@ -141,7 +141,7 @@ You must have an Azure resource group in the supported regions before registrati
 
 #### Supported regions
 
-You can use the AKS Arc on VMware preview in the following supported regions:
+You can use the AKS on VMware preview in the following supported regions:
 
 - East US
 - Australia East
@@ -152,11 +152,11 @@ You can use the AKS Arc on VMware preview in the following supported regions:
 - Canada Central
 
 > [!WARNING]
-> The AKS Arc on VMware preview currently supports cluster creation exclusively within the specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
+> The AKS on VMware preview currently supports cluster creation exclusively within the specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
 
 #### Data residency
 
-AKS Arc on VMware doesn't store or process customer data outside the region in which the customer deploys the service instance.
+AKS on VMware doesn't store or process customer data outside the region in which the customer deploys the service instance.
 
 ## Next steps
 

@@ -7,8 +7,9 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.date: 11/13/2025
 ms.lastreviewed: 05/31/2023
+ms.custom: windows-server
 
-# Intent: As a subscription owner, I want to understand how the AKS Arc service is priced and what I am paying for.
+# Intent: As a subscription owner, I want to understand how the AKS service is priced and what I am paying for.
 # Keyword: pricing
 
 ---
@@ -18,7 +19,7 @@ ms.lastreviewed: 05/31/2023
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) on Windows Server is a subscription-based Kubernetes offering that you can run on Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can get for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period. After the evaluation period, a pay-as-you-go rate per vCPU (of running worker nodes) per day applies.
+Azure Kubernetes Service (AKS) on Windows Server is a subscription-based Kubernetes offering that you can run on Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware either in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can get for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period. After the evaluation period, a pay-as-you-go rate per vCPU (of running worker nodes) per day applies.
 
 > [!IMPORTANT]
 > Starting in June 2023, the 60-day evaluation period is a one-time benefit per subscription. After the evaluation period, a pay-as-you-go rate per vCPU applies. The evaluation period no longer resets when you reinstall AKS on Windows Server. This change aligns with our existing pricing guidelines and helps us continue providing high-quality services.
@@ -32,9 +33,9 @@ Azure pricing for running workloads on AKS on Windows Server is based on US curr
 - Standard HDD
 - No uptime SLA (included in the support level)
 
-In addition, AKS Arc pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
+In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
 
-For detailed pricing information, see the [AKS pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/#overview) page. The list price for AKS Arc includes the following features:
+For detailed pricing information, see the [AKS pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/#overview) page. The list price for AKS includes the following features:
 
 - Kubernetes control plane and load balancer nodes:
   - No charge for Arc-enabled AKS management cluster usage.
@@ -53,7 +54,7 @@ For detailed pricing information, see the [AKS pricing details](https://azure.mi
 - If you enable hyper-threading on the physical computer, this feature reduces the measured vCPU count by 50 percent.
 
 > [!NOTE]
-> Running Windows Server containers on AKS Arc requires a Windows Server license. You can acquire the license separately through regular licensing channels, or you can add it to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid Benefits](azure-hybrid-benefit-22h2.md) might apply, thus reducing or eliminating the Windows Server license fees.
+> Running Windows Server containers on AKS requires a Windows Server license. You can acquire the license separately through regular licensing channels, or you can add it to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid Benefits](azure-hybrid-benefit-22h2.md) might apply, thus reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 

@@ -1,13 +1,13 @@
 ---
-title: AKS Arc and workload cluster architecture
-description: Learn about AKS Arc and workload cluster architecture.
+title: AKS and workload cluster architecture
+description: Learn about AKS and workload cluster architecture.
 ms.topic: overview
 ms.date: 11/17/2025
 author: davidsmatlak
 ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 05/29/2024
-ms.custom: references_regions
+ms.custom: references_regions, local
 
 ---
 
@@ -25,16 +25,16 @@ AKS clusters on Azure Local use **Arc Resource Bridge** (also known as **Arc app
 
 :::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
 
-AKS Arc uses a predefined configuration to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
+AKS uses a predefined configuration to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
 
 > [!NOTE]
 > To help improve the reliability of the system, if you run multiple Cluster Shared Volumes (CSVs) in your cluster, virtual machine data automatically spreads out across all available CSVs in the cluster. This default behavior ensures that applications survive in the event of CSV outages.
 
 ### Arc Resource Bridge
 
-The Arc Resource Bridge connects a private cloud (for example, Azure Local, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure. Arc Resource Bridge includes the following core AKS Arc components:
+The Arc Resource Bridge connects a private cloud (for example, Azure Local, VMWare/vSphere, or SCVMM) to Azure and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure. Arc Resource Bridge includes the following core AKS components:
 
-- **AKS Arc cluster extensions**: A cluster extension is the on-premises equivalent of an Azure Resource Manager resource provider. Just as the **Microsoft.ContainerService** resource provider manages AKS clusters in Azure, the AKS Arc cluster extension, once added to your Arc Resource Bridge, helps manage Kubernetes clusters via Azure.
+- **AKS cluster extensions**: A cluster extension is the on-premises equivalent of an Azure Resource Manager resource provider. Just as the **Microsoft.ContainerService** resource provider manages AKS clusters in Azure, the AKS cluster extension, once added to your Arc Resource Bridge, helps manage Kubernetes clusters via Azure.
 - **Custom location**: A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying Azure service instances.
 
 ### AKS clusters
@@ -45,7 +45,7 @@ An AKS cluster has 2 major components, as described in the following sections.
 
 #### Control plane nodes
 
-Kubernetes uses control plane nodes to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker node pools that hold the containerized applications. AKS enabled by Arc deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. Microsoft does not charge you for control plane nodes, since control plane nodes do not host customer applications.
+Kubernetes uses control plane nodes to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker node pools that hold the containerized applications. AKS Hybrid and Edge deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. Microsoft does not charge you for control plane nodes, since control plane nodes do not host customer applications.
 
 Control plane nodes run the following major components (not an exhaustive list):
 
@@ -67,13 +67,13 @@ For more information, see [node selectors](https://kubernetes.io/docs/concepts/
 
 ## Lifecycle management
 
-Azure Arc is automatically enabled on all your Kubernetes clusters created using AKS Arc. You can use your Microsoft Entra ID for connecting to your clusters from anywhere. Azure Arc enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters.
+Azure Arc is automatically enabled on all your Kubernetes clusters created using AKS. You can use your Microsoft Entra ID for connecting to your clusters from anywhere. Azure Arc enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters.
 
 ## Cloud-based updates for infrastructure components
 
 Azure Local consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
 
-AKS is part of Azure Local, starting with version 23H2. The lifecycle management of AKS enabled by Azure Arc infrastructure follows the same approach as any other components on Azure Local. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Local solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS enabled by Arc infrastructure components, as part of solution extensions, are updated by the update package of Azure Local.
+AKS is part of Azure Local, starting with version 23H2. The lifecycle management of AKS Hybrid and Edge infrastructure follows the same approach as any other components on Azure Local. This approach provides a flexible foundation to integrate and manage various aspects of the Azure Local solution in one place, including the management of the OS, core agents and services, and the solution extension. AKS Hybrid and Edge infrastructure components, as part of solution extensions, are updated by the update package of Azure Local.
 
 For more information, see the [Update overview for Azure Local](/azure/azure-local/update/about-updates-23h2).
 

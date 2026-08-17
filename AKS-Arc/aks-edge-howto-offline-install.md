@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 01/08/2024
-ms.custom: template-how-to
+ms.custom: template-how-to, edge-essentials
 ---
 
 # Prerequisites for AKS Edge Essentials offline installation

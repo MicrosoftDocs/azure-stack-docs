@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.topic: how-to
 ms.date: 03/10/2025
-ms.custom:
+ms.custom: edge-essentials
   - template-how-to
   - devx-track-azurecli
 ---

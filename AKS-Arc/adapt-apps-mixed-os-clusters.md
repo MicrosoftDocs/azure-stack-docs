@@ -4,11 +4,12 @@ description: Learn how to use node selectors or taints and tolerations on Azure 
 author: davidsmatlak
 ms.topic: how-to
 ms.date: 06/27/2024
-ms.author: davidsmatlak 
+ms.author: davidsmatlak
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: srikantsarwa
+ms.custom: windows-server
 
-# Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters. 
+# Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters.
 # Keyword: Node Selector mixed-OS clusters taints tolerations
 
 ---
@@ -40,7 +41,7 @@ For more information about node selectors, see [node selectors](https://kubernet
 
 **Taints** and **tolerations** work together to ensure that pods aren't unintentionally scheduled on nodes. A node can be "tainted" to reject pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in AKS Arc can be tainted when created with the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) commands. You can also use these commands to taint Linux OS nodes. The following example taints Windows nodes.
+Windows OS nodes in AKS can be tainted when created with the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) commands. You can also use these commands to taint Linux OS nodes. The following example taints Windows nodes.
 
 ### Apply taint to new cluster
 

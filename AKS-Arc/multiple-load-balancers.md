@@ -7,6 +7,7 @@ ms.date: 06/26/2024
 ms.reviewer: rbaziwane
 ms.lastreviewed: 07/29/2022
 ms.topic: how-to
+ms.custom: windows-server
 
 # Intent: As an IT Pro, I want to learn about using multiple load balancers in Azure Kubernetes Service (AKS).
 # Keyword: Kubernetes load balancer
@@ -21,11 +22,11 @@ This article describes how to deploy one or more instances of the **HAProxy** lo
 
 In AKS on Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
 
-You can also use a custom load balancer with AKS Arc. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
+You can also use a custom load balancer with AKS. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 
 ## Before you begin
 
-- Install [AKS Arc](kubernetes-walkthrough-powershell.md), and provide a range of virtual IP addresses for the load balancer during the network configuration step.
+- Install [AKS](kubernetes-walkthrough-powershell.md), and provide a range of virtual IP addresses for the load balancer during the network configuration step.
 - Make sure you have enough memory and storage to create a new virtual machine and have virtual IP addresses to assign to application services.
 
 ## Deploy multiple load balancer instances

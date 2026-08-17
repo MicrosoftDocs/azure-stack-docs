@@ -7,20 +7,21 @@ ms.date: 02/15/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 02/15/2023
 ms.reviewer: baziwane
+ms.custom: windows-server
 ---
 
 # Add-ons, extensions, and other integrations with AKS on Windows Server
 
-Azure Kubernetes Service (AKS) on Windows Server provides augmented functionality for your Kubernetes cluster, mainly through extensions that are supported by Microsoft. There are also many integrations offered by open-source projects and third-party organizations. It's important to note that these integrations, which are not supported by AKS Arc, are not included in the [AKS Arc support policy](support-policies.md).
+Azure Kubernetes Service (AKS) on Windows Server provides augmented functionality for your Kubernetes cluster, mainly through extensions that are supported by Microsoft. There are also many integrations offered by open-source projects and third-party organizations. It's important to note that these integrations, which are not supported by AKS, are not included in the [AKS support policy](support-policies.md).
 
 ## Add-ons
 
-Add-ons are a fully supported way to provide extra capabilities for your Kubernetes cluster. The add-ons installation, configuration, and lifecycle are managed by AKS Arc. For information about how to install each add-on, see the available add-ons list.
+Add-ons are a fully supported way to provide extra capabilities for your Kubernetes cluster. The add-ons installation, configuration, and lifecycle are managed by AKS. For information about how to install each add-on, see the available add-ons list.
 
-The following rules are used by AKS Arc for applying updates to installed add-ons:
+The following rules are used by AKS for applying updates to installed add-ons:
 
 - Any breaking or behavior changes to the add-on are usually announced 60 days in advance of a release.
-- Updates to add-ons are communicated through the release notes accompanying each new release of AKS Arc.
+- Updates to add-ons are communicated through the release notes accompanying each new release of AKS.
 
 ### Available add-ons
 
@@ -42,11 +43,11 @@ For more information about the specific cluster extensions for AKS on Windows Se
 
 ## Difference between extensions and add-ons
 
-Both extensions and add-ons are supported ways to add functionality to your Kubernetes cluster. When you install an add-on, the functionality is added as part of the AKS Arc deployment. When you install an extension, the functionality is added as part of a separate resource provider in the Azure API.
+Both extensions and add-ons are supported ways to add functionality to your Kubernetes cluster. When you install an add-on, the functionality is added as part of the AKS deployment. When you install an extension, the functionality is added as part of a separate resource provider in the Azure API.
 
 ## Open source and third-party integrations
 
-You can install many open source and third-party integrations on your Kubernetes cluster, but these open-source and third-party integrations are not covered by the [AKS Arc support policy](support-policies.md).
+You can install many open source and third-party integrations on your Kubernetes cluster, but these open-source and third-party integrations are not covered by the [AKS support policy](support-policies.md).
 
 The following table shows examples of open-source and third-party integrations:
 

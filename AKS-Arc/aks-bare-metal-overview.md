@@ -5,6 +5,7 @@ ms.topic: overview
 ms.date: 06/01/2026
 author: SummerSmith
 ms.author: sumsmith
+ms.custom: bare-metal
 ---
 
 # What is Azure Kubernetes Service on bare metal? (preview)

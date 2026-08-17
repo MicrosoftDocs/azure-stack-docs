@@ -1,19 +1,20 @@
 ---
-title: Security bulletins for AKS enabled by Azure Arc
-description: Security vulnerability advisories and mitigation guidance for AKS enabled by Azure Arc.
+title: Security bulletins for AKS Hybrid and Edge
+description: Security vulnerability advisories and mitigation guidance for AKS Hybrid and Edge.
 author: leslielin
 ms.author: leslielin
 ms.topic: concept-article
 ms.date: 05/18/2026
+ms.custom: overview
 ---
 
-# Security bulletins for AKS enabled by Azure Arc
+# Security bulletins for AKS Hybrid and Edge
 
-This article provides information on security vulnerabilities that affect AKS enabled by Azure Arc and its components. This information includes details on:
+This article provides information on security vulnerabilities that affect AKS Hybrid and Edge and its components. This information includes details on:
 
 - **Critical Security Advisories:** High-impact security vulnerabilities, including zero-day vulnerabilities and other critical CVEs that require immediate attention, along with mitigation guidance.
 - **Ongoing Security Investigations:** Security issues under review, including CVEs where a patch isn't yet available or further assessment is needed.
-- **False Positives & Non-Exploitable CVEs:** Cases where a reported CVE doesn't impact AKS enabled by Azure Arc due to specific configurations, mitigations, or lack of exploitability.
+- **False Positives & Non-Exploitable CVEs:** Cases where a reported CVE doesn't impact AKS Hybrid and Edge due to specific configurations, mitigations, or lack of exploitability.
 
 > [!NOTE]
 > For security bulletins that affect AKS in Azure, see [Security bulletins for Azure Kubernetes Service (AKS)](/azure/aks/security-bulletins/overview).
@@ -63,7 +64,7 @@ If your Azure Local deployment is on version 2601 or earlier, upgrade to 2602 or
 
 ##### Step 2: Run the remediation command
 
-1. Install the [AKS Arc Support Tool](/azure/aks/aksarc/support-module) and run `az login` on your Azure Local node.
+1. Install the [AKS Support Tool](/azure/aks/aksarc/support-module) and run `az login` on your Azure Local node.
 
 2. Run the remediation command:
 

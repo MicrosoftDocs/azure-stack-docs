@@ -6,13 +6,14 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 04/01/2025
 ms.reviewer: leslielin
+ms.custom: local
 ---
 
-# Can't fully delete AKS Arc cluster with PodDisruptionBudget (PDB) resources
+# Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS Edge Essentials
 
-When you delete an AKS Arc cluster that has [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove the PDB resources. By default, PDB is installed in the workload identity-enabled AKS Arc cluster.
+When you delete an AKS cluster that has [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove the PDB resources. By default, PDB is installed in the workload identity-enabled AKS cluster.
 
 ## Mitigation
 
@@ -24,17 +25,17 @@ This issue was fixed in [AKS on Azure Local, version 2503](aks-whats-new-local.m
 
 ## Workaround for AKS Edge Essentials and older versions of AKS on Azure Local
 
-Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig** and delete all PDBs:
+Before you delete the AKS cluster, access the AKS cluster's **kubeconfig** and delete all PDBs:
 
-1. Access the AKS Arc cluster according to its connectivity state:
+1. Access the AKS cluster according to its connectivity state:
 
-   - When the AKS Arc cluster is in a **Connected** state, run the [`az connectedk8s proxy`](/cli/azure/connectedk8s#az-connectedk8s-proxy) command
+   - When the AKS cluster is in a **Connected** state, run the [`az connectedk8s proxy`](/cli/azure/connectedk8s#az-connectedk8s-proxy) command
 
      ```azurecli
      az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name 
      ```
    
-   - When the AKS Arc cluster is in a **disconnected** state, run the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command with permission to perform the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission. For more information, see [Retrieve certificate-based admin kubeconfig in AKS Arc](retrieve-admin-kubeconfig.md#retrieve-the-certificate-based-admin-kubeconfig-using-az-cli).
+   - When the AKS cluster is in a **disconnected** state, run the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command with permission to perform the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission. For more information, see [Retrieve certificate-based admin kubeconfig in AKS](retrieve-admin-kubeconfig.md#retrieve-the-certificate-based-admin-kubeconfig-using-az-cli).
 
      ```azurecli
      az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name --admin
@@ -54,7 +55,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ### [AKS on Azure Local](#tab/aks-on-azure-local)
 
-4. Delete the AKS Arc cluster:
+4. Delete the AKS cluster:
 
    ```azurecli
    az aksarc delete -n $aks_cluster_name -g $resource_group_name
@@ -62,7 +63,7 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ### [AKS Edge Essentials](#tab/aks-edge-essentials)
 
-4. Delete the AKS Arc cluster:
+4. Delete the AKS cluster:
 
    ```azurecli
    az connectedk8s delete -n <cluster_name> -g <resource_group>
@@ -72,4 +73,4 @@ Before you delete the AKS Arc cluster, access the AKS Arc cluster's **kubeconfig
 
 ## Next steps
 
-[Known issues in AKS enabled by Azure Arc](aks-arc-known-issues.md)
+[Known issues in AKS Hybrid and Edge](aks-arc-known-issues.md)

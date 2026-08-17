@@ -2,7 +2,7 @@
 title: Use Azure RBAC for AKS on Azure Local for multi-rack deployments
 description: Learn how to enable and use Azure role-based access control (RBAC) with Microsoft Entra ID to authorize Kubernetes API requests on AKS on Azure Local for multi-rack deployments.
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, multi-rack
 ms.date: 05/26/2026
 ms.author: rickbartra
 author: rickbartra
