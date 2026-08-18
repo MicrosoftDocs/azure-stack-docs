@@ -127,6 +127,9 @@ Confirm that:
 
 If you want a lightweight Kubernetes environment on the device, install K3s.
 
+> [!TIP]
+> **Recommended: Encrypt Kubernetes secrets.** To help protect your stored Kubernetes secrets, you can optionally install the Microsoft KMS Plugin for Edge Clusters on your single-node K3s cluster. This plugin isn't part of the small form factor managed offering, but its installation is highly recommended, as it adds defense-in-depth protection for your secrets. See [Encrypt Kubernetes secrets on K3s for small form factor deployments of Azure Local](small-form-factor-encrypt-kubernetes-secrets.md) to decide whether this plugin is right for your scenario and how to install it.
+
 #### Connect to the machine over SSH
 
 Follow these steps to [SSH into a provisioned machine from Azure](small-form-factor-connect-jit.md).
