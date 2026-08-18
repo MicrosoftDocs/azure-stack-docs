@@ -36,9 +36,8 @@ Some of the `run-read` commands require that you supply specific arguments to en
 
 This list shows the commands you can use. Commands that are displayed in *italics* can't have arguments, but the rest can.
 
-- `arp`
 - `brctl show`
-- `dmidecode`
+- `dmidecode` (only no arguments or the `-t bios` argument allowed)
 - _`fdisk -l`_
 - `host`
 - _`hostname`_
@@ -48,7 +47,7 @@ This list shows the commands you can use. Commands that are displayed in *italic
 - `ip link show`
 - `ip maddress show`
 - `ip route show`
-- `journalctl`
+- `journalctl` (only the `-u`, `-n`, `--no-pager`, and `--disk-usage` arguments allowed)
 - `kubectl api-resources`
 - `kubectl api-versions`
 - `kubectl describe`
@@ -57,7 +56,6 @@ This list shows the commands you can use. Commands that are displayed in *italic
 - _`mount`_
 - `ping`
 - _`ss`_
-- `tcpdump`
 - `traceroute`
 - `uname`
 - _`ulimit -a`_
