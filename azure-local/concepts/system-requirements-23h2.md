@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 05/04/2026
+ms.date: 08/14/2026
 ms.subservice: hyperconverged
 ---
 
@@ -64,7 +64,7 @@ Before you begin, make sure that the physical machine and storage hardware used 
 |Component|Minimum|
 |--|--|
 |Number of machines| 1 to 64 machines are supported. <br> Each machine must be the same model, manufacturer, have the same processor types, have the same network adapters, and have the same number and type of storage drives.|
-|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br> All the Azure Local machines used to form an Azure Local instance must have the same processor types. |
+|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT). <br><br> All Azure Local machines in a cluster must use compatible processors. During deployment, the following processor properties must be identical across all nodes: `Caption`, `Family`, `Manufacturer`, `MaxClockSpeed`, `NumberOfEnabledCore`, `NumberOfLogicalProcessors`, and `ThreadCount`. <br><br> During add or repair operations, the new or repaired node can have a higher `NumberOfCores` value than existing cluster nodes. |
 |Memory|A minimum of 32-GB RAM per machine with Error-Correcting Code (ECC). <br> If you can't meet the memory and the ECC requirements, opt for a [Virtual deployment](../deploy/deployment-virtual.md).|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|

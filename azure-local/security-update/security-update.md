@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 07/14/2026
+ms.date: 08/12/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -11,6 +11,57 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the various security updates that are available for Azure Local.
+
+::: moniker range="=azloc-2608"
+
+## August OS security update (KB5120233) for Azure Local
+
+This section describes the 2608 security updates associated with OS build **26100.33296** released on August 11, 2026 ([KB5120233](https://support.microsoft.com/help/5120233)).
+
+For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
+
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+## Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
+
+## Improvements
+
+This security update includes fixes and quality improvements from [KB5099536](https://support.microsoft.com/en-us/servicing/os/windows-server/2026/07/july-14-2026-kb5099536-os-build-26100-33158) (released July 14, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[File Explorer]** This update improves File Explorer for files stored on DFS mapped drives, helping previews and copied files work as expected after reconnecting to the network.
+
+- **[Windows]** This update improves support for post‑quantum cryptography (PQC) certificates by restoring PQC options during Certificate Authority configuration and enabling successful enrollment with newly created PQC certificate templates.
+
+- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
+
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
+
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+## Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
+
+## To install
+
+### Before you install this update
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [August 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Aug).
+
+## File information
+
+For a list of the files provided in this update, download the file information for [cumulative update 5120233](https://go.microsoft.com/fwlink/?LinkId=2374840).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2607"
 
@@ -27,15 +78,15 @@ This section provides key notifications related to this release, including annou
 ## Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft has been updating these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Updated certificates are delivered through Windows Update in the coming months.  For more information, see Windows Secure Boot certificate expiration and CA updates.
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
 
-## Improvements  
+## Improvements
 
-This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/topic/aaaabbbb-0000-cccc-1111-dddd2222eeee) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
-- **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/topic/june-9-2026-kb5094125-os-build-26100-32995-aaaabbbb-0000-cccc-1111-dddd2222eeee)), these apps might fail to launch Office or open documents.
+- **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)), these apps might fail to launch Office or open documents.
 
 - **[Containers]** This update improves startup performance for Hyper-V–isolated Windows Server containers on Windows Server 2025. The updated Windows Server 2025 container base images (nanoserver, servercore, and windowsservercore) include this improvement and are available through the Microsoft Container Registry (MCR). Pull the latest image tag to get the update.
 
@@ -49,7 +100,7 @@ This security update includes fixes and quality improvements from [KB5094125](
 
 - **[Event Log]** This update improves the reliability of the Windows Event Log service on event collector servers that forward events to custom log channels configured with a manifest.
 
-- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer is run with administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/topic/june-9-2026-kb5094125-os-build-26100-32995-aaaabbbb-0000-cccc-1111-dddd2222eeee)).
+- **[File Explorer (known issue)]** Fixed: An issue where the OneDrive shortcut in File Explorer stops working when File Explorer runs in administrative mode. This issue might occur after installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)).
 
 - **[Input]** This update changes hotkey unregister and cleanup behavior. In rare cases, some built-in Windows experiences that rely on previous hotkey lifecycle behavior might temporarily stop responding to certain keyboard shortcuts. This issue can typically be resolved by restarting the app affected. If the issue isn't resolved, report it through the [Feedback Hub](https://support.microsoft.com/Windows/Apps/send-feedback-to-microsoft-with-the-feedback-hub-app).
 
@@ -113,9 +164,9 @@ You can check your PC status in the Windows Security app. If you're an IT admini
 
 ## Improvements
 
-This security update contains fixes and quality improvements from [KB5087539​​​​​​​](https://support.microsoft.com/en-us/topic/may-12-2026-kb5087539-os-build-26100-32860-fe3fd635-23fc-41bd-b7a7-00e57c1c4f91?preview=true) (released May 12, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5087539​​​​​​​](https://support.microsoft.com/topic/may-12-2026-kb5087539-os-build-26100-32860-fe3fd635-23fc-41bd-b7a7-00e57c1c4f91?preview=true) (released May 12, 2026). The following summary outlines key issues addressed by this update. It also includes available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Boot manager servicing update (Known issue)]** Fixed: This update addresses an issue where some devices might enter BitLocker Recovery after updating boot files on systems with certain Trusted Platform Module (TPM) validation settings, including invalid PCR7 (Platform Configuration Register 7) configurations. This might occur after installing the April 2026 security update ([KB5082063](https://support.microsoft.com/en-us/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true)).
+- **[Boot manager servicing update (Known issue)]** Fixed: This update addresses an issue where some devices might enter BitLocker Recovery after updating boot files on systems with certain Trusted Platform Module (TPM) validation settings, including invalid PCR7 (Platform Configuration Register 7) configurations. This issue might occur after installing the April 2026 security update ([KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true)).
 
 - **[File Explorer]** This update improves File Explorer search, including support for Chinese text, and UTF 8–encoded files without a byte order mark (BOM). Text now displays more clearly and consistently across search results, Content view, and tooltips.
 
@@ -164,7 +215,7 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 ## Improvements
 
-This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/en-us/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
+This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
 
 - **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
 
@@ -358,20 +409,20 @@ For a list of the files provided in this update, download the file information f
 
 ::: moniker-end
 
-::: moniker range="=azloc-2602"
+::: moniker range="=azloc-previous"
 
 ## February OS security update (KB5075899) for Azure Local
 
 This section provides the 2602 security updates associated with OS build **26100.32370** released on February 10, 2026 ([KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e?preview=true)). It also includes key notifications, announcements, change logs, and end-of-support notices.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 > [!IMPORTANT]
 > The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-## Improvements 
+### Improvements 
 
 This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -403,15 +454,15 @@ This security update contains fixes and quality improvements from [KB5073379](ht
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
-## Known issues
+### Known issues
 
-### Windows Server Update Services (WSUS) doesn't display error details
+#### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
 
-## To install
+### To install
 
-### Before you install this update 
+#### Before you install this update 
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -419,13 +470,9 @@ For more information about security vulnerabilities addressed by this update, se
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
-## File Information
+### File Information
 
 For a list of the files provided in this update, download the file information for [cumulative update 5075899](https://go.microsoft.com/fwlink/?linkid=2350429).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## January OS security update (KB5073379) for Azure Local
 
@@ -443,7 +490,7 @@ To learn more about differences between security updates, optional non-securit
 
 This security update contains fixes and quality improvements from [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-builds-26200-7462-and-26100-7462-0c1a4334-19ba-406d-bb1e-88fcffc87b79) (released December 9, 2025). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Compatibility]** This update removes the following modem drivers: agrsm64.sys (x64), agrsm.sys (x86), smserl64.sys (x64), and smserial.sys (x86). Modem hardware is dependent on these specific drivers will no longer work in Windows.
+- **[Compatibility]** This update removes the following modem drivers: agrsm64.sys (x64), agrsm.sys (x86), smserl64.sys (x64), and smserial.sys (x86). Modem hardware is dependent on these specific drivers and no longer works in Windows.
 
 - **[Networking (known issue)]** Fixed: This update addresses an issue where you might experience [RemoteApp](/azure/virtual-desktop/publish-applications-stream-remoteapp?tabs=portal) connection failures in Azure Virtual Desktop (AVD) environments. This might occur after installing [KB5072033](https://support.microsoft.com/topic/december-9-2025-kb5072033-os-build-26100-7462-fca31d8d-5fe8-4b5e-9591-6641ef1d26a1).
 
@@ -543,7 +590,7 @@ This security update contains fixes and quality improvements from [KB5068861](
 
 - **[Voice Access]** Fixed: This update addresses an issue where **Voice Access** failed during initial setup if no microphone was connected and the voice model wasn't installed.
 
-- **​​​​​​​[Window management]** Fixed: his update addresses an issue where selecting the desktop could unexpectedly open **Task View**.
+- **​​​​​​​[Window management]** Fixed: This update addresses an issue where selecting the desktop could unexpectedly open **Task View**.
 
 - **[Networking]** Fixed: This update fixes an issue in the `HTTP.sys` request parser, a Windows component that reads and processes HTTP requests. The parser allowed a single line break within HTTP/1.1 chunk extensions, where the RFC 9112 standard requires a carriage return and line feed (CRLF) sequence to terminate each chunk. This can cause a parsing discrepancy when front end proxies are a part of the setup.
 
@@ -804,7 +851,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Input]**:
 
-    - Fixed: This update addresses an issue that caused certain apps to stop responding input in some input method scenarios.
+    - Fixed: This update addresses an issue that caused certain apps to stop responding to input in some input method scenarios.
 
     - Fixed: This update addresses an issue that caused some Internet Information Services (IIS) modules to disappear from IIS Manager, preventing users from configuring IIS using the IIS Manager interface.
 
