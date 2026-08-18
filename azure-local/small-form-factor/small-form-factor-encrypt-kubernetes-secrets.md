@@ -14,7 +14,8 @@ ms.subservice: small-form-factor
 This article describes how to install a Key Management Service (KMS) plugin on a K3s cluster running on small form factor deployments of Azure Local to enable encryption at rest for Kubernetes secrets. This plugin is an optional, highly recommended component you can choose to install and enable on your K3s cluster.
 
 > [!IMPORTANT]
-> The KMS plugin on K3s for small form factor deployments currently supports **single-node cluster deployments only**.
+>- The KMS plugin on K3s for small form factor deployments currently supports **single-node cluster deployments only**.
+>-The KMS plugin doesn't currently support OS upgrades. Don't enable it on a deployment where you plan to upgrade the OS. An OS upgrade will render the cluster inoperable, with no recovery path. To restore service, you must redeploy the cluster.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -33,9 +34,6 @@ When the KEK is rotated, the DEK seed is also rotated, the KMS plugin then encry
 
 On Azure Local small form factor deployments, you can install the KMS Plugin for Edge Clusters as an optional Microsoft component on top of K3s. It uses a **platform managed key (PMK)** as the KEK, which is isolated in a separate component that uses hardware-backed (TPM) protection where available. If a TPM (physical or virtual) isn't available, process-based isolation is used instead. The plugin handles the key lifecycle - generation, storage, and rotation - so you don't need to bring or manage your own key management system. The plugin rotates the KEK every 30 days, and triggers re-encryption of all secrets to ensure they're protected under the new key.
 
-> [!IMPORTANT]
-> The KMS plugin doesn't currently support OS upgrades. Don't enable it on a deployment where you plan to upgrade the OS. An OS upgrade will render the cluster inoperable, with no recovery path. To restore service, you must redeploy the cluster.
-
 ## Why use the Microsoft KMS Plugin for Edge Clusters on K3s on small form factor deployments?
 
 Use the KMS plugin when one or more of the following apply:
@@ -48,7 +46,6 @@ Use the KMS plugin when one or more of the following apply:
 
 - **Single-node K3s only:** The KMS plugin currently supports only single-node K3s configurations.
 - **Platform-managed key only:** The platform manages the key used to encrypt secrets. Bring-your-own-key (BYOK) and customer-managed key (CMK) scenarios aren't supported for this configuration.
-
 
 ## How the Microsoft KMS Plugin for Edge Clusters fits into the small form factor stack
 
