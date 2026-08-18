@@ -3,7 +3,7 @@ title: Azure Container Registry supported commands
 description: Review the list of supported commands for CLI and PowerShell for Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
 ms.topic: reference
-ms.date: 02/07/2025
+ms.date: 08/18/2026
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
@@ -60,7 +60,9 @@ Some supported commands have optional parameters that are not supported on Azure
 - `--key-encryption-key`  
 - `--public-network-enabled`  
 - `--workspace`  
-- `--zone-redundancy`  
+- `--zone-redundancy`
+- `--writable-cache-repos`
+- `--regional-endpoints [enabled|disabled]`
 
 `az acr update`
 
@@ -70,6 +72,8 @@ Some supported commands have optional parameters that are not supported on Azure
 - `--default-action`
 - `--public-network-enabled`
 - `--sku`
+- `--writable-cache-repos`
+- `--regional-endpoints [enabled|disabled]`
 
 ## Supported Azure Container Registry PowerShell commands
 
