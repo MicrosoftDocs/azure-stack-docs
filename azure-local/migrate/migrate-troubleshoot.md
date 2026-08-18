@@ -158,7 +158,7 @@ Verify the following:
 - Make sure that you have the [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) role at the Azure subscription scope. The Azure Local Migrate Execute Expert role doesn't allow users to create projects.
 - Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
-### Can't replicate to Azure Local because the project wasn't created in the Azure portal
+### Can't replicate to Azure Local because you didn't create the project in the Azure portal
 
 **Root cause**
 
