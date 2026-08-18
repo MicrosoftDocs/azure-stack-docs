@@ -1,10 +1,10 @@
 ---
-title: Manage Capacity by Adding a Node on Azure Local, Version 23H2
-description: Learn how to manage capacity on your Azure Local, version 23H2 system by adding a node.
+title: Manage Capacity by Adding a Node on Azure Local, Version 24H2
+description: Learn how to manage capacity on your Azure Local, version 24H2 system by adding a node.
 ms.topic: how-to
-author: ronmiab
-ms.author: robess
-ms.date: 04/30/2026
+author: rajeshkumar
+ms.author: rajeshkumar
+ms.date: 06/17/2026
 ms.subservice: hyperconverged
 ---
 
@@ -36,9 +36,9 @@ The following flow diagram shows the overall process to add a node:
 To add a node, follow these high-level steps:
 
 1. Install the operating system, drivers, and firmware on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
-1. Add the prepared node via the `Add-server` PowerShell cmdlet.
-1. When you add a node to the system, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
-1. Once the node is added, the system is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't affect actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
+2. Add the prepared node by using either PowerShell (`Add-Server`) or the Azure Local experience in the Azure portal.
+3. When you add a node to the system, the system validates that the new incoming node meets the CPU, memory, and storage (drives) requirements before it actually adds the node.
+4. Once the node is added, the system is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't affect actual workloads. The rebalance can run for multiple days depending on number of the nodes and the storage used.
 
 > [!NOTE]
 > If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is added.
@@ -48,20 +48,26 @@ To add a node, follow these high-level steps:
 When you add a node, the following scale-out scenarios are supported:
 
 | **Start scenario** | **Target scenario** | **Resiliency settings** | **Storage network architecture** | **Witness settings** |
-|--|--|--|--|--|
+| -- | -- | -- | -- | -- |
 | Single-node | Two-node system | Two-way mirror | Configured with and without a switch | Witness required for target scenario. |
 | Two-node system | Three-node system | Three-way mirror | Configured with a switch only | Witness optional for target scenario. |
 | Three-node system | N-node system | Three-way mirror | Switch only | Witness optional for target scenario. |
 
-When you upgrade a system from two to three nodes, the storage resiliency level is changed from a two-way mirror to a three-way mirror.
+When you upgrade a system from two to three nodes, the storage resiliency level changes from a two-way mirror to a three-way mirror.
+
+The following scenarios are currently not supported via the **Azure portal**:
+- Scaling out from a single-node to two-node system
+- Scaling out for rack aware clusters
+- Scaling out for disaggregated deployments with local availability zones configured
+- Scaling out is not supported for systems deployed in the Azure Government cloud
 
 ### Resiliency settings
 
-In this release, for the add node operation, specific tasks aren't performed on the workload volumes created after the deployment.
+In this release, the add node operation doesn't perform specific tasks on the workload volumes that you create after the deployment.
 
-For add node operation, the resiliency settings are updated for the required infrastructure volumes and the workload volumes created during the deployment. The settings remain unchanged for other workload volumes that you created after the deployment (since the intentional resiliency settings of these volumes aren't known and you might want a two-way mirror volume regardless of the system scale).
+For the add node operation, the resiliency settings update for the required infrastructure volumes and the workload volumes that you create during the deployment. The settings stay the same for other workload volumes that you create after the deployment (since the intentional resiliency settings for these volumes aren't known and you might want a two-way mirror volume regardless of the system scale).
 
-However, the default resiliency settings are updated at the storage pool level, so any new workload volumes that you create after the deployment inherit the resiliency settings.
+However, the default resiliency settings update at the storage pool level, so any new workload volumes that you create after the deployment inherit the resiliency settings.
 
 ### Hardware requirements
 
@@ -71,119 +77,238 @@ When you add a node, the system validates the hardware of the new, incoming node
 
 ## Prerequisites
 
-Before you add a node, you would need to complete the hardware and software prerequisites.
+Before you add a node, complete the hardware and software prerequisites.
 
-#### Hardware prerequisites
+### Hardware prerequisites
 
-Make sure to complete the following prerequisites:
+Make sure you complete the following prerequisites:
 
-1. The first step is to acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new node hardware for use in your system.
-1. Place the new physical node in the predetermined location, for example, a rack, and cable it appropriately.
-1. Enable and adjust physical switch ports as applicable in your network environment.
+1. Acquire new Azure Local hardware from your original OEM. Always refer to your OEM-provided documentation when adding new node hardware for use in your system.
+2. Place the new physical node in the predetermined location, such as a rack, and cable it appropriately.
+3. Enable and adjust physical switch ports as applicable in your network environment.
 
-#### Software prerequisites
+### Software prerequisites
 
-Make sure to complete the following prerequisites:
+Make sure you complete the following prerequisites:
 
 [!INCLUDE [hci-prerequisites-add-repair-server](../includes/hci-prerequisites-add-repair-server.md)]
 
 ## Add a node
 
-This section describes how to add a node using PowerShell, monitor the status of the `Add-Server` operation and troubleshoot, if there are any issues.
+You can add a node to your Azure Local instance by using either PowerShell or the Azure Local experience in the Azure portal.
 
-### Add a node using PowerShell
+## [PowerShell](#tab/azure-powershell)
 
-Make sure that you've reviewed and completed the [prerequisites](#prerequisites).
+Use PowerShell when you want to script and automate the add node workflow.
 
-On the new node that you plan to add, follow these steps.
+### Prepare (PowerShell)
 
-1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os.md).
+Follow these steps to add a node by using PowerShell:
 
-    >[!NOTE]
-    > - For versions 2503 and later, you must use the OS image of the same solution as that running on the existing cluster.
-    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you're running on the cluster.
-    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version. Don't use the Azure portal, as it doesn't list all available OS image versions and might not include the required matching version.
+1. Install the operating system, drivers, and firmware on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
 
-1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+   > [!IMPORTANT]
+   > For versions 2503 and later, use the OS image from the same solution version as the existing cluster. Use [Get solution version](/azure/azure-local/update/azure-update-manager-23h2#get-solution-version) to identify the running solution version, and use the [OS image table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) to select a matching image. Avoid selecting the image only from Azure portal because not all image versions might be listed.
 
-    > [!NOTE]
-    > You must use the same parameters as the existing node to register with Arc. For example: Resource Group name, Region, Subscription, and Tenant.
+2. Register the new node with Arc. For guidance, see [Register with Arc and set up permissions](/azure/azure-local/deploy/deployment-arc-register-server-permissions).
 
-1. Assign the following permissions to the newly added nodes:
+   > [!NOTE]
+   > Use the same Arc registration parameters as the existing nodes, including resource group, region, subscription, and tenant.
 
-    - Azure Stack HCI Device Management Role
-    - Key Vault Secrets User
-    For more information, see [Assign permissions to the node](../deploy/deployment-arc-register-server-permissions.md).
+3. Assign required permissions to the newly added node, including **Azure Stack HCI Device Management Role**, **Connected InfraVMs**, and **Key Vault Secrets User**.
+4. Run the `Add-Server` cmdlet to add the prepared node to your Azure Local instance.
 
-If you're scaling out from a single-node, follow these steps first:
+   Example:
 
-1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
+   ```powershell
+   Add-Server -Name "<new-node-name>"
+   ```
 
-1. Configure a storage intent if you didn't do so during the initial deployment of your Azure Local instance. Modify the parameters to match your environment.
+5. Wait for system validation to confirm that the incoming node meets CPU, memory, and storage (drives) requirements.
+6. Verify that the node is added successfully and allow storage rebalance to complete. Rebalance is a low-priority background task and can run for multiple days depending on node count and storage usage.
 
-    ```powershell
-    Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"
-    ```
+### If scaling from a single-node system
 
-On a node that already exists on your system, follow these steps:
+Before you run `Add-Server`, complete these tasks:
 
-1. Sign in with the domain user credentials (AzureStackLCMUser or another user with equivalent permissions) that you provided during the deployment of the system.
+1. Configure a quorum witness. See [Deploy a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness).
+2. Configure a storage intent if you didn't configure one during the initial deployment.
 
-1. Run the following command to add the new incoming node using a local administrator credential for the new node:
+   Example:
 
-    ```powershell
-    $HostIpv4 = "<IPv 4 for the new node>"
-    $Cred = Get-Credential 
-    Add-Server -Name "<Name of the new node>" -HostIpv4 $HostIpv4 -LocalAdminCredential $Cred 
-    ```
+   ```powershell
+   Set-StorageNetworkIntent -Name "StorageNet" -StorageIntentAdapters "Ethernet1, Ethernet2" -Switchless $false -VLANID "877, 888"
+   ```
 
-1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
+### Run the add node operation
 
-### Monitor operation progress
+On a node that already exists in your system, follow these steps:
 
-To monitor the progress of the add node operation, follow these steps:
+1. Sign in with the domain user credentials (AzureStackLCMUser or an equivalent user) that you provided during system deployment.
+2. Run the following command to add the incoming node by using local administrator credentials for the new node:
 
-[!INCLUDE [hci-monitor-add-repair-server](../includes/hci-monitor-add-repair-server.md)]
+   ```powershell
+   $HostIpv4 = "<IPv4 for the new node>"
+   $Cred = Get-Credential
+   Add-Server -Name "<Name of the new node>" -HostIpv4 $HostIpv4 -LocalAdminCredential $Cred
+   ```
 
-The newly added node shows in the Azure portal in your Azure Local instance list after several hours. To force the node to show up in Azure portal, run the following command:
+3. Save the operation ID returned by `Add-Server`. You use this ID to monitor operation progress.
 
-```powershell
-Sync-AzureStackHCI
-```
+### Monitor operation progress (PowerShell)
+
+1. Run the following cmdlet and provide the operation ID from the previous step:
+
+   ```powershell
+   $ID = "<Operation ID>"
+   Start-MonitoringActionplanInstanceToComplete -ActionPlanInstanceID $ID
+   ```
+
+2. After the add node operation completes, monitor storage rebalance progress:
+
+   ```powershell
+   Get-VirtualDisk | Get-StorageJob
+   ```
+
+   If storage rebalance is complete, this cmdlet returns no output.
+
+3. If needed, force synchronization so the node appears sooner in Azure portal:
+
+   ```powershell
+   Sync-AzureStackHCI
+   ```
 
 ### Recovery scenarios
 
-Following recovery scenarios and the recommended mitigation steps are tabulated for adding a node:
+| Scenario | Mitigation | Rerun required |
+| -- | -- | -- |
+| Added a new node out of band without using the orchestrator. | Remove the added node and use the orchestrator to add the node. | No |
+| Added a new node with orchestrator and the operation failed. | Investigate the failure and rerun the failed operation by using `Add-Server -Rerun`. | Yes |
+| Added a new node with orchestrator and the operation partially succeeded, but you must start with a fresh OS install. | Use the repair node scenario because orchestrator already updated its knowledge store with the new node. | Yes |
 
-| Scenario description | Mitigation | Supported? |
-|--|--|--|
-| Added a new node out of band without using the orchestrator. | Remove the added node. <br> Use the orchestrator to add the node. | No |
-| Added a new node with orchestrator and the operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
-| Added a new node with orchestrator. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, orchestrator has already updated its knowledge store with the new node. Use the repair node scenario. | Yes |
+### Troubleshoot PowerShell add node operations
+
+> [!NOTE]
+> Starting with release 2508, validation runs after you execute the `Add-Server` command. If a test fails, the validator returns details to help resolve the failure.
+
+If you experience failures while adding a node, capture output to a log file:
+
+```powershell
+Get-ActionPlanInstance -ActionPlanInstanceID $ID | Out-File log.txt
+```
+
+To rerun a failed operation:
+
+```powershell
+Add-Server -Rerun
+```
+
+> [!NOTE]
+> If you deployed your Azure Local instance using custom storage IPs, you must manually assign IPs to the storage network adapters after the node is added.
+
+## [Azure portal (preview)](#tab/azure-portal)
+
+Use the Azure Local experience in the Azure portal for a guided, wizard-based workflow.
+
+### Prepare (Azure portal)
+
+The add node wizard in the Azure portal guides you through eight steps to successfully add a new machine to your cluster.
+
+Follow these steps to add a node using the Azure portal:
+
+#### Step 1: Launch the wizard
+
+1. In the Azure portal, go to your Azure Local instance.
+2. In the **Machines** pane, select **Add Machine**.
+3. The **Basics** tab opens automatically.
+
+:::image type="content" source="./media/add-server/add-server-machine-pane.png" alt-text="Screenshot of the Machines pane with the Add Machine button." lightbox="./media/add-server/add-server-machine-pane.png":::
+
+#### Step 2: Select machine in Basics tab
+
+In the **Basics** tab, select the machine that you want to add to your cluster.
+
+:::image type="content" source="./media/add-server/add-server-add-machine-selection.png" alt-text="Screenshot of the Basics tab showing available machines to add." lightbox="./media/add-server/add-server-add-machine-selection.png":::
+
+1. **Machine selection**: The context pane displays all available machines. Filter and select the machine you want to add.
+2. **Key vault selection**: Create a new key vault or select an existing key vault to continue.
+3. **Local administrator**: Local administrator user credentials for the machines. Use the same credential for all machines.
+4. **Extension installation**: After selection, the wizard automatically installs mandatory extensions on the machine.
+5. **Machine state**: The machine transitions to the **Ready** state once extension installation completes.
+
+#### Step 3: Lite validation
+
+In this step, the wizard performs initial validation on the selected machine.
+
+:::image type="content" source="./media/add-server/add-server-machine-selection-basics.png" alt-text="Screenshot of the Lite Validation step showing validation controls." lightbox="./media/add-server/add-server-machine-selection-basics.png":::
+
+1. Select **Validate selected machines** to run the validation.
+2. If validation succeeds, the **Next** button becomes enabled to proceed to the Networking tab.
+3. If validation fails, review the error message for details and resolve the issue before retrying.
+
+### Add node operation
+
+#### Step 4: Networking tab
+
+The Networking tab automatically processes network configuration for your cluster.
+
+
+- No user interaction is required on this tab.
+- The wizard automatically proceeds to the Validation tab after processing networking configuration.
+
+#### Step 5: Validation and RBAC assignment
+
+The Validation tab assigns necessary permissions for the add node operation to succeed.
+
+:::image type="content" source="./media/add-server/add-server-machine-validation-rbac.png" alt-text="Screenshot of the Validation tab showing RBAC assignments." lightbox="./media/add-server/add-server-machine-validation-rbac.png":::
+
+The following role-based access control (RBAC) assignments are configured:
+
+| **Scope** | **Role** | **Purpose** |
+| -- | -- | -- |
+| Resource Group | Azure Stack HCI Device Management Role | Device management on Azure Stack HCI cluster |
+| Azure Stack HCI Device | Connected InfraVMs | Infrastructure VM management |
+| Secrets (via Key Vault) | Secret User Role | Access cluster secrets during deployment |
+| Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for adless scenarios |
+
+#### Step 6: Validation job execution
+
+The wizard creates and runs a validation job to verify the configuration before deployment. Select the **Refresh** button to retrieve the latest validation status.
+
+:::image type="content" source="./media/add-server/add-server-validation-job-trigger.png" alt-text="Screenshot showing the validation job trigger in the portal." lightbox="./media/add-server/add-server-validation-job-trigger.png":::
+
+:::image type="content" source="./media/add-server/add-server-validation-progress-status.png" alt-text="Screenshot showing validation job progress and status in the portal." lightbox="./media/add-server/add-server-validation-progress-status.png":::
+
+#### Step 7: Review and create
+
+Review the cluster and machine details before deploying.
+
+:::image type="content" source="./media/add-server/add-server-confirmation-before-deploy.png" alt-text="Screenshot of the review screen showing confirmation before deployment." lightbox="./media/add-server/add-server-confirmation-before-deploy.png":::
+
+Select **Review + Add machine** to trigger the deployment job.
+
+The wizard now transitions to **Deploy mode** and redirects you to the **Jobs** pane to monitor progress.
+
+### Monitor operation progress
+
+#### Step 8: Monitor deployment
+
+Track the add node job in the **Jobs** pane.
+
+:::image type="content" source="./media/add-server/add-server-deployment-job-status.png" alt-text="Screenshot of the Jobs pane showing add node deployment tracking." lightbox="media/add-server/add-server-deployment-job-status.png":::
+
+
+The newly added node appears in the **Machines** pane after deployment completes successfully. The Azure portal updates automatically after several hours.
+
+### Troubleshoot
+
+If the add node operation fails in the wizard, review the validation or deployment error details from the **Jobs** pane. Resolve the reported issue before retrying.
+
+---
 
 ### Troubleshoot issues
 
-Starting with the 2508 release, validation runs after you execute the `Add-Server` command. If a test fails, the validator returns information to help you resolve the failure.
-
-Here's an example of a validation failure message:
-
-:::image type="content" source="./media/add-server/validation-error.png" alt-text="Screenshot of validation error message." lightbox="./media/add-server/validation-error.png":::
-
-If you experience failures or errors while adding a node, you can capture the output of the failures in a log file. On a node that already exists on your system, follow these steps:
-
-- Sign in with the domain user credentials that you provided during the deployment of the system. Capture the issue in the log files.
-
-    ```powershell
-    Get-ActionPlanInstance -ActionPlanInstanceID $ID|out-file log.txt
-    ```
-
-- To rerun the failed operation, use the following cmdlet:
-
-    ```powershell
-    Add-Server -Rerun
-    ```
-
-If you encounter an issue during the add node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send the diagnostic logs to Microsoft. 
+If you encounter an issue during the add node operation and need help from Microsoft Support, you can follow the steps in [Collect diagnostic logs for Azure Local (preview)](collect-logs.md) to collect and send the diagnostic logs to Microsoft.
 
 You might need to provide diagnostic logs from the new node that's to be added to the cluster. Make sure you run the `Send-DiagnosticData` cmdlet from the new node.
 

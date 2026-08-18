@@ -5,13 +5,54 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 08/06/2026
+ms.date: 08/18/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2608"
+
+## Features and improvements in 2608
+
+The August 2026 release of hyperconverged deployments of Azure Local is version **12.2608.1003.8**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2608 release, all new and existing deployments of Azure Local run the new OS version **26100.33296** (download from the Azure portal).
+  
+  - You also need a driver that's compatible with OS version **26100.33296** or Windows Server 2025.
+  
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.30** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.11** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+<!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](../azure-local/migrate/migrate-whats-new.md). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
+- **Azure Local VMs**:
+
+    - **Graceful VM shutdown**: The Azure portal now provides Shut down (recommended) and Turn off options for Azure Local VMs. Shut down gracefully powers down the guest operating system before turning off the VM, while Turn off immediately powers off the VM. Requires Azure Local version 2604 or later.
+
+    - **Azure Arc Site Manager (preview)**: View and manage Azure Local VMs across sites from a centralized Azure Arc Site Manager experience, with Kubernetes cluster support also available.
+
+- **Add node via Azure portal (preview)**: You can now add nodes to an existing Azure Local cluster directly from the Azure portal with a new guided scale-out experience. For more information, see [Add a node on Azure Local](../azure-local/manage/add-server.md).
+
+- **Update workflow changes**:
+  
+    - This release introduces the prepare updates workflow, allowing you to prepare updates now and install them at a later time.
+    - Feature updates now include a new update state, **Pending OEM Validation**, indicating that the update is awaiting OEM validation before it can proceed.
+
+- **GPU Management from Azure (preview)**: Manage and monitor GPU resources in Azure Local from Azure, including centralized GPU inventory, partition configuration, GPU assignment to workloads, and lifecycle management of GPU-accelerated workloads. For more information, see [Manage GPU fabric resources in Azure Local (preview)](../azure-local/manage/gpu-manage-fabric-resources.md).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2607"
 
@@ -219,7 +260,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2602"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2602
 
@@ -252,10 +293,6 @@ This release includes various reliability improvements and other bug fixes.
 - **Drift detection**: Starting with this release, the drift detection framework identifies configuration deviations, improves troubleshooting, and helps reduce configuration-related issues in your Azure Local environment. For more information, see [Drift detection](./manage/drift-detection.md).
 
 - **Azure Migrate now preserves Secure Boot settings during migration**: For eligible UEFI (Generation 2) VMs, Secure Boot settings are preserved when you migrate to Azure Local, helping maintain workload security posture. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#february-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2601
 
