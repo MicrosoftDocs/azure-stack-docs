@@ -1542,7 +1542,7 @@ items:
     - name: Manage network interfaces
       href: ./small-form-factor/small-form-factor-network-interfaces.md
     - name: Encrypt Kubernetes secrets (KMS)
-      href: index.yml
+      href: ./small-form-factor/small-form-factor-encrypt-kubernetes-secrets.md
     - name: Configure JIT access
       href: ./small-form-factor/small-form-factor-configure-jit.md
     - name: Connect using JIT access
