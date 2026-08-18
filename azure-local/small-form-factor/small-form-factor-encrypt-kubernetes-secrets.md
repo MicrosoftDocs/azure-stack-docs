@@ -15,7 +15,7 @@ This article describes how to install a Key Management Service (KMS) plugin on a
 
 > [!IMPORTANT]
 >- The KMS plugin on K3s for small form factor deployments currently supports **single-node cluster deployments only**.
->- The KMS plugin doesn't currently support OS upgrades. Don't enable it on a deployment where you plan to upgrade the OS. An OS upgrade will render the cluster inoperable, with no recovery path. To restore service, you must redeploy the cluster.
+>- The KMS plugin doesn't currently support OS upgrades. Don't enable it on a deployment where you plan to upgrade the OS. An OS upgrade renders the cluster inoperable, with no recovery path. To restore service, you must redeploy the cluster.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
