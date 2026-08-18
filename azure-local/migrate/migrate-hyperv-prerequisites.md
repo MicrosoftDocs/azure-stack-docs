@@ -43,7 +43,7 @@ The following list contains the prerequisites and considerations that must be me
 Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
 
 > [!IMPORTANT]
-> If you intend to migrate to Azure Local, you must create the Azure Migrate project in the Azure portal. Projects created by any other method - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart - aren't yet supported for Azure Local migrations. If you use one of these methods, you can't replicate VMs to Azure Local, and you must create a new project in the Azure portal to continue.
+> To migrate to Azure Local, you must create the Azure Migrate project in the Azure portal. Azure Local migrations don't support projects that you create by using any other method - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
