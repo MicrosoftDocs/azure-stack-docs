@@ -61,7 +61,43 @@ This script checks for the missing images and reimports them as needed.
 
 ## Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources
 
-For information about this known issue, see [Can't fully delete AKS cluster with PDB resources](delete-cluster-pdb.md) in the AKS documentation.
+When you delete an AKS cluster that has [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove the PDB resources. By default, PDB is installed in workload identity-enabled AKS clusters.
+
+**For deleting a node pool** with a PodDisruptionBudget: By design, the node pool isn't deleted if a PodDisruptionBudget exists, to protect applications. Use the following workaround to delete the PDB resources and then retry deleting the node pool.
+
+Before you delete the AKS cluster, access the AKS cluster's **kubeconfig** and delete all PDBs:
+
+1. Access the AKS cluster according to its connectivity state:
+
+   - When the AKS cluster is in a **Connected** state, run the [`az connectedk8s proxy`](/cli/azure/connectedk8s#az-connectedk8s-proxy) command
+
+     ```azurecli
+     az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name 
+     ```
+
+   - When the AKS cluster is in a **disconnected** state, run the `az aksarc get-credentials` command with permission to perform the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action, which is included in the **Azure Kubernetes Service Arc Cluster Admin** role permission.
+
+     ```azurecli
+     az aksarc get-credentials -n $aks_cluster_name -g $resource_group_name --admin
+     ```
+
+1. Verify PDB:
+
+   ```bash
+   kubectl get pdb -A 
+   ```
+
+1. Delete all PDBs. The following command is an example of deleting a PDB generated from workload identity enablement:
+
+   ```bash
+   kubectl delete pdb azure-wi-webhook-controller-manager -n arc-workload-identity 
+   ```
+
+1. Delete the AKS cluster:
+
+   ```azurecli
+   az connectedk8s delete -n <cluster_name> -g <resource_group>
+   ```
 
 ## Offline deployments
 
