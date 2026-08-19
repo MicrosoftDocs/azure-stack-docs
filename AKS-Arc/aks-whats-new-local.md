@@ -2,10 +2,10 @@
 title: What's new in AKS Hybrid and Edge on Azure Local
 description: Learn about what's new in AKS Hybrid and Edge on Azure Local.
 ms.topic: overview
-ms.date: 11/13/2025
+ms.date: 08/13/2026
 author: davidsmatlak
 ms.author: davidsmatlak 
-ms.lastreviewed: 10/24/2025
+ms.lastreviewed: 08/13/2026
 ms.custom: local
 
 ---
@@ -22,6 +22,10 @@ This article summarizes features, improvements, and important notices for AKS on
 ## AKS Hybrid and Edge releases
 
 This section lists the new features and improvements in AKS in each release of Azure Local.
+
+### Release 2607
+
+There are no AKS-specific changes in the 2607 release. Supported Kubernetes versions, features, and deprecations for AKS on Azure Local remain the same as in release 2602.
 
 ### Release 2602
 
@@ -91,8 +95,8 @@ The Kubernetes versions included in the 2508 release are: 1.29.12, 1.29.13, 1.30
 The following Kubernetes cluster deployment and management capabilities are available:
 
 - **Disk space exhaustion**: Fixed [issues due to disk space exhaustion on control plane VMs caused by accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md).  
-- **Cluster upgrade**: Fixed AKS cluster and node pool create, scale, and [upgrade issues due to unavailability of AKS VM images](gallery-image-not-usable.md).
-- **AKS Telemetry pod issue**: Fixed an issue in which the [AKS telemetry pod consumed excess CPU and memory](telemetry-pod-resources.md).
+- **Cluster upgrade**: Fixed AKS cluster and node pool create, scale, and upgrade issues due to unavailability of AKS VM images.
+- **AKS Telemetry pod issue**: Fixed an issue in which the AKS telemetry pod consumed excess CPU and memory.
 - **New checks**: Added new checks during cluster and node pool operations. These improvements allow the system to proactively detect and handle scenarios where there are insufficient IP addresses in the IP pool.
 - **GPU resource allocation**: Added pre-checks for resource allocation for GPUs during Kubernetes cluster create operation.
 - **Node pool improvements**: Accurate representation of node pool count and status on the Azure portal. This release also includes improvements to node pool creation and update flows to ensure that the Kubernetes cluster status accounts for corresponding node pool status.
@@ -113,7 +117,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Large VM SKUs for Kubernetes node pools**: Added two new VM SKUs - `Standard_D32s_v3`: 32 vCPU, 128 GiB and `Standard_D16s_v3`: 16 vCPU, 64 GiB - to support larger node pools on an AKS cluster. For more information about supported VM sizes, see [supported scale options](scale-requirements.md).
 - **Improved log collection experience**: Improved log collection for AKS control plane node VMs and node pool VMs, with support for passing multiple IP addresses and SSH key or directory path. For more information, see [on-demand log collection](get-on-demand-logs.md) and [az aksarc get-logs CLI](/cli/azure/aksarc#az-aksarc-get-logs).
 - **Improved diagnosability**: The [Diagnostic Checker tool](aks-arc-diagnostic-checker.md) automatically runs if the Kubernetes cluster creation fails, and added new test cases.
-- **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to [pod disruption budgets](delete-cluster-pdb.md?tabs=aks-on-azure-local).
+- **Improved Kubernetes cluster delete**: Fixed deletion issues; for example, due to pod disruption budgets.
 - **Improved AKS image download**: Fixed issues with AKS image downloads.
 - **Improved GPU support**: Improved error handling for Kubernetes cluster creation with GPU enabled node pools. Fixed known issues with attaching persistent volumes on GPU enabled node pools.
 
