@@ -27,11 +27,8 @@ The following section describes known issues for AKS Hybrid and Edge:
 | AKS cluster create     | [Can't create AKS cluster with GPU-enabled default node pool](gpu-enabled-cluster-issue.md)|Active|
 | AKS steady state       | [Storage provisioning issue impacting cluster and node pool creation](storage-provision-issue.md)|Active|
 | AKS cluster delete     | [Deleted AKS cluster still visible on Azure portal](deleted-cluster-visible.md) | Active |
-| AKS steady state       | [AKS telemetry pod consumes too much memory and CPU](telemetry-pod-resources.md) | Fixed in 2507 release  |
-| AKS cluster create     | [Can't create AKS cluster or scale node pool because of issues with AKS images](gallery-image-not-usable.md) | Fixed in 2507 release |
 | AKS steady state       | [Disk space exhaustion on control plane VMs due to accumulation of kube-apiserver audit logs](kube-apiserver-log-overflow.md) | Fixed in 2507 release |
 | AKS cluster upgrade    | [AKS cluster stuck in "Upgrading" state](cluster-upgrade-status.md) | Fixed in 2505 release |
-| AKS cluster delete     | [Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources](delete-cluster-pdb.md) | Fixed in 2503 release |
 
 ## Next steps
 

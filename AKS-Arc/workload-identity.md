@@ -343,11 +343,6 @@ To delete the AKS cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksar
 az aksarc delete -n $aks_cluster_name -g $resource_group_name
 ```
 
-> [!NOTE]
-> When you delete an AKS cluster with [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) (PDB) resources, the deletion might fail to remove these PDB resources. Microsoft is aware of the problem and is working on a fix.
->
-> PDB is installed by default in workload identity-enabled AKS clusters. To delete a workload identity enabled AKS cluster, see the [troubleshooting guide](delete-cluster-pdb.md).
-
 ## Next steps
 
 In this article, you deployed a Kubernetes cluster and configured it to use a workload identity in preparation for application workloads to
