@@ -43,6 +43,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 
 Keep the following information in mind as you create a project:
 
+- Create the project in the Azure portal. Projects created by other methods, such as an ARM template, the REST API, Azure CLI, or Azure PowerShell, don't support replication to Azure Local yet.
 - The project geography only stores the discovered metadata. Your VMware source environment and Azure Local target environment don't need to be in the same geography or region as your Azure Migrate project.
 - When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. Azure Migrate allocates the region. Azure Migrate doesn't move or store customer data outside of the region allocated.
 - Your Azure Migrate project must be in the same tenant as your Azure Local instance. The project can recognize Azure Local instances across subscriptions, but it doesn't work with an Azure Local instance registered in a separate Azure tenant.

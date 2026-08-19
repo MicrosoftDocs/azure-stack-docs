@@ -47,9 +47,23 @@
     href: aks-local-overview.md
   - name: What's new in AKS on Azure Local
     href: aks-whats-new-local.md
-  - name: System requirements for AKS on Azure Local
-    href: aks-arc-local-requirements.md
-  - name: Hyperconverged and disaggregated
+  - name: Get started
+    items:
+    - name: System requirements and prerequisites
+      href: aks-arc-local-requirements.md
+    - name: Create a cluster - Azure CLI
+      href: aks-create-clusters-cli.md
+    - name: Create a cluster - Azure portal
+      href: aks-create-clusters-portal.md
+    - name: Create a cluster - Bicep
+      href: create-clusters-bicep.md
+    - name: Create a cluster - Terraform
+      href: create-clusters-terraform.md
+    - name: Create a cluster - Azure Resource Manager template
+      href: resource-manager-quickstart.md
+    - name: Create a cluster - REST API
+      href: aks-create-clusters-api.md
+  - name: Hyperconverged
     items:
       - name: Concepts
         items:
@@ -77,26 +91,8 @@
           items:
           - name: Pricing details
             href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
-      - name: Quickstarts
-        items:
-        - name: Jumpstart HCIBox (external link)
-          href: https://jumpstart.azure.com/azure_arc_jumpstart
       - name: How-to
         items:
-        - name: Create Kubernetes clusters
-          items:
-          - name: Azure CLI
-            href: aks-create-clusters-cli.md
-          - name: Azure portal
-            href: aks-create-clusters-portal.md
-          - name: Bicep
-            href: create-clusters-bicep.md
-          - name: Terraform
-            href: create-clusters-terraform.md
-          - name: Azure Resource Manager template
-            href: resource-manager-quickstart.md
-          - name: REST API
-            href: aks-create-clusters-api.md
         - name: Networking
           items:
           - name: Create logical networks
@@ -250,16 +246,10 @@
             href: storage-provision-issue.md
           - name: Deleted AKS cluster still visible on Azure portal
             href: deleted-cluster-visible.md
-          - name: Telemetry pod consumes too much memory and CPU
-            href: telemetry-pod-resources.md
-          - name: Can't create/scale AKS cluster due to image issues
-            href: gallery-image-not-usable.md
           - name: Disk space exhaustion on control plane VMs
             href: kube-apiserver-log-overflow.md
           - name: Cluster status stuck during upgrade
             href: cluster-upgrade-status.md
-          - name: Can't fully delete AKS cluster with PodDisruptionBudget (PDB) resources
-            href: delete-cluster-pdb.md
       - name: Security
         items:
         - name: Security book - recommendations and best practices
@@ -283,16 +273,6 @@
           href: /powershell/module/az.aksarc/
         - name: REST API reference
           href: /rest/api/hybridcontainer/operation-groups
-      - name: Resources
-        items:
-        - name: Azure Local
-          href: /azure/azure-local
-        - name: Azure adaptive cloud
-          href: /azure/adaptive-cloud
-        - name: Azure Arc Jumpstart
-          href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-        - name: AKS Hybrid and Edge roadmap
-          href: https://github.com/Azure/aksArc/projects
   - name: Multi-rack
     items:
       - name: Concepts
