@@ -304,7 +304,7 @@ The newly added node appears in the **Machines** pane after deployment completes
 
 ### Troubleshoot
 
-If the add node operation fails, review the error details from the **Jobs** pane by selecting **View details** next to the failed step. After resolving the reported issue, select the job and then select the **Retry** button to resume.
+If the add node operation fails, review the error details in the **Jobs** pane by selecting **View details** next to the failed step. After you resolve the reported issue, select the job and then select the **Retry** button to resume.
 
 ---
 
