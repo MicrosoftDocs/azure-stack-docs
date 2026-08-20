@@ -236,6 +236,8 @@ To restart a VM, follow these steps in the Azure portal for your Azure Local ins
 
 ## Stop a VM
 
+### [Azure portal](#tab/azureportal)
+
 To stop a VM, follow these steps in the Azure portal for your Azure Local instance:
 
 1. Go to the Azure Local resource, and then go to **Virtual machines**.
@@ -244,11 +246,59 @@ To stop a VM, follow these steps in the Azure portal for your Azure Local instan
 
 1. On the **Overview** page for the VM, on the command bar, select **Stop**.
 
-   :::image type="content" source="./media/manage-arc-virtual-machines/stop-virtual-machine.png" alt-text="Screenshot of the button for stopping a virtual machine on the overview page." lightbox="./media/manage-arc-virtual-machines/stop-virtual-machine.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/shutdown-turnoff-virtual-machine.png" alt-text="Screenshot of the shut down and turn off options in the Stop dialog." lightbox="./media/manage-arc-virtual-machines/shutdown-turnoff-virtual-machine.png":::
 
-1. On the confirmation dialog, select **Yes**.
+1. Choose how to stop the VM, and then select **OK**:
+
+   - **Shut down (recommended)**: Gracefully shuts down the guest operating system before the VM stops.
+   - **Turn off**: Forces the VM to stop without gracefully shutting down the guest operating system. This option skips the shutdown process.
+
+   > [!NOTE]
+   > The **Shut down (recommended)** and **Turn off** options are available only on clusters running version 2604 or later. On earlier versions, the VM turns off without a graceful shutdown.
 
 1. Verify that the VM stopped.
+
+### [Azure CLI](#tab/azurecli)
+
+To stop a VM, run the following commands in the Azure CLI on the computer that you're using to connect to Azure Local.
+
+1. [Connect to a machine on your system](./azure-arc-vm-management-prerequisites.md#connect-to-the-system-directly).
+
+1. Run the following Azure CLI cmdlet. By default, this command gracefully shuts down the VM's guest operating system before stopping the VM.
+
+    ```azurecli
+    #Set input parameters
+
+    $rg = "<Resource group name>"
+    $vmName = "<VM name>"
+
+    #Stop the VM
+
+    az stack-hci-vm stop --name $vmName --resource-group $rg
+    ```
+
+    > [!NOTE]
+    > The graceful shutdown behavior is available only on clusters running version 2604 or later. On earlier versions, the VM is turned off without a graceful shutdown.
+
+    The parameters for this cmdlet are as follows:
+
+    |Parameter  |Description  |
+    |---------|---------|
+    |`name`     |Name of the virtual machine.         |
+    |`resource-group`    |Name of the resource group. You can configure the default group by using `az configure --defaults group=<name>`.         |
+    |`subscription`     |Name or ID of the subscription. You can configure the default subscription by using `az account set -s NAME_OR_ID`.         |
+
+1. To stop the VM without gracefully shutting down the guest operating system, add the `--skip-shutdown` flag. This flag forces the VM to turn off.
+
+    ```azurecli
+    #Stop the VM without a graceful shutdown
+
+    az stack-hci-vm stop --name $vmName --resource-group $rg --skip-shutdown
+    ```
+
+1. Verify that the VM stopped.
+
+---
 
 ## Pause a VM
 
