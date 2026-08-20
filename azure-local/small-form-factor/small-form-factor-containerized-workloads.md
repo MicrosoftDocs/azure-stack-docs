@@ -13,7 +13,7 @@ ms.subservice: small-form-factor
 
 This article describes how to run containerized workloads on a provisioned machine for small form factor deployments of Azure Local.
 
-Docker is included in the image by default. If you want a lightweight Kubernetes environment, you can also install the open-source K3s distribution.
+The image includes Docker by default. If you want a lightweight Kubernetes environment, you can also install the open-source K3s distribution.
 
 To compare these options before you choose one, see [Container orchestrators](small-form-factor-container-orchestrators.md).
 
@@ -23,8 +23,7 @@ To compare these options before you choose one, see [Container orchestrators](sm
 
 Before you begin, make sure that you have:
 
-- A provisioned machine that you can reach over SSH
-- Completed [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md)
+- Successfully created a provisioned machine that you can reach over SSH
 - A Windows PC on the same local network as the provisioned machine
 - Azure CLI installed and signed in
 
@@ -128,13 +127,16 @@ Confirm that:
 
 If you want a lightweight Kubernetes environment on the device, install K3s.
 
+> [!TIP]
+> **Recommended: Encrypt Kubernetes secrets.** To help protect your stored Kubernetes secrets, you can optionally install the Microsoft KMS Plugin for Edge Clusters on your single-node K3s cluster. This plugin isn't part of the small form factor managed offering, but its installation is highly recommended, as it adds defense-in-depth protection for your secrets. See [Encrypt Kubernetes secrets on K3s for small form factor deployments of Azure Local](small-form-factor-encrypt-kubernetes-secrets.md) to decide whether this plugin is right for your scenario and how to install it.
+
 #### Connect to the machine over SSH
 
-Follow the SSH steps in [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md#connect-to-the-machine-over-ssh).
+Follow these steps to [SSH into a provisioned machine from Azure](small-form-factor-connect-jit.md).
 
 #### Install K3s
 
-To remotely install open source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use [setup-k3s-arc.sh](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh). Otherwise, follow the steps in this section.
+To remotely install open-source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use [setup-k3s-arc.sh](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh). Otherwise, follow the steps in this section.
 
 1. Install K3s and disable Traefik:
 

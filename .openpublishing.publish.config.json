@@ -7,7 +7,7 @@
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -35,7 +35,8 @@
       "build_output_subfolder": "azure-local-max",
       "locale": "en-us",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "moniker_ranges": [],
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -96,6 +97,7 @@
       "build_output_subfolder": "operator-nexus",
       "locale": "en-us",
       "monikers": [],
+      "moniker_ranges": [],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"

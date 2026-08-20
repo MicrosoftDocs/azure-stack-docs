@@ -44,6 +44,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 
 Keep in mind the following information as you create a project:
 
+- Create the project in the Azure portal. Projects created by other methods, such as an ARM template, the REST API, Azure CLI, or Azure PowerShell, don't support replication to Azure Local yet.
 - Project geography only stores the discovered metadata.
 - When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. The service allocates the region. Azure Migrate doesn't move or store customer data outside of the allocated region.
 
