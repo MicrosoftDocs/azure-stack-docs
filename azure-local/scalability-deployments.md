@@ -24,7 +24,7 @@ You can deploy Azure Local in different ways depending on your use case and need
 | Hyperconverged deployments | Clusters of 1-16 machines using hyperconverged storage. <br><br>You can also attach an external SAN for more storage capacity. |
 | Disaggregated deployments | Disaggregated deployments come in different sizes, from a single machine footprint to a maximum of 64 machines that use SAN storage. |
 | Multi-rack deployments | Integrated racks of compute, storage, and networking that expand up to hundreds of machines. |
-| Small form factor deployments | Compact deployments for space- and power-constrained environments such as retail, branch, and edge sites. |
+| Small form factor deployments (preview) | Compact deployments for space- and power-constrained environments such as retail, branch, and edge sites. |
 | Disconnected deployments | Disconnected operations for Azure Local enable you to deploy and manage Azure Local instances without a connection to the Azure public cloud. |
 | Microsoft 365 Local deployments | Deployments for hosting Microsoft 365 Local workloads. |
 
@@ -48,7 +48,7 @@ For large workloads, Azure Local provides multi-rack deployments that can accomm
 
 For more information about multi-rack deployments, see [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
 
-## Small form factor deployments
+## Small form factor deployments (preview)
 
 Small form factor deployments let you run Azure Local on compact, Linux-based hardware designed for space- and power-constrained environments such as retail, branch, and edge sites. These deployments provide a consistent, Azure-managed platform for running applications at the edge.
 
