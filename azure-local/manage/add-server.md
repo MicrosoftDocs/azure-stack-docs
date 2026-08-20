@@ -271,7 +271,7 @@ The following role-based access control (RBAC) assignments are configured:
 | Secrets (via Key Vault) | Secret User Role | Access cluster secrets during deployment |
 | Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for adless scenarios |
 
-Once the secret is created and the RBAC assignments are configured, assign the **Key Vault Secrets User** role to the existing nodes at the **Secrets** scope.
+Once the secret is created and the RBAC assignments are configured, assign the **Key Vault Secrets User** role to the existing nodes at the **Secrets** scope of the new secret.
 
 #### Step 6: Validation job execution
 
