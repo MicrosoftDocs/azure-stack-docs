@@ -271,6 +271,8 @@ The following role-based access control (RBAC) assignments are configured:
 | Secrets (via Key Vault) | Secret User Role | Access cluster secrets during deployment |
 | Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for adless scenarios |
 
+Once the secret is created and the RBAC assignments are configured, assign the **Key Vault Secrets User** role to the existing nodes at the **Secrets** scope.
+
 #### Step 6: Validation job execution
 
 The wizard creates and runs a validation job to verify the configuration before deployment. Select the **Refresh** button to retrieve the latest validation status.
@@ -302,7 +304,7 @@ The newly added node appears in the **Machines** pane after deployment completes
 
 ### Troubleshoot
 
-If the add node operation fails in the wizard, review the validation or deployment error details from the **Jobs** pane. Resolve the reported issue before retrying.
+If the add node operation fails, review the error details from the **Jobs** pane by selecting **View details** next to the failed step. After resolving the reported issue, select the job and then select the **Retry** button to resume.
 
 ---
 
