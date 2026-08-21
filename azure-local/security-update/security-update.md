@@ -3,14 +3,14 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 08/12/2026
+ms.date: 08/21/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
 # Security updates for Azure Local
 
-This article lists the various security updates that are available for Azure Local.
+This article lists the security updates that are available for Azure Local.
 
 ::: moniker range="=azloc-2608"
 
@@ -20,14 +20,11 @@ This section describes the 2608 security updates associated with OS build **2610
 
 For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
+<!--
 ## Announcements and messages
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
-
-## Windows Secure Boot certificate expiration
-
-> [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
+-->
 
 ## Improvements
 
@@ -37,7 +34,7 @@ This security update includes fixes and quality improvements from [KB5099536](ht
 
 - **[Windows]** This update improves support for post‑quantum cryptography (PQC) certificates by restoring PQC options during Certificate Authority configuration and enabling successful enrollment with newly created PQC certificate templates.
 
-- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
+- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
 
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
@@ -71,20 +68,11 @@ This section describes the 2607 security updates associated with OS build **2610
 
 For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
-## Announcements and messages
-
-This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
-
-## Windows Secure Boot certificate expiration
-
-> [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
-
 ## Improvements
 
 This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
+- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
 
 - **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)), these apps might fail to launch Office or open documents.
 
@@ -152,16 +140,6 @@ This section describes the 2606 security updates associated with OS build **2610
 
 For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
-## Announcements and messages
-
-This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
-
-### Windows Secure Boot certificate expiration
-
-Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft has been updating these certificates on consumer and non-managed business devices over the past months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Microsoft will continue to install the newer certificates through Windows updates in the coming months.
-
-You can check your PC status in the Windows Security app. If you're an IT administrator, follow the guidance in the Secure Boot Playbook for Windows clients and Windows Server.
-
 ## Improvements
 
 This security update includes fixes and quality improvements from [KB5087539​​​​​​​](https://support.microsoft.com/topic/may-12-2026-kb5087539-os-build-26100-32860-fe3fd635-23fc-41bd-b7a7-00e57c1c4f91?preview=true) (released May 12, 2026). The following summary outlines key issues addressed by this update. It also includes available new features. The bold text within the brackets indicates the item or area of the change.
@@ -172,8 +150,8 @@ This security update includes fixes and quality improvements from [KB5087539�
 
 - **[Reliability]** This update improves reliability during user profile load by managing system resources more efficiently.
 
-- **​​​​​​​​​​​[Secure Boot]**
-    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+- **[Secure Boot]**
+    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
     - This update adds the **LimitSecureBootRequiredServiceData** Group Policy and mobile device management (MDM) setting under **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Secure Boot**. When enabled, Windows limits the Secure Boot service data it sends by suppressing the event normally sent to Microsoft. This policy is included in the Windows Restricted Traffic Limited Functionality Baseline. For information about the policy, see [Manage connections from Windows 10 and Windows 11 operating system components to Microsoft services](/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services).
 
 - **[Networking]** Windows Server 2025 DNS Server now supports DNS over HTTPS (DoH), enabling encrypted DNS communication between the server and clients. DoH helps improve privacy and security by protecting DNS queries from being viewed and preventing unauthorized modification of DNS responses. This feature is generally available and compatible with existing DNS infrastructure and management workflows.
@@ -181,13 +159,13 @@ This security update includes fixes and quality improvements from [KB5087539�
 
 - **[Windows Update Deployment (known issue)]** Fixed: This update addresses an issue in Windows Server 2025, where updates installed using the Windows Update Standalone Installer (WUSA) might fail with error code `ERROR_BAD_PATHNAME`. This issue can occur when you double-click a .msu file or run WUSA from a network share that contains multiple .msu files.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) does not display error details
+## Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -217,7 +195,7 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
 
-- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
 
 - **[Connectivity]** This update improves the reliability of Simple Service Discovery Protocol (SSDP) notifications to help prevent the service from becoming unresponsive.
 
@@ -321,7 +299,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[Secure Boot]**
 
-  - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+  - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
 
   - This update addresses an issue where the device might enter BitLocker Recovery after the Secure Boot updates.
 
@@ -343,7 +321,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[Windows Deployment Services (WDS)]** This update disables the "Hands-Free Deployment" feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
@@ -383,7 +361,7 @@ This security update contains fixes and quality improvements from [KB5075899](
 
 - This update makes miscellaneous security improvements to internal OS functionality.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
@@ -534,7 +512,7 @@ This security update contains fixes and quality improvements from [KB5072033](
 
 - **[Networking]** Fixed: This update fixes an issue where external virtual switches lose their physical network adapter (NIC) bindings after a host reboot. When this happens, the switches revert to internal mode, resulting in loss of network connectivity for virtual machines and blocking normal server operations.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 ### Known issues
 
@@ -604,7 +582,7 @@ To turn off strict parsing, use the following registry key and values:
 
 **Data to be set**: `1`
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 ### Known issues
 
@@ -657,7 +635,7 @@ This security update contains fixes and quality improvements from [KB5066780](
 
 - **[Compatibility]** Fixed. This update removes the ltmdm64.sys driver. Fax modem hardware dependent on this specific driver will no longer work in Windows.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Oct).
 
@@ -703,7 +681,7 @@ This security update contains fixes and quality improvements from [KB5066835](
 
 - **[Compatibility]** Fixed. This update removes the ltmdm64.sys driver. Fax modem hardware dependent on this specific driver will no longer work in Windows.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Oct).
 
