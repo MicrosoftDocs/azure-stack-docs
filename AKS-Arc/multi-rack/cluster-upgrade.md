@@ -3,7 +3,7 @@ title: Upgrade an Azure Kubernetes Service (AKS) on Azure Local for multi-rack d
 description: Learn how to upgrade an AKS cluster to a newer Kubernetes version on Azure Local.
 ms.topic: overview
 ms.date: 04/24/2026
-ms.author: davidsmatlak
+ms.author: sanjanamohan
 ms.custom: multi-rack
 author: sanjanamsft
 ---
