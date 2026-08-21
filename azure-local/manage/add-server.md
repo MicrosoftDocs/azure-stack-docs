@@ -269,7 +269,7 @@ The following role-based access control (RBAC) assignments are configured:
 | Resource Group | Azure Stack HCI Device Management Role | Device management on Azure Stack HCI cluster |
 | Azure Stack HCI Device | Connected InfraVMs | Infrastructure VM management |
 | Secrets (via Key Vault) | Secret User Role | Access cluster secrets during deployment |
-| Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for adless scenarios |
+| Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for clusters using local identity with Azure Key Vault|
 
 After the wizard creates the secret and configures the RBAC assignments, assign the **Key Vault Secrets User** role to the existing nodes at the **Secrets** scope of the new secret.
 
