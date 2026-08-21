@@ -762,6 +762,8 @@ items:
         items:
         - name: About multi-rack deployments
           href: ./multi-rack/multi-rack-overview.md
+        - name: What's new (multi-rack)
+          href: ./multi-rack/multi-rack-whats-new.md
 
       # --- Plan / multi-rack concepts (FROM Multi-rack > Concepts) ---
       - name: Plan
