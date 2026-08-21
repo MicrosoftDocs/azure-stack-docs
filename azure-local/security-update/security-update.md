@@ -34,7 +34,7 @@ This security update includes fixes and quality improvements from [KB5099536](ht
 
 - **[Windows]** This update improves support for post‑quantum cryptography (PQC) certificates by restoring PQC options during Certificate Authority configuration and enabling successful enrollment with newly created PQC certificate templates.
 
-- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
+- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
@@ -72,7 +72,7 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
+- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 - **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)), these apps might fail to launch Office or open documents.
 
@@ -151,7 +151,7 @@ This security update includes fixes and quality improvements from [KB5087539�
 - **[Reliability]** This update improves reliability during user profile load by managing system resources more efficiently.
 
 - **[Secure Boot]**
-    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
+    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
     - This update adds the **LimitSecureBootRequiredServiceData** Group Policy and mobile device management (MDM) setting under **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Secure Boot**. When enabled, Windows limits the Secure Boot service data it sends by suppressing the event normally sent to Microsoft. This policy is included in the Windows Restricted Traffic Limited Functionality Baseline. For information about the policy, see [Manage connections from Windows 10 and Windows 11 operating system components to Microsoft services](/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services).
 
 - **[Networking]** Windows Server 2025 DNS Server now supports DNS over HTTPS (DoH), enabling encrypted DNS communication between the server and clients. DoH helps improve privacy and security by protecting DNS queries from being viewed and preventing unauthorized modification of DNS responses. This feature is generally available and compatible with existing DNS infrastructure and management workflows.
@@ -195,7 +195,7 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
 
-- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
+- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 - **[Connectivity]** This update improves the reliability of Simple Service Discovery Protocol (SSDP) notifications to help prevent the service from becoming unresponsive.
 
@@ -299,7 +299,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[Secure Boot]**
 
-  - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates).
+  - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
   - This update addresses an issue where the device might enter BitLocker Recovery after the Secure Boot updates.
 
