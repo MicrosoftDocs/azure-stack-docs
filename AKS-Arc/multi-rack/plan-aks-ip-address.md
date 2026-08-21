@@ -3,7 +3,7 @@ title: Plan IP addresses for Azure Kubernetes Service (AKS) on Azure Local for m
 description: Plan the IP addresses needed to deploy AKS enabled by Azure Arc clusters on Azure Local (multi-rack), including node IPs, control plane endpoints, and load balancer addresses.
 ms.topic: concept-article
 ms.date: 04/24/2026
-ms.author: davidsmatlak
+ms.author: sanjanamohan
 ms.custom: multi-rack
 author: sanjanamsft
 ---
