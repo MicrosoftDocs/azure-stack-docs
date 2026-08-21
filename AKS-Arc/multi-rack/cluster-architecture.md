@@ -3,7 +3,7 @@ title: Azure Kubernetes Service (AKS) on Azure Local for multi-rack deployments
 description: Learn about the architecture of AKS enabled by Azure Arc on Azure Local (multi-rack), including how clusters are deployed, managed, and connected to Azure.
 ms.topic: concept-article
 ms.date: 04/24/2026
-ms.author: davidsmatlak
+ms.author: sanjanamohan
 ms.custom: multi-rack
 author: sanjanamsft
 ---
