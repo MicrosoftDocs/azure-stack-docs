@@ -72,7 +72,7 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+- **[Secure Boot]** This update includes high-confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 - **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)), these apps might fail to launch Office or open documents.
 
