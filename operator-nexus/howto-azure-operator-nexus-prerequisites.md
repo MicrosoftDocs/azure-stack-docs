@@ -103,8 +103,8 @@ Ensure that the registration state is Registered.
     Provisioned
 - Set up Azure Key Vault to store encryption and security tokens,
   passwords, certificates, and API keys
-- Set up Log Analytics WorkSpace (LAW) to store logs and analytics data for
-  Operator Nexus subcomponents (Network Fabric, Cluster, etc.)
+- Set up Log Analytics WorkSpace (LAW) in the same Azure Region as the Operator nexus Cluster to store logs and analytics data for
+  Operator Nexus subcomponents
 - Set up Azure Storage account to store Operator Nexus data objects:
   - Azure Storage supports blobs and files accessible from anywhere in the world over HTTP or HTTPS
   - this storage isn't for user/consumer data.
