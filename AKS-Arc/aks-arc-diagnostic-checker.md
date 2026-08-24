@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/27/2025
 ms.reviewer: srikantsarwa
-ms.custom: local
+ms.custom: hyperconverged
 #Customer intent: As an AKS user, I want to use the diagnostic checker to run diagnostic checks on my AKS cluster to find out common causes for AKS cluster create failure.
 ---
 

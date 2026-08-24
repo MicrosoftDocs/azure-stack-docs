@@ -7,7 +7,7 @@ ms.date: 11/19/2024
 ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 08/15/2024
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 
