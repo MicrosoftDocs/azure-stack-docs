@@ -21,7 +21,7 @@ The time required to complete cluster inspect depends on the number of nodes and
   - Name of the resource group for the cluster
   - Name of the Bare Metal Machine (BMM) and/or rack to include in the cluster inspection
   - Subscription ID
-- Cluster Detailed status must be `Pending Deployment`, `Running`, or `Failed`
+- Cluster detailed status must be `Pending Deployment`, `Running`, or `Failed`.
 
 > [!IMPORTANT]
 >
