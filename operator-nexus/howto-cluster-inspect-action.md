@@ -49,7 +49,7 @@ The `az networkcloud cluster inspect` command triggers an inspection of the clus
 
 > [!IMPORTANT]
 >
-> Cluster inspection reboots the baseboard management controller (BMC) if hardware validation fails. The reboot refreshes Redfish data to correct stale or missing entries. The reboot can occur during both nondisruptive and disruptive cluster inspections. It does not interrupt the host operating system or running workloads.
+> Cluster inspection reboots the baseboard management controller (BMC) if hardware validation fails. The reboot refreshes Redfish data to correct stale or missing entries. The reboot can occur during both nondisruptive and disruptive cluster inspections. It doesn't interrupt the host operating system or running workloads.
 
 **The following Azure CLI command runs a cluster inspection on all BMMs in the cluster. It is nondisruptive to the host operating system and running workloads. It might reboot a BMC, which temporarily interrupts management connectivity to that BMC but does not restart the host operating system or disrupt workloads.**
 
