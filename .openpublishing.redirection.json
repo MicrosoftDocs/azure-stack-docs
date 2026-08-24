@@ -1,5 +1,90 @@
 {
   "redirections": [
+     {
+      "source_path": "AKS-Arc/aksarc.yml",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aksarc",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/logs.yml",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/logs",
+      "redirect_document_id": false
+    },
+     {
+      "source_path": "AKS-Arc/nodepool.yml",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/nodepool",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/vmsize.yml",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/vmsize",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/vnet.yml",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/vnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-cluster-architecture.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-cluster-architecture",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-install-kubernetes-extension.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-install-kubernetes-extension",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-known-issues.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-monitoring-logging.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-monitoring-logging",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-networking-concepts.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-networking-concepts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-overview.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-quickstart-deploy.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-quickstart-deploy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-retrieve-kubeconfig.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-retrieve-kubeconfig",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-scale-requirements.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-scale-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-support-troubleshoot.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-support-troubleshoot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-system-requirements.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-system-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "AKS-Arc/aks-vmware-troubleshooting-guide.md",
+      "redirect_url": "/previous-versions/azure/aks/aksarc/aks-vmware-troubleshooting-guide",
+      "redirect_document_id": false
+    },
     {
       "source_path": "AKS-Arc/reference/ps/add-akshcigmsacredentialspec.md",
       "redirect_url": "/previous-versions/azure/aks/aksarc/reference/ps/add-akshcigmsacredentialspec",

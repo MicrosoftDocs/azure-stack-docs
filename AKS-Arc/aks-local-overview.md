@@ -8,7 +8,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 08/12/2026
-ms.custom: overview
+ms.custom: local
 ---
 
 # What is AKS on Azure Local?

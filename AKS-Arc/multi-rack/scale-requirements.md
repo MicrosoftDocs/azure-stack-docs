@@ -3,7 +3,7 @@ title: Scale requirements for Azure Kubernetes Service (AKS) on Azure Local, Rac
 description: Learn about scale requirements for AKS on Azure Local, Rack Scale deployments, including cluster, node pool, and node limits.
 ms.topic: limits-and-quotas
 ms.date: 04/24/2026
-ms.author: davidsmatlak
+ms.author: sanjanamohan
 ms.custom: multi-rack
 author: sanjanamsft
 ---
