@@ -27,7 +27,7 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -76,7 +76,7 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -155,7 +155,7 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -214,7 +214,7 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -323,7 +323,7 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -390,15 +390,13 @@ This section provides key notifications related to this release, including annou
 ### Windows Secure Boot certificate expiration
 
 > [!Important]
-> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
 This security update contains fixes and quality improvements from [KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e) (released February 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
 
-- **[Improved Secure Boot Certificate readiness]** Starting with this release, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
-
-- This update makes miscellaneous security improvements to internal OS functionality.
+This update makes miscellaneous security improvements to internal OS functionality.
 
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
@@ -441,7 +439,7 @@ This section provides key notifications related to this release, including annou
 #### Windows Secure Boot certificate expiration
 
 > [!Important]
-> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -586,6 +584,8 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 
 For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [December 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Dec).
 
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
 ### File list
@@ -607,9 +607,7 @@ This section provides key notifications related to this release, including annou
 
 #### Simplified Windows update titles
 
-A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
-
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. You keep key identifiers such as date prefixes, the KB number, and build or version so you can quickly recognize each update.
 
 ### Improvements
 
