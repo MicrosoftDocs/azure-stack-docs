@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/02/2024
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Deploy extension for MetalLB for Azure Arc enabled Kubernetes using the Azure portal
