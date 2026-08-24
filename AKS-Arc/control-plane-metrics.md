@@ -6,7 +6,7 @@ ms.topic: how-to
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: haojiehang
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 

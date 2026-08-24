@@ -7,7 +7,7 @@ ms.date: 11/17/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 04/01/2024
 ms.reviewer: srikantsarwa
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Create logical networks for Kubernetes clusters on Azure Local
