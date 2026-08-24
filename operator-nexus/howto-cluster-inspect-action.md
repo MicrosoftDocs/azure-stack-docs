@@ -21,14 +21,13 @@ The time required to complete cluster inspect depends on the number of nodes and
   - Name of the resource group for the cluster
   - Name of the Bare Metal Machine (BMM) and/or rack to include in the cluster inspection
   - Subscription ID
-- Cluster Detailed status must be either `Pending Deployment` or `Running`
-- The cluster inspect action requires 2026-01-01-preview API
+- Cluster Detailed status must be `Pending Deployment`, `Running`, or `Failed`
 
 > [!IMPORTANT]
 >
 > Cluster inspect action is rejected if there's another running cluster inspection or HWV on the cluster.
 >
-> `ResetHardware` is only supported on clusters in `Pending Deployment` state
+> `ResetHardware` is supported on clusters in either `Pending Deployment` or `Failed` state.
 >
 > The BMM names specified in `bareMetalMachineNames` and rack names specified in `rackNames` are case sensitive. Multiple bare metal machines can be listed in `bareMetalMachineNames` and multiple rack names can be listed in `rackNames`. Both `bareMetalMachineNames` and `rackNames` can be used together in the same command; the resulting filter is additive.
 
@@ -48,6 +47,9 @@ The `az networkcloud cluster inspect` command triggers an inspection of the clus
 
 ## Running Cluster Inspect Action
 
+> [!IMPORTANT]
+>
+> Cluster inspection reboots the baseboard management controller (BMC) if hardware validation fails. The reboot refreshes Redfish data to correct stale or missing entries.
 
 **The following Azure CLI command will run a read only, non-disruptive Cluster Inspect Action against all BMMs in a cluster**
 
