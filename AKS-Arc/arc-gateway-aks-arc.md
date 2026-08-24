@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/20/2026
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Simplify network configuration requirements with Azure Arc gateway

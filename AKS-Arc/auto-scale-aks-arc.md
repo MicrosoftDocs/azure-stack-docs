@@ -2,7 +2,7 @@
 title: Use auto-scaling in a Kubernetes cluster
 description: Learn how to use Azure CLI for cluster autoscaling.
 ms.topic: how-to
-ms.custom: devx-track-azurecli, local
+ms.custom: devx-track-azurecli, hyperconverged
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/09/2025

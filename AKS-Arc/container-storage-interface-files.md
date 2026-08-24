@@ -7,7 +7,7 @@ ms.date: 06/16/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: srikantsarwa
-ms.custom: sfi-ropc-nochange, local
+ms.custom: sfi-ropc-nochange, hyperconverged
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS.
 # Keyword: container storage interface drivers, CSI drivers
