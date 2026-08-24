@@ -5,7 +5,7 @@ author: davidsmatlak
 ms.topic: how-to
 ms.date: 10/02/2025
 ms.author: davidsmatlak
-ms.custom: local
+ms.custom: hyperconverged
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers in AKS.
 # Keyword: container storage interface drivers, CSI drivers

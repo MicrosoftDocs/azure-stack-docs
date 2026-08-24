@@ -6,7 +6,7 @@ ms.author: davidsmatlak
 ms.lastreviewed: 07/26/2024
 ms.reviewer: srikantsarwa
 ms.topic: how-to
-ms.custom: local
+ms.custom: hyperconverged
   - devx-track-azurecli
 ms.date: 07/26/2024
 
