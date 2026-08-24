@@ -2079,7 +2079,7 @@ items:
       - name: Azure registration PowerShell commands
         href: /powershell/module/az.stackhci
       - name: Go package for ARM Azure Local service API
-        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+        href: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
       - name: Azure Local Java service classes and interfaces
         href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
       - name: Azure Local management service Python package
