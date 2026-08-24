@@ -3,7 +3,7 @@ title: Network requirements for AKS on Azure Local for multi-rack deployments
 description: Learn about the network requirements for deploying AKS enabled by Azure Arc clusters on Azure Local (multi-rack), including logical network configuration, IP address requirements, and port requirements.
 ms.topic: concept-article
 ms.date: 04/24/2026
-ms.author: davidsmatlak
+ms.author: sanjanamohan
 ms.custom: multi-rack
 author: sanjanamsft
 ---
