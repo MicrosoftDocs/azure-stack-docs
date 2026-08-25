@@ -64,7 +64,9 @@ To ensure a smooth and timely RMA process, verify the following prerequisites be
 - Network Packet Broker (NPB)
 
 >[!Note]
->Please note that this workflow supports RMA for only one device at a time through POST actions, which accept input related to a single device per request. 
+>Please note that this workflow supports RMA for only one device at a time through POST actions, which accept input related to a single device per request.
+>
+>Ahead of RMA workflow, it is recommended to verify that the resources are in a valid configuration state. If any resource, or associated resource, is in a failed/rejected state, it should be brought back to a good (valid) state before RMA via patch operation. Otherwise, the RMA step - refresh config - may return an erroneous response, indicating that the physical swap has been completed but the configuration state is still failed/bad. In that case, the RMA workflow is unable to complete successfully, and the user will be asked to fix it via patch operation before reattempting the refresh config operation to bring the device back to an enabled state.
 
 
 ## Steps to replace a device
