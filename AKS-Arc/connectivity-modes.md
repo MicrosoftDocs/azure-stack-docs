@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.reviewer: srikantsarwa
 ms.lastreviewed: 04/08/2025
-ms.custom: conceptual, local
+ms.custom: conceptual, hyperconverged
 
 ---
 

@@ -2,7 +2,7 @@
 title: Create a MetalLB load balancer using the Azure CLI
 description: Learn how to deploy extension for MetalLB for Azure Arc enabled Kubernetes clusters
 ms.topic: how-to
-ms.custom: devx-track-azurecli, local
+ms.custom: devx-track-azurecli, hyperconverged
 ms.date: 07/03/2025
 author: davidsmatlak
 ms.author: davidsmatlak

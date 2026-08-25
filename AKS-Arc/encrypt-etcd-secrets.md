@@ -7,7 +7,7 @@ ms.date: 10/24/2025
 ms.author: davidsmatlak 
 ms.lastreviewed: 10/06/2025
 ms.reviewer: khareanushka
-ms.custom: local
+ms.custom: hyperconverged
 # Intent: As an IT Pro, I want to learn about encrypted etcd secrets and how they are used in my AKS deployment. 
 # Keyword: etcd secrets AKS on Azure Local
 

@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: leslielin
 ms.lastreviewed: 01/10/2025
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Configure SSH keys for an AKS cluster

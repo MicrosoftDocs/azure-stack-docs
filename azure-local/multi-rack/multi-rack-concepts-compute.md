@@ -1,6 +1,6 @@
 ---
-title: Compute for Multi-rack Deployments of Azure Local (preview)
-description: Get an overview of compute resources for multi-rack deployments of Azure Local (preview).
+title: Compute for Multi-rack Deployments of Azure Local
+description: Get an overview of compute resources for multi-rack deployments of Azure Local.
 author: sipastak
 ms.author: sipastak
 ms.service: azure-local

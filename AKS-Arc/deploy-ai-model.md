@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 05/27/2025
 ms.reviewer: haojiehang
 ms.lastreviewed: 05/27/2025
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 

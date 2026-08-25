@@ -7,7 +7,7 @@ ms.date: 01/29/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
-ms.custom: local
+ms.custom: hyperconverged
 
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS Hybrid and Edge.

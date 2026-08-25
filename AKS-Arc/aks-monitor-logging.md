@@ -7,7 +7,7 @@ ms.date: 01/17/2024
 ms.author: davidsmatlak 
 ms.lastreviewed: 01/17/2024
 ms.reviewer: guanghu
-ms.custom: local
+ms.custom: hyperconverged
 
 # Intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
 # Keyword: monitor and logging data, Prometheus

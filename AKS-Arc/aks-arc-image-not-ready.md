@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 07/01/2026
 ms.reviewer: srikantsarwa
-ms.custom: local
+ms.custom: hyperconverged
 
 # Intent: As an IT admin, I want to troubleshoot and resolve Kubernetes version image readiness issues in AKS on Azure Local.
 # Keyword: Kubernetes version image not ready AKS Azure Local

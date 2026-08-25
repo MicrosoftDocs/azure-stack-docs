@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 1/26/2026
 ms.lastreviewed: 1/26/2026
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # AKS cluster creation fails on Azure Local 2511 or 2512 after upgrade from 2510

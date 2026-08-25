@@ -5,7 +5,7 @@ ms.topic: how-to
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 02/24/2026
-ms.custom: local
+ms.custom: hyperconverged
 ai-usage: ai-assisted
 ---
 

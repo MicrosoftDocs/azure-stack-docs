@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 1/13/2026
 ms.lastreviewed: 1/13/2026
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # AKS cluster becomes unhealthy after upgrading to Kubernetes v1.31 with Azure Policy or Gatekeeper enabled

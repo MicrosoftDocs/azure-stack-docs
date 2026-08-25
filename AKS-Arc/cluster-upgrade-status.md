@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/27/2025
 ms.reviewer: srikantsarwa
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Troubleshoot AKS cluster stuck in "Upgrading" state

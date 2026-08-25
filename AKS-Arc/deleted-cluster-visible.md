@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 10/02/2024
 ms.reviewer: sumsmith
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 

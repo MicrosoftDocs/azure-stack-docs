@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.date: 06/24/2026
 ms.reviewer: srikantsarwa
-ms.custom: local
+ms.custom: hyperconverged
 
 # Customer intent: As an Azure Kubernetes user, I want to troubleshoot the MOC is unreachable error code so that I can successfully create or delete an Azure Kubernetes Service cluster or node pool and avoid infrastructure operation failures.
 ---

@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 05/29/2024
-ms.custom: references_regions, local
+ms.custom: references_regions, hyperconverged
 
 ---
 

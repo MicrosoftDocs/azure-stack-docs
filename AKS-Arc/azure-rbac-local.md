@@ -2,7 +2,7 @@
 title: Use Azure role-based access control (RBAC) for Kubernetes authorization
 description: Learn how infrastructure administrators can use Azure RBAC to control who can access kubeconfig. 
 ms.topic: how-to
-ms.custom: devx-track-azurecli, local
+ms.custom: devx-track-azurecli, hyperconverged
 author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: leslielin

@@ -6,7 +6,7 @@ author: davidsmatlak
 ms.date: 09/30/2025
 ms.author: davidsmatlak
 ms.lastreviewed: 02/11/2026
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 

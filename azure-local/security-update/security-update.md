@@ -3,14 +3,14 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 08/12/2026
+ms.date: 08/24/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
 # Security updates for Azure Local
 
-This article lists the various security updates that are available for Azure Local.
+This article lists the security updates that are available for Azure Local.
 
 ::: moniker range="=azloc-2608"
 
@@ -24,10 +24,10 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -36,8 +36,6 @@ This security update includes fixes and quality improvements from [KB5099536](ht
 - **[File Explorer]** This update improves File Explorer for files stored on DFS mapped drives, helping previews and copied files work as expected after reconnecting to the network.
 
 - **[Windows]** This update improves support for post‑quantum cryptography (PQC) certificates by restoring PQC options during Certificate Authority configuration and enabling successful enrollment with newly created PQC certificate templates.
-
-- **[Secure Boot]** This update includes high confidence device targeting data, increasing coverage of devices eligible to automatically receive [new Secure Boot certificates](https://support.microsoft.com/servicing/os/secure-boot/2025/06/windows-devices-for-home-users-businesses-and-schools-with-microsoft-managed-updates). Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
 If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
@@ -75,16 +73,14 @@ For more information about Windows update terminology, see [Types of Windows upd
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-## Windows Secure Boot certificate expiration
+### Windows Secure Boot certificate expiration
 
 > [!Important]
-> Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft updated these certificates on consumer and non-managed business devices over the past several months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Windows Update delivers updated certificates in the coming months. For more information, see Windows Secure Boot certificate expiration and CA updates.
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
 This security update includes fixes and quality improvements from [KB5094125](https://support.microsoft.com/help/5094125) (released June 9, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
-
-- **[Secure Boot]** This update includes additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Certificate deployment via Windows updates continues across supported PCs and non-managed business devices in the coming months.
 
 - **[Apps (Known issue)]** Fixed: This update addresses an issue that affects certain third-party apps that use [OLE](/windows/win32/api/oaidl/nf-oaidl-idispatch-invoke) Automation to interact with Microsoft Office. After installing the June 2026 security update ([KB5094125](https://support.microsoft.com/help/5094125)), these apps might fail to launch Office or open documents.
 
@@ -158,9 +154,8 @@ This section provides key notifications related to this release, including annou
 
 ### Windows Secure Boot certificate expiration
 
-Secure Boot certificates used by most Windows devices expire starting in June 2026. Microsoft has been updating these certificates on consumer and non-managed business devices over the past months. Devices that don't receive the newer certificates continue to start and operate normally, and standard Windows updates continue to install. Microsoft will continue to install the newer certificates through Windows updates in the coming months.
-
-You can check your PC status in the Windows Security app. If you're an IT administrator, follow the guidance in the Secure Boot Playbook for Windows clients and Windows Server.
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
 ## Improvements
 
@@ -172,8 +167,7 @@ This security update includes fixes and quality improvements from [KB5087539�
 
 - **[Reliability]** This update improves reliability during user profile load by managing system resources more efficiently.
 
-- **​​​​​​​​​​​[Secure Boot]**
-    - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
+- **[Secure Boot]**
     - This update adds the **LimitSecureBootRequiredServiceData** Group Policy and mobile device management (MDM) setting under **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Secure Boot**. When enabled, Windows limits the Secure Boot service data it sends by suppressing the event normally sent to Microsoft. This policy is included in the Windows Restricted Traffic Limited Functionality Baseline. For information about the policy, see [Manage connections from Windows 10 and Windows 11 operating system components to Microsoft services](/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services).
 
 - **[Networking]** Windows Server 2025 DNS Server now supports DNS over HTTPS (DoH), enabling encrypted DNS communication between the server and clients. DoH helps improve privacy and security by protecting DNS queries from being viewed and preventing unauthorized modification of DNS responses. This feature is generally available and compatible with existing DNS infrastructure and management workflows.
@@ -181,13 +175,13 @@ This security update includes fixes and quality improvements from [KB5087539�
 
 - **[Windows Update Deployment (known issue)]** Fixed: This update addresses an issue in Windows Server 2025, where updates installed using the Windows Update Standalone Installer (WUSA) might fail with error code `ERROR_BAD_PATHNAME`. This issue can occur when you double-click a .msu file or run WUSA from a network share that contains multiple .msu files.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) does not display error details
+## Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -213,11 +207,18 @@ This section describes the 2605 security updates associated with OS build **2610
 
 For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+
 ## Improvements
 
 This security update includes fixes and quality improvements from [KB5082063](https://support.microsoft.com/topic/april-14-2026-kb5082063-os-build-26100-32690-c57e289d-27c9-47cd-a183-72fabc62c5d7?preview=true) (released April 14, 2026) and [KB5091157](https://support.microsoft.com/topic/april-19-2026-kb5091157-os-build-26100-32698-out-of-band-13ab53cc-ccc8-4a00-89d2-823b58fa03ec?preview=true) (released April 19, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.​​​
-
-- **[Secure Boot]** With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
 
 - **[Connectivity]** This update improves the reliability of Simple Service Discovery Protocol (SSDP) notifications to help prevent the service from becoming unresponsive.
 
@@ -315,15 +316,20 @@ This section provides the 2604 security updates associated with OS build **26100
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+
 ## Improvements
 
 This security update contains fixes and quality improvements from [KB5078740](https://support.microsoft.com/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd?preview=true) (released March 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[Secure Boot]**
-
-  - With this update, Windows quality updates include additional high confidence device targeting data, increasing coverage of devices eligible to automatically receive new Secure Boot certificates. Devices receive the new certificates only after demonstrating sufficient successful update signals, maintaining a controlled and phased rollout.
-
-  - This update addresses an issue where the device might enter BitLocker Recovery after the Secure Boot updates.
+- **[Secure Boot]** This update addresses an issue where the device might enter BitLocker Recovery after the Secure Boot updates.
 
 - **[Kerberos protocol]** This update changes the default DefaultDomainSupportedEncTypes value for Kerberos Key Distribution Center (KDC) operations to leverage AES-SHA1 for accounts that don't have an explicit msds-SupportedEncryptionTypes Active Directory attribute defined. For more information see, How to manage Kerberos KDC usage of RC4 for service account ticket issuance changes related to CVE-2026-20833.
 
@@ -337,13 +343,13 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[PowerShell]** This update improves how the Set-GPPrefRegistryValue cmdlet in PowerShell imports registry preference values. The cmdlet now preserves each imported value in full, including the final character.
 
-- **[Remote Desktop]** This update improves protection against phishing attacks that use Remote Desktop (.rdp) files. When you open an .rdp file, Remote Desktop shows all requested connection settings before it connects, with each setting turned off by default. A one-time security warning also appears the first time you open an .rdp file on a device. For more information, see [Understanding security warnings when opening Remote Desktop (RDP) files](https://go.microsoft.com/fwlink/?linkid=2347342). 
+- **[Remote Desktop]** This update improves protection against phishing attacks that use Remote Desktop (.rdp) files. When you open an .rdp file, Remote Desktop shows all requested connection settings before it connects, with each setting turned off by default. A one-time security warning also appears the first time you open an .rdp file on a device. For more information, see [Understanding security warnings when opening Remote Desktop (RDP) files](https://go.microsoft.com/fwlink/?linkid=2347342).
 
 - **​​​​​​​[Texts and Fonts]** This update improves Windows fonts by adding the new Saudi Riyal currency symbol. This change helps keep text clear, accurate, and visually consistent across your Windows apps and experiences​​​​​​​.
 
 - **[Windows Deployment Services (WDS)]** This update disables the "Hands-Free Deployment" feature in WDS by default and is no longer a supported feature. For more information about this change, see [Windows Deployment Services (WDS) Hands-Free Deployment Hardening Guidance related to CVE-2026-0386](https://support.microsoft.com/topic/windows-deployment-services-wds-hands-free-deployment-hardening-guidance-related-to-cve-2026-0386-0daa3a3c-f3cd-4291-9147-a459c290c462?preview=true).
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
@@ -377,13 +383,22 @@ This section provides the 2603 security updates associated with OS build **26100
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+
 ## Improvements
 
 This security update contains fixes and quality improvements from [KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e) (released February 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
 
-- This update makes miscellaneous security improvements to internal OS functionality.
+This update makes miscellaneous security improvements to internal OS functionality.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
@@ -395,7 +410,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 ## To install
 
-### Before you install this update 
+### Before you install this update
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -415,14 +430,18 @@ For a list of the files provided in this update, download the file information f
 
 This section provides the 2602 security updates associated with OS build **26100.32370** released on February 10, 2026 ([KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e?preview=true)). It also includes key notifications, announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
-
-> [!IMPORTANT]
-> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
 
-### Improvements 
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates initiate the mitigation process to address this scenario.
+
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -462,7 +481,7 @@ After you install [KB5070881](https://support.microsoft.com/topic/october-23-2
 
 ### To install
 
-#### Before you install this update 
+#### Before you install this update
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -480,11 +499,16 @@ This section provides the 2601 security updates associated with OS build **26100
 
 Starting with the January 2026 security update, Azure Stack HCI OS, version 24H2 will use different KB identifiers and a different build number. This change does not affect how you receive or manage updates for Azure Local.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -518,11 +542,16 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2512 security updates associated with OS build **26200.7462** and **26100.7462** released on December 9, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -534,7 +563,7 @@ This security update contains fixes and quality improvements from [KB5072033](
 
 - **[Networking]** Fixed: This update fixes an issue where external virtual switches lose their physical network adapter (NIC) bindings after a host reboot. When this happens, the switches revert to internal mode, resulting in loss of network connectivity for virtual machines and blocking normal server operations.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 ### Known issues
 
@@ -555,6 +584,8 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 
 For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [December 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Dec).
 
+To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
 To install the LCU on your Azure Local instance, see [Update Azure Stack Local instances](../update/about-updates-23h2.md).
 
 ### File list
@@ -565,15 +596,18 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2511 security updates associated with OS build **26200.7171** and **26100.7171** released on November 11, 2025, and also includes key notifications, announcements, change logs, and end-of-support notices.
 
-### Simplified Windows update titles
+### Announcements and messages
 
-A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. Key identifiers such as date prefixes, the KB number, and build or version are retained to help you quickly recognize each update.
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
+#### Windows Secure Boot certificate expiration
 
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
-To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+#### Simplified Windows update titles
+
+A new, standardized title format makes Windows updates easier to read and understand. It improves clarity by removing unnecessary technical elements like platform architecture. You keep key identifiers such as date prefixes, the KB number, and build or version so you can quickly recognize each update.
 
 ### Improvements
 
@@ -604,7 +638,7 @@ To turn off strict parsing, use the following registry key and values:
 
 **Data to be set**: `1`
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 ### Known issues
 
@@ -635,11 +669,16 @@ For the 2510 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2510 security updates associated with OS build **25398.1913**.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -657,7 +696,7 @@ This security update contains fixes and quality improvements from [KB5066780](
 
 - **[Compatibility]** Fixed. This update removes the ltmdm64.sys driver. Fax modem hardware dependent on this specific driver will no longer work in Windows.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Oct).
 
@@ -681,11 +720,16 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2510 security updates associated with OS build **26200.6899** and **26100.6899**.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -703,7 +747,7 @@ This security update contains fixes and quality improvements from [KB5066835](
 
 - **[Compatibility]** Fixed. This update removes the ltmdm64.sys driver. Fax modem hardware dependent on this specific driver will no longer work in Windows.
 
-If you've already installed previous updates, your device will download and install only the new updates included in this package.
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2025 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2025-Oct).
 
@@ -760,11 +804,16 @@ For the 2509 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2509 security updates associated with OS build **25398.1849**.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -831,11 +880,16 @@ For a list of the files that are provided in this update, download the file info
 
 This section provides the 2509 security updates associated with OS build **26100.6584**.
 
-### Windows Secure Boot certificate expiration
-
-The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
-
 To learn more about differences between security updates, optional non-security preview updates, out-of-band (OOB) updates, and continuous innovation, see [Windows monthly updates explained](https://techcommunity.microsoft.com/blog/windows-itpro-blog/windows-monthly-updates-explained/3773544). For information on Windows update terminology, see the different types of [Windows software updates](/troubleshoot/windows-client/installing-updates-features-roles/standard-terminology-software-updates).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -919,6 +973,15 @@ For the 2508 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2508 security updates associated with OS build **25398.1791**.
 
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+
 ### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
@@ -944,6 +1007,15 @@ For a list of the files that are provided in this update, download the file info
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
 This section provides the 2508 security updates associated with OS build **26100.4946**.
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
@@ -982,6 +1054,15 @@ For the 2507 release of Azure Local, Microsoft released two security updates, ea
 
 This section provides the 2507 security updates associated with OS build **25398.1732**.
 
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
+
 ### Improvements
 
 This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well. The bold text within the brackets indicates the item or area of the change.
@@ -1016,6 +1097,15 @@ For a list of the files that are provided in this update, download the file info
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
 This section provides the 2507 security updates associated with OS build **26100.4652**.
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> The Azure Local product team is aware of the upcoming expiration of the boot certificates of Windows devices and is actively working with solution OEM partners to deliver a managed update. Upcoming solution updates will initiate the mitigation process to address this scenario.
 
 ### Improvements
 
