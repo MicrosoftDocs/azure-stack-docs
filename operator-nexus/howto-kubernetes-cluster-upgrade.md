@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 10/05/2023 
+ms.date: 08/25/2026
 ms.custom: template-how-to-pattern
 ---
 
@@ -23,7 +23,6 @@ This article provides instructions on how to upgrade an Operator Nexus Kubernete
 * Modifications to etcd configuration are restored to the default configuration as part of the cluster upgrade process. Avoid customizing etcd configuration to prevent potential upgrade failures. If the etcd configuration restoration encounters issues, it might lead to upgrade failures.
 * When you upgrade the Operator Nexus Kubernetes cluster, Kubernetes minor versions can't be skipped. You must perform all upgrades sequentially by minor version number. For example, upgrades between *1.14.x* -> *1.15.x* or *1.15.x* -> *1.16.x* are allowed, however *1.14.x* -> *1.16.x* isn't allowed. If your version is behind by more than one minor version, you should perform multiple sequential upgrades.
 * Some upgrade paths across minor versions can be blocked due to unsupported component upgrade paths nested within the version bundle. Users should ensure that their application supports the upgrade path including all upgrades in the version bundle. Larger jumps across version bundle upgrades increase risk. Update clusters frequently to stay close to the latest version to minimize risk of upgrade failure.
-* The max surge and/or max unavailable values must be set during the cluster creation. You can't change these values after the cluster is created. For more information, see `upgradeSettings` in [Create an Azure Operator Nexus Kubernetes cluster](./quickstarts-kubernetes-cluster-deployment-bicep.md).
 
 ## Prerequisites
 
@@ -104,8 +103,7 @@ During the cluster upgrade process, Operator Nexus performs the following operat
 > The cluster upgrade won't create new nodes and replace the old ones if the operating system (OS) image version and Kubernetes version remain the same between version bundles. This is expected behavior, as the upgrade may only include updates to Addon versions rather than new OS or K8s versions. Since there is no rolling upgrade involved, there is no cordon and drain on the nodes, so Pod disruptions will not occur.
 
 > [!IMPORTANT]
-> Ensure that any `PodDisruptionBudgets` ([PDB](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#pod-disruption-budgets)) allow for at least *one* pod replica to be moved at a time otherwise the drain/evict operation will fail.
-> If the drain operation fails, the upgrade operation will fail as well, to ensure that the applications are not disrupted. Please correct what caused the operation to stop (i.e. incorrect PDBs, lack of quota, etc.) and re-try the operation. It is also possible to configure a drain timeout per worker node pool, after which the node will be removed even if pods have not yet finished draining. This can prevent upgrades from being blocked by misconfigured PDBs. The drain timeout setting is configured in seconds and defaults to 1800.
+> Prepare workloads to drain before you upgrade. Ensure that `PodDisruptionBudgets` ([PDB](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#pod-disruption-budgets)) allow at least one pod replica to move at a time. Also check termination grace periods, finalizers, node affinity and topology constraints, cluster capacity, and workloads that can't be evicted. These conditions can prevent a drain from completing.
 
 1. Upgrade your cluster using the `networkcloud kubernetescluster update` command.
 
@@ -152,6 +150,41 @@ The API accepts both integer values and a percentage value for max surge and max
 One of max surge or max unavailable must be at least 1 (or 1%), otherwise there would be no mechanism by which the cluster could be upgraded. A percent value is rounded up to the nearest node count. Both max surge and max unavailable can be set to a maximum of 100%. If the max surge value is higher than the required number of nodes to be upgraded, the number of nodes to be upgraded is used for the max surge value.
 
 Max surge and max unavailable can be configured at the same time, in which case the upgrade will proceed via a mix of surge and unavailability.
+
+You can update `maxSurge`, `maxUnavailable`, and the drain settings in `upgradeSettings` after creating an agent pool. Changing these settings updates the existing agent pool configuration and doesn't by itself replace or roll any nodes. If you change the settings during an upgrade, the new settings apply to nodes that haven't started upgrading.
+
+For example, use the following command to update an agent pool with a 30-minute drain timeout:
+
+```azurecli
+az networkcloud kubernetescluster agentpool update \
+  --agent-pool-name <agent-pool-name> \
+  --kubernetes-cluster-name <cluster-name> \
+  --resource-group <resource-group> \
+  --upgrade-settings drain-timeout=1800
+```
+
+## Configure the worker node drain timeout
+
+The drain settings control how long Operator Nexus waits for each worker node to drain during an upgrade or scale-down. They don't apply to control plane nodes. The control plane drain timeout is fixed at five minutes and can't be configured.
+
+The available drain settings and defaults depend on the Operator Nexus release:
+
+| Operator Nexus release | Worker node behavior when the drain setting is omitted | Control plane node behavior |
+| --- | --- | --- |
+| NC 4.13 | The drain times out after 1,800 seconds (30 minutes). | The drain times out after five minutes. |
+| NC 4.14 | The drain waits indefinitely. | The drain times out after five minutes. |
+
+In NC 4.13, configure `upgradeSettings.drainTimeout` with the maximum number of seconds to wait for each worker node to drain. An explicit value of `0` means that the drain waits indefinitely. A positive value allows the node replacement to continue after that many seconds, even if workloads haven't finished draining.
+
+Beginning with NC 4.14, `AgentPoolUpgradeSettings` adds `drainTimeoutMode` with these values:
+
+* `Timeout`: Use `drainTimeout` as the maximum number of seconds to wait for each worker node to drain.
+* `Indefinite`: Wait indefinitely for each worker node to drain.
+
+The `Indefinite` mode is the default when the drain settings are omitted in NC 4.14. Use the `Timeout` mode and set `drainTimeout` to retain a finite drain timeout.
+
+> [!WARNING]
+> A positive drain timeout allows node replacement to continue after the timeout expires, even if workloads haven't finished draining. This behavior can interrupt workloads. An indefinite drain avoids forced progression, but an unevictable or nonterminating workload can block an upgrade or scale-down indefinitely. Prepare and test workload disruption settings before you start an upgrade.
 
 > [!IMPORTANT]
 > The standard Kubernetes workloads natively cycle to the new nodes when they are drained from the nodes being torn down. Please keep in mind that Operator Nexus Kubernetes service cannot make workload promises for nonstandard Kubernetes behaviors.
