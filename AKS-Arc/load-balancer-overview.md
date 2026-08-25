@@ -7,7 +7,7 @@ author: davidsmatlak
 ms.author: davidsmatlak
 ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
-ms.custom: local
+ms.custom: hyperconverged
 ---
 
 # Overview of MetalLB for Kubernetes clusters

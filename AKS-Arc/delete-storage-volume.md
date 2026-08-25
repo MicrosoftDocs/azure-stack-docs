@@ -7,7 +7,7 @@ ms.topic: troubleshooting
 ms.date: 07/18/2025
 ms.reviewer: guanghu
 ms.lastreviewed: 07/18/2025
-ms.custom: local
+ms.custom: hyperconverged
 
 ---
 

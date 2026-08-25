@@ -1433,42 +1433,6 @@ items:
             href: deploy/deploy-via-portal.md
           - name: 6B. Deploy via ARM template
             href: deploy/deployment-azure-resource-manager-template.md
-        - name: Deploy using local identity with Azure Key Vault
-          items:
-          - name: About local identity with Azure Key Vault
-            href: deploy/deployment-local-identity-with-key-vault-overview.md
-          - name: Deploy via Azure portal
-            href: deploy/deployment-local-identity-with-key-vault.md
-          - name: Deploy via ARM template
-            href: deploy/deployment-local-identity-with-key-vault-template.md
-        # FROM Hyperconverged > Configure and manage > Rack aware cluster
-        # Moved here: it's an end-to-end deployment workflow, not a day-2 op.
-        - name: Deploy rack aware cluster
-          items:
-          - name: What's a rack aware cluster?
-            href: concepts/rack-aware-cluster-overview.md
-          - name: Review requirements
-            href: concepts/rack-aware-cluster-requirements.md
-          - name: Network reference patterns
-            href: concepts/rack-aware-cluster-reference-architecture.md
-          - name: Room-to-room connections
-            href: concepts/rack-aware-cluster-room-to-room-connectivity.md
-          - name: Prepare to deploy
-            href: deploy/rack-aware-cluster-deploy-prep.md
-          - name: Assess network readiness via LLDP
-            href: deploy/rack-aware-cluster-readiness-check.md
-          - name: Deploy via Azure portal
-            href: deploy/rack-aware-cluster-deploy-portal.md
-          - name: Deploy via ARM template
-            href: deploy/rack-aware-cluster-deployment-via-template.md
-          - name: Complete post-deployment tasks
-            href: deploy/rack-aware-cluster-post-deployment.md
-          - name: Add and repair nodes
-            href: concepts/rack-aware-cluster-add-server.md
-          - name: Provision and place VMs
-            href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
-          - name: Spread AKS nodes
-            href: concepts/rack-aware-cluster-aks-nodes.md
 
       # --- Enable (SDN, external storage) ---
       - name: Enable
@@ -1631,14 +1595,6 @@ items:
             href: deploy/deploy-via-portal-disaggregated.md
           - name: 6B. Deploy via ARM template (disaggregated)
             href: deploy/deployment-azure-resource-manager-template-disaggregated.md
-        - name: Deploy using local identity with Azure Key Vault   # REUSE (same article also linked under Install and deploy (hyperconverged))
-          items:
-          - name: About local identity with Azure Key Vault
-            href: deploy/deployment-local-identity-with-key-vault-overview.md
-          - name: Deploy via Azure portal
-            href: deploy/deployment-local-identity-with-key-vault.md
-          - name: Deploy via ARM template
-            href: deploy/deployment-local-identity-with-key-vault-template.md
 
       # --- Enable (external storage only — no SDN for disaggregated) ---
       - name: Enable
@@ -1653,50 +1609,6 @@ items:
     # -----------------------------------------------------------------------
     - name: Configure and manage (hyperconverged and disaggregated)   # REUSE (identical to Connected > Hyperconverged and disaggregated > Configure and manage (hyperconverged and disaggregated))
       items:
-
-      # --- Update ---
-      - name: Update
-        items:
-        - name: About updates
-          href: update/about-updates-23h2.md
-        - name: About Solution Builder Extension software updates
-          href: update/solution-builder-extension.md
-        - name: Understand update phases
-          href: update/update-phases-23h2.md
-        - name: Manage update settings
-          href: update/update-settings.md
-        - name: Update via PowerShell
-          href: update/update-via-powershell-23h2.md
-        - name: Update via PowerShell with limited connectivity
-          href: update/import-discover-updates-offline-23h2.md
-        - name: Update via Azure portal
-          href: update/azure-update-manager-23h2.md
-        - name: Review best practices
-          href: update/update-best-practices.md
-        - name: Troubleshoot updates
-          href: update/update-troubleshooting-23h2.md
-
-      # --- Upgrade (22H2 to 23H2 path; Hyperconverged-applicable today) ---
-      - name: Upgrade
-        items:
-        - name: About Azure Local upgrades
-          href: upgrade/about-upgrades-23h2.md
-        - name: 1. Upgrade OS via PowerShell
-          href: upgrade/upgrade-22h2-to-23h2-powershell.md
-        - name: 2. Perform post-OS upgrade tasks
-          href: upgrade/post-upgrade-steps.md
-        - name: 3. Configure Network ATC
-          href: upgrade/install-enable-network-atc.md
-        - name: 4. Validate solution upgrade readiness
-          href: upgrade/validate-solution-upgrade-readiness.md
-        - name: 5. Apply solution upgrade
-          items:
-          - name: Upgrade via Azure portal
-            href: upgrade/install-solution-upgrade.md
-          - name: Upgrade via ARM template
-            href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
-        - name: Troubleshoot upgrades
-          href: upgrade/troubleshoot-upgrade-to-23h2.md
 
       # --- Manage ---
       - name: Manage
@@ -2079,7 +1991,7 @@ items:
       - name: Azure registration PowerShell commands
         href: /powershell/module/az.stackhci
       - name: Go package for ARM Azure Local service API
-        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+        href: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
       - name: Azure Local Java service classes and interfaces
         href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
       - name: Azure Local management service Python package
