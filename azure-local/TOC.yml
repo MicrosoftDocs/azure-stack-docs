@@ -2030,6 +2030,8 @@ items:
         href: /cli/azure/networkfabric
       - name: Azure Local VM CLI commands (multi-rack)
         href: /cli/azure/stack-hci-vm
+      - name: Storage Appliance Error Messages
+        href: ./multi-rack/multi-rack-storage-appliance-error-messages.md
 
     - name: For small form factor
       items:
