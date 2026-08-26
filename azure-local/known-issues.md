@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 08/18/2026
+ms.date: 08/26/2026
 ms.subservice: hyperconverged
 ---
 
@@ -367,7 +367,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2603
 
@@ -384,7 +384,7 @@ The release notes for this version include the issues fixed in this release, kno
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
 
-## Fixed issues
+### Fixed issues
 
 The following table lists the fixed issues in this release:
 
@@ -399,7 +399,7 @@ The following table lists the fixed issues in this release:
 | Deployment <!--35380820--> | Fixed issue where retrying deployment via the Azure portal would fail.  | |
 | Deployment <!--36430065--> | Added end-of-support banner messages to the **Get started** tab for Azure Local instances on OS version 22H2.  | |
 
-## Known issues
+### Known issues
 
 The following table lists the known issues in this release:
 
@@ -410,7 +410,7 @@ The following table lists the known issues in this release:
 | Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This is a warning-level error. You can ignore it while running the update. |
 
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -431,17 +431,13 @@ The following table lists the known issues from previous releases:
 | Azure Local VMs <!--35810643--> | VM start, stop, or delete operations may fail due to the wssdagent node agent crashing.| To check if wssdagent crashed, run the following command: <br><br> `$ServerList = (Get-Clusternode).name` <br> `foreach ($Server in $ServerList) {` <br> `Write-Output "Cluster Node: $Server..."` <br> `Invoke-Command -ComputerName $Server -ScriptBlock {` <br> `get-service wssdagent` <br> `}` <br> `}` <br><br> If the wssdagent status shows "Stopped", run the following command to restart the agent from that node: <br><br> `start-service wssdagent` <br><br> This action gets the node agent running again and unblocks the VMs. If any VMs are deleted while the node agent is down, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to get the issue resolved. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
 | Feature  | Behavior  |  Workaround |
 |---------|---------|---------|
 | Operating system  | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution.  | |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2602
 

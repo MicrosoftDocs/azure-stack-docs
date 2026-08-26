@@ -54,7 +54,9 @@ This article describes new features and improvements in disconnected operations 
 
 ::: moniker-end
 
-::: moniker range="=azloc-2602"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
 
 ## Features and improvements in 2602
 
@@ -67,11 +69,5 @@ This article describes new features and improvements in disconnected operations 
 
 - [Disconnected operations for Azure Local](./disconnected-operations-overview.md).
 - [Known issues in disconnected operations for Azure Local](./disconnected-operations-known-issues.md).
-
-::: moniker-end
-
-::: moniker range="<=azloc-2601"
-
-This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

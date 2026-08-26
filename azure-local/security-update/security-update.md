@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 08/24/2026
+ms.date: 08/26/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -375,7 +375,7 @@ For a list of the files provided in this update, download the file information f
 
 ::: moniker-end
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-previous"
 
 ## March OS security update (KB5078740) for Azure Local
 
@@ -383,7 +383,7 @@ This section provides the 2603 security updates associated with OS build **26100
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
-## Announcements and messages
+### Announcements and messages
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
@@ -392,7 +392,7 @@ This section provides key notifications related to this release, including annou
 > [!Important]
 > Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5075899](https://support.microsoft.com/topic/february-10-2026-kb5075899-os-build-26100-32370-ffae9df3-05c5-439c-9087-e034985c1b2e) (released February 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change. ​​​
 
@@ -402,15 +402,15 @@ If you already installed previous updates, your device downloads and installs on
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
-## Known issues
+### Known issues
 
-### Windows Server Update Services (WSUS) doesn't display error details
+#### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
 
-## To install
+### To install
 
-### Before you install this update
+#### Before you install this update
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -418,13 +418,9 @@ For more information about security vulnerabilities addressed by this update, se
 
 To install the LCU on your Azure Local instance, see [Update Azure Local](../update/azure-update-manager-23h2.md).
 
-## File Information
+### File Information
 
 For a list of the files provided in this update, download the file information for [cumulative update 5078740](https://go.microsoft.com/fwlink/?linkid=2355918).
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## February OS security update (KB5075899) for Azure Local
 

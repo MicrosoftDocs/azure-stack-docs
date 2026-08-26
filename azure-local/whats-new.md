@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 08/18/2026
+ms.date: 08/25/2026
 ms.subservice: hyperconverged
 ---
 
@@ -224,7 +224,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2603
 
@@ -257,10 +257,6 @@ This release includes various reliability improvements and bug fixes.
 - **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
 
 - **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#march-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2602
 
