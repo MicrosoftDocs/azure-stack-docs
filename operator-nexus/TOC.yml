@@ -544,6 +544,10 @@
           href: reference-near-edge-storage.md
         - name: Supported Storage Appliance Versions
           href: reference-near-edge-storage-supported-versions.md
+        - name: Storage appliance error messages
+          href: reference-storage-appliance-error-messages.md
+        - name: Volume error messages
+          href: reference-volume-error-messages.md
     - name: Limits & quotas
       href: reference-limits-and-quotas.md
     - name: Neighbor Group Configuration Overview
