@@ -166,24 +166,10 @@ az networkcloud kubernetescluster agentpool update \
 
 The drain settings control how long Operator Nexus waits for each worker node to drain during an upgrade or scale-down. These settings don't apply to control plane nodes. The control plane drain timeout is fixed at five minutes and can't be configured.
 
-The available drain settings and defaults depend on the Operator Nexus release:
-
-| Operator Nexus release | Worker node behavior when the drain setting is omitted | Control plane node behavior |
-| --- | --- | --- |
-| NC 4.13 | The drain times out after 1,800 seconds (30 minutes). | The drain times out after five minutes. |
-| NC 4.14 | The drain waits indefinitely. | The drain times out after five minutes. |
-
-In NC 4.13, configure `upgradeSettings.drainTimeout` with the maximum number of seconds to wait for each worker node to drain. An explicit value of `0` means that the drain waits indefinitely. A positive value allows the node replacement to continue after that many seconds, even if workloads haven't finished draining.
-
-Beginning with NC 4.14, `AgentPoolUpgradeSettings` adds `drainTimeoutMode` with these values:
-
-* `Timeout`: Use `drainTimeout` as the maximum number of seconds to wait for each worker node to drain.
-* `Indefinite`: Wait indefinitely for each worker node to drain.
-
-The `Indefinite` mode is the default when the drain settings are omitted in NC 4.14. Use the `Timeout` mode and set `drainTimeout` to retain a finite drain timeout.
+Configure `upgradeSettings.drainTimeout` with the maximum number of seconds to wait for each worker node to drain. If you omit this setting, the drain timeout is 1,800 seconds (30 minutes).
 
 > [!WARNING]
-> A positive drain timeout allows node replacement to continue after the timeout expires, even if workloads haven't finished draining. This behavior can interrupt workloads. An indefinite drain avoids forced progression, but a workload that can't be evicted or doesn't terminate can block an upgrade or scale-down indefinitely. Prepare and test workload disruption settings before you start an upgrade.
+> When the drain timeout expires, node replacement can continue even if workloads haven't finished draining. This behavior can interrupt workloads. Prepare and test workload disruption settings before you start an upgrade.
 
 Standard Kubernetes workloads natively cycle to new nodes when the old nodes are drained. Operator Nexus Kubernetes service can't make workload guarantees for nonstandard Kubernetes behaviors.
 
