@@ -269,7 +269,9 @@ The following role-based access control (RBAC) assignments are configured:
 | Resource Group | Azure Stack HCI Device Management Role | Device management on Azure Stack HCI cluster |
 | Azure Stack HCI Device | Connected InfraVMs | Infrastructure VM management |
 | Secrets (via Key Vault) | Secret User Role | Access cluster secrets during deployment |
-| Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for adless scenarios |
+| Key Vault (local identity with Azure Key Vault only) | Secret Officer Role, Certificate Officer Role | Secret and certificate management for clusters using local identity with Azure Key Vault|
+
+After the wizard creates the secret and configures the RBAC assignments, assign the **Key Vault Secrets User** role to the existing nodes at the **Secrets** scope of the new secret.
 
 #### Step 6: Validation job execution
 
@@ -302,7 +304,7 @@ The newly added node appears in the **Machines** pane after deployment completes
 
 ### Troubleshoot
 
-If the add node operation fails in the wizard, review the validation or deployment error details from the **Jobs** pane. Resolve the reported issue before retrying.
+If the add node operation fails, review the error details in the **Jobs** pane by selecting **View details** next to the failed step. After you resolve the reported issue, select the job and then select the **Retry** button to resume.
 
 ---
 
