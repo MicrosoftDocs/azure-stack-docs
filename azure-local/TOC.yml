@@ -144,6 +144,8 @@ items:
             href: deploy/deploy-private-endpoints-with-proxy-no-gateway.md
           - name: Private endpoints - with proxy, with gateway
             href: deploy/deploy-private-endpoints-with-proxy-with-gateway.md
+        - name: Review Azure Private Path
+          href: concepts/private-path-network-overview.md
         - name: Review cloud deployment network considerations
           href: plan/cloud-deployment-network-considerations.md
         - name: Review security
@@ -200,6 +202,8 @@ items:
             href: deploy/deployment-without-azure-arc-gateway.md
           - name: With Arc gateway
             href: deploy/deployment-with-azure-arc-gateway.md
+          - name: With Arc gateway Private Path
+            href: deploy/deployment-with-azure-arc-gateway-private-path.md
           - name: Unregister and reregister machines
             href: manage/unregister-register-machine.md
         - name: 6. Choose a deployment method
