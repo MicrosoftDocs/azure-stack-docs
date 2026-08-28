@@ -3,7 +3,7 @@ title: Migrate file share
 description: Document detailing how to migrate the Azure App Service on Azure Stack Hub tenant content file share.
 author: sethmanheim
 ms.topic: upgrade-and-migration-article
-ms.date: 08/08/2024
+ms.date: 08/27/2026
 ms.author: sethm
 ms.reviewer: anwestg
 
@@ -65,7 +65,7 @@ In addition to copying the file share contents, you must also reset permissions 
 ## Migrate the file share
 
 1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and select the **ControllersNSG** Network Security Group.
-1. By default, Remote Desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+1. By default, Remote Desktop is disabled for all App Service infrastructure roles. Change the **Inbound_Rdp_3389** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
 1. Open an Administrator PowerShell session and run **net stop webfarmservice**.
 1. Repeat steps 3 and 4 for all other controllers.

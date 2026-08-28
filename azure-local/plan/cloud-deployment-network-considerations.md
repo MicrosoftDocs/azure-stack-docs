@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local
 description: Plan the network architecture for an Azure Local cloud deployment by using an 11-decision design framework that covers connectivity mode, architecture, topology, storage, intents, IP addressing, backup, outbound connectivity, and software defined networking.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/28/2026
+ms.date: 08/28/2026
 ms.author: cedward
 ms.subservice: hyperconverged
 ---
@@ -43,7 +43,7 @@ The network design framework is a sequence of 11 decisions for your Azure Local 
 
 The connectivity mode determines how your Azure Local instance reaches Azure for registration, billing, and lifecycle management. You decide it first, because it applies to both the hyperconverged and disaggregated architectures and influences your outbound connectivity design in [Decision 10](#decision-10-determine-outbound-connectivity).
 
-- **Connected**: Nodes and infrastructure services reach Azure over the internet—directly, through an enterprise proxy, through the Azure Arc gateway, or over ExpressRoute/S2S VPN. This is the most common mode and is required for standard cloud deployment. You plan the details of outbound connectivity in [Decision 10](#decision-10-determine-outbound-connectivity).
+- **Connected**: Nodes and infrastructure services reach Azure over the internet—directly, through an enterprise proxy, or through the Azure Arc gateway—or over a private path that uses ExpressRoute or a site-to-site VPN. This mode is the most common and is required for standard cloud deployment. You plan the details of outbound connectivity in [Decision 10](#decision-10-determine-outbound-connectivity).
 - **Disconnected (air-gapped)**: For sovereign, regulated, or air-gapped environments, Azure Local disconnected operations provide a local Autonomous Cloud endpoint instead of public Azure endpoints. A disconnected deployment uses an on-premises Azure Arc control plane running on a dedicated 3 nodes management cluster.
 
 Here are the summarized considerations for the connectivity mode decision:
@@ -749,13 +749,10 @@ Plan how your Azure Local nodes and infrastructure services reach Azure for regi
 | 1 | Direct outbound | Not configured | Not configured | Nodes reach Azure directly over the internet. Requires more than 100 FQDNs on the perimeter firewall. Best for labs or small isolated environments. |
 | 2 | Enterprise proxy | Configured | Not configured | All host HTTP/HTTPS is routed through the corporate proxy. Still requires more than 100 FQDNs allowed and SSL inspection disabled for Azure Local endpoints. |
 | 3 | Arc gateway | Not configured | Configured | Arc gateway tunnels supported HTTPS traffic to Azure, leaving fewer than 30 endpoints on the firewall allowlist. |
-| 4 | Enterprise proxy and Arc gateway | Configured | Configured | Recommended for new production deployments. Centralized proxy policy plus a minimal allowlist. |
-| 5 | Private path | Configured (Azure Firewall Explicit Proxy) | Configured | Nodes connect to Azure over Azure ExpressRoute or a site-to-site VPN. The proxy is always Azure Firewall Explicit Proxy, and Arc gateway is required. |
+| 4 | Enterprise proxy and Arc gateway | Configured | Configured | Recommended for new production deployments that use a public path. Centralized proxy policy plus a minimal allow list. |
+| 5 | Private path | Configured (Azure Firewall Explicit Proxy) | Configured | Recommended when regulatory or security policy prohibits outbound traffic over the public internet. Nodes connect to Azure over Azure ExpressRoute or a site-to-site VPN. The proxy is always Azure Firewall Explicit Proxy, and Arc gateway is required. Requires Azure Local 2608 or later. For more information, see [Private path](#private-path). |
 
 For air-gapped environments, use Azure Local disconnected operations, which provides a local Autonomous Cloud endpoint instead of public Azure endpoints. For more information, see [Decision 1](#decision-1-determine-connectivity-mode).
-
-> [!IMPORTANT]
-> Deploying the Azure Local *infrastructure* registration over a fully private path (Azure ExpressRoute or site-to-site VPN) isn't currently supported. Use a public-path topology for deployment. You can still use private connectivity for workloads and private endpoints.
 
 ### Azure Arc gateway
 
@@ -788,7 +785,7 @@ Even with Arc gateway, approximately 23 FQDNs remain on your perimeter firewall 
 For the full, current endpoint list, see [Firewall requirements](../concepts/firewall-requirements.md).
 
 > [!NOTE]
-> When AKS is deployed, the AKS subnet requires line of sight to the infrastructure subnet on TCP ports 22, 6443, 40343, 55000, and 65000.
+> When AKS is deployed, the AKS subnet requires line of sight to the infrastructure subnet. Ports 40343, 55000, and 65000 are outbound from the AKS subnet to the Azure Local cluster IP, while ports 22 and 6443 are bidirectional between the AKS subnet and the infrastructure subnet. If you place AKS on a separate subnet from the infrastructure subnet, you must also allow the FQDN endpoints that the Arc gateway doesn't support. For the full port and endpoint breakdown, see [AKS clusters on separate subnet from infrastructure subnet](../concepts/private-path-network-overview.md#aks-clusters-on-separate-subnet-from-infrastructure-subnet).
 
 Here are the summarized considerations for Arc gateway:
 
@@ -828,6 +825,42 @@ Here are the summarized considerations for proxy configuration:
 |5     | Only non-authenticated proxies are supported. PAC files and proxy endpoints with a `.local` domain aren't supported.        | Both  |
 |6     | The proxy server configured for Azure Local nodes must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16).        | Both  |
 |7     | In the proxy bypass list, include each machine IP, the cluster IP, and the infrastructure subnet, plus the machine and cluster NetBIOS names. Separate entries with commas and use wildcard notation (for example, `192.168.1.*`), because CIDR notation isn't supported.        | Both  |
+
+### Private path
+
+Private path is topology 5 in the preceding table. It keeps all Azure Local outbound traffic on a private connection by combining the Azure Arc gateway with an Azure Firewall explicit proxy, so nodes reach Azure over Azure ExpressRoute or a site-to-site VPN instead of the public internet. Choose this topology when regulatory or security policy prohibits outbound traffic over the public internet.
+
+To use private path, your Azure Local instance must run software version **2608 or later**. Releases earlier than 2608 don't support the private path architecture.
+
+Plan the following components before you deploy:
+
+- **Azure virtual network** with at least one workload subnet and a subnet named `AzureFirewallSubnet` that is `/26` or larger.
+- **Azure Firewall** in the Standard or Premium tier. The explicit proxy feature isn't available in the Basic tier. Enable explicit proxy on the firewall policy and note the firewall private IP, which becomes the proxy endpoint for both HTTP and HTTPS.
+- **Azure Arc gateway resource** in the same subscription where you register the Azure Local machines.
+- **Azure ExpressRoute or site-to-site VPN** from the on-premises environment to the virtual network, with routing configured so that every machine can reach the Azure Firewall private IP *before* Arc registration begins.
+
+When you plan the virtual network, account for the Azure Arc Private Link Scope constraint. Azure Local doesn't support Azure Arc Private Link Scope on the virtual network where Azure Firewall runs as the explicit proxy. If your workloads require Azure Arc for servers Private Link Scope, plan a separate virtual network for them. Because this constraint shapes your virtual network topology, resolve it during planning rather than during deployment.
+
+Private path also carries these supportability limits:
+
+- Azure Firewall explicit proxy is used as a forward proxy. Azure Local doesn't support TLS inspection on the required endpoints.
+- You can't apply TLS certificates to the Azure Firewall explicit proxy.
+- Microsoft doesn't validate or support any variation of the private path architecture other than the one described in the documentation.
+
+For the architecture, per-scenario traffic flows, and diagrams, see [What is the private path network for Azure Local?](../concepts/private-path-network-overview.md) For the deployment steps, see [Register Azure Local with Azure Arc gateway and private path](../deploy/deployment-with-azure-arc-gateway-private-path.md).
+
+Here are the summarized considerations for private path:
+
+|#  | Consideration  | Applies to  |
+|---------|---------|---------|
+|1     | Private path requires Azure Local 2608 or later. Verify the software version before you commit to this topology.        | Both  |
+|2     | Azure Firewall must be Standard or Premium tier, because explicit proxy isn't available in the Basic tier.        | Both  |
+|3     | Size the `AzureFirewallSubnet` at `/26` or larger in the virtual network that terminates the ExpressRoute or site-to-site VPN connection.        | Both  |
+|4     | Every machine must reach the Azure Firewall private IP before Arc registration starts. Complete the Azure-side routing first.        | Both  |
+|5     | Don't enable Azure Arc Private Link Scope on the virtual network where Azure Firewall runs as the explicit proxy. Use a separate virtual network for workloads that need Arc Private Link Scope.        | Both  |
+|6     | TLS inspection isn't supported on the required endpoints, and you can't apply TLS certificates to the Azure Firewall explicit proxy.        | Both  |
+|7     | Arc gateway is mandatory for this topology. The proxy is always the Azure Firewall explicit proxy, specified as an IP address and port.        | Both  |
+|8     | Microsoft supports only the documented private path architecture. Variations aren't validated or supported.        | Both  |
 
 ### Private endpoints
 
