@@ -43,7 +43,7 @@ The network design framework is a sequence of 11 decisions for your Azure Local 
 
 The connectivity mode determines how your Azure Local instance reaches Azure for registration, billing, and lifecycle management. You decide it first, because it applies to both the hyperconverged and disaggregated architectures and influences your outbound connectivity design in [Decision 10](#decision-10-determine-outbound-connectivity).
 
-- **Connected**: Nodes and infrastructure services reach Azure over the internet—directly, through an enterprise proxy, or through the Azure Arc gateway—or over a private path that uses ExpressRoute or a site-to-site VPN. This is the most common mode and is required for standard cloud deployment. You plan the details of outbound connectivity in [Decision 10](#decision-10-determine-outbound-connectivity).
+- **Connected**: Nodes and infrastructure services reach Azure over the internet—directly, through an enterprise proxy, or through the Azure Arc gateway—or over a private path that uses ExpressRoute or a site-to-site VPN. This mode is the most common and is required for standard cloud deployment. You plan the details of outbound connectivity in [Decision 10](#decision-10-determine-outbound-connectivity).
 - **Disconnected (air-gapped)**: For sovereign, regulated, or air-gapped environments, Azure Local disconnected operations provide a local Autonomous Cloud endpoint instead of public Azure endpoints. A disconnected deployment uses an on-premises Azure Arc control plane running on a dedicated 3 nodes management cluster.
 
 Here are the summarized considerations for the connectivity mode decision:
