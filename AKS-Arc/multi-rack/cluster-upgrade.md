@@ -25,10 +25,14 @@ The supported Kubernetes Versions are:
 - 1.31.100
 - 1.32.10
 - 1.32.11
-- 1.33.10
 - 1.33.11
-- 1.34.6
+- 1.33.12
 - 1.34.7
+- 1.34.8
+- 1.35.4
+- 1.35.5
+- 1.36.0
+- 1.36.1
 
 ## Upgrade the Kubernetes version
 
