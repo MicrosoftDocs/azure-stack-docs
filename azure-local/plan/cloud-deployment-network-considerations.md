@@ -847,7 +847,7 @@ Private path also carries these supportability limits:
 - You can't apply TLS certificates to the Azure Firewall explicit proxy.
 - Microsoft doesn't validate or support any variation of the private path architecture other than the one described in the documentation.
 
-For the architecture, per-scenario traffic flows, and diagrams, see [What is the private path network for Azure Local?](../concepts/private-path-network-overview.md). For the deployment steps, see [Register Azure Local with Azure Arc gateway and private path](../deploy/deployment-with-azure-arc-gateway-private-path.md).
+For the architecture, per-scenario traffic flows, and diagrams, see [What is the private path network for Azure Local?](../concepts/private-path-network-overview.md) For the deployment steps, see [Register Azure Local with Azure Arc gateway and private path](../deploy/deployment-with-azure-arc-gateway-private-path.md).
 
 Here are the summarized considerations for private path:
 
