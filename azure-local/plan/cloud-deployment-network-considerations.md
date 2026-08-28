@@ -749,7 +749,7 @@ Plan how your Azure Local nodes and infrastructure services reach Azure for regi
 | 1 | Direct outbound | Not configured | Not configured | Nodes reach Azure directly over the internet. Requires more than 100 FQDNs on the perimeter firewall. Best for labs or small isolated environments. |
 | 2 | Enterprise proxy | Configured | Not configured | All host HTTP/HTTPS is routed through the corporate proxy. Still requires more than 100 FQDNs allowed and SSL inspection disabled for Azure Local endpoints. |
 | 3 | Arc gateway | Not configured | Configured | Arc gateway tunnels supported HTTPS traffic to Azure, leaving fewer than 30 endpoints on the firewall allowlist. |
-| 4 | Enterprise proxy and Arc gateway | Configured | Configured | Recommended for new production deployments that use a public path. Centralized proxy policy plus a minimal allowlist. |
+| 4 | Enterprise proxy and Arc gateway | Configured | Configured | Recommended for new production deployments that use a public path. Centralized proxy policy plus a minimal allow list. |
 | 5 | Private path | Configured (Azure Firewall Explicit Proxy) | Configured | Recommended when regulatory or security policy prohibits outbound traffic over the public internet. Nodes connect to Azure over Azure ExpressRoute or a site-to-site VPN. The proxy is always Azure Firewall Explicit Proxy, and Arc gateway is required. Requires Azure Local 2608 or later. For more information, see [Private path](#private-path). |
 
 For air-gapped environments, use Azure Local disconnected operations, which provides a local Autonomous Cloud endpoint instead of public Azure endpoints. For more information, see [Decision 1](#decision-1-determine-connectivity-mode).
