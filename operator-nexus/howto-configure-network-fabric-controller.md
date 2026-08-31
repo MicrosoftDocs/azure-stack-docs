@@ -36,7 +36,7 @@ All the new NFC Cluster deployments use Standard_D8s_v3 virtual machine SKU.
 The above architecture distributes workloads intelligently across three separate zones. NFC requires up to six nodes and is created using all the availability zones. A customer can switch to two availability zones if the Standard_D8s_v3  SKU is not available in all zones. In the event of a zone failure, the remaining zones continue to handle traffic, minimizing the risk of outages and supporting business continuity.
 
 **Total vCPUs Required**: 228 <br>
-For more details, please refer [link](reference-limits-and-quotas.md)
+For more details, see [reference-limits-and-quotas.md](reference-limits-and-quotas.md).
 
 This allocation ensures:
 - High availability through zone redundancy
