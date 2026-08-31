@@ -18,7 +18,7 @@ Use this allow list to configure outbound firewall rules required for a successf
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-## Firewall allow list (2604, East US)
+## Firewall allow list (2607, East US)
 
 The following table lists the outbound endpoints and ports required for small form factor deployments with Arc Gateway in the East US region.
 
@@ -26,31 +26,20 @@ The following table lists the outbound endpoints and ports required for small fo
 |----:|---------------|:----:|-----------|-------|
 | 1 | `<your-gateway-endpoint-id>.gw.arc.azure.com` | 443 | Azure Local Arc Gateway | Example: `1a2fc225-ac05-4dbf-9da2-0d9a3e9062de.gw.arc.azure.com` |
 | 2 | `<your-device-endpoint>.eastus.deviceonboard.azure.net` | 443 | Azure onboarding provisioning service | Example: `onboardingservice-emh3bxgvbjg5hdgb.eastus.deviceonboard.azure.net` |
-| 3 | `agentserviceapi.guestconfiguration.azure.com` | 443 | Azure Local Arc agent | |
-| 4 | `aka.ms` | 443 | Azure Local OS provisioning | |
-| 5 | `azgn-eastus-public-1p-cusdm-vazr0001.servicebus.windows.net` | 443 | Azure Local Arc agent | |
-| 6 | `azgn-eastus-public-2p-cusdm-vazr0002.servicebus.windows.net` | 443 | Azure Local Arc agent | |
-| 7 | `azurestackreleases.download.prss.microsoft.com` | 443 | Azure Local OS provisioning | |
-| 8 | `dp.stackhci.azure.com` | 443 | Azure Local diagnostics and billing | |
-| 9 | `eastus-gas.guestconfiguration.azure.com` | 443 | Azure Local Arc agent | |
-| 10 | `eastus-mdm.prod.hot.ingest.monitor.core.windows.net` | 443 | Azure Local monitoring | |
-| 11 | `eastus-shared.prod.warm.ingest.monitor.core.windows.net` | 443 | Azure Local monitoring | |
-| 12 | `eastus.login.microsoft.com` | 443 | Azure Local authentication | |
-| 13 | `eoprodrvsvc95jfo-hzbjevbze6e0dfgv.eastus.devicerendezvous.azure.net` | 443 | Azure onboarding discovery service | |
-| 14 | `eus.his.arc.azure.com` | 443 | Azure Local Arc agent | |
-| 15 | `gbl.his.arc.azure.com` | 443 | Azure Local Arc agent | |
-| 16 | `gcs.prod.monitoring.core.windows.net` | 443 | Azure Local monitoring | |
-| 17 | `global.prod.microsoftmetrics.com` | 443 | Azure Local monitoring | |
-| 18 | `guestnotificationservice.azure.com` | 443 | Azure Local storage | |
-| 19 | `login.microsoft.com` | 443 | Azure Local ROE connectivity test | |
-| 20 | `login.microsoftonline.com` | 443 | Azure Local authentication | |
-| 21 | `management.azure.com` | 443 | Azure Local management | |
-| 22 | `packages.microsoft.com` | 443 | Azure Local extensions | |
-| 23 | `pas.windows.net` | 443 | Azure Local Arc agent | |
-| 24 | `prod6.prod.microsoftmetrics.com` | 443 | Azure Local monitoring | |
+| 3 | eus.his.arc.azure.com | 443 | Azure Arc | |
+| 4 | management.azure.com | 443 | Azure Arc | | 
+| 5 | login.microsoftonline.com | 443 | Azure Entra Login Svc | |
+| 6 | eoprodrvsvc95jfo-hzbjevbze6e0dfgv.eastus.devicerendezvous.azure.net | | |
+| 7 | eastus.login.microsoft.com | Azure EastUS Login | | 
+| 8 | gbl.his.arc.azure.com | Azure Arc | | 
+| 9 | login.microsoft.com | Azure Entra | | 
+| 10 | global.prod.micosoftmetrics.com | Azure Arc Metrics | | 
 
 > [!NOTE]
-> Endpoint names that include placeholders (for example, `<your-gateway-endpoint-id>`) are environment-specific and are generated during deployment.
+>
+> - Endpoint names that include placeholders (for example, `<your-gateway-endpoint-id>`) are environment-specific and are generated during deployment.
+>
+> - If you're using an enterprise proxy, include the following HTTP endpoint (Port 80): `http://www.msftconnecttest.com/connecttest.txt`
 
 ## Next steps
 

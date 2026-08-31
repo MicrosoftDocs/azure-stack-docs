@@ -5,7 +5,7 @@ ms.topic: feature-availability
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 02/14/2025
+ms.date: 08/29/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,7 +23,7 @@ The following table lists network attributes for deployments without microsegmen
 |--|--|--|--|--|--|
 |Storage 1|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|1 optional if connected to switch.|
 |Storage 2|1 IP for each host|Storage|No defined gateway.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|1 optional if connected to switch.|
-|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for OEM VM (optional)|Management|Outbound connected (internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|2 required,<br>1 optional.|
+|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for OEM VM (optional)|Management|Outbound connected (outbound connectivity to Azure required, over the internet or a private path).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|2 required,<br>1 optional.|
 |**Total**|||||2 required.<br>2 optional for storage,<br>1 optional for OEM VM.|
 
 ## (Optional) Deployments with microsegmentation and QoS enabled
@@ -34,7 +34,7 @@ The following table lists network attributes for deployments with microsegmentat
 |--|--|--|--|--|--|
 |Storage 1|1 IP for each host|Storage|No defined GW.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|1 optional if connected to switch.|
 |Storage 2|1 IP for each host|Storage|No defined GW.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|1 optional if connected to switch.|
-|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)|Management|Outbound connected (internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|4 required,<br>1 optional|
+|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)|Management|Outbound connected (outbound connectivity to Azure required, over the internet or a private path).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|4 required,<br>1 optional|
 |**Total**|||||4 Required.<br>2 optional for storage,<br>1 optional for OEM VM.|
 
 ## Deployments with SDN optional services
@@ -46,7 +46,7 @@ The following table lists network attributes for deployments SDN optional servic
 |Storage 1|1 IP for each host|Storage|No defined GW.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 711.|1 optional if connected to switch.|
 |Storage 2|1 IP for each host|Storage|No defined GW.<br>IP-less L2 VLAN.|Network ATC managed subnet.<br>Default VLAN tag 712.|1 optional if connected to switch.|
 |Tenant compute|Tenant VM IPs connected to corresponding VLANs|Compute|Tenant VLAN routing/access customer-managed.<br>VLAN trunk configuration on physical switches required.|Customer-defined||
-|Management|1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)<br><br>**Single node**:<br>1 Network Controller VM IP<br>1 Software Load Balancer (SLB) VM IP<br>1 gateway VM IP|Management|Connected Outbound (internet access required).<br>Disconnected (Arc autonomous controller).|Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported).|6 required<br>1 optional|
+| Management | 1 IP for each host,<br>1 IP for Failover Cluster,<br>1 IP for Network Controller VM,<br>1 IP for Arc VM management stack VM,<br>1 IP for OEM VM (new)<br><br>**Single node**:<br>1 Network Controller VM IP<br>1 Software Load Balancer (SLB) VM IP<br>1 gateway VM IP | Management | Connected Outbound (outbound connectivity to Azure required, over the internet or a private path).<br>Disconnected (Arc autonomous controller). | Customer-defined management VLAN.<br>(Native VLAN preferred but trunk mode supported). | 6 required<br>1 optional |
 |HNV (also known as PA network)|2 IPs for each host<br><br>**Single node**:<br>1 SLB VM IP<br>1 gateway VM IP|N/A|Requires default gateway to route packets externally.|Provider Address Network VLAN.<br>Subnet needs to allocate hosts and SLB VMs.<br>Potential subnet growth consideration.|IPs automatically assigned out of the subnet by Network Controller|
 |Public VIPs|LB and GWs, Public VIPs|N/A|Advertised through BGP||Network Controller-managed IPs|
 |Private VIPs|LB Private VIPs|N/A|Advertised through BGP||Network Controller-managed IPs|
