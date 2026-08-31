@@ -182,6 +182,12 @@ Key considerations:
 > [!NOTE]
 > Azure Local doesn't currently provide hard workload placement controls (rack affinity). Administrators should be aware that uneven workload distribution might require adjusting the spine-to-leaf bandwidth ratio or adding spine capacity.
 
+## Related content
+
+- [External storage support for Azure Local](../concepts/external-storage-support.md)
+- [Connect an external storage array to Azure Local](../deploy/enable-external-storage.md)
+- [Network reference patterns overview for Azure Local disaggregated deployments](network-patterns-overview-disaggregated.md)
+
 ## Next steps
 
 - [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md).

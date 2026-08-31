@@ -40,7 +40,7 @@ The following network reference patterns are available for disaggregated deploym
 |---|---|---|
 | Fiber Channel SAN | No dedicated backup network | [Fiber Channel disaggregated pattern without backup network](fiber-channel-no-backup-disaggregated-pattern.md) |
 | Fiber Channel SAN | Dedicated backup network | [Fiber Channel disaggregated pattern with backup network](fiber-channel-with-backup-disaggregated-pattern.md) |
-| iSCSI SAN | 6-NIC dedicated iSCSI paths | [iSCSI 6-NIC disaggregated pattern](iscsi-6-network-adapters-disaggregated-pattern.md) |
+| iSCSI SAN | Optional in-guest backup network (added after deployment) | [iSCSI 6-NIC disaggregated pattern](iscsi-6-network-adapters-disaggregated-pattern.md) |
 
 ## Why use a leaf-spine (Clos) topology?
 
