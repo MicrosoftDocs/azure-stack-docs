@@ -536,9 +536,9 @@ Here are the summarized considerations for the management IP pool:
 |---------|---------|---------|
 |1     | The IP range must use consecutive IPs, and all IPs must be available within that range. This IP range can't be changed post deployment.        | Both  |
 |2     | The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.        | Both  |
-|3     | The default gateway defined for the management IP pool must provide outbound connectivity to the internet.        | Both  |
-|4     | The DNS servers must ensure name resolution with Active Directory and the internet.        | Both  |
-|5     | The management IPs require outbound internet access.        | Both  |
+|3     | The default gateway defined for the management IP pool must provide outbound connectivity to Azure, either over the internet or over a private path that uses ExpressRoute or a site-to-site VPN.        | Both  |
+|4     | The DNS servers must ensure name resolution with Active Directory and with the public Azure endpoints, including when you use a private path.        | Both  |
+|5     | The management IPs require outbound connectivity to Azure. Public internet access isn't required if you use the private path topology described in [Decision 10](#decision-10-determine-outbound-connectivity).        | Both  |
 |6     | Environment checker validates that ICMP traffic responds on the default gateway from the Azure Local management IP pool range.        | Both  |
 
 ### Management VLAN ID
