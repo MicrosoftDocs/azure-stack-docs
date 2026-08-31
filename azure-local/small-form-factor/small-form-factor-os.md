@@ -54,6 +54,8 @@ After the provisioned machine enters the maintenance environment, install the op
 
 1. The network and security settings from the previous OS installation are applied to the new OS installation.
 
+1. Any additional post-install configuration from the previous machine isn't applied to the new installation. To reapply or remove settings for extra interfaces, see [Manage network interfaces](small-form-factor-network-interfaces.md).
+
 1. When the OS installation completes, the machine is ready for your workloads.
 
 ## Next steps
