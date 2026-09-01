@@ -43,7 +43,7 @@ For detailed information about how the underlay, overlay, and Virtual Routing an
 Place all VXLAN Network Identifiers (VNIs) inside the cluster Virtual Routing and Forwarding (VRF) to maintain traffic isolation. Each VLAN maps to a unique VNI, and this mapping is consistent across all racks. The following table shows an example configuration for disaggregated deployments spanning multiple racks.
 
 | VLAN | Name | VNI | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 7 | Azure Local infrastructure subnet | 10007 | VLAN configured in access mode on the leaf for Azure Local management. |
 | 1711 | Cluster subnet 1 | 11711 | VLAN configured in access mode on the leaf for cluster network 1. |
 | 1712 | Cluster subnet 2 | 11712 | VLAN configured in access mode on the leaf for cluster network 2. |
@@ -81,7 +81,7 @@ Each server also has a Baseboard Management Controller (BMC) network port for ou
 The following table shows the host network port allocation per compute leaf physical switch. Each rack has 16 nodes:
 
 | Port range | Function | Leaf A VLANs | Leaf B VLANs | Notes |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 1-16 | Management and compute ports | VLAN 7 for management. VLANs 100 and 200 for tenants. | VLAN 7 for management. VLANs 100 and 200 for tenants. | Native VLAN 7 in access mode. VLANs 100 and 200 for tenants in trunk mode. If you add a backup host vNIC after deployment, trunk VLAN 800 on these ports. |
 | 17-32 | Cluster network ports | VLAN 1711 for cluster network 1. | VLAN 1712 for cluster network 2. | Second network adapter ports for dedicated cluster traffic (CSV, live migration, and cluster heartbeat). |
 | 33-48 | Dedicated iSCSI ports | VLAN 300 for iSCSI path A. | VLAN 400 for iSCSI path B. | Third network adapter ports for dedicated iSCSI storage paths. |
@@ -140,7 +140,7 @@ Static routes ensure that iSCSI traffic always exits the storage network adapter
 In the 6-NIC model, iSCSI path A and path B use dedicated standalone adapters on separate VLANs and subnets. The following table shows an example of the host interfaces:
 
 | Interface | IP address | Subnet | Gateway | Role |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Management (NIC1) | 192.168.1.10 | /24 | 192.168.1.1 | Default gateway. All non-specific traffic exits here. |
 | Cluster network 1 (NIC3) | 10.10.100.50 | /24 | None | CSV and live migration. Local cluster traffic only. |
 | Cluster network 2 (NIC4) | 10.10.101.50 | /24 | None | CSV and live migration. Local cluster traffic only. |
@@ -150,7 +150,7 @@ In the 6-NIC model, iSCSI path A and path B use dedicated standalone adapters on
 For each iSCSI target on a remote subnet multiple Layer 3 hops away, configure a persistent static route that directs target traffic through the storage network adapter. The following table explains each route component:
 
 | Route component | Value | Explanation |
-|---|---|---|
+| --- | --- | --- |
 | Destination | A /32 host route for each iSCSI target IP | One route per iSCSI target IP. |
 | Next hop | Leaf switch SVI (gateway) on the iSCSI VLAN | Directs storage traffic to the iSCSI fabric gateway. |
 | Interface | The iSCSI storage network adapter (NIC5 or NIC6) | Forces traffic out the storage network adapter, not management. |
@@ -170,6 +170,9 @@ For the step-by-step commands, see the iSCSI tab in [Install the Azure Local ope
 
 ## Workload placement considerations
 
+> [!NOTE]
+> Azure Local doesn't currently provide hard workload placement controls (rack affinity). Administrators should be aware that uneven workload distribution might require adjusting the spine-to-leaf bandwidth ratio or adding spine capacity.
+
 In a multirack Clos fabric, the physical location of workloads affects traffic patterns and bandwidth requirements. While the leaf-spine topology provides equal-cost paths between any two racks, workload placement can create uneven traffic distribution that impacts performance.
 
 Key considerations:
@@ -179,15 +182,12 @@ Key considerations:
 - **Power-dense racks** - These racks might require spreading workloads across racks for thermal or power distribution reasons, which increases cross-rack traffic.
 - **Backup traffic** - If you add a backup host vNIC, VMs send backup traffic over the backup VLAN trunked on the management and compute intent. Scheduling backup windows and co-locating backup-intensive VMs can reduce cross-rack backup traffic on spine links.
 
-> [!NOTE]
-> Azure Local doesn't currently provide hard workload placement controls (rack affinity). Administrators should be aware that uneven workload distribution might require adjusting the spine-to-leaf bandwidth ratio or adding spine capacity.
+## Next steps
+
+- [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md).
 
 ## Related content
 
 - [External storage support for Azure Local](../concepts/external-storage-support.md)
 - [Connect an external storage array to Azure Local](../deploy/enable-external-storage.md)
 - [Network reference patterns overview for Azure Local disaggregated deployments](network-patterns-overview-disaggregated.md)
-
-## Next steps
-
-- [Install the Azure Local operating system for disaggregated deployments](../deploy/deployment-install-os-disaggregated.md).

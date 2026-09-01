@@ -25,19 +25,15 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 ## Benefits
 
 - **Investment protection**: Extends existing SAN infrastructure into Azure Local without re-architecture.
-
 - **Operational consistency**: Offers the ability to use existing practices for management and operations.
-
 - **Resilience and scale**: Dual fabrics, multipathing, and SAN-native redundancy ensure high availability.
-
 - **Flexibility**: Choose between Storage Spaces Direct or external SAN volumes per workload requirement.
-
 - **Enterprise performance**: Uses Fibre Channel-class bandwidth and latency for demanding workloads.
 
 ## Supported configurations
-- Fibre Channel (FC) based SAN arrays 
-- iSCSI based SAN arrays
 
+- Fibre Channel (FC) based SAN arrays
+- iSCSI based SAN arrays
 - Software initiator (Dell PowerFlex)
 
 ## Fibre Channel or iSCSI based SAN arrays
