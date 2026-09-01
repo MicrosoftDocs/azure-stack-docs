@@ -238,7 +238,7 @@ The storage fabric differs by SAN type:
 
 iSCSI deployments follow this validated pattern, which you choose in [Decision 6](#decision-6-determine-network-adapter-ports-and-configuration):
 
-- **6-port dedicated-path**: Dedicated ports carry iSCSI path A and path B, separate from the cluster networks. This pattern supports an optional dedicated backup network.
+- **6-port dedicated-path**: Dedicated ports carry iSCSI path A and path B, separate from the cluster networks. This pattern supports an optional in-guest backup network that you add after deployment as a backup host vNIC on the management and compute intent. It doesn't use a dedicated backup adapter.
 
 For more information about connecting an external SAN, including the host-side and array-side configuration for Fiber Channel and iSCSI, see [Connect an external storage array to Azure Local](../deploy/enable-external-storage.md) and [External storage support for Azure Local](../concepts/external-storage-support.md).
 
