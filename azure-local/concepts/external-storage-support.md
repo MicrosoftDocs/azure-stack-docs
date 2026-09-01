@@ -66,4 +66,8 @@ Rack aware clusters are not supported with External SAN storage for hyperconverg
 
 ## Related content
 
+- [Connect an external storage array to Azure Local](../deploy/enable-external-storage.md)
+- [Disaggregated iSCSI 6-NIC pattern for Azure Local](../plan/iscsi-6-network-adapters-disaggregated-pattern.md)
+- [Network reference patterns overview for Azure Local disaggregated deployments](../plan/network-patterns-overview-disaggregated.md)
+- [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md)
 - Learn more about [Dell PowerFlex for Azure Local Integration Guide (PDF)](https://infohub.delltechnologies.com/static/media/client/7phukh/DAM_fd0e04d5-d47e-4b55-8f7f-0a80d26086af.pdf?utm_source=chatgpt.com).
