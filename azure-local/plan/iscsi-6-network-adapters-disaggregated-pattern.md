@@ -170,9 +170,6 @@ For the step-by-step commands, see the iSCSI tab in [Install the Azure Local ope
 
 ## Workload placement considerations
 
-> [!NOTE]
-> Azure Local doesn't currently provide hard workload placement controls (rack affinity). Administrators should be aware that uneven workload distribution might require adjusting the spine-to-leaf bandwidth ratio or adding spine capacity.
-
 In a multirack Clos fabric, the physical location of workloads affects traffic patterns and bandwidth requirements. While the leaf-spine topology provides equal-cost paths between any two racks, workload placement can create uneven traffic distribution that impacts performance.
 
 Key considerations:
@@ -181,6 +178,9 @@ Key considerations:
 - **Storage-heavy workloads** - Validate that the dedicated iSCSI adapters and storage fabric provide sufficient bandwidth for your storage requirements.
 - **Power-dense racks** - These racks might require spreading workloads across racks for thermal or power distribution reasons, which increases cross-rack traffic.
 - **Backup traffic** - If you add a backup host vNIC, VMs send backup traffic over the backup VLAN trunked on the management and compute intent. Scheduling backup windows and co-locating backup-intensive VMs can reduce cross-rack backup traffic on spine links.
+
+> [!NOTE]
+> Azure Local doesn't currently provide hard workload placement controls (rack affinity). Administrators should be aware that uneven workload distribution might require adjusting the spine-to-leaf bandwidth ratio or adding spine capacity.
 
 ## Next steps
 
