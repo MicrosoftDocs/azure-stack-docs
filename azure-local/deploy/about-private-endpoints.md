@@ -19,7 +19,7 @@ A private endpoint is a network interface that uses a private IP address from th
 
 Azure Local infrastructure (including the nodes and the Arc resource bridge VM) supports many [Azure private endpoint types](/azure/private-link/private-endpoint-overview), but Azure Arc Private Link is not supported. Because of this, Azure Local always registers with Azure Arc using public Arc endpoints.
 
-For more information, see [Use Azure Private Link to connect machines to Azure Arc by Using a private endpoint](/azure/azure-arc/servers/private-link-security) and [Troubleshoot Azure Arc resource bridge issues]().
+For more information, see [Use Azure Private Link to connect machines to Azure Arc by Using a private endpoint](/azure/azure-arc/servers/private-link-security) and [Troubleshoot Azure Arc resource bridge issues](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge).
 
 The following table summarizes key points for using supported private endpoints with Azure Local.
 
