@@ -37,10 +37,10 @@ A disaggregated deployment consists of single-node or multinode systems (up to 6
 The following network reference patterns are available for disaggregated deployments:
 
 | Storage connectivity | Backup network | Reference pattern |
-|---|---|---|
+| --- | --- | --- |
 | Fiber Channel SAN | No dedicated backup network | [Fiber Channel disaggregated pattern without backup network](fiber-channel-no-backup-disaggregated-pattern.md) |
 | Fiber Channel SAN | Dedicated backup network | [Fiber Channel disaggregated pattern with backup network](fiber-channel-with-backup-disaggregated-pattern.md) |
-| iSCSI SAN | 6-NIC dedicated iSCSI paths | [iSCSI 6-NIC disaggregated pattern](iscsi-6-network-adapters-disaggregated-pattern.md) |
+| iSCSI SAN | Optional in-guest backup network (added after deployment) | [iSCSI 6-NIC disaggregated pattern](iscsi-6-network-adapters-disaggregated-pattern.md) |
 
 ## Why use a leaf-spine (Clos) topology?
 
@@ -55,7 +55,7 @@ A leaf-spine (Clos) topology solves these problems by adding a dedicated spine l
 Think of it like a highway system:
 
 | Network concept | Highway analogy |
-|---|---|
+| --- | --- |
 | Leaf switches (Top of Rack) | Local roads that connect directly to your house (servers). |
 | Spine switches | Highway interchanges that connect all the local roads together. |
 | Nodes | Houses where people (workloads) live. |
@@ -109,7 +109,7 @@ Virtual Routing and Forwarding (VRF) instances create isolated routing domains o
 Not all leaf switches have the same role. The fabric has two types of leaf switches with distinct responsibilities:
 
 | Function | Compute leaf | Service leaf |
-|---|---|---|
+| --- | --- | --- |
 | Virtual Extensible LAN (VXLAN) termination for local servers | Yes | Yes |
 | Anycast gateway for workload VLANs | Yes | Yes |
 | Spine uplinks | Yes | Yes |
@@ -147,10 +147,10 @@ Software Defined Networking (SDN) support varies depending on the Azure Local ar
 The following table summarizes SDN support across Azure Local architectures as of version 2604:
 
 | Azure Local architecture | Azure Local version | Number of nodes | SDN supported configuration |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Hyperconverged | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
 | Hyperconverged hybrid (S2D + SAN attach) | 2604 | 1 to 16 | Microsoft SDN LNETs and NSGs |
-| Disaggregated | 2604 | 1 to 64 | External SDN LNETs supported.|
+| Disaggregated | 2604 | 1 to 64 | External SDN LNETs supported. |
 
 > [!NOTE]
 > For disaggregated deployments, SDN logical networks must be configured on the external network fabric (leaf-spine switches) rather than through the Microsoft SDN Network Controller. Plan your VXLAN EVPN overlay design accordingly to support the required logical networks.
@@ -187,7 +187,7 @@ When both the AKS workload and its target management node are on the **same rack
 The following table summarizes the effective hop count for each scenario:
 
 | Scenario | Routing path | Hop count |
-|---|---|---|
+| --- | --- | --- |
 | Same rack, same VRF | Local IRB on compute leaf | One hop |
 | Cross rack, same VRF (Option 1) | Compute Leaf → Spine → Compute Leaf | Three hops |
 | Cross rack, separate VRFs (Option 2) | Compute Leaf → Spine → Service Leaf → Spine → Compute Leaf | Five hops |
@@ -200,7 +200,7 @@ The following table summarizes the effective hop count for each scenario:
 This section covers the additional switch capabilities required for medium (17-32 node) and large (33-64 node) deployments that use a leaf-spine Clos fabric with Virtual Extensible LAN (VXLAN) Ethernet Virtual Private Network (EVPN) overlay, multitenant Virtual Routing and Forwarding (VRF) isolation, and service integration through firewall or load balancer appliances. These requirements are additive—all base Azure Local switch requirements still apply.
 
 | Category | Requirements |
-|---|---|
+| --- | --- |
 | **Underlay** | External Border Gateway Protocol (eBGP) unnumbered (RFC 5549) using IPv6 link-local transport for IPv4 Network Layer Reachability Information (NLRI) |
 | | Loopback-based peering (one loopback per switch) |
 | | Per-rack unique Autonomous System Number (ASN) |
