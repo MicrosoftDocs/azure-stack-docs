@@ -1264,6 +1264,8 @@ items:
           href: manage/disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md
       - name: Certificate rotation
         href: manage/disconnected-operations-certificate-rotation.md
+      - name: Platform expansion packs
+        href: manage/disconnected-operations-platform-expansion-packs.md
       - name: Monitor
         items:
         - name: Overview

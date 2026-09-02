@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 07/23/2026
+ms.date: 09/01/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -27,11 +27,14 @@ These release notes are updated continuously to include critical issues and requ
 > This fix is a one-time remediation. After the InfraLocal_1 volume is created, the same cluster doesn't require these steps for subsequent Azure Local updates.
 
 **Mitigation**:
+
 - Sign in to any Azure Local cluster node with administrative privileges.
 - Run the following PowerShell command to create the InfraLocal_1 volume:
+
 ```powershell
 New-Volume -FriendlyName "InfraLocal_1" -Size 10GB -ProvisioningType Thin
 ```
+
 - Verify that the command completes successfully without errors.
 - Proceed with the Azure Local patch and update.
 
@@ -42,6 +45,7 @@ Cloud deployment doesn't succeed in air-gapped environments for Azure Local disc
 - From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2011 certificate](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt).
 - Copy the downloaded certificate file (MicCodSigPCA2011_2011-07-08.crt) to each Azure Local node.
 - On each node, open an elevated PowerShell session and run:
+
 ```powershell
 Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
 ```
@@ -54,9 +58,9 @@ There's a known issue with the BitLocker key protector in this release, and only
 
 When you perform indirect log collection by running the `Invoke-AzureLocalDisconnectedLogCollection` cmdlet and include the `Observability` role in the roles that you collect, the observability component on the disconnected operations appliance for Azure Local captures the SMB share path, username, and password that you pass to the `-SaveToPath` and `-ShareCredential` parameters. If you later collect those observability logs and upload them to Microsoft as part of a diagnostic data submission, the share credentials are uploaded with them.
 
-If you don't specify the `-CloudManagementFilterByRoles` parameter, all cloud management roles, including `Observability`, are collected by default. The only way to exclude observability logs is to pass an explicit list of roles to `-CloudManagementFilterByRoles` that omits the observability roles.
+If you don't specify the `-CloudManagementFilterByRoles` parameter, you collect all cloud management roles by default, including `Observability`. The only way to exclude observability logs is to pass an explicit list of roles to `-CloudManagementFilterByRoles` that omits the observability roles.
 
-**Mitigation:**
+**Mitigation**:
 
 When you run `Invoke-AzureLocalDisconnectedLogCollection`, explicitly set `-CloudManagementFilterByRoles` to a list of roles that omits the observability role. Don't rely on the default behavior, because the default collects all roles, including observability. For example:
 
@@ -89,15 +93,13 @@ Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
 
 Deployment fails with the following error: `invalid transformation contained in extension package`.
 
-**Root cause**: Upgrading from 2602 to 2604 triggered an update issue in a backend service.
-
-**Mitigation**: Redeploy the latest version, or contact Microsoft Support for steps specific to the 2604 build.
+**Mitigation**: Redeploy the latest version or contact Microsoft Support for steps specific to the 2604 build.
 
 ### Azure Local Worker Cluster Failed Cloud Deployment at Deploy Arc Infrastructure Components
 
 Workload clusters in air-gapped environments fail to deploy in rare conditions.
 
-**Error message:** Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
+**Error message**: Worker Cluster Azure Local Cloud Deployment failed with "New-ArcHciApplianceConfigs failed with error MOC Role StorageContainerContributor is unavailable
 
 **Mitigation**:
 
@@ -124,17 +126,17 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
 **Symptom**: Upgrading from build 2602 in an air-gapped environment fails during package upload with an error similar to
 
 ```
-ErrorReports     : {Update Download: Update package 'arca.update.package.2603.1.25553.zip' did not pass validation. Below is the summary of the validation error(s) encountered:
+ErrorReports    : {Update Download: Update package 'arca.update.package.2603.1.25553.zip' did not pass validation. Below is the summary of the validation error(s) encountered:
                    - ManifestSignatureInvalid: File signature on Manifest.xml is invalid or it is not signed. The package may be tampered with or corrupted.
                    }
 ```
 
 This error occurs because the update package is signed with a different certificate than the one available in build 2602.
 
-1. Download the following [zip](https://aka.ms/aldo-fix1/2602-update) and copy it over to your seed node.
+1. Download the following [zip](https://aka.ms/aldo-fix1/2602-update) and copy it to your seed node.
 1. Modify and run this script:
 
-**Mitigation:**
+**Mitigation**:
 
 ```powershell
     # Using the operations module:
@@ -154,7 +156,7 @@ This error occurs because the update package is signed with a different certific
     & "$($targetFolder)\ImportCodeSignCertsOffline.ps1" -CertsFolder $targetFolder -BitLockerRecoveryKeys $recoveryKeys
 ```
 
-- Wait 10 minutes or more
+- Wait 10 minutes or more.
 - From the same PowerShell context, run:
 
    ```powershell
@@ -185,15 +187,15 @@ This error occurs because the update package is signed with a different certific
         Start-ApplianceUpdate -TargetVersion $updateTargetVersion -Wait
      ```
 
-- The process takes about 3 hours to finish.
+- The process takes about three hours to finish.
 
 ### Bootstrap or deployment fails due to invalid certificates (exception)
 
 If the Certificate Revocation List (CRL) is empty or misconfigured, bootstrap validation fails.
 
-**Error message:** Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
+**Error message**: Bootstrap reported error: ALDO services failed to come up after 00:45:00 minutes, failing Arc registration.
 
-**Mitigation**: 
+**Mitigation**:
 
 Verify that your Certificate Authority is configured correctly and ensure that your certificates include a CRL endpoint that nodes can access.
 
@@ -250,14 +252,14 @@ There's a known issue in the Azure portal that prevents creating SSH keys during
 **Mitigation**:
 
 Use command-line tools to generate an SSH key and include the key during the VM or AKS creation process.
- 
+
 ### Other cluster deployments fail - Host Guardian certificates aren't available
 
 When you deploy more Azure Local clusters after successfully deploying the dedicated management cluster, the deployments fail.
 
 **Mitigation**:
 
- Copy the following certificates from the first node of the management cluster and paste them in all Azure Local nodes (workload clusters) at `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
+Copy the following certificates from the first node of the management cluster and paste them in all Azure Local nodes (workload clusters) at `C:\Users\Administrator\AppData\Roaming\AzureLocal\`.
 
 Make sure that the following files are present on each Azure Local node before you deploy a new workload cluster:
 
@@ -268,7 +270,7 @@ Make sure that the following files are present on each Azure Local node before y
 
 In rare cases, deployments might time out, and services might not reach 100% convergence, even after eight hours.
 
-**Mitigation:**
+**Mitigation**:
 
 Redeploy the disconnected operations appliance. If the issue persists after two or three clean redeployments, collect logs and open a support ticket.
 
@@ -553,7 +555,7 @@ if ($failures.Count -gt 0 -and $results.Count -eq 0) {
 
 When you use a cmdlet that uses the management endpoint (for example, `Get-ApplianceHealthState`), you receive an error "threw an exception: The request was aborted: Could not create SSL/TLS secure channel... Retrying."
 
-**Mitigation:**
+**Mitigation**:
 
 For 2511, don't use `Set-DisconnectedOperationsClientContext`. Instead, use `$context = New-DisconnectedOperationsClientContext` and pass the `$context` to the respective cmdlets.
 
@@ -564,13 +566,13 @@ If you're running an OEM image, make sure you're on the correct OS baseline.
 Follow these steps:
 
 1. Make sure you're on the same supported version or an earlier version (for example, 2508 or earlier).
-1. Disable zero-day update on each node:
+1. Disable zero-day update on each node.
   
    ```powershell
    Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\EdgeArcBootstrapSetup" -Name "MicrosoftOSImage" -Value 1
    ```
   
-1. Upgrade to the Microsoft provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes using this approach.
+1. Upgrade to the Microsoft-provided ISO for your disconnected operations version target. Choose upgrade and keep settings when reimaging the nodes by using this approach.
     - Alternatively, run the following command to get the correct update:
 
       ```powershell
@@ -650,13 +652,13 @@ During the validate or cloud deployment flow, the first machine (seed node) rest
 
 **Mitigation**:
 
-1. Check if the HIMDS service is stopped:
+1. Check if the HIMDS service is stopped.
   
    ```powershell
    Get-Service HIMDS
    ```
 
-1. If the service is stopped, start it:
+1. If the service is stopped, start it.
 
    ```powershell
    Start-Service HIMDS
@@ -721,7 +723,7 @@ The disconnected operations appliance uses 78 GB of memory. If your node has les
 
 In virtual environments, deployments can time out, and services might not reach 100% convergence, even after eight hours.
 
-**Mitigation:**
+**Mitigation**:
 
 Redeploy the disconnected operations appliance a few times. If you're using a physical environment and the problem continues, collect logs and open a support ticket.
 
@@ -731,7 +733,7 @@ Role-Based Access Control (RBAC) permissions on a newly created Azure Key Vault 
 
 **Mitigation**:
 
-Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the Key Vault ahead of time. 
+Wait 20 minutes after you create the Azure Key Vault to finish deploying the cluster, or create the Key Vault ahead of time.
 
 If you create the Key Vault ahead of time, make sure you assign:
 
@@ -856,7 +858,7 @@ In the current Azure Local disconnected operations scale envelope, running more 
 
 **Mitigation**:
 
-Until the supported scale range is expanded, Microsoft recommends you limit the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
+Until the supported scale range is expanded, limit the number of workload clusters to 20 or fewer to maintain stable and reliable disconnected operations.
 
 #### Kubernetes cluster list empty under Azure Local (Kubernetes clusters)
 
@@ -864,7 +866,7 @@ When you navigate to Azure Local and click **Kubernetes clusters**, you might se
 
 **Mitigation**:
 
-Navigate to **Kubernetes** > **Azure Arc** in the left menu or use the search bar. Your clusters should appear in the list.
+Go to **Kubernetes** > **Azure Arc** in the left menu or use the search bar. Your clusters should appear in the list.
 
 #### Save Kubernetes service notification stuck
 
@@ -872,7 +874,7 @@ After you update to a newer version of Kubernetes, you might see a stuck notific
 
 **Mitigation**:
 
-Navigate to the **Cluster View** page and refresh it. Check whether the state shows upgrading or completed. If the update completed successfully, you can ignore the notification.
+Go to the **Cluster View** page and refresh it. Check whether the state shows upgrading or completed. If the update completed successfully, you can ignore the notification.
 
 #### Activity log shows authentication issue
 
@@ -904,7 +906,7 @@ az aksarc delete
 
 #### Restart a node or the control plane VM
 
-After you restart a node or the control plane VM, the system might take up to an hour to become fully ready. If you notice issues with the local portal, missing resources, or failed deployments, check the appliance health using the **OperationsModule** to confirm that all services are fully converged.
+After you restart a node or the control plane VM, the system might take up to an hour to become fully ready. If you notice issues with the local portal, missing resources, or failed deployments, check the appliance health by using the **OperationsModule** to confirm that all services are fully converged.
 
 ### Subscriptions
 
