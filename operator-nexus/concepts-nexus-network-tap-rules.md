@@ -38,7 +38,7 @@ A Network TAP resource represents the configuration that controls destinations, 
 | TAP rule per destination                      | Only 1                                       |
 | Match condition input                         | Inline (up to 2 MB) or file                   |
 | File polling interval                         | 30–120 seconds (applies to all destinations) |
-
+| Destination name uniqueness                   | All `destinations[].name` values must be unique (case-insensitive) within a NetworkTap and across all NetworkTaps under the same NPB |
 
 ## Network TAP rules
 
