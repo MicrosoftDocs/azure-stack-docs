@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2608
 
-The August 2026 release of hyperconverged deployments of Azure Local is version **12.2608.1003.8**. For more information, see [Release information summary](./release-information-23h2.md).
+The August 2026 release of hyperconverged deployments of Azure Local is version **12.2608.1003.9**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -39,16 +39,16 @@ This release includes various reliability improvements and bug fixes.
 
 - **Azure Local VMs**:
 
-    - **Graceful VM shutdown**: The Azure portal now provides Shut down (recommended) and Turn off options for Azure Local VMs. Shut down gracefully powers down the guest operating system before turning off the VM, while Turn off immediately powers off the VM. Requires Azure Local version 2604 or later.
+  - **Graceful VM shutdown**: The Azure portal now provides Shut down (recommended) and Turn off options for Azure Local VMs. Shut down gracefully powers down the guest operating system before turning off the VM, while Turn off immediately powers off the VM. Requires Azure Local version 2604 or later.
 
-    - **Azure Arc Site Manager (preview)**: View and manage Azure Local VMs across sites from a centralized Azure Arc Site Manager experience, with Kubernetes cluster support also available.
+  - **Azure Arc Site Manager (preview)**: View and manage Azure Local VMs across sites from a centralized Azure Arc Site Manager experience, with Kubernetes cluster support also available.
 
 - **Add node via Azure portal (preview)**: You can now add nodes to an existing Azure Local cluster directly from the Azure portal with a new guided scale-out experience. For more information, see [Add a node on Azure Local](../azure-local/manage/add-server.md).
 
 - **Update workflow changes**:
   
-    - This release introduces the prepare updates workflow, allowing you to prepare updates now and install them at a later time.
-    - Feature updates now include a new update state, **Pending OEM Validation**, indicating that the update is awaiting OEM validation before it can proceed.
+  - This release introduces the prepare updates workflow, allowing you to prepare updates now and install them at a later time.
+  - Feature updates now include a new update state, **Pending OEM Validation**, indicating that the update is awaiting OEM validation before it can proceed.
 
 - **GPU Management from Azure (preview)**: Manage and monitor GPU resources in Azure Local from Azure, including centralized GPU inventory, partition configuration, GPU assignment to workloads, and lifecycle management of GPU-accelerated workloads. For more information, see [Manage GPU fabric resources in Azure Local (preview)](../azure-local/manage/gpu-manage-fabric-resources.md).
 

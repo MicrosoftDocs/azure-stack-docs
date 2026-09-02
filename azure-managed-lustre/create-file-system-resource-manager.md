@@ -2,7 +2,7 @@
 title: Create an Azure Managed Lustre file system by using Azure Resource Manager templates
 description: Learn how to use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
-ms.date: 11/11/2024
+ms.date: 09/01/2026
 author: pauljewellmsft
 ms.author: pauljewell
 ms.lastreviewed: 11/11/2024
@@ -27,16 +27,17 @@ Before you write a template, you must make some decisions about your Azure Manag
 
 When you use a template, specify a SKU to define the basic type of Azure Managed Lustre file system to create. The SKU represents a product tier. It sets system qualities such as the type of disks, the supported amount of storage, and the maximum throughput capacity. If you use the Azure portal to create your Azure Managed Lustre file system, you specify the system type indirectly by selecting its capabilities.
 
-The following table shows the values for throughput and storage size in each supported SKU. These SKUs create a file system that uses durable SSD storage.
+The following table shows the throughput and storage capacity values for each supported SKU. These SKUs create a file system that uses durable SSD storage. The default maximum is the capacity limit available to a subscription by default. You can request an increase up to the maximum supported capacity by opening a support ticket.
 
-| SKU | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
-|----------|-----------|-----------|-----------|-----------|
-| AMLFS-Durable-Premium-40 | 40 MBps | 48 TB | 768 TB | 48 TB|
-| AMLFS-Durable-Premium-125 | 125 MBps | 16 TB | 128 TB | 16 TB |
-| AMLFS-Durable-Premium-250 | 250 MBps | 8 TB | 128 TB | 8 TB |
-| AMLFS-Durable-Premium-500 | 500 MBps | 4 TB | 128 TB | 4 TB |
+| SKU | Throughput tier | Storage minimum | Default maximum | Maximum supported capacity | Increment |
+|----------|-----------|-----------|-----------|-----------|-----------|
+| AMLFS-Durable-Premium-20 | 20 MBps | 96 TiB | 3,072 TiB | 25,632 TiB | 96 TiB |
+| AMLFS-Durable-Premium-40 | 40 MBps | 48 TiB | 1,536 TiB | 12,816 TiB | 48 TiB |
+| AMLFS-Durable-Premium-125 | 125 MBps | 16 TiB | 512 TiB | 4,096 TiB | 16 TiB |
+| AMLFS-Durable-Premium-250 | 250 MBps | 8 TiB | 256 TiB | 2,048 TiB | 8 TiB |
+| AMLFS-Durable-Premium-500 | 500 MBps | 4 TiB | 128 TiB | 1,024 TiB | 4 TiB |
 
-If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
+To enable your subscription to deploy a file system with a capacity greater than the default maximum, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 
 To check SKU capabilities, you can use the [workflow for creating a Managed Lustre file system by using the Azure portal](create-file-system-portal.md). SKU-specific settings are on the **Basics** tab under **File system details**.
 
