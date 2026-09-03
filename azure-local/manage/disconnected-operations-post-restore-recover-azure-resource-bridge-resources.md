@@ -1,26 +1,48 @@
 ---
-title: Recover ARB and associated resources after cluster re-registration
-description: Learn how to recreate the Arc Resource Bridge (ARB), custom location, logical network, and storage resources on a restored Azure Local disconnected operations cluster after re-registering the management or data cluster.
+title: Recover Azure Arc Resource Bridge and Associated Resources After a Restore and Cluster Re-registration
+description: Learn how to recreate the Azure Arc resource bridge (ARB), custom location, logical network, and storage resources on a restored Azure Local disconnected operations cluster after a restore and re-registration of the management or data cluster.
 author: anupam8995
 ms.author: kumaranupam
-ms.date: 07/29/2026
+ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Recover ARB and associated resources after cluster re-registration
+# Recover Azure Arc resource bridge and associated resources after a restore and cluster re-registration
 
 ::: moniker range=">=azloc-2603"
 
-This article describes how to recreate the Arc Resource Bridge (ARB), custom location (CL), logical network (Lnet), and storage resources on an Azure Local disconnected operations (ALDO) cluster after you re-register the management cluster or a data cluster that you created post-backup. The existing key vault and user storage are preserved. You only need to recreate the cluster-scoped resources.
+This article describes how to recreate the Azure Arc resource bridge (ARB), custom location (CL), logical network (Lnet), and storage resources on a disconnected operations for Azure Local cluster after you re-register the management cluster or a data cluster that you created post-backup. The existing key vault and user storage are preserved. You only need to recreate the cluster-scoped resources.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2609"
+
+## Automated recovery
+
+ARB recovery is included in the public re-registration commands in the post-restore recovery module. There isn't a separate public command that only restores ARB.
+
+Use the command for the cluster type that you're recovering:
+
+- For a management cluster, [run `Invoke-ApplianceManagementClusterReRegistration`](disconnected-operations-post-restore-repair-register-management-cluster.md#invoke-appliancemanagementclusterreregistration).
+- For a data cluster that you created after the backup, first reconnect the data cluster from its DVM, and then [run `Invoke-ApplianceDataClusterReRegistration`](disconnected-operations-post-restore-repair-register-management-cluster.md#invoke-appliancedataclusterreregistration).
+
+The linked command sections include the module import, sample command, available parameters, and parameter descriptions.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2603 <azloc-2609"
+
+> [!NOTE]
+> Automated recovery is available in Azure Local 2609 and later. If your Azure Local disconnected operations version is earlier than 2609, follow the manual steps in this article.
 
 ## Prerequisites
 
 Before you start, complete these prerequisites:
 
-- **Cluster re-registration complete**: You completed [Re-register the management or data cluster (created post backup) on a restored ALDO setup](disconnected-operations-post-restore-repair-register-management-cluster.md) and `Register-AzStackHCI -RepairRegistration` finished successfully.
+- **Cluster re-registration complete**: You completed [Re-register the management or data cluster (created post backup) on a restored disconnected operations for Azure Local setup](disconnected-operations-post-restore-repair-register-management-cluster.md) and `Register-AzStackHCI -RepairRegistration` finished successfully.
 - **CredSSP session open**: You have an active CredSSP session to the seed node. To configure CredSSP and open the session, see [Step 1: Define variables, enable CredSSP, and open a CredSSP session](disconnected-operations-post-restore-repair-register-management-cluster.md#step-1-define-variables-enable-credssp-and-open-a-credssp-session). Run all the steps in this article in that CredSSP session to avoid a second-hop authentication failure.
 - **Backup public certificate available**: You have a copy of `PublicCertificate.cer` from the backup that you can copy to each cluster node.
 - **Environment values**: You have the variables `$seedNode`, `$node`, and `$cluster` defined in the CredSSP session as described in [Step 1 of the re-registration procedure](disconnected-operations-post-restore-repair-register-management-cluster.md#step-1-define-variables-enable-credssp-and-open-a-credssp-session).
@@ -165,13 +187,9 @@ After the action plan completes successfully, the ARB, custom location, logical 
 
 :::image type="content" source="media/disconnected-operations/back-up-restore/mgmt-cluster-post-full-recovery.png" alt-text="Screenshot of the portal showing the recovered management cluster." lightbox="./media/disconnected-operations/back-up-restore/mgmt-cluster-post-full-recovery.png":::
 
-## Next step
-
-Workload rehydration, such as for VMs and K8s, is coming in future versions.
-
 ## Related content
 
-- [Re-register the management or data cluster (created post backup) on a restored ALDO setup](disconnected-operations-post-restore-repair-register-management-cluster.md)
+- [Re-register the management or data cluster (created post backup) on a restored disconnected operations for Azure Local setup](disconnected-operations-post-restore-repair-register-management-cluster.md)
 - [Restore for disconnected operations for Azure Local](disconnected-operations-restore.md)
 - [Reconnect a data cluster after a disconnected operations restore](disconnected-operations-post-restore-reconnect-cluster.md)
 - [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md)
