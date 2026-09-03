@@ -1,16 +1,16 @@
 ---
-title: Reconnect Azure Arc on Cluster Machines After Disconnected Operations Restore
+title: Reconnect Azure Arc on Cluster Machines After a Restore of Disconnected Operations for Azure Local
 description: Learn how to reconnect Azure Arc on workload and management cluster machines after an Azure Local disconnected operations restore by reinstalling the Connected Machine agent and re-running Arc initialization.
 author: anupam8995
 ms.author: kumaranupam
-ms.date: 07/29/2026
+ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Reconnect Azure Arc on cluster machines after a disconnected operations restore
+# Reconnect Azure Arc on cluster machines after a restore of disconnected operations
 
 ::: moniker range=">=azloc-2603"
 
@@ -18,8 +18,56 @@ This article describes how to reconnect Azure Arc on workload and management clu
 
 Run this procedure on every workload and management cluster machine that needs to be reconnected to the restored Azure Local disconnected operations environment.
 
+::: moniker-end
+
+::: moniker range=">=azloc-2609"
+
+## Automated recovery
+
+Use the post-restore recovery module from the Operations module package to automate this procedure.
+
+### `Invoke-ApplianceArcNodeReconnection`
+
+On each cluster machine that you need to reconnect, open an administrator PowerShell session, import the module, and run the following command. Replace the sample values with values from your environment.
+
+```powershell
+$operationsModulePath = "C:\AzureLocal\OperationsModule"
+Import-Module "$operationsModulePath\Azure.Local.DisconnectedOperations.PostRestoreRecovery.psm1" -Force
+
+Invoke-ApplianceArcNodeReconnection `
+    -PublicCertificatePath "C:\Temp\PublicCertificate.cer" `
+    -AccountId "admin@contoso.com" `
+    -TenantId "00000000-0000-0000-0000-000000000000" `
+    -SubscriptionId "00000000-0000-0000-0000-000000000000" `
+    -ResourceGroup "example-resource-group" `
+    -Cloud "Azure.Local" `
+    -Region "autonomous"
+```
+
+#### Parameters
+
+The following table describes the parameters for `Invoke-ApplianceArcNodeReconnection`:
+
+| Parameter | Description | Type | Required |
+|---|---|---|---|
+| **AgentInstallerPath** | Full path to the Azure Connected Machine agent installer on the target machine. The default is `C:\ImageComposition\ArcAgent\content\AzureConnectedMachineAgent.msi`. | String | No |
+| **PublicCertificatePath** | Full path to the backup public root certificate (`.cer`) copied to the target machine. | String | Yes |
+| **Cloud** | Name of the disconnected cloud. The default is `Azure.Local`. | String | No |
+| **AccountId** | Account user principal name (UPN) used for Arc initialization. | String | Yes |
+| **TenantId** | Tenant ID of the Operator subscription. | String | Yes |
+| **SubscriptionId** | Subscription ID of the restored environment. | String | Yes |
+| **ResourceGroup** | Resource group name for the cluster. | String | Yes |
+| **Region** | Region name of the disconnected environment. The default is `autonomous`. | String | No |
+| **ArmAccessToken** | ARM access token. When omitted, the command signs in and acquires a token. | SecureString | No |
+
+The command reinstalls the Azure Connected Machine agent, imports the public root certificate, clears stale bootstrap state, reruns Arc initialization, and displays the agent state. Confirm that `Agent Status` is `Connected`. Repeat the command on every affected workload and management cluster machine.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2603 <azloc-2609"
+
 > [!NOTE]
-> Automation for the following steps is planned for a future release.
+> Automated recovery is available in Azure Local 2609 and later. If your Azure Local disconnected operations version is earlier than 2609, follow the manual steps in this article.
 
 ## Prerequisites
 
@@ -98,7 +146,7 @@ Azure.Local  https://armmanagement.contoso.private              https://login.ar
 
 ## Step 3: Remove stale bootstrap state and disconnect the agent
 
-Remove the existing bootstrap hive file and force the agent to disconnect locally so that it doesn't retain state from the pre-restore environment.
+Remove the existing bootstrap hive file and force the agent to disconnect locally so it doesn't retain state from the pre-restore environment.
 
 ```powershell
 Remove-Item -Path C:\windows\system32\bootstrap\bootstraphive.ds
@@ -314,6 +362,7 @@ Agent Auto Upgrade Task Status          : enabled, id: {00000000-0000-0000-0000-
 ```
 
 Repeat this procedure on every workload and management cluster machine that needs to be reconnected.
+
 
 ## Next step
 

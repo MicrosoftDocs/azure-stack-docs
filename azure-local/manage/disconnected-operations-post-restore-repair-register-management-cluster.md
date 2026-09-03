@@ -1,16 +1,16 @@
 ---
-title: Re-register the management or data cluster(created post backup) on a restored ALDO setup
+title: Re-register a Management or Data Cluster After a Disconnected Operations Restore
 description: Learn how to re-register the management cluster or data cluster created post backup on a restored Azure Local disconnected operations node by re-running Arc initialization, assigning roles, creating the cluster resource, and repairing registration.
 author: anupam8995
 ms.author: kumaranupam
-ms.date: 07/29/2026
+ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Re-register the management or data cluster (created post backup) on a restored ALDO setup
+# Re-register a management or data cluster after a disconnected operations restore
 
 ::: moniker range=">=azloc-2603"
 
@@ -22,22 +22,123 @@ ai-usage: ai-assisted
 
 This article describes how to re-register
 
-* Management cluster on a restored Azure Local disconnected operations node after a [restore **post cloud deployment** for disconnected operations](disconnected-operations-restore.md). During a restore on a setup where Azure Local instance is deployed, the management cluster of the newly setup restore node is deleted and replaced by the management cluster from the backup, which no longer exists. Use this procedure to recover the management cluster on the restored Azure Local disconnected operations (ALDO) environment.
+* Management cluster on a restored Azure Local disconnected operations node after a [restore **post cloud deployment** for disconnected operations](disconnected-operations-restore.md). During a restore on a setup where Azure Local instance is deployed, the management cluster of the newly setup restore node is deleted and replaced by the management cluster from the backup, which no longer exists. Use this procedure to recover the management cluster on the restored disconnected operations for Azure Local environment.
 
-* Data cluster that you created and registered post backup, implying that the physical resources exist but the restored ALDO VM no longer has knowledge of its existence.
+* Data cluster that you created and registered post backup, implying that the physical resources exist but the restored disconnected operations for Azure Local VM no longer has knowledge of its existence.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2609"
+
+## Automated recovery
+
+Use the post-restore recovery module from the Operations module package to automate re-registration.
+
+Open an administrator PowerShell session on any node of the cluster and import the module. The commands prompt before they configure CredSSP. The `management-cluster` command also discovers and prompts before it removes stray backup management-cluster resources.
+
+### `Invoke-ApplianceManagementClusterReRegistration`
+
+To re-register a management cluster, run the following command:
+
+```powershell
+$operationsModulePath = "C:\AzureLocal\OperationsModule"
+Import-Module "$operationsModulePath\Azure.Local.DisconnectedOperations.PostRestoreRecovery.psm1" -Force
+
+Invoke-ApplianceManagementClusterReRegistration `
+    -SubscriptionId "00000000-0000-0000-0000-000000000000" `
+    -ResourceGroup "example-resource-group" `
+    -AccountId "admin@contoso.com" `
+    -TenantId "00000000-0000-0000-0000-000000000000" `
+    -PublicCertificatePath "C:\Temp\PublicCertificate.cer" `
+    -CloudName "Azure.Local" `
+    -Region "autonomous"
+```
+
+#### Parameters
+
+The following table describes the parameters for `Invoke-ApplianceManagementClusterReRegistration`:
+
+| Parameter | Description | Type | Required |
+|---|---|---|---|
+| **ClusterNodeName** | Name of the cluster node on which the command runs. The default is the current computer. | String | No |
+| **ClusterName** | Name of the Azure Local cluster resource to recreate. When omitted, the command discovers the name from deployment data. | String | No |
+| **NodeNames** | Cluster node names. When omitted, the command discovers the nodes from deployment data. | String array | No |
+| **SubscriptionId** | Subscription ID of the restored environment. | String | Yes |
+| **ResourceGroup** | Resource group name for the cluster. | String | Yes |
+| **Region** | Region name of the disconnected environment. The default is `autonomous`. | String | No |
+| **CloudName** | Name of the disconnected cloud. The default is `Azure.Local`. | String | No |
+| **AccountId** | Account user principal name (UPN) used for registration. | String | Yes |
+| **TenantId** | Tenant ID of the Operator subscription. | String | Yes |
+| **PublicCertificatePath** | Full path to the backup public root certificate (`.cer`) used to recreate ARB. | String | Yes |
+| **ControlPlaneGroupName** | Name of the control plane cluster group. When omitted, the command discovers the group whose name contains `control-plane`. | String | No |
+| **AppliancePath** | Path to the Arc appliance working directory. The default is `C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\MocArb\WorkingDirectory\Appliance`. | String | No |
+| **ArmAccessToken** | ARM access token. When omitted, the command acquires a token from the connected Az PowerShell context. | SecureString | No |
+| **DomainFqdn** | Active Directory domain FQDN used to configure CredSSP. When omitted, the command discovers it from deployment data. | String | No |
+| **Credential** | Credentials for remote sessions to cluster nodes. When omitted, the command uses the current session credentials. | PSCredential | No |
+| **SkipStrayResourceDeletion** | Skips discovery and deletion of stray backup management-cluster resources. | Switch | No |
+| **Force** | Skips the interactive prompts to configure CredSSP and delete stray backup management-cluster resources. | Switch | No |
+
+The command discovers the cluster and node names from deployment data, ensures that required roles are assigned, repairs cluster registration, reconnects any cluster node whose Azure Connected Machine agent isn't connected, and recreates the Arc Resource Bridge (ARB) and associated resources.
+
+### `Invoke-ApplianceDataClusterReRegistration`
+
+For a data cluster that you created after the backup, first complete the reconnection procedure on the DVM, and then run the following command on any cluster node:
+
+```powershell
+$operationsModulePath = "C:\AzureLocal\OperationsModule"
+Import-Module "$operationsModulePath\Azure.Local.DisconnectedOperations.PostRestoreRecovery.psm1" -Force
+
+Invoke-ApplianceDataClusterReRegistration `
+    -SubscriptionId "00000000-0000-0000-0000-000000000000" `
+    -ResourceGroup "example-resource-group" `
+    -AccountId "admin@contoso.com" `
+    -TenantId "00000000-0000-0000-0000-000000000000" `
+    -PublicCertificatePath "C:\Temp\PublicCertificate.cer" `
+    -CloudName "Azure.Local" `
+    -Region "autonomous"
+```
+
+#### Parameters
+
+The following table describes the parameters for `Invoke-ApplianceDataClusterReRegistration`:
+
+| Parameter | Description | Type | Required |
+|---|---|---|---|
+| **ClusterNodeName** | Name of the cluster node on which the command runs. The default is the current computer. | String | No |
+| **ClusterName** | Name of the Azure Local cluster resource to recreate. When omitted, the command discovers the name from deployment data. | String | No |
+| **NodeNames** | Cluster node names. When omitted, the command discovers the nodes from deployment data. | String array | No |
+| **SubscriptionId** | Subscription ID of the restored environment. | String | Yes |
+| **ResourceGroup** | Resource group name for the cluster. | String | Yes |
+| **Region** | Region name of the disconnected environment. The default is `autonomous`. | String | No |
+| **CloudName** | Name of the disconnected cloud. The default is `Azure.Local`. | String | No |
+| **AccountId** | Account user principal name (UPN) used for registration. | String | Yes |
+| **TenantId** | Tenant ID of the Operator subscription. | String | Yes |
+| **PublicCertificatePath** | Full path to the backup public root certificate (`.cer`) used to recreate ARB. | String | Yes |
+| **ControlPlaneGroupName** | Name of the control plane cluster group. When omitted, the command discovers the group whose name contains `control-plane`. | String | No |
+| **AppliancePath** | Path to the Arc appliance working directory. The default is `C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\MocArb\WorkingDirectory\Appliance`. | String | No |
+| **ArmAccessToken** | ARM access token. When omitted, the command acquires a token from the connected Az PowerShell context. | SecureString | No |
+| **DomainFqdn** | Active Directory domain FQDN used to configure CredSSP. When omitted, the command discovers it from deployment data. | String | No |
+| **Credential** | Credentials for remote sessions to cluster nodes. When omitted, the command uses the current session credentials. | PSCredential | No |
+| **Force** | Skips the interactive prompt to configure CredSSP. | Switch | No |
+
+The command discovers the cluster and node names from deployment data, ensures that required roles are assigned, repairs cluster registration, and recreates the ARB and associated resources.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2603 <azloc-2609"
 
 > [!NOTE]
-> Complete [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md) on each cluster machine. That article covers the prerequisite work that this procedure builds on, including copying and importing the management certificates from the seed node, reinstalling the Azure Connected Machine agent, and running Azure Local Arc initialization against the restored environment.
+> Automated recovery is available in Azure Local 2609 and later. If your Azure Local disconnected operations version is earlier than 2609, follow the manual steps in this article.
 
 > [!NOTE]
-> Automation for the following steps is planned for a future release.
+> For the manual procedure, complete [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md) on each cluster machine. That article covers the prerequisite work that this procedure builds on, including copying and importing the management certificates from the seed node, reinstalling the Azure Connected Machine agent, and running Azure Local Arc initialization against the restored environment.
 
 ## Prerequisites
 
 Before you start, complete these prerequisites:
 
 - **Restore complete**: The [restore operation](disconnected-operations-restore.md) for your Azure Local disconnected environment finishes successfully.
-- **Delete backup management cluster resources in portal (not applicable for data cluster re-registration)** - Delete ARC machines, cluster, lnet, custom location, and ARB for the backup management cluster. These resources are phantom resources as no on-prem connection exists for these resources with backup machine being considered unavailable in this scenario.
+- **Delete backup management cluster resources in portal (not applicable for data cluster re-registration)** - Delete ARC machines, cluster, lnet, custom location, and Azure Arc resource bridge (ARB) for the backup management cluster. These resources are phantom resources as no on-prem connection exists for these resources with backup machine being considered unavailable in this scenario.
 - **Azure Arc reconnected on cluster machines**: You complete [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md) for each cluster machine.
 - **Operator access**: Your identity has the required OperatorRP RBAC role in the Operator subscription. For more information, see [Operator subscription and RBAC permissions](disconnected-operations-identity.md).
 - **Seed node access**: You have administrative access to the seed node. The certificates and dependencies are located under `C:\ProgramData\Microsoft\aldodependencies` on the seed node, and you can reach them through the administrative share, for example, `\\$seedNode\c$\ProgramData\Microsoft\aldodependencies`.
@@ -60,7 +161,7 @@ Before you start, complete these prerequisites:
 
 ## Overview of the re-registration workflow
 
-After you complete the [Arc reconnection prerequisite](disconnected-operations-post-restore-reconnect-arc.md) on each cluster machine, complete these steps to re-register the management cluster and data cluster that you created after backup on the restored node:
+After you complete the [Arc reconnection prerequisite](disconnected-operations-post-restore-reconnect-arc.md) on each cluster machine, follow these steps to re-register the management cluster and data cluster that you created after backup on the restored node:
 
 > [!IMPORTANT]
 > Run all the following steps on the seed node.
@@ -316,7 +417,7 @@ VERBOSE: Importing cmdlet 'Find-PackageProvider'.
 ...
 ```
 
-After `Register-AzStackHCI` completes successfully, the management cluster is re-registered on the restored Azure Local disconnected operations environment.
+After `Register-AzStackHCI` completes successfully, the management cluster is re-registered on the restored disconnected operations for Azure Local environment.
 
 ```powershell
 VERBOSE: Cloud Deployment detected via registry key
@@ -362,19 +463,19 @@ and support experience.
 VERBOSE: Connecting from management
 ```
 
-## Next steps
+## Next step
 
-After the management cluster (or data cluster created post backup) is re-registered, recreate the Arc Resource Bridge (ARB), custom location, logical network, and storage resources for the cluster:
+After the management cluster (or data cluster created post backup) is re-registered, recreate the Azure Arc resource bridge (ARB), custom location, logical network, and storage resources for the cluster.
 
-- [Recover ARB and associated resources after cluster re-registration](disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md)
+> [!div class="nextstepaction"]
+> [Recover Azure Arc resource bridge and associated resources after a restore and cluster re-registration](disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md)
 
 ## Related content
 
-- [Recover ARB and associated resources after cluster re-registration](disconnected-operations-post-restore-recover-azure-resource-bridge-resources.md)
-- [Restore for disconnected operations for Azure Local](disconnected-operations-restore.md)
-- [Reconnect a data cluster after a disconnected operations restore](disconnected-operations-post-restore-reconnect-cluster.md)
-- [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md)
-- [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true)
+* [Restore for disconnected operations for Azure Local](disconnected-operations-restore.md)
+* [Reconnect a data cluster after a disconnected operations restore](disconnected-operations-post-restore-reconnect-cluster.md)
+* [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md)
+* [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true)
 
 ::: moniker-end
 
