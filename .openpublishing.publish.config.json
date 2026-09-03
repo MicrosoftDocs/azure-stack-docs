@@ -137,12 +137,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "modules",
-      "url": "https://github.com/MicrosoftDocs/edge-modules",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "reusable-content",
       "url": "https://github.com/MicrosoftDocs/reusable-content",
       "branch": "main",
