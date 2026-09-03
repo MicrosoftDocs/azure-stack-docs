@@ -27,6 +27,7 @@ This article describes new features and improvements in disconnected operations 
 - Restored AKS-airgapped cluster creation.
 - Improved support diagnostics.
 - Scalability and reliability improvements.
+- Support for Add and Remove node operations. 
 
 ::: moniker-end
 
