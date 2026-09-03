@@ -1,22 +1,64 @@
 ---
-title: Reconnect Data Cluster After Azure Local Disconnected Operations Restore
+title: Reconnect Data Cluster After a Restore of Disconnected Operations for Azure Local
 description: Learn how to reconnect an Azure Local data cluster to a new restore machine after a disconnected operations restore by updating DNS, refreshing Arc agents, and restarting the control plane VM.
 author: anupam8995
 ms.author: kumaranupam
-ms.date: 07/22/2026
+ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# Reconnect a data cluster after a disconnected operations restore
+# Reconnect a data cluster after a restore of disconnected operations
 
 ::: moniker range=">=azloc-2603"
 
 This article describes how to reconnect an Azure Local data cluster to a new restore machine after you complete a [restore for disconnected operations](disconnected-operations-restore.md). After a restore, the IRVM and the control plane VM might run on a new IP address. Existing data clusters continue to point to the old IP and can't reach the restored environment until you update DNS, flush cached records, and restart the Azure Arc agents on the cluster hosts and DVM.
 
 Use this procedure to redirect the cluster to the new IRVM and reestablish the connection so that you can manage virtual servers and other resources through the portal.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2609"
+
+## Automated recovery
+
+Use the post-restore recovery module from the Operations module package to automate this procedure.
+
+### `Invoke-ApplianceDataClusterReconnection`
+
+On the data cluster's Deployment VM (DVM), open an administrator PowerShell session, import the module, and run the following command. Replace the sample IP address and DNS zone with values from your environment.
+
+```powershell
+$operationsModulePath = "C:\AzureLocal\OperationsModule"
+Import-Module "$operationsModulePath\Azure.Local.DisconnectedOperations.PostRestoreRecovery.psm1" -Force
+
+Invoke-ApplianceDataClusterReconnection `
+    -NewIngressIpAddress "10.0.0.50" `
+    -DnsZoneName "autonomous.aldo.private"
+```
+
+#### Parameters
+
+The following table describes the parameters for `Invoke-ApplianceDataClusterReconnection`:
+
+| Parameter | Description | Type | Required |
+|---|---|---|---|
+| **NewIngressIpAddress** | New IRVM01 ingress IP address in the restored environment. | String | Yes |
+| **DnsZoneName** | Disconnected operations DNS zone name, for example, `autonomous.aldo.private`. | String | Yes |
+| **RecordName** | Host A record to update. The default is the wildcard record (`*`). | String | No |
+| **ClusterHostName** | Cluster host names on which to clear DNS caches, restart Arc services, and locate the control plane VM. When omitted, the command discovers the hosts from deployment data on the DVM. | String array | No |
+| **Credential** | Credentials for remote sessions to the cluster hosts. When omitted, the command uses the current session credentials. | PSCredential | No |
+
+The command discovers the cluster hosts from the deployment data, updates the wildcard DNS A record, clears DNS caches, restarts the Azure Connected Machine agent services, and restarts the control plane VM. Use `-ClusterHostName` to provide the host names explicitly or `-Credential` when the remote sessions require alternate credentials.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2603 <azloc-2609"
+
+> [!NOTE]
+> Automated recovery is available in Azure Local 2609 and later. If your Azure Local disconnected operations version is earlier than 2609, follow the manual steps in this article.
 
 ## Prerequisites
 
