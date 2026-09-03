@@ -14,7 +14,7 @@ ms.custom: template-concept
 Operator Nexus releases various functionality and bug fixes throughout the product lifecycle to update the Azure resources and on-premises extensions, critical in communications back to Azure.
 
 > [!NOTE]
-> This article describes **Cluster Management Bundle Upgrades (CMBU)**, which are automatically applied by Microsoft. While a CMBU is in progress, existing workloads aren't impacted, but creating new workloads might be affected. These upgrades are separate from **Cluster Runtime Upgrades**, which are customer-managed and disruptive. For more information, see [Related content](#related-content).
+> This article describes **Cluster Management Bundle Upgrades (CMBU)**, which Microsoft automatically applies. While a CMBU is in progress, existing workloads aren't impacted, but creating new workloads might be slightly delayed. These upgrades are separate from **Cluster Runtime Upgrades**, which are customer-managed and disruptive. For more information, see [Related content](#related-content).
 
 ## Scope
 The releases update components on the Cluster to enable new functionality, while maintaining backwards compatibility for the customer. Additionally, new runtime releases are made available and accessed via [Cluster Runtime Upgrades](./howto-cluster-runtime-upgrade.md).
@@ -23,7 +23,8 @@ The releases update components on the Cluster to enable new functionality, while
 CMBU is triggered independently when the release is available in the Azure region.
 
 ## Impact to customer workloads
-There's no disruption to running workloads or instantiating new workloads, and on-premises resources retain availability throughout the upgrade. Therefore, the customer sees no impact. 
+Existing workload readiness and general node health remain unaffected throughout a CMBU. Any baremetalMachines `readyState` transitioning to `false` briefly during the upgrade doesn't affect existing or new workloads. However, new workload creation might be slightly delayed during the upgrade window. 
+
 
 ## Duration of on-premises updates
 Updates take up to one hour to complete per Cluster.
