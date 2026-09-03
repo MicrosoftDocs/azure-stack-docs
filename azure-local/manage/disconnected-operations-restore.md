@@ -3,7 +3,7 @@ title: Restore Azure Local Disconnected Environments
 description: Learn how to restore an Azure Local environment running in disconnected mode. Configure restore parameters and trigger a restore operation.
 author: ronmiab
 ms.author: robess
-ms.date: 04/03/2026
+ms.date: 09/02/2026
 ms.topic: concept-article
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -14,15 +14,15 @@ ai-usage: ai-assisted
 
 ::: moniker range=">=azloc-2603"
 
+> [!IMPORTANT]
+> The restore operation supports restoring the backup to the same version of Azure Local disconnected environment.
+
 This article explains the restore process for disconnected operations for Azure Local environments. It provides practical steps to trigger a restore and parameter configurations to customize it. Operators need access to the [Operator subscription and role-based access control (RBAC) permissions](disconnected-operations-identity.md).
   
 For more information, see [Disconnected operations for Azure Local](/azure/azure-local/manage/disconnected-operations-overview?view=azloc-2602&preserve-view=true).
 
-> [!IMPORTANT]
-> The restore operation supports restoring the backup to the same version of Azure Local disconnected environment.
-
 > [!TIP]
-> Restore ALDO before cloud deployment on the new instance in order to avoid repair registration of management cluster. In case of restoring on same instance as backup, restore can be performed after cloud deployment post which follow (reconnect sequence)[disconnected-operations-post-restore-reconnect-cluster.md] for management cluster rehydration.
+> Restore disconnected operations for Azure Local *before* cloud deployment on the new instance to avoid repair registration of the management cluster. If you restore on the same instance as the backup, you can run the restore after cloud deployment. In that case, follow the [management cluster rehydration sequence](disconnected-operations-post-restore-repair-register-management-cluster.md) to re-register the management cluster. For the recommended end-to-end order, see [Post-restore rehydration overview for disconnected operations](disconnected-operations-post-restore-overview.md).
 
 ## Overview
 
@@ -95,16 +95,17 @@ To trigger and monitor the restore, follow these steps:
 > Before you initiate a restore, the backup state and the current environment state might have differences in the workload state of the control plane data. The restore operation can cause a drift in the resource metadata.
 
 - **Lost resources**: You can't recover cloud-only resources that you created after the backup. You must recreate these resources.
-- **Untracked Arc resources**: You need to rehydrate or re-register resources that you created after the backup and exist on the cluster but are missing in restored metadata.
+- **Untracked Arc resources**: You need to rehydrate or re-register resources that you created after the backup and exist on the cluster but are missing in restored metadata. To recover a data cluster that you created after the backup, see [Recover a data cluster created after backup following a disconnected operations restore](disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md).
 - **Phantom / Resurrected resources**: You need to clean up resources that you deleted after the backup but reappear as metadata after restoring.
 - **Drifted resources**: Restored environment reflects old state for resources that you updated after backup. This state might break authentication or management until remediated.
-- **Azure Local cluster infra drift**: You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup.
+- **Azure Local cluster infra drift**: You need to repair registration and re-Arc actions for membership changes or new clusters registered after the backup. See [Reconnect Azure Arc on cluster machines after a disconnected operations restore](disconnected-operations-post-restore-reconnect-arc.md) and [Re-register the management or data cluster (created post backup) on a restored disconnected operations for Azure Local setup](disconnected-operations-post-restore-repair-register-management-cluster.md).
 - **Certificate expiry / rotation**: Older backups might contain expired certificates or mismatched client authentication certificate. You need manual remediation and rotation.
 
 ## Next steps
 
+- For the recommended end-to-end order of the post-restore rehydration steps: [Post-restore rehydration overview for disconnected operations](disconnected-operations-post-restore-overview.md).
 - To reconnect an existing data cluster from backup to the restored environment: [Reconnect a data cluster after a disconnected operations restore](disconnected-operations-post-restore-reconnect-cluster.md).
-- To re-register a management cluster (if restore was initiated after cloud deployment): [Re-register the management or data cluster (created post backup) on a restored ALDO setup](disconnected-operations-post-restore-repair-register-management-cluster.md).
+- To re-register a management cluster (if restore was initiated after cloud deployment): [Re-register the management or data cluster (created post backup) on a restored disconnected operations for Azure Local setup](disconnected-operations-post-restore-repair-register-management-cluster.md).
 - To re-register data cluster created after backup, do this: [Recover a data cluster created after backup following a disconnected operations restore](disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md).
 
 ::: moniker-end

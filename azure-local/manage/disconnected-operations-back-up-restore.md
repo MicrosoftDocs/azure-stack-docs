@@ -3,7 +3,7 @@ title: Back up Azure Local Disconnected Environments
 description: Learn how to back up Azure Local environments running disconnected. Configure parameters and trigger backups.
 author: ronmiab
 ms.author: robess
-ms.date: 02/23/2026
+ms.date: 09/02/2026
 ms.topic: concept-article
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -123,6 +123,11 @@ Rerun the command with the `-ExternalDomainSuffix` parameter set to your externa
 ```powershell
 -ExternalDomainSuffix autonomous.aldo.private
 ```
+
+## Next steps
+
+- To restore the control plane data from a backup, see [Restore for disconnected operations for Azure Local](disconnected-operations-restore.md).
+- To understand the end-to-end rehydration sequence after a restore, see [Post-restore rehydration overview for disconnected operations](disconnected-operations-post-restore-overview.md).
 
 ::: moniker-end
 

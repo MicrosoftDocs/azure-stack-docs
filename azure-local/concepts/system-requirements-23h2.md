@@ -44,6 +44,7 @@ Here are the Azure requirements for your Azure Local instance:
    - Canada Central
    - Japan East
    - South Central US
+   - UK West
 
   ### [Azure Government](#tab/azure-government)
 

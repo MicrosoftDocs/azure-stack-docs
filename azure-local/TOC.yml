@@ -1252,6 +1252,8 @@ items:
           href: manage/disconnected-operations-back-up-restore.md
         - name: Restore disconnected operations
           href: manage/disconnected-operations-restore.md
+        - name: Post-restore rehydration overview
+          href: manage/disconnected-operations-post-restore-overview.md
         - name: Reconnect data cluster after restore
           href: manage/disconnected-operations-post-restore-reconnect-cluster.md
         - name: Reconnect Azure Arc on cluster machines after restore
