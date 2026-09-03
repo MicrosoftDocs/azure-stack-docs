@@ -16,6 +16,9 @@ ai-usage: ai-assisted
 
 This article explains how to update disconnected operations for Azure Local. Learn how to apply updates to the appliance to ensure optimal performance and reliability in disconnected environments.
 
+> [!NOTE]
+> You must update Azure Local disconnected operations regularly to stay supported. Establish an update routine as part of your production planning.
+
 ## Get updates
 
 Keep your disconnected operations appliance up to date. Follow these steps to download and apply the latest updates.
@@ -23,17 +26,21 @@ Keep your disconnected operations appliance up to date. Follow these steps to do
 1. From the Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete in your browser. You can also use the script based download.
-1. Verify that you have the following files downloaded: `Docker.wim`, `OS.wim`, `Package.zip`, `EFI.wim`, `Manifest.xml`, and `Notice.txt`.
+1. Verify that you have downloaded the following files: `Docker.wim`, `OS.wim`, `Package.zip`, `EFI.wim`, `Manifest.xml`, `OperationsModule.zip`, and `Notice.txt`.
 1. Copy the files to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations\Update`.
+1. Extract `OperationsModule.zip` on the first machine (seed node) to a folder, such as `C:\AzureLocalDisconnectedOperations\Update`.
 
 ## Load the OperationsModule
 
-To prepare the seed node for managing disconnected operations, run the following command to load the OperationsModule.
+To prepare the seed node for managing disconnected operations, run the following command to load the updated OperationsModule.
 
 ```powershell
-$applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations'
+$applianceConfigBasePath = 'C:\AzureLocalDisconnectedOperations\Update'
 # Import the OperationsModule
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force    
+$password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
+$managementIp = "169.254.53.25"
+$context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress $managementIp 
 ```
 
 ## Upload the update

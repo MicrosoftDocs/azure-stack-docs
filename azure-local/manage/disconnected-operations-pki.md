@@ -27,7 +27,7 @@ Certificates must come from a public certificate authority (CA) or enterprise ce
 Group mandatory certificates by area with the appropriate Subject Alternative Name (SAN). Before you create the certificates, review these requirements:
 
 - The use of self-signed certificates isn't supported. We recommend you use certificates issued by an enterprise CA.
-- Disconnected operations require 23 external certificates for the endpoints it exposes.
+- Disconnected operations require several external certificates for the endpoints it exposes.
 - Generate individual certificates for each endpoint and copy them into the corresponding directory or folder structure. These certificates are required for disconnected operations deployment.
 - Define the subject and SAN for all certificates, as required by most browsers.
 - All certificates should share the same trust chain and have at least a two-year expiration from the day of deployment.
@@ -54,7 +54,6 @@ This table lists the mandatory certificates required for disconnected operations
 | Azure Key Vault | `*.vault.fqdn` |
 | Admin management | `adminmanagement.fqdn` |
 | Arc for Server Agent data service | `agentserviceapi.fqdn` |
-| Arc monitor agent | `amcs.monitoring.fqdn` |
 | Arc configuration data plane <br></br> Azure Arc-enabled Kubernetes | `arckubernetesconfig.fqdn` |
 | Azure Resource Manager | `armmanagement.fqdn` <br></br> `management.fqdn` |
 | Public portal catalog apis| `catalogapi.fqdn` |
@@ -67,7 +66,6 @@ This table lists the mandatory certificates required for disconnected operations
 | Arc for server | `his.fqdn` |
 | Public portal hosting | `hosting.fqdn` |
 | Secure token service | `login.fqdn` |
-| Arc metrics | `metricsingestiongateway.monitoring.fqdn` |
 | Public portal | `portal.fqdn` |
 
 
@@ -94,7 +92,7 @@ You need these certificates to deploy the disconnected operations appliance. You
 1. Connect to the CA.
 1. Create a folder named **IngressEndpointsCerts**. Use this folder to store all certificates.
 1. Create the certificates by using the OperationsModule helper method with the target **IngressEndpointsCerts** folder.
-1. View and copy the certificates (23 .pfx files) exported to **IngressEndpointsCerts**.
+1. View and copy the certificates (.pfx files) exported to **IngressEndpointsCerts**.
 
 The following script shows you how to use the OperationsModule to generate certificates. The script creates Certificate Signing Requests (CSRs), submits them to your Certificate Authority (CA), and then exports the generated certificates with password protection.
 
@@ -175,7 +173,7 @@ certutil -encode "C:\Temp\RootCA-DER.cer" $applianceRootcert
 For more information, see [Active Directory Certificate Services](/troubleshoot/windows-server/certificates-and-public-key-infrastructure-pki/export-root-certification-authority-certificate).
 
 >[!NOTE]
-> **Root cert is required.** Use the explicit root certificate, not an intermediate certificate. Deployment fails if the full trust chain for the ingress endpoint certificates is missing.
+> **Root certificate is required.** Use the explicit root certificate, not an intermediate certificate. Deployment fails if the full trust chain for the ingress endpoint certificate is missing.
 
 
 ## Obtain certificate information for identity integration
@@ -211,7 +209,7 @@ TESTING9BFD666761B268073FE06D1CC8D4F82A4  CN=www.website.com, O=Contoso Corporat
 ```
 
 ### Appendix
-#### Validate CRL using Powershell script
+#### Validate CRL by using PowerShell script
 - Copy the below script into a file and name it ValidateCRL.ps1 
 - Invoke the script by using `.\ValidateCRL.ps1 -domainFQDN 'cloud.contoso.com'`
 ```powershell
@@ -325,8 +323,6 @@ $AzLCerts = @(
   "agentserviceapi.$fqdn"
   "his.$fqdn"
   "guestnotificationservice.$fqdn"
-  "metricsingestiongateway.monitoring.$fqdn"
-  "amcs.monitoring.$fqdn"
   "dp.appliances.$fqdn"
   "armmanagement.$fqdn"
   "adminmanagement.$fqdn"

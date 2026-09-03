@@ -1,9 +1,9 @@
 ---
-title: App Service on Azure Stack Hub 2302 release notes 
-description: Learn about what's new in the 2302 release for App Service on Azure Stack Hub and where to download the update.
+title: App Service on Azure Stack Hub 2302 release notes
+description: Learn about whats new in the 2302 release for App Service on Azure Stack Hub and where to download the update.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 08/12/2024
+ms.date: 07/09/2026
 ms.author: sethm
 ms.reviewer: anwestg
 
@@ -17,11 +17,11 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2302 build number is **98.0.1.703**
+The App Service on Azure Stack Hub 2302 build number is **98.0.1.703**.
 
 ## What's new?
 
-Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release](app-service-release-notes-2022-h1.md) and includes fixes for the following issues:
+App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release](app-service-release-notes-2022-h1.md) and includes fixes for the following issues:
 
 - [CVE-2023-21703 Azure App Service on Azure Stack Hub Elevation of Privilege Vulnerability](https://go.microsoft.com/fwlink/?linkid=2225046).
 
@@ -29,19 +29,19 @@ Azure App Service on Azure Stack Hub 2302 release replaces the [2022 H1 release]
 
 - All other updates are documented in the [Azure App Service on Azure Stack Hub 2022 H1 Update Release Notes](app-service-release-notes-2022-h1.md).
 
-- As of the Azure App Service on Azure Stack Hub 2022 H1 update, the letter **K** is now a reserved SKU letter. If you have a custom SKU defined that uses the letter K, contact support to assist with resolving this situation prior to upgrade.
+- As of the App Service on Azure Stack Hub 2022 H1 update, the letter **K** is now a reserved SKU letter. If you have a custom SKU defined that uses the letter K, contact support to assist with resolving this situation prior to upgrade.
 
 ## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2302:
+Before you begin the upgrade of App Service on Azure Stack Hub to 2302:
 
 - Ensure your **Azure Stack Hub** is updated to **1.2108.2.127** or **1.2206.2.52**.
 
-- Ensure all roles are ready in the Azure App Service administration in the Azure Stack Hub admin portal.
+- Ensure all roles are ready in the App Service administration in the Azure Stack Hub admin portal.
 
-- Back up App Service secrets using the App Service administration in the Azure Stack Hub admin portal.
+- Back up App Service secrets by using the App Service administration in the Azure Stack Hub admin portal.
 
 - Back up the App Service and SQL Server master databases:
   - AppService_Hosting;
@@ -51,38 +51,38 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2302:
 - Back up the tenant app content file share.
 
   > [!IMPORTANT]
-  > Cloud operators are responsible for the maintenance and operation of the file server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > Cloud operators are responsible for the maintenance and operation of the file server and SQL Server. The resource provider doesn't manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
 - Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
 
 ## Pre-update steps
 
  > [!NOTE]
- > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues.
+ > If you previously deployed App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 that addresses two issues.
 
-Azure App Service on Azure Stack Hub 2302 is a significant update that will take multiple hours to complete. The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS. Therefore, we recommend informing end customers of a planned update before applying the update.
+App Service on Azure Stack Hub 2302 is a significant update that takes multiple hours to complete. The whole deployment is updated and all roles are recreated with the Windows Server 2022 Datacenter OS. Therefore, inform your end customers of a planned update before applying the update.
 
-- As of the Azure App Service on Azure Stack Hub 2022 H1 update, the letter **K** is now a reserved SKU letter. If you have a custom SKU defined that uses the letter K, contact support to assist with resolving this situation prior to upgrade.
+- As of the App Service on Azure Stack Hub 2022 H1 update, the letter **K** is now a reserved SKU letter. If you have a custom SKU defined that uses the letter K, contact support to assist with resolving this situation prior to upgrade.
 
 Review the [known issues for update](#known-issues-update) and take any actions prescribed.
 
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you provide the App Service resource provider with a SQL Always On instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
-- In situations where you have converted the appservice_hosting and appservice_metering databases to contained databases, the upgrade may fail if logins haven't been successfully migrated to contained users.
+- In situations where you convert the appservice_hosting and appservice_metering databases to contained databases, the upgrade might fail if you don't successfully migrate logins to contained users.
 
-  If you converted the appservice_hosting and appservice_metering databases to contained database post deployment, and haven't successfully migrated the database logins to contained users, you might experience upgrade failures.  
+  If you convert the appservice_hosting and appservice_metering databases to contained databases after deployment, and you don't successfully migrate the database logins to contained users, you might experience upgrade failures.  
 
-  You must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and will not cause downtime.
+  You must run the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your App Service on Azure Stack Hub installation to 2020 Q3. This script is non-destructive and doesn't cause downtime.
 
-  This script must be run under the following conditions:
+  Run this script under the following conditions:
 
-  - By a user that has the system administrator privilege, for example the SQL SA Account.
-  - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+  - By a user that has the system administrator privilege, such as the SQL SA Account.
+  - If you're using SQL Always On, ensure you run the script from the SQL instance that contains all App Service logins in the form:
     - appservice_hosting_FileServer
     - appservice_hosting_HostingAdmin
     - appservice_hosting_LoadBalancer
@@ -148,22 +148,22 @@ Review the [known issues for update](#known-issues-update) and take any actions 
         GO
   ```
 
-- Tenant Applications are unable to bind certificates to applications after upgrade.
+- Tenant applications can't bind certificates to applications after upgrade.
 
-  The cause of this issue is due to a missing feature on front-ends after the upgrade to Windows Server 2022. Operators must follow this procedure to resolve the issue.
+  This problem happens because of a missing feature on front-ends after the upgrade to Windows Server 2022. Operators must follow this procedure to resolve the problem.
 
-  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+  1. In the Azure Stack Hub admin portal, go to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
-  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
+  1. By default, remote desktop is disabled to all App Service infrastructure roles. Change the **Inbound_Rdp_3389** rule action to **Allow** access.
 
-  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
+  1. Go to the resource group containing the App Service Resource Provider deployment. By default, the name is **AppService.\<region\>**. Connect to **CN0-VM**.
   1. Return to the **CN0-VM** remote desktop session.
-  1. In an administrator PowerShell session run:
+  1. In an administrator PowerShell session, run:
 
       > [!IMPORTANT]
-      > During the execution of this script there will be a pause for each instance in the front end scaleset. If there is a message indicating the feature is being installed,
-      > that instance will be rebooted. Use the pause in the script to maintain front end availability. Operators must ensure at least one front end instance is "Ready" at all times
-      > to ensure tenant applications can receive traffic and not experience downtime.
+      > During the execution of this script, there's a pause for each instance in the front end scale set. If there's a message indicating the feature is being installed,
+      > that instance is rebooted. Use the pause in the script to maintain front end availability. Operators must ensure at least one front end instance is "Ready" at all times
+      > to ensure tenant applications can receive traffic and don't experience downtime.
 
       ```powershell
       $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
@@ -190,15 +190,15 @@ Review the [known issues for update](#known-issues-update) and take any actions 
       Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
       ```
 
-  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+  1. In the Azure Stack admin portal, go back to the **ControllersNSG** Network Security Group.
 
-  1. Modify the **Inbound_Rdp_3389** rule to deny access.
+  1. Change the **Inbound_Rdp_3389** rule to deny access.
 
 ## Known issues (post-installation)
 
-- Workers are unable to reach the file server when App Service is deployed in an existing virtual network and the file server is only available on the private network, as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers can't reach the file server when you deploy App Service in an existing virtual network and the file server is only available on the private network, as described in the App Service on Azure Stack deployment documentation.
 
-  If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+  If you choose to deploy into an existing virtual network and use an internal IP address to connect to your file server, you must add an outbound security rule that enables SMB traffic between the worker subnet and the file server. Go to the **WorkersNsg** in the admin portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -209,9 +209,9 @@ Review the [known issues for update](#known-issues-update) and take any actions 
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server, we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory controllers if securing the file server using Active Directory; for example, if you've used the Quickstart template to deploy a HA file server and SQL Server.
+- To remove latency when workers communicate with the file server, also add the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory controllers if you're securing the file server by using Active Directory. For example, if you used the Quickstart template to deploy a HA file server and SQL Server.
 
-  Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+  Go to the **WorkersNsg** in the admin portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -222,22 +222,22 @@ Review the [known issues for update](#known-issues-update) and take any actions 
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
-- Tenant applications are unable to bind certificates to applications after upgrade.
+- Tenant applications can't bind certificates to applications after upgrade.
 
-  The cause of this issue is due to a missing feature on front ends after the upgrade to Windows Server 2022. Operators must follow this procedure to resolve the issue:
+  This problem happens because of a missing feature on front ends after the upgrade to Windows Server 2022. Operators must follow this procedure to resolve the problem:
 
-  1. In the Azure Stack Hub admin portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
+  1. In the Azure Stack Hub admin portal, go to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
 
-  1. By default, remote desktop is disabled to all App Service infrastructure roles. Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
+  1. By default, remote desktop is disabled to all App Service infrastructure roles. Change the **Inbound_Rdp_3389** rule action to **Allow** access.
 
-  1. Navigate to the resource group containing the App Service Resource Provider deployment, by default the name is **AppService.\<region\>** and connect to **CN0-VM**.
+  1. Go to the resource group containing the App Service Resource Provider deployment. By default, the name is **AppService.\<region\>**. Connect to **CN0-VM**.
   1. Return to the **CN0-VM** remote desktop session.
-  1. In an administrator PowerShell session run:
+  1. In an administrator PowerShell session, run:
       
       > [!IMPORTANT]
-      > During the execution of this script there will be a pause for each instance in the front end scaleset. If there is a message indicating the feature is being installed,
-      > that instance will be rebooted. Use the pause in the script to maintain front end availability. Operators must ensure at least one front end instance is "Ready" at all times
-      > to ensure tenant applications can receive traffic and not experience downtime.
+      > During the execution of this script, there's a pause for each instance in the front end scale set. If there's a message indicating the feature is being installed,
+      > that instance is rebooted. Use the pause in the script to maintain front end availability. Operators must ensure at least one front end instance is "Ready" at all times
+      > to ensure tenant applications can receive traffic and don't experience downtime.
 
       ```powershell
       $c = Get-AppServiceConfig -Type Credential -CredentialName FrontEndCredential
@@ -263,21 +263,21 @@ Review the [known issues for update](#known-issues-update) and take any actions 
       Remove-PSSession -Session $session      
       ```
 
-  1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
+  1. In the Azure Stack admin portal, go back to the **ControllersNSG** Network Security Group.
 
-  1. Modify the **Inbound_Rdp_3389** rule to deny access.
+  1. Change the **Inbound_Rdp_3389** rule to deny access.
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for cloud admins operating App Service on Azure Stack
 
 - Custom domains aren't supported in disconnected environments.
 
-  App Service performs domain ownership verification against public DNS endpoints. As a result, custom domains aren't supported in disconnected scenarios.
+  App Service verifies domain ownership through public DNS endpoints. Because of this verification method, custom domains aren't supported in disconnected scenarios.
 
-- Virtual Network integration for Web and Function apps is not supported.
+- Virtual network integration isn't supported for web and function apps.
 
-  The ability to add virtual network integration to Web and Function apps shows in the Azure Stack Hub portal and if a tenant attempts to configure, they receive an internal server error. This feature is not supported in Azure App Service on Azure Stack Hub.
+  The Azure Stack Hub portal shows the option to add virtual network integration to web and function apps. If a tenant attempts to configure this feature, they receive an internal server error. App Service on Azure Stack Hub doesn't support this feature.
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+- For an overview of App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
 - For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).

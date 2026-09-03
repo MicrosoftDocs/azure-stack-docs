@@ -62,7 +62,7 @@ The outcome of preflight checks is visible in the `stepStates` of the `Validate 
 ```json
 {
   "actionType": "Microsoft.NetworkCloud/clusters/updateVersion",
-  "correlationId": "0f5776a8-7d83-4800-b0c8-332c536e3341",
+  "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
   "endTime": "2026-05-28T20:34:54Z",
   "message": "Platform prerequisites not satisfied: Platform readiness checks failed: Cluster is not ready for upgrade. Fix the resources associated with capiCluster/nodepools rs1111",
   "startTime": "2026-05-28T20:34:22Z",
@@ -84,7 +84,7 @@ The outcome of preflight checks is visible in the `stepStates` of the `Validate 
 ```json
 {
   "actionType": "Microsoft.NetworkCloud/clusters/continueUpdateVersion",
-  "correlationId": "14699a26-3e30-416a-a4d0-4188b2e91f1d",
+  "correlationId": "bbbb1111-cc22-3333-44dd-555555eeeeee",
   "message": "Target Cluster Version 4.11.0",
   "startTime": "2026-05-28T23:24:43Z",
   "status": "InProgress",

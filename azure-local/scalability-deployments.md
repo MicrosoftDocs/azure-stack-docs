@@ -24,6 +24,7 @@ You can deploy Azure Local in different ways depending on your use case and need
 | Hyperconverged deployments | Clusters of 1-16 machines using hyperconverged storage. <br><br>You can also attach an external SAN for more storage capacity. |
 | Disaggregated deployments | Disaggregated deployments come in different sizes, from a single machine footprint to a maximum of 64 machines that use SAN storage. |
 | Multi-rack deployments | Integrated racks of compute, storage, and networking that expand up to hundreds of machines. |
+| Small form factor deployments (preview) | Compact deployments for environments with limited space and power. |
 | Disconnected deployments | Disconnected operations for Azure Local enable you to deploy and manage Azure Local instances without a connection to the Azure public cloud. |
 | Microsoft 365 Local deployments | Deployments for hosting Microsoft 365 Local workloads. |
 
@@ -47,6 +48,12 @@ For large workloads, Azure Local provides multi-rack deployments that can accomm
 
 For more information about multi-rack deployments, see [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
 
+## Small form factor deployments (preview)
+
+Small form factor deployments let you run Azure Local on compact, Linux-based hardware designed for environments with limited space and power, such as retail, branch, and edge sites. These deployments provide a consistent, Azure-managed platform for running applications at the edge.
+
+For more information about small form factor deployments, see [What are small form factor deployments of Azure Local?](./small-form-factor/small-form-factor-overview.md)
+
 ## Disconnected deployments
 
 Azure Local is typically deployed as a cloud-connected solution with the control plane running in an Azure cloud region. For customers with the strictest sovereignty or security requirements, you can also deploy Azure Local as a disconnected solution. Disconnected operations for Azure Local provides a local instance of the control plane, with a subset of Azure capabilities - enabling you to operate without a connection to the cloud.
@@ -64,5 +71,6 @@ Read about the different Azure Local deployment types:
 - [What are hyperconverged deployments of Azure Local?](./overview/hyperconverged-overview.md)
 - [What are disaggregated deployments of Azure Local?](./overview/disaggregated-overview.md)
 - [What are multi-rack deployments of Azure Local?](./multi-rack/multi-rack-overview.md)
+- [What are small form factor deployments of Azure Local?](./small-form-factor/small-form-factor-overview.md)
 - [Disconnected operations for Azure Local overview](./manage/disconnected-operations-overview.md)
 - [Microsoft 365 Local overview](/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview)

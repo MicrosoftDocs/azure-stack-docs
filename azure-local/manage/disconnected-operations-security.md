@@ -36,6 +36,10 @@ For more information about the security features for Azure Local, see [Security 
 
 By default, the Azure Local disconnected operations VM appliance encrypts data volumes by using BitLocker with AES-XTS256 bit encryption. BitLocker recovery passwords (key protectors) stay in an internal secure secret store.
 
+### Intrusion detection system and intrusion prevention system
+
+Disconnected operations doesn't provide a built-in intrusion detection system (IDS) or intrusion prevention system (IPS). You're responsible for deploying your own IDS and IPS on your network path. This deployment helps prevent distributed denial-of-service (DDoS) attacks on the control plane and mitigates abnormal network behavior.
+
 ### BitLocker recovery key retrieval
 
 Disconnected operations for Azure Local manages BitLocker recovery passwords for data at rest encryption. You don't need to provide these passwords for regular operations or during system startup. However, support scenarios might require these passwords to bring the system online. Without these passwords, some support scenarios can cause data loss and require system redeployment.
@@ -324,7 +328,7 @@ This section lists miscellaneous events that the solution forwards. You can't cu
 
 | Event type | Event query |
 | ------------ | ------------- |
-| Wireless Lan 802.1x authentication events with Peer MAC address | `query="Security!*[System[(EventID=5632)]]"` |
+| Wireless LAN 802.1x authentication events with Peer MAC address | `query="Security!*[System[(EventID=5632)]]"` |
 | New service (4697) | `query="Security!*[System[(EventID=4697)]]"` |
 | TS session reconnect (4778), TS session disconnect (4779) | `query="Security!*[System[(EventID=4778 or EventID=4779)]]"` |
 | Network share object access without IPC$ and Netlogon shares | `query="Security![System[(EventID=5140)] and EventData[Data[@Name='ShareName']!='\\IPC$']]"` |

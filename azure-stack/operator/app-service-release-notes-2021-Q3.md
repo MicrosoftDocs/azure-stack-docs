@@ -1,9 +1,9 @@
 ---
-title: App Service on Azure Stack Hub 2021 Q3 release notes 
-description: Learn about what's new in the 2021 Q3 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+title: App Service on Azure Stack Hub 2021 Q3 release notes
+description: Learn about whats new in the 2021 Q3 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: sethmanheim
 ms.topic: release-notes
-ms.date: 08/12/2024
+ms.date: 07/09/2026
 ms.author: sethm
 ms.reviewer: anwestg
 
@@ -11,47 +11,47 @@ ms.reviewer: anwestg
 
 # App Service on Azure Stack Hub 2021 Q3 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2021 Q3 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in App Service on Azure Stack Hub 2021 Q3 and any known issues. The known issues are divided into two categories: issues directly related to the deployment and update process, and issues with the build (post-installation).
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2021 Q3 build number is **95.1.1.539**
+The App Service on Azure Stack Hub 2021 Q3 build number is **95.1.1.539**.
 
 ## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 2021 Q3:
+Before you begin the upgrade of App Service on Azure Stack to 2021 Q3:
 
 - Ensure your Azure Stack Hub is updated to 2108.
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
+- Ensure all roles are Ready in the App Service Administration in the Azure Stack Hub Admin Portal.
 
-- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
+- Back up App Service secrets by using the App Service Administration in the Azure Stack Hub Admin Portal.
 
 - Back up the App Service and SQL Server Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the Tenant App content file share
+- Back up the tenant App content file share.
 
   > [!Important]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider doesn't manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
+- Syndicate the **Azure Custom Script Extension** version **1.9.3** from the Marketplace.
 
 ## Updates
 
-Azure App Service on Azure Stack Update 2021 Q3 includes the following improvements and fixes:
+App Service on Azure Stack Update 2021 Q3 includes the following improvements and fixes:
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
+- Updates to **App Service Tenant, Admin, Azure Functions portals, and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.13154**.
 
-- Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
+- Updates to core service to improve reliability and error messaging, enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
   - ASP.NET Core 
@@ -83,61 +83,61 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
   - Wordpress 4.9.18
   - Updated Kudu to 94.30524.5227
 
-- **Updates to underlying operating system of all roles**:
+- **Updates to the underlying operating system of all roles**:
   - [2021-11 Cumulative Update for Windows Server 2016 for x64-based Systems (KB5007192)](https://support.microsoft.com/help/5007192)
   - [2021-09 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB5005698)](https://support.microsoft.com/help/5005698)
-  - Defender Definition 1.353.743.0
+  - Microsoft Defender Definition 1.353.743.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
 - TLS Cipher Suites updated to maintain consistency with Azure Service.
 
-- Added support for 2020-09-01-hybrid profile
+- Added support for 2020-09-01-hybrid profile.
 
 ## Issues fixed in this release
 
-- App Service can now be deployed when running the installer from a FIPS-Compliant Client machine
+- You can now deploy App Service when running the installer from a FIPS-compliant client machine.
 
-- App Service Role Health is now automatically checked before completing App Service secret rotation procedures.  If all roles not in ready state, secret rotation will be blocked
+- The process automatically checks App Service Role Health before completing App Service secret rotation procedures. If any roles aren't in a ready state, secret rotation is blocked.
 
-- Outbound IP Address for sites is now displayed in the properties and Custom Domains blades within the tenant portal
+- The outbound IP address for sites now appears in the properties and Custom Domains blades within the tenant portal.
 
-- Included further details on event of Custom Domain verification failure
+- The release notes include further details on the event of Custom Domain verification failure.
 
-- Customers can successfully upload and delete private certificates in the tenant portal
+- Customers can successfully upload and delete private certificates in the tenant portal.
 
-- Issue resolved whereby FrontEnd role instances can remain in Auto Repair loop because of a missing dependency in Functions scaling components
+- Resolved an issue where FrontEnd role instances can remain in an Auto Repair loop because of a missing dependency in Functions scaling components.
 
-- Resolved Single Sign On Failures to SCM Site because of changes in Azure AD endpoints
+- Resolved Single Sign On failures to SCM Site because of changes in Azure AD endpoints.
 
 
-- Updated load balancer health probes on Front-End roles and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front-End role instance(s) when not in Ready state.
+- Updated Azure Load Balancer health probes on Front-End roles and Management roles to be in alignment with Azure implementation. Traffic is blocked from reaching Front-End role instances when they're not in a Ready state.
 
-- Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10 GB, Shared Workers is 500 MB
+- Aligned per site temporary directory quota size with Azure. The limit on Dedicated Workers is 10 GB, and Shared Workers is 500 MB.
 
-- Added algorithm to Log Scavenger routines to prevent workers entering repair loop in event generated http logs exceed available space on worker.
+- Added an algorithm to Log Scavenger routines to prevent workers from entering a repair loop when generated HTTP logs exceed available space on worker.
 
-## Pre-Update steps
+## Pre-update steps
 
 Review the [known issues for update](#known-issues-update) and take any action prescribed.
 
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you provide the App Service resource provider with a SQL Server Always On Instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
-- In situations where a customer has converted the appservice_hosting and appservice_metering databases to contained database, upgrade may fail if logins have not been successfully migrated to contained users
+- In situations where you convert the appservice_hosting and appservice_metering databases to contained databases, upgrade might fail if you don't successfully migrate logins to contained users.
 
-Customers that have converted the appservice_hosting and appservice_metering databases to contained database post deployment, and have not successfully migrated the database logins to contained users, may experience upgrade failures.  
+If you convert the appservice_hosting and appservice_metering databases to contained databases after deployment and don't successfully migrate the database logins to contained users, you might experience upgrade failures.  
 
-Customers must execute the following script against the SQL Server hosting appservice_hosting and appservice_metering before upgrading your Azure App Service on Azure Stack Hub installation to 2020 Q3.  **This script is non-destructive and will not cause downtime**.
+Before upgrading your App Service on Azure Stack Hub installation to 2020 Q3, run the following script against the SQL Server hosting appservice_hosting and appservice_metering databases.  **This script is non-destructive and doesn't cause downtime**.
 
-This script must be run under the following conditions
+Run this script under the following conditions:
 
-- By a user that has the system administrator privilege, for example the SQL SA Account;
-- If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
+- By a user that has the system administrator privilege, such as the SQL SA Account;
+- If you're using SQL Server Always On, ensure you run the script from the SQL instance that contains all App Service logins in the form:
 
     - appservice_hosting_FileServer
     - appservice_hosting_HostingAdmin
@@ -206,9 +206,9 @@ This script must be run under the following conditions
 
 ## Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers can't reach the file server when you deploy App Service in an existing virtual network and the file server is only available on the private network, as described in the [Azure App Service and Azure Functions on Azure Stack Hub overview](azure-stack-app-service-overview.md).
 
-  If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  If you choose to deploy into an existing virtual network and use an internal IP address to connect to your file server, you must add an outbound security rule that enables SMB traffic between the worker subnet and the file server. Go to the **WorkersNsg** in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
@@ -219,13 +219,13 @@ This script must be run under the following conditions
   - Priority: 700
   - Name: Outbound_Allow_SMB445
 
-- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+- To remove latency when workers communicate with the file server, add the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if you're securing the file server by using Active Directory. For example, if you use the Quickstart template to deploy a HA File Server and SQL Server.
 
-  Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  Go to the **WorkersNsg** in the Admin Portal and add an outbound security rule with the following properties:
   - Source: Any
   - Source port range: *
   - Destination: IP Addresses
-  - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
+  - Destination IP address range: Range of IPs for your AD Servers. For example, with the Quickstart template use `10.0.0.100, 10.0.0.101`.
   - Destination port range: 389,88
   - Protocol: Any
   - Action: Allow
@@ -233,13 +233,13 @@ This script must be run under the following conditions
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for cloud admins operating App Service on Azure Stack
 
-- Custom domains are not supported in disconnected environments
+- Custom domains aren't supported in disconnected environments
 
-App Service performs domain ownership verification against public DNS endpoints, as a result custom domains are not supported in disconnected scenarios.
+App Service verifies domain ownership through public DNS endpoints. Therefore, custom domains aren't supported in disconnected scenarios.
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+- For an overview of App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
 - For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).

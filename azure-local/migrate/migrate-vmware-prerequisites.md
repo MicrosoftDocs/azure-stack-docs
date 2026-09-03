@@ -37,11 +37,14 @@ The following list contains the prerequisites and considerations that you must m
 |Create a custom storage path for the Azure Arc resource bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
 |Create a logical network for the Azure Arc resource bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
 |Configure Azure account permissions for project creation and appliance registration.|both|The account needs the **Azure Local Migrate Owner** role at the Azure subscription scope and the **Application Developer** role at the Microsoft Entra ID tenant scope. For more information, see [Azure account permissions](migrate-vmware-requirements.md#azure-account-permissions).|
-|Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
+|Create an Azure Migrate project in the Azure portal|source, target|You must create the project in the Azure portal. Projects created by other methods can't replicate to Azure Local. See [Create an Azure Migrate project](#create-an-azure-migrate-project).|
 
 ## Create an Azure Migrate project
 
 Before you can migrate, create an Azure Migrate project in the Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
+
+> [!IMPORTANT]
+> If you intend to migrate to Azure Local, you must create the Azure Migrate project in the Azure portal. Projects that you create by using other methods - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart - aren't supported yet for Azure Local migrations. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.
 
 1. On the Azure portal home page, select **Azure Migrate**.
 

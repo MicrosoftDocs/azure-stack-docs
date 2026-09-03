@@ -10,7 +10,7 @@ ms.date: 3/31/2026
 
 
 # Use certificate rotation in Azure Operator Nexus
-API-driven Certificate Rotation enables customers to self-serve certificate rotation and resynchronization for Nexus Network Fabric. This capability allows customers to manage certificate lifecycle operations directly, while preserving existing operational safeguards. 
+API-driven certificate rotation enables you to self-serve certificate rotation and resynchronization for Nexus Network Fabric. This capability allows you to manage certificate lifecycle operations directly while preserving existing operational safeguards. 
 
 ## Key capabilities
 
@@ -25,15 +25,38 @@ This article explains the prerequisites for rotating certificates for a network 
 
 ## Prerequisites
 
-* Enable the environment on supported NF version with supported API. 
+* Enable the environment on a supported NF version with a supported API. 
 * Install and authenticate the Azure CLI to the correct subscription.
-* Ensure that Nexus Network Fabric is in a healthy state, the configuration state is provisioned, and the administrative state is Enabled.
-* Run outside commit/upgrade workflows. Ensure that the administrative state for the targeted devices is Enabled.
+* Confirm that the Network Fabric resource and its devices are in the states described in the following section.
+* Run outside commit or upgrade workflows.
+
+### Required resource states
+
+Certificate rotation depends only on the state of the Network Fabric resource and its devices. Before you start a rotation or a resync, use the Azure portal or the Azure CLI to validate the following resource states.
+
+| Check | Expectation | Impact if the check fails |
+| --- | --- | --- |
+| Check the administrative lock status of the Network Fabric resource. | The state must be **Unlocked**. For more information, see [Azure Operator Nexus: Use the administrative lock or unlock for Network Fabric](./howto-set-administrative-lock-or-unlock-for-network-fabric.md). | The rotation or resync request is rejected. |
+| Check the Network Fabric resource states. | Validate the resource states:<br/>• Administrative state is **Enabled**. <br/>• Provisioning state is **Succeeded**. <br/>• Configuration state is **Provisioned**. | The rotation or resync request is rejected. |
+| Check the Network Fabric devices. | Validate the resource states:<br/>• Administrative state is **Enabled**. <br/>• Provisioning state is **Succeeded**. <br/>• Configuration state is **Succeeded** or **Deferred Control**. | The fabric-wide operation runs, but it fails for the corresponding device and reports `PartialSuccess`. |
+
+To check the state of the fabric, run the following command:
+
+```Azure CLI
+az networkfabric fabric show --resource-group <resource-group-name> --resource-name <fabric-name>
+```
+
+To check the state of a device, run the following command:
+
+```Azure CLI
+az networkfabric device show --resource-group <resource-group-name> --resource-name <device-name>
+```
+
+The state of other Network Fabric resources, such as isolation domains, internal and external networks, access control lists (ACLs), network taps, and network tap rules, has no impact on certificate rotation. You don't need to validate those resources before you rotate or resync certificates.
 
 ## Operational guardrails
 
 * Don't rotate during an upgrade or while the upgrade status is Failed.
-* Enable disabled devices before rotation or resync.
 * Treat rotation as mutually exclusive with other fabric-wide operations.
 
 ## Azure CLI procedures
@@ -50,9 +73,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T09:58:29.5174661Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
   "startTime": "2026-04-22T09:40:13.3419824Z",
   "status": "Succeeded"
 }
@@ -82,9 +105,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T10:24:12.6499675Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric",
   "startTime": "2026-04-22T10:06:15.1423306Z",
   "status": "Succeeded"
 }
@@ -106,9 +129,9 @@ Sample response:
 ```json
 {
   "endTime": "2026-04-22T10:31:03.7090686Z",
-  "id": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
+  "id": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/providers/Microsoft.ManagedNetworkFabric/locations/WESTUS3/operationStatuses/a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
   "name": "a1b2c3d4-5678-9abc-def0-123456789abc*A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2C3D4E5F6A1B2",
-  "resourceId": "/subscriptions/1234abcd-0000-1234-5678-abcdef123456/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-device",
+  "resourceId": "/subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/example-device",
   "startTime": "2026-04-22T10:27:43.7739143Z",
   "status": "Succeeded"
 }
