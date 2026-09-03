@@ -14,7 +14,7 @@ ms.custom: template-concept
 Operator Nexus releases various functionality and bug fixes throughout the product lifecycle to update the Azure resources and on-premises extensions, critical in communications back to Azure.
 
 > [!NOTE]
-> This article describes **Cluster Management Bundle Upgrades (CMBU)**, which are non-disruptive and automatically applied by Microsoft. These upgrades are separate from **Cluster Runtime Upgrades**, which are customer-managed and disruptive. For more information, see [Related content](#related-content).
+> This article describes **Cluster Management Bundle Upgrades (CMBU)**, which are automatically applied by Microsoft. While a CMBU is in progress, existing workloads aren't impacted, but creating new workloads might be affected. These upgrades are separate from **Cluster Runtime Upgrades**, which are customer-managed and disruptive. For more information, see [Related content](#related-content).
 
 ## Scope
 The releases update components on the Cluster to enable new functionality, while maintaining backwards compatibility for the customer. Additionally, new runtime releases are made available and accessed via [Cluster Runtime Upgrades](./howto-cluster-runtime-upgrade.md).
