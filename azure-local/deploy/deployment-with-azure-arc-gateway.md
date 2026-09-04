@@ -1,9 +1,9 @@
 --- 
 title: Register Azure Local with Azure Arc using Arc Gateway
-description: Learn how to register Azure Local using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
+description: Learn how to register Azure Local by using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 08/14/2026
+ms.date: 08/27/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -207,128 +207,15 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
 
 # [Via Configurator app](#tab/app)
 
+[!INCLUDE [application-registration-start](../includes/application-registration-start.md)]
 
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc.
+[!INCLUDE [application-arc-gateway-prerequisites](../includes/application-arc-gateway-prerequisites.md)]
 
-## Prerequisites
+[!INCLUDE [application-configure-machine](../includes/application-configure-machine.md)]
 
-Before you begin, make sure to complete the following prerequisites:
+[!INCLUDE [application-arc-gateway-proxy-settings](../includes/application-arc-gateway-proxy-settings.md)]
 
-### Azure Local machine prerequisites
-
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
-
-- Note down:
-
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
-
-### Azure prerequisites
-
-- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
-
-   1. In the Azure portal, go to the Arc gateway resource that you created.
-   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
-   
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
-
-## Step 1: Configure the network and connect to Azure
-
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
-
-### Prerequisites tab
-
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
-
-### Basics tab
-
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-1.png":::
-
-1. Provide the interface name, IP allocation as static or Dynamic Host Configuration Protocol (DHCP), IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-2.png":::
-
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
-
-1. To specify more details, select **Enter additional details**.
-
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-with-proxy.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-with-proxy.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Proxy server** as the connectivity method. Provide the proxy URL and the bypass list. The bypass list is required and can be provided in a comma separated format.
-   
-      When defining your proxy bypass string, make sure you meet the following conditions:
-
-      - Include at least the IP address of each Azure Local machine.
-      - Include at least the IP address of the Azure Local cluster.
-      - Include at least the IPs you defined for your infrastructure network. Arc resource bridge, Azure Kubernetes Service (AKS), and future infrastructure services using these IPs require outbound connectivity.
-      - Or you can bypass the entire infrastructure subnet.
-      - Provide the NetBIOS name of each machine.
-      - Provide the NetBIOS name of the Azure Local cluster.
-      - Domain name or domain name with asterisk * wildcard at the beginning to include any host or subdomain. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
-      - Parameters must be separated with a comma `,`.
-      - Classless Inter-Domain Routing (CIDR) notation to bypass subnets isn't supported.
-      - The use of \<local\> strings isn't supported in the proxy bypass list.
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-1.png":::
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-   
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
-
-   1. Specify the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app-arc-gateway](../includes/azure-local-review-apply-tab-configurator-app-arc-gateway.md)]
-
-## Step 2: Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Step 3: Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
+[!INCLUDE [application-arc-registration](../includes/application-arc-registration.md)]
 
 ---
 
@@ -506,114 +393,15 @@ Once the registration is complete, follow these steps to verify that Azure Arc g
 
 # [Via Configurator app](#tab/app)
 
-If you plan to deploy a few machines per site, use the Configurator app to register your Azure Local machines with Azure Arc gateway.
+[!INCLUDE [application-registration-start](../includes/application-registration-start.md)]
 
-## Prerequisites
+[!INCLUDE [application-arc-gateway-prerequisites](../includes/application-arc-gateway-prerequisites.md)]
 
-Before you begin, make sure that you complete the following prerequisites:
+[!INCLUDE [application-configure-machine](../includes/application-configure-machine.md)]
 
-### Azure Local machine prerequisites
+[!INCLUDE [application-arc-gateway-public-settings](../includes/application-arc-gateway-public-settings.md)]
 
-- Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that is connected to the same network as the Azure Local machines.
-
-- Note down:
-
-   - The serial number for each machine.
-   - Local administrator credentials to sign into each machine.
-
-### Azure prerequisites
-
-- **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
-
-   1. In the Azure portal, go to the Arc gateway resource that you created.
-   1. On the **Overview** page, copy the **Resource ID**. You use this Arc gateway ID later.
- 
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png" alt-text="Screenshot of the Resource ID in the Overview page for Azure Arc gateway." lightbox="media/deployment-with-azure-arc-gateway/arc-gateway-resource-id.png":::
- 
-## Step 1: Configure the network and connect to Azure
-
-[!INCLUDE [azure-local-start-configurator](../includes/azure-local-start-configurator.md)]
-
-### Prerequisites tab
-
-[!INCLUDE [azure-local-prerequisites-tab-configurator-app](../includes/azure-local-prerequisites-tab-configurator-app.md)]
-
-### Basics tab
-
-1. On the **Basics** tab, configure one network interface that is connected to the internet. Select the **Pencil icon** to modify network interface settings.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-1.png" alt-text="Screenshot of the Basics tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-2.png":::
-
-1. Provide the interface name, IP allocation as static or DHCP, IP address, subnet, gateway, and preferred DNS servers. Optionally, enter an alternate DNS server.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-2.png" alt-text="Screenshot of the Basics tab with Network settings configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-1.png":::
-
-   > [!IMPORTANT]
-   > Make sure that the IPs you assign are free and not in use.  
-
-1. To specify more details, select **Enter additional details**.
-
-1. On the **Additional details** page, provide the following inputs and then select **Apply**.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-1.png" alt-text="Screenshot of the Basics tab with additional details configured in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/basics-tab-additional-details-1.png":::
-
-   1. Select **ON** to enable **Remote desktop** protocol. Remote desktop protocol is disabled by default.
-
-   1. Select **Public endpoint** as the connectivity method.
-
-   1. Select a time zone.
-
-   1. Specify a preferred and an alternate NTP server to act as a time server or accept the **Default**. The default is `time.windows.com`.
-
-   1. Set the hostname for your machine to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
-
-1. Select **Next** on the **Basics** tab.
-
-### Arc agent setup tab
-
-1. On the **Arc agent setup** tab, provide the following inputs:
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-1.png" alt-text="Screenshot of the Arc agent setup tab in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/arc-agent-setup-tab-1.png":::
-
-   1. The **Cloud type** is populated automatically as `Azure`.
-   
-   1. Enter a **Subscription ID** to register the machine.
-
-   1. Provide a **Resource group** name. This resource group contains the machine and system resources that you create.
-
-   1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Local instance.
-
-      > [!IMPORTANT]
-      > Specify the region with spaces removed. For example, specify the East US region as `EastUS`.
-
-   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
-
-   1. Specify the Arc gateway ID. This is the resource ID of the Arc gateway that you got earlier when completing the [Azure prerequisites](#azure-prerequisites-1).
-
-   > [!IMPORTANT]
-   > Make sure to verify all the inputs before you proceed. Any incorrect inputs here might result in a setup failure.
-
-1. Select **Next**.
-
-### Review and apply tab
-
-[!INCLUDE [azure-local-review-apply-tab-configurator-app-arc-gateway](../includes/azure-local-review-apply-tab-configurator-app-arc-gateway.md)]
-
-## Step 2: Complete registration of machines to Azure
-
-1. Wait for the configuration to complete. First, machine is configured with the basic details followed by registration of the machines to Azure.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The app displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/setup-configuration-authentication.png" alt-text="Screenshot of the Arc agent sign in and registration dialog in the Configurator app for Azure Local." lightbox="media/deployment-with-azure-arc-gateway/setup-configuration-authentication.png":::
-
-1. Once the configuration is complete, status for Arc configuration should display **Success (Open in Azure portal)**.
-
-1. Repeat all steps on the other machines until the Arc configuration succeeds. Select the **Open in Azure portal** link.
-
-## Step 3: Verify machines are connected to Arc
-
-[!INCLUDE [azure-local-verify-machines](../includes/azure-local-verify-machines.md)]
+[!INCLUDE [application-arc-registration](../includes/application-arc-registration.md)]
 
 ---
 
