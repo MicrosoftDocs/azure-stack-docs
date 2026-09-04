@@ -901,14 +901,14 @@ items:
     - name: Install and deploy
       items:
 
-      # --- About: model intro + SFF-specific lifecycle info ---
+      # --- About: model intro + small form factor-specific lifecycle info ---
       - name: About
         items:
         - name: About small form factor deployments
           href: ./small-form-factor/small-form-factor-overview.md
-        - name: Known issues (SFF)
+        - name: Known issues (small form factor)
           href: ./small-form-factor/small-form-factor-known-issues.md
-        - name: FAQ (SFF)
+        - name: FAQ (small form factor)
           href: ./small-form-factor/small-form-factor-faq.md
 
       # --- Evaluate ---
@@ -928,11 +928,11 @@ items:
           href: ./small-form-factor/small-form-factor-zero-touch-provisioning.md
         - name: Configurator App
           href: ./small-form-factor/small-form-factor-configurator-app.md
-        - name: Firewall requirements (SFF)
+        - name: Firewall requirements (small form factor)
           href: ./small-form-factor/small-form-factor-firewall-requirements.md
         - name: Connectivity modes
           href: ./small-form-factor/connectivity-modes.md
-        - name: Security features (SFF)
+        - name: Security features (small form factor)
           href: ./small-form-factor/small-form-factor-security.md
 
       # --- Prepare ---
@@ -955,7 +955,7 @@ items:
         - name: Deploy GPU-enabled workloads
           href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
 
-  # -------- CONFIGURE AND MANAGE (FROM SFF > Troubleshoot; plus OS, network, encrypt secrets, and JIT day-2 ops) -----
+  # -------- CONFIGURE AND MANAGE (FROM SMALL FORM FACTOR > Troubleshoot; plus OS, network, encrypt secrets, and JIT day-2 ops) -----
     - name: Configure and manage
       items:
       - name: Update operating system
@@ -972,7 +972,7 @@ items:
         href: ./small-form-factor/small-form-factor-connect-jit.md
       - name: Troubleshoot
         items:
-        - name: Collect system logs (SFF)
+        - name: Collect system logs (small form factor)
           href: ./small-form-factor/small-form-factor-collect-system-logs.md
         - name: Troubleshoot small form factor deployments
           href: ./small-form-factor/small-form-factor-troubleshoot.md
