@@ -3,7 +3,7 @@ title: What's New in Disconnected Operations for Azure Local
 description: Find out about the new features and enhancements in disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 02/23/2026
+ms.date: 09/01/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -12,6 +12,16 @@ ai-usage: ai-assisted
 # What's new in disconnected operations for Azure Local
 
 This article describes new features and improvements in disconnected operations for Azure Local. Before you deploy disconnected operations with Azure Local, review the [Known issues](./disconnected-operations-known-issues.md) to understand current limitations and available workarounds.
+
+::: moniker range="=azloc-2607"
+## Features and improvements in 2607
+ - Quality and security improvements.
+ - Performance improvements.
+ - API and resource provider updates.
+ - Support for Azure Local 2607 and its associated capabilities.
+  
+::: moniker-end
+
 ::: moniker range="=azloc-2606"
 ## Features and improvements in 2606
  - Quality and security improvements.
@@ -34,7 +44,7 @@ This article describes new features and improvements in disconnected operations 
 ## Features and improvements in 2604
 
 - Added support for the Azure Local 2604 ISO and its associated capabilities.
-- Enable 64 node cluster support (Workload clusters).
+- Enabled 64-node cluster support (workload clusters).
 - Performance improvements.
 - Security improvements to MSI.
 - OperationsModule: Enables client certificate rotation, cmdlet naming standardization.
