@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 08/14/2026
+ms.date: 09/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -44,7 +44,6 @@ Here are the Azure requirements for your Azure Local instance:
    - Canada Central
    - Japan East
    - South Central US
-   - UK West
 
   ### [Azure Government](#tab/azure-government)
 
