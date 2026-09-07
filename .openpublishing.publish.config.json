@@ -15,21 +15,6 @@
       "template_folder": "_themes"
     },
     {
-      "docset_name": "AKS-Hybrid",
-      "build_source_folder": "AKS-Arc",
-      "build_output_subfolder": "AKS-Hybrid",
-      "locale": "en-us",
-      "monikers": [],
-      "moniker_ranges": [],
-      "open_to_public_contributors": true,
-      "type_mapping": {
-        "Conceptual": "Content",
-        "ZonePivotGroups": "Toc"
-      },
-      "build_entry_point": "docs",
-      "template_folder": "_themes"
-    },
-    {
       "docset_name": "azure-local-max",
       "build_source_folder": "azure-local-max",
       "build_output_subfolder": "azure-local-max",
