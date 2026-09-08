@@ -34,7 +34,7 @@ This release includes various reliability improvements and bug fixes.
   - This build uses .NET version **10.0.11** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
 - **PowerShell updates**:
-  - This build uses PowerShell version **7.4** (built on .NET 8). For more information, see [What's New in PowerShell 7.4](/powershell/scripting/whats-new/what-s-new-in-powershell-74).
+  - This build uses PowerShell version **7.6.4** (built on .NET 10). For more information, see [What's New in PowerShell 7.6](/powershell/scripting/whats-new/what-s-new-in-powershell-76).
 
 <!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
 
