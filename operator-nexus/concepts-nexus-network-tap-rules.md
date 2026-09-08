@@ -72,6 +72,9 @@ Static match conditions define fixed parameters for filtering traffic. Supported
 | Source port        | Ports 1–65535 or port groups            |
 | Destination port   | Ports 1–65535 or port groups            |
 
+> [!Note] 
+> All destination name values must be unique (case-insensitive) within a single NetworkTap and across all NetworkTaps associated with the same NPB. Duplicate names cause PUT, Enable, and Resync operations to fail.
+
 ### Example – VLAN and IP match (IPv4)
 
 ```json

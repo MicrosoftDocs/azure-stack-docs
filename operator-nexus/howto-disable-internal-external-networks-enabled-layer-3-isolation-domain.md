@@ -15,7 +15,7 @@ ms.custom: template-concept
 
 - Fabric must support CommitV2.
 - ISD must be in Enabled state.
-- Fabric Runtime version ≥ 6.0.1.
+- Fabric Runtime version ≥ 7.0.1.
 
 ## Steps
 
