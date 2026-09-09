@@ -11,18 +11,19 @@ ms.subservice: hyperconverged
 
 
 # Supported SAN solutions on Azure Local
-Azure Local supports using Fibre Channel (FC) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This article details the supported SAN solutions from our storage partners.
+Azure Local supports using Fibre Channel (FC) and Internet Small Computer Systems Interface (iSCSI) storage area network (SAN) storage as an alternative to local storage (Storage Spaces Direct). This article details the supported SAN solutions from our storage partners.
 
 ## Supported SAN solutions
 
 > [!IMPORTANT]
-> - External SAN supports only block storage over Fibre Channel.
-> - All cluster nodes must have identical HBA configuration and zoning.
-> - You must present logical unit numbers (LUNs) to all cluster nodes (no partial presentation).
-> - Only NT file system (NTFS) formatted volumes are supported for SAN-backed Cluster Shared Volumes (CSVs).
-> - ReFS isn't supported for SAN-backed volumes in this preview.
-> - Each SAN LUN must be dedicated to a single CSV (no sharing across clusters).
-> - You must configure Multipath I/O (MPIO) consistently across all nodes before volume use.
+> External SAN supports only block storage over Fibre Channel and iSCSI.
+- All cluster nodes must have identical HBA configuration and zoning.
+- You must present logical unit numbers (LUNs) to all cluster nodes (no partial presentation).
+- Only NT file system (NTFS) formatted volumes are supported for SAN-backed Cluster Shared Volumes (CSVs).
+- ReFS isn't supported for SAN-backed volumes in this preview.
+- Each SAN LUN must be dedicated to a single CSV (no sharing across clusters).
+- You must configure Multipath I/O (MPIO) consistently across all nodes before volume use.
+
 
 Select one of the partners to view their support statements:
 
@@ -68,7 +69,7 @@ Azure Local supports the following Lenovo Storage systems:
 - ThinkSystem DG Series
 
 # [NetApp](#tab/Netapp-support)
-NetApp supports ONTAP-based external SAN arrays, including NetApp AFF, NetApp ASA, and other ONTAP platforms configured for SAN. Azure Local supports these arrays for use as external storage when you deploy the solution as FC block storage presented to Azure Local nodes and consumed as CSVs.
+NetApp supports ONTAP-based external SAN arrays, including NetApp AFF, NetApp ASA, and other ONTAP platforms configured for SAN. Azure Local supports these arrays for use as external storage when you deploy the solution as FC or iSCSI block storage presented to Azure Local nodes and consumed as CSVs.
 
 The [NetApp Interoperability Matrix Tool (IMT)](https://www.netapp.com/company/interoperability/) lists the qualified configurations and governs the supported ONTAP versions. You get support when the NetApp IMT validates and lists the following end-to-end configuration components:
 
