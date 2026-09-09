@@ -36,7 +36,7 @@ You can use Azure Migrate to migrate the following types of VMs to Azure Local:
 Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
 
 - **Hyper-V migrations:** Support is currently in preview.
-- **VMware migrations:** Azure Migrate doesn't provide VDDK packages, and access to them may be limited. If your organization already has a supported VDDK package, it can use that package under the applicable terms. If a supported package isn't available to your organization, use a [third-party migration option](#third-party-migration-options).
+- **VMware migrations:** Azure Migrate doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](#third-party-migration-options).
 
 By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local).
 
