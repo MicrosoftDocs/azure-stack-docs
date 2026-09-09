@@ -550,7 +550,7 @@ Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later t
    kubectl get nodes -L kubernetes.azure.com/os-sku-effective
    ```
 
-   All nodes in the node pools where you intend to run Azure Managed Lustre workloads must report `Ubuntu2204`, `Ubuntu2404`, or `Ubuntu2004` for Confidential VM node pools. Don't continue if a required node has a missing or unsupported value. AKS manages this label. Don't change it manually.
+   All nodes in the node pools where you intend to run Azure Managed Lustre workloads must report `Ubuntu2204`, `Ubuntu2404`, or, for Confidential VM node pools, `Ubuntu2004`. Don't continue if a required node has a missing or unsupported value. AKS manages this label. Don't change it manually.
 
 1. Confirm the following prerequisites:
 
@@ -559,13 +559,19 @@ Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later t
    - Every node pool can reach `mcr.microsoft.com` and `packages.microsoft.com`.
    - Any network allow list includes the `amlfs-jammy` and `amlfs-noble` package repositories on `packages.microsoft.com`. The `amlfs-noble` repository is new in v0.4.0.
 
-1. List the PersistentVolumeClaims backed by the Azure Lustre CSI driver:
+1. List the storage classes that use the Azure Lustre CSI driver:
 
    ```bash
-   kubectl get pv -o jsonpath='{range .items[?(@.spec.csi.driver=="azurelustre.csi.azure.com")]}{.spec.claimRef.namespace}{"/"}{.spec.claimRef.name}{"\n"}{end}'
+   kubectl get storageclass -o jsonpath='{range .items[?(@.provisioner=="azurelustre.csi.azure.com")]}{.metadata.name}{"\n"}{end}'
    ```
 
-   Each line identifies a namespace and PersistentVolumeClaim to account for.
+1. List all PersistentVolumeClaims and identify the claims that use those storage classes:
+
+   ```bash
+   kubectl get pvc --all-namespaces -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STORAGECLASS:.spec.storageClassName,STATUS:.status.phase,VOLUME:.spec.volumeName'
+   ```
+
+   Account for every Azure Lustre claim, including claims with `Pending` status. Don't continue while an Azure Lustre volume creation or deletion is in progress.
 
 1. List pods and the PersistentVolumeClaims that they reference:
 
@@ -577,9 +583,22 @@ Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later t
 
 1. Repeat the preceding pod query. Don't continue while it lists a pod that references an Azure Managed Lustre claim, including a pod in `Terminating` state.
 
+1. Check every CSI node pod for remaining Lustre mounts:
+
+   ```bash
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o name |
+     while read -r pod; do
+       echo "$pod"
+       kubectl exec -n kube-system "$pod" -c azurelustre -- \
+         sh -c 'grep " - lustre " /proc/self/mountinfo || true'
+     done
+   ```
+
+   The command displays each CSI node pod. Don't continue if it also displays a Lustre mount entry beneath any pod.
+
 ### Install v0.4.0
 
-After all Azure Managed Lustre workloads are stopped, run the version-pinned v0.4.0 installer:
+After you stop all Azure Managed Lustre workloads, run the version-pinned v0.4.0 installer:
 
 ```bash
 curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/v0.4.0/deploy/install-driver.sh | bash -s v0.4.0
@@ -587,7 +606,7 @@ curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-c
 
 Specify `v0.4.0` in both the script URL and the script argument so the command installs the expected release instead of a different release from `main`.
 
-On a large cluster, the installer can report a rollout timeout while the rollout is still progressing because node pods update one at a time. If this condition happens, run the checks in [Verify the upgrade](#verify-the-upgrade) before you retry the installer.
+If the installer reports a rollout timeout, run the checks in [Verify the upgrade](#verify-the-upgrade) before you retry the installer.
 
 ### Verify the upgrade
 
