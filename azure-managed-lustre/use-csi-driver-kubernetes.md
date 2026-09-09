@@ -559,19 +559,28 @@ Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later t
    - Every node pool can reach `mcr.microsoft.com` and `packages.microsoft.com`.
    - Any network allow list includes the `amlfs-jammy` and `amlfs-noble` package repositories on `packages.microsoft.com`. The `amlfs-noble` repository is new in v0.4.0.
 
+1. List the PersistentVolumes that use the Azure Lustre CSI driver:
+
+   ```bash
+   printf 'PV\tCLAIM\tSTATUS\tDELETING\n'
+   kubectl get pv -o jsonpath='{range .items[?(@.spec.csi.driver=="azurelustre.csi.azure.com")]}{.metadata.name}{"\t"}{.spec.claimRef.namespace}{"/"}{.spec.claimRef.name}{"\t"}{.status.phase}{"\t"}{.metadata.deletionTimestamp}{"\n"}{end}'
+   ```
+
+   Use the claim references to account for every bound Azure Lustre claim, even if its StorageClass no longer exists.
+
 1. List the storage classes that use the Azure Lustre CSI driver:
 
    ```bash
    kubectl get storageclass -o jsonpath='{range .items[?(@.provisioner=="azurelustre.csi.azure.com")]}{.metadata.name}{"\n"}{end}'
    ```
 
-1. List all PersistentVolumeClaims and identify the claims that use those storage classes:
+1. List all PersistentVolumeClaims and use the preceding storage class list to identify unbound Azure Lustre claims:
 
    ```bash
-   kubectl get pvc --all-namespaces -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STORAGECLASS:.spec.storageClassName,STATUS:.status.phase,VOLUME:.spec.volumeName'
+   kubectl get pvc --all-namespaces -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STORAGECLASS:.spec.storageClassName,STATUS:.status.phase,VOLUME:.spec.volumeName,DELETING:.metadata.deletionTimestamp'
    ```
 
-   Account for every Azure Lustre claim, including claims with `Pending` status. Don't continue while an Azure Lustre volume creation or deletion is in progress.
+   Account for every Azure Lustre claim, including claims with `Pending` status. Don't continue if an Azure Lustre PV or PVC has a deletion timestamp, or while an Azure Lustre volume creation or deletion is in progress.
 
 1. List pods and the PersistentVolumeClaims that they reference:
 
@@ -583,18 +592,33 @@ Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later t
 
 1. Repeat the preceding pod query. Don't continue while it lists a pod that references an Azure Managed Lustre claim, including a pod in `Terminating` state.
 
+1. List the CSI node pods:
+
+   ```bash
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o wide
+   ```
+
+   Compare the `NODE` column with the node list from the first step. Don't continue unless every node where you intend to run Azure Managed Lustre workloads has a CSI node pod in `Running` state.
+
 1. Check every CSI node pod for remaining Lustre mounts:
 
    ```bash
-   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o name |
-     while read -r pod; do
+   (
+     set -e
+     pods=$(kubectl get pods -n kube-system -l app=csi-azurelustre-node -o name)
+     if [ -z "$pods" ]; then
+       echo "No Azure Lustre CSI node pods found." >&2
+       exit 1
+     fi
+     for pod in $pods; do
        echo "$pod"
        kubectl exec -n kube-system "$pod" -c azurelustre -- \
-         sh -c 'grep " - lustre " /proc/self/mountinfo || true'
+         sh -c 'grep " - lustre " /proc/self/mountinfo; status=$?; [ "$status" -eq 1 ]'
      done
+   )
    ```
 
-   The command displays each CSI node pod. Don't continue if it also displays a Lustre mount entry beneath any pod.
+   The command displays each CSI node pod and exits with an error if it finds a Lustre mount or can't inspect a pod. Don't continue if the command fails.
 
 ### Install v0.4.0
 
