@@ -33,6 +33,9 @@ This release includes various reliability improvements and bug fixes.
 
   - This build uses .NET version **10.0.11** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
 
+- **PowerShell updates**:
+  - This build uses PowerShell version **7.6.4** (built on .NET 10). For more information, see [PowerShell 7.6 changelog](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.6.md).
+
 <!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
 
 - **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](../azure-local/migrate/migrate-whats-new.md). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
