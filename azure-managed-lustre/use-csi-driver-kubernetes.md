@@ -587,7 +587,7 @@ curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-c
 
 Specify `v0.4.0` in both the script URL and the script argument so the command installs the expected release instead of a different release from `main`.
 
-On a large cluster, the installer can report a rollout timeout while the rollout is still progressing because node pods update one at a time. If this happens, run the checks in [Verify the upgrade](#verify-the-upgrade) before you retry the installer.
+On a large cluster, the installer can report a rollout timeout while the rollout is still progressing because node pods update one at a time. If this condition happens, run the checks in [Verify the upgrade](#verify-the-upgrade) before you retry the installer.
 
 ### Verify the upgrade
 
