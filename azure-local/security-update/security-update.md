@@ -67,7 +67,7 @@ For more information about security vulnerabilities addressed by this update, se
 
 ## File information
 
-For a list of the files provided in this update, download the file information for [cumulative update 5122871](https://go.microsoft.com/fwlink/?LinkId=2378920).
+To get a list of the files provided in this update, download the file information for [cumulative update 5122871](https://go.microsoft.com/fwlink/?LinkId=2378920).
 
 :::moniker-end
 
