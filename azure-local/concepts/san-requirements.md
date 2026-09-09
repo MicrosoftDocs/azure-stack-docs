@@ -60,7 +60,7 @@ The following Hitachi storage models qualify to integrate with Azure Local (subj
 
 
 # [HPE](#tab/HPE-Alletra-support)
-Azure Local supports HPE Alletra MP 10000 (Fibre Channel) storage.
+Azure Local supports HPE Alletra MP 10000 storage.
 
 # [Lenovo](#tab/Lenovo-support)
 Azure Local supports the following Lenovo Storage systems:
