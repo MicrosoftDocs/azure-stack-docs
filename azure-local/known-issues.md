@@ -43,7 +43,7 @@ The following table lists the fixed issues in this release:
 | Feature | Issue | Comments | Solution version |
 | ------ | ------ | ------- | -------- |
 | Azure Local VMs <!--38675823--> | On Azure Local clusters earlier than version 2604, `az stack-hci-vm stop` can fail when stopping a running VM with the error "Cannot do StopGraceful power operation on a Running VM." | The stop command now remains compatible with clusters earlier than version 2604, so you can stop running VMs without this error. | 12.2609.1003.7 |
-| Azure Local VMs <!--32094767--> | Some clusters were being billed for Azure Machine Configuration, when it should be free for Azure Local customers. | This issue is resolved in the August 2026 release of the Azure Machine Configuration agent. More details in the [agent release notes](/azure-arc/servers/agent-release-notes#version-167---august-2026). | 12.2609.1003.7 |
+| Azure Local VMs <!--32094767--> | Some clusters were being billed for Azure Machine Configuration, when it should be free for Azure Local customers. | This issue is resolved in the August 2026 release of the Azure Machine Configuration agent. For more details, see the [agent release notes](/azure/azure-arc/servers/agent-release-notes#version-167---august-2026). | 12.2609.1003.7 |
 
 ## Known issues
 
