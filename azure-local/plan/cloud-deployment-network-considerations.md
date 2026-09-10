@@ -438,13 +438,14 @@ For disaggregated deployments, the storage array is reached over Fiber Channel o
 
 The following table summarizes which intent groupings are supported for each storage connectivity option:
 
-| Intent grouping | S2D switchless | S2D switched | External SAN (FC or IP-based) |
+| Network ATC intent grouping | S2D switchless | S2D switched | External SAN (FC or IP-based) |
 |-----------------|:--------------:|:------------:|:--------------------------:|
 | Group all traffic (management, compute, storage) | ❌ | ✅ | ❌ |
 | Group management and compute, separate storage | ✅ | ✅ | ❌ |
 | Group compute and storage, separate management | ❌ | ✅ | ❌ |
 | Custom configuration (up to three intents) | ✅ | ✅ | ❌ |
 | Management and compute, plus cluster networks not managed by Network ATC | ❌ | ❌ | ✅ |
+| Management and compute, plus an additional compute intent when enough network adapter ports are available, and cluster networks not managed by Network ATC | ❌ | ❌ | ✅ |
 
 Here are the summarized considerations for the network traffic intents decision:
 
