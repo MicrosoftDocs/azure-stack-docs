@@ -456,7 +456,7 @@ Here are the summarized considerations for the network traffic intents decision:
 |3     | The *Group all traffic* and *Group compute and storage* intents require a physical switch for storage and aren't available for switchless clusters.        | HCI  |
 |4     | Disaggregated deployments use a management and compute intent, plus cluster networks that run outside of Network ATC.        | DA  |
 |5     | For iSCSI, the iSCSI paths are standalone and dedicated ports outside Network ATC       | DA  |
-|6     | Disaggregated deployments can add an additional compute intent when enough network adapter ports are available      | DA  |
+|6   | Disaggregated deployments can add an extra compute intent when enough network adapter ports are available      | DA  |
 
 ## Decision 8: Determine management IPs and infrastructure network
 
