@@ -190,7 +190,7 @@ The advantages and disadvantages of switched and switchless options are document
 You can only decide between switched and switchless storage when the size of your cluster is four or fewer nodes. Any S2D cluster with more than four nodes is automatically deployed using a network switch for storage.
 
 > [!IMPORTANT]
-> For switched hyperconverged deployments, run storage traffic over the *same* top-of-rack (ToR) switch pair that carries management and compute traffic. Using a separate, dedicated pair of switches for the storage intent only isn't supported. A storage-only switch pair that is isolated from the management and compute network can lead to a cluster split-brain situation, because the nodes can lose the storage (east-west) path while keeping the management path, or the reverse. Keep all intents on a single MLAG-configured ToR switch pair per rack.
+> For switched hyperconverged deployments, it is recommended to run storage, management, and compute traffic over the same MLAG-configured top-of-rack (ToR) switch pair. It is not recommended to use a separate, isolated switch pair dedicated to the storage intent because it can create asymmetric failures in which nodes retain management connectivity but lose the storage east-west path, or the reverse. This condition can result in a cluster split-brain condition. If this condition occurs, make recovery of the storage path the immediate operational priority.
 
 If clusters have four or fewer nodes, the storage connectivity decision influences the number and type of network intents you can define in [Decision 7](#decision-7-determine-network-traffic-intents). For example, for switchless configurations, you need to define two network traffic intents. Storage traffic for east-west communication using the crossover cables doesn't have north-south connectivity and is completely isolated from the rest of your network infrastructure. That means you need to define a second network intent for management outbound connectivity and for your compute workloads.
 
@@ -438,13 +438,14 @@ For disaggregated deployments, the storage array is reached over Fiber Channel o
 
 The following table summarizes which intent groupings are supported for each storage connectivity option:
 
-| Intent grouping | S2D switchless | S2D switched | External SAN (FC or IP-based) |
+| Network ATC intent grouping | S2D switchless | S2D switched | External SAN (FC or IP-based) |
 |-----------------|:--------------:|:------------:|:--------------------------:|
 | Group all traffic (management, compute, storage) | ❌ | ✅ | ❌ |
 | Group management and compute, separate storage | ✅ | ✅ | ❌ |
 | Group compute and storage, separate management | ❌ | ✅ | ❌ |
 | Custom configuration (up to three intents) | ✅ | ✅ | ❌ |
 | Management and compute, plus cluster networks not managed by Network ATC | ❌ | ❌ | ✅ |
+| Management and compute, plus an additional compute intent when enough network adapter ports are available, and cluster networks not managed by Network ATC | ❌ | ❌ | ✅ |
 
 Here are the summarized considerations for the network traffic intents decision:
 
@@ -455,6 +456,7 @@ Here are the summarized considerations for the network traffic intents decision:
 |3     | The *Group all traffic* and *Group compute and storage* intents require a physical switch for storage and aren't available for switchless clusters.        | HCI  |
 |4     | Disaggregated deployments use a management and compute intent, plus cluster networks that run outside of Network ATC.        | DA  |
 |5     | For iSCSI, the iSCSI paths are standalone and dedicated ports outside Network ATC       | DA  |
+|6   | Disaggregated deployments can add an extra compute intent when enough network adapter ports are available      | DA  |
 
 ## Decision 8: Determine management IPs and infrastructure network
 
