@@ -9,5 +9,5 @@ ms.lastreviewed:
 ---
 
 ```bash
-sudo dnf install amlfs-lustre-client-2.15.8_34_gc0f2040-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+sudo dnf install amlfs-lustre-client-2.15.8_39_g2d32b59-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
 ```
