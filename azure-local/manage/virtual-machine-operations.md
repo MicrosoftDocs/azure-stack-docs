@@ -49,8 +49,12 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Enable and use Windows Admin Center (for read-only)
 - Add a data disk
 - Delete a data disk
-- Change CPU cores
-- Change memory
+- Change vCPUs 
+- Change startup memory (changing dynamic memory minimum and maximum values are NOT supported)
+
+    > [!NOTE]
+    > Prior to Azure Local version 2606, vCPU and startup memory changes made through local tools could be reverted to the values stored in Azure.
+
 - Add extensions
 - Delete extensions
 - Enable guest management
