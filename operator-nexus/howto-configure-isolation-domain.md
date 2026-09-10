@@ -478,10 +478,10 @@ The following parameters are optional for creating internal networks.
 |`isMonitoringEnabled`| TO enable or disable monitoring on internal network|False| |
 
 > [!NOTE]
-> IPv4 prefixes and addresses must be supplied in **canonical dotted-decimal form with no leading zeros** (for example, `10.66.65.0/24`, not `010.66.65.0/24`). Non-canonical literals such as `00.66.65.0/24` are ambiguous and are **rejected at create/update time with a 400 error**. This applies to all IPv4 fields on the internal network, including `connectedIPv4Subnets`, `ipv4ListenRangePrefixes`, neighbor and next-hop addresses, and static route prefixes.
+> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.66.65.0/24`, not `010.66.65.0/24`). Non-canonical literals such as `00.66.65.0/24` are ambiguous and are **rejected at create/update time with a 400 error**. This rule applies to all IPv4 fields on the internal network, including `connectedIPv4Subnets`, `ipv4ListenRangePrefixes`, neighbor and next-hop addresses, and static route prefixes.
 
 > [!NOTE]
-> **TWAMP Light is not supported** on Arista CE devices in Azure Operator Nexus Network Fabric. Test equipment or vendors issuing TWAMP Light requests to the CE device VLAN IP will not receive a response.
+> **TWAMP Light isn't supported** on Arista CE devices in Azure Operator Nexus Network Fabric. Test equipment or vendors that send TWAMP Light requests to the CE device VLAN IP don't receive a response.
 
 You need to create an internal network before you enable an L3 isolation domain. This command creates an internal network with BGP configuration and a specified peering address:
 

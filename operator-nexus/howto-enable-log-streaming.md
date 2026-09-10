@@ -74,7 +74,7 @@ az networkfabric networkmonitor create \
 ```
 
 > [!NOTE]
-> `stationIp` must be a canonical IPv4 address with **no leading zeros** (for example, `10.1.2.3`, not `010.1.2.3`), or a valid IPv6 address. Non-canonical IPv4 literals are rejected with a 400 error.
+> You must provide `stationIp` as a canonical IPv4 address with **no leading zeros** (for example, `10.1.2.3`, not `010.1.2.3`), or a valid IPv6 address. Non-canonical IPv4 literals are rejected with a 400 error.
 
 > [!NOTE]
 > During the new deployment, the Network Monitor resource doesn't include `stationNetwork`. The default virtual routing and forwarding (VRF) is designated as `INFRA-MGMT`, with the source interface set to `vlan39`.
