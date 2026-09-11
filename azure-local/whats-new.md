@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 09/09/2026
+ms.date: 09/11/2026
 ms.subservice: hyperconverged
 ---
 
@@ -41,9 +41,9 @@ This release includes various reliability improvements and bug fixes.
 
 - **Automatic backup of system-level secrets (preview)**: With this release, you can automatically back up system-level secrets, such as Trusted Launch virtual machine keys, BitLocker recovery keys, and other sensitive information, to an Azure Key Vault instance that serves as a backup key vault. If data loss occurs, you can use the backup key vault for disaster recovery. For more information, see [Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc](../azure-local/manage/trusted-launch-vm-overview.md).
 
-- **Local Identity with Azure Key Vault**:
+<!--- **Local Identity with Azure Key Vault**:
     - **Internal DNS (preview)**: In this release, you can deploy Azure Local by using Local Identity with internal DNS. For more information, see [Deploy with Internal DNS](../azure-local/deploy/deployment-local-identity-with-key-vault.md#deploy-with-internal-dns-preview).
-    - **Admin setup**: This release introduces a PowerShell-based local identity management solution that uses certificate-based authentication and integrates with Azure Key Vault. For more information, see [Managing local identity with Azure Key Vault clusters](../azure-local/deploy/deployment-local-identity-with-key-vault.md#managing-local-identity-with-azure-key-vault-clusters).
+    - **Admin setup**: This release introduces a PowerShell-based local identity management solution that uses certificate-based authentication and integrates with Azure Key Vault. For more information, see [Managing local identity with Azure Key Vault clusters](../azure-local/deploy/deployment-local-identity-with-key-vault.md#managing-local-identity-with-azure-key-vault-clusters).-->
 
 - **Documentation updates**: The following notable documentation updates are available in this release:
     - **TOC modernization**: The Azure Local documentation experience now features a new scenario-based structure, improved navigation, and a [Find your deployment type](../azure-local/plan/find-your-deployment-type.md) entry point to help you quickly find the right deployment and management guidance.
