@@ -101,7 +101,7 @@ After you install the source appliance, follow these steps:
 1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. **Don't use VDDK 7.0.X.** These versions have known problems and result in errors during migration.
 
    > [!IMPORTANT]
-   > Broadcom might restrict download access to VMware Virtual Disk Development Kit (VDDK) packages. Organizations that already downloaded a supported VDDK package can continue to use it to migrate VMware VMs to Azure Local. If your organization can't download a supported VDDK package, use a [third-party migration option](./migration-options-overview.md#third-party-migration-options) to migrate your VMware VMs to Azure Local.
+   > Azure Migrate doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](./migration-options-overview.md#third-party-migration-options) to migrate your VMware VMs to Azure Local.
 
 1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
 

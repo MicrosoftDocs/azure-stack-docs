@@ -65,6 +65,8 @@ To ensure a smooth and timely RMA process, verify the following prerequisites be
 
 >[!Note]
 >Please note that this workflow supports RMA for only one device at a time through POST actions, which accept input related to a single device per request. 
+>
+> Before starting the RMA workflow, verify that the resources are in a valid configuration state. If any resource or associated resource is in a failed or rejected state, bring it back to a valid state before RMA through a patch operation. Otherwise, the RMA step - refresh config - might return an erroneous response. This response might indicate that the physical swap is complete but the configuration state is still failed or bad. In this case, the RMA workflow can't complete successfully. The user needs to fix the configuration through a patch operation before reattempting the refresh config operation to bring the device back to an enabled state.
 
 
 ## Steps to replace a device
