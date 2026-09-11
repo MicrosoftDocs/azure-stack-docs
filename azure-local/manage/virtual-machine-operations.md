@@ -50,7 +50,7 @@ Perform the following VM operations only via the Azure portal or the Azure CLI. 
 - Add a data disk
 - Delete a data disk
 - Change vCPUs 
-- Change startup memory (changing dynamic memory minimum and maximum values are NOT supported)
+- Change startup memory (changing dynamic memory minimum and maximum values isn't supported)
 
     > [!NOTE]
     > Prior to Azure Local version 2606, vCPU and startup memory changes made through local tools could be reverted to the values stored in Azure.
