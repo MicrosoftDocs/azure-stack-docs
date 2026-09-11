@@ -3,7 +3,7 @@ title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/10/2026
+ms.date: 09/11/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -104,7 +104,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
     :::image type="content" source="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png" alt-text="Screenshot of Create a Key Vault page." lightbox="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png":::
 
-## Deploy with Internal DNS (preview)
+<!--## Deploy with Internal DNS (preview)
 
 You can deploy Azure Local by using Local Identity, so it's a good option for environments that don't have an existing Active Directory or dedicated DNS infrastructure. As part of this deployment model, Azure Local can automatically deploy and manage an Internal DNS service to support cluster operations and core infrastructure requirements.
 
@@ -160,7 +160,7 @@ If you plan to host applications, virtual machines, or Kubernetes workloads on A
 
 
 
-![Screenshot of Internal DNS](media/deployment-local-identity-with-key-vault/screenshot-of-internal-dns.png)
+![Screenshot of Internal DNS](media/deployment-local-identity-with-key-vault/screenshot-of-internal-dns.png)-->
 
 ## Post-deployment steps
 
@@ -288,7 +288,7 @@ To address and resolve the issue of the failed extension and restore normal back
     1. After reassignment, monitor the extension status in the Azure portal to ensure it changes from **Failed** to **Succeeded**. This indicates the extension has regained the necessary permissions and is now functioning properly.
     1. Test the backup operations to ensure that secrets are being backed up correctly and that the backup process is functioning as expected.
 
-## Managing local identity with Azure Key Vault clusters
+<!--## Managing local identity with Azure Key Vault clusters
 
 Administrators can manage most day-to-day infrastructure operations through the Azure portal, including virtual machine provisioning, Kubernetes cluster management, health monitoring, capacity tracking, and Azure Arc-enabled services. For advanced tasks that aren't yet available in the portal, connect directly to cluster nodes with local credentials and manage them through PowerShell or other command-line tools.
 
@@ -296,7 +296,7 @@ If you prefer a graphical management experience, Azure Local supports a dedicate
 
 To simplify secure administration in local identity with Azure Key Vault environments, Azure Local provides a PowerShell-based local identity management solution that supports certificate-based authentication and Azure Key Vault. By using this solution, you can create, manage, and remove local administrator accounts across a cluster while securely provisioning and managing certificates. You can import certificates directly from Azure Key Vault, and you can keep certificate material entirely in memory without storing it on disk. The module also automates remoting configuration, certificate deployment, and cluster-wide account lifecycle management, which reduces dependency on shared local passwords and improves operational security.
 
-For installation instructions and the latest module information, see the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureLocal.LocalIdentity.AdminSetup/1.0.5).
+For installation instructions and the latest module information, see the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureLocal.LocalIdentity.AdminSetup/1.0.5).-->
 
 ## FAQ
 
