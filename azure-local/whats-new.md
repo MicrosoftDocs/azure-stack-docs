@@ -5,13 +5,51 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 08/18/2026
+ms.date: 09/11/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2609"
+
+## Features and improvements in 2609
+
+The September 2026 release of hyperconverged deployments of Azure Local is version **12.2609.1003.7**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2609 release, all new and existing deployments of Azure Local run the new OS version **26100.33438** (download from the Azure portal).
+  
+  - You also need a driver that's compatible with OS version **26100.33438** or Windows Server 2025.
+  
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.31** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.12** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **PowerShell updates**: This build uses PowerShell version 7.6.5 (built on .NET 10). For more information, see [PowerShell 7.6 changelog](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.6.md).
+
+<!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
+
+- **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](../azure-local/migrate/migrate-whats-new.md). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
+
+<!--- **Automatic backup of system-level secrets (preview)**: With this release, you can automatically back up system-level secrets, such as Trusted Launch virtual machine keys, BitLocker recovery keys, and other sensitive information, to an Azure Key Vault instance that serves as a backup key vault. If data loss occurs, you can use the backup key vault for disaster recovery. For more information, see [Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc](../azure-local/manage/trusted-launch-vm-overview.md).-->
+
+<!--- **Local Identity with Azure Key Vault**:
+    - **Internal DNS (preview)**: In this release, you can deploy Azure Local by using Local Identity with internal DNS. For more information, see [Deploy with Internal DNS](../azure-local/deploy/deployment-local-identity-with-key-vault.md#deploy-with-internal-dns-preview).
+    - **Admin setup**: This release introduces a PowerShell-based local identity management solution that uses certificate-based authentication and integrates with Azure Key Vault. For more information, see [Managing local identity with Azure Key Vault clusters](../azure-local/deploy/deployment-local-identity-with-key-vault.md#managing-local-identity-with-azure-key-vault-clusters).-->
+
+- **Documentation updates**: The following notable documentation updates are available in this release:
+    - **TOC modernization**: The Azure Local documentation experience now features a new scenario-based structure, improved navigation, and a [Find your deployment type](../azure-local/plan/find-your-deployment-type.md) entry point to help you quickly find the right deployment and management guidance.
+    - **Private path network for Azure Local documentation**: New documentation is available for planning and deploying private path network configurations. For more information see [What is the private path network for Azure Local?](../azure-local/concepts/private-path-network-overview.md) and [Register Azure Local with Azure Arc gateway and private path](../azure-local/deploy/deployment-with-azure-arc-gateway-private-path.md).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2608"
 
@@ -227,7 +265,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2603"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2603
 
@@ -260,10 +298,6 @@ This release includes various reliability improvements and bug fixes.
 - **Simplified machine provisioning**: Starting with this release, use simplified machine provisioning to install the OS and register your Azure Local machines together in a single streamlined process. For more information, see [Simplified machine provisioning](./deploy/simplified-machine-provisioning.md).
 
 - **Azure Migrate for Azure Local**: For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#march-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2602
 
