@@ -3,7 +3,7 @@ title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/22/2026
+ms.date: 09/10/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -104,7 +104,7 @@ The general deployment steps are the same as those outlined in [Deploy an Azure 
 
     :::image type="content" source="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png" alt-text="Screenshot of Create a Key Vault page." lightbox="media/deployment-local-identity-with-key-vault/create-key-vault-at-deployment.png":::
 
-## Deploy with Internal DNS
+## Deploy with Internal DNS (preview)
 
 You can deploy Azure Local by using Local Identity, so it's a good option for environments that don't have an existing Active Directory or dedicated DNS infrastructure. As part of this deployment model, Azure Local can automatically deploy and manage an Internal DNS service to support cluster operations and core infrastructure requirements.
 
