@@ -26,6 +26,7 @@ When you finish these steps, you get:
 
 - A disconnected operations instance in Azure that represents your on-premises virtual appliance.
 - The files you need to deploy Azure Local disconnected operations.
+- The correct ISO image required for Azure Local deployments.
 
 > [!NOTE]
 > Azure CLI isn't supported. Use the REST API if you need automation capabilities. For more information, see [Azure CLI REST command documentation](/cli/azure/use-azure-cli-rest-command?tabs=bash).
@@ -130,6 +131,9 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2605 | 2605.1.25825 | AzureLocal24H2.26100.32230.LCM.12.2605.1.3001 | 12.2605.1003.1003
 | 2606 | 2606.1.26063 | AzureLocal24H2.26100.32230.LCM.12.2606.0.3008 | 12.2606.1003.205 |
 | 2607 | 2607.1.26162| AzureLocal24H2.26100.32230.LCM.12.2607.0.3096 | 12.2607.1003.73 |
+
+> [!NOTE] For new deployments - please ensure you have the matching Azure Local build with your Azure Local deployment.
+>  Azure Local can never be on a newer version than your Disconnected operations build (control plane).
 
 ## Original equipment manufacturer (OEM) golden images with lower version
 
