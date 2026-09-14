@@ -133,8 +133,8 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2607 | 2607.1.26162| AzureLocal24H2.26100.32230.LCM.12.2607.0.3096 | 12.2607.1003.73 |
 | 2608 | 2608.1.26197 | AzureLocal24H2.26100.32230.LCM.12.2608.0.3020| 12.2608.1003.9 | 
 
-> [!NOTE] For new deployments, ensure you have the matching Azure Local build with your Azure Local deployment.
->  Azure Local can never be on a newer version than your Disconnected operations build (control plane).
+>[!NOTE] For new deployments, ensure you have the matching Azure Local build with your Azure Local deployment.
+> Azure Local can never be on a newer version than your Disconnected operations build (control plane).
 
 ## Original equipment manufacturer (OEM) golden images with lower version
 
