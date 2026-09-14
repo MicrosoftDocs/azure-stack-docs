@@ -13,11 +13,22 @@ ai-usage: ai-assisted
 
 This article describes new features and improvements in disconnected operations for Azure Local. Before you deploy disconnected operations with Azure Local, review the [Known issues](./disconnected-operations-known-issues.md) to understand current limitations and available workarounds.
 
+::: moniker range="=azloc-2608"
+## Features and improvements in 2608
+ - Quality and security improvements.
+ - Refreshed RBAC definitions.
+ - Support for Azure Local 2608 and its associated capabilities.
+ - OperationsModule now supports custom template name for generating certificates.
+
+::: moniker-end
+
 ::: moniker range="=azloc-2607"
 ## Features and improvements in 2607
  - Quality and security improvements.
  - Performance improvements.
  - API and resource provider updates.
+ - Expanded monitoring and diagnostics with point-in-time dashboards.
+ - Fallback log collection improvements.
  - Support for Azure Local 2607 and its associated capabilities.
   
 ::: moniker-end
@@ -31,12 +42,14 @@ This article describes new features and improvements in disconnected operations 
 ::: moniker-end
 
 ::: moniker range="=azloc-2605"
+
 ## Features and improvements in 2605
 
 - Infrastructure hardening.
 - Restored AKS-airgapped cluster creation.
 - Improved support diagnostics.
 - Scalability and reliability improvements.
+- Support for Add and Repair node. 
 
 ::: moniker-end
 
