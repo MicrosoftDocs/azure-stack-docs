@@ -18,7 +18,7 @@ This article describes new features and improvements in disconnected operations 
  - Quality and security improvements.
  - Refreshed RBAC definitions.
  - Support for Azure Local 2608 and its associated capabilities.
- - OperationsModule now supporting custom template name for generating certificates.
+ - OperationsModule now supports custom template name for generating certificates.
 
 ::: moniker-end
 
@@ -27,7 +27,7 @@ This article describes new features and improvements in disconnected operations 
  - Quality and security improvements.
  - Performance improvements.
  - API and resource provider updates.
- - Expanded monitoring and diagnostics with point-in=time dashboards.
+ - Expanded monitoring and diagnostics with point-in-time dashboards.
  - Fallback log collection improvements.
  - Support for Azure Local 2607 and its associated capabilities.
   
