@@ -33,7 +33,7 @@ The following flow diagram shows the overall process to repair a node.
 To repair an existing node, follow these high-level steps:
 
 1. If possible, shut down the node that you want to repair. Depending on the state of the node, a shutdown might not be possible or necessary.
-1. Reimage the node that needs to be repaired. Depending on the part and the hardware manufacturer, reimage the node after replacement.
+1. Reimage the node that needs to be repaired. Depending on the part and the hardware manufacturer, you may need to reimage the node after replacement.
 
 1. Run the repair node operation. The Azure Stack HCI Operating System, drivers, and firmware are updated as part of the repair operation.
 
