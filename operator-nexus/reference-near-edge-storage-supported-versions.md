@@ -2,7 +2,7 @@
 title: Supported Storage Software Versions in Azure Operator Nexus
 description: Learn the storage appliance software versions supported by Azure Operator Nexus versions.
 ms.topic: concept-article
-ms.date: 05/08/2026
+ms.date: 09/14/2026
 author: VatsalShahMS
 ms.author: vatsalshah
 ms.service: azure-operator-nexus
@@ -63,8 +63,10 @@ Each number in the version indicates general compatibility with the previous ver
 | 6.5.8            | Nexus 2408.1     | Sept 2026*      |
 | 6.5.10           | Nexus 2504.1     | Sept 2026*      |
 | 6.5.11           | Nexus 2509.1     | Sept 2026*      |
+| 6.7.9            | Nexus 2608.2     | May 2028*       |
 | 6.9.4            | Nexus 2604.2     | May 2028*      |
 | 6.9.5            | Nexus 2604.2     | May 2028*      |
+| 6.9.8            | Nexus 2608.2     | May 2028*       |
 
 > [!IMPORTANT]
 > \* At max 2 LTS versions will be supported. The dates are tentative assuming that by this timeframe we will have another set of LTS versions released, making this version deprecated per our support guidelines.
