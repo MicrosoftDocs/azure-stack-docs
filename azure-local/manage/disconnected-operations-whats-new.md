@@ -27,8 +27,8 @@ This article describes new features and improvements in disconnected operations 
  - Quality and security improvements.
  - Performance improvements.
  - API and resource provider updates.
- - Expanded monitoring and diagnostics with point-in=time dashboards
- - Fallback log collection improvements
+ - Expanded monitoring and diagnostics with point-in=time dashboards.
+ - Fallback log collection improvements.
  - Support for Azure Local 2607 and its associated capabilities.
   
 ::: moniker-end
