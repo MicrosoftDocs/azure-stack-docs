@@ -144,9 +144,9 @@ New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpoin
 ```
 
 > [!NOTE]
-> If you do not have a template called Webserver - the method will fail when issuing certificates. You can override the default name and pass a different template name. 
+> If you don't have a template called **Webserver**, the method fails when issuing certificates. You can override the default name and use a different template name. 
 >
-> Do override the template name , pass the following parameter when creating certificates -CertificateTemplate 'MyTemplate'
+> Use the following parameter to override the template name when creating certificates: `-CertificateTemplate 'MyTemplate'`
 
 
 ## Export root CA certificate

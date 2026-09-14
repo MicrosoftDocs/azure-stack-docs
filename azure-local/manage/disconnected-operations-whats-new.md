@@ -16,9 +16,9 @@ This article describes new features and improvements in disconnected operations 
 ::: moniker range="=azloc-2608"
 ## Features and improvements in 2608
  - Quality and security improvements.
- - RBAC Refresh
+ - RBAC refresh.
  - Support for Azure Local 2608 and its associated capabilities.
- - OperationsModule now supporting custom template name for generating certificates.
+ - OperationsModule now supports custom template name for generating certificates.
  - 
 ::: moniker-end
 

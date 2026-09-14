@@ -246,9 +246,9 @@ The following table lists the CLI extensions supported on Azure Local disconnect
 | Azure Key Vault | Built-in | | [Quickstart: Create a key vault using Azure CLI](/azure/key-vault/general/quick-create-cli) |
 
 ### Download and sideload extensions for disconnected environments
-Azure CLI extensions can be downloaded and imported into disconnected environments. 
+You can download Azure CLI extensions and import them into disconnected environments.  
 
-Here is an example for discovering extensions and downloading them:
+The following example shows how to discover extensions and download them:  
 
 ```powershell
 $ExtensionName = "aks-preview"
@@ -267,7 +267,7 @@ if(-not $ext){
 
 ```
 
-To install an extension that has been downloaded into a folder instead of an online source:
+To install an extension that you downloaded into a folder instead of using an online source, use the following command:  
 
 ```powershell
     az extension add --source .\extensions\aks_preview-21.0.0b.whl
