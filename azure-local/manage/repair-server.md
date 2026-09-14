@@ -188,7 +188,7 @@ If you experience failures or errors while repairing a node, you can capture the
 
 - To rerun the failed operation, use the following cmdlet:
 
-   ```powershell
+    ```powershell
     Repair-Server -Rerun
     ```
 
