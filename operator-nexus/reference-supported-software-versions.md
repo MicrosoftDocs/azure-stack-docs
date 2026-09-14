@@ -2,7 +2,7 @@
 title: Supported software versions in Azure Operator Nexus 
 description: Learn about supported software versions in Azure Operator Nexus. 
 ms.topic: feature-availability
-ms.date: 02/26/2026
+ms.date: 09/14/2026
 author: dougbristow
 ms.author: dbristow
 ms.service: azure-operator-nexus
@@ -10,7 +10,7 @@ ms.service: azure-operator-nexus
 
 # Supported runtime versions in Azure Operator Nexus
 
-This document provides the list of software versioning supported as of Release 2602.2 of Azure Operator Nexus.
+This document provides the list of software versioning supported as of Release 2608.2 of Azure Operator Nexus.
 Please note that this list is subject to change as new software versions are released and validated. Nexus supports only the software versions listed in this document, which is up to N-2 versions from the latest validated version.
 
 ## Support matrix for Nexus components
@@ -39,7 +39,7 @@ Please note that this list is subject to change as new software versions are rel
 
 | Product | Supported versions |
 |---------|--------------------|
-| Purity  | 6.5.1, 6.5.4, 6.5.6, 6.5.8, 6.5.10, 6.5.11 |
+| Purity  | 6.5.8, 6.5.10, 6.5.11, 6.7.9, 6.9.4, 6.9.5, 6.9.8 |
 
 
 ### Supported K8s versions
