@@ -39,7 +39,7 @@ Please note that this list is subject to change as new software versions are rel
 
 | Product | Supported versions |
 |---------|--------------------|
-| Purity  | 6.5.1, 6.5.4, 6.5.6, 6.5.8, 6.5.10, 6.5.11, 6.7.9, 6.9.4, 6.9.5, 6.9.8 |
+| Purity  | 6.5.8, 6.5.10, 6.5.11, 6.7.9, 6.9.4, 6.9.5, 6.9.8 |
 
 
 ### Supported K8s versions
