@@ -62,6 +62,8 @@ groups:
     title: Ubuntu 18.04
   - id: azurelinux-3
     title: Azure Linux 3
+  - id: rhel-10
+    title: Red Hat Enterprise Linux or AlmaLinux 10
   - id: rhel-9
     title: Red Hat Enterprise Linux or AlmaLinux 9
   - id: rhel-8

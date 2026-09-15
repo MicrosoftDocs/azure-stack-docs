@@ -28,6 +28,54 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
 > - **Kernel upgrades** (for example, 5.15.0-100 → 5.15.0-105): If you installed the Lustre client by using DKMS, kernel upgrades are handled automatically. DKMS recompiles the Lustre module during the kernel package install (typically 2-5 minutes), not at boot. The new kernel is ready to load Lustre as soon as you reboot. **No action is needed** - you don't need to follow this procedure.
 > - **Lustre version upgrades** (for example, 2.15.7 → 2.15.8): To upgrade to a newer Lustre release, follow the steps in this article. The procedure is the same for both kmod and DKMS users - uninstall the old version, then install the new one.
 
+::: zone pivot="rhel-10"
+
+1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:
+
+    ```bash
+    sudo umount <all Lustre mounts>
+    ```
+
+1. Uninstall the existing Lustre client version by using the following command:
+
+    ```bash
+    sudo dnf remove *lustre*
+    ```
+
+1. Install the current version of the Lustre client:
+
+    #### [Prebuilt kmod](#tab/kmod)
+
+    [!INCLUDE [client-upgrade-version-rhel-10](./includes/client-upgrade-version-rhel-10.md)]
+
+    #### [DKMS](#tab/dkms)
+
+    [!INCLUDE [client-upgrade-dkms-rhel-10](./includes/client-upgrade-dkms-rhel-10.md)]
+
+    ---
+
+1. Unload the Lustre and Lustre Networking (LNet) kernel modules by using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
+
+1. Verify that old kernel modules are removed by using the following command:
+
+    ```bash
+    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
+    ```
+
+    The output should look similar to the following example:
+
+    ```bash
+    cat: /sys/module/lustre/version: No such file or directory
+    ```
+
+    If the output shows an old version of the Lustre kernel module, restart (`sudo reboot`) the system.
+
+::: zone-end
+
 ::: zone pivot="rhel-9,rhel-8,rhel-7,alma-86"
 
 1. Unmount any containers or mount points that are mounting the Lustre client by using the following command:

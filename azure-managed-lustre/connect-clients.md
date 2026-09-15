@@ -52,6 +52,7 @@ Packages and kernel modules are available for the following Linux operating syst
 - [Ubuntu 20.04](client-install.md?pivots=ubuntu-20) (Lustre 2.15)
 - [Ubuntu 18.04](client-install.md?pivots=ubuntu-18) (Lustre 2.15.4 -- frozen, no new packages)
 - [Azure Linux 3](client-install.md?pivots=azurelinux-3) (Lustre 2.17)
+- [Red Hat Enterprise Linux 10 or AlmaLinux 10](client-install.md?pivots=rhel-10) (Lustre 2.17)
 - [Red Hat Enterprise Linux 9 or AlmaLinux 9](client-install.md?pivots=rhel-9) (Lustre 2.15)
 - [Red Hat Enterprise Linux 8 or AlmaLinux 8](client-install.md?pivots=rhel-8) (Lustre 2.15)
 - [Red Hat Enterprise Linux 7](client-install.md?pivots=rhel-7) (Lustre 2.15.4 -- frozen, no new packages)
