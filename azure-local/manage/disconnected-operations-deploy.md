@@ -589,23 +589,23 @@ Get-Service *bootstrap*
 ```
 
 ### Initialize Azure Arc
-
-1. Copy **Platform.zip** to **C:\zerodayupdate** directory on each node.
+1. Extract the **CombinedSolutionBundle.zip** to **c:\temp** 
+1. Copy **Platform.zip** from **C:\temp\Platform** to **C:\zerodayupdate** directory on each node. Please use the name including the version for the zip. Example **Platform.12.2606.0.3008.zip**  
 
 1. On each node, run the `Invoke-AzStackHciArcInitialization` command:
     
     ```powershell
+    $targetSolutionVersion = '12.2606.1003.205'     
     # Initialize Azure Arc with ALDO-specific parameters
       Invoke-AzStackHciArcInitialization
       -TenantId $Tenant
 	  -SubscriptionID $Subscription
 	  -ResourceGroup $RG
 	  -Region $Region
-	# cloud must be set to `Azure.local` for disconnected operations
+    # cloud must be set to `Azure.local` for disconnected operations
       -Cloud "Azure.local" 
-      -TargetSolutionVersion "<SolutionVersionToDeploy>" 
-	#LocalPlatformPackagePath - The local path to the `Platform.zip` file you copied
-      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.zip"
+      -TargetSolutionVersion $targetSolutionVersion
+      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.12.2606.0.3008.zip"
 	```
 
     > [!IMPORTANT]
