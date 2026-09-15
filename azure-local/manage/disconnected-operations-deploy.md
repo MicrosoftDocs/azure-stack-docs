@@ -494,6 +494,9 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 | --- | --- |
 | 2604 | 12.2604.1003.1005 |
 | 2605 | 12.2605.1003.1003 |
+| 2606 | 12.2606.1003.205 |
+| 2607 | 12.2607.1003.73 |
+| 2608 | 12.2608.1003.9 | 
 
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
@@ -503,8 +506,9 @@ $resourcegroup = 'azurelocal-management-cluster'
 $applianceCloudName = "azure.local"
 $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
 $applianceFQDN = "autonomous.cloud.private"
- $subscriptionName = "Operator subscription"
-    
+$subscriptionName = "Operator subscription"
+$targetSolutionVersion = '12.2604.1003.1005' 
+
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Ensuring you are using operator subscription for the management cluster.."
 $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
@@ -520,12 +524,12 @@ $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($app
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
 # Bootstrap each node
-Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion '12.2604.1003.1005'
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion $targetSolutionVersion
 # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
 ```
 
 > [!NOTE]
-> Ensure that you run initialization on the first machine before moving on to other nodes.
+> Ensure that you run initialization on the first machine before moving on to other nodes. 
 >
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
