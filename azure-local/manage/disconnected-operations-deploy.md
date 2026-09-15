@@ -589,8 +589,8 @@ Get-Service *bootstrap*
 ```
 
 ### Initialize Azure Arc
-1. Extract the **CombinedSolutionBundle.zip** to **c:\temp** 
-1. Copy **Platform.zip** from **C:\temp\Platform** to **C:\zerodayupdate** directory on each node. Please use the name including the version for the zip. Example **Platform.12.2606.0.3008.zip**  
+1. Extract **CombinedSolutionBundle.zip** to **c:\temp**.
+1. Copy **Platform.zip** from **C:\temp\Platform** to the **C:\zerodayupdate** directory on each node. Use the name that includes the version for the zip file. For example, **Platform.12.2606.0.3008.zip**.
 
 1. On each node, run the `Invoke-AzStackHciArcInitialization` command:
     
