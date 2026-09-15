@@ -56,6 +56,14 @@ This article shows how to install the client package to set up client VMs runnin
 
 ::: zone-end
 
+::: zone pivot="rhel-10"
+
+## Install client software for Red Hat Enterprise Linux 10 or AlmaLinux 10
+
+This article shows how to install the client package to set up client VMs running Red Hat Enterprise Linux 10 (RHEL 10) or AlmaLinux 10.
+
+::: zone-end
+
 ::: zone pivot="ubuntu-18"
 
 ## Install client software for Ubuntu 18.04
@@ -333,6 +341,57 @@ This article shows how to install the client package to set up client VMs runnin
    [!INCLUDE [client-install-dkms-rhel](./includes/client-install-dkms-rhel.md)]
 
    ---
+
+::: zone-end
+
+::: zone pivot="rhel-10"
+
+> [!IMPORTANT]
+> Azure Managed Lustre currently publishes RHEL and AlmaLinux 10 client packages for the **10.2** minor release (kernel series `6.12.0-211.*`). Before installing the Lustre client, ensure your VM is on a supported minor release. Check the [Support matrix](client-install-plan.md#support-matrix) for the current list of supported RHEL and AlmaLinux 10 minor releases and kernel series.
+
+> [!IMPORTANT]
+> For production workloads, Microsoft recommends pinning RHEL 10 systems to a specific minor release before installing the Lustre client. Pinning keeps the kernel inside a stable z-stream that Microsoft actively validates the Lustre client against. The currently recommended minor release is **10.2**.
+>
+> <!-- Doc-authors: RHEL 10 EUS/minor-pinning guidance is intentionally lightweight for the initial RHEL 10 release. Fill in the detailed EUS pinning steps (mirroring the RHEL 9 block above: subscription-manager release/repos for BYOS, the Azure RHUI switch-to-EUS procedure, and the AlmaLinux releasever pin) once the RHEL 10 EUS lifecycle and the AMLFS-validated EUS minor are confirmed. RHEL EUS list: https://access.redhat.com/support/policy/updates/errata -->
+
+1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+   DISTRIB_CODENAME=el10
+
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Run the script as a superuser:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the Lustre client package. Choose the install method that best fits your needs:
+
+    #### [Prebuilt kmod](#tab/kmod)
+
+    The metapackage version doesn't always align with the kernel version. Use the following command to install the proper metapackage:
+
+    [!INCLUDE [client-install-version-rhel-10](./includes/client-install-version-rhel-10.md)]
+
+    #### [DKMS](#tab/dkms)
+
+    [!INCLUDE [client-install-dkms-rhel-10](./includes/client-install-dkms-rhel-10.md)]
+
+    ---
 
 ::: zone-end
 
