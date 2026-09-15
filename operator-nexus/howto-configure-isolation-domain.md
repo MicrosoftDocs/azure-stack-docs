@@ -478,7 +478,7 @@ The following parameters are optional for creating internal networks.
 |`isMonitoringEnabled`| TO enable or disable monitoring on internal network|False| |
 
 > [!NOTE]
-> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.66.65.0/24`, not `010.66.65.0/24`). Non-canonical literals such as `00.66.65.0/24` are ambiguous and are **rejected at create/update time with a 400 error**. This rule applies to all IPv4 fields on the internal network, including `connectedIPv4Subnets`, `ipv4ListenRangePrefixes`, neighbor and next-hop addresses, and static route prefixes.
+> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.66.65.0/24`, not `010.66.65.0/24`). Non-canonical literals such as `00.66.65.0/24` are ambiguous and are **rejected at create/update time with a 400 error**. This rule applies to all IPv4 fields on the internal network as listed above.
 
 > [!NOTE]
 > **TWAMP Light isn't supported** on Arista CE devices in Azure Operator Nexus Network Fabric. Test equipment or vendors that send TWAMP Light requests to the CE device VLAN IP don't receive a response.
@@ -667,6 +667,9 @@ The commands for creating an external network by using Azure CLI include the fol
 |optionBProperties | OptionB properties configuration. To specify use exportIPv4/IPv6RouteTargets or importIpv4/Ipv6RouteTargets|"exportIpv4/Ipv6RouteTargets": ["1234:1234"]}}||
 |optionAProperties | Configuration of OptionA properties. Please refer to OptionA example in section below |||
 |external|This is an optional Parameter to input MPLS Option 10 (B) connectivity to external networks via Provider Edge devices. Using this Option, a user can Input Import and Export Route Targets as shown in the example| || 
+
+> [!NOTE]
+> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.18.0.148/30`, not `010.18.0.148/30`). Non-canonical literals are ambiguous and are **rejected at create/update time with a 400 error**. This rule applies to all IPv4 fields on the external network as listed above.
 
 For Option A You need to create an external network before you enable the L3 isolation Domain. An external is dependent on Internal network, so an external can't be enabled without an internal network. The vlan-id value should be between 501 and 4095.
 

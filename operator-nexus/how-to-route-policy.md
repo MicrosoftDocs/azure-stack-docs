@@ -92,7 +92,7 @@ IP prefixes specify only the match conditions of route policies. They don't spec
 | subnetMaskLength | SubnetMaskLength specifies the minimum networkPrefix length to be matched. Required when condition is specified.  |  32| |
 
 > [!NOTE]
-> IPv4 values such as `networkPrefix` and IPv4 route targets (`<IPv4>:NN`) must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/28`, not `010.10.10.0/28`). Non-canonical IPv4 literals are rejected with a 400 error.
+> IPv4 values such as `networkPrefix` must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/28`, not `010.10.10.0/28`). Non-canonical IPv4 literals are rejected with a 400 error.
 
 ### Create IP Prefix
 
