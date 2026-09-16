@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/23/2026
+ms.date: 09/15/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -48,7 +48,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
 1. Select the **Identity provider** for this Azure Local instance.
 
-    For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
+    For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](deployment-local-identity-with-key-vault-overview.md).
 
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
 
@@ -73,7 +73,7 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
     If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
 
-1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
+1. **Select an existing Key Vault** or select **Create a new Key Vault**. Create an empty Key Vault to securely store secrets for this system, such as cryptographic keys, and local admin credentials.
 
     > [!IMPORTANT]
     > Azure Local doesn't support deploying a cluster using an existing Azure Key Vault that has Private Endpoints enabled.
@@ -82,16 +82,15 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-6.png" alt-text="Screenshot of Create a new Key Vault on Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-6.png":::
 
-	On the **Create a new Key Vault** page, provide information for the specified parameters:
-    1. Accept the suggested name or provide a name for the Key Vault you create.
-    1. Accept the default number of Days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
-    1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
-	1. Select **Create**.
-     
+   On the **Create a new Key Vault** page, provide information for the specified parameters:
+      1. Accept the suggested name or provide a name for the Key Vault you create.
+    1. Accept the default number of days to retain deleted vaults or specify a value between 7 and 90 days. You can’t change the retention period later. The Key Vault creation takes several minutes.
+      1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
+      1. Select **Create**.
 
    :::image type="content" source="./media/deploy-via-portal/basics-tab-7.png" alt-text="Screenshot of Key Vault parameters specified on the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-7.png":::
 
-    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
+   The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
 
 1. Select **Next: Configuration**.
 
@@ -100,9 +99,9 @@ This article helps you deploy an Azure Local instance using the Azure portal.
 On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you're able to review the settings before you deploy:
 
 1. Choose the source of the deployment settings:
-   * **New configuration** - Specify all of the settings to deploy this system.
-   * **Template spec** - Load the settings to deploy this system from a template spec stored in your Azure subscription.
-   * **Quickstart template** - This setting isn't available in this release.
+    - **New configuration** - Specify all of the settings to deploy this system.
+    - **Template spec** - Load the settings to deploy this system from a template spec stored in your Azure subscription.
+    - **Quickstart template** - This setting isn't available in this release.
 
     :::image type="content" source="./media/deploy-via-portal/configuration-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/configuration-tab-1.png":::
 1. Select **Next: Networking**.
@@ -110,14 +109,14 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Specify network settings
 
 1. For multi-node systems, select whether the cluster is cabled to use a network switch for the storage network traffic:
-    * **No switch for storage** - For systems with storage network adapters that connect all the machines directly without going through a switch.
-    * **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This also applies to systems that use converged network adapters that carry all traffic types including storage.
-2. Choose traffic types to group together on a set of network adapters–and which types to keep physically isolated on their own adapters.
+    - **No switch for storage** - For systems with storage network adapters that connect all the machines directly without going through a switch.
+    - **Network switch for storage traffic** - For systems with storage network adapters connected to a network switch. This option also applies to systems that use converged network adapters that carry all traffic types including storage.
+1. Choose traffic types to group together on a set of network adapters and which types to keep physically isolated on their own adapters.
 
     There are three types of traffic we configure:
-    * **Management** traffic between this system, your management PC, and Azure.
-    * **Compute** traffic to or from VMs and containers on this system.
-    * **Storage** (SMB) traffic between machines in a multi-node system.
+    - **Management** traffic between this system, your management PC, and Azure.
+    - **Compute** traffic to or from VMs and containers on this system.
+    - **Storage** (SMB) traffic between machines in a multi-node system.
 
     If you selected **No switch** for storage, the following networking patterns are available:
 
@@ -151,7 +150,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
     - For *Compute_Management* intent, provide an intent name.
         - In this case, we added two network adapters.
     - For *Storage* intent, provide an intent name.
-	    - In this case, we added network adapters, ethernet 3, and ethernet 4.
+        - In this case, we added network adapters, ethernet 3, and ethernet 4.
         - Accept the default VLAN ID, or enter the value that you set on the network switches used for each storage network.
 
     > [!NOTE]
@@ -217,29 +216,35 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 ## Set the security level
 
 1. Select the security level for your system's infrastructure:
-    * **Recommended security settings** - Sets the highest security settings.
-    * **Customized security settings** - Lets you turn off security settings.
+    - **Recommended security settings** - Sets the highest security settings.
+    - **Customized security settings** - Lets you turn off security settings.
 
     :::image type="content" source="./media/deploy-via-portal/security-tab-1.png" alt-text="Screenshot of the Security tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/security-tab-1.png":::
 
-2. Select **Next: Advanced**.
+1. Create a backup key vault to automatically back up system-level secrets for disaster recovery. This feature is in preview. For more information, see [Automatic key backup (preview)](../manage/trusted-launch-vm-overview.md#automatic-key-backup-preview).
+   - If you don't provide a backup key vault, the system doesn't automatically back up system-level secrets such as Trusted launch virtual machine keys and BitLocker recovery keys. You might not be able to recover your Azure Local instance if data loss occurs.
+   - For security and isolation, use a dedicated backup key vault for each Azure Local instance. Don't share the backup key vault across Azure Local instances or use it for other purposes.
+   - If the backup key vault fails to deploy or enters a failed state, see [Deploy Azure Local using Local Identity with Azure Key Vault](deployment-local-identity-with-key-vault-overview.md) for troubleshooting guidance.
+
+    :::image type="content" source="./media/deploy-via-portal/security-tab-2.png" alt-text="Screenshot of the Security tab in deployment with key vault creation via Azure portal." lightbox="./media/deploy-via-portal/security-tab-2.png":::
+
+1. Select **Next: Advanced**.
 
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes, and storage paths for VM images. You can create more volumes later.
-   * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates at least one thinly provisioned volume and storage path per machine for workloads to use. This is in addition to the required one infrastructure volume per cluster.
-      
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
-    * **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
+    - **Create workload volumes and required infrastructure volumes (Recommended)** - Creates at least one thinly provisioned volume and storage path per machine for workloads to use. This option is in addition to the required one infrastructure volume per cluster.
+    - **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You need to create workload volumes and storage paths later.
+    - **Use existing data drives** (single machines only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
         To use this option, use a single machine and have a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
- 
+
     > [!IMPORTANT]
     > - Don't delete the infrastructure volumes created during deployment.
-    > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size, and is a minimum of 1 per machine. 
-    
+    > - The number of workload volumes created during deployment is determined by the size of the storage pool and the maximum supportable volume size. It's a minimum of one per machine. 
+
     Here's a summary of the volumes that are created based on the number of machines in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
  
     |# machines  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
@@ -252,10 +257,9 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 1. Optionally add a tag to the Azure Local resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
-1. Select **Next: Validation**. Select **Start validation**. 
+1. Select **Next: Validation**. Select **Start validation**.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-1.png" alt-text="Screenshot of the Start validation selected in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-1.png":::
-
 
 1. The validation takes about 15 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
@@ -289,29 +293,30 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     To verify the event, connect to one of the machines on the Azure Local instance and run the following PowerShell command:
 
-    ```powershell
-    Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
-    ```
+     ```powershell
+     Get-ClusterNode | % { Get-WinEvent -ComputerName $_ -LogName Microsoft-AzureStack-HCI/Admin | ? Id -eq 609 }
+     ```
 
 - **Deployment timing.** When the deployment starts, the first step in the deployment, **Begin cloud deployment**, can take 45 to 60 minutes to complete. The total deployment time for a single machine is around 1.5 to 2 hours, whereas a two-node system takes about 2.5 hours to deploy.
 
 ## Verify a successful deployment
 
-To confirm that the system and all of its Azure resources were successfully deployed
-1. In the Azure portal, navigate to the resource group into which you deployed the system.
-2. On the **Overview** > **Resources**, you should see the following:
+To confirm that the system and all of its Azure resources deployed successfully, follow these steps:
 
-    |Number of resources  | Resource type  |
-    |---------|---------|
+1. In the Azure portal, navigate to the resource group into which you deployed the system.
+1. On **Overview** > **Resources**, check for the following resources:
+
+    | Number of resources | Resource type |
+    | --------- | --------- |
     | 1 per machine | Machine - Azure Arc |
-    | 1            | Azure Local     |
-    | 1            | Arc Resource Bridge |
-    | 1            | Infrastructure logical network named as *(clustername-InfraLNET)* |
-    | 1            | Key Vault           |
-    | 1            | Custom location     |
-    | 2*           | Storage account     |
+    | 1 | Azure Local |
+    | 1 | Arc Resource Bridge |
+    | 1 | Infrastructure logical network named as *(clustername-InfraLNET)* |
+    | 1 | Key Vault |
+    | 1 | Custom location |
+    | 2* | Storage account |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
-    
+
     \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
 
 ## Resume deployment
@@ -342,25 +347,25 @@ You might need to connect to the system via RDP to deploy workloads. Follow thes
 1. Run PowerShell as administrator on your management PC.
 1. Connect to your Azure Local instance via a remote PowerShell session.
 
-    ```powershell
-    $ip="<IP address of the Azure Local machine>"
-    Enter-PSSession -ComputerName $ip -Credential get-Credential
-    ```
+      ```powershell
+      $ip="<IP address of the Azure Local machine>"
+      Enter-PSSession -ComputerName $ip -Credential get-Credential
+      ```
 
 1. Enable RDP.
 
-    ```powershell
-    Enable-ASRemoteDesktop
-    ```
+      ```powershell
+      Enable-ASRemoteDesktop
+      ```
 
     > [!NOTE]
     > As per the security best practices, keep the RDP access disabled when not needed.
 
 1. Disable RDP.
 
-    ```powershell
-    Disable-ASRemoteDesktop
-    ```
+      ```powershell
+      Disable-ASRemoteDesktop
+      ```
 
 ## Next steps
 
