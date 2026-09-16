@@ -72,6 +72,9 @@ Static match conditions define fixed parameters for filtering traffic. Supported
 | Source port        | Ports 1–65535 or port groups            |
 | Destination port   | Ports 1–65535 or port groups            |
 
+> [!NOTE]
+> IPv4 prefixes in `ipPrefixValues` must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/24`, not `010.10.10.0/24`). Non-canonical IPv4 literals are rejected with a 400 error.
+
 ### Example – VLAN and IP match (IPv4)
 
 ```json
