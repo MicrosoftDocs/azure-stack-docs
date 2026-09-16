@@ -5,7 +5,7 @@ ms.topic: concept-article
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 01/23/2026
+ms.date: 09/14/2026
 ---
 
 # Introduction to Trusted launch for Azure Local VMs enabled by Azure Arc
@@ -52,7 +52,7 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 
 - Back up all VM files. You can use any backup solution or tool to back up all VM files as long as they follow standard [Hyper-V Backup Approaches](/virtualization/hyper-v-on-windows/reference/hypervbackupapproaches).  
 
-- Back up VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. You must manually back up the VM guest state protection key as soon as you create a Trusted launch VM as described in [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md). Without the guest state protection key, you cannot start the VM.
+- Back up the VM guest state protection key. Unlike standard Azure Local VMs, Trusted launch Azure Local VMs use a VM guest state protection key to protect the VM guest state, including the virtual TPM (vTPM) state, while at rest. The VM guest state protection key is stored in a local key vault in the Azure Local instance where the VM resides. Without the guest state protection key, you can't start the VM. You must manually back up the VM guest state protection key as soon as you create a Trusted launch VM. For more information, see [Manual backup and recovery of VM guest state protection key](trusted-launch-vm-import-key.md).
 
 ### VM recovery
 
@@ -71,6 +71,10 @@ When working with Trusted launch Azure Local VMs, make sure to understand the fo
 ### VM replication
 
 Azure Site Recovery, which can replicate virtual machines on your Azure Local instance to Azure, is not supported.
+
+### Automatic key backup (preview)
+
+To ensure business continuity and disaster recovery, provide a backup key vault (Azure Key Vault) when [creating your Azure Local instance](../deploy/deploy-via-portal.md). When you provide a backup key vault, the system automatically backs up system-level secrets such as Trusted Launch virtual machine keys (VM guest state protection keys), BitLocker recovery keys, and other sensitive information to the backup key vault. If data loss occurs, you can use the backup key vault for disaster recovery purposes.
 
 ## Supported operations
 
