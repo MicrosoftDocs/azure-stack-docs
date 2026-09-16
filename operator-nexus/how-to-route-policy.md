@@ -91,6 +91,9 @@ IP prefixes specify only the match conditions of route policies. They don't spec
 | condition | Specified prefix list bounds- EqualTo \|  GreaterThanOrEqualTo \|  LesserThanOrEqualTo |  EqualTo | |
 | subnetMaskLength | SubnetMaskLength specifies the minimum networkPrefix length to be matched. Required when condition is specified.  |  32| |
 
+> [!NOTE]
+> IPv4 values such as `networkPrefix` must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/28`, not `010.10.10.0/28`). Non-canonical IPv4 literals are rejected with a 400 error.
+
 ### Create IP Prefix
 
 This command creates an IP prefix resource with IPv4 prefix rules:
