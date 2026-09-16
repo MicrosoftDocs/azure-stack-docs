@@ -669,7 +669,7 @@ The commands for creating an external network by using Azure CLI include the fol
 |external|This is an optional Parameter to input MPLS Option 10 (B) connectivity to external networks via Provider Edge devices. Using this Option, a user can Input Import and Export Route Targets as shown in the example| || 
 
 > [!NOTE]
-> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.18.0.148/30`, not `010.18.0.148/30`). Non-canonical literals are ambiguous and are **rejected at create/update time with a 400 error**. This rule applies to all IPv4 fields on the external network as listed above.
+> You must supply IPv4 prefixes and addresses in **canonical dotted-decimal form with no leading zeros** (for example, `10.18.0.148/30`, not `010.18.0.148/30`). Non-canonical literals are ambiguous and are **rejected at create or update time with a 400 error**. This rule applies to all IPv4 fields on the external network as listed in the preceding table.
 
 For Option A You need to create an external network before you enable the L3 isolation Domain. An external is dependent on Internal network, so an external can't be enabled without an internal network. The vlan-id value should be between 501 and 4095.
 
