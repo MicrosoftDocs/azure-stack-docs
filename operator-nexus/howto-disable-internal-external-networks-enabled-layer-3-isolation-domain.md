@@ -1,140 +1,154 @@
 ---
-title: How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
-description: Learn about how to disable Internal/External networks in an enabled layer 3 isolation domain in Azure Operator Nexus 
+title: Disable internal or external networks in an enabled Layer 3 isolation domain
+description: Learn to safely disable internal and external networks in an enabled Layer 3 isolation domain in Azure Operator Nexus.
 author: rbhupatiraju-ms
 ms.author: rbhupatiraju
 ms.service: azure-operator-nexus
 ms.topic: how-to
 ms.date: 05/16/2025
-ms.custom: template-concept
+ms.custom: template-how-to
+#Customer intent: As a network operator, I want to disable internal and external networks in an enabled Layer 3 isolation domain so that I can change network resources without disrupting service.
 ---
 
-# How to Disable Internal/External Networks in an Enabled Layer 3 Isolation Domain in Azure Operator Nexus 
+# How to disable internal and external networks in an enabled Layer 3 isolation domain
+
+This article explains how to disable internal and external networks in an enabled Layer 3 isolation domain in Azure Operator Nexus. It also explains how to re-enable or delete them by following the Commit Workflow v2 process.
 
 ## Prerequisites
 
-- Fabric must support CommitV2.
-- ISD must be in Enabled state.
-- Fabric Runtime version ≥ 6.0.1.
+- The fabric supports Commit Workflow v2.
+- The Layer 3 isolation domain (ISD) is enabled.
+- Fabric Runtime version 7.0.0 or later.
 
-## Steps
+> [!NOTE]
+>
+> - Always perform a **Lock** followed by a **Commit** after administrative state changes.
+> - You can delete a network only after you disable it and commit the change.
+> - You can't disable or enable a network if the parent Layer 3 ISD isn't enabled.
+> - Associated resources are also disabled unless they're shared globally.
 
-### Common parameters used across commands:
-- --resource-group \<rg\>_ – Resource group containing the ISD and network resources
-- --l3-isolation-domain-name \<isd-name\>_ – The L3 Isolation Domain where networks belong
-- --name \<resource-name\>_ – Internal/External network resource name
-- --fabric \<fabric-name\>_ – Fabric resource name for commit operations
+## Common parameters
 
-## Step 1: Disable an External Network (Administrative State)
-```Azure CLI
-az managednetworkfabric external-network update-administrative-state \
+The following parameters are used across the commands in this article:
+
+- `--resource-group <rg>` – Resource group that contains the ISD and network resources.
+- `--l3-isolation-domain-name <isd-name>` – The Layer 3 isolation domain that the networks belong to.
+- `--resource-name <resource-name>` – Internal or external network resource name.
+- `--fabric <fabric-name>` – Fabric resource name for commit operations.
+
+## Disable the external network
+
+Set the administrative state of the external network to **Disable**.
+
+```azurecli
+az networkfabric externalnetwork update-admin-state \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <external-network-name> \
+  --resource-name <external-network-name> \
   --state Disable
 ```
-**Verify state**
-```Azure CLI
-az managednetworkfabric external-network show \
+### Verify state
+
+```azurecli
+az networkfabric externalnetwork show \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <external-network-name> \
+  --resource-name <external-network-name> \
   --query "{name:name, adminState:administrativeState, provState:provisioningState}"
 ```
 
-## Step 2: Disable an Internal Network (Administrative State)
-```Azure CLI
-az managednetworkfabric internal-network update-administrative-state \
+## Disable an internal network
+
+> [!WARNING]
+> Keep at least one Internal Network enabled per ISD to avoid service disruption.
+
+Set the administrative state of the internal network to **Disable**.
+
+### Disable the internal network:
+
+```azurecli
+az networkfabric internalnetwork update-admin-state \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <internal-network-name> \
+  --resource-name <internal-network-name> \
   --state Disable
-``` 
-**Verify state**
-```Azure CLI
-az managednetworkfabric internal-network show \
+```
+
+### Verify state:
+
+```azurecli
+az networkfabric internalnetwork show \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <internal-network-name> \
+  --resource-name <internal-network-name> \
   --query "{name:name, adminState:administrativeState, provState:provisioningState}"
 ```
 
-## Step 3: CommitV2 Workflow (Fabric-wide)
-**Lock configuration**
-```Azure CLI
-az managednetworkfabric fabric lock-configuration \
-  --fabric <fabric-name>   
-```
-**(Optional) Inspect the configuration diff before applying**
-```Azure CLI
-# Device-level configuration view
-az managednetworkfabric fabric view-device-configuration \
-  --fabric <fabric-name> \
-  --output table
-```     
-**Commit configuration**
-```Azure CLI
-az managednetworkfabric fabric commit-configuration \
-  --fabric <fabric-name>  
-```
-**Check commit job status**
-```Azure CLI
-az managednetworkfabric fabric show \
-  --fabric <fabric-name> \
-  --query "{name:name, provState:provisioningState, commitStatus:commitStatus}"
-```
+## Commit Workflow v2 (Fabric-wide)
 
-## Step 4: Re-enable a Network (Rollback / Enable)
-**External Network: Enable**
-```Azure CLI
-az managednetworkfabric external-network update-administrative-state \
+Always perform a **Lock** followed by a **Commit** after administrative state changes. Use the Commit Workflow v2: lock the new fabric configuration, inspect the configuration diff, and then commit the changes. For more information, see [How to use Commit Workflow v2 in Azure Operator Nexus](./howto-use-commit-workflow-v2.md)
+
+## Re-enable a network (rollback or enable)
+
+### External network: Enable
+
+```azurecli
+az networkfabric externalnetwork update-admin-state \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <external-network-name> \
+  --resource-name <external-network-name> \
   --state Enable  
-``` 
-**Internal Network: Enable**
-```Azure CLI
-az managednetworkfabric internal-network update-administrative-state \
+```
+
+### Internal network: Enable
+
+```azurecli
+az networkfabric internalnetwork update-admin-state \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <internal-network-name> \
+  --resource-name <internal-network-name> \
   --state Enable   
 ```
-**Commit the change**
-```Azure CLI
-az managednetworkfabric fabric lock-configuration --fabric <fabric-name>
-az managednetworkfabric fabric commit-configuration --fabric <fabric-name> 
-```
 
-## Step 5: Optional step - Delete a Network (after Disable + Commit)
-**External Network: Delete**
-```Azure CLI
-az managednetworkfabric external-network delete \
+### Commit the change
+
+To lock and commit the change after you enable the network, see [Commit Workflow v2](./howto-use-commit-workflow-v2.md).
+
+## Delete a network (optional)
+
+> [!IMPORTANT]
+> You must disable and commit the network before you delete it.
+
+### External network: Delete
+
+```azurecli
+az networkfabric externalnetwork delete \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <external-network-name> 
+  --resource-name <external-network-name> 
 ```
-**Internal Network: Delete**
-```Azure CLI
-az managednetworkfabric internal-network delete \
+
+### Internal network: Delete
+
+```azurecli
+az networkfabric internalnetwork delete \
   --resource-group <rg> \
   --l3-isolation-domain-name <isd-name> \
-  --name <internal-network-name>
+  --resource-name <internal-network-name>
 ```
-### Notes
-- **Always** perform a **Lock** followed by a **Commit** after administrative state changes.
-- Deletion is permitted **only after** disable + commit success.
-- Keep at least one Internal Network enabled per ISD to avoid service disruption.
-- Disable/Enable is not permitted if the parent L3 ISD is not enabled.
 
-### Important Notes
+## Frequently asked questions
 
-- Disable and commit must be completed before delete.
-- Associated resources will also be disabled unless shared globally.
+This section answers common questions about disabling and re-enabling internal and external networks.
 
-## FAQ
----
+### Why can't I delete a network directly?
 
-- **Why not allow direct delete?** To maintain configuration integrity and avoid traffic disruption.
-- **Can disabled networks be re-enabled?** Yes, via commit flow.
+You can't delete a network directly because it helps maintain configuration integrity and prevents traffic disruption. Disable the network and commit the change first.
+
+### Can I re-enable a disabled network?
+
+Yes. Set the administrative state back to `Enable`, and then commit the change through Commit Workflow v2.
+
+## Related content
+
+- [How to use Commit Workflow v2 in Azure Operator Nexus](./howto-use-commit-workflow-v2.md)
