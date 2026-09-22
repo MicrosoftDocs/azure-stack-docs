@@ -31,7 +31,7 @@ This section provides key notifications related to this release, including annou
 
 ## Improvements
 
-This security update includes fixes and quality improvements from [KB5120233](https://support.microsoft.com/servicing/os/windows-server/2026/08/kb5120233-windows-server-2025-security-update?branch=pr-en-us-325) (released August 11, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5120233](https://support.microsoft.com/servicing/os/windows-server/2026/08/kb5120233-windows-server-2025-security-update) (released August 11, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[Certificates]** This update improves application compatibility during Windows certificate-authority updates, helping applications continue to work as expected as Microsoft transitions to newer signing certificates.
 
