@@ -22,6 +22,8 @@
           href: concepts-storage-multiple-appliances.md
         - name: Storage for Nexus Kubernetes
           href: concepts-storage-kubernetes.md
+        - name: Expand CSN shared storage
+          href: howto-expand-csn-shared-storage.md
     - name: Cluster deployment and upgrades
       expanded: false
       items:
@@ -572,4 +574,3 @@
       href: reference-operator-nexus-skus.md
     - name: Password By Key Vault Reference
       href: reference-key-vault-credential.md
-
