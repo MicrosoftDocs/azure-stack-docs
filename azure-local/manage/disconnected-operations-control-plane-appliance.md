@@ -93,7 +93,7 @@ To get started with a quick proof of concept (POC) for disconnected operations, 
 
 
 > [!NOTE]
-> **We recommend you run the above recommended hardware configuration** even for POC configurations. This would be a supported configuration and could be used in production later. If you diverge from this recommendation  ensure that the control plane nodes have the following as a minimum configuration : 256 GB memory, 24 cores, 4TB dedicated storage (SSD/NVME), 960 GB boot drive (SSD/NVME)
+> **We recommend you run the preceding hardware configuration** even for POC configurations. This configuration is supported and you can use it in production later. If you diverge from this recommendation, ensure that the control plane nodes have the following minimum configuration: 256 GB memory, 24 cores, 4TB dedicated storage (SSD/NVME), 960 GB boot drive (SSD/NVME).
 > 
 
 
