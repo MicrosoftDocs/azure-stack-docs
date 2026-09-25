@@ -5,7 +5,7 @@ description: Discover Azure Local multi-rack deployments, a new capability for d
 author: sipastak
 ms.author: sipastak
 ms.reviewer: robess
-ms.date: 07/21/2026
+ms.date: 09/17/2026
 ms.topic: overview
 ms.custom: references_regions
 ms.subservice: multi-rack
@@ -18,6 +18,8 @@ ms.subservice: multi-rack
 This article provides an overview of multi-rack deployments of Azure Local. The overview details the benefits, key features, use cases, and how to get started with multi-rack deployments.
 
 Multi-rack deployments extend the scale of Azure Local, supporting hundreds of servers across multiple racks in a single instance.
+
+[!INCLUDE [workload-availability-note](../includes/workload-availability-note.md)]
 
 ## Overview
 

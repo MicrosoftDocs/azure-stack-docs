@@ -1,6 +1,6 @@
 ---
-title: What's New in Disconnected Operations for Azure Local
-description: Find out about the new features and enhancements in disconnected operations for Azure Local.
+title: What's new in disconnected operations
+description: What's new in disconnected operations for Azure Local, including the latest features, security, API, and resource provider updates.
 author: ronmiab
 ms.topic: concept-article
 ms.date: 09/01/2026
