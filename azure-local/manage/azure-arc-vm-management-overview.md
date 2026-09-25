@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: linux-related-content
-ms.date: 07/23/2026
+ms.date: 09/17/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,6 +17,8 @@ ms.subservice: hyperconverged
 This article provides an overview of virtual machine (VM) management in hyperconverged deployments of Azure Local, including its benefits, components, and a high-level workflow.
 
 Azure Local VM management enables IT admins to provision and manage Windows and Linux VMs hosted in an on-premises Azure Local environment. IT admins can use the feature to create, modify, delete, and assign permissions and roles to app owners, thereby enabling self-service VM management.
+
+[!INCLUDE [workload-availability-note](../includes/workload-availability-note.md)]
 
 Administrators can manage Azure Local VMs enabled by Azure Arc on their Azure Local instances by using Azure management tools, including the Azure portal, the Azure CLI, Azure PowerShell, and [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates. By using Azure Resource Manager templates, you can also automate VM provisioning in a secure cloud environment.
 

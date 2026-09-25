@@ -1,11 +1,11 @@
 ---
-title: What's new in multi-rack deployments of Azure Local?
-description: Find out about the new features and enhancements in the latest multi-rack deployments release of Azure Local.
-ms.topic: overview
+title: What's new in multi-rack deployments
+description: What's new in multi-rack deployments of Azure Local, including the latest AKS, networking, storage, security, and Azure Local VM features and fixes.
+ms.topic: whats-new
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 08/20/2026
+ms.date: 09/17/2026
 ms.subservice: multi-rack
 ---
 
@@ -15,17 +15,9 @@ ms.subservice: multi-rack
 
 This article lists the features and improvements that are available in multi-rack deployments of Azure Local. The multi-rack release focuses on Azure Local virtual machine (VM) management, Azure Kubernetes Service (AKS) enabled by Azure Arc, networking, storage, security, and more.
 
-<!-- Monikers below are placeholders while the multi-rack moniker set is finalized:
-     Multi-rack 1.3 -> azloc-2606
-     Multi-rack 1.4 -> azloc-2607
-     Multi-rack 1.5 -> azloc-2608
--->
+Multi-rack deployments release on a separate cadence from hyperconverged deployments of Azure Local, so the release dates and version numbers don't align. For the platform release notes, see [What's new in hyperconverged deployments of Azure Local](../whats-new.md).
 
-::: moniker range="=azloc-2608"
-
-## Features and improvements in 1.5
-
-<!-- TODO: Confirm exact 1.5 build/version string. -->
+## July 2026
 
 The July 2026 release of multi-rack deployments of Azure Local is version **1.5.0**. This release includes new features across AKS enabled by Azure Arc, Azure Local VMs, security, and storage validation, along with reliability improvements and bug fixes.
 
@@ -55,13 +47,7 @@ The July 2026 release of multi-rack deployments of Azure Local is version **1.5.
 
   - **Purity 6.9.5 certified**: Purity 6.9.5 is now certified for multi-rack deployments running this release or later. If your arrays run Purity 6.5.11 or earlier, coordinate with Pure Storage to complete any required pre-upgrade actions before you upgrade.
 
-::: moniker-end
-
-::: moniker range="=azloc-2607"
-
-## Features and improvements in 1.4
-
-<!-- TODO: Confirm exact 1.4 build/version string. -->
+## June 2026
 
 The June 2026 release of multi-rack deployments of Azure Local is version **1.4.0**. This release adds new capabilities for logical networking, Azure Local VMs, GPU workloads, and update visibility, along with reliability improvements and bug fixes.
 
@@ -81,13 +67,7 @@ The June 2026 release of multi-rack deployments of Azure Local is version **1.4.
 
   - **Last successful runtime update timestamp visible in the Azure portal (API 2026-05-01-preview)**: The cluster resource now surfaces the last successful runtime version update timestamp in the Azure portal, so you can confirm when a runtime update last completed successfully.
 
-::: moniker-end
-
-::: moniker range="=azloc-2606"
-
-## Features and improvements in 1.3
-
-<!-- TODO: Confirm 1.3 build/version string and release month. -->
+## May 2026
 
 The May 2026 release of multi-rack deployments of Azure Local is version **1.3.0**. This release adds new features across Azure Local VMs, multi-tenancy, networking, the Azure portal experience, and edge credential management, along with reliability improvements and bug fixes.
 
@@ -117,8 +97,6 @@ The May 2026 release of multi-rack deployments of Azure Local is version **1.3.0
   - **Cluster-local credential rotation**: Cluster-specific credential rotation is now handled locally on the cluster, providing the foundation for future bring-your-own key vault (BYOK) support. If you use Network Security Perimeter, ensure your Key Vault is an associated resource on the perimeter and inbound access rules allow subscription access. For more information, see [Security concepts](./multi-rack-security.md).
 
   - **Access Bridge resource (API 2026-01-01-preview)**: The Access Bridge resource enables scenarios such as bastion access to storage management interfaces.
-
-::: moniker-end
 
 ## Related content
 
