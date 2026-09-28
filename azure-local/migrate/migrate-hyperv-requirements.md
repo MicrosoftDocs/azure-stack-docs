@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Local using Azure M
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Migrate (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 09/24/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -79,7 +79,7 @@ For any subscriptions that host resources used in migration, such as Azure Migra
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
-- Verify that none of the VMs you plan to migrate have the Azure Connected Machine Agent installed. For more information, see [FAQ](migrate-faq.yml).
+- For VMs with the Azure Connected Machine Agent installed, decide whether to reuse the existing Azure Arc resource. If you reuse the resource, keep the agent installed. The existing Azure Arc resource carries forward to the migrated VM. If you don't reuse the resource, uninstall the agent before replication. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 ## Target Azure Local requirements
 

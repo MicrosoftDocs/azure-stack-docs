@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/25/2025
+ms.date: 09/28/2026
 ms.reviewer: sethm
 ms.lastreviewed: 10/28/2020
 ---
@@ -13,4 +13,5 @@ ms.lastreviewed: 10/28/2020
 >
 > | Supported minimum Azure Stack Hub version | App Service resource provider version |
 > | ----- | --- |
+> | 2311 and later | 26R1 [installer](https://aka.ms/appsvcupdate26R1installer), 26R1 [offline package](https://aka.ms/appsvcupdate26R1offline) ([release notes](../operator/app-service-release-notes-2026r1.md)) |
 > | 2311 and later | 25R1 [installer](https://aka.ms/appsvcupdate25R1installer), 25R1 [offline package](https://aka.ms/appsvcupdate25R1offline) ([release notes](../operator/app-service-release-notes-2025R1.md)) |
