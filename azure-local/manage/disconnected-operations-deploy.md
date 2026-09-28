@@ -259,6 +259,8 @@ Populate the required parameters based on your deployment planning. Modify the e
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
+# If you want to fully automate the install - you can bypass the bitlocker prompt by updating this to true
+$env:BypassBitlockerRecoveryKeysPrompt = $false; 
 $networkIntentName = 'ManagementComputeStorage'
 $TimeServers = "Your reliable NTP source" 
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
@@ -354,16 +356,16 @@ In order for the nodes to understand your private cloud environment, you must ad
 
 On each node, run the following from PowerShell:
  
-1. `Add-AzLocalEnvironment -ArmEndpoint "autonomous.cloud.private"`
-1. Use `Get-AzEnvironment` to verify that the cloud endpoint was added. Check for a row labeled **Azure.local**.
+1. `Add-AzLocalEnvironment -ArmEndpoint "https://armmanagement.$($applianceFQDN)"`
+1. Verify that the cloud endpoint was added by using `Get-AzEnvironment`. Verify that you have a row labelled **Azure.local**.
 
 > [!NOTE]
 > This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
 
-For environments prior to version 2607, use the legacy `Add-AzEnvironment` approach described in the following section.
+For environments prior to 2607, use the legacy `Add-AzEnvironment` approach below.
 
 ```powershell
-# Legacy approach from prior to 2603 adding a private cloud environment
+# Legacy approach from prior to 2607 adding a private cloud environment
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
