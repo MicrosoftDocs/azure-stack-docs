@@ -724,6 +724,8 @@ items:
             href: migrate/migrate-vmware-replicate.md
           - name: Migrate, verify
             href: migrate/migrate-vmware-migrate.md
+        - name: Reuse Azure Arc-enabled servers
+          href: migrate/migrate-arc-reuse.md
         - name: Migrate via PowerShell, Azure CLI, or Terraform
           href: migrate/migrate-via-powershell.md
         - name: Enable guest management
@@ -1835,52 +1837,6 @@ items:
         # --- Drift detection ---
         - name: Drift detection
           href: manage/drift-detection.md
-
-      # --- Migrate ---
-      - name: Migrate
-        items:
-        - name: Migration overview
-          href: migrate/migration-options-overview.md
-        - name: Known issues in Azure Migrate for Azure Local
-          href: migrate/migration-known-issues.md
-        - name: What's new in VM migration?
-          href: migrate/migrate-whats-new.md
-        - name: Migrate Hyper-V VMs
-          items:
-          - name: Overview
-            href: migrate/migration-azure-migrate-overview.md
-          - name: Review requirements
-            href: migrate/migrate-hyperv-requirements.md
-          - name: Complete prerequisites
-            href: migrate/migrate-hyperv-prerequisites.md
-          - name: Discover, replicate
-            href: migrate/migrate-hyperv-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-azure-migrate.md
-        - name: Migrate VMware VMs
-          items:
-          - name: Overview
-            href: migrate/migration-azure-migrate-vmware-overview.md
-          - name: Review requirements
-            href: migrate/migrate-vmware-requirements.md
-          - name: Complete prerequisites
-            href: migrate/migrate-vmware-prerequisites.md
-          - name: Discover, replicate
-            href: migrate/migrate-vmware-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-vmware-migrate.md
-        - name: Migrate via PowerShell, Azure CLI, or Terraform
-          href: migrate/migrate-via-powershell.md
-        - name: Enable guest management
-          href: migrate/migrate-enable-guest-management.md
-        - name: Maintain static IP addresses
-          href: migrate/migrate-maintain-ip-addresses.md
-        - name: Monitor Azure Local migrations
-          href: migrate/monitor-migration.md
-        - name: Migration FAQ
-          href: migrate/migrate-faq.yml
-        - name: Troubleshoot migration
-          href: migrate/migrate-troubleshoot.md
 
       # --- Troubleshoot ---
       - name: Troubleshoot
