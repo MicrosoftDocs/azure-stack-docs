@@ -386,6 +386,8 @@
         href: app-service-migrate-to-azure.md
       - name: Release notes
         items:
+        - name: 26R1 release notes [September 2026]
+          href: app-service-release-notes-2026r1.md
         - name: 25R1 release notes [June 2025]
           href: app-service-release-notes-2025R1.md
         - name: 24R1 release notes [December 2024]
