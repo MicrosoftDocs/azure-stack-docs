@@ -40,7 +40,15 @@ items:
   - name: Overview
     items:
     - name: What's new
-      href: whats-new.md
+      items:
+      - name: Hyperconverged
+        href: whats-new.md
+      - name: Multi-rack (preview)
+        href: ./multi-rack/multi-rack-whats-new.md
+      - name: Small form factor
+        href: ./small-form-factor/small-form-factor-overview.md
+      - name: VM migration
+        href: ./migrate/migrate-whats-new.md
     - name: Release notes
       items:
       - name: Release information
@@ -983,7 +991,7 @@ items:
   # Grouped into suites (AI / Data / Productivity / Bring your own apps /
   # Other) per PM feedback to mirror the product diagram.
   # ---------------------------------------------------------------------------
-  - name: Workloads
+  - name: Workloads (hyperconverged and disaggregated)
     items:
 
     # ---------------------------------------------------------------------------
@@ -1204,7 +1212,9 @@ items:
     - name: About disconnected operations
       href: manage/disconnected-operations-overview.md
     - name: What's new
-      href: manage/disconnected-operations-whats-new.md
+      items:
+      - name: Disconnected operations
+        href: manage/disconnected-operations-whats-new.md
     - name: Release notes
       items:
       - name: Known issues
@@ -1913,7 +1923,7 @@ items:
   # Grouped into suites (AI / Productivity / Bring your own apps) per PM
   # feedback to mirror the product diagram.
   # ---------------------------------------------------------------------------
-  - name: Workloads
+  - name: Workloads (hyperconverged and disaggregated)
     items:
 
     # ---------------------------------------------------------------------------
