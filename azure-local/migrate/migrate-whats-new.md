@@ -4,7 +4,7 @@ description: What's new in Azure Migrate for Azure Local, including the latest H
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 08/13/2026
+ms.date: 09/24/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -14,6 +14,12 @@ ms.subservice: hyperconverged
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## September 2026
+
+This release includes these features and improvements:
+
+- **Reuse Azure Arc-enabled server resources during migration** – If your source VMware or Hyper-V VMs are onboarded as Azure Arc-enabled servers, you can now retain their existing Azure Arc resources during migration instead of uninstalling the Azure Connected Machine agent beforehand. Azure Migrate reconfigures the agent in place and transitions the same `Microsoft.HybridCompute/machines` resource from an Arc-enabled server to an Azure Local VM, carrying forward its tags, role-based access control (RBAC) assignments, Azure Policy assignments, monitoring configuration, and installed VM extensions. Select the VMs to reuse on the **Virtual machines** tab of the **Replicate** wizard. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 ## July 2026
 
