@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 09/28/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -280,7 +280,6 @@ This step applies to using a .zip file.
 
 1. Wait until the configuration is complete and you see this message: **Successfully configured Azure Migrate project.**
 
-
 ## Step 3: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
@@ -321,6 +320,9 @@ This step applies to using a .zip file.
 1. On the **Virtual machines** tab, verify the VMs are discovered and are listed. You can select up to 10 VMs from the portal list to replicate at one time. Select **Next**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
+
+    > [!NOTE]
+    > If any VMs you select are Azure Arc-enabled servers, this tab also asks whether to retain their Azure Connected Machine agents during migration. Reuse preserves each resource's tags, role assignments, Azure Policy assignments, and extensions, but locks the target resource group and VM name for every VM in the batch. You can't change the setting after replication starts. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 1. On the **Target settings** tab, complete these tasks:
 

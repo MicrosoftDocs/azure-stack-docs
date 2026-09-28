@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Local using Azure Migrate
 description: Learn prerequisites for VMware migration to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 09/24/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -29,7 +29,7 @@ The following list contains the prerequisites and considerations that you must m
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
 | Encrypted disks/volumes aren't supported. | source | Decrypt any encrypted disks or volumes on VMs before migration.|
 | Shared disks aren't supported. | source | Ensure that VMs don't have any shared disks attached before migration. |
-| Uninstall Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Arc-enabled, ensure that you uninstall the Azure Connected Machine Agent before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
+| Decide how to handle Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Azure Arc-enabled, you can reuse its existing Azure Arc resource during migration and keep the agent installed. See [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md). If you don't reuse the resource, uninstall the Azure Connected Machine Agent before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
 | Review snapshot-based backup solutions | source | If you use snapshot-based backups on VMware VMs, make sure they don't run at the same time as Azure Migrate replication cycles. Concurrent snapshot operations can interfere with replication cycles. See [Replication Cycles](/azure/migrate/concepts-vmware-agentless-migration#replication-cycles) for more information. |
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
