@@ -1,6 +1,6 @@
 ---
-title: What's new in Azure Migrate for Azure Local
-description: Learn about new features in Azure Migrate for Azure Local.
+title: What's new in Azure Migrate
+description: What's new in Azure Migrate for Azure Local, including the latest Hyper-V and VMware VM migration features, fixes, and role-based access updates.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
