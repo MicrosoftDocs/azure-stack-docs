@@ -357,12 +357,12 @@ In order for the nodes to understand your private cloud environment, you must ad
 On each node, run the following from PowerShell:
  
 1. `Add-AzLocalEnvironment -ArmEndpoint "https://armmanagement.$($applianceFQDN)"`
-1. Verify that the cloud endpoint was added by using `Get-AzEnvironment`. Verify that you have a row labelled **Azure.local**.
+1. Use `Get-AzEnvironment` to verify that the cloud endpoint was added. Check for a row labeled **Azure.local**.
 
 > [!NOTE]
 > This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
 
-For environments prior to 2607, use the legacy `Add-AzEnvironment` approach below.
+For environments prior to version 2607, use the legacy `Add-AzEnvironment` approach described in the following section.
 
 ```powershell
 # Legacy approach from prior to 2607 adding a private cloud environment
