@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 09/28/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -93,15 +93,15 @@ After you install the source appliance, follow these steps:
 
     :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
         
-    If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions. 
+    If needed, use a preconfigured Microsoft Entra ID application to register the source appliance. See [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml) for detailed instructions.
     
        > [!NOTE]
        > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
 
-1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. 
+1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. **Don't use VDDK 7.0.X.** These versions have known problems and result in errors during migration.
 
    > [!IMPORTANT]
-   > Don't use VDDK 7.0.X. These versions have known problems and result in errors during migration.
+   > Azure Migrate doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](./migration-options-overview.md#third-party-migration-options) to migrate your VMware VMs to Azure Local.
 
 1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
 
@@ -280,7 +280,6 @@ This step applies to using a .zip file.
 
 1. Wait until the configuration is complete and you see this message: **Successfully configured Azure Migrate project.**
 
-
 ## Step 3: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
@@ -321,6 +320,9 @@ This step applies to using a .zip file.
 1. On the **Virtual machines** tab, verify the VMs are discovered and are listed. You can select up to 10 VMs from the portal list to replicate at one time. Select **Next**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
+
+    > [!NOTE]
+    > If any VMs you select are Azure Arc-enabled servers, this tab also asks whether to retain their Azure Connected Machine agents during migration. Reuse preserves each resource's tags, role assignments, Azure Policy assignments, and extensions, but locks the target resource group and VM name for every VM in the batch. You can't change the setting after replication starts. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 1. On the **Target settings** tab, complete these tasks:
 

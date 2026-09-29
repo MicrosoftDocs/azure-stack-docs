@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Migrate (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 09/28/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -259,6 +259,9 @@ This step applies to using a .zip file.
 1. On the **Virtual machines** tab, verify the VMs are discovered and listed. You can select up to 10 VMs from the list to migrate at one time. Select **Next**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-hyperv-replicate/replicate-3-vm.png":::
+
+    > [!NOTE]
+    > If any VMs you select are Azure Arc-enabled servers, this tab also asks whether to retain their Azure Connected Machine agents during migration. Reuse preserves each resource's tags, role assignments, Azure Policy assignments, and extensions, but locks the target resource group and VM name for every VM in the batch. You can't change the setting after replication starts. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 1. On the **Target settings** tab, complete these tasks:
 

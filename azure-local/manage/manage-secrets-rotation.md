@@ -29,10 +29,12 @@ The `Set-AzureStackLCMUserPassword` cmdlet takes the following parameters:
 |Parameter|Description  |
 |---------|---------|
 |`Identity`    | Username of the user whose password you want to change.         |
-|`OldPassword` | The current password of the user.        |
+|`OldPassword` | The current password of the user. Only specify this parameter when using the `UpdateAD` parameter.         |
 |`NewPassword` | The new password for the user.        |
 |`UpdateAD`    | Optional parameter used to set a new password in Active Directory.        |
 
+> [!NOTE]
+> Specify the `OldPassword` parameter only if you also specify the `UpdateAD` parameter.
 
 ### Run Set-AzureStackLCMUserPassword cmdlet
 

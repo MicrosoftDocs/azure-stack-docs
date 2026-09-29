@@ -3,8 +3,8 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 09/24/2025
-ms.lastreviewed: 09/24/2025
+ms.date: 09/17/2026
+ms.lastreviewed: 09/17/2026
 ---
 
 ### Get the object ID for Azure Local Resource Provider
@@ -13,7 +13,7 @@ This object ID for the Azure Local Resource Provider (RP) is unique per Azure te
 
 1. In the Azure portal, search for and go to Microsoft Entra ID.
 
-1. Go to the **Overview** tab and search for `00001111-aaaa-2222-bbbb-3333cccc4444`.
+1. Go to the **Overview** tab and search for `1412d89f-b8a8-4111-b4fd-e82905cbd85d`.
 
 1. Select the Service Principal Name that is listed and copy the **Object ID**.
 
@@ -24,13 +24,13 @@ This object ID for the Azure Local Resource Provider (RP) is unique per Azure te
     # [Azure PowerShell](#tab/azure-powershell)
 
     ```powershell
-    (Get-AzADServicePrincipal -ApplicationId "00001111-aaaa-2222-bbbb-3333cccc4444").Id
+    (Get-AzADServicePrincipal -ApplicationId "1412d89f-b8a8-4111-b4fd-e82905cbd85d").Id
     ```
 
     # [Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az ad sp list --filter "appId eq '00001111-aaaa-2222-bbbb-3333cccc4444'" --query "[0].id" -o tsv
+    az ad sp list --filter "appId eq '1412d89f-b8a8-4111-b4fd-e82905cbd85d'" --query "[0].id" -o tsv
     ```
 
     ---

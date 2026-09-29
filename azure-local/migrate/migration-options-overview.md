@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Local
 description: Learn about the available migration options for migrating VM workloads to your Azure Local.
 author: ronmiab
 ms.topic: overview
-ms.date: 12/09/2025
+ms.date: 09/24/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -28,14 +28,19 @@ The primary first-party migration option is [Azure Migrate](./migration-azure-mi
 
 You can use Azure Migrate to migrate the following types of VMs to Azure Local:
 
-   - [Hyper-V VMs (Preview)](./migration-azure-migrate-overview.md)
-   - [VMware VMs](./migration-azure-migrate-vmware-overview.md)
+- [Hyper-V VMs (Preview)](./migration-azure-migrate-overview.md)
+- [VMware VMs](./migration-azure-migrate-vmware-overview.md)
 
 **Considerations for Azure Migrate**
 
 Azure Migrate requires both a source appliance in your on-premises environment and a target appliance in your Azure Local instance. This setup is necessary for every Azure Migrate project. For more information, see [Source VMware requirements](migrate-vmware-requirements.md#source-vmware-server-requirements) and [Source Hyper-V requirements](migrate-hyperv-requirements.md#source-hyper-v-requirements).  
 
+- **Hyper-V migrations:** Support is currently in preview.
+- **VMware migrations:** Azure Migrate doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](#third-party-migration-options).
+
 By default, Azure Migrate provisions all migrated VMs as Azure Local VMs enabled by Azure Arc. For more information on VM types for Azure Local, see [Types of VMs on Azure Local](../concepts/compare-vm-management-capabilities.md#types-of-vms-on-azure-local).
+
+If your source VMs are already onboarded as Azure Arc-enabled servers, you can retain their existing Azure Arc resources during migration instead of projecting new ones. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](./migrate-arc-reuse.md).
 
 
 ## Third-party migration options

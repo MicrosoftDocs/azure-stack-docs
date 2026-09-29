@@ -44,7 +44,7 @@ The creation of the Network Fabric related resources is subject to the following
 | Isolation domain MTU | 1500 - 9200 |
 
 #### Resource Requirements for the NFC Deployment
-This section provides a detailed breakdown of the compute resources required for a complete NFC (Network Fabric Controller) deployment.  Below is the detailed breakdown of the total vCPU capacity of **228 vCPUs** needed to support [NFC zone‑redundant operations](https://learn.microsoft.com/azure/operator-nexus/howto-configure-network-fabric-controller#virtual-machine-vm-sku-information-for-network-fabric-controller) and to ensure seamless AKS cluster upgrade cycles.
+This section provides a detailed breakdown of the compute resources required for a complete NFC (Network Fabric Controller) deployment.  Below is the detailed breakdown of the total vCPU capacity of **228 vCPUs** needed to support [NFC zone‑redundant operations](howto-configure-network-fabric-controller.md#virtual-machine-vm-sku-information-for-network-fabric-controller) and to ensure seamless AKS cluster upgrade cycles.
 -   **NFC AKS Cluster**
     -   VM SKU: _Standard D8s v3_
     -   Total vCPUs Required: **144**

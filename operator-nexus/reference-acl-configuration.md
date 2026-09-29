@@ -49,6 +49,9 @@ Dynamic match configuration makes it easier to handle complex matching scenarios
 
 You can store the field-set definition in a file in your own Azure storage account blob container and provide the blob URL in the aclsUrl property in the ACL payload.
 
+> [!NOTE]
+> IPv4 prefixes and addresses in match conditions must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.0.0.0/24`, not `010.0.0.0/24`). Non-canonical IPv4 literals are rejected with a 400 error.
+
 ## Configuration parameters for an Access Control List
 
 | Parameter | Description | Example |

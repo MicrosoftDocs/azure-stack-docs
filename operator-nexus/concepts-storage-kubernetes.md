@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: concept-article
-ms.date: 05/22/2025
+ms.date: 09/17/2026
 ms.custom: template-concept
 ---
 
@@ -46,7 +46,7 @@ Some Azure Operator Nexus deployments may have two storage appliances installed.
 
 ### StorageClass: nexus-shared
 
-In situations where a shared file system is required, the *nexus-shared* storage class is available. This storage class provides a highly available shared storage solution by enabling multiple pods in the same Nexus Kubernetes cluster to concurrently access and share the same volume. The *nexus-shared* storage class is backed by a highly available NFS storage service. This NFS storage service (storage pool currently limited to a maximum size of 1 TiB) is available per Cloud Service Network (CSN). The NFS storage service is deployed automatically on creation of a CSN resource. Any Nexus Kubernetes cluster attached to the CSN can provision persistent volumes from this shared storage pool. Nexus-shared supports both Read Write Once (RWO) and Read Write Many (RWX) access modes. What that means is that the workload applications can make use of either of these access modes to access the shared storage.
+Use the *nexus-shared* storage class when you need a shared file system. This storage class provides a highly available shared storage solution by enabling multiple pods in the same Nexus Kubernetes cluster to concurrently access and share the same volume. The *nexus-shared* storage class is backed by a highly available NFS storage service. One shared storage pool is available per Cloud Services Network (CSN). The pool has a default and minimum size of 1 TiB and can be expanded to a maximum of 20 TiB. The NFS storage service is deployed automatically when the CSN resource is created. Any Nexus Kubernetes cluster attached to the CSN can provision persistent volumes from this shared storage pool. Nexus-shared supports both Read Write Once (RWO) and Read Write Many (RWX) access modes. For instructions to increase the pool capacity, see [Expand shared storage for a Cloud Services Network](./howto-expand-csn-shared-storage.md).
 
 <!--- IMG ![Nexus Shared Volume](Docs/media/nexus-shared-volume.png) IMG --->
 :::image type="content" source="media/nexus-shared-volume.png" alt-text="Diagram depicting how nexus-shared provisions a volume for a workload in Nexus Kubernetes Cluster.":::
@@ -294,12 +294,18 @@ Thu Nov  9 21:51:42 UTC 2023 -- test-deploy-rwx-fdb8f49c-86pv4
 
 ## Volume size limits and capacity management
 
-PVCs created using the nexus-volume and nexus-shared have minimum and maximum claim sizes.
+PVCs you create by using the `nexus-volume` and `nexus-shared` storage classes have the following capacity constraints.
 
-| Storage Class | Minimum PVC Size | Maximum PVC Size |
-|---------------|------------------|------------------|
-| nexus-volume  | 1 MiB | 12 TiB |
-| nexus-shared  | None | 1 TiB |
+| Storage class | Minimum PVC size | Capacity constraint |
+|---------------|------------------|---------------------|
+| nexus-volume | 1 MiB | Maximum PVC size is 12 TiB. |
+| nexus-shared | None | Consumption is limited by both the PVC request and the available capacity in the CSN shared storage pool. |
+
+The CSN shared storage pool that backs `nexus-shared` PVCs has the following limits.
+
+| Default size | Minimum size | Maximum size |
+|--------------|--------------|--------------|
+| 1 TiB | 1 TiB | 20 TiB |
 
 > [!IMPORTANT]
 > Volumes that reach their consumption limit causes out of disk space errors on the workloads that consume them. You must make sure that you provision suitable volume sizes for your workload requirements. You must monitor both the storage appliance and all NFS servers for their percentage storage consumption. You can do this using the metrics documented in the [list of available metrics](./list-of-metrics-collected.md).
@@ -307,9 +313,10 @@ PVCs created using the nexus-volume and nexus-shared have minimum and maximum cl
 - Both nexus-volume and nexus-shared PVCs have their requested storage capacity enforced as a consumption limit. A volume can't consume more storage than the associated PVC request.
 - All physical volumes are thin-provisioned. You must monitor the total storage consumption on your storage appliance and perform maintenance operations to free up storage space if necessary.
 - A nexus-volume PVC provisioning request fails if the requested size is less than the minimum or more than the maximum supported volume size.
-- Nexus-shared volumes are logically thin-provisioned on the backing NFS server. This NFS server has a fixed capacity of 1 TiB.
-  - A nexus-shared PVC can be provisioned despite requesting more than 1 TiB of storage, however, only 1 TiB can be consumed.
-  - It's possible to provision a set of PVCs where the sum of capacity requests is greater than 1 TiB. However, the consumption limit of 1 TiB applies; the set of associated PVs can't consume more than 1 TiB of storage.
+- `nexus-shared` volumes are logically thin-provisioned on the backing NFS server.
+- A `nexus-shared` PVC can't consume more storage than either its requested capacity or the remaining capacity in the CSN shared storage pool.
+- The sum of `nexus-shared` PVC capacity requests can exceed the CSN shared storage pool capacity. The associated persistent volumes still can't consume more than the pool capacity.
+- Expand the CSN shared storage pool before workloads exhaust its available capacity. Pool capacity can't be reduced after it is allocated.
 
 ## Limitations
 

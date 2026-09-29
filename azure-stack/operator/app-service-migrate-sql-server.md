@@ -3,7 +3,7 @@ title: Migrate SQL server
 description: Learn how to migrate the Azure App Service on the Azure Stack Hub Resource Provider to SQL server.
 author: sethmanheim
 ms.topic: upgrade-and-migration-article
-ms.date: 08/12/2024
+ms.date: 08/27/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.custom: sfi-image-nochange
@@ -66,7 +66,7 @@ After you [prepare the SQL Server instance](azure-stack-app-service-before-you-g
 ## Migrate the SQL Server
 
 1. In the Azure Stack Hub administrator portal, navigate to **Network Security Groups** and view the **ControllersNSG** Network Security Group.
-1. By default, Remote Desktop is disabled for all App Service infrastructure roles. Modify the **Inbound_Rdp_2289** rule action to **Allow** access.
+1. By default, Remote Desktop is disabled for all App Service infrastructure roles. Change the **Inbound_Rdp_3389** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider deployment. By default, the resource group is named in the format **AppService.\<region\>**.
 1. Connect to **CN0-VM**.
 1. Open an administrator PowerShell session and run `net stop webfarmservice`.

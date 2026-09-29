@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Local (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Local instance (preview).
 author: ronmiab
 ms.topic: overview
-ms.date: 09/03/2025
+ms.date: 09/24/2026
 ms.author: robess
 ms.custom: linux-related-content
 ms.subservice: hyperconverged
@@ -54,3 +54,4 @@ To prepare for migration, see the following articles:
 
 - [Review the requirements](migrate-hyperv-requirements.md) for Hyper-V VM migration to Azure Local.
 - [Complete the prerequisites](migrate-hyperv-prerequisites.md) for Hyper-V VM migration to Azure Local.
+- [Reuse Azure Arc-enabled server resources](migrate-arc-reuse.md) if your source VMs are already Arc-enabled.

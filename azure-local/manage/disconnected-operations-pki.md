@@ -138,7 +138,16 @@ $caName = "mycaserver.contoso.com\Contoso-RootCA" # Replace with your CA server 
 Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.DisconnectedOperations.psd1" -Force
 
 New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caName -CertificatePassword $certpassword
+
+# Alternative pass -CertificateTemplate 'MyTemplate' to override the default Webserver 
+# New-ApplianceManagementCertificatesFromCA -ManagementEndpoint $managementEndpointIp -OutputFolder $managementEndpointCertsFolder -CAConfig $caName -CertificatePassword $certpassword -CertificateTemplate 'MyTemplate'
 ```
+
+> [!NOTE]
+> If you don't have a template called **Webserver**, the method fails when issuing certificates. You can override the default name and use a different template name. 
+>
+> Use the following parameter to override the template name when creating certificates: `-CertificateTemplate 'MyTemplate'`
+
 
 ## Export root CA certificate
 

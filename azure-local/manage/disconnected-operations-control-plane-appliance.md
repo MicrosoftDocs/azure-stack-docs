@@ -52,13 +52,14 @@ These solutions meet the support requirements and are validated by the hardware 
 ### Management cluster hardware requirements 
 You must deploy a dedicated management cluster for Azure Local disconnected operations. Review the minimum production specifications for setting up a management cluster with the disconnected operations appliance:
 
-| Specification                | Minimum configuration           |
-| -----------------------------| ---------------------------------|
-| Number of nodes              | 3 nodes                          |
-| Memory per node              | 512 GB                           |
-| Cores per node               | 24 physical cores                |
-| Storage per node             | 8 drives/min 2 TB each (SSD/NVME)|
-| Boot disk drive storage      | 960 GB SSD/NVME **               |
+| Specification                | Datacenter configuration             | Standard configuration           |
+| -----------------------------| -------------------------------------|----------------------------------|
+| Minimum number of nodes      | 3 nodes                              | 3 nodes                          |
+| Memory per node              | 512 GB                               | 128 GB                           |
+| Cores per node               | 24 physical cores                    | 24 physical cores                |
+| Storage per node             | 8 drives/min 2 TB each (SSD/NVME)    | 6 drives/min 2 TB each (SSD/NVME)|
+| Boot disk drive storage      | 960 GB SSD/NVME **                   | 960 GB SSD/NVME                  |
+| Usage                        | Large Data center scale, 1000+ nodes | Medium deployments, 100+ nodes   |                             
 
 > [!NOTE]
 > The recommended configuration allows for additional capabilities and higher scalepoints for your private cloud. If you're looking for smaller configurations for the dedicated management cluster, contact your account team to discuss your options.
@@ -89,6 +90,12 @@ Because the control plane runs locally, you need to plan capacity to keep the ma
 ## Proof-of-concept configurations
 
 To get started with a quick proof of concept (POC) for disconnected operations, use a four-node Azure Local hardware configuration from the supported solutions in the Azure Local catalog. You can arrange the four nodes in three alternative configurations, depending on which aspects of disconnected operations you want to emphasize during testing.
+
+
+> [!NOTE]
+> **We recommend you run the preceding hardware configuration** even for POC configurations. This configuration is supported and you can use it in production later. If you diverge from this recommendation, ensure that the control plane nodes have the following minimum configuration: 256 GB memory, 24 cores, 4TB dedicated storage (SSD/NVME), 960 GB boot drive (SSD/NVME).
+> 
+
 
 ### Option 1: Management-focused
 

@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Local using Azure Mi
 description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/16/2026
+ms.date: 09/24/2026
 ms.author: robess
 ms.custom: references_regions
 ms.subservice: hyperconverged
@@ -75,7 +75,7 @@ For any subscriptions that host resources used in migration, such as Azure Migra
 
 - The VMware source environment must be able to initiate a network connection with the target Azure Local instance, either by being on the same on-premises network or by using a VPN.
 
-- Verify that none of the VMs you plan to migrate have the Azure Connected Machine Agent installed. For more information, see [FAQ](migrate-faq.yml).
+- For VMs with the Azure Connected Machine Agent installed, decide whether to reuse the existing Azure Arc resource. If you reuse the resource, keep the agent installed. The existing Azure Arc resource carries forward to the migrated VM. If you don't reuse the resource, uninstall the agent before replication. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
 ## Target Azure Local system requirements
 

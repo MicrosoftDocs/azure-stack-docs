@@ -4,7 +4,7 @@ description: Learn how to set up disconnected operations for Azure Local. Create
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/23/2026
+ms.date: 09/01/2026
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ms.subservice: hyperconverged
@@ -26,6 +26,7 @@ When you finish these steps, you get:
 
 - A disconnected operations instance in Azure that represents your on-premises virtual appliance.
 - The files you need to deploy Azure Local disconnected operations.
+- The correct ISO image required for Azure Local deployments.
 
 > [!NOTE]
 > Azure CLI isn't supported. Use the REST API if you need automation capabilities. For more information, see [Azure CLI REST command documentation](/cli/azure/use-azure-cli-rest-command?tabs=bash).
@@ -126,11 +127,18 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2601 | 2601.1.24997 | AzureLocal24H2.26100.1742.LCM.12.2601.0.3137 |
 | 2602 | 2602.1.25411 | AzureLocal24H2.26100.1742.LCM.12.2602.0.3018 |
 | 2603 | 2603.1.25508 | AzureLocal24H2.26100.1742.LCM.12.2603.0.3012 |
-| 2604 | 2604.3.25706 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3002 | 12.2604.1003.1005
+| 2604 | 2604.3.25706 | AzureLocal24H2.26100.32230.LCM.12.2604.2.3003 | 12.2604.1003.1005
 | 2605 | 2605.1.25825 | AzureLocal24H2.26100.32230.LCM.12.2605.1.3001 | 12.2605.1003.1003
 | 2606 | 2606.1.26063 | AzureLocal24H2.26100.32230.LCM.12.2606.0.3008 | 12.2606.1003.205 |
+| 2607 | 2607.1.26162| AzureLocal24H2.26100.32230.LCM.12.2607.0.3096 | 12.2607.1003.73 |
+| 2608 | 2608.1.26197 | AzureLocal24H2.26100.32230.LCM.12.2608.0.3020| 12.2608.1003.9 | 
 
-## Original Equipment manufacturer (OEM) Golden images with lower version
+
+>[!NOTE]
+> For new deployments, ensure you have the matching Azure Local build with your Azure Local deployment.
+> Azure Local can never be on a newer version than your Disconnected operations build (control plane).
+
+## Original equipment manufacturer (OEM) golden images with lower version
 
 If your nodes come preinstalled with a golden image, update the image so it reaches the correct target solution version. For exact versions, see the [Azure Local update versions](https://aka.ms/azureedgeupdates).
 

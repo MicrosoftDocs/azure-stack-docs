@@ -9,5 +9,5 @@ ms.lastreviewed: 04/23/2026
 ---
 
 ```bash
-sudo dnf install -y lustre-client-dkms-2.15.8_35_gdf4872c
+sudo dnf install -y lustre-client-dkms-2.15.8_39_g2d32b59
 ```

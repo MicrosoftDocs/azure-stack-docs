@@ -41,6 +41,9 @@ Import-Module "$applianceConfigBasePath\OperationsModule\Azure.Local.Disconnecte
 $password = ConvertTo-SecureString 'RETRACTED' -AsPlainText -Force  
 $managementIp = "169.254.53.25"
 $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCertificatePath "${env:localappdata}\AzureLocalOpModuleDev\certs\ManagementEndpoint\ManagementEndpointClientAuth.pfx" -ManagementEndpointClientCertificatePassword $password -ManagementEndpointIpAddress $managementIp 
+
+# If you previously exported your bitlocker keys - you can skip the prompt asking you for this during update and enable full automation.
+$env:BypassBitlockerRecoveryKeysPrompt = $true; 
 ```
 
 ## Upload the update

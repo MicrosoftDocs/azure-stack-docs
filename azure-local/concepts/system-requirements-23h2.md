@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 08/14/2026
+ms.date: 09/04/2026
 ms.subservice: hyperconverged
 ---
 

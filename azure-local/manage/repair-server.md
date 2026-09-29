@@ -28,12 +28,13 @@ The following flow diagram shows the overall process to repair a node.
 
 :::image type="content" source="./media/repair-server/repair-server-workflow-2.png" alt-text="Diagram illustrating the repair node process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
 
-\*Node might not be in a state where shutdown is possible or necessary*
+\*** Node might not be in a state where shutdown is possible or necessary*
 
 To repair an existing node, follow these high-level steps:
 
 1. If possible, shut down the node that you want to repair. Depending on the state of the node, a shutdown might not be possible or necessary.
-1. Reimage the node that needs to be repaired.
+1. Reimage the node that needs to be repaired. Depending on the part and the hardware manufacturer, you might need to reimage the node after replacement.
+
 1. Run the repair node operation. The Azure Stack HCI Operating System, drivers, and firmware are updated as part of the repair operation.
 
     The storage is automatically rebalanced on the reimaged node. Storage rebalance is a low priority task that can run for multiple days depending on the number of nodes and the storage used.

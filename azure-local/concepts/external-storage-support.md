@@ -25,19 +25,15 @@ Multiple volumes from the SAN array can be presented as Cluster Shared Volumes (
 ## Benefits
 
 - **Investment protection**: Extends existing SAN infrastructure into Azure Local without re-architecture.
-
 - **Operational consistency**: Offers the ability to use existing practices for management and operations.
-
 - **Resilience and scale**: Dual fabrics, multipathing, and SAN-native redundancy ensure high availability.
-
 - **Flexibility**: Choose between Storage Spaces Direct or external SAN volumes per workload requirement.
-
 - **Enterprise performance**: Uses Fibre Channel-class bandwidth and latency for demanding workloads.
 
 ## Supported configurations
-- Fibre Channel (FC) based SAN arrays 
-- iSCSI based SAN arrays
 
+- Fibre Channel (FC) based SAN arrays
+- iSCSI based SAN arrays
 - Software initiator (Dell PowerFlex)
 
 ## Fibre Channel or iSCSI based SAN arrays
@@ -66,4 +62,8 @@ Rack aware clusters are not supported with External SAN storage for hyperconverg
 
 ## Related content
 
+- [Connect an external storage array to Azure Local](../deploy/enable-external-storage.md)
+- [Disaggregated iSCSI 6-NIC pattern for Azure Local](../plan/iscsi-6-network-adapters-disaggregated-pattern.md)
+- [Network reference patterns overview for Azure Local disaggregated deployments](../plan/network-patterns-overview-disaggregated.md)
+- [Network considerations for cloud deployments of Azure Local](../plan/cloud-deployment-network-considerations.md)
 - Learn more about [Dell PowerFlex for Azure Local Integration Guide (PDF)](https://infohub.delltechnologies.com/static/media/client/7phukh/DAM_fd0e04d5-d47e-4b55-8f7f-0a80d26086af.pdf?utm_source=chatgpt.com).

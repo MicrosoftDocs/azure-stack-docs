@@ -3,7 +3,7 @@ title: Overview of Small Form Factor Deployments of Azure Local (preview)
 description: Learn about small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.topic: concept-article
-ms.date: 05/04/2026
+ms.date: 09/17/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -14,6 +14,8 @@ ms.subservice: small-form-factor
 Small form factor deployments let you run Azure Local on compact, Linux-based hardware designed for edge and distributed environments. Edge and IoT solutions often span thousands of geographically distributed devices. These environments can have limited connectivity, varied hardware, and complex lifecycle management requirements. Small form factor deployments help address these challenges by providing a consistent, Azure-managed platform for running applications at the edge.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
+
+[!INCLUDE [workload-availability-note](../includes/workload-availability-note.md)]
 
 ## About small form factor deployments
 

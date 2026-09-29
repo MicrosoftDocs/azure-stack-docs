@@ -4,7 +4,7 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: barbisch
 ms.author: akashdubey
-ms.date: 03/12/2026
+ms.date: 09/01/2026
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
 ms.custom: sfi-image-nochange
@@ -63,19 +63,18 @@ When you finish entering details on the **Basics** tab, select **Next: Advanced*
 
 ### Throughput configurations
 
-Currently, the following throughput configurations are available:
+Currently, the following throughput configurations are available. The default maximum is the capacity limit available to a subscription by default. You can request an increase up to the maximum supported capacity by opening a support ticket.
 
-| Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
-|-----------|-----------|-----------|-----------|
-| 40 MBps | 48 TiB | 1536 TiB | 48 TiB |
-| 125 MBps | 16 TiB | 512 TiB | 16 TiB |
-| 250 MBps | 8 TiB | 256 TiB | 8 TiB |
-| 500 MBps | 4 TiB | 128 TiB | 4 TiB |
+| Throughput tier | Storage minimum | Default maximum | Maximum supported capacity | Increment |
+|-----------|-----------|-----------|-----------|-----------|
+| 20 MBps | 96 TiB | 3,072 TiB | 25,632 TiB | 96 TiB |
+| 40 MBps | 48 TiB | 1,536 TiB | 12,816 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 512 TiB | 4,096 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 256 TiB | 2,048 TiB | 8 TiB |
+| 500 MBps | 4 TiB | 128 TiB | 1,024 TiB | 4 TiB |
 
 > [!NOTE]
-> Azure Managed Lustre can support larger storage capacities up to 25 pebibytes (PiB) upon request. To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
->
-> If you need cluster sizes greater than 25 PiB, you can open a support ticket to discuss additional options.
+> To enable your subscription to deploy a file system with a capacity greater than the default maximum, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 
 ### Maintenance window
 

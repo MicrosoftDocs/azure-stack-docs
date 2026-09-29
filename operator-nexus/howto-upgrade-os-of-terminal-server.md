@@ -3,7 +3,7 @@ title: "Azure Operator Nexus: How to upgrade the operating system of a Terminal 
 description: Learn the process for upgrading the operating system of a Terminal Server
 author: RaghvendraMandawale
 ms.author: rmandawale
-ms.date: 02/26/2025
+ms.date: 09/16/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
@@ -53,7 +53,7 @@ tmpfs                            3.9G  299M  3.6G   8% /tmp
 ```
 
 
-Ensure at least **5 GB** of free space is available in the '/tmp' folder on the Terminal Server before beginning the upgrade process.
+Ensure at least **1 GB** of free space is available in the '/tmp' folder on the Terminal Server before beginning the upgrade process.
 
 ## Verifying OS download integrity using SHA1 checksum  
 

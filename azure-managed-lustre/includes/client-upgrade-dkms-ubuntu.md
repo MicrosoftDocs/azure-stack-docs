@@ -9,5 +9,5 @@ ms.lastreviewed: 04/23/2026
 ---
 
 ```bash
-sudo apt install -y amlfs-lustre-client-dkms-2.15.8-35-gdf4872c
+sudo apt install -y amlfs-lustre-client-dkms-2.15.8-39-g2d32b59
 ```

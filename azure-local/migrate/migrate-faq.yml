@@ -6,7 +6,7 @@ metadata:
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 07/23/2026
+  ms.date: 09/24/2026
   ms.subservice: hyperconverged
 
 
@@ -134,9 +134,13 @@ sections:
 
           ### I have the Azure Connected Machine Agent deployed on my source VMs that I wish to migrate. Do I need to uninstall the agent on my VMs before migration?
 
-          Yes, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
+          It depends on whether you reuse the existing Azure Arc resource.
 
-          When the VM is migrated, it will be created as a native Azure Local VM in the Azure Local instance. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure.
+          If you select **Reuse Arc-enabled server** for the VM during replication, keep the agent installed. Azure Migrate reconfigures the existing agent in place and transitions the same `Microsoft.HybridCompute/machines` resource from an Arc-enabled server to an Azure Local VM, so its tags, role assignments, Azure Policy assignments, and extensions carry forward. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
+
+          If you don't reuse the resource, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
+
+          In that case, the VM is created as an Azure Local VM in the Azure Local instance when it's migrated. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure. The original Azure Arc resource is left behind and you must delete it manually.
 
           ### How can I throttle the bandwidth used for replicating and migrating VMs with Azure Migrate?
 

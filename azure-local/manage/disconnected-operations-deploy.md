@@ -259,6 +259,8 @@ Populate the required parameters based on your deployment planning. Modify the e
 To install and configure the appliance on the first machine, use the following command. Point the `AzureLocalInstallationFile` to a path that contains the **IRVM01.zip**.
 
 ```powershell
+# If you want to fully automate the install - you can bypass the bitlocker prompt by updating this to true
+$env:BypassBitlockerRecoveryKeysPrompt = $false; 
 $networkIntentName = 'ManagementComputeStorage'
 $TimeServers = "Your reliable NTP source" 
 $azureLocalInstallationFile = "$($applianceConfigBasePath)"  
@@ -354,15 +356,16 @@ In order for the nodes to understand your private cloud environment, you must ad
 
 On each node, run the following from PowerShell:
  
-1. `Add-AzLocalEnvironment -CloudFQDN "autonomous.cloud.private"`
+1. `Add-AzLocalEnvironment -ArmEndpoint "https://armmanagement.$($applianceFQDN)"`
+1. Use `Get-AzEnvironment` to verify that the cloud endpoint was added. Check for a row labeled **Azure.local**.
 
 > [!NOTE]
 > This defaults to the built-in directoryTenantId and endpoints. For more information, use  `Get-Help Add-AzLocalEnvironment`
 
-For environments prior to 2603, use the legacy `Add-AzEnvironment` approach below.
+For environments prior to version 2607, use the legacy `Add-AzEnvironment` approach described in the following section.
 
 ```powershell
-# Legacy approach from prior to 2603 adding a private cloud environment
+# Legacy approach from prior to 2607 adding a private cloud environment
 $applianceCloudName = "azure.local"
 $applianceFQDN = "autonomous.cloud.private"
 
@@ -494,6 +497,9 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 | --- | --- |
 | 2604 | 12.2604.1003.1005 |
 | 2605 | 12.2605.1003.1003 |
+| 2606 | 12.2606.1003.205 |
+| 2607 | 12.2607.1003.73 |
+| 2608 | 12.2608.1003.9 | 
 
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
@@ -503,8 +509,9 @@ $resourcegroup = 'azurelocal-management-cluster'
 $applianceCloudName = "azure.local"
 $applianceConfigBasePath = "C:\AzureLocalDisconnectedOperations\"
 $applianceFQDN = "autonomous.cloud.private"
- $subscriptionName = "Operator subscription"
-    
+$subscriptionName = "Operator subscription"
+$targetSolutionVersion = '12.2604.1003.1005' 
+
 Connect-AzAccount -EnvironmentName $applianceCloudName -UseDeviceAuthentication
 Write-Host "Ensuring you are using operator subscription for the management cluster.."
 $subscription = Get-AzSubscription -SubscriptionName $subscriptionName
@@ -520,12 +527,12 @@ $armTokenResponse = Get-AzAccessToken -ResourceUrl "https://armmanagement.$($app
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
 # Bootstrap each node
-Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion '12.2604.1003.1005'
+Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $subscription.TenantId -ResourceGroup $resourceGroup -Cloud $applianceCloudName -Region "Autonomous" -CloudFqdn $applianceFQDN -ArmAccessToken $ArmAccessToken -TargetSolutionVersion $targetSolutionVersion
 # If bootstrap fails or timesouts after 45:00:00 - see known-issues with CRL. 
 ```
 
 > [!NOTE]
-> Ensure that you run initialization on the first machine before moving on to other nodes.
+> Ensure that you run initialization on the first machine before moving on to other nodes. 
 >
 > Nodes appear in the local portal shortly after you run the steps, and the extensions appear on the nodes a few minutes after installation.  
 >
@@ -585,23 +592,23 @@ Get-Service *bootstrap*
 ```
 
 ### Initialize Azure Arc
-
-1. Copy **Platform.zip** to **C:\zerodayupdate** directory on each node.
+1. Extract **CombinedSolutionBundle.zip** to **c:\temp**.
+1. Copy **Platform.zip** from **C:\temp\Platform** to the **C:\zerodayupdate** directory on each node. Use the name that includes the version for the zip file. For example, **Platform.12.2606.0.3008.zip**.
 
 1. On each node, run the `Invoke-AzStackHciArcInitialization` command:
     
     ```powershell
+    $targetSolutionVersion = '12.2606.1003.205'     
     # Initialize Azure Arc with ALDO-specific parameters
       Invoke-AzStackHciArcInitialization
       -TenantId $Tenant
 	  -SubscriptionID $Subscription
 	  -ResourceGroup $RG
 	  -Region $Region
-	# cloud must be set to `Azure.local` for disconnected operations
+    # cloud must be set to `Azure.local` for disconnected operations
       -Cloud "Azure.local" 
-      -TargetSolutionVersion "<SolutionVersionToDeploy>" 
-	#LocalPlatformPackagePath - The local path to the `Platform.zip` file you copied
-      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.zip"
+      -TargetSolutionVersion $targetSolutionVersion
+      -LocalPlatformPackagePath "C:\zerodayupdate\Platform.12.2606.0.3008.zip"
 	```
 
     > [!IMPORTANT]

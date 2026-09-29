@@ -2,7 +2,7 @@
 title: Use the Azure Managed Lustre CSI Driver with Azure Kubernetes Service
 description: Learn how to use an Azure Managed Lustre storage system with your Kubernetes containers in Azure Kubernetes Service (AKS).
 ms.topic: overview
-ms.date: 11/11/2025
+ms.date: 09/09/2026
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: brianl
@@ -26,30 +26,38 @@ The Azure Lustre CSI Driver for Kubernetes is compatible with [AKS](/azure/aks/)
 AKS Kubernetes versions 1.21 and later are supported. This support includes all versions currently available when you're creating a new AKS cluster.
 
 > [!IMPORTANT]
-> The Azure Lustre CSI Driver for Kubernetes currently works only with the Ubuntu Linux OS SKU for node pools of AKS.
+> Version 0.4.0 provides images for Ubuntu 22.04 (`Ubuntu2204`) and Ubuntu 24.04 (`Ubuntu2404`) node pools. The Jammy DaemonSet also targets Ubuntu 20.04 (`Ubuntu2004`) Confidential VM node pools. Azure Linux and Windows node pools aren't supported.
 
 ## Compatible Lustre versions
 
 The Azure Lustre CSI Driver for Kubernetes is compatible with [Azure Managed Lustre](/azure/azure-managed-lustre). Other Lustre installations are not currently supported.  
 
 ### Azure Lustre CSI Driver Versions
-The following driver versions are supported:
 
-| Driver version  | Image                                                         | Supported k8s version | Lustre client version | Dynamic Provisioning |
-|-----------------|---------------------------------------------------------------|-----------------------|-----------------------|-----------------------|
-| main branch     | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:latest   | 1.21+                 | 2.15.5                | ✅                    |
-| v0.3.0          | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.0   | 1.21+                 | 2.15.5                | ✅                    |
-| v0.2.0          | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.2.0 | 1.21+                 | 2.15.5                | ❌                    |
-| v0.1.18         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.18  | 1.21+                 | 2.15.5                | ❌                    |
-| v0.1.17         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.17  | 1.21+                 | 2.15.5                | ❌                    |
-| v0.1.15         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.15  | 1.21+                 | 2.15.4                | ❌                    |
-| v0.1.14         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.14  | 1.21+                 | 2.15.3                | ❌                    |
-| v0.1.13         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.13  | 1.21+                 | 2.15.4                | ❌                    |
-| v0.1.12         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.12  | 1.21+                 | 2.15.3                | ❌                    |
-| v0.1.11         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.11  | 1.21+                 | 2.15.1                | ❌                    |
-| v0.1.10         | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.1.10  | 1.21+                 | 2.15.2                | ❌                    |
+This article documents v0.4.0, the latest generally available (GA) release. Use a versioned release instead of the `main` branch for production deployments.
+
+Starting with v0.4.0, the driver uses separate node images for Ubuntu 22.04 (Jammy) and Ubuntu 24.04 (Noble). The installer deploys both node DaemonSets. Kubernetes schedules the appropriate driver pod by using the `kubernetes.azure.com/os-sku-effective` node label.
+
+| Driver version | Image | AKS node OS SKU | Supported k8s version | Lustre client version | Dynamic Provisioning |
+|----------------|-------|-----------------|-----------------------|-----------------------|----------------------|
+| v0.4.0 (Jammy) | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.4.0-jammy | `Ubuntu2204`; `Ubuntu2004` Confidential VM node pools | 1.21+ | 2.15.7 | ✅ |
+| v0.4.0 (Noble) | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.4.0-noble | `Ubuntu2404` | 1.21+ | 2.16.1 | ✅ |
+| v0.3.1 | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.1 | Ubuntu Linux | 1.21+ | 2.15.7 | ✅ |
+| v0.3.0 | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.0 | Ubuntu Linux | 1.21+ | 2.15.5 | ✅ |
+| v0.2.0 | mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.2.0 | Ubuntu Linux | 1.21+ | 2.15.5 | ❌ |
+| v0.1.18 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.18 | Ubuntu Linux | 1.21+ | 2.15.5 | ❌ |
+| v0.1.17 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.17 | Ubuntu Linux | 1.21+ | 2.15.5 | ❌ |
+| v0.1.15 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.15 | Ubuntu Linux | 1.21+ | 2.15.4 | ❌ |
+| v0.1.14 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.14 | Ubuntu Linux | 1.21+ | 2.15.3 | ❌ |
+| v0.1.13 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.13 | Ubuntu Linux | 1.21+ | 2.15.4 | ❌ |
+| v0.1.12 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.12 | Ubuntu Linux | 1.21+ | 2.15.3 | ❌ |
+| v0.1.11 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.11 | Ubuntu Linux | 1.21+ | 2.15.1 | ❌ |
+| v0.1.10 | mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.10 | Ubuntu Linux | 1.21+ | 2.15.2 | ❌ |
 
 For a complete list of all driver releases and their changelog, see the [Azure Lustre CSI driver releases page](https://github.com/kubernetes-sigs/azurelustre-csi-driver/releases).
+
+> [!NOTE]
+> Version 0.4.0 requires AKS node pools that report the `kubernetes.azure.com/os-sku-effective` label, in addition to the Kubernetes version requirement shown in the table.
 
 ## Prerequisites
 
@@ -155,7 +163,7 @@ The kubelet identity requires the following permissions:
 - Network permissions to create and manage subnets if needed
 - Azure Managed Lustre service permissions
 
-For detailed permission requirements, see the [Driver Parameters documentation](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/driver-parameters.md#Permissions%20For%20Kubelet%20Identity).
+For detailed permission requirements, see the [v0.4.0 Driver Parameters documentation](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/driver-parameters.md#Permissions%20For%20Kubelet%20Identity).
 
 #### Network requirements
 
@@ -215,10 +223,13 @@ To peer the AKS virtual network with your Azure Managed Lustre virtual network, 
 To install the Azure Lustre CSI Driver for Kubernetes, run the following command:
 
 ```bash
-curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
+curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/v0.4.0/deploy/install-driver.sh | bash -s v0.4.0
 ```
 
-To get sample commands for a local installation, see [Install the Azure Lustre CSI driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
+> [!IMPORTANT]
+> Specify `v0.4.0` in both the script URL and the script argument so the command installs the release described in this article. Without the argument, the installer can install a different release from the `main` branch.
+
+For the corresponding source and deployment manifests, see the [v0.4.0 release](https://github.com/kubernetes-sigs/azurelustre-csi-driver/releases/tag/v0.4.0).
 
 ### Create a Storage Class for dynamic provisioning
 
@@ -412,24 +423,27 @@ To peer the AKS virtual network with your Azure Managed Lustre virtual network, 
 To install the Azure Lustre CSI Driver for Kubernetes, run the following command:
 
 ```bash
-curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/main/deploy/install-driver.sh | bash
+curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/v0.4.0/deploy/install-driver.sh | bash -s v0.4.0
 ```
 
-To get sample commands for a local installation, see [Install the Azure Lustre CSI driver on a Kubernetes cluster](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/install-csi-driver.md).
+> [!IMPORTANT]
+> Specify `v0.4.0` in both the script URL and the script argument so the command installs the release described in this article. Without the argument, the installer can install a different release from the `main` branch.
+
+For the corresponding source and deployment manifests, see the [v0.4.0 release](https://github.com/kubernetes-sigs/azurelustre-csi-driver/releases/tag/v0.4.0).
 
 ### Create and configure a persistent volume for static provisioning
 
 To create a persistent volume for an existing Azure Managed Lustre file system:
 
-1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the driver](#install-the-driver-for-static-provisioning), you have local copies available already.
+1. Copy the following configuration files from the **/docs/examples/** folder in the [v0.4.0 azurelustre-csi-driver source](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/v0.4.0/docs/examples).
 
    - **storageclass_existing_lustre.yaml**
    - **pvc_storageclass.yaml**
 
    If you don't want to clone the entire repository, you can download each file individually. Open each of the following links, copy the file's contents, and then paste the contents into a local file with the same file name.
 
-   - [storageclass_existing_lustre.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/storageclass_existing_lustre.yaml)
-   - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/examples/pvc_storageclass.yaml)
+   - [storageclass_existing_lustre.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/examples/storageclass_existing_lustre.yaml)
+   - [pvc_storageclass.yaml](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/examples/pvc_storageclass.yaml)
 
 1. In the **storageclass_existing_lustre.yaml** file, update the internal name of the Lustre cluster and the Lustre Management Service (MGS) IP address.
 
@@ -519,6 +533,170 @@ kubectl delete storageclass azurelustre-static
 > [!Important]
 > This only deletes the Kubernetes resources. The Azure Managed Lustre file system itself will continue to exist and can be reused.
 
+## Upgrade the CSI driver
+
+Use this procedure to upgrade the Azure Lustre CSI driver from v0.2.0 or later to v0.4.0. If your cluster runs a release earlier than v0.2.0, contact Microsoft Support before you upgrade.
+
+> [!IMPORTANT]
+> Plan a maintenance window and stop every workload that mounts Azure Managed Lustre before the upgrade. You can't replace the Lustre client kernel modules while a Lustre mount is active. Don't continue until no running workload uses an Azure Managed Lustre PersistentVolumeClaim.
+>
+> Stopping workloads doesn't delete PersistentVolumes, PersistentVolumeClaims, or dynamically provisioned Azure Managed Lustre file systems. Don't delete these storage resources as part of the driver upgrade.
+
+### Prepare for the upgrade
+
+1. Check the effective OS SKU for every node:
+
+   ```bash
+   kubectl get nodes -L kubernetes.azure.com/os-sku-effective
+   ```
+
+   All nodes in the node pools where you intend to run Azure Managed Lustre workloads must report `Ubuntu2204`, `Ubuntu2404`, or, for Confidential VM node pools, `Ubuntu2004`. Don't continue if a required node has a missing or unsupported value. AKS manages this label. Don't change it manually.
+
+1. Confirm the following prerequisites:
+
+   - You have `cluster-admin` permissions.
+   - The machine running `kubectl` can reach `raw.githubusercontent.com`.
+   - Every node pool can reach `mcr.microsoft.com` and `packages.microsoft.com`.
+   - Any network allow list includes the `amlfs-jammy` and `amlfs-noble` package repositories on `packages.microsoft.com`. The `amlfs-noble` repository is new in v0.4.0.
+
+1. List the PersistentVolumes that use the Azure Lustre CSI driver:
+
+   ```bash
+   printf 'PV\tCLAIM\tSTATUS\tDELETING\n'
+   kubectl get pv -o jsonpath='{range .items[?(@.spec.csi.driver=="azurelustre.csi.azure.com")]}{.metadata.name}{"\t"}{.spec.claimRef.namespace}{"/"}{.spec.claimRef.name}{"\t"}{.status.phase}{"\t"}{.metadata.deletionTimestamp}{"\n"}{end}'
+   ```
+
+   Use the claim references to account for every bound Azure Lustre claim, even if its StorageClass no longer exists.
+
+1. List the storage classes that use the Azure Lustre CSI driver:
+
+   ```bash
+   kubectl get storageclass -o jsonpath='{range .items[?(@.provisioner=="azurelustre.csi.azure.com")]}{.metadata.name}{"\n"}{end}'
+   ```
+
+1. List all PersistentVolumeClaims and use the preceding storage class list to identify unbound Azure Lustre claims:
+
+   ```bash
+   kubectl get pvc --all-namespaces -o custom-columns='NAMESPACE:.metadata.namespace,NAME:.metadata.name,STORAGECLASS:.spec.storageClassName,STATUS:.status.phase,VOLUME:.spec.volumeName,DELETING:.metadata.deletionTimestamp'
+   ```
+
+   Account for every Azure Lustre claim, including claims with `Pending` status. Don't continue if an Azure Lustre PV or PVC has a deletion timestamp, or while an Azure Lustre volume creation or deletion is in progress.
+
+1. List pods and the PersistentVolumeClaims that they reference:
+
+   ```bash
+   kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.namespace}{"\t"}{.metadata.name}{"\t"}{range .spec.volumes[?(@.persistentVolumeClaim)]}{.persistentVolumeClaim.claimName}{" "}{end}{"\n"}{end}'
+   ```
+
+1. Stop every workload that uses an Azure Managed Lustre claim. Scale controllers to zero replicas, suspend scheduled workloads, and pause any deployment or GitOps process that recreates the pods.
+
+1. Repeat the preceding pod query. Don't continue while it lists a pod that references an Azure Managed Lustre claim, including a pod in `Terminating` state.
+
+1. List the CSI node pods:
+
+   ```bash
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o wide
+   ```
+
+   Compare the `NODE` column with the node list from the first step. Don't continue unless every node where you intend to run Azure Managed Lustre workloads has a CSI node pod in `Running` state.
+
+1. Check every CSI node pod for remaining Lustre mounts:
+
+   ```bash
+   (
+     set -e
+     pods=$(kubectl get pods -n kube-system -l app=csi-azurelustre-node -o name)
+     if [ -z "$pods" ]; then
+       echo "No Azure Lustre CSI node pods found." >&2
+       exit 1
+     fi
+     for pod in $pods; do
+       echo "$pod"
+       kubectl exec -n kube-system "$pod" -c azurelustre -- \
+         sh -c 'grep " - lustre " /proc/self/mountinfo; status=$?; [ "$status" -eq 1 ]'
+     done
+   )
+   ```
+
+   The command displays each CSI node pod and exits with an error if it finds a Lustre mount or can't inspect a pod. Don't continue if the command fails.
+
+### Install v0.4.0
+
+After you stop all Azure Managed Lustre workloads, run the version-pinned v0.4.0 installer:
+
+```bash
+curl -sSL --fail https://raw.githubusercontent.com/kubernetes-sigs/azurelustre-csi-driver/v0.4.0/deploy/install-driver.sh | bash -s v0.4.0
+```
+
+Specify `v0.4.0` in both the script URL and the script argument so the command installs the expected release instead of a different release from `main`.
+
+If the installer reports a rollout timeout, run the checks in [Verify the upgrade](#verify-the-upgrade) before you retry the installer.
+
+### Verify the upgrade
+
+1. Wait for the controller and node DaemonSets to be ready:
+
+   ```bash
+   kubectl rollout status deployment/csi-azurelustre-controller -n kube-system --timeout=300s
+   kubectl rollout status daemonset/csi-azurelustre-node-jammy -n kube-system --timeout=1800s
+   kubectl rollout status daemonset/csi-azurelustre-node-noble -n kube-system --timeout=1800s
+   ```
+
+1. Confirm that each node DaemonSet has the expected number of ready pods:
+
+   ```bash
+   kubectl get daemonset -n kube-system csi-azurelustre-node-jammy csi-azurelustre-node-noble
+   ```
+
+   A DaemonSet can have zero desired pods when the cluster doesn't contain node pools for that Ubuntu version. For every DaemonSet with desired pods, `READY` must equal `DESIRED`.
+
+1. Compare the node and pod lists to confirm that every intended node has a CSI node pod:
+
+   ```bash
+   kubectl get nodes -L kubernetes.azure.com/os-sku-effective
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o wide
+   ```
+
+   Every node where you intend to run Azure Managed Lustre workloads must appear in the `NODE` column of the pod list. A node without a CSI node pod can't mount Azure Managed Lustre, even when both DaemonSets report ready.
+
+1. Confirm that every CSI node pod is ready and uses the expected v0.4.0 image:
+
+   ```bash
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o wide
+   kubectl get pods -n kube-system -l app=csi-azurelustre-node -o jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.nodeName}{"\t"}{.spec.containers[?(@.name=="azurelustre")].image}{"\n"}{end}'
+   ```
+
+   Every node pod must show `3/3` in the `READY` column and `Running` in the `STATUS` column. A pod that is running with fewer than three ready containers isn't ready to serve mounts. The Azure Lustre container image must end in `v0.4.0-jammy` or `v0.4.0-noble`.
+
+### Restart workloads
+
+Keep Azure Managed Lustre workloads stopped until every required CSI node pod is ready. Then restart the workloads and verify that a representative workload can access its Azure Managed Lustre mount:
+
+```bash
+kubectl exec -n <namespace> <pod-name> -- df -h <mount-path>
+```
+
+### Recover from an unsuccessful upgrade
+
+> [!IMPORTANT]
+> Keep Azure Managed Lustre workloads stopped while recovering from an unsuccessful upgrade. Don't install an arbitrary older driver release, because it might not support the node operating system, kernel, or Lustre client version in the cluster.
+
+Use the [v0.4.0 troubleshooting guide](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/csi-debug.md) and [v0.4.0 error reference](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/errors.md) to correct the installation failure. Then rerun the pinned installer from [Install v0.4.0](#install-v040). If you can't complete the installation, contact Microsoft Support. Support might direct you to reinstall the previously working release as a cluster-specific recovery step.
+
+## Uninstall the driver
+
+Stop every workload that mounts Azure Managed Lustre before you uninstall the driver.
+
+Run the uninstall script from a local clone of the release that's installed on the cluster. The machine running the command must have `git` installed and access to `github.com`. The following example uninstalls v0.4.0:
+
+```bash
+git clone --branch v0.4.0 --depth 1 https://github.com/kubernetes-sigs/azurelustre-csi-driver.git
+cd azurelustre-csi-driver
+./deploy/uninstall-driver.sh
+```
+
+The script removes the CSI controller, node DaemonSets, `CSIDriver` object, and RBAC resources. It doesn't delete PersistentVolumes, PersistentVolumeClaims, or Azure Managed Lustre file systems.
+
 ## Validate Container Image Signatures
 
 Azure Lustre CSI Driver signs its container images to allow users to verify the integrity and origin of the images they use. Signing utilizes a public/private key pair to prove that Microsoft built a container image by creating a digital signature and adding it to the image. This section provides the steps to verify that an image was signed by Microsoft.
@@ -601,8 +779,11 @@ Before deploying the Azure Lustre CSI Driver, you can verify the digital signatu
     notation policy import trustpolicy.json
     export NOTATION_EXPERIMENTAL=1
     
-    # Verify the controller image
-    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.0
+    # Verify the Jammy image used by the controller and Jammy node pods
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.4.0-jammy
+
+    # Verify the Noble image used by Noble node pods
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.4.0-noble
     ```
 
     The output of a successful verification looks like the following example:
@@ -620,13 +801,17 @@ To learn more about implementing image integrity policies for your application w
 
 ## Troubleshooting
 
-For troubleshooting issues with the Azure Lustre CSI Driver, see the [CSI driver troubleshooting guide](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/main/docs/csi-debug.md) in the GitHub repository.
+For troubleshooting issues with the Azure Lustre CSI Driver, see the [v0.4.0 CSI driver troubleshooting guide](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.4.0/docs/csi-debug.md) in the GitHub repository.
 
 Common issues include:
-- **Network connectivity problems** between AKS and Azure Managed Lustre - verify virtual network peering or subnet configuration
-- **Incorrect configuration** - double-check the MGS IP address and file system name in your storage class configuration
-- **Pod scheduling issues** - ensure you're using Ubuntu Linux OS SKU for node pools, as this is the only supported configuration
-- **Permission issues** - verify that the AKS service principal has appropriate permissions on the Azure Managed Lustre virtual network
+- **Network connectivity problems** - verify virtual network peering or subnet configuration between AKS and Azure Managed Lustre.
+- **Incorrect configuration** - verify the MGS IP address and file system name in your storage class.
+- **Pod scheduling issues** - verify that the node's effective OS SKU is `Ubuntu2204`, `Ubuntu2404`, or `Ubuntu2004` for a Confidential VM node pool.
+- **No v0.4.0 node pod on an AKS node** - verify that the `kubernetes.azure.com/os-sku-effective` label is present and matched by the Jammy or Noble DaemonSet.
+- **A DaemonSet has zero desired pods** - this condition is expected if the cluster has no node pools for that Ubuntu version.
+- **Upgrade rollout timeout** - inspect the DaemonSet status, affected pod events, and Azure Lustre container logs before retrying.
+- **Image pull or Lustre client installation failures** - verify node egress to `mcr.microsoft.com` and `packages.microsoft.com`.
+- **Permission issues** - verify that the AKS identity has the required permissions.
 
 For dynamic provisioning specific issues:
 - **Authentication/authorization errors** - verify kubelet identity permissions for creating Azure Managed Lustre clusters

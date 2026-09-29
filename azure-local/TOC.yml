@@ -40,7 +40,15 @@ items:
   - name: Overview
     items:
     - name: What's new
-      href: whats-new.md
+      items:
+      - name: Hyperconverged
+        href: whats-new.md
+      - name: Multi-rack (preview)
+        href: ./multi-rack/multi-rack-whats-new.md
+      - name: Small form factor
+        href: ./small-form-factor/small-form-factor-overview.md
+      - name: VM migration
+        href: ./migrate/migrate-whats-new.md
     - name: Release notes
       items:
       - name: Release information
@@ -144,6 +152,8 @@ items:
             href: deploy/deploy-private-endpoints-with-proxy-no-gateway.md
           - name: Private endpoints - with proxy, with gateway
             href: deploy/deploy-private-endpoints-with-proxy-with-gateway.md
+        - name: Review Azure Private Path
+          href: concepts/private-path-network-overview.md
         - name: Review cloud deployment network considerations
           href: plan/cloud-deployment-network-considerations.md
         - name: Review security
@@ -200,6 +210,8 @@ items:
             href: deploy/deployment-without-azure-arc-gateway.md
           - name: With Arc gateway
             href: deploy/deployment-with-azure-arc-gateway.md
+          - name: With Arc gateway Private Path
+            href: deploy/deployment-with-azure-arc-gateway-private-path.md
           - name: Unregister and reregister machines
             href: manage/unregister-register-machine.md
         - name: 6. Choose a deployment method
@@ -712,6 +724,8 @@ items:
             href: migrate/migrate-vmware-replicate.md
           - name: Migrate, verify
             href: migrate/migrate-vmware-migrate.md
+        - name: Reuse Azure Arc-enabled servers
+          href: migrate/migrate-arc-reuse.md
         - name: Migrate via PowerShell, Azure CLI, or Terraform
           href: migrate/migrate-via-powershell.md
         - name: Enable guest management
@@ -897,14 +911,14 @@ items:
     - name: Install and deploy
       items:
 
-      # --- About: model intro + SFF-specific lifecycle info ---
+      # --- About: model intro + small form factor-specific lifecycle info ---
       - name: About
         items:
         - name: About small form factor deployments
           href: ./small-form-factor/small-form-factor-overview.md
-        - name: Known issues (SFF)
+        - name: Known issues (small form factor)
           href: ./small-form-factor/small-form-factor-known-issues.md
-        - name: FAQ (SFF)
+        - name: FAQ (small form factor)
           href: ./small-form-factor/small-form-factor-faq.md
 
       # --- Evaluate ---
@@ -924,11 +938,11 @@ items:
           href: ./small-form-factor/small-form-factor-zero-touch-provisioning.md
         - name: Configurator App
           href: ./small-form-factor/small-form-factor-configurator-app.md
-        - name: Firewall requirements (SFF)
+        - name: Firewall requirements (small form factor)
           href: ./small-form-factor/small-form-factor-firewall-requirements.md
         - name: Connectivity modes
           href: ./small-form-factor/connectivity-modes.md
-        - name: Security features (SFF)
+        - name: Security features (small form factor)
           href: ./small-form-factor/small-form-factor-security.md
 
       # --- Prepare ---
@@ -951,7 +965,7 @@ items:
         - name: Deploy GPU-enabled workloads
           href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
 
-  # -------- CONFIGURE AND MANAGE (FROM SFF > Troubleshoot; plus OS, network, encrypt secrets, and JIT day-2 ops) -----
+  # -------- CONFIGURE AND MANAGE (FROM SMALL FORM FACTOR > Troubleshoot; plus OS, network, encrypt secrets, and JIT day-2 ops) -----
     - name: Configure and manage
       items:
       - name: Update operating system
@@ -968,7 +982,7 @@ items:
         href: ./small-form-factor/small-form-factor-connect-jit.md
       - name: Troubleshoot
         items:
-        - name: Collect system logs (SFF)
+        - name: Collect system logs (small form factor)
           href: ./small-form-factor/small-form-factor-collect-system-logs.md
         - name: Troubleshoot small form factor deployments
           href: ./small-form-factor/small-form-factor-troubleshoot.md
@@ -979,7 +993,7 @@ items:
   # Grouped into suites (AI / Data / Productivity / Bring your own apps /
   # Other) per PM feedback to mirror the product diagram.
   # ---------------------------------------------------------------------------
-  - name: Workloads
+  - name: Workloads (hyperconverged and disaggregated)
     items:
 
     # ---------------------------------------------------------------------------
@@ -1200,7 +1214,9 @@ items:
     - name: About disconnected operations
       href: manage/disconnected-operations-overview.md
     - name: What's new
-      href: manage/disconnected-operations-whats-new.md
+      items:
+      - name: Disconnected operations
+        href: manage/disconnected-operations-whats-new.md
     - name: Release notes
       items:
       - name: Known issues
@@ -1248,6 +1264,8 @@ items:
           href: manage/disconnected-operations-back-up-restore.md
         - name: Restore disconnected operations
           href: manage/disconnected-operations-restore.md
+        - name: Post-restore rehydration overview
+          href: manage/disconnected-operations-post-restore-overview.md
         - name: Reconnect data cluster after restore
           href: manage/disconnected-operations-post-restore-reconnect-cluster.md
         - name: Reconnect Azure Arc on cluster machines after restore
@@ -1260,6 +1278,8 @@ items:
           href: manage/disconnected-operations-post-restore-recover-data-cluster-created-post-backup.md
       - name: Certificate rotation
         href: manage/disconnected-operations-certificate-rotation.md
+      - name: Platform expansion packs
+        href: manage/disconnected-operations-platform-expansion-packs.md
       - name: Monitor
         items:
         - name: Overview
@@ -1433,42 +1453,6 @@ items:
             href: deploy/deploy-via-portal.md
           - name: 6B. Deploy via ARM template
             href: deploy/deployment-azure-resource-manager-template.md
-        - name: Deploy using local identity with Azure Key Vault
-          items:
-          - name: About local identity with Azure Key Vault
-            href: deploy/deployment-local-identity-with-key-vault-overview.md
-          - name: Deploy via Azure portal
-            href: deploy/deployment-local-identity-with-key-vault.md
-          - name: Deploy via ARM template
-            href: deploy/deployment-local-identity-with-key-vault-template.md
-        # FROM Hyperconverged > Configure and manage > Rack aware cluster
-        # Moved here: it's an end-to-end deployment workflow, not a day-2 op.
-        - name: Deploy rack aware cluster
-          items:
-          - name: What's a rack aware cluster?
-            href: concepts/rack-aware-cluster-overview.md
-          - name: Review requirements
-            href: concepts/rack-aware-cluster-requirements.md
-          - name: Network reference patterns
-            href: concepts/rack-aware-cluster-reference-architecture.md
-          - name: Room-to-room connections
-            href: concepts/rack-aware-cluster-room-to-room-connectivity.md
-          - name: Prepare to deploy
-            href: deploy/rack-aware-cluster-deploy-prep.md
-          - name: Assess network readiness via LLDP
-            href: deploy/rack-aware-cluster-readiness-check.md
-          - name: Deploy via Azure portal
-            href: deploy/rack-aware-cluster-deploy-portal.md
-          - name: Deploy via ARM template
-            href: deploy/rack-aware-cluster-deployment-via-template.md
-          - name: Complete post-deployment tasks
-            href: deploy/rack-aware-cluster-post-deployment.md
-          - name: Add and repair nodes
-            href: concepts/rack-aware-cluster-add-server.md
-          - name: Provision and place VMs
-            href: concepts/rack-aware-cluster-provision-vm-local-availability-zone.md
-          - name: Spread AKS nodes
-            href: concepts/rack-aware-cluster-aks-nodes.md
 
       # --- Enable (SDN, external storage) ---
       - name: Enable
@@ -1631,14 +1615,6 @@ items:
             href: deploy/deploy-via-portal-disaggregated.md
           - name: 6B. Deploy via ARM template (disaggregated)
             href: deploy/deployment-azure-resource-manager-template-disaggregated.md
-        - name: Deploy using local identity with Azure Key Vault   # REUSE (same article also linked under Install and deploy (hyperconverged))
-          items:
-          - name: About local identity with Azure Key Vault
-            href: deploy/deployment-local-identity-with-key-vault-overview.md
-          - name: Deploy via Azure portal
-            href: deploy/deployment-local-identity-with-key-vault.md
-          - name: Deploy via ARM template
-            href: deploy/deployment-local-identity-with-key-vault-template.md
 
       # --- Enable (external storage only — no SDN for disaggregated) ---
       - name: Enable
@@ -1653,50 +1629,6 @@ items:
     # -----------------------------------------------------------------------
     - name: Configure and manage (hyperconverged and disaggregated)   # REUSE (identical to Connected > Hyperconverged and disaggregated > Configure and manage (hyperconverged and disaggregated))
       items:
-
-      # --- Update ---
-      - name: Update
-        items:
-        - name: About updates
-          href: update/about-updates-23h2.md
-        - name: About Solution Builder Extension software updates
-          href: update/solution-builder-extension.md
-        - name: Understand update phases
-          href: update/update-phases-23h2.md
-        - name: Manage update settings
-          href: update/update-settings.md
-        - name: Update via PowerShell
-          href: update/update-via-powershell-23h2.md
-        - name: Update via PowerShell with limited connectivity
-          href: update/import-discover-updates-offline-23h2.md
-        - name: Update via Azure portal
-          href: update/azure-update-manager-23h2.md
-        - name: Review best practices
-          href: update/update-best-practices.md
-        - name: Troubleshoot updates
-          href: update/update-troubleshooting-23h2.md
-
-      # --- Upgrade (22H2 to 23H2 path; Hyperconverged-applicable today) ---
-      - name: Upgrade
-        items:
-        - name: About Azure Local upgrades
-          href: upgrade/about-upgrades-23h2.md
-        - name: 1. Upgrade OS via PowerShell
-          href: upgrade/upgrade-22h2-to-23h2-powershell.md
-        - name: 2. Perform post-OS upgrade tasks
-          href: upgrade/post-upgrade-steps.md
-        - name: 3. Configure Network ATC
-          href: upgrade/install-enable-network-atc.md
-        - name: 4. Validate solution upgrade readiness
-          href: upgrade/validate-solution-upgrade-readiness.md
-        - name: 5. Apply solution upgrade
-          items:
-          - name: Upgrade via Azure portal
-            href: upgrade/install-solution-upgrade.md
-          - name: Upgrade via ARM template
-            href: upgrade/install-solution-upgrade-azure-resource-manager-template.md
-        - name: Troubleshoot upgrades
-          href: upgrade/troubleshoot-upgrade-to-23h2.md
 
       # --- Manage ---
       - name: Manage
@@ -1906,52 +1838,6 @@ items:
         - name: Drift detection
           href: manage/drift-detection.md
 
-      # --- Migrate ---
-      - name: Migrate
-        items:
-        - name: Migration overview
-          href: migrate/migration-options-overview.md
-        - name: Known issues in Azure Migrate for Azure Local
-          href: migrate/migration-known-issues.md
-        - name: What's new in VM migration?
-          href: migrate/migrate-whats-new.md
-        - name: Migrate Hyper-V VMs
-          items:
-          - name: Overview
-            href: migrate/migration-azure-migrate-overview.md
-          - name: Review requirements
-            href: migrate/migrate-hyperv-requirements.md
-          - name: Complete prerequisites
-            href: migrate/migrate-hyperv-prerequisites.md
-          - name: Discover, replicate
-            href: migrate/migrate-hyperv-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-azure-migrate.md
-        - name: Migrate VMware VMs
-          items:
-          - name: Overview
-            href: migrate/migration-azure-migrate-vmware-overview.md
-          - name: Review requirements
-            href: migrate/migrate-vmware-requirements.md
-          - name: Complete prerequisites
-            href: migrate/migrate-vmware-prerequisites.md
-          - name: Discover, replicate
-            href: migrate/migrate-vmware-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-vmware-migrate.md
-        - name: Migrate via PowerShell, Azure CLI, or Terraform
-          href: migrate/migrate-via-powershell.md
-        - name: Enable guest management
-          href: migrate/migrate-enable-guest-management.md
-        - name: Maintain static IP addresses
-          href: migrate/migrate-maintain-ip-addresses.md
-        - name: Monitor Azure Local migrations
-          href: migrate/monitor-migration.md
-        - name: Migration FAQ
-          href: migrate/migrate-faq.yml
-        - name: Troubleshoot migration
-          href: migrate/migrate-troubleshoot.md
-
       # --- Troubleshoot ---
       - name: Troubleshoot
         items:
@@ -1993,7 +1879,7 @@ items:
   # Grouped into suites (AI / Productivity / Bring your own apps) per PM
   # feedback to mirror the product diagram.
   # ---------------------------------------------------------------------------
-  - name: Workloads
+  - name: Workloads (hyperconverged and disaggregated)
     items:
 
     # ---------------------------------------------------------------------------
@@ -2079,7 +1965,7 @@ items:
       - name: Azure registration PowerShell commands
         href: /powershell/module/az.stackhci
       - name: Go package for ARM Azure Local service API
-        href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+        href: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
       - name: Azure Local Java service classes and interfaces
         href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
       - name: Azure Local management service Python package
@@ -2118,6 +2004,8 @@ items:
         href: /cli/azure/networkfabric
       - name: Azure Local VM CLI commands (multi-rack)
         href: /cli/azure/stack-hci-vm
+      - name: Storage Appliance Error Messages
+        href: ./multi-rack/multi-rack-storage-appliance-error-messages.md
 
     - name: For small form factor
       items:

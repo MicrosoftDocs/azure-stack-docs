@@ -55,7 +55,7 @@ the list of incremental validation checks. 
 #### User guidance
 - Users must run the complete set of pre‑upgrade validation checks prior to initiating the fabric runtime upgrade.
 
-| Check | Expectation | Automated feature flag workflow  | [Post-upgrade](https://learn.microsoft.com/azure/operator-nexus/howto-upgrade-nexus-fabric?branch=main&branchFallbackFrom=pr-en-us-20479#post-upgrade-validation-steps) check applicable? | Impacted runtime upgrade step (if pre-validation fails) |
+| Check | Expectation | Automated feature flag workflow  | [Post-upgrade](#post-upgrade-validation-steps) check applicable? | Impacted runtime upgrade step (if pre-validation fails) |
 | --- | --- | --- | --- | --- |
 | Check the NFC provisioning state. | Provisioning state must be **Succeeded**. | Yes | No | The Network Fabric upgrade start step fails. |
 | Check the administrative lock status of the Network Fabric resource. | The state must be **Unlocked**. For more: [Azure Operator Nexus: Use the administrative lock or unlock for Network Fabric](./howto-set-administrative-lock-or-unlock-for-network-fabric.md). | Yes | No | The Network Fabric upgrade start step fails. |

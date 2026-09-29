@@ -376,6 +376,8 @@
           href: app-service-migrate-file-server.md
         - name: Migrate SQL Server
           href: app-service-migrate-sql-server.md
+        - name: Updating Windows OS
+          href: app-service-wsus.md
       - name: Benefits of migrating to Azure App Service
         href: app-service-benefits-migrate-to-azure.md
       - name: Planning to migrate to Azure App Service
@@ -384,6 +386,8 @@
         href: app-service-migrate-to-azure.md
       - name: Release notes
         items:
+        - name: 26R1 release notes [September 2026]
+          href: app-service-release-notes-2026r1.md
         - name: 25R1 release notes [June 2025]
           href: app-service-release-notes-2025R1.md
         - name: 24R1 release notes [December 2024]
