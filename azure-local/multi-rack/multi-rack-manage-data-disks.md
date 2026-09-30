@@ -43,7 +43,7 @@ $customLocationID = "<Custom location resource ID>"
 1. Generate a SAS URL of the disk using Azure CLI:
 
     ```azurecli
-    $downloadUrl = (az disk grant-access --access-level Read --duration-in-seconds 3600 --name $name --resource-group $resourceGroup --query accessSas -o tsv)
+    $downloadUrl = (az disk grant-access --access-level Read --duration-in-seconds 3600 --name $name --resource-group $resourceGroup --query accessSAS -o tsv)
     ```
 
 1. Once the SAS URL is generated, use the following command to download it to your Azure Local multi-rack instance:
