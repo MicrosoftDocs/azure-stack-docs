@@ -1,22 +1,18 @@
 ---
-title: Protect your Hyper-V Virtual Machine workloads on Azure Local with Azure Site Recovery (preview)
-description: Use Azure Site Recovery to protect Hyper-V VM workloads running on Azure Local. (preview)
+title: Protect your Hyper-V virtual machine workloads on Azure Local with Azure Site Recovery 
+description: Use Azure Site Recovery to protect Hyper-V VM workloads running on Azure Local.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/29/2026
+ms.date: 09/10/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 
-# Protect VM workloads with Azure Site Recovery on Azure Local (preview)
+# Protect VM workloads with Azure Site Recovery on Azure Local
 
-[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
-
-This guide describes how to protect Windows and Linux VM workloads running on your Azure Local if there's a disaster. You can use Azure Site Recovery to replicate your on-premises Azure Local virtual machines (VMs) into Azure and protect your business critical workloads.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+This guide describes how to protect Windows and Linux VM workloads running on your Azure Local if there's a disaster. You can use Azure Site Recovery to replicate your on-premises Azure Local virtual machines (VMs) into Azure and protect your business-critical workloads.
 
 ## Azure Site Recovery with Azure Local
 
@@ -24,72 +20,68 @@ This guide describes how to protect Windows and Linux VM workloads running on yo
 
 The disaster recovery strategy for Azure Site Recovery consists of the following steps:
 
-- **Replication** - Replication lets you replicate the target VM’s virtual hard disk (VHD) to an Azure Storage account and thus protects your VM if there's a disaster.
-- **Failover** -  Once the VM is replicated, fail over the VM and run it in Azure. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
+- **Replicate** - Replication lets you replicate the target VM’s virtual hard disk (VHD) to an Azure Storage account and thus protects your VM if there's a disaster.
+- **Test Failover** - Validate your disaster recovery plan with non-disruptive test failovers that create a VM in Azure in an isolated network without impacting production replication.
+- **Failover to Azure (planned or unplanned)** -  Once the VM is replicated, you can fail it over and run it in Azure, even if the server hosting the VM is no longer available. In such cases, the VM starts from its last replicated state, and any in-memory state is lost.
 - **Re-protect** – VMs are replicated back from Azure to the on-premises system.
-- **Failback** - You can fail back from Azure to the on-premises system.
 
-In the current implementation of Azure Site Recovery integration with Azure Local, you can start the disaster recovery and prepare the infrastructure from the Azure Local resource in the Azure portal. After the preparation is complete, you can finish the remaining steps from the Site Recovery resource in the Azure portal.
+- **Planned failover back to on-premises (also known as failback)** - Use planned failover to fail the VM back from Azure to the on-premises environment.
+- **Reverse replicate** - After the VM is back on-premises, it is recommended that you reverse replicate it to Azure to restore continuous replication, maintain protection against data loss, and support rapid recovery in the event of another disaster.
+
 
 > [!NOTE]
-> To test Azure Site Recovery for Azure Local VMs, you can temporarily configure Application Control policy to **Audit** mode. However, using **Audit** policy mode isn't recommended for production environments. To set policy mode to **Audit**, follow the instructions in [Manage Application Control for Azure Local](./manage-wdac.md). Once the installation is complete, revert the policy mode to **Enforced**.
+> In the current implementation of Azure Site Recovery integration with Azure Local, you can start the disaster recovery and prepare the infrastructure from the Azure Local resource in the Azure portal. Once the preparation is complete, perform all remaining steps from the Recovery Services vault in the Azure portal.
 
 ## Overall workflow
 
-Here are the main steps that occur when using Site Recovery with an Azure Local:
+Here are the main steps that occur when using Site Recovery with an Azure Local system:
 
-1. Start with a registered Azure Local on which you enable Azure Site Recovery.
+1. Start with a registered Azure Local system on which you prepared the infrastructure for Azure Site Recovery.
 1. Make sure that you meet the [prerequisites](#prerequisites-and-planning) before you begin.
-1. Create the following resources in your Azure Local resource portal:
-    1. Recovery services vault
-    1. Hyper-V site
-    1. Replication policy
-1. After you create all the resources, prepare infrastructure.
-1. Enable VM replication. Complete the remaining steps for replication in the Azure Site Recovery resource portal and begin replication.
-1. After the VMs are replicated, you can fail over the VMs and run on Azure.
+1. Enable [VM replication](#step-2-enable-replication-of-vms) and begin replication.
+1. After the VMs are replicated, you can [fail over the VMs](/azure/site-recovery/hyper-v-azure-failover-failback-tutorial) and run on Azure.
 1. To fail back from Azure, follow the instructions in [Fail back from Azure](/azure/site-recovery/hyper-v-azure-failback).
 
 ## Supported scenarios
 
-The following table lists the scenarios that are supported for Azure Site Recovery and Azure Local.
-
-**Fail over Azure Local VMs to Azure followed by failback**
+The following table lists the scenarios that Azure Site Recovery and Azure Local support.
 
 | **Azure Local VM details** | **Failover** | **Failback** |
 |--|--|--|
-| Windows Gen 1 | Failover to Azure | Failback on same host as failover |
-| Windows Gen 2 | Failover to Azure | Failback on same host as failover |
-| Linux Gen 1 | Failover to Azure | Failback on same host as failover |
+| Windows Gen 1 | Failover to Azure | Failback on same or an alternate host as failover |
+| Windows Gen 2 | Failover to Azure | Failback on same or an alternate host as failover |
+| Linux Gen 1 | Failover to Azure | Failback on same or an alternate host as failover |
+| Linux Gen 2 | Failover to Azure | Failback on same or an alternate host as failover |
 
 > [!NOTE]
-> If an Azure Local VM is deleted after a failover, manual intervention is needed to fail back to the same or a different host.
+> If you delete an Azure Local VM after a failover, you need to manually intervene to continue managing this VM by using Azure Local. 
 
 ## Prerequisites and planning
 
-Before you begin, make sure to complete the following prerequisites:
+Before you begin, complete the following prerequisites:
 
-- The Hyper-V VMs that you intend to replicate should be made highly available for replication to happen. If VMs aren't highly available, then the replication would fail. For more information, see [How to make an existing Hyper-V machine VM highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
-- Make sure that Hyper-V is set up on the Azure Local.
-- The machines hosting the VMs you want to protect must have internet access to replicate to Azure.
+- The Azure Local hosting the VMs you want to protect must have internet access to replicate to Azure.
 - The Azure Local must already be registered.
-    - If you're running an earlier build, the Azure portal indicates that the disaster recovery isn't supported as managed identity isn't enabled for older versions.
-
-        Run the repair registration cmdlet to ensure that a managed identity is created for your Azure Local resource and then retry the workflow. For more information, go to [Enable enhanced management from Azure for Azure Local](/azure-stack/hci).
-
-    - The system must be Arc-enabled. If the system isn't Arc-enabled, you see an error in the Azure portal to the effect that the **Capabilities** tab isn't available.
 - You need owner permissions on the Recovery Services Vault to assign permissions to the managed identity. You also need read/write permissions on the Azure Local resource and its child resources.
-- [Review the caveats](#caveats) associated with the implementation of this feature.
-- [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
+- Review the caveats associated with the implementation of this feature.
+- Review the [capacity planning tool](/azure/site-recovery/hyper-v-site-walkthrough-capacity) to evaluate the requirements for successful replication and failover.
 
-## Step 1: Prepare infrastructure on your target host
+## Caveats
 
-To prepare the infrastructure, prepare a vault and a Hyper-V site, install the site recovery extension, and associate a replication policy with the machines.
+Consider the following information before you use Azure Site Recovery to protect your on-premises VM workloads by replicating those VMs to Azure.
 
-On your Azure Local target system, follow these steps to prepare infrastructure:
+- Extensions installed by Arc aren't visible on the Azure VMs. The Azure Local VMs still show the extensions that are installed, but you can't manage those extensions (for example, install, upgrade, or uninstall) while the machine is in Azure.
+- Guest Configuration policies don't run while the machine is in Azure, so any policies that audit the OS security or configuration don't run until the machine is migrated back on-premises.
+- Log data (including Sentinel, Defender, and Azure Monitor info) is associated with the Azure VM while it's in Azure. Historical data is associated with the Arc-enabled server. If the data is migrated back on-premises, it starts being associated with the Arc-enabled server again. You can still find all the logs by searching by computer name as opposed to resource ID, but it's worth noting the Portal UX experiences look for data by resource ID, so you only see a subset on each resource.
+- We strongly recommend that you don't install the Azure VM Guest Agent to avoid conflicts with Arc if there's any potential that the machine will be migrated back on-premises. If you need to install the guest agent, make sure that the VM has extension management disabled. If you try to install or manage extensions using the Azure VM guest agent when there are already extensions installed by Arc on the same machine (or vice versa), the agent might encounter state reconciliation issues because it's unaware of the previous extension installations.
 
-1. In the Azure portal, go to the **Overview** pane of the target system resource that's hosting VMs that you want to protect.
+## Step 1: Prepare infrastructure
 
-1. In the right-pane, go to the **Capabilities** tab and select the **Disaster recovery** tile. As managed identity is enabled on your system, disaster recovery should be available.
+On your Azure Local system, follow these steps to prepare the infrastructure:
+
+1. In the Azure portal, go to the **Overview** pane of the Azure Local system that's hosting VMs that you want to protect.
+
+1. In the right pane, go to the **Capabilities** tab and select the **Disaster recovery** tile.
 
     :::image type="content" source="media/azure-site-recovery/prepare-infra-1.png" alt-text="Screenshot of Capabilities tab in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/prepare-infra-1.png":::
 
@@ -101,15 +93,11 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
 
     :::image type="content" source="media/azure-site-recovery/prepare-infra-3.png" alt-text="Screenshot of Prepare infrastructure in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/prepare-infra-3.png":::
 
-1. On the **Prepare infrastructure**, select an existing or create a new Recovery services vault. You use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
-    1. If you choose to create a new Recovery services vault, the subscription and resource groups are automatically populated.
+1. On **Prepare infrastructure**, select an existing or create a new Recovery Services vault. Use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery Services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
+    1. If you choose to create a new Recovery Services vault, the subscription and resource groups are automatically populated.
     1. Provide a vault name and select the location of the vault same as where the system is deployed.
     1. Accept the defaults for other settings.
-
-        > [!IMPORTANT]
-        > You must have owner permissions on the Recovery services vault to assign permissions to the managed identity. You must have read/write permission on the Azure Local resource and its child resources.
-
-        Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
+    1. Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery Services vault](/azure/backup/backup-create-recovery-services-vault).
 
         :::image type="content" source="media/azure-site-recovery/prepare-infra-4.png" alt-text="Screenshot of Create Recovery Services vault in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/prepare-infra-4.png":::
 
@@ -121,13 +109,13 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
 
     :::image type="content" source="media/azure-site-recovery/prepare-infra-6.png" alt-text="Screenshot of Create replication policy in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/prepare-infra-6.png":::
 
-1. Select **Prepare infrastructure**. When you select **Prepare infrastructure**, the following actions occur:
+1. Select **Prepare infrastructure**. The following actions occur:
     1. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
     1. An Azure Site Recovery agent is automatically downloaded on each node of your system that's hosting the VMs.
-    1. Managed Identity gets the vault registration key file from Recovery Services vault that you created and then the key file is used to complete the installation of the Azure Site Recovery agent. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
-    1. Replication policy is associated with the specified Hyper-V site and the target system host is registered with the Azure Site Recovery service.
+    1. Managed Identity gets the vault registration key file from the Recovery Services vault that you created and then uses the key file to complete the installation of the Azure Site Recovery agent. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
+    1. The replication policy is associated with the specified Hyper-V site and the target system host is registered with the Azure Site Recovery service.
 
-        If you don't have owner level access to the subscription/resource group where you create the vault, you see an error to the effect that you don't have authorization to perform the action.
+        If you don't have owner-level access to the subscription or resource group where you create the vault, you see an error that you don't have authorization to perform the action.
 
 1. Depending on the number of nodes in your system, the infrastructure preparation could take several minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of the window).
 
@@ -135,7 +123,7 @@ On your Azure Local target system, follow these steps to prepare infrastructure:
 
 After the infrastructure preparation is complete, follow these steps to select the VMs to replicate.
 
-1. On **Step 2: Enable replication**, select **Enable replication**. You're now directed to the Recovery services vault where you can specify the VMs to replicate.
+1. On **Step 2: Enable replication**, select **Enable replication**. You're now directed to the Recovery Services vault where you can specify the VMs to replicate.
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-1.png" alt-text="Screenshot of Enable replication in Azure portal for an Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-1.png":::
 
@@ -180,30 +168,44 @@ After the infrastructure preparation is complete, follow these steps to select t
 
     :::image type="content" source="media/azure-site-recovery/enable-replication-8.png" alt-text="Screenshot of Replicated items in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-8.png":::
 
-1. To monitor the VM replication, follow these steps.
+### Monitor VM replication
 
-    1. To view the **Replication health** and **Status**, select the VM and go to the Overview. You can see the percentage completion of the replication job.
+To monitor the VM replication, follow these steps:
+
+1. To view the **Replication health**, **Status**, and replication progress, select the VM, and then go to **Overview**.
+
+    :::image type="content" source="media/azure-site-recovery/enable-replication-9.png" alt-text="Screenshot of Overview of a replicated item in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-9.png":::
+ 
+1. To view detailed job status and the **Job ID**, select the VM, and then go to **Properties**.
+  
+    :::image type="content" source="media/azure-site-recovery/enable-replication-10.png" alt-text="Screenshot of the Properties page for a replicated Azure Local VM in the Azure portal." lightbox="media/azure-site-recovery/enable-replication-10.png":::
+ 
+1. To view disk information, go to **Disks**. After replication is complete, verify that the **Operating system disk** and **Data disk** show a status of **Protected**.
+ 
+    :::image type="content" source="media/azure-site-recovery/enable-replication-11.png" alt-text="Screenshot of Disks for a selected replicated VM in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-11.png"::: 
+ 
+1. To view the **Replication health** and **Status**, select the VM and go to the Overview. You can see the percentage completion of the replication job.
      
-        :::image type="content" source="media/azure-site-recovery/enable-replication-9.png" alt-text="Screenshot of Overview of a replicated item in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-9.png":::
+    :::image type="content" source="media/azure-site-recovery/enable-replication-9.png" alt-text="Screenshot of Overview of a replicated item in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-9.png":::
     
-    1. To see a more granular job status and **Job id**, select the VM and go to the **Properties** of the replicated VM.
+1. To see a more granular job status and **Job id**, select the VM and go to the **Properties** of the replicated VM.
 
-        :::image type="content" source="media/azure-site-recovery/enable-replication-10.png" alt-text="Screenshot of Properties of a replicated item in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-10.png":::
+    :::image type="content" source="media/azure-site-recovery/enable-replication-10.png" alt-text="Screenshot of Properties of a replicated item in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-10.png":::
 
-    1. To view the disk information, go to **Disks**. Once the replication is complete, the **Operating system disk** and **Data disk** should show as **Protected**.
+1. To view the disk information, go to **Disks**. Once the replication is complete, the **Operating system disk** and **Data disk** should show as **Protected**.
 
-        :::image type="content" source="media/azure-site-recovery/enable-replication-11.png" alt-text="Screenshot of Disks for a selected replicated VM in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-11.png":::
+   :::image type="content" source="media/azure-site-recovery/enable-replication-11.png" alt-text="Screenshot of Disks for a selected replicated VM in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/enable-replication-11.png":::
 
 The next step is to configure a test failover.
 
 ## Step 3: Configure and run a test failover in the Azure portal
 
-Once the replication is complete, the VMs are protected. We do recommend that you configure failover settings and run a test failover when you set up Azure Site Recovery.
+After replication finishes, the VMs are protected. Configure the failover settings and run a test failover as part of your Azure Site Recovery setup.
 
 To prepare for failover to an Azure VM, complete the following steps:
 
 1. If you didn't specify the network configuration for the replicated VM, you can complete that configuration now.
-    1. First, make sure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
+    1. Ensure that an Azure network is set up to test failover as per the instructions in [Create a network for test failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
     1. Select the VM and go to the **Compute and Network** settings and specify the virtual network and the subnet. The failed-over VM in Azure attaches to this virtual network and subnet.
 
 1. Once the replication is complete and the VM is **Protected** as reflected in the status, you can start **Test Failover**.
@@ -212,28 +214,33 @@ To prepare for failover to an Azure VM, complete the following steps:
 
 1. To run a test failover, see the detailed instructions in [Run a disaster recovery drill to Azure](/azure/site-recovery/tutorial-dr-drill-azure#run-a-test-failover-for-a-single-vm).
 
-## Step 4: Create Recovery Plans
+## Step 4: Create recovery plans
 
-*Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application comprising a collection of VMs. While it's possible to recover protected VMs individually, by adding the VMs comprising an application to a recovery plan, you're able to fail over the entire application through the recovery plan.
 
-You can also use the test failover feature of Recovery Plan to test the recovery of the application. Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate other steps to be performed as part of the recovery process. After you protect your VMs, you can go to the Azure Site Recovery vault in the Azure portal and create recovery plans for these VMs. [Learn more about recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
+A recovery plan in Azure Site Recovery groups VMs so that you can fail over and recover an application as a single unit. Although you can recover protected VMs individually, a recovery plan lets you group application VMs, define the order in which they start after failover, and automate recovery tasks.
+
+
+
+Use a recovery plan to group VMs, define the order in which they start during failover, and automate recovery tasks. You can run a test failover for the recovery plan to validate application recovery.
+
+After you protect your VMs, create a recovery plan for them in the Recovery Services vault in the Azure portal. For more information, see 
+[Create and customize recovery plans](/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Step 5: Fail over to Azure
 
-To fail over to Azure, you can follow the instructions in [Fail over Hyper-V VMs to Azure](/azure/site-recovery/hyper-v-azure-failover-failback-tutorial).
+To fail over to Azure, follow the instructions in [Fail over Hyper-V VMs to Azure](/azure/site-recovery/hyper-v-azure-failover-failback-tutorial).
 
 ## Step 6: Fail back from Azure
 
 To fail back from Azure, follow the instructions in [Fail back from Azure](/azure/site-recovery/hyper-v-azure-failback).
+> [!NOTE]
+> If you prepare multiple Azure Local instances by using the same Hyper-V site, you can fail back a VM to a host in either instance. Select **Create on-premises virtual machine if it does not exist**, and then choose the target Hyper-V host under **Host Name**. To learn more about this process, see [Fail back to an alternate location](/azure/site-recovery/hyper-v-azure-failback#fail-back-to-an-alternate-location).
 
-## Caveats
 
-Consider the following information before you use Azure Site Recovery to protect your on-premises VM workloads by replicating those VMs to Azure.
+## Step 7: Reverse replicate to Azure
 
-- Extensions installed by Arc aren’t visible on the Azure VMs. The Arc-enabled server still shows the extensions that are installed, but you can't manage those extensions (for example, install, upgrade, or uninstall) while the machine is in Azure.
-- Guest Configuration policies don't run while the machine is in Azure, so any policies that audit the OS security/configuration don't run until the machine is migrated back on-premises.
-- Log data (including Sentinel, Defender, and Azure Monitor info) is associated with the Azure VM while it's in Azure. Historical data is associated with the Arc-enabled server. If the data is migrated back on-premises, it starts being associated with the Arc-enabled server again. You can still find all the logs by searching by computer name as opposed to resource ID, but it's worth noting the Portal UX experiences look for data by resource ID, so you only see a subset on each resource.
-- We strongly recommend that you don't install the Azure VM Guest Agent to avoid conflicts with Arc if there's any potential that the machine will be migrated back on-premises. If you need to install the guest agent, make sure that the VM has extension management disabled. If you try to install/manage extensions using the Azure VM guest agent when there are already extensions installed by Arc on the same machine (or vice versa), the agent might encounter state reconciliation issues because it's unaware of the previous extension installations.
+Reverse replicate your VMs back to Azure to restore continuous replication and maintain ongoing protection against data loss. This protection enables rapid recovery in the event of another disaster. Only the delta changes since the VM was turned off in Azure are replicated.
+
 
 ## Known issues
 
@@ -242,10 +249,12 @@ Here's a list of known issues and the associated workarounds in this release:
 | \# | Issue                   | Workaround/Comments    |
 |----|----------------------|---------------------------|
 | 1. | When you register Azure Site Recovery with a system, a machine fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs might not be protected. Verify that all machines in the system are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
-| 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
-| 3. | Azure Site Recovery agent fails to install. Error message `Microsoft Azure Site Recovery Provider installation has failed with exit code - 1.` appears in the portal with the failed installation. | The installation fails when Application Control is enforced. <br><br> - Setting Application Control policy mode to **Audit** mode allows the installation to complete. However, this method isn't recommended for production environments. To set the policy mode to **Audit**, follow the instructions in [Manage Application Control for Azure Local](./manage-wdac.md#manage-application-control-settings-with-powershell). |
-| 4. | Failback of an Azure Local VM to an alternate cluster fails. | Failback of an Azure Local VM to an alternate cluster isn't supported. |
+| 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it's because of one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
+
+
 
 ## Next steps
+- [Learn more about Hybrid capabilities with Azure services](/azure-stack/hci/hybrid-capabilities-with-azure-services)
+- [Hyper-V to Azure disaster recovery architecture](/azure/site-recovery/hyper-v-azure-architecture)
+- [Troubleshoot Hyper-V to Azure replication and failover](/azure/site-recovery/hyper-v-azure-troubleshoot)
 
-- [Learn more about Hybrid capabilities with Azure services](/azure-stack/hci/hybrid-capabilities-with-azure-services).

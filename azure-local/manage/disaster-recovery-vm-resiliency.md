@@ -99,7 +99,7 @@ NetBackup uses its mature Hyper-V integration and Microsoft Resilient Change Tra
 
 Commvault Cloud offers unified, enterprise-grade data protection for Azure Local environments, enabling secure backup, recovery, and ransomware protection across virtual machines, databases, and unstructured data. With intelligent automation and policy-driven workflows, Commvault simplifies compliance, improves resiliency, and delivers scalable protection from edge to cloud, all while maintaining full control of your data within your Azure Local region.
 
-- [Commvault for Azure Local](https://documentation.commvault.com/11.42/software/azure_local.html)
+- [Commvault for Azure Local](https://documentation.commvault.com/11.46/software/protect_microsoft_azure_local_virtual_machines.html)
 - [Solution briefs](https://www.commvault.com/resources/solution-brief/commvault-for-microsoft-azure-local)
 - [Commvault Marketplace SaaS](https://marketplace.microsoft.com/en-us/product/saas/commvault.commvault_complete_backup_recovery?tab=Overview)
 
@@ -139,7 +139,7 @@ Azure Site Recovery is Microsoft's cloud-based disaster recovery solution design
 Key points about Azure Site Recovery for Azure Local:
 
 - **Deployment**:
-  - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. For more information, see [Protect VM workloads with Azure Site Recovery](azure-site-recovery.md#step-1-prepare-infrastructure-on-your-target-host).
+  - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. For more information, see [Protect VM workloads with Azure Site Recovery](azure-site-recovery.md#step-1-prepare-infrastructure).
   - Manual deployment: Azure Site Recovery extension for Azure Local is in preview and only applicable to test environments. For those customers that need a production ready solution, Azure Site Recovery can be configured manually on Azure Local cluster using the [Hyper-V to Azure disaster recovery](/azure/site-recovery/hyper-v-azure-architecture) option.  
 
 - **Frequent replication**: Azure Site Recovery can achieve Recovery Point Objectives (RPOs) as low as 30 seconds.
