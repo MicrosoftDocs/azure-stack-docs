@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 09/10/2026
+ms.date: 09/30/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
