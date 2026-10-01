@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 09/30/2026
+ms.date: 10/01/2026
 ms.subservice: hyperconverged
 ---
 
@@ -57,8 +57,7 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
 
 > [!IMPORTANT]
 > If your Azure Local solution is more than six months out of date, it's unsupported. Microsoft Support can only help you update the solution to a supported version.
-> This limitation applies to all scenarios, including active outages and service-impacting incidents. Troubleshooting, root-cause analysis, and support for other incidents aren't available until you update the solution to a supported version.
-> Planning an update or having an update in progress doesn't make the solution supported.
+> This limitation applies to all scenarios, including active outages and service-impacting incidents. Troubleshooting, root-cause analysis, and support for other incidents aren't available until you update the solution to a supported version. Planning an update or being in the process of updating doesn't place the solution in a supported state.
 > For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
 
 ### OS version 23H2
