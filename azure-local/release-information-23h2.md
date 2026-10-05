@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 09/10/2026
+ms.date: 10/01/2026
 ms.subservice: hyperconverged
 ---
 
@@ -56,7 +56,9 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
 ## End of support for Azure Local versions
 
 > [!IMPORTANT]
-> Versions not updated within six months are no longer supported. Running an unsupported version might expose your environment to security vulnerabilities, compliance issues, or regulatory requirements associated with using an unsupported version. Microsoft doesn't guarantee or provide remediation for risks resulting from the continued use of unsupported versions. For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
+> If you don't update your Azure Local solution within six months, it's no longer supported. Microsoft Support can only help you update the solution to a supported version.
+> This limitation applies in all scenarios, including active outages and service-impacting incidents. Troubleshooting, root-cause analysis, and support for other incidents aren't available until you update the solution to a supported version. Planning an update or being in the process of updating doesn't make the solution supported.
+> For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
 
 ### OS version 23H2
 
