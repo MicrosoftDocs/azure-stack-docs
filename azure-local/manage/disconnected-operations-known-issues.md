@@ -10,12 +10,37 @@ ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
-
-::: moniker range=">=azloc-2605"
-
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
+
+::: moniker range="=azloc-2609"
+## Known issues for version 2609
+### OperationsModule generating certificates causes issue when CA root contains space in CA common name
+**Applies to**: Generating certificates with operations module and CA common name containing a space.
+
+You will see an error with the following: ***Unable to locate a file named Root in the working directory, certreq.exe failed immediately with Windows Error Code 0x80070002 (ERROR_FILE_NOT_FOUND).***
+
+**Mitigation**:
+- Open a support case from the Azure Portal to get a fix.
+
+::: moniker-end
+
+::: moniker range="=azloc-2605"
+## Known issues for version 2606
+
+### AKS failed state after update 
+**Applies to**: AKS on Azure Local (Preview) 2606 or earlier versions. 
+
+Some rare conditions during update can cause AKS cluster to become unavailable and unable to communicate with the control plane. 
+
+**Mitigation**:
+ - Update Azure Local disconnected operations to 2609 and recreate your AKS cluster for AKS GA support.   
+ - Or: Open a support ticket for mitigation steps for preview versions.
+
+::: moniker-end
+
+::: moniker range="=azloc-2605"
 
 ## Known issues for version 2605
 
