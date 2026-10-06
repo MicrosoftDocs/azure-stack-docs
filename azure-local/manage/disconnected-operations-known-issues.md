@@ -19,10 +19,10 @@ These release notes are updated continuously to include critical issues and requ
 ### OperationsModule generating certificates causes issue when CA root contains space in CA common name
 **Applies to**: Generating certificates with operations module and CA common name containing a space.
 
-You will see an error with the following: ***Unable to locate a file named Root in the working directory, certreq.exe failed immediately with Windows Error Code 0x80070002 (ERROR_FILE_NOT_FOUND).***
+You see an error with the following message: ***Unable to locate a file named Root in the working directory, certreq.exe failed immediately with Windows Error Code 0x80070002 (ERROR_FILE_NOT_FOUND).***
 
 **Mitigation**:
-- Open a support case from the Azure Portal to get a fix.
+- Open a support case from the Azure portal to get a fix.
 
 ::: moniker-end
 
