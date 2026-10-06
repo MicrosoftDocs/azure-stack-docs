@@ -216,6 +216,16 @@ The add node wizard in the Azure portal guides you through eight steps to succes
 
 Follow these steps to add a node using the Azure portal:
 
+#### Prerequisites
+
+- Ensure the user who adds the node has the following role permissions. For more information, see [Assign Azure permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?assign-azure-permissions-for-deployment):
+  - **Azure Stack HCI Administrator**
+  - **Reader**
+  - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for the add node operation.
+  - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for the add node operation.
+  - **Key Vault Contributor**: This permission is required to create the key vault used for the add node operation.
+  - **Storage Account Contributor**: This permission is required to create the storage account used for the add node operation.
+
 #### Step 1: Launch the wizard
 
 1. In the Azure portal, go to your Azure Local instance.
@@ -231,7 +241,7 @@ In the **Basics** tab, select the machine that you want to add to your cluster.
 :::image type="content" source="./media/add-server/add-server-add-machine-selection.png" alt-text="Screenshot of the Basics tab showing available machines to add." lightbox="./media/add-server/add-server-add-machine-selection.png":::
 
 1. **Machine selection**: The context pane displays all available machines. Filter and select the machine you want to add.
-2. **Key vault selection**: Create a new key vault or select an existing key vault to continue.
+2. **Key vault selection**: The wizard selects an available key vault on the cluster. If there's no available key vault, create a new key vault or select an existing key vault. If there are insufficient permissions, select the **Grant Key Vault permissions** button to continue. 
 3. **Local administrator**: Local administrator user credentials for the machines. Use the same credential for all machines.
 4. **Extension installation**: After selection, the wizard automatically installs mandatory extensions on the machine.
 5. **Machine state**: The machine transitions to the **Ready** state once extension installation completes.
