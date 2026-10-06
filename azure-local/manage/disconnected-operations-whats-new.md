@@ -13,6 +13,24 @@ ai-usage: ai-assisted
 
 This article describes new features and improvements in disconnected operations for Azure Local. Before you deploy disconnected operations with Azure Local, review the [Known issues](./disconnected-operations-known-issues.md) to understand current limitations and available workarounds.
 
+::: moniker range="=azloc-2609"
+## Features and improvements in 2609
+ - AKS on Azure Local is generally available (GA).
+ - AKS on Azure Local now supports Windows node pools.
+ - Workload Identity Federation support for Arc-enabled Kubernetes.
+ - Added support for scheduled backups.
+ - Added support for Azure resource graph (ARG).
+ - Azure portal updates.
+ - Added support for writable graph (users and groups).
+ - Added support for Local identity with Azure Key Vault.
+ - Refresh of RBAC definitions.
+ - Security and quality updates.
+ - Usability improvements in OperationsModule.
+ - OperationsModule - added support for specifying templatename on certificate generation to override default template name.
+ - Support for Azure Local 2609 and its associated capabilities.
+
+::: moniker-end
+
 ::: moniker range="=azloc-2608"
 ## Features and improvements in 2608
  - Quality and security improvements.
