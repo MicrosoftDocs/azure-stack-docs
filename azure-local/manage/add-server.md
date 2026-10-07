@@ -212,19 +212,29 @@ Use the Azure Local experience in the Azure portal for a guided, wizard-based wo
 
 ### Prepare (Azure portal)
 
-The add node wizard in the Azure portal guides you through eight steps to successfully add a new machine to your cluster.
+The add node wizard in the Azure portal guides you to successfully add a new machine to your cluster.
 
 Follow these steps to add a node using the Azure portal:
 
 #### Prerequisites
 
-- Ensure the user who adds the node has the following role permissions. For more information, see [Assign Azure permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?assign-azure-permissions-for-deployment):
-  - **Azure Stack HCI Administrator**
-  - **Reader**
-  - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for the add node operation.
-  - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for the add node operation.
-  - **Key Vault Contributor**: This permission is required to create the key vault used for the add node operation.
-  - **Storage Account Contributor**: This permission is required to create the storage account used for the add node operation.
+1. Install the operating system, drivers, and firmware on the new node that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
+
+   > [!IMPORTANT]
+   > For versions 2503 and later, use the OS image from the same solution version as the existing cluster. Use [Get solution version](/azure/azure-local/update/azure-update-manager-23h2#get-solution-version) to identify the running solution version, and use the [OS image table](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) to select a matching image. Avoid selecting the image only from Azure portal because not all image versions might be listed.
+
+2. Register the new node with Arc. For guidance, see [Register with Arc and set up permissions](/azure/azure-local/deploy/deployment-arc-register-server-permissions).
+
+   > [!NOTE]
+   > Use the same Arc registration parameters as the existing nodes, including resource group, region, subscription, and tenant.
+
+3. Ensure the user who adds the node has the following role permissions. For more information, see [Assign Azure permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?assign-azure-permissions-for-deployment):
+   - **Azure Stack HCI Administrator**
+   - **Reader**
+   - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for the add node operation.
+   - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for the add node operation.
+   - **Key Vault Contributor**: This permission is required to create the key vault used for the add node operation.
+   - **Storage Account Contributor**: This permission is required to create the storage account used for the add node operation.
 
 #### Step 1: Launch the wizard
 
