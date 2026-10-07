@@ -1256,8 +1256,6 @@ items:
     # --- Operate the Control Plane (order per PM feedback) ---
     - name: Operate the Control Plane
       items:
-      - name: Update
-        href: manage/disconnected-operations-update.md
       - name: Backup and restore
         items:
         - name: Back up disconnected operations
@@ -1290,6 +1288,12 @@ items:
         href: manage/disconnected-operations-cli.md
       - name: Azure PowerShell
         href: manage/disconnected-operations-powershell.md
+      - name: Update
+        items:
+        - name: Plan updates
+          href: manage/disconnected-operations-plan-updates.md
+        - name: Apply updates
+          href: manage/disconnected-operations-update.md
       - name: Troubleshoot
         items:
         - name: On-demand log collection
