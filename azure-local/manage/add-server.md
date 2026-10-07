@@ -229,7 +229,7 @@ Follow these steps to add a node using the Azure portal:
    > Use the same Arc registration parameters as the existing nodes, including resource group, region, subscription, and tenant.
 
 3. Ensure the user who adds the node has the following role permissions. For more information, see [Assign Azure permissions for deployment](/azure/azure-local/deploy/deployment-arc-register-server-permissions?assign-azure-permissions-for-deployment):
-- **Azure Stack HCI Administrator**
+  - **Azure Stack HCI Administrator**
   - **Reader**
   - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for the add node operation.
   - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for the add node operation.
