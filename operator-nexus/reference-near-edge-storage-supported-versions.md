@@ -62,17 +62,20 @@ Each number in the version indicates general compatibility with the previous ver
 | 6.5.11           | Nexus 2509.1     | Sept 2026*      |
 | 6.7.9            | Nexus 2608.2     | May 2028*       |
 | 6.9.4            | Nexus 2604.2     | May 2028*      |
-| 6.9.5            | Nexus 2604.2     | May 2028*      |
 | 6.9.8            | Nexus 2608.2     | May 2028*       |
 
 > [!IMPORTANT]
 > \* At max 2 LTS versions will be supported. The dates are tentative assuming that by this timeframe we will have another set of LTS versions released, making this version deprecated per our support guidelines.
+
+> [!IMPORTANT]
+> PurityOS 6.9.5 has been removed from the supported versions list due to a known issue that can cause I/O disruption during a Purity upgrade. If you're currently running 6.9.5, upgrade to **6.9.8**, which contains the fix. See the [Versions out of support](#versions-out-of-support) table for details.
 
 ### Versions out of support
 
 |  PurityOS version | Support added in | End of support | Remarks |
 |-------------------|------------------|----------------|---------|
 | 6.1.x             | Year 2021        | Jul 2024       | End of support in Nexus 2406.2 |
+| 6.9.5             | Nexus 2604.2     | Oct 2026       | Removed from support due to a known issue causing I/O disruption during Purity upgrade. Upgrade to 6.9.8, which includes the fix. |
 
 ## Supported Pure HW Controller versions
 
