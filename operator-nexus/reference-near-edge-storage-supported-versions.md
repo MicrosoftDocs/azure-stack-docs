@@ -68,7 +68,7 @@ Each number in the version indicates general compatibility with the previous ver
 > \* At max 2 LTS versions will be supported. The dates are tentative assuming that by this timeframe we will have another set of LTS versions released, making this version deprecated per our support guidelines.
 
 > [!IMPORTANT]
-> Purity 6.9.5 has a known issue that can result in storage path disruption following a Purity upgrade, which can impact storage I/O. Customers should avoid upgrading to Purity 6.9.5 and instead upgrade to Purity 6.9.8 or later supported version. See the [Versions out of support](#versions-out-of-support) table for details.
+> Purity 6.9.5 has a known issue that can result in storage path disruption following a Purity upgrade, which can impact storage I/O. Customers should avoid upgrading to Purity 6.9.5 and instead upgrade to Purity 6.9.8 or later supported version. Purity 6.9.5 is now listed in the [Versions out of support](#versions-out-of-support) table.
 
 ### Versions out of support
 
