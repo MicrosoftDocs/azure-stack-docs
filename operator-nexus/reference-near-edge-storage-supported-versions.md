@@ -75,7 +75,7 @@ Each number in the version indicates general compatibility with the previous ver
 |  PurityOS version | Support added in | End of support | Remarks |
 |-------------------|------------------|----------------|---------|
 | 6.1.x             | Year 2021        | Jul 2024       | End of support in Nexus 2406.2 |
-| 6.9.5             | Nexus 2604.2     | Oct 2026       | Purity 6.9.5 has a known issue that can result in storage path disruption following a Purity upgrade, which can impact storage I/O. Customers should avoid upgrading to Purity 6.9.5 and instead upgrade to Purity 6.9.8 or later supported version. |
+| 6.9.5             | Nexus 2604.2     | Oct 2026       | Known storage path disruption issue after upgrade; use 6.9.8 or later |
 
 ## Supported Pure HW Controller versions
 
