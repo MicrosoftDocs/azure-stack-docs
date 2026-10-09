@@ -39,6 +39,8 @@ The Pure FlashArray contains a variety of data reduction features. The effective
 
 All data stored on the Pure FlashArray is encrypted at rest using platform-managed storage server-side encryption. For more information, see [Pure's FlashArray Data Security Overview](https://support.purestorage.com/bundle/m_security_resources/page/repositories/production-branch/content/documents/Production/FlashArray/FlashArray_Security/FlashArray_Security_Guides_and_Manuals/topics/task/t_an_overview_of_flasharray_data_security.html) (sign in required).
 
+For management connections to the Pure FlashArray, Azure Operator Nexus enforces TLS 1.3 on the client side. To disable TLS 1.1 and TLS 1.2 on the Pure FlashArray server side, raise a support ticket with Pure.
+
 ## Storage connectivity
 
 This diagram shows the connectivity model followed by storage appliance in the near-edge offering.
