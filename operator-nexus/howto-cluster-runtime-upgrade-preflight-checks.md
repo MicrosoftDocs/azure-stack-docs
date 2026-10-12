@@ -20,8 +20,18 @@ If any check fails, the upgrade is blocked and a descriptive message is shown in
 
 Checks are grouped by whether they're affected by the CUVA `SafeguardMode` setting. All checks that can be evaluated are run together, so all failures are reported at once.
 
+Example usage:
+```azcli
+az networkcloud cluster update-version \
+-g <CLUSTER_RG> \
+-n <CLUSTER_NAME> \
+--subscription <CUSTOMER_SUB_ID> \
+--target-cluster-version <TARGET_VERSION> \
+--safeguard-mode <SAFEGUARD_MODE> \
+```
+
 > [!IMPORTANT]
-> `SafeguardMode=All` is the default for API version `2026-05-01` and later. Earlier API versions default to `SafeguardMode=None`.
+> The `SafeguardMode` setting is available starting with API version `2026-05-01`. Valid values are `All` and `None`, with `All` as the default.
 
 ## Validation checks
 
