@@ -14,6 +14,7 @@ ms.service: azure-operator-nexus
 | 1.34         | Jun 2026  | Nov 2026        | Nov 2027        |
 | 1.35         | Aug 2026  | Mar 2027        | Mar 2028        |
 | 1.36         | Aug 2026  | Jun 2027        | Jun 2028        |
+| 1.37         | Nov 2026  | Oct 2027        | Oct 2028        |
 
 > [!NOTE]
 > Starting from Kubernetes version 1.30, all Nexus Kubernetes versions will be LTS-compatible.
