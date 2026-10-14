@@ -5,7 +5,7 @@ author: eak13
 ms.author: ekarandjeff
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 6/10/2025
+ms.date: 10/13/2026
 ms.custom: template-how-to
 ---
 
@@ -15,9 +15,11 @@ To improve the security of the Operator Nexus platform, managed identities are n
 
 Managed identities are used with the following user resources provided on Operator Nexus Clusters:
 
-- Storage Accounts used for the output of Bare Metal run-\* commands.
+- Storage Accounts used for the output of Bare Metal run-\* commands and supported Microsoft troubleshooting actions.
 - Key Vaults used for credential rotation.
 - Log Analytics Workspaces (LAW) used to capture some metrics.
+
+Supported Microsoft troubleshooting actions use the default container and associated identity in `commandOutputSettings`, rather than the overrides for specific run-command types. For information on accessing the records, see [Review Microsoft troubleshooting activity](howto-review-microsoft-troubleshooting-activity.md).
 
 To learn more about managed identities in Azure, see [Managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview). Operator Nexus Clusters support multiple User Assigned Managed Identities (UAMI) or one system assigned managed identity (SAMI). A combination of one or more UAMIs and a SAMI is also supported.
 
