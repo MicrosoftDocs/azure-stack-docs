@@ -56,6 +56,8 @@
       href: use-csi-driver-kubernetes.md
 - name: Manage a file system
   items:
+    - name: Expand a file system
+      href: expand-file-system-portal.md
     - name: Configure root squash settings
       href: root-squash-configure-settings.md
     - name: Set and configure Lustre quotas
