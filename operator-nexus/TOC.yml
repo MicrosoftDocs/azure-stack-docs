@@ -392,6 +392,8 @@
     - name: Security
       expanded: false
       items:
+        - name: Review Microsoft troubleshooting activity
+          href: howto-review-microsoft-troubleshooting-activity.md
         - name: Set up Defender for Cloud security
           href: howto-set-up-defender-for-cloud-security.md
         - name: Use Azure Policy with Operator Nexus resources

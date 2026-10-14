@@ -5,7 +5,7 @@ author: nstone-ms
 ms.author: nathanstone
 ms.service: azure-operator-nexus
 ms.topic: concept-article
-ms.date: 01/19/2026
+ms.date: 10/13/2026
 ms.custom:
   - template-concept
   - build-2025
@@ -139,6 +139,10 @@ The Operator Nexus Cluster Manager is an AKS implementation. The following image
 Azure Operator Nexus provides persistent storage for virtualized and containerized workloads. Data is stored and encrypted at rest on the storage appliances in the Azure Operator Nexus aggregator rack. For more information, please see [the storage appliance reference documentation](/azure/operator-nexus/reference-near-edge-storage).
 
 Nexus Kubernetes clusters and Nexus virtual machines consume storage from a local disk. Data stored on local disks is encrypted using LUKS2 with the AES256 bit algorithm in XTS mode. All encryption keys are platform managed.
+
+## Microsoft troubleshooting activity
+
+Supported Microsoft troubleshooting actions save command inputs and outputs to your Cluster's configured storage account. Azure Activity Log provides the corresponding execution events. For information on finding and reviewing these records, see [Review Microsoft troubleshooting activity](howto-review-microsoft-troubleshooting-activity.md).
 
 ## Related content
 
