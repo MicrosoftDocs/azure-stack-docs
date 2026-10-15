@@ -31,10 +31,10 @@ Records are saved to the default container configured in the Cluster's `commandO
 1. Find the troubleshooting record by its filename:
 
    ```text
-   cluster-execute-<dfmNumber>-YYYYMMDDTHHMMSSZ.json
+   cluster-execute-<support-ticket-number>-YYYYMMDDTHHMMSSZ.json
    ```
 
-   The filename contains the troubleshooting action's DfM number and a UTC timestamp, with a literal `T` between the date and time and a trailing `Z`. For example: `cluster-execute-123-20261013T142345Z.json`.
+   The filename contains the support ticket number and a UTC timestamp, with a literal `T` between the date and time and a trailing `Z`. For example: `cluster-execute-123-20261013T142345Z.json`.
 
 1. Select the record and download it to review its JSON contents.
 
