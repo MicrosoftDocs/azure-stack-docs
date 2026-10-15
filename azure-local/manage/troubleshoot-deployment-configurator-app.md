@@ -70,6 +70,8 @@ Prepare the required PowerShell package-management provider components before st
 
 Keep the client online and the app running through upload and cleanup. An already Arc-connected computer skips temporary Arc onboarding, but still runs the observability component and module checks.
 
+The bundled standalone upload command refuses to run when the `WatchdogAgent` service is already installed, even if the service is stopped. Use another approved client for the upload instead of removing or disabling existing monitoring.
+
 The support-upload workflow described here uses Azure public cloud. Selecting another cloud for machine registration doesn't change the upload command's cloud configuration. Don't assume that Government, disconnected, private-link-only or Arc-gateway-only upload is supported by this workflow.
 
 ## Get logs if the app is inaccessible
