@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the registration failures for Azure Local
 ms.topic: how-to
 ms.author: robess
 author: ronmiab
-ms.date: 10/14/2026
+ms.date: 10/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -33,7 +33,7 @@ Configure the connections for the operations that you use. The following table s
 | Operation | Connection origin | Destination or maintained endpoint reference | Protocol and destination port | When required |
 | --- | --- | --- | --- | --- |
 | Download the app | Windows client | `aka.ms`, then the Microsoft download destination, currently `azurestackreleases.download.prss.microsoft.com` | HTTPS, TCP 443 | When you download the Configurator installer. |
-| Download a missing .NET runtime | Windows client or your software-distribution system | Follow the runtime download requested by the app and the maintained [Windows .NET installation guidance](/dotnet/core/install/windows). | HTTPS, TCP 443 | If the runtime required by your Configurator version isn't installed. A successful MSIX installation doesn't establish that the runtime is present. An approved offline installer avoids an internet download from the client. |
+| Download a missing .NET runtime | Windows client or your software-distribution system | Follow the maintained [Windows .NET installation guidance](/dotnet/core/install/windows) for the runtimes required by Configurator and its upload components. | HTTPS, TCP 443 | If a required runtime isn't installed. A successful MSIX installation doesn't establish that all component runtimes are present. An approved offline installer avoids an internet download from the client. |
 | Validate certificate chains | Windows client and its installed components | Certificate-authority CRL, OCSP and issuer URLs, and relevant trust-list services. See [Windows certificate chain retrieval](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain). | HTTP, TCP 80, or HTTPS, TCP 443, as specified by the certificate chain | When signing or TLS verification needs information that isn't cached. Allow the applicable current certificate URLs; don't disable certificate validation to work around blocked connectivity. |
 | Connect to the machine, run diagnostics, create a support package, or download it | Configurator app on the Windows client | Hostname or IP address of the Azure Local machine | HTTPS, TCP 9099 or 20001 | For device operations. The app probes both ports and uses a responding Bootstrap API listener. Allow that port inbound to the machine from the client. If you use a hostname, the client also needs working name resolution. |
 | Run machine connectivity and time diagnostics | Bootstrap on the Azure Local machine | Configured DNS, proxy and time services, and the destinations in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | As specified for each service, including HTTPS on TCP 443 and NTP on UDP 123 where applicable | The diagnostic work runs on the machine. Validate the Windows client's Azure connectivity separately. |
@@ -67,6 +67,8 @@ Keep bypass lists separate for each component. For example, .NET `NO_PROXY` does
 Run the app as an administrator for upload. Use a Windows client where you have permission to install the required dependencies and observability components, and Azure permissions to create and remove the temporary Arc resource when needed. See [Connected Machine Agent prerequisites](/azure/azure-arc/servers/prerequisites#required-permissions) for the relevant Arc permissions.
 
 Prepare the required PowerShell package-management provider components before starting a noninteractive upload. A fresh Windows installation can lack the NuGet provider needed to install `Az.Accounts`. Use the maintained [PowerShell Gallery troubleshooting and endpoint guidance](/powershell/gallery/how-to/getting-support/troubleshooting-cmdlets) when preparing these components.
+
+Check the .NET runtime requirements of the upload components as well as the app. Framework-dependent components can require an older major runtime alongside the app's runtime. A newer major runtime doesn't satisfy that requirement by default. Install the required runtime side by side rather than overriding version selection. See [.NET runtime version selection](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
 
 Keep the client online and the app running through upload and cleanup. An already Arc-connected computer skips temporary Arc onboarding, but still runs the observability component and module checks.
 
