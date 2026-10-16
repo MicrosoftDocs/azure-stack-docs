@@ -14,18 +14,16 @@
       href: create-aml-file-system-terraform.md
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
-- name: Integrate with data sources
+- name: Integrate with Azure Blob Storage
   items:
-    - name: Use Azure Blob Storage with Azure Managed Lustre
+    - name: Azure Blob Storage integration overview
       href: blob-integration.md
-    - name: Import data using manual import jobs
-      href: create-import-job.md
-    - name: Import data using auto-import jobs
-      href: auto-import.md
-    - name: Export data using manual export jobs
-      href: export-with-archive-jobs.md
-    - name: Export data using auto-export jobs
-      href: auto-export.md
+    - name: Import data from Blob Storage
+      href: import-data.md
+    - name: Export data to Blob Storage
+      href: export-data.md
+    - name: Restore data from Blob Storage
+      href: restore-data.md
 - name: Scenarios
   items:
     - name: Migrate data from on-premises POSIX file systems
@@ -52,8 +50,18 @@
       href: automount-clients-fstab.md
     - name: Use Azure Managed Lustre with Secure Boot
       href: client-secure-boot.md
-    - name: Use Azure Lustre CSI driver for Kubernetes
+- name: Use Azure Kubernetes Service with Azure Managed Lustre
+  items:
+    - name: Azure Lustre CSI driver overview
       href: use-csi-driver-kubernetes.md
+    - name: Plan network architecture for AKS
+      href: use-container-storage-interface-driver-network-planning.md
+    - name: Use dynamic provisioning
+      href: use-container-storage-interface-driver-dynamic-provisioning.md
+    - name: Use static provisioning
+      href: use-container-storage-interface-driver-static-provisioning.md
+    - name: Validate CSI driver image security
+      href: use-container-storage-interface-driver-image-security.md
 - name: Manage a file system
   items:
     - name: Expand a file system

@@ -2415,6 +2415,46 @@
       "source_path": "azure-local/concepts/microsoft-365-local-overview.md",
       "redirect_url": "/azure/azure-sovereign-clouds/private/m365-local/microsoft-365-local-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/auto-export.md",
+      "redirect_url": "/azure/azure-managed-lustre/export-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/auto-import.md",
+      "redirect_url": "/azure/azure-managed-lustre/import-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/export-with-archive-jobs.md",
+      "redirect_url": "/azure/azure-managed-lustre/export-data",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-managed-lustre/create-import-job.md",
+      "redirect_url": "/azure/azure-managed-lustre/import-data",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-managed-lustre/aks-csi-driver-dynamic-provisioning.md",
+      "redirect_url": "/azure/azure-managed-lustre/use-container-storage-interface-driver-dynamic-provisioning",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-managed-lustre/aks-csi-driver-static-provisioning.md",
+      "redirect_url": "/azure/azure-managed-lustre/use-container-storage-interface-driver-static-provisioning",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-managed-lustre/aks-csi-driver-network-planning.md",
+      "redirect_url": "/azure/azure-managed-lustre/use-container-storage-interface-driver-network-planning",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-managed-lustre/aks-csi-driver-image-security.md",
+      "redirect_url": "/azure/azure-managed-lustre/use-container-storage-interface-driver-image-security",
+      "redirect_document_id": true
     }
   ]
 }
