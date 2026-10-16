@@ -4,7 +4,7 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: barbisch
 ms.author: akashdubey
-ms.date: 09/15/2026
+ms.date: 09/29/2026
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
 ms.custom: sfi-image-nochange
@@ -121,7 +121,7 @@ To configure blob integration, follow these steps:
 1. Select the **Import/export data from blob** checkbox.
 1. Specify the **Subscription**, **Storage account**, and **Container** values to use with your Lustre file system.
 1. In the **Logging container** box, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.
-1. In the **Import Prefix(es)** boxes, you can optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](blob-integration.md#import-prefix).
+1. In the **Import Prefix(es)** boxes, optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](import-data.md#import-prefix).
 
 :::image type="content" source="./media/create-file-system-portal/advanced-blob-integration.png" alt-text="Screenshot that shows blob integration settings on the Advanced tab for creating an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/advanced-blob-integration.png":::
 
