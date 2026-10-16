@@ -99,7 +99,7 @@ To create an Azure Managed Lustre file system by using an ARM template, you need
 > [!NOTE]
 > The `importPrefixesInitial` property allows you to specify multiple prefixes for importing data into the file system, while `importPrefix` allows you to specify a single prefix. The default value for both properties is `/`. If you define one of the properties, you can't define the other. If you define both properties, the deployment fails.
 >
-> To learn more, see [Import prefix](blob-integration.md#import-prefix).
+> To learn more, see [Import prefix](import-data.md#import-prefix).
 
 #### Maintenance window
 
