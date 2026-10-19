@@ -15,12 +15,14 @@ The Operator Nexus platform architecture incorporates a storage component replac
 
 Throughout the process of replacing these components, the status of the Storage Appliance can be viewed either through the Azure portal or using [Command Line](./howto-storage-run-read.md).
 
-## Pure Storage
+<a name="pure-storage"></a>
+
+## Everpure
 ### Prerequisites
-Before performing a component repair on a Pure Storage FlashArray, confirm Pure Storage Support determined there's a hardware fault as outlined in [Pure Support documentation](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html). Additionally, review the open Purity//FA alerts in the Purity GUI, or the Azure portal using the steps in the [Troubleshooting an Unhealthy or Degraded Storage Appliance](./troubleshoot-unhealthy-degraded-storage-appliance.md#active-alerts) guide (Active Alerts section).
+Before performing a component repair on an Everpure FlashArray, confirm Everpure Support determined there's a hardware fault as outlined in [Everpure Support documentation](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html). Additionally, review the open Purity//FA alerts in the Purity GUI, or the Azure portal using the steps in the [Troubleshooting an Unhealthy or Degraded Storage Appliance](./troubleshoot-unhealthy-degraded-storage-appliance.md#active-alerts) guide (Active Alerts section).
 
 ### Component Replacement
-Pure Storage FlashArray appliances support nondisruptive component replacement through [Pure's standard repair procedure](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html) (sign-in required). All major hardware components—including controllers, drives, power supplies, and fans—are [hot-swappable](https://support.purestorage.com/bundle/50-0035-12/resource/50-0035-12.pdf) (sign-in required), allowing technicians to replace failed parts without taking the system offline. The FlashArray automatically retains its configuration across hardware replacements, eliminating the need for manual reconfiguration.
+Everpure FlashArray appliances support nondisruptive component replacement through [Everpure's standard repair procedure](https://support.purestorage.com/bundle/m_technical_services_information/page/Pure_Storage_Technical_Services/Technical_Services_Information/topics/task/t_pure_storage_parts_replacement_procedure.html) (sign-in required). All major hardware components—including controllers, drives, power supplies, and fans—are [hot-swappable](https://support.purestorage.com/bundle/50-0035-12/resource/50-0035-12.pdf) (sign-in required), allowing technicians to replace failed parts without taking the system offline. The FlashArray automatically retains its configuration across hardware replacements, eliminating the need for manual reconfiguration.
 
 For chassis replacements, update the serial number using Azure CLI for asset tracking purposes. This update doesn't impact Operator Nexus functionality.
 
@@ -32,7 +34,7 @@ az networkcloud storageappliance update --name <storageAppliance> -g <HostedReso
  ### Post-Replacement
 After the component is replaced, confirm that the related Purity//FA alert cleared in the Purity GUI or Azure portal, and verify that the new component replacement reports a healthy state in the Purity GUI or CLI. 
 
-You can also validate the hardware status through Operator Nexus by running a [read-only diagnostic command](./howto-storage-run-read.md). This example command surfaces the hardware state directly from the Pure FlashArray, allowing you to confirm that the replacement part is detected and reporting a healthy status.
+You can also validate the hardware status through Operator Nexus by running a [read-only diagnostic command](./howto-storage-run-read.md). This example command surfaces the hardware state directly from the Everpure FlashArray, allowing you to confirm that the replacement part is detected and reporting a healthy status.
 
 ```azurecli
 az networkcloud storageappliance run-read-command --name "<storageApplianceName>" \
