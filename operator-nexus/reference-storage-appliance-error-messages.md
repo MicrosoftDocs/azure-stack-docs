@@ -94,7 +94,7 @@ When the description is `contact support if this persists`, the condition is typ
 
 ### Storage appliance update and actions
 
-This covers errors that may occur when the Storage Appliance is being updated, for example enable/disable remote vendor management on a Pure device.
+This covers errors that may occur when the Storage Appliance is being updated, for example enable/disable remote vendor management on an Everpure device.
 
 | Error code | When it occurs | Recommended action |
 |------------|----------------|--------------------|

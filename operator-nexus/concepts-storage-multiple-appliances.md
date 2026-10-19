@@ -24,7 +24,7 @@ The spaces in the aggregator rack reserved for storage appliances are called sto
 Azure Operator Nexus only supports a second storage appliance for instances that meet the following conditions:
 
 - The instance hardware matches the 2.0.x or later bills of material (BOMs).
-- All Pure storage appliances have R4 controllers.
+- All Everpure storage appliances have R4 controllers.
 
 The Azure Operator Nexus SKUs that support a second storage appliance are documented in the [supported SKUs documentation](./reference-operator-nexus-skus.md). The storage appliances don't have to have the same capacity configurations. All supported capacity configurations are listed in the [supported storage appliances](./reference-near-edge-storage.md) documentation.
 

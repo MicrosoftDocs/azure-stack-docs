@@ -29,7 +29,7 @@ The run-read command lets you run commands on a storage appliance that don't cha
 > [!WARNING]
 > Microsoft doesn't provide or support any Operator Nexus API calls that expect plaintext username and/or password to be supplied. The Nexus platform handles authentication with the storage appliance and it shouldn't be necessary to provide credentials as part of the commands. Note any values sent are logged and are considered exposed secrets, which should be rotated and revoked. The Microsoft documented method for securely using secrets is to store them in an Azure Key Vault. If you have specific questions or concerns, submit a request via the Azure portal.
 
-The command syntax for a single command is as follows, using the Pure FlashArrray command `purehw list` as an example:
+The following example shows the command syntax for a single command, using the Everpure FlashArray command `purehw list` as an example:
 
 ```azurecli
 az networkcloud storageappliance run-read-command --name "<storageApplianceName>" \
