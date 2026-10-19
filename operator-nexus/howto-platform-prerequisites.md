@@ -69,7 +69,7 @@ ordering errors because of complex parts lists.
 
 #### Placing a SKU-based order
 
-Operator Nexus has created a series of SKUs with vendors such as Dell, Pure Storage, and Arista that the operator can reference when they place
+Operator Nexus has created a series of SKUs with vendors such as Dell, Everpure, and Arista that the operator can reference when they place
 an order. Thus, an operator simply needs to place an order based on the SKU
 information provided by Operator Nexus to the vendor to receive the correct
 parts list for the build.
@@ -383,19 +383,21 @@ ogcli update port "port-<PORT_#>"  label=\"<NEW_NAME>\" <PORT_#>
 | PORT\_#        | Terminal Server port number |
 
 
-### Step 9: Settings required for PURE Array serial connections
+<a name="step-9-settings-required-for-pure-array-serial-connections"></a>
 
-Pure Storage arrays purchased prior to 2024 have revision R3 controllers which use rollover console cables and require the custom serial port connection commands below:
+### Step 9: Settings required for Everpure Array serial connections
 
-**Pure Storage R3 Controllers:**
+Everpure arrays purchased prior to 2024 have revision R3 controllers which use rollover console cables and require the custom serial port connection commands below:
+
+**Everpure R3 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
 ogcli update port ports-<PORT_#> 'pinout="X1"' <PORT_#>    Pure Storage Controller console
 ```
 
-Newer Pure Storage appliances, and systems upgraded from R3 to R4 Pure Storage controllers, will use straight-through console cables with the updated settings below:
+Newer Everpure appliances, and systems upgraded from R3 to R4 Everpure controllers, will use straight-through console cables with the updated settings below:
 
-**Pure Storage R4 Controllers:**
+**Everpure R4 Controllers:**
 ```bash
 ogcli update port ports-<PORT_#> 'baudrate="115200"' <PORT_#> Pure Storage Controller console
 ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>    Pure Storage Controller console
@@ -407,7 +409,7 @@ ogcli update port ports-<PORT_#> 'pinout="X2"' <PORT_#>    Pure Storage Controll
 | -------------- | --------------------------- |
 | PORT\_#        | Terminal Server port number |
 
-These commands set the baud rate and pinout for connecting to the Pure Storage Controller console.
+These commands set the baud rate and pinout for connecting to the Everpure Controller console.
 
 >[!NOTE]
 >All other Terminal Server port configurations settings should remain the same and work by default with a straight-through RJ45 console cable.
@@ -469,13 +471,13 @@ Interface:    net1, via: LLDP, RID: 1, Time: 0 day, 20:28:36
 
 ## Determine whether to enable SafeMode on storage arrays
 
-Pure Storage arrays support a feature called SafeMode, which is designed to protect against ransomware attacks and other malicious activities. When enabled, snapshots of volumes are periodically created that can't be fully deleted or modified for a configurable retention period. Enabling SafeMode provides protection against loss of data but also uses more storage capacity on the array.
+Everpure arrays support a feature called SafeMode, which is designed to protect against ransomware attacks and other malicious activities. When enabled, snapshots of volumes are periodically created that can't be fully deleted or modified for a configurable retention period. Enabling SafeMode provides protection against loss of data but also uses more storage capacity on the array.
 
-The Operator Nexus platform supports SafeMode being enabled on storage arrays. Volumes are subject to its protection so long as the default Protection Groups include at least one with SafeMode enabled. However, it doesn't directly interact with the generated snapshots, and you need to work with your Pure support representative if you need to recover data from a snapshot.
+The Operator Nexus platform supports SafeMode on storage arrays. Volumes are protected as long as the default Protection Groups include at least one group with SafeMode enabled. However, the platform doesn't directly interact with the generated snapshots. To recover data from a snapshot, contact your Everpure support representative.
 
-By default SafeMode is enabled on Pure Storage arrays via a default Protection Group. If you wish to disable it, you can do so by deleting this default Protection Group. If you wish to enable SafeMode with different snapshot frequency or retention settings, you can replace it with a new SafeMode-enabled Protection Group with your desired settings.
+By default, SafeMode is enabled on Everpure arrays through a default Protection Group. To disable it, delete this default Protection Group. To enable SafeMode with different snapshot frequency or retention settings, replace the default group with a new SafeMode-enabled Protection Group that has your desired settings.
 
-For more information about SafeMode and its implications, see the [Pure Storage documentation](https://support.purestorage.com/bundle/m_flasharray_security/page/FlashArray/FlashArray_Security/SafeMode/topics/concept/FlashArray_SafeMode_Introduction_and_Best_Practices.html) (sign-in required). Contact your Pure support representative for further questions about SafeMode and its configuration.
+For more information about SafeMode and its implications, see the [Everpure documentation](https://support.purestorage.com/bundle/m_flasharray_security/page/FlashArray/FlashArray_Security/SafeMode/topics/concept/FlashArray_SafeMode_Introduction_and_Best_Practices.html) (sign-in required). Contact your Everpure support representative if you have questions about SafeMode and its configuration.
 
 ## Set up first storage array
 
@@ -531,7 +533,7 @@ For more information about SafeMode and its implications, see the [Pure Storage 
    - ct1.eth11: not set by operator during setup
    - ct1.eth18: not set by operator during setup
    - ct1.eth19: not set by operator during setup
-   - Pure Tunable to be applied:
+   - Everpure Tunable to be applied:
      - `puretune -set PS_ENFORCE_IO_ORDERING 1 "PURE-209441";`
      - `puretune -set PS_STALE_IO_THRESH_SEC 4 "PURE-209441";`
      - `puretune -set PS_LANDLORD_QUORUM_LOSS_TIME_LIMIT_MS 0 "PURE-209441";`
@@ -595,7 +597,7 @@ For more information about SafeMode and its implications, see the [Pure Storage 
    - ct1.eth11: not set by operator during setup
    - ct1.eth18: not set by operator during setup
    - ct1.eth19: not set by operator during setup
-   - Pure Tunable to be applied:
+   - Everpure Tunable to be applied:
      - `puretune -set PS_ENFORCE_IO_ORDERING 1 "PURE-209441";`
      - `puretune -set PS_STALE_IO_THRESH_SEC 4 "PURE-209441";`
      - `puretune -set PS_LANDLORD_QUORUM_LOSS_TIME_LIMIT_MS 0 "PURE-209441";`
