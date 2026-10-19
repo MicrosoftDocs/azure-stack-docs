@@ -29,7 +29,7 @@ This article describes the Operator Nexus credential rotation lifecycle includin
 The Operator Nexus Platform offers a managed credential rotation process that automatically rotates the following credentials:
 
 - Baseboard Management Controller (BMC)
-- Pure Storage Array Administrator
+- Everpure Array Administrator
 - Console User for emergency access
 - Console User SSH keys for emergency access
 - Local path storage

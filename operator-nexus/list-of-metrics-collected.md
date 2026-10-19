@@ -41,7 +41,7 @@ This section provides the list of metrics collected from the different component
   - [Baremetal servers](#baremetal-servers)
     - [***node metrics***](#node-metrics)
   - [Storage Appliances](#storage-appliances)
-    - [***pure storage***](#pure-storage)
+    - [***Everpure***](#everpure)
   - [Cluster Management](#cluster-management)
     - [***cluster management metrics***](#cluster-management-metrics)
   - [Network Fabric Metrics](#network-fabric-metrics)
@@ -385,21 +385,23 @@ Baremetal server metrics are collected and delivered to Azure Monitor per minute
 
 All the metrics from Storage appliance are collected and delivered to Azure Monitor per minute.
 
-### ***pure storage***
+<a name="pure-storage"></a>
+
+### ***Everpure***
 
 | Metric      | Category | Display Name  | Unit | Description | Dimensions   |
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
 |PurefaAlertsOpen2|Storage Array|Nexus Storage Alerts Open|Count|Number of open alert events. In the absence of data, this metric defaults to 0.|Code, Component Type, Issue, Severity, Summary|
 |PurefaArrayPerformanceAverageBytes|Storage Array|Nexus Storage Array Performance Average Bytes|Bytes|The average operations size by dimension, where dimension can be mirrored_write_bytes_per_sec, read_bytes_per_sec or write_bytes_per_sec. In the absence of data, this metric retains the most recent value emitted.|Dimension|
-|PurefaArrayPerformanceBandwidthBytes|Storage Array|Nexus Storage Array Bandwidth Bytes|Bytes|Performance of the pure storage array bandwidth in bytes per second. In the absence of data, this metric retains the most recent value emitted.|Dimension|
-|PurefaArrayPerformanceLatencyMs|Storage Array|Nexus Storage Array Latency|MilliSeconds|Latency of the pure storage array. In the absence of data, this metric defaults to 0.|Dimension|
+|PurefaArrayPerformanceBandwidthBytes|Storage Array|Nexus Storage Array Bandwidth Bytes|Bytes|Performance of the Everpure storage array bandwidth in bytes per second. In the absence of data, this metric retains the most recent value emitted.|Dimension|
+|PurefaArrayPerformanceLatencyMs|Storage Array|Nexus Storage Array Latency|MilliSeconds|Latency of the Everpure storage array. In the absence of data, this metric defaults to 0.|Dimension|
 |PurefaArrayPerformanceQueueDepthOps|Storage Array|Nexus Storage Array Performance Queue Depth Operations|Count|The array queue depth size by number of operations. In the absence of data, this metric retains the most recent value emitted.| |
 |PurefaArrayPerformanceThroughputIops|Storage Array|Nexus Storage Array Performance Throughput Iops|Count|The array throughput in operations per second. In the absence of data, this metric retains the most recent value emitted.|Dimension|
 |PurefaArraySpaceBytes|Storage Array|Nexus Storage Array Space Bytes|Bytes|The amount of array space. The space filter can be used to filter the space by type. In the absence of data, this metric retains the most recent value emitted.|Space|
 |PurefaArraySpaceDataReductionRatioV2|Storage Array|Nexus Storage Array Space Data Reduction Ratio|Count|Storage array overall data reduction ratio. In the absence of data, this metric retains the most recent value emitted.| |
 |PurefaArraySpaceUtilization|Storage Array|Nexus Storage Array Space Utilization|Percent|Array space utilization in percent. In the absence of data, this metric retains the most recent value emitted.| |
-|PurefaHostPerformanceBandwidthBytes|Host|Nexus Storage Host Bandwidth Bytes|Bytes|Host bandwidth of the pure storage array in bytes per second. In the absence of data, this metric retains the most recent value emitted.|Dimension, Host|
-|PurefaHostPerformanceLatencyMs|Host|Nexus Storage Host Latency|MilliSeconds|Latency of the pure storage array hosts. In the absence of data, this metric defaults to 0.|Dimension, Host|
+|PurefaHostPerformanceBandwidthBytes|Host|Nexus Storage Host Bandwidth Bytes|Bytes|Host bandwidth of the Everpure storage array in bytes per second. In the absence of data, this metric retains the most recent value emitted.|Dimension, Host|
+|PurefaHostPerformanceLatencyMs|Host|Nexus Storage Host Latency|MilliSeconds|Latency of the Everpure storage array hosts. In the absence of data, this metric defaults to 0.|Dimension, Host|
 |PurefaHostPerformanceThroughputIops|Host|Nexus Storage Host Performance Throughput Iops|Count|The host throughput in I/O operations per second. In the absence of data, this metric retains the most recent value emitted.|Host, Dimension|
 |PurefaHostSpaceBytesV2|Host|Nexus Storage Host Space Bytes|Bytes|Storage array host space. In the absence of data, this metric retains the most recent value emitted.|Host, Space|
 |PurefaHostSpaceDataReductionRatioV2|Host|Nexus Storage Host Space Data Reduction Ratio|Count|Host space data reduction ratio. In the absence of data, this metric retains the most recent value emitted.|Host|
@@ -409,9 +411,9 @@ All the metrics from Storage appliance are collected and delivered to Azure Moni
 |PurefaInfo|Storage Array|Nexus Storage Info (Preview)|Unspecified|Storage array system information. In the absence of data, this metric defaults to 0.|Array Name, Array Version|
 |PurefaNetworkInterfacePerformanceErrors|Storage Array|Nexus Storage Network Interface Performance Errors|Count|The number of network interface errors per second. In the absence of data, this metric retains the most recent value emitted.|Dimension, Name, Type|
 |PurefaVolumePerformanceBandwidthBytesV2|Volume|Nexus Storage Volume Performance Bandwidth Bytes|Bytes|Volume throughput in bytes per second. In the absence of data, this metric retains the most recent value emitted.|Name, Dimension|
-|PurefaVolumePerformanceLatencyMsV2|Volume|Nexus Storage Volume Latency|MilliSeconds|Latency of the pure storage array volumes. In the absence of data, this metric defaults to 0.|Dimension, Name|
+|PurefaVolumePerformanceLatencyMsV2|Volume|Nexus Storage Volume Latency|MilliSeconds|Latency of the Everpure storage array volumes. In the absence of data, this metric defaults to 0.|Dimension, Name|
 |PurefaVolumePerformanceThroughputIops|Volume|Nexus Storage Volume Performance Throughput Iops|Count|Volume throughput in operations per second. In the absence of data, this metric retains the most recent value emitted.|Name, Dimension|
-|PurefaVolumeSpaceBytesV2|Volume|Nexus Storage Volume Space Bytes|Bytes|Pure storage array volume space. In the absence of data, this metric retains the most recent value emitted.|Name, Space|
+|PurefaVolumeSpaceBytesV2|Volume|Nexus Storage Volume Space Bytes|Bytes|Everpure storage array volume space. In the absence of data, this metric retains the most recent value emitted.|Name, Space|
 |PurefaVolumeSpaceDataReductionRatioV2|Volume|Nexus Storage Volume Space Data Reduction Ratio|Unspecified|Volume space data reduction ratio. In the absence of data, this metric retains the most recent value emitted.|Name|
 
 ## Cluster Management

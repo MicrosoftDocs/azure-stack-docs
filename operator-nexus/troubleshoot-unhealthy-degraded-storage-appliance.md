@@ -89,7 +89,7 @@ The health events in this list indicate that the appliance has high latency:
 - `StorageApplianceLatencyUnavailable`, which means the self-reported latency of the Storage Appliance
   exceeds 100 ms.
 
-The expected latency for Pure X-series is 1 ms or less.
+The expected latency for Everpure X-series is 1 ms or less.
 
 The root cause of high latency could be an issue with the appliance, or high load. First, check if high load
 is the cause:
