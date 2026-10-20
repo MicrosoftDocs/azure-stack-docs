@@ -14,6 +14,8 @@ If you plan to deploy a few machines per site, use the Configurator app to regis
 
 - Download the [Configurator App for Azure Local](https://aka.ms/ConfiguratorAppForHCI) on a client machine that's connected to the same network as the Azure Local machines.
 
+- Review the [Windows client network prerequisites](../manage/troubleshoot-deployment-configurator-app.md#windows-client-network-prerequisites). Azure sign-in and support-package upload need internet access from the client.
+
 - Note down:
 
   - The serial number for each machine.
