@@ -28,7 +28,7 @@ The following table outlines potential issues you might encounter during deploym
 
 If observability components aren't deployed or you run into issues during system deployment or registration, perform standalone log collection to collect and send diagnostic data to Microsoft for troubleshooting. Make sure to file a support ticket before you start log collection.
 
-If you use the Configurator app to collect or upload a support package, review its [Windows client network prerequisites](troubleshoot-deployment-configurator-app.md#windows-client-network-prerequisites) before following the [Configurator support-package workflow](troubleshoot-deployment-configurator-app.md#collect-a-support-log-package-from-the-app).
+If you use the Configurator app to upload a support package, see [Collect a Support log package from the app](troubleshoot-deployment-configurator-app.md#collect-a-support-log-package-from-the-app) and the [Windows client network prerequisites](troubleshoot-deployment-configurator-app.md#windows-client-network-prerequisites).
 
 Here are the high-level steps for standalone log collection:
 

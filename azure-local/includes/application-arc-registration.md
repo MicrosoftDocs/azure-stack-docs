@@ -61,7 +61,7 @@ ms.date: 09/04/2026
 
 Use the support and troubleshooting tools in the Configurator app to collect logs and diagnose issues.
 
-Before you upload a support package, check the [Windows client network prerequisites](../manage/troubleshoot-deployment-configurator-app.md#windows-client-network-prerequisites). The upload runs on the client and can install dependencies and temporarily connect that computer to Azure Arc.
+Before you upload a support package, check the [Windows client network prerequisites](../manage/troubleshoot-deployment-configurator-app.md#windows-client-network-prerequisites). The upload runs on the client computer and can temporarily connect it to Azure Arc.
 
 1. Select the **Support** icon in the upper-right corner of the Configurator app.
 

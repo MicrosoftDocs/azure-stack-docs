@@ -26,55 +26,46 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 
 ## Windows client network prerequisites
 
-The Windows computer running the Configurator app needs network access to the Azure Local machine. Azure sign-in and support-package upload also need internet access from the Windows computer.
+The Windows computer that runs the Configurator app connects to the Azure Local machine for every device operation. Azure sign-in and support-package upload also need internet access from that computer. Diagnostic tests run on the Azure Local machine, so they check the machine's connectivity, not the client's.
 
-Configure the connections for the operations that you use. The following table separates connections from the Windows client from connections made by the Azure Local machine.
-
-| Operation | Connection origin | Destination or maintained endpoint reference | Protocol and destination port | When required |
+| Operation | Connects from | Destination | Protocol and port | Required when |
 | --- | --- | --- | --- | --- |
-| Download the app | Windows client | `aka.ms`, then the Microsoft download destination, currently `azurestackreleases.download.prss.microsoft.com` | HTTPS, TCP 443 | When you download the Configurator installer. |
-| Download a missing .NET runtime | Windows client or your software-distribution system | Follow the maintained [Windows .NET installation guidance](/dotnet/core/install/windows) for the runtimes required by Configurator and its upload components. | HTTPS, TCP 443 | If a required runtime isn't installed. A successful MSIX installation doesn't establish that all component runtimes are present. An approved offline installer avoids an internet download from the client. |
-| Validate certificate chains | Windows client and its installed components | Certificate-authority CRL, OCSP and issuer URLs, and relevant trust-list services. See [Windows certificate chain retrieval](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain). | HTTP, TCP 80, or HTTPS, TCP 443, as specified by the certificate chain | When signing or TLS verification needs information that isn't cached. Allow the applicable current certificate URLs; don't disable certificate validation to work around blocked connectivity. |
-| Connect to the machine, run diagnostics, create a support package, or download it | Configurator app on the Windows client | Hostname or IP address of the Azure Local machine | HTTPS, TCP 9099 or 20001 | For device operations. The app probes both ports and uses a responding Bootstrap API listener. Allow that port inbound to the machine from the client. If you use a hostname, the client also needs working name resolution. |
-| Run machine connectivity and time diagnostics | Bootstrap on the Azure Local machine | Configured DNS, proxy and time services, and the destinations in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | As specified for each service, including HTTPS on TCP 443 and NTP on UDP 123 where applicable | The diagnostic work runs on the machine. Validate the Windows client's Azure connectivity separately. |
-| Sign in to Azure | Windows client's browser and authentication library | Microsoft Entra sign-in services for the selected cloud, including `login.microsoftonline.com` for Azure public cloud or `login.microsoftonline.us` for Azure Government, and any sign-in services required by your tenant | HTTPS, TCP 443 | For interactive sign-in and token refresh. The browser must also be able to return the sign-in result to the app's local authentication listener. |
-| Select Azure resources | Configurator app on the Windows client | `management.azure.com` for Azure public cloud or `management.usgovcloudapi.net` for Azure Government | HTTPS, TCP 443 | To load tenants, subscriptions, resource groups, regions and available Arc gateways after sign-in. |
-| Discover the tenant for support upload | Standalone observability on the Windows client | `management.azure.com` for endpoint metadata and the selected subscription | HTTPS, TCP 443 | Before support upload. The app's standalone upload invocation uses the module's default `AzureCloud` configuration. |
-| Install missing upload dependencies | Windows PowerShell on the Windows client | Configured PowerShell repository and its download services. For PSGallery, use the current [PowerShell Gallery network endpoint requirements](/powershell/gallery/how-to/getting-support/troubleshooting-cmdlets#required-network-endpoints). | HTTPS, TCP 443, with TLS 1.2 or later | If `Az.Accounts` or required provider components are missing. Cleanup also checks for `Az.Accounts`, including when the computer is already connected to Arc. |
-| Install or connect the uploading client to Azure Arc | Connected Machine Agent and standalone observability on the Windows client | Windows agent installer at `download.microsoft.com`, plus the applicable [Connected Machine Agent endpoints](/azure/azure-arc/servers/network-requirements) | HTTPS, TCP 443, with any scenario-specific exceptions in the maintained requirements | When the uploading computer isn't already connected to Arc. The upload can create a temporary Arc server resource for the Windows client. |
-| Create local observability PowerShell sessions | Windows PowerShell on the Windows client | The same computer's WinRM endpoint, normally `http://localhost:5985/WSMAN`; see [New-PSSession (Windows PowerShell 5.1)](/powershell/module/microsoft.powershell.core/new-pssession?view=powershell-5.1&preserve-view=true). | Local HTTP, TCP 5985 by default | The bundled standalone scripts create local PowerShell sessions during observability setup and event emission. This is a client-local dependency, not a requirement to expose WinRM to other computers. |
-| Request the temporary Arc client's managed-identity token | Observability components on the Windows client | The local Hybrid Instance Metadata Service. See [Connected Machine Agent components](/azure/azure-arc/servers/agent-overview#agent-resources). | Local HTTP, TCP 40342 | When observability uses the connected client's Arc identity. This endpoint is local to the uploading computer; don't open it to your network as an upload prerequisite. |
-| Send diagnostic data | Observability components on the Windows client | Monitoring, diagnostics and storage destinations for your cloud and region. Start with the maintained regional endpoint references in [Azure Local firewall requirements](../concepts/firewall-requirements.md). | HTTPS, TCP 443, as specified by the endpoint reference | During upload. Configuration and ingestion destinations depend on the selected region and effective observability configuration. The Arc endpoint list alone doesn't describe the entire upload path. |
-| Clean up after upload | Standalone observability and Connected Machine Agent on the Windows client | Relevant Arc and Resource Manager endpoints, and repository endpoints if a required module is missing | HTTPS, TCP 443 | To remove upload components and, for a client onboarded by the upload, disconnect its temporary Arc resource. |
+| Download the app | Windows client | `aka.ms` and `azurestackreleases.download.prss.microsoft.com` | HTTPS, TCP 443 | You download the installer on this computer. |
+| Connect to the machine, run diagnostics, and create or download a support package | Configurator app | Hostname or IP address of the Azure Local machine | HTTPS, TCP 9099 or 20001 | Always. The app tries both ports and uses the one where the machine's Bootstrap service responds. If you connect by hostname, the client also needs name resolution for it. |
+| Run diagnostic tests | Azure Local machine | The machine's DNS, proxy, and time servers, and the endpoints in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | As listed in the firewall requirements | You run diagnostic tests. |
+| Sign in to Azure | Browser on the Windows client | Microsoft Entra ID: `login.microsoftonline.com` for Azure public cloud or `login.microsoftonline.us` for Azure Government, and any other sign-in services your tenant uses | HTTPS, TCP 443 | You register the machine or upload a support package. The browser returns the sign-in result to the app on the same computer. |
+| Load subscriptions and resources | Configurator app and upload components | Azure Resource Manager: `management.azure.com` for Azure public cloud or `management.usgovcloudapi.net` for Azure Government | HTTPS, TCP 443 | After sign-in, and at the start of an upload. |
+| Install missing upload dependencies | Windows PowerShell | Your PowerShell repository. For PowerShell Gallery, see its [required network endpoints](/powershell/gallery/how-to/getting-support/troubleshooting-cmdlets#required-network-endpoints). | HTTPS, TCP 443, TLS 1.2 or later | The NuGet provider or `Az.Accounts` module isn't installed. |
+| Connect the client to Azure Arc for upload, and disconnect it afterward | Connected Machine agent | `download.microsoft.com` for the agent installer, and the [Connected Machine agent endpoints](/azure/azure-arc/servers/network-requirements) | HTTPS, TCP 443 | The client isn't already Arc-enabled. The upload creates a temporary Arc server resource for the client. |
+| Send diagnostic data | Observability components on the client | Monitoring and storage endpoints for your region, listed in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | HTTPS, TCP 443 | During upload. |
 
-The maintained endpoint references describe requirements for their respective components. Apply the entries relevant to your cloud, region and scenario. Don't substitute a resolved IP address for a maintained FQDN or service-tag requirement.
+Configure your firewall from the linked endpoint lists, not from resolved IP addresses. The lists are maintained for each cloud and region.
 
-### Proxy configuration scope
+The client also needs to reach certificate revocation and issuer URLs when they aren't cached. Don't turn off certificate validation to work around blocked access.
 
-The proxy URL and bypass list entered in Configurator's machine settings apply to the Azure Local machine. They don't configure the Windows client's browser, HTTP requests, PowerShell, Arc agent or observability components.
+Upload also uses two endpoints on the client itself: local PowerShell sessions through WinRM on `localhost:5985`, and the Arc agent's metadata service on `localhost:40342`. Don't open these ports to other computers.
 
-On the client:
+### Proxy settings on the client
 
-- Ensure the effective HTTP proxy or bypass policy permits the local machine's hostname or IP address and API port.
-- Check browser and .NET proxy settings for Azure sign-in and Resource Manager requests. On Windows, [.NET's default HTTP proxy](/dotnet/api/system.net.http.httpclient.defaultproxy) uses proxy environment variables or, if those aren't defined, the user's proxy settings.
-- Configure the Connected Machine Agent according to its [proxy guidance](/azure/azure-arc/servers/manage-agent-proxy-settings). The agent has its own configuration and doesn't use the Windows user's proxy setting by default. Some extensions don't inherit the agent's proxy configuration.
-- Verify the proxy settings used by PowerShell and the observability components under the identity running the upload. The device proxy and Arc gateway fields in the app aren't passed to the standalone upload command.
+The proxy settings you enter in the Configurator app apply only to the Azure Local machine. They don't change any proxy setting on the Windows client.
 
-Keep bypass lists separate for each component. For example, .NET `NO_PROXY` doesn't support the asterisk wildcard syntax used by the machine configuration's bypass list.
+On the client, check each component's proxy configuration:
+
+- The Configurator app uses [.NET's default proxy](/dotnet/api/system.net.http.httpclient.defaultproxy): the proxy environment variables if they're set, and otherwise the Windows user's proxy settings. Make sure this configuration allows connections to the Azure Local machine's address and API port.
+- The browser uses its own proxy settings for Azure sign-in.
+- The Connected Machine agent has its own proxy setting and doesn't use the Windows user's settings. Some extensions don't inherit the agent's proxy setting. See [Manage and maintain the Connected Machine agent proxy settings](/azure/azure-arc/servers/manage-agent-proxy-settings).
+- Windows PowerShell and the observability components use the proxy settings of the account that runs the app. The app doesn't pass the machine's proxy or Arc gateway settings to the upload.
+
+Bypass lists use different syntax in each component. For example, the .NET `NO_PROXY` variable doesn't support the `*` wildcard used in the machine's bypass list.
 
 ### Support upload requirements
 
-Run the app as an administrator for upload. Use a Windows client where you have permission to install the required dependencies and observability components, and Azure permissions to create and remove the temporary Arc resource when needed. See [Connected Machine Agent prerequisites](/azure/azure-arc/servers/prerequisites#required-permissions) for the relevant Arc permissions.
-
-Prepare the required PowerShell package-management provider components before starting a noninteractive upload. A fresh Windows installation can lack the NuGet provider needed to install `Az.Accounts`. Use the maintained [PowerShell Gallery troubleshooting and endpoint guidance](/powershell/gallery/how-to/getting-support/troubleshooting-cmdlets) when preparing these components.
-
-Check the .NET runtime requirements of the upload components as well as the app. Framework-dependent components can require an older major runtime alongside the app's runtime. A newer major runtime doesn't satisfy that requirement by default. Install the required runtime side by side rather than overriding version selection. See [.NET runtime version selection](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
-
-Keep the client online and the app running through upload and cleanup. An already Arc-connected computer skips temporary Arc onboarding, but still runs the observability component and module checks.
-
-The bundled standalone upload command refuses to run when the `WatchdogAgent` service is already installed, even if the service is stopped. Use another approved client for the upload instead of removing or disabling existing monitoring.
-
-The support-upload workflow described here uses Azure public cloud. Selecting another cloud for machine registration doesn't change the upload command's cloud configuration. Don't assume that Government, disconnected, private-link-only or Arc-gateway-only upload is supported by this workflow.
+- Run the app as an administrator. Use an account that can install software on the client, and an Azure account that can create and delete Arc server resources. See [Connected Machine agent prerequisites](/azure/azure-arc/servers/prerequisites#required-permissions).
+- A new Windows installation might not have the NuGet provider that PowerShell needs to install `Az.Accounts`. The upload can fail when PowerShell prompts to install the provider, so install it before you upload.
+- The upload components can require a different .NET runtime version than the app. A newer major version doesn't satisfy an older requirement by default, so install the required runtime alongside the existing one. See [Install .NET on Windows](/dotnet/core/install/windows) and [.NET runtime version selection](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
+- Keep the client online and the app open until upload and cleanup finish. A client that's already Arc-enabled skips the temporary Arc connection but runs the other steps.
+- Upload doesn't run on a computer where the `WatchdogAgent` service is installed, even if the service is stopped. Use a different computer instead of removing existing monitoring.
+- Upload uses Azure public cloud, even if you register the machine in another cloud.
 
 ## Get logs if the app is inaccessible
 
@@ -122,7 +113,7 @@ Follow these steps to collect and download a Support package:
 
 ### Upload the Support log package
 
-Review the [Windows client network prerequisites](#windows-client-network-prerequisites) before starting an upload. Upload runs the standalone observability pipeline on the Windows client, where it can install dependencies and temporarily connect the client to Azure Arc.
+Before you upload, review the [Windows client network prerequisites](#windows-client-network-prerequisites) and [support upload requirements](#support-upload-requirements). The upload runs on the Windows client, and can install dependencies and temporarily connect the client to Azure Arc.
 
 > [!IMPORTANT]
 > - Make sure to run the Configurator app as an administrator to upload the Support log package.
