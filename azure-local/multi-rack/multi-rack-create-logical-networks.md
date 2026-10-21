@@ -37,9 +37,6 @@ Before you begin, complete these prerequisites:
 > If you don't specify an IP pool during logical network creation, the entire subnet address space in the Layer 3 internal network is dedicated to this logical network. No other logical network can be created on this Layer 3 internal network.
 > You can create multiple logical networks on the same Layer 3 internal network with non-overlapping IP pools.
 
-> [!IMPORTANT]
-> You can't share a logical network between Azure Local VMs enabled by Azure Arc and Azure Kubernetes Service (AKS) enabled by Azure Arc. Create a separate, dedicated logical network for each workload type. Don't reuse a logical network that's used for Azure Local VMs to deploy AKS Arc clusters, and vice versa.
-
 ## Create the logical network
 
 You can create a logical network using either the Azure Command-Line Interface (CLI) or the Azure portal.
