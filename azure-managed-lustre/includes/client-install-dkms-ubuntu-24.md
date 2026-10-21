@@ -3,7 +3,7 @@ author: jebearer
 ms.author: jebearer
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/19/2026
+ms.date: 10/20/2026
 ms.reviewer:
 ms.lastreviewed: 04/23/2026
 ---
@@ -12,7 +12,7 @@ ms.lastreviewed: 04/23/2026
 > 2.17 is a non-LTS release of Lustre. Community support ends soon after the 2.18 release.
 
 ```bash
-sudo apt install -y amlfs-lustre-client-dkms-2.17.0-24-gf517bc4
+sudo apt install -y amlfs-lustre-client-dkms-2.17.0-28-gc7c975e
 ```
 
 This metapackage installs the Lustre userspace tools (`lustre-client`) together with the DKMS module source package (`lustre-client-modules-dkms`), so they stay at matching versions.
