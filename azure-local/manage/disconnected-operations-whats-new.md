@@ -16,7 +16,8 @@ This article describes new features and improvements in disconnected operations 
 
 ::: moniker range="=azloc-2610"
 ## Features and improvements in 2610
-    
+ - Onboarded Azure Keyvault Secrets provider extension.
+ - Security and quality updates.
  - Support for Azure Local 2610 and its associated capabilities.
 
 ::: moniker-end
