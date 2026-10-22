@@ -3,7 +3,7 @@ title: Deploy Azure Local Using an Azure Resource Manager Template for Disaggreg
 description: Learn how to prepare and deploy an Azure Local instance using an Azure Resource Manager template for disaggregated deployments.
 author: ronmiab
 ms.topic: how-to
-ms.date: 03/31/2026
+ms.date: 10/21/2026
 ms.author: robess
 ms.reviewer: alkohli
 ms.service: azure-local
@@ -46,90 +46,75 @@ An ARM template creates and assigns all the resource permissions required for de
 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
-For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://aka.ms/azurelocal-san-arm). For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
+Choose the template that corresponds to the storage protocol for your disaggregated deployment:
+
+- For Fibre Channel (FC), use *azurestackhci/create-cluster-san*. For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://aka.ms/azurelocal-san-arm).
+
+- For Internet Small Computer Systems Interface (iSCSI), use *azurestackhci/create-cluster-san-iscsi*. For an example of a parameter JSON file, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-san-iscsi).
+
+For detailed descriptions of the parameters defined in this file, see [ARM template parameters reference](#arm-template-parameters-reference).
 
 > [!IMPORTANT]
 > Ensure that all parameters in the JSON file are filled out, including placeholders that appear as `[“”]`, which indicate that the parameter expects an array structure. Replace these with actual values based on your deployment environment, or validation will fail.
 
 1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
-2. Select **Create** under **Template deployment (deploy using custom templates)**.
+1. Select **Create** under **Template deployment (deploy using custom templates)**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing the template deployment (deploy using custom template)." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png":::
 
-3. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
+1. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
 
-::: moniker range="<=azloc-24113"
+1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster-san* (Fibre Channel) or *azurestackhci/create-cluster-san-iscsi* (iSCSI) for the filter.
 
-1. From the **Quickstart template (disclaimer)** dropdown list, select the **create-cluster-san** template.
+1. When finished, select the **Select template** button.
 
-5. When finished, select the **Select template** button.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png" alt-text="Screenshot showing template selected for version 2411.3 and earlier." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-24113-and-earlier.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
 
-   > [!NOTE]
-   > For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://aka.ms/azurelocal-san-arm).
-   
-::: moniker-end
-
-::: moniker range=">=azloc-2503"
-
-1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster-san* for the filter.
-
-5. When finished, select the **Select template** button.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
-
-6. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
-
     > [!NOTE]
-    > For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster/azuredeploy.parameters.json).
+    > For an example parameter file that shows the format of various inputs, such as `ArcNodeResourceId`, see [azuredeploy.parameters.json](https://aka.ms/azurelocal-san-arm) for Fibre Channel or see [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.azurestackhci/create-cluster-san-iscsi) for iSCSI.
 
-::: moniker-end
-
-7. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
+1. Edit parameters such as network intent or storage network intent. When you finish entering the parameters, **Save** the parameters file.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
-8. Select the appropriate resource group for your environment.
+1. Select the appropriate resource group for your environment.
 
-9. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
+1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
-10. Select **Review + create**.
+1. Select **Review + create**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
-11. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
+1. On the **Review + Create** tab, select **Create**. This action creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
 
-12. Once validation is complete, select **Redeploy**.
+1. When validation is complete, select **Redeploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png":::
 
-13. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
+1. On the **Custom deployment** screen, select **Edit parameters**. Load the previously saved parameters and select **Save**.
 
-14. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
+1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
-15. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON.
+1. Verify that the parameters JSON fills in all the fields for the ARM deployment template.
 
-16. Select the appropriate resource group for your environment.
+1. Select the appropriate resource group for your environment.
 
-17. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
+1. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
 
-18. Select **Review + create**.
+1. Select **Review + create**.
 
-19. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
+1. Select **Create**. The deployment begins by using the existing prerequisite resources that the **Validate** step created.
 
     The Deployment screen cycles on the cluster resource during deployment.
 
@@ -137,17 +122,19 @@ For an example of a parameter JSON file, see [azuredeploy.parameters.json](https
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
 
-20. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
+1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
-21. Select **Deployments**.
+1. Select **Deployments**.
 
-22. Refresh and watch the deployment progress from the first machine (also known as the seed machine and is the first machine where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
+1. Refresh and watch the deployment progress from the first machine (also known as the seed machine and is the first machine where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
-23. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
+1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
     Once complete, the task at the top updates with status and end time.
 
 ## ARM template parameters reference
+
+### Fibre Channel
 
 The following table describes the parameters that you define in the ARM template's parameters file:
 
@@ -184,6 +171,7 @@ The following table describes the parameters that you define in the ARM template
 | streamingDataClient | Specifies whether telemetry data streaming from the Azure Local cluster to Microsoft is enabled. |
 | euLocation | Specifies whether to send and store telemetry and diagnostic data within the European Union (EU). |
 | episodicDataUpload | Episodic diagnostic data setting to specify whether to collect log data and upload to Microsoft to assist with troubleshooting and support.<br/>For more information, see [Crash dump collection](../concepts/observability.md#crash-dump-collection). |
+| configurationMode| The storage volume configuration mode.|
 | infraVolLunId| LUN serial number or unique ID for infrastructure volume. Minimum size is 250GB. |
 | infraPerfLunId| LUN serial number or unique ID for performance history volume. Minimum size is 20GB.  |
 | subnetMask | The subnet mask for the management network used by the Azure Local deployment. |
@@ -207,6 +195,14 @@ The following table describes the parameters that you define in the ARM template
 | sbeManifestCreationDate | Creation date of the SBE manifest. |
 | partnerProperties | List of partner-specific properties. |
 | partnerCredentiallist | List of partner credentials. |
+
+### iSCSI
+
+The ARM template for deployments using iSCSI has the same parameters as the template for deployments using Fibre Channel. The following table describes the additional parameters that you define in the ARM template's parameters file for deployments using iSCSI:
+
+| Parameter | Description |
+|--|--|
+| nodes| Array of nodes for the Azure Local cluster to perform per-node configuration.|
 
 ## Troubleshoot deployment issues
 

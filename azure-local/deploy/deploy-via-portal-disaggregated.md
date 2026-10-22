@@ -3,7 +3,7 @@ title: Deploy Azure Local Using the Azure portal for Disaggregated Deployments
 description: Learn how to deploy an Azure Local instance from the Azure portal for disaggregated deployments.
 author: ronmiab
 ms.topic: how-to
-ms.date: 06/12/2026
+ms.date: 10/16/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -38,23 +38,23 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
 
 1. Enter the **Instance name** to use for this Azure Local instance.
 
-1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+1. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
    We don't transfer much data so it's OK if the region isn't close.
 
-1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance. **For disaggregated deployments, you cannot select the Rack aware cluster option.**
+1. Select **Cluster options**. Choose the **Standard** or **Rack aware** cluster option for this Azure Local instance. **For disaggregated deployments, you can't select the Rack aware cluster option.**
 
-    For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
+   For more information about the Rack aware option, see [Azure Local rack aware clustering overview](../concepts/rack-aware-cluster-overview.md).
    
 1. Select **Storage options**. Choose the **Storage Spaces Direct (S2D)** or **Storage Area Network (SAN)** storage option for this Azure Local instance. For disaggregated deployments, select the Storage Area Network option.
 
 1. Select the **Identity provider** for this Azure Local instance.
 
-    For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
-
+   For more information about the Local identity with Azure Key Vault option, see [Deploy Azure Local using local identity](../deploy/deployment-local-identity-with-key-vault.md).
+   
 1. Select **+ Add machines** and choose the machine or machines that make up this Azure Local instance.
    
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png" alt-text="Screenshot of the deploy Azure Local Basics tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-151738.png":::
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-basics-tab-4.png" alt-text="Screenshot of the deploy Azure Local Basics tab." lightbox="media/deploy-via-portal-disaggregated/disaggregated-basics-tab-4.png":::
    
    On the **Add machines** page:
    1. The operating system for your Azure Local machines is automatically selected as Azure Stack HCI.
@@ -65,14 +65,14 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
    
 1. **Install extensions**. Arc extensions are automatically installed on the selected machines after they're added. This process may take several minutes. To check the installation status, refresh the page.
 
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png" alt-text="Screenshot deploy Azure Local Basics tab showing status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152216.png":::
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-basics-tab-3.png" alt-text="Screenshot deploy Azure Local Basics tab showing status." lightbox="media/deploy-via-portal-disaggregated/disaggregated-basics-tab-3.png":::
    
     After the extensions are installed successfully, the status of the machine updates to **Ready**.  
    Note, if extension installations fail, you can select failed machines and retry the installation.
    
 1. Select **Validate selected machines**. Wait for the green validation check to indicate the validation is successful. The validation process checks that each machine is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png" alt-text="Screenshot deploy Azure Local Basics tab showing ready status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-152525.png":::
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-basics-tab-2.png" alt-text="Screenshot deploy Azure Local Basics tab showing ready status." lightbox="media/deploy-via-portal-disaggregated/disaggregated-basics-tab-2.png":::
    
    If the validation fails with wrong extension version, go to **Install extensions** to install the appropriate version of extension.
    
@@ -91,15 +91,15 @@ This article helps you deploy a disaggregated Azure Local instance using the Azu
     1. If you don’t have permissions to the resource group, you see a message that you have insufficient permissions for the Key Vault. Select **Grant Key Vault permissions**.
 	1. Select **Create**.
      
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png" alt-text="Screenshot of the deploy Azure Local Basics tab showing more status." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-153006.png":::
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-basics-tab-1.png" alt-text="Screenshot of the deploy Azure Local Basics tab showing more status." lightbox="media/deploy-via-portal-disaggregated/disaggregated-basics-tab-1.png":::
    
    The Key Vault adds cost in addition to the Azure Local subscription. For details, see [Key Vault pricing](https://azure.microsoft.com/pricing/details/key-vault). View security implications when sharing an existing Key Vault.
    
-1. Select **Next: Configuration**.
+1. Select **Next: Model**.
 
 ## Specify the deployment settings
 
-On the **Configuration** tab, choose whether to create a new configuration for this system or to load deployment settings from a template–either way you're able to review the settings before you deploy:
+On the **Model** tab, choose whether to create a new configuration for this system or to load deployment settings from a template. Either way, you can review the settings before you deploy:
 
 1. Choose the source of the deployment settings:
    * **New configuration** - Specify all of the settings to deploy this system.
@@ -107,6 +107,30 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    * **Quickstart template** - This setting isn't available in this release.
 
     :::image type="content" source="./media/deploy-via-portal/configuration-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/configuration-tab-1.png":::
+1. Select **Next: Configuration**.
+
+## Specify configuration settings
+
+1. Enter the Active Directory **Domain** where you're deploying this system. This domain must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
+
+   :::image type="content" source="media/deploy-via-portal-disaggregated/configuration-tab.png" alt-text="Screenshot of Azure portal settings for deploying an Azure Local instance using the disaggregated deployment model." lightbox="media/deploy-via-portal-disaggregated/configuration-tab.png":::
+   
+1. Enter the **OU** created for this deployment. The OU can't be at the top level of the domain. For example: `OU=Local001,DC=contoso,DC=com`.
+
+1. Enter the **Deployment account** credentials.
+
+    You created this domain user account when you prepared the domain for deployment.
+   
+1. Enter the **Local administrator** credentials for the machines.
+
+   The credentials must be identical on all machines in the system. If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
+   
+1. Choose to enable or disable **iSCSI Configuration** for the cluster.
+
+   If you select **Enable**, specify the authentication type and the iSCSI network details. Then, select **Configure**.
+   
+   :::image type="content" source="media/deploy-via-portal-disaggregated/node-configuration.png" alt-text="Screenshot of the Azure portal showing the Azure Local iSCSI configuration page for a disaggregated deployment." lightbox="media/deploy-via-portal-disaggregated/node-configuration.png":::
+   
 1. Select **Next: Networking**.
 
 ## Specify network settings
@@ -125,7 +149,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    - Group management and compute traffic
    - Separate management and compute traffic
       
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png" alt-text="Screenshot of the deploy Azure Local Networking tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-163448.png":::   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-networking-tab-3.png" alt-text="Screenshot of the deploy Azure Local Networking tab." lightbox="media/deploy-via-portal-disaggregated/disaggregated-networking-tab-3.png":::
    
 1. For each network intent (group of traffic types), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
@@ -138,7 +162,7 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    > [!IMPORTANT]
    > If you share the adapters, select the already configured iSCSI adapters for the cluster network, VLAN ID, and subnet. 
 
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png" alt-text="Screenshot of the deploy Azure Local parameters tab." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172057.png":::      
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-networking-tab-1.png" alt-text="Screenshot of the deploy Azure Local parameters tab." lightbox="media/deploy-via-portal-disaggregated/disaggregated-networking-tab-1.png":::
    
 1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
@@ -158,33 +182,8 @@ On the **Configuration** tab, choose whether to create a new configuration for t
    1. Provide the Subnet mask, Default gateway, and one or more DNS servers.
    1. Validate subnet.
       
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing IP addresses." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-172135.png":::   
+   :::image type="content" source="./media/deploy-via-portal-disaggregated/disaggregated-networking-tab-2.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing IP addresses." lightbox="media/deploy-via-portal-disaggregated/disaggregated-networking-tab-2.png":::
    
-1. Select **Next: Management**.
-
-## Specify management settings
-
-1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-1. To store the cloud witness file, select an existing Storage account or create a new Storage account.
-
-    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
-
-    :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
-
-1. Enter the Active Directory **Domain** where you're deploying this system. This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
-
-1. Enter the **OU** created for this deployment. The OU can't be at the top level of the domain.
-   For example: `OU=Local001,DC=contoso,DC=com`.
-
-1. Enter the **Deployment account** credentials.
-
-    This domain user account was created when the domain was prepared for deployment.
-1. Enter the **Local administrator** credentials for the machines.
-
-    The credentials must be identical on all machines in the system.  If the current password doesn't meet the complexity requirements (14+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all machines before proceeding.
-
-    :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
-
 1. Select **Next: Security**.
 
 ## Set the security level
@@ -195,33 +194,36 @@ On the **Configuration** tab, choose whether to create a new configuration for t
 
     :::image type="content" source="./media/deploy-via-portal/security-tab-1.png" alt-text="Screenshot of the Security tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/security-tab-1.png":::
 
-2. Select **Next: Advanced**.
+1. Select **Next: Advanced**.
 
-## Optionally change advanced settings and apply tags
+## Specify advanced settings and apply tags
 
-1. Select the only option available for disaggregated deployments, which is for selecting two LUNs that are used for infrastructure and cluster performance history volumes. Workload LUNs will be configured post deployment.   
+1. Optionally, edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
+
+1. Select an existing storage account or create a new storage account to store the cloud witness file.
+
+   When you select an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters. Each witness uses less than a kilobyte of storage.
+   
+1. Select the only option available for disaggregated deployments, which is for selecting two LUNs that are used for infrastructure and cluster performance history volumes. Workload LUNs are configured after deployment.   
 The infrastructure LUN selection field only shows volumes with a minimum size of 250GB, and the cluster performance history volume requires at least 20GB.  
 
-    
-   
-   :::image type="content" source="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png" alt-text="Screenshot of the deploy Azure Local parameters tab showing cluster options." lightbox="./media/deploy-via-portal-disaggregated/screenshot-2026-04-14-165343.png":::   
+   :::image type="content" source="media/deploy-via-portal-disaggregated/advanced-tab-1.png" alt-text="Screenshot of the Azure portal showing the Azure Local advanced page for a disaggregated deployment." lightbox="media/deploy-via-portal-disaggregated/advanced-tab-1.png"::: 
    
    > [!IMPORTANT]
    > - Don't delete the infrastructure volumes created during deployment.
    
-   
 1. Optionally add a tag to the Azure Local resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
+   
 1. Select **Next: Validation**. Select **Start validation**. 
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-1.png" alt-text="Screenshot of the Start validation selected in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-1.png":::
-
-
+   
 1. The validation takes about 20 minutes to deploy one to two machines and longer for bigger deployments. Monitor the validation progress.
 
     :::image type="content" source="./media/deploy-via-portal/validation-tab-2.png" alt-text="Screenshot of the validation in progress in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-2.png":::
-
+   
 ## Validate and deploy the system
 
 1. After the validation is complete, review the validation results.
@@ -271,7 +273,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Local storage path - Azure Arc |
     
-    \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
 
 ## Resume deployment
 
