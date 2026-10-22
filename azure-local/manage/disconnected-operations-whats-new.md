@@ -3,7 +3,7 @@ title: What's new in disconnected operations
 description: What's new in disconnected operations for Azure Local, including the latest features, security, API, and resource provider updates.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 09/01/2026
+ms.date: 10/15/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -28,6 +28,8 @@ This article describes new features and improvements in disconnected operations 
  - Usability improvements in OperationsModule.
  - OperationsModule - added support for specifying templatename on certificate generation to override default template name.
  - Support for Azure Local 2609 and its associated capabilities.
+- **Documentation updates**: The following notable documentation updates are available in this release:
+    - **Plan updates for Azure Local disconnected operations**: New guidance is available to help you plan and sequence updates for the control plane, data plane, and workloads in Azure Local disconnected operations. For more information, see [Plan updates for Azure Local disconnected operations](./disconnected-operations-plan-updates.md).
 
 ::: moniker-end
 
@@ -71,7 +73,10 @@ This article describes new features and improvements in disconnected operations 
 
 ::: moniker-end
 
-::: moniker range="=azloc-2604"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
+
 ## Features and improvements in 2604
 
 - Added support for the Azure Local 2604 ISO and its associated capabilities.
@@ -81,9 +86,6 @@ This article describes new features and improvements in disconnected operations 
 - OperationsModule: Enables client certificate rotation, cmdlet naming standardization.
 - Business continuity and disaster recovery (BCDR) : Restore implementation added to operation module.
 - Added automation credential support and docs.
-::: moniker-end
-
-::: moniker range="=azloc-2603"
 
 ## Features and improvements in 2603
 
@@ -92,12 +94,6 @@ This article describes new features and improvements in disconnected operations 
 - Implemented client certificate rotation.
 - Added restore cmdlets and logic as part of Business Continuity and Disaster Recovery (BCDR).
 - Added cmdlet to lock down management cluster.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
-This feature is available only in Azure Local 2602 or later.
 
 ## Features and improvements in 2602
 
