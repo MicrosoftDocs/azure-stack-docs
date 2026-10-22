@@ -1,10 +1,10 @@
 ---
 title: Understand Update Phases of Azure Local
 description: Understand the various phases of solution updates applied to Azure Local.
-author: ronmiab
-ms.author: robess
+author: dominicbetts
+ms.author: dobett
 ms.topic: concept-article
-ms.date: 04/01/2026
+ms.date: 10/19/2026
 ms.subservice: hyperconverged
 ---
 
@@ -39,14 +39,18 @@ Each stage produces an `UpdateRun` resource that records step-by-step progress, 
 
     The preparation phase is triggered as part of starting every update; however, you have the option to independently run the preparation without also triggering the installation phase. For more information, see the [Installation phase](./update-phases-23h2.md#installation-phase).
 
-    - To only perform the [Preparation Phase](./update-phases-23h2.md#preparation-phase), start the update by running `Start-SolutionUpdate -PrepareOnly`. This step downloads and validates update content and runs health checks without starting the installation. Use it to pre-stage updates or validate cluster readiness before a maintenance window.
-    - To perform both the [Preparation Phase](./update-phases-23h2.md#preparation-phase) and the [Installation phase](./update-phases-23h2.md#installation-phase), start the update by running `Start-SolutionUpdate`.
+    - To only perform the preparation phase, start the update by running `Start-SolutionUpdate -PrepareOnly`. This step downloads and validates update content and runs health checks without starting the installation. Use it to pre-stage updates or validate cluster readiness before a maintenance window.
+    - To perform both the preparation phase and the [Installation phase](./update-phases-23h2.md#installation-phase), start the update by running `Start-SolutionUpdate`.
 
-1. Run preparation phases
+1. Complete preparation
 
-    The preparation workflow moves through the following phases in order.
+    After the update is triggered, the preparation workflow runs several phases in sequence. The following section describes each phase.
 
-### Download
+### Run preparation phases
+
+The preparation workflow moves through the following phases in order.
+
+#### Download
 
 The download phase retrieves the update package from the configured update source.
 
@@ -55,7 +59,7 @@ The download phase retrieves the update package from the configured update sourc
 
 During this phase, the Update object transitions to the `Downloading` state. On failure, the state becomes `DownloadFailed`.
 
-#### SBE download connector (if applicable)
+##### SBE download connector (if applicable)
 
 Any update that includes an SBE update requires extra content from the hardware vendor. If the SBE provides a download connector, the Update Service uses it to handle part of the download:
 
@@ -65,13 +69,13 @@ Any update that includes an SBE update requires extra content from the hardware 
 
 If download fails while using the SBE download connector, the update state becomes `DownloadFailed`. To see the detailed failure message, examine the preparation details in Azure Update Manager in the portal, or using the `UpdateRun` object from `Get-SolutionUpdateRun`.
 
-### Validate and extract
+#### Validate and extract
 
 After all content is downloaded, the Update Service validates file integrity and extracts the update files.
 
 If validation or extraction fails, the `UpdateRun` records the error and the Update state becomes `PreparationFailed`.
 
-### Health check
+#### Health check
 
 Before installation, the cluster runs pre-update health checks. These checks validate that the cluster is in a healthy state. They also identify any issues that could interfere with a successful installation.
 
@@ -85,18 +89,27 @@ Each health check has an assigned severity level:
 
 If you start the update in `-PrepareOnly` mode, the Update changes to the `ReadyToInstall` state when the health checks pass. If the health checks find critical or warning issues (and you don't specify `-IgnoreWarnings`), the status becomes `HealthCheckFailed`.
 
-You can inspect health check results on the update object by using:
+To inspect the health check results:
 
-```powershell
-# View health check results
-(Get-SolutionUpdate).HealthCheckResult |
-Where-Object { ($_.Status -ne "Success") -and ($_.Severity -ne "Informational") } |
-Format-List Title, Status, Severity, Description, Remediation
-```
+- For Azure Local release 2610 or newer, run:
+
+    ```powershell
+    Get-SolutionHealthSummary
+    ```
+
+    When a pre-update health check fails, the default `Get-SolutionHealthSummary` syntax shows the details of the blocking failures. For more information, see [Use the Get-SolutionHealthSummary PowerShell command](../manage/use-get-solution-health-summary-powershell-command.md).
+
+- For previous releases of Azure Local, run:
+
+    ```powershell
+    (Get-SolutionUpdate).HealthCheckResult |
+    Where-Object { ($_.Status -ne "Success") -and ($_.Severity -ne "Informational") } |
+    Format-List Title, Status, Severity, Description, Remediation
+    ```
 
 By default, an update in the `ReadyToInstall` state transitions to a `HealthCheckExpired` state after three days. If an update installation is triggered in this state, the health check repeats prior to starting the installation action plan.
 
-For help with troubleshooting health check failures, see [Troubleshoot updates](update-troubleshooting-23h2.md).
+For help with troubleshooting updates, see [Troubleshoot updates](update-troubleshooting-23h2.md). For help with troubleshooting health check failures, see [Troubleshoot health check failures](../manage/troubleshoot-health-check-failures.md#preupdate-health-checks).
 
 ## Monitor the preparation phase
 

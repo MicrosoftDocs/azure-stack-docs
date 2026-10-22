@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1472" viewBox="0 0 1600 1472" role="img" aria-labelledby="title description">
+  <title id="title">Which bypass? Start with two questions</title>
+  <desc id="description">First determine whether the Azure Local instance is using Arc gateway, then whether it is using an enterprise proxy. Without either, there is nothing to bypass. With an enterprise proxy but no Arc gateway, use local bypass for private endpoints or AKS traffic that must skip the proxy; other traffic needs no change. With Arc gateway, gatewayBypass skips the tunnel for allowed endpoints but retains any enterprise proxy. Non-allowed endpoints already use the fallback path. Use local bypass to skip an enterprise proxy or move AKS traffic off the cluster IP proxy to the AKS subnet. Local bypass applies to one Azure Local instance; gatewayBypass applies to every device on the gateway. Both lists are complete replacements.</desc>
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #242424; }
+      .title { font-size: 36px; font-weight: 600; }
+      .subtitle { font-size: 22px; fill: #616161; }
+      .question { font-size: 24px; font-weight: 600; }
+      .section { font-size: 23px; font-weight: 600; }
+      .body { font-size: 21px; }
+      .small { font-size: 19px; }
+      .label { font-size: 18px; font-weight: 700; letter-spacing: 0; }
+      .muted { fill: #616161; }
+      .local { fill: #107c41; }
+      .gateway { fill: #005a9e; }
+      .white { fill: #ffffff; }
+      .bold { font-weight: 600; }
+      .connector { fill: none; stroke: #707070; stroke-width: 2; }
+      .rule { stroke: #d1d1d1; stroke-width: 1; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#707070" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1472" fill="#ffffff"/>
+  <text x="48" y="66" class="title">Which bypass? Start with two questions</text>
+  <text x="48" y="104" class="subtitle">Arc gateway, then your enterprise proxy, then the endpoint or traffic scenario.</text>
+
+  <rect x="48" y="134" width="8" height="44" fill="#107c41"/>
+  <text x="70" y="152" class="label local">LOCAL BYPASS</text>
+  <text x="70" y="177" class="small muted">Update-AzureLocalProxy: instance bypass list</text>
+  <rect x="622" y="134" width="8" height="44" fill="#0078d4"/>
+  <text x="644" y="152" class="label gateway">gatewayBypass</text>
+  <text x="644" y="177" class="small muted">Property on the Arc gateway resource</text>
+  <rect x="1158" y="134" width="8" height="44" fill="#707070"/>
+  <text x="1180" y="152" class="label muted">NOTHING TO DO</text>
+  <text x="1180" y="177" class="small muted">Already on the right path</text>
+
+  <rect x="480" y="215" width="640" height="64" rx="4" fill="#f5f5f5" stroke="#8a8886" stroke-width="2"/>
+  <text x="800" y="255" text-anchor="middle" class="question">Is the Azure Local instance using Arc gateway?</text>
+  <path d="M800 279 V301 H412 V339" class="connector" marker-end="url(#arrow)"/>
+  <path d="M800 301 H1188 V339" class="connector" marker-end="url(#arrow)"/>
+  <rect x="308" y="286" width="208" height="30" fill="#ffffff"/>
+  <text x="412" y="308" text-anchor="middle" class="label muted">NO: no Arc gateway</text>
+  <rect x="1098" y="286" width="180" height="30" fill="#ffffff"/>
+  <text x="1188" y="308" text-anchor="middle" class="label gateway">YES: Arc gateway</text>
+
+  <rect x="72" y="339" width="680" height="58" rx="4" fill="#f5f5f5" stroke="#8a8886"/>
+  <text x="412" y="376" text-anchor="middle" class="question">Is the Azure Local instance using an enterprise proxy?</text>
+  <rect x="848" y="339" width="680" height="58" rx="4" fill="#eff6fc" stroke="#0078d4"/>
+  <text x="1188" y="376" text-anchor="middle" class="question">Is the Azure Local instance using an enterprise proxy?</text>
+  <path d="M412 397 V420 H224 V450" class="connector" marker-end="url(#arrow)"/>
+  <path d="M412 420 H600 V450" class="connector" marker-end="url(#arrow)"/>
+  <path d="M1188 397 V420 H1000 V450" class="connector" marker-end="url(#arrow)"/>
+  <path d="M1188 420 H1376 V450" class="connector" marker-end="url(#arrow)"/>
+
+  <rect x="48" y="450" width="352" height="52" fill="#f0f0f0"/>
+  <text x="224" y="483" text-anchor="middle" class="section">No enterprise proxy</text>
+  <rect x="424" y="450" width="352" height="52" fill="#f0f0f0"/>
+  <text x="600" y="483" text-anchor="middle" class="section">Enterprise proxy</text>
+  <rect x="824" y="450" width="352" height="52" fill="#eff6fc"/>
+  <text x="1000" y="483" text-anchor="middle" class="section">Enterprise proxy</text>
+  <rect x="1200" y="450" width="352" height="52" fill="#eff6fc"/>
+  <text x="1376" y="483" text-anchor="middle" class="section">No enterprise proxy</text>
+  <line x1="800" y1="339" x2="800" y2="1260" class="rule"/>
+
+  <rect x="48" y="522" width="352" height="738" rx="4" fill="#fafafa" stroke="#b3b3b3"/>
+  <rect x="48" y="522" width="352" height="5" fill="#707070"/>
+  <text x="72" y="571" class="label muted">NOTHING TO BYPASS</text>
+  <text x="72" y="620" class="body">
+    <tspan x="72">No proxy in the path.</tspan>
+    <tspan x="72" dy="32">Traffic is already direct to</tspan>
+    <tspan x="72" dy="32">the customer firewall.</tspan>
+  </text>
+
+  <rect x="424" y="522" width="352" height="232" rx="4" fill="#edf7ee" stroke="#107c41" stroke-width="2"/>
+  <path d="M425 527 H775" stroke="#107c41" stroke-width="8"/>
+  <text x="446" y="563" class="section">Private endpoint</text>
+  <text x="446" y="591" class="small bold">Must skip your proxy</text>
+  <text x="446" y="624" class="label local">LOCAL BYPASS</text>
+  <text x="446" y="658" class="small">
+    <tspan x="446">Add the exact FQDN to the list:</tspan>
+    <tspan x="446" dy="27">full update, or</tspan>
+    <tspan x="446" dy="27">-UpdateARBProxyBypassOnly $true</tspan>
+    <tspan x="446" dy="27">for the appliance only.</tspan>
+  </text>
+
+  <rect x="424" y="774" width="352" height="232" rx="4" fill="#edf7ee" stroke="#107c41" stroke-width="2"/>
+  <path d="M425 779 H775" stroke="#107c41" stroke-width="8"/>
+  <text x="446" y="815" class="section">AKS workload traffic</text>
+  <text x="446" y="843" class="small bold">Must skip your proxy</text>
+  <text x="446" y="876" class="label local">LOCAL BYPASS</text>
+  <text x="446" y="910" class="small">
+    <tspan x="446">Use Update-AzureLocalProxy to</tspan>
+    <tspan x="446" dy="27">update the local bypass list.</tspan>
+  </text>
+
+  <rect x="424" y="1026" width="352" height="234" rx="4" fill="#fafafa" stroke="#b3b3b3"/>
+  <path d="M425 1031 H775" stroke="#707070" stroke-width="8"/>
+  <text x="446" y="1067" class="section">Any other endpoint</text>
+  <text x="446" y="1105" class="label muted">NOTHING TO DO</text>
+  <text x="446" y="1144" class="body">
+    <tspan x="446">Stays on your proxy, then</tspan>
+    <tspan x="446" dy="30">the customer firewall.</tspan>
+  </text>
+  <text x="446" y="1208" class="small muted">
+    <tspan x="446">No gatewayBypass here.</tspan>
+    <tspan x="446" dy="27">The local bypass list is the option.</tspan>
+  </text>
+
+  <rect x="824" y="522" width="352" height="232" rx="4" fill="#eff6fc" stroke="#0078d4" stroke-width="2"/>
+  <path d="M825 527 H1175" stroke="#0078d4" stroke-width="8"/>
+  <text x="846" y="563" class="section">Allowed endpoint</text>
+  <text x="846" y="592" class="small muted">Allowed by Arc gateway</text>
+  <text x="846" y="625" class="label gateway">gatewayBypass</text>
+  <text x="846" y="658" class="small">
+    <tspan x="846">Skips the Arc gateway tunnel.</tspan>
+    <tspan x="846" dy="27">Your proxy is NOT bypassed.</tspan>
+  </text>
+  <text x="846" y="719" class="small local bold">
+    <tspan x="846">Must skip your proxy?</tspan>
+    <tspan x="846" dy="25">Use LOCAL BYPASS.</tspan>
+  </text>
+
+  <rect x="1200" y="522" width="352" height="232" rx="4" fill="#eff6fc" stroke="#0078d4" stroke-width="2"/>
+  <path d="M1201 527 H1551" stroke="#0078d4" stroke-width="8"/>
+  <text x="1222" y="563" class="section">Allowed endpoint</text>
+  <text x="1222" y="592" class="small muted">Allowed by Arc gateway</text>
+  <text x="1222" y="625" class="label gateway">gatewayBypass</text>
+  <text x="1222" y="658" class="small">
+    <tspan x="1222">Skips the Arc gateway tunnel;</tspan>
+    <tspan x="1222" dy="27">goes straight to the firewall.</tspan>
+    <tspan x="1222" dy="27">Private endpoint: add private DNS</tspan>
+    <tspan x="1222" dy="27">and an ExpressRoute or VPN route.</tspan>
+  </text>
+
+  <rect x="824" y="774" width="352" height="232" rx="4" fill="#fafafa" stroke="#b3b3b3"/>
+  <path d="M825 779 H1175" stroke="#707070" stroke-width="8"/>
+  <text x="846" y="815" class="section">Non-allowed endpoint</text>
+  <text x="846" y="844" class="small muted">Not allowed by Arc gateway</text>
+  <text x="846" y="877" class="label muted">NOTHING TO DO</text>
+  <text x="846" y="910" class="small">
+    <tspan x="846">gatewayBypass has no effect.</tspan>
+    <tspan x="846" dy="27">Fallback: your proxy, then firewall.</tspan>
+  </text>
+  <text x="846" y="971" class="small local bold">
+    <tspan x="846">Must skip your proxy?</tspan>
+    <tspan x="846" dy="25">Use LOCAL BYPASS.</tspan>
+  </text>
+
+  <rect x="1200" y="774" width="352" height="232" rx="4" fill="#fafafa" stroke="#b3b3b3"/>
+  <path d="M1201 779 H1551" stroke="#707070" stroke-width="8"/>
+  <text x="1222" y="815" class="section">Non-allowed endpoint</text>
+  <text x="1222" y="844" class="small muted">Not allowed by Arc gateway</text>
+  <text x="1222" y="877" class="label muted">NOTHING TO DO</text>
+  <text x="1222" y="910" class="small">
+    <tspan x="1222">gatewayBypass has no effect.</tspan>
+    <tspan x="1222" dy="27">The Arc proxy fallback path already</tspan>
+    <tspan x="1222" dy="27">goes straight to the firewall.</tspan>
+  </text>
+
+  <rect x="824" y="1026" width="352" height="234" rx="4" fill="#edf7ee" stroke="#107c41" stroke-width="2"/>
+  <path d="M825 1031 H1175" stroke="#107c41" stroke-width="8"/>
+  <text x="846" y="1067" class="section">AKS workload traffic</text>
+  <text x="846" y="1096" class="small muted">Workload service destinations</text>
+  <text x="846" y="1129" class="label local">LOCAL BYPASS</text>
+  <text x="846" y="1162" class="small">
+    <tspan x="846">Update-AzureLocalProxy moves the</tspan>
+    <tspan x="846" dy="27">first hop from cluster IP :40343</tspan>
+    <tspan x="846" dy="27">to the AKS subnet.</tspan>
+  </text>
+
+  <rect x="1200" y="1026" width="352" height="234" rx="4" fill="#edf7ee" stroke="#107c41" stroke-width="2"/>
+  <path d="M1201 1031 H1551" stroke="#107c41" stroke-width="8"/>
+  <text x="1222" y="1067" class="section">AKS workload traffic</text>
+  <text x="1222" y="1096" class="small muted">Workload service destinations</text>
+  <text x="1222" y="1129" class="label local">LOCAL BYPASS</text>
+  <text x="1222" y="1162" class="small">
+    <tspan x="1222">The cluster IP :40343 hop still exists.</tspan>
+    <tspan x="1222" dy="27">gatewayBypass cannot remove it.</tspan>
+  </text>
+
+  <line x1="48" y1="1292" x2="1552" y2="1292" class="rule"/>
+  <text x="48" y="1327" class="label">BEFORE YOU CHANGE A BYPASS LIST</text>
+  <text x="48" y="1361" class="body">
+    <tspan class="bold">gatewayBypass</tspan><tspan> skips only the Arc gateway tunnel, never your enterprise proxy. Allowed endpoints only;</tspan>
+    <tspan x="48" dy="28">use exact FQDNs. The change applies to every device connected to that gateway.</tspan>
+  </text>
+  <text x="48" y="1422" class="body">
+    <tspan class="bold">Local bypass</tspan><tspan> applies to one Azure Local instance: wildcards on machines; .domain or CIDR on the appliance.</tspan>
+    <tspan x="48" dy="28" class="bold">Both lists are complete replacements. Include every entry you still need.</tspan>
+  </text>
+</svg>
