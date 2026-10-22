@@ -174,6 +174,20 @@ w32tm /query /peers
 ```
 
 ### Install Microsoft code signing certificate in air-gapped environments
+::: moniker range=">=azloc-2610"    
+
+Fully air-gapped requirements require you to download and install the Microsoft Code Signing PCA 2024  certificate. Follow these steps:
+
+- From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2024  certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20Code%20Signing%20PCA%202024.crt).
+- Copy the downloaded certificate file (Microsoft Code Signing PCA 2024.crt) to each Azure Local node.
+- On each node, open an elevated PowerShell session and run:
+
+```powershell
+    Import-Certificate -FilePath "<CertPath>\Microsoft Code Signing PCA 2024.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
+```
+::: moniker-end
+
+::: moniker range="<=azloc-2609"    
 
 Fully air-gapped requirements require you to download and install the Microsoft Code Signing PCA 2011 certificate. Follow these steps:
 
@@ -184,9 +198,11 @@ Fully air-gapped requirements require you to download and install the Microsoft 
 ```powershell
     Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
 ```
+::: moniker-end
+
 
 > [!NOTE]
-> If you don't install the code signing certificate, cloud deployment (cluster) fails.
+> If you don't install the code signing certificate, cloud deployment (cluster) fails and cluster upgrade fails.
 
 
 ## Next steps
