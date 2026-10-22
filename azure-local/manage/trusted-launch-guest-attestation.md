@@ -1,19 +1,19 @@
 ---
-title: Guest attestation for Trusted launch for Azure Local VMs (preview)
-description: Learn how guest attestation works for Trusted launch for Azure Local VMs (preview).
+title: Guest attestation for Trusted launch for Azure Local VMs
+description: Learn how guest attestation works for Trusted launch for Azure Local VMs.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 12/08/2025
+ms.date: 10/21/2025
 ms.subservice: hyperconverged
 ---
 
-# Guest attestation for Trusted launch for Azure Local VMs (preview)
+# Guest attestation for Trusted launch for Azure Local VMs
 
 Applies to: Azure Local 2509 and later
 
-This article describes how to enable guest attestation for Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc. Guest attestation, also called boot integrity verification, is a new feature you can preview starting with Azure Local version 2509. 
+This article describes how to enable guest attestation, also called boot integrity verification, for Trusted launch for Azure Local virtual machines (VMs) enabled by Azure Arc.
 
 Guest attestation allows you to verify if the VM started in a well-known good state – specifically, verify integrity of the entire boot chain. This helps detect any unexpected changes to the boot chain (firmware, OS boot loader, and drivers) so you can take corrective actions if the boot chain is compromised. 
 
@@ -38,7 +38,7 @@ You can enable guest attestation when you create a Trusted launch Azure Local VM
 
 1. When creating the VM, choose security type as **Trusted launch**. 
 
-1. Select **Configure security features** and choose **Integrity monitoring (preview)**. 
+1. Select **Configure security features** and choose **Integrity monitoring**.
 
     :::image type="content" source="./media/trusted-launch-guest-attestation/create-vm.png" alt-text="Screenshot of security features section." lightbox="./media/trusted-launch-guest-attestation/create-vm.png":::
 

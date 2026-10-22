@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 12/09/2025
+ms.date: 10/12/2026
 ms.subservice: hyperconverged
 ---
 
@@ -53,7 +53,8 @@ Microsoft might release the following types of updates for Azure Local:
 
 |Update Type |Typical Cadence  |Description |
 |------------|-----------------|------------|
-|Cumulative Updates | Monthly | Cumulative updates primarily include quality and reliability improvements. They might also include OS Latest Cumulative Updates ¹. Some updates require host system reboots, while others do not. |
+|Cumulative Updates | Monthly | Cumulative updates primarily include quality and reliability improvements. They might also include OS latest cumulative updates (LCU) ¹. Some updates require host system reboots, while others don't. |
+|Security Updates | Monthly | Security updates include OS LCU and .NET updates. These updates are released the same week as Patch Tuesday, helping you address vulnerabilities sooner and maintain compliance without waiting for a broader cumulative or feature release. When applied on systems already running the latest Azure Local release, these updates function as security-only updates. However, when applied to applicable older Azure Local releases, the installation will also apply all required Azure Local updates needed to bring the system to the target security release version. These updates are subject to supported update paths. |
 |Feature Updates |Semi-annually|Feature updates introduce new features and improvements. They typically require host system reboots and might take longer to apply. |
 |Hotfixes | As needed | Hotfixes address critical issues that could block regular monthly or semi-annual updates. These updates might be released sooner than the monthly cadence to resolve urgent security or functionality issues. |
 |Solution Builder Extension | As needed | Solution Builder Extension² provides drivers, firmware, and other partner-specific content. These updates might require host system reboots. |

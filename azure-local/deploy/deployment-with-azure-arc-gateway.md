@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc using Arc Gateway
 description: Learn how to register Azure Local by using Azure Arc gateway Arc proxy. Both scenarios with and without proxy are configured. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 08/27/2026
+ms.date: 10/13/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -17,6 +17,8 @@ ms.subservice: hyperconverged
 ::: zone pivot="register-proxy"
 
 This article details how to register Azure Local using Azure Arc gateway and with the proxy configuration enabled. Once you create an Arc gateway resource in your Azure subscription, you can enable the Arc gateway features. For an overview of the Arc gateway, see [About Azure Arc gateway for Azure Local](./deployment-azure-arc-gateway-overview.md).
+
+[!INCLUDE [post-deployment-proxy-update](../includes/post-deployment-proxy-update.md)]
 
 - **Configure proxy with a script**: Using this method, you can configure Arc proxy with a script. This method is useful as you don't need to configure the Arc proxy across WinInet, WinHttp, or environment variables manually.
 
@@ -35,9 +37,6 @@ This article details how to register Azure Local using Azure Arc gateway and wit
 - You have reviewed the supported and unsupported scenarios. For more information, see [Supported and unsupported scenarios](./deployment-azure-arc-gateway-overview.md#supported-and-unsupported-scenarios).
 
 - Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
-
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
-
 
 ## Step 1: Get the Arc gateway ID  
 
@@ -61,8 +60,8 @@ Review the parameters used in the script:
 | `ArcGatewayID` | Define the Arc gateway resource ID from Azure. |
 | `ProxyServer` | Optional. Proxy Server address when required for outbound connectivity. |
 | `ProxyBypass` | Optional. Define the bypass list for the proxy. Use comma to separate each item from the list. |
-| `ArmAccessToken` | Optional. Required if you choose to authenticate using an Azure Resource Manager (ARM) access token. If omitted, the script prompts for device code authentication. |
-| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| `ArmAccessToken` | Required if you choose to authenticate by using an Azure Resource Manager (ARM) access token. If you omit this parameter, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version to use for the initial deployment after Azure Arc registration. If you don't specify this optional parameter, you're prompted to select a version from the list of available versions. For example: `12.2602.1002.10` |
  
 ## Step 3: Set parameters
 
@@ -113,51 +112,16 @@ $armTokenResponse = Get-AzAccessToken
 # Required because Get-AzAccessToken returns SecureString
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
-# Example: "12.2602.1002.10"
+#Optional: The target Azure Local solution version for initial deployment after Azure Arc registration. If omitted, select a version from the available options.
 $TargetSolutionVersion = "<solution-version>" 
 
 ```
 
-## Step 4: Run registration script
+## Step 4: Run the registration script
 
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
+[!INCLUDE [run-registration-script-with-arc-gateway](../includes/run-registration-script-with-arc-gateway.md)]
 
-1. Run the Arc registration script. The script takes a few minutes to run.
-
-   ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
-   -ArcGatewayID $ArcgwId
-   # Optional
-   -Proxy $ProxyServer
-   # Optional
-   -ProxyBypass $ProxyBypassList
-   # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
-   # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
-   ```
-
-   > [!NOTE]
-   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
-
-   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
-
-### Handle preinstalled or outdated OS images during Azure Arc registration
-
-[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
-
-## Step 4: Verify the Azure Arc gateway setup is successful
+## Step 5: Verify the Azure Arc gateway setup is successful
 
 Once the registration is complete, follow these steps to verify that Azure Arc gateway setup is successful.
 
@@ -244,9 +208,6 @@ This article details how to register using Azure Arc gateway on Azure Local with
 
 - Required endpoints are open in your firewall. For more information, see [Azure Local endpoints not redirected](./deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected).
 
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
-
-
 ## Step 1: Get the Arc gateway ID  
 
 - **Get Arc gateway ID**. To create Azure Arc gateway, see [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure) and get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
@@ -267,8 +228,8 @@ Review the parameters used in the script:
 | `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
 | `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
 | `ArcGatewayID` | Define the Arc gateway resource ID from Azure. |
-| `ArmAccessToken` | Optional. Required if you choose to authenticate using an ARM access token. If omitted, the script prompts for device code authentication. |
-| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate by using an ARM access token. If you omit this parameter, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version to use for the initial deployment after Azure Arc registration. If you don't specify this optional parameter, you're prompted to select a version from the list of available versions. For example: `12.2602.1002.10`. |
 
 ## Step 3: Set parameters
 
@@ -301,45 +262,14 @@ $armTokenResponse = Get-AzAccessToken
 # Required because Get-AzAccessToken returns SecureString
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password
 
-# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
-# Example: "12.2602.1002.10"
+#Optional: The target Azure Local solution version for initial deployment after Azure Arc registration. If omitted, select a version from the available options.
 $TargetSolutionVersion = "<solution-version>" 
 
 ```
 
 ## Step 4: Run the registration script
 
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
-
-To use the Arc gateway feature for Azure Local systems without a proxy, only use the `ArcGatewayID` parameter.
-
-1. Run the initialization script as follows.
-
-   ```powershell
-   Invoke-AzStackHciArcInitialization
-   -TenantId $Tenant
-   -SubscriptionID $Subscription
-   -ResourceGroup $RG
-   -Region $Region
-   -Cloud "AzureCloud"
-   -ArcGatewayID $ArcgwId
-   # Optional: include only when using token-based authentication
-   -ArmAccessToken $ArmAccessToken
-   # Optional
-   -TargetSolutionVersion $TargetSolutionVersion
-   ```
-
-   > [!NOTE]
-   > If using `-ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
-
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, in order to authenticate. Follow the instructions to complete the authentication process.
-
-    :::image type="content" source="media/deployment-with-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with the device code and the URL to open." lightbox="media/deployment-with-azure-arc-gateway/authentication-device-code.png":::
-
-### Handle preinstalled or outdated OS images during Azure Arc registration
-
-[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
+[!INCLUDE [run-registration-script-with-arc-gateway](../includes/run-registration-script-with-arc-gateway.md)]
 
 ## Step 5: Verify the setup is successful
 

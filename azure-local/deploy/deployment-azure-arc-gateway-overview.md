@@ -1,9 +1,9 @@
---- 
+---
 title: Overview of Azure Arc gateway for Azure Local
 description: Learn what is Azure Arc gateway for Azure Local.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/15/2025
+ms.date: 09/29/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -19,6 +19,8 @@ Use the Arc gateway to significantly reduce the number of required endpoints nee
 
 > [!NOTE]
 > Although Arc gateway for Azure Local infrastructure and Azure Local VMs is generally available, Arc gateway for AKS on Azure Local is still in preview.
+>
+> Enabling Arc gateway on an existing Azure Local instance is in preview. For instructions, see [Enable Azure Arc gateway after deployment](../manage/enable-arc-gateway-after-deployment.md).
 
 ## How it works
 
@@ -38,11 +40,11 @@ The following sections explain how *http* and *https* traffic flow changes when 
 
 ### Traffic flows 1-3 for Azure Local host OS
 
-- Make sure to [Configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?tabs=register-proxy#step-3-set-parameters) for any endpoint that you don't want to send over Arc gateway.
+- During initial registration, [configure the proxy bypass list](./deployment-with-azure-arc-gateway.md?tabs=register-proxy#step-3-set-parameters) for endpoints that must bypass the local Arc proxy or enterprise proxy. On an existing instance running version 2610 or later, you can [configure `gatewayBypass` on the Arc gateway resource](../manage/update-proxy-settings.md?tabs=arc-gateway-bypass#apply-your-selected-option) when an Arc gateway-supported endpoint must skip only the gateway tunnel. Cloud-side `gatewayBypass` doesn't apply to unsupported endpoints and doesn't bypass a configured enterprise proxy.
 
 - Arc gateway doesn't support HTTP traffic. Configure your proxy or firewall to allow the required HTTP endpoints for Azure Local.
 
-- All HTTPS traffic not configured in the proxy bypass list is forwarded to Arc gateway.
+- Supported HTTPS traffic that doesn't match the local proxy bypass list or cloud-side Arc gateway `gatewayBypass` list is forwarded to Arc gateway. Cloud-side `gatewayBypass` applies only to endpoints supported by Arc gateway and doesn't bypass a configured enterprise proxy.
 
 - Arc proxy automatically determines the right path for the endpoint. If the Arc gateway doesn't allow the HTTPS endpoint, Arc proxy sends the HTTPS traffic to your enterprise proxy or firewall.
 
@@ -76,11 +78,8 @@ For more information about the traffic flows, see [Deep dive into Azure Arc gate
 Use the Arc gateway in the following scenarios for Azure Local:
 
 - Enable Arc gateway during deployment of new Azure Local instances running versions 2506 or later.
+- Enable the Arc gateway after deployment on existing Azure Local instances. This scenario is in preview.
 - When a single Arc gateway is shared between an Azure Local instance and its workloads, the Arc gateway resource must reside in the same subscription as the Azure Local instance. If separate Arc gateways are used for the Azure Local instance and its workloads, the gateway associated with the workloads may be created in any subscription within the same tenant that hosts the virtual machines and the gateway.
-
-Unsupported scenarios for Azure Local include:
-
-- You can't enable Arc gateway after deployment.
 
 
 ## Azure Local endpoints not redirected

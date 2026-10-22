@@ -149,13 +149,13 @@ Starting with this release, you can run Azure Kubernetes Service (AKS) workloads
 The following Azure Kubernetes cluster deployment and management capabilities are available:
 
 - **Simplified infrastructure deployment on Azure Local**. In this release, the infrastructure components of Azure Kubernetes on Azure Local including the Azure Arc resource bridge, custom location, and the Azure Kubernetes Extension for the Azure Kubernetes operator, are all deployed as part of the Azure Local deployment. For more information, see [Deploy Azure Local instance using the Azure portal (preview)](../deploy/deploy-via-portal.md).
-- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of Azure Kubernetes infrastructure follows the same approach as the other components on Azure Local. For more information, see [Infrastructure component updates for AKS on Azure Local (preview)](/azure/aks/hybrid/infrastructure-components).
+- **Integrated infrastructure upgrade on Azure Local**. The whole lifecycle management of Azure Kubernetes infrastructure follows the same approach as the other components on Azure Local. For more information, see [Cloud-based updates for AKS infrastructure components](/azure/aks-hybrid-edge/local/hyperconverged/cluster-architecture#cloud-based-updates-for-infrastructure-components).
 - **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Local by using familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
 - **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
 - **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry by using Azure Container Registry to your Kubernetes clusters running on Azure Local. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and Azure Kubernetes](/azure/aks/hybrid/deploy-container-registry).
 - **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in Azure Kubernetes](/azure/aks/hybrid/manage-node-pools).
-- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
+- **Support for Linux and Windows Server containers**. For more information, see [Create a Windows node pool in AKS enabled by Azure Arc](/azure/aks/aksarc/howto-create-windows-node-pools).
 
 ### Security capabilities
 
@@ -167,7 +167,7 @@ The new installations with this release of Azure Local start with a *secure-by-d
 
 ### Support for web proxy
 
-This release supports configuring a web proxy for your Azure Local system. Perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Local](../manage/configure-proxy-settings-23h2.md).
+This release supports configuring a web proxy for your Azure Local system. Perform this optional configuration if your network uses a proxy server for internet access. For current guidance, see [Manage proxy and Azure Arc gateway bypass settings for Azure Local](../manage/update-proxy-settings.md).
 
 ### Removal of GMSA accounts
 

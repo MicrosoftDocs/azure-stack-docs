@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot solution updates for Azure Local, version 23H2
 description: Learn how to troubleshoot solution updates applied to Azure Local, version 23H2.
-author: ronmiab
-ms.author: robess
+author: dominicbetts
+ms.author: dobett
 ms.topic: how-to
-ms.date: 06/01/2026
+ms.date: 10/19/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -21,257 +21,7 @@ If you deploy your system by using a new Azure Local installation, you install t
 
 The new update solution includes retry and remediation logic. This logic attempts to fix update problems in a nondisruptive way, such as retrying a Cluster-Aware Update (CAU) run. If an update run can't be remediated automatically, it fails. When an update fails, inspect the details for the failure message to determine the appropriate next action. You can attempt to resume the update, if appropriate, to determine if a retry resolves the problem.
 
-## Troubleshoot readiness checks
-
-[!INCLUDE [about-readiness-checks](../includes/about-readiness-checks.md)]
-
-The troubleshooting steps vary depending on the readiness check scenario.
-
-## Using Azure portal
-
-### Using Azure portal, scenario 1: System health checks
-
-This scenario occurs when preparing to install system updates in Azure Update Manager:
-
-1. In the system list, select the **Update readiness** status. Systems that require attention show a **Critical** or **Warning** state.
-
-    :::image type="content" source="media/troubleshoot-updates/update-manager.png" alt-text="Screenshot of Update Manager page." lightbox="media/troubleshoot-updates/update-manager.png":::
-
-
-1. Review the list of readiness checks and their results.
-
-    1. Select the links under **Details** to view more information.
-
-    1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
-
-        :::image type="content" source="media/troubleshoot-updates/readiness-checks.png" alt-text="Screenshot of Readiness checks with multiple critical errors, highlighting a storage health check failure and its detailed error message with remediation guidance." lightbox="media/troubleshoot-updates/readiness-checks.png":::
-
-    1. Follow the remediation steps provided to resolve any failures.
-
-    1. After resolving the issues, select **Check again** to rerun the readiness checks.
-    
-        :::image type="content" source="media/troubleshoot-updates/readiness-check-again.png" alt-text="Screenshot of Readiness checks showing the Check again button." lightbox="media/troubleshoot-updates/readiness-check-again.png":::
-
-### Using the Azure portal, scenario 2: Update readiness checks
-
-This scenario occurs when you install and track system updates in Azure Update Manager:
-
-1. In **History**, select the failed update run from the list.
-
-1. On the **Validate that the system is ready** tab, review the list of readiness checks and their results.
-
-    1. Select the **View details** links under **Details**.
-
-    1. When the details box opens, you can view more details, individual system results, and the **Remediation** for failing health checks.
-
-    :::image type="content" source="media/troubleshoot-updates/update-progress.png" alt-text="Screenshot of Update progress page." lightbox="media/troubleshoot-updates/update-progress.png":::
-
-    To resolve the failures, follow the remediation instructions, and then select the **Try again** button to retry the pre-update readiness checks and **Resume the update**.
-
-    To further troubleshoot, see the [PowerShell](#using-powershell) section.
-
-## Using PowerShell
-
-### Using PowerShell, scenario 1: System health checks
-
-To troubleshoot system health checks by using PowerShell:
-
-1. To validate that the system health checks failed, run the following command on one of the machines in your system:
-
-    ```powershell
-    Get-SolutionUpdateEnvironment
-    ```
-
-    Here's a sample output:
-
-    ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdateEnvironment 
-    ResourceId        : redmond  
-    SbeFamily         : VirtualForTesting  
-    HardwareModel     : Virtual Machine  
-    LastChecked       : 9/12/2023 10:34:42 PM  
-    PackageVersions   : {Solution: 10.2309.0.20, Services: 10.2309.0.20, Platform: 1.0.0.0, SBE: 4.0.0.0}  
-    CurrentVersion    : 10.2309.0.20  
-    CurrentSbeVersion : 4.0.0.0  
-    LastUpdated       :  
-    State             : AppliedSuccessfully  
-    HealthState       : Failure 
-    HealthCheckResult : {Storage Pool Summary, Storage Services Physical Disks Summary, Storage Services Physical Disks  
-
-                    Summary, Storage Services Physical Disks Summary...}  
-
-    HealthCheckDate   : 9/12/2023 7:03:32 AM  
-
-    AdditionalData    : {[SBEAdditionalData, Solution Builder extension is partially installed. Please install the latest  
-
-                    Solution Builder Extension provided by your hardware vendor.  
-
-                    For more information, see https://aka.ms/SBE.]}  
-
-    HealthState       : Success  
-    HealthCheckResult : {}  
-    HealthCheckDate   : 8/4/2022 9:10:36 PM 
-
-    PS C:\Users\lcmuser>
-    ```
-
-1. Review the `HealthState` on your system and view the `Failure` or `Warning` value.
-
-1. To filter the `HealthCheckResult` property to identify failing tests, run the following command:
-
-    ```powershell
-    $result = Get-SolutionUpdateEnvironment
- 
-    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | Format-List Title, Status, Severity, Description, Remediation
-    ```
-
-    Here's a sample output:
-
-    ```output
-    Title       : The machine proxy on each failover cluster node should be set to a local proxy server 
-    Status      : FAILURE 
-    Severity    : INFORMATIONAL 
-    Description : Validating cluster setup for update. 
-    Remediation : `https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating-requirements# 
-              tests-for-cluster-updating-readiness`
- 
-    Title       : The CAU clustered role should be installed on the failover cluster to enable self-updating mode 
-    Status      : FAILURE 
-    Severity    : INFORMATIONAL 
-    Description : Validating cluster setup for update. 
-    Remediation : `https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating-requirements# 
-              tests-for-cluster-updating-readiness`
-    ```
-
-1. Review the `Remediation` property for the failed tests and take action as appropriate to resolve the failures.
-
-1. If you need more diagnostic information to determine why tests failed, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
-
-    ```powershell
-    $FullResults = Get-SolutionUpdateEnvironment -FullHealthCheckDetails
-
-    $Failures = $FullResults.HealthCheckResult | Where-Object { $_.Status -ne "SUCCESS" -and $_.Severity -ne "INFORMATIONAL" }
-
-    $Failures | Format-List *
-    ```
-
-1. If available, use the diagnostic information shown in the `AdditionalData` property, such as `FailedMachines`, `Source`, and `ExceptionMessage` to determine which physical machines are causing the test failure. Then use the link in the `Remediation` property to resolve the failures.
-
-1. After you resolve the failure, invoke the system health checks again by running the following command:
-
-    ```powershell
-    Invoke-SolutionUpdatePrecheck -SystemHealth
-    ```
-
-1. Use `Get-SolutionUpdateEnvironment` to confirm the failing health check failures are resolved. It might take a few minutes for the system health checks to run.
-
-    Here's a sample output:
-
-    ```output
-    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | Format-List HealthState, HealthCheckResult, HealthCheckDate 
-
-    HealthState       : InProgress 
-    HealthCheckResult : 
-    HealthCheckDate   : 1/1/0001 12:00:00 AM 
-
-    PS C:\Users\lcmuser>  Get-SolutionUpdateEnvironment | Format-List HealthState, HealthCheckResult, HealthCheckDate
-
-    HealthState       : Success 
-
-    HealthCheckResult : {Storage Pool Summary, Storage Subsystem Summary, Storage Services Summary, Storage Services 
-
-                    Summary...} 
-
-    HealthCheckDate   : 10/18/2024 11:56:49 PM 
-    ```
-
-### Using PowerShell, scenario 2: Update readiness checks
-
-When update readiness checks fail, the system update also fails. To troubleshoot update readiness checks by using PowerShell:
-
-1. To verify that update readiness checks failed, run the following command on one machine in your system to find the `ResourceId` of the update:
-
-    ```powershell
-   Get-SolutionUpdate | Format-Table ResourceId, State, Version
-    ```
-
-    Here's a sample output:
-
-    ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdate | Format-Table ResourceId, State, Version
-
-    ResourceId                     State                  Version 
-    ----------                     -----                  -------
-    redmond/Solution10.2405.2.7    HealthCheckFailed      10.2405.2.7
-
-    ```
-
-1. Using the update `ResourceId` from the previous command's output, run the following command and replace the `Id` parameter with that value:
-
-    ```powershell
-    Get-SolutionUpdate -Id <Resource ID> | Format-Table Version, State, HealthCheckResult
-    ```
-
-    Here's a sample output:
-
-    ```output
-    PS C:\Users\lcmuser> Get-SolutionUpdate -Id redmond/Solution10.2405.2.7 | Format-Table Version, State, HealthCheckResult 
-
-    Version     State              HealthCheckResult 
-    -------     -----              ----------------- 
-    10.2405.2.7 HealthCheckFailed {Storage Subsystem Summary, Storage Pool Summary, Storage Services Physical Disks Summary, Stora...                       
-
-    PS C:\Users\lcmuser>
-    ```
-
-1. Review the `State` for the update and view the `HealthCheckResult` value.
-
-1. To filter the `HealthCheckResult` property and identify failed tests, run the following command. Replace the `Id` value with the update `ResourceId` from the previous command.
-
-    ```powershell
-    $result = Get-SolutionUpdate -Id <Resource ID>
-    $result.HealthCheckResult | Where-Object {$_.Status -ne "SUCCESS"} | Format-List Title, Status, Severity, Description, Remediation
-    ```
-
-    Here's a sample output:
-
-    ```output
-    Title       : The machine proxy on each failover cluster node should be set to a local proxy server 
-    Status      : FAILURE 
-    Severity    : INFORMATIONAL 
-    Description : Validating cluster setup for update. 
-    Remediation : https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating-requirements# 
-              tests-for-cluster-updating-readiness 
- 
-    Title       : The CAU clustered role should be installed on the failover cluster to enable self-updating mode 
-    Status      : FAILURE 
-    Severity    : INFORMATIONAL 
-    Description : Validating cluster setup for update. 
-    Remediation : https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating-requirements# 
-              tests-for-cluster-updating-readiness
-     ```
-
-1. Use the link in the `Remediation` property for the failed test. Open the article on a device with a web browser, and follow the recommended steps to resolve the failures.
-
-1. If you need more diagnostic information to determine why tests failed, examine the `AdditionalData` property by using the `-FullHealthCheckDetails` parameter:
-
-    ```powershell
-    $FullResults = Get-SolutionUpdate -Id <Resource ID> -FullHealthCheckDetails
-
-    $Failures = $FullResults.HealthCheckResult | Where-Object { $_.Status -ne "SUCCESS" -and $_.Severity -ne "INFORMATIONAL" }
-
-    $Failures | Format-List *
-    ```
-
-1. If available, use diagnostic details in the `AdditionalData` property, such as `FailedMachines`, `Source`, and `ExceptionMessage`, to identify which physical machines caused the test failure. Then use the link in the `Remediation` property to resolve the failures.
-
-1. After you resolve the failure, invoke the update readiness checks again by running the following command:
-
-    ```powershell
-    Get-SolutionUpdate -Id <Resource ID> | Start-SolutionUpdate -PrepareOnly
-    ```
-
-## Troubleshoot update failures
+## Identify which step failed
 
 When an update fails, review the detailed step progress to identify the point of failure. This review helps you determine whether you can resolve the issue by repairing and resuming the update or whether you need to contact support.
 
@@ -287,9 +37,28 @@ The following table lists update failure scenarios and remediation guidelines.
 
 | Step names | Type of issue | Remediation |
 | --- | --- | --- |
-| Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update.  |
-| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If multiple CAU attempts fail, investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport` output to further investigate the failure.  |
+| Any | Known issue | 1. Review [release notes with fixed and known issues](../known-issues.md) for the installed version of Azure Local and the version to which you're updating.<br>2. Search the [official technical support guides](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG) (see [Searching for known issues in Azure Local release notes](#searching-for-known-issues-in-azure-local-release-notes)).<br>3. If installing an SBE update, review the SBE known issues documented by your hardware vendor. |
+| Any | Power loss or other similar interruption to system during the update. | 1. Restore power.<br>2. Run a system health check.<br>3. Resume the update. |
+| CAU updates | Cluster Aware Update (CAU) update run fails with a `max retries exceeded` failure. | If multiple CAU attempts fail, investigate the first failure.<br><br>Use the start and end time of the first failure to match up with the correct `Get-CauReport -Detailed` output to further investigate the failure. |
 | Any | Memory, power supply, boot driver, or similar critical failure on one or more nodes. | See [Repair a node on Azure Local](../manage/repair-server.md) for how to repair the failing node.<br>After the node is repaired, resume the update. |
+
+## Searching for known issues in Azure Local release notes
+
+The Azure Local release notes list known issues specific to each version of Azure Local. If you're troubleshooting an update issue, look at the release notes for the version of Azure Local to which you're updating (the newer "to" version for your update). If you're troubleshooting a daily system update readiness (system health check) failure, a preupdate health check failure, or a failure to start the update, review the release notes for the installed version of Azure Local (the "from" version for your update).
+
+## Searching for known issues in GitHub
+
+The [AzureLocal-Supportability/TSG](https://github.com/Azure/AzureLocal-Supportability/tree/main/TSG) GitHub repository is the official source of Technical Support Guide (TSG) articles that document known issues and their mitigations.
+
+Based on the update step that's failing, you might be able to find the proper article by browsing the repository. For example, if you're having an issue with `Get-SolutionUpdate`, start by looking in the Update directory. Otherwise, search based on your specific exception message or the step that is failing.
+
+If you have an error message like the following:
+
+```powershell
+Type 'AfterOSPlatformUpdate' of Role 'ComposedImageUpdate' raised an exception: Exception calling 'OnAfterOSSolutionUpdate' with '1' argument(s): 'Registry path 'SYSTEM\\CurrentControlSet\\Services\\VSR' not found.' at AfterOSPlatformUpdate.
+```
+
+Search for key words in the exception message (such as `OnAfterOSSolutionUpdate`) or the failing type (`AfterOSPlatformUpdate`) separately to increase your chance of finding the proper article. This search method works because different versions of Azure Local might have variations of the exception messages, whereas the `Type` values change less often.)
 
 ## Collect update logs
 
@@ -333,7 +102,7 @@ To view a detailed update summary report by using PowerShell, follow these steps
     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? Version -eq "10.2303.1.7" -verbose
     PS C:\Users\lcmuser> $Failure = $Update | Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
-    
+
     ResourceId      : redmond/Solution10.2303.1.7/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1
     Progress        : Microsoft.AzureStack.Services.Update.ResourceProvider.UpdateService.Models.Step
     TimeStarted     : 4/21/2023 10:02:54 PM
@@ -400,8 +169,9 @@ To resume a previously failed update due to update health checks in a **Warning*
 Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
 ```
 
-## Next steps
+## See also
 
-Learn more about how to [Run updates via PowerShell](./update-via-powershell-23h2.md).
-
-Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md).
+- [Run updates via PowerShell](./update-via-powershell-23h2.md)
+- [Run updates via the Azure portal](./azure-update-manager-23h2.md)
+- [Use the `Get-SolutionHealthSummary` PowerShell command](../manage/use-get-solution-health-summary-powershell-command.md)
+- [Troubleshoot health check failures](../manage/troubleshoot-health-check-failures.md)

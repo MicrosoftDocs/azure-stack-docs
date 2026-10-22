@@ -3,7 +3,7 @@ title: Use Private Endpoints with Azure Local for with Proxy no Arc Gateway
 description: Review how Azure Private Endpoints can be used when deploying Azure Local, with an enterprise proxy but without an Arc gateway.
 author: ronmiab
 ms.author: robess
-ms.date: 03/06/2026
+ms.date: 09/29/2026
 ms.topic: concept-article
 ---
 
@@ -11,6 +11,8 @@ ms.topic: concept-article
 
 This article provides an overview of how you can integrate both existing and new Azure private endpoints with Azure Local in a scenario with enterprise proxy but without an Arc gateway.
 For more information about Azure private endpoints on Azure Local and the supported scenarios, see [About Azure private endpoints on Azure Local](./about-private-endpoints.md).
+
+[!INCLUDE [post-deployment-proxy-update](../includes/post-deployment-proxy-update.md)]
 
 
 ## About Azure private scenario with proxy and without Arc Gateway
@@ -77,7 +79,15 @@ Azure Local deployment requires a key vault, which can use a private endpoint. H
 
 #### Storage account private endpoints: (blob.core.windows.net)
 
-Azure Local with two nodes requires a Storage Account for deployment. You can use a private endpoint but keep public access open until setup is complete so that Azure portal and Azure Local RP can configure cloud witness. Restrict access to private networks once deployment finishes.
+[!INCLUDE [storage-account-private-endpoints-intro](../includes/storage-account-private-endpoints-intro.md)]
+
+Add each exact storage account FQDN, such as `<storage-account-name>.blob.core.windows.net`, to the proxy bypass list so that traffic goes directly to the enterprise firewall instead of through the proxy. Configure private DNS so that the FQDN resolves to its private endpoint IP, and configure routing through Azure ExpressRoute or a site-to-site VPN. Don't use a broad entry such as `*.blob.core.windows.net` when only specific accounts should bypass the proxy.
+
+For initial deployment, include these FQDNs in the bypass list during Arc registration. On an existing instance, use `Update-AzureLocalProxy` to add the FQDNs after deployment. The bypass list is a complete replacement, so preserve every existing entry. For the procedure, see [Add a service endpoint to the bypass list](../manage/update-proxy-settings.md?tabs=local-proxy#add-a-service-endpoint-to-the-bypass-list).
+
+#### Azure Site Recovery private endpoints (`privatelink.siterecovery.windowsazure.com`)
+
+Configure the required Azure Site Recovery service private endpoints and add their FQDNs to the proxy bypass list so that traffic reaches them through the enterprise firewall and private connection. Azure Site Recovery also requires access to its cache storage account. Add the exact cache account FQDN, `<cache-storage-account-name>.blob.core.windows.net`, to the bypass list. For Azure Site Recovery private endpoint requirements, see [Enable replication with private endpoints in Azure Site Recovery](/azure/site-recovery/azure-to-azure-how-to-enable-replication-private-endpoints).
 
 #### Azure Container Registry private endpoints for AKS: (azurecr.io)
 
