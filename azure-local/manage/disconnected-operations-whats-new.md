@@ -18,6 +18,7 @@ This article describes new features and improvements in disconnected operations 
 ## Features and improvements in 2610
  - Onboarded Azure Keyvault Secrets provider extension.
  - Security and quality updates.
+ - Fixed issue in Operationsmodule and certificate generation for conditions where CA Name contained whitespace.
  - Support for Azure Local 2610 and its associated capabilities.
 
 ::: moniker-end
