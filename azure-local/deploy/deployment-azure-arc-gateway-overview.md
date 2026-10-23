@@ -110,11 +110,7 @@ The endpoints from the following table are required. Add these endpoints to the 
 | 16 | `http://ocsp2.globalsign.com` | Certificate Revocation List for Arc extensions |
 | 17 | `http://oneocsp.microsoft.com` | Certificate Revocation List for Arc extensions |
 | 18 | `http://crl.microsoft.com/pkiinfra` | Certificate Revocation List for Arc extensions |
-| 19 | `https://dl.delivery.mp.microsoft.com` | Not required starting with 2504 new deployments. Windows Update |
-| 20 | `https://*.tlu.dl.delivery.mp.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
-| 21 | `https://*.windowsupdate.com` | Not required starting with 2506 new deployments. Windows Update |
-| 22 | `https://*.windowsupdate.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
-| 23 | `https://*.update.microsoft.com` | Not required starting with 2506 new deployments. Windows Update |
+| 19 | `http://www.microsoft.com/pkiops` | Certificate Revocation List for Microsoft Code Signing PCA2011 |
 
 ## Restrictions and limitations
 

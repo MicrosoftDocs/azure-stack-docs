@@ -152,8 +152,7 @@ From an elevated PowerShell session on an Azure Local machine, run a full proxy 
 # Replace this sample endpoint with your Azure Firewall private IP and explicit proxy port.
 Update-AzureLocalProxy `
   -ProxyServer "http://10.0.43.4:8080" `
-  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 > [!IMPORTANT]
@@ -218,8 +217,7 @@ If private path validation fails while the previous path is still available, res
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "http://oldproxy.contoso.com:8080" `
-  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 Validate all components again after rollback. If the update or rollback fails, keep the existing network paths available, collect the logs from `C:\MASLogs`, and contact Microsoft Support.
