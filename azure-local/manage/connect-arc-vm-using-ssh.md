@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 01/22/2026
+ms.date: 10/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -193,9 +193,6 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
     $rdpFilePath="<path to save RDP file>" # Optional, will be saved in current directory if not specified
     ```
 
-    > [!NOTE]
-    > VM Connect currently only supports VMs that are located in the same resource group as the Azure Local instance. Ensure that the VM is in the same resource group as the Azure Local instance.
-
 1. Run the following command to enable VM Connect and connect to the VM. Optionally, you can specify the path to save the generated RDP file by using the `--path` parameter.
 
     ```powershell
@@ -226,9 +223,6 @@ Follow these steps to connect to an Azure Local VM by using VM Connect.
     ```
 
 ### Known limitations
-
-- **VM Connect requires VMs to be in the same resource group as the Azure Local instance**.  
-    VM Connect doesn't work in the current release if the VM is in a different resource group than the Azure Local instance.
 
 - **VM Connect occasionally fails if the Azure Local host machine has multiple network interfaces.**  
     In some cases, VM Connect fails when executing the RDP file if the Azure Local host machine has multiple network interfaces. This problem happens because the RDP file contains an IP address that isn't reachable from the client machine. As a workaround, you can manually edit the RDP file to replace the IP address with one that's reachable from the client machine before opening it. To do this:
