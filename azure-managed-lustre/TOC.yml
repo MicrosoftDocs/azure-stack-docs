@@ -56,10 +56,14 @@
       href: use-csi-driver-kubernetes.md
     - name: Plan network architecture for AKS
       href: use-container-storage-interface-driver-network-planning.md
+    - name: Install the CSI driver
+      href: use-container-storage-interface-driver-install.md
     - name: Use dynamic provisioning
       href: use-container-storage-interface-driver-dynamic-provisioning.md
     - name: Use static provisioning
       href: use-container-storage-interface-driver-static-provisioning.md
+    - name: Upgrade or uninstall the CSI driver
+      href: use-container-storage-interface-driver-upgrade.md
     - name: Validate CSI driver image security
       href: use-container-storage-interface-driver-image-security.md
 - name: Manage a file system
