@@ -46,7 +46,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **Composed ISO refresh cadence**: Composed ISO releases now follow a semiannual cadence aligned with OEM validation and release cycles.
 
-- **Provisioned** **Machine**** ****resources**: Starting with this release, the Azure portal automatically creates a Provisioned Machine resource for each Azure Arc-enabled server in an Azure Local cluster, using the same resource name. These resources are created and managed automatically. No action is required, and you shouldn't delete them.
+- **Provisioned Machine resources**: Starting with this release, the Azure portal automatically creates a Provisioned Machine resource for each Azure Arc-enabled server in an Azure Local cluster, using the same resource name. These resources are created and managed automatically. No action is required, and you shouldn't delete them.
 
 - **Per-node iSCSI configuration**: You can now configure iSCSI for each node directly in the Azure portal deployment wizard, simplifying SAN deployments and reducing manual setup. For more information, see [Deploy Azure Local using the Azure portal for disaggregated deployments](../azure-local/deploy/deploy-via-portal-disaggregated.md).
 
