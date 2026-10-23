@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 10/19/2026
+ms.date: 10/23/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,9 +23,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2610 release, all new and existing deployments of Azure Local run the new OS version **26100.33650** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33650** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -47,6 +45,8 @@ This release includes various reliability improvements and bug fixes.
 - **Disk witness for SAN deployments**: You can now configure disk witness for SAN deployments directly in the Azure portal deployment wizard, helping enable rack aware clusters with SAN. For more information, see [Deploy Azure Local using the Azure portal for disaggregated deployments](../azure-local/deploy/deploy-via-portal-disaggregated.md).
 
 - **Composed ISO refresh cadence**: Composed ISO releases now follow a semiannual cadence aligned with OEM validation and release cycles.
+
+- **Provisioned** **Machine**** ****resources**: Starting with this release, the Azure portal automatically creates a Provisioned Machine resource for each Azure Arc-enabled server in an Azure Local cluster, using the same resource name. These resources are created and managed automatically. No action is required, and you shouldn't delete them.
 
 - **Per-node iSCSI configuration**: You can now configure iSCSI for each node directly in the Azure portal deployment wizard, simplifying SAN deployments and reducing manual setup. For more information, see [Deploy Azure Local using the Azure portal for disaggregated deployments](../azure-local/deploy/deploy-via-portal-disaggregated.md).
 
@@ -89,9 +89,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2609 release, all new and existing deployments of Azure Local run the new OS version **26100.33438** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33438** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -127,9 +125,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2608 release, all new and existing deployments of Azure Local run the new OS version **26100.33296** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33296** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -153,7 +149,6 @@ This release includes various reliability improvements and bug fixes.
 - **Add node via Azure portal (preview)**: You can now add nodes to an existing Azure Local cluster directly from the Azure portal with a new guided scale-out experience. For more information, see [Add a node on Azure Local](../azure-local/manage/add-server.md).
 
 - **Update workflow changes**:
-  
   - This release introduces the prepare updates workflow, allowing you to prepare updates now and install them at a later time.
   - Feature updates now include a new update state, **Pending OEM Validation**, indicating that the update is awaiting OEM validation before it can proceed.
 
@@ -171,9 +166,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2607 release, all new and existing deployments of Azure Local run the new OS version **26100.33158** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33158** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -227,9 +220,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2606 release, all new and existing deployments of Azure Local run the new OS version **26100.32995** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.32995** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
