@@ -3,7 +3,7 @@ title: Deploy an Azure Local instance using the Azure portal
 description: Learn how to deploy an Azure Local instance from the Azure portal
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/13/2026
+ms.date: 10/23/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -154,7 +154,6 @@ On the **Model** tab, choose whether to create a new configuration for this syst
    - **Group compute and storage traffic** - If you're using network switches for storage traffic, you can group compute and storage traffic together on your high-speed adapters while keeping management traffic isolated on another set of adapters. You create two network intents:
       - Management intent.
       - Compute and storage intent.
-            
    - **Custom configuration** - Finally you can do a custom configuration that lets you group traffic differently, such as carrying each traffic type on its own set of adapters. You also create corresponding custom intents.
    <!--Check w/ Cristian This is commonly used for private multi-access edge compute (MEC) systems.-->
    
@@ -307,20 +306,21 @@ On the **Model** tab, choose whether to create a new configuration for this syst
 To confirm that the system and all of its Azure resources deployed successfully, follow these steps:
 
 1. In the Azure portal, navigate to the resource group into which you deployed the system.
-1. On **Overview** > **Resources**, check for the following resources:
+2. On **Overview** > **Resources**, check for the following resources:
 
-    | Number of resources | Resource type |
-    | --------- | --------- |
-    | 1 per machine | Machine - Azure Arc |
-    | 1 | Azure Local |
-    | 1 | Arc Resource Bridge |
-    | 1 | Infrastructure logical network named as *(clustername-InfraLNET)* |
-    | 1 | Key Vault |
-    | 1 | Custom location |
-    | 2* | Storage account |
-    | 1 per workload volume | Azure Local storage path - Azure Arc |
-
-    \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
+   | Number of resources | Resource type |
+   | --------- | --------- |
+   | 1 per machine | Machine - Azure Arc |
+   | 1 per machine| Provisioned Machine (same name as the Machine - Azure Arc resource)|
+   | 1 | Azure Local |
+   | 1 | Arc Resource Bridge |
+   | 1 | Infrastructure logical network named as *(clustername-InfraLNET)* |
+   | 1 | Key Vault |
+   | 1 | Custom location |
+   | 2* | Storage account |
+   | 1 per workload volume | Azure Local storage path - Azure Arc |
+   
+       \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
 
 ## Resume deployment
 
