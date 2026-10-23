@@ -122,15 +122,15 @@ Get-Command Update-AzureLocalProxy
 
 | Parameter | Type | Description |
 |---|---|---|
-| `ProxyServer` | String | Proxy server URL, such as `http://proxy.contoso.com:8080`. Use an empty string (`""`) when you remove the enterprise proxy or update only the Azure Arc resource bridge bypass list. |
+| `ProxyServer` | String | Proxy server URL, such as `http://proxy.contoso.com:8080`. Use an empty string (`""`) when you remove the enterprise proxy. Omit this parameter when you update only the Azure Arc resource bridge bypass list. |
 | `BypassList` | String | Comma-separated, complete replacement list of addresses that bypass the proxy. Include every entry that you want to retain. |
-| `UpdateARBProxyBypassOnly` | Boolean | Use `$false` to update proxy settings on the machines and Azure Arc resource bridge. Use `$true` to update only the bypass list in Azure Arc resource bridge. |
+| `UpdateARBProxyBypassOnly` | Switch | Omit this switch to update proxy settings on the machines and Azure Arc resource bridge. Include `-UpdateARBProxyBypassOnly` without a value to update only the bypass list in Azure Arc resource bridge. |
 
 ### Bypass list formats
 
-The required notation depends on the value of `UpdateARBProxyBypassOnly`:
+The required notation depends on whether you include the `UpdateARBProxyBypassOnly` switch:
 
-| Element | Full update (`$false`) | Azure Arc resource bridge only (`$true`) |
+| Element | Full update (switch omitted) | Azure Arc resource bridge only (switch included) |
 |---|---|---|
 | Domain | `*.contoso.com` | `.contoso.com` |
 | Subnet | `192.168.1.*` | `192.168.1.0/24` |
@@ -160,8 +160,7 @@ To add an enterprise proxy for the first time, run a full update and use Windows
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "http://proxy.contoso.com:8080" `
-  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 ### Change the enterprise proxy
@@ -171,8 +170,7 @@ To change the proxy server address, provide the new address and the complete byp
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "http://newproxy.contoso.com:8080" `
-  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 ### Remove the enterprise proxy
@@ -182,8 +180,7 @@ To stop routing traffic through an enterprise proxy, use empty strings for the p
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "" `
-  -BypassList "" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList ""
 ```
 
 > [!NOTE]
@@ -196,8 +193,7 @@ When you add a machine to the instance, update the bypass list on both the machi
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "http://proxy.contoso.com:8080" `
-  -BypassList "localhost,*.contoso.com,node1,node2,node3,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,node1,node2,node3,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 ### Add a service endpoint to the bypass list
@@ -212,21 +208,19 @@ Use a full update when both the Azure Local machines and Azure Arc resource brid
 ```powershell
 Update-AzureLocalProxy `
   -ProxyServer "http://proxy.contoso.com:8080" `
-  -BypassList "localhost,*.contoso.com,<storage-account-name>.blob.core.windows.net,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1" `
-  -UpdateARBProxyBypassOnly $false
+  -BypassList "localhost,*.contoso.com,<storage-account-name>.blob.core.windows.net,node1,node2,192.168.1.*,192.168.2.*,192.168.3.*,AzCluster1"
 ```
 
 Don't add a broad entry such as `*.blob.core.windows.net` when only specific storage accounts should bypass the proxy. Confirm that the storage account FQDN resolves to its private endpoint IP and that routing sends the traffic through Azure ExpressRoute or a site-to-site VPN.
 
 ### Update only the Azure Arc resource bridge bypass list
 
-Use this option when the proxy server and machine-level settings don't change. Because the bypass list is applied directly to the Linux-based appliance, use Linux domain and CIDR notation:
+Use this option when the proxy server and machine-level settings don't change. Provide `BypassList` and the `-UpdateARBProxyBypassOnly` switch without a value; omit `ProxyServer`. Because the bypass list is applied directly to the Linux-based appliance, use Linux domain and CIDR notation:
 
 ```powershell
 Update-AzureLocalProxy `
-  -ProxyServer "" `
   -BypassList "localhost,192.168.1.0/24,192.168.2.0/24,192.168.3.0/24,.contoso.com,node1,node2,AzCluster1" `
-  -UpdateARBProxyBypassOnly $true
+  -UpdateARBProxyBypassOnly
 ```
 
 This option requires an existing enterprise proxy or Arc gateway configuration. It doesn't change WinHTTP, WinINet, or the `HTTP_PROXY` and `HTTPS_PROXY` environment variables on the machines.
