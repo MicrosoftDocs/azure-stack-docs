@@ -826,7 +826,7 @@ When you define the proxy bypass list during registration or for a full post-dep
 - For internal domains, you can use a domain name with a leading asterisk (`*`) wildcard, such as `*.contoso.com`. For subnets, use wildcard notation such as `192.168.1.*`.
 - Separate entries with commas. CIDR notation to bypass subnets isn't supported for registration or full Windows updates.
 
-An Azure Arc resource bridge-only bypass update uses Linux notation instead: dot-prefix domains such as `.contoso.com` and CIDR subnets such as `192.168.1.0/24`. For this option, use `Update-AzureLocalProxy` with `UpdateARBProxyBypassOnly` set to `$true`. See [Bypass list formats](../manage/update-proxy-settings.md?tabs=local-proxy#bypass-list-formats).
+An Azure Arc resource bridge-only bypass update uses Linux notation instead: dot-prefix domains such as `.contoso.com` and CIDR subnets such as `192.168.1.0/24`. For this option, use `Update-AzureLocalProxy` with `BypassList` and the `-UpdateARBProxyBypassOnly` switch without a value; omit `ProxyServer`. See [Bypass list formats](../manage/update-proxy-settings.md?tabs=local-proxy#bypass-list-formats).
 
 Here are the summarized considerations for proxy configuration:
 
