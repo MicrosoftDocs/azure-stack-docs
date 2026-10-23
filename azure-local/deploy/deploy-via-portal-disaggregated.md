@@ -3,7 +3,7 @@ title: Deploy Azure Local Using the Azure portal for Disaggregated Deployments
 description: Learn how to deploy an Azure Local instance from the Azure portal for disaggregated deployments.
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/16/2026
+ms.date: 10/23/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: sfi-image-nochange
@@ -265,6 +265,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     |Number of resources  | Resource type  |
     |---------|---------|
     | 1 per machine | Machine - Azure Arc |
+    | 1 per machine| Provisioned Machine (same name as the Machine - Azure Arc resource)|
     | 1            | Azure Local     |
     | 1            | Arc Resource Bridge |
     | 1            | Infrastructure logical network named as *(clustername-InfraLNET)* |
