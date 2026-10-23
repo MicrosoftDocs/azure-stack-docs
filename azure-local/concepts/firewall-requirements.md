@@ -69,7 +69,7 @@ For a consolidated list of endpoints for South Central US that includes Azure Lo
 ## Required firewall URLs for Azure Local in Azure Government regions
 
 For a consolidated list of endpoints for US Gov Virginia that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
-- [Required endpoints in US Gov Virginia for Azure Local](https://github.com/CristianEdwards/AzureStack-Tools/blob/master/HCI/usgovvirginia-hci-endpoints/usgovvirginia-hci-endpoints.md)
+- [Required endpoints in US Gov Virginia for Azure Local](https://github.com/azure/AzureStack-Tools/blob/master/HCI/usgovvirginia-hci-endpoints/usgovvirginia-hci-endpoints.md)
 
 For a consolidated list of endpoints for US Gov Arizona that includes Azure Local, Arc-enabled servers, ARB, and AKS, use:
 - [Required endpoints in US Gov Arizona for Azure Local](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/usgovarizona-hci-endpoints/usgovarizona-hci-endpoints.md)
