@@ -320,7 +320,7 @@ To confirm that the system and all of its Azure resources deployed successfully,
    | 2* | Storage account |
    | 1 per workload volume | Azure Local storage path - Azure Arc |
    
-       \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for Key Vault audit logs. These accounts are locally redundant storage (LRS) accounts with a lock placed on them.
 
 ## Resume deployment
 
