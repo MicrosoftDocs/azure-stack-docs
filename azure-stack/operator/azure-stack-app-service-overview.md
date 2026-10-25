@@ -3,7 +3,7 @@ title: Azure App Service on Azure Stack overview
 description: Overview of Azure App Service and Azure Functions on Azure Stack Hub.
 author: sethmanheim
 ms.topic: concept-article
-ms.date: 08/13/2025
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
@@ -16,6 +16,8 @@ ms.custom: sfi-image-nochange
 
 
 # Azure App Service and Azure Functions on Azure Stack Hub overview
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 Azure App Service on Azure Stack Hub is a platform-as-a-service (PaaS) offering from Microsoft Azure available on Azure Stack Hub. The service enables your internal or external customers to create Web and Azure Functions apps for any platform or device. They can integrate your apps with on-premises apps and automate their business processes. Azure Stack Hub cloud operators can run customer apps on fully managed virtual machines (VMs) with their choice of shared VM resources or dedicated VMs.
 
