@@ -4,7 +4,7 @@ description: Understand the various phases of solution updates applied to Azure 
 author: dominicbetts
 ms.author: dobett
 ms.topic: concept-article
-ms.date: 10/19/2026
+ms.date: 10/26/2026
 ms.subservice: hyperconverged
 ---
 
@@ -31,9 +31,14 @@ Each stage produces an `UpdateRun` resource that records step-by-step progress, 
 
 1. Meet prerequisites
 
-    Before preparation, the update might be in an `AdditionalContentRequired` state. This state indicates the update package requires hardware vendor content. This requirement applies to Solution Builder Extension (SBE) updates and combined Solution plus SBE updates. The installed SBE package from the hardware vendor doesn't support automatic download of that content.
+    Before preparation, the system can discover an update but show it in one of the following states that mean the update isn't yet eligible to enter preparation.
 
-    If the update is in the `AdditionalContentRequired` state, you must import the content before you can begin preparation or installation. For more information, see [Update via PowerShell](update-via-powershell-23h2.md).
+    | State | Meaning |
+    | --- | --- |
+    | `AdditionalContentRequired` | The update package requires hardware vendor content. This requirement applies to Solution Builder Extension (SBE) updates and combined Solution plus SBE updates. The installed SBE package from the hardware vendor doesn't support automatic download of that content.<br/><br/>If the update is in the `AdditionalContentRequired` state, you must import the content before you can begin preparation or installation. For more information, see [Solution Builder Extension updates for your Azure Local](/azure/azure-local/update/solution-builder-extension#the-additionalcontentrequired-update-state). |
+    | `HasPrerequisite` | The update requires one or more updates to be installed prior to it. Review what is currently installed by using `Get-SolutionUpdate` and compare the installed `CurrentVersion` and `CurrentSBEVersion` to the values listed in the update's `Prerequisites` list. |
+    | `Invalid` | The update doesn't match the hardware model for the cluster. This state is most often seen after you use `Add-SolutionUpdate` to locally import an update, such as a Solution Builder Extension (SBE), that doesn't match the hardware model or family. If you see this state, ensure you're adding updates for the proper SBE family that matches your server model. For more information, see [Solution Builder Extension updates for your Azure Local](./solution-builder-extension#identify-a-solution-builder-extension-update-for-your-hardware).<br/><br/>This update remains in the update list once added and should be ignored. |
+    | `Obsolete` | There's already a higher version of this type of update installed. You can't install older versions.<br/><br/>No action is needed to clean up this update - it will be removed automatically after a grace period. |
 
 1. Trigger update (optional)
 
@@ -67,7 +72,7 @@ Any update that includes an SBE update requires extra content from the hardware 
 - If supported, an Orchestrator action plan invokes the SBE download action to retrieve hardware vendor packages such as firmware and drivers.
 - The hardware vendor typically includes a download connectivity health check that must pass before the download starts.
 
-If download fails while using the SBE download connector, the update state becomes `DownloadFailed`. To see the detailed failure message, examine the preparation details in Azure Update Manager in the portal, or using the `UpdateRun` object from `Get-SolutionUpdateRun`.
+If download fails while using the SBE download connector, the update state becomes `DownloadFailed`. To see the detailed failure message, examine the preparation details in Azure Update Manager in the portal, or use the `UpdateRun` object from `Get-SolutionUpdateRun`.
 
 #### Validate and extract
 
@@ -83,7 +88,7 @@ Each health check has an assigned severity level:
 
 | Severity | Effect |
 | --- | --- |
-| **Critical** | Blocks the update. You must remediate these issues before installation can proceed. |
+| **Critical** | Blocks the update. You must fix these issues before installation can proceed. |
 | **Warning** | Blocks the update by default. You can override these issues by using `Start-SolutionUpdate -IgnoreWarnings`. |
 | **Informational** | Advisory only. Doesn't block installation. |
 
@@ -107,13 +112,13 @@ To inspect the health check results:
     Format-List Title, Status, Severity, Description, Remediation
     ```
 
-By default, an update in the `ReadyToInstall` state transitions to a `HealthCheckExpired` state after three days. If an update installation is triggered in this state, the health check repeats prior to starting the installation action plan.
+By default, an update in the `ReadyToInstall` state transitions to a `HealthCheckExpired` state after three days. If an update installation is triggered in this state, the health check repeats before starting the installation action plan.
 
 For help with troubleshooting updates, see [Troubleshoot updates](update-troubleshooting-23h2.md). For help with troubleshooting health check failures, see [Troubleshoot health check failures](../manage/troubleshoot-health-check-failures.md#preupdate-health-checks).
 
 ## Monitor the preparation phase
 
-Monitor the preparation phase using the `Get-SolutionUpdateRun` cmdlet.
+Use the `Get-SolutionUpdateRun` cmdlet to monitor the preparation phase.
 
 Each time you run `Start-SolutionUpdate`, with or without `-PrepareOnly`, you create an `UpdateRun` resource. To retrieve the preparation step details, use:
 
@@ -126,12 +131,12 @@ When a preparation run fails, the `UpdateRun` `State` property is set to `Failed
 
 ## Installation phase
 
-The update is able to enter the installation phase when you run `Start-SolutionUpdate` without the `-PrepareOnly` parameter.
+The update enters the installation phase when you run `Start-SolutionUpdate` without the `-PrepareOnly` parameter.
 
 When you start the update this way, installation begins:
 
-- **Immediately** - if you have recently executed the preparation phase and the update was already in the `ReadyToInstall` state.
-- **After preparation completes** - if the update wasn't already prepared and is only in the `Ready` state.
+- **Immediately** - if you recently executed the preparation phase and the update is already in the `ReadyToInstall` state.
+- **After preparation completes** - if the update isn't already prepared and is only in the `Ready` state.
 
 ### Start installation
 
@@ -163,7 +168,7 @@ Each step in the progress tree exposes the following properties:
 
 ### Monitor installation progress
 
-Because the `UpdateRun` object has a complex structure, we recommend you monitor update installation status through the Azure portal.
+Because the `UpdateRun` object has a complex structure, monitor update installation status through the Azure portal.
 
 :::image type="content" source="media/update-phases/update-run-structure.png" alt-text="Screenshot of the UpdateRun structure." lightbox="media/update-phases/update-run-structure.png":::
 
@@ -187,9 +192,9 @@ The update moves through these states during installation:
 
 | State | Meaning |
 | --- | --- |
-| Installing | Installation is actively running. |
-| Installed | The update finished installing successfully. |
-| InstallationFailed | One or more steps failed. |
+| `Installing` | Installation is actively running. |
+| `Installed` | The update finished installing successfully. |
+| `InstallationFailed` | One or more steps failed. |
 
 ### Troubleshoot installation failures
 
