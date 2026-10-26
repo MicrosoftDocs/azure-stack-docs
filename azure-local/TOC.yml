@@ -819,6 +819,8 @@ items:
       # --- Deploy (infrastructure + SDN + VM workloads) ---
       - name: Deploy
         items:
+        - name: SAN storage deployment and preparation
+          href: ./multi-rack/multi-rack-san-storage-deployment.md
         - name: Create and manage L3 isolation domains
           href: ./multi-rack/multi-rack-configure-layer-3-isolation-domain.md
         - name: Complete networking prerequisites
@@ -873,6 +875,11 @@ items:
           - name: Manage NSGs
             href: ./multi-rack/multi-rack-manage-network-security-groups.md
 
+        - name: SAN storage
+          items:
+          - name: Manage SAN storage appliances
+            href: ./multi-rack/multi-rack-manage-san-storage.md
+
         # --- Azure Local VMs (FROM Multi-rack > Deploy > Manage Azure Local VM workloads) ---
         - name: Azure Local VMs
           items:
@@ -912,6 +919,8 @@ items:
           href: ./multi-rack/multi-rack-monitor-overview.md
         - name: Monitor cluster metrics (multi-rack)
           href: ./multi-rack/multi-rack-monitor-cluster-with-metrics.md
+        - name: Monitor and troubleshoot SAN storage appliances
+          href: ./multi-rack/multi-rack-monitor-san-storage.md
 
   # ===========================================================================
   - name: Small form factor

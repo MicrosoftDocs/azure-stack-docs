@@ -226,15 +226,16 @@ Helm removes the resources in the release. It doesn't delete PVs, PVCs, or Azure
 
 ### Uninstall a script-managed driver
 
-Use the v0.6.0 cleanup script to remove a script-managed v0.2.0 or later installation, including legacy driver resources. Run it from a local v0.6.0 checkout:
+Use the v0.6.0 cleanup script to remove a script-managed v0.2.0 or later installation. Also delete the legacy `csi-azurelustre-node` DaemonSet explicitly because it lacks the label selected by the script:
 
 ```bash
 git clone --branch v0.6.0 --depth 1 https://github.com/kubernetes-sigs/azurelustre-csi-driver.git
 cd azurelustre-csi-driver
 ./deploy/uninstall-driver.sh
+kubectl delete daemonset csi-azurelustre-node -n kube-system --ignore-not-found
 ```
 
-The script removes the CSI controller, node DaemonSets, `CSIDriver` object, and RBAC resources. It doesn't delete PersistentVolumes, PersistentVolumeClaims, or Azure Managed Lustre file systems.
+These commands remove the CSI controller, node DaemonSets, `CSIDriver` object, and RBAC resources. They don't delete PersistentVolumes, PersistentVolumeClaims, or Azure Managed Lustre file systems.
 
 ## Related content
 
