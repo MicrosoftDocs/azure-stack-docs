@@ -3,7 +3,7 @@ title:  Benefits of Migrating to Azure App Service in Azure
 description: Why should you look to migrate from Azure App Service on Azure Stack Hub to Azure App Service in Azure, and how to do it
 author: apwestgarth
 ms.topic: upgrade-and-migration-article
-ms.date: 07/13/2026
+ms.date: 10/24/2026
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.custom: sfi-image-nochange
@@ -11,6 +11,8 @@ ms.custom: sfi-image-nochange
 ---
 
 # Benefits of migrating to Azure App Service
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 Migrating from Azure App Service on Azure Stack Hub to Azure App Service in Azure enables organizations to take advantage of the latest platform innovations, broader geographical reach, enhanced security capabilities, and greater operational flexibility.
 

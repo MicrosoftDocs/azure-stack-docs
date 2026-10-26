@@ -3,7 +3,7 @@ title: Rotate App Service on Azure Stack Hub secrets and certificates
 description: Learn how to rotate secrets and certificates used by Azure App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/31/2024
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/09/2020
@@ -14,6 +14,8 @@ ms.lastreviewed: 04/09/2020
 ---
 
 # Rotate App Service on Azure Stack Hub secrets and certificates
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 These instructions only apply to Azure App Service on Azure Stack Hub. Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub. Operators can monitor the validity of secrets within the system, the date on which they were last updated, and the time remaining until the secrets expire.
 
