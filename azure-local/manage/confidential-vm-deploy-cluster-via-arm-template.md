@@ -1,23 +1,21 @@
 ---
-title: Deploy an Azure Local Cluster via Azure Resource Manager deployment template for confidential VMs (preview)
-description: Learn how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an Azure Resource Manager deployment template (preview).
-author: sipastak
-ms.author: sipastak
-ms.date: 07/27/2026
+title: Deploy an Azure Local Cluster via Azure Resource Manager deployment template for confidential VMs
+description: Learn how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an Azure Resource Manager deployment template.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/26/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Deploy an Azure Local cluster via Azure Resource Manager deployment template for confidential VMs (preview)
+# Deploy an Azure Local cluster via Azure Resource Manager deployment template for confidential VMs
 
 ::: moniker range=">=azloc-2607"
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an [Azure Resource Manager template deployment for Azure Local](../deploy/deployment-azure-resource-manager-template.md).
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -35,7 +33,7 @@ Before you begin, make sure that you meet the following requirements:
 - **BIOS and UEFI settings.** Apply the BIOS and UEFI settings that enable AMD SEV-SNP functionality on the following OEM servers:
 
     - **Lenovo server**: To apply the BIOS and UEFI settings, see [Lenovo Configuration Guide for Confidential Computing and CVM](https://lenovopress.com/lp2484).
-    <!-- - **HPE server**: (TBD) - hidden until HPE UEFI configuration guide link is available. -->
+    - **HPE server**: To apply the BIOS and UEFI settings, see [HPE ProLiant for Azure Local Solutions User Guide](https://support.hpe.com/hpesc/public/docDisplay?docId=sd00006156en_us&page=GUID-D469E210-3D1F-47DB-B250-0DE5AB6C3FF6.html).
 
 ## Deploy the CVM-ready cluster
 
