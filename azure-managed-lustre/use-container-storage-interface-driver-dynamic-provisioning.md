@@ -50,7 +50,9 @@ Complete the [driver readiness checks](use-container-storage-interface-driver-in
 
 ## Create a Storage Class for dynamic provisioning
 
-Create a file named `storageclass_dynprov_lustre.yaml` using the following configuration, based on the [v0.6.0 StorageClass example](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.6.0/docs/examples/storageclass_dynprov_lustre.yaml). Set `location` to the region where you want to create the file system, and choose a SKU and zone available in that region. Replace the resource group, virtual network, and subnet values with your selected resources. Omit optional parameters to use the default values shown in the comments. The `resource-group-name` parameter identifies where to create the file system, and the `vnet-resource-group` parameter identifies where the virtual network exists.
+Create a file named `storageclass_dynprov_lustre.yaml` by using the following configuration, based on the [v0.6.0 StorageClass example](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.6.0/docs/examples/storageclass_dynprov_lustre.yaml). Set `location` to the region where you want to create the file system, and choose a SKU available in that region. If the selected SKU and region support availability zones, set `zone` to an available zone. Otherwise, remove the `zone` parameter.
+
+Replace the resource group, virtual network, and subnet values with your selected resources. Omit optional parameters to use the default values shown in the comments. The `resource-group-name` parameter identifies where to create the file system, and the `vnet-resource-group` parameter identifies where the virtual network exists.
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -60,7 +62,7 @@ metadata:
 provisioner: azurelustre.csi.azure.com
 parameters:
   sku-name: "AMLFS-Durable-Premium-125"  # Choose appropriate SKU
-  zone: "1"  # Specify zone if required for your SKU/location
+  zone: "1"  # Remove if your SKU/region has no availability zones
   maintenance-day-of-week: "Sunday"
   maintenance-time-of-day-utc: "22:00"
   location: "eastus"  # Optional: defaults to AKS cluster location
@@ -128,7 +130,7 @@ To inspect provisioning events, run `kubectl describe pvc pvc-lustre-dynprov`.
 
 ## Create a pod for dynamic provisioning
 
-Create a file called `pod_echo_date_dynprov.yaml` and copy in the following YAML. This example is for Linux amd64 nodes with the driver installed. Use an ARM-compatible image for the same approach on supported ARM nodes.
+Create a file called `pod_echo_date_dynprov.yaml` and copy in the following YAML. This example targets Linux amd64 nodes with the driver installed. For supported ARM64 nodes, use an ARM64-compatible image and set `kubernetes.io/arch` to `arm64` in `nodeSelector`.
 
 ```yaml
 apiVersion: v1
@@ -136,6 +138,9 @@ kind: Pod
 metadata:
   name: lustre-echo-date-dynprov
 spec:
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
   containers:
   - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: lustre-echo-date-dynprov
@@ -199,7 +204,7 @@ For common driver installation, node scheduling, and upgrade issues, see [CSI dr
 Common issues for dynamic provisioning include:
 
 - **Authentication or authorization errors** - verify the configured controller identity's permissions for creating Azure Managed Lustre clusters. For workload identity, also check OIDC, federation, and the controller ServiceAccount configuration.
-- **SKU and zone validation errors** - check the available region, zone, and throughput options in the [file system configuration](create-file-system-portal.md#basics-tab), then update `location`, `sku-name`, and `zone` in your StorageClass.
+- **SKU and zone validation errors** - check the available region, zone, and throughput options in the [file system configuration](create-file-system-portal.md#basics-tab), then update `location`, `sku-name`, and `zone` in your StorageClass. For a SKU and region without availability zones, remove `zone`.
 - **Network IP address availability** - confirm sufficient IP addresses are available in the target subnet.
 - **Quota limitations** - check both Kubernetes resource quotas and Azure subscription quotas for Azure Managed Lustre clusters.
 - **Network connectivity problems** between AKS and Azure Managed Lustre - verify virtual network peering or subnet configuration.
