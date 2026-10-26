@@ -130,7 +130,7 @@ To inspect provisioning events, run `kubectl describe pvc pvc-lustre-dynprov`.
 
 ## Create a pod for dynamic provisioning
 
-Create a file called `pod_echo_date_dynprov.yaml` and copy in the following YAML. This example is for Linux amd64 nodes with the driver installed. Use an ARM-compatible image for the same approach on supported ARM nodes.
+Create a file called `pod_echo_date_dynprov.yaml` and copy in the following YAML. This example targets Linux amd64 nodes with the driver installed. For supported ARM64 nodes, use an ARM64-compatible image and set `kubernetes.io/arch` to `arm64` in `nodeSelector`.
 
 ```yaml
 apiVersion: v1
@@ -138,6 +138,9 @@ kind: Pod
 metadata:
   name: lustre-echo-date-dynprov
 spec:
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
   containers:
   - image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     name: lustre-echo-date-dynprov
