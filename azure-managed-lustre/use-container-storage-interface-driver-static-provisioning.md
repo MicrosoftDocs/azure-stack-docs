@@ -15,7 +15,7 @@ ms.custom: sfi-image-nochange
 
 # Use static provisioning with the Azure Managed Lustre CSI driver
 
-By using static provisioning, you can use an existing Azure Managed Lustre file system with your AKS cluster. Manually create the necessary Kubernetes resources. This method involves creating storage classes that reference existing Lustre clusters and specifying the MGS IP address. Use this method for scenarios where you have preexisting Lustre infrastructure.
+Use static provisioning to mount an existing Azure Managed Lustre file system in AKS. Create a `StorageClass` with its MGS IP address and a `PersistentVolumeClaim` for the workload.
 
 ## Prerequisites for static provisioning
 
