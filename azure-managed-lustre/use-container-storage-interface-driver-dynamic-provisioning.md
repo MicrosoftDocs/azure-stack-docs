@@ -50,7 +50,7 @@ Complete the [driver readiness checks](use-container-storage-interface-driver-in
 
 ## Create a Storage Class for dynamic provisioning
 
-Create a file named `storageclass_dynprov_lustre.yaml` using the following configuration, based on the [v0.6.0 StorageClass example](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.6.0/docs/examples/storageclass_dynprov_lustre.yaml). Set `location` to the region where you want to create the file system, and choose a SKU available in that region. If the selected SKU and region support availability zones, set `zone` to an available zone. Otherwise, remove the `zone` parameter.
+Create a file named `storageclass_dynprov_lustre.yaml` by using the following configuration, based on the [v0.6.0 StorageClass example](https://github.com/kubernetes-sigs/azurelustre-csi-driver/blob/v0.6.0/docs/examples/storageclass_dynprov_lustre.yaml). Set `location` to the region where you want to create the file system, and choose a SKU available in that region. If the selected SKU and region support availability zones, set `zone` to an available zone. Otherwise, remove the `zone` parameter.
 
 Replace the resource group, virtual network, and subnet values with your selected resources. Omit optional parameters to use the default values shown in the comments. The `resource-group-name` parameter identifies where to create the file system, and the `vnet-resource-group` parameter identifies where the virtual network exists.
 
