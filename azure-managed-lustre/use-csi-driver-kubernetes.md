@@ -17,8 +17,6 @@ ms.custom: sfi-image-nochange
 
 By using the [Azure Lustre CSI Driver for Kubernetes](https://github.com/kubernetes-sigs/azurelustre-csi-driver), you can use [Azure Managed Lustre](/azure/azure-managed-lustre) as persistent storage for workloads running in [Azure Kubernetes Service (AKS)](/azure/aks/). This driver is based on the Container Storage Interface (CSI) specification.
 
-You can use the Azure Lustre CSI Driver for Kubernetes to access Azure Managed Lustre storage as persistent storage volumes from Kubernetes containers deployed in AKS.
-
 ## Supported Kubernetes and AKS versions
 
 The Azure Lustre CSI Driver for Kubernetes is compatible with [AKS](/azure/aks/). Other Kubernetes installations aren't currently supported.
