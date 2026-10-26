@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: install-set-up-deploy
 ms.custom:
   - devx-track-arm-template
-ms.date: 05/22/2026
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019
@@ -16,6 +16,8 @@ zone_pivot_groups: state-connected-disconnected
 ---
 
 # Prerequisites for deploying App Service on Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
