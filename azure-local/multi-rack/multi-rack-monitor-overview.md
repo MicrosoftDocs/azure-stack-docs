@@ -74,3 +74,4 @@ The following table provides a brief description and setup instructions for each
 ## Next steps
 
 - Learn more about [Monitoring multi-rack deployments of Azure Local with Azure Monitor metrics](../multi-rack/multi-rack-monitor-cluster-with-metrics.md).
+- Learn how to [Monitor and troubleshoot SAN storage appliances](multi-rack-monitor-san-storage.md).
