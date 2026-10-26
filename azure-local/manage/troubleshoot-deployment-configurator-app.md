@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the registration failures for Azure Local
 ms.topic: how-to
 ms.author: robess
 author: ronmiab
-ms.date: 07/29/2025
+ms.date: 10/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,6 +23,49 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 - Run diagnostic tests.
 - Download and upload a Support package.
 - Clean previous installation.
+
+## Windows client network prerequisites
+
+The Windows computer that runs the Configurator app connects to the Azure Local machine for every device operation. Azure sign-in and support-package upload also need internet access from that computer. Diagnostic tests run on the Azure Local machine, so they check the machine's connectivity, not the client's.
+
+| Operation | Connects from | Destination | Protocol and port | Required when |
+| --- | --- | --- | --- | --- |
+| Download the app | Windows client | `aka.ms` and `azurestackreleases.download.prss.microsoft.com` | HTTPS, TCP 443 | You download the installer on this computer. |
+| Connect to the machine, run diagnostics, and create or download a support package | Configurator app | Hostname or IP address of the Azure Local machine | HTTPS, TCP 9099 or 20001 | Always. The app tries both ports and uses the one where the machine's Bootstrap service responds. If you connect by hostname, the client also needs name resolution for it. |
+| Run diagnostic tests | Azure Local machine | The machine's DNS, proxy, and time servers, and the endpoints in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | As listed in the firewall requirements | You run diagnostic tests. |
+| Sign in to Azure | Browser on the Windows client | Microsoft Entra ID: `login.microsoftonline.com` for Azure public cloud or `login.microsoftonline.us` for Azure Government, and any other sign-in services your tenant uses | HTTPS, TCP 443 | You register the machine or upload a support package. The browser returns the sign-in result to the app on the same computer. |
+| Load subscriptions and resources | Configurator app and upload components | Azure Resource Manager: `management.azure.com` for Azure public cloud or `management.usgovcloudapi.net` for Azure Government | HTTPS, TCP 443 | After sign-in, and at the start of an upload. |
+| Install missing upload dependencies | Windows PowerShell | Your PowerShell repository. For PowerShell Gallery, see its [required network endpoints](/powershell/gallery/how-to/getting-support/troubleshooting-cmdlets#required-network-endpoints). | HTTPS, TCP 443, TLS 1.2 or later | The NuGet provider or `Az.Accounts` module isn't installed. |
+| Connect the client to Azure Arc for upload, and disconnect it afterward | Connected Machine agent | `download.microsoft.com` for the agent installer, and the [Connected Machine agent endpoints](/azure/azure-arc/servers/network-requirements) | HTTPS, TCP 443 | The client isn't already Arc-enabled. The upload creates a temporary Arc server resource for the client. |
+| Send diagnostic data | Observability components on the client | Monitoring and storage endpoints for your region, listed in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | HTTPS, TCP 443 | During upload. |
+
+Configure your firewall from the linked endpoint lists, not from resolved IP addresses. The lists are maintained for each cloud and region.
+
+The client also needs to reach certificate revocation and issuer URLs when they aren't cached. Don't turn off certificate validation to work around blocked access.
+
+Upload also uses two endpoints on the client itself: local PowerShell sessions through WinRM on `localhost:5985`, and the Arc agent's metadata service on `localhost:40342`. Don't open these ports to other computers.
+
+### Proxy settings on the client
+
+The proxy settings you enter in the Configurator app apply only to the Azure Local machine. They don't change any proxy setting on the Windows client.
+
+On the client, check each component's proxy configuration:
+
+- The Configurator app uses [.NET's default proxy](/dotnet/api/system.net.http.httpclient.defaultproxy): the proxy environment variables if they're set, and otherwise the Windows user's proxy settings. Make sure this configuration allows connections to the Azure Local machine's address and API port.
+- The browser uses its own proxy settings for Azure sign-in.
+- The Connected Machine agent has its own proxy setting and doesn't use the Windows user's settings. Some extensions don't inherit the agent's proxy setting. See [Manage and maintain the Connected Machine agent proxy settings](/azure/azure-arc/servers/manage-agent-proxy-settings).
+- Windows PowerShell and the observability components use the proxy settings of the account that runs the app. The app doesn't pass the machine's proxy or Arc gateway settings to the upload.
+
+Bypass lists use different syntax in each component. For example, the .NET `NO_PROXY` variable doesn't support the `*` wildcard used in the machine's bypass list.
+
+### Support upload requirements
+
+- Run the app as an administrator. Use an account that can install software on the client, and an Azure account that can create and delete Arc server resources. See [Connected Machine agent prerequisites](/azure/azure-arc/servers/prerequisites#required-permissions).
+- A new Windows installation might not have the NuGet provider that PowerShell needs to install `Az.Accounts`. The upload can fail when PowerShell prompts to install the provider, so install it before you upload.
+- The upload components can require a different .NET runtime version than the app. A newer major version doesn't satisfy an older requirement by default, so install the required runtime alongside the existing one. See [Install .NET on Windows](/dotnet/core/install/windows) and [.NET runtime version selection](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
+- Keep the client online and the app open until upload and cleanup finish. A client that's already Arc-enabled skips the temporary Arc connection but runs the other steps.
+- Upload doesn't run on a computer where the `WatchdogAgent` service is installed, even if the service is stopped. Use a different computer instead of removing existing monitoring.
+- Upload uses Azure public cloud, even if you register the machine in another cloud.
 
 ## Get logs if the app is inaccessible
 
@@ -69,6 +112,8 @@ Follow these steps to collect and download a Support package:
 1. After the Support package is created, select **Download**. This action downloads two zipped packages corresponding to Support logs and Configurator logs on your local system. You can unzip the package and view the system log files.
 
 ### Upload the Support log package
+
+Before you upload, review the [Windows client network prerequisites](#windows-client-network-prerequisites) and [support upload requirements](#support-upload-requirements). The upload runs on the Windows client, and can install dependencies and temporarily connect the client to Azure Arc.
 
 > [!IMPORTANT]
 > - Make sure to run the Configurator app as an administrator to upload the Support log package.
