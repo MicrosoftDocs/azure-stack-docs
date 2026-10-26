@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local
 description: Plan the network architecture for an Azure Local cloud deployment by using an 11-decision design framework that covers connectivity mode, architecture, topology, storage, intents, IP addressing, backup, outbound connectivity, and software defined networking.
 author: ronmiab
 ms.topic: how-to
-ms.date: 08/28/2026
+ms.date: 09/29/2026
 ms.author: cedward
 ms.subservice: hyperconverged
 ---
@@ -377,7 +377,7 @@ Here are the summarized considerations for the network adapter configuration dec
 
 ## Decision 7: Determine network traffic intents
 
-For Azure Local, all deployments rely on Network ATC for the host network configuration. The network intents are automatically configured when deploying Azure Local via the Azure portal. To understand more about the network intents and how to troubleshoot them, see [Common network ATC commands](../deploy/network-atc.md#common-network-atc-commands).
+For Azure Local, all deployments rely on Network ATC for the host network configuration. The network intents are automatically configured when deploying Azure Local via the Azure portal. To learn more about network intents, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 This section explains the implications of your design decision for network traffic intents. The options available depend on the architecture, the number of nodes in your cluster, and the storage connectivity type used.
 
@@ -750,32 +750,38 @@ Plan how your Azure Local nodes and infrastructure services reach Azure for regi
 |---|----------|------------------|-------------|---------|
 | 1 | Direct outbound | Not configured | Not configured | Nodes reach Azure directly over the internet. Requires more than 100 FQDNs on the perimeter firewall. Best for labs or small isolated environments. |
 | 2 | Enterprise proxy | Configured | Not configured | All host HTTP/HTTPS is routed through the corporate proxy. Still requires more than 100 FQDNs allowed and SSL inspection disabled for Azure Local endpoints. |
-| 3 | Arc gateway | Not configured | Configured | Arc gateway tunnels supported HTTPS traffic to Azure, leaving fewer than 30 endpoints on the firewall allowlist. |
+| 3 | Arc gateway | Not configured | Configured | Arc gateway tunnels HTTPS traffic to allowed endpoints in Azure, leaving fewer than 30 endpoints on the firewall allow list. |
 | 4 | Enterprise proxy and Arc gateway | Configured | Configured | Recommended for new production deployments that use a public path. Centralized proxy policy plus a minimal allow list. |
-| 5 | Private path | Configured (Azure Firewall Explicit Proxy) | Configured | Recommended when regulatory or security policy prohibits outbound traffic over the public internet. Nodes connect to Azure over Azure ExpressRoute or a site-to-site VPN. The proxy is always Azure Firewall Explicit Proxy, and Arc gateway is required. Requires Azure Local 2608 or later. For more information, see [Private path](#private-path). |
+| 5 | Private path | Configured (Azure Firewall Explicit Proxy) | Configured | Recommended when regulatory or security policy prohibits outbound traffic over the public internet. Nodes connect to Azure over Azure ExpressRoute or a site-to-site VPN. The proxy is always Azure Firewall Explicit Proxy, and Arc gateway is required. New deployments require Azure Local 2608 or later; moving an existing deployment to private path requires version 2610 or later. For more information, see [Private path](#private-path). |
 
 For air-gapped environments, use Azure Local disconnected operations, which provides a local Autonomous Cloud endpoint instead of public Azure endpoints. For more information, see [Decision 1](#decision-1-determine-connectivity-mode).
 
+Choose and prepare the intended topology before deployment whenever possible. Starting with Azure Local 2610, you can also update the enterprise proxy or enable Arc gateway on an existing instance. Both post-deployment capabilities are in preview. Enabling Arc gateway and updating the proxy are separate operations: if both are required, enable and validate Arc gateway first, and then update the proxy. For procedures and limitations, see [Enable Azure Arc gateway after deployment](../manage/enable-arc-gateway-after-deployment.md) and [Update proxy settings after deployment](../manage/update-proxy-settings.md).
+
 ### Azure Arc gateway
 
-The Azure Arc gateway reduces the number of public endpoints required to deploy and operate Azure Local from more than 100 to fewer than 30. An Arc-gateway-enabled deployment relies on four components:
+The Azure Arc gateway reduces the number of public endpoints required to deploy and operate Azure Local from more than 100 to fewer than 30. You can enable it during initial deployment or, as a preview beginning with Azure Local 2610, on an existing instance. An Arc-gateway-enabled deployment relies on four components:
 
 - **Arc agent**: Runs on every node and connects it to the Azure Arc control plane.
-- **Arc proxy**: A local forward proxy service that is part of the Arc agentry and runs on every node. When Arc gateway is enabled on Azure Local, the Arc proxy redirects supported HTTPS traffic through the Arc gateway tunnel. The nodes reach their own Arc proxy locally on `localhost:40343`, while the Azure Resource Bridge VM and the AKS control plane and worker VMs reach it through the cluster IP on port 40343.
+- **Arc proxy**: A local forward proxy service that is part of the Arc agent and runs on every node. When Arc gateway is enabled on Azure Local, the Arc proxy redirects HTTPS traffic to allowed endpoints through the Arc gateway tunnel, subject to the bypass configuration. The nodes reach their own Arc proxy locally on `localhost:40343`, while the Azure Resource Bridge VM and the AKS control plane and worker VMs reach it through the cluster IP on port 40343.
 - **Cluster IP**: A single forwarder used by Azure Resource Bridge and AKS. It floats across nodes for high availability, so the redirected Azure Resource Bridge VM and AKS VM HTTPS traffic always flows through the Arc proxy on the node that owns the cluster IP at that moment. When you troubleshoot this traffic, analyze the Arc proxy logs on the node that currently owns the cluster IP, not on the other nodes.
 - **Arc gateway resource**: The Azure-managed entry point, addressed as `<gatewayId>.gw.arc.azure.com`.
 
-When Arc gateway is enabled, each component routes its outbound traffic through a specific proxy. Node OS HTTPS traffic uses the node's local Arc proxy (`http://localhost:40343`), while the Azure Resource Bridge VM and the AKS control plane and worker VMs use the cluster IP on port 40343. Arc-enabled Azure Local VMs use their own dedicated Arc proxy. In every case, the Arc proxy forwards only supported Microsoft-managed HTTPS endpoints through the Arc gateway tunnel.
+When Arc gateway is enabled, each component routes its outbound traffic through a specific proxy, except for destinations in its local bypass list. Node OS HTTPS traffic uses the node's local Arc proxy (`http://localhost:40343`), while the Azure Resource Bridge VM and the AKS control plane and worker VMs use the cluster IP on port 40343. Arc-enabled Azure Local VMs use their own dedicated Arc proxy. In every case, the Arc proxy forwards only HTTPS traffic to allowed endpoints through the Arc gateway tunnel, unless the destination is in `gatewayBypass`.
 
-HTTPS traffic to endpoints that the Arc gateway doesn't permit—including third-party and OEM services such as hardware-vendor update services or other agents installed on your nodes—is redirected to your enterprise proxy or firewall. You must allow those endpoints explicitly based on your requirements. HTTP traffic is never tunneled and always goes to the enterprise proxy or firewall.
+HTTPS traffic to endpoints that Arc gateway doesn't allow—including third-party and OEM services such as hardware-vendor update services or other agents installed on your nodes—uses the fallback path through your enterprise proxy or firewall. You must allow those endpoints explicitly based on your requirements. HTTP traffic is never tunneled through Arc gateway. Its configured proxy first hop is separate from its onward enterprise proxy or firewall path; inspect the actual appliance and AKS settings rather than inferring HTTP behavior from the HTTPS tunnel.
 
 For more information about how the Arc gateway works and how to create the gateway resource, see [About Azure Arc gateway for Azure Local](../deploy/deployment-azure-arc-gateway-overview.md). To register your machines through the gateway, see [Register Azure Local machines with Azure Arc using Arc gateway](../deploy/deployment-with-azure-arc-gateway.md). For a detailed breakdown of each outbound traffic flow (node OS, Azure Resource Bridge, AKS, and Azure Local VMs) with diagrams, see [Arc gateway outbound connectivity deep dive](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Networking/Arc-Gateway-Outbound-Connectivity/DeepDive-ArcGateway-Outbound-Traffic.md).
 
-Complete these prerequisites before you register your nodes:
+For initial deployment with Arc gateway, complete these prerequisites before you register your nodes:
 
 - Create the Arc gateway resource in the subscription where you plan to deploy Azure Local.
 - Open your firewall to the Arc gateway endpoints and disable SSL inspection on them.
 - If you use an enterprise proxy, add the required subnets, node names, cluster name, and any private endpoint FQDNs to the proxy bypass list before Arc registration.
+
+For an existing instance running version 2610 or later, create the Arc gateway resource first, prepare the firewall and proxy, and then use the post-deployment portal workflow to select that existing gateway. The workflow doesn't create an Arc gateway resource. Keep the current endpoint allow list in place until enablement completes and you validate connectivity. For the complete procedure, see [Enable Azure Arc gateway after deployment](../manage/enable-arc-gateway-after-deployment.md).
+
+Starting with version 2610, you can also configure selected endpoint FQDNs currently allowed by Arc gateway in the cloud-side `gatewayBypass` list. Matching traffic doesn't traverse the Arc gateway tunnel, but it still uses the enterprise proxy when one is configured. Non-allowed endpoints aren't eligible for `gatewayBypass`; they already use the Arc proxy fallback path to the enterprise proxy or firewall. Review the [current endpoint guidance](../deploy/deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected) before choosing an option. This capability is in preview. For configuration guidance, see [Manage proxy and Azure Arc gateway bypass settings](../manage/update-proxy-settings.md?tabs=arc-gateway-bypass#apply-your-selected-option).
 
 Even with Arc gateway, approximately 23 FQDNs remain on your perimeter firewall or proxy allowlist, including:
 
@@ -787,59 +793,66 @@ Even with Arc gateway, approximately 23 FQDNs remain on your perimeter firewall 
 For the full, current endpoint list, see [Firewall requirements](../concepts/firewall-requirements.md).
 
 > [!NOTE]
-> When AKS is deployed, the AKS subnet requires line of sight to the infrastructure subnet. Ports 40343, 55000, and 65000 are outbound from the AKS subnet to the Azure Local cluster IP, while ports 22 and 6443 are bidirectional between the AKS subnet and the infrastructure subnet. If you place AKS on a separate subnet from the infrastructure subnet, you must also allow the FQDN endpoints that the Arc gateway doesn't support. For the full port and endpoint breakdown, see [AKS clusters on separate subnet from infrastructure subnet](../concepts/private-path-network-overview.md#aks-clusters-on-separate-subnet-from-infrastructure-subnet).
+> When AKS is deployed, the AKS subnet requires line of sight to the infrastructure subnet. Ports 40343, 55000, and 65000 are outbound from the AKS subnet to the Azure Local cluster IP, while ports 22 and 6443 are bidirectional between the AKS subnet and the infrastructure subnet. If you place AKS on a separate subnet from the infrastructure subnet, you must also allow the FQDN endpoints that Arc gateway doesn't allow. Preserve the rules needed for local bypass, `gatewayBypass`, and any existing AKS connectivity paths until validation succeeds. For the full port and endpoint breakdown, see [AKS clusters on separate subnet from infrastructure subnet](../concepts/private-path-network-overview.md#aks-clusters-on-separate-subnet-from-infrastructure-subnet).
 
 Here are the summarized considerations for Arc gateway:
 
 |#  | Consideration  | Applies to  |
 |---------|---------|---------|
-|1     | Plan the proxy bypass list before deployment. Include supported private link endpoints and any node names and IPs that you plan to add when scaling out.        | Both  |
-|2     | SSL inspection isn't supported for Arc gateway endpoints. When using a terminating proxy, you can't skip TLS inspection for the Arc gateway endpoint, because the proxy can't intercept the nested TLS tunnel.        | Both  |
-|3     | Don't configure the proxy manually. The Arc registration script automates proxy configuration for WinINET, WinHTTP, and environment variables.        | Both  |
-|4     | You can't update the proxy bypass list after deployment to add new endpoints or machines.        | Both  |
+|1     | Plan the proxy bypass list before deployment. Include supported private link endpoints and any node names and IPs that you plan to add when scaling out. On version 2610 or later, you can update the list after deployment by using `Update-AzureLocalProxy`.        | Both  |
+|2     | SSL inspection isn't supported for Arc gateway endpoints. If you use a terminating proxy, bypass or disable TLS inspection for the Arc gateway endpoint because the proxy can't intercept the nested TLS tunnel.        | Both  |
+|3     | Don't configure the proxy manually. For initial deployment, the Arc registration script configures WinINET, WinHTTP, and environment variables. For post-deployment changes on version 2610 or later, use `Update-AzureLocalProxy`.        | Both  |
+|4     | You can enable Arc gateway on an existing instance running version 2610 or later. This capability is in preview and requires an existing Arc gateway resource.        | Both  |
 |5     | Use the same proxy configuration across all Azure Local machines.        | Both  |
 |6     | HTTPS traffic to endpoints the Arc gateway doesn't permit, including third-party and OEM services, is redirected to your enterprise proxy or firewall. Allow those endpoints explicitly.        | Both  |
 |7     | Redirected Azure Resource Bridge VM and AKS VM traffic always flows through the node that owns the cluster IP. Analyze Arc proxy logs for this traffic on the node that currently owns the cluster IP.        | Both  |
+|8     | On version 2610 or later, use the cloud-side `gatewayBypass` list when selected endpoints currently allowed by Arc gateway must skip the gateway tunnel without changing proxy settings on each machine. A configured enterprise proxy remains in the path. Non-allowed endpoints aren't eligible. This capability is in preview.        | Both  |
+|9     | Cloud-side `gatewayBypass` doesn't update AKS proxy or no-proxy settings. When AKS traffic to endpoints such as a specific Key Vault or Azure Container Registry must avoid the cluster IP proxy and use the AKS subnet default gateway and customer firewall, use `Update-AzureLocalProxy`. New AKS clusters inherit the change; existing clusters require additional action.        | Both  |
 
 ### Proxy requirements
 
-A proxy is most likely required to reach the internet from your on-premises infrastructure. Since Azure Local 2506, you no longer configure the host proxy manually. Instead, you provide the enterprise proxy server and the proxy bypass list once during Arc registration, and the Arc registration script automatically configures the proxy across all three operating system components—WinINET, WinHTTP, and environment variables—on every node. You can supply the proxy details either through the Arc registration script or interactively through the Configurator app. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
+To reach the internet from your on-premises infrastructure, you most likely need a proxy. Since Azure Local 2506, you no longer configure the host proxy manually. For initial deployment, provide the enterprise proxy server and proxy bypass list during Arc registration. The Arc registration script automatically configures the proxy across all three operating system components—WinINET, WinHTTP, and environment variables—on every node. You can supply the initial proxy details either through the Arc registration script or interactively through the Configurator app. For post-deployment proxy updates and cloud-side Arc gateway endpoint bypass, see [Manage proxy and Azure Arc gateway bypass settings](../manage/update-proxy-settings.md).
 
 The same proxy configuration is automatically carried over to the Arc Resource Bridge VM and AKS during deployment, so those components have internet access without extra manual steps. When you use the Arc gateway, the registration script sets the host HTTPS proxy to the local Arc proxy (`http://localhost:40343`) and routes HTTP traffic to the enterprise proxy, and it appends the required internal endpoints to each component's bypass list automatically.
 
+Starting with Azure Local 2610, you can add, change, or remove the enterprise proxy and update the bypass list after deployment by using `Update-AzureLocalProxy`. This capability is in preview. The cmdlet coordinates the host and Azure Arc Resource Bridge settings; don't update those components individually. Existing AKS clusters don't automatically receive the new proxy settings. For supported changes, the AKS limitation, and validation steps, see [Update proxy settings after deployment](../manage/update-proxy-settings.md).
+
 Only non-authenticated proxies are supported. Proxy Auto-Configuration (PAC) files and proxy endpoints that use a `.local` domain (for example, `http://proxy.contoso.local`) aren't supported.
 
-When you define the proxy bypass list, follow these formatting rules so that internal traffic bypasses the proxy correctly:
+When you define the proxy bypass list during registration or for a full post-deployment update, follow these Windows formatting rules so that internal traffic bypasses the proxy correctly:
 
 - Include, at a minimum, the IP address of each Azure Local machine, the cluster IP, and the infrastructure network IPs. Arc Resource Bridge, AKS, and future infrastructure services use these IPs. Alternatively, you can bypass the entire infrastructure subnet.
 - Include the NetBIOS name of each machine and of the cluster.
 - For internal domains, you can use a domain name with a leading asterisk (`*`) wildcard, such as `*.contoso.com`. For subnets, use wildcard notation such as `192.168.1.*`.
-- Separate entries with commas. CIDR notation to bypass subnets isn't supported.
+- Separate entries with commas. CIDR notation to bypass subnets isn't supported for registration or full Windows updates.
+
+An Azure Arc resource bridge-only bypass update uses Linux notation instead: dot-prefix domains such as `.contoso.com` and CIDR subnets such as `192.168.1.0/24`. For this option, use `Update-AzureLocalProxy` with `BypassList` and the `-UpdateARBProxyBypassOnly` switch without a value; omit `ProxyServer`. See [Bypass list formats](../manage/update-proxy-settings.md?tabs=local-proxy#bypass-list-formats).
 
 Here are the summarized considerations for proxy configuration:
 
 |#  | Consideration  | Applies to  |
 |---------|---------|---------|
-|1     | Since Azure Local 2506, you don't configure the host proxy manually. The Arc registration script configures it automatically across WinINET, WinHTTP, and environment variables.        | Both  |
-|2     | Provide the enterprise proxy server and the proxy bypass list once during Arc registration, before the nodes are registered with Azure Arc.        | Both  |
+|1     | Don't configure the host proxy manually. For initial deployment, the Arc registration script configures it across WinINET, WinHTTP, and environment variables. For post-deployment updates on version 2610 or later, use `Update-AzureLocalProxy`.        | Both  |
+|2     | Provide the enterprise proxy server and bypass list during Arc registration whenever possible. On version 2610 or later, you can add, change, or remove the proxy and update the bypass list after deployment. This capability is in preview.        | Both  |
 |3     | You can supply the proxy details through the Arc registration script or interactively through the Configurator app.        | Both  |
 |4     | The Arc registration script carries the proxy configuration over to the Arc Resource Bridge VM and AKS during deployment.        | Both  |
 |5     | Only non-authenticated proxies are supported. PAC files and proxy endpoints with a `.local` domain aren't supported.        | Both  |
 |6     | The proxy server configured for Azure Local nodes must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16).        | Both  |
-|7     | In the proxy bypass list, include each machine IP, the cluster IP, and the infrastructure subnet, plus the machine and cluster NetBIOS names. Separate entries with commas and use wildcard notation (for example, `192.168.1.*`), because CIDR notation isn't supported.        | Both  |
+|7     | For registration and full updates, include each machine IP, the cluster IP, and the infrastructure subnet, plus the machine and cluster NetBIOS names. Separate entries with commas and use Windows wildcard notation (for example, `192.168.1.*`), not CIDR. An Azure Arc resource bridge-only update uses Linux dot-prefix domain and CIDR notation instead.        | Both  |
+|8     | Existing AKS clusters don't automatically receive post-deployment proxy changes. Review the preview limitation before changing or removing the original connectivity path.        | Both  |
 
 ### Private path
 
 Private path is topology 5 in the preceding table. It keeps all Azure Local outbound traffic on a private connection by combining the Azure Arc gateway with an Azure Firewall explicit proxy, so nodes reach Azure over Azure ExpressRoute or a site-to-site VPN instead of the public internet. Choose this topology when regulatory or security policy prohibits outbound traffic over the public internet.
 
-To use private path, your Azure Local instance must run software version **2608 or later**. Releases earlier than 2608 don't support the private path architecture.
+For a new private path deployment, your Azure Local instance must run software version **2608 or later**. Releases earlier than 2608 don't support the private path architecture. Moving an existing public-path instance to private path uses the post-deployment Arc gateway and proxy update capabilities and requires version **2610 or later**; this migration is in preview.
 
-Plan the following components before you deploy:
+For a new deployment, plan the following components before you deploy. For a migration, prepare them before you enable Arc gateway or update the proxy:
 
 - **Azure virtual network** with at least one workload subnet and a subnet named `AzureFirewallSubnet` that is `/26` or larger.
 - **Azure Firewall** in the Standard or Premium tier. The explicit proxy feature isn't available in the Basic tier. Enable explicit proxy on the firewall policy and note the firewall private IP, which becomes the proxy endpoint for both HTTP and HTTPS.
-- **Azure Arc gateway resource** in the same subscription where you register the Azure Local machines.
-- **Azure ExpressRoute or site-to-site VPN** from the on-premises environment to the virtual network, with routing configured so that every machine can reach the Azure Firewall private IP *before* Arc registration begins.
+- **Azure Arc gateway resource** in the same subscription as the Azure Local instance.
+- **Azure ExpressRoute or site-to-site VPN** from the on-premises environment to the virtual network, with routing configured so that every machine can reach the Azure Firewall private IP. For a new deployment, verify this connectivity before Arc registration begins. For a migration, verify it before you enable Arc gateway or update the proxy.
 
 When you plan the virtual network, account for the Azure Arc Private Link Scope constraint. Azure Local doesn't support Azure Arc Private Link Scope on the virtual network where Azure Firewall runs as the explicit proxy. If your workloads require Azure Arc for servers Private Link Scope, plan a separate virtual network for them. Because this constraint shapes your virtual network topology, resolve it during planning rather than during deployment.
 
@@ -849,20 +862,21 @@ Private path also carries these supportability limits:
 - You can't apply TLS certificates to the Azure Firewall explicit proxy.
 - Microsoft doesn't validate or support any variation of the private path architecture other than the one described in the documentation.
 
-For the architecture, per-scenario traffic flows, and diagrams, see [What is the private path network for Azure Local?](../concepts/private-path-network-overview.md) For the deployment steps, see [Register Azure Local with Azure Arc gateway and private path](../deploy/deployment-with-azure-arc-gateway-private-path.md).
+Review [What is the private path network for Azure Local?](../concepts/private-path-network-overview.md) for the architecture, per-scenario traffic flows, and diagrams. For a new deployment, see [Register Azure Local with Azure Arc gateway and private path](../deploy/deployment-with-azure-arc-gateway-private-path.md). To migrate an existing instance, follow [Move Azure Local from public path to private path connectivity](../manage/move-public-path-to-private-path.md). The migration order is required: prepare private connectivity and Azure Firewall, enable and validate Arc gateway, update the proxy, and validate the instance before removing the public path.
 
 Here are the summarized considerations for private path:
 
 |#  | Consideration  | Applies to  |
 |---------|---------|---------|
-|1     | Private path requires Azure Local 2608 or later. Verify the software version before you commit to this topology.        | Both  |
+|1     | A new private path deployment requires Azure Local 2608 or later. Migrating an existing instance to private path requires version 2610 or later and is in preview.        | Both  |
 |2     | Azure Firewall must be Standard or Premium tier, because explicit proxy isn't available in the Basic tier.        | Both  |
 |3     | Size the `AzureFirewallSubnet` at `/26` or larger in the virtual network that terminates the ExpressRoute or site-to-site VPN connection.        | Both  |
-|4     | Every machine must reach the Azure Firewall private IP before Arc registration starts. Complete the Azure-side routing first.        | Both  |
+|4     | Every machine must reach the Azure Firewall private IP. For a new deployment, verify connectivity before Arc registration. For a migration, verify it before enabling Arc gateway or updating the proxy.        | Both  |
 |5     | Don't enable Azure Arc Private Link Scope on the virtual network where Azure Firewall runs as the explicit proxy. Use a separate virtual network for workloads that need Arc Private Link Scope.        | Both  |
 |6     | TLS inspection isn't supported on the required endpoints, and you can't apply TLS certificates to the Azure Firewall explicit proxy.        | Both  |
 |7     | Arc gateway is mandatory for this topology. The proxy is always the Azure Firewall explicit proxy, specified as an IP address and port.        | Both  |
 |8     | Microsoft supports only the documented private path architecture. Variations aren't validated or supported.        | Both  |
+|9     | For migration, enable and validate Arc gateway before you run `Update-AzureLocalProxy`. Keep the public path available until post-update validation succeeds.        | Both  |
 
 ### Private endpoints
 
@@ -875,9 +889,9 @@ When you plan private endpoints, follow these rules:
 
 - **Avoid reserved-range overlap**: Private endpoint IPs must not fall within `10.244.0.0/16` (AKS pods) or `10.96.0.0/12` (Kubernetes services). An overlapping endpoint is treated as internal cluster traffic and never leaves the virtual network. For example, an endpoint at `10.244.1.4` fails, while `10.245.0.5` routes correctly.
 - **Keep critical services public during deployment**: Keep public access enabled on Azure Key Vault and the witness storage account until deployment completes, then restrict them to private networks.
-- **Add private endpoints to the bypass list**: When you use an enterprise proxy, add private endpoint FQDNs to the proxy bypass list during Arc registration. For AKS workloads, add them to the environment-variable bypass list after Arc registration.
-- **Don't use wildcards**: Wildcard entries such as `*.azurecr.io` aren't supported on the bypass list. Add the exact registry FQDNs before deployment, because they're used by Azure Resource Bridge and AKS for image pulls.
-- **Route private endpoints outside Arc gateway**: Private endpoints aren't routed through the Arc gateway. For services such as Azure Site Recovery, either disable SSL inspection on the enterprise proxy or, preferably, add the endpoint to the proxy bypass list.
+- **Add private endpoints to the bypass list**: When you use an enterprise proxy, add private endpoint FQDNs to the proxy bypass list during Arc registration whenever possible. On version 2610 or later, use `Update-AzureLocalProxy` for supported post-deployment bypass-list changes. Existing AKS clusters don't automatically receive these changes, so review the post-deployment proxy update limitations before proceeding.
+- **Use exact service FQDNs**: For private service endpoints, add exact FQDNs, including the registry and required registry data endpoints for image pulls. Don't use broad service wildcards such as `*.azurecr.io`. This requirement is separate from wildcard notation for internal domains in a Windows bypass list.
+- **Route private endpoints outside Arc gateway**: Private DNS resolution alone doesn't select a bypass path. For an endpoint currently allowed by Arc gateway, use `gatewayBypass` to skip only the tunnel; non-allowed endpoints already use the fallback path. Neither option skips a configured enterprise proxy. Use local bypass when traffic must skip that proxy or the AKS cluster-IP first hop. In all cases, configure private DNS, routes, and firewall rules for the intended source subnet and destination, and disable TLS inspection where required.
 
 The following table provides per-service private endpoint guidance:
 

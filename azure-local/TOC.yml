@@ -424,7 +424,8 @@ items:
             href: deploy/deployment-local-identity-with-key-vault.md
           - name: Deploy via ARM template
             href: deploy/deployment-local-identity-with-key-vault-template.md
-
+        - name: Deploy a rack aware cluster (disaggregated)
+          href: deploy/deploy-rack-aware-cluster-storage-area-network.md
       # --- Enable (external storage only — no SDN for disaggregated) ---
       - name: Enable
         items:
@@ -569,8 +570,6 @@ items:
             href: manage/repair-server.md
           - name: Repair a node (disaggregated)
             href: manage/repair-server-disaggregated.md
-          - name: Configure proxy
-            href: manage/configure-proxy-settings-23h2.md
           - name: Configure local availability zones
             href: manage/configure-local-availability-zones-disaggregated.md
           - name: Suspend and resume
@@ -601,6 +600,12 @@ items:
           items:
           - name: Network ATC overview
             href: concepts/network-atc-overview.md?pivots=azure-local
+          - name: Update proxy settings
+            href: manage/update-proxy-settings.md
+          - name: Enable Arc gateway after deployment
+            href: manage/enable-arc-gateway-after-deployment.md
+          - name: Move from public path to private path
+            href: manage/move-public-path-to-private-path.md
           - name: Add NICs to a Network ATC intent
             href: manage/add-network-adapters-to-network-intents.md
           - name: Replace a failed NIC in a Network ATC intent
@@ -621,6 +626,8 @@ items:
 
         - name: GPUs
           items:
+          - name: Assign GPU infrastructure RBAC roles
+            href: manage/assign-infrastructure-rbac-roles.md
           - name: Prepare GPUs
             href: manage/gpu-preparation.md
           - name: Manage GPUs using Discrete Device Assignment
@@ -748,6 +755,12 @@ items:
           href: manage/troubleshoot-deployment-configurator-app.md
         - name: Troubleshoot deployment validation issues
           href: manage/troubleshoot-deployment.md
+        - name: Troubleshoot updates
+          href: update/update-troubleshooting-23h2.md
+        - name: Troubleshoot health check failures
+          href: manage/troubleshoot-health-check-failures.md
+        - name: Use the Get-SolutionHealthSummary PowerShell command
+          href: manage/use-get-solution-health-summary-powershell-command.md
         - name: Troubleshoot simplified machine provisioning
           href: deploy/troubleshoot-simplified-machine-provisioning.md
         - name: Use the Support tool for infrastructure issues
@@ -1256,8 +1269,6 @@ items:
     # --- Operate the Control Plane (order per PM feedback) ---
     - name: Operate the Control Plane
       items:
-      - name: Update
-        href: manage/disconnected-operations-update.md
       - name: Backup and restore
         items:
         - name: Back up disconnected operations
@@ -1290,6 +1301,12 @@ items:
         href: manage/disconnected-operations-cli.md
       - name: Azure PowerShell
         href: manage/disconnected-operations-powershell.md
+      - name: Update
+        items:
+        - name: Plan updates
+          href: manage/disconnected-operations-plan-updates.md
+        - name: Apply updates
+          href: manage/disconnected-operations-update.md
       - name: Troubleshoot
         items:
         - name: On-demand log collection
@@ -1716,8 +1733,6 @@ items:
             href: manage/repair-server.md
           - name: Repair a node (disaggregated)
             href: manage/repair-server-disaggregated.md
-          - name: Configure proxy
-            href: manage/configure-proxy-settings-23h2.md
           - name: Configure local availability zones
             href: manage/configure-local-availability-zones-disaggregated.md
           - name: Suspend and resume
@@ -2037,4 +2052,3 @@ items:
       href: previous-releases/known-issues-23.md
     - name: Security updates
       href: previous-releases/security-update-23.md
-

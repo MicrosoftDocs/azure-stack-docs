@@ -4,7 +4,7 @@ description: Learn how to create an Azure Managed Lustre file system from the Az
 ms.topic: how-to
 author: barbisch
 ms.author: akashdubey
-ms.date: 09/01/2026
+ms.date: 09/29/2026
 ms.lastreviewed: 06/06/2023
 ms.reviewer: brlepore
 ms.custom: sfi-image-nochange
@@ -21,10 +21,10 @@ If you prefer to use an Azure Resource Manager template to create a file system,
 
 ## Prerequisites
 
-Plan the following configuration options carefully, because you can't change them after you create your file system:
+Plan the following configuration options before you create your file system:
 
-- Size of the file system, in terms of storage capacity and throughput
-- Encryption key management, whether Microsoft-managed keys or customer-managed keys
+- **Storage capacity and throughput.** You can [expand the file system](expand-file-system-portal.md) after creation to increase capacity and throughput, but you can't reduce them.
+- **Encryption key management.** Choose Microsoft-managed keys or customer-managed keys. You can't change this choice after creation.
 
 ## Sign in to the Azure portal
 
@@ -63,15 +63,32 @@ When you finish entering details on the **Basics** tab, select **Next: Advanced*
 
 ### Throughput configurations
 
-Currently, the following throughput configurations are available. The default maximum is the capacity limit available to a subscription by default. You can request an increase up to the maximum supported capacity by opening a support ticket.
+Currently, the following throughput configurations are available. The default maximum is the capacity limit available to a subscription by default. You can request an increase up to the maximum supported capacity for your file system's Blob integration configuration by opening a support ticket.
 
-| Throughput tier | Storage minimum | Default maximum | Maximum supported capacity | Increment |
-|-----------|-----------|-----------|-----------|-----------|
-| 20 MBps | 96 TiB | 3,072 TiB | 25,632 TiB | 96 TiB |
-| 40 MBps | 48 TiB | 1,536 TiB | 12,816 TiB | 48 TiB |
-| 125 MBps | 16 TiB | 512 TiB | 4,096 TiB | 16 TiB |
-| 250 MBps | 8 TiB | 256 TiB | 2,048 TiB | 8 TiB |
-| 500 MBps | 4 TiB | 128 TiB | 1,024 TiB | 4 TiB |
+| Throughput tier | Storage minimum | Default maximum | Maximum with Blob integration | Maximum without Blob integration | Increment |
+|-----------|-----------|-----------|-----------|-----------|-----------|
+| 20 MBps | 96 TiB | 3,072 TiB | 5,088 TiB | 25,632 TiB | 96 TiB |
+| 40 MBps | 48 TiB | 1,536 TiB | 2,544 TiB | 12,816 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 512 TiB | 1,024 TiB | 4,096 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 256 TiB | 1,024 TiB | 2,048 TiB | 8 TiB |
+| 500 MBps | 4 TiB | 128 TiB | 1,024 TiB | 1,024 TiB | 4 TiB |
+
+File systems with [Azure Blob Storage integration](#blob-integration) can't scale beyond the second metadata server (MDS) and are subject to the **Maximum with Blob integration** limits in the table. File systems without Blob integration can scale up to the **Maximum without Blob integration** limits for their throughput tier.
+
+> [!NOTE]
+> Scaling storage capacity can also increase the number of metadata targets (MDTs). The system provisions extra MDTs as the file system grows across the throughput tier's metadata scaling thresholds, rather than with every storage increment. The maximum supported file system capacity still limits how far each tier can scale. Multiple MDTs help scale metadata operations and file counts when directory metadata is distributed across them. For instructions to check the deployed MDT count and distribute directories, see [Optimize directory layouts with multiple MDTs](optimize-file-layouts.md#optimizing-directory-layouts-with-multiple-mdts).
+
+The system provisions an extra MDT for every capacity interval shown in the following table, subject to the throughput tier's maximum supported file system capacity:
+
+| Throughput tier | Additional MDT every (TiB) |
+|-----------|-----------|
+| 20 MBps | 5,120 |
+| 40 MBps | 2,560 |
+| 125 MBps | 1,024 |
+| 250 MBps | 1,024 |
+| 500 MBps | 1,024 |
+
+The Blob integration maximums shown above are rounded down to the nearest multiple of each tier's storage increment. The MDT capacity intervals aren't rounded. These limits apply when you create or expand a file system. Requested capacities must be multiples of the tier's increment and must not exceed the applicable maximum.
 
 > [!NOTE]
 > To enable your subscription to deploy a file system with a capacity greater than the default maximum, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
@@ -104,7 +121,7 @@ To configure blob integration, follow these steps:
 1. Select the **Import/export data from blob** checkbox.
 1. Specify the **Subscription**, **Storage account**, and **Container** values to use with your Lustre file system.
 1. In the **Logging container** box, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.
-1. In the **Import Prefix(es)** boxes, you can optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](blob-integration.md#import-prefix).
+1. In the **Import Prefix(es)** boxes, optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](import-data.md#import-prefix).
 
 :::image type="content" source="./media/create-file-system-portal/advanced-blob-integration.png" alt-text="Screenshot that shows blob integration settings on the Advanced tab for creating an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/advanced-blob-integration.png":::
 

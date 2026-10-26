@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 09/10/2026
+ms.date: 10/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -53,10 +53,14 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
 
 - Before you can update to the 2511 release, you must first apply the 12.2510 update. The 12.2510 (24H2) update becomes automatically available once you apply 11.2510. Apply the 12.2510 update to keep your Azure Local up-to-date.
 
+- If the `AzureEdgeAlerts` extension is installed, update it to version 12.2607.5.0 or later before updating Azure Local to version 2610.
+
 ## End of support for Azure Local versions
 
 > [!IMPORTANT]
-> Versions not updated within six months are no longer supported. Running an unsupported version might expose your environment to security vulnerabilities, compliance issues, or regulatory requirements associated with using an unsupported version. Microsoft doesn't guarantee or provide remediation for risks resulting from the continued use of unsupported versions. For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
+> If you don't update your Azure Local solution within six months, it's no longer supported. Microsoft Support can only help you update the solution to a supported version.
+> This limitation applies in all scenarios, including active outages and service-impacting incidents. Troubleshooting, root-cause analysis, and support for other incidents aren't available until you update the solution to a supported version. Planning an update or being in the process of updating doesn't make the solution supported.
+> For supported versions, see the [release trains diagram](#about-azure-local-releases) or the [Supported versions](#supported-versions-of-azure-local) table.
 
 ### OS version 23H2
 
@@ -78,18 +82,18 @@ If your cluster supports [Solution Builder Extension software updates](./update/
 The following tables summarize the release information for Azure Local across all supported versions. All dates are listed in ISO 8601 format: *YYYY-MM-DD*. After you upgrade your solution, you might see 10.x versions. These versions are supported.
 
 > [!IMPORTANT]
-> New deployments of this software use the **12.2609.1003.7** build.
+> New deployments of this software use the **12.2610.1004.41** build.
 
 #### [OS build 26100.xxxx](#tab/OS-build-26100-xxxx)
 
 | Solution version | OS build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
-| 12.2609.1003.7 <br><br> Availability date: 2026-09-11 | 26100.33438 | [September OS security update](security-update/security-update.md?view=azloc-2609&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2609&preserve-view=true#features-and-improvements-in-2608) | [Known issues](./known-issues.md?view=azloc-2609&preserve-view=true) |
+| 12.2610.1004.41 <br><br> Availability date: 2026-10-22 | 26100.33650 | [October OS security update](security-update/security-update.md?view=azloc-2610&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2610&preserve-view=true#features-and-improvements-in-2610) | [Known issues](./known-issues.md?view=azloc-2610&preserve-view=true) |
+| 12.2609.1003.7 <br><br> Availability date: 2026-09-11 | 26100.33438 | [September OS security update](security-update/security-update.md?view=azloc-2609&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2609&preserve-view=true#features-and-improvements-in-2609) | [Known issues](./known-issues.md?view=azloc-2609&preserve-view=true) |
 | 12.2608.1003.9 <br><br> Availability date: 2026-09-01 Supersedes: 12.2608.1003.8 <br><br> Availability date: 2026-08-18 | 26100.33296 | [August OS security update](security-update/security-update.md?view=azloc-2608&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2608&preserve-view=true#features-and-improvements-in-2608) | [Known issues](./known-issues.md?view=azloc-2608&preserve-view=true) |
 | 12.2607.1003.73 <br><br> Availability date: 2026-08-07 <br><br> Supersedes: 12.2607.1003.71 <br><br> Availability date: 2026-07-29 <br><br> Supersedes: 12.2607.1003.69 <br><br> Availability date: 2026-07-22 | 26100.33158 | [July OS security update](security-update/security-update.md?view=azloc-2607&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2607&preserve-view=true#features-and-improvements-in-2607) | [Known issues](./known-issues.md?view=azloc-2607&preserve-view=true) |
 | 12.2606.1003.205 <br><br> Availability date: 2026-06-15 | 26100.32995 | [June OS security update](security-update/security-update.md?view=azloc-2606&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2606&preserve-view=true#features-and-improvements-in-2606) | [Known issues](./known-issues.md?view=azloc-2606&preserve-view=true) |
 | 12.2605.1003.1003 <br><br> Availability date: 2026-06-18 <br><br> Supersedes 12.2605.1003.210 <br><br> Availability date: 2026-05-28 | 26100.32860 | [May OS security update](security-update/security-update.md?view=azloc-2605&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2605&preserve-view=true#features-and-improvements-in-2605) | [Known issues](./known-issues.md?view=azloc-2605&preserve-view=true) |
-| 12.2604.1003.1006 <br><br> Availability date: 2026-05-28 <br><br> Supersedes 12.2604.1003.1005 <br><br> Availability date: 2026-05-11 <br><br> Supersedes: 12.2604.1003.1002 <br><br> Availability date: 2026-05-01 <br><br> Supersedes: 12.2604.1003.209 <br><br> Availability date: 2026-04-22 | 26100.32690 | [April OS security update](security-update/security-update.md?view=azloc-2604&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-2604&preserve-view=true#features-and-improvements-in-2604) | [Known issues](./known-issues.md?view=azloc-2604&preserve-view=true) |
 
 ---
 
@@ -101,6 +105,7 @@ The following table summarizes the release information for Azure Local across ol
 
 | Solution version | OS Build | Security update | What's new | Known issues |
 | ------ | ------- | --------------- | ---------- | ------------ |
+| 12.2604.1003.1006 <br><br> Availability date: 2026-05-28 <br><br> Supersedes 12.2604.1003.1005 <br><br> Availability date: 2026-05-11 <br><br> Supersedes: 12.2604.1003.1002 <br><br> Availability date: 2026-05-01 <br><br> Supersedes: 12.2604.1003.209 <br><br> Availability date: 2026-04-22 | 26100.32690 | [April OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2604) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 12.2603.1002.502 <br><br> Availability date: 2026-05-28 <br><br> Supersedes: 12.2603.1002.500 <br><br> Availability date: 2026-04-06 <br><br> Supersedes: 12.2603.1002.15 <br><br> Availability date: 2026-03-17 | 26100.32522 | [March OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2603) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 12.2602.1002.501 <br><br> Availability date: 2026-03-02 <br><br> Supersedes: 12.2602.1002.7 <br><br> Availability date: 2026-02-17 | 26100.32370 | [February OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2602) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |
 | 12.2601.1002.503 <br><br> Availability date: 2026-02-02 <br><br> Supersedes: 12.2601.1002.38 <br><br> Availability date: 2026-01-22 | 26100.32230 | [January OS security update](security-update/security-update.md?view=azloc-previous&preserve-view=true&tabs=new-deployments) | [Features and improvements](./whats-new.md?view=azloc-previous&preserve-view=true#features-and-improvements-in-2601) | [Known issues](./known-issues.md?view=azloc-previous&preserve-view=true) |

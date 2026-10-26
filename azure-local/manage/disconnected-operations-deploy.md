@@ -4,7 +4,7 @@ description: Learn how to deploy disconnected operations for Azure Local in your
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 06/12/2026
+ms.date: 10/19/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -500,9 +500,18 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 | 2606 | 12.2606.1003.205 |
 | 2607 | 12.2607.1003.73 |
 | 2608 | 12.2608.1003.9 | 
+| 2609 | 12.2609.1003.7 | 
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602 <=azloc-2609"
 
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602"
 
 ```powershell
 $resourcegroup = 'azurelocal-management-cluster' 
@@ -539,6 +548,10 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 > You can also use the [Configurator App](../deploy/deployment-without-azure-arc-gateway.md?tabs=app&pivots=register-proxy) to initialize each node.
 >  Ensure that the `TargetSolutionVersion` parameter is set to the correct solution version used for the deployment.
 
+::: moniker-end
+
+::: moniker range=">=azloc-2602 <=azloc-2609"
+
 ## Handle preinstalled OEM images in disconnected operations
 
 ### Prerequisites
@@ -566,27 +579,27 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 
     :::image type="content" source="./media/disconnected-operations-deploy/boot-strap-service-update.png" alt-text="Screenshot showing the bootstrap service update." lightbox=" ./media/disconnected-operations-deploy/boot-strap-service-update.png":::
 
-1. Stop the bootstrap service
+1. Stop the bootstrap service.
 ```powershell
 stop-service *bootstrap*
 ```
-1. Verify services are stopped
+1. Verify services are stopped.
 ```powershell
 Get-Service *bootstrap*
 ```
-1. Modify the bootstrap configuration file 
+1. Modify the bootstrap configuration file.
 
-Edit the following file: C:\Windows\System32\Bootstrap\content_10.3342.1.3008\Microsoft.Azure.Edge.Bootstrap.ManagementService\windows.mae.config.json
+    Edit the following file: `C:\Windows\System32\Bootstrap\content_10.3342.1.3008\Microsoft.Azure.Edge.Bootstrap.ManagementService\windows.mae.config.json`.
 
-- Locate the line saying:  "EnableNodeAddValidation": true
-- Modify the line to : "EnableNodeAddValidation": false
-- Save the file.
+    - Locate the line saying:  `"EnableNodeAddValidation": true`.
+    - Modify the line to : `"EnableNodeAddValidation": false`.
+    - Save the file.
 
-1. Start the bootstrap service
+1. Start the bootstrap service.
 ```powershell
 start-service *bootstrap*
 ```
-1. Verify services are running
+1. Verify services are running.
 ```powershell
 Get-Service *bootstrap*
 ```
@@ -626,6 +639,10 @@ Get-Service *bootstrap*
     ```
 
 1. Run `Invoke-AzStackHciArcInitialization` again on each node.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602"
 
 ## Pre-create Azure Key Vault
 

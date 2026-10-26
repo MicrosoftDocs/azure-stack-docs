@@ -5,7 +5,7 @@ ms.topic: how-to
 author: jeffbearer
 ms.author: jebearer
 ms.reviewer: wdesalvador
-ms.date: 06/19/2026
+ms.date: 10/20/2026
 zone_pivot_groups: select-os
 
 ---
@@ -259,7 +259,7 @@ If your client machine uses an older version of Lustre, you can upgrade the Lust
     sleep 5; cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should show the new Lustre version (for example, `2.17.0_24_gf517bc4`).
+    The output should show the new Lustre version (for example, `2.17.0_28_gc7c975e`).
 
 ::: zone-end
 

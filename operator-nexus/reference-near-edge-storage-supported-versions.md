@@ -12,7 +12,7 @@ ms.service: azure-operator-nexus
 
 This document provides an overview of the storage appliance software versions supported by Azure Operator Nexus. The document also covers the version support lifecycle and end of life for each version of Storage Appliance Software.
 
-Azure Nexus Supports Pure x70r3 and x70r4 each being deployed with a version of the Purity Operating System (PurityOS) that is compatible with the Azure Nexus version.
+Azure Nexus supports Everpure x70r3 and x70r4, each deployed with a version of the Purity Operating System (PurityOS) that works with the Azure Nexus version.
 
 PurityOS uses the standard [Semantic Versioning](https://semver.org/) scheme for each version:
 
@@ -32,13 +32,13 @@ Each number in the version indicates general compatibility with the previous ver
 
 ## Version support guidelines
 
-* It is best practice for Pure devices to be running the latest Purity patch version in a supported release train. Microsoft recommends upgrading all Pure devices to the latest Purity patch version verified and supported by Azure Operator Nexus.
+* It is best practice for Everpure devices to be running the latest Purity patch version in a supported release train. Microsoft recommends upgrading all Everpure devices to the latest Purity patch version verified and supported by Azure Operator Nexus.
 * All changes to version support and any version specific upgrade instructions are communicated in release notes.
 * Nexus will only support Long Term Support (LTS) storage versions. Purity LTS versions contain an odd number minor version, such as 6.1.x, 6.5.x etc.
 * Nexus will support up to two LTS versions at any time.
-* Support shall be provided for all patch releases documented in Nexus public documentation. Which means that Nexus will handle and resolve issue tickets where storage appliance is running a supported release version. These tickets may require a fix to Nexus software or be referred to the storage vendor support team depending on the specific details. If a fix requires inclusion of new Pure patch release, it is appropriately tested and documented.
-* Each Pure LTS release listed as supported is tested equally with each new Nexus release to ensure comprehensive compatibility.
-* Azure Operator Nexus instances can have two Pure storage appliances. It is supported to run these storage appliances on different Purity versions, so long as each Purity version is supported by the Azure Operator Nexus version. Note, however, that Microsoft recommends upgrading all Pure devices to the latest Purity patch version verified and supported by Azure Operator Nexus.
+* Support shall be provided for all patch releases documented in Nexus public documentation. Which means that Nexus will handle and resolve issue tickets where storage appliance is running a supported release version. These tickets may require a fix to Nexus software or be referred to the storage vendor support team depending on the specific details. If a fix requires inclusion of new Everpure patch release, it is appropriately tested and documented.
+* Each Everpure LTS release listed as supported is tested equally with each new Nexus release to ensure comprehensive compatibility.
+* Azure Operator Nexus instances can have two Everpure storage appliances. It is supported to run these storage appliances on different Purity versions, so long as each Purity version is supported by the Azure Operator Nexus version. Note, however, that Microsoft recommends upgrading all Everpure devices to the latest Purity patch version verified and supported by Azure Operator Nexus.
 
 ## Release process
 
@@ -62,7 +62,6 @@ Each number in the version indicates general compatibility with the previous ver
 | 6.5.11           | Nexus 2509.1     | Sept 2026*      |
 | 6.7.9            | Nexus 2608.2     | May 2028*       |
 | 6.9.4            | Nexus 2604.2     | May 2028*      |
-| 6.9.5            | Nexus 2604.2     | May 2028*      |
 | 6.9.8            | Nexus 2608.2     | May 2028*       |
 
 > [!IMPORTANT]
@@ -73,10 +72,13 @@ Each number in the version indicates general compatibility with the previous ver
 |  PurityOS version | Support added in | End of support | Remarks |
 |-------------------|------------------|----------------|---------|
 | 6.1.x             | Year 2021        | Jul 2024       | End of support in Nexus 2406.2 |
+| 6.9.5             | Nexus 2604.2     | Oct 2026       | Known storage path disruption issue after upgrade; use 6.9.8 or later |
 
-## Supported Pure HW Controller versions
+<a name="supported-pure-hw-controller-versions"></a>
 
-| Pure HW Controller version | Support added in |
+## Supported Everpure HW Controller versions
+
+| Everpure HW Controller version | Support added in |
 |----------------------------|------------------|
 | R3                         | Year 2021        |
 | R4                         | Nexus 2404.2     |
@@ -86,17 +88,19 @@ Each number in the version indicates general compatibility with the previous ver
 > [!NOTE]
 > Make sure you are upgrading to one of the Purity versions listed in [Supported Purity Software Versions](#supported-purity-software-versions).
 
-Azure Operator Nexus software doesn't trigger or manage Purity upgrades. Purity upgrades are supported by Pure Storage and can be triggered either through a Pure engineer assisted process or through a self-service process in the Pure1 management portal.
+Azure Operator Nexus software doesn't trigger or manage Purity upgrades. Purity upgrades are supported by Everpure and can be triggered either through an Everpure engineer assisted process or through a self-service process in the Pure1 management portal.
 
-The self-service process requires that you work with your Pure support representative to install and enable the edge agent on the storage appliance. The self-service enablement and upgrade processes, and the Pure engineer assisted upgrade process, are both documented in [Pure's documentation](https://support.purestorage.com/) (sign in required).
+The self-service process requires that you work with your Everpure support representative to install and enable the edge agent on the storage appliance. The self-service enablement and upgrade processes, and the Everpure engineer assisted upgrade process, are both documented in [Everpure's documentation](https://support.purestorage.com/) (sign in required).
 
-Contact your Pure support representative for further questions about Purity upgrades.
+Contact your Everpure support representative for further questions about Purity upgrades.
 
 ## Upgrade requirements
 
 If you're upgrading from Purity 6.1.x to 6.5.x or beyond, you must decide whether or not to enable SafeMode on your storage arrays. For more information about SafeMode, see [Determine whether to enable SafeMode on storage arrays](./howto-platform-prerequisites.md#determine-whether-to-enable-safemode-on-storage-arrays).
 
-## Supported Pure FlashArray Expansion Shelf firmware versions
+<a name="supported-pure-flasharray-expansion-shelf-firmware-versions"></a>
+
+## Supported Everpure FlashArray Expansion Shelf firmware versions
 
 Azure Operator Nexus supports and tests the latest combination of a Purity version and FlashArray expansion shelf version (DFS) at the time of a Nexus release.
 

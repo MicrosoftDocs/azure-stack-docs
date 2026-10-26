@@ -1,16 +1,16 @@
 ---
-title: Update Disconnected Operations for Azure Local
+title: Apply updates for Azure Local disconnected operations
 description: Learn how to update disconnected operations for Azure Local.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 02/23/2026
+ms.date: 10/07/2026
 ms.reviewer: haraldfianbakken
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
 ---
 
-# About updates for disconnected operations
+# Apply updates for Azure Local disconnected operations
 
 ::: moniker range=">=azloc-2602"
 

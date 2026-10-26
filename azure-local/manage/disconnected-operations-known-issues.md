@@ -3,19 +3,44 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 09/01/2026
+ms.date: 09/21/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
 ---
 
 # Known issues in disconnected operations for Azure Local
-
-::: moniker range=">=azloc-2605"
-
 This article identifies critical known issues and their workarounds in disconnected operations for Azure Local.
 
 These release notes are updated continuously to include critical issues and required workarounds. Review this information carefully before you deploy disconnected operations for Azure Local.
+
+::: moniker range="=azloc-2609"
+## Known issues for version 2609
+### OperationsModule generating certificates causes issue when CA root contains space in CA common name
+**Applies to**: Generating certificates with operations module and CA common name containing a space.
+
+You see an error with the following message: ***Unable to locate a file named Root in the working directory, certreq.exe failed immediately with Windows Error Code 0x80070002 (ERROR_FILE_NOT_FOUND).***
+
+**Mitigation**:
+- Open a support case from the Azure portal to get a fix.
+
+::: moniker-end
+
+::: moniker range="=azloc-2605"
+## Known issues for version 2606
+
+### AKS failed state after update 
+**Applies to**: AKS on Azure Local (Preview) 2606 or earlier versions. 
+
+Some rare conditions during update can cause AKS cluster to become unavailable and unable to communicate with the control plane. 
+
+**Mitigation**:
+ - Update Azure Local disconnected operations to 2609 and recreate your AKS cluster for AKS GA support.   
+ - Or: Open a support ticket for mitigation steps for preview versions.
+
+::: moniker-end
+
+::: moniker range="=azloc-2605"
 
 ## Known issues for version 2605
 
@@ -85,7 +110,9 @@ Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
 
 ::: moniker-end
 
-::: moniker range="=azloc-2604"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
 
 ## Known issues for version 2604
 
@@ -114,10 +141,6 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
    ```
 
 1. Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
-
-::: moniker-end
-
-::: moniker range=">=azloc-2602 <=azloc-2603"
 
 ## Known issues for version 2602 and 2603
 
@@ -976,11 +999,5 @@ If you test these scenarios, these systems must trust your custom CA and you nee
 ## Related content
 
 - [Disconnected operations for Azure Local](./disconnected-operations-overview.md).
-
-::: moniker-end
-
-::: moniker range="<=azloc-2601"
-
-This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

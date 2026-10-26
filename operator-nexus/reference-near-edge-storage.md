@@ -19,25 +19,29 @@ Within each Azure Operator Nexus storage appliance, multiple storage devices are
 
 This table lists the available SKUs for the storage appliances in the near-edge Azure Operator Nexus offering.
 
-### Pure FlashArray
+<a name="pure-flasharray"></a>
+
+### Everpure FlashArray
 
 | SKU                     | Total raw storage capacity | Usable raw storage capacity |
 | ----------------------- | -------------------- | --------------------------------- |
-| Pure FlashArray X70R4-45TB  | 45 TB | 25.74 TB |
-| Pure FlashArray X70R4-91TB  | 91 TB | 54.75 TB |
-| Pure FlashArray X70R4-183TB | 183 TB | 114.66 TB |
-| Pure FlashArray X70R4-366TB | 366 TB | 272.36 TB |
-| Pure FlashArray X70R4-622TB | 622 TB | 457.23 TB |
+| Everpure FlashArray X70R4-45TB  | 45 TB | 25.74 TB |
+| Everpure FlashArray X70R4-91TB  | 91 TB | 54.75 TB |
+| Everpure FlashArray X70R4-183TB | 183 TB | 114.66 TB |
+| Everpure FlashArray X70R4-366TB | 366 TB | 272.36 TB |
+| Everpure FlashArray X70R4-622TB | 622 TB | 457.23 TB |
 
-An Azure Operator Nexus instance can have up to two storage appliances. The storage appliances do not have to have the same raw storage capacity. Azure Operator Nexus recommends that you work with Pure to identify your workloads' capacity requirements and select the Pure SKU accordingly.
+An Azure Operator Nexus instance can have up to two storage appliances. The storage appliances do not have to have the same raw storage capacity. Azure Operator Nexus recommends that you work with Everpure to identify your workloads' capacity requirements and select the Everpure SKU accordingly.
 
 ### Raw vs effective storage capacity
 
-The Pure FlashArray contains a variety of data reduction features. The effective capacity of the storage appliance, which gives the amount of data that can be stored from the workload's perspective, is typically larger than the raw capacity. The effective capacity depends strongly on the data being stored. For example, pre-compressed or application-encrypted data achieves lower data reduction ratios on the storage appliance than data with high levels of duplication. Pure storage can model likely achievable data reduction ratios and effective capacity for a wide variety of workloads to help you choose a SKU with a suitable amount of storage capacity.
+The Everpure FlashArray contains a variety of data reduction features. The effective capacity of the storage appliance, which gives the amount of data that can be stored from the workload's perspective, is typically larger than the raw capacity. The effective capacity depends strongly on the data being stored. For example, pre-compressed or application-encrypted data achieves lower data reduction ratios on the storage appliance than data with high levels of duplication. Everpure can model likely achievable data reduction ratios and effective capacity for a wide variety of workloads to help you choose a SKU with a suitable amount of storage capacity.
 
 ### Encryption at rest
 
-All data stored on the Pure FlashArray is encrypted at rest using platform-managed storage server-side encryption. For more information, see [Pure's FlashArray Data Security Overview](https://support.purestorage.com/bundle/m_security_resources/page/repositories/production-branch/content/documents/Production/FlashArray/FlashArray_Security/FlashArray_Security_Guides_and_Manuals/topics/task/t_an_overview_of_flasharray_data_security.html) (sign in required).
+All data stored on the Everpure FlashArray is encrypted at rest using platform-managed storage server-side encryption. For more information, see [Everpure's FlashArray Data Security Overview](https://support.purestorage.com/bundle/m_security_resources/page/repositories/production-branch/content/documents/Production/FlashArray/FlashArray_Security/FlashArray_Security_Guides_and_Manuals/topics/task/t_an_overview_of_flasharray_data_security.html) (sign in required).
+
+For management connections to the Everpure FlashArray, Azure Operator Nexus enforces TLS 1.3 on the client side. To disable TLS 1.1 and TLS 1.2 on the Everpure FlashArray server side, raise a support ticket with Everpure.
 
 ## Storage connectivity
 

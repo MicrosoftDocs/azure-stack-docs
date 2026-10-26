@@ -5,13 +5,79 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 09/16/2026
+ms.date: 10/23/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2610"
+
+## Features and improvements in 2610
+
+The October 2026 release of hyperconverged deployments of Azure Local is version **12.2610.1004.41**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2610 release, all new and existing deployments of Azure Local run the new OS version **26100.33650** (download from the Azure portal).
+  - You also need a driver that's compatible with OS version **26100.33650** or Windows Server 2025.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.32** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.13** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **PowerShell updates**: This build uses PowerShell version 7.6.6 (built on .NET 10). For more information, see [PowerShell 7.6 changelog](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.6.md).
+
+<!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
+
+- **Azure Migrate for Azure Local**: Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them. For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](../azure-local/migrate/migrate-whats-new.md).
+    - **Reuse Azure Arc-enabled server resources during migration**: Retain existing Arc-enabled server resources on source VMware and Hyper-V VMs during migration. Tags, role-based access control (RBAC) assignments, Azure Policy configurations, monitoring settings, and VM extensions carry forward to the Azure Local VM.
+
+- **Azure Government Arizona region expansion (preview)**: You can now deploy and manage Azure Local deployments using the US Gov Arizona region, providing an additional Azure Government region beyond US Gov Virginia with support up to Impact Level 5 (IL5). For more information about supported regions, see [Azure requirements](../azure-local/concepts/system-requirements-23h2.md#azure-requirements).
+
+- **Rack aware clusters with SAN (preview)**: Rack aware clusters now support disaggregated SAN deployments, enabling workload protection across two rooms with synchronized storage replication and independent compute and storage management. For more information, see [Deploy a disaggregated rack aware Azure Local cluster with SAN storage](../azure-local/deploy/deploy-rack-aware-cluster-storage-area-network.md).
+
+- **Disk witness for SAN deployments**: You can now configure disk witness for SAN deployments directly in the Azure portal deployment wizard, helping enable rack aware clusters with SAN. For more information, see [Deploy Azure Local using the Azure portal for disaggregated deployments](../azure-local/deploy/deploy-via-portal-disaggregated.md).
+
+- **Composed ISO refresh cadence**: Composed ISO releases now follow a semiannual cadence aligned with OEM validation and release cycles.
+
+- **Provisioned Machine resources**: Starting with this release, the Azure portal automatically creates a Provisioned Machine resource for each Azure Arc-enabled server in an Azure Local cluster, using the same resource name. These resources are created and managed automatically. No action is required, and you shouldn't delete them.
+
+- **Per-node iSCSI configuration**: You can now configure iSCSI for each node directly in the Azure portal deployment wizard, simplifying SAN deployments and reducing manual setup. For more information, see [Deploy Azure Local using the Azure portal for disaggregated deployments](../azure-local/deploy/deploy-via-portal-disaggregated.md).
+
+- **Update proxy settings (preview)**: Starting with this release, you have two preview options for changing how an existing Azure Local instance routes outbound traffic. For more information, see [Update proxy settings](../azure-local/manage/update-proxy-settings.md).
+
+- **Enable Azure Arc gateway after deployment (preview)**: You can now enable Azure Arc gateway on an existing Azure Local instance after deployment. For more information, see [Enable Azure Arc gateway after deployment](../azure-local/manage/enable-arc-gateway-after-deployment.md).
+
+- **Change outbound connectivity from public to private path (preview)**: Starting with Azure Local 2610, you can move an existing Azure Local instance from public-path connectivity to the Azure Local private path architecture. For more information, see [Move Azure Local from public path to private path connectivit](../azure-local/manage/move-public-path-to-private-path.md).
+
+- **Confidential VMs on Azure Local with AMD SEV-SNP now generally available**: Confidential VMs powered by AMD SEV-SNP on AMD Genoa platforms are now generally available on Azure Local. This capability provides workload attestation and memory encryption to help protect VMs and strengthen security for sensitive workloads.
+
+- **Combined OS and SBE CAU updates**: You can now update the operating system and OEM firmware and drivers in a single coordinated Cluster-Aware Updating (CAU) run, helping reduce update time and minimize workload disruption.
+
+- **Security updates**: Starting in November 2026, operating system (OS) latest cumulative update (LCU) and .NET updates are released the same week as Patch Tuesday, helping you address vulnerabilities sooner and maintain compliance without waiting for a broader cumulative or feature release. The update experience depends on the Azure Local solution version currently installed:
+
+    - **Systems already running the latest Azure Local release**: The security updates function as security-only updates.
+    - **Systems running an applicable older Azure Local release**: Installing the security updates also applies all the required Azure Local security updates to bring the system to the target security release version.
+    - **Supported update paths**: Security updates can only be applied through supported update paths.
+
+- **Use built-in RBAC roles to manage infrastructure in Azure Local (preview)**: With this release, you can use Azure role-based access control (RBAC) to manage access to infrastructure resources in Azure Local. Currently, the built-in infrastructure roles apply only to GPU infrastructure. These roles help separate GPU infrastructure administration from workload administration and support least-privilege access. For more information, see [Use built-in RBAC roles to manage infrastructure in Azure Local (preview)](../azure-local/manage/assign-infrastructure-rbac-roles.md).
+
+- **New role for filtering logs**: With this release, the new `SANDiagnostics` role lets you collect SAN storage diagnostics, including MPIO, Fibre Channel and iSCSI initiators, disks, volumes, Cluster Shared Volumes, iSCSI target reachability, event logs, and cluster logs. For more information, see [Roles available for filtering logs](../azure-local/manage/collect-logs.md#roles-available-for-filtering-logs).
+
+- **New Get-SolutionHealthSummary PowerShell command**: With this release, the new `Get-SolutionHealthSummary` command lets you get a concise summary of the most recent solution health check results, highlighting critical and important health issues that you should immediately address. For more information, see [Use the Get-SolutionHealthSummary PowerShell command](./manage/use-get-solution-health-summary-powershell-command.md).
+
+- **Security improvements**:
+    - **Expanded security baseline coverage**: Azure Local continues to deepen its alignment with industry security benchmarks. Starting in 2610, the security baseline grows to 429 evaluated settings, up from 408, extending coverage against CIS and DISA STIG recommendations. The expanded baseline applies automatically to new deployment as well as updated with this release. For more information, see [Manage security defaults for Azure Local](../azure-local/manage/manage-secure-baseline.md).
+    - **Customize the security baseline while keeping drift control**: Until now you could adjust only a small set of security toggles. Starting in 2610, you can customize the security baseline settings, and drift control keeps enforcing them. Guardrails determine whether a change is permitted, and the settings critical to system integrity stay protected. For more information, see [Manage security defaults for Azure Local](../azure-local/manage/manage-secure-baseline.md).
+    - **Application Control cmdlets aligned to App Control for Business**: Microsoft retired the Windows Defender Application Control name in favor of App Control for Business. Starting in 2610, the Azure Local cmdlets for this capability are renamed to match. Your existing scripts continue to work. For more information, see [Manage Application Control settings with PowerShell](../azure-local/manage/manage-wdac.md#manage-application-control-settings-with-powershell).
+
+::: moniker-end
 
 ::: moniker range="=azloc-2609"
 
@@ -23,9 +89,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2609 release, all new and existing deployments of Azure Local run the new OS version **26100.33438** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33438** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -41,9 +105,9 @@ This release includes various reliability improvements and bug fixes.
 
 - **Automatic backup of system-level secrets (preview)**: With this release, you can automatically back up system-level secrets, such as Trusted Launch virtual machine keys, BitLocker recovery keys, and other sensitive information, to an Azure Key Vault instance that serves as a backup key vault. If data loss occurs, you can use the backup key vault for disaster recovery. For more information, see [Automatic key backup (preview)](../azure-local/manage/trusted-launch-vm-overview.md#automatic-key-backup-preview).
 
-<!--- **Local Identity with Azure Key Vault**:
+- **Local Identity with Azure Key Vault**:
     - **Internal DNS (preview)**: In this release, you can deploy Azure Local by using Local Identity with internal DNS. For more information, see [Deploy with Internal DNS](../azure-local/deploy/deployment-local-identity-with-key-vault.md#deploy-with-internal-dns-preview).
-    - **Admin setup**: This release introduces a PowerShell-based local identity management solution that uses certificate-based authentication and integrates with Azure Key Vault. For more information, see [Managing local identity with Azure Key Vault clusters](../azure-local/deploy/deployment-local-identity-with-key-vault.md#managing-local-identity-with-azure-key-vault-clusters).-->
+    - **Admin setup**: This release introduces a PowerShell-based local identity management solution that uses certificate-based authentication and integrates with Azure Key Vault. For more information, see [Managing local identity with Azure Key Vault clusters](../azure-local/deploy/deployment-local-identity-with-key-vault.md#managing-local-identity-with-azure-key-vault-clusters).
 
 - **Documentation updates**: The following notable documentation updates are available in this release:
     - **TOC modernization**: The Azure Local documentation experience now features a new scenario-based structure, improved navigation, and a [Find your deployment type](../azure-local/plan/find-your-deployment-type.md) entry point to help you quickly find the right deployment and management guidance.
@@ -61,9 +125,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2608 release, all new and existing deployments of Azure Local run the new OS version **26100.33296** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33296** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -87,7 +149,6 @@ This release includes various reliability improvements and bug fixes.
 - **Add node via Azure portal (preview)**: You can now add nodes to an existing Azure Local cluster directly from the Azure portal with a new guided scale-out experience. For more information, see [Add a node on Azure Local](../azure-local/manage/add-server.md).
 
 - **Update workflow changes**:
-  
   - This release introduces the prepare updates workflow, allowing you to prepare updates now and install them at a later time.
   - Feature updates now include a new update state, **Pending OEM Validation**, indicating that the update is awaiting OEM validation before it can proceed.
 
@@ -105,9 +166,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2607 release, all new and existing deployments of Azure Local run the new OS version **26100.33158** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.33158** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -161,9 +220,7 @@ This release includes various reliability improvements and bug fixes.
 
 - **OS changes**:
   - In the 2606 release, all new and existing deployments of Azure Local run the new OS version **26100.32995** (download from the Azure portal).
-  
   - You also need a driver that's compatible with OS version **26100.32995** or Windows Server 2025.
-  
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 
 - **.NET updates**:
@@ -205,7 +262,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2604"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2604
 
@@ -262,10 +319,6 @@ This release includes various reliability improvements and bug fixes.
 - **Security baseline improvements**: A user logon text and banner help comply with DISA STIG and CIS requirements. The new settings are protected by drift control; to customize the values, first disable drift control. For more information, see [Manage security defaults for Azure Local](./manage/manage-secure-baseline.md).
 
 - **Azure Migrate now supports Azure CLI for replication and migration (preview)**: You can use Azure CLI to replicate and migrate VMs to Azure Local, which enables automation and scripting for migration workflows. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#april-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2603
 
