@@ -3,10 +3,10 @@ title: Update Azure App Service on Azure Stack Hub
 description: Learn how to update Azure App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/11/2026
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
-ms.lastreviewed: 11/28/2020
+ms.lastreviewed: 10/24/2026
 zone_pivot_groups: 
 # Intent: As an Azure Stack operator, I want to update my App Service so I'm up to date.
 # Keyword: update app service azure stack
@@ -14,6 +14,8 @@ zone_pivot_groups:
 ---
 
 # Update Azure App Service on Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 

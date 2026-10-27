@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 09/01/2026
+ms.date: 09/21/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -110,7 +110,9 @@ Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
 
 ::: moniker-end
 
-::: moniker range="=azloc-2604"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
 
 ## Known issues for version 2604
 
@@ -139,10 +141,6 @@ Workload clusters in air-gapped environments fail to deploy in rare conditions.
    ```
 
 1. Resume deployment by using the same method that you started with (for example, through the portal or ARM template deployment).
-
-::: moniker-end
-
-::: moniker range=">=azloc-2602 <=azloc-2603"
 
 ## Known issues for version 2602 and 2603
 
@@ -1001,11 +999,5 @@ If you test these scenarios, these systems must trust your custom CA and you nee
 ## Related content
 
 - [Disconnected operations for Azure Local](./disconnected-operations-overview.md).
-
-::: moniker-end
-
-::: moniker range="<=azloc-2601"
-
-This feature is available only in Azure Local 2602 or later.
 
 ::: moniker-end

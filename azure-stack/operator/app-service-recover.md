@@ -3,7 +3,7 @@ title: App Service recovery on Azure Stack Hub
 description: Learn about disaster recovery for App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
@@ -14,6 +14,8 @@ ms.lastreviewed: 03/21/2019
 ---
 
 # App Service recovery on Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 This article provides instructions on what actions to take for App Service disaster recovery.
 

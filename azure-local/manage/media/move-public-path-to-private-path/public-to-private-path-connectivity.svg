@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
+  <title id="title">Public path and private path connectivity for Azure Local</title>
+  <desc id="desc">A before and after diagram. The public path sends Azure Local traffic through an on-premises proxy and the public internet. The private path sends traffic over ExpressRoute or a site-to-site VPN to the private IP of Azure Firewall explicit proxy. HTTPS traffic to allowed endpoints continues through Azure Arc gateway unless bypassed. Non-allowed endpoints and gatewayBypass destinations skip the tunnel but retain the firewall explicit proxy. Locally bypassed destinations use the source subnet's direct route and require private DNS, routing, and firewall rules.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1368c3"/>
+    </marker>
+    <style>
+      .heading { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .label { font: 600 20px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .text { font: 17px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .small { font: 15px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .box { fill: #ffffff; stroke: #1368c3; stroke-width: 3; rx: 12; }
+      .azure { fill: #e8f3ff; stroke: #1368c3; stroke-width: 3; rx: 12; }
+      .private { fill: #e9f7ef; stroke: #107c10; stroke-width: 3; rx: 12; }
+      .public { fill: #fff4ce; stroke: #c19c00; stroke-width: 3; rx: 12; }
+      .line { fill: none; stroke: #1368c3; stroke-width: 4; marker-end: url(#arrow); }
+      .divider { stroke: #a6a6a6; stroke-width: 2; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+  <rect width="1400" height="700" fill="#ffffff"/>
+  <text x="700" y="45" text-anchor="middle" class="heading">Move Azure Local from public path to private path connectivity</text>
+  <line x1="700" y1="75" x2="700" y2="665" class="divider"/>
+
+  <text x="350" y="100" text-anchor="middle" class="heading">Before: public path</text>
+  <rect x="55" y="160" width="240" height="125" class="box"/>
+  <text x="175" y="205" text-anchor="middle" class="label">Azure Local</text>
+  <text x="175" y="237" text-anchor="middle" class="text">Machines and Azure Arc</text>
+  <text x="175" y="263" text-anchor="middle" class="text">resource bridge</text>
+
+  <rect x="405" y="160" width="240" height="125" class="public"/>
+  <text x="525" y="205" text-anchor="middle" class="label">Current proxy</text>
+  <text x="525" y="237" text-anchor="middle" class="text">Public-path proxy</text>
+  <text x="525" y="263" text-anchor="middle" class="text">address and port</text>
+
+  <rect x="230" y="405" width="240" height="125" class="public"/>
+  <text x="350" y="450" text-anchor="middle" class="label">Public internet</text>
+  <text x="350" y="482" text-anchor="middle" class="text">Outbound route to</text>
+  <text x="350" y="508" text-anchor="middle" class="text">Azure endpoints</text>
+
+  <path d="M295 222 L405 222" class="line"/>
+  <path d="M525 285 L525 345 L350 345 L350 405" class="line"/>
+  <text x="350" y="325" text-anchor="middle" class="small">HTTP and HTTPS through public path</text>
+
+  <text x="1050" y="100" text-anchor="middle" class="heading">After: private path</text>
+  <rect x="725" y="160" width="250" height="125" class="box"/>
+  <text x="850" y="205" text-anchor="middle" class="label">Azure Local host traffic</text>
+  <text x="850" y="237" text-anchor="middle" class="text">HTTP uses firewall proxy</text>
+  <text x="850" y="263" text-anchor="middle" class="text">HTTPS uses Arc proxy</text>
+
+  <rect x="1040" y="160" width="300" height="125" class="azure"/>
+  <text x="1190" y="205" text-anchor="middle" class="label">Azure Arc gateway</text>
+  <text x="1190" y="237" text-anchor="middle" class="text">HTTPS to allowed endpoints</text>
+  <text x="1190" y="263" text-anchor="middle" class="text">unless bypassed</text>
+
+  <rect x="725" y="405" width="250" height="125" class="private"/>
+  <text x="850" y="450" text-anchor="middle" class="label">Private connection</text>
+  <text x="850" y="482" text-anchor="middle" class="text">ExpressRoute or</text>
+  <text x="850" y="508" text-anchor="middle" class="text">site-to-site VPN</text>
+
+  <rect x="1040" y="380" width="300" height="175" class="private"/>
+  <text x="1190" y="425" text-anchor="middle" class="label">Azure Firewall</text>
+  <text x="1190" y="455" text-anchor="middle" class="label">explicit proxy</text>
+  <text x="1190" y="490" text-anchor="middle" class="text">Private IP:port</text>
+  <text x="1190" y="518" text-anchor="middle" class="small">Standard or Premium tier</text>
+  <text x="1190" y="541" text-anchor="middle" class="small">TLS inspection disabled</text>
+
+  <path d="M850 295 L850 395" class="line"/>
+  <path d="M985 467 L1030 467" class="line"/>
+  <text x="1008" y="438" text-anchor="middle" class="small">Private route</text>
+  <path d="M1190 370 L1190 295" class="line"/>
+  <text x="1215" y="339" class="small">Allowed HTTPS</text>
+
+  <rect x="760" y="585" width="580" height="60" fill="#f3f2f1" stroke="#605e5c" stroke-width="2" rx="10"/>
+  <text x="1050" y="610" text-anchor="middle" class="text">Replace the current proxy with</text>
+  <text x="1050" y="635" text-anchor="middle" class="label">http://&lt;Azure-Firewall-private-IP&gt;:&lt;explicit-proxy-port&gt;</text>
+</svg>

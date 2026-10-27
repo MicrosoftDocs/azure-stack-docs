@@ -4,7 +4,7 @@ description: Update 8 release notes for App Service on Azure Stack Hub, includin
 author: sethmanheim
 manager: stefsch
 ms.topic: release-notes
-ms.date: 07/09/2026
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
@@ -16,6 +16,8 @@ ms.custom: sfi-ropc-nochange
 ---
 
 # App Service on Azure Stack Hub update 8 release notes
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 These release notes describe new features, fixes, and known issues in Azure App Service on Azure Stack Hub update 8. Known issues are divided into two sections: issues related to the upgrade process and issues with the build (post-installation).
 

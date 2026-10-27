@@ -1,17 +1,17 @@
 ---
-title: Create and Connect to an Azure Local Confidential VM (Preview)
+title: Create and Connect to an Azure Local Confidential VM
 description: Learn how to create a confidential VM (CVM) on Azure Local by using the Azure portal or Azure CLI, and how to connect to the VM to verify attestation.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/27/2026
+ms.date: 10/21/2026
 ms.custom:
   - devx-track-azurecli
 ms.subservice: hyperconverged
 ---
 
-# Create and connect to an Azure Local confidential VM (preview)
+# Create and connect to an Azure Local confidential VM
 
 ::: moniker range=">=azloc-2607"
 
@@ -19,11 +19,9 @@ ms.subservice: hyperconverged
 
 This article describes how to create a confidential VM (CVM) on Azure Local by using the Azure portal or the Azure CLI, and how to connect to the CVM after it's deployed. Confidential VMs use an integrity-protected VM image and stronger isolation guarantees than a standard VM.
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
-
 ## Prerequisites
 
-- An Azure Local cluster deployed with the `confidentialVmIntent` parameter set to `Enable` in the ARM deployment template (API version `2026-04-01-preview`).
+- An Azure Local cluster deployed with the `confidentialVmIntent` parameter set to `Enable` in the ARM deployment template (API version `2026-10-15-preview` or the latest available version).
 - The Azure Stack HCI VM extension, version 1.12.0 or later.
 - A prepared integrity-protected VHDX image uploaded to the cluster.
 
@@ -82,7 +80,7 @@ Use the Azure portal to create a CVM interactively, with guided prompts for secu
 
 ### Verify deployment (Azure portal)
 
-Go to your cluster > **Virtual machines** and verify that your CVM is running and shows **Security properties** on the **Overview** tab. Confirm that the CVM properties show `ConfidentialVmStatus: [Enabled]` in the cluster JSON view (using API version `2026-04-01-preview`).
+Go to your cluster > **Virtual machines** and verify that your CVM is running and shows **Security properties** on the **Overview** tab. Confirm that the CVM properties show `ConfidentialVmStatus: [Enabled]` in the cluster JSON view (using API version `2026-10-15-preview` or the latest available version).
 
 > [!NOTE]
 > Use attestation to verify the deployment status of your CVM. Attestation is the only reliable way to confirm a CVM's security state.
@@ -161,7 +159,7 @@ $endpoint = $cluster.isolatedVmAttestationConfiguration.attestationServiceEndpoi
 
 - [Create Azure Local virtual machines enabled by Azure Arc](create-arc-virtual-machines.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
-- [Connect to an Azure Local VM using SSH, RDP over SSH, or VM Connect (preview)](connect-arc-vm-using-ssh.md)
+- [Connect to an Azure Local VM using SSH, RDP over SSH, or VM Connect](connect-arc-vm-using-ssh.md)
 
 ::: moniker-end
 

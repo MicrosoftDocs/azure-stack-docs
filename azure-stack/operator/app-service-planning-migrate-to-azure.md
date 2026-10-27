@@ -3,7 +3,7 @@ title:  Plan a Migration to Azure App Service from Azure Stack Hub
 description: Plan your migration from Azure App Service on Azure Stack Hub to Azure App Service in Azure
 author: apwestgarth
 ms.topic: upgrade-and-migration-article
-ms.date: 07/13/2026
+ms.date: 10/24/2026
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.custom: sfi-image-nochange
@@ -11,6 +11,8 @@ ms.custom: sfi-image-nochange
 ---
 
 # Plan migration to Azure App Service from Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 
 To successfully migrate from Azure App Service on Azure Stack Hub to Azure App Service, start with a comprehensive assessment of your existing environment. Evaluate application architecture, platform dependencies, operational requirements, compliance constraints, and business objectives before selecting a migration strategy.

@@ -4,7 +4,7 @@ description: This article describes how to use Application Control on Azure Loca
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 11/04/2025
+ms.date: 10/03/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -29,16 +29,19 @@ You can use Application Control policies to manage which drivers and apps are al
 
 ## Manage Application Control settings with PowerShell
 
+> [!IMPORTANT]
+> The cmdlet names in this section apply to Azure Local, version 2610 and later. Starting with version 2610, the Application Control cmdlets use App Control names, such as `Enable-ASAppControlPolicy`, `Get-ASAppControlPolicyMode`, and `Add-ASAppControlSupplementalPolicy`. In version 2609 and earlier, use the WDAC names instead: `Enable-AsWdacPolicy`, `Enable-ASLocalWDACPolicy`, `Get-AsWdacPolicyMode`, `Add-ASWDACSupplementalPolicy`, and `Get-ASLocalWDACPolicyInfo`. In version 2610 and later, the WDAC names still work as aliases, so existing scripts keep running.
+
 ### Enable Application Control policy modes
 
 You can enable Application Control during or after deployment. Use PowerShell to enable or disable Application Control after deployment.
 
 Connect to one of the machines and use the following cmdlets to enable the desired Application Control policy in "Audit" or "Enforced" mode.
 
-In this build release there are two cmdlets:
+There are two cmdlets:
 
-- `Enable-AsWdacPolicy` - Affects all cluster nodes.
-- `Enable-ASLocalWDACPolicy` - Affects only the node on which the cmdlet is run.
+- `Enable-ASAppControlPolicy` - Affects all cluster nodes.
+- `Enable-ASLocalAppControlPolicy` - Affects only the node on which the cmdlet is run.
 
 Depending on your use case, you should run a global cluster change or a local node change.
 
@@ -50,24 +53,24 @@ This is useful when:
 - Your software or scripts are blocked by Application Control. In this case, you can use audit mode to understand and troubleshoot the issue.
 
 > [!NOTE]
-> When your application is blocked, Application Control creates a corresponding event. Review the Event log to understand details of the policy that's blocking your application. For more information, see the [Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
+> When your application is blocked, Application Control creates a corresponding event. Review the Event log to understand details of the policy that's blocking your application. For more information, see the [Application Control operational guide](/windows/security/application-security/application-control/app-control-for-business/operations/appcontrol-operational-guide).
 
 ### Switch Application Control policy modes
 
 Follow these steps to switch between Application Control policy modes. These PowerShell commands interact with the Orchestrator to enable the selected modes.
 
-[!INCLUDE [Switch WDAC policy mode](../includes/hci-switch-wdac-policy-mode.md)]
+[!INCLUDE [Switch Application Control policy mode](../includes/hci-switch-wdac-policy-mode.md)]
 
 <!--- ## Support for OEM extensions --->
 
 ### Create an Application Control policy to enable third party software
 
-While using Application Control in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating an Application Control supplemental policy. Additional information can be found in the [public Application Control documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using Application Control in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating an Application Control supplemental policy. For more information, see the [App Control for Business documentation](/windows/security/application-security/application-control/app-control-for-business/design/deploy-multiple-appcontrol-policies#supplemental-policy-creation).
 
 > [!NOTE]
 > To run or install new software, you might need to switch Application Control to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch Application Control back to enforced mode.
 
-Create a new policy in the Multiple Policy Format as shown below. Then use ```Add-ASWDACSupplementalPolicy -Path Policy.xml``` to convert it to a supplemental policy and deploy it across nodes in the cluster.
+Create a new policy in the Multiple Policy Format as shown in the following section. Then use `Add-ASAppControlSupplementalPolicy -Path Policy.xml` to convert it to a supplemental policy and deploy it across nodes in the cluster.
 
 #### Create an Application Control supplemental policy
 
@@ -78,15 +81,18 @@ Use the following steps to create a supplemental policy:
 1. Once you have all your software in place, run the following command to create your supplemental policy. Use a unique policy name to help identify it.
 
    ```powershell
-   New-CIPolicy -MultiplePolicyFormat -Level Publisher -FilePath c:\wdac\Contoso-policy.xml -UserPEs -Fallback Hash -ScanPath c:\software\codetoscan
+   New-CIPolicy -MultiplePolicyFormat -Level Publisher -FilePath c:\appcontrol\Contoso-policy.xml -UserPEs -Fallback Hash -ScanPath c:\software\codetoscan
    ```
+
+   > [!IMPORTANT]
+   > Some software is signed in a way that makes a `Publisher` level policy fail at runtime. If the software you're scanning is affected, use `-Level LeafCertificate` instead. See [Choose the signer level for your supplemental policy](#choose-the-signer-level-for-your-supplemental-policy).
 
 1. Run the following cmdlet to modify the metadata of your supplemental policy:
 
    ```powershell
 
     # Path of new created XML)
-    $policyPath = "c:\wdac\Contoso-policy.xml"
+    $policyPath = "c:\appcontrol\Contoso-policy.xml"
 
    # Set Policy Version (VersionEx in the XML file)
     $policyVersion = "1.0.0.1"
@@ -99,19 +105,19 @@ Use the following steps to create a supplemental policy:
 1. Run the following cmdlet to deploy the policy:
 
    ```powershell
-   Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-policy.xml
+   Add-ASAppControlSupplementalPolicy -Path c:\appcontrol\Contoso-policy.xml
    ```
 
 1. Run the following cmdlet to check the status of the new policy:
 
    ```powershell
-   Get-ASLocalWDACPolicyInfo
+   Get-ASLocalAppControlPolicyInfo
    ```
 
    Here's a sample output of these cmdlets:
 
    ```powershell
-   C:\> Get-ASLocalWDACPolicyInfo
+   C:\> Get-ASLocalAppControlPolicyInfo
 
    NodeName          : Node01
    PolicyMode        : Enforced
@@ -131,6 +137,26 @@ Use the following steps to create a supplemental policy:
    MicrosoftProvided : False
    LastTimeApplied   : 10/26/2023 11:14:24 AM
    ```
+
+#### Choose the signer level for your supplemental policy
+
+The `-Level` parameter of `New-CIPolicy` decides which certificate in the signing chain the policy records. `Publisher` and `PcaCertificate` both record an intermediate or root certificate, which keeps the policy stable as the vendor ships new versions of the same binary.
+
+For some signed software, those two levels produce a policy that deploys without error but still blocks the application. This problem occurs when the file's signature carries two copies of the same root certificate authority, a cross-signed copy and a self-signed copy. The policy records the cross-signed copy, while the code integrity engine resolves the chain to the self-signed copy. The two certificates have different hashes, so the rule never matches and the binary stays blocked. The application is blocked in the same way as unsigned software, and the Code Integrity event log doesn't indicate that the policy rule was close to matching.
+
+Software signed by widely used commercial certificate authorities is the most likely to be affected, because cross-signed roots are common in those chains.
+
+If a supplemental policy doesn't take effect for signed software, create the policy at leaf certificate level instead:
+
+```powershell
+New-CIPolicy -MultiplePolicyFormat -Level LeafCertificate -FilePath c:\appcontrol\Contoso-policy.xml -UserPEs -Fallback Hash -ScanPath c:\software\codetoscan
+```
+
+`LeafCertificate` records the end-entity certificate that signed the file, which is unambiguous and matches at runtime. The trade-off is maintenance: the leaf certificate changes when the vendor signs a new build, so you must regenerate and redeploy the supplemental policy each time you update that software. Plan for this maintenance if you choose leaf certificate level for software that updates frequently.
+
+## Investigate blocked applications
+
+When Application Control blocks a binary, it records the block in the Code Integrity event log on the node that ran the binary. To analyze those events across an instance rather than one node at a time, use the App Control (WDAC) insights workbook. This workbook aggregates block and audit events in Azure Monitor and groups them by publisher, file, and node. You can find the workbook and its setup instructions in the [OSConfig guides repository](https://github.com/microsoft/osconfig/tree/main/guides/How%20to%20get%20insights%20into%20App%20Control%20(WDAC)%20events).
 
 ## Next steps
 

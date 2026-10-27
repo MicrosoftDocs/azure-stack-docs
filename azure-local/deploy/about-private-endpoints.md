@@ -3,7 +3,7 @@ title: About using Private Endpoints to Connect with Azure Local
 description: Review how Azure Private Endpoints can be used when deploying Azure Local, with and without Arc gateway, and with and without Proxy.
 author: ronmiab
 ms.author: robess
-ms.date: 03/09/2026
+ms.date: 09/29/2026
 ms.topic: concept-article
 ---
 
@@ -19,15 +19,13 @@ A private endpoint is a network interface that uses a private IP address from th
 
 Azure Local infrastructure (including the nodes and the Arc resource bridge VM) supports many [Azure private endpoint types](/azure/private-link/private-endpoint-overview), but Azure Arc Private Link is not supported. Because of this, Azure Local always registers with Azure Arc using public Arc endpoints.
 
-For more information, see [Use Azure Private Link to connect machines to Azure Arc by Using a private endpoint](/azure/azure-arc/servers/private-link-security) and [Troubleshoot Azure Arc resource bridge issues](/azure/azure-arc/resource-bridge/troubleshoot-resource-bridge).
-
 The following table summarizes key points for using supported private endpoints with Azure Local.
 
 | Scenario | Private endpoint outbound path | Supported private endpoint types | Key requirements or limitations |
 |----|----|:--:|:--:|
 | **1. No proxy, no Arc gateway** | Direct. <br> Routed via Express Route or S2S VPN | Storage, SQL, Key Vault, Azure Container Registry and other PaaS services supporting Private Link | Configure routing and DNS for private endpoints; no proxy bypass needed |
 | **2. With proxy, no Arc gateway** | Proxy bypassed. <br> Routed via Express Route or S2S VPN | Storage, SQL, Key Vault, Azure Container Registry and other PaaS services supporting Private Link | Configure routing, DNS and proxy bypass list for private endpoint FQDNs |
-| **3. No proxy, with Arc gateway** | AKS cluster IP proxy bypassed. <br> Routed via Express Route or S2S VPN | Storage, SQL, Key Vault, Azure Container Registry and other PaaS services supporting Private Link | Configure routing, DNS and environment variables for AKS/Arc resource bridge after Arc registration to bypass private endpoint FQDNs |
+| **3. No proxy, with Arc gateway** | Outside the gateway tunnel. Use local bypass when the source subnet's direct path is required. <br> Routed via ExpressRoute or S2S VPN | Storage, SQL, Key Vault, Azure Container Registry and other PaaS services supporting Private Link | Configure DNS and routing. For an allowed endpoint, use `gatewayBypass` to skip only the tunnel; non-allowed endpoints already use fallback. Use local bypass to skip the AKS cluster-IP first hop. For existing instances, follow the post-deployment update procedure. |
 | **4. With proxy, with Arc gateway** | Proxy bypassed. <br> Routed via Express Route or S2S VPN | Storage, SQL, Key Vault, Azure Container Registry and other PaaS services supporting Private Link | Configure routing, DNS and proxy bypass for private endpoint FQDNs |
 
 ### DNS requirements
@@ -50,6 +48,21 @@ Azure Local infrastructure must always resolve Azure Arc endpoints to public IP 
         -  To the public internet or through Arc gateway for Azure public endpoints.
         -  Through Azure ExpressRoute/Site-to-Site (S2S) VPN for private endpoints.
 
+### Storage account private endpoints
+
+[!INCLUDE [storage-account-private-endpoints-intro](../includes/storage-account-private-endpoints-intro.md)]
+
+The required bypass configuration depends on your environment:
+
+- **No enterprise proxy or Arc gateway**: You don't need a bypass entry. Traffic follows the default route.
+- **Enterprise proxy**: Add each storage account FQDN to the local proxy bypass list. This configuration allows private endpoint traffic to bypass the proxy and follow the source subnet's default route.
+- **Arc gateway without an enterprise proxy**: If you currently allow the storage endpoint, you can add its FQDN to the cloud-side Arc gateway `gatewayBypass` list to bypass the gateway tunnel. Endpoints that aren't allowed already use the fallback path and don't require a `gatewayBypass` entry.
+- **Direct routing required**: Use local bypass when traffic must follow the source subnet's direct path, including when AKS traffic must bypass the cluster-IP first hop.
+
+Review the [current endpoint guidance](deployment-azure-arc-gateway-overview.md#azure-local-endpoints-not-redirected) before choosing an option.
+
+> [!IMPORTANT]
+> Specify individual storage account FQDNs. Don't use a wildcard such as `*.blob.core.windows.net` when only specific storage accounts should bypass the proxy or Arc gateway.
 
 ### Arc resource bridge and AKS reserved network subnets with private endpoints
 
@@ -61,7 +74,7 @@ When deploying Arc Resource Bridge VM in Azure Local:
     | **Service** | **Designated IP range** |
     |----|----|
     | Arc resource bridge Kubernetes pods | 10.244.0.0/16 (from 10.244.0.1 to 10.244.255.254) |
-    | Arc resource bridge Kubernetes services | 10.96.0.0/12 (from 10.96.0.1 to 10.111.255.54) |
+    | Arc resource bridge Kubernetes services | 10.96.0.0/12 (from 10.96.0.1 to 10.111.255.254) |
 
 - Ensure that your PaaS services private endpoint IPs on the Azure VNET subnet used by AKS workloads don't overlap with any of reserved Kubernetes subnets.
 

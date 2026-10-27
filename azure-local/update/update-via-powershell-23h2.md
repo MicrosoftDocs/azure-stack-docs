@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 07/12/2026
+ms.date: 10/22/2026
 ms.subservice: hyperconverged
 ---
 
@@ -60,6 +60,7 @@ Before you begin, make sure that you meet the following prerequisites:
 - You have access to an Azure Local system that is running version 2311 or higher. The system is registered in Azure.
 - You have access to a client that can connect to your Azure Local.
 - You have access to the solution update over the network. <!--A typical quarterly update downloads around XX GB of files.-->
+- If the `AzureEdgeAlerts` extension is installed, update it to version 12.2607.5.0 or later before updating Azure Local to version 2610.
 
 ## Connect to your Azure Local
 

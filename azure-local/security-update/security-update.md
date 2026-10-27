@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 09/09/2026
+ms.date: 10/13/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -11,6 +11,81 @@ ms.subservice: hyperconverged
 # Security updates for Azure Local
 
 This article lists the security updates that are available for Azure Local.
+
+:::moniker range="=azloc-2610"
+
+## October OS security update (KB5126646) for Azure Local
+
+This section describes the 2610 security updates associated with OS build **26100.33650** released on October 13, 2026 ([KB5126646](https://support.microsoft.com/help/5126646)).
+
+For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
+
+## Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+
+## Improvements
+
+This security update contains fixes and quality improvements from [KB5122871](https://support.microsoft.com/servicing/os/windows-server/2026/09/kb5122871-windows-server-2025-security-update) (released September 8, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[App]** This update upgrades Curl for Windows to version 8.21.0, which includes the latest security improvements and reliability updates.
+
+- **[Authentication]** This update improves Netlogon secure channel connections, helping member servers connect successfully to domain controllers that you set up before Windows Server 2025.
+
+- **[Emoji]** This update improves security for emoji search in the Expressive Input Panel by updating the libraries used by EmojiSearchData.
+
+- **[HyperV]** This update improves the reliability of Intel Trusted Domain Extensions (TDX) confidential virtual machines in Hyper-V reliability issues affecting TDX operation.
+
+- **[Networking]** This update improves the NetUseAdd function, helping it establish SMB network connections successfully during NULL session attempts.
+
+- **[ReFS security]** This update adds auditing and optional policy controls for [ReFS](/windows-server/storage/refs/refs-overview) volumes on externally attached storage devices. Auditing is enabled by default, while enforcement controls remain disabled by default to give administrators time to evaluate and prepare for future security hardening changes. To learn more, see [KB5130741](https://support.microsoft.com/help/5130741).
+
+- **[Security]** New! This update adds support for ML-KEM post-quantum key exchange in Transport Layer Security (TLS) 1.3, helping protect encrypted connections against future quantum-computing threats.
+
+- **[Timezone]** This update updates Windows time-zone data to support permanent daylight saving time (DST) in British Columbia and Alberta starting in November 2026.
+
+If you already installed previous updates, your device downloads and installs only the new updates included in this package.
+
+For an overview of Azure Local, see [What is Azure Local?](../overview.md)
+
+## Known issues
+
+### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
+
+### Remote Desktop Services might stop responding after September 2026 security update
+
+**Symptoms**
+
+After installing the September 2026 Windows security update, some organizations might experience issues with Remote Desktop Services (RDS).
+
+In some environments, RDS might become unstable, resulting in RDP connections failing after several minutes, sign-in issues, or servers hanging at "Please wait for the Remote Desktop Configuration". Related tools, including Microsoft Management Console (MMC), RDS Licensing Diagnoser, and File Explorer might also become unresponsive. Additionally, the Windows Update page might stop responding and continuously display a loading indicator.
+
+**Microsoft Support:** IT administrators who need an immediate workaround should contact [Microsoft Support for Business](https://support.microsoft.com/support-for-business) for assistance.
+
+**Resolution**
+
+This issue is resolved in Windows updates released on and after September 14, 2026 such as [KB5129235](https://support.microsoft.com/help/5129235). We recommend you install the latest Windows update for your device as it contains important improvements and issue resolutions, including this one.
+
+## To install
+
+### Before you install this update
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Oct).
+
+## File information
+
+To get a list of the files provided in this update, download the file information for [cumulative update 5126646](https://go.microsoft.com/fwlink/?LinkId=2384036).
+
+:::moniker-end
 
 :::moniker range="=azloc-2609"
 
@@ -53,7 +128,7 @@ For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) doesn't display error details
+### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -102,7 +177,7 @@ For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) doesn't display error details
+### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -181,7 +256,7 @@ For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) doesn't display error details
+### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -240,7 +315,7 @@ For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
 ## Known issues
 
-## Windows Server Update Services (WSUS) doesn't display error details
+### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
@@ -367,7 +442,7 @@ For a list of the files provided in this update, download the file information f
 
 ::: moniker-end
 
-::: moniker range="=azloc-2604"
+::: moniker range="=azloc-previous"
 
 ## April OS security update (KB5082063) for Azure Local
 
@@ -375,16 +450,16 @@ This section provides the 2604 security updates associated with OS build **26100
 
 To learn more about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
-## Announcements and messages
+### Announcements and messages
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
+#### Windows Secure Boot certificate expiration
 
 > [!Important]
 > Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5078740](https://support.microsoft.com/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd?preview=true) (released March 10, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -412,15 +487,15 @@ If you already installed previous updates, your device downloads and installs on
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
-## Known issues
+### Known issues
 
-### Windows Server Update Services (WSUS) doesn't display error details
+#### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. This functionality is temporarily removed to address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287).
 
-## To install
+### To install
 
-### Before you install this update
+#### Before you install this update
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
@@ -432,10 +507,6 @@ To install the LCU on your Azure Local instance, see [Update Azure Local](../upd
 
 For a list of the files provided in this update, download the file information for [cumulative update 5082063](https://go.microsoft.com/fwlink/?linkid=2359591).
 
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
 ## March OS security update (KB5078740) for Azure Local
 
 This section provides the 2603 security updates associated with OS build **26100.32522** released on March 10, 2026 ([KB5078740](https://support.microsoft.com/topic/march-10-2026-kb5078740-os-build-26100-32522-fea85758-f53d-4e3e-bbbf-62d9998f92bd)). It also includes key notifications, announcements, change logs, and end-of-support notices.
@@ -446,7 +517,7 @@ To learn more about Windows update terminology, see [Types of Windows updates](/
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
+#### Windows Secure Boot certificate expiration
 
 > [!Important]
 > Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with this release, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
@@ -1532,7 +1603,7 @@ This security update includes quality improvements. Below is a summary of the ke
 
 - **[Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)]** This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
-- **[Virtual machine (VM) storage pool]** Fixed: Some operations that rely on a storage pool stop working. This occurs because the virtual machine (VM)can't reclaim disk space to do task such as load balancing.
+- **[Virtual machine (VM) storage pool]** Fixed: Some operations that rely on a storage pool stop working. This issue occurs because the virtual machine (VM) can't reclaim disk space to do tasks such as load balancing.
 
 - **[USB cameras]** Fixed: Your device does not recognize the camera is on. This issue occurs after you install the January 2025 security update.
 
@@ -1546,7 +1617,7 @@ The following is a known issue with this update.
 
 Following the installation of the October 2024 security update, some customers report that the OpenSSH (Open Secure Shell) service fails to start, preventing SSH connections. The service fails with no detailed logging, and manual intervention is required to run the sshd.exe process.
 
-This issue is affecting enterprise, IOT, and education customers, with a limited number of devices impacted. Microsoft is investigating whether consumer customers using Home or Pro editions of Windows are also affected.
+This issue affects enterprise, IoT, and education customers, with a limited number of devices impacted. Microsoft is investigating whether consumer customers who use Home or Pro editions of Windows are also affected.
 
 **Workaround**
 

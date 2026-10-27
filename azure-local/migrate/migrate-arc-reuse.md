@@ -3,7 +3,7 @@ title: Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Lo
 description: Learn how to retain existing Azure Arc connected machine agents when you migrate VMware and Hyper-V VMs to Azure Local using Azure Migrate.
 author: trumanbrown
 ms.topic: how-to
-ms.date: 09/28/2026
+ms.date: 10/26/2026
 ms.author: trumanbrown
 ms.subservice: hyperconverged
 ---
@@ -53,7 +53,7 @@ Before you begin, make sure that:
 ## Configure Arc reuse in the Replicate wizard
 
 
-In your Azure Migrate project, start the Replicate wizard for Azure Local. Complete Basics and Target appliance as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
+In your Azure Migrate project, start the Replicate wizard for Azure Local. Complete Basics and Appliances as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
 
 ### Virtual machines
 

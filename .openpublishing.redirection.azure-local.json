@@ -657,7 +657,7 @@
     },
     {
       "source_path": "azure-stack/hci/manage/configure-proxy-settings-23h2.md", 
-      "redirect_url": "/azure/azure-local/manage/configure-proxy-settings-23h2", 
+      "redirect_url": "/azure/azure-local/manage/update-proxy-settings",
       "redirect_document_id": false
     },
     {
@@ -1518,6 +1518,11 @@
     {
       "source_path": "azure-stack/hci/upgrade/validate-solution-upgrade-readiness.md", 
       "redirect_url": "/azure/azure-local/upgrade/validate-solution-upgrade-readiness", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-local/manage/configure-proxy-settings-23h2.md",
+      "redirect_url": "/azure-local/manage/update-proxy-settings",
       "redirect_document_id": false
     },
     {

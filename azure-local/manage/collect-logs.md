@@ -604,6 +604,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
 | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Local. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the system during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| SANDiagnostics | Collects SAN storage diagnostics, including MPIO, Fibre Channel and iSCSI initiators, disks, volumes, Cluster Shared Volumes, iSCSI target reachability, event logs, and the cluster logs.|
 
 ---
 

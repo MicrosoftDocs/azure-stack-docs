@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 08/08/2024
 ms.author: sethm
 ms.reviewer: anwestg
-ms.lastreviewed: 03/21/2019
+ms.lastreviewed: 10/24/2026
 ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want to back up App Service on Azure Stack so I don't lose important data.
@@ -15,6 +15,8 @@ ms.custom: sfi-image-nochange
 ---
 
 # Back up App Service on Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 This article provides instructions on how to back up App Service on Azure Stack Hub.
 

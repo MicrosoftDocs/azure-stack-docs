@@ -5,7 +5,7 @@ metadata:
   ms.service: azure-stack-hub
   author: sethmanheim
   ms.topic: faq
-  ms.date: 08/08/2024
+  ms.date: 10/24/2026
   ms.author: sethm
   ms.reviewer: anwestg
   ms.lastreviewed: 04/13/2020
@@ -14,10 +14,11 @@ metadata:
   # Keyword: azure stack hub app service billing
 title: Azure App Service on Azure Stack Hub billing overview and FAQ
 summary: |
-
   This article describes how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for using the service.
 
-    ## Billing overview
+  ## Billing overview
+
+  [!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
   
   Azure Stack Hub cloud operators can choose to deploy Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
   

@@ -4,7 +4,7 @@ description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 author: sethmanheim
 
 ms.topic: install-set-up-deploy
-ms.date: 1/29/2020
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 1/29/2020
@@ -17,6 +17,8 @@ ms.custom: sfi-image-nochange
 
 
 # Add workers and infrastructure in Azure App Service on Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 This document provides instructions on how to scale infrastructure and worker roles in Azure App Service on Azure Stack Hub. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
 

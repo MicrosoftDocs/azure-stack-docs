@@ -3,7 +3,7 @@ title: Remove Azure App Service from Azure Stack Hub
 description: Learn how to remove Azure App Service from Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/17/2020
@@ -11,6 +11,8 @@ ms.lastreviewed: 04/17/2020
 ---
 
 # Remove Azure App Service from Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 This article describes how to remove the Azure App Service resource provider and related components from Azure Stack Hub.
 

@@ -3,7 +3,7 @@ title: Plan App Service server roles capacity - Azure Stack Hub
 description: Learn about capacity planning for App Service server roles in Azure Stack Hub.
 author: sethmanheim
 ms.topic: best-practice
-ms.date: 03/06/2025
+ms.date: 10/24/2026
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/13/2020
@@ -14,6 +14,8 @@ ms.lastreviewed: 04/13/2020
 ---
 
 # Capacity planning for App Service server roles in Azure Stack Hub
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 To set up a production-ready deployment of Azure App Service on Azure Stack Hub, you must plan for the capacity you expect the system to support.  
 

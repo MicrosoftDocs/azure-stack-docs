@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360" role="img" aria-labelledby="title desc">
+  <title id="title">Steps to move Azure Local to private path connectivity</title>
+  <desc id="desc">A six-step process: prepare the private connection, configure Azure Firewall explicit proxy, enable Arc gateway, record and test the configuration, update the Azure Local proxy, and validate before removing the public path.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1368c3"/>
+    </marker>
+    <style>
+      .heading { font: 700 27px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .number { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .small { font: 15px 'Segoe UI', Arial, sans-serif; fill: #17253d; }
+      .box { fill: #e8f3ff; stroke: #1368c3; stroke-width: 3; rx: 12; }
+      .circle { fill: #1368c3; }
+      .line { fill: none; stroke: #1368c3; stroke-width: 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1400" height="360" fill="#ffffff"/>
+  <text x="700" y="48" text-anchor="middle" class="heading">Public-to-private path migration sequence</text>
+
+  <path d="M225 190 L250 190" class="line"/>
+  <path d="M450 190 L475 190" class="line"/>
+  <path d="M675 190 L700 190" class="line"/>
+  <path d="M900 190 L925 190" class="line"/>
+  <path d="M1125 190 L1150 190" class="line"/>
+
+  <g transform="translate(30,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">1</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Prepare private</text>
+    <text x="95" y="82" text-anchor="middle" class="label">connection</text>
+    <text x="95" y="118" text-anchor="middle" class="small">ExpressRoute or</text>
+    <text x="95" y="140" text-anchor="middle" class="small">site-to-site VPN</text>
+  </g>
+
+  <g transform="translate(255,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">2</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Configure Azure</text>
+    <text x="95" y="82" text-anchor="middle" class="label">Firewall proxy</text>
+    <text x="95" y="118" text-anchor="middle" class="small">Enable explicit proxy</text>
+    <text x="95" y="140" text-anchor="middle" class="small">and application rules</text>
+  </g>
+
+  <g transform="translate(480,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">3</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Enable Azure</text>
+    <text x="95" y="82" text-anchor="middle" class="label">Arc gateway</text>
+    <text x="95" y="118" text-anchor="middle" class="small">Required for private</text>
+    <text x="95" y="140" text-anchor="middle" class="small">path topology</text>
+  </g>
+
+  <g transform="translate(705,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">4</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Record and test</text>
+    <text x="95" y="82" text-anchor="middle" class="label">settings</text>
+    <text x="95" y="118" text-anchor="middle" class="small">Save old proxy and test</text>
+    <text x="95" y="140" text-anchor="middle" class="small">private IP and port</text>
+  </g>
+
+  <g transform="translate(930,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">5</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Update Azure</text>
+    <text x="95" y="82" text-anchor="middle" class="label">Local proxy</text>
+    <text x="95" y="118" text-anchor="middle" class="small">Use firewall private</text>
+    <text x="95" y="140" text-anchor="middle" class="small">IP and proxy port</text>
+  </g>
+
+  <g transform="translate(1155,105)">
+    <rect width="190" height="170" class="box"/>
+    <circle cx="95" cy="0" r="27" class="circle"/>
+    <text x="95" y="8" text-anchor="middle" class="number">6</text>
+    <text x="95" y="58" text-anchor="middle" class="label">Validate and</text>
+    <text x="95" y="82" text-anchor="middle" class="label">cut over</text>
+    <text x="95" y="118" text-anchor="middle" class="small">Monitor, then remove</text>
+    <text x="95" y="140" text-anchor="middle" class="small">the public path</text>
+  </g>
+
+  <text x="700" y="330" text-anchor="middle" class="small">Keep the existing public path available until all Azure Local, Arc resource bridge, AKS, and extension checks pass.</text>
+</svg>

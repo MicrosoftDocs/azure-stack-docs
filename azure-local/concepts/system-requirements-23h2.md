@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions
-ms.date: 09/04/2026
+ms.date: 10/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -50,6 +50,7 @@ Here are the Azure requirements for your Azure Local instance:
    Regions supported in the Azure Government cloud:
 
    - US Gov Virginia
+   - Azure Gov Arizona (preview)
 
    ---
 

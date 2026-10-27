@@ -33,7 +33,7 @@ ms.date: 09/04/2026
 
 1. Select **Done** to start the configuration and registration process.
 
-1. Monitor the registration progress on the **Configuration status** page. The app might display the following states:
+1. Monitor the registration progress on the **Configuration status** page. Select **View details** when available to open the details pane on the right. The app might display the following states:
 
    - Registration not started.
 

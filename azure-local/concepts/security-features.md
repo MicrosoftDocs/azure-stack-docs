@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: concept-article
 ms.service: azure-local
-ms.date: 08/06/2026
+ms.date: 10/06/2026
 ms.subservice: hyperconverged
 ---
 
@@ -93,7 +93,7 @@ To learn more about Deny rules, see:
 
 - [Driver blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
 
-- [User Mode blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
+- [User Mode blocklist](/windows/security/application-security/application-control/app-control-for-business/design/applications-that-can-bypass-appcontrol).
 
 ## BitLocker encryption
 
@@ -119,6 +119,23 @@ In this release, the following local built-in users associated with `RID 500` an
 
 > [!IMPORTANT]
 > We recommend that you create your own local administrator account, and that you disable the well-known `RID 500` user account.
+
+### Account lockout for local accounts
+
+The security baseline applies an account lockout policy to the local accounts on your Azure Local system, including the built-in administrator account. The account lockout policy uses the following default values:
+
+|Policy |Default value |
+|-----|-----|
+|Account lockout threshold |3 invalid sign-in attempts |
+|Account lockout duration |15 minutes |
+|Reset account lockout counter after |15 minutes |
+
+The built-in administrator account associated with `RID 500` isn't exempt from this policy. After three invalid sign-in attempts, the built-in administrator account is locked for the lockout duration, in the same way as any other local account.
+
+> [!IMPORTANT]
+> Ensure that you have another way to sign in to your system, such as your own local administrator account, before you rely on the built-in administrator account. If every local account is locked out, you must wait for the lockout duration to elapse.
+
+The account lockout settings are part of the security baseline, and you can review or change them. For more information, see [Manage security baseline on Azure Local](../manage/manage-secure-baseline.md).
 
 ## Secret creation and rotation
 

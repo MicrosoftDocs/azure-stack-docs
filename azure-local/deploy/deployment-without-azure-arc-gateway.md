@@ -3,7 +3,7 @@ title: Register Azure Local with Azure Arc without using Arc Gateway
 description: Learn how to register Azure Local with Azure Arc with and without proxy setup. The proxy configuration can be done via an Arc script or via the Configurator app on Azure Local. 
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/01/2026
+ms.date: 10/13/2026
 ms.author: robess
 ms.service: azure-local
 zone_pivot_groups: register-arc-options
@@ -17,6 +17,8 @@ ms.subservice: hyperconverged
 ::: zone pivot="register-proxy"
 
 This article details how to register Azure Local machines with Azure Arc without using an Arc gateway and with proxy configuration enabled. The proxy configuration can be done via an Arc script or via the Configurator app for Azure Local.
+
+[!INCLUDE [post-deployment-proxy-update](../includes/post-deployment-proxy-update.md)]
 
 - **Configure with a script**: You can use an Arc script to configure registration settings.
 
@@ -32,8 +34,6 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later.
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
-
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -50,8 +50,8 @@ Review the parameters used in the script:
 | `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
 | `ProxyServer` | Optional. Proxy Server address when required for outbound connectivity. |
 | `ProxyBypass` | Optional. Define the bypass list for the proxy. Use comma to separate each item from the list. |
-| `ArmAccessToken` | Optional. Required if you choose to authenticate using an Azure Resource Manager (ARM) access token. If omitted, the script prompts for device code authentication. |
-| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate by using an Azure Resource Manager (ARM) access token. If you omit this parameter, the script prompts for device code authentication. |
+| `TargetSolutionVersion` |Optional. The target Azure Local solution version to use for the initial deployment after Azure Arc registration. If you don't specify this optional parameter, you're prompted to select a version from the list of available versions. For example: `12.2602.1002.10`. |
 
 ## Step 2: Set parameters
 
@@ -99,8 +99,7 @@ $armTokenResponse = Get-AzAccessToken
 # Required because Get-AzAccessToken returns SecureString
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
 
-# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
-# Example: "12.2602.1002.10"
+# Optional: The target Azure Local solution version for initial deployment after Azure Arc registration. If omitted, select a version from the available options.
 $TargetSolutionVersion = "<solution-version>"
 ```
 
@@ -121,84 +120,7 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 
 ## Step 3: Run registration script
 
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration).
-
-1. Run the Arc registration script. The script takes a few minutes to run.
-
-   ```powershell
-   $params = @{
-    TenantId       = $Tenant
-    SubscriptionID = $Subscription
-    ResourceGroup  = $RG
-    Region         = $Region
-    Cloud          = "AzureCloud"
-   }
-
-   # Optional
-   if ($ProxyServer) {
-    $params.Proxy = $ProxyServer
-   }
-
-   # Optional
-   if ($ProxyBypassList) {
-    $params.ProxyBypass = $ProxyBypassList
-   }
-
-   # Optional: include only when using token-based authentication
-   if ($ArmAccessToken) {
-    $params.ArmAccessToken = $ArmAccessToken
-   }
-
-   # Optional
-   if ($TargetSolutionVersion) {
-    $params.TargetSolutionVersion = $TargetSolutionVersion
-   }
-
-   Invoke-AzStackHciArcInitialization @params
-   ```
-
-   > [!NOTE]
-   > If using `ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
-
-   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-   <details>
-   <summary>Expand this section to see an example output.</summary>
-
-   Here's a sample output of a successful registration of your machines:
-
-   ```output
-   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud" -Proxy $ProxyServer
-   >>
-   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-   Triggering bootstrap on the device...
-   Waiting for bootstrap to complete... Current Status: InProgress
-   =========SNIPPED=========SNIPPED=============
-   Waiting for bootstrap to complete... Current Status: InProgress
-   Waiting for bootstrap to complete... Current Status: Succeeded
-   Bootstrap succeeded.
-    
-   Triggering bootstrap log collection as a best effort.
-   Version Response                                                    
-   ------- --------                                                    
-   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-
-
-   PS C:\Users\Administrator>
-   ```
-   </details>
-
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
-
-Once the registration is complete, the Azure Local machines are registered in Azure Arc.
-
-### Handle preinstalled or outdated OS images during Azure Arc registration
-
-[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
+[!INCLUDE [run-registration-script-without-arc-gateway](../includes/run-registration-script-without-arc-gateway.md)]
 
 ## Step 4: Verify the setup is successful
 
@@ -248,7 +170,6 @@ Make sure the following prerequisites are met before proceeding:
 
 - You have access to Azure Local machines running release 2505 or later. 
 - You have assigned the appropriate permissions to the subscription used for registration. For more information, see [Assign required permissions for Azure Local deployment](deployment-arc-register-server-permissions.md).
-- Review guidance on [handling preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
 
 > [!IMPORTANT]
 > Run these steps as a local administrator on every Azure Local machine that you intend to cluster.
@@ -264,8 +185,8 @@ Review the parameters used in the script:
 | `SubscriptionID` | The ID of the subscription used to register your machines with Azure Arc. |
 | `ResourceGroup` | The resource group precreated for Arc registration of the machines. A resource group is created if one doesn't exist. |
 | `Region` | The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used. |
-| `ArmAccessToken` | Optional. Required if you choose to authenticate using an ARM access token. If omitted, the script prompts for device code authentication. |
-| `TargetSolutionVersion` | Optional. The target Azure Local solution version that the node must update to after registering with Azure Arc. For example: "12.2602.1002.10". |
+| `ArmAccessToken` | Optional. Required if you choose to authenticate by using an ARM access token. If you omit this parameter, the script prompts for device code authentication. |
+| `TargetSolutionVersion` | Optional. The target Azure Local solution version to use for the initial deployment after Azure Arc registration. If you don't specify this optional parameter, you're prompted to select a version from the list of available versions. For example: `12.2602.1002.10`. |
 
 ## Step 2: Set parameters
 
@@ -293,7 +214,7 @@ $armTokenResponse = Get-AzAccessToken
 # Required because Get-AzAccessToken returns SecureString
 $ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password    
 
-# Define the target Azure Local solution version that the node must update to after registering with Azure Arc.
+# Optional: The target Azure Local solution version for initial deployment after Azure Arc registration. If omitted, select a version from the available options.
 # Example: "12.2602.1002.10"
 $TargetSolutionVersion = "<solution-version>"
 ```
@@ -313,69 +234,7 @@ PS C:\Users\SetupUser> $TargetSolutionVersion = "12.2602.1002.10"
 
 ## Step 3: Run registration script
 
-> [!NOTE]
-> If your Azure Local system is preinstalled with an Original Equipment Manufacturer (OEM) image that's outdated or unsupported, or if it was installed with an older ISO, see [Handle preinstalled or outdated OS images during Azure Arc registration](#handle-preinstalled-or-outdated-os-images-during-azure-arc-registration-1).
-
-1. Run the Arc registration script. The script takes a few minutes to run.
-
-   ```powershell
-   $params = @{
-    TenantId            = $Tenant
-    SubscriptionID      = $Subscription
-    ResourceGroup       = $RG
-    Region              = $Region
-    Cloud               = "AzureCloud"
-    TargetSolutionVersion = $TargetSolutionVersion
-   }
-
-   # Optional: include only when using token-based authentication
-
-   if ($ArmAccessToken) {
-     $params.ArmAccessToken = $ArmAccessToken
-   }
-
-   Invoke-AzStackHciArcInitialization @params
-   ```
-
-   > [!NOTE]
-   > If using `ArmAccessToken`, convert the token to a plain text string using: `$ArmAccessToken = [System.Net.NetworkCredential]::new("", $armTokenResponse.Token).Password`.
-    
-   For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
-
-   <details>
-   <summary>Expand this section to see an example output.</summary>
-
-
-   ```output
-   PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -TenantId $Tenant -SubscriptionID $Subscription -ResourceGroup $RG -Region $Region -Cloud "AzureCloud"
-   >>
-   Configuration saved to: C:\Users\ADMINI~1\AppData\Local\Temp\bootstrap.json
-   Triggering bootstrap on the device...
-   Waiting for bootstrap to complete... Current Status: InProgress
-   =========SNIPPED=========SNIPPED=============
-   Waiting for bootstrap to complete... Current Status: InProgress
-   Waiting for bootstrap to complete... Current Status: Succeeded
-   Bootstrap succeeded.
-   
-   Triggering bootstrap log collection as a best effort.
-   Version Response                                                    
-   ------- --------                                                    
-   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-   V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
-
-
-   PS C:\Users\Administrator>
-   ```
-
-   </details>
-
-1. During the Arc registration process, you must authenticate with your Azure account. The console window displays a code that you must enter in the URL, displayed in the app, in order to authenticate. Follow the instructions to complete the authentication process.
-
-   :::image type="content" source="media/deployment-without-azure-arc-gateway/authentication-device-code.png" alt-text="Screenshot of the console window with device code and URL for authentication." lightbox="media/deployment-without-azure-arc-gateway/authentication-device-code.png":::
-
-### Handle preinstalled or outdated OS images during Azure Arc registration
-
-[!INCLUDE [handle-os-image-updates](../includes/azure-local-handle-os-image-update-during-arc-registration.md)]
+[!INCLUDE [run-registration-script-without-arc-gateway](../includes/run-registration-script-without-arc-gateway.md)]
 
 ## Step 4: Verify the setup is successful
 

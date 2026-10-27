@@ -2,7 +2,7 @@
 title: Validate Azure Managed Lustre CSI Driver container image security
 description: Learn how to verify the integrity and origin of Azure Lustre CSI Driver container images using Notation CLI and AKS Image Integrity.
 ms.topic: how-to
-ms.date: 10/16/2026
+ms.date: 10/23/2026
 author: pauljewellmsft
 ms.author: akashdubey
 ms.reviewer: brianl
@@ -95,8 +95,14 @@ Before you deploy the Azure Lustre CSI Driver, verify the digital signatures and
     notation policy import trustpolicy.json
     export NOTATION_EXPERIMENTAL=1
     
-    # Verify the controller image
-    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.3.0
+    # Verify the Jammy image used by Jammy node pods
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.6.0-jammy
+
+    # Verify the Noble image used by the controller and Noble node pods
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.6.0-noble
+
+    # Verify the Azure Linux 3 image used by Azure Linux 3 node pods
+    notation verify --allow-referrers-api mcr.microsoft.com/oss/v2/kubernetes-csi/azurelustre-csi:v0.6.0-azurelinux3
     ```
 
     The output of a successful verification looks like the following example:
@@ -114,6 +120,7 @@ To learn more about implementing image integrity policies for your application w
 ## Related content
 
 - [Azure Lustre CSI driver overview](use-csi-driver-kubernetes.md)
+- [Install the Azure Managed Lustre CSI driver](use-container-storage-interface-driver-install.md)
 - [Use dynamic provisioning with the Azure Lustre CSI driver](use-container-storage-interface-driver-dynamic-provisioning.md)
 - [Use static provisioning with the Azure Lustre CSI driver](use-container-storage-interface-driver-static-provisioning.md)
 - [Image Integrity in Azure Kubernetes Service (AKS)](/azure/aks/image-integrity)

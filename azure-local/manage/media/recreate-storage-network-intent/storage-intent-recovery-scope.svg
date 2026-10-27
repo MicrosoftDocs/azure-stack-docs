@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="diagram-title" aria-describedby="diagram-description">
+  <title id="diagram-title">Confirm the recovery scope</title>
+  <desc id="diagram-description">Use this procedure only when all three conditions are true: the missing intent was storage-only, its physical adapters are still present, and the previous configuration will be restored unchanged. Otherwise, use a different workflow. Converged management or compute intents, adapter additions or replacements, and changes to VLANs, RDMA, QoS, MTU, or IP design are outside this procedure. Don't remove an existing intent to change adapter membership.</desc>
+  <defs>
+    <style>text { font-family:'Segoe UI',sans-serif;letter-spacing:0; } .heading { font-size:42px;font-weight:650;fill:#edf3f6; } .subtitle { font-size:23px;fill:#b9c8d2; } .label { font-size:24px;font-weight:600;fill:#edf3f6; } .body { font-size:23px;fill:#b9c8d2; }</style>
+    <marker id="arrow-teal" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#76dec1" stroke-width="1.8" fill="none"/></marker>
+    <marker id="arrow-rose" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#ffa0c0" stroke-width="1.8" fill="none"/></marker>
+  </defs>
+  <rect width="1440" height="900" fill="#12171c"/>
+  <text x="48" y="67" class="heading">Is this the right recovery procedure?</text>
+  <text x="48" y="110" class="subtitle">Start with a storage intent that is missing and can't be restored</text>
+  <rect x="48" y="192" width="600" height="432" rx="6" fill="#1a242c" stroke="#3b4e5b" stroke-width="1.5"/>
+  <text x="80" y="238" class="label">Confirm all three conditions</text>
+  <g>
+    <circle cx="102" cy="301" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="102" y="309" text-anchor="middle" font-size="23" fill="#78c6ff">1</text>
+    <text x="144" y="295" class="body"><tspan x="144">The missing intent was</tspan><tspan x="144" dy="32" fill="#edf3f6">storage-only.</tspan></text>
+    <path d="M 80 353 H 616" stroke="#3b4e5b"/>
+    <circle cx="102" cy="405" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="102" y="413" text-anchor="middle" font-size="23" fill="#78c6ff">2</text>
+    <text x="144" y="399" class="body"><tspan x="144">The physical storage adapters</tspan><tspan x="144" dy="32" fill="#edf3f6">are still present.</tspan></text>
+    <path d="M 80 457 H 616" stroke="#3b4e5b"/>
+    <circle cx="102" cy="509" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="102" y="517" text-anchor="middle" font-size="23" fill="#78c6ff">3</text>
+    <text x="144" y="503" class="body"><tspan x="144">The goal is to restore the previous</tspan><tspan x="144" dy="32" fill="#edf3f6">configuration unchanged.</tspan></text>
+    <text x="80" y="592" font-size="21" fill="#b9c8d2">All conditions must be true before continuing.</text>
+  </g>
+  <path d="M 648 408 H 792" fill="none" stroke="#ffa0c0" stroke-width="2.5" marker-end="url(#arrow-rose)"/>
+  <text x="720" y="377" text-anchor="middle" font-size="20" fill="#ffa0c0">Any condition</text>
+  <text x="720" y="399" text-anchor="middle" font-size="20" fill="#ffa0c0">not met</text>
+  <rect x="792" y="192" width="600" height="432" rx="6" fill="#3c2431" stroke="#ffa0c0" stroke-width="1.5"/>
+  <text x="824" y="238" font-size="24" font-weight="600" fill="#ffa0c0">Use a different workflow</text>
+  <text x="824" y="290" class="body">This procedure doesn't cover:</text>
+  <g font-size="23" fill="#edf3f6">
+    <text x="824" y="340"><tspan x="824">Intents that combine storage with</tspan><tspan x="824" dy="32">management or compute.</tspan></text>
+    <text x="824" y="428"><tspan x="824">Adding an adapter or replacing</tspan><tspan x="824" dy="32">a failed adapter in an existing intent.</tspan></text>
+    <text x="824" y="516"><tspan x="824">Changes to VLANs, RDMA, QoS, MTU,</tspan><tspan x="824" dy="32">or the storage IP addressing design.</tspan></text>
+  </g>
+  <path d="M 348 624 V 704" fill="none" stroke="#76dec1" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+  <text x="372" y="672" font-size="20" fill="#76dec1">All conditions met</text>
+  <rect x="48" y="704" width="600" height="104" rx="6" fill="#202d37" stroke="#76dec1" stroke-width="1.5"/>
+  <text x="80" y="746" class="label">Continue to stage 2</text>
+  <text x="80" y="780" class="body">Recover the original configuration before submitting.</text>
+  <rect x="792" y="704" width="600" height="104" rx="6" fill="#1a242c" stroke="#3b4e5b" stroke-width="1.5"/>
+  <text x="824" y="746" class="body"><tspan x="824">Don't remove and re-create an existing intent</tspan><tspan x="824" dy="34">to change which adapters belong to it.</tspan></text>
+  <path d="M 48 844 H 1392" stroke="#3b4e5b"/>
+  <text x="48" y="878" font-size="21" fill="#b9c8d2">Recovery only: preserve the previous storage networking design.</text>
+</svg>

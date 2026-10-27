@@ -3,12 +3,14 @@ title: App Service on Azure Stack Hub 26R1 release notes
 description: Learn about what's new and updated in the App Service on Azure Stack Hub 26R1 release.
 author: apwestgarth
 ms.topic: release-notes
-ms.date: 09/28/2026
+ms.date: 10/24/2026
 ms.author: anwestg
 ms.reviewer:
 ---
 
 # App Service on Azure Stack Hub 26R1 release notes
+
+[!INCLUDE [retirement-banner](../includes/app-service-hub-sunset-banner.md)]
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 26R1. They also describe any known issues. Known issues are divided into issues directly related to the deployment and update process, and issues with the build (post-installation).
 

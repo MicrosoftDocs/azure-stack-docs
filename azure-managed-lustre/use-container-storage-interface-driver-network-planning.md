@@ -2,7 +2,7 @@
 title: Plan network architecture for AKS with Azure Managed Lustre CSI Driver
 description: Learn how to plan the network architecture for connecting Azure Kubernetes Service (AKS) to an Azure Managed Lustre file system using the CSI driver.
 ms.topic: concept-article
-ms.date: 10/16/2026
+ms.date: 10/23/2026
 author: pauljewellmsft
 ms.author: akashdubey
 ms.reviewer: brianl
@@ -63,7 +63,7 @@ Azure Managed Lustre operates within a private virtual network. Your AKS instanc
 
 ### Peering AKS and Azure Managed Lustre virtual networks
 
-Virtual network peering provides flexibility, but it requires coordination between the two networks to avoid overlapping IP address spaces.
+Virtual network peering lets you separate network management into different privileged roles. It also provides flexibility because you can peer networks across Azure subscriptions or regions. Coordinate the two networks to avoid overlapping IP address spaces.
 
 ![Diagram that shows two virtual networks, one for Azure Managed Lustre and one for AKS, with a peering arrow connecting them.](media/use-csi-driver-kubernetes/subnet-access-option-2.png)
 
@@ -71,13 +71,14 @@ Virtual network peering provides flexibility, but it requires coordination betwe
 
 The option to install the AKS cluster in the Azure Managed Lustre virtual network with the **Bring your own Azure virtual network** feature in AKS can be advantageous in scenarios where you manage the network singularly. You need to create an extra subnet, sized to meet your AKS networking requirements, in the Azure Managed Lustre virtual network.
 
-There's no privilege separation for network management when you provision AKS on the Azure Managed Lustre virtual network. The AKS service principal needs privileges on the Azure Managed Lustre virtual network.
+The AKS control-plane identity needs permissions on the AKS subnet. See [AKS identity role assignments](/azure/aks/use-managed-identity#control-plane-managed-identity-role-assignments) when using your own virtual network.
 
 ![Diagram that shows an Azure Managed Lustre virtual network with two subnets, one for the Lustre file system and one for AKS.](media/use-csi-driver-kubernetes/subnet-access-option-1.png)
 
 ## Related content
 
 - [Azure Lustre CSI driver overview](use-csi-driver-kubernetes.md)
+- [Install the Azure Managed Lustre CSI driver](use-container-storage-interface-driver-install.md)
 - [Use dynamic provisioning with the Azure Lustre CSI driver](use-container-storage-interface-driver-dynamic-provisioning.md)
 - [Use static provisioning with the Azure Lustre CSI driver](use-container-storage-interface-driver-static-provisioning.md)
 - [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview)

@@ -3,7 +3,7 @@ title: Use Azure Private Endpoints with Azure Local for No Proxy No Arc Gateway 
 description: Review how Azure private endpoints can be used when deploying Azure Local, without an enterprise proxy and without an Arc gateway.
 author: ronmiab
 ms.author: robess
-ms.date: 03/09/2026
+ms.date: 09/29/2026
 ms.topic: concept-article
 ---
 
@@ -70,9 +70,19 @@ For more information about Azure private endpoints on Azure Local and the suppor
 
 ### Considerations for private endpoint deployment on Azure Local
 
-- **Key Vault private endpoints (vault.azure.net):** Azure Local needs a Key Vault for deployment that can use a private endpoint. Keep the public access enabled during the deployment as the Azure portal and Azure Local resource provider configure the key vault secrets.
+#### Key Vault private endpoints (`vault.azure.net`)
 
-- **Storage account private endpoints (blob.core.windows.net):** An Azure Local instance with two nodes requires a storage account for deployment that can use a private endpoint. Keep the public access until the initial deployment is complete. Azure portal and Azure Local resource provider need to configure the cloud witness during deployment. Once the deployment is complete, you can restrict the storage account access to only private networks.
+Azure Local needs a Key Vault for deployment that can use a private endpoint. Keep public access enabled during deployment while the Azure portal and Azure Local resource provider configure the Key Vault secrets.
+
+#### Storage account private endpoints (`blob.core.windows.net`)
+
+[!INCLUDE [storage-account-private-endpoints-intro](../includes/storage-account-private-endpoints-intro.md)]
+
+Configure private DNS so that each exact storage account FQDN, such as `<storage-account-name>.blob.core.windows.net`, resolves to its private endpoint IP. Also configure routing through Azure ExpressRoute or a site-to-site VPN and allow the traffic on the enterprise firewall. This topology has no proxy, so no proxy bypass entry is required.
+
+#### Azure Site Recovery private endpoints
+
+In addition to the Azure Site Recovery service private endpoints, configure DNS, routing, and firewall access for the exact cache storage account FQDN, `<cache-storage-account-name>.blob.core.windows.net`. For Azure Site Recovery private endpoint requirements, see [Enable replication with private endpoints in Azure Site Recovery](/azure/site-recovery/azure-to-azure-how-to-enable-replication-private-endpoints).
 
 ## Next steps
 

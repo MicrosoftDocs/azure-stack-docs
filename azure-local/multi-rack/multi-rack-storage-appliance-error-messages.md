@@ -16,6 +16,10 @@ This article lists the error messages that you might encounter when you manage a
 
 Storage appliance errors appear after the request is accepted, while the platform reconciles the resource. They're reported in the resource's `detailedStatusMessage` field. Many asynchronous conditions are transient and the platform retries them automatically.
 
+For information about viewing storage appliances and management responsibilities, see [Manage SAN storage appliances](multi-rack-manage-san-storage.md).
+
+For storage performance metrics and guidance on requesting support, see [Monitor and troubleshoot SAN storage appliances](multi-rack-monitor-san-storage.md).
+
 ## Resource Status Errors
 
 These errors appear in `detailedStatusMessage` after the request is accepted. Transient conditions are retried automatically.

@@ -1,17 +1,17 @@
 ---
-title: Guest Attestation for Confidential VMs on Azure Local (Preview)
+title: Guest Attestation for Confidential VMs on Azure Local
 description: Learn how guest attestation works for confidential VMs (CVMs) on Azure Local, how to run the attestation sample client, and how to set up secure key release.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 07/27/2026
+ms.date: 10/21/2026
 ms.custom:
   - devx-track-azurecli
 ms.subservice: hyperconverged
 ---
 
-# Guest attestation for confidential VMs on Azure Local (preview)
+# Guest attestation for confidential VMs on Azure Local
 
 ::: moniker range=">=azloc-2607"
 
@@ -25,8 +25,6 @@ Use guest attestation to:
 
 - Make sure that the CVM runs on the expected hardware platform.
 - Get evidence for a relying party that the CVM runs on confidential hardware.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## How guest attestation works
 
@@ -483,8 +481,8 @@ On success, the sample writes the released key material to stdout. Use the attes
 
 ## Related content
 
-- [Create and connect to an Azure Local confidential VM (preview)](create-connect-confidential-vm.md)
-- [Guest attestation for Trusted launch for Azure Local VMs (preview)](trusted-launch-guest-attestation.md)
+- [Create and connect to an Azure Local confidential VM](create-connect-confidential-vm.md)
+- [Guest attestation for Trusted launch for Azure Local VMs](trusted-launch-guest-attestation.md)
 - [What is Trusted launch for Azure Local VMs?](trusted-launch-vm-overview.md)
 
 ::: moniker-end
