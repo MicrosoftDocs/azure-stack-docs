@@ -174,7 +174,6 @@ The `rootfs-workload/` directory replicates the filesystem layout of the target 
        -PackageDir ./packages/ `
        -RootfsOverlay ./rootfs-workload `
        -Packages "edge-cc-base-attestation-sdk" `
-       -InsidersFast `
        -WSLDistro Ubuntu-24.04 `
        -DockerRebuild `
        -PasswordlessSudo
