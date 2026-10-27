@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="diagram-title" aria-describedby="diagram-description">
+  <title id="diagram-title">Storage-only intent recovery process</title>
+  <desc id="diagram-description">Four stages restore the verified original configuration during a maintenance window. Confirm scope, recover the original configuration, pass the recovery gate, re-create the intent, and validate recovery. If the original configuration can't be positively identified, stop and obtain missing deployment or network records. Keep nonconflicting existing IP addresses during provisioning. After successful provisioning and validation, automatic IP generation requires a review of every previously recorded storage address. Remove verified obsolete addresses, preserve required addresses, document any old addresses deliberately retained and why, and resolve all IP address conflicts before completing recovery.</desc>
+  <defs>
+    <style>text { font-family:'Segoe UI',sans-serif;letter-spacing:0; } .heading { font-size:42px;font-weight:650;fill:#edf3f6; } .subtitle { font-size:23px;fill:#b9c8d2; } .label { font-size:24px;font-weight:600;fill:#edf3f6; } .body { font-size:22px;fill:#b9c8d2; } .route { fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round; }</style>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#78c6ff" stroke-width="1.8" fill="none"/></marker>
+    <marker id="arrow-rose" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#ffa0c0" stroke-width="1.8" fill="none"/></marker>
+  </defs>
+  <rect width="1440" height="760" fill="#12171c"/>
+  <text x="48" y="67" class="heading">Storage-only intent recovery</text>
+  <text x="48" y="110" class="subtitle">Restore the previous configuration, not a new networking design</text>
+  <rect x="48" y="148" width="1344" height="48" rx="6" fill="#1a242c" stroke="#3b4e5b"/>
+  <text x="720" y="180" text-anchor="middle" font-size="22" fill="#b9c8d2">Perform the whole procedure during a maintenance window.</text>
+  <g class="route" stroke="#78c6ff" marker-end="url(#arrow-blue)">
+    <path d="M 288 320 H 336"/>
+    <path d="M 576 320 H 624"/>
+    <path d="M 816 320 H 864"/>
+    <path d="M 1104 320 H 1152"/>
+  </g>
+  <path class="route" d="M 720 410 V 510" stroke="#ffa0c0" marker-end="url(#arrow-rose)"/>
+  <g text-anchor="middle">
+    <rect x="48" y="230" width="240" height="180" rx="6" fill="#202d37" stroke="#78c6ff" stroke-width="1.5"/>
+    <text x="168" y="265" font-size="20" fill="#78c6ff">STAGE 1</text>
+    <text x="168" y="304" class="label">Confirm scope</text>
+    <text x="168" y="344" class="body"><tspan x="168">Missing storage-only</tspan><tspan x="168" dy="30">intent; adapters present</tspan></text>
+    <rect x="336" y="230" width="240" height="180" rx="6" fill="#202d37" stroke="#78c6ff" stroke-width="1.5"/>
+    <text x="456" y="265" font-size="20" fill="#78c6ff">STAGE 2</text>
+    <text x="456" y="304" class="label">Recover records</text>
+    <text x="456" y="344" class="body"><tspan x="456">Establish the original</tspan><tspan x="456" dy="30">storage configuration</tspan></text>
+    <rect x="624" y="230" width="192" height="180" rx="6" fill="#3c2a1b" stroke="#d88933" stroke-width="1.5"/>
+    <text x="720" y="269" font-size="20" fill="#ffe4ba">RECOVERY GATE</text>
+    <text x="720" y="314" font-size="23" font-weight="600" fill="#fff6e6"><tspan x="720">Configuration</tspan><tspan x="720" dy="32">verified?</tspan></text>
+    <text x="840" y="302" font-size="18" fill="#78c6ff">Yes</text>
+    <rect x="864" y="230" width="240" height="180" rx="6" fill="#202d37" stroke="#78c6ff" stroke-width="1.5"/>
+    <text x="984" y="265" font-size="20" fill="#78c6ff">STAGE 3</text>
+    <text x="984" y="304" class="label">Re-create intent</text>
+    <text x="984" y="344" class="body"><tspan x="984">Keep existing IPs;</tspan><tspan x="984" dy="30">submit once</tspan></text>
+    <rect x="1152" y="230" width="240" height="180" rx="6" fill="#202d37" stroke="#76dec1" stroke-width="1.5"/>
+    <text x="1272" y="265" font-size="20" fill="#76dec1">STAGE 4</text>
+    <text x="1272" y="304" class="label">Validate recovery</text>
+    <text x="1272" y="344" class="body"><tspan x="1272">Verify health;</tspan><tspan x="1272" dy="30">review old AutoIPs</tspan></text>
+    <text x="746" y="466" font-size="20" fill="#ffa0c0">No</text>
+    <rect x="448" y="510" width="544" height="126" rx="6" fill="#3c2431" stroke="#ffa0c0" stroke-width="1.5"/>
+    <text x="720" y="550" font-size="24" font-weight="600" fill="#ffa0c0">Stop. Don't guess values.</text>
+    <text x="720" y="590" class="body">Get missing deployment or network records.</text>
+  </g>
+  <path d="M 48 690 H 1392" stroke="#3b4e5b"/>
+  <text x="48" y="726" font-size="21" fill="#b9c8d2">A successful Add-NetIntent command alone doesn't establish a healthy recovery.</text>
+</svg>
