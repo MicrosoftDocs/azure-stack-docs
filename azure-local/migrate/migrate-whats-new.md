@@ -4,7 +4,7 @@ description: What's new in Azure Migrate for Azure Local, including the latest H
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 09/24/2026
+ms.date: 10/26/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -14,6 +14,12 @@ ms.subservice: hyperconverged
 This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## October 2026
+
+This release includes these features and improvements:
+
+- **Migrate VMs as Trusted launch VMs** – You can now select the **Trusted Launch** security type for Generation 2 (UEFI) VMware and Hyper-V VMs when you replicate them to Azure Local. Azure Migrate creates the migrated VM with Secure Boot and a virtual Trusted Platform Module (vTPM) enabled. You can also enable Secure Boot on Generation 2 VMs that don't use it on the source. Choose these settings on the new **Security** tab of the **Replicate** wizard. For more information, see [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication), [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication), and [Trusted launch for Azure Local VMs](../manage/trusted-launch-vm-overview.md).
 
 ## September 2026
 

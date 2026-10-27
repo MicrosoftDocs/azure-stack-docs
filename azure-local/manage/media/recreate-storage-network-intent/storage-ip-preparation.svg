@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1160" viewBox="0 0 1440 1160" role="img" aria-labelledby="diagram-title" aria-describedby="diagram-description">
+  <title id="diagram-title">Storage IP addressing during intent recovery</title>
+  <desc id="diagram-description">Record existing storage addresses on every adapter and machine before re-creating the intent. If automatic IP generation is enabled, leave nonconflicting addresses unchanged during provisioning and validation to protect connectivity. After validation, review every previously recorded address. Remove verified obsolete addresses, preserve required addresses, and document any old addresses deliberately retained and why. The review is required even if no addresses need removal. If automatic IP generation is disabled, preserve the original static addresses and prefixes as the intended configuration. Resolve duplicate-address conflicts against the verified IP mapping before recovery is complete; don't select an address for removal solely because it is older. Run Add-NetIntent once and wait for successful provisioning. Validate intent, IP, network, and storage health before routine cleanup. Work on one node at a time, considering storage maintenance mode for additional protection. Restore missing static addresses only from verified original records. Resume any node in maintenance mode and revalidate after address changes.</desc>
+  <defs>
+    <style>text { font-family:'Segoe UI',sans-serif;letter-spacing:0; } .heading { font-size:42px;font-weight:650;fill:#edf3f6; } .subtitle { font-size:23px;fill:#b9c8d2; } .label { font-size:24px;font-weight:600;fill:#edf3f6; } .body { font-size:23px;fill:#b9c8d2; } .route { fill:none;stroke:#adbfcb;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round; }</style>
+    <marker id="arrow-gray" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#adbfcb" stroke-width="1.8" fill="none"/></marker>
+    <marker id="arrow-teal" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#76dec1" stroke-width="1.8" fill="none"/></marker>
+  </defs>
+  <rect width="1440" height="1160" fill="#12171c"/>
+  <text x="48" y="67" class="heading">Storage IP addressing during recovery</text>
+  <text x="48" y="110" class="subtitle">Preserve connectivity during recovery; retain the intended static IP configuration</text>
+  <text x="48" y="176" font-size="24" fill="#78c6ff">Automatic IP generation enabled ($true)</text>
+  <text x="744" y="176" font-size="24" fill="#78c6ff">Automatic IP generation disabled ($false)</text>
+  <g class="route">
+    <path d="M 372 376 V 394 H 720"/>
+    <path d="M 1068 376 V 394 H 720 V 414" marker-end="url(#arrow-gray)"/>
+    <path d="M 720 510 V 558" marker-end="url(#arrow-gray)"/>
+    <path d="M 720 674 V 718 H 372 V 766" marker-end="url(#arrow-gray)"/>
+    <path d="M 720 718 H 1068 V 766" marker-end="url(#arrow-gray)"/>
+    <path d="M 372 954 V 992 H 720"/>
+    <path d="M 1068 954 V 992 H 720 V 1026" stroke="#76dec1" marker-end="url(#arrow-teal)"/>
+  </g>
+  <rect x="48" y="206" width="648" height="170" rx="6" fill="#202d37" stroke="#78c6ff" stroke-width="1.5"/>
+  <text x="80" y="248" class="label">Record existing storage IPs.</text>
+  <text x="80" y="282" class="body"><tspan x="80">Leave nonconflicting IPs in place during recovery.</tspan><tspan x="80" dy="32">After validation, review every previously recorded IP.</tspan><tspan x="80" dy="32">Resolve IP conflicts before completing recovery.</tspan></text>
+  <rect x="744" y="206" width="648" height="170" rx="6" fill="#202d37" stroke="#78c6ff" stroke-width="1.5"/>
+  <text x="776" y="248" class="label">Record original static IPs and prefixes.</text>
+  <text x="776" y="282" class="body"><tspan x="776">Preserve these as the intended configuration.</tspan><tspan x="776" dy="32">Restore verified original addresses if missing.</tspan><tspan x="776" dy="32">Resolve IP conflicts against the verified IP mapping.</tspan></text>
+  <g text-anchor="middle">
+    <rect x="288" y="414" width="864" height="96" rx="6" fill="#152f43" stroke="#78c6ff" stroke-width="1.5"/>
+    <text x="720" y="454" class="label">Build the intent and run Add-NetIntent once.</text>
+    <text x="720" y="488" class="body">Wait for successful cluster-wide provisioning.</text>
+    <rect x="288" y="558" width="864" height="116" rx="6" fill="#202d37" stroke="#76dec1" stroke-width="1.5"/>
+    <text x="720" y="596" class="label">Validate the recovered configuration.</text>
+    <text x="720" y="628" class="body"><tspan x="720">Check intent, IP configuration, network, and storage health.</tspan><tspan x="720" dy="30">Resolve IP conflicts before routine cleanup.</tspan></text>
+    <text x="372" y="748" font-size="21" fill="#78c6ff">Automatic IP generation enabled</text>
+    <text x="1068" y="748" font-size="21" fill="#78c6ff">Automatic IP generation disabled</text>
+  </g>
+  <rect x="48" y="766" width="648" height="188" rx="6" fill="#3c2a1b" stroke="#d88933" stroke-width="1.5"/>
+  <text x="80" y="806" font-size="24" font-weight="600" fill="#fff6e6">Review and clean up old automatic IPs.</text>
+  <text x="80" y="838" font-size="22" fill="#b9c8d2"><tspan x="80">After successful provisioning and health checks:</tspan><tspan x="80" dy="25">Account for each previously recorded address.</tspan><tspan x="80" dy="25">Remove verified obsolete IPs, one node at a time.</tspan><tspan x="80" dy="25">Preserve required IPs; document retained old IPs and why.</tspan><tspan x="80" dy="25">Resolve all IP conflicts before completing recovery.</tspan></text>
+  <rect x="744" y="766" width="648" height="188" rx="6" fill="#202d37" stroke="#3b4e5b" stroke-width="1.5"/>
+  <text x="776" y="806" class="label">Restore a static IP only if missing.</text>
+  <text x="776" y="840" class="body"><tspan x="776">Use only the verified original address and prefix.</tspan><tspan x="776" dy="32">Don't copy or invent addresses.</tspan><tspan x="776" dy="32">Don't add a default gateway.</tspan></text>
+  <rect x="288" y="1026" width="864" height="88" rx="6" fill="#202d37" stroke="#76dec1" stroke-width="1.5"/>
+  <text x="720" y="1062" text-anchor="middle" class="label">Resume any node placed in maintenance mode.</text>
+  <text x="720" y="1094" text-anchor="middle" class="body">Revalidate health and connectivity after address changes.</text>
+</svg>

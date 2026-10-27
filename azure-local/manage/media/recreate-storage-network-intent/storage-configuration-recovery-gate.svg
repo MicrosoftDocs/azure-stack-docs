@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="diagram-title" aria-describedby="diagram-description">
+  <title id="diagram-title">Recover the original storage configuration</title>
+  <desc id="diagram-description">Consult saved Network ATC configuration, deployment records, remaining configuration on every machine, and physical switch configuration or switchless cabling and IP design, in that priority order. Verify the original intent name, dedicated adapters, topology, VLAN mapping, automatic IP generation setting, original per-adapter and per-machine static addresses and prefixes if applicable, and required nondefault overrides. Remaining host configuration is evidence, not a complete reconstruction. Stop if required information is missing.</desc>
+  <defs>
+    <style>text { font-family:'Segoe UI',sans-serif;letter-spacing:0; } .heading { font-size:42px;font-weight:650;fill:#edf3f6; } .subtitle { font-size:23px;fill:#b9c8d2; } .label { font-size:24px;font-weight:600;fill:#edf3f6; } .body { font-size:23px;fill:#b9c8d2; }</style>
+    <marker id="arrow-blue" markerWidth="11" markerHeight="11" viewBox="0 0 10 10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 1 1 L 9 5 L 1 9" stroke="#78c6ff" stroke-width="1.8" fill="none"/></marker>
+  </defs>
+  <rect width="1440" height="980" fill="#12171c"/>
+  <text x="48" y="67" class="heading">Recover the original configuration</text>
+  <text x="48" y="110" class="subtitle">Use evidence from every machine; don't infer intent overrides from adapter values alone</text>
+  <text x="48" y="186" class="label">Evidence sources, in priority order</text>
+  <g>
+    <rect x="48" y="226" width="520" height="110" rx="6" fill="#202d37" stroke="#3b4e5b" stroke-width="1.5"/>
+    <circle cx="88" cy="281" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="88" y="289" text-anchor="middle" font-size="23" fill="#78c6ff">1</text>
+    <text x="130" y="270" class="body"><tspan x="130" fill="#edf3f6">Saved Network ATC configuration</tspan><tspan x="130" dy="34">For example, Get-NetIntent output</tspan></text>
+    <rect x="48" y="366" width="520" height="110" rx="6" fill="#202d37" stroke="#3b4e5b" stroke-width="1.5"/>
+    <circle cx="88" cy="421" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="88" y="429" text-anchor="middle" font-size="23" fill="#78c6ff">2</text>
+    <text x="130" y="410" class="body"><tspan x="130" fill="#edf3f6">Deployment records</tspan><tspan x="130" dy="34">Scripts and implementation records</tspan></text>
+    <rect x="48" y="506" width="520" height="110" rx="6" fill="#202d37" stroke="#3b4e5b" stroke-width="1.5"/>
+    <circle cx="88" cy="561" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="88" y="569" text-anchor="middle" font-size="23" fill="#78c6ff">3</text>
+    <text x="130" y="550" class="body"><tspan x="130" fill="#edf3f6">Remaining host configuration</tspan><tspan x="130" dy="34">Collect from every machine</tspan></text>
+    <rect x="48" y="646" width="520" height="110" rx="6" fill="#202d37" stroke="#3b4e5b" stroke-width="1.5"/>
+    <circle cx="88" cy="701" r="22" fill="#152f43" stroke="#78c6ff"/>
+    <text x="88" y="709" text-anchor="middle" font-size="23" fill="#78c6ff">4</text>
+    <text x="130" y="690" class="body"><tspan x="130" fill="#edf3f6">Physical network design</tspan><tspan x="130" dy="34">Switch config or switchless cabling/IPs</tspan></text>
+  </g>
+  <path d="M 584 496 H 672" fill="none" stroke="#78c6ff" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="628" y="476" text-anchor="middle" font-size="20" fill="#78c6ff">Verify</text>
+  <rect x="688" y="190" width="704" height="618" rx="6" fill="#152f43" stroke="#78c6ff" stroke-width="1.5"/>
+  <text x="720" y="236" class="label">Required configuration checklist</text>
+  <g font-size="23" fill="#edf3f6">
+    <text x="720" y="290">1. Original intent name</text>
+    <text x="720" y="346">2. Dedicated physical storage adapters</text>
+    <text x="720" y="402">3. Switched or switchless storage topology</text>
+    <text x="720" y="458">4. Original storage VLAN mapping</text>
+    <text x="720" y="514">5. EnableAutomaticIPGeneration: $true or $false</text>
+    <text x="720" y="570"><tspan x="720">6. Original static IP and prefix per adapter and machine</tspan><tspan x="748" dy="32" fill="#b9c8d2">Required if automatic IP generation was disabled</tspan></text>
+    <text x="720" y="658"><tspan x="720">7. Verified nondefault settings to restore as overrides</tspan><tspan x="748" dy="32" fill="#b9c8d2">Don't add overrides based on adapter values alone</tspan></text>
+  </g>
+  <path d="M 720 726 H 1360" stroke="#3b4e5b"/>
+  <text x="720" y="768" font-size="22" fill="#76dec1">Positively identify every required item before continuing.</text>
+  <rect x="48" y="856" width="1344" height="76" rx="6" fill="#3c2431" stroke="#ffa0c0" stroke-width="1.5"/>
+  <text x="80" y="902" font-size="24" fill="#ffa0c0">Missing required information? Stop recovery and obtain the original records. Never guess.</text>
+</svg>
