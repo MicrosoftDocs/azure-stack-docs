@@ -610,6 +610,8 @@ items:
             href: manage/add-network-adapters-to-network-intents.md
           - name: Replace a failed NIC in a Network ATC intent
             href: manage/replace-network-adapter-to-network-intents.md
+          - name: Re-create a storage-only Network ATC intent
+            href: manage/recreate-storage-network-intent.md
 
         - name: Storage
           items:
@@ -1776,6 +1778,8 @@ items:
             href: manage/add-network-adapters-to-network-intents.md
           - name: Replace a failed NIC in a Network ATC intent
             href: manage/replace-network-adapter-to-network-intents.md
+          - name: Re-create a storage-only Network ATC intent
+            href: manage/recreate-storage-network-intent.md
 
         - name: Storage
           items:
