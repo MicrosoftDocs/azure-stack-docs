@@ -460,7 +460,7 @@ az keyvault key show `
 
 ### Run the SKR sample
 
-Run the sample application from within the confidential VM to perform a secure key release. The `-r` flag attests the platform and releases the key itself, instead of wrapping or unwrapping a symmetric key:
+Run the sample application from within the confidential VM to perform a secure key release. The `-r` flag attests the platform and releases the key without wrapping or unwrapping a local secret key:
 
 ```bash
 sudo ./AzureAttestSKR \
@@ -469,7 +469,7 @@ sudo ./AzureAttestSKR \
   -r
 ```
 
-On success, the sample writes the released key material to stdout. Use the attestation endpoint captured earlier for the `-a` argument. On Azure Local, omit the credentials source (`-c`) because the host performs key release by using the Azure Local cluster identity.
+On success, the sample reports that the key was successfully released; it doesn't print the released key material. To wrap or unwrap a local secret key, use the sample's `-w` or `-u` option, respectively. Use the attestation endpoint captured earlier for the `-a` argument. On Azure Local, omit the credentials source (`-c`) because the host performs key release by using the Azure Local cluster identity.
 
 ---
 
