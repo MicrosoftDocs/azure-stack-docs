@@ -63,11 +63,7 @@ After downloading the OS image on the on-premises machine, verify its integrity 
 
 ### Step 1: Download the SHA checksum file  
 
-Use `wget` or any other utility to download the checksum file corresponding to the OS version 25.11.9.
-
-```bash
-wget https://ftp.opengear.com/download/opengear_appliances/OM/archive/25.11.9/SHASUMS
-```
+Download the `SHASUMS` checksum file for OS version 25.11.9 from the **Software Updates** page in the Opengear Customer Portal, the same location as the firmware image.
 
 ### Step 2: Compute and compare the SHA1 checksum 
 
@@ -85,8 +81,6 @@ operations_manager-25.11.9-production-signed.raucb: OK
 ```
 
 Ensure that the output returns **"OK"** to confirm the file integrity before proceeding with installation.  
-
-Would you like additional details on troubleshooting checksum mismatches?
 
 ### Step 3: Check current version of Terminal Server
 
