@@ -3,7 +3,7 @@ title: "Azure Operator Nexus: How to upgrade the operating system of a Terminal 
 description: Learn the process for upgrading the operating system of a Terminal Server
 author: RaghvendraMandawale
 ms.author: rmandawale
-ms.date: 09/16/2026
+ms.date: 10/28/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
@@ -19,7 +19,9 @@ This document provides a step-by-step guide to upgrade the operating system (OS)
 
 - An **on-premises machine** with access to the Terminal Server for file transfers.
 
-- Download **25.11.9 firmware**: [Opengear Firmware](https://ftp.opengear.com/download/opengear_appliances/OM/). 
+- An **Opengear Customer Portal** account. Opengear firmware isn't publicly downloadable. To register, see the [Opengear Customer Portal user manual](https://portal.opengear.com/customerservice/s/article/OpengearsCustomerPortalUserManual661d1989da648). For help with portal access, contact Opengear support at support@opengear.com.
+
+- Download **25.11.9 firmware**: sign in to the [Opengear Customer Portal](https://portal.opengear.com/) and go to **Software Updates**.
 
 - After downloading the firmware, verify the **SHA1 checksum** to ensure integrity before proceeding with the installation.
 
