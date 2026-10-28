@@ -208,7 +208,7 @@ scp -r -o MACs=umac-128-etm@openssh.com ./operations_manager-25.11.9-production-
 
 >[!Note]
 > Replace <ts_ip> with the Terminal Server IP.<br>
-> Ensure the file name corresponds to the specific firmware version being used. For example, <operations_manager-25.11.9-production-signed.raucb> is the file name for Opengear OS version 25.11.9. Adjust the file name accordingly for your firmware version.
+> Ensure the file name corresponds to the specific firmware version being used. For example, `operations_manager-25.11.9-production-signed.raucb` is the file name for Opengear OS version 25.11.9. Adjust the file name accordingly for your firmware version.
 
 ### Initiate installation of firmware
 
