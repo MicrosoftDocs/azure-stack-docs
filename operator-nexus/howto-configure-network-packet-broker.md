@@ -74,6 +74,9 @@ A **neighbor group** defines **destinations** for the traffic that a TAP forward
 * You can also use IP addresses behind Azure Load Balancer as destinations, but traffic goes directly to the specified addresses.
 * Grouping multiple destinations simplifies configuration.
 
+> [!NOTE]
+> All destination name values must be unique (case-insensitive) within a single NetworkTap and across all NetworkTaps associated with the same NPB. Duplicate names cause PUT, Enable, and Resync operations to fail.
+
 **CLI examples:**
 
 ```AzCLI

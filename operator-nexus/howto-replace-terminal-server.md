@@ -5,13 +5,18 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: how-to
-ms.date: 01/24/2025
+ms.date: 10/28/2026
 ms.custom: template-how-to, devx-track-azurecli
 ---
 
 # Replacing terminal server
 
 This guide provides a step-by-step process for replacing a Terminal Server (TS) within Azure Operator Nexus Network Fabric. The procedure includes cleaning up the existing TS, removing the TS, installing a new TS, and configuring the Terminal Server.
+
+> [!NOTE]
+> The steps to follow depend on the Network Fabric runtime version:
+> - **Runtime version `8.0.0` or later:** Run the **Disable** post action on the `NetworkBootstrapDevice` resource first. Then complete the pre-replacement cleanup, device removal, and new device installation steps in this article. Instead of opening a support ticket, run the **RMA** post action, and then run the **Enable** post action. For details, see the "Terminal server replacement (RMA)" section in [Terminal server as an Azure Operator Nexus resource](concepts-terminal-server-as-resource.md)
+> - **Runtime version earlier than `8.0.0`:** Complete all the steps in this article, including Microsoft engineering support.
 
 ## Pre-replacement cleanup (Customer action)
 
@@ -51,7 +56,7 @@ Set up the terminal server device with the same password and username as before.
 
 ### Microsoft engineering support
 
-After the new Terminal Server is installed and configured, open a support ticket with Microsoft to complete the setup. When creating the support ticket, ensure that the new Terminal Server serial number is provided. Microsoft engineers will trigger a lockbox action for *Reprovisioning Terminal Server Device*.
+For Network Fabrics on a runtime version earlier than `8.0.0`, after the new Terminal Server is installed and configured, open a support ticket with Microsoft to complete the setup. When creating the support ticket, ensure that you provide the new Terminal Server serial number. Microsoft engineers trigger a lockbox action for *Reprovisioning Terminal Server Device*.
 
 >[!Note]
 >The user is expected to setup the terminal server with the same username and password as stored in customer NFC key vault.
