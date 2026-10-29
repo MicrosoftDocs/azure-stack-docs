@@ -546,5 +546,4 @@ A successful Refresh Configuration generates and applies new SNMP credentials an
 In the Azure portal, open the `NetworkBootstrapDevice` resource and select **Monitoring** > **Metrics**.
 
 > [!NOTE]
-> - SNMP traps and syslog aren't supported.
 > - During a Terminal Server RMA, metrics pause and resume after the replacement device is enabled.
