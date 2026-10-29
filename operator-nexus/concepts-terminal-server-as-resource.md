@@ -5,7 +5,7 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: concept-article
-ms.date: 04/09/2026
+ms.date: 10/18/2026
 ms.custom: template-concept
 ---
 
@@ -23,19 +23,18 @@ The `NetworkBootstrapInterface` is exposed as a child-resource of the `NetworkBo
 These resources are defined within the AON Managed Network Fabric API specification and are reflected in Azure Resource Manager under the Managed Network Fabric Resource Provider. They're also available in the Azure Resource Graph.
 
 > [!NOTE]
-> - You can create the Net2 interface, but it isn't operational as a backup for Net1 in the NNF 2608 release.
+> - You can create the Net2 interface, but it isn't operational as a backup for Net1.
 
 ## Prerequisites
+- Network Fabric runtime version `8.0.0` or later.
+- API version `2026-01-15-preview` or later.
 
-The Greenfield and Brownfield environments must run NNF MBU version `11.0`, Fabric Runtime version `8.0.0`, and API `2026-01-15-preview` to enable complete support for Terminal Server as an AON resource.
+Additional requirements for metrics, NTP synchronization, and RMA are listed in their sections.
+
+When a Network Fabric is created with, or upgraded to, runtime version `8.0.0` or later, the service discovers the Terminal Servers, creates the corresponding `NetworkBootstrapDevice` and `NetworkBootstrapInterface` resources, populates their properties, and updates the device state based on reachability checks.
 
 > [!NOTE]
-> - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using the `2026-01-15-preview` API version, the Terminal Server ARM resources are created using the `2026-01-15-preview` API version.
-> - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using the `2025-07-15` GA API version, the Terminal Server ARM resources are created using the `2025-07-15` GA API version.
-> - If a user performs a Runtime (RT) upgrade to NF version `8.0.0` using ≤ `2025-07-15`, the Terminal Server ARM resources are created with the `2025-07-15` API version.
-> - The same behavior applies during Greenfield deployments where the Network Fabric is created with NF RT version `8.0.0`.
-
-After performing the runtime upgrade to NF Runtime version `8.0.0`, the service identifies existing Bootstrap Devices, creates and associates the corresponding `NetworkBootstrapDevice` and `NetworkBootstrapInterface` resources, hydrates Bootstrap Device properties, and updates the Bootstrap Device state based on reachability checks.
+> The Terminal Server resources are created with the API version used for the fabric creation or runtime upgrade. If you use the `2026-01-15-preview` API version, the resources are created with that version. If you use `2025-07-15` or earlier, they're created with the `2025-07-15` API version.
 
 ## Resource Properties
 
@@ -223,6 +222,28 @@ GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers
 }
 ```
 
+## Terminal server NTP synchronization
+
+Azure Operator Nexus automatically configures NTP on the Terminal Server (Network Bootstrap Device) by using the platform-managed Infrastructure NTP Service. The Terminal Server uses the same NTP servers as the Network Fabric devices, which provides consistent device time for time-sensitive platform operations.
+
+You don't need to configure NTP servers or manage server addresses on the Terminal Server.
+
+### Prerequisites for NTP synchronization
+
+- Network Fabric runtime version `8.0.0` or later.
+
+### Enable NTP synchronization
+
+NTP is configured automatically on the Terminal Server during Network Fabric provisioning, or when a runtime upgrade to version `8.0.0` or later completes. NTP is also configured on a replacement Terminal Server as part of the RMA post action. No action is required.
+
+### Check NTP synchronization
+
+Azure doesn't show an NTP synchronization status or metric for the Terminal Server. To check that NTP is running and the clock is synchronized, sign in to the Terminal Server and view the NTP status on the device.
+
+> [!NOTE]
+> If NTP isn't configured on the Terminal Server, open a support request to reprovision the Terminal Server.
+
+
 ## Post Actions
 
 Users can invoke the following post actions:
@@ -231,8 +252,9 @@ Users can invoke the following post actions:
 - Interface Admin Down / Up for `Net3` only
 - Refresh Configuration
 - Resync Password
+- Terminal Server replacement (RMA): Disable, RMA, and Enable
 
-All post actions are auditable, state-driven, and security-bounded. Use the `2026-01-15-preview` API version to invoke these post actions.
+All post actions are auditable, state-driven, and security-bounded. Use the `2026-01-15-preview` API version or later to invoke these post actions, except RMA, which requires the `2026-07-15-preview` API version
 
 ### Reboot
 
@@ -270,7 +292,7 @@ This post action updates the administrative state of the Terminal Server `Net3` 
 #### Request
 
 ```http
-post "/subscriptions/<subscriptionId>/resourceGroups/f<resourcegroup>/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/networkBootstrapInterfaces/net3/UpdateAdministrativeState?api-version=<api-version>" "{""state"":""Enable""}"
+post "/subscriptions/<subscriptionId>/resourceGroups/<resourcegroup>/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/<networkbootstrapdevicename>/networkBootstrapInterfaces/net3/UpdateAdministrativeState?api-version=<api-version>" "{""state"":""Enable""}"
 ```
 
 | Parameter | Description |
@@ -359,11 +381,170 @@ Retry-After: 30
 
 **Response Body:** None.
 
+### Terminal server replacement (RMA)
+
+Azure Operator Nexus supports replacing a failed Terminal Server (Network Bootstrap Device) and returning the replacement device to service as an Azure Operator Nexus resource. The replacement is driven by administrative state post actions on the `NetworkBootstrapDevice` resource: Disable takes the Terminal Server out of service, RMA reprovisions the replacement device and automatically discovers and updates its serial number, and Enable returns it to service.
+
+NTP is configured on the replacement device, and Terminal Server metrics resume after the device is enabled. Use the `2026-07-15-preview` API version to invoke this post action.
+
+#### RMA prerequisites
+
+- Network Fabric runtime version `8.0.0` or later.
+- The Network Fabric is provisioned (provisioning state `Succeeded` and configuration state `Provisioned`).
+- The Network Fabric isn't administratively locked or configuration-locked. Post actions are blocked while the fabric is locked.
+- Customer-managed firewall configuration is applied to the replacement device before you run the RMA post action.
+
+#### Replace a terminal server
+
+1. Disable the Terminal Server. The Network Fabric administrative state changes to `EnabledDegraded`.
+1. If the existing Terminal Server is still accessible, complete the [pre-replacement cleanup](howto-replace-terminal-server.md#pre-replacement-cleanup-customer-action).
+1. Remove the existing device, and then install and set up the replacement device. For the steps, see [Device removal](howto-replace-terminal-server.md#device-removal-customer-action) and [Installation of new device](howto-replace-terminal-server.md#installation-of-new-device-customer-action).
+1. Run the RMA post action to reprovision the replacement device.
+1. After the RMA completes, the Terminal Server remains in the `UnderMaintenance` state. Enable the Terminal Server to return it to service.
+
+#### Operations blocked while the terminal server is disabled
+
+While the Terminal Server is in the `Disabled` or `UnderMaintenance` state, the following operations are rejected with a `BadRequest` error until the Terminal Server is enabled:
+
+- Terminal Server: Reboot, Refresh Configuration, Resync Passwords, and Network Bootstrap Interface administrative state updates.
+- Network devices: ZTP-based reboot, certificate resynchronization, and RMA. Reboot without ZTP isn't affected.
+
+Fabric provisioning, initial ZTP, fabric upgrade, and device reimage aren't blocked, but they might fail if they require the Terminal Server DHCP or HTTP services. Enable, Disable, and RMA of the Terminal Server itself remain available, and resource create, update, and delete operations aren't affected.
+
+> [!NOTE]
+> If the replacement device runs a different OS version, the `version` property of the `NetworkBootstrapDevice` resource continues to show the version recorded before the RMA.
+
+#### Pre-validation errors
+
+Each post action validates the Network Fabric and Terminal Server state before it runs. If a check fails, the request is rejected:
+
+| Condition | Error code |
+|---|---|
+| The Network Fabric is administratively locked or configuration-locked. | `ResourceLocked` |
+| The Network Fabric isn't in an allowed state for the action. | `BadRequest` |
+| The Terminal Server isn't in an allowed state for the action. For example, RMA is accepted only when the Terminal Server is `Disabled`. | `BadRequest` |
+
+#### Update terminal server administrative state
+
+Use this post action to disable, replace (RMA), or enable the Terminal Server.
+
+- `Disable` takes the Terminal Server out of service before replacement.
+- `RMA` reprovisions the replacement Terminal Server and updates its serial number. Run it after the Terminal Server is disabled and the device is physically replaced.
+- `Enable` returns the Terminal Server to service, including after an RMA completes.
+
+##### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState?api-version=2026-07-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the Terminal Server (`NetworkBootstrapDevice`) resource. |
+
+##### Request Body
+
+Set `state` to `Disable`, `RMA`, or `Enable`.
+
+```json
+{
+  "state": "Disable"
+}
+```
+
+##### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=-07-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-07-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
+
 ### Response Codes
 
 | Code | Description |
 |---|---|
 | `200 OK` | The request succeeded. The response body contains the NetworkBootstrapInterface resource. |
-| `400 Bad Request` | The request was malformed or contained invalid parameters. |
+| `400 Bad Request` | The request was malformed or contained invalid parameters, or a pre-validation check failed. |
 | `404 Not Found` | The specified resource doesn't exist. |
 | `202 Accepted` | The post action request is accepted. |
+
+
+## Terminal server metrics
+
+Azure Operator Nexus collects health and utilization metrics from the Terminal Server (Network Bootstrap Device) and publishes them to Azure Monitor on the `NetworkBootstrapDevice` resource. The metrics give you visibility into the health of the device, including system resources, network interfaces, serial port traffic, and power supplies, for operational monitoring, dashboards, and alerts.
+
+Metrics are collected securely over SNMPv3 by using a read-only account that the service configures and manages. You don't need to set up SNMP on the Terminal Server.
+
+### Supported metrics
+
+The following Terminal Server metrics are collected every five minutes and are available in Azure Monitor on the `NetworkBootstrapDevice` resource.
+
+| Metric group | Metrics | Applies to | Reported as |
+|---|---|---|---|
+| Storage and memory | `hrStorageUsed`, `hrStorageSize` | Physical memory, virtual memory, `/mnt/nvram`, `/var/log`, and `/tmp` | Used and total allocation units |
+| Network interfaces | `ifAdminStatus`, `ifOperStatus`, `ifInOctets`, `ifOutOctets`, `ifInDiscards`, `ifOutDiscards`, `ifInErrors`, `ifOutErrors` | Terminal Server network interfaces | Status: state value. Octets, discards, and errors: cumulative counts |
+| Voltage | `lmVoltSensorsValue` | Voltage sensors `in2` and `in4` | Millivolts |
+| Serial ports | `ogOmSerialPortRxBytes`, `ogOmSerialPortTxBytes` | Serial ports | Cumulative byte counts |
+| Power supplies | `ogOmPowerSupplyInputVoltage`, `ogOmPowerSupplyOutputCurrent`, `ogOmPowerSupplyOutputPower` | Power supplies PSU1 and PSU2 | Millivolts, milliamps, and watts |
+
+Values are reported as emitted by the Terminal Server, without unit conversion. Counters are reported as cumulative counts, not as rates or percentages. No values are filled in for intervals with no data.
+
+### Prerequisites for metrics
+
+- Network Fabric runtime version `9.0.0`.
+- Terminal Server (Opengear) OS version `25.11.5` or later.
+- SNMPv3 polling access over UDP port `161` on `Net1`.
+- The `NetworkBootstrapDevice` resource is available for the Network Fabric.
+- The Terminal Server firewall allows SNMP traffic: add `snmp` to the `wan` firewall zone address filters.
+
+### Enable terminal server metrics
+
+Metrics are enabled automatically when the Network Fabric runs runtime version `9.0.0`. No additional configuration is required.
+
+If you upgrade the Terminal Server OS to a supported version later, run the Refresh Configuration post action on the `NetworkBootstrapDevice` resource to start metrics collection.
+
+#### Request
+
+```http
+POST /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration?api-version=2026-07-15-preview
+```
+
+| Parameter | Description |
+|---|---|
+| `subscriptionId` | The Azure subscription ID. |
+| `resourceGroupName` | The name of the resource group. |
+| `networkBootstrapDeviceName` | The name of the Terminal Server (`NetworkBootstrapDevice`) resource. |
+
+**Request Body:** None.
+
+#### Sample Response - 202 Accepted
+
+```http
+HTTP/1.1 202 Accepted
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-07-15-preview
+Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-07-15-preview
+Retry-After: 30
+```
+
+**Response Body:** None.
+
+### Resolve out-of-sync SNMP credentials
+
+The `synchronizationStatus` value in the `secretRotationStatus` property of the `NetworkBootstrapDevice` resource shows the status of the SNMP credentials. If the SNMP credentials are `OutOfSync`, run the **Refresh Configuration** post action on a Network Fabric that runs runtime version `9.0.0`.
+
+A successful Refresh Configuration generates and applies new SNMP credentials and sets their status to `InSync`. It doesn't resynchronize the existing out-of-sync credentials.
+
+### View Terminal Server metrics
+
+In the Azure portal, open the `NetworkBootstrapDevice` resource and select **Monitoring** > **Metrics**.
+
+> [!NOTE]
+> - SNMP traps and syslog aren't supported.
+> - During a Terminal Server RMA, metrics pause and resume after the replacement device is enabled.
