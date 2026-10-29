@@ -15,7 +15,7 @@ This guide provides a step-by-step process for replacing a Terminal Server (TS) 
 
 > [!NOTE]
 > The steps to follow depend on the Network Fabric runtime version:
-> - **Runtime version `8.0.0` or later:** Run the **Disable** post action on the `NetworkBootstrapDevice` resource first. Then complete the pre-replacement cleanup, device removal, and new device installation steps in this article. Instead of opening a support ticket, run the **RMA** post action, and then run the **Enable** post action. For details, see [Terminal server replacement (RMA)](concepts-terminal-server-as-resource.md#terminal-server-replacement-rma).
+> - **Runtime version `8.0.0` or later:** Run the **Disable** post action on the `NetworkBootstrapDevice` resource first. Then complete the pre-replacement cleanup, device removal, and new device installation steps in this article. Instead of opening a support ticket, run the **RMA** post action, and then run the **Enable** post action. For details, see the "Terminal server replacement (RMA)" section in [Terminal server as an Azure Operator Nexus resource](concepts-terminal-server-as-resource.md)
 > - **Runtime version earlier than `8.0.0`:** Complete all the steps in this article, including Microsoft engineering support.
 
 ## Pre-replacement cleanup (Customer action)
