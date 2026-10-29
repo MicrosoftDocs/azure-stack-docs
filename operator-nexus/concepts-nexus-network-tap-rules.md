@@ -38,7 +38,7 @@ A Network TAP resource represents the configuration that controls destinations, 
 | TAP rule per destination                      | Only 1                                       |
 | Match condition input                         | Inline (up to 2 MB) or file                   |
 | File polling interval                         | 30–120 seconds (applies to all destinations) |
-
+| Destination name uniqueness                   | All `destinations[].name` values must be unique (case-insensitive) within a NetworkTap and across all NetworkTaps under the same NPB |
 
 ## Network TAP rules
 
@@ -73,7 +73,8 @@ Static match conditions define fixed parameters for filtering traffic. Supported
 | Destination port   | Ports 1–65535 or port groups            |
 
 > [!NOTE]
-> IPv4 prefixes in `ipPrefixValues` must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/24`, not `010.10.10.0/24`). Non-canonical IPv4 literals are rejected with a 400 error.
+> - All destination name values must be unique (case-insensitive) within a single NetworkTap and across all NetworkTaps associated with the same NPB. Duplicate names cause PUT, Enable, and Resync operations to fail.
+> - IPv4 prefixes in `ipPrefixValues` must be in canonical dotted-decimal form with **no leading zeros** (for example, `10.10.10.0/24`, not `010.10.10.0/24`). Non-canonical IPv4 literals are rejected with a 400 error.
 
 ### Example – VLAN and IP match (IPv4)
 
