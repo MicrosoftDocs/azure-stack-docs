@@ -96,7 +96,7 @@ The data plane consists of the Azure Local infrastructure that hosts workloads, 
 
 - Platform agents and services
 
-For more information, see [Update the data plane](./disconnected-operations-update.md#update-azure-local-disconnected).
+For more information, see [Update an Azure Local instance running on disconnected operations](./disconnected-operations-update-azure-local-instance.md).
 
 ## Workload updates
 
