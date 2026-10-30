@@ -99,82 +99,10 @@ On the seed node, in the same session as the preceding section, run the followin
 Get-ApplianceUpdateHistory 
 ```
 
-## Update Azure Local (disconnected)
-
-> [!IMPORTANT]
-> **Azure Local, version 2603 only.** If your Azure Local system is on version 2603, complete steps 1–3 before running the update script to exclude a test that requires internet connectivity. If you're on version 2604 or later, skip this section and continue with the script.
-> 
-> **Update from Azure Local, version 2602 to version 2604.** To update your Azure Local system on version 2602 to version 2604, you must first:
-> 1. Update disconnected operations from version 2602 to version 2604.
-> 1. Then, update Azure Local from version 2602 to version 2603.
-> 1. Then, update Azure Local from version 2603 to version 2604.
-
-1. Identify the Azure Local node running the orchestrator service.
-
-   1. Sign in to any Azure Local node and run the following command:
-
-      ```PowerShell
-      Get-ClusterGroup
-      ```
-
-   1. From the output, identify the node that owns the **Azure Stack HCI Orchestrator Service Cluster Group**.
-
-1. Exclude the internet-dependent test.
-
-   1. Sign in to the node identified in the previous step.
-   1. Go to `C:\Program Files\WindowsPowerShell\Modules\AzStackHci.EnvironmentChecker`.
-   1. Create a new file named `ExcludeTests.txt`.
-   1. Add the following line to the file and save it: ` Test-ARBStackBandwidth`
-
-1. After saving the file, proceed to trigger the update on Azure Local.
-
-Use the following PowerShell script to patch and update each Azure Local node in a disconnected environment.
-
-```powershell
-$applianceFQDN = 'autonomous.cloud.private'
-# Reboot the node for this to take effect
-[System.Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", "Machine")
-
-# Check latest "Check System Update readiness" daily runs
-# Expect to see failed runs
-$eceClient = Create-ECEClientSimple
-$plans = $eceClient.GetActionPlanInstances().Result
-$plans | Sort-Object -Property LastModifiedDateTime -Descending | ft InstanceID, ActionPlanName, ActionTypeName, Status, LastModifiedDateTime
-
-# Host the OEM SBE manifest and overwrite location 
-$OEM = 'Replaceme'
-
-$client = New-SolutionUpdateClient
-$client.SetDynamicConfigurationValue("AutomaticOemUpdateUri", "https://edgeartifacts.blob.$($applianceFQDN)/clouddeployment/SBE_Discovery_$($OEM).xml").Wait()
-$client.SetDynamicConfigurationValue("AutomaticUpdateUri", "https://fakehost").Wait()
-$client.SetDynamicConfigurationValue("UpdateRingName", "Unknown").Wait()
-
-# Re-run "Check System Update readiness"
-Invoke-SolutionUpdatePrecheck
-
-# Check "Check System Update readiness" health
-Get-SolutionUpdateEnvironment
-
-# Manually add solution update
-Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\import\Solution
-
-# Wait for this to return to make sure the update is ready
-Get-SolutionUpdate
-$SolutionVersion = 'Replaceme' # Use prior output to find the latest supported version
-
-# Run the update
-Get-SolutionUpdate -Id "redmond/Solution$($solutionVersion)" | Start-SolutionUpdate
-
-# Run these to monitor
-$actionPlanInstanceId = 'ReplaceMe' # Copy output from previous step
-Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
-```
-> [!IMPORTANT]
-> ** Make sure to set the following on each Azure Local node before running patch and update for the first time on Azure Local disconnected operations: 
-> **[System.Environment]::SetEnvironmentVariable("NUGET_CERT_REVOCATION_MODE", "offline", "Machine")** 
 ## Related content
 
 - [Backup for disconnected operations for Azure Local](./disconnected-operations-back-up-restore.md).
+- [Update an Azure Local instance running on disconnected operations](./disconnected-operations-update-azure-local-instance.md).
 
 ::: moniker-end
 
