@@ -27,10 +27,10 @@ For the 2610 release of Azure Local, Microsoft released the following update:
 
 | Solution version | OS build |
 | -- | -- |
-| 12.2610.1004.49 | 26100.33650 |
+| 12.2610.1004.50 | 26100.33650 |
 
 > [!IMPORTANT]
-> New deployments of this software use the **12.2610.1004.49** build.
+> New deployments of this software use the **12.2610.1004.50** build.
 The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 > [!NOTE]
@@ -69,8 +69,8 @@ The following table lists the fixed issues in this release:
 | Update orchestration <!--37738500--> | Duplicate concurrent update requests can overwhelm update management services, causing hangs and timeouts. | Duplicate concurrent update requests are now prevented so they don't overwhelm update management services. | 12.2610.1004.41 |
 | Update orchestration <!--39270929--> | Retry evaluation after an OS update leaves nodes on an unexpected version can produce a misleading file-path error that masks the actual update condition. | Retry evaluation now handles unexpected node versions without masking the update condition with a misleading file-path error. | 12.2610.1004.41 |
 | Arc-enabled virtual machines <!--39230146--> | Stale Arc Resource Bridge health alerts after health-check ownership moves between nodes can incorrectly block updates on a healthy cluster. | Arc Resource Bridge health alerts now reflect current health after ownership moves between nodes, preventing stale alerts from blocking updates. | 12.2610.1004.41 |
-| Update orchestration <!--40312999--> | Update preparation telemetry can be missing, limiting diagnostic information available during update preparation. | Update preparation now generates the expected telemetry for improved diagnostics. | 12.2610.1004.49 |
-| Hardware and Solution Builder Extension <!--40277569--> | SBE download connector detection can fail when the PowerShell execution policy prevents the detection script from running. | SBE download connector detection now works when PowerShell script execution is restricted by the system execution policy. | 12.2610.1004.49 |
+| Update orchestration <!--40312999--> | Update preparation telemetry can be missing, limiting diagnostic information available during update preparation. | Update preparation now generates the expected telemetry for improved diagnostics. | 12.2610.1004.50 |
+| Hardware and Solution Builder Extension <!--40277569--> | SBE download connector detection can fail when the PowerShell execution policy prevents the detection script from running. | SBE download connector detection now works when PowerShell script execution is restricted by the system execution policy. | 12.2610.1004.50 |
 
 ## Known issues
 
