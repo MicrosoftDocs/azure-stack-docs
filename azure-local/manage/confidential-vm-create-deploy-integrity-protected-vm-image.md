@@ -1,23 +1,21 @@
 ---
-title: Create and deploy an integrity-protected VM image for Azure Local confidential VMs (preview)
-description: Learn how to use the Integrity-Protected CVM Image Builder to create Ubuntu-based confidential VM (CVM) images for Azure Local (preview).
-author: sipastak
-ms.author: sipastak
-ms.date: 07/27/2026
+title: Create and deploy an integrity-protected VM image for Azure Local confidential VMs
+description: Learn how to use the Integrity-Protected CVM Image Builder to create Ubuntu-based confidential VM (CVM) images for Azure Local.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/26/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# Create and deploy an integrity-protected VM image for Azure Local confidential VMs (preview)
+# Create and deploy an integrity-protected VM image for Azure Local confidential VMs
 
 ::: moniker range=">=azloc-2607"
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use the Integrity-Protected CVM Image Builder to create Ubuntu-based confidential virtual machine (CVM) images for Azure Local. The Integrity-Protected CVM Image Builder is available as part of the [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/master/ConfidentialComputing/CvmImageBuilder) repository.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Why integrity-protected VM images are important
 
@@ -449,7 +447,6 @@ The Python application, service definition, and installed packages are all inclu
 | `-Packages` / `--packages` | Ubuntu packages to install. |
 | `-PackageDir` / `--package-dir` | Local `.deb` package directory. |
 | `-RootfsOverlay` / `--rootfs-overlay` | Overlay directory. |
-| `-InsidersFast` / `--insiders-fast` | Enable the `packages.microsoft.com` insiders-fast repository. |
 | `-AllowSshPassword` / `--allow-ssh-password` | Enable SSH password authentication. |
 | `-AllowSerialConsole` / `--allow-serial-console` | Enable serial console login. |
 | `-VerboseOutput` / `--verbose-output` | Enable verbose console output. |

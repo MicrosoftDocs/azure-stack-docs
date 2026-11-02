@@ -1,15 +1,15 @@
 ---
-title: What are Confidential Virtual Machines (VMs) for Azure Local (preview)?
-description: Learn how confidential virtual machines (CVMs) on Azure Local bring hardware-based memory encryption and attestation to customer-owned edge infrastructure for stateless, security-sensitive workloads (preview).
-author: sipastak
-ms.author: sipastak
-ms.date: 07/27/2026
+title: What are Confidential Virtual Machines (VMs) for Azure Local?
+description: Learn how confidential virtual machines (CVMs) on Azure Local bring hardware-based memory encryption and attestation to customer-owned edge infrastructure for stateless, security-sensitive workloads.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/26/2026
 ms.topic: overview
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# What are confidential VMs for Azure Local (preview)?
+# What are confidential VMs for Azure Local?
 
 ::: moniker range=">=azloc-2607"
 
@@ -20,8 +20,6 @@ This article provides an overview of confidential virtual machines (CVMs) on Azu
 CVMs on Azure Local bring hardware-based memory encryption and attestation to customer-owned edge infrastructure. They extend Azure's confidential computing platform to the edge to provide cryptographic assurance that protects and encrypts data in use, in RAM, and during computation.
 
 CVMs offer stronger security and confidentiality than standard virtual machines (VMs). They provide hardware-based isolation between virtual machines, the hypervisor, and host management code.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Features
 

@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Confidential VMs on Azure Local (Preview)
+title: Troubleshoot Confidential VMs on Azure Local
 description: Learn how to troubleshoot cluster deployment, VM creation, attestation, and image build problems for confidential VMs (CVMs) on Azure Local.
 author: ronmiab
 ms.author: robess
@@ -9,15 +9,13 @@ ms.date: 07/27/2026
 ms.subservice: hyperconverged
 ---
 
-# Troubleshoot confidential VMs on Azure Local (preview)
+# Troubleshoot confidential VMs on Azure Local
 
 ::: moniker range=">=azloc-2607"
 
 [!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
 
 This article lists the current limitations for confidential VMs (CVMs) on Azure Local, then describes how to troubleshoot cluster deployment, VM creation, attestation, and image build problems. Review the limitations first to rule out unsupported scenarios before you start troubleshooting.
-
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Current limitations
 
@@ -32,9 +30,7 @@ This article lists the current limitations for confidential VMs (CVMs) on Azure 
 
 **Resolution:**
 
-1. On each node, check the registry key `HKLM:\SOFTWARE\Microsoft\AszIGVmAgent\ConfidentialVMHardwareCapability`. The correct value is `1`.
-1. Verify that the Microsoft Azure Attestation (MAA) resource details are set and that all nodes show `igvmStatus: Enabled`.
-1. Use the REST API to check cluster status with API version `2026-04-01-preview`.
+To verify that the cluster deployed successfully with CVM intent, see [Verify cluster deployment](./confidential-vm-deploy-cluster-via-arm-template.md#verify-cluster-deployment).
 
 ## VM creation failures
 
@@ -94,8 +90,8 @@ wsl -d "Ubuntu-24.04" -u <username> -- <command>
 
 ## Related content
 
-- [Create and connect to an Azure Local confidential VM (preview)](create-connect-confidential-vm.md)
-- [Guest attestation for confidential VMs on Azure Local (preview)](guest-attestation-confidential-vm.md)
+- [Create and connect to an Azure Local confidential VM](create-connect-confidential-vm.md)
+- [Guest attestation for confidential VMs on Azure Local](guest-attestation-confidential-vm.md)
 
 ::: moniker-end
 
