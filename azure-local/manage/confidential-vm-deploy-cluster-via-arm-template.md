@@ -41,7 +41,7 @@ Prepare the Azure resources by using the same steps as the [Azure Resource Manag
 
 To configure the cluster to enable deployment of a CVM, you must include an additional parameter, `confidentialVmIntent`, in the Azure Resource Manager deployment specification. If you don't specify this parameter, CVM creation fails. Setting this parameter might slightly reduce CPU performance for some workloads, on both CVMs and standard VMs.
 
-Include the `confidentialVmIntent` parameter in the ARM template and set it in the ARM template parameter file. Use the API version `2026-10-15-preview`.
+Include the `confidentialVmIntent` parameter in the ARM template and set it in the ARM template parameter file. Use the API version `2026-11-01-Preview`.
 
 ```json
 "confidentialVmIntent": {
@@ -70,7 +70,7 @@ To deploy the cluster:
 Use the REST API to check whether the cluster deployed successfully with CVM intent. Check the status details for `"ConfidentialVmStatus": "Enabled"`.
 
 ```azurecli
-az rest --method get --url https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/clusters/$($clustername)?api-version=2026-10-15-preview
+az rest --method get --url https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/clusters/$($clustername)?api-version=2026-11-01-Preview
 ```
 
 Verify the intent you passed to the cluster deployment by checking the properties. Find the property description on the cluster page in the Azure portal.
@@ -87,7 +87,7 @@ Verify the intent you passed to the cluster deployment by checking the propertie
 Use the REST API to check the CVM status on each node.
 
 ```azurecli
-az rest --method get --url "https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.HybridCompute/machines/$machineName1/providers/Microsoft.AzureStackHCI/edgeDevices/default?api-version=2026-10-15-preview"
+az rest --method get --url "https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.HybridCompute/machines/$machineName1/providers/Microsoft.AzureStackHCI/edgeDevices/default?api-version=2026-11-01-Preview"
 ```
 
 ```json
@@ -106,7 +106,7 @@ In addition to the deployment issues described earlier, you might encounter issu
 If `"ConfidentialVmStatus"` is `PartiallyEnabled` or `Disabled` and `"ConfidentialVmIntent"` is `Enabled`, identify the faulty nodes by going to each individual node using the REST API:
 
 ```
-az rest --method get --url https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.HybridCompute/machines/$machineName1/providers/Microsoft.AzureStackHCI/edgeDevices/default?api-version=2026-10-15-preview%22
+az rest --method get --url https://management.azure.com/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.HybridCompute/machines/$machineName1/providers/Microsoft.AzureStackHCI/edgeDevices/default?api-version=2026-11-01-Preview%22
 ```
 
 A node that isn't deployed correctly returns:
@@ -129,7 +129,7 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
     $resourceGroup = "<resource-group-name>"
     $clusterName = "<cluster-name>"
     
-    $path = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/Clusters/$clusterName/jobs/ConfigureCVM?api-version=2026-10-15-preview"  
+    $path = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/Clusters/$clusterName/jobs/ConfigureCVM?api-version=2026-11-01-Preview"  
     
     $body = @{ 
         properties = @{ 
@@ -147,7 +147,7 @@ Use this Day N scenario to enable CVM intent on a cluster that meets all the CVM
 1. After the job succeeds, return to your deployment VM (DVM) terminal and run this command:
 
     ```azurecli
-    az rest --method get --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/clusters/$($clusterName)?api-version=2026-10-15-preview
+    az rest --method get --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.AzureStackHCI/clusters/$($clusterName)?api-version=2026-11-01-Preview
     ```
 
 1. Confirm that `ConfidentialVmIntent` is now set to `Enable` on the cluster.
