@@ -1,11 +1,11 @@
 ---
 title: Guest Attestation for Confidential VMs on Azure Local
 description: Learn how guest attestation works for confidential VMs (CVMs) on Azure Local, how to run the attestation sample client, and how to set up secure key release.
-author: ronmiab
-ms.author: robess
+author: dominicbetts
+ms.author: dobett
 ms.topic: how-to
 ms.service: azure-local
-ms.date: 10/21/2026
+ms.date: 10/26/2026
 ms.custom:
   - devx-track-azurecli
 ms.subservice: hyperconverged
@@ -104,8 +104,6 @@ In this section, you build binaries to include in the integrity-protected image.
    ./azurelocal/build-azure-local.sh -p
    ```
 
-   When prompted, enable the insiders-fast software repository.
-
 1. Find the finished build artifacts in the `output` directory. You use these artifacts in later sections.
 
    :::image type="content" source="./media/guest-attestation-cvm/build-artifacts-output-directory.png" alt-text="Screenshot of the build artifacts in the output directory." lightbox="./media/guest-attestation-cvm/build-artifacts-output-directory.png":::
@@ -176,7 +174,6 @@ The `rootfs-workload/` directory replicates the filesystem layout of the target 
        -PackageDir ./packages/ `
        -RootfsOverlay ./rootfs-workload `
        -Packages "edge-cc-base-attestation-sdk" `
-       -InsidersFast `
        -WSLDistro Ubuntu-24.04 `
        -DockerRebuild `
        -PasswordlessSudo
@@ -197,7 +194,6 @@ The `rootfs-workload/` directory replicates the filesystem layout of the target 
        --package-dir ./packages \
        --packages "edge-cc-base-attestation-sdk" \
        --rootfs-overlay ./rootfs-workload \
-       --insiders-fast \
        --passwordless-sudo
    ```
 
@@ -293,8 +289,6 @@ In this section, you build the binaries to include in the integrity-protected im
    ```bash
    ./azurelocal/build-azure-local.sh -p
    ```
-
-   When prompted, enable the insiders-fast software repository.
 
 1. Find the finished build artifacts in the `output` directory. You use these artifacts in later sections. For the SKR sample application, look for the `AzureAttestSKR` app:
 
@@ -466,7 +460,7 @@ az keyvault key show `
 
 ### Run the SKR sample
 
-Run the sample application from within the confidential VM to perform a secure key release. The `-r` flag attests the platform and releases the key itself, instead of wrapping or unwrapping a symmetric key:
+Run the sample application from within the confidential VM to perform a secure key release. The `-r` flag attests the platform and releases the key without wrapping or unwrapping a local secret key:
 
 ```bash
 sudo ./AzureAttestSKR \
@@ -475,7 +469,7 @@ sudo ./AzureAttestSKR \
   -r
 ```
 
-On success, the sample writes the released key material to stdout. Use the attestation endpoint captured earlier for the `-a` argument. On Azure Local, omit the credentials source (`-c`) because the host performs key release by using the Azure Local cluster identity.
+On success, the sample reports that the key was successfully released; it doesn't print the released key material. To wrap or unwrap a local secret key, use the sample's `-w` or `-u` option, respectively. Use the attestation endpoint you captured earlier for the `-a` argument. On Azure Local, omit the credentials source (`-c`) because the host performs key release by using the Azure Local cluster identity.
 
 ---
 
