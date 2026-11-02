@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 10/23/2026
+ms.date: 11/02/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,7 +17,7 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2610
 
-The October 2026 release of hyperconverged deployments of Azure Local is version **12.2610.1004.41**. For more information, see [Release information summary](./release-information-23h2.md).
+The October 2026 release of hyperconverged deployments of Azure Local is version **12.2610.1004.50**. For more information, see [Release information summary](./release-information-23h2.md).
 
 This release includes various reliability improvements and bug fixes.
 
@@ -76,6 +76,8 @@ This release includes various reliability improvements and bug fixes.
     - **Expanded security baseline coverage**: Azure Local continues to deepen its alignment with industry security benchmarks. Starting in 2610, the security baseline grows to 429 evaluated settings, up from 408, extending coverage against CIS and DISA STIG recommendations. The expanded baseline applies automatically to new deployment as well as updated with this release. For more information, see [Manage security defaults for Azure Local](../azure-local/manage/manage-secure-baseline.md).
     - **Customize the security baseline while keeping drift control**: Until now you could adjust only a small set of security toggles. Starting in 2610, you can customize the security baseline settings, and drift control keeps enforcing them. Guardrails determine whether a change is permitted, and the settings critical to system integrity stay protected. For more information, see [Manage security defaults for Azure Local](../azure-local/manage/manage-secure-baseline.md).
     - **Application Control cmdlets aligned to App Control for Business**: Microsoft retired the Windows Defender Application Control name in favor of App Control for Business. Starting in 2610, the Azure Local cmdlets for this capability are renamed to match. Your existing scripts continue to work. For more information, see [Manage Application Control settings with PowerShell](../azure-local/manage/manage-wdac.md#manage-application-control-settings-with-powershell).
+  
+- **HciSvc2 service**: Starting with version 2610, Azure Local uses HciSvc2 instead of HciSvc. We don't expect this change to have any impact. Don't manually start HciSvc.
 
 ::: moniker-end
 
