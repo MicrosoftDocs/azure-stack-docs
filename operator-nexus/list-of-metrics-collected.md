@@ -5,7 +5,7 @@ author: neilverse
 ms.author: soumyamaitra
 ms.service: azure-operator-nexus
 ms.topic: reference
-ms.date: 08/10/2026
+ms.date: 10/28/2026
 ms.custom: template-reference
 ---
 
@@ -46,6 +46,10 @@ This section provides the list of metrics collected from the different component
     - [***cluster management metrics***](#cluster-management-metrics)
   - [Network Fabric Metrics](#network-fabric-metrics)
     - [Network Devices Metrics](#network-devices-metrics)
+      - [Device health](#device-health)
+      - [Port channel utilization](#port-channel-utilization)
+      - [Device performance and interface metrics](#device-performance-and-interface-metrics)
+    - [Network Fabric Controller metrics](#network-fabric-controller-metrics)
 
 ## Nexus Cluster
 
@@ -238,7 +242,7 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 |-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
 |NfsVolumeSizeBytes|Storage|NFS Volume Size Bytes|Bytes|Total Size of the NFS volume. In the absence of data, this metric retains the most recent value emitted|CSN Name|
 |NfsVolumeUsedBytes|Storage|NFS Volume Used Bytes|Bytes|Size of NFS volume used. In the absence of data, this metric retains the most recent value emitted|CSN Name|
-|StorageControlPlaneConnectivity|Storage|Storage control-plane connectivity (Preview)|Count|Cluster's connectivity status to the storage appliance. In the absence of data, this metric defaults to 0|Node, Endpoint, State|
+|StorageControlPlane|Storage|Storage control-plane  (Preview)|Count|Cluster's  status to the storage appliance. In the absence of data, this metric defaults to 0|Node, Endpoint, State|
 
 ### ***telegraf***
 
@@ -432,7 +436,29 @@ All the metrics from Cluster Management are collected and delivered to Azure Mon
 
 ## Network Fabric Metrics
 
+Network Fabric metrics provide visibility into device health and Network Fabric Controller (NFC) availability and stability. You can view these metrics in Azure Monitor. 
+
 ### Network Devices Metrics
+
+Resource type: `Microsoft.ManagedNetworkFabric/networkDevices`.
+
+#### Device health 
+
+| Metric | Category | Display Name | Unit | Description | Dimensions |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|DeviceOperationalState|SLI|Device Operational State|Count|Operational health of the device. Supported values are 1 = Healthy, 2 = Warning, and 3 = Critical. Missing telemetry, such as an absent memory-utilization signal, results in a gap (no data), not a value of 0.|DeviceType|
+|DeviceState|SLI|Device  State|Count| State of the device. Supported values are 1 = Up, 2 = Degraded, and 3 = Down. Loss of the gNMI signal results in a gap (no data).|DeviceType|
+
+#### Port channel utilization
+
+The following metrics report port channel receive and transmit capacity utilization. The default aggregation is **Average**. Supported aggregations are **Average**, **Minimum**, **Maximum**, **Total**, and **Count**.
+
+| Metric | Category | Display Name | Unit | Description | Dimensions |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|PortChInBitPerCentRateUtil|Interface State Rate|Port Channel In Bits Rate Utilization in percentage|Percent|Percentage of the port channel's aggregate receive capacity currently in use, calculated from the inbound bit rate relative to the combined capacity of its active member interfaces.|FabricId, PortChannelName|
+|PortChOutBitPerCentRateUtil|Interface State Rate|Port Channel Out Bits Rate Utilization in percentage|Percent|Percentage of the port channel's aggregate transmit capacity currently in use, calculated from the outbound bit rate relative to the combined capacity of its active member interfaces.|FabricId, PortChannelName|
+
+#### Device performance and interface metrics
 
 The collection interval for Network Fabric device metrics varies and you can find more information per metric (refer to column "Collection Interval").
 
@@ -545,3 +571,30 @@ For example, if a BGP peer transitions through states 6→1→6→1→6 (five ch
 - Use **Minimum** to identify the worst state reached during the interval.
 - Configure alerts on `Count > threshold` (for example, Count > 3 in 1 minute) to detect BGP instability, rather than relying solely on the state value.
 - For detailed transition-level analysis, use diagnostic settings to export raw metrics to Log Analytics, where individual samples can be queried.
+
+### Network Fabric Controller metrics
+
+Resource type: `Microsoft.ManagedNetworkFabric/networkFabricControllers`.
+
+The following metrics report availability and container restart counts for NFC components.
+
+| Metric | Category | Display Name | Unit | Description | Dimensions |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|nfc_service_replica_state_operator|Health|NFC Operator Availability|Count|Availability of Operator. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, deployment|
+|nfc_service_replica_state_gnmigw|Health|NFC gNMI Gateway Availability|Count|Availability of gNMI Gateway. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, deployment|
+|nfc_service_replica_state_geneva_monitoringinfra|Health|NFC Geneva Monitoring Infra Availability|Count|Availability of Geneva Monitoring Infra. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, deployment|
+|nfc_services_statefulset_status_redis|Health|NFC Redis Availability|Count|Availability of Redis. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, statefulset|
+|nfc_services_statefulset_status_zk|Health|NFC ZooKeeper Availability|Count|Availability of ZooKeeper. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, statefulset|
+|nfc_service_replica_state_envoy|Health|NFC Envoy Availability|Count|Availability of Envoy. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, deployment|
+|nfc_services_statefulset_status_ntp|Health|NFC NTP Availability|Count|Availability of NTP. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, statefulset|
+|nfc_service_replica_state_xds|Health|NFC XDS Availability|Count|Availability of xDS. Supported values are 1 = Healthy, 2 = Degraded, and 3 = Unhealthy.|nfcClusterRole, deployment|
+|kube_pod_container_status_restarts_total_operator|Health|NFC Operator Restarts|Count|Container restart count for Operator.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_gnmigw|Health|NFC gNMI Gateway Restarts|Count|Container restart count for gNMI Gateway.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_geneva_monitoringinfra|Health|NFC Geneva Monitoring Infra Restarts|Count|Container restart count for Geneva Monitoring Infra.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_redis|Health|NFC Redis Restarts|Count|Container restart count for Redis.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_zk|Health|NFC ZooKeeper Restarts|Count|Container restart count for ZooKeeper.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_envoy|Health|NFC Envoy Restarts|Count|Container restart count for Envoy.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_ntp|Health|NFC NTP Restarts|Count|Container restart count for NTP.|nfcClusterRole, container|
+|kube_pod_container_status_restarts_total_xds|Health|NFC XDS Restarts|Count|Container restart count for xDS.|nfcClusterRole, container|
+
+For guidance on interpreting availability, restart counts, and container restart stability, see [Network Fabric Controller internal service metrics](reference-network-fabric-controller-metrics.md).

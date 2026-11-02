@@ -58,6 +58,8 @@
           href: concepts-terminal-server-as-resource.md 
         - name: Password Rotation v1
           href: concepts-password-rotation-v1.md
+        - name: Network Fabric feature flags
+          href: concepts-network-fabric-feature-flags.md
         - name: Route Policy
           expanded: false
           items:
@@ -286,6 +288,8 @@
           href: howto-enable-log-streaming.md
         - name: How to use Commit Workflow v2 in Azure Operator Nexus
           href: howto-use-commit-workflow-v2.md
+        - name: How to configure feature flags in Azure Operator Nexus Network Fabric
+          href: howto-configure-network-fabric-feature-flags.md
         - name: How to use Password Rotation v1 in Azure Operator Nexus
           href: howto-use-password-rotation-v1.md
         - name: How to set administrative lock or unlock for Network fabric

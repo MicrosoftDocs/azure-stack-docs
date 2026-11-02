@@ -1316,7 +1316,7 @@ items:
         items:
         - name: Plan updates
           href: manage/disconnected-operations-plan-updates.md
-        - name: Apply updates
+        - name: Update disconnected operations
           href: manage/disconnected-operations-update.md
       - name: Troubleshoot
         items:
@@ -1865,6 +1865,12 @@ items:
         # --- Drift detection ---
         - name: Drift detection
           href: manage/drift-detection.md
+      
+      # --- Update disconnected operations ---
+      - name: Update
+        items:
+        - name: Update an Azure Local instance
+          href: manage/disconnected-operations-update-azure-local-instance.md
 
       # --- Troubleshoot ---
       - name: Troubleshoot

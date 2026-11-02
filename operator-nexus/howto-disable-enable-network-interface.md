@@ -81,6 +81,25 @@ az networkfabric interface show --resource-group "resource-group-name" --network
 }
 ```
 
+### Safety checks when disabling an interface
+
+Nexus Network Fabric blocks a disable action that removes the last enabled interface of a network-to-network interconnect (NNI). This action isolates the remote host reachable through that NNI. This safety check applies to both customer edge (CE) and network packet broker (NPB) device pairs.
+
+When the platform blocks the operation, it returns a 400 error.
+
+To proceed, keep at least one interface in the NNI enabled, or re-enable a peer interface before you disable this one.
+
+#### Override the safety check with --force
+
+If you accept the risk—for example, during a security incident—you can bypass the safety check by adding the `--force` parameter to the disable command. This parameter requires API version `2026-07-15-preview` or later.
+
+```azurecli
+az networkfabric interface update-admin-state --resource-group "example-rg" --network-device-name "example-device" --resource-name "example-interface" --state Disable --force True
+```
+
+> [!WARNING]
+> Using `--force` can cause fabric connectivity loss, routing disruption, or device unreachability. Use it only when you understand and accept the impact.
+
 ## Enabling a network interface
 
 Once you need to restore the interface to normal operation, you can enable it.

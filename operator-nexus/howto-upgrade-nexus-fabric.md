@@ -33,29 +33,13 @@ Follow the instructions in this article for a consistent, scalable, and secure a
 
 Before initiating the Network Fabric runtime upgrade, Users have the option to validate all the resource readiness prechecks as part of the upgrade workflow. These proactive validation steps help identify configuration or readiness issues early, reducing the risk of upgrade failures and minimizing potential service interruptions.
 
-Starting with the 2604.1 release, an opt‑in enforcement mechanism is available to mandate pre‑upgrade validations. This enforcement is enabled through a support ticket and is governed by a fabric instance–level persistent feature flag.
-
-Validation results are stored in the customer managed storage account attached to Network fabric resource at fabricname/UpgradeValidations/fabric_prechecks_{timestamp}.json.
-
-When the feature flag is enabled, any pre‑upgrade validation failure will block the upgrade until the identified issues are remediated.
-
-### Recommended guidance for feature flag (enabled) workflow
-- Pre‑upgrade validations are enforced during the fabric runtime upgrade start.
-- Users are expected to run incremental validation checks only, as applicable. Please refer to the table below to see 
-the list of incremental validation checks. 
-
-#### User guidance
-- Run targeted incremental validation checks only for areas not covered by the automated pre‑upgrade checks.
-- If validation failures occur, re‑run only the failed resource readiness validation tests.
-
-### Recommended guidance for default workflow (feature flag disabled)
-- The fabric upgrade start API does not block or interrupt the upgrade due to missing pre‑upgrade validations.
+### Recommended guidance for default workflow
 - User‑initiated validations (manual or automated) remain the primary validation mechanism.
 
 #### User guidance
 - Users must run the complete set of pre‑upgrade validation checks prior to initiating the fabric runtime upgrade.
 
-| Check | Expectation | Automated feature flag workflow  | [Post-upgrade](#post-upgrade-validation-steps) check applicable? | Impacted runtime upgrade step (if pre-validation fails) |
+| Check | Expectation | Automated workflow  | [Post-upgrade](#post-upgrade-validation-steps) check applicable? | Impacted runtime upgrade step (if pre-validation fails) |
 | --- | --- | --- | --- | --- |
 | Check the NFC provisioning state. | Provisioning state must be **Succeeded**. | Yes | No | The Network Fabric upgrade start step fails. |
 | Check the administrative lock status of the Network Fabric resource. | The state must be **Unlocked**. For more: [Azure Operator Nexus: Use the administrative lock or unlock for Network Fabric](./howto-set-administrative-lock-or-unlock-for-network-fabric.md). | Yes | No | The Network Fabric upgrade start step fails. |
@@ -133,35 +117,43 @@ Use the Azure portal or the Azure CLI to validate the resource states of each Ne
 | --- | --- | --- |
 | Validate the Network Fabric device resource state. | Confirm these states:</br> - Provisioning state is **Succeeded**.</br> - Configuration state is **Succeeded** or **Deferred Control**.</br> - Administrative state is **Enabled**. | The device upgrade step is considered to be failed. Engage Microsoft support to diagnose and resolve the problem.|
 
-Follow these steps:
+Once the fabric upgrade starts, user can upgrade the Network Fabric devices as part of step 2 either in nine batches (Option 1) or six batches (Option 2). Whichever option user chooses, upgrade the network device batches in the order shown below. Run mid-validations after each batch and start the next batch only after the current one succeeds.
 
-1. Trigger the upgrade of odd-numbered TORs (parallel). (Example of an eight-rack: TORs 1, 3, 5, 7, 9, 11, 13, and 15.)
+##### Option 1: NNF device upgrade by device type batch (nine batches)
 
-1. Perform mid-validations on the odd-numbered TORs to validate that the upgrade succeeded.
+1. Trigger the upgrade of the odd-numbered TORs in parallel (Batch 1). For example, in an eight-rack deployment, upgrade TORs 1, 3, 5, 7, 9, 11, 13, and 15.
+1. Perform mid-validations on the odd-numbered TORs to confirm that the upgrade succeeded.
+1. Trigger the upgrade of the even-numbered TORs in parallel (Batch 2). For example, in an eight-rack deployment, upgrade TORs 2, 4, 6, 8, 10, 12, 14, and 16.
+1. Perform mid-validations on the even-numbered TORs to confirm that the upgrade succeeded.
+1. Trigger the upgrade of the compute rack management switches in parallel (Batch 3).
+1. Perform mid-validations on the compute rack management switches to confirm that the upgrade succeeded.
+1. Trigger the upgrade of CE1 (Batch 4).
+1. Perform mid-validations on CE1 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of CE2 (Batch 5).
+1. Perform mid-validations on CE2 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of NPB1 (Batch 6).
+1. Perform mid-validations on NPB1 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of NPB2 (Batch 7).
+1. Perform mid-validations on NPB2 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of aggregate rack management switch 1 (Batch 8).
+1. Perform mid-validations on aggregate rack management switch 1 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of aggregate rack management switch 2 (Batch 9).
+1. Perform mid-validations on aggregate rack management switch 2 to confirm that the upgrade succeeded.
 
-1. Trigger the upgrade of even-numbered TORs (parallel). (Example of an eight-rack: TORs 2, 4, 6, 8, 10, 12, 14, 16.)
+##### Option 2: Upgrade with optimized batching and parallel execution of multiple device types (six batches)
 
-1. Perform mid-validations on the even-numbered TORs to validate that the upgrade succeeded.
-
-1. Trigger the upgrade of compute rack management switches (parallel).
-
-1. Perform mid-validations on the compute rack management switches to validate that the upgrade succeeded.
-
-1. Trigger the upgrade of the CE1.
-
-1. Perform mid-validations on the CE1 to validate that the upgrade succeeded.
-
-1. Trigger the upgrade of the CE2.
-
-1. Perform mid-validations on the CE2 to validate that the upgrade succeeded.
-
-1. Trigger the upgrade of NPBs (serial).
-
-1. Perform mid-validations on the NPBs to validate that the upgrade succeeded.
-
-1. Trigger the upgrade of aggregate rack management switches (serial).
-
-1. Perform mid-validations on the aggregate rack management switches to validate that the upgrade succeeded.
+1. Trigger the upgrade of the odd-numbered TORs and NPB1 in parallel (Batch 1). For example, in an eight-rack deployment, upgrade TORs 1, 3, 5, 7, 9, 11, 13, and 15, and NPB1.
+1. Perform mid-validations on the odd-numbered TORs and NPB1 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of the even-numbered TORs and NPB2 in parallel (Batch 2). For example, in an eight-rack deployment, upgrade TORs 2, 4, 6, 8, 10, 12, 14, and 16, and NPB2.
+1. Perform mid-validations on the even-numbered TORs and NPB2 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of CE1 (Batch 3).
+1. Perform mid-validations on CE1 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of CE2 (Batch 4).
+1. Perform mid-validations on CE2 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of the compute rack management switches and aggregate rack management switch 2 in parallel (Batch 5).
+1. Perform mid-validations on the compute rack management switches and aggregate rack management switch 2 to confirm that the upgrade succeeded.
+1. Trigger the upgrade of aggregate rack management switch 1 (Batch 6).
+1. Perform mid-validations on aggregate rack management switch 1 to confirm that the upgrade succeeded.
 
 #### Perform mid-validation checks
 
