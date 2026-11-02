@@ -610,6 +610,8 @@ items:
             href: manage/add-network-adapters-to-network-intents.md
           - name: Replace a failed NIC in a Network ATC intent
             href: manage/replace-network-adapter-to-network-intents.md
+          - name: Re-create a storage-only Network ATC intent
+            href: manage/recreate-storage-network-intent.md
 
         - name: Storage
           items:
@@ -1314,7 +1316,7 @@ items:
         items:
         - name: Plan updates
           href: manage/disconnected-operations-plan-updates.md
-        - name: Apply updates
+        - name: Update disconnected operations
           href: manage/disconnected-operations-update.md
       - name: Troubleshoot
         items:
@@ -1776,6 +1778,8 @@ items:
             href: manage/add-network-adapters-to-network-intents.md
           - name: Replace a failed NIC in a Network ATC intent
             href: manage/replace-network-adapter-to-network-intents.md
+          - name: Re-create a storage-only Network ATC intent
+            href: manage/recreate-storage-network-intent.md
 
         - name: Storage
           items:
@@ -1798,10 +1802,11 @@ items:
             href: manage/gpu-manage-via-device.md
           - name: Manage GPUs via partitioning
             href: manage/gpu-manage-via-partitioning.md
-          - name: Manage GPU fabric resources
-            href: manage/gpu-manage-fabric-resources.md
-          - name: REST APIs for GPU management
-            href: manage/gpu-rest-api-reference.md
+          #commenting out the following GPU management entries for 2610
+          #- name: Manage GPU fabric resources
+          #  href: manage/gpu-manage-fabric-resources.md
+          #- name: REST APIs for GPU management
+          #  href: manage/gpu-rest-api-reference.md
 
       # --- Monitor ---
       # Grouped into functional subsections (About / Insights / Metrics and alerts /
@@ -1861,6 +1866,12 @@ items:
         # --- Drift detection ---
         - name: Drift detection
           href: manage/drift-detection.md
+      
+      # --- Update disconnected operations ---
+      - name: Update
+        items:
+        - name: Update an Azure Local instance
+          href: manage/disconnected-operations-update-azure-local-instance.md
 
       # --- Troubleshoot ---
       - name: Troubleshoot

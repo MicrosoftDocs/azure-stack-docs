@@ -504,7 +504,7 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
 ::: moniker-end
 
-::: moniker range=">=azloc-2602 <=azloc-2609"
+::: moniker range=">=azloc-2602 <=azloc-2610"
 
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).

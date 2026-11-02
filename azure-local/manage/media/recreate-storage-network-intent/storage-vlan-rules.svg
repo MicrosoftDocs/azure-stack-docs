@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920" role="img" aria-labelledby="diagram-title" aria-describedby="diagram-description">
+  <title id="diagram-title">Storage VLAN rules by topology</title>
+  <desc id="diagram-description">Switched storage uses the recovered VLAN mapping validated against the physical switch configuration. Two-machine switchless storage links can use different VLAN IDs. Three-machine or four-machine switchless storage requires one shared storage VLAN ID across all storage links. A three-machine example illustrates that rule. Preserve the original VLAN mapping for every topology; this recovery procedure doesn't change the design.</desc>
+  <defs>
+    <style>text { font-family:'Segoe UI',sans-serif;letter-spacing:0; } .heading { font-size:42px;font-weight:650;fill:#edf3f6; } .subtitle { font-size:23px;fill:#b9c8d2; } .label { font-size:24px;font-weight:600;fill:#edf3f6; } .body { font-size:23px;fill:#b9c8d2; } .node { fill:#202d37;stroke:#3b4e5b;stroke-width:1.5; } .link { fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round; }</style>
+  </defs>
+  <rect width="1440" height="920" fill="#12171c"/>
+  <text x="48" y="67" class="heading">Storage VLAN rules by topology</text>
+  <text x="48" y="110" class="subtitle">Validate the recovered mapping against the original physical network design</text>
+  <g fill="#1a242c" stroke="#3b4e5b">
+    <rect x="48" y="190" width="432" height="580" rx="6"/>
+    <rect x="504" y="190" width="432" height="580" rx="6"/>
+    <rect x="960" y="190" width="432" height="580" rx="6"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="264" y="238" class="label">Switched storage</text>
+    <text x="720" y="238" class="label">Two-machine switchless</text>
+    <text x="1176" y="230" class="label"><tspan x="1176">Three-machine or</tspan><tspan x="1176" dy="32">four-machine switchless</tspan></text>
+    <g class="link" stroke="#78c6ff">
+      <path d="M 134 352 V 478"/>
+      <path d="M 264 352 V 478"/>
+      <path d="M 394 352 V 478"/>
+    </g>
+    <rect x="72" y="282" width="384" height="70" rx="6" class="node"/>
+    <text x="264" y="325" font-size="23" fill="#edf3f6">Physical switch infrastructure</text>
+    <rect x="78" y="478" width="112" height="78" rx="6" class="node"/>
+    <rect x="208" y="478" width="112" height="78" rx="6" class="node"/>
+    <rect x="338" y="478" width="112" height="78" rx="6" class="node"/>
+    <g font-size="20" fill="#edf3f6">
+      <text x="134" y="508"><tspan x="134">Machine</tspan><tspan x="134" dy="26">1</tspan></text>
+      <text x="264" y="508"><tspan x="264">Machine</tspan><tspan x="264" dy="26">2</tspan></text>
+      <text x="394" y="508"><tspan x="394">Machine</tspan><tspan x="394" dy="26">3</tspan></text>
+    </g>
+    <text x="264" y="626" class="body"><tspan x="264">Validate storage VLANs against</tspan><tspan x="264" dy="34">the physical switch configuration.</tspan></text>
+    <rect x="528" y="330" width="160" height="140" rx="6" class="node"/>
+    <rect x="752" y="330" width="160" height="140" rx="6" class="node"/>
+    <text x="608" y="407" font-size="23" fill="#edf3f6">Machine 1</text>
+    <text x="832" y="407" font-size="23" fill="#edf3f6">Machine 2</text>
+    <path d="M 688 370 H 752" class="link" stroke="#78c6ff"/>
+    <path d="M 688 430 H 752" class="link" stroke="#ffa0c0"/>
+    <text x="720" y="354" font-size="17" fill="#78c6ff">VLAN A</text>
+    <text x="720" y="456" font-size="17" fill="#ffa0c0">VLAN B</text>
+    <text x="720" y="626" class="body"><tspan x="720">Storage links can use</tspan><tspan x="720" dy="34">different VLAN IDs.</tspan></text>
+    <g class="link" stroke="#76dec1">
+      <path d="M 1144 340 H 1208"/>
+      <path d="M 1064 380 L 1176 470"/>
+      <path d="M 1288 380 L 1176 470"/>
+    </g>
+    <rect x="984" y="300" width="160" height="80" rx="6" class="node"/>
+    <rect x="1208" y="300" width="160" height="80" rx="6" class="node"/>
+    <rect x="1096" y="470" width="160" height="80" rx="6" class="node"/>
+    <g font-size="23" fill="#edf3f6">
+      <text x="1064" y="347">Machine 1</text>
+      <text x="1288" y="347">Machine 2</text>
+      <text x="1176" y="517">Machine 3</text>
+    </g>
+    <text x="1176" y="626" class="body"><tspan x="1176">One shared storage VLAN ID</tspan><tspan x="1176" dy="34">across all storage links.</tspan></text>
+    <text x="1176" y="724" font-size="20" fill="#b9c8d2">Three-machine example shown</text>
+  </g>
+  <rect x="48" y="810" width="1344" height="64" rx="6" fill="#202d37" stroke="#76dec1" stroke-width="1.5"/>
+  <text x="720" y="851" text-anchor="middle" font-size="24" font-weight="600" fill="#76dec1">Preserve the original VLAN mapping for every topology.</text>
+</svg>

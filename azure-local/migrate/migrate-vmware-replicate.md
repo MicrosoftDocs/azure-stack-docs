@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/28/2026
+ms.date: 10/26/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -85,9 +85,7 @@ This step applies only if you downloaded the .zip file. Use the `AzureMigrateIns
 
 ### Configure the source appliance and discover VMs
 
-After you install the source appliance, follow these steps:
-
-[Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). Complete these steps.
+After you install the source appliance, [configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance) by completing these steps:
 
 1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
@@ -127,12 +125,12 @@ After you install the source appliance, follow these steps:
 ### Onboard to Azure Local
 
 1. After you add the discovery sources, onboard to the target Azure Local instance. This step validates connectivity between the source appliance and the target Azure Local instance, and provides the information needed about the target system for migration.
-1. Toggle the slider to "**Enable credentials for Azure Local**".
+1. Toggle the slider to **Enable credentials for Azure Local**.
 
     :::image type="content" source="media/migrate-vmware-replicate/enable-azure-local-credentials.png" alt-text="Screenshot of how to enable credentials for Azure Local appliance.":::
 
 1. Select **Add information** to provide the necessary information and credentials for the target Azure Local instance.
-1. Select **Save**".
+1. Select **Save**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
@@ -308,21 +306,52 @@ This step applies to using a .zip file.
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, look for a green checkmark to verify that the target appliance is connected.
+1. On the **Appliances** tab:
+
+    1. **Source appliance** shows the appliance that you selected on **Specify intent**.
+    1. For **Target appliance**, select the target appliance on your Azure Local instance.
+    1. Verify that both appliances show a green checkmark. The message confirms that the appliance is connected and shows when its Azure Local credentials for the selected system were last verified.
+    1. When finished, select **Next**.
+
+    :::image type="content" source="./media/migrate-vmware-replicate/replicate-2-target.png" alt-text="Screenshot showing the Appliances tab with connected source and target appliances." lightbox="./media/migrate-vmware-replicate/replicate-2-target.png":::
 
     > [!NOTE]
-    > A green checkmark indicates that the target appliance is successfully registered and configured. If you didn't configure your target appliance yet, you see the configuration page instead.
+    > If an appliance is disconnected, or its Azure Local credentials are missing, no longer valid, or don't match the selected system, fix the issue on the appliance and then select the refresh button next to it. To update credentials, see [Onboard to Azure Local](#onboard-to-azure-local) for the source appliance and [Register the target appliance](#register-the-target-appliance) for the target appliance. If no target appliance is registered for the system, select **Deploy and configure target appliance** to set one up.
 
-1. Select **Next**.
+1. On the **Virtual machines** tab:
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/migrate-vmware-replicate/replicate-2-target.png":::
+    1. For **Do you want to retain the Azure Arc-enabled server connected machine agents during migration?**, select **Yes** or **No**. You must select an option to continue.
 
-1. On the **Virtual machines** tab, verify the VMs are discovered and are listed. You can select up to 10 VMs from the portal list to replicate at one time. Select **Next**.
+        - **Yes**: Reuse the existing Azure Arc resources of Arc-enabled source VMs. After you select the VMs, select **Configure Arc-enabled server reuse**, choose the VMs to reuse, and then select **Save**. **Next** stays unavailable until you save this configuration.
+        - **No**: Azure Migrate creates a new Azure Local VM resource for every migrated VM. If any source VMs are Arc-enabled servers, uninstall the Azure Connected Machine agent on them before you migrate.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
+    1. Select up to 10 VMs to replicate. Use the search box to filter the list. VMs that can't be replicated are unavailable and show the reason next to the name, such as **already in replication** or **VM powered off**. After you fix the issue, it can take up to 30 minutes for the VM to become available.
+    1. To review your selection or remove VMs from it, select **Selected virtual machines**.
+    1. When finished, select **Next**.
+
+    :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab with the Arc reuse option and selected VMs." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
 
     > [!NOTE]
-    > If any VMs you select are Azure Arc-enabled servers, this tab also asks whether to retain their Azure Connected Machine agents during migration. Reuse preserves each resource's tags, role assignments, Azure Policy assignments, and extensions, but locks the target resource group and VM name for every VM in the batch. You can't change the setting after replication starts. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
+    > Arc reuse preserves each resource's tags, role assignments, Azure Policy assignments, and extensions, but locks the target resource group and VM name for every VM in the batch. You can't change the setting after replication starts. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
+
+1. On the **Security** tab, choose the security settings for the migrated VMs. Only Generation 2 (UEFI) VMs, shown with a **Boot type** of **efi**, support Secure Boot and the Trusted launch security type. Generation 1 (BIOS) VMs are migrated with the **Standard** security type, and Secure Boot shows **Not available**.
+
+    1. For each Generation 2 VM, select a **Security type**:
+
+        - **Standard**: Migrates the VM with the basic level of security.
+        - **Trusted Launch**: Creates the Azure Local VM with Secure Boot and a virtual Trusted Platform Module (vTPM) enabled. Trusted launch requires Secure Boot, so **Enable Secure Boot** is selected automatically and can't be cleared. For more information, see [Trusted launch for Azure Local VMs](../manage/trusted-launch-vm-overview.md).
+
+    1. To enable Secure Boot on a Generation 2 VM that doesn't use it on the source, select **Enable Secure Boot** for that VM. To enable it on all of them at once, turn on **Enable Secure Boot on all Generation 2 VMs that don't currently use it**. Before you enable Secure Boot, make sure the guest OS supports it.
+
+        If Secure Boot is enabled on the source VM, it shows **Enabled at source** and stays enabled after migration.
+
+    1. When finished, select **Next**.
+
+        :::image type="content" source="./media/migrate-vmware-replicate/replicate-security.png" alt-text="Screenshot showing the Security tab with the security type and Secure Boot settings for each VM." lightbox="./media/migrate-vmware-replicate/replicate-security.png":::
+
+    > [!IMPORTANT]
+    > - Choose the security type before you start replication. There's no supported way to convert a migrated Standard VM to Trusted launch later.
+    > - Azure Migrate doesn't migrate vTPM state or keys from the source VM. A Trusted launch VM gets a new vTPM on Azure Local. Guest attestation isn't enabled during migration.
 
 1. On the **Target settings** tab, complete these tasks:
 
