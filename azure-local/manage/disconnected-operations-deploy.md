@@ -563,7 +563,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 
 ### Update the bootstrap service
 
-If you are on an OEM image prior to 2610, update the bootstrap service. ***Skip this section if you are on an image build with 2610 or newer.***
+If you're using an OEM image prior to 2610, update the bootstrap service. ***Skip this section if you're using an image build with 2610 or newer.***
 
 1. Copy and extract the **BootstrapBundle.zip** file. This bundle includes:
 
