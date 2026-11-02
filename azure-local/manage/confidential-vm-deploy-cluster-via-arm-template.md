@@ -3,7 +3,7 @@ title: Deploy an Azure Local Cluster via Azure Resource Manager deployment templ
 description: Learn how to deploy a confidential virtual machine (CVM) ready Azure Local cluster by using an Azure Resource Manager deployment template.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/26/2026
+ms.date: 11/02/2026
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -41,7 +41,7 @@ Prepare the Azure resources by using the same steps as the [Azure Resource Manag
 
 To configure the cluster to enable deployment of a CVM, you must include an additional parameter, `confidentialVmIntent`, in the Azure Resource Manager deployment specification. If you don't specify this parameter, CVM creation fails. Setting this parameter might slightly reduce CPU performance for some workloads, on both CVMs and standard VMs.
 
-Include the `confidentialVmIntent` parameter in the ARM template and set it in the ARM template parameter file. Use the API version `2026-10-15-preview` or the latest available version where applicable.
+Include the `confidentialVmIntent` parameter in the ARM template and set it in the ARM template parameter file. Use the API version `2026-10-15-preview`.
 
 ```json
 "confidentialVmIntent": {
