@@ -504,7 +504,7 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 
 ::: moniker-end
 
-::: moniker range=">=azloc-2602 <=azloc-2610"
+::: moniker range=">=azloc-2602"
 
 > [!NOTE]
 > If your machines come preinstalled with an OEM image, follow the steps in [Handle preinstalled OEM images in disconnected operations](#handle-preinstalled-oem-images-in-disconnected-operations).
@@ -550,7 +550,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 
 ::: moniker-end
 
-::: moniker range=">=azloc-2602 <=azloc-2609"
+::: moniker range=">=azloc-2602"
 
 ## Handle preinstalled OEM images in disconnected operations
 
@@ -560,7 +560,10 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $subscription.Id -TenantID $s
 
 - On a connected machine, [download the bootstrap package](https://aka.ms/BootstrapBundle).
 
+
 ### Update the bootstrap service
+
+If you are on an OEM image prior to 2610, update the bootstrap service. ***Skip this section if you are on an image build with 2610 or newer.***
 
 1. Copy and extract the **BootstrapBundle.zip** file. This bundle includes:
 
@@ -603,6 +606,7 @@ start-service *bootstrap*
 ```powershell
 Get-Service *bootstrap*
 ```
+
 
 ### Initialize Azure Arc
 1. Extract **CombinedSolutionBundle.zip** to **c:\temp**.
