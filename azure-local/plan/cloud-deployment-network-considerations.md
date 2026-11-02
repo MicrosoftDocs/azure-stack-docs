@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Local
 description: Plan the network architecture for an Azure Local cloud deployment by using an 11-decision design framework that covers connectivity mode, architecture, topology, storage, intents, IP addressing, backup, outbound connectivity, and software defined networking.
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/29/2026
+ms.date: 11/02/2026
 ms.author: cedward
 ms.subservice: hyperconverged
 ---
@@ -466,31 +466,35 @@ The following infrastructure subnet components must be planned and defined befor
 
 ### Reserved IP ranges to avoid
 
-When you deploy Azure Local, the platform reserves two internal Kubernetes CIDRs—`10.96.0.0/12` for Kubernetes services and `10.244.0.0/16` for pod networking. The Azure Resource Bridge (ARB) control plane runs on this internal Kubernetes platform, and any Azure Kubernetes Service (AKS) clusters you deploy use the same ranges. If any Azure Local configuration overlaps these ranges, deployment might fail or experience connectivity issues that are difficult to troubleshoot.
+Azure Arc resource bridge (ARB) reserves internal Kubernetes CIDRs for services and pod networking. Starting with Azure Local 2610, new deployments include ARB 1.8.0, which reduces the Kubernetes service CIDR from `10.96.0.0/12` to `10.96.0.0/24`. The pod CIDR remains `10.244.0.0/16`. If your Azure Local configuration overlaps the applicable ranges, deployment might fail or experience connectivity issues that are difficult to troubleshoot.
 
-Because `10.96.0.0/12` is the platform's internal Kubernetes Service network, no Azure Local infrastructure IP—and none of the core infrastructure services the cluster must reach, such as DNS and proxy—can fall within it. From the nodes and the infrastructure VMs, any traffic sent to an address in `10.96.0.0/12` is handled internally and never reaches the real destination. Plan the following so they all sit outside `10.96.0.0/12`:
+> [!IMPORTANT]
+> The smaller ARB service CIDR applies only to new deployments starting with Azure Local 2610. Updating an existing Azure Local deployment to 2610 or later doesn't shrink its existing ARB service CIDR; continue to avoid `10.96.0.0/12` for those deployments. This change doesn't reduce the minimum of six consecutive available IP addresses required for the management IP pool.
+
+No Azure Local infrastructure IP—and none of the core infrastructure services ARB must reach, such as DNS and proxy—can fall within its service or pod CIDRs. Traffic from the ARB appliance to an address within its internal Kubernetes networks doesn't reach the intended external destination. Plan the following so they all sit outside the applicable reserved ranges:
 
 - The cluster node IPs and the cluster IP.
 - The Azure Resource Bridge VM and the other infrastructure VM IPs, along with the management IP pool they're drawn from.
 - The DNS servers and the proxy server that the infrastructure uses.
 
-The `10.244.0.0/16` pod range carries the same restriction: any infrastructure IP, node IP, or logical network you place there collides with pod networking.
+The `10.244.0.0/16` pod range carries the same restriction for all deployments: any infrastructure IP, node IP, or logical network you place there collides with pod networking.
 
-If you deploy AKS on Azure Local, the same reserved ranges add two more requirements for the AKS workloads:
+If you deploy Azure Kubernetes Service (AKS) on Azure Local, plan its address ranges separately from ARB. The ARB 1.8.0 change doesn't reduce the AKS service CIDR, which remains `10.96.0.0/12`. AKS uses `10.244.0.0/16` as its default pod CIDR and supports a custom pod CIDR at cluster creation. These ranges add two requirements for AKS workloads:
 
-- **The AKS logical network can't overlap the reserved ranges.** The logical network (LNET) that you deploy AKS clusters into must not overlap `10.96.0.0/12` (Kubernetes services) or `10.244.0.0/16` (pods).
+- **The AKS logical network can't overlap the reserved ranges.** The logical network (LNET) that you deploy AKS clusters into must not overlap `10.96.0.0/12` (Kubernetes services) or the AKS pod CIDR (`10.244.0.0/16` by default). Also avoid the applicable ARB ranges.
 - **AKS can't reach private endpoints inside `10.96.0.0/12`.** Any private endpoint that AKS workloads rely on—such as Azure Container Registry (ACR), Azure Key Vault, or Azure Storage endpoints—must not have an IP within `10.96.0.0/12`. From an AKS control plane VM or worker node, that range *is* the internal Kubernetes Service network, so traffic to any address in it is handled internally and never reaches the real endpoint. If your environment already places private endpoints or other services that AKS must reach in that space, move them out before you deploy AKS.
 
-The service and pod CIDRs can't currently be changed, so plan your network to avoid these ranges rather than expecting them to move. Beyond the Azure Local infrastructure, the endpoints it must reach, and AKS, these ranges don't reserve or restrict the rest of your datacenter address space—only the services the cluster itself connects to need to stay clear of them. For the full AKS address-planning requirements, including multi-rack deployments, see [Plan IP addresses for AKS on Azure Local](/azure/aks/aksarc/aks-hci-ip-address-planning).
+Plan your network to avoid the applicable ranges rather than expecting an update to change them. Beyond the Azure Local infrastructure, the endpoints it must reach, and AKS, these ranges don't reserve or restrict the rest of your datacenter address space—only the services the cluster itself connects to need to stay clear of them. For the full AKS address-planning requirements, including multi-rack deployments and custom pod CIDRs, see [Plan IP addresses for AKS on Azure Local](/azure/aks/aksarc/aks-hci-ip-address-planning).
 
 #### Reserved ranges to avoid
 
-The following IP ranges are reserved internally by the Kubernetes platform (used by both Arc Resource Bridge and AKS) and must not be used for any Azure Local infrastructure component:
+The following table summarizes the internal Kubernetes ranges to avoid:
 
-| Reserved range | What it's used for |
-|----------------|-------------------|
-| `10.96.0.0/12` | Kubernetes internal services (cluster IPs) |
-| `10.244.0.0/16` | Kubernetes pod networking |
+| Component and deployment | Service CIDR | Pod CIDR |
+|--------------------------|--------------|----------|
+| ARB in new Azure Local deployments starting with 2610 (ARB 1.8.0) | `10.96.0.0/24` | `10.244.0.0/16` |
+| ARB in deployments created before 2610, including after an update to 2610 or later | `10.96.0.0/12` | `10.244.0.0/16` |
+| AKS on Azure Local, including new deployments on 2610 or later | `10.96.0.0/12` | `10.244.0.0/16` by default; configurable at AKS cluster creation |
 
 #### What to check before deployment
 
@@ -499,12 +503,14 @@ Make sure none of the following Azure Local infrastructure IPs fall within the r
 | Check this | Example of a problem |
 |------------|---------------------|
 | Your node management IPs | Node at `10.244.1.50` conflicts with pod network |
-| Your cluster IP | Cluster IP at `10.96.0.5` is unreachable from the nodes |
-| The Azure Resource Bridge VM and infrastructure IP pool | Pool starting at `10.100.0.1` falls within `10.96.0.0/12` |
-| Your DNS server IPs | DNS at `10.96.1.10` would conflict |
-| Your proxy server IP | Proxy server at `10.97.10.25` would conflict |
+| Your cluster IP | Cluster IP at `10.96.0.5` conflicts with the ARB service network in all deployments |
+| The Azure Resource Bridge VM and infrastructure IP pool | Pool starting at `10.96.0.50` falls within the ARB service CIDR in all deployments |
+| Your DNS server IPs | DNS at `10.96.0.10` conflicts with the ARB service network in all deployments |
+| Your proxy server IP | Proxy server at `10.96.0.25` conflicts with the ARB service network in all deployments |
 | Your default gateway | Gateway at `10.96.0.1` would conflict |
 | Any logical networks for VMs | VM subnet `10.244.100.0/24` overlaps pod network |
+
+For a new deployment starting with Azure Local 2610, an address such as `10.100.0.1` no longer overlaps the ARB service CIDR. However, it still overlaps the AKS service CIDR and the ARB service CIDR in deployments created before 2610.
 
 #### Safe IP ranges to use
 
@@ -515,12 +521,15 @@ Here are examples of commonly used private IP ranges that won't conflict:
 | `192.168.x.x` | Most common for small deployments |
 | `172.16.x.x` to `172.31.x.x` | Good for medium-sized networks |
 | `10.0.x.x` to `10.95.x.x` | Safe — stays below the reserved `10.96.0.0` boundary |
-| `10.112.x.x` and higher | Safe — above the reserved `10.111.255.255` boundary |
+| `10.112.x.x` and higher, excluding `10.244.x.x` | Above the larger service CIDR boundary; exclude `10.244.0.0/16` for pod networking |
+
+These examples avoid both ARB service CIDR sizes and the default AKS ranges. If you configure a custom AKS pod CIDR, also check for overlap with that range.
 
 #### IP planning references
 
 - [IP address planning requirements for AKS](/azure/aks/aksarc/aks-hci-ip-address-planning)
 - [Designated IP ranges for Arc resource bridge](/azure/azure-arc/resource-bridge/network-requirements#designated-ip-ranges-for-arc-resource-bridge)
+- [Arc resource bridge 1.8.0 release notes](/azure/azure-arc/resource-bridge/release-notes#version-180-july-2026)
 
 ### Management IP pool
 
@@ -704,7 +713,7 @@ Here are the summarized considerations for DNS server addresses:
 |5     | When defining an array of multiple DNS servers in an ARM template for the infrastructure network, make sure each value is within quotes "" and separated by commas, as in the following example.        | Both  |
 |6     | It isn't supported to run *all* of the configured DNS servers as virtual machines on the same Azure Local instance. At least one configured DNS server must run outside the cluster so that name resolution works during boot, shutdown, restart, and recovery, when cluster-hosted VMs aren't available.        | Both  |
 |7     | All DNS servers configured must resolve on-premises domains required for the infrastructure. Public DNS servers such as 8.8.8.8 aren't supported.        | Both  |
-|8     | All DNS servers configured must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16).        | Both  |
+|8     | DNS server IPs must not overlap the applicable ARB ranges: `10.96.0.0/24` for new deployments starting with 2610, or `10.96.0.0/12` for deployments created before 2610, plus `10.244.0.0/16` in both cases. If AKS uses these DNS servers, also avoid its service and pod CIDRs. See [Reserved IP ranges to avoid](#reserved-ip-ranges-to-avoid).        | Both  |
 
 ```json
 "dnsServers": [
@@ -837,7 +846,7 @@ Here are the summarized considerations for proxy configuration:
 |3     | You can supply the proxy details through the Arc registration script or interactively through the Configurator app.        | Both  |
 |4     | The Arc registration script carries the proxy configuration over to the Arc Resource Bridge VM and AKS during deployment.        | Both  |
 |5     | Only non-authenticated proxies are supported. PAC files and proxy endpoints with a `.local` domain aren't supported.        | Both  |
-|6     | The proxy server configured for Azure Local nodes must not overlap with the reserved ARB subnet ranges (10.96.0.0/12 and 10.244.0.0/16).        | Both  |
+|6     | The proxy server IP must not overlap the applicable ARB ranges: `10.96.0.0/24` for new deployments starting with 2610, or `10.96.0.0/12` for deployments created before 2610, plus `10.244.0.0/16` in both cases. If AKS uses the proxy, also avoid its service and pod CIDRs. See [Reserved IP ranges to avoid](#reserved-ip-ranges-to-avoid).        | Both  |
 |7     | For registration and full updates, include each machine IP, the cluster IP, and the infrastructure subnet, plus the machine and cluster NetBIOS names. Separate entries with commas and use Windows wildcard notation (for example, `192.168.1.*`), not CIDR. An Azure Arc resource bridge-only update uses Linux dot-prefix domain and CIDR notation instead.        | Both  |
 |8     | Existing AKS clusters don't automatically receive post-deployment proxy changes. Review the preview limitation before changing or removing the original connectivity path.        | Both  |
 
@@ -887,7 +896,7 @@ You can use Azure Private Link private endpoints to keep traffic to supported Az
 
 When you plan private endpoints, follow these rules:
 
-- **Avoid reserved-range overlap**: Private endpoint IPs must not fall within `10.244.0.0/16` (AKS pods) or `10.96.0.0/12` (Kubernetes services). An overlapping endpoint is treated as internal cluster traffic and never leaves the virtual network. For example, an endpoint at `10.244.1.4` fails, while `10.245.0.5` routes correctly.
+- **Avoid reserved-range overlap**: Private endpoints that ARB must reach must avoid its applicable service CIDR (`10.96.0.0/24` for new deployments starting with 2610; `10.96.0.0/12` for deployments created before 2610) and pod CIDR (`10.244.0.0/16`). Endpoints that AKS must reach must still avoid `10.96.0.0/12` and its pod CIDR (`10.244.0.0/16` by default), even on 2610 or later. An overlapping destination is treated as internal Kubernetes traffic instead of reaching the intended endpoint. See [Reserved IP ranges to avoid](#reserved-ip-ranges-to-avoid).
 - **Keep critical services public during deployment**: Keep public access enabled on Azure Key Vault and the witness storage account until deployment completes, then restrict them to private networks.
 - **Add private endpoints to the bypass list**: When you use an enterprise proxy, add private endpoint FQDNs to the proxy bypass list during Arc registration whenever possible. On version 2610 or later, use `Update-AzureLocalProxy` for supported post-deployment bypass-list changes. Existing AKS clusters don't automatically receive these changes, so review the post-deployment proxy update limitations before proceeding.
 - **Use exact service FQDNs**: For private service endpoints, add exact FQDNs, including the registry and required registry data endpoints for image pulls. Don't use broad service wildcards such as `*.azurecr.io`. This requirement is separate from wildcard notation for internal domains in a Windows bypass list.
