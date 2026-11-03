@@ -4,7 +4,7 @@ description: Virtual machine resiliency considerations for Azure Local.
 ms.topic: reliability-article
 author: sipastak
 ms.author: sipastak
-ms.date: 01/07/2026
+ms.date: 11/03/2026
 ms.subservice: hyperconverged
 ---
 
@@ -140,7 +140,7 @@ Key points about Azure Site Recovery for Azure Local:
 
 - **Deployment**:
   - Automated deployment: Azure Local created an extension to Azure Site Recovery for automated deployment. Azure Site Recovery extension can detect all the nodes of the cluster and deploy Azure Site Recovery on all nodes automatically and configure them with the replication policy. For more information, see [Protect VM workloads with Azure Site Recovery](azure-site-recovery.md#step-1-prepare-infrastructure).
-  - Manual deployment: Azure Site Recovery extension for Azure Local is in preview and only applicable to test environments. For those customers that need a production ready solution, Azure Site Recovery can be configured manually on Azure Local cluster using the [Hyper-V to Azure disaster recovery](/azure/site-recovery/hyper-v-azure-architecture) option.  
+  - Manual deployment: For those customers that need a production ready solution, Azure Site Recovery can be configured manually on Azure Local cluster using the [Hyper-V to Azure disaster recovery](/azure/site-recovery/hyper-v-azure-architecture) option.  
 
 - **Frequent replication**: Azure Site Recovery can achieve Recovery Point Objectives (RPOs) as low as 30 seconds.
 
@@ -159,7 +159,7 @@ Key points about Azure Site Recovery for Azure Local:
     >- Reconnecting means the Azure resource is updated with the new resource group (optional, you can also keep it in the same resource group), custom location, storage path, and logical network of the VM.
     >- If the VM is failed back on the same cluster, registering and reconnecting aren't needed. The VM's Azure connection is restored, and it continues to be managed from Azure as long as it's within [Azure Arc's 45-day reconnection window](/azure/azure-arc/servers/overview#agent-status).
 
-For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local (preview)](azure-site-recovery.md).
+For more information and to install Azure Site Recovery, see [Protect VM workloads with Azure Site Recovery on Azure Local](azure-site-recovery.md).
 
 ### Use Hyper-V Replica for continuous replication of business-critical VMs
 
