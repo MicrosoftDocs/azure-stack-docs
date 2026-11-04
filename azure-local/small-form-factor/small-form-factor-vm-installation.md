@@ -19,8 +19,6 @@ This article describes how to test small form factor deployments of Azure Local 
 
 If you don’t have access to physical hardware, you can use a Hyper-V VM to test these deployments. You can also follow this approach in an Azure Virtual Machine, though additional workaround steps are required as described later in this article.
 
-While a VM is useful for testing, it doesn’t fully replicate bare-metal hardware behavior. For the most accurate representation of a customer deployment, use a supported physical device. For more information, see [Install the maintenance environment on your machine](small-form-factor-installation.md).
-
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## Prerequisites
@@ -75,7 +73,7 @@ To download them:
 The VM needs a network that:
 
 - Provides DHCP for the initial connection
-- Supports assigning a static IP address later
+- Supports assigning a static IP address later (if you use the [NICs feature](small-form-factor-network-interfaces.md) to set a static IP)
 - Has internet connectivity
 
 To simplify setup, use the provided script to create the Hyper-V switch, configure NAT, and enable DHCP.
@@ -177,7 +175,7 @@ Add-VMNetworkAdapterAcl -VMNetworkAdapter $adapter -Action Deny -Direction Outbo
 
 ## Troubleshoot
 
-To troubleshoot VM setup, see [Troubleshoot small form factor deployments of Azure Local](small-form-factor-troubleshoot.md#troubleshoot-vm-setup).
+To troubleshoot VM setup, see [Troubleshoot VM setup](small-form-factor-troubleshoot-vm-setup.md).
 
 ## Review your VM setup
 

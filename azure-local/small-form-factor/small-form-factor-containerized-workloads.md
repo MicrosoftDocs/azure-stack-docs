@@ -136,7 +136,11 @@ Follow these steps to [SSH into a provisioned machine from Azure](small-form-fac
 
 #### Install K3s
 
-To remotely install open-source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use [setup-k3s-arc.sh](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh). Otherwise, follow the steps in this section.
+To remotely install open-source K3s, connect the cluster to Azure Arc, and configure Azure RBAC, use [setup-k3s-arc.sh](https://github.com/Azure-Samples/AzureLocal/blob/main/small-form-factor/setup-k3s-arc.sh). 
+
+Otherwise, follow the steps in this section.
+> [!NOTE]
+> If an NVIDIA Jetson Thor is being used, skip Step 1 and instead run `sudo systemctl start k3s` to start the k3s service, and run `sudo systemctl enable k3s` to set it to start automatically at each boot-up.
 
 1. Install K3s and disable Traefik:
 

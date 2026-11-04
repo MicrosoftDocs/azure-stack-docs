@@ -3,7 +3,7 @@ title: Resource Overview for Small Form Factor Deployments of Azure Local (previ
 description: Understand the Azure resources created for small form factor deployments of Azure local and how they relate to each other (preview).
 author: sipastak
 ms.topic: concept-article
-ms.date: 05/04/2026
+ms.date: 10/28/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -19,22 +19,13 @@ This article describes the Azure resources involved in small form factor deploym
 
 Small form factor deployments of Azure Local create several interconnected Azure resources. The following diagram shows the relationship between these resources:
 
-```
-Azure Subscription
-└── Resource Group (user-created)
-    ├── Provisioned Machine A
-    ├── Provisioned Machine B
-    ├── ...
-    └── Azure Arc Site
-        └── Managed Resource Group (auto-created, one per site; name derived from site name unless overridden)
-            └── Arc for Servers instance (one per provisioned machine)
-                ├── Azure Edge Device Management Extension
-                └── Azure Edge Telemetry And Monitoring Extension
-```
+:::image type="complex" source="media/small-form-factor-resource-hierarchy.png" alt-text="Box diagram of the Azure Local small form factor resources, showing the user-created resource group and the site-owned managed resource group within an Azure subscription." lightbox="media/small-form-factor-resource-hierarchy.png" border="false":::
+The Azure subscription contains a user-created resource group with provisioned machines A, B, and other machines alongside an Azure Arc site. Each provisioned machine has Disk, Network Interface, and GPU hardware subresources, as applicable to the device, and Job subresources for device operations. The site creates and owns a separate managed resource group, with one managed resource group per site. Its name is derived from the site name unless overridden. The managed resource group contains one Arc for Servers instance per provisioned machine. Each instance contains the Azure Edge Device Management Extension and the Azure Edge Telemetry And Monitoring Extension.
+:::image-end:::
 
 ## Provisioned machine
 
-The provisioned machine is the top-level Azure resource that represents your physical small form factor device. It provides a cloud-based management surface for the hardware running at your edge location.
+The provisioned machine is the top-level Azure resource that represents your physical device and all of its physical hardware. It provides a cloud-based management surface for the hardware running at your edge location.
 
 > [!NOTE]
 > In the Azure Resource Manager API, this resource is referred to as an "Edge Machine." This name exists for backwards compatibility with previous versions of the API. The CLI and portal continue to refer to it as a "Provisioned Machine," but the underlying API refers to it as an "Edge Machine."
@@ -42,9 +33,10 @@ The provisioned machine is the top-level Azure resource that represents your phy
 Through the provisioned machine resource, you can perform lifecycle operations on the physical device, including:
 
 - **Install OS**: Deploy the Azure Local operating system (such as Azure Linux) to the physical device, specifying the target OS image, network configuration, and SSH public key for access.
+- **Update OS**: Apply an available operating system update to the device. For more information, see [Update your Azure Local small form factor deployment](small-form-factor-upgrade.md).
 - **Reset OS**: Return the device to its maintenance environment, wiping the installed operating system while preserving the underlying hardware configuration.
 
-These operations are available through the Azure CLI using the `az provisionedmachine` command group:
+You can install or reset the operating system through the Azure CLI by using the `az provisionedmachine` command group.
 
 ```azurecli
 # Install the operating system on the small form factor device
@@ -62,6 +54,17 @@ az provisionedmachine reset-os \
 ```
 
 The provisioned machine resource tracks the state of these operations, allowing you to monitor progress from the Azure portal or CLI.
+
+### Provisioned machine subresources
+
+The provisioned machine exposes its physical hardware and device operations through the following subresources. Hardware subresources apply according to the hardware present on the device. These subresources belong to the provisioned machine, not to the Arc for Servers instance.
+
+| Subresource | Represents | Related guidance |
+|---|---|---|
+| Provisioned Machine / Disk | A physical disk on the device. | [Manage disks and volumes](small-form-factor-storage.md) |
+| Provisioned Machine / Network Interface | A network interface on the device. | [Manage network interfaces](small-form-factor-network-interfaces.md) |
+| Provisioned Machine / GPU | A GPU on the device. | [Deploy GPU-enabled workloads](small-form-factor-deploy-gpu-workloads.md) |
+| Provisioned Machine / Job | A device operation, such as OS provisioning. | [Troubleshoot management and connectivity](small-form-factor-troubleshoot.md) |
 
 ## Azure Arc site
 

@@ -1,10 +1,10 @@
 ---
 title: Firewall Requirements for Small Form Factor Deployments of Azure Local (preview)
 description: This article provides guidance on firewall requirements for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: Sars47
 ms.topic: concept-article
 ms.date: 05/04/2026
-ms.author: sipastak
+ms.author: anthonyjoint
 ms.service: azure-local
 ms.subservice: small-form-factor
 ms.custom: references_regions
@@ -12,13 +12,13 @@ ms.custom: references_regions
 
 # Firewall requirements for small form factor deployments of Azure Local (preview)
 
-This article describes the fully qualified domain name (FQDN) firewall requirements for small form factor deployments of Azure Local that use **Arc Gateway** in the **East US** region.
+This article describes the fully qualified domain name (FQDN) firewall requirements for small form factor deployments of Azure Local in the **East US** region.
 
 Use this allow list to configure outbound firewall rules required for a successful deployment.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
-## Firewall allow list (2607, East US)
+## Firewall allow list (2610, East US)
 
 The following table lists the outbound endpoints and ports required for small form factor deployments with Arc Gateway in the East US region.
 
@@ -29,17 +29,15 @@ The following table lists the outbound endpoints and ports required for small fo
 | 3 | eus.his.arc.azure.com | 443 | Azure Arc | |
 | 4 | management.azure.com | 443 | Azure Arc | | 
 | 5 | login.microsoftonline.com | 443 | Azure Entra Login Svc | |
-| 6 | eoprodrvsvc95jfo-hzbjevbze6e0dfgv.eastus.devicerendezvous.azure.net | | |
-| 7 | eastus.login.microsoft.com | Azure EastUS Login | | 
-| 8 | gbl.his.arc.azure.com | Azure Arc | | 
-| 9 | login.microsoft.com | Azure Entra | | 
-| 10 | global.prod.micosoftmetrics.com | Azure Arc Metrics | | 
-
+| 6 | eoprodrvsvc95jfo-hzbjevbze6e0dfgv.eastus.devicerendezvous.azure.net | 443 | Azure Local | |
+| 7 | eastus.login.microsoft.com | 443 | Azure EastUS Login | | 
+| 8 | gbl.his.arc.azure.com | 443 | Azure Arc | | 
+| 9 | dp.stackhci.azure.com | 443 | Azure Arc | | 
 > [!NOTE]
 >
 > - Endpoint names that include placeholders (for example, `<your-gateway-endpoint-id>`) are environment-specific and are generated during deployment.
 >
-> - If you're using an enterprise proxy, include the following HTTP endpoint (Port 80): `http://www.msftconnecttest.com/connecttest.txt`
+> - If you're using an enterprise proxy, include the following HTTP endpoint (Port 80): `http://www.msftconnecttest.com/connecttest.txt`.
 
 ## Next steps
 

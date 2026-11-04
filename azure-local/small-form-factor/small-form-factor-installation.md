@@ -32,6 +32,7 @@ Use one of these supported devices:
 - [ASUS NUC 15 Pro](https://www.asus.com/displays-desktops/nucs/nuc-mini-pcs/asus-nuc-15-pro/)
 - [Lenovo ThinkEdge SE30](https://www.lenovo.com/us/en/p/desktops/thinkedge/thinkedge-se30/len102c0004?orgRef=https%253A%252F%252Fwww.bing.com%252F)
 - [Lenovo ThinkEdge SE100](https://www.lenovo.com/us/en/p/servers-storage/servers/edge/thinkedge-se100/len21te0020?orgRef=https%253A%252F%252Fwww.bing.com%252F&clickid=whp0Rqw5BxyZT-5wqgy1oyjRUkuWSZV3z3IU3U0&irgwc=1&afsrc=1&PID=2003851&acid=ww:affiliate:bv0as6&cid=us:affiliate:cxsaam)
+- [NVIDIA Jetson Thor Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/) (minimum required [Jetson UEFI Firmware: v39.2.x](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/twa_uefi_iso_compatibility.html))
 - [OnLogic HX521](https://www.onlogic.com/store/hx521-azurelocal/)
 - [OnLogic K521](https://www.onlogic.com/store/k521-azurelocal/)
 
@@ -41,7 +42,7 @@ Use one of these supported devices:
 ### Software and tools
 
 - A Windows PC with internet access and a USB port
-- [Rufus 4.12](https://github.com/pbatard/rufus/releases/download/v4.12/rufus-4.12p.exe)
+- [Rufus 4.15](https://github.com/pbatard/rufus/releases/download/v4.15/rufus-4.15p.exe)
 
 > [!TIP]
 > Use only Rufus. Other USB creation tools can leave the drive in a read-only state, which can prevent ownership voucher extraction.
@@ -66,7 +67,7 @@ To download the files:
 
 1. In the Azure portal, select **Azure Arc** > **Operations** > **Machine Provisioning (preview)** > **Get started** > **View downloads**.
 
-1. In the **Download and Install** pane, review the terms, and select **Download all**.
+1. In the **Download and Install** pane, review the terms, select **Download all**, and select the appropriate CPU architecture for the device you're setting up.
 
     :::image type="content" source="media/small-form-factor-download-install.png" alt-text="Screenshot of the Download and Install pane in the Azure portal." border="true" lightbox="media/small-form-factor-download-install.png":::
 
@@ -105,6 +106,7 @@ To download the files:
 
 ## Prepare the physical device
 
+1. If you're using the NVIDIA Jetson AGX Thor Devkit device, ensure it's running the required [supported UEFI firmware version, currently v39.2.x](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/twa_uefi_iso_compatibility.html).
 1. Make sure the device can access a network with internet connectivity.
 1. If you plan to assign static IP addresses later, reserve the required IPs on the network.
 
@@ -120,10 +122,11 @@ To download the files:
 1. Connect a monitor and USB keyboard to the target machine.
 1. Insert the bootable USB drive.
 1. Connect the Ethernet cable.
-1. Power on the device.
-1. Repeatedly press the boot menu key:
+1. Power on the device and use the appropriate key to open the boot menu:
    - **ASUS NUC** devices: <kbd>F10</kbd>
    - **Lenovo** devices: <kbd>F12</kbd>
+   - **OnLogic** devices: Hold <kbd>Delete</kbd> during power-on to open the BIOS front page, then select **Boot Manager**. See the [OnLogic BIOS manual](https://support.onlogic.com/product-documentation/industrial-products/helix-hx500-series/hx520-k520/hx520-k520-bios-manual) and confirm the key for your hardware model.
+   - **NVIDIA Jetson Thor** devices: Repeatedly press <kbd>F11</kbd> at the NVIDIA logo to launch the **Boot Manager Menu**. See the [NVIDIA Jetson Thor UEFI instructions](https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/twa_display_handoff.html).
 1. From the boot menu, select the USB drive (usually labeled with `UEFI:`).
 
 ### Complete the maintenance environment installation
@@ -171,7 +174,7 @@ Use this option for the default flow, where the voucher was written to the USB d
 > Store the `.pem` files in a secure, backed-up location. The `.pem` files are needed for connecting the machine to Azure.
 
 > [!IMPORTANT]
-> If you lose the `.pem` file before you connect the machine to Azure, you must redeploy the operating system on that machine to generate a new ownership voucher.
+> If you lose the `.pem` file before you connect the machine to Azure, you must redeploy the maintenance operating system on that machine to generate a new ownership voucher.
 
 ## [Configurator App](#tab/configurator-app)
 
