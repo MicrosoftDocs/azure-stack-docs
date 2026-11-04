@@ -3,7 +3,7 @@ title: Update your Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to Update your Small Form Factor Deployment of Azure Local (preview).
 author: sipastak
 ms.topic: how-to
-ms.date: 08/17/2026
+ms.date: 10/21/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -16,8 +16,6 @@ This article describes how to update the software on your Azure Local small form
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
 ## How updates work in small form factor deployments
-
-The current release of small form factor deployments has a preview for testing the update tools. To facilitate this, Microsoft published a mock release known as **Azure Linux 2608**. To test the update feature, you must have a machine running Azure Linux with K3s installed and running.
 
 To deploy K3s and Azure Arc-enable it, use the example from the [Azure Samples repo](https://github.com/Azure-Samples).
 
