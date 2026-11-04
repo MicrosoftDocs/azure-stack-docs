@@ -37,18 +37,7 @@ This article covers the **one-time setup**. After that, users connect by followi
 - Verify that you have **Key Vault Crypto Officer** on the key vault created during the provisioning flow.
 - [Azure CLI](/cli/azure/install-azure-cli) installed.
 
-## Step 1: Admin creates the Key Vault CA key
-
-A **Key Vault CA key** is a signing key in Azure Key Vault that acts as the certificate authority for the device. The device trusts SSH certificates signed by this key, and the CLI calls the Key Vault Sign API to issue each user a short-lived certificate. The private key is non-exportable and never leaves Key Vault.
-
-The key vault is created automatically during the provisioning flow, so it already exists. 
-
-1. Navigate to the key vault created for your device, select **Objects** > **Keys**, and select **New**. 
-1. Import the key that was created during the provisioning flow by uploading that file. 
-1. Name this new key `<provisioned-machine-name>-ssh-ca` &mdash; for example, `machine1-ssh-ca`.
-1. The key vault should now have the original key pair that was there by default and the new ssh-ca key you imported.
-
-## Step 2: Admin grants eligible PIM assignments
+## Step 1: Admin grants eligible PIM assignments
 
 An admin needs to set up PIM for their organization. For more information about PIM, see [Privileged Identity Management documentation](/entra/id-governance/privileged-identity-management/).
 
@@ -63,7 +52,7 @@ An admin needs to set up PIM for their organization. For more information about 
 1. Add an approver to approve the request.
 1. Repeat on the resource's key vault, assigning **Key Vault Crypto User** as **Eligible**.
 
-## Step 3: Users install the CLI extension
+## Step 2: Users install the CLI extension
 
 The `provisionedmachine` Azure CLI extension provides the provisioned machine SSH command. Install it from the `.whl` package.
 

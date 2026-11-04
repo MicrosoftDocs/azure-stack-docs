@@ -68,6 +68,25 @@ For example:
 ssh -i mykey.pem clouduser@<ip-address>
 ```
 
+> [!TIP]
+> The private SSH key file might not have the appropriate permissions assigned at download for immediate consumption. You might need to modify the keyfile's access permissions.
+>
+> On Windows (replace the path to your downloaded `keyPair.pem` file):
+>
+> ```powershell
+> icacls "C:\Tools\1423325057408-keyPair.pem" /inheritance:r
+> icacls "C:\Tools\1423325057408-keyPair.pem" /remove "BUILTIN\Users"
+> icacls "C:\Tools\1423325057408-keyPair.pem" /remove "NT AUTHORITY\Authenticated Users"
+> icacls "C:\Tools\1423325057408-keyPair.pem" /grant:r "$($env:USERNAME):(R)"
+> icacls "C:\Tools\1423325057408-keyPair.pem"
+> ```
+>
+> On Linux/macOS (replace the path to your downloaded `keyPair.pem` file):
+>
+> ```bash
+> chmod 600 1423325057408-keyPair.pem
+> ```
+
 ## Add the machine
 
 To add your machine:
@@ -76,10 +95,12 @@ To add your machine:
 
 1. In the **Add machines using ownership vouchers** pane, upload the ownership voucher that you created in [Install the maintenance environment on your machine](small-form-factor-installation.md). Select **Add**.
 
-1. In the **Operating system** dropdown list, select **Azure Linux 2607**.
+1. In the **Operating system** dropdown list, select the image appropriate for the device architecture  **Azure Linux 2610**.
 
    > [!NOTE]
-   > You must select **Azure Linux 2607** to deploy Azure Local small form factor. Selecting a different option results in deployment failures later on.
+   > For x86/amd64 devices, select **Azure Linux 2610** to deploy Azure Local small form factor. Selecting a different option results in deployment failures later on.
+   > 
+   > For arm64/NVIDIA Jetson Thor devices, select **Jetson Ubuntu 2610**.
 
 1. Enter a name for the SSH key that you use later.
 

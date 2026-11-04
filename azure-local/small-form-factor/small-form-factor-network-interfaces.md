@@ -56,6 +56,21 @@ When you use static IP addressing, you must provide the netmask for your IP netw
 |Default Gateway | The IP address of the host that serves as the gateway to external networks. This address is usually a router address|
 |DNS             | Domain Name Servers (up to 16) to use for resolving hostnames to IP addresses for this host                         |
 
+#### Wireless Adapters 
+When viewing the network interfaces, those with the Adapter type of "Wireless Interface" can be configured to connect to a Wireless LAN. 
+In the **Edit** screen, the following parameters are available for wireless networks:
+
+|Parameter                | Description                                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Wireless Network (SSID) | The name of the wireless network to connect to                                                                  |
+| Authentication type     | Either WPA2-Personal or WPA3-Personal wireless authentication is supported. Insecure networks aren't supported |
+| Azure key vault         | The name of a key vault in your subscription to store the wireless pre-shared key (PSK)                          |
+| Passphrase              | You can select an existing secret in your selected key vault, or create a new one                               |
+| New passphrase name *   | The key name in the key vault for this secret. This name isn't the PSK                                         |
+| New passphrase value *  | The pre-shared key (PSK) or passphrase for this wireless network to store in the key vault                      |
+
+:::image type="content" source="media/small-form-factor-wifi-configuration.png" alt-text="Screenshot showing wifi network configuration dialog." border="true" lightbox="media/small-form-factor-wifi-configuration.png":::
+
 ### Configuration change detection
 
 Azure Local tracks the last known good configuration of your network interfaces and compares it to the current running configuration on your edge device. 

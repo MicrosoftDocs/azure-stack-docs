@@ -26,8 +26,8 @@ Before you begin, make sure that you:
 - Have a provisioned machine that you can reach over SSH.
 - Complete the steps in [Connect a provisioned machine from the Azure portal](small-form-factor-connect-portal.md).
 - Complete the steps in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md).
-- Have supported hardware with an NVIDIA GPU installed in the provisioned machine.
-- Installed NVIDIA GPU drivers on the host OS.
+- Have supported hardware with an NVIDIA GPU installed in the provisioned machine. (GPU is embedded in the NVIDIA Jetson Thor Devkit)
+- Installed NVIDIA GPU drivers on the host OS. (Drivers are preinstalled in the Jetson Ubuntu OS image)
 - Have a Windows PC on the same local network as the provisioned machine.
 - Installed and signed into Azure CLI.
 - Have internet connectivity available to install packages and pull container images.
@@ -52,7 +52,7 @@ Choose the same container platform that you prepared in [Run containerized workl
 
 GPU-enabled container workloads rely on multiple layers working together correctly.
 
-The following components must be configured:
+Configure the following components. If you're using the NVIDIA Jetson Thor Devkit, you can skip these steps:
 
 1. NVIDIA GPU drivers
 1. NVIDIA kernel modules and device nodes
@@ -63,13 +63,13 @@ The following components must be configured:
 K3s workloads also require:
 
 - NVIDIA Kubernetes device plugin
-- Kubernetes RuntimeClass configuration
+- Kubernetes RuntimeClass configuration (skip this requirement if you're using the NVIDIA Jetson Thor Devkit)
 
 If any layer is missing or misconfigured, GPU workloads might fail to start or might not detect GPU resources correctly.
 
-## Validate NVIDIA GPU access on the host
+## Validate NVIDIA GPU access on the host (can be skipped for Jetson Thor)
 
-1. Confirm that the operating system can detect the NVIDIA GPU.
+1. Confirm that the operating system detects the discrete NVIDIA GPU card.
 
     ```bash
     lspci | grep -i nvidia
@@ -129,7 +129,7 @@ If `nvidia-smi` fails, the NVIDIA kernel modules or device nodes might not be in
 > [!NOTE]
 > In production environments, NVIDIA device nodes should be managed through proper driver installation and udev rules rather than manual device creation.
 
-## Install the NVIDIA Container Toolkit
+## Install the NVIDIA Container Toolkit (can be skipped for Jetson Thor)
 
 The NVIDIA Container Toolkit enables containers to access GPU devices from the host system.
 
@@ -180,13 +180,13 @@ Docker workloads can access GPUs directly through the NVIDIA container runtime.
 
 Use this path if you followed the Docker workflow in [Run containerized workloads on a provisioned machine](small-form-factor-containerized-workloads.md#use-docker-on-the-provisioned-device).
 
-1. Configure the NVIDIA runtime for Docker:
+1. Configure the NVIDIA runtime for Docker: (can be skipped for Jetson Thor)
 
     ```bash
     sudo nvidia-ctk runtime configure --runtime=docker
     ```
 
-1. Restart Docker:
+1. Restart Docker: (can be skipped for Jetson Thor)
 
     ```bash
     sudo systemctl restart docker
@@ -278,7 +278,7 @@ If no NVIDIA runtime is present, configure it manually.
     sudo systemctl restart k3s
     ```
 
-### Create the NVIDIA RuntimeClass
+### Create the NVIDIA RuntimeClass (can be skipped for Jetson Thor)
 
 A Kubernetes `RuntimeClass` allows workloads to explicitly request the NVIDIA runtime.
 
@@ -301,7 +301,7 @@ A Kubernetes `RuntimeClass` allows workloads to explicitly request the NVIDIA ru
     > [!NOTE]
     > If the `RuntimeClass` already exists, you may see a warning that the resource is missing the `kubectl.kubernetes.io/last-applied-configuration` annotation. This warning is expected when the resource wasn't originally created with `kubectl apply`. If the output includes `runtimeclass.node.k8s.io/nvidia configured`, the RuntimeClass was updated successfully.
 
-### Install the NVIDIA Kubernetes device plugin
+### Install the NVIDIA Kubernetes device plugin (this step is required for Jetson Thor)
 
 The NVIDIA Kubernetes device plugin exposes GPU resources to Kubernetes as `nvidia.com/gpu`.
 
@@ -320,7 +320,7 @@ The NVIDIA Kubernetes device plugin exposes GPU resources to Kubernetes as `nvid
 
 1. Wait until the NVIDIA device plugin reaches the `Running` state.
 
-### Generate the NVIDIA CDI configuration
+### Generate the NVIDIA CDI configuration (can be skipped for Jetson Thor)
 
 Some containerd environments use the Container Device Interface (CDI) for GPU device injection.
 
