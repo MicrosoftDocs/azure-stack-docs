@@ -123,6 +123,39 @@ The following table describes the parameters for `Invoke-ApplianceDataClusterReR
 
 The command discovers the cluster and node names from deployment data, ensures that required roles are assigned, repairs cluster registration, and recreates the ARB and associated resources.
 
+### Troubleshooting
+
+#### CensusSyncFailure during cluster re-registration
+
+If `Invoke-ApplianceManagementClusterReRegistration` or `Invoke-ApplianceDataClusterReRegistration` fails with `CensusSyncFailure`, restart the affected Azure Local cluster node, and then rerun the re-registration command. This is a temporary workaround.
+
+> [!CAUTION]
+> Restarting a cluster node can interrupt workloads and closes PowerShell sessions. Follow your cluster maintenance procedures before restarting the node.
+
+1. On the cluster node where re-registration failed, open an administrator PowerShell session and restart the node. If you specified `-ClusterNodeName`, restart that node.
+
+   ```powershell
+   Restart-Computer
+   ```
+
+1. After the node restarts and is available, open a new administrator PowerShell session, import the recovery module again, and rerun the same re-registration command with the parameter values from your original attempt. For example, for a management cluster:
+
+   ```powershell
+   $operationsModulePath = "C:\AzureLocal\OperationsModule"
+   Import-Module "$operationsModulePath\Azure.Local.DisconnectedOperations.PostRestoreRecovery.psm1" -Force
+
+   Invoke-ApplianceManagementClusterReRegistration `
+       -SubscriptionId "00000000-0000-0000-0000-000000000000" `
+       -ResourceGroup "example-resource-group" `
+       -AccountId "admin@contoso.com" `
+       -TenantId "00000000-0000-0000-0000-000000000000" `
+       -PublicCertificatePath "C:\Temp\PublicCertificate.cer" `
+       -CloudName "Azure.Local" `
+       -Region "autonomous"
+   ```
+
+   For a data cluster, rerun `Invoke-ApplianceDataClusterReRegistration` instead, using the parameter values from your original attempt.
+
 ::: moniker-end
 
 ::: moniker range=">=azloc-2603 <azloc-2609"
