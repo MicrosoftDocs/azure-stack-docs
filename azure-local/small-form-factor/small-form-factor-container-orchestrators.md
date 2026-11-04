@@ -98,15 +98,6 @@ Use K3s when your workloads benefit from Kubernetes-native capabilities:
 - **Familiar tooling**: Docker is widely adopted, and most development teams already have experience building and running Docker containers.
 - **Compose for multi-container apps**: Docker Compose allows you to define and run multi-container applications using a single YAML file, which is sufficient for many edge workloads.
 
-### Limitations compared to K3s
-
-Docker on its own doesn't provide:
-
-- **Automatic restart and rescheduling**: If a container crashes, Docker can restart it (with `--restart` policies), but it doesn't reschedule workloads or perform health-based failover.
-- **Service discovery and load balancing**: Containers can communicate over Docker networks, but there's no built-in DNS-based service discovery or automatic load balancing across replicas.
-- **Declarative desired-state management**: Docker Compose provides basic declarative configuration, but it doesn't continuously reconcile actual state against desired state the way Kubernetes does.
-- **Azure Arc-enabled Kubernetes integration**: Docker containers can't be managed through Azure Arc-enabled Kubernetes. Centralized fleet management requires additional tooling.
-
 ### When to use Docker
 
 Use Docker when your workloads are simple and don't require Kubernetes orchestration:

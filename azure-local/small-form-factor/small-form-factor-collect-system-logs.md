@@ -3,7 +3,7 @@ title: Collect System Logs for Small Form Factor Deployments of Azure Local (pre
 description: Learn how to collect system logs for small form factor deployments of Azure Local (preview).
 author: sipastak
 ms.topic: how-to
-ms.date: 05/04/2026
+ms.date: 10/19/2026
 ms.author: sipastak
 ms.service: azure-local
 ms.subservice: small-form-factor
@@ -73,4 +73,4 @@ The credentials you use depend on the current state of the provisioned machine r
 
 ## Next steps
 
-- [Troubleshoot small form factor deployments of Azure Local (preview)](small-form-factor-troubleshoot.md)
+- [Troubleshoot management and connectivity](small-form-factor-troubleshoot.md)
