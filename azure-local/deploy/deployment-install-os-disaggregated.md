@@ -191,9 +191,9 @@ You must complete the following steps for connecting to the SAN on every machine
 
 1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuration](./enable-external-storage.md).
 
-5. Confirm you can see the LUNs before you proceed with Arc Registration.
+1. Confirm you can see the LUNs before you proceed with Arc Registration.
 
-       ```powershell
+    ```powershell
     Get-PhysicalDisk
     ```
    > [!IMPORTANT]
