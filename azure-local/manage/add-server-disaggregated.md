@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Local disaggregated depl
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 03/31/2026
+ms.date: 11/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -40,7 +40,6 @@ To add a node, follow these high-level steps:
 1. When adding a node to the system, the system validates that the new incoming node meets the CPU and memory requirements before it actually adds the node.
 1. Once the node is added, the system is also validated to ensure that it's functioning normally.
 
-
 ## Supported scenarios
 
 For adding a node, the following scale-out scenarios are supported:
@@ -50,7 +49,6 @@ For adding a node, the following scale-out scenarios are supported:
 | Single-node | Two-node system | Witness required for target scenario. |
 | Two-node system | Three-node system | Witness optional for target scenario. |
 | Three-node system | N-node system | Witness optional for target scenario. |
-
 
 ### Hardware requirements
 
@@ -88,11 +86,13 @@ On the new node that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new node that you plan to add. Follow the steps in [Install the Azure Stack HCI Operating System, version 23H2](../deploy/deployment-install-os-disaggregated.md).
 
-    >[!NOTE]
-    > - For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
-    > - Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
-    > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
-
+   > [!NOTE]
+- For versions 2503 and later, you'll need to use the OS image of the same solution as that running on the existing cluster.
+- Use the [Get solution version](../update/azure-update-manager-23h2.md#get-solution-version) to identify the solution version that you are running on the cluster.
+   > - Use the [OS image](https://github.com/Azure-Samples/AzureLocal/blob/main/os-image/os-image-tracking-table.md) table to identify and download the appropriate OS image version.
+   > 
+   > - Connect the new node to the SAN as part of the OS installation by following the documented SAN connection steps.
+   
 1. Register the node with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
@@ -107,7 +107,6 @@ On the new node that you plan to add, follow these steps.
 If you're scaling out from a single-node, follow these steps first:
 
 1. [Configure a quorum witness](/windows-server/failover-clustering/deploy-quorum-witness?tabs=domain-joined-witness%2Cpowershell%2Cfailovercluster1&pivots=cloud-witness) for the Azure Local instance.
-
 
 On a node that already exists on your system, follow these steps:
 

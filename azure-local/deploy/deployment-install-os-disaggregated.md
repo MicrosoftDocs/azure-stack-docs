@@ -3,7 +3,7 @@ title: Install the Azure Local Operating System for Disaggregated Deployments
 description: Learn how to install the Azure Local operating system on each machine of your disaggregated deployment using SConfig.
 author: troettinger
 ms.topic: how-to
-ms.date: 06/30/2026
+ms.date: 11/04/2026
 ms.author: thoroet
 ms.reviewer: thoroet
 ms.service: azure-local
@@ -27,7 +27,7 @@ Before you begin, make sure you complete the following steps:
 - Create a LUN with a minimum size of 250 GB for the infrastructure volume.
 - Create a LUN with a minimum size of 20 GB for performance history.
 
- > [!NOTE]
+> [!NOTE]
  > Sysprep is not supported for the operating system.
 
 ## Boot and install the operating system
@@ -101,7 +101,6 @@ To use SConfig, sign in to the machine running the Azure Stack HCI operating sys
 > [!IMPORTANT]
 > - Do not install Windows Updates using SConfig or Azure Update Manager (Microsoft.SoftwareUpdateManagement.WindowsOsUpdateExtension). Updates are installed during the deployment. Installing updates using SConfig or Azure Update Manager causes a deployment failure.
 
-
 Follow these steps to configure the operating system using SConfig:
 
 1. Configure networking as per your environment. You can configure the following optional settings:
@@ -113,7 +112,6 @@ Follow these steps to configure the operating system using SConfig:
 
    > [!IMPORTANT]
    > It is not supported to change the DNS servers after deployment. Make sure you plan your DNS strategy before doing the deployment. For more information, see [DNS Servers Considerations](../plan/cloud-deployment-network-considerations.md#dns-server-considerations).
-
 
 1. Configure a valid time server on each machine. Validate that your machine is not using the local CMOS clock as a time source, using the following command:
 
@@ -166,11 +164,14 @@ Starting with version 2604, you can domain join machines before deployment:
     Add-LocalGroupMember -Group "Administrators" -Member "DOMAIN\deploymentuser"
     ```
 
-If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).-->
+If you don't domain join beforehand, the machines are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 ## Connect to SAN
 
 You must complete the following steps for connecting to the SAN on every machine.
+
+> [!IMPORTANT]
+> Starting with Azure Local version 2610, for connected and disconnected deployments, **do not manually enable iSCSI on the machines before deployment**. The deployment wizard now includes iSCSI configuration as part of the deployment process. For earlier versions, follow the steps in this section to enable iSCSI manually.
 
 # [FC](#tab/fc)
 
@@ -190,14 +191,14 @@ You must complete the following steps for connecting to the SAN on every machine
 
 1. Configure MPIO following the vendor specific configuration. Learn more about [vendor specific MPIO configuration](./enable-external-storage.md).
 
-1. Confirm you can see the LUNs before you proceed with Arc Registration.
+5. Confirm you can see the LUNs before you proceed with Arc Registration.
 
-    ```powershell
+       ```powershell
     Get-PhysicalDisk
     ```
    > [!IMPORTANT]
-   > Don't initialize the drives, as the deployment expects the drive type to be RAW!
-
+   > Don't initialize the drives, as the deployment expects the drive type to be RAW.
+   
 # [iSCSI](#tab/iscsi)
 
 Azure Local only supports dedicated adapters for iSCSI.
@@ -205,8 +206,8 @@ Azure Local only supports dedicated adapters for iSCSI.
 1. Install the drivers for your network adapters that you will use for iSCSI. 
 
    > [!IMPORTANT]
-   > Do not use the inbox drivers
-
+   > Do not use the inbox drivers.
+   
 1. Assign an IP Address to each adapter and disable DNS client registration for that adapter.
 
    ```powershell
