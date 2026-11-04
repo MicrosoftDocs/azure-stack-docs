@@ -171,7 +171,7 @@ If you don't domain join beforehand, the machines are automatically joined to a 
 You must complete the following steps for connecting to the SAN on every machine.
 
 > [!IMPORTANT]
-> Starting with Azure Local version 2610, for connected and disconnected deployments, **do not manually enable iSCSI on the machines before deployment**. The deployment wizard now includes iSCSI configuration as part of the deployment process. For earlier versions, follow the steps in this section to enable iSCSI manually.
+> Starting with Azure Local version 2610, for connected and disconnected deployments, **don't manually enable iSCSI on the machines before deployment**. The deployment wizard now includes iSCSI configuration as part of the deployment process. For earlier versions, follow the steps in this section to enable iSCSI manually.
 
 # [FC](#tab/fc)
 
@@ -206,7 +206,7 @@ Azure Local only supports dedicated adapters for iSCSI.
 1. Install the drivers for your network adapters that you will use for iSCSI. 
 
    > [!IMPORTANT]
-   > Do not use the inbox drivers.
+   > Don't use the inbox drivers.
    
 1. Assign an IP Address to each adapter and disable DNS client registration for that adapter.
 
