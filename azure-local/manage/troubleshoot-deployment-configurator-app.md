@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the registration failures for Azure Local
 ms.topic: how-to
 ms.author: robess
 author: ronmiab
-ms.date: 07/29/2025
+ms.date: 11/04/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,6 +23,48 @@ You might need to collect logs or diagnose problems if you encounter any issues 
 - Run diagnostic tests.
 - Download and upload a Support package.
 - Clean previous installation.
+
+## Windows client network prerequisites
+
+The Windows computer that runs the Configurator app connects to the Azure Local machine for every device operation. Azure sign-in and support-package upload also need internet access from that computer. Diagnostic tests run on the Azure Local machine, so they check the machine's connectivity, not the client's.
+
+| Operation | Connects from | Destination | Protocol and port | Required when |
+| --- | --- | --- | --- | --- |
+| Download the app | Windows client | `aka.ms` and `azurestackreleases.download.prss.microsoft.com` | HTTPS, TCP 443 | You download the installer on this computer. |
+| Connect to the machine, run diagnostics, and create, download, or upload a support package | Configurator app | Hostname or IP address of the Azure Local machine | HTTPS, TCP 9099 or 20001 | Always. The app tries both ports and uses the one where the machine's Bootstrap service responds. If you connect by hostname, the client also needs name resolution for it. An upload starts by downloading the package from the machine. |
+| Run diagnostic tests | Azure Local machine | The machine's DNS, proxy, and time servers, and the endpoints in [Azure Local firewall requirements](../concepts/firewall-requirements.md) | As listed in the firewall requirements | You run diagnostic tests. |
+| Sign in to Azure | Browser and Configurator app on the Windows client | Microsoft Entra ID: `login.microsoftonline.com` for Azure public cloud or `login.microsoftonline.us` for Azure Government, and any other sign-in services your tenant uses | HTTPS, TCP 443 | You register the machine or upload a support package. The browser returns the sign-in result to the app on the same computer, and the app gets its tokens from Microsoft Entra ID. |
+| Load subscriptions and resources | Configurator app | Azure Resource Manager: `management.azure.com` for Azure public cloud or `management.usgovcloudapi.net` for Azure Government | HTTPS, TCP 443 | After sign-in. |
+| Create and delete the temporary upload resource | Configurator app | `management.azure.com` | HTTPS, TCP 443 | During upload. |
+| Get the upload credential | Configurator app | `gbl.his.arc.azure.com`, which can direct the app to another `*.his.arc.azure.com` endpoint for the region you select | HTTPS, TCP 443 | During upload. |
+| Send diagnostic data | Configurator app | `gcs.prod.monitoring.core.windows.net` and the `*.prod.warm.ingest.monitor.core.windows.net` endpoint for the region you select | HTTPS, TCP 443 | During upload. |
+
+The [Azure Arc network requirements](/azure/azure-arc/servers/network-requirements) and the regional lists in [Azure Local firewall requirements](../concepts/firewall-requirements.md) maintain these endpoints. Allow hostnames in your firewall, not resolved IP addresses. Upload doesn't need the other endpoints in those lists, because it doesn't install anything on the client.
+
+The client also needs to reach certificate revocation and issuer URLs when they aren't cached. Don't turn off certificate validation to work around blocked access.
+
+### Proxy settings on the client
+
+The proxy settings you enter in the Configurator app apply only to the Azure Local machine. They don't change any proxy setting on the Windows client.
+
+On the client, check each component's proxy configuration:
+
+- The Configurator app uses [.NET's default proxy](/dotnet/api/system.net.http.httpclient.defaultproxy): the proxy environment variables if they're set, and otherwise the Windows user's proxy settings. The app's connections to the Azure Local machine and to Azure both use this configuration, so it must allow the machine's address and API port as well as the Azure endpoints in the table.
+- The browser uses its own proxy settings for Azure sign-in.
+- Upload doesn't use the machine's proxy settings or an Arc gateway, even if you enter a gateway in the upload dialog.
+
+Bypass lists use different syntax in each component. For example, the .NET `NO_PROXY` variable doesn't support the `*` wildcard used in the machine's bypass list.
+
+### Support upload requirements
+
+You can upload as a standard user. Upload doesn't install anything on the client or register it with Azure Arc. The app creates a temporary Azure Arc machine resource named `configurator-upload-<ID>` in a resource group you select, uses that resource's managed identity to send the logs, and then deletes the resource.
+
+- Select an existing resource group. The app doesn't create resource groups or role assignments.
+- Use an Azure account that can list the resource group and read, create, and delete `Microsoft.HybridCompute/machines` resources in it. For example, use Contributor, or Azure Connected Machine Resource Administrator with Reader. Azure Connected Machine Onboarding isn't enough, because it can't delete the temporary resource. See [Connected Machine agent prerequisites](/azure/azure-arc/servers/prerequisites#required-permissions).
+- The `Microsoft.HybridCompute` resource provider must be [registered in the subscription](/azure/azure-arc/servers/prerequisites#azure-resource-providers).
+- Upload uses Azure public cloud only, even if you register the machine in another cloud. If you signed in to another cloud in the app, signing in to Azure public cloud for the upload replaces that sign-in.
+- Azure Policy that applies to the resource group also applies to the temporary resource. A policy that denies Azure Arc machine resources blocks the upload. A policy that deploys extensions can report failed deployments after the resource is deleted.
+- Keep the client online and the app open until upload and cleanup finish. If the app closes first, the temporary resource stays in the resource group. A later upload from the same Windows account to the same tenant tries to remove it, or you can delete the resource yourself.
 
 ## Get logs if the app is inaccessible
 
@@ -70,28 +112,30 @@ Follow these steps to collect and download a Support package:
 
 ### Upload the Support log package
 
+Before you upload, review the [Windows client network prerequisites](#windows-client-network-prerequisites) and [support upload requirements](#support-upload-requirements). The upload runs on the Windows client and creates a temporary Azure Arc resource in a resource group you select.
+
+These steps apply to the current version of the Configurator app. If the upload dialog doesn't say that it creates a temporary Azure Arc resource, you have an earlier version, which must run as an administrator and connects the client to Azure Arc. [Download the current version](https://aka.ms/ConfiguratorAppForHCI) before you upload.
+
 > [!IMPORTANT]
-> - Make sure to run the Configurator app as an administrator to upload the Support log package.
-> - Uploading the Support log package to Microsoft can take up to 20 minutes. Make sure to leave the app open and running to complete this process.
+> Leave the app open until the upload and cleanup finish. The upload might take several minutes, depending on the size of the package.
 
 Follow these steps to upload the Support package to Microsoft:
 
-1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. Select **Upload** to upload the Support package to Microsoft.
+1. Select the help icon in the top-right corner of the app to open the **Support + troubleshooting** pane. After you create a Support package, select **Upload to Microsoft**.
 
    :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload package selected." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-1.png":::
 
-1. Provide the required information in the **Upload Support package to Microsoft** dialog:
+1. In the **Upload support package to Microsoft** dialog, select **Log in to Azure** and sign in with an account that has the [required permissions](#support-upload-requirements). Then select your tenant, subscription, resource group, and region.
 
    :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png" alt-text="Screenshot that shows the Upload Support Package dialog filled out." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-2.png":::
 
-    The fields in the dialog are prepopulated with the information you provided during [Step 1: Configure the network and connect to Azure](../deploy/deployment-without-azure-arc-gateway.md#basics-tab). You can modify the fields as needed.
+    If you registered the machine in Azure public cloud, the dialog starts with the settings you provided during [Step 1: Configure the network and connect to Azure](../deploy/deployment-without-azure-arc-gateway.md#basics-tab). You can modify the fields as needed.
 
-1. Select **Begin upload** to upload the Support log package.
-1. Authenticate in the browser with the same account that you used to sign in to register with Azure Arc. The upload process might take several minutes. Leave the app open and running until the upload is complete.
+    You can also enter the values without signing in. The app then opens the browser for sign-in after it downloads the package from the machine.
 
-   :::image type="content" source="media/troubleshoot-deployment-configurator-app/upload-support-package-3.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Upload selected and authentication guidance." lightbox="media/troubleshoot-deployment-configurator-app/upload-support-package-3.png":::
+1. Select **Begin upload**. The app downloads the package from the machine, creates the temporary resource, sends the logs, and deletes the resource. If you select **Cancel**, the app removes the temporary resource before it reports that the upload is canceled.
 
-1. After the upload is complete, you receive a confirmation message. You can also view the upload status in the app.
+1. After the upload and cleanup finish, you receive a confirmation message. To see the status history, expand **Upload details and history**.
 
 ## Clean previous installation
 
