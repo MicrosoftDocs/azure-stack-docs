@@ -125,14 +125,16 @@ The command discovers the cluster and node names from deployment data, ensures t
 
 ### Troubleshooting
 
-#### CensusSyncFailure during cluster re-registration
+#### Cluster re-registration fails with CensusSyncFailure
 
-If `Invoke-ApplianceManagementClusterReRegistration` or `Invoke-ApplianceDataClusterReRegistration` fails with `CensusSyncFailure`, restart the affected Azure Local cluster node, and then rerun the re-registration command. This is a temporary workaround.
+If `Invoke-ApplianceManagementClusterReRegistration` or `Invoke-ApplianceDataClusterReRegistration` fails with `CensusSyncFailure`, restart the affected Azure Local cluster node, and then rerun the re-registration command. 
+
+Follow these steps to apply this workaround.
 
 > [!CAUTION]
 > Restarting a cluster node can interrupt workloads and closes PowerShell sessions. Follow your cluster maintenance procedures before restarting the node.
 
-1. On the cluster node where re-registration failed, open an administrator PowerShell session and restart the node. If you specified `-ClusterNodeName`, restart that node.
+1. On the cluster node where re-registration failed, open PowerShell as an administrator and restart the node. If you specified `-ClusterNodeName`, restart that node.
 
    ```powershell
    Restart-Computer
