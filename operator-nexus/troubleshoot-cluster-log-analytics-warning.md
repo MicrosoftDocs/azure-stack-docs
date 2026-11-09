@@ -60,7 +60,7 @@ If you retained an `Azure-AsyncOperation` or `Location` URL from the original op
 
 ## Attempt a portal tag change
 
-A LAW warning has been reported to clear following a cluster tag change through the Azure portal after a cluster management upgrade. That sequence alone doesn't prove causation or establish that a tag update triggers workspace revalidation. It also doesn't establish that the resource update completed or telemetry ingestion recovered.
+A LAW warning clears when a cluster tag change goes through the Azure portal after a cluster management upgrade. That sequence alone doesn't prove causation or establish that a tag update triggers workspace revalidation. It also doesn't establish that the resource update completed or telemetry ingestion recovered.
 
 This attempt changes the cluster resource; it isn't a risk-free status refresh. A tag change can be associated with an update that remains pending or conflicts with another operation.
 
