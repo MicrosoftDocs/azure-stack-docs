@@ -266,45 +266,20 @@ If your Key Vault has firewall rules enabled:
 
 ### Scenario: Log Analytics workspace warning while the cluster is running
 
-**Symptoms**: Your cluster reports a Log Analytics workspace (LAW) warning, including after a cluster management upgrade, while `detailedStatus` is `Running`. `Running` doesn't establish that workspace access is healthy or that the warning is stale. Warning clearance, resource operation completion, and telemetry ingestion are separate outcomes.
+**Symptoms**: Your cluster shows a Log Analytics workspace (LAW) warning while `detailedStatus` is `Running`, including after a cluster management upgrade.
 
-**Investigate before making changes**:
+**Solution**:
 
-1. Ensure you have read access to the cluster, configured workspace, and managed identity, and permission to query workspace data. Your query access is separate from the cluster identity's access.
-1. In the Azure portal, confirm the cluster's subscription, resource group, and name. Record the full warning, provisioning state, detailed status, and UTC observation time. Retain the resource JSON, including workspace and identity settings. Alternatively, retrieve the full response with this read-only command:
+1. Review the [Log Analytics workspace validation errors](#log-analytics-workspace-validation-errors) and resolve any workspace or access issue. Check the identity selected in `analyticsOutputSettings`, not necessarily the system-assigned identity.
+1. On the cluster resource's **Overview** page in the Azure portal, select **Add tags**, or **change** for existing tags. See [Apply tags with the Azure portal](/azure/azure-resource-manager/management/tag-resources-portal).
+1. Add an unused, policy-permitted tag with a nonsensitive value that doesn't drive automation. Preserve all existing tags and coordinate with other tag writers. Don't remove tags to make room or bypass policy or resource locks.
+1. Select **Save**, then refresh the cluster resource and check whether the LAW warning has cleared.
 
-   ```azurecli
-   az networkcloud cluster show --subscription "<subscription-id>" --resource-group "<cluster-resource-group>" --name "<cluster-name>" --output json
-   ```
+A portal tag change can clear this warning, but it doesn't repair workspace or permission failures, and warning clearance isn't guaranteed. If the portal reports a conflicting operation, don't repeatedly submit tag changes; resolve that operation or contact support.
 
-1. Review the cluster's **Activity log** for the relevant upgrade and updates. Confirm the subscription, resource scope, and time range. Retain operation and correlation IDs. Missing entries don't prove that processing stopped.
-1. Check the [Log Analytics workspace validation errors](#log-analytics-workspace-validation-errors). Use `analyticsOutputSettings` to identify the workspace and selected identity; don't assume the system-assigned identity is used when a user-assigned identity is selected. Follow the [managed identity configuration guidance](howto-cluster-managed-identity-user-provided-resources.md) for permissions. Returned validation conditions depend on the API version and configuration; a missing condition doesn't prove success.
-1. Check `provisioningState` separately from the warning and `detailedStatus`. `Accepted` doesn't establish completion or, by itself, prove that processing is stuck. If you retained an `Azure-AsyncOperation` or `Location` URL from the original response, follow [Track asynchronous operations](howto-track-async-operations-cli.md) using that actual URL. Don't construct one from an example or repeat an update to obtain it.
+The warning can clear while `provisioningState` remains `Accepted`. Treat that as a separate resource-operation status, not as evidence that the LAW warning persists. Investigate pending operations separately using [Track asynchronous operations](howto-track-async-operations-cli.md).
 
-Resolve any identified workspace or access failure before considering a tag change. A tag change doesn't grant permissions or repair an unavailable workspace.
-
-**Optional portal tag-change attempt**:
-
-A cluster tag change through the Azure portal is a recovery attempt for this warning, not a proven universal revalidation trigger. Warning clearance after a tag change doesn't establish causation, operation completion, or restored ingestion.
-
-> [!IMPORTANT]
-> This changes the cluster resource; it isn't a risk-free status refresh. An update can remain pending or conflict with another operation. Attempt a tag change only if the cluster is `Running`, no workspace or access failure remains unresolved, and no update is pending. If completion is uncertain, contact support rather than submitting another change.
-
-1. Obtain authorization to update the cluster and approval under your organization's change process. Read access isn't sufficient; don't assume Tag Contributor alone permits portal tagging. See [Required access for tags](/azure/azure-resource-manager/management/tag-resources#required-access).
-1. With the resource owner and any automation owners, review existing tags, [tag limits](/azure/azure-resource-manager/management/tag-resources#limitations), policies, and locks. Choose an unused, policy-permitted tag name and a nonsensitive value that doesn't drive automation. Tag names are case-insensitive. Don't overwrite keys, remove tags to make room, include credentials or personal information, or bypass policy or locks.
-1. On the cluster resource's **Overview** page, select **Add tags**, or **change** for existing tags, as described in [Apply tags with the Azure portal](/azure/azure-resource-manager/management/tag-resources-portal). Confirm you're editing the cluster itself, not its resource group or cluster manager.
-1. Refresh and review the current tags, retain every existing name-value pair, and add only the agreed tag. If another writer changes tags during the attempt, stop and reconcile before saving. Select **Save**.
-1. If saving fails, capture the error. For a conflict, don't retry the write or toggle tags; check the existing operation and provisioning state. After a successful save, reload the resource and verify that the new tag is present and all existing tags remain unchanged. A successful save doesn't establish cluster update completion.
-
-Don't substitute a one-tag `az networkcloud cluster update --tags` command: it replaces all existing tags. The generic `az tag update --operation Merge` operation isn't established as an equivalent trigger. Don't repeatedly toggle tags to force a result.
-
-**Verify all three outcomes**:
-
-1. **Warning clearance:** Refresh the resource or repeat the read-only cluster command. Record the UTC time and full warning text. A saved tag doesn't prove that the warning cleared.
-1. **Resource operation completion:** Check the provisioning state and available operation status. `Running` or an absent warning doesn't mean `Succeeded`. If an update remains pending or completion is uncertain, contact support instead of submitting another change.
-1. **Telemetry ingestion:** In the intended workspace, use existing queries or workbooks to check recent telemetry for the affected cluster and expected data source. Older records or another cluster's data don't demonstrate current ingestion. Check collection and destination settings; see [Azure Operator Nexus observability](concepts-observability.md).
-
-There isn't a guaranteed warning-clearance delay or update completion time for this attempt. If any outcome remains unresolved, follow [Get additional help](#get-additional-help), even if the other outcomes look healthy. Don't patch conditions, delete secrets, reinstall healthy extensions, or restart the cluster manager as routine fixes for this warning.
+Verify recent telemetry for the affected cluster in its configured workspace; warning clearance alone doesn't establish ingestion. See [Azure Operator Nexus observability](concepts-observability.md). If the warning persists, follow [Get additional help](#get-additional-help).
 
 ### Scenario: Deployment times out waiting for validation
 
@@ -332,8 +307,7 @@ There isn't a guaranteed warning-clearance delay or update completion time for t
 
 ## Retry validation
 
-> [!IMPORTANT]
-> Before submitting a retry, confirm that no update is pending. For a running cluster with a LAW warning, follow the [LAW warning scenario](#scenario-log-analytics-workspace-warning-while-the-cluster-is-running) instead. Don't treat a tag change as an immediate or guaranteed validation retry.
+For a LAW warning on a running cluster, follow the [LAW warning scenario](#scenario-log-analytics-workspace-warning-while-the-cluster-is-running) instead.
 
 After correcting the resource configuration or role assignments, validation automatically retries on the next cluster reconciliation (typically within 2 minutes).
 
@@ -385,7 +359,7 @@ If validation continues to fail after following the remediation steps:
    - Managed identity principal ID
    - Resource IDs for the failing resources
 
-   For a LAW warning, also include UTC observation times, exact warning and error messages (including conflicts), relevant operation or correlation IDs, before-and-after warning and operation status, and cluster-specific ingestion checks. Describe any tag change. Share diagnostics through the support request, not a public issue; don't include workspace keys, tokens, passwords, or other credentials.
+   For a LAW warning, also include UTC observation times, the exact warning or conflict error, relevant operation IDs, and whether cluster-specific telemetry is current. Don't include credentials.
 
 ## Related content
 
