@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
-ms.date: 09/30/2026
+ms.date: 11/09/2026
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
@@ -27,7 +27,6 @@ The disaster recovery strategy for Azure Site Recovery consists of the following
 
 - **Planned failover back to on-premises (also known as failback)** - Use planned failover to fail the VM back from Azure to the on-premises environment.
 - **Reverse replicate** - After the VM is back on-premises, it is recommended that you reverse replicate it to Azure to restore continuous replication, maintain protection against data loss, and support rapid recovery in the event of another disaster.
-
 
 > [!NOTE]
 > In the current implementation of Azure Site Recovery integration with Azure Local, you can start the disaster recovery and prepare the infrastructure from the Azure Local resource in the Azure portal. Once the preparation is complete, perform all remaining steps from the Recovery Services vault in the Azure portal.
@@ -93,9 +92,10 @@ On your Azure Local system, follow these steps to prepare the infrastructure:
 
     :::image type="content" source="media/azure-site-recovery/prepare-infra-3.png" alt-text="Screenshot of Prepare infrastructure in Azure portal for Azure Local resource." lightbox="media/azure-site-recovery/prepare-infra-3.png":::
 
-1. On **Prepare infrastructure**, select an existing or create a new Recovery Services vault. Use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery Services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
+5. On **Prepare infrastructure**, select an existing or create a new Recovery Services vault. Use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery Services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
     1. If you choose to create a new Recovery Services vault, the subscription and resource groups are automatically populated.
-    1. Provide a vault name and select the location of the vault same as where the system is deployed.
+   2. Provide a vault name and select the vault location. The vault location is the Azure region your VMs will fail over to if a disaster occurs. We recommend choosing a region that's different from your Azure Local instance's region.
+      
     1. Accept the defaults for other settings.
     1. Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery Services vault](/azure/backup/backup-create-recovery-services-vault).
 
@@ -216,10 +216,7 @@ To prepare for failover to an Azure VM, complete the following steps:
 
 ## Step 4: Create recovery plans
 
-
 A recovery plan in Azure Site Recovery groups VMs so that you can fail over and recover an application as a single unit. Although you can recover protected VMs individually, a recovery plan lets you group application VMs, define the order in which they start after failover, and automate recovery tasks.
-
-
 
 Use a recovery plan to group VMs, define the order in which they start during failover, and automate recovery tasks. You can run a test failover for the recovery plan to validate application recovery.
 
@@ -236,11 +233,9 @@ To fail back from Azure, follow the instructions in [Fail back from Azure](/azur
 > [!NOTE]
 > If you prepare multiple Azure Local instances by using the same Hyper-V site, you can fail back a VM to a host in either instance. Select **Create on-premises virtual machine if it does not exist**, and then choose the target Hyper-V host under **Host Name**. To learn more about this process, see [Fail back to an alternate location](/azure/site-recovery/hyper-v-azure-failback#fail-back-to-an-alternate-location).
 
-
 ## Step 7: Reverse replicate to Azure
 
 Reverse replicate your VMs back to Azure to restore continuous replication and maintain ongoing protection against data loss. This protection enables rapid recovery in the event of another disaster. Only the delta changes since the VM was turned off in Azure are replicated.
-
 
 ## Known issues
 
@@ -251,10 +246,7 @@ Here's a list of known issues and the associated workarounds in this release:
 | 1. | When you register Azure Site Recovery with a system, a machine fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs might not be protected. Verify that all machines in the system are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
 | 2. | Azure Site Recovery agent fails to install. No error details are seen at the system or machine levels in the Azure Local portal. | When the Azure Site Recovery agent installation fails, it's because of one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the host. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
 
-
-
 ## Next steps
 - [Learn more about Hybrid capabilities with Azure services](/azure-stack/hci/hybrid-capabilities-with-azure-services)
 - [Hyper-V to Azure disaster recovery architecture](/azure/site-recovery/hyper-v-azure-architecture)
 - [Troubleshoot Hyper-V to Azure replication and failover](/azure/site-recovery/hyper-v-azure-troubleshoot)
-
