@@ -25,7 +25,7 @@ Azure PowerShell is a versatile, cross-platform set of PowerShell modules that y
 Before you begin, make sure your client computer trusts the public key used to secure the endpoints for your disconnected operations appliance. If you get a Secure Socket Layer (SSL) warning when using your private cloud endpoint, you didn't trust the public key on the client.
 
 ## Disable instance discovery
-Disable instance discovery so the client does not reach out to an online endpoint during login. This needs to be run once for each client.
+Disable instance discovery so the client doesn't reach out to an online endpoint during authentication. Run this command once for each client.
 
 ```powershell
     Update-AzConfig -DisableInstanceDiscovery $true

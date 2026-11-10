@@ -176,7 +176,7 @@ w32tm /query /peers
 ### Install Microsoft code signing certificate in air-gapped environments
 ::: moniker range=">=azloc-2610"    
 
-Fully air-gapped requirements require you to download and install the Microsoft Code Signing PCA 2024  certificate. Follow these steps:
+Fully air-gapped environments require you to download and install the Microsoft Code Signing PCA 2024 certificate. Follow these steps:
 
 - From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2024  certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20Code%20Signing%20PCA%202024.crt).
 - Copy the downloaded certificate file (Microsoft Code Signing PCA 2024.crt) to each Azure Local node.

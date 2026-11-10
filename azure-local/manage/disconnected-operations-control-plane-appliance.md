@@ -112,9 +112,9 @@ Use this configuration when the primary goal is to:
 - Understand management cluster sizing and isolation
 - Validate operational independence of the control plane
 
-[!NOTE] When deploying a single node management cluster POC from the portal, use the following flag in the portal uri to enable less than 3-nodes:
+[!NOTE] When you deploy a single-node management cluster proof of concept from the portal, use the following flag in the portal URI to enable fewer than three nodes:
 > ?isManagementClusterAllowedToBeLessThan3Nodes=true 
-> This enables the portal experience to deploy a single node management cluster for proof of concept purposes. 
+> This flag enables the portal experience to deploy a single-node management cluster for proof of concept purposes. 
 >
 
 ### Option 2: Workload-focused
