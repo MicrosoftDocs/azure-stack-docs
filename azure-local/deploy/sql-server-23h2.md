@@ -88,6 +88,20 @@ In addition to these backup scenarios, you can set up other database services th
 - [Azure Data Factory](/azure/architecture/data-science-process/overview)
 - [Azure feature pack for SQL Server Integration Services (SSIS)](/sql/integration-services/azure-feature-pack-for-integration-services-ssis)
 
+## Deploy SQL Server on a Trusted launch VM
+
+[Trusted launch](../manage/trusted-launch-vm-overview.md) adds Secure Boot and a vTPM to the VM that hosts SQL Server. Secure Boot helps reduce the risk of boot-level malware, and Azure Local preserves the vTPM state when the VM migrates or fails over within the cluster.
+
+To deploy SQL Server on a Trusted launch VM:
+
+1. Choose a Windows Server or Linux image that your SQL Server version supports and that's [supported for Trusted launch](../manage/trusted-launch-vm-overview.md#guest-operating-system-images).
+1. [Create the Azure Local VM](../manage/create-arc-virtual-machines.md) and set the security type to Trusted launch. On Azure Local 2509 and later, you can also enable [guest attestation](../manage/trusted-launch-guest-attestation.md) to verify that the VM started in a known good state. Guest attestation isn't available for custom images.
+1. As soon as you create the VM, [back up its guest state protection key](../manage/trusted-launch-vm-import-key.md). Without this key, the VM can't start.
+1. Install SQL Server as described in [Step 2: Install SQL Server on Azure Local](#step-2-install-sql-server-on-azure-local).
+
+> [!NOTE]
+> Trusted launch doesn't encrypt SQL Server databases or data volumes. Configure the encryption that your workload requires.
+
 ## Related content
 
 - For more information about working with SQL Server, see [Tutorial: Get started with the Database Engine](/sql/relational-databases/tutorial-getting-started-with-the-database-engine).

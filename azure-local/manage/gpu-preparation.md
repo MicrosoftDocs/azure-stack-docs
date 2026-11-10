@@ -4,7 +4,7 @@ description: Learn how to prepare GPUs for an Azure Local instance.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 02/11/2026
+ms.date: 10/27/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -27,7 +27,7 @@ Consider the following functionality and support differences between the two opt
 
 | Description | Discrete Device Assignment | GPU Partitioning |
 | --- | --- | --- |
-GPU resource model | Entire device | Equally partitioned device |
+| GPU resource model | Entire device | Equally partitioned device |
 | VM density | Low (one GPU to one VM) | High (one GPU to many VMs) |
 | App compatibility | All GPU capabilities provided by vendor (DX 12, OpenGL, CUDA) | All GPU capabilities provided by vendor (DX 12, OpenGL, CUDA) |
 | GPU VRAM | Up to VRAM supported by the GPU | Up to VRAM supported by the GPU per partition |
@@ -35,7 +35,7 @@ GPU resource model | Entire device | Equally partitioned device |
 
 ## Supported GPU models
 
-To see the full list of supported solutions and GPUs available, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA). The page opens with GPU support options already selected.
+To see the full list of supported solutions and GPUs, see [Azure Local catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?gpuSupport=GPU_P&gpuSupport=DDA). The page opens with GPU support options already selected.
 
 For a list of Premier Solutions and Integrated Systems that support accelerated AI workloads with Azure Local supported GPU models, go to the Azure Local catalog and select **AI workload** under **Solution capability** in the left menu.
 
@@ -71,7 +71,7 @@ Your Azure Local host must meet the following requirements:
 
 - You must create a homogeneous configuration for GPUs across all the machines in your system. A homogeneous configuration consists of installing the same make and model of GPU.
 
-- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each machine in the system. Contact your hardware vendor if you're unable to identify the correct setting in your BIOS.
+- For GPU-P, ensure that the virtualization support and SR-IOV are enabled in the BIOS of each machine in the system. Contact your hardware vendor if you can't identify the correct setting in your BIOS.
 
 ## Prepare GPU drivers on each host
 
@@ -79,17 +79,23 @@ The process for preparing and installing GPU drivers for each machine differs so
 
 ### Find GPUs on each host
 
-First ensure there's no host driver installed for each machine. If a host driver is installed, uninstall it and restart the machine.  
+For a new DDA setup, ensure that you don't install the NVIDIA host graphics or runtime driver on any machine. If the driver is installed, uninstall it, and then restart the machine.
+
+> [!NOTE] 
+> This step doesn't apply to the DDA mitigation driver, which is separate from the host graphics or runtime driver.
+
+If your GPUs are already prepared for DDA, don't uninstall a working mitigation driver or restart the host to recreate the unprepared state. Instead, use `Get-VMHostAssignableDevice` and the [bound-driver verification commands](#2-download-and-install-the-mitigation-driver) to check how the GPUs are currently prepared.
+
 
 Next, run PowerShell as administrator and run the following command:
 
 ```powershell
 Get-PnpDevice -Status Error | fl FriendlyName, InstanceId
 ```
-You should see the GPU devices appear in an error state as `3D Video Controller` as shown in the example output that lists the friendly name and instance ID of the GPU:
+On an unprepared host without a GPU driver, the GPUs appear as **3D Video Controller** devices in an error state, as shown in the following example output. GPUs that are already prepared and working correctly don't appear in the output, because this query returns only devices in an error state.
 
 ```output
-[ASRR1N26R02U46A]: PS C:\Users\HCIDeploymentUser\Documents> Get-PnpDevice - Status Error
+[ASRR1N26R02U46A]: PS C:\Users\HCIDeploymentUser\Documents> Get-PnpDevice -Status Error
 
 Status		Class			FriendlyName
 ------		-----			------------
@@ -98,7 +104,7 @@ Error					3D Video Controller
 Error					3D Video Controller
 Error		USB			Unknown USB Device (Device Descriptor Request Failed)
 
-[ASRR1N26R02U46A]: PS C:\Users\HCIDeploymentUser\Documents> Get-PnpDevice - Status Error | f1 InstanceId
+[ASRR1N26R02U46A]: PS C:\Users\HCIDeploymentUser\Documents> Get-PnpDevice -Status Error | Format-List InstanceId
 
 InstanceId : PCI\VEN_8086&DEV_18DB&SUBSYS_7208086REV_11\3&11583659&0&E0
 
@@ -111,11 +117,11 @@ InstanceId : USB\VID_0000&PID_0002\S&E492A46&0&2
 
 ## Using DDA
 
-Follow this process if using DDA:
+Follow this process when using DDA:
 
 ### 1. Disable and dismount GPUs from the host
 
-For DDA, when you uninstall the host driver or have a new Azure Local setup, the physical GPU goes into an error state. You must dismount all the GPU devices to continue. You can use Device Manager or PowerShell to disable and dismount the GPU using the `InstanceId` obtained in the prior step.
+For DDA, the physical GPU goes into an error state when you uninstall the host graphics or runtime driver, or when you set up a new Azure Local. You must dismount each GPU before you can assign it through DDA. To disable and dismount GPUs that aren't already dismounted, use Device Manager or PowerShell with the `InstanceId` value from the previous step. Skip this step for any GPU that's already listed in the output of `Get-VMHostAssignableDevice`.
 
 ```powershell
 $id1 = "GPU_instance_ID"
@@ -123,10 +129,10 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -InstancePath $id1 -Force
 ```
 
-Confirm the GPUs were correctly dismounted from the host machine. The GPUs is now in an `Unknown` state:
+Confirm the GPUs are correctly dismounted by listing the devices available for DDA. Check the `InstanceID` and `LocationPath` for each GPU:
 
 ```powershell
-Get-PnpDevice -Status Unknown | fl FriendlyName, InstanceId
+Get-VMHostAssignableDevice | Format-List InstanceID, LocationPath
 ```
 
 Repeat this process for each machine in your system to prepare the GPUs.
@@ -135,33 +141,77 @@ Repeat this process for each machine in your system to prepare the GPUs.
 
 The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownloads/licence.php?lang=us).
 
-See the [NVIDIA documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the applicable NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine. Use the following PowerShell script to download the mitigation driver and extract it:
+You need the NVIDIA mitigation driver so that Hyper-V can correctly reset the GPU during VM reboots. This driver is separate from the NVIDIA graphics driver installed in the guest VM. Install the applicable mitigation driver on every GPU-capable host, including hosts that can receive the VM during failover.
+
+To download the applicable package for your hardware, see the [NVIDIA GPU Passthrough Support documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/). The following example downloads and extracts `Azure_Local_Mitigation_092525.zip`. The model-specific INFs in this package report driver version `2025.02.13.0`:
 
 ```powershell
-Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
-mkdir nvidia-mitigation-driver
-Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver
+$downloadUrl = "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/Azure_Local_Mitigation_092525.zip"
+Invoke-WebRequest -Uri $downloadUrl -OutFile ".\Azure_Local_Mitigation_092525.zip"
+Expand-Archive -LiteralPath ".\Azure_Local_Mitigation_092525.zip" -DestinationPath ".\nvidia-mitigation-driver"
 ```
 
-Once the mitigation driver files are extracted, find the version for the correct model of your GPU and install it. For example, if you were installing an NVIDIA A2 mitigation driver, run the following command:
+Before you install the driver, make sure that a model entry in the model-specific INF file matches a hardware ID or compatible ID for each dismounted GPU. The match must also meet any subsystem or revision restrictions in that entry. To view these IDs, use Device Manager, or run `Get-PnpDeviceProperty` with the `DEVPKEY_Device_HardwareIds` and `DEVPKEY_Device_CompatibleIds` properties.
+
+An INF file can match a less specific compatible ID, so the full hardware ID, including the subsystem and revision, doesn't need to appear exactly in the INF file. If no model entry matches either list, contact your hardware vendor for a supported package.
+
+> [!IMPORTANT]
+> An INF being included in the package doesn't establish support for that GPU or Azure Local solution. Check the [supported GPU models](#supported-gpu-models) and your hardware vendor's requirements.
+
+Install the INF for your GPU model. The extracted `drivers\nvidia_azure_stack_RTX6000` directory contains INFs for multiple models. For example, to install the NVIDIA A2 mitigation driver, run:
 
 ```powershell
-pnputil /add-driver nvidia_azure_stack_A2_base.inf /install /force
+$driverPath = ".\nvidia-mitigation-driver\drivers\nvidia_azure_stack_RTX6000"
+pnputil /add-driver "$driverPath\nvidia_azure_stack_A2_base.inf" /install
 ```
 
-To confirm the installation of these drivers, run:
+> [!NOTE]
+> If an identical package is already installed, PnPUtil can report that it already exists and that the device's driver is up to date. An existing-package operation can return exit code `259` (`No more data is available`) with those messages. This isn't evidence of a fresh installation. Check the command output and verify the actual device binding below; don't treat other nonzero exit codes or error messages as success, or uninstall a working package just to obtain a zero exit code.
+
+Confirm that the mitigation driver is bound to each GPU, not just added to the driver store. Dismounted NVIDIA GPUs use a `PCIP\VEN_10DE` device instance and can appear in the `System` class, so a `Get-PnpDevice -Class Display` check doesn't verify these devices.
+
+Run the following commands to inspect each dismounted NVIDIA GPU and its bound driver:
 
 ```powershell
-pnputil /enum-devices OR pnputil /scan-devices
+$properties = @(
+    'DEVPKEY_Device_HardwareIds'
+    'DEVPKEY_Device_CompatibleIds'
+    'DEVPKEY_Device_DriverInfPath'
+    'DEVPKEY_Device_DriverVersion'
+    'DEVPKEY_Device_DriverProvider'
+    'DEVPKEY_Device_Service'
+    'DEVPKEY_Device_ProblemCode'
+)
+
+Get-VMHostAssignableDevice |
+    Where-Object { $_.InstanceID -like 'PCIP\VEN_10DE&*' } |
+    ForEach-Object {
+        $id = $_.InstanceID
+        Get-PnpDevice -InstanceId $id |
+            Format-List FriendlyName, Status, Class, InstanceId
+        Get-PnpDeviceProperty -InstanceId $id -KeyName $properties |
+            Format-Table KeyName, @{Name = 'Data'; Expression = { $_.Data -join ', ' }} -Wrap
+
+        $inf = (Get-PnpDeviceProperty -InstanceId $id -KeyName DEVPKEY_Device_DriverInfPath).Data
+        Get-WindowsDriver -Online -Driver $inf |
+            Select-Object Driver, OriginalFileName, ProviderName, Version -Unique |
+            Format-List Driver, OriginalFileName, ProviderName, Version
+    }
 ```
 
-You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
+For each GPU you expect to see, verify that:
 
-```powershell
-Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
-```
+- The device status is `OK`.
+- The problem code is `0`.
+- The service is `pcip`.
+- The published `oem*.inf` file maps to the NVIDIA model-specific INF file that you selected.
+- The driver version matches the package version.
+- The `FriendlyName` value matches the name defined in that INF file.
 
-Repeat the above steps for each host in your Azure Local.
+> [!IMPORTANT]
+> A message saying that the package was staged successfully doesn't confirm that the driver is bound to the GPU. Complete all the preceding checks.
+
+Repeat these checks on every GPU-capable host, including failover hosts, before assigning GPUs to VMs.
 
 ## Using GPU-P
 
@@ -171,7 +221,7 @@ Follow this process if using GPU-P:
 
 GPU-P requires drivers on the host level that differ from DDA. For NVIDIA GPUs, you need an NVIDIA vGPU software graphics driver on each host and on each VM that uses GPU-P. For more information, see the latest version of [NVIDIA vGPU Documentation](https://docs.nvidia.com/vgpu/latest/grid-vgpu-release-notes-microsoft-azure-stack-hci/index.html) and details on licensing at [Client Licensing User Guide](https://docs.nvidia.com/vgpu/latest/grid-licensing-user-guide/index.html).
 
-After identifying the GPUs as `3D Video Controller` on your host machine, download the host vGPU driver. Through your NVIDIA GRID license, you should be able to obtain the proper host driver .zip file.
+After identifying the GPUs as `3D Video Controller` on your host machine, download the host vGPU driver. Through your NVIDIA GRID license, you can obtain the proper host driver .zip file.
 
 You need to obtain and move the following folder to your host machine: *\vGPU_<Your_vGPU_version>_GA_Azure_Stack_HCI_Host_Drivers*
 
@@ -187,7 +237,7 @@ To confirm the installation of these drivers, run:
 pnputil /enum-devices
 ```
 
-You should be able to see the correctly identified GPUs in `Get-PnpDevice`:
+You should see the correctly identified GPUs in `Get-PnpDevice`:
 
 ```powershell
 Get-PnpDevice -Class Display | fl FriendlyName, InstanceId
@@ -232,7 +282,7 @@ Wed Nov 30 15:22:36 2022
 Follow these steps to configure the GPU partition count in PowerShell:
 
 > [!NOTE]
-> When using PowerShell, you must manually ensure the GPU configuration is homogenous across all machines in your Azure Local.
+> When using PowerShell, you must manually ensure the GPU configuration is homogeneous across all machines in your Azure Local.
 
 1. Connect to the machine whose GPU partition count you want to configure.
 
@@ -270,7 +320,7 @@ Follow these steps to configure the GPU partition count in PowerShell:
 
 ## Guest requirements
 
-GPU management is supported for the following VM workloads:
+GPU management supports the following VM workloads:
 
 - Generation 2 VMs
 

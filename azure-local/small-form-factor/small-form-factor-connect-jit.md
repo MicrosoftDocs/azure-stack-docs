@@ -118,5 +118,5 @@ You're now connected to the Azure Local small form factor device over a temporar
 | `Key '{name}' not found in vault` | The CA key is missing. Contact your administrator. |
 | `InvalidAuthenticationTokenTenant` | Run `az login --tenant <correct-tenant-id>`. |
 | `ssh-keygen not found` | Install OpenSSH on your workstation. |
-| `az provisionedmachine` not recognized | [Install the CLI extension](small-form-factor-configure-jit.md#step-3-users-install-the-cli-extension). |
+| `az provisionedmachine` not recognized | [Install the CLI extension](small-form-factor-configure-jit.md#step-2-users-install-the-cli-extension). |
 | `PermissionError: [WinError 5] Access is denied` | Run your terminal as a local Windows administrator. |

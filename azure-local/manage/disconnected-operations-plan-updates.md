@@ -1,7 +1,7 @@
 ---
 title: Plan updates for Azure Local disconnected operations
 description: Learn how to plan updates for the control plane, data plane, and workloads in Azure Local disconnected operations.
-ms.date: 10/07/2026
+ms.date: 11/09/2026
 ms.topic: overview
 author: arduppal
 ms.author: arduppal
@@ -11,7 +11,7 @@ ms.author: arduppal
 
 ::: moniker range=">=azloc-2602"
 
-This article describes how to plan and sequence updates for the control plane, data plane, and workloads in Azure Local disconnected operations.
+This article describes how to plan and sequence updates for the control plane, data plane, management cluster, and workloads in Azure Local disconnected operations.
 
 ## Understand update layers and responsibilities
 
@@ -19,9 +19,9 @@ When you operate Azure Local in a disconnected or air-gapped environment, mainta
 
 Azure Local disconnected operations provides a structured update model that separates updates into three layers:
 
-- **Control plane (Disconnected Operations) updates**
+- **Disconnected Operations (Control Plane) updates**
 
-- **Data plane (Azure Local Instance) updates**
+- **Azure Local Instance (Management cluster and Data Plane) updates**
 
 - **Workload updates**
 
@@ -34,13 +34,13 @@ It’s important to understand the different layers and the roles responsible fo
 
 **Recommended approach:** Keep the control plane within its six-month support window. Update the control plane when required by its support lifecycle or when a downstream update depends on newer control-plane capabilities. Otherwise, compatible data plane and workload updates can continue on their own cadences.
 
-**Update order:** Control plane (Disconnected Operations) → data plane (Azure Local instances) → workloads (VMs, guest operating systems, AKS, and applications)
+**Update order:** Control plane (Disconnected Operations) → management cluster (Azure Local instance), data plane (Azure Local instances) → workloads (VMs, guest operating systems, AKS, and applications)
 
 The following diagram shows a compatibility hierarchy rather than a one-to-one release mapping. One supported control-plane version can enable multiple data-plane releases, and one compatible data-plane version can support multiple workload update cycles.
 
-:::image type="content" source="media/disconnected-operations-plan-updates/disconnected-operations-update-path.png" alt-text="Diagram of disconnected operations control plane update path, showing releases and supported Azure Local versions per release." lightbox="media/disconnected-operations-plan-updates/disconnected-operations-update-path.png":::
+:::image type="content" source="media/disconnected-operations-plan-updates/disconnected-operations-update-path.png" alt-text="Screenshot of a diagram of the disconnected operations control plane update path, showing releases and supported Azure Local versions per release." lightbox="media/disconnected-operations-plan-updates/disconnected-operations-update-path.png":::
 
-## Control plane updates (Disconnected operations)
+## Updating Disconnected operations (Control Plane updates)
 
 The control plane provides management, orchestration, monitoring, and lifecycle capabilities for Azure Local environments and cloud services. The operator maintains the control plane, monitors its six-month support window, and coordinates dependencies with downstream updates.
 
@@ -60,7 +60,7 @@ Examples include:
 
 - Infrastructure services
 
-### When is a control-plane update required?
+### When do you need to update the control plane?
 
 Update the control plane when one or more of the following conditions apply:
 
@@ -76,9 +76,9 @@ If none of these conditions apply, keep the current supported control plane vers
 
 For more information, see [Update the control plane](./disconnected-operations-update.md).
 
-## Data plane updates (Azure Local instances)
+## Updating Azure Local instances (Data Plane and Management cluster updates)
 
-Administrators can apply supported data-plane updates within the compatibility range of the installed control-plane version.
+Administrators can apply supported Azure Local instance updates within the compatibility range of the installed control-plane version.
 
 ### What gets updated?
 

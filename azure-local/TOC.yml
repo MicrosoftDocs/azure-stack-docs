@@ -927,31 +927,18 @@ items:
   # ===========================================================================
   - name: Small form factor
     items:
-
-    # SET UP (About / Evaluate / Plan / Prepare / Deploy) — flattened directly under the deployment node.
-
-    # --- Install and deploy (About / Evaluate / Plan / Prepare / Deploy) — mirrors
-    # the Hyperconverged/Disaggregated "Install and deploy (…)" wrapper pattern. ---
     - name: Install and deploy
       items:
-
-      # --- About: model intro + small form factor-specific lifecycle info ---
       - name: About
         items:
         - name: About small form factor deployments
           href: ./small-form-factor/small-form-factor-overview.md
         - name: Known issues (small form factor)
           href: ./small-form-factor/small-form-factor-known-issues.md
+        - name: Release notes (small form factor)
+          href: ./small-form-factor/small-form-factor-release-notes.md
         - name: FAQ (small form factor)
           href: ./small-form-factor/small-form-factor-faq.md
-
-      # --- Evaluate ---
-      - name: Evaluate
-        items:
-        - name: Install small form factor on a VM
-          href: ./small-form-factor/small-form-factor-vm-installation.md
-
-      # --- Plan (concepts + security + firewall) ---
       - name: Plan
         items:
         - name: Resource overview
@@ -962,20 +949,18 @@ items:
           href: ./small-form-factor/small-form-factor-zero-touch-provisioning.md
         - name: Configurator App
           href: ./small-form-factor/small-form-factor-configurator-app.md
-        - name: Firewall requirements (small form factor)
-          href: ./small-form-factor/small-form-factor-firewall-requirements.md
         - name: Connectivity modes
           href: ./small-form-factor/connectivity-modes.md
         - name: Security features (small form factor)
           href: ./small-form-factor/small-form-factor-security.md
-
-      # --- Prepare ---
       - name: Prepare
         items:
+        - name: Install small form factor on a VM
+          href: ./small-form-factor/small-form-factor-vm-installation.md
+        - name: Firewall requirements (small form factor)
+          href: ./small-form-factor/small-form-factor-firewall-requirements.md
         - name: Prepare to deploy
           href: ./small-form-factor/small-form-factor-prepare-to-deploy.md
-
-      # --- Deploy ---
       - name: Deploy
         items:
         - name: Install small form factor
@@ -988,8 +973,6 @@ items:
           href: ./small-form-factor/small-form-factor-deploy-applications.md
         - name: Deploy GPU-enabled workloads
           href: ./small-form-factor/small-form-factor-deploy-gpu-workloads.md
-
-  # -------- CONFIGURE AND MANAGE (FROM SMALL FORM FACTOR > Troubleshoot; plus OS, network, encrypt secrets, and JIT day-2 ops) -----
     - name: Configure and manage
       items:
       - name: Update operating system
@@ -998,18 +981,26 @@ items:
         href: ./small-form-factor/small-form-factor-os.md
       - name: Manage network interfaces
         href: ./small-form-factor/small-form-factor-network-interfaces.md
+      - name: Manage disks
+        href: ./small-form-factor/small-form-factor-storage.md
       - name: Encrypt Kubernetes secrets
         href: ./small-form-factor/small-form-factor-encrypt-kubernetes-secrets.md
       - name: Configure JIT access
         href: ./small-form-factor/small-form-factor-configure-jit.md
       - name: Connect using JIT access
         href: ./small-form-factor/small-form-factor-connect-jit.md
-      - name: Troubleshoot
-        items:
-        - name: Collect system logs (small form factor)
-          href: ./small-form-factor/small-form-factor-collect-system-logs.md
-        - name: Troubleshoot small form factor deployments
-          href: ./small-form-factor/small-form-factor-troubleshoot.md
+      - name: Security monitoring
+        href: ./small-form-factor/security-monitoring.md
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot USB installation
+        href: ./small-form-factor/small-form-factor-troubleshoot-usb-installation.md
+      - name: Troubleshoot VM setup
+        href: ./small-form-factor/small-form-factor-troubleshoot-vm-setup.md
+      - name: Collect system logs (small form factor)
+        href: ./small-form-factor/small-form-factor-collect-system-logs.md
+      - name: Troubleshoot management and connectivity
+        href: ./small-form-factor/small-form-factor-troubleshoot.md
 
   # ---------------------------------------------------------------------------
   # Workloads on connected Azure Local (moved from top-level Workloads L1
@@ -1802,10 +1793,11 @@ items:
             href: manage/gpu-manage-via-device.md
           - name: Manage GPUs via partitioning
             href: manage/gpu-manage-via-partitioning.md
-          - name: Manage GPU fabric resources
-            href: manage/gpu-manage-fabric-resources.md
-          - name: REST APIs for GPU management
-            href: manage/gpu-rest-api-reference.md
+          #commenting out the following GPU management entries for 2610
+          #- name: Manage GPU fabric resources
+          #  href: manage/gpu-manage-fabric-resources.md
+          #- name: REST APIs for GPU management
+          #  href: manage/gpu-rest-api-reference.md
 
       # --- Monitor ---
       # Grouped into functional subsections (About / Insights / Metrics and alerts /
