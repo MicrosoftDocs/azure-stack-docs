@@ -205,6 +205,8 @@ Fully air-gapped requirements require you to download and install the Microsoft 
 
 ::: moniker-end
 
+::: moniker range=">=azloc-2602"
+
 
 > [!NOTE]
 > If you don't install the code signing certificate, cloud deployment (cluster) fails and cluster upgrade fails.
