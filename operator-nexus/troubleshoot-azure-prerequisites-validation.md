@@ -5,8 +5,9 @@ author: gregoberfield
 ms.author: goberfield
 ms.service: azure-operator-nexus
 ms.topic: troubleshooting
-ms.date: 01/23/2026
+ms.date: 11/09/2026
 ms.custom: troubleshooting
+ai-usage: ai-assisted
 ---
 
 # Troubleshoot Azure prerequisites validation for Azure Operator Nexus clusters
@@ -263,6 +264,23 @@ If your Key Vault has firewall rules enabled:
 3. Confirm role assignments are still in place.
 4. Review any recent changes to network or firewall configuration.
 
+### Scenario: Log Analytics workspace warning while the cluster is running
+
+**Symptoms**: Your cluster shows a Log Analytics workspace (LAW) warning while `detailedStatus` is `Running`, including after a cluster management upgrade.
+
+**Solution**:
+
+1. Review the [Log Analytics workspace validation errors](#log-analytics-workspace-validation-errors) and resolve any workspace or access issue. Check the identity selected in `analyticsOutputSettings`, not necessarily the system-assigned identity.
+1. On the cluster resource's **Overview** page in the Azure portal, select **Add tags**, or **change** for existing tags. See [Apply tags with the Azure portal](/azure/azure-resource-manager/management/tag-resources-portal).
+1. Add an unused, policy-permitted tag with a nonsensitive value that doesn't drive automation. Preserve all existing tags and coordinate with other tag writers. Don't remove tags to make room or bypass policy or resource locks.
+1. Select **Save**, then refresh the cluster resource and check whether the LAW warning has cleared.
+
+A portal tag change can clear this warning, but it doesn't repair workspace or permission failures, and warning clearance isn't guaranteed. If the portal reports a conflicting operation, don't repeatedly submit tag changes; resolve that operation or contact support.
+
+The warning can clear while `provisioningState` remains `Accepted`. Treat that as a separate resource-operation status, not as evidence that the LAW warning persists. Investigate pending operations separately using [Track asynchronous operations](howto-track-async-operations-cli.md).
+
+Verify recent telemetry for the affected cluster in its configured workspace; warning clearance alone doesn't establish ingestion. See [Azure Operator Nexus observability](concepts-observability.md). If the warning persists, follow [Get additional help](#get-additional-help).
+
 ### Scenario: Deployment times out waiting for validation
 
 **Symptoms**: The deployment action fails with a message indicating Azure prerequisites validation didn't complete within the timeout period.
@@ -288,6 +306,8 @@ If your Key Vault has firewall rules enabled:
 3. Assign the required roles to the user-assigned identity (not the system-assigned identity).
 
 ## Retry validation
+
+For a LAW warning on a running cluster, follow the [LAW warning scenario](#scenario-log-analytics-workspace-warning-while-the-cluster-is-running) instead.
 
 After correcting the resource configuration or role assignments, validation automatically retries on the next cluster reconciliation (typically within 2 minutes).
 
@@ -338,6 +358,8 @@ If validation continues to fail after following the remediation steps:
    - Validation error codes and messages
    - Managed identity principal ID
    - Resource IDs for the failing resources
+
+   For a LAW warning, also include UTC observation times, the exact warning or conflict error, relevant operation IDs, and whether cluster-specific telemetry is current. Don't include credentials.
 
 ## Related content
 
