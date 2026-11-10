@@ -185,7 +185,9 @@ Fully air-gapped environments require you to download and install the Microsoft 
 ```powershell
     Import-Certificate -FilePath "<CertPath>\Microsoft Code Signing PCA 2024.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
 ```
+
 ::: moniker-end
+
 
 ::: moniker range="<=azloc-2609"    
 
@@ -198,6 +200,7 @@ Fully air-gapped requirements require you to download and install the Microsoft 
 ```powershell
     Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
 ```
+
 ::: moniker-end
 
 
