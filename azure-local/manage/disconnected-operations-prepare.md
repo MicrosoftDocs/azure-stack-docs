@@ -174,7 +174,7 @@ w32tm /query /peers
 ```
 
 ### Install Microsoft code signing certificate in air-gapped environments
-::: moniker range="=azloc-2610"    
+::: moniker range=">=azloc-2610"    
 
 Fully air-gapped environments require you to download and install the Microsoft Code Signing PCA 2024 certificate. Follow these steps:
 
