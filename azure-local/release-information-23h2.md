@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 11/02/2026
+ms.date: 11/10/2026
 ms.subservice: hyperconverged
 ---
 
@@ -47,7 +47,7 @@ The following diagram illustrates the feature builds, cumulative updates, qualit
   | 10.2xxx or 11.25xx | 25398.xxxx | 2411 --> 2411.2 --> 2411.3 --> 2503 --> 2504 --> 2505 --> so forth. | Use this version to update your system through each feature and cumulative build. |
   | 12.25xx or 12.26xx | 26100.xxxx | 2504 --> 2505 or other. | After 2504, use this version to install any of the subsequent releases directly within a feature release train. |
 
-- To keep your Azure Local solution in a supported state, you have up to six months to install updates. However, before installing the feature update, make sure to install the last released cumulative update. For example, before installing the 2510 feature update, you must first install the last cumulative update, which is 2509 in this case.
+- To keep your Azure Local solution in a supported state, you have up to six months to install updates. However, you must take 2603 update before applying 2604 update.
 
 - Azure Arc resource bridge requires solution updates to be applied within one year. This requirement is critical to keep certificates valid and the Azure Local VM functionality working.
 
