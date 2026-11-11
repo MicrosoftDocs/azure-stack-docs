@@ -501,6 +501,7 @@ To initialize each node, run this PowerShell script. Modify the variables necess
 | 2607 | 12.2607.1003.73 |
 | 2608 | 12.2608.1003.9 | 
 | 2609 | 12.2609.1003.7 | 
+| 2610 | 12.2610.1004.41 |
 
 ::: moniker-end
 

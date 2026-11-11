@@ -19,6 +19,27 @@ This article explains how to update disconnected operations for Azure Local. Lea
 > [!NOTE]
 > You must update Azure Local disconnected operations regularly to stay supported. Establish an update routine as part of your production planning.
 
+## Install Microsoft code signing certificate in air-gapped environments
+If you're running fully air-gapped, you must download and install the Microsoft Code Signing certificate before updates and deployments. 
+
+- From a machine with internet connectivity, download the [Microsoft Code Signing PCA 2024 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20Code%20Signing%20PCA%202024.crt) for versions newer than 2609 and the [Microsoft Code Signing PCA 2011 certificate](https://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt) for older versions.
+- **Note**: If you're on versions before 2609 and plan to upgrade to the latest version, you need to install both certificates.
+- Copy the downloaded certificate files to each Azure Local node.
+- On each node, open an elevated PowerShell session and run:
+
+```powershell
+    # 2610 and newer
+    Import-Certificate -FilePath "<CertPath>\Microsoft Code Signing PCA 2024.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
+    # 2609 and earlier versions
+    Import-Certificate -FilePath "<CertPath>\MicCodSigPCA2011_2011-07-08.crt" -CertStoreLocation "Cert:\LocalMachine\CA"
+
+```
+
+> [!NOTE]
+> If you don't install the code signing certificate in an air-gapped environment, cluster upgrade and deployment fails.
+> If you're updating from 2608 to 2610, you must have both certificates installed for the upgrade to work.
+
+
 ## Get updates
 
 Keep your disconnected operations appliance up to date. Follow these steps to download and apply the latest updates.
