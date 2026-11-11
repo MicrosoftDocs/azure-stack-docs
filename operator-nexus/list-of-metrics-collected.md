@@ -18,6 +18,7 @@ This section provides the list of metrics collected from the different component
 - [List of metrics collected in Azure Operator Nexus](#list-of-metrics-collected-in-azure-operator-nexus)
   - [Nexus Cluster](#nexus-cluster)
     - [***Kubernetes API server***](#kubernetes-api-server)
+    - [***cniMetrics***](#cnimetrics)
     - [***calico-felix***](#calico-felix)
     - [***calico-typha***](#calico-typha)
     - [***Kubernetes Containers***](#kubernetes-containers)
@@ -63,6 +64,15 @@ All these metrics for Nexus Cluster are collected and delivered to Azure Monitor
 |ApiserverClientCertificateExpirationSecondsSum|API Server|APIServer Clnt Cert Exp Sec Sum (Preview)|Seconds|Sum of API server client certificate expiration. In the absence of data, this metric retains the most recent value emitted|Component, Pod Name|
 |ApiserverStorageDataKeyGenerationFailuresTotal|API Server|APIServer Storage Data Key Gen Fail|Count|Total number of operations that failed Data Encryption Key (DEK) generation. In the absence of data, this metric retains the most recent value emitted|Component, Pod Name|
 |ApiserverTlsHandshakeErrorsTotal|API Server|APIServer TLS Handshake Err (Preview)|Count|Number of requests dropped with 'TLS handshake' error. In the absence of data, this metric retains the most recent value emitted|Component, Pod Name|
+
+### ***cniMetrics***
+
+| Metric      | Category | Display Name  | Unit | Description | Dimensions   |
+|-------------|:-------------:|:-----:|:----------:|:-----------:|:--------------------------:|
+|CniPacketDropBytesPerMinute|Network|CNI Packet Drop Bytes/Min (Preview)|Bytes|Number of bytes dropped by Cilium per minute.|Host, Direction, Reason|
+|CniPacketDropPerMinute|Network|CNI Packet Drops/Min (Preview)|Count|Number of packets dropped by Cilium per minute.|Host, Direction, Reason|
+|CniPacketForwardBytesPerMinute|Network|CNI Packet Forward Bytes/Min (Preview)|Bytes|Number of bytes forwarded by Cilium per minute.|Host, Direction|
+|CniPacketForwardPerMinute|Network|CNI Packet Forwarded/Min (Preview)|Count|Number of packets forwarded by Cilium per minute.|Host, Direction|
 
 ### ***calico-felix***
 
