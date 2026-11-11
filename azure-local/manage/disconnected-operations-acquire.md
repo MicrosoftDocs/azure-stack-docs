@@ -133,6 +133,8 @@ Make sure you have the ISO available to install on your Azure Local nodes.
 | 2607 | 2607.1.26162| AzureLocal24H2.26100.32230.LCM.12.2607.0.3096 | 12.2607.1003.73 |
 | 2608 | 2608.1.26197 | AzureLocal24H2.26100.32230.LCM.12.2608.0.3020| 12.2608.1003.9 | 
 | 2609 | 2609.1.26316 | AzureLocal24H2.26100.32230.LCM.12.2609.0.3009| 12.2609.1003.7 | 
+| 2610 | 2610.1.26525 | AzureLocal24H2.26100.32230.LCM.12.2610.0.3098 | 12.2610.1004.41 | 
+
 
 >[!NOTE]
 > For new deployments, ensure you have the matching Azure Local build with your Azure Local deployment.
