@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Local, version 23H2
 description: Learn how to assess upgrade readiness for Azure Local, version 23H2 that already had its operating system upgraded from version 22H2.
 author: ronmiab
 ms.topic: how-to
-ms.date: 02/27/2026
+ms.date: 11/10/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -416,8 +416,6 @@ Follow these steps to apply solution upgrade if you're running Azure Kubernetes 
    ```
 
    To avoid any PowerShell version-related issues in your AKS deployment, you can use this [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130).
-
-1. If you used the preview version of AKS Arc on 22H2 or the preview version of Arc VM on 22H2, uninstall MOC by running the command `Uninstall-Moc` on an Azure Local node to remove the VM instances created by using the preview version.
 
 ## Remediation 10: Check the AKS install state
 
