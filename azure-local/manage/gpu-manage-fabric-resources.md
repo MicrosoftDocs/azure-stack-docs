@@ -28,7 +28,7 @@ For information about GPU-P limitations, see the [Limitations](./gpu-manage-via-
 ## Prerequisites
 
 - [Prepare GPUs for an Azure Local instance](./gpu-preparation.md).
-- - Assign the following roles at the resource group or subscription scope, not just on the cluster:
+- Assign the following roles at the resource group or subscription scope, not just on the cluster:
   
         - **Azure Local Infrastructure Reader** to view GPUs, or **Azure Local Infrastructure Contributor** to manage them. See [Infrastructure RBAC roles](/azure/azure-local/manage/assign-infrastructure-rbac-roles?view=azloc-2611).
         
