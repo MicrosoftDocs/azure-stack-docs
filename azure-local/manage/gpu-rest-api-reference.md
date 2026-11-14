@@ -23,9 +23,9 @@ GPU inventory and discovery operations are performed at the edge machine level. 
 - [Prepare GPUs for an Azure Local instance](./gpu-preparation.md).
 - - Assign the following roles at the resource group or subscription scope, not just on the cluster:
   
-        - **Azure Local Infrastructure Reader** to view GPUs, or **Azure Local Infrastructure Contributor** to manage them. See [Infrastructure RBAC roles](/azure/azure-local/manage/assign-infrastructure-rbac-roles?view=azloc-2611).
+  - **Azure Local Infrastructure Reader** to view GPUs, or **Azure Local Infrastructure Contributor** to manage them. See [Infrastructure RBAC roles](/azure/azure-local/manage/assign-infrastructure-rbac-roles.md).
         
-              - **Azure Stack HCI VM Contributor** to assign GPUs to VMs or remove GPU assignments. See [VM RBAC roles](/azure/azure-local/manage/assign-vm-rbac-roles?view=azloc-2611).
+  - **Azure Stack HCI VM Contributor** to assign GPUs to VMs or remove GPU assignments. See [VM RBAC roles](/azure/azure-local/manage/assign-vm-rbac-roles.md).
               
     After assigning the required roles, wait approximately 15 minutes before using GPU management. During this period, role assignments might not have taken effect, and GPU management operations might return inconsistent results.
     
