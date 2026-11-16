@@ -3,7 +3,7 @@ title:  Operational security for the Azure Local security book
 description: Learn about operational security for the Azure Local security book.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 08/11/2025
+ms.date: 11/12/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -17,7 +17,7 @@ Operational security in Azure Local means ongoing operations using Windows Admin
 
 ## Ongoing operations
 
-Windows Admin Center in Azure plays a central in the daily operations of Azure Local.
+Windows Admin Center in Azure plays a central role in the daily operations of Azure Local.
 
 ### Windows Admin Center in Azure
 
@@ -108,8 +108,8 @@ Azure Local solutions are designed to have a predictable update experience:
 
 - Microsoft releases monthly patch (quality and reliability) updates, quarterly baseline (features and improvements) updates, hotfixes (for critical or security issues) as needed, and solution builder extension updates (driver, firmware, and other partner content specific to the system solution used) as needed.
 
-- To keep your Azure Local instance in a supported state, you must install updates regularly and stay current within six months of the most recent release. We recommend installing updates as and when they are released.
- 
+- To keep your Azure Local instance in a supported state, install updates within the N-6 released build window, where N is the latest released build. We recommend installing updates as they're released.
+
 You can update your Azure Local instance either via Azure portal using Azure Update Manager or via PowerShell command line interface. For more information on how to keep your Azure Local instance up to date, read about [updates for Azure Local](../update/about-updates-23h2.md). The Cluster-Aware Updating feature orchestrates update install on each machine in the system so that your applications continue to run during the system upgrade.  
  
 To regularly update virtual machines running on your Azure Local, you can use Windows Update, Windows Server Update Services, and Azure Update Management to update VMs. 
@@ -118,4 +118,3 @@ To regularly update virtual machines running on your Azure Local, you can use Wi
 ## Related content
 
 [Workload security](workload-security.md)
-

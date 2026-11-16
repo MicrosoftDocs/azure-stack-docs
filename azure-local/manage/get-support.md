@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: thoroet
-ms.date: 05/04/2026
+ms.date: 11/12/2026
 ms.subservice: hyperconverged
 ---
 
@@ -19,7 +19,7 @@ This article provides guidance on how to get support for Azure Local. Azure Loca
 > - If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
 > - If you're a customer using an Azure Local Premier solution, contact your OEM for support, directly.
 
-Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
+Updates for Azure Local are released monthly to enhance customer experience. To keep your Azure Local instance in a supported state, install updates within the N-6 released build window, where N is the latest released build. We recommend installing updates as they're released. Microsoft provides monthly quality and security updates for each supported version of Azure Local and quarterly feature releases.
 
 Creating an Azure Local support request requires one of the following Azure support plans: Standard, Professional Direct, or Developer. You can't use the Basic plan.
 
