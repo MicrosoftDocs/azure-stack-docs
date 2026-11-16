@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 11/02/2026
+ms.date: 11/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -14,6 +14,9 @@ ms.subservice: hyperconverged
 ::: moniker range=">=azloc-24113"
 
 This article explains how to discover and import solution update packages for Azure Local deployed in sites with limited bandwidth connections to Azure. You can download the Azure Local solution update as a static payload by using the Azure portal or PowerShell. Then, copy or transfer it to multiple instances and import it by using PowerShell. To reduce the amount of data downloaded during the update, complete these steps before you start an update.
+
+> [!NOTE]
+> The limited-connectivity update workflow in this article doesn't apply to Azure Local disconnected operations. To update an Azure Local instance running on disconnected operations, follow [Update an Azure Local instance running on disconnected operations](../manage/disconnected-operations-update-azure-local-instance.md).
 
 The static payload for a solution update includes the OS security update, extensions, and core agents, which install during the update process. The update process automatically downloads updated container images required for the Azure Arc resource bridge component and Azure Kubernetes Service on Azure Local. These images aren't included in the static payload.
 
@@ -40,7 +43,7 @@ For more information on the release cadence, see [Azure Local release informatio
 
 | OS Build | Download URI | Notes / SHA256 |
 | -- | -- | -- |
-| 26100.33650 | [12.2610.1004.50](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2610.1004.50/CombinedSolutionBundle.12.2610.1004.50.zip) <br><br> Availability date: 2026-11-02 | 81B6FC33745BC5E2D94644219C18969BCA1CF6D4B9F561DA4D026D2AF3F54868 |
+| 26100.33822 | [12.2610.1004.54](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2610.1004.54/CombinedSolutionBundle.12.2610.1004.54.zip) <br><br> Availability date: 2026-11-14 | 730CDD48D9DCD38D63A3F38E552FE589FD7C3A1FF8976DE6DCB95F5AC2E26BEE |
 | 26100.33438 | [12.2609.1003.7](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2609.1003.7/CombinedSolutionBundle.12.2609.1003.7.zip) <br><br> Availability date: 2026-09-11 | C0DD738362B3B44FBA9E801483C297011B706B740A2A5F5482B0A71D0A70F054 |
 | 26100.33296 | [12.2608.1003.9](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2608.1003.9/CombinedSolutionBundle.12.2608.1003.9.zip) <br><br> Availability date: 2026-09-01 | 150ED78820BE0E8EA75ACF9F1D3F7F375199D98749C1A762134E674CE406FAC4 |
 | 26100.33158 | [12.2607.1003.73](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2607.1003.73/CombinedSolutionBundle.12.2607.1003.73.zip) <br><br> Availability date: 2026-08-07 | 90112DA91420ADD41DA39EDB36A42EC5E6698029F841243314AB76883C8AE8D3 |

@@ -5,7 +5,7 @@ ms.topic: product-comparison
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 03/02/2026
+ms.date: 11/13/2026
 ---
 
 # Compare Azure Local to Windows Server
@@ -59,7 +59,7 @@ The following table shows the high-level product positioning for Azure Local and
 | Runs in VMs      | For evaluation only; intended as a host operating system | Yes, in the cloud or on-premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 | Support          | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
-| Lifecycle policy | Always up to date with the latest features. You have up to six months to install updates. | - Long-Term Servicing Channel (LTSC): 5 years of mainstream support and 5 years of extended support<br>- [Annual Channel](/windows-server/get-started/servicing-channels-comparison): 18 months of mainstream support and 6 months of extended support |
+| Lifecycle policy | Always up to date with the latest features. Install updates within the N-6 released build window, where N is the latest released build. | - Long-Term Servicing Channel (LTSC): 5 years of mainstream support and 5 years of extended support<br>- [Annual Channel](/windows-server/get-started/servicing-channels-comparison): 18 months of mainstream support and 6 months of extended support |
 | Where to get it  | Download from [the Azure portal](../deploy/download-software.md) or comes preinstalled on integrated systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Sizing tool| [Azure Local sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) | None |
 
