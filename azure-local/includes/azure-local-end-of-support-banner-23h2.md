@@ -3,14 +3,14 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 03/17/2026
+ms.date: 11/13/2026
 ---
 
 <!--Azure Stack HCI, version 23H2 OS (OS version 25398.xxxx) will reach end of support in April 2026. After this date, you won't receive monthly security and quality updates. Support requests will only be available for patching to a supported release.-->
 
 Azure Stack HCI, version 23H2 OS (OS version 25398.xxxx) reached end of support in April 2026.  
 
-- Each Azure Local release is supported for six months, whether you're on 23H2 (11.x.x.x) or 24H2 (12.x.x.x).
+- To keep your Azure Local solution in a supported state, install updates within the N-6 released build window, where N is the latest released build.
 - October 2025 (version 11.2510) is the final 23H2 release.
 - Support for the 23H2 OS without the Azure Local solution is available until April 2026.
 

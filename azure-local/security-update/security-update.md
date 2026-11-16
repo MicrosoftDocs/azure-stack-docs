@@ -3,7 +3,7 @@ title:  Security updates for Azure Local
 description: Security updates for Azure Local.
 author: ronmiab
 ms.topic: release-notes
-ms.date: 10/13/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -14,22 +14,101 @@ This article lists the security updates that are available for Azure Local.
 
 :::moniker range="=azloc-2610"
 
+## November OS security update (KB5131080) for Azure Local
+
+This section describes the security updates for Azure Local associated with OS build **26100.33822** released on November 10, 2026 ([KB5131080](https://support.microsoft.com/servicing/os/windows-server/2026/11/kb5131080-windows-server-2025-security-update)).
+
+For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
+
+### Announcements and messages
+
+This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
+
+#### Windows Secure Boot certificate expiration
+
+> [!Important]
+> Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
+
+### Improvements
+
+This security update contains fixes and quality improvements from [KB5126646](https://support.microsoft.com/servicing/os/windows-server/2026/10/kb5126646-windows-server-2025-security-update) (released October 13, 2026) and the out-of-band update [KB5134137](https://support.microsoft.com/servicing/os/windows-server/2026/10/kb5134137-windows-server-2025-update) (released October 26, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
+
+- **[Certificates]** Fixed: Device certificate enrollment might fail because some certificate handles didn't persist and key-type flags were set incorrectly, causing keys to be managed improperly.
+
+- **[Date and Time]** This update adjusts daylight saving time (DST) rules for Cuba for the extended 2026-2027 DST period. Cuba remains on UTC-04:00 and doesn't observe the November 2026 and March 2027 transitions. It returns to UTC-05:00 in November 2027 and resumes its regular seasonal schedule in 2028. For the latest DST and time zone guidance, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
+
+- **[Printing]** Fixed: Adding a printer published in Active Directory through Settings > Bluetooth & devices > Printers & scanners > Add device might fail with error 87, "The parameter is incorrect." This issue was introduced by the October 2026 update and doesn't generally affect existing printers or printing.
+
+- **[Remote Desktop]** Fixed: You couldn't configure the "Specify thumbprints of certificates representing trusted .rdp publishers" policy successfully through Microsoft Intune.
+
+- **[Remote Desktop Web Access]** Fixed: RD Web Access might fail to load and display "Unable to display RD Web Access" in Microsoft Edge or Google Chrome when XSLT is disabled by browser policy. RD Web Access pages are now rendered on the server and no longer depend on browser XSLT support. To learn more, see [KB5130994: RD Web Access fails to load when XSLT is disabled in Microsoft Edge or Google Chrome](https://support.microsoft.com/help/5130994).
+
+- **[Security]** This update improves NTLM security by enabling clients to offer NTLM message signing by default for non-anonymous connections. This change helps reduce exposure to NTLM relay attacks and provides auditing to identify connections that aren't using signing. To learn more, see [NTLM signing security improvements in Windows](https://support.microsoft.com/help/5135557).
+
+- **[Start menu]** The [HideRecommendedSection policy](/windows/client-management/mdm/policy-csp-start#hiderecommendedsection) now applies to Windows 11 Enterprise multi-session, including Azure Virtual Desktop and ServerRDSH environments.
+
+- **[Windows Deployment Services]** Fixed: After installing this security update, the Import-WdsInstallImage cmdlet requires administrator privileges. Attempts to run the cmdlet as a non-administrator fail with an `ACCESS_DENIED` error.
+
+- **[Windows Setup]** Fixed: An in-place upgrade from Windows Server 2016 to Windows Server 2025 might fail during the compatibility check when using installation media that includes the October 2026 update. The failure displays the message "Sorry, we’re having trouble determining if your PC can run Windows Server" and error code `0x80070003 - 0x40008`.
+
+- **[Exchange Server]** This update fixes an issue that affects on-premises Exchange servers. The issue might prevent signing in to Outlook on the web (OWA), cause email messages to remain in the Outlook Outbox without being delivered, or prevent Exchange from accessing mailboxes during mailbox replication.
+
+- **[Windows PowerShell]** This update strengthens security for PowerShell script signing and signature verification by introducing stricter encoding validation. As a result, scripts containing invalid UTF-8 encoding might fail signature validation, even if they were previously accepted. To resolve this issue, review the affected scripts, save them using valid UTF-8 encoding with a byte order mark (BOM), and sign them again. For further guidance, see [Encoding Guidance for Signed PowerShell Scripts](https://support.microsoft.com/help/5135999).
+
+### Known issues
+
+#### Windows Server Update Services (WSUS) doesn't display error details
+
+After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
+
+#### Users might be unable to sign in to OWA or send emails on Exchange Server
+
+**Symptoms**
+
+After installing this update, some on-premises Exchange servers might experience issues accessing or sending email. Users might be unable to sign in to Outlook on the web (OWA), or email messages sent from Outlook might remain in the Outbox and not be delivered. Additionally, Exchange might experience issues accessing mailboxes during mailbox replication.
+
+In some affected configurations, Exchange Server OWA might fail with an error `MapiExceptionMdbOffline: Unable to make connection to the server. (hr=0x80004005, ec=1142)` with Event ID 1006 logged in the application log. Another reported symptom is growing email queues. Installing the [October 2026 Exchange server security updates](https://techcommunity.microsoft.com/blog/exchange/released-october-2026-exchange-server-security-updates/4563014) isn’t required for these issues to occur.
+
+**Workaround**
+
+This issue can be temporarily mitigated by modifying the registry key as described in [Exchange servers may become unstable after installation of October 2026 Windows updates](https://techcommunity.microsoft.com/blog/exchange/exchange-servers-may-become-unstable-after-installation-of-october-2026-windows-/4565382).
+
+The October 2026 update introduced a default limit on the amount of memory used by Endpoint Mapper when handling Endpoint Lookup calls.
+
+For workloads such as Exchange Server, the default limit of 512 simultaneous Endpoint Lookup calls might not be sufficient under heavy load. Administrators can use this registry setting to increase the maximum number of simultaneous Endpoint Lookup calls, which increases the amount of memory that Endpoint Mapper can use.
+
+**Microsoft Support:** An additional mitigation is available for affected devices through Microsoft Support. To apply this mitigation in your organization, contact Microsoft Support for business.
+
+**Next steps:** Microsoft is investigating this issue and will provide more information when it is available.
+
+### To install
+
+#### Before you install this update
+
+Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
+
+For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [November 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Nov).
+
+### File information
+
+To get a list of the files provided in this update, download the file information for [cumulative update KB5131080](https://go.microsoft.com/fwlink/?LinkId=2388155).
+
 ## October OS security update (KB5126646) for Azure Local
 
 This section describes the 2610 security updates associated with OS build **26100.33650** released on October 13, 2026 ([KB5126646](https://support.microsoft.com/help/5126646)).
 
 For more information about Windows update terminology, see [Types of Windows updates](/troubleshoot/windows-client/deployment/standard-terminology-software-updates) and the [monthly quality update types](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-monthly-updates-explained/ba-p/3773544).
 
-## Announcements and messages
+### Announcements and messages
 
 This section provides key notifications related to this release, including announcements, change logs, and end-of-support notices.
 
-### Windows Secure Boot certificate expiration
+#### Windows Secure Boot certificate expiration
 
 > [!Important]
 > Secure Boot certificates used by most Windows devices expire starting in June 2026. Starting with release 2603, Azure Local orchestrates the Secure Boot 2023 certificate update. This process helps you deploy protection for CVE-2023-24932 while minimizing risk during updates. For more information, see [Manage Secure Boot updates](../manage/manage-secure-boot-updates.md).
 
-## Improvements
+### Improvements
 
 This security update contains fixes and quality improvements from [KB5122871](https://support.microsoft.com/servicing/os/windows-server/2026/09/kb5122871-windows-server-2025-security-update) (released September 8, 2026). The following summary outlines key issues addressed by this update. Also, included are available new features. The bold text within the brackets indicates the item or area of the change.
 
@@ -53,13 +132,13 @@ If you already installed previous updates, your device downloads and installs on
 
 For an overview of Azure Local, see [What is Azure Local?](../overview.md)
 
-## Known issues
+### Known issues
 
-### Windows Server Update Services (WSUS) doesn't display error details
+#### Windows Server Update Services (WSUS) doesn't display error details
 
 After you install [KB5070881](https://support.microsoft.com/topic/october-23-2025-kb5070881-os-build-26100-6905-out-of-band-8e7ac742-6785-4677-87e4-b73dd8ac0122?preview=true) or later updates, Windows Server Update Services (WSUS) doesn't display synchronization error details within its error reporting. To address the Remote Code Execution Vulnerability [CVE-2025-59287](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59287), Microsoft temporarily removed this functionality.
 
-### Remote Desktop Services might stop responding after September 2026 security update
+#### Remote Desktop Services might stop responding after September 2026 security update
 
 **Symptoms**
 
@@ -73,15 +152,15 @@ In some environments, RDS might become unstable, resulting in RDP connections fa
 
 This issue is resolved in Windows updates released on and after September 14, 2026 such as [KB5129235](https://support.microsoft.com/help/5129235). We recommend you install the latest Windows update for your device as it contains important improvements and issue resolutions, including this one.
 
-## To install
+### To install
 
-### Before you install this update
+#### Before you install this update
 
 Microsoft combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 For more information about security vulnerabilities addressed by this update, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [October 2026 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2026-Oct).
 
-## File information
+### File information
 
 To get a list of the files provided in this update, download the file information for [cumulative update 5126646](https://go.microsoft.com/fwlink/?LinkId=2384036).
 
@@ -165,7 +244,7 @@ This section provides key notifications related to this release, including annou
 
 ## Improvements
 
-This security update includes fixes and quality improvements from [KB5099536](https://support.microsoft.com/en-us/servicing/os/windows-server/2026/07/july-14-2026-kb5099536-os-build-26100-33158) (released July 14, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
+This security update includes fixes and quality improvements from [KB5099536](https://support.microsoft.com/servicing/os/windows-server/2026/07/july-14-2026-kb5099536-os-build-26100-33158) (released July 14, 2026). The following summary outlines key issues addressed by this update. It also lists new features. The bold text within the brackets indicates the item or area of the change.
 
 - **[File Explorer]** This update improves File Explorer for files stored on DFS mapped drives, helping previews and copied files work as expected after reconnecting to the network.
 
@@ -465,7 +544,7 @@ This security update contains fixes and quality improvements from [KB5078740](
 
 - **[Secure Boot]** This update addresses an issue where the device might enter BitLocker Recovery after the Secure Boot updates.
 
-- **[Kerberos protocol]** This update changes the default DefaultDomainSupportedEncTypes value for Kerberos Key Distribution Center (KDC) operations to leverage AES-SHA1 for accounts that don't have an explicit msds-SupportedEncryptionTypes Active Directory attribute defined. For more information see, How to manage Kerberos KDC usage of RC4 for service account ticket issuance changes related to CVE-2026-20833.
+- **[Kerberos protocol]** This update changes the default DefaultDomainSupportedEncTypes value for Kerberos Key Distribution Center (KDC) operations to leverage AES-SHA1 for accounts that don't have an explicit msds-SupportedEncryptionTypes Active Directory attribute defined. For more information, see [How to manage Kerberos KDC usage of RC4 for service account ticket issuance changes related to CVE-2026-20833](https://support.microsoft.com/servicing/os/windows/2025/11/how-to-manage-kerberos-kdc-usage-of-rc4-for-service-account-ticket-issuance-changes-related-to-cve-2).
 
 - **[Authentication]** This update improves how Windows uses Kerberos encryption policies during authentication. After you install this update, Windows reads the configured policy settings as expected, which helps ensure encryption behavior is applied consistently across the domain.
 
@@ -571,7 +650,7 @@ This section provides key notifications related to this release, including annou
 
 This security update contains fixes and quality improvements from [KB5073379](https://support.microsoft.com/topic/january-13-2026-kb5073379-os-build-26100-32230-a6021fd2-b3b7-45a7-b68e-35c28a2a77da?preview=true) (released January 13, 2026), [KB5077793](https://support.microsoft.com/topic/january-17-2026-kb5077793-os-build-26100-32234-out-of-band-58c4a80a-0d1c-4684-b828-5f33ef3892e4?preview=true) (released January 17, 2026), and [KB5078135](https://support.microsoft.com/topic/january-24-2026-kb5078135-os-build-26100-32236-out-of-band-1dd50b78-08e5-4e13-ae0f-a0c4ff61a2e5?preview=true) (released January 24, 2026). The following summary outlines key issues addressed by this update. Also included are available new features. The bold text within the brackets indicates the item or area of the change.
 
-- **[File Explorer]** Fixed: This update addresses an issue where folder renaming with desktop.ini files in File Explorer isn't work correctly. The `LocalizedResourceName` setting is ignored, so custom folder names don't appear.
+- **[File Explorer]** Fixed: This update addresses an issue where folder renaming with desktop.ini files in File Explorer doesn't work correctly. The `LocalizedResourceName` setting is ignored, so custom folder names don't appear.
 
 - **[Fonts & Display]** Updates the Chinese fonts to support the GB180302022A standard for character coverage and display.
 
@@ -840,7 +919,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5066780.](https://go.microsoft.com/fwlink/?linkid=2338807).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5066780](https://go.microsoft.com/fwlink/?linkid=2338807).
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
@@ -1314,7 +1393,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060118.](https://go.microsoft.com/fwlink/?linkid=2323858).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060118](https://go.microsoft.com/fwlink/?linkid=2323858).
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
@@ -1352,7 +1431,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842.](https://go.microsoft.com/fwlink/?linkid=2323769).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5060842](https://go.microsoft.com/fwlink/?linkid=2323769).
 
 ---
 
@@ -1402,7 +1481,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058384.](https://go.microsoft.com/fwlink/?linkid=2320746).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058384](https://go.microsoft.com/fwlink/?linkid=2320746).
 
 # [OS build 26100.xxxx](#tab/os-build-26100-xxxx)
 
@@ -1440,7 +1519,7 @@ To install the LCU on your Azure Local instance, see [Update Azure Stack Local i
 
 ### File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058411.](https://go.microsoft.com/fwlink/?linkid=2320918).
+For a list of the files that are provided in this update, download the file information for [Cumulative update KB5058411](https://go.microsoft.com/fwlink/?linkid=2320918).
 
 ---
 
@@ -1501,7 +1580,7 @@ This security update includes quality improvements. Here is a summary of the key
 
 - **[Authentication]** This update addresses an issue affecting machine password rotation in the Identity Update Manager certificate/Pre-Bootstrapping Key Initialization path. This issue occurred particularly when Kerberos was used and Credential Guard was enabled, potentially causing user authentication problems. The feature **Machine Accounts in Credential Guard**, which is dependent on password rotation via Kerberos, is disabled until a permanent fix is made available.
 
-- **[Daylight Saving Time (DST)]** This update is for the Aysen region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
+- **[Daylight Saving Time (DST)]** This update is for the Aysén region in Chile to support the government DST change order in 2025. For more info about DST changes, see the [Daylight Saving Time & Time Zone Blog](https://techcommunity.microsoft.com/category/windows/blog/dstblog).
 
 - **[PcaUiArm]** This update addresses an issue affecting the **PcaUiArmUpdate** feature, which results in unexpected behavior in specific scenarios.
 

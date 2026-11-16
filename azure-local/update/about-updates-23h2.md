@@ -5,8 +5,9 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 10/12/2026
+ms.date: 11/12/2026
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
 # About updates for Azure Local
@@ -47,7 +48,11 @@ This new approach:
 
 [!INCLUDE [azure-local-banner-resource-bridge](../includes/azure-local-banner-resource-bridge.md)]
 
-Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern), which defines products and services that are continuously serviced and supported. To remain compliant with this policy, you must stay within six months of the most recent release. For more information on support windows, see [Azure Local release information](../release-information-23h2.md).
+Azure Local follows the [Modern Lifecycle policy](/lifecycle/policies/modern), which defines products and services that are continuously serviced and supported.
+
+To remain compliant with this policy, install updates within the N-6 released build window, where N is the latest released build.
+
+For more information on support windows, see [Azure Local release information](../release-information-23h2.md).
 
 Microsoft might release the following types of updates for Azure Local:
 
@@ -63,7 +68,11 @@ Microsoft might release the following types of updates for Azure Local:
 
 ² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates. These updates often align with Azure Local feature releases, allowing customers to install a combined update.
 
-Sometimes you might see updates to the latest patch level of your current feature. If a new feature is available, you might see the feature update itself or the latest patch level of the feature. Your system must stay within six months of the most recent feature to consider it supported. For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
+Sometimes you might see updates to the latest patch level of your current feature. If a new feature is available, you might see the feature update itself or the latest patch level of the feature.
+
+Your system must stay within the N-6 released build window to remain supported.
+
+For more information and a visualization of supported releases, see [About Azure Local releases](../release-information-23h2.md#about-azure-local-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 

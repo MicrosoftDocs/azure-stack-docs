@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.date: 10/30/2026
+ms.date: 11/12/2026
 ms.subservice: hyperconverged
 ---
 
@@ -102,9 +102,7 @@ Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanIn
 
 ## Download, import, and install an update package
 
-Use one of the following options to download an eligible update package.
-
-### Option 1 (recommended): Download the update package by using a script
+Follow these steps to download, import, and install a solution update package for your Azure Local instance running on disconnected operations.
 
 1. To update your Azure Local instance to the same version as your installed disconnected operations control plane, download the script for that version from the local disconnected operations endpoint:
 
@@ -177,30 +175,6 @@ Use one of the following options to download an eligible update package.
    $actionPlanInstanceId = 'ReplaceMe' # Copy output from previous step
    Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanInstanceID $actionPlanInstanceID
    ```
-
-### Option 2: Download the update package from Microsoft Learn
-
-Download the update package on an internet-connected machine. Then transfer it into the disconnected environment and copy it to the target Azure Local instance before following the import procedure.
-
-1. Review the [recommended update sequence and version compatibility](./disconnected-operations-plan-updates.md#recommended-update-sequence-and-version-compatibility) for the Azure Local instance running on your disconnected operations version.
-1. Review [Azure Local release information](../release-information-23h2.md#about-azure-local-releases) to determine the update path for your Azure Local instance.
-1. After you identify an eligible version, [download the solution update bundle](../update/import-discover-updates-offline-23h2.md#solution-update-bundle).
-1. [Import the solution update bundle](../update/import-discover-updates-offline-23h2.md#import-the-solution-update-bundle).
-
-### Option 3: Download the update package from the Azure portal
-
-Download the update package on an internet-connected machine. Then transfer it into the disconnected environment and copy it to the target Azure Local instance before following the import procedure.
-
-If your Azure subscription has access to Azure Local disconnected operations, you can download an eligible update package from the Azure portal.
-
-1. In the Azure portal, go to **Azure Arc** > **Azure Local** > **Azure Local Hyperconverged & Disaggregated (Get started)** > **Download and Install** > **Download Azure Local updates**.
-1. On the **Download Azure Local update** page, select **Azure Local instance is in a disconnected environment**.
-1. Select your current disconnected operations version and your current Azure Local solution version.
-1. From the eligible updates, select the version you want, and then select **Download package**.
-
-   :::image type="content" source="media/disconnected-operations-update-azure-local-instance/download-update.png" alt-text="Screenshot of the Download Azure Local update page in the Azure portal." lightbox="media/disconnected-operations-update-azure-local-instance/download-update.png":::
-
-1. After downloading the package, follow the instructions to [Import the solution update bundle](../update/import-discover-updates-offline-23h2.md#import-the-solution-update-bundle).
 
 ::: moniker-end
 
