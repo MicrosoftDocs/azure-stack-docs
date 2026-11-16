@@ -5,7 +5,7 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 11/02/2026
+ms.date: 11/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -17,12 +17,34 @@ This article lists the features and improvements that are available in hyperconv
 
 ## Features and improvements in 2610
 
-The October 2026 release of hyperconverged deployments of Azure Local is version **12.2610.1004.50**. For more information, see [Release information summary](./release-information-23h2.md).
+This section describes release highlights and any subsequent security updates for hyperconverged deployments of Azure Local. For available solution builds and the default build for new deployments, see [Release information summary](./release-information-23h2.md).
 
-This release includes various reliability improvements and bug fixes.
+### Security updates
+
+#### November 2026 (solution version 12.2610.1004.54)
+
+The November 2026 security update to Azure Local 2610 for hyperconverged deployments is version **12.2610.1004.54**, displayed as **2026.10 Feature Update + November Security Updates**. For more information, see [November OS security update for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true#november-os-security-update-kb5131080-for-azure-local).
 
 - **OS changes**:
-  - In the 2610 release, all new and existing deployments of Azure Local run the new OS version **26100.33650** (download from the Azure portal).
+  - This update includes OS build **26100.33822**. For available solution builds and the default build for new deployments, see [Release information summary](./release-information-23h2.md).
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.34** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.15** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **PowerShell updates**: This build uses PowerShell version **7.6.10** (built on .NET 10). For more information, see [PowerShell 7.6 changelog](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.6.md).
+
+### Release highlights
+
+The October 2026 release of Azure Local 2610 for hyperconverged deployments is version **12.2610.1004.50**. For more information, see [Release information summary](./release-information-23h2.md).
+
+For details about the included OS security update, see [October OS security update for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true#october-os-security-update-kb5126646-for-azure-local).
+
+The following list describes the capabilities, improvements, and requirements for this release.
+
+- **OS changes**:
+  - This release includes OS build **26100.33650** (download from the Azure portal). For available solution builds and the default build for new deployments, see [Release information summary](./release-information-23h2.md).
   - You also need a driver that's compatible with OS version **26100.33650** or Windows Server 2025.
   - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
 

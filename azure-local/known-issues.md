@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 10/29/2026
+ms.date: 11/15/2026
 ms.subservice: hyperconverged
 ---
 
@@ -23,15 +23,15 @@ For more information about new features in this release, see [What's new for Azu
 
 ## Known issues for version 2610
 
-For the 2610 release of Azure Local, Microsoft released the following update:
+The latest update for the 2610 release of Azure Local is:
 
 | Solution version | OS build |
 | -- | -- |
-| 12.2610.1004.50 | 26100.33650 |
+| 12.2610.1004.54 | 26100.33822 |
 
-> [!IMPORTANT]
-> New deployments of this software use the **12.2610.1004.50** build.
 The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
+
+For OS security update details, see [Security updates for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true).
 
 > [!NOTE]
 > For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
@@ -71,6 +71,7 @@ The following table lists the fixed issues in this release:
 | Arc-enabled virtual machines <!--39230146--> | Stale Arc Resource Bridge health alerts after health-check ownership moves between nodes can incorrectly block updates on a healthy cluster. | Arc Resource Bridge health alerts now reflect current health after ownership moves between nodes, preventing stale alerts from blocking updates. | 12.2610.1004.41 |
 | Update orchestration <!--40312999--> | Update preparation telemetry can be missing, limiting diagnostic information available during update preparation. | Update preparation now generates the expected telemetry for improved diagnostics. | 12.2610.1004.50 |
 | Hardware and Solution Builder Extension <!--40277569--> | SBE download connector detection can fail when the PowerShell execution policy prevents the detection script from running. | SBE download connector detection now works when PowerShell script execution is restricted by the system execution policy. | 12.2610.1004.50 |
+| Update orchestration | An SMB-related issue can cause a cluster node to stop with error code `0x50`. |The update process now applies the required registry configuration before Cluster-Aware Updating to prevent the SMB-related `0x50` stop error.| 12.2610.1004.54 |
 
 ## Known issues
 
