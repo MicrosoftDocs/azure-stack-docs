@@ -1,19 +1,19 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Migrate FAQ
-  description: Find answers to common questions about migrating Hyper-V and VMware virtual machines to Azure Local using Azure Migrate.
+  title: Azure Catalyst FAQ
+  description: Find answers to common questions about migrating Hyper-V and VMware virtual machines to Azure Local using Azure Catalyst.
   ms.topic: faq
   author: ronmiab
   ms.author: robess
   ms.service: azure-local
-  ms.date: 09/24/2026
+  ms.date: 11/09/2026
   ms.subservice: hyperconverged
 
 
-title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Migrate 
+title: FAQ - Migration of Hyper-V and VMware VMs to Azure Local using Azure Catalyst
 
 summary:
-  The Azure Migrate based solution enables you to migrate VMs from Hyper-V (Preview) and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Migrate.
+  The Azure Catalyst based solution enables you to migrate VMs from Hyper-V (Preview) and VMware to an Azure Local instance.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Local instance using Azure Catalyst.
 
   Tabs have questions about **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**. The migration of Hyper-V VMs is in preview.
 
@@ -47,7 +47,7 @@ sections:
           - **Azure CLI (Preview)**: Automate replication and migration by using Azure CLI commands. See [Migrate VMs using Azure CLI](migrate-via-powershell.md?tabs=azurecli).
           - **Terraform (Preview)**: Define repeatable replication and migration workflows as infrastructure as code. See [Migrate VMs using Terraform](migrate-via-powershell.md?tabs=terraform).
 
-          The PowerShell, Azure CLI, and Terraform workflows require an existing Azure Migrate project with the source and target appliances already configured.
+          The PowerShell, Azure CLI, and Terraform workflows require an existing Azure Catalyst project with the source and target appliances already configured.
           
           ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Local instance?
       
@@ -80,7 +80,9 @@ sections:
 
           Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Local and Windows Server systems](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
 
-          ### How do I remove appliances from the Azure Migrate project?
+          <a name="how-do-i-remove-appliances-from-the-azure-migrate-project"></a>
+
+          ### How do I remove appliances from the Azure Catalyst project?
 
           To remove the target appliance from the project and create a new appliance, run the following command:
 
@@ -96,7 +98,7 @@ sections:
 
           ### I'm located in a geography that isn't in the listed supported geographies. Does this mean I can't use this migration solution?
 
-          You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography.
+          You can still use this solution. Just create the [Azure Catalyst project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography.
 
           ### Will I be charged for this migration solution? 
         
@@ -120,15 +122,19 @@ sections:
         
           Yes, Secure Boot settings are preserved during migration for eligible UEFI (Generation 2) VMs. If Secure Boot is enabled on the source VM, it remains enabled on Azure Local after migration, helping maintain workload security posture.
 
-          ### Can I use private endpoints with Azure Migrate for Azure Local migrations?
+          <a name="can-i-use-private-endpoints-with-azure-migrate-for-azure-local-migrations"></a>
+
+          ### Can I use private endpoints with Azure Catalyst for Azure Local migrations?
           
-          Private endpoint connectivity is not currently supported for Azure Migrate projects configured for migrations to Azure Local.
+          Private endpoint connectivity is not currently supported for Azure Catalyst projects configured for migrations to Azure Local.
 
           ### How do I enable guest management on my migrated VMs? 
           
           Guest management is not enabled by default on migrated VMs. To enable guest management on migrated VMs, see [Enable Guest Management on Azure Local VMs enabled by Azure Arc](migrate-enable-guest-management.md).
           
-          ### Can I use the same Azure Migrate project for both Hyper-V and VMware migrations?
+          <a name="can-i-use-the-same-azure-migrate-project-for-both-hyper-v-and-vmware-migrations"></a>
+
+          ### Can I use the same Azure Catalyst project for both Hyper-V and VMware migrations?
           
           No, this scenario isn't supported in this release. Create a separate project for each source from which you wish to migrate.
 
@@ -136,17 +142,21 @@ sections:
 
           It depends on whether you reuse the existing Azure Arc resource.
 
-          If you select **Reuse Arc-enabled server** for the VM during replication, keep the agent installed. Azure Migrate reconfigures the existing agent in place and transitions the same `Microsoft.HybridCompute/machines` resource from an Arc-enabled server to an Azure Local VM, so its tags, role assignments, Azure Policy assignments, and extensions carry forward. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
+          If you select **Reuse Arc-enabled server** for the VM during replication, keep the agent installed. Azure Catalyst reconfigures the existing agent in place and transitions the same `Microsoft.HybridCompute/machines` resource from an Arc-enabled server to an Azure Local VM, so its tags, role assignments, Azure Policy assignments, and extensions carry forward. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
           If you don't reuse the resource, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
 
           In that case, the VM is created as an Azure Local VM in the Azure Local instance when it's migrated. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure. The original Azure Arc resource is left behind and you must delete it manually.
 
-          ### How can I throttle the bandwidth used for replicating and migrating VMs with Azure Migrate?
+          <a name="how-can-i-throttle-the-bandwidth-used-for-replicating-and-migrating-vms-with-azure-migrate"></a>
+
+          ### How can I throttle the bandwidth used for replicating and migrating VMs with Azure Catalyst?
 
           See the FAQ at [Common Questions About the Migration and Modernization Tool](/azure/migrate/common-questions-server-migration#how-do-i-throttle-replication-when-using-the-azure-migrate-appliance-for-agentless-vmware-replication) for details on throttling replication and migration bandwidth.
         
-          ### Can I migrate DNS server VMs to Azure Local using Azure Migrate?
+          <a name="can-i-migrate-dns-server-vms-to-azure-local-using-azure-migrate"></a>
+
+          ### Can I migrate DNS server VMs to Azure Local using Azure Catalyst?
 
           Yes, starting with Azure Local 2607, a migrated DNS server VM can use the IPv4 address configured as the DNS server on its destination workload logical network.
 
@@ -156,7 +166,7 @@ sections:
 
           ### What is a seed disk, and can I delete it?
 
-          During initial replication, Azure Migrate creates a temporary seed disk for each source disk on the selected Azure Local storage path. The seed disk contains the replicated source data and subsequent changes. During migration, Azure Migrate uses it to create the final disk attached to the migrated VM.
+          During initial replication, Azure Catalyst creates a temporary seed disk for each source disk on the selected Azure Local storage path. The seed disk contains the replicated source data and subsequent changes. During migration, Azure Catalyst uses it to create the final disk attached to the migrated VM.
 
           Don't rename, modify, or delete a seed disk. It is a service-managed part of the active replication and can be reused if migration is retried. If the seed disk is deleted, replication or migration can fail, and you might have to stop and enable replication again, which restarts initial replication.
 
@@ -193,7 +203,7 @@ sections:
           
           ### How many VMs can I replicate in parallel from VMware?
 
-          Within the Azure Migrate portal, you can select up to 10 machines at once for replication. To replicate more machines, add in batches of 10 (agentless migration overview).
+          Within the Azure Catalyst portal, you can select up to 10 machines at once for replication. To replicate more machines, add in batches of 10 (agentless migration overview).
 
           Each Azure Migrate appliance supports replication of 52 disks in parallel (scheduling logic).
 

@@ -3,7 +3,7 @@ title: Maintain static IP addresses during migration
 description: Learn how to maintain static IP addresses for VMs during migration.
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 11/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -12,7 +12,7 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Migrate. It provides detailed instructions for both Software Defined Networking (SDN) enabled and non-SDN enabled Azure Local environments.
+This article explains how to preserve static IP addresses during virtual machine (VM) migration to Azure Local using Azure Catalyst. It provides detailed instructions for both Software Defined Networking (SDN) enabled and non-SDN enabled Azure Local environments.
 
 This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
@@ -127,7 +127,7 @@ To set up IP migration manually for Windows VMs:
     .\Prepare-MigratedVM.ps1 -StaticIPMigration  
     ```
 
-1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
+1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Catalyst project](migration-options-overview.md).
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
 
@@ -245,7 +245,7 @@ To set up IP migration manually for Linux VMs:
     sudo ./prepare_migrated_vm.sh -o StaticIPMigration 
     ```
 
-1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Migrate project](migration-options-overview.md).
+1. In the Azure portal, create a migration project, trigger discovery, and replicate the VM. For more information, see [Create an Azure Catalyst project](migration-options-overview.md).
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
 
@@ -291,5 +291,5 @@ When configuring static IP migration for VMs using the *Prepare-MigratedVM.ps1* 
 
 ## Next steps
 
-- Read [Overview of Azure Migrate based migration for Azure Local](migration-azure-migrate-overview.md).
-- Read [Overview of Azure Migrate based VMware migration for Azure Local](migration-azure-migrate-vmware-overview.md)
+- Read [Overview of Azure Catalyst based migration for Azure Local](migration-azure-migrate-overview.md).
+- Read [Overview of Azure Catalyst based VMware migration for Azure Local](migration-azure-migrate-vmware-overview.md).

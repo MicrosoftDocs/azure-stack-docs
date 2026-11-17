@@ -4,7 +4,7 @@ description: Learn about the kinds of virtual machines (VMs) that can run on Azu
 ms.topic: product-comparison
 author: ronmiab
 ms.author: robess
-ms.date: 09/10/2025
+ms.date: 11/09/2026
 ---
 
 # Compare management capabilities of VMs on Azure Local
@@ -38,7 +38,7 @@ The following table compares the provisioning and management methods for the var
 
 | Method | Azure Local VMs enabled by Azure Arc | Azure Arc-enabled servers | Unmanaged VMs |
 | :---- | :---- | :---- | :---- |
-| Provisioning |  [Azure Local VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal). Create Azure Local VMs by using the Azure CLI, the Azure portal, or an Azure Resource Manager template (ARM template). By using ARM templates, you can also automate VM provisioning in a secure cloud environment. <br><br> [Azure Migrate flow](../migrate/migration-azure-migrate-overview.md). Migrate existing VMware and Hyper-V VMs to Azure Local by using the migration flow. | Connect these machines to Azure by [deploying the Azure Connected Machine agent](/azure/azure-arc/servers/deployment-options). | On-premises provisioning flow. Use local tools like Failover Cluster Manager available in your on-premises environment Or use [Windows Admin Center](../manage/vm.md#create-a-new-vm), [System Center Virtual Machine Manager](/system-center/vmm/provision-vms), or [PowerShell](../manage/vm-powershell.md#create-a-vm).|
+| Provisioning |  [Azure Local VM provisioning flow](../manage/create-arc-virtual-machines.md?tabs=azureportal). Create Azure Local VMs by using the Azure CLI, the Azure portal, or an Azure Resource Manager template (ARM template). By using ARM templates, you can also automate VM provisioning in a secure cloud environment. <br><br> [Azure Catalyst flow](../migrate/migration-azure-migrate-overview.md). Migrate existing VMware and Hyper-V VMs to Azure Local by using the migration flow. | Connect these machines to Azure by [deploying the Azure Connected Machine agent](/azure/azure-arc/servers/deployment-options). | On-premises provisioning flow. Use local tools like Failover Cluster Manager available in your on-premises environment Or use [Windows Admin Center](../manage/vm.md#create-a-new-vm), [System Center Virtual Machine Manager](/system-center/vmm/provision-vms), or [PowerShell](../manage/vm-powershell.md#create-a-vm).|
 | Management | [Via Azure](../manage/manage-arc-virtual-machines.md). | Via Azure. See [Management and monitoring for Azure Arc-enabled servers](/azure/cloud-adoption-framework/scenarios/hybrid/arc-enabled-servers/eslz-management-and-monitoring-arc-server). | Via the local tools. Manage these VMs through the management consoles of the same local tools that you used for their creation. |
 
 > [!NOTE]

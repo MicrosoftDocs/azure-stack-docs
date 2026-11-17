@@ -5,7 +5,8 @@ description: Discover Azure Local multi-rack deployments, a new capability for d
 author: sipastak
 ms.author: sipastak
 ms.reviewer: robess
-ms.date: 09/17/2026
+ms.date: 11/03/2026
+ms.service: azure-local
 ms.topic: overview
 ms.custom: references_regions
 ms.subservice: multi-rack
@@ -74,6 +75,22 @@ The important points about this architecture are as follows:
   - Deployment of Windows and Linux Azure Local virtual machines (VMs) and Azure Kubernetes services (AKS) enabled by Azure Arc.
 - Azure ExpressRoute to connect your on-premises infrastructure to Azure.
 - Azure Arc-enabled add-on services like Azure Monitor, Azure Policy, Microsoft Defender for Cloud, and more.
+
+## Deployment and lifecycle
+
+A multi-rack deployment is a set of Azure resources that represent your on-premises racks. Before you start, complete the [prerequisites](multi-rack-prerequisites.md). The racks must be installed, cabled, and powered on according to your approved bill of materials. Your account team tells you who does this work.
+
+Then create the resources in this order:
+
+| Step | What you create | Learn more |
+|--|--|--|
+| 1 | Network Fabric Controller (NFC) | [Deploy the Network Fabric Controller](multi-rack-deploy-network-fabric-controller.md) |
+| 2 | Network fabric | [Deploy and validate the network fabric](multi-rack-deploy-network-fabric.md) |
+| 3 | Cluster Manager and Cluster | [Deploy and validate a multi-rack cluster](multi-rack-deploy-cluster.md) |
+| 4 | Layer 3 isolation domains and networks | [Manage Layer 3 isolation domains](multi-rack-configure-layer-3-isolation-domain.md) |
+| 5 | Workloads | [Create Azure Local VMs](multi-rack-create-arc-virtual-machines.md), [AKS on Azure Local for multi-rack deployments](/azure/aks/aksarc/multi-rack/cluster-architecture) |
+
+You can create the Cluster Manager before or while the network fabric is being provisioned. Create it before you create the Cluster.
 
 ## Get started
 
