@@ -1,14 +1,14 @@
 --- 
-title: Prerequisites for Hyper-V VM migration to Azure Local using Azure Migrate (preview)
-description: Learn prerequisites for Hyper-V migration to Azure Local using Azure Migrate (preview).
+title: Prerequisites for Hyper-V VM migration to Azure Local using Azure Catalyst (preview)
+description: Learn prerequisites for Hyper-V migration to Azure Local using Azure Catalyst (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/24/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
-# Prerequisites for Hyper-V VM migration to Azure Local using Azure Migrate (preview)
+# Prerequisites for Hyper-V VM migration to Azure Local using Azure Catalyst (preview)
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
@@ -23,27 +23,29 @@ The following list contains the prerequisites and considerations that must be me
 |Prerequisite|Applies to|More information|
 |--|--|--|
 |Open required firewall ports.|source, target|**3389** – Inbound connections on port 3389 to allow remote desktop connections to the appliance. <br> **44368** – Inbound connections on port 44368 to remotely access the appliance management app by using the URL: *https:\//\<appliance-ip-or-name\>:44368*. <br> **5985, 5986** – Inbound and outbound connections on port 5985 (WinRM) to communicate from appliance to host. <br> **445** – Inbound and outbound connections on port 445 (SMB) to communicate between source and target appliance.|
-|Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** |
+|Allow required URLs |source, <br> target |[URL access](/azure/migrate/migrate-appliance#url-access) and <br> **\*.siterecovery.azure.com** <br><br> For Azure Government, see [Migrate VMs to Azure Local in Azure Government](migrate-azure-government.md#prerequisites). |
 |Configure SAN/disks policy on VMs. |source|[Configure SAN/disks policy](migrate-troubleshoot.md#disks-on-migrated-vms-are-offline).|
-| Verify secure boot status of guest VMs | source | Secure Boot settings are preserved for UEFI (Generation 2) VMs during migration. Configure Secure Boot as intended on the source VM before migration. If Secure Boot settings are modified, allow up to 30 minutes for the Azure Migrate discovery service to detect the change before you initiate migration. |
+| Verify secure boot status of guest VMs | source | Secure Boot settings are preserved for UEFI (Generation 2) VMs during migration. Configure Secure Boot as intended on the source VM before migration. If Secure Boot settings are modified, allow up to 30 minutes for the Azure Catalyst discovery service to detect the change before you initiate migration. |
 | Disable BitLocker on Windows VMs. | source | BitLocker must be disabled on VMs before migration.|
 | Encrypted disks/volumes are not supported. | source | Any encrypted disks/volumes must be decrypted on VMs before migration.|
 | Shared disks are not supported. | source | Ensure that VMs do not have any shared disks attached before migration. |
-| Decide how to handle Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Azure Arc-enabled, you can reuse its existing Azure Arc resource during migration and keep the agent installed. See [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md). If you don't reuse the resource, uninstall the Azure Connected Machine Agent before initiating replication. See [Azure Migrate FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
+| Decide how to handle Azure Connected Machine Agent on source VMs (if present) | source | If the source VM is Azure Arc-enabled, you can reuse its existing Azure Arc resource during migration and keep the agent installed. See [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md). If you don't reuse the resource, uninstall the Azure Connected Machine Agent before initiating replication. See [Azure Catalyst FAQ](migrate-faq.yml?&tabs=vmware-and-hyper-v-vms#i-have-the-azure-connected-machine-agent-deployed-on-my-source-vms-that-i-wish-to-migrate-do-i-need-to-uninstall-the-agent-on-my-vms-before-migration) for more information. |
 |Deploy, configure, and register an Azure Local instance.|target|[Create and register an Azure Local instance](../deploy/deployment-introduction.md).|
 | Verify a successful deployment. | target | [Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment). |
 |Verify and make a note of the custom location created during deployment on Azure Local.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
 |Create a custom storage path for the Azure Arc resource bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
 |Create a logical network for the Azure Arc resource bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
 |Configure Azure account permissions for project creation and appliance registration.|both|The account needs the **Azure Local Migrate Owner** role at the Azure subscription scope and the **Application Developer** role at the Microsoft Entra ID tenant scope. For more information, see [Azure account permissions](migrate-hyperv-requirements.md#azure-account-permissions).|
-|Create an Azure Migrate project in the Azure portal|source, target|You must create the project in the Azure portal. Projects created by other methods can't replicate to Azure Local. See [Create an Azure Migrate project](#create-an-azure-migrate-project).|
+|Create an Azure Catalyst project in the Azure portal|source, target|You must create the project in the Azure portal. Projects created by other methods can't replicate to Azure Local. See [Create an Azure Catalyst project](#create-an-azure-migrate-project).|
 
-## Create an Azure Migrate project
+<a name="create-an-azure-migrate-project"></a>
 
-Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
+## Create an Azure Catalyst project
+
+Before you can migrate, create an Azure Catalyst project in Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
 
 > [!IMPORTANT]
-> To migrate to Azure Local, you must create the Azure Migrate project in the Azure portal. Azure Local migrations don't support projects that you create by using any other method - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.
+> To migrate to Azure Local, you must create the Azure Catalyst project in the Azure portal. Azure Local migrations don't support projects that you create by using any other method - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.
 
 1. On the Azure portal home page, select **Azure Migrate**.
 

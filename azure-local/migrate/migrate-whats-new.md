@@ -1,19 +1,27 @@
 ---
-title: What's new in Azure Migrate
-description: What's new in Azure Migrate for Azure Local, including the latest Hyper-V and VMware VM migration features, fixes, and role-based access updates.
+title: What's new in Azure Catalyst
+description: What's new in Azure Catalyst for Azure Local, including the latest Hyper-V and VMware VM migration features, fixes, and role-based access updates.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 10/26/2026
+ms.date: 11/10/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
 
-# What's new in Azure Migrate for Azure Local
+# What's new in Azure Catalyst for Azure Local
 
-This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local. This article applies to both Hyper-V (Preview) and VMware VM migrations.
+This article lists the various features and improvements that are available in virtual machine (VM) migration to Azure Local with Azure Catalyst (formerly Azure Migrate). This article applies to both Hyper-V (Preview) and VMware VM migrations.
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
+
+## November 2026
+
+This release includes these updates:
+
+- **Azure Migrate is now Azure Catalyst** – Azure Migrate is evolving into Azure Catalyst, bringing migration into a broader vision for intelligent, agent-powered modernization across infrastructure, applications, and data. Your current migration experience and capabilities aren't affected by this change. Existing projects, appliances, and workflows for migrating VMs to Azure Local continue to work as they do today. During the transition, you might still see Azure Migrate in the Azure portal, tools, and parts of this documentation.
+- **Migrate VMs to Azure Local in Azure Government (preview)** – You can now migrate VMware and Hyper-V VMs to Azure Local in Azure Government. Create your project with the **Azure Government** geography, with metadata stored in US Gov Virginia or US Gov Arizona. For the steps that differ from the Azure public cloud, see [Migrate VMs to Azure Local in Azure Government](migrate-azure-government.md).
+- **Azure Local migrations in the unified Azure Catalyst experience** – Azure Local migrations are now part of the modern, unified Azure Catalyst experience in the Azure portal. You can discover, replicate, and track VMware and Hyper-V migrations to Azure Local in one place, alongside your other migrations.
 
 ## October 2026
 
