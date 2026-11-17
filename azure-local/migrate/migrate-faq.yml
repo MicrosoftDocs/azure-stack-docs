@@ -144,7 +144,7 @@ sections:
 
           If you select **Reuse Arc-enabled server** for the VM during replication, keep the agent installed. Azure Catalyst reconfigures the existing agent in place and transitions the same `Microsoft.HybridCompute/machines` resource from an Arc-enabled server to an Azure Local VM, so its tags, role assignments, Azure Policy assignments, and extensions carry forward. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 
-          If you don't reuse the resource, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). Not doing so results in unsupported behavior.
+          If you don't reuse the resource, you must uninstall the Azure Connected Machine Agent from your source VMs before replication. [Follow the steps to uninstall the agent](/azure/azure-arc/servers/uninstall-agent#uninstall-the-agent). Not doing so results in unsupported behavior.
 
           In that case, the VM is created as an Azure Local VM in the Azure Local instance when it's migrated. Removing the Azure Connected Machine Agent from the source VMs before migration ensures that the migrated VM is the only valid projection of the virtual machine in Azure. The original Azure Arc resource is left behind and you must delete it manually.
 
@@ -172,7 +172,7 @@ sections:
 
           After you verify that the migrated VM works as expected, use the standard **Complete migration** operation. This operation deletes the protected item and its replication artifacts, including seed disks and any seed ISO attached to the migrated VM, without deleting the migrated VM. If you don't complete migration, these artifacts remain on the target system and continue to use storage.
 
-          A forceful completion might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Replications** view and that the artifact doesn't belong to another active replication.
+          A forceful completion might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Server replication** view and that the artifact doesn't belong to another active replication.
 
           ### Can I forcefully stop replications or complete migrations?
 
@@ -180,7 +180,7 @@ sections:
           In the Azure portal, this option appears as “Forcefully stop replication” or “Forcefully complete migration”, and is only available after a normal stop or complete operation fails.
           From PowerShell, you can use the [Remove-AzMigrateLocalServerReplication (Az.Migrate) cmdlet](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) to forcefully stop replication or complete migration only when standard operations don’t succeed.
           
-          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Replications** view and that the artifact doesn't belong to another active replication.
+          Force deletion may not clean up all associated resources. Seed disks and migration logs may remain. Before manually deleting a leftover artifact, confirm that the protected item no longer appears in the **Server replication** view and that the artifact doesn't belong to another active replication.
           
           ### How can I migrate the same source VM again after initial migration?
           

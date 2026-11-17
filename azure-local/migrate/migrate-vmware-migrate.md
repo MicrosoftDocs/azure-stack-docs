@@ -3,7 +3,7 @@ title: Migrate VMware VMs to Azure Local using Azure Catalyst
 description: Learn about how to migrate VMware VMs to your Azure Local instance using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -20,28 +20,22 @@ This article describes how to migrate the VMware virtual machines (VMs) to Azure
 Before you migrate your VMware VMs:
 
 - Replicate the VMware VMs on your Azure Local instance. To replicate a VM, use the instructions in [Replicate VMware VMs to Azure Local using Azure Catalyst](migrate-vmware-replicate.md).
-- Make sure the replication has completed and the migration status is **Ready to replicate**.
+- Ensure the replication is complete and the migration status is **Ready to migrate**.
 
 
 ## Migrate VMware VMs
 
-1. In the Azure portal, go to your **Azure Migrate project > Servers, databases and web apps**.
+1. In the Azure portal, go to your project and select **Server replication**.
 
-1. On the **Migration tools** tile, select **Overview**.
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot of the Server replication page for a project in the Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png":::
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png":::
+1. From the command bar, select **Migrate** to migrate multiple VMs that are ready.  
 
-1. Go to **Azure Local migration > Replications**.
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot of the Server replication page with Migrate highlighted on the command bar." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png":::
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot showing Replications in Azure Local migration in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png":::
+    Alternatively, select **Ready to migrate** for a single VM, or select **...** next to the VM and then select **Migrate**.
 
-1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
-
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot with Replications page in Azure portal with Migrate option selected." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png":::
-
-    Alternatively, you can select **Migrate** from the context menu for a single VM that's ready to migrate.
-
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of Migrate page in Azure portal with Migrate option selected from context menu." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of the Server replication page with Migrate selected from the context menu for a VM." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3.png":::
 
 
 1. On the **Migrate** page:
@@ -53,14 +47,10 @@ Before you migrate your VMware VMs:
     
 1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png":::
-
     The **Planned failover** blade indicates the various migration tasks in progress.
     :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-c.png" alt-text="Screenshot of Planned failover for a VM in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-c.png":::
 
     The migration status changes from **Migration in progress** to **Completed** when the migration is complete.
-
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-4.png" alt-text="Screenshot of Migrate page with Migration status as completed in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-4.png":::
 
 Once the migration is complete, the VMs are running on your Azure Local instance. You can view the VMs in the Azure portal.
 
@@ -84,9 +74,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
     1. The VM behaves as expected.
     1. Your applications work as expected.
 
-1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**.
-
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-1.png" alt-text="Screenshot of Replications view with complete migration selected from the context menu in Azure portal." lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-1.png":::
+1. In the Azure portal, go to your project and select **Server replication**. Select **...** next to the VM, and then select **Complete migration**.
 
     Alternatively, select the VM name.
 
@@ -98,17 +86,13 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     Repeat this action for all the migrated VMs.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of multiple VMs completing migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
-
-    The **Complete migration** action starts the **Delete protected item** job, which you can track on the **Jobs** page. This job removes the replication state and service-managed replication artifacts without affecting the migrated VM.
+    The **Complete migration** action starts the **Delete protected item** job, which you can track on the **Jobs** page of your project. This job removes the replication state and service-managed replication artifacts without affecting the migrated VM.
     
-   <!--:::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::-- old one-->
+    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of the Jobs page with a Delete protected item job highlighted." lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::
 
     A seed disk is a temporary disk that contains the replicated source data used to create the final migrated disk. As part of its cleanup, the standard **Complete migration** operation deletes seed disks and other replication artifacts, such as a seed ISO attached to the migrated VM. If you don't complete migration, these artifacts remain on the target system and continue to use storage.
 
-    After the migrated resource is deleted, it's also removed from the **Replications** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
-
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-5.png":::
+    After the migrated resource is deleted, it's also removed from the **Server replication** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
 
 ## Clean up
 
@@ -122,7 +106,7 @@ Once you have verified that migration is complete and no more machines need to b
 
 After migrating a VM, you might want to enable guest management on that VM. For more information, see [Enable guest management](../manage/manage-arc-virtual-machines.md#enable-guest-management).
 
-Enabling guest management is supported only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Supported Guest OS](/virtualization/hyper-v-on-windows/user-guide/make-integration-service#supported-guest-os).
+You can enable guest management only on Windows Server 2016 or later, and on Linux guests with Linux Integration Services. For more information, see [Supported Guest OS](/windows-server/virtualization/hyper-v/make-integration-service#supported-guest-os).
 
 
 ## Next steps

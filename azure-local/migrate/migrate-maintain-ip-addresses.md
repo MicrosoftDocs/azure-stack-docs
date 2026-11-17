@@ -131,7 +131,7 @@ To set up IP migration manually for Windows VMs:
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
 
-1. In the **Replications > General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
+1. On **Server replication**, select the VM. In the **General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 
@@ -249,7 +249,7 @@ To set up IP migration manually for Linux VMs:
 
 1. Before you select the VMs to migrate, use the Replication Wizard to assign and configure the correct logical networks for each network interface on the source VM.
 
-1. In the **Replications > General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
+1. On **Server replication**, select the VM. In the **General > Compute and Network** section, select **VM**. On this tab, ensure that the network interfaces are assigned to the correct logical network. DHCP network interfaces are assigned to dynamic logical networks, and static network interfaces are assigned to static logical networks.
 
     :::image type="content" source="./media/migrate-maintain-ip-addresses/compute-network.png" alt-text="Screenshot of Compute and Network page." lightbox="./media/migrate-maintain-ip-addresses/compute-network.png":::
 

@@ -38,7 +38,7 @@ Because the migrated VM inherits the identity of the existing Azure Arc resource
 | VM name is locked | For an Arc-enabled source VM selected for reuse, **Target VM name** is fixed to the name of the source Arc-enabled resource, because that Azure Arc property is immutable. Non-reuse VMs can still be renamed during migration. Renaming the VM in the source environment doesn't change the Azure Arc resource name. To change the name, delete and recreate the Azure Arc resource before you start replication, which also discards the tags, role assignments, and policy assignments that reuse preserves. For more information, see [How to rename Azure Arc-enabled servers and migrate across regions](/azure/azure-arc/servers/manage-howto-migrate). |
 | Move resource groups *before* you migrate | Azure Local VMs enabled by Azure Arc currently can't be moved between resource groups after migration. Move the Azure Arc resource first, then select **Refresh Arc status** in the wizard to pick up the change. |
 | Non-reused Arc resources are orphaned | An Arc-enabled source VM replicated without **Reuse Arc-enabled server** selected leaves behind a stale Azure Arc resource that you must delete manually. VMs that aren't Arc-enabled aren't affected. |
-| Uninstall the agent if you don't reuse | If you don't reuse an Arc-enabled source VM's resource, uninstall the Connected Machine agent before you migrate it. Migrating with the agent still active results in a duplicate, nonfunctional Azure Arc resource that's difficult to troubleshoot. For more information, see [Uninstall the agent](/azure/azure-arc/servers/manage-agent?tabs=windows#uninstall-the-agent). |
+| Uninstall the agent if you don't reuse | If you don't reuse an Arc-enabled source VM's resource, uninstall the Connected Machine agent before you migrate it. Migrating with the agent still active results in a duplicate, nonfunctional Azure Arc resource that's difficult to troubleshoot. For more information, see [Uninstall the agent](/azure/azure-arc/servers/uninstall-agent#uninstall-the-agent). |
 | Reuse can't be changed after replication starts | To change the setting, stop replication and start a new replication batch. |
 
 ## Prerequisites
@@ -53,7 +53,7 @@ Before you begin, make sure that:
 ## Configure Arc reuse in the Replicate wizard
 
 
-In your Azure Catalyst project, start the Replicate wizard for Azure Local. Complete Basics and Appliances as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
+In your Azure Catalyst project, go to **Server replication** and start the Replicate wizard for Azure Local. Complete **Basics** and **Appliances** as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
 
 ### Virtual machines
 

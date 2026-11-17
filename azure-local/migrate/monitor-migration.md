@@ -12,15 +12,15 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to enable diagnostic settings in Azure Catalyst through the Azure portal to help monitor Azure Local migrations. Diagnostic logs provide detailed and frequent data about resource operations, which helps you monitor, troubleshoot, and audit. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
+This article describes how to enable diagnostic settings in Azure Catalyst through the Azure portal to help monitor Azure Local migrations. Diagnostic logs provide detailed and frequent data about resource operations, which helps you monitor, troubleshoot, and audit. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/data-collection/diagnostic-settings).
 
-To enable diagnostic settings in Azure Catalyst through PowerShell or the Azure CLI, see [Collect and consume log data from your Azure resources](/azure/azure-monitor/essentials/platform-logs-overview).
+To enable diagnostic settings in Azure Catalyst through PowerShell or the Azure CLI, see [Methods for creating a diagnostic setting](/azure/azure-monitor/data-collection/diagnostic-settings#methods-for-creating-a-diagnostic-setting).
 
 ## Prerequisites
 
 - An Azure subscription with an Azure Catalyst project.
 - A Data Replication Vault resource that exists in the same resource group as your Azure Catalyst project. This resource is automatically created after you register the source appliance VM with the intent to migrate to Azure Local.
-- A destination selected for your diagnostic log data. For supported destinations, see [diagnostic settings destinations](/azure/azure-monitor/platform/diagnostic-settings#destinations).
+- A destination selected for your diagnostic log data. For supported destinations, see [diagnostic settings destinations](/azure/azure-monitor/data-collection/diagnostic-settings#destinations).
 
 ## Before you begin
 
@@ -28,8 +28,8 @@ To enable diagnostic settings in Azure Catalyst through PowerShell or the Azure 
 
 - This article uses Log Analytics workspace and Azure Storage account as destination examples. You can create these resources in the same resource group as your Migrate project.
 
-   - **Log Analytics workspace**: Enables querying and analyzing logs. For more information, see [Log Analytics workspace](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#send-to-log-analytics-workspace).
-   - **Azure Storage account**: Stores logs for audit, backup, or static analysis. The storage account can be in a different subscription if the user has the required permissions. For more information, see [Azure Storage account](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics).
+   - **Log Analytics workspace**: Enables querying and analyzing logs. For more information, see [Log Analytics workspace](/azure/azure-monitor/logs/resource-logs#destinations).
+   - **Azure Storage account**: Stores logs for audit, backup, or static analysis. The storage account can be in a different subscription if you have the required permissions. For more information, see [Azure Storage account](/azure/azure-monitor/logs/resource-logs#destinations).
 
 ## Enable diagnostic log collection  
 

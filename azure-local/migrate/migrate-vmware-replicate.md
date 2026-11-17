@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Local using Azur
 description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -29,19 +29,23 @@ Ensure all VMs that you wish to migrate are powered on and have VMware tools ins
 
 ### Generate the project key
 
-1. In the Azure portal, go to **All projects** and select your project from the list.
+1. In the Azure portal, go to **Azure Migrate** > **All projects** and select your project from the list.
 
-1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
+1. On the project **Overview**, under **Inventory**, select **Start discovery**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of the project Overview page with Start discovery highlighted." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
 
-1. On **Discover**, select **Azure Local** under **Where do you want to migrate to**. Then, under **Are your machines virtualized**, select **Yes, with VMware vSphere Hypervisor**.
-1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
+1. On **Start discovery**, for **How do you want to discover?**, select **Using appliance**, and then select **Continue**. Azure Local migrations support only appliance-based discovery.
 
-1. Copy the **Project key** to a text editor such as Notepad and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either an *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
+    :::image type="content" source="./media/migrate-vmware-replicate/start-discovery-using-appliance.png" alt-text="Screenshot of the Start discovery page with Using appliance selected." lightbox="./media/migrate-vmware-replicate/start-discovery-using-appliance.png":::
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
+1. On **Discover**, under **Are your servers virtualized?**, select **Yes, with VMware vSphere Hypervisor**.
+1. Under **1: Generate project key**, enter a name for your source appliance, and then select **Generate key**.
+
+1. Copy the **Project key** to a text editor such as Notepad and save it for later use. You can also find the key later by selecting **Manage existing appliances**.
+1. Under **2: Download Azure Migrate appliance**, download the source appliance by using either an *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
+
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of the Discover page with a generated project key and the appliance download options." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
 
 ### Create the source appliance
 
@@ -51,7 +55,7 @@ You can install the appliance by using either an *.ova* file or a *.zip* file th
 
 This step applies only if you are deploying the source VMware appliance using an *.OVA* file.
 
-1. After you download the **.OVA** file, [verify that the file is secure](/azure/migrate/how-to-set-up-appliance-vmware#verify-security). 
+1. After you download the **.OVA** file, [verify that the file is secure](/azure/migrate/migrate-appliance#verify-security). 
 1. [Create the source VMware appliance](/azure/migrate/tutorial-discover-vmware#create-the-appliance-server). 
 1. [Verify that the appliance can access Azure](/azure/migrate/tutorial-discover-vmware#verify-appliance-access-to-azure). <!--check if this is needed-->
 
@@ -76,7 +80,7 @@ This step applies only if you downloaded the .zip file. Use the `AzureMigrateIns
     ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 
-    .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget
+    .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false
     ```
 
 1. Select option 1 as the desired configuration: **Primary appliance to discover, assess and migrate servers**.
@@ -145,7 +149,7 @@ After you install the source appliance, [configure the source appliance](/azure/
 1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of VMware VMs.
 1. Select **Start Discovery**. The discovery might take several minutes to finish.
 
-	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot of the start discovery source appliance.":::
+	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot of the start discovery source appliance." lightbox="media/migrate-vmware-replicate/start-discovery.png":::
 
 1. Wait until you see a green checkmark that indicates the discovery is finished. This mark also means the migration readiness checks are successful. After the discovery finishes, go to the Azure portal to review the VM inventory.
 
@@ -157,32 +161,37 @@ After you install the source appliance, [configure the source appliance](/azure/
 
 ### Generate target appliance key
 
-Complete the following tasks to generate the target appliance key:
+Generate the target appliance key from the **Replicate** wizard. Open the wizard from **Server replication**, the page in your project where you replicate, migrate, and track the VMs that you move to Azure Local.
 
-1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
+1. In the Azure portal, go to your project and select **Overview**. Under **Inventory summary**, verify that **Workloads** shows a value greater than zero.
 
-1. Verify that you see a value greater than zero for **Discovered servers** under **Migration tools**.
+    :::image type="content" source="./media/migrate-vmware-replicate/replicate-discovered-servers.png" alt-text="Screenshot of the inventory summary on the project Overview page with the number of discovered workloads highlighted." lightbox="./media/migrate-vmware-replicate/replicate-discovered-servers.png":::
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/migrate-vmware-replicate/replicate-discovered-servers.png":::
+1. In the left pane, under **Manage**, select **Server replication**.
 
-1. Under **Migration and modernization**, select **Replicate**.
+    Until you replicate VMs to Azure Local, the page shows **No replicating items found** and columns that don't apply to Azure Local, such as **Test migration status**. After you replicate VMs, the page shows the Azure Local columns, and **Start replication** changes to **Replicate**.
 
-1. On the **Specify intent** page, provide the following inputs:
+1. Select **Start replication**.
 
-    - Select Servers or virtual machines (VM) for **What do you want to migrate?**.
-    - Select **Azure Local** for **Where do you want to migrate?**.
-    - Select **VMware vSphere** for **Virtualization type**.
-    - For the **On-premises appliance**, the portal prepopulates the source appliance. If you have more than one source appliance, select the applicable one from the dropdown list.
+    :::image type="content" source="./media/migrate-vmware-replicate/replicate-start-1.png" alt-text="Screenshot of the Server replication page with Server replication highlighted in the left pane and Start replication highlighted on the command bar." lightbox="./media/migrate-vmware-replicate/replicate-start-1.png":::
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-vmware-replicate/replicate-specify-intent.png":::
+1. On **Specify intent**:
+    1. The **What do you want to migrate?** field automatically shows **Servers or Virtual machines (VM)**.
+    1. For **Where do you want to migrate to?**, select **Azure Local (formerly Azure Stack HCI)**. **How will you select workloads?** is set to **From all inventory**.
+    1. For **Discovery method**, select the source appliance that you used for discovery. **Migration mode** is set to **Agentless migration**.
+    1. When finished, select **Continue**.
 
-1. Select **Download and configure** in **Before you start replication to Azure Local** from the information block.
+    :::image type="content" source="./media/migrate-vmware-replicate/replication-specify-intent-1.png" alt-text="Screenshot of the Specify intent page with Azure Local and a source appliance selected." lightbox="./media/migrate-vmware-replicate/replication-specify-intent-1.png":::
+
+1. On the **Basics** tab of the **Replicate** wizard, select the subscription, resource group, and target system for your Azure Local instance. Verify that the system shows a green check, and then select **Next**.
+
+1. On the **Appliances** tab, select **Deploy and configure target appliance**.
 
 1. On the **Deploy and configure the target appliance** pane, provide a name for the target appliance and then select **Generate key**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/generate-target-key-1.png":::
 
-1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
+1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use. You can close the **Replicate** wizard. You start replication after you register the target appliance.
 
 ### Create the target appliance
 
@@ -282,20 +291,11 @@ This step applies to using a .zip file.
 
 ## Step 3: Start replication
 
-1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
+After you register the target appliance, return to **Server replication** to start replication.
 
-1. Under **Migration tools**, select **Replicate**.
+1. In the Azure portal, go to your project. In the left pane, under **Manage**, select **Server replication**, and then select **Start replication**. If the project already has replicated VMs, select **Replicate** instead.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-start-1.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/migrate-vmware-replicate/replicate-start-1.png":::
-
-1. On **Specify intent**:
-    1. The **What do you want to migrate** field automatically shows **Servers or virtual machines (VM)**.
-    1. Select **Azure Local** for **Where do you want to migrate to ?**
-    1. Select **VMware vSphere** for the **Virtualization type**.
-    1. Select the source appliance as the **On-premises appliance** used for discovery.
-    1. When finished, select **Continue**.
-
-    :::image type="content" source="./media/migrate-vmware-replicate/replication-specify-intent-1.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-vmware-replicate/replication-specify-intent-1.png":::
+1. On **Specify intent**, select the same values that you used in [Generate target appliance key](#generate-target-appliance-key), and then select **Continue**.
 
 1. On **Replicate**, on the **Basics** tab:
 
@@ -411,13 +411,13 @@ This step applies to using a .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/migrate-vmware-replicate/replicate-77-review.png":::
 
-7. You're automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
+1. When the process finishes, go to your project and select **Server replication**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
 
-8. Go to **Azure Local migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
- 
-9. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
+1. As the replication continues, the replication status shows progress. Continue refreshing periodically. After the initial replication finishes, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot of the Server replication page with the migration status Ready to migrate highlighted." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
+
+    To track replication operations, select **Jobs** in your project. Failed scheduled replication cycles appear on **Events**. For more information, see [Troubleshoot](migrate-troubleshoot.md#get-job-id-for-replication-or-migration).
 
 > [!IMPORTANT]
 > During initial replication, Azure Catalyst creates a temporary seed disk for each source disk on the selected Azure Local storage path. It writes the replicated source data and subsequent changes to the seed disk. During migration, Azure Catalyst uses the seed disk to create the final disk attached to the migrated VM.
