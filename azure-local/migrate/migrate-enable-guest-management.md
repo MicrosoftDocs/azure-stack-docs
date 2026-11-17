@@ -3,7 +3,7 @@ title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 11/09/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -13,9 +13,9 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to enable guest management for VMs that have been migrated to Azure Local using [Azure Migrate](../migrate/migration-azure-migrate-overview.md). Enabling guest management allows you to manage in guest OS settings and install and manage Azure extensions on these VMs.
+This article describes how to enable guest management for VMs that you migrated to Azure Local by using [Azure Catalyst](../migrate/migration-azure-migrate-overview.md). When you enable guest management, you can manage in-guest OS settings and install and manage Azure extensions on these VMs.
 
-This article is only for VMs that have been migrated using Azure Migrate. For more information on how to enable guest management in other scenarios, see [Manage Azure Local VMs](../manage/manage-arc-virtual-machines.md).
+This article applies only to VMs that you migrated by using Azure Catalyst. For more information about how to enable guest management in other scenarios, see [Manage Azure Local VMs](../manage/manage-arc-virtual-machines.md).
 
 The output properties may vary depending on whether VMs were migrated or not.
 

@@ -1,25 +1,25 @@
 ---
-title: Migrate VMware VMs to Azure Local using Azure Migrate
-description: Learn about how to to migrate VMware VMs to your Azure Local instance using Azure Migrate.
+title: Migrate VMware VMs to Azure Local using Azure Catalyst
+description: Learn about how to migrate VMware VMs to your Azure Local instance using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Migrate VMware VMs to Azure Local using Azure Migrate
+# Migrate VMware VMs to Azure Local using Azure Catalyst
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to migrate the VMware virtual machines (VMs) to Azure Local using Azure Migrate and includes the steps to verify the migration.
+This article describes how to migrate the VMware virtual machines (VMs) to Azure Local using Azure Catalyst. It also includes the steps to verify the migration.
 
 ## Before you begin
 
 Before you migrate your VMware VMs:
 
-- Make sure that you have replicated the VMware VMs on your Azure Local instance. To replicate a VM, use the instructions in [Replicate VMware VMs to Azure Local using Azure Migrate](migrate-vmware-replicate.md).
+- Replicate the VMware VMs on your Azure Local instance. To replicate a VM, use the instructions in [Replicate VMware VMs to Azure Local using Azure Catalyst](migrate-vmware-replicate.md).
 - Make sure the replication has completed and the migration status is **Ready to replicate**.
 
 

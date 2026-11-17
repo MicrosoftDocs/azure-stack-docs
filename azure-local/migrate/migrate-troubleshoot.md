@@ -1,9 +1,9 @@
 ---
-title: Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate
-description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Migrate.
+title: Troubleshoot issues when migrating VMs to Azure Local using Azure Catalyst
+description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -11,11 +11,11 @@ ms.custom:
 ms.subservice: hyperconverged
 ---
 
-# Troubleshoot issues migrating VMs to Azure Local via Azure Migrate
+# Troubleshoot issues migrating VMs to Azure Local via Azure Catalyst
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to troubleshoot any potential issues that you may experience when migrating Hyper-V (Preview) and VMware VMs to your Azure Local using Azure Migrate.
+This article describes how to troubleshoot any potential issues that you might experience when migrating Hyper-V (Preview) and VMware VMs to your Azure Local using Azure Catalyst.
 
 
 ## Check if required services are running
@@ -52,8 +52,8 @@ If you experience any issues, before you open a Support ticket, collect the foll
 - Description of the issue or feedback
 - Subscription ID 
 - Tenant ID 
-- Azure Migrate project name
-- Azure Migrate project region or geography
+- Azure Catalyst project name
+- Azure Catalyst project region or geography
 - VM name for issues in replication and migration 
 - Correlation ID for deployment or job ID
 
@@ -72,7 +72,7 @@ Additionally failed operations in the session are shown as notifications or in a
 
 Follow these steps to identify the correlation ID for your deployment in Azure portal:
 
-1. Go to the resource group for your Azure Migrate project and then go to **Overview**. In the right-pane, select the hyperlink that shows failed and successful deployments.
+1. Go to the resource group for your Azure Catalyst project and then go to **Overview**. In the right pane, select the hyperlink that shows failed and successful deployments.
 
     :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-1.png" alt-text="Screenshot Azure Migrate project resource group > Overview in Azure portal.":::
   
@@ -93,7 +93,7 @@ In these cases, the **Job ID** needs to be collected as well.
 
 Follow these steps to get the job ID:
 
-1. In your Azure Migrate project in the Azure portal, go to **Overview** under **Migration tools**.
+1. In your Azure Catalyst project in the Azure portal, go to **Overview** under **Migration tools**.
 
     :::image type="content" source="./media/migrate-troubleshoot/get-job-id-1.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview in Azure portal.":::
 
@@ -144,11 +144,13 @@ If needed, Microsoft Support may also request component event viewer logs, or sy
 
 ## Common issues and resolutions
 
-### Azure Migrate project creation fails
+<a name="azure-migrate-project-creation-fails"></a>
+
+### Azure Catalyst project creation fails
 
 **Root cause** 
 
-The Azure Migrate project creation fails if the Azure subscription isn't registered for Azure Migrate or if the user doesn't have the required permissions to create a project.
+The Azure Catalyst project creation fails if the Azure subscription isn't registered for Azure Catalyst or if the user doesn't have the required permissions to create a project.
 
 **Recommended resolution** 
 
@@ -156,17 +158,17 @@ Verify the following:
 
 - Make sure that you have the [Application Developer](/entra/identity/role-based-access-control/permissions-reference#application-developer) role at the Microsoft Entra ID tenant scope.
 - Make sure that you have the [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) role at the Azure subscription scope. The Azure Local Migrate Execute Expert role doesn't allow users to create projects.
-- Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
+- Ensure that you're selecting one of the supported regions for Azure Catalyst project creation. For a list of supported regions, see [Supported geographies](migrate-hyperv-requirements.md).
 
 ### Can't replicate to Azure Local because you didn't create the project in the Azure portal
 
 **Root cause**
 
-You didn't create the Azure Migrate project in the Azure portal. Projects that you create by using other methods - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, or Azure PowerShell - don't support Azure Local migrations. These projects include the [Create and manage Azure Migrate projects](/azure/migrate/quickstart-create-migrate-project) and [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstarts. In these projects, Azure Local isn't available as a replication target, so you can't register the target appliance or start replication.
+You didn't create the Azure Catalyst project in the Azure portal. Projects that you create by using other methods - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, or Azure PowerShell - don't support Azure Local migrations. These projects include the [Create and manage Azure Catalyst projects](/azure/migrate/quickstart-create-migrate-project) and [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstarts. In these projects, Azure Local isn't available as a replication target, so you can't register the target appliance or start replication.
 
 **Recommended resolution**
 
-Create a new Azure Migrate project in the Azure portal, and then rerun discovery and replication by using the new project. You can't convert an existing project into one that supports Azure Local. For more information, see [Create an Azure Migrate project for Hyper-V](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) or [Create an Azure Migrate project for VMware](migrate-vmware-prerequisites.md#create-an-azure-migrate-project).
+Create a new Azure Catalyst project in the Azure portal, and then rerun discovery and replication by using the new project. You can't convert an existing project into one that supports Azure Local. For more information, see [Create an Azure Catalyst project for Hyper-V](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) or [Create an Azure Catalyst project for VMware](migrate-vmware-prerequisites.md#create-an-azure-migrate-project).
 
 ### Target system validation fails on appliance
 
@@ -266,7 +268,7 @@ Also, to migrate a non-HA VM, follow these steps:
 1. You first need to make the VM highly available. For more information, see [Make Hyper-V VMs highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/). 
 1. Wait for discovery agent to sync the data. 
 
-Alternatively, go to Azure Migrate and select **Refresh** to manually refresh **Servers, databases, and web apps** to help expedite the discovery agent synchronization. 
+Alternatively, go to Azure Catalyst and select **Refresh** to manually refresh **Servers, databases, and web apps** to help expedite the discovery agent synchronization.
 
 
 ### Replication or migration fails with error value can't be null
@@ -412,7 +414,7 @@ In some cases, migrations to Azure Local may fail during the migration phase, su
 
 **Recommended resolution**
 
-To determine where the failure occurred, open the Planned failover job in the Azure Migrate portal. Use the job details to identify whether the failure occurred before or after VM creation on the Azure Local instance.
+To determine where the failure occurred, open the Planned failover job in the Azure Catalyst portal. Use the job details to identify whether the failure occurred before or after VM creation on the Azure Local instance.
 
 *If the failure occurred before VM creation*
 
@@ -444,7 +446,7 @@ Task failures listed below the red line (**Preparing protected entities** task a
 
     - Network interfaces.
 
-    These resources are reused automatically by Azure Migrate during subsequent migration attempts. For more information about the seed disk lifecycle, see the [Azure Migrate FAQ](migrate-faq.yml).
+    Azure Catalyst automatically reuses these resources during subsequent migration attempts. For more information about the seed disk lifecycle, see the [Azure Catalyst FAQ](migrate-faq.yml).
 
 ### Migrated VM data disks show as 1GB in Azure portal
 
@@ -468,5 +470,5 @@ This action triggers a portal refresh and updates the UX to show the correct dat
 Depending upon the phase of migration you are in, you may need to review one of the following articles to troubleshoot issues:
 
 - [Troubleshoot discovery issues](/azure/migrate/troubleshoot-discovery).
-- [Troubleshoot Azure Migrate projects](/azure/migrate/troubleshoot-general).
+- [Troubleshoot Azure Catalyst projects](/azure/migrate/troubleshoot-general).
 - [Troubleshoot with appliance diagnostics](/azure/migrate/troubleshoot-appliance-diagnostic).

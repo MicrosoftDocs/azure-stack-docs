@@ -1,9 +1,9 @@
 ---
 title: Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local
-description: Learn how to retain existing Azure Arc connected machine agents when you migrate VMware and Hyper-V VMs to Azure Local using Azure Migrate.
+description: Learn how to retain existing Azure Arc connected machine agents when you migrate VMware and Hyper-V VMs to Azure Local using Azure Catalyst.
 author: trumanbrown
 ms.topic: how-to
-ms.date: 10/26/2026
+ms.date: 11/09/2026
 ms.author: trumanbrown
 ms.subservice: hyperconverged
 ---
@@ -12,15 +12,15 @@ ms.subservice: hyperconverged
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to retain the existing [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) on your source virtual machines (VMs) when you migrate them to Azure Local using Azure Migrate. It applies to both VMware and Hyper-V source VMs that are onboarded as [Azure Arc-enabled servers](/azure/azure-arc/servers/overview).
+This article describes how to retain the existing [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview) on your source virtual machines (VMs) when you migrate them to Azure Local using Azure Catalyst. It applies to both VMware and Hyper-V source VMs that are onboarded as [Azure Arc-enabled servers](/azure/azure-arc/servers/overview).
 ## Benefits
 
 Arc reuse provides the following benefits when you migrate Arc-enabled VMs to Azure Local:
 
-- **Retain the existing Azure Arc resource and configuration.** Azure Migrate transitions the existing Microsoft.HybridCompute/machines resource from an Arc-enabled server to an Azure Local VM. Tags, role-based access control (RBAC) assignments, Azure Policy assignments, monitoring configuration, and installed VM extensions carry forward with the resource.
-- **Keep the existing Connected Machine agent.** Azure Migrate reconfigures the agent during migration, so you don't need to uninstall it before migration and reinstall it afterward.
+- **Retain the existing Azure Arc resource and configuration.** Azure Catalyst transitions the existing Microsoft.HybridCompute/machines resource from an Arc-enabled server to an Azure Local VM. Tags, role-based access control (RBAC) assignments, Azure Policy assignments, monitoring configuration, and installed VM extensions carry forward with the resource.
+- **Keep the existing Connected Machine agent.** Azure Catalyst reconfigures the agent during migration, so you don't need to uninstall it before migration and reinstall it afterward.
 
-You don't need to create a new Azure Migrate project to use Arc reuse. Azure Migrate fully supports existing projects, including projects that have appliances already registered and VMs already replicating.
+You don't need to create a new Azure Catalyst project to use Arc reuse. Azure Catalyst fully supports existing projects, including projects that have appliances already registered and VMs already replicating.
 
 > [!NOTE]
 > Arc reuse doesn't change how VM data is replicated. Disks continue to replicate directly from the source appliance to the target Azure Local instance.
@@ -45,7 +45,7 @@ Because the migrated VM inherits the identity of the existing Azure Arc resource
 
 Before you begin, make sure that:
 
-- You have a new or existing Azure Migrate project for Azure Local with the source and target appliances registered and discovery completed. Your environment must also meet the requirements for [VMware VM migration](migrate-vmware-replicate.md) or [Hyper-V VM migration](migrate-hyperv-replicate.md).
+- You have a new or existing Azure Catalyst project for Azure Local with the source and target appliances registered and discovery completed. Your environment must also meet the requirements for [VMware VM migration](migrate-vmware-replicate.md) or [Hyper-V VM migration](migrate-hyperv-replicate.md).
 - The source VMs that you want to reuse are Azure Arc-enabled servers, have the Azure Connected Machine agent installed, and show a **Connected** status in Azure Arc.
 
 - You have the [Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner) role on the subscription that contains the Arc-enabled resources that you're migrating.
@@ -53,7 +53,7 @@ Before you begin, make sure that:
 ## Configure Arc reuse in the Replicate wizard
 
 
-In your Azure Migrate project, start the Replicate wizard for Azure Local. Complete Basics and Appliances as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
+In your Azure Catalyst project, start the Replicate wizard for Azure Local. Complete Basics and Appliances as described in [Discover and replicate VMware VMs](migrate-vmware-replicate.md#step-3-start-replication) or [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md#step-3-start-replication).
 
 ### Virtual machines
 
@@ -99,7 +99,7 @@ On the **Review + Start replication** tab, validate the selected virtual machine
 
 ## Migrate and verify
 
-After initial replication finishes, migrate the VMs as described in [Migrate VMware VMs to Azure Local using Azure Migrate](migrate-vmware-migrate.md) or [Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)](migrate-azure-migrate.md). During migration, Azure Migrate reconfigures the Connected Machine agent on the migrated VM instead of onboarding a new one.
+After initial replication finishes, migrate the VMs as described in [Migrate VMware VMs to Azure Local using Azure Catalyst](migrate-vmware-migrate.md) or [Migrate Hyper-V VMs to Azure Local using Azure Catalyst (preview)](migrate-azure-migrate.md). During migration, Azure Catalyst reconfigures the Connected Machine agent on the migrated VM instead of onboarding a new one.
 
 To confirm that reuse succeeded, open the Azure Arc resource for the migrated VM and verify the following on the **Overview** page:
 
@@ -122,7 +122,7 @@ This is the more common failure scenario. No Azure Local resources were created,
 
 Fix the issue, and then run the migration again as you would for a migration without Arc reuse.
 
-For more information, see [Troubleshoot issues when migrating VMs to Azure Local using Azure Migrate](migrate-troubleshoot.md) and [Known issues in Azure Migrate for Azure Local](migration-known-issues.md).
+For more information, see [Troubleshoot issues when migrating VMs to Azure Local using Azure Catalyst](migrate-troubleshoot.md) and [Known issues in Azure Catalyst for Azure Local](migration-known-issues.md).
 
 ### Failure at Preparing protected entities or later
 
@@ -135,7 +135,7 @@ An Azure Local VM instance was already created on the reused Azure Arc resource 
 
 ## Next steps
 
-- [Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate](migrate-vmware-replicate.md)
-- [Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Migrate (preview)](migrate-hyperv-replicate.md)
-- [Migrate VMware VMs to Azure Local using Azure Migrate](migrate-vmware-migrate.md)
-- [Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)](migrate-azure-migrate.md)
+- [Discover and replicate VMware VMs for migration to Azure Local using Azure Catalyst](migrate-vmware-replicate.md)
+- [Discover and replicate Hyper-V VMs for migration to Azure Local using Azure Catalyst (preview)](migrate-hyperv-replicate.md)
+- [Migrate VMware VMs to Azure Local using Azure Catalyst](migrate-vmware-migrate.md)
+- [Migrate Hyper-V VMs to Azure Local using Azure Catalyst (preview)](migrate-azure-migrate.md)

@@ -1,21 +1,23 @@
 --- 
-title: Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate 
-description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Migrate.
+title: Discover and replicate VMware VMs for migration to Azure Local using Azure Catalyst
+description: Learn the discovery and replication process for VMware VMs to Azure Local using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/26/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---
 
-# Discover and replicate VMware VMs for migration to Azure Local using Azure Migrate
+# Discover and replicate VMware VMs for migration to Azure Local using Azure Catalyst
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Migrate.
+This article describes the discovery and replication phase for VMware virtual machine (VM) migration to Azure Local using Azure Catalyst.
 
-For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
+For more information about appliances for Azure Catalyst and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
+
+If your Azure Local instance is in Azure Government, see [Migrate VMs to Azure Local in Azure Government](migrate-azure-government.md) for the steps that differ. To replicate and migrate VMs by using PowerShell, Azure CLI, or Terraform instead of the Azure portal, see [Migrate VMs to Azure Local using PowerShell, Azure CLI, or Terraform](migrate-via-powershell.md).
 
 ## Before you begin
 
@@ -43,7 +45,7 @@ Ensure all VMs that you wish to migrate are powered on and have VMware tools ins
 
 ### Create the source appliance
 
-You can install the appliance using either an *.ova* file or a *.zip* file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
+You can install the appliance by using either an *.ova* file or a *.zip* file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Catalyst and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
 
 #### Install using an .OVA file
 
@@ -99,7 +101,7 @@ After you install the source appliance, [configure the source appliance](/azure/
 1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, so new deployments can't use this version. **Don't use VDDK 7.0.X.** These versions have known problems and result in errors during migration.
 
    > [!IMPORTANT]
-   > Azure Migrate doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](./migration-options-overview.md#third-party-migration-options) to migrate your VMware VMs to Azure Local.
+   > Azure Catalyst doesn't provide VDDK packages, and access to them might be restricted. If a supported VDDK package isn't available to your organization, use a [third-party migration option](./migration-options-overview.md#third-party-migration-options) to migrate your VMware VMs to Azure Local.
 
 1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
 
@@ -157,7 +159,7 @@ After you install the source appliance, [configure the source appliance](/azure/
 
 Complete the following tasks to generate the target appliance key:
 
-1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
+1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
 
 1. Verify that you see a value greater than zero for **Discovered servers** under **Migration tools**.
 
@@ -280,7 +282,7 @@ This step applies to using a .zip file.
 
 ## Step 3: Start replication
 
-1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
+1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
 
 1. Under **Migration tools**, select **Replicate**.
 
@@ -323,7 +325,7 @@ This step applies to using a .zip file.
     1. For **Do you want to retain the Azure Arc-enabled server connected machine agents during migration?**, select **Yes** or **No**. You must select an option to continue.
 
         - **Yes**: Reuse the existing Azure Arc resources of Arc-enabled source VMs. After you select the VMs, select **Configure Arc-enabled server reuse**, choose the VMs to reuse, and then select **Save**. **Next** stays unavailable until you save this configuration.
-        - **No**: Azure Migrate creates a new Azure Local VM resource for every migrated VM. If any source VMs are Arc-enabled servers, uninstall the Azure Connected Machine agent on them before you migrate.
+        - **No**: Azure Catalyst creates a new Azure Local VM resource for every migrated VM. If any source VMs are Arc-enabled servers, uninstall the Azure Connected Machine agent on them before you migrate.
 
     1. Select up to 10 VMs to replicate. Use the search box to filter the list. VMs that can't be replicated are unavailable and show the reason next to the name, such as **already in replication** or **VM powered off**. After you fix the issue, it can take up to 30 minutes for the VM to become available.
     1. To review your selection or remove VMs from it, select **Selected virtual machines**.
@@ -351,7 +353,7 @@ This step applies to using a .zip file.
 
     > [!IMPORTANT]
     > - Choose the security type before you start replication. There's no supported way to convert a migrated Standard VM to Trusted launch later.
-    > - Azure Migrate doesn't migrate vTPM state or keys from the source VM. A Trusted launch VM gets a new vTPM on Azure Local. Guest attestation isn't enabled during migration.
+    > - Azure Catalyst doesn't migrate vTPM state or keys from the source VM. A Trusted launch VM gets a new vTPM on Azure Local. Guest attestation isn't enabled during migration.
 
 1. On the **Target settings** tab, complete these tasks:
 
@@ -369,11 +371,11 @@ This step applies to using a .zip file.
 
     3. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are connected to this network. 
+	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md). The VMs are connected to this network.
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	5. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-local-using-azure-migrate). The VMs are created at this storage path. Ensure that the storage path has sufficient space to accommodate the VMs being migrated.
+	5. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md). The VMs are created at this storage path. Ensure that the storage path has sufficient space to accommodate the VMs being migrated.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
@@ -418,9 +420,9 @@ This step applies to using a .zip file.
     :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 > [!IMPORTANT]
-> During initial replication, Azure Migrate creates a temporary seed disk for each source disk on the selected Azure Local storage path. Replicated source data and subsequent changes are written to the seed disk. During migration, Azure Migrate uses it to create the final disk attached to the migrated VM.
+> During initial replication, Azure Catalyst creates a temporary seed disk for each source disk on the selected Azure Local storage path. It writes the replicated source data and subsequent changes to the seed disk. During migration, Azure Catalyst uses the seed disk to create the final disk attached to the migrated VM.
 >
-> Don't rename, modify, or delete a seed disk. It remains part of the active replication and can be reused if migration is retried. Deleting it can cause replication or migration to fail and might require you to stop and enable replication again, which restarts initial replication. After you verify the migrated VM, use **Complete migration** to remove the protected item and its replication artifacts, including the seed disk. For more information, see the [Azure Migrate FAQ](migrate-faq.yml).
+> Don't rename, modify, or delete a seed disk. It remains part of the active replication and can be reused if migration is retried. Deleting it can cause replication or migration to fail and might require you to stop and enable replication again, which restarts initial replication. After you verify the migrated VM, use **Complete migration** to remove the protected item and its replication artifacts, including the seed disk. For more information, see the [Azure Catalyst FAQ](migrate-faq.yml).
 
 ## Next steps
 

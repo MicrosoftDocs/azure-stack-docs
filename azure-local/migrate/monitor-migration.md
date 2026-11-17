@@ -1,30 +1,30 @@
 ---
-title: Monitor Azure Local Migrations Using Diagnostic Settings in Azure Migrate
-description: Learn how to monitor Azure Local migrations using diagnostic settings in Azure Migrate.
+title: Monitor Azure Local Migrations Using Diagnostic Settings in Azure Catalyst
+description: Learn how to monitor Azure Local migrations using diagnostic settings in Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 10/15/2025
+ms.date: 11/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
-# Monitor Azure Local migrations using diagnostic settings in Azure Migrate
+# Monitor Azure Local migrations by using diagnostic settings in Azure Catalyst
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to enable diagnostic settings in Azure Migrate via the Azure portal to help monitor Azure Local migrations. Diagnostic logs provide detailed and frequent data about resource operations, helping in monitoring, troubleshooting, and auditing. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
+This article describes how to enable diagnostic settings in Azure Catalyst through the Azure portal to help monitor Azure Local migrations. Diagnostic logs provide detailed and frequent data about resource operations, which helps you monitor, troubleshoot, and audit. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings).
 
-To enable diagnostic settings in Azure Migrate via PowerShell or the Azure CLI, see [Collect and consume log data from your Azure resources](/azure/azure-monitor/essentials/platform-logs-overview).
+To enable diagnostic settings in Azure Catalyst through PowerShell or the Azure CLI, see [Collect and consume log data from your Azure resources](/azure/azure-monitor/essentials/platform-logs-overview).
 
 ## Prerequisites
 
-- An Azure subscription with an Azure Migrate project.
-- A Data Replication Vault resource that exists in the same resource group as your Azure Migrate project. This resource is automatically created after you register the source appliance VM with the intent to migrate to Azure Local.
+- An Azure subscription with an Azure Catalyst project.
+- A Data Replication Vault resource that exists in the same resource group as your Azure Catalyst project. This resource is automatically created after you register the source appliance VM with the intent to migrate to Azure Local.
 - A destination selected for your diagnostic log data. For supported destinations, see [diagnostic settings destinations](/azure/azure-monitor/platform/diagnostic-settings#destinations).
 
 ## Before you begin
 
-- Azure Migrate supports only logs in Azure Monitor diagnostic settings. Metrics aren't currently supported.
+- Azure Catalyst supports only logs in Azure Monitor diagnostic settings. It doesn't currently support metrics.
 
 - This article uses Log Analytics workspace and Azure Storage account as destination examples. You can create these resources in the same resource group as your Migrate project.
 
@@ -35,7 +35,7 @@ To enable diagnostic settings in Azure Migrate via PowerShell or the Azure CLI, 
 
 Follow these steps to enable diagnostic logging in the Azure portal.
 
-1. In the Azure portal, go to the resource group where your Azure Migrate project was created. Select the **Data Replication Vault** resource.
+1. In the Azure portal, go to the resource group where you created your Azure Catalyst project. Select the **Data Replication Vault** resource.
 1. Under **Monitoring**, select **Diagnostics settings**. This page contains all previously created diagnostic settings for this resource.
 1. To use a previously created resource, select it. Otherwise, select **+ Add diagnostic setting**.
 
@@ -44,7 +44,7 @@ Follow these steps to enable diagnostic logging in the Azure portal.
 1. Enter a name for the setting.
 1. From **Destination details**, select **Send to log Analytics** or **Archive to a storage account**.
 1. When prompted to configure, select the storage account where you want to store the diagnostic logs.
-1. Under **Category groups**, select **all Logs** to enable logging for all log categories, or select individual category under **Categories**. To learn more about individual log category supported by Azure Migrate service, see [Supported logs for Microsoft.DataReplication/replicationVaults](/azure/azure-monitor/reference/supported-logs/microsoft-datareplication-replicationvaults-logs).
+1. Under **Category groups**, select **all Logs** to enable logging for all log categories, or select an individual category under **Categories**. To learn more about individual log categories supported by the Azure Catalyst service, see [Supported logs for Microsoft.DataReplication/replicationVaults](/azure/azure-monitor/reference/supported-logs/microsoft-datareplication-replicationvaults-logs).
 1. Select **Save**.
 
       :::image type="content" source="media/monitor-migration/diagnostic-setting.png" alt-text="Screenshot of the Diagnostics settings page." border="false" lightbox="media/monitor-migration/diagnostic-setting.png":::
@@ -63,7 +63,7 @@ Follow these steps to explore log analytics data for your resource:
 
 ### Sample queries
 
-Run the following Kusto query to view the protected items diagnostic logs from Azure Migrate from the last 30 days:
+Run the following Kusto query to view the protected items diagnostic logs from Azure Catalyst for the last 30 days:
 
 ```kusto
 ASRv2ProtectedItems
@@ -74,7 +74,7 @@ ASRv2ProtectedItems
 
 Azure Storage accounts provide an object storage solution that is optimized for storing large amounts of unstructured data.
 
-Follow these steps to locate and download the Azure Migrate service resource logs stored in Azure Storage account:
+Follow these steps to locate and download the Azure Catalyst service resource logs stored in an Azure Storage account:
 
 1. In the Azure portal, go to the Storage account you selected when enabling diagnostic settings.
 1. In the left-hand menu, under **Data storage**, select **Containers**. <!--can we add a screenshot here?-->

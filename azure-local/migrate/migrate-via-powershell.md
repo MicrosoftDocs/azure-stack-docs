@@ -1,31 +1,31 @@
 --- 
 title: Migrate VMs to Azure Local using PowerShell, Azure CLI, or Terraform
-description: Learn how to migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI, or Terraform.
+description: Learn how to migrate VMs to Azure Local with Azure Catalyst using PowerShell, Azure CLI, or Terraform.
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
-# Migrate VMs to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview)
+# Migrate VMs to Azure Local with Azure Catalyst using PowerShell, Azure CLI (Preview), or Terraform (Preview)
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Migrate using PowerShell, Azure CLI (Preview), or Terraform (Preview). This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
+This article describes how to migrate virtual machines (VMs) to Azure Local with Azure Catalyst using PowerShell, Azure CLI (Preview), or Terraform (Preview). This article applies to migration of Hyper-V VMs (Preview) and VMware VMs.
 
 
 ## Prerequisites
 
 Before you begin, ensure that the following prerequisites are met:
 
-1. Complete the following prerequisites for the Azure Migrate project:
+1. Complete the following prerequisites for the Azure Catalyst project:
     - For a Hyper-V source environment, complete the [Hyper-V prerequisites](migrate-hyperv-prerequisites.md) and [configure the source and target appliances](migrate-hyperv-replicate.md#step-1-create-and-configure-the-source-appliance).
     - For a VMware source environment, complete the [VMware prerequisites](migrate-vmware-prerequisites.md) and [configure the source and target appliances](migrate-vmware-replicate.md#step-1-create-and-configure-the-source-vmware-appliance).
 
-1. An Azure account with either the **Azure Local Migrate Owner** or **Azure Local Migrate Execute Expert** role at the Azure subscription scope. You need only one role. Because this workflow uses an existing, configured Azure Migrate project, the Execute Expert role is sufficient for replication and migration operations. For role details, see Azure account permissions for [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions) or [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions).
+1. An Azure account with either the **Azure Local Migrate Owner** or **Azure Local Migrate Execute Expert** role at the Azure subscription scope. You need only one role. Because this workflow uses an existing, configured Azure Catalyst project, the Execute Expert role is sufficient for replication and migration operations. For role details, see Azure account permissions for [Hyper-V migrations](migrate-hyperv-requirements.md#azure-account-permissions) or [VMware migrations](migrate-vmware-requirements.md#azure-account-permissions).
 
-3. A configured Azure Migrate project with source appliance (VMware or Hyper-V) and target Azure Local appliance registered.
+3. A configured Azure Catalyst project with source appliance (VMware or Hyper-V) and target Azure Local appliance registered.
 
 4. Arc Resource Bridge running on your Azure Local instance.
 
@@ -100,7 +100,7 @@ Before you begin, ensure that the following prerequisites are met:
 Connect-AzAccount
 ```
 
-2. Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Migrate project using the `Set-AzContext` cmdlet:
+2. Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription that hosts your Azure Catalyst project by using the `Set-AzContext` cmdlet:
 
 ```powershell
 Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
@@ -127,7 +127,7 @@ az account set --subscription "<subscriptionId>"
 
 # [Terraform (Preview)](#tab/terraform)
 
-The AzAPI provider uses your Azure CLI sign-in for authentication. Sign in and set the subscription that hosts your Azure Migrate project:
+The AzAPI provider uses your Azure CLI sign-in for authentication. Sign in and set the subscription that hosts your Azure Catalyst project:
 
 ```azurecli
 az login
@@ -140,14 +140,14 @@ For more information, see the [AzAPI provider documentation](https://registry.te
 
 ## Retrieve discovered VMs
 
-Retrieve the discovered VMs in your Azure Migrate project.
+Retrieve the discovered VMs in your Azure Catalyst project.
 
 # [PowerShell](#tab/powershell)
 
 Use the `Get-AzMigrateDiscoveredServer` cmdlet to retrieve the list of VMs discovered by the source appliance. `SourceMachineType` can be either `HyperV` or `VMware`, depending on your source VM environment.
 For more information, see the [`Get-AzMigrateDiscoveredServer`](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet.
 
-**Example 1**: Get all VMs discovered by an Azure Migrate source appliance in an Azure Migrate project:
+**Example 1**: Get all VMs discovered by an Azure Migrate source appliance in an Azure Catalyst project:
 
 ```powershell
 $DiscoveredServers = Get-AzMigrateDiscoveredServer `
@@ -211,9 +211,9 @@ Use the source machine ID (`sdsArmId`) and OS disk ID from this output as the `m
 
 ## Initialize replication infrastructure
 
-Initialize the replication infrastructure for your Azure Migrate project. This sets up the infrastructure and metadata storage account needed to replicate VMs from the source appliance to the target appliance. You can safely run this command multiple times, it checks whether the replication infrastructure is already initialized before running again.
+Initialize the replication infrastructure for your Azure Catalyst project. This command sets up the infrastructure and metadata storage account needed to replicate VMs from the source appliance to the target appliance. You can safely run this command multiple times. It checks whether the replication infrastructure is already initialized before running.
 
-You can use a default or custom storage account to store the replication metadata. To find the source and target appliance names, go to your Azure Migrate project in the Azure portal, then select Appliances > Registered appliances.
+Use a default or custom storage account to store the replication metadata. To find the source and target appliance names, go to your Azure Catalyst project in the Azure portal, and then select **Appliances** > **Registered appliances**.
 
 :::image type="content" source="./media/migrate-via-powershell/migrate-appliances.png" alt-text="Screenshot showing Appliances in Azure Migrate project page." lightbox="./media/migrate-via-powershell/migrate-appliances.png":::
 
@@ -243,7 +243,7 @@ $CustomStorageAccount = Get-AzStorageAccount `
     -Name $CustomStorageAccountName
 ```
 
-Ensure that the storage account uses Standard tier and blob storage kind, these are the only supported types for Azure Migrate metadata storage accounts. Also ensure that Public network access is enabled on the storage account. If you disable public network access, replication fails.
+Ensure that the storage account uses the Standard tier and blob storage kind. These types are the only supported types for Azure Catalyst metadata storage accounts. Also, ensure that Public network access is enabled on the storage account. If you disable public network access, replication fails.
 
 Next, initialize replication infrastructure with custom-created storage account:
 
@@ -707,7 +707,7 @@ Write-Output "Protected item removed successfully."
 
 ### List all replications
 
-List all ongoing replications for your Azure Migrate project:
+List all ongoing replications for your Azure Catalyst project:
 
 ```azurecli
 az migrate local replication list \
@@ -835,12 +835,12 @@ After migration succeeds, remove the replication to clean up resources.
 
 The standard removal operation deletes the protected item and associated replication artifacts, including the seed disks, without deleting the migrated VM. Don't manually delete a seed disk while the protected item exists. The seed disk contains the replicated source data used to create the final migrated disk and can be reused if migration is retried.
 
-Use force removal only if the standard operation fails. Force removal might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer exists and that the artifact doesn't belong to another active replication. For more information, see the [Azure Migrate FAQ](migrate-faq.yml).
+Use force removal only if the standard operation fails. Force removal might leave seed disks or other artifacts behind. Before manually deleting a leftover artifact, confirm that the protected item no longer exists and that the artifact doesn't belong to another active replication. For more information, see the [Azure Catalyst FAQ](migrate-faq.yml).
 
 # [PowerShell](#tab/powershell)
 
 Use the `Remove-AzMigrateLocalServerReplication` cmdlet to remove a protected item to complete migration. 
-Do not use this cmdlet until you have verified that the migration is successful and you no longer need the protected item in Azure Migrate.
+Don't use this cmdlet until you verify that the migration is successful and you no longer need the protected item in Azure Catalyst.
 For more information, see the [`Remove-AzMigrateLocalServerReplication`](/powershell/module/az.migrate/remove-azmigratelocalserverreplication) cmdlet.
 
 **Example**
@@ -873,7 +873,7 @@ For more information, see the [`az migrate local replication remove`](/cli/azure
 
 # [Terraform (Preview)](#tab/terraform)
 
-After migration succeeds, use the `remove` operation mode to disable and remove replication for the protected item. Don't remove replication until you verify that the migration succeeded and you no longer need the protected item in Azure Migrate.
+After migration succeeds, use the `remove` operation mode to disable and remove replication for the protected item. Don't remove replication until you verify that the migration succeeded and you no longer need the protected item in Azure Catalyst.
 
 ```terraform
 module "remove" {

@@ -3,10 +3,10 @@ author: ronmiab
 ms.author: robess
 ms.service: azure-local
 ms.topic: include
-ms.date: 09/03/2025
+ms.date: 11/09/2026
 ---
 
-With Azure Migrate, you can choose to migrate your data from your on-premises environment to Azure or to your on-premises Azure Local instance.
+With Azure Catalyst, you can migrate your data from your on-premises environment to Azure or to your on-premises Azure Local instance.
 
 The following diagram shows the migration process to your on-premises Azure Local instance using Azure Migrate:
 
@@ -17,7 +17,7 @@ The following diagram shows the migration process to your on-premises Azure Loca
 The migration process includes the following key components, organized into two layers:
 
 **Azure layer:**
-- Azure Migrate project. Central to the migration process, used to orchestrate discovery of source VMs and replication of VMs. Both the source and target appliances must register with this project.
+- Azure Catalyst project. Central to the migration process, it orchestrates discovery of source VMs and replication of VMs. Both the source and target appliances must register with this project.
 - Storage Accounts and Key Vault. Used for storing metadata and replication state data.
 - Azure Resource Manager (ARM). Orchestrates and manages resources across Azure and Azure Local by interacting with the Azure Local Resource Provider.
 
