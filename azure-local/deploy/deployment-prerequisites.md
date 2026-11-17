@@ -3,7 +3,7 @@ title: Prerequisites to Deploy Azure Local Version
 description: Review prerequisites to deploy Azure Local, including security, hardware, networking, and checklist requirements. Prepare your environment now.
 author: ronmiab
 ms.topic: install-set-up-deploy
-ms.date: 06/16/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.service: azure-local
 ms.subservice: hyperconverged
@@ -34,7 +34,7 @@ Use the following checklist to gather the required information ahead of the actu
 |--|--|
 |Machine names|Unique name for each machine you wish to deploy.|
 |Active directory OU|A new organizational unit (OU) to store all the objects for the Azure Local deployment. The OU is created during the [Active Directory preparation](./deployment-prep-active-directory.md).<br>The OU must be specified as the distinguished name (DN). The OU path doesn't support the following special characters anywhere within the path: `&,",',<,>`. For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
-|Active Directory Domain|Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment.|
+|Active Directory Domain|Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment. The domain name can only contain ASCII characters.|
 |Active Directory Lifecycle Manager (LCM) User credential|A new username and password that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Local deployment.<br>The password must conform to the Azure length and complexity requirements. Use a password that is at least 14 characters long. The password must include: a lowercase character, an uppercase character, a numeral, and  a special character.<br> The name must be unique for each Azure Local instance (deployment) and you can't use *admin* as the username.|
 |IPv4 network range subnet for management network intent|A subnet used for management network intent. You need an address range for management network with  a minimum of 6 available, contiguous IPs in this subnet. These IPs are used for infrastructure services with the first IP assigned to fail over clustering.<br> For more information, see the **Specify network settings** page in [Deploy via Azure portal](./deploy-via-portal.md#specify-network-settings).|
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.<br> We recommend using the default VLANS from Network ATC for storage subnets. If you plan to have two storage subnets, Network ATC uses VLANS from 712 and 711 subnets. <br> For more information, see the **Specify network settings** page in [Deploy via Azure portal](./deploy-via-portal.md#specify-network-settings).|
