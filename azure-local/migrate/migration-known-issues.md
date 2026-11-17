@@ -1,7 +1,7 @@
 ---
-title: Known issues in Azure Migrate for Azure Local
-description: Fix Azure Local migration issues in Azure Migrate. Review common causes and proven solutions, then troubleshoot failures faster—start resolving issues now.
-ms.date: 07/23/2026
+title: Known issues in Azure Catalyst for Azure Local
+description: Fix Azure Local migration issues in Azure Catalyst. Review common causes and proven solutions, then troubleshoot failures faster—start resolving issues now.
+ms.date: 11/09/2026
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -10,9 +10,9 @@ ms.subservice: hyperconverged
 ms.reviewer: simonw, joasa
 ---
 
-# Known issues in Azure Migrate for Azure Local
+# Known issues in Azure Catalyst for Azure Local
 
-This article identifies known issues and their workarounds in Azure Migrate for Azure Local.
+This article identifies known issues and their workarounds in Azure Catalyst for Azure Local.
 
 These release notes are continuously updated, and as issues requiring a workaround are discovered, they're added.
 
@@ -68,13 +68,13 @@ To resolve the problem, follow these steps:
 
 ## Migration tool stuck in discovery phase
 
-During migration from VMware to Azure Local, the Azure Migrate portal remains at the **Discovering** phase for more than 48 hours.
+During migration from VMware to Azure Local, the Azure Catalyst portal stays in the **Discovering** phase for more than 48 hours.
 
 **Symptoms**:
 
 Common symptoms include:
 
-- The Azure Migrate portal is stuck at **Discovering** even though the appliances show VMs as discovered.
+- The Azure Catalyst portal is stuck at **Discovering** even though the appliances show VMs as discovered.
 - No errors are reported in diagnostics.
 - Clearing the browser cache doesn't fix the problem.
 
@@ -92,7 +92,7 @@ To resolve the problem, follow these steps:
 
 ## Replication failure because of storage account region mismatch
 
-Migrating from VMware to Azure Local fails if the storage account is in a different region than the Azure Migrate project.
+Migrating from VMware to Azure Local fails if the storage account is in a different region than the Azure Catalyst project.
 
 **Symptoms**:
 
@@ -106,7 +106,7 @@ Common symptoms include:
 Common causes include:
 
 - Public network access is disabled on the storage account.
-- The storage account region doesn't match the Azure Migrate project region.
+- The storage account region doesn't match the Azure Catalyst project region.
 
 **Solution**:
 
@@ -143,7 +143,7 @@ After migration, some VMs appear in the portal without a disk attached even thou
 
 Common symptoms include:
 
-- No OS disk is visible in the Azure Migrate portal.
+- No OS disk is visible in the Azure Catalyst portal.
 - An incorrect IP address is registered in the portal.
 - VMs are inaccessible until the correct IP is identified.
 
@@ -151,7 +151,7 @@ Common symptoms include:
 
 Common causes include:
 
-- The resource model displays only data disks in the Azure Migrate portal.
+- The resource model displays only data disks in the Azure Catalyst portal.
 - An IP mismatch exists between the portal and the actual VM.
 
 **Solution**:

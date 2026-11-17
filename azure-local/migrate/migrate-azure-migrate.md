@@ -1,9 +1,9 @@
 ---
-title: Migrate Hyper V VMs to Azure Local using Azure Migrate (preview)
-description: Learn about how to to migrate Windows and Linux VMs to your Azure Local instance using Azure Migrate  (preview).
+title: Migrate Hyper V VMs to Azure Local using Azure Catalyst (preview)
+description: Learn about how to migrate Windows and Linux VMs to your Azure Local instance using Azure Catalyst (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -11,11 +11,11 @@ ms.custom:
 ms.subservice: hyperconverged
 ---
 
-# Migrate Hyper-V VMs to Azure Local using Azure Migrate (preview)
+# Migrate Hyper-V VMs to Azure Local using Azure Catalyst (preview)
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article describes how to migrate Hyper-V virtual machines (VMs) to Azure Local using Azure Migrate and includes the steps to verify the migration.
+This article describes how to migrate Hyper-V virtual machines (VMs) to Azure Local using Azure Catalyst. It also includes the steps to verify the migration.
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
@@ -23,7 +23,7 @@ This article describes how to migrate Hyper-V virtual machines (VMs) to Azure Lo
 
 Before you migrate your VMs:
 
-- Make sure that you replicate the VM on your Azure Local instance. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Local using Azure Migrate](migrate-hyperv-replicate.md).
+- Replicate the VM on your Azure Local instance. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Local using Azure Catalyst](migrate-hyperv-replicate.md).
 - Make sure the replication is completed and that the migration status is **Ready to migrate**.
 
 

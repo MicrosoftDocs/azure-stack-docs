@@ -1,19 +1,19 @@
 ---
-title: Review requirements for VMware VM migration to Azure Local using Azure Migrate
-description: Learn the system requirements for VMware migration to Azure Local using Azure Migrate.
+title: Review requirements for VMware VM migration to Azure Local using Azure Catalyst
+description: Learn the system requirements for VMware migration to Azure Local using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 09/24/2026
+ms.date: 11/10/2026
 ms.author: robess
 ms.custom: references_regions
 ms.subservice: hyperconverged
 ---
 
-# Review requirements for VMware VM migration to Azure Local using Azure Migrate
+# Review requirements for VMware VM migration to Azure Local using Azure Catalyst
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Local by using Azure Migrate.
+This article lists the system requirements for migrating VMware virtual machines (VMs) to Azure Local by using Azure Catalyst.
 
 ## Supported configurations
 
@@ -33,7 +33,9 @@ The following operating systems (OSs) are supported for the VMware source applia
 
 ## Supported geographies
 
-You can create an Azure Migrate project in many geographies in the Azure public cloud. Here's a list of supported geographies for migration to Azure Local:
+### [Azure public](#tab/azure-public)
+
+You can create an Azure Catalyst project in many geographies in the Azure public cloud. Here's a list of supported geographies for migration to Azure Local:
 
 |Geography|Metadata storage locations|
 |-|-|
@@ -41,12 +43,24 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 |Europe|North Europe, West Europe|
 |United States|Central US, West US2|
 
+### [Azure Government](#tab/azure-government)
+
+Migration to Azure Local in Azure Government is in preview. Here's the supported geography:
+
+|Geography|Metadata storage locations|
+|-|-|
+|Azure Government|US Gov Virginia, US Gov Arizona|
+
+For the steps that differ in Azure Government, see [Migrate VMs to Azure Local in Azure Government](migrate-azure-government.md).
+
+---
+
 Keep the following information in mind as you create a project:
 
 - Create the project in the Azure portal. Projects created by other methods, such as an ARM template, the REST API, Azure CLI, or Azure PowerShell, don't support replication to Azure Local yet.
-- The project geography only stores the discovered metadata. Your VMware source environment and Azure Local target environment don't need to be in the same geography or region as your Azure Migrate project.
-- When you create a project, you select a geography. The Azure Migrate service creates the project and related resources in one of the regions in the geography. Azure Migrate allocates the region. Azure Migrate doesn't move or store customer data outside of the region allocated.
-- Your Azure Migrate project must be in the same tenant as your Azure Local instance. The project can recognize Azure Local instances across subscriptions, but it doesn't work with an Azure Local instance registered in a separate Azure tenant.
+- The project geography only stores the discovered metadata. Your VMware source environment and Azure Local target environment don't need to be in the same geography or region as your Azure Catalyst project.
+- When you create a project, you select a geography. The Azure Catalyst service creates the project and related resources in one of the regions in the geography. Azure Catalyst allocates the region. Azure Catalyst doesn't move or store customer data outside of the region allocated.
+- Your Azure Catalyst project must be in the same tenant as your Azure Local instance. The project can recognize Azure Local instances across subscriptions, but it doesn't work with an Azure Local instance registered in a separate Azure tenant.
 
 ## Azure account permissions
 
@@ -56,12 +70,12 @@ At the Microsoft Entra ID tenant scope, an account that registers a source or ta
 
 At the Azure subscription scope, assign one of the following roles based on the user's responsibilities:
 
-- **[Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner)**: Provides full access to the Azure Migrate project, including creating and managing the project, registering source and target appliances, assigning migration-specific roles, and performing replication and migration operations.
-- **[Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert)**: Provides access to perform replication and migration operations and to track and monitor migration progress on an existing, configured project. This role doesn't allow users to create Azure Migrate projects, register source or target appliances, or assign roles.
+- **[Azure Local Migrate Owner](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-owner)**: Provides full access to the Azure Catalyst project, including creating and managing the project, registering source and target appliances, assigning migration-specific roles, and performing replication and migration operations.
+- **[Azure Local Migrate Execute Expert](/azure/role-based-access-control/built-in-roles/migration#azure-local-migrate-execute-expert)**: Provides access to perform replication and migration operations and to track and monitor migration progress on an existing, configured project. This role doesn't allow users to create Azure Catalyst projects, register source or target appliances, or assign roles.
 
 A user needs only one of these Azure subscription roles, not both. A user who only performs replication and migration with the Azure Local Migrate Execute Expert role and doesn't register appliances doesn't need the Application Developer role.
 
-For any subscriptions that host resources used in migration, such as Azure Migrate project subscriptions and target Azure Local instance subscriptions, register the **Microsoft.DataReplication** resource provider. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
+For any subscriptions that host resources used in migration, such as Azure Catalyst project subscriptions and target Azure Local instance subscriptions, register the **Microsoft.DataReplication** resource provider. For more information, see [register resource provider](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 :::image type="content" source="./media/migrate-vmware-requirements/migrate-resource-providers.png" alt-text="Screenshot showing Azure Local Docs Subscription page." lightbox="./media/migrate-vmware-requirements/migrate-resource-providers.png":::
 
@@ -89,19 +103,21 @@ For any subscriptions that host resources used in migration, such as Azure Migra
 
 - The Azure Local target system must be able to initiate a network connection with the VMware source environment, either by being on the same on-premises network or by using a VPN.
 
-## Azure Migrate project requirements
+<a name="azure-migrate-project-requirements"></a>
 
-- If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Local. You can't use existing Azure Migrate projects for migration.
+## Azure Catalyst project requirements
 
-- You must have only one source appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
+- If you have an existing Azure Catalyst project with VM discovery complete, you need to [create a new Azure Catalyst project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Local. You can't use existing Azure Catalyst projects for migration.
 
-- You must have only one target appliance per Azure Migrate project for Azure Local migrations. This requirement means you can't use the same Azure Migrate project for a single source appliance to migrate to multiple target appliances across different Azure Local instances.
+- You must have only one source appliance per Azure Catalyst project for Azure Local migrations. This requirement means you can't use the same Azure Catalyst project for both a VMware source and a Hyper-V source. Create a new project for each source you want to migrate from.
 
-- In general, Azure Migrate projects must have a 1:1 pairing of only one source appliance and one target appliance per project.
+- You must have only one target appliance per Azure Catalyst project for Azure Local migrations. This requirement means you can't use the same Azure Catalyst project for a single source appliance to migrate to multiple target appliances across different Azure Local instances.
+
+- In general, Azure Catalyst projects must have a 1:1 pairing of only one source appliance and one target appliance per project.
 
 ## Considerations for migrating VMware VMs to Azure Local 
 
-- Azure Migrate retains the boot type of the VM during migration. If the source VMware VM uses BIOS, the migrated VM on Azure Local also uses BIOS. If the source VMware VM uses UEFI, the migrated VM on Azure Local also uses UEFI.
+- Azure Catalyst retains the boot type of the VM during migration. If the source VMware VM uses BIOS, the migrated VM on Azure Local also uses BIOS. If the source VMware VM uses UEFI, the migrated VM on Azure Local also uses UEFI.
 
 - This behavior means that the migration process creates BIOS VMs as Hyper-V Generation 1 VMs on Azure Local, and UEFI VMs as Hyper-V Generation 2 VMs on Azure Local. For more information on Generation 1 VM limitations, see [Azure Local VM management](../manage/azure-arc-vm-management-overview.md).
 

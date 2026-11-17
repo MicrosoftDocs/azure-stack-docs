@@ -1,26 +1,26 @@
 ---
-title: Use Azure Migrate to move VMware VMs to Azure Local
-description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Local instance.
+title: Use Azure Catalyst to move VMware VMs to Azure Local
+description: Learn about how to use Azure Catalyst to migrate VMware VMs to your Azure Local instance.
 author: ronmiab
 ms.topic: overview
-ms.date: 09/24/2026
+ms.date: 11/09/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
 
-# Overview of Azure Migrate based VMware migration for Azure Local
+# Overview of Azure Catalyst based VMware migration for Azure Local
 
 [!INCLUDE [hci-applies-to-2503](../includes/hci-applies-to-2503.md)]
 
-This article provides an overview of how to migrate VMware virtual machines (VMs) to your Azure Local instance using Azure Migrate.
+This article provides an overview of how to migrate VMware virtual machines (VMs) to your Azure Local instance using Azure Catalyst (formerly Azure Migrate).
 
-Azure Migrate is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Migrate platform to move on-premises VMware VMs to your Azure Local instance.
+Azure Catalyst is a central hub for tools to discover, assess, and migrate on-premises servers, apps, and data to the Microsoft Azure cloud. Azure Local is a hyperconverged infrastructure system solution that hosts virtualized Windows and Linux workloads in a hybrid environment. You can use the Azure Catalyst platform to move on-premises VMware VMs to your Azure Local instance.
 
-For more information on the Azure Migrate platform, see [About Azure Migrate](/azure/migrate/migrate-services-overview).
+For more information on the Azure Catalyst platform, see [About Azure Catalyst](/azure/migrate/migrate-services-overview).
 
 ## Benefits
 
-Here are the benefits of using Azure Migrate to migrate your on-premises VMware VMs to Azure Local. This solution:
+Here are the benefits of using Azure Catalyst to migrate your on-premises VMware VMs to Azure Local. This solution:
 
 - Requires no preparation for your VMware VMs including installation of agents prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure Local.
@@ -37,7 +37,7 @@ Here are the key phases of the migration process:
 
 |Migration steps |Phase  |Description  |
 |---------|---------|---------|
-|Step 1.  |**Prepare**    |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Migrate project in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-vmware-prerequisites.md).  |
+|Step 1.  |**Prepare**    |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Local instance. This system is the migration target. Create an Azure Catalyst project in Azure.<br><br> For more information, see [Review prerequisites for Azure Catalyst](migrate-vmware-prerequisites.md).  |
 |Step 2.  |**Discover**   |Create and configure an Azure Migrate source appliance on VMware. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover VMware VMs](migrate-vmware-replicate.md).  |
 |Step 3.  |**Replicate**  |Create and configure the target appliance on your Azure Local. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate VMware VMs](migrate-vmware-replicate.md).  |
 |Step 4.  |**Migrate, verify**|Once the replication is complete, select and migrate VMware VMs to your Azure Local. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMware VMs. <br><br> For more information, see [Migrate and verify VMware VMs](./migrate-vmware-migrate.md).  |
@@ -50,3 +50,5 @@ To prepare for VMware migration, see the following articles:
 - [Review the requirements](migrate-vmware-requirements.md) for VMware VM migration to Azure Local.
 - [Complete the prerequisites](migrate-vmware-prerequisites.md) for VMware VM migration to Azure Local.
 - [Reuse Azure Arc-enabled server resources](migrate-arc-reuse.md) if your source VMs are already Arc-enabled.
+- [Migrate VMs in Azure Government](migrate-azure-government.md) if your Azure Local instance is in Azure Government.
+- [Migrate VMs using PowerShell, Azure CLI, or Terraform](migrate-via-powershell.md) if you want to automate replication and migration.
