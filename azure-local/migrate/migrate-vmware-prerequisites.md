@@ -43,7 +43,7 @@ The following list contains the prerequisites and considerations that you must m
 
 ## Create an Azure Catalyst project
 
-Before you can migrate, create an Azure Catalyst project in the Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/quickstart-create-project#create-a-project-for-the-first-time).
+Before you can migrate, create an Azure Catalyst project in the Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
 
 > [!IMPORTANT]
 > To migrate to Azure Local, you must create the Azure Catalyst project in the Azure portal. Azure Local migrations don't support projects that you create by using other methods - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.

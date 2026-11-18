@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 11/13/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
+ai-usage: ai-assisted
 ---
 
 # Migrate VMs to Azure Local in Azure Government using Azure Catalyst (preview)
@@ -101,14 +102,14 @@ The **Replicate** wizard, the **Migrate** page, Azure Arc resource reuse, Truste
 
         ```powershell
         Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-        .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud USGov -PrivateEndpoint:$false
+        .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud USGov -PrivateEndpoint:$false -EnableAzureStackHCITarget
         ```
 
     - For Hyper-V:
 
         ```powershell
         Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-        .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud USGov -PrivateEndpoint:$false
+        .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud USGov -PrivateEndpoint:$false -EnableAzureStackHCITarget
         ```
 
 1. Follow the onscreen instructions to install the source appliance. For VMware, select option 1: **Primary appliance to discover, assess and migrate servers**.

@@ -93,7 +93,11 @@ In these cases, the **Job ID** needs to be collected as well.
 
 Follow these steps to get the job ID:
 
-1. In the Azure portal, go to your project and select **Jobs**.
+1. In your Azure Catalyst project in the Azure portal, go to **Overview** under **Migration tools**.
+
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-1.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview in Azure portal.":::
+
+1. In the left-pane, go to **Azure Local migration > Jobs**.
 
 1. Identify the job that you want the job ID for and select the job name.
 
