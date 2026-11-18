@@ -19,7 +19,8 @@ This article describes new features and improvements in disconnected operations 
  - Security and quality updates.
  - Fixed issue in Operationsmodule and certificate generation for conditions where CA Name contained whitespace.
  - Support for Azure Local 2610 and its associated capabilities.
-
+ - Added support for Azure Local updates through platform expansion packs 
+ 
 ::: moniker-end
 
 ::: moniker range="=azloc-2609"

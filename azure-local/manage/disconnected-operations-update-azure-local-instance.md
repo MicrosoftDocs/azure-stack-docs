@@ -16,7 +16,8 @@ This article describes how to identify, download, import, and install an eligibl
 ## Prerequisites
 
 - Before you download an update package, choose an Azure Local solution version that your installed disconnected operations control-plane version supports. The two versions don't need to match. For more information, see [Recommended update sequence and version compatibility](./disconnected-operations-plan-updates.md#recommended-update-sequence-and-version-compatibility).
-
+- Download the Azure Local update platform expansion pack (s) and install the platform expansion pack so the update becomes available through the control plane. 
+- You can apply an Azure Local update with a monthly than the control plane version (e.g. if you are on Azure Local disconnected operations version 2610.* you can only apply platform expansion packs for 2610.* for your Azure Local clusters)
 - Before you apply your first solution update, run the following command in an elevated PowerShell session on each node of the target Azure Local instance to set the machine-level environment variable:
 
    ```powershell
@@ -101,6 +102,9 @@ Start-MonitoringActionplanInstanceToComplete -EceClient $eceClient -actionPlanIn
 ::: moniker range=">=azloc-2605"
 
 ## Download, import, and install an update package
+
+> [!NOTE]
+> Before downloading a solution update from the local control plane, review that you have applied any newer Azure Local update Platform expansion packs that might have released after your control plane update. This ensures that you have the latest Azure Local solution updates in the system prior to updating the Azure Local instances.   
 
 Follow these steps to download, import, and install a solution update package for your Azure Local instance running on disconnected operations.
 
