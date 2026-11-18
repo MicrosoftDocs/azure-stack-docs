@@ -184,6 +184,9 @@ Use cordon when:
 - Performing rolling maintenance across multiple nodes
 - Troubleshooting a node while keeping existing workloads running
 
+> [!IMPORTANT]
+> The manual cordon guidance in this section applies to compute servers only. Do not cordon management and control plane servers, with or without evacuation, unless Microsoft Support explicitly directs you to do so.
+
 > [!NOTE]
 > The platform might automatically cordon nodes due to detected hardware problems such as port flapping, NIC failures, or Link Aggregation Control Protocol (LACP) issues. When you run an uncordon command, it clears both your cordon and any platform-applied cordons.
 >
@@ -290,10 +293,11 @@ During a reimage, the system progresses through the following phases:
 > [!NOTE]
 > Both reimage and replace result in a freshly provisioned machine, but they differ in key ways. Reimage reinstalls the OS on the same hardware, while replace swaps the physical hardware entirely. Use reimage for software-related issues and replace for hardware failures.
 
-As a best practice, ensure the Bare Metal Machine's workloads are drained using the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command, with `evacuate` set to `True`, before executing the `reimage` command.
+For compute servers only, drain the bare metal machine's workloads by using the [`cordon`](#make-a-bare-metal-machine-unschedulable-cordon) command with `evacuate` set to `True` before running the `reimage` command.
 For more best practices to follow, read through [Best Practices for Bare Metal Machine Operations](./howto-bare-metal-best-practices.md).
 
 > [!IMPORTANT]
+> Do not cordon management and control plane servers before reimaging unless Microsoft Support explicitly directs you to do so.
 > Avoid write or edit actions performed on the node via Bare Metal Machine access.
 > The `reimage` action is required to restore Microsoft support and any changes done to the Bare Metal Machine are lost while restoring the node to it's expected state.
 

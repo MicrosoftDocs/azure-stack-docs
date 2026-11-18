@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Local using Azure Catalyst (preview)
 description: Learn about how to migrate Windows and Linux VMs to your Azure Local instance using Azure Catalyst (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -29,23 +29,17 @@ Before you migrate your VMs:
 
 ## Migrate VMs
 
-1. In the Azure portal, go to your **Azure Migrate project > Servers, databases and web apps**.
+1. In the Azure portal, go to your project and select **Server replication**.
 
-1. On the **Migration tools** tile, select **Overview**.
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot of the Server replication page for a project in the Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png":::
 
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot Azure Migrate project > Server, databases and webapps in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png":::
+1. From the command bar, select **Migrate** to migrate multiple VMs that are ready.  
 
-1. Go to **Azure Local migration > Replications**.
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot of the Server replication page with Migrate highlighted on the command bar." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png":::
 
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot showing Azure Local migration > Replications in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png":::
+    Alternatively, select **Ready to migrate** for a single VM, or select **...** next to the VM and then select **Migrate**.
 
-1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
-
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png":::
-
-    Alternatively, you can select **Migrate** from the context menu for a single VM that is ready to migrate.
-
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of Migrate page in Azure portal with Migrate option selected from context menu." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3.png":::
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3.png" alt-text="Screenshot of the Server replication page with Migrate selected from the context menu for a VM." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3.png":::
 
 
 1. On the **Migrate** page:
@@ -57,14 +51,10 @@ Before you migrate your VMs:
     
 1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details. 
 
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3b.png":::
-
     The **Planned failover** blade indicates the various migration tasks in progress.
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of Planned failover for a VM in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-3c.png":::
 
     The migration status changes from **Migration in progress** to **Completed** when the migration is complete.
-
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-4.png" alt-text="Screenshot of Migrate page with Migration status as completed in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-4.png":::
 
 Once the migration is complete, the VMs are running on your Azure Local instance. You can view the VMs in the Azure portal.
 
@@ -88,9 +78,7 @@ Once the migration is complete, the VMs are running on your Azure Local instance
     1. The VM behaves as expected.
     1. Your applications work as expected.
 
-1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**.
-
-    :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-1.png" alt-text="Screenshot of Replications view with complete migration selected from the context menu in Azure portal." lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-1.png":::
+1. In the Azure portal, go to your project and select **Server replication**. Select **...** next to the VM, and then select **Complete migration**.
 
     Alternatively, select the VM name.
 
@@ -100,15 +88,13 @@ Once the migration is complete, the VMs are running on your Azure Local instance
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png":::
 
-    The **Complete migration** action starts the **Delete protected item** job, which you can track on the **Jobs** page. This job removes the replication state and service-managed replication artifacts without affecting the migrated VM.
+    The **Complete migration** action starts the **Delete protected item** job, which you can track on the **Jobs** page of your project. This job removes the replication state and service-managed replication artifacts without affecting the migrated VM.
     
-    :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png":::
+    :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of the Jobs page with a Delete protected item job highlighted." lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png":::
 
     A seed disk is a temporary disk that contains the replicated source data used to create the final migrated disk. As part of its cleanup, the standard **Complete migration** operation deletes seed disks and other replication artifacts, such as a seed ISO attached to the migrated VM. If you don't complete migration, these artifacts remain on the target system and continue to use storage.
 
-    After the migrate resource is deleted, it's also removed from the **Replications** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
-
-    :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png":::
+    After the migrated resource is deleted, it's also removed from the **Server replication** view. The source VM is no longer protected, and you can enable replication again for the same source VM if needed.
 
 ## Clean up
 

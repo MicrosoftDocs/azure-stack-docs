@@ -3,7 +3,7 @@ title: Prerequisites for Hyper-V VM migration to Azure Local using Azure Catalys
 description: Learn prerequisites for Hyper-V migration to Azure Local using Azure Catalyst (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.subservice: hyperconverged
 ---
@@ -42,26 +42,28 @@ The following list contains the prerequisites and considerations that must be me
 
 ## Create an Azure Catalyst project
 
-Before you can migrate, create an Azure Catalyst project in Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
+Before you can migrate, create an Azure Catalyst project in Azure portal by using the following procedure. For more information, see [Create and manage projects](/azure/migrate/quickstart-create-project).
 
 > [!IMPORTANT]
 > To migrate to Azure Local, you must create the Azure Catalyst project in the Azure portal. Azure Local migrations don't support projects that you create by using any other method - such as an Azure Resource Manager (ARM) template, the REST API, Azure CLI, Azure PowerShell, or the [Create a project in a specific region](/azure/migrate/quickstart-create-project#create-a-project-in-a-specific-region) quickstart. If you use one of these methods, you can't replicate VMs to Azure Local. You must create a new project in the Azure portal to continue.
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
-1. On the **Get started** page, select **Create project**.
+1. On the **Get started** page, select **Start migration journey**. To open a project that you already created, select **View all projects** instead.
 
-    :::image type="content" source="media/migrate-hyperv-prerequisites/project-get-started.png" alt-text="Screenshot of Get started page in Azure portal." lightbox="media/migrate-hyperv-prerequisites/project-get-started.png":::
+    :::image type="content" source="media/migrate-hyperv-prerequisites/project-get-started.png" alt-text="Screenshot of the Get started page in the Azure portal with Start migration journey highlighted." lightbox="media/migrate-hyperv-prerequisites/project-get-started.png":::
 
 1. On the **Create project** page:
-    1. Enter your subscription.
-    1. Enter the resource group, or select it if it already exists.
-    1. Enter the new project name.
-    1. Select a supported geography region that you previously created. For more information, see [Supported geographies](migrate-hyperv-requirements.md#supported-geographies).
+    1. Select your subscription. Ensure that the chosen subscription is associated with the same Azure tenant as the Azure Local instance.
+    1. Select a resource group, or select **Create new** to create one.
+    1. For **Project**, enter a name for the project.
+    1. For **Geography**, select a supported geography. For more information, see [Supported geographies](migrate-hyperv-requirements.md#supported-geographies).
+    1. Under **Artifact store details**, select **Use same subscription and resource group as project**. The artifact store is a storage account that stores artifacts generated for the project. By default, a new storage account is created. To use a storage account that you already have, select **Select an existing storage account**.
+    1. Under **Advanced**, keep **Connectivity method** set to **Public endpoint**. Private endpoint connectivity isn't supported for Azure Local migrations.
 
-    :::image type="content" source="media/migrate-hyperv-prerequisites/project-create.png" alt-text="Screenshot of Create Project page in Azure portal." lightbox="media/migrate-hyperv-prerequisites/project-create.png":::
+    :::image type="content" source="media/migrate-hyperv-prerequisites/project-create.png" alt-text="Screenshot of the Create project page in the Azure portal with the artifact store details and connectivity method highlighted." lightbox="media/migrate-hyperv-prerequisites/project-create.png":::
 
-1. When finished, select **Create**.
+1. When finished, select **Create**. Keep the page open until the project is created.
 
 ## Next steps
 
