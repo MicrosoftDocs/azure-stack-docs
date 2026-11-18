@@ -102,6 +102,21 @@ To deploy SQL Server on a Trusted launch VM:
 > [!NOTE]
 > Trusted launch doesn't encrypt SQL Server databases or data volumes. Configure the encryption that your workload requires.
 
+## Deploy SQL Server on a confidential VM (Preview)
+
+[Confidential VMs (CVMs)](../manage/confidential-vm-overview.md) use hardware-based memory encryption to help keep SQL Server data confidential while it's in use, even from the host, the hypervisor, and host administrators. Data on disk, in backups, and in transit still needs SQL Server's own protections.
+
+To deploy SQL Server on a CVM:
+
+1. [Deploy Azure Local 2607 or later with confidential VMs enabled](../manage/confidential-vm-deploy-cluster-via-arm-template.md) on [validated hardware](../manage/confidential-vm-overview.md#supported-oem-hardware).
+1. Use the [Integrity-Protected CVM Image Builder](../manage/confidential-vm-create-deploy-integrity-protected-vm-image.md) to build an Ubuntu 24.04 image with SQL Server 2025. The root file system is read-only, so store databases, logs, and tempdb on a separate data disk. Windows Server guests aren't supported in this release.
+1. [Create the CVM](../manage/create-connect-confidential-vm.md) from your image with the data disk attached.
+1. Use [guest attestation](../manage/guest-attestation-confidential-vm.md) to verify the CVM before you connect applications to SQL Server.
+
+> [!NOTE]
+> Guest management isn't supported, so apply SQL Server updates by building a new image. Live migration and failover between nodes aren't supported, so plan maintenance around each node's CVMs, build availability into the database design, and keep SQL Server backups outside the VM.
+
 ## Related content
 
 - For more information about working with SQL Server, see [Tutorial: Get started with the Database Engine](/sql/relational-databases/tutorial-getting-started-with-the-database-engine).
+

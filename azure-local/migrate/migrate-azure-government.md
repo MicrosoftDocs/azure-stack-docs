@@ -4,7 +4,7 @@ description: Learn how to migrate VMware and Hyper-V VMs to Azure Local in Azure
 author: trumanbrown
 ms.author: trumanbrown
 ms.topic: how-to
-ms.date: 11/10/2026
+ms.date: 11/13/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ai-usage: ai-assisted
@@ -23,13 +23,17 @@ This article describes how to migrate VMware and Hyper-V virtual machines (VMs) 
 | Area | Azure public cloud | Azure Government |
 |---|---|---|
 | Azure portal | `portal.azure.com` | `portal.azure.us` |
+| Portal experience | New Azure Migrate experience | Classic Azure Migrate experience |
+| Create project | **Get started** > **Start migration journey** | **Get started** > **Discover, assess and migrate** > **Create project** |
 | Project geography | Asia-Pacific, Europe, or United States | Azure Government, with metadata stored in US Gov Virginia or US Gov Arizona |
 | Start discovery | Project **Overview** > **Start discovery** | **Migration and modernization** > **Discover** |
 | Appliance download | .ova file (VMware), .vhd file (Hyper-V), or .zip file | .zip file only |
 | Appliance installer parameter | `-Cloud Public` | `-Cloud USGov` |
 | Appliance URLs | [Public cloud URLs](/azure/migrate/migrate-appliance#public-cloud-urls) | [Government cloud URLs](/azure/migrate/migrate-appliance#government-cloud-urls) |
+| Generate target appliance key | **Appliances** tab of the **Replicate** wizard | **Specify intent** > **Download and configure** |
+| Replicate and migrate VMs | Project > **Server replication** | **Migration tools** > **Overview** > **Azure Local migration** > **Replications** |
 
-Replication, migration, Azure Arc resource reuse, Trusted Launch VM migration, and the PowerShell, Azure CLI, and Terraform workflows work the same way as in the Azure public cloud.
+The **Replicate** wizard, the **Migrate** page, Azure Arc resource reuse, Trusted Launch VM migration, and the PowerShell, Azure CLI, and Terraform workflows work the same way as in the Azure public cloud.
 
 ## Prerequisites
 
@@ -121,10 +125,16 @@ Replication, migration, Azure Arc resource reuse, Trusted Launch VM migration, a
 
 1. In your project, under **Migration tools** > **Migration and modernization**, select **Replicate**.
 
-1. Complete the **Specify intent** page and generate the target appliance key the same way as in the Azure public cloud:
+1. On **Specify intent**, provide the following inputs:
 
-    - For VMware, see [Generate target appliance key](migrate-vmware-replicate.md#generate-target-appliance-key).
-    - For Hyper-V, see [Generate target appliance key](migrate-hyperv-replicate.md#generate-target-appliance-key).
+    - For **What do you want to migrate?**, select **Servers or virtual machines (VM)**.
+    - For **Where do you want to migrate to?**, select **Azure Local**.
+    - For **Virtualization type**, select **VMware vSphere** or **Hyper-V**.
+    - For **On-premises appliance**, select your source appliance.
+
+1. In **Before you start replication to Azure Local**, select **Download and configure**.
+
+1. On the **Deploy and configure the target appliance** pane, enter a name for the target appliance, and then select **Generate key**. Copy the project key to a text editor such as Notepad and save it for later use.
 
 1. Under **Step 2: Download and install the target appliance**, select **Download**. In Azure Government, the appliance is available only as a .zip file.
 
@@ -153,10 +163,25 @@ Replication, migration, Azure Arc resource reuse, Trusted Launch VM migration, a
 
 ## Replicate and migrate VMs
 
-After you register both appliances, replicate and migrate VMs the same way as in the Azure public cloud:
+After you register both appliances, replicate and migrate VMs from the classic experience. The **Replicate** wizard and the **Migrate** page work the same way as in the Azure public cloud.
 
-- For VMware, see [Start replication](migrate-vmware-replicate.md#step-3-start-replication) and [Migrate and verify VMware VMs](migrate-vmware-migrate.md).
-- For Hyper-V, see [Start replication](migrate-hyperv-replicate.md#step-3-start-replication) and [Migrate and verify Hyper-V VMs](migrate-azure-migrate.md).
+1. In your project, under **Migration tools** > **Migration and modernization**, select **Replicate**.
+
+1. On **Specify intent**, select the same values that you used to generate the target appliance key, and then select **Continue**.
+
+1. Complete the **Replicate** wizard, starting with the **Basics** tab:
+
+    - For VMware, see [Start replication](migrate-vmware-replicate.md#step-3-start-replication).
+    - For Hyper-V, see [Start replication](migrate-hyperv-replicate.md#step-3-start-replication).
+
+1. To monitor replication, under **Migration tools**, select **Overview**, and then select **Azure Local migration** > **Replications**. Replication and migration operations are listed under **Azure Local migration** > **Jobs**, and replication cycle failures are listed under **Azure Local migration** > **Events**.
+
+1. When the **Migration status** of a VM shows **Ready to migrate**, select **Migrate** on the **Replications** page, or select **Migrate** from the context menu for the VM. The **Migrate** page and the steps to verify the migrated VM are the same as in the Azure public cloud:
+
+    - For VMware, see [Migrate VMware VMs](migrate-vmware-migrate.md).
+    - For Hyper-V, see [Migrate Hyper-V VMs](migrate-azure-migrate.md).
+
+1. After you verify the migrated VM, go to **Azure Local migration** > **Replications**, select **...** next to the VM, and then select **Complete migration**.
 
 If your source VMs are Azure Arc-enabled servers, you can keep their existing Azure Arc resources during migration. For more information, see [Reuse Azure Arc-enabled server resources when you migrate VMs to Azure Local](migrate-arc-reuse.md).
 

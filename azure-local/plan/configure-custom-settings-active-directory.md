@@ -3,7 +3,7 @@ title: Custom or advanced Active Directory configuration for Azure Local, versio
 description: Learn how to assign the required permissions and create the required DNS records for use by Active Directory for your Azure Local, version 23H2 system.
 author: ronmiab
 ms.topic: how-to
-ms.date: 12/30/2025
+ms.date: 11/13/2026
 ms.author: robess
 ms.service: azure-local
 ms.custom: devx-track-azurepowershell
@@ -32,6 +32,8 @@ Here are some of the Active Directory requirements for the Azure Local deploymen
 - Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Local manages security defaults including the drift protection. For more information, see [Security features for Azure Local instance](../concepts/security-features.md).
 
 - Computer account objects and cluster CNO can be [precreated](/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to the deployment itself creating them.
+
+- The domain name can only contain ASCII characters.
 
 ## Required permissions
 

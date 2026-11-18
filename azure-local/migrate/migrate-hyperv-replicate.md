@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Local using Azu
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Local using Azure Catalyst (preview).
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
@@ -31,40 +31,114 @@ Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integra
 
 ### Generate the project key
 
-1. In the Azure portal, go to the **All projects** page and select your project from the list.
+1. In the Azure portal, go to **Azure Migrate** > **All projects** and select your project from the list.
 
-1. On the **Overview** tab, under **Inventory**, select **Start discovery** > **Using appliance** > **For Azure Local**.
+1. On the project **Overview**, under **Inventory**, select **Start discovery**.
 
-    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of the project Overview page with Start discovery highlighted." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-1.png":::
 
-1. On the **Discover** page, select **Azure Local** under **Where do you want to migrate to** and then select **Yes, with Hyper-V** under **Are your machines virtualized** in Azure Catalyst.
-1. Enter a name for your source appliance and generate the key for the source Hyper-V appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
+1. On **Start discovery**, for **How do you want to discover?**, select **Using appliance**, and then select **Continue**. Azure Local migrations support only appliance-based discovery.
 
-1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either a .VHD or a *.zip* file. The detailed steps are provided in the subsequent sections.
+    :::image type="content" source="./media/migrate-hyperv-replicate/start-discovery-using-appliance.png" alt-text="Screenshot of the Start discovery page with Using appliance selected." lightbox="./media/migrate-hyperv-replicate/start-discovery-using-appliance.png":::
 
-    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png":::
+1. On the **Discover** page, under **Are your servers virtualized?**, select **Yes, with Hyper-V**.
+1. Under **1: Generate project key**, enter a name for your source appliance, and then select **Generate key**.
+
+1. Copy the **Project key** (to a text editor such as Notepad) and save it for later use. You can also find the key later by selecting **Manage existing appliances**.
+1. Under **2: Download Azure Migrate appliance**, download the source appliance by using either a .VHD or a *.zip* file. The detailed steps are provided in the subsequent sections.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of the Discover page with Yes, with Hyper-V selected, the Generate project key step, and the appliance download options." lightbox="./media/migrate-hyperv-replicate/generate-source-appliance-project-key-2.png":::
 
 ### Create the source appliance
 
-You can install the appliance by using either a template (.VHD file) or a script (.zip file) that you download to your Hyper-V server. For more information about appliances for Azure Catalyst and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
+You can install the source appliance by using either a template (.VHD file) or a script (.zip file) that you download to your Hyper-V server. For more information about appliances for Azure Catalyst and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
 #### Install using a template (.VHD file)
 
-This step applies only if you are deploying the source appliance using a .VHD file template. The source appliance is installed for you using the .VHD file. For step-by-step information, see [Download the VHD](/azure/migrate/how-to-set-up-appliance-hyper-v#download-the-vhd).
+This step applies only if you downloaded the .VHD file.
+
+1. On the machine where you downloaded the file, open PowerShell as an administrator and run the following command to generate the hash for the file. Compare the hash with the latest value listed in [Verify security](/azure/migrate/migrate-appliance#verify-security).
+
+    ```powershell
+    Get-FileHash -Path <path to the downloaded file> -Algorithm SHA256
+    ```
+
+1. Extract the zipped file to a folder on the Hyper-V host that hosts the appliance. The zipped file contains three folders.
+
+1. Open Hyper-V Manager. Under **Actions**, select **Import Virtual Machine**.
+
+1. In the **Import Virtual Machine** wizard, complete these steps:
+
+    1. On **Before You Begin**, select **Next**.
+    1. On **Locate Folder**, select the folder that contains the extracted files, and then select **Next**.
+    1. On **Select Virtual Machine**, select **Next**.
+    1. On **Choose Import Type**, select **Copy the virtual machine (create a new unique ID)**, and then select **Next**.
+    1. On **Choose Destination** and **Storage Folders**, keep the default settings, and then select **Next**.
+    1. On **Choose Network**, select the virtual switch for the appliance. The switch needs internet connectivity to send data to Azure.
+    1. On **Summary**, review the settings, and then select **Finish**.
+
+1. In Hyper-V Manager, under **Virtual Machines**, start the appliance VM. Right-click the VM, and then select **Connect**.
+
+1. Provide the language, time zone, and password for the appliance, and then sign in.
 
 #### Install using a script (.zip file)
 
-This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
+This step applies only if you downloaded the .zip file.
+
+1. Create a VM on your Hyper-V host with the following configuration:
+
+    - Operating system: Windows Server 2022 or Windows Server 2025
+    - vCPU: 8
+    - Disk: >80 GB
+    - Memory: 16 GB
+    - Network: An external virtual switch
+
+1. After you create the VM, sign in to the VM as an administrator.
+
+1. Copy the downloaded .zip file to the VM. Extract it to a folder, and then go to the folder that contains the `AzureMigrateInstaller.ps1` PowerShell script.
+
+    > [!NOTE]
+    > Don't run the script on a server that already has an Azure Migrate appliance. The script replaces the existing appliance configuration.
+
+1. Open PowerShell as an administrator and run the following command:
+
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    .\AzureMigrateInstaller.ps1 -Scenario HyperV -Cloud Public -PrivateEndpoint:$false
+    ```
+
+1. Follow the onscreen instructions to install the source appliance. If the installation fails, check the log at `C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<timestamp>.log`.
+
+1. Restart the VM after the installation is complete. Sign in to the VM.
 
 ### Configure the appliance and discover VMs
 
-Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
+1. Open the appliance configuration manager by using the shortcut on the appliance desktop. You can also open it from any machine that can reach the appliance at `https://<appliance-name-or-IP-address>:44368`. Accept the license terms.
 
-- If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. For more information, see [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml).
+1. Under **Set up prerequisites**, the appliance checks its connectivity to Azure and whether its time is in sync. If the appliance uses a proxy, select **Set up proxy**, enter the proxy address and port, and then select **Save**. Only HTTP proxy is supported.
 
-  > [!NOTE]
-  > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
+1. Under **Check latest updates and register appliance**, paste the project key for the source appliance that you copied earlier, and then select **Verify**. The appliance updates its services to the latest versions.
+
+1. Select **Login**, and then select **Copy code & Login**. In the new browser tab, paste the code and sign in to your Azure account. Return to the configuration manager and wait until you see **The appliance has been successfully registered**. Your Azure account needs the permissions in [Azure account permissions](migrate-hyperv-requirements.md#azure-account-permissions).
+
+    If needed, you can use a preconfigured Microsoft Entra ID application to register the source appliance. For more information, see [Register an Azure Migrate appliance with a preconfigured Microsoft Entra ID application](./migrate-faq.yml).
+
+    > [!NOTE]
+    > Each preconfigured application can only be used with a single appliance. You must create a separate preconfigured application for the target appliance and for any additional appliances in other projects.
+
+1. If the disks of the VMs that you want to migrate are on SMB shares, enable delegation of credentials from the appliance to the Hyper-V hosts. On the appliance, open PowerShell as an administrator and run the following command. Replace the example host names with the names of your Hyper-V hosts.
+
+    ```powershell
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
+    ```
+
+1. Under **Provide Hyper-V host credentials**, select **Add credentials**. Enter a friendly name and the username and password that the appliance uses to connect to your Hyper-V hosts or cluster, and then select **Save**.
+
+1. Under **Provide Hyper-V host/cluster details**, select **Add discovery source**. Enter the IP address or FQDN of each Hyper-V host or cluster and the friendly name of the credentials to use, and then select **Save**.
+
+    The appliance validates the connection to each host or cluster and shows the result under **Validation status**. If validation fails, select **Validation failed** to see the error. Fix the issue, and then validate again.
+
+1. Providing server credentials for software inventory and dependency analysis is optional. To skip it, turn off the slider under **Provide server credentials**.
 
 ### Onboard to Azure Local
 
@@ -87,7 +161,7 @@ Once the source appliance is installed, you are ready to [Configure the applianc
 1. Once the source appliance is configured and onboarded to Azure Local, you can start the discovery of Hyper-V VMs.
 1. Select **Start Discovery**. The discovery may take several minutes to finish.
 
-	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot showing how to start the discovery source appliance.":::
+	:::image type="content" source="media/migrate-vmware-replicate/start-discovery.png" alt-text="Screenshot showing how to start the discovery source appliance." lightbox="media/migrate-vmware-replicate/start-discovery.png":::
 
 1. Wait until you see green checkmarks to indicate that the discovery and migration readiness are complete.
 1. Go to the Azure portal to review the VM inventory.
@@ -99,31 +173,37 @@ Once the source appliance is installed, you are ready to [Configure the applianc
 
 ### Generate target appliance key
 
-Complete the following tasks to generate the target appliance key:
+Generate the target appliance key from the **Replicate** wizard. Open the wizard from **Server replication**, the page in your project where you replicate, migrate, and track the VMs that you move to Azure Local.
 
-1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
+1. In the Azure portal, go to your project and select **Overview**. Under **Inventory summary**, verify that **Workloads** shows a value greater than zero.
 
-1. Verify that you see a value greater than zero for **Discovered servers** under **Migration tools**.
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-discovered-servers.png" alt-text="Screenshot of the inventory summary on the project Overview page with the number of discovered workloads highlighted." lightbox="./media/migrate-hyperv-replicate/replicate-discovered-servers.png":::
 
-    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/migrate-hyperv-replicate/replicate-discovered-servers.png":::
+1. In the left pane, under **Manage**, select **Server replication**.
 
-1. Under **Migration and modernization**, select **Replicate**.
+    Until you replicate VMs to Azure Local, the page shows **No replicating items found** and columns that don't apply to Azure Local, such as **Test migration status**. After you replicate VMs, the page shows the Azure Local columns, and **Start replication** changes to **Replicate**.
 
-1. On the **Specify intent** page, enter the following inputs:
-    - For **What do you want to migrate?**, select **Servers or virtual machines (VM)**.
-    - For **Where do you want to migrate?**, select **Azure Local**.
-    - For **Virtualization Type**, select **Hyper-V**.
-    - For the **On-premises appliance**, the source appliance is pre-populated. If you have more than one source appliance, select the applicable one from the dropdown list.
+1. Select **Start replication**.
 
-    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-hyperv-replicate/replicate-specify-intent.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-start.png" alt-text="Screenshot of the Server replication page with Server replication highlighted in the left pane and Start replication highlighted on the command bar." lightbox="./media/migrate-hyperv-replicate/replicate-start.png":::
 
-1. Select **Download and configure** in **Before you start replication to Azure Local** from the information block.
+1. On the **Specify intent** page:
+    1. **What do you want to migrate?** is automatically populated as **Servers or Virtual machines (VM)**.
+    1. For **Where do you want to migrate to?**, select **Azure Local (formerly Azure Stack HCI)**. **How will you select workloads?** is set to **From all inventory**.
+    1. For **Discovery method**, select the source appliance that you used for discovery.
+    1. When finished, select **Continue**.
+
+    :::image type="content" source="./media/migrate-hyperv-replicate/replication-screen.png" alt-text="Screenshot of the Specify intent page with Azure Local selected." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
+
+1. On the **Basics** tab of the **Replicate** wizard, select the subscription, resource group, and target system for your Azure Local instance. Verify that the system shows a green check, and then select **Next**.
+
+1. On the **Appliances** tab, select **Deploy and configure target appliance**.
 
 1. On the **Deploy and configure the target appliance** pane, provide a name for the target appliance and then select **Generate key**.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-hyperv-replicate/generate-target-key.png":::
 
-1. Copy and paste the project key to a text editor (for example, Notepad) after it is generated for future use.
+1. Copy and paste the project key to a text editor (for example, Notepad) after it is generated for future use. You can close the **Replicate** wizard. You start replication after you register the target appliance.
 
 ### Create the target appliance
 
@@ -224,20 +304,11 @@ This step applies to using a .zip file.
 
 ## Step 3: Start replication
 
-1. In the Azure portal, go to your Azure Catalyst project and select **Servers, databases and web apps**.
+After you register the target appliance, return to **Server replication** to start replication.
 
-1. Under **Migration and modernization**, select **Replicate**.
+1. In the Azure portal, go to your project. In the left pane, under **Manage**, select **Server replication**, and then select **Start replication**. If the project already has replicated VMs, select **Replicate** instead.
 
-    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/migrate-hyperv-replicate/replicate-start.png":::
-
-1. On the **Specify intent** page:
-    1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
-    1. Select **Azure Local** for **Where do you want to migrate to?**
-    1. Select **Hyper-V** for the **Virtualization type**.
-    1. Select the source appliance as the **On-premises appliance** (source) used for discovery.
-    1. When finished, select **Continue**.
-
-    :::image type="content" source="./media/migrate-hyperv-replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
+1. On the **Specify intent** page, select the same values that you used in [Generate target appliance key](#generate-target-appliance-key), and then select **Continue**.
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -348,15 +419,15 @@ This step applies to using a .zip file.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/migrate-hyperv-replicate/replicate-77-review.png":::
 
-1. You are automatically taken to the **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
-
-1. Go to **Azure Local migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
+1. When the process finishes, go to your project and select **Server replication**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
 1. As the replication continues, replication status shows progress. Refresh periodically.
 
 1. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot of the Server replication page with the migration status Ready to migrate highlighted." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1-a.png":::
+
+    To track replication operations, select **Jobs** in your project. Failed scheduled replication cycles appear on **Events**. For more information, see [Troubleshoot](migrate-troubleshoot.md#get-job-id-for-replication-or-migration).
 
 > [!IMPORTANT]
 > During initial replication, Azure Catalyst creates a temporary seed disk for each source disk on the selected Azure Local storage path. It writes the replicated source data and subsequent changes to the seed disk. During migration, Azure Catalyst uses the seed disk to create the final disk attached to the migrated VM.

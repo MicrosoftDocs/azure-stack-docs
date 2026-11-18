@@ -3,7 +3,7 @@ title: Troubleshoot issues when migrating VMs to Azure Local using Azure Catalys
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Catalyst.
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/09/2026
+ms.date: 11/13/2026
 ms.author: robess
 ms.custom:
   - linux-related-content
@@ -74,20 +74,20 @@ Follow these steps to identify the correlation ID for your deployment in Azure p
 
 1. Go to the resource group for your Azure Catalyst project and then go to **Overview**. In the right pane, select the hyperlink that shows failed and successful deployments.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-1.png" alt-text="Screenshot Azure Migrate project resource group > Overview in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-1.png" alt-text="Screenshot Azure Migrate project resource group > Overview in Azure portal." lightbox="./media/migrate-troubleshoot/get-correlation-id-1.png":::
   
 1. Identify the deployment that you want the correlation ID for and select the deployment name.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-2.png" alt-text="Screenshot Azure Migrate project resource group > Deployments in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-2.png" alt-text="Screenshot Azure Migrate project resource group > Deployments in Azure portal." lightbox="./media/migrate-troubleshoot/get-correlation-id-2.png":::
  
 1. Find the correlation ID.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-3.png" alt-text="Screenshot Azure Migrate project resource group > Deployments > Your deployment > Overview in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-correlation-id-3.png" alt-text="Screenshot Azure Migrate project resource group > Deployments > Your deployment > Overview in Azure portal." lightbox="./media/migrate-troubleshoot/get-correlation-id-3.png":::
  
 
 #### Get job ID for replication or migration
 
-Operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration) are also listed as **Jobs** in the Azure Local migration section of the portal.
+The **Jobs** page of your project also lists operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration).
 
 In these cases, the **Job ID** needs to be collected as well.
 
@@ -101,15 +101,17 @@ Follow these steps to get the job ID:
 
 1. Identify the job that you want the job ID for and select the job name.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-2.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Local migration > Jobs > Your job in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-2.png" alt-text="Screenshot of the Jobs page for a project with a job name highlighted." lightbox="./media/migrate-troubleshoot/get-job-id-2.png":::
 
 1. Find the **Job Id**.
 
-    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-3.png" alt-text="Screenshot Azure Migrate project > Migration tools > Overview > Azure Local migration > Jobs >  Your job > Create or update protected item in Azure portal.":::
+    :::image type="content" source="./media/migrate-troubleshoot/get-job-id-3.png" alt-text="Screenshot of the job details pane with the Job ID highlighted in the Azure portal." lightbox="./media/migrate-troubleshoot/get-job-id-3.png":::
 
 ### For scheduled replication operations  
 
-Failures in scheduled operations like hourly replication cycle failures are listed as **Events** under Azure Local migration section of the portal.
+The **Events** page of your project lists failures in scheduled operations, such as hourly replication cycle failures.
+
+:::image type="content" source="./media/migrate-troubleshoot/events.png" alt-text="Screenshot of the Events page for a project with replication cycle failures." lightbox="./media/migrate-troubleshoot/events.png":::
 
 To troubleshoot replication issues, collect the following information:
 

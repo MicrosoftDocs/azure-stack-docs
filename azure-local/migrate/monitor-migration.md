@@ -28,8 +28,8 @@ To enable diagnostic settings in Azure Catalyst through PowerShell or the Azure 
 
 - This article uses Log Analytics workspace and Azure Storage account as destination examples. You can create these resources in the same resource group as your Migrate project.
 
-   - **Log Analytics workspace**: Enables querying and analyzing logs. For more information, see [Log Analytics workspace](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#send-to-log-analytics-workspace).
-   - **Azure Storage account**: Stores logs for audit, backup, or static analysis. The storage account can be in a different subscription if the user has the required permissions. For more information, see [Azure Storage account](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics).
+   - **Log Analytics workspace**: Enables querying and analyzing logs. For more information, see [Log Analytics workspace](/azure/azure-monitor/logs/resource-logs#destinations).
+   - **Azure Storage account**: Stores logs for audit, backup, or static analysis. The storage account can be in a different subscription if you have the required permissions. For more information, see [Azure Storage account](/azure/azure-monitor/logs/resource-logs#destinations).
 
 ## Enable diagnostic log collection  
 

@@ -4,7 +4,7 @@ description: What's new in Azure Catalyst for Azure Local, including the latest 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.date: 11/10/2026
+ms.date: 11/13/2026
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
@@ -21,7 +21,7 @@ This release includes these updates:
 
 - **Azure Migrate is now Azure Catalyst** – Azure Migrate is evolving into Azure Catalyst, bringing migration into a broader vision for intelligent, agent-powered modernization across infrastructure, applications, and data. Your current migration experience and capabilities aren't affected by this change. Existing projects, appliances, and workflows for migrating VMs to Azure Local continue to work as they do today. During the transition, you might still see Azure Migrate in the Azure portal, tools, and parts of this documentation.
 - **Migrate VMs to Azure Local in Azure Government (preview)** – You can now migrate VMware and Hyper-V VMs to Azure Local in Azure Government. Create your project with the **Azure Government** geography, with metadata stored in US Gov Virginia or US Gov Arizona. For the steps that differ from the Azure public cloud, see [Migrate VMs to Azure Local in Azure Government](migrate-azure-government.md).
-- **Azure Local migrations in the unified Azure Catalyst experience** – Azure Local migrations are now part of the modern, unified Azure Catalyst experience in the Azure portal. You can discover, replicate, and track VMware and Hyper-V migrations to Azure Local in one place, alongside your other migrations.
+- **Azure Local migrations in the unified Azure Catalyst experience** – Azure Local migrations are now part of the modern, unified Azure Catalyst experience in the Azure portal. You can discover, replicate, and track VMware and Hyper-V migrations to Azure Local in one place, alongside your other migrations. When you start discovery, you no longer choose Azure or Azure Local before you generate the source appliance key. After discovery, go to **Server replication** in your project to replicate and migrate VMs, and use **Jobs** and **Events** to track them. For the updated steps, see [Discover and replicate VMware VMs](migrate-vmware-replicate.md) and [Discover and replicate Hyper-V VMs](migrate-hyperv-replicate.md).
 
 ## October 2026
 

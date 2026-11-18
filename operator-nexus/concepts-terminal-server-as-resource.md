@@ -5,7 +5,7 @@ author: RaghvendraMandawale
 ms.author: rmandawale
 ms.service: azure-operator-nexus
 ms.topic: concept-article
-ms.date: 10/18/2026
+ms.date: 11/12/2026
 ms.custom: template-concept
 ---
 
@@ -254,7 +254,7 @@ Users can invoke the following post actions:
 - Resync Password
 - Terminal Server replacement (RMA): Disable, RMA, and Enable
 
-All post actions are auditable, state-driven, and security-bounded. Use the `2026-01-15-preview` API version or later to invoke these post actions, except RMA, which requires the `2026-07-15-preview` API version
+All post actions are auditable, state-driven, and security-bounded. Use the `2026-01-15-preview` API version or later to invoke these post actions, except RMA, which requires the `2026-07-15-preview` API version.
 
 ### Reboot
 
@@ -385,7 +385,7 @@ Retry-After: 30
 
 Azure Operator Nexus supports replacing a failed Terminal Server (Network Bootstrap Device) and returning the replacement device to service as an Azure Operator Nexus resource. The replacement is driven by administrative state post actions on the `NetworkBootstrapDevice` resource: Disable takes the Terminal Server out of service, RMA reprovisions the replacement device and automatically discovers and updates its serial number, and Enable returns it to service.
 
-NTP is configured on the replacement device, and Terminal Server metrics resume after the device is enabled. Use the `2026-07-15-preview` API version to invoke this post action.
+NTP is configured on the replacement device. Terminal Server metrics collection is restored on a best-effort basis after the device is enabled and isn't guaranteed. Use the `2026-07-15-preview` API version to invoke this post action.
 
 #### RMA prerequisites
 
@@ -458,7 +458,7 @@ Set `state` to `Disable`, `RMA`, or `Enable`.
 
 ```http
 HTTP/1.1 202 Accepted
-Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=-07-15-preview
+Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-07-15-preview
 Location: https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/locations/{location}/operationStatuses/{operationId}?api-version=2026-07-15-preview
 Retry-After: 30
 ```
@@ -484,11 +484,11 @@ Metrics are collected securely over SNMPv3 by using a read-only account that the
 
 ### Supported metrics
 
-The following Terminal Server metrics are collected every five minutes and are available in Azure Monitor on the `NetworkBootstrapDevice` resource.
+The following Terminal Server metrics are available in Azure Monitor on the `NetworkBootstrapDevice` resource.
 
 | Metric group | Metrics | Applies to | Reported as |
 |---|---|---|---|
-| Storage and memory | `hrStorageUsed`, `hrStorageSize` | Physical memory, virtual memory, `/mnt/nvram`, `/var/log`, and `/tmp` | Used and total allocation units |
+| Storage and memory | `hrStorageUsed` | Physical memory, virtual memory, `/mnt/nvram`, `/var/log`, and `/tmp` | Used allocation units |
 | Network interfaces | `ifAdminStatus`, `ifOperStatus`, `ifInOctets`, `ifOutOctets`, `ifInDiscards`, `ifOutDiscards`, `ifInErrors`, `ifOutErrors` | Terminal Server network interfaces | Status: state value. Octets, discards, and errors: cumulative counts |
 | Voltage | `lmVoltSensorsValue` | Voltage sensors `in2` and `in4` | Millivolts |
 | Serial ports | `ogOmSerialPortRxBytes`, `ogOmSerialPortTxBytes` | Serial ports | Cumulative byte counts |
@@ -498,7 +498,7 @@ Values are reported as emitted by the Terminal Server, without unit conversion. 
 
 ### Prerequisites for metrics
 
-- Network Fabric runtime version `9.0.0`.
+- Network Fabric runtime version `9.0.0` or later.
 - Terminal Server (Opengear) OS version `25.11.5` or later.
 - SNMPv3 polling access over UDP port `161` on `Net1`.
 - The `NetworkBootstrapDevice` resource is available for the Network Fabric.
@@ -506,7 +506,7 @@ Values are reported as emitted by the Terminal Server, without unit conversion. 
 
 ### Enable terminal server metrics
 
-Metrics are enabled automatically when the Network Fabric runs runtime version `9.0.0`. No additional configuration is required.
+Metrics are enabled automatically when the Network Fabric runs runtime version `9.0.0` or later. No additional configuration is required.
 
 If you upgrade the Terminal Server OS to a supported version later, run the Refresh Configuration post action on the `NetworkBootstrapDevice` resource to start metrics collection.
 
@@ -537,7 +537,7 @@ Retry-After: 30
 
 ### Resolve out-of-sync SNMP credentials
 
-The `synchronizationStatus` value in the `secretRotationStatus` property of the `NetworkBootstrapDevice` resource shows the status of the SNMP credentials. If the SNMP credentials are `OutOfSync`, run the **Refresh Configuration** post action on a Network Fabric that runs runtime version `9.0.0`.
+The `synchronizationStatus` value in the `secretRotationStatus` property of the `NetworkBootstrapDevice` resource shows the status of the SNMP credentials. If the SNMP credentials are `OutOfSync`, run the **Refresh Configuration** post action on a Network Fabric that runs runtime version `9.0.0` or later.
 
 A successful Refresh Configuration generates and applies new SNMP credentials and sets their status to `InSync`. It doesn't resynchronize the existing out-of-sync credentials.
 
@@ -546,4 +546,4 @@ A successful Refresh Configuration generates and applies new SNMP credentials an
 In the Azure portal, open the `NetworkBootstrapDevice` resource and select **Monitoring** > **Metrics**.
 
 > [!NOTE]
-> - During a Terminal Server RMA, metrics pause and resume after the replacement device is enabled.
+> - During a Terminal Server RMA, metrics collection pauses. Collection is restored on a best-effort basis after the replacement device is enabled and isn't guaranteed.
