@@ -67,6 +67,21 @@ $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCert
 $env:BypassBitlockerRecoveryKeysPrompt = $true; 
 ```
 
+::: moniker range=">=azloc-2609"
+## Install the control plane appliance update
+On the seed node, in the same session as the preceding section, run the following command to install the update.
+
+```powershell
+# Specify the update package path
+$updatePath = "C:\AzureLocalDisconnectedOperations\Update\"
+$updateResult = Install-ApplianceUpdate -UpdatePackagePath $updatePath     
+```
+
+
+::: moniker-end
+
+::: moniker range="<azloc-2609"
+
 ## Upload the update
 
 On the seed node, in the same session as the preceding section, run the following command to upload the update.
@@ -108,6 +123,8 @@ On the seed node, in the same session as the preceding section, run the followin
 ```powershell
 Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -Wait
 ```
+
+::: moniker-end
 
 > [!NOTE]  
 > Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
