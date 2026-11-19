@@ -51,7 +51,7 @@ Ensure all VMs that you wish to migrate are powered on and have [Hyper-V integra
 
 ### Create the source appliance
 
-You can install the source appliance by using either a template (.VHD file) or a script (.zip file).
+You can install the source appliance by using either a template (.VHD file) or a script (.zip file) that you download to your Hyper-V server. For more information about appliances for Azure Catalyst and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
 #### Install using a template (.VHD file)
 
