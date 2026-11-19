@@ -493,15 +493,15 @@ Verify the deployment before creating local Azure resources.
 
 To initialize each node, run this PowerShell script. Modify the variables necessary to match your environment details:
 
-| Azure Local Disconnected Operations | Target Solution Version |
+| Azure Local disconnected operations | Target solution version |
 | --- | --- |
-| 2604 | 12.2604.1003.1005 |
-| 2605 | 12.2605.1003.1003 |
-| 2606 | 12.2606.1003.205 |
-| 2607 | 12.2607.1003.73 |
-| 2608 | 12.2608.1003.9 | 
-| 2609 | 12.2609.1003.7 | 
 | 2610 | 12.2610.1004.41 |
+| 2609 | 12.2609.1003.7 |
+| 2608 | 12.2608.1003.9 |
+| 2607 | 12.2607.1003.73 |
+| 2606 | 12.2606.1003.205 |
+| 2605 | 12.2605.1003.1003 |
+| 2604 | 12.2604.1003.1005 |
 
 ::: moniker-end
 

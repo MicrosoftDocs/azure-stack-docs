@@ -47,7 +47,7 @@ Keep your disconnected operations appliance up to date. Follow these steps to do
 1. From the Azure portal, navigate to your disconnected operations appliance.
 1. Select **Updates** and then select the latest version.
 1. Select **Download** and wait for the download to complete in your browser. You can also use the script based download.
-1. Verify that you have downloaded the following files: `Docker.wim`, `OS.wim`, `Package.zip`, `EFI.wim`, `Manifest.xml`, `OperationsModule.zip`, and `Notice.txt`.
+1. Verify that you downloaded the following files: `Docker.wim`, `OS.wim`, `Package.zip`, `EFI.wim`, `Manifest.xml`, `OperationsModule.zip`, `PlatformExtensionPack.zip`, `UpgradeKnowledgeStoreRBACRules.json`, and `Notice.txt`. The file list might be different for different versions. 
 1. Copy the files to a staging folder on the first machine (seed node), such as `C:\AzureLocalDisconnectedOperations\Update`.
 1. Extract `OperationsModule.zip` on the first machine (seed node) to a folder, such as `C:\AzureLocalDisconnectedOperations\Update`.
 
@@ -66,6 +66,22 @@ $context = Set-DisconnectedOperationsClientContext -ManagementEndpointClientCert
 # If you previously exported your bitlocker keys - you can skip the prompt asking you for this during update and enable full automation.
 $env:BypassBitlockerRecoveryKeysPrompt = $true; 
 ```
+
+::: moniker-end
+
+::: moniker range=">=azloc-2609"
+## Install the control plane appliance update
+On the seed node, in the same session as the preceding section, run the following command to install the update.
+
+```powershell
+# Specify the update package path
+$updatePath = "C:\AzureLocalDisconnectedOperations\Update\"
+$updateResult = Install-ApplianceUpdate -UpdatePackagePath $updatePath     
+```
+
+::: moniker-end
+
+::: moniker range="<azloc-2609"
 
 ## Upload the update
 
@@ -108,6 +124,10 @@ On the seed node, in the same session as the preceding section, run the followin
 ```powershell
 Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -Wait
 ```
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602"
 
 > [!NOTE]  
 > Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
