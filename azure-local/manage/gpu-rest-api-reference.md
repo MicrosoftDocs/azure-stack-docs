@@ -21,14 +21,14 @@ GPU inventory and discovery operations are performed at the edge machine level. 
 ## Prerequisites
 
 - [Prepare GPUs for an Azure Local instance](./gpu-preparation.md).
-- You must be assigned the **Azure Stack HCI Administrator** role to run the API. For more information, see [Use Role-based Access Control to manage Azure Local VMs enabled by Azure Arc](../manage/assign-vm-rbac-roles.md)
-- Ensure that your machine has a supported GPU model. For more information, see [Supported GPU models](./gpu-preparation.md#supported-gpu-models).
-- You must have the appropriate Azure Local infrastructure RBAC role:
-    - **Azure Local Infrastructure Reader** for read-only GPU operations.
-    - **Azure Local Infrastructure Contributor** to perform GPU management actions.
+- - Assign the following roles at the resource group or subscription scope, not just on the cluster:
+  
+  - **Azure Local Infrastructure Reader** to view GPUs, or **Azure Local Infrastructure Contributor** to manage them. See [Infrastructure RBAC roles](/azure/azure-local/manage/assign-infrastructure-rbac-roles.md).
+        
+  - **Azure Stack HCI VM Contributor** to assign GPUs to VMs or remove GPU assignments. See [VM RBAC roles](/azure/azure-local/manage/assign-vm-rbac-roles.md).
+              
+    After assigning the required roles, wait approximately 15 minutes before using GPU management. During this period, role assignments might not have taken effect, and GPU management operations might return inconsistent results.
     
-   For more information, see [Use built-in RBAC roles to manage infrastructure in Azure Local](./assign-infrastructure-rbac-roles.md).
-- For VM-related actions, such as assigning or unassigning resources, you must also have the **Azure Stack HCI VM Contributor** role. For more information, see [Use built-in RBAC roles for Azure Local VM to manage Azure Local VMs enabled by Azure Arc](./assign-vm-rbac-roles.md).
 - GPU APIs are supported only on edge machines. If needed, run the [Edge machine creation script](https://github.com/Azure-Samples/AzureLocal/tree/main/GpuFabricManagement/EdgeMachineCreationScript) before proceeding.
 - Run the `Sync-AzureStackHci` cmdlet on one of the cluster nodes to ensure that GPU capabilities appear on the cluster.
 
