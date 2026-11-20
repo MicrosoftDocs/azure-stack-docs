@@ -3,13 +3,13 @@ author: dominicbetts
 ms.author: dobett
 ms.service: azure-local
 ms.topic: include
-ms.date: 11/16/2026
+ms.date: 11/20/2026
 ai-usage: ai-assisted
 ---
 
 | OS Build | Download URI | Notes / SHA256 |
 | -- | -- | -- |
-| 26100.33822 | [12.2610.1004.54](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2610.1004.54/CombinedSolutionBundle.12.2610.1004.54.zip) <br><br> Availability date: 2026-11-14 | 730CDD48D9DCD38D63A3F38E552FE589FD7C3A1FF8976DE6DCB95F5AC2E26BEE |
+| 26100.33822 | [12.2610.1004.55](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2610.1004.55/CombinedSolutionBundle.12.2610.1004.55.zip) <br><br> Availability date: 2026-11-20 | F8724227F6B90D6698FE1A96BDDDDE4069380A73AA6E24EA8A3D5A950C82EC09 |
 | 26100.33438 | [12.2609.1003.7](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2609.1003.7/CombinedSolutionBundle.12.2609.1003.7.zip) <br><br> Availability date: 2026-09-11 | C0DD738362B3B44FBA9E801483C297011B706B740A2A5F5482B0A71D0A70F054 |
 | 26100.33296 | [12.2608.1003.9](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2608.1003.9/CombinedSolutionBundle.12.2608.1003.9.zip) <br><br> Availability date: 2026-09-01 | 150ED78820BE0E8EA75ACF9F1D3F7F375199D98749C1A762134E674CE406FAC4 |
 | 26100.33158 | [12.2607.1003.73](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2607.1003.73/CombinedSolutionBundle.12.2607.1003.73.zip) <br><br> Availability date: 2026-08-07 | 90112DA91420ADD41DA39EDB36A42EC5E6698029F841243314AB76883C8AE8D3 |
