@@ -132,6 +132,29 @@ Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -
 > [!NOTE]  
 > Update can take several hours and might reboot the control plane appliance. If update fails, the system attempts to roll back to the last known good state and boot back.
 
+::: moniker-end
+
+::: moniker range=">=azloc-2611"
+
+### Back up before and after an update
+
+Add the optional `-EnableBackup` switch to `Start-ApplianceUpdate` to automatically back up the control plane immediately before the update and after it succeeds.
+
+Before using this switch:
+
+- Ensure the installed appliance and the OperationsModule are version 2611 or later.
+- [Create or update the default backup configuration](disconnected-operations-back-up-restore.md#create-or-update-the-default-configuration) with an accessible SMB share, valid share credentials, and an encryption certificate. Both backups use this configuration, not a named configuration. A backup schedule isn't required.
+To enable automatic backups before and after the update, run the following command instead of the preceding `Start-ApplianceUpdate` command.
+```powershell
+Start-ApplianceUpdate -TargetVersion $updatePackageResult.UpdatePackageVersion -EnableBackup -Wait
+```
+
+`-Wait` waits for both backups and the update. A failed pre-update backup prevents the update from starting. A failed post-update backup is reported but doesn't roll back the update.
+
+::: moniker-end
+
+::: moniker range=">=azloc-2602"
+
 ## Get update history
 
 On the seed node, in the same session as the preceding section, run the following command to view the update history.

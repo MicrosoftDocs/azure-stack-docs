@@ -4,7 +4,7 @@ description: Read about the known issues and fixed issues in Azure Local.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting-general
-ms.date: 11/15/2026
+ms.date: 11/19/2026
 ms.subservice: hyperconverged
 ---
 
@@ -19,6 +19,77 @@ These release notes are continuously updated, and as critical issues requiring a
 
 For more information about new features in this release, see [What's new for Azure Local](whats-new.md).
 
+::: moniker range="=azloc-2611"
+
+## Known issues for version 2611
+
+For the 2611 release of Azure Local, Microsoft released the following update:
+
+| Solution version | OS build |
+| -- | -- |
+| 12.2611.1004.9 | 26100.33822 |
+
+> [!IMPORTANT]
+> New deployments of this software use the **12.2611.1004.9** build.
+The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
+
+> [!NOTE]
+> For detailed remediation for common known issues, see the [Azure Local Supportability](https://github.com/Azure/AzureStackHCI-Supportability) GitHub repository.
+
+## Fixed issues
+
+The following table lists the issues fixed in this release:
+
+| Feature | Issue | Comments | Solution version |
+|---|---|---|---|
+| <!--40412688--> Update | Zero-downtime updates can fail when Azure Local Deployment Orchestrator (ALDO) encounters a download-tool dependency. | The update process now resolves the download-tool dependency so zero-downtime updates can continue. | 12.2611.1004.9 |
+| <!--40422158--> Deployment and node lifecycle | On multi-node deployments, installation can fail when the `Add-CauClusterRole` operation can't add the Cluster-Aware Updating role. | The deployment workflow has been updated to address the failure when adding the Cluster-Aware Updating role. | 12.2611.1004.9 |
+| <!--38713708--> Deployment and node lifecycle | DNS validation for the cluster name object (CNO) IP mapping reports some actionable conditions as informational messages. | CNO IP-mapping validation now reports these conditions as warnings so they're more visible before deployment. | 12.2611.1004.9 |
+| <!--38728609--> Deployment and node lifecycle | Cluster DNS posture validation reports some actionable conditions as informational messages. | Cluster DNS posture validation now reports these conditions as warnings so they're more visible before deployment. | 12.2611.1004.9 |
+| <!--39253723--> Network | Cluster network validation can fail without sufficient telemetry about the cluster excluded-adapter list. | Additional telemetry has been added for the cluster excluded-adapter list to improve diagnosis of cluster network validation failures. | 12.2611.1004.9 |
+| <!--39706204--> Network | Inconsistent network adapter link speeds across nodes are reported as a warning, allowing deployment to continue with an unsupported network configuration. | Network validation now reports inconsistent link speeds across nodes as a critical error. | 12.2611.1004.9 |
+| <!--39885324--> Network | Network validation can incorrectly allow overlapping management and storage IP address prefixes. | Network validation now correctly detects overlap between management and storage IP address prefixes. | 12.2611.1004.9 |
+| <!--40128858--> Update | Network Controller health issues detected before a solution update don't have sufficient visibility. | Pre-update Network Controller health issues are now reported with warning severity. | 12.2611.1004.9 |
+| <!--39342649--> Deployment and node lifecycle | Storage cluster creation can fail when the deployment process can't locate the Active Directory computer object during the `New-Cluster` operation. | The deployment process now correctly handles the Active Directory computer-object lookup during cluster creation. | 12.2611.1004.9 |
+| <!--40344544--> Security | .NET and PowerShell components require updates to address CVE-2026-111497. | The applicable .NET and PowerShell components have been updated to address CVE-2026-111497. | 12.2611.1004.9 |
+| <!--40615915--> Update | On multi-node systems, a platform update can encounter a missing exception during the action-plan stage. | The update workflow now handles the affected action-plan condition. | 12.2611.1004.9 |
+| <!--40353539--> Update | Update downloads can fail when the PowerShell execution policy prevents the download connector from running its scripts. | The download connector now handles the applicable PowerShell execution-policy configuration so update downloads can continue. | 12.2611.1004.9 |
+| <!--40489208--> Update | Security updates aren't selectable as update baselines in the applicable update workflow. | Security updates can now be selected as update baselines. | 12.2611.1004.9 |
+| <!--39720513--> Update | Update downloads can fail if the Background Intelligent Transfer Service (BITS) is stopped or its helper configuration is missing. | The update process now recovers the BITS helper when the service is stopped or its configuration is missing. | 12.2611.1004.9 |
+| <!--40392384--> Update | Multipath I/O (MPIO) registrations might not be preserved during operating system composition. | The updated OS platform package preserves MPIO registrations. | 12.2611.1004.9 |
+| <!--40497196--> Update | Systems can encounter a `0x50` bug check in the Server Message Block (SMB) component during an update. | The update process applies the required registry configuration before Cluster-Aware Updating begins. | 12.2611.1004.9 |
+| <!--40044608--> Azure Government | Azure Resource Bridge deployment in Azure Government can attempt to authenticate against `login.microsoftonline.com` instead of the Azure Government endpoint. | Azure Resource Bridge deployment now uses the appropriate Azure Government authentication endpoint. | 12.2611.1004.9 |
+
+## Known issues
+
+There are no known issues specific to this release. For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
+
+<!--|Feature  |Issue    |Workaround |
+|---------|---------|---------|-->
+
+## Known issues from previous releases
+
+The following table lists known issues from previous releases:
+
+| Feature | Issue | Workaround |
+| --------- | --------- | --------- |
+| Azure Local VMs <!--30775126--> | The `az stack-hci-vm stop` command fails when using CLI version 1.14.x against clusters running versions prior to 2604. | Use the latest CLI and include the `--skip-shutdown` parameter to force a turn off (`az stack-hci-vm stop --skip-shutdown`). Alternatively, downgrade to an earlier CLI version (1.13.0 or earlier) where the default stop behavior is supported on all clusters. |
+| Windows Admin Center <!--60836305--> | Instances of Windows Admin Center with installed versions of Cluster Manager lower than 5.2.6 might experience problems with volume deletion operations. | To prevent data loss, update the Cluster manager extension to version 5.2.6 or ensure you're using Windows Admin Center version 2511 build 2.6.6.18 or higher. Don't delete your volumes in Windows Admin Center unless the Cluster manager extension is updated. |
+| Update <!--36808734--> | During the update, health checks might report the error: `SBE manifest endpoint not reported by Get-SolutionDiscoveryDiagnosticInfo`. | This error is at the warning level. You can ignore it while running the update. |
+| Deployment <!--33008717--> | In this release and previous releases, registration fails with the following error when you try to register Azure Local machines with Azure Arc: <br>`AZCMAgent command failed with error: >> exitcode: 42. Additional Info: See https://aka.ms/arc/azcmerror`. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/ArcRegistration/TSG-Arc-registration-failing-with-error-42.md). |
+| Azure Local VM management | The Mochostagent service might appear to be running but can get stuck without updating logs for over a month. You can identify this issue by checking the service logs in `C:\programdata\mochostagent\logs` to see if logs are being updated. | Run the following command to restart the mochostagent service: `restart-service mochostagent`. |
+| Update | When you view the readiness check results for an Azure Local instance via the Azure Update Manager, there might be multiple readiness checks with the same name. | There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Update | There's an intermittent issue in this release when the Azure portal incorrectly reports the update status as **Failed to update** or **In progress** though the update is complete. | [Connect to your Azure Local instance](./update/update-via-powershell-23h2.md#connect-to-your-azure-local) via a remote PowerShell session. To confirm the update status, run the following PowerShell cmdlets: <br><br> `$Update = get-solutionupdate`\| `? version -eq "<version string>"`<br><br>Replace the version string with the version you're running. For example, "10.2405.0.23". <br><br>`$Update.state`<br><br>If the update status is **Installed**, no further action is required. The Azure portal refreshes the status correctly within 24 hours. <br> To refresh the status sooner, follow these steps on one of the nodes. <br>Restart the Cloud Management cluster group.<br>`Stop-ClusterGroup "Cloud Management"`<br>`Start-ClusterGroup "Cloud Management"` |
+| Azure portal <!--25741164--> | In some instances, the Azure portal takes a while to update and the view might not be current. | You might need to wait for 30 minutes or more to see the updated view. |
+| Security <!--30348397--> | Azure Local might face an issue during normal operations (for example, Update, Repair) while using Defender for Endpoint and when the **Restrict App Execution** setting is enabled for one or more servers in the deployment. | Disable the **Restrict App Execution** setting in the Defender portal and reboot. If the issue persists, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| Deployment <!--33390832--> | In rare instances, deployment fails with errors during validation that state that the mandatory Arc extensions aren't yet installed. | If you face this issue, retry the deployment. |
+| Security | If the Windows Defender attack surface reduction rule Block Process Creations originating from PSExec & WMI commands is configured to Block, the Azure Local Solution Update fails to run. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Solution-Update-CAU-Run-fails-due-to-Windows-Defender-blocking-WMI-commands.md). |
+| Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation. |
+| Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
+| Update | Older .NET runtime files can remain on Azure Local nodes after a .NET update because the update process defers cleanup and the pending RunOnce action doesn't execute. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Complete-cleanup-of-older-.NET-runtime-installations-on-Azure-Local.md). |
+
+::: moniker-end
+
 ::: moniker range="=azloc-2610"
 
 ## Known issues for version 2610
@@ -27,8 +98,10 @@ The latest update for the 2610 release of Azure Local is:
 
 | Solution version | OS build |
 | -- | -- |
-| 12.2610.1004.54 | 26100.33822 |
+| 12.2610.1004.55 | 26100.33650 |
 
+> [!IMPORTANT]
+> New deployments of this software use the **12.2610.1004.55** build.
 The release notes for this version include the issues fixed in this release, known issues in this release, and known issues carried over from previous versions.
 
 For OS security update details, see [Security updates for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true).
@@ -72,13 +145,15 @@ The following table lists the fixed issues in this release:
 | Update orchestration <!--40312999--> | Update preparation telemetry can be missing, limiting diagnostic information available during update preparation. | Update preparation now generates the expected telemetry for improved diagnostics. | 12.2610.1004.50 |
 | Hardware and Solution Builder Extension <!--40277569--> | SBE download connector detection can fail when the PowerShell execution policy prevents the detection script from running. | SBE download connector detection now works when PowerShell script execution is restricted by the system execution policy. | 12.2610.1004.50 |
 | Update orchestration | An SMB-related issue can cause a cluster node to stop with error code `0x50`. |The update process now applies the required registry configuration before Cluster-Aware Updating to prevent the SMB-related `0x50` stop error.| 12.2610.1004.54 |
+| Storage <!--40773129--> | On initial deployment of clusters with NVMe and HDD storage, Storage Spaces Direct (S2D) cache can be incorrectly disabled because the storage configuration is detected as HDD-only. | Initial deployment now correctly enables S2D cache on clusters with NVMe and HDD storage. | 12.2610.1004.55 |
 
 ## Known issues
 
-There are no known issues specific to this release. For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
+| Feature | Issue | Workaround |
+| -- | -- | -- |
+| Update | Older .NET runtime files can remain on Azure Local nodes after a .NET update because the update process defers cleanup and the pending RunOnce action doesn't execute. | For detailed steps on how to resolve this issue, see the [Troubleshooting guide](https://github.com/Azure/AzureLocal-Supportability/blob/main/TSG/Update/Complete-cleanup-of-older-.NET-runtime-installations-on-Azure-Local.md). |
 
-<!--|Feature  |Issue    |Workaround |
-|---------|---------|---------|-->
+For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
 
 ## Known issues from previous releases
 
@@ -364,7 +439,7 @@ The following table lists the known and expected system behaviors that shouldn't
 
 ::: moniker-end
 
-::: moniker range="=azloc-2605"
+::: moniker range="=azloc-previous"
 
 ## Known issues for version 2605
 
@@ -392,14 +467,14 @@ The following table lists the fixed issues in this release:
 | Azure Local VMs <!--37983058--> | Fixed an issue where instances of Azure Local version 2601 and later might experience unintended virtual machine deletion when a platform component incorrectly classifies virtual machines during routine system operations. | |
 | Azure Local VMs <!--30775126--> | Fixed an issue where the `az stack-hci-vm stop` command could fail when using CLI version 1.14.x against clusters running versions prior to 2604. | Improved compatibility for VM stop operations in CLI version 1.14.x on clusters running versions prior to 2604. |
 
-## Known issues
+### Known issues
 
 There are no known issues specific to this release. For known issues from previous releases, see the [Known issues from previous releases](#known-issues-from-previous-releases) section.
 
 <!--|Feature  |Issue    |Workaround |
 |---------|---------|---------|-->
 
-## Known issues from previous releases
+### Known issues from previous releases
 
 The following table lists the known issues from previous releases:
 
@@ -420,17 +495,13 @@ The following table lists the known issues from previous releases:
 | Add server, Repair server <!--35816797--> | Add node and repair node operations fail when running on 11.2510.1002.87 or 12.2510.1002.88, as these images were recalled and don't exist. | Upgrade your environment to 11.2510.1002.93 or 12.2510.1002.94. <br><br> If you need to run add node or repair node operations during the update from 1.2510.1002.87/12.2510.1002.88 to 11.2510.1002.93/12.2510.1002.94, [open a support case](/azure/azure-portal/supportability/how-to-create-azure-support-request) to overwrite the image validation. |
 | Update <!--36360771--> | Fetching the secret rotation action plan status fails. | The secret rotation completes successfully, so you can ignore the failure message. |
 
-## Known and expected behaviors
+### Known and expected behaviors
 
 The following table lists the known and expected system behaviors that shouldn't be considered as bugs or limitations.
 
 | Feature | Behavior | Workaround |
 | -------- | --------- | --------- |
 | Operating system | Restoring the registry by using *RegBack* isn't supported on Azure Local. This operation can remove the Lifecycle Manager (LCM) and Microsoft On-premises Cloud (MOC) settings on your Azure Local instance, which can corrupt the solution. | |
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Known issues for version 2604
 

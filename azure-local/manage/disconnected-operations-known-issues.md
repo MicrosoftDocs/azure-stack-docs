@@ -3,7 +3,7 @@ title: Release Notes for Disconnected Operations for Azure Local
 description: Read about the known issues and fixed issues for disconnected operations for Azure Local.
 author: ronmiab
 ms.topic: concept-article
-ms.date: 09/21/2026
+ms.date: 10/26/2026
 ms.author: robess
 ms.reviewer: haraldfianbakken
 ai-usage: ai-assisted
@@ -26,7 +26,7 @@ You see an error with the following message: ***Unable to locate a file named Ro
 
 ::: moniker-end
 
-::: moniker range="=azloc-2605"
+::: moniker range="=azloc-2606"
 ## Known issues for version 2606
 
 ### AKS failed state after update 
@@ -40,7 +40,9 @@ Some rare conditions during update can cause AKS cluster to become unavailable a
 
 ::: moniker-end
 
-::: moniker range="=azloc-2605"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
 
 ## Known issues for version 2605
 
@@ -107,12 +109,6 @@ Invoke-AzureLocalDisconnectedLogCollection -FromDate (Get-Date).AddHours(-6) `
     -CloudManagementFilterByRoles @("Agents", "ArcControlPlane", "ArcADiagnostics", "Containers", "CosmosDB", "MASLogs", "Messaging", "Oplets", "WindowsEventLogs") `
     -ForceRefreshCloudManagementPsModule
 ```
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
-This feature is available only in Azure Local 2602 or later.
 
 ## Known issues for version 2604
 
