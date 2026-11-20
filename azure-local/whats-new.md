@@ -5,13 +5,41 @@ ms.topic: overview
 author: ronmiab
 ms.author: robess
 ms.service: azure-local
-ms.date: 11/15/2026
+ms.date: 11/19/2026
 ms.subservice: hyperconverged
 ---
 
 # What's new in hyperconverged deployments of Azure Local?
 
 This article lists the features and improvements that are available in hyperconverged deployments of Azure Local. The latest version of Azure Local solution focuses on cloud-based deployment and updates, cloud-based monitoring, a new and simplified experience for Azure Local virtual machine (VM) management, security, and more.
+
+::: moniker range="=azloc-2611"
+
+## Features and improvements in 2611
+
+The November 2026 release of hyperconverged deployments of Azure Local is version **12.2611.1004.9**. For more information, see [Release information summary](./release-information-23h2.md).
+
+This release includes various reliability improvements and bug fixes.
+
+- **OS changes**:
+  - In the 2611 release, all new and existing deployments of Azure Local run the new OS version **26100.33822** (download from the Azure portal).
+  - You also need a driver that's compatible with OS version **26100.33822** or Windows Server 2025.
+  - For Integrated System or Premier solution hardware from the [Azure Local Catalog](https://aka.ms/AzureStackHCICatalog), the OS is preinstalled. Work with your Original Equipment Manufacturer (OEM) to get a compatible OS image and a compatible driver.
+
+- **.NET updates**:
+  - This build uses .NET version **8.0.34** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+  - This build uses .NET version **10.0.15** for both .NET Runtime and ASP.NET Core. For more information, see [Download .NET 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+- **PowerShell updates**: This build uses PowerShell version **7.6.10** (built on .NET 10). For more information, see [PowerShell 7.6 changelog](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.6.md).
+
+<!--Keep the following Azure Migrate entry until Azure Migrate updates are included in the standard Azure Local release process.-->
+
+- **Azure Migrate for Azure Local**: Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them. For the latest Azure Migrate features and fixes for migrating VMs to Azure Local, see [What's new in Azure Migrate for Azure Local](../azure-local/migrate/migrate-whats-new.md).
+
+- **Simplified GPU management**: The Azure portal GPU management experience no longer requires running the Edge machine creation script, simplifying setup and reducing manual configuration.
+
+::: moniker-end
 
 ::: moniker range="=azloc-2610"
 
@@ -21,9 +49,9 @@ This section describes release highlights and any subsequent security updates fo
 
 ### Security updates
 
-#### November 2026 (solution version 12.2610.1004.54)
+#### November 2026 (solution version 12.2610.1004.55)
 
-The November 2026 security update to Azure Local 2610 for hyperconverged deployments is version **12.2610.1004.54**, displayed as **2026.10 Feature Update + November Security Updates**. For more information, see [November OS security update for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true#november-os-security-update-kb5131080-for-azure-local).
+The November 2026 security update to Azure Local 2610 for hyperconverged deployments is version **12.2610.1004.55**, displayed as **2026.10 Feature Update + November Security Updates**. For more information, see [November OS security update for Azure Local](./security-update/security-update.md?view=azloc-2610&preserve-view=true#november-os-security-update-kb5131080-for-azure-local).
 
 - **OS changes**:
   - This update includes OS build **26100.33822**. For available solution builds and the default build for new deployments, see [Release information summary](./release-information-23h2.md).
@@ -256,7 +284,7 @@ This release includes various reliability improvements and bug fixes.
 
 ::: moniker-end
 
-::: moniker range="=azloc-2605"
+::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2605
 
@@ -283,10 +311,6 @@ This release includes various reliability improvements and bug fixes.
 - **GPU metrics**: You can now monitor GPU metrics in Azure Local for GPUs configured using GPU Partitioning (GPU-P). For more information, see [Metrics for GPU](../azure-local/manage/monitor-cluster-with-metrics.md#metrics-for-gpu).
 
 - **Azure Migrate now supports migrating to Azure Local instances that use external (SAN) storage**: You can migrate VMs to Azure Local instances that use external Storage Area Network (SAN) storage, including volumes configured as NTFS. For more information, see [What's new in Azure Migrate for Azure Local](./migrate/migrate-whats-new.md#may-2026). Azure Migrate updates release on a separate cadence, so you don't need to upgrade to this Azure Local version to receive them.
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
 
 ## Features and improvements in 2604
 

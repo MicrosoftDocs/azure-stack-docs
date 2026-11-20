@@ -76,7 +76,7 @@ Update-ApplianceExternalIdentityConfiguration -Config $config
 
 ::: moniker-end
 
-::: moniker range="<=azloc-2605"
+::: moniker range="<=azloc-previous"
 
 This feature is available only in Azure Local 2606 or later.
 

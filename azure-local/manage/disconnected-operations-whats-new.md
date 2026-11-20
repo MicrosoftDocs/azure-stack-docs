@@ -71,7 +71,9 @@ This article describes new features and improvements in disconnected operations 
   
 ::: moniker-end
 
-::: moniker range="=azloc-2605"
+::: moniker range="=azloc-previous"
+
+This feature is available only in Azure Local 2602 or later.
 
 ## Features and improvements in 2605
 
@@ -80,12 +82,6 @@ This article describes new features and improvements in disconnected operations 
 - Improved support diagnostics.
 - Scalability and reliability improvements.
 - Support for Add and Repair node. 
-
-::: moniker-end
-
-::: moniker range="=azloc-previous"
-
-This feature is available only in Azure Local 2602 or later.
 
 ## Features and improvements in 2604
 

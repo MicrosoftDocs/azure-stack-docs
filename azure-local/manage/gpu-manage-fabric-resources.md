@@ -37,7 +37,7 @@ For information about GPU-P limitations, see the [Limitations](./gpu-manage-via-
     After assigning the required roles, wait approximately 15 minutes before using GPU management. During this period, role assignments might not have taken effect, and GPU management operations might return inconsistent results.
     
 - A machine with a supported GPU model. For more information, see [Supported GPU models](./gpu-preparation.md#supported-gpu-models).
-- The GPU APIs support only edge machines. If needed, run the [Edge machine creation script](https://github.com/Azure-Samples/AzureLocal/tree/main/GpuFabricManagement/EdgeMachineCreationScript) before proceeding.
+- The GPU APIs support only edge machines. Starting with Azure Local 2611, edge machine resources are created automatically. For earlier releases, run the [Edge machine creation script](https://github.com/Azure-Samples/AzureLocal/tree/main/GpuFabricManagement/EdgeMachineCreationScript) before proceeding.
 - Run the `Sync-AzureStackHci` cmdlet on one of the cluster nodes to ensure that GPU capabilities appear on the cluster.
 - To use GPU management, you must have solution version 12.2604.1003.x or later. For more information, see [Azure Local release information](../release-information-23h2.md).
 
