@@ -9,6 +9,7 @@ ai-usage: ai-assisted
 
 | OS Build | Download URI | Notes / SHA256 |
 | -- | -- | -- |
+| 26100.33822 | [12.2611.1004.9](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2611.1004.9/CombinedSolutionBundle.12.2611.1004.9.zip) <br><br> Availability date: 2026-11-20 | B7EEB5EFF9762D20F5D47D969702D43B3E181C8493ED0527CAB4ACC6E19344EF |
 | 26100.33822 | [12.2610.1004.55](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2610.1004.55/CombinedSolutionBundle.12.2610.1004.55.zip) <br><br> Availability date: 2026-11-20 | F8724227F6B90D6698FE1A96BDDDDE4069380A73AA6E24EA8A3D5A950C82EC09 |
 | 26100.33438 | [12.2609.1003.7](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2609.1003.7/CombinedSolutionBundle.12.2609.1003.7.zip) <br><br> Availability date: 2026-09-11 | C0DD738362B3B44FBA9E801483C297011B706B740A2A5F5482B0A71D0A70F054 |
 | 26100.33296 | [12.2608.1003.9](https://azurestackreleases.download.prss.microsoft.com/dbazure/AzureLocal/CombinedSolutionBundle/12.2608.1003.9/CombinedSolutionBundle.12.2608.1003.9.zip) <br><br> Availability date: 2026-09-01 | 150ED78820BE0E8EA75ACF9F1D3F7F375199D98749C1A762134E674CE406FAC4 |
