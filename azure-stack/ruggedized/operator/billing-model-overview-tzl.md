@@ -2,12 +2,12 @@
 title: Customer billing model overview in Azure Stack | Microsoft Docs
 description: Learn how Azure Stack users are billed for resource usage.
 services: azure-stack
-author: sethmanheim
+author: scompton1045
 manager: lizross
 ms.service: azure-stack
 ms.topic: concept-article
 ms.date: 10/11/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: alfredop
 ms.lastreviewed: 12/23/2019
 

@@ -1,10 +1,10 @@
 ---
 title: Server firmware updates in Azure Stack Hub Ruggedized
 description: Describes how to perform server firmware updates in Azure Stack Hub Ruggedized
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 05/06/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 05/06/2021
 

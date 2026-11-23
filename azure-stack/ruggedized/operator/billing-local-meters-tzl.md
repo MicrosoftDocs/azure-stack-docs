@@ -2,12 +2,12 @@
 title: Local billing meters | Microsoft Docs
 description: List of local Azure Stack meters
 services: azure-stack
-author: sethmanheim
+author: scompton1045
 manager: lizross
 ms.service: azure-stack
 ms.topic: feature-availability
 ms.date: 10/11/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
 
