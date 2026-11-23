@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub help and support
 description: Get support for Microsoft Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: get-started
 ms.date: 01/28/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 01/19/2021
 
 

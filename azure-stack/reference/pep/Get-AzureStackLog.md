@@ -2,11 +2,11 @@
 title: Get-AzureStackLog
  privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Get-AzureStackLog
-author: sethmanheim
+author: scompton1045
 
 ms.topic: reference
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---

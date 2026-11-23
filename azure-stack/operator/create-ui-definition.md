@@ -1,8 +1,8 @@
 ---
 title: Update solution templates to work with new CreateUiDefinition changes
 description: Update solution templates for new CreateUiDefinition changes in Azure Stack Hub. Learn to validate, modify, and repackage your templates for compatibility.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 07/08/2026
 ms.custom:

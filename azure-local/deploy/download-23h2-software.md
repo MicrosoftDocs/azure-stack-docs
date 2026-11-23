@@ -1,8 +1,8 @@
 ---
 title: Download Azure Stack HCI Operating System software for Azure Local deployment
 description: Learn how to download Azure Stack HCI operating system from the Azure portal to deploy an Azure Local instance.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 05/04/2026

@@ -1,10 +1,10 @@
 ---
 title: Resource Overview for Small Form Factor Deployments of Azure Local (preview)
 description: Understand the Azure resources created for small form factor deployments of Azure local and how they relate to each other (preview).
-author: sipastak
+author: scompton1045
 ms.topic: concept-article
 ms.date: 10/28/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

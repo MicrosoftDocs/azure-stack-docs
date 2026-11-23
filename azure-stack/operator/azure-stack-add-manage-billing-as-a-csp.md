@@ -1,10 +1,10 @@
 ---
 title: Manage Azure Stack Hub usage and billing as a Cloud Solution Provider 
 description: Learn how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and add customers for billing.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 08/15/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2019
 

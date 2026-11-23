@@ -1,10 +1,10 @@
 ---
 title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/30/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 03/10/2021
 ms.custom: sfi-image-nochange
 

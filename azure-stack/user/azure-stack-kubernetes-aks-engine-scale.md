@@ -1,11 +1,11 @@
 ---
 title: Scale a Kubernetes cluster using AKS engine on Azure Stack Hub 
 description: Learn how to scale a Kubernetes cluster using AKS engine on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 02/13/2023
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
 

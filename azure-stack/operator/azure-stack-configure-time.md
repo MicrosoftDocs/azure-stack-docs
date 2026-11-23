@@ -1,10 +1,10 @@
 ---
 title: Configure the time server in Azure Stack Hub 
 description: Learn how to configure the time server in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 2/19/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
 

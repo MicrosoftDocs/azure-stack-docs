@@ -1,11 +1,11 @@
 ---
 title: Azure Marketplace items available for Azure Stack Hub 
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: feature-availability
 ms.custom: linux-related-content
 ms.date: 09/22/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/9/2020
 

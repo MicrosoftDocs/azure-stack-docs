@@ -1,8 +1,8 @@
 ---
 title: Plan capacity for Event Hubs on Azure Stack Hub
 description: Learn how to plan capacity for Azure Event Hubs on Azure Stack Hub by setting quotas and calculating resource consumption. Start planning your deployment today.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 07/08/2026

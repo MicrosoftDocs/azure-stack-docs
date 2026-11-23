@@ -1,8 +1,8 @@
 ---
 title: Prerequisites to install Event Hubs on Azure Stack Hub
 description: Learn about the required prerequisites, before installing the Event Hubs resource provider on Azure Stack Hub.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 07/08/2026

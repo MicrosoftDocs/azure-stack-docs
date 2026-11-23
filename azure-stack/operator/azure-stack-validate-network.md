@@ -2,10 +2,10 @@
 title: Validate Datacenter Network Integration
 titleSuffix: Azure Stack Hub
 description: Learn how to use the Azure Stack Hub Readiness Checker to validate datacenter network integration for Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/19/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: brhoug
 ms.lastreviewed: 10/25/2021
 

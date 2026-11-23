@@ -2,8 +2,8 @@
 title: What's new in Hyperconverged Deployments of Azure Local 23xx releases
 description: Find out about the new features and enhancements in the Azure Local 23xx releases.
 ms.topic: overview
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 02/11/2026
 ms.subservice: hyperconverged

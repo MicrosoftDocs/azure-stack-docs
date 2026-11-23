@@ -2,8 +2,8 @@
 
 title: Virtual network peering in Azure Stack Hub
 description: Learn how to use Virtual network peering to connect virtual networks in Azure Stack Hub.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.date: 03/09/2022
 ms.topic: concept-article
 ms.reviewer: cedward

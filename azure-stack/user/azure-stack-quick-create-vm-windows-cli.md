@@ -1,11 +1,11 @@
 ---
 title: Create Windows VM on Azure Stack Hub with Azure CLI 
 description: Create a Windows virtual machine on Azure Stack Hub using Azure CLI
-author: sethmanheim
+author: scompton1045
 
 ms.topic: quickstart
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 01/14/2020
 ms.custom:
   - mode-api

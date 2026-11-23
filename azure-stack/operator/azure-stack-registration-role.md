@@ -2,10 +2,10 @@
 title: Create a custom role for Azure Stack Hub registration
 titleSuffix: Azure Stack Hub
 description: Learn how to create a custom role for Azure Stack Hub registration.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/19/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 ms.custom: sfi-image-nochange

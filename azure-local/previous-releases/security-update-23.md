@@ -1,10 +1,10 @@
 ---
 title:  Security updates for Azure Local 23xx releases
 description: Security updates for Azure Local 23xx releases.
-author: ronmiab
+author: scompton1045
 ms.topic: release-notes
 ms.date: 03/25/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

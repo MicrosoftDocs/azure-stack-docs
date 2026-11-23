@@ -1,11 +1,11 @@
 ---
 title: Azure Monitor supported metrics on Azure Stack Hub 
 description: Learn about the supported metrics for Azure Monitor on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: concept-article
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 11/11/2019
 
 # Intent: As an Azure Stack user, I want to use Azure Monitor and I want to know which metrics are supported by its pipeline so I can retrieve them. 

@@ -2,8 +2,8 @@
 title: Review two-node storage reference pattern IP requirements for Azure Local
 description: Review two-node storage reference pattern IP requirements for Azure Local
 ms.topic: feature-availability
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 02/14/2025
 ms.subservice: hyperconverged

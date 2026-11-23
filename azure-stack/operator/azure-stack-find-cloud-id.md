@@ -1,10 +1,10 @@
 ---
 title: Find your cloud ID  
 description: How to find your Cloud ID in Azure Stack Hub help and support.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/16/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 10/08/2019
 ms.custom: sfi-image-nochange
 

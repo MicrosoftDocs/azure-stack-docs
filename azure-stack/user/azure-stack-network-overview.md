@@ -1,11 +1,11 @@
 ---
 title: Introduction to Azure Stack Hub networking 
 description: Learn about Azure Stack Hub networking.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: get-started
 ms.date: 03/28/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/28/2024
 

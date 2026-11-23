@@ -1,10 +1,10 @@
 ---
 title: Monitor hardware health in Azure Stack Hub
 description: Learn how to monitor Azure Stack Hub hardware components, including system fans, temperature, and power supplies. Set up SNMP alerts to stay ahead of failures.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 

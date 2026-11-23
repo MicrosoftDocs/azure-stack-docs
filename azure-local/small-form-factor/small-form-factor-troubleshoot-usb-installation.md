@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot USB Installation for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to troubleshoot USB installation issues for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: troubleshooting
 ms.date: 10/28/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

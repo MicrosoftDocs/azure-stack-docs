@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub managed disks differences and considerations
 description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to know the differences between managed disks for Azure and managed disks for Azure Stack so I can simplify disk management for IaaS.

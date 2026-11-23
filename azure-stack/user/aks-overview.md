@@ -1,10 +1,10 @@
 ---
 title: Azure Kubernetes Service on Azure Stack Hub overview for users
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub overview for users.
-author: sethmanheim
+author: scompton1045
 ms.topic: install-set-up-deploy
 ms.date: 02/27/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: sumsmith
 ms.lastreviewed: 02/27/2025
 

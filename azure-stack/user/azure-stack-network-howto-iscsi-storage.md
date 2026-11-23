@@ -1,11 +1,11 @@
 ---
 title: How to connect to iSCSI storage with Azure Stack Hub
 description: Connect to iSCSI storage with Azure Stack Hub by deploying a VM as an iSCSI initiator. Get template details and PowerShell steps in this how-to guide.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 ms.custom: sfi-image-nochange

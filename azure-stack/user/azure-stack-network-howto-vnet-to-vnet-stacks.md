@@ -1,10 +1,10 @@
 ---
 title: Establish Azure Stack Hub VNET to VNET connection with Fortinet FortiGate NVA
 description: Learn how to establish VNet to VNet connectivity between two Azure Stack Hub instances using the Fortinet FortiGate NVA. Follow this step-by-step guide.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 ms.custom: sfi-image-nochange

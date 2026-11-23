@@ -1,8 +1,8 @@
 ---
 title: Supported Operations for Azure Local Multi-rack Virtual Machines (VMs) Enabled by Azure Arc
 description: Learn about the supported virtual machine (VM) operations for Azure Local multi-rack VMs enabled by Azure Arc.
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 04/15/2026

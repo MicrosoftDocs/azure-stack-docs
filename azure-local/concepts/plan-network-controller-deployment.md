@@ -1,8 +1,8 @@
 ---
 title: Plan to deploy Network Controller on Azure Local, version 23H2
 description: This article covers how to plan to deploy Network Controller on Azure Local via Windows Admin Center on a set of virtual machines (VMs).
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: install-set-up-deploy
 ms.date: 10/12/2026
 ms.subservice: hyperconverged

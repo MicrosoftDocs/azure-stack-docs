@@ -2,11 +2,11 @@
 title: Overview of remote support for Azure Stack Hub
 titleSuffix: Azure Stack Hub
 description: Learn about remote support for Azure Stack Hub
-author: sethmanheim
+author: scompton1045
 
 ms.topic: concept-article
 ms.date: 07/27/2023
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: shisab
 ms.lastreviewed: 07/27/2023
 

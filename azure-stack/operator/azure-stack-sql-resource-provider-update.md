@@ -2,11 +2,11 @@
 title: Update the Azure Stack Hub SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Update the Azure Stack Hub SQL resource provider to the latest build. Learn the prerequisites, upgrade steps, and validation process to keep your deployment current.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: jiadu
 ms.lastreviewed: 08/24/2021
 

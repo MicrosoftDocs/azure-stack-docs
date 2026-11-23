@@ -1,10 +1,10 @@
 ---
 title: Azure Kubernetes Service on Azure Stack Hub support
 description: Learn how to get support for Azure Kubernetes Service (AKS) on Azure Stack Hub, including preview limitations and feedback options. Read now.
-author: sethmanheim
+author: scompton1045
 ms.topic: install-set-up-deploy
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 

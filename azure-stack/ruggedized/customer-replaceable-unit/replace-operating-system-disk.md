@@ -1,11 +1,11 @@
 ---
 title: Replace an operating system disk
 description: Learn how to replace an operating system disk
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: release-notes
 ms.date: 02/19/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: carlosm
 ms.lastreviewed: 02/19/2025
 

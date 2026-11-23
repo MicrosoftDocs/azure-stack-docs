@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot management and connectivity
 description: Learn how to troubleshoot management and connectivity issues for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: concept-article
 ms.date: 10/28/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

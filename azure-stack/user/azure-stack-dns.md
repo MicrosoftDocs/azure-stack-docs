@@ -1,10 +1,10 @@
 ---
 title: DNS in Azure Stack Hub 
 description: Learn about DNS in Azure Stack Hub and how to create and manage DNS zones.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 3/26/2021
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 3/26/2021
 ms.custom: sfi-image-nochange
 

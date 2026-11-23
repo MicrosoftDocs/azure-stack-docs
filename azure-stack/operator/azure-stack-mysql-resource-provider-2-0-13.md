@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub MyMySQL resource provider 2.0.13.x release notes 
 description: View the release notes to see what's new in the Azure Stack Hub MyMySQL resource provider 2.0.13.x update.
-author: sethmanheim
+author: scompton1045
 ms.topic: release-notes
 ms.date: 02/16/2023
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: jiadu
 ms.lastreviewed: 02/16/2023
 

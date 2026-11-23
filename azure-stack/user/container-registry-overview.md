@@ -1,10 +1,10 @@
 ---
 title: Azure Container Registry on Azure Stack Hub user overview 
 description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registry.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 07/23/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
 

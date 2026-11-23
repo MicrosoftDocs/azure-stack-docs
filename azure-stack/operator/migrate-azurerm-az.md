@@ -1,8 +1,8 @@
 ---
 title: Migrate Azure PowerShell scripts from AzureRM to Az in Azure Stack Hub
 description: Learn the steps and tools for migrating scripts from the AzureRM module to the new Az module in Azure Stack Hub.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: upgrade-and-migration-article
 ms.custom:
   - devx-track-azurepowershell

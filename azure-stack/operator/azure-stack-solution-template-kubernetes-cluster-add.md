@@ -2,12 +2,12 @@
 title: Add Kubernetes to Azure Stack Hub Marketplace
 titleSuffix: Azure Stack Hub
 description: Learn how to add Kubernetes to Azure Stack Hub Marketplace.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 03/24/2020v
 

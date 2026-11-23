@@ -2,12 +2,12 @@
 title: Azure Stack Hub ruggedized deployment and set up for the Azure Stack Hub Hardware Lifecycle Host (HLH) management server | Microsoft Docs
 description: Learn what to expect for a successful on-site deployment of a Azure Stack Hub ruggedized, from planning to post-deployment.
 services: azure-stack
-author: sethmanheim
+author: scompton1045
 manager: lizross
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 06/02/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: asganesh
 ms.lastreviewed: 02/17/2021
 ---

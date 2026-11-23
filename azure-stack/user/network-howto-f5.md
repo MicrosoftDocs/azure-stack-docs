@@ -1,11 +1,11 @@
 ---
 title: Deploy F5 across two Azure Stack Hub instances 
 description: Learn how to deploy F5 across two Azure Stack Hub instances.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 12/2/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 ms.custom: sfi-image-nochange

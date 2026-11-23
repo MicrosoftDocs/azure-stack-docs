@@ -4,8 +4,8 @@ ms.service: azure-local
 ms.reviewer: robess
 description: Learn how Azure Local supports external SAN integration, enabling high-performance storage for VMs, AKS clusters, and AVD instances without re-architecture.
 ms.topic: concept-article
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 11/13/2025
 ai-usage: ai-assisted
 ---

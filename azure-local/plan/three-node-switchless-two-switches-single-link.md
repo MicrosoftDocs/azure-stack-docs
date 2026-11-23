@@ -2,8 +2,8 @@
 title: Azure Local three-node storage switchless, dual TOR, single link deployment network reference pattern
 description: Plan to deploy an Azure Local three-node storage switchless, dual TOR, single link network reference pattern.
 ms.topic: concept-article
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 04/05/2026
 ms.custom:

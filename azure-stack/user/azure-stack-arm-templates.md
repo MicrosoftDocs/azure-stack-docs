@@ -1,12 +1,12 @@
 ---
 title: Use Azure Resource Manager templates in Azure Stack Hub 
 description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.custom:
   - devx-track-arm-template
 ms.date: 2/1/2022
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2019
 

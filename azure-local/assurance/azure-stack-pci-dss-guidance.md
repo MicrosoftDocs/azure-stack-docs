@@ -4,8 +4,8 @@ description: Learn about PCI DSS compliance using Azure Local.
 ms.date: 04/09/2025
 ms.topic: concept-article
 ms.service: azure-local
-ms.author: robess
-author: ronmiab
+ms.author: scompton
+author: scompton1045
 ms.subservice: hyperconverged
 ---
 

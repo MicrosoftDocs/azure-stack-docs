@@ -2,11 +2,11 @@
 title: Guest operating systems supported on Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: feature-availability
 ms.custom: linux-related-content
 ms.date: 06/04/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2021
 

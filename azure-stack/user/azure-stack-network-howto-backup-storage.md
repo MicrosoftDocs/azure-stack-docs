@@ -1,11 +1,11 @@
 ---
 title: Back up your storage accounts on Azure Stack Hub
 description: Learn how to back up your storage accounts on Azure Stack Hub with step-by-step guidance on data replication, AzCopy setup, and disaster recovery strategies.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 ms.custom: sfi-image-nochange

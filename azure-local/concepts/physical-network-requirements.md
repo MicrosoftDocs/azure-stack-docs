@@ -1,10 +1,10 @@
 ---
 title: Physical network requirements for Azure Local
 description: Learn about physical network requirements for Azure Local, including network switches, to ensure optimal performance.
-author: ronmiab
+author: scompton1045
 ms.topic: concept-article
 ms.date: 03/27/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

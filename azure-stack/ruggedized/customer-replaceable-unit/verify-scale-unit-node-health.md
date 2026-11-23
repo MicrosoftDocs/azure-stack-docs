@@ -1,11 +1,11 @@
 ---
 title: Verify scale unit node health
 description: Learn how to verify scale unit node health
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

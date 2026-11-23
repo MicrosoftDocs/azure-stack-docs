@@ -2,10 +2,10 @@
 title: Validate Azure Graph integration
 titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate graph integration for Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/19/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: jerskine
 ms.lastreviewed: 10/19/2020
 

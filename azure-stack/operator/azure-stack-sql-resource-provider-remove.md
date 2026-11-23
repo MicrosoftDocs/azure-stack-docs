@@ -2,10 +2,10 @@
 title: Remove the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Remove SQL resource provider dependencies and run the uninstall script in Azure Stack Hub. Get clear instructions and required parameters to complete the task.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: jiadu
 ms.lastreviewed: 08/24/2021
 

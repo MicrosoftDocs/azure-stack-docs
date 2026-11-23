@@ -1,10 +1,10 @@
 ---
 title: Install Azure Container Registry on Azure Stack Hub 
 description: Learn how to install Azure Container Registry on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/27/2024
-ms.author: sethm
+ms.author: scompton
 ms.custom: sfi-image-nochange
 
 ---

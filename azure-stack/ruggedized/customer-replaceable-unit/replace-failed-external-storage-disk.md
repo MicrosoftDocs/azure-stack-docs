@@ -1,11 +1,11 @@
 ---
 title: Replace a failed data drive
 description: Learn how to replace a failed data drive
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

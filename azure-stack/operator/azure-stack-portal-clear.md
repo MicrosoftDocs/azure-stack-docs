@@ -1,10 +1,10 @@
 ---
 title: Clear portal user data on demand from Azure Stack Hub
 description: Learn how to clear portal user data when requested by Azure Stack Hub users.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
 

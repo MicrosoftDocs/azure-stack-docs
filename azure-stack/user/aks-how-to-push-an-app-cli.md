@@ -1,10 +1,10 @@
 ---
 title: Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to deploy Prometheus and Grafana test apps to AKS on Azure Stack Hub. Follow this step-by-step guide to configure your cluster.
-author: sethmanheim
+author: scompton1045
 ms.topic: install-set-up-deploy
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 ms.custom: sfi-ropc-nochange

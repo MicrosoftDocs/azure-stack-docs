@@ -1,8 +1,8 @@
 ---
 title: Azure Local release information
 description: Learn about Azure Local releases, including OS builds, supported update paths, and key considerations for staying in a supported state.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: release-notes
 ms.service: azure-local
 ms.date: 11/20/2026

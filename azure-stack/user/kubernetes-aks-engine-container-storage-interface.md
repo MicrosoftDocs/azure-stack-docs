@@ -1,11 +1,11 @@
 ---
 title: Add container storage to Kubernetes in Azure Stack Hub 
 description: Learn how to add container storage to Kubernetes in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 12/21/2022
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 3/4/2021
 

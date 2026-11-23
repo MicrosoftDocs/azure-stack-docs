@@ -1,10 +1,10 @@
 ---
 title: Diagnostic log collection
 description: Learn about diagnostic log collection.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/01/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 09/20/2021
 ms.custom: sfi-image-nochange
 

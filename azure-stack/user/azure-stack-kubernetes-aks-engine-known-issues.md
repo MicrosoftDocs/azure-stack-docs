@@ -1,10 +1,10 @@
 ---
 title: Known issues with AKS engine on Azure Stack Hub 
 description: Learn about known issues using AKS engine on Azure Stack Hub. 
-author: sethmanheim
+author: scompton1045
 ms.topic: troubleshooting-known-issue
 ms.date: 04/24/2023
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
 

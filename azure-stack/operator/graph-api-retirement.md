@@ -1,8 +1,8 @@
 ---
 title: Entra ID Graph API retirement
 description: Learn how to mitigate the retirement of the Entra ID Graph API.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 04/15/2025
 ms.reviewer: rtiberiu

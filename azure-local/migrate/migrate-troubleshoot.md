@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot issues when migrating VMs to Azure Local using Azure Catalyst
 description: Learn about how to troubleshoot issues when migrating Windows VMs to your Azure Local instance using Azure Catalyst.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/13/2026
-ms.author: robess
+ms.author: scompton
 ms.custom:
   - linux-related-content
   - sfi-image-nochange

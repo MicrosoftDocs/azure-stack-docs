@@ -1,10 +1,10 @@
 ---
 title: Use the template validation tool in Azure Stack Hub 
 description: Check templates for deployment to Azure Stack Hub with a template validation tool.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 03/06/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 10/27/2021
 
 # Intent: As an Azure Stack user, I want to use the template validation tool so I can see if my templates are ready to deploy.

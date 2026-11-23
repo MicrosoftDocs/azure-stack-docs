@@ -1,10 +1,10 @@
 ---
 title: Create a subscription with an offer in Azure Stack Hub 
 description: Learn how to create a new subscription with an offer in Azure Stack Hub and then test the offer with a test VM.
-author: sethmanheim
+author: scompton1045
 ms.topic: tutorial
 ms.date: 01/16/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 11/13/2019
 ms.custom: sfi-image-nochange
 

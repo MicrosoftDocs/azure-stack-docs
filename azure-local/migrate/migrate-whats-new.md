@@ -1,8 +1,8 @@
 ---
 title: What's new in Azure Catalyst
 description: What's new in Azure Catalyst for Azure Local, including the latest Hyper-V and VMware VM migration features, fixes, and role-based access updates.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 11/13/2026
 ms.service: azure-local

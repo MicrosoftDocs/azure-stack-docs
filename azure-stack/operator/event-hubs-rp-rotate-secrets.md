@@ -1,8 +1,8 @@
 ---
 title: How to rotate secrets for the Event Hubs on Azure Stack Hub resource provider
 description: Learn how to rotate secrets for the Event Hubs on Azure Stack Hub resource provider
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/15/2020

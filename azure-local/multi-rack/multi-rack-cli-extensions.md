@@ -1,8 +1,8 @@
 ---
 title: Install CLI extensions for multi-rack deployments of Azure Local
 description: Learn how to install the needed Azure CLI extensions for multi-rack deployments of Azure Local.
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.topic: how-to
 ms.date: 04/15/2026

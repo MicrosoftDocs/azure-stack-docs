@@ -1,10 +1,10 @@
 ---
 title: Add public IP addresses in Azure Stack Hub 
 description: Learn how to add public IP addresses to an Azure Stack Hub system.  
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/12/2024
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 09/10/2019
 
 # Intent: As an Azure Stack operator, I want to add public IP addresses to my Azure Stack network.

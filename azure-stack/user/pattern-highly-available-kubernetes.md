@@ -1,10 +1,10 @@
 ---
 title: High availability Kubernetes pattern using Azure and Azure Stack Hub
 description: Learn how a Kubernetes cluster solution provides high availability using Azure and Azure Stack Hub.
-author: ronmiab 
+author: scompton1045 
 ms.topic: how-to
 ms.date: 03/04/2026
-ms.author: robess
+ms.author: scompton
 ms.reviewer: bryanla
 ms.lastreviewed: 12/03/2020
 

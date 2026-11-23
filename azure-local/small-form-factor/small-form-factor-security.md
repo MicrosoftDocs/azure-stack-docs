@@ -1,8 +1,8 @@
 ---
 title: Security Features for Small Form Factor Deployments of Azure Local (Preview)
 description: Security guidance and best practices for securing small form factor deployments of Azure Local (preview).
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 08/17/2026

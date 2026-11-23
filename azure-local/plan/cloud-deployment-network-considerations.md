@@ -1,7 +1,7 @@
 ---
 title: Network considerations for cloud deployment for Azure Local
 description: Plan the network architecture for an Azure Local cloud deployment by using an 11-decision design framework that covers connectivity mode, architecture, topology, storage, intents, IP addressing, backup, outbound connectivity, and software defined networking.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/02/2026
 ms.author: cedward

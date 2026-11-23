@@ -1,11 +1,11 @@
 ---
 title: Privileged Access Workstation and privileged endpoint access
 description: Learn about the Privileged Access Workstation and privileged endpoint access
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

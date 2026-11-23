@@ -1,8 +1,8 @@
 ---
 title: Deploy SQL Server on Azure Local Version 23H2
 description: This article provides guidance on how to deploy SQL Server on Azure Local, version 23H2.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 10/10/2025
 ms.subservice: hyperconverged

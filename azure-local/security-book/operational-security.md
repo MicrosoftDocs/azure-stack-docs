@@ -1,10 +1,10 @@
 ---
 title:  Operational security for the Azure Local security book
 description: Learn about operational security for the Azure Local security book.
-author: ronmiab
+author: scompton1045
 ms.topic: concept-article
 ms.date: 11/12/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

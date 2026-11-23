@@ -1,11 +1,11 @@
 ---
 title: Rotate Kubernetes certificates using AKS engine on Azure Stack Hub
 description: Learn how to rotate Kubernetes certificates on AKS engine clusters in Azure Stack Hub. Follow this guide for secure cluster maintenance and updates.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/09/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 05/17/2022
 

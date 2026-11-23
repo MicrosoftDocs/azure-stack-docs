@@ -1,8 +1,8 @@
 ---
 title: How to install Event Hubs on Azure Stack Hub
 description: Learn how to install the Event Hubs resource provider on Azure Stack Hub. 
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 02/24/2023

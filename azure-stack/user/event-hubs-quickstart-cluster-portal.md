@@ -1,8 +1,8 @@
 ---
 title: Create an Event Hubs on Azure Stack Hub cluster using the portal
 description: Learn how to create an Event Hubs on Azure Stack Hub cluster, using the Azure Stack Hub user portal.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 07/07/2021

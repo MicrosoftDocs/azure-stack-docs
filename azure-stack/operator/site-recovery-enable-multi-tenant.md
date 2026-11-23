@@ -1,8 +1,8 @@
 ---
 title: Enable multitenant scenarios for Azure Site Recovery on Azure Stack Hub
 description: Learn how to Enable multiple tenants for Azure Site Recovery on Azure Stack Hub.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 05/01/2024
 ms.reviewer: rtiberiu

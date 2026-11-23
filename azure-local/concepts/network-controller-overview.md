@@ -1,8 +1,8 @@
 ---
 title: Overview of Network Controller in Azure Local and Windows Server
 description: Use this article to learn about Network Controller for Software Defined Networking managed by on-premises tools in Azure Local and Windows Server.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/16/2025

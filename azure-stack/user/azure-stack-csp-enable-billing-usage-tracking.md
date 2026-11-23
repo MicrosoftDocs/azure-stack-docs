@@ -1,11 +1,11 @@
 ---
 title: Let your Cloud Solution Provider manage your Azure Stack Hub subscription 
 description: Learn how to let your Cloud Solution Provider (CSP) manage your Azure Stack Hub subscription for you.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
 

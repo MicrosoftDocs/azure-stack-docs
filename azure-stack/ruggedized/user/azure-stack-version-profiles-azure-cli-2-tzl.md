@@ -2,12 +2,12 @@
 title: Manage Azure Stack Hub with Azure CLI | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
 services: azure-stack
-author: sethmanheim
+author: scompton1045
 manager: lizross
 ms.service: azure-stack
 ms.topic: install-set-up-deploy
 ms.date: 08/19/2024
-ms.author: sethm
+ms.author: scompton
 ms.custom:
   - devx-track-azurecli
   - linux-related-content

@@ -1,10 +1,10 @@
 ---
 title: Run Containerized Workloads on a Provisioned Machine for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to run containerized workloads on a provisioned machine (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 05/04/2026    
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

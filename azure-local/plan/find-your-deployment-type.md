@@ -2,8 +2,8 @@
 title: Find your Azure Local deployment type
 description: Use this wizard-style guide to choose the Azure Local deployment type that fits your connectivity, scale, and architecture requirements.
 #customer intent: As an IT admin evaluating Azure Local, I want a guided way to identify the deployment type that fits my requirements so that I follow the correct setup path on first try.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 09/17/2026
 ms.topic: concept-article
 ms.service: azure-local

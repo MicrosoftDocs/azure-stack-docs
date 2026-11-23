@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.date: 07/09/2026
 ms.topic: troubleshooting-general
 ms.reviewer: unknown

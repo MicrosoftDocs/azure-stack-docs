@@ -1,10 +1,10 @@
 --- 
 title: Register your Azure Local machines with Azure Arc and assign permissions for deployment 
 description: Learn how to register your Azure Local machines with Azure Arc and assign permissions for deployment. 
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/30/2025
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.custom:
   - devx-track-azurepowershell

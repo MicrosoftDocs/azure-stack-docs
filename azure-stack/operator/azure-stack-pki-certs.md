@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub public key infrastructure certificate requirements 
 description: Learn about the Azure Stack Hub PKI certificate requirements for Azure Stack Hub integrated systems.
-author: sethmanheim
+author: scompton1045
 ms.topic: checklist
 ms.date: 08/12/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 06/07/2021
 
 # Intent: As an Azure Stack Hub operator, I want to learn about the Azure Stack Hub PKI certificate requirements.

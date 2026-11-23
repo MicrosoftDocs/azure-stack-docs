@@ -1,8 +1,8 @@
 ---
 title: Deploy rack aware cluster using the Azure portal
 description: Learn how to deploy a rack aware cluster via the Azure portal with step-by-step guidance, including configuration, networking, and validation processes.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 10/23/2026
 ms.topic: how-to
 ---

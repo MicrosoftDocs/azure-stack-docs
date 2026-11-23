@@ -1,11 +1,11 @@
 ---
 title: Use the Azure Stack Hub policy module
 description: Learn how to constrain an Azure subscription to behave like an Azure Stack Hub subscription
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 06/06/2022
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 11/22/2020
 ms.custom:
   - devx-track-azurepowershell

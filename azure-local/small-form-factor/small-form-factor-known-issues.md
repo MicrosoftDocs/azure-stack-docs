@@ -1,10 +1,10 @@
 ---
 title: Known Issues for Small Form Factor Deployments of Azure Local (preview)
 description: Read about the known issues and limitations for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: concept-article
 ms.date: 10/28/2026
-ms.author: sipastak
+ms.author: scompton
 ---
 
 # Known issues for small form factor deployments of Azure Local (preview)

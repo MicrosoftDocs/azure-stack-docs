@@ -1,10 +1,10 @@
 ---
 title: Migrate workloads to AKS engine from AKS preview on Azure Stack Hub
 description: Learn how to migrate workloads from the AKS preview on Azure Stack Hub to a Kubernetes cluster created in AKS engine and compare supported Azure Kubernetes Service features.
-author: sethmanheim
+author: scompton1045
 ms.topic: upgrade-and-migration-article
 ms.date: 02/27/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: sumsmith
 ms.lastreviewed: 02/27/2025
 

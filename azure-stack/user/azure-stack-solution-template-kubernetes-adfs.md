@@ -1,11 +1,11 @@
 ---
 title: Deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services (AD FS) 
 description: Learn how to deploy Kubernetes to Azure Stack Hub using Active Directory Federated Services (AD FS).
-author: sethmanheim
+author: scompton1045
 
 ms.topic: install-set-up-deploy
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
 ms.custom: sfi-image-nochange

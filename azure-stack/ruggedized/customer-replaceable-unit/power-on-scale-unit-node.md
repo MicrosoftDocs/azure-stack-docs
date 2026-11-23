@@ -1,11 +1,11 @@
 ---
 title: Power on scale unit node
 description: Learn how to power on scale unit node
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

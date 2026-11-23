@@ -1,10 +1,10 @@
 ---
 title: Connect to Small Form Factor Deployments of Azure Local using JIT Access (preview)
 description: Learn how to connect to small form factor deployments of Azure Local using JIT access (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/17/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

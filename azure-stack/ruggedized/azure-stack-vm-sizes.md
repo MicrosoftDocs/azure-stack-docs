@@ -2,12 +2,12 @@
 title: VM sizes supported in Azure Stack | Microsoft Docs
 description: Reference for the supported VM sizes in an Azure Stack Hub ruggedized.
 services: azure-stack
-author: sethmanheim
+author: scompton1045
 manager: lizross
 ms.service: azure-stack
 ms.topic: reference
 ms.date: 10/14/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/14/2020
 

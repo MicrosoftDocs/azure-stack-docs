@@ -1,11 +1,11 @@
 ---
 title: Replace the heater
 description: Learn how to replace the heater
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 

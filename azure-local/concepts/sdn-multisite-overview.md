@@ -1,8 +1,8 @@
 ---
 title: Overview of SDN Multisite in Azure Local and Windows Server
 description: This article provides an overview of the SDN Multisite solution.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: concept-article
 zone_pivot_groups: windows-os
 ms.service: azure-local

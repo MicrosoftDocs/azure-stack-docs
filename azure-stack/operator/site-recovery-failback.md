@@ -2,8 +2,8 @@
 
 title: Azure Site Recovery failback tool user guide
 description: Learn how to use the Azure Site Recovery failback tool to protect virtual machines (VMs).
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.date: 07/26/2021
 ms.topic: how-to
 ms.lastreviewed: 11/19/2020

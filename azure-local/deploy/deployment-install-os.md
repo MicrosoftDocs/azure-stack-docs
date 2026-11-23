@@ -1,10 +1,10 @@
 ---
 title: Install Azure Stack HCI operating system, version 23H2 using SConfig
 description: Learn how to install the Azure Stack HCI operating system, version 23H2 on each machine of your system using SConfig.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 06/30/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged

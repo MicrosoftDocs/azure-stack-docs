@@ -1,11 +1,11 @@
 ---
 title: Infrastructure Backup Service reference 
 description: Reference material for the Infrastructure Backup Service in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: overview
 ms.date: 08/23/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2019
 

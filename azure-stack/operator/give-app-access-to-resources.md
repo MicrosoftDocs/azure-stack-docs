@@ -1,8 +1,8 @@
 ---
 title: Give an app access to Azure Stack Hub resources
 description: Learn how to give an app access to Azure Stack Hub resources.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 01/30/2025
 ms.lastreviewed: 03/18/2022

@@ -1,10 +1,10 @@
 ---
 title: Azure disconnected deployment decisions for Azure Stack Hub integrated systems 
 description: Learn about Azure disconnected deployment of Azure Stack Hub integrated systems and the planning decisions to consider.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 01/22/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 11/01/2019
 
 # Intent: As an Azure Stack operator, I want to know the planning decisions for deploying Azure Stack integrated systems disconnected from Azure.

@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub known issues 
 description: Learn about known issues in Azure Stack Hub releases.
-author: sethmanheim
+author: scompton1045
 ms.topic: troubleshooting-known-issue
 ms.date: 06/23/2026
-ms.author: sethm
+ms.author: scompton
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
 # Keyword: Notdone: keyword noun phrase

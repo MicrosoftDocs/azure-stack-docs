@@ -1,8 +1,8 @@
 ---
 title: Overview of Azure Local rack aware clustering
 description: Use this article to learn about Azure Local rack aware clustering.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: overview
 ms.service: azure-local
 ms.date: 10/15/2025

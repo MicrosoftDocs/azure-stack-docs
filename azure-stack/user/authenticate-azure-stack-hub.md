@@ -1,13 +1,13 @@
 ---
 title: Get authentication information for Azure Stack Hub 
 description: Learn how to get authentication information for Azure Stack Hub
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.custom:
   - devx-track-arm-template
 ms.date: 12/2/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 

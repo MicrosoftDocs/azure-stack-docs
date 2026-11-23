@@ -1,8 +1,8 @@
 ---
 title: Create virtual networks for multi-rack deployments of Azure Local (preview)
 description: Learn how to create virtual networks for multi-rack deployments of Azure Local (preview).
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 11/17/2025

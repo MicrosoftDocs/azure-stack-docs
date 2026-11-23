@@ -1,8 +1,8 @@
 ---
 title:  Configure Network ATC on Azure Local
 description: Learn how to configure Network ATC on Azure Local.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 12/02/2025
 ms.service: azure-local

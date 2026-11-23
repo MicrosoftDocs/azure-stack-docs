@@ -1,10 +1,10 @@
 ---
 title: Deploy GPU-Enabled Workloads on a Provisioned Machine (preview)
 description: Deploy GPU-enabled workloads on a provisioned machine for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 05/04/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

@@ -1,10 +1,10 @@
 ---
 title: Overview of identity providers for Azure Stack Hub 
 description: Learn about the identity providers you can use with Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: overview
 ms.date: 08/19/2024
-ms.author: sethm
+ms.author: scompton
 ms.custom: sfi-image-nochange
 
 # Intent: As an Azure Stack operator, I want an overview for the identity provider options I have when deploying Azure Stack.
