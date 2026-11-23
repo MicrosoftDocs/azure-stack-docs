@@ -1,10 +1,10 @@
 ---
 title: Install solution upgrade on Azure Local using Azure Resource Manager template
 description: Learn how to install the solution upgrade on your Azure Local instance using Azure Resource Manager template.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 04/28/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---
