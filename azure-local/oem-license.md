@@ -1,10 +1,10 @@
 ---
 title: OEM license for Azure Local overview
 description: Learn about the OEM license for Azure Local, its benefits, license requirements, activation, and more.
-author: ronmiab
+author: scompton1045
 ms.topic: overview
 ms.date: 02/11/2026
-ms.author: robess
+ms.author: scompton
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

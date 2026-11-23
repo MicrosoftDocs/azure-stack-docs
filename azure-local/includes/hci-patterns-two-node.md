@@ -1,7 +1,7 @@
 ---
 ms.topic: include
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 12/26/2022
 ---

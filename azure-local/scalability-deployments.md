@@ -2,8 +2,8 @@
 title: Azure Local Deployment Types and Scalability
 description: Discover how Azure Local offers scalable on-premises solutions for critical workloads, from single machines to hundreds of machines, tailored to your needs.
 #customer intent: As an IT admin, I want to understand the different Azure Local deployment types so that I can choose the best option for my organization's needs.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 04/29/2026
 ms.topic: concept-article
 ms.service: azure-local

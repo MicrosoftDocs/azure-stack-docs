@@ -1,6 +1,6 @@
 ---
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.topic: include
 ms.date: 01/08/2025
