@@ -1,11 +1,11 @@
 ---
 title: Indicators and codes
 description: Learn about indicators and codes
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 
 

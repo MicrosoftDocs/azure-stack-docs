@@ -1,11 +1,11 @@
 ---
 title: Azure Stack Hub hardware diagram
 description: Learn about the hardware in the Azure Stack Hub ruggedized.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/14/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer:
 ms.lastreviewed:
 

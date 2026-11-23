@@ -1,11 +1,11 @@
 ---
 title: Power on and repair a scale unit node
 description: Learn how to power on and repair a scale unit node
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: 
 ms.lastreviewed: 
 ms.custom: sfi-image-nochange
