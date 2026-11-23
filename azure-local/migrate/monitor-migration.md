@@ -1,10 +1,10 @@
 ---
 title: Monitor Azure Local Migrations Using Diagnostic Settings in Azure Catalyst
 description: Learn how to monitor Azure Local migrations using diagnostic settings in Azure Catalyst.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/09/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

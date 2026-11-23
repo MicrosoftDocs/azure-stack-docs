@@ -1,10 +1,10 @@
 ---
 title: Use Azure Catalyst to move VMware VMs to Azure Local
 description: Learn about how to use Azure Catalyst to migrate VMware VMs to your Azure Local instance.
-author: ronmiab
+author: scompton1045
 ms.topic: overview
 ms.date: 11/09/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

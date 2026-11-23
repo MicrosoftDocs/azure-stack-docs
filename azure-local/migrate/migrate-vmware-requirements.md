@@ -1,10 +1,10 @@
 ---
 title: Review requirements for VMware VM migration to Azure Local using Azure Catalyst
 description: Learn the system requirements for VMware migration to Azure Local using Azure Catalyst.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/10/2026
-ms.author: robess
+ms.author: scompton
 ms.custom: references_regions
 ms.subservice: hyperconverged
 ---

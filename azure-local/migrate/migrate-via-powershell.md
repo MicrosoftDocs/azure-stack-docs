@@ -1,10 +1,10 @@
 --- 
 title: Migrate VMs to Azure Local using PowerShell, Azure CLI, or Terraform
 description: Learn how to migrate VMs to Azure Local with Azure Catalyst using PowerShell, Azure CLI, or Terraform.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/09/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

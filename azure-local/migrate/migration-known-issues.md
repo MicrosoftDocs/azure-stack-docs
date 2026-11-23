@@ -2,8 +2,8 @@
 title: Known issues in Azure Catalyst for Azure Local
 description: Fix Azure Local migration issues in Azure Catalyst. Review common causes and proven solutions, then troubleshoot failures faster—start resolving issues now.
 ms.date: 11/09/2026
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.subservice: hyperconverged

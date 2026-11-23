@@ -1,10 +1,10 @@
 ---
 title: Enable guest management for migrated VMs (preview)
 description: Learn how to enable guest management for migrated VMs (preview).
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/09/2026
-ms.author: robess
+ms.author: scompton
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged
 ---

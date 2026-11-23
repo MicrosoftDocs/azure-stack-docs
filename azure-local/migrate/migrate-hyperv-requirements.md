@@ -1,10 +1,10 @@
 ---
 title: Review requirements for Hyper-V VM migration to Azure Local using Azure Catalyst (preview)
 description: Learn the system requirements for Hyper-V migration to Azure Local using Azure Catalyst (preview).
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 11/10/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

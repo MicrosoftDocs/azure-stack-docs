@@ -1,10 +1,10 @@
 ---
 title: Use Azure Catalyst to move Hyper-V VMs to Azure Local (preview)
 description: Learn about how to use Azure Catalyst to migrate Windows and Linux VMs to your Azure Local instance (preview).
-author: ronmiab
+author: scompton1045
 ms.topic: overview
 ms.date: 11/09/2026
-ms.author: robess
+ms.author: scompton
 ms.custom: linux-related-content
 ms.subservice: hyperconverged
 ---
