@@ -1,8 +1,8 @@
 ---
 title: Software defined networking (SDN) managed by on-premises tools in Azure Local, version 23H2
 description: Software defined networking (SDN) managed by on-premises tools provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in Azure Local.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: concept-article
 ms.service: azure-local
 ms.date: 09/05/2025

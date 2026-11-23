@@ -1,10 +1,10 @@
 ---
 title: Add or repair a node to a rack aware cluster on Azure Local
 description: Learn how to add or repair a node to a rack aware cluster on Azure Local.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/20/2025
-ms.author: robess
+ms.author: scompton
 ---
 
 # Add or repair a node to a rack aware cluster

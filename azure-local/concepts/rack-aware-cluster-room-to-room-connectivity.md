@@ -1,8 +1,8 @@
 ---
 title: Azure Local rack aware cluster room-to-room connectivity
 description: Learn about Azure Local rack aware cluster room-to-room connectivity.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 02/24/2026
 ms.service: azure-local
 ms.topic: concept-article

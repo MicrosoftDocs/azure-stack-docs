@@ -1,10 +1,10 @@
 ---
 title: Requirements and supported configurations for rack aware clusters
 description: Learn about requirements and supported configurations for rack aware clusters.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 02/24/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ---
 

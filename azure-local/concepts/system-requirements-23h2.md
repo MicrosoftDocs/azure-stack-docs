@@ -1,8 +1,8 @@
 ---
 title: System requirements for Azure Local
 description: How to choose machines, storage, and networking components for Azure Local.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.custom: references_regions

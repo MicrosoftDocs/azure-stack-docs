@@ -2,8 +2,8 @@
 title: Compare Management Capabilities of VMs on Azure Local
 description: Learn about the kinds of virtual machines (VMs) that can run on Azure Local and compare their management capabilities.
 ms.topic: product-comparison
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 11/09/2026
 ---
 

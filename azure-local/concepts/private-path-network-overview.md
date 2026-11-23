@@ -1,10 +1,10 @@
 ---
 title: Overview of private path network architecture for Azure Local
 description: Learn about private path network architecture for Azure Local.
-author: ronmiab
+author: scompton1045
 ms.topic: overview
 ms.date: 09/29/2026
-ms.author: robess 
+ms.author: scompton 
 ms.reviewer: cedward
 ---
 

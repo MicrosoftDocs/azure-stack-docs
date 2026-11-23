@@ -1,8 +1,8 @@
 ---
 title: Spread Azure Kubernetes Service (AKS) nodes in rack aware cluster
 description: Learn how to deploy AKS clusters with rack aware cluster support to ensure fault tolerance and evenly distribute nodes across Azure Local zones.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.reviewer: mindyqdiep
 ms.date: 10/14/2025
 ms.topic: concept-article

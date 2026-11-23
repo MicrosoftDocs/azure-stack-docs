@@ -1,8 +1,8 @@
 ---
 title: Azure Local telemetry and diagnostics extension
 description: This article describes the telemetry and diagnostics extension in Azure Local.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.reviewer: shisab
