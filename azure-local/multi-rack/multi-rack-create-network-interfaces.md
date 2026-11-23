@@ -1,8 +1,8 @@
 ---
 title: Create network interfaces for Azure Local VMs for multi-rack deployments
 description: Learn how to create network interfaces on an existing logical network associated with your Azure Local for multi-rack deployments. The Azure Local VM enabled by Azure Arc uses these network interfaces.
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.service: azure-local
 ms.date: 04/15/2026

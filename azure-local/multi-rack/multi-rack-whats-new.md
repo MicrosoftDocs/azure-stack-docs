@@ -2,8 +2,8 @@
 title: What's new in multi-rack deployments
 description: What's new in multi-rack deployments of Azure Local, including the latest AKS, networking, storage, security, and Azure Local VM features and fixes.
 ms.topic: whats-new
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 09/17/2026
 ms.subservice: multi-rack

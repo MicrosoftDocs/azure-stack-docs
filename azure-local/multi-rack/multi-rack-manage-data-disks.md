@@ -1,10 +1,10 @@
 ---
 title: Download Azure managed disk to Azure Local multi-rack
 description: Learn how to download an Azure managed disk to Azure Local multi-rack deployments.
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 04/15/2026
-ms.author: sipastak
+ms.author: scompton
 ms.reviewer: vlakshmanan
 ms.service: azure-local
 ms.custom: sfi-image-nochange

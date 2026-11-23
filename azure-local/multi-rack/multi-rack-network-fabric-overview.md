@@ -1,8 +1,8 @@
 ---
 title: Network Fabric Overview For Azure Local Multi-Rack Deployments
 description: Learn about network fabric resources for Azure Local multi-rack deployments.
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.topic: concept-article
 ms.date: 04/15/2026
