@@ -1,11 +1,11 @@
 ---
 title: Reset-DatacenterIntegrationConfiguration privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Reset-DatacenterIntegrationConfiguration
-author: sethmanheim
+author: scompton1045
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---

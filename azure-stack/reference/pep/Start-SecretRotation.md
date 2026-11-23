@@ -1,11 +1,11 @@
 ---
 title: Start-SecretRotation privileged endpoint cmdlet for Azure Stack Hub
 description: Reference for PowerShell Azure Stack Hub privileged endpoint - Start-SecretRotation
-author: sethmanheim
+author: scompton1045
 
 ms.topic: reference
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---
