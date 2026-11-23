@@ -1,10 +1,10 @@
 ---
 title: Azure Modular Data Center v2 OEM Release Notes
 description: OEM Release Notes for Azure Modular Data Center v2. Includes firmware and driver versions for all solution hardware.
-author: sethmanheim
+author: scompton1045
 ms.topic: article
 ms.date: 04/01/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: danlewi
 ms.lastreviewed:
 
