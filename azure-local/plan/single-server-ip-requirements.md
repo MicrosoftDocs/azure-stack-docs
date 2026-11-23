@@ -2,8 +2,8 @@
 title: Review single-server storage reference pattern IP requirements for Azure Local
 description: Review single-server storage reference pattern IP requirements for Azure Local.
 ms.topic: feature-availability
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 08/29/2026
 ms.subservice: hyperconverged

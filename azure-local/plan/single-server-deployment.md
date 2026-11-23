@@ -2,8 +2,8 @@
 title: Azure Local single node storage deployment network reference pattern
 description: Plan to deploy an Azure Local single-server storage network reference pattern.
 ms.topic: how-to
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.date: 12/30/2025
 ms.subservice: hyperconverged

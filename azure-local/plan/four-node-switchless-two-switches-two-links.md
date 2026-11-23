@@ -2,8 +2,8 @@
 title: Azure Local four-node storage switchless, dual TOR, dual link deployment network reference pattern
 description: Plan to deploy an Azure Local four-node storage switchless, dual TOR, dual link network reference pattern.
 ms.topic: concept-article
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.service: azure-local
 ms.custom: devx-track-arm-template
 ms.date: 04/05/2026
