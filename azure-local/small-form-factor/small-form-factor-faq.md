@@ -1,8 +1,8 @@
 ---
 title: Frequently Asked Questions for Small Form Factor Deployments of Azure Local (preview)
 description: This FAQ provides answers to common questions about small form factor deployments of Azure Local (preview).
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.date: 05/04/2026
 ms.topic: faq
 ms.service: azure-local

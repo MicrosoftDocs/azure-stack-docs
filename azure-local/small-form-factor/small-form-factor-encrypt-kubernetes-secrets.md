@@ -4,7 +4,7 @@ description: Learn how to Encrypt Kubernetes secrets on K3s for small form facto
 author: aditimittal
 ms.topic: how-to
 ms.date: 07/06/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

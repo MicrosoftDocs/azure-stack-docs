@@ -1,10 +1,10 @@
 ---
 title: Update your Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to Update your Small Form Factor Deployment of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/21/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

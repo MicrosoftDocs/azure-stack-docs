@@ -1,10 +1,10 @@
 ---
 title: Manage Azure Local Small Form Factor Storage devices (preview)
 description: Learn how to manage storage resources in Azure Local small form factor (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/17/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

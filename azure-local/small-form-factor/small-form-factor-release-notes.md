@@ -1,10 +1,10 @@
 ---
 title: Release Notes for Small Form Factor Deployments of Azure Local (preview)
 description: Read about new features, supported devices, and fixed issues in version 2610 of small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: release-notes
 ms.date: 10/28/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

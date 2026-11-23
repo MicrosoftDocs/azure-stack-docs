@@ -1,10 +1,10 @@
 ---
 title: Overview of Small Form Factor Deployments of Azure Local (preview)
 description: Learn about small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: concept-article
 ms.date: 10/19/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

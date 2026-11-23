@@ -1,10 +1,10 @@
 ---
 title: Configure JIT Access for Small Form Factor Deployments of Azure Local (preview)
 description: Learn how to configure JIT access for small form factor deployments of Azure Local (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/17/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---

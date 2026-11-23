@@ -1,8 +1,8 @@
 ---
 title: Prepare to deploy Azure Local on small form factor devices (preview)
 description: Learn about the deployment sequence and prepare your Azure subscription to deploy Azure Local on small form factor devices (preview).
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.date: 07/20/2026
 ms.topic: how-to
 ms.service: azure-local

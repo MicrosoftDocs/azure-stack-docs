@@ -1,10 +1,10 @@
 ---
 title: Install the maintenance environment for small form factor deployments of Azure Local (Preview)
 description: Learn how to install the maintenance environment for small form factor deployments of Azure Local and extract ownership vouchers to connect your machine to Azure (preview).
-author: sipastak
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/30/2026
-ms.author: sipastak
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: small-form-factor
 ---
