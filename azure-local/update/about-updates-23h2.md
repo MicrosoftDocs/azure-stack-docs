@@ -1,8 +1,8 @@
 ---
 title: About updates for Azure Local, version 23H2
 description: This article describes the updates feature for this release, benefits, and how to keep various pieces of your Azure Local, version 23H2 solution up to date.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: overview
 ms.reviewer: thoroet
 ms.date: 11/12/2026

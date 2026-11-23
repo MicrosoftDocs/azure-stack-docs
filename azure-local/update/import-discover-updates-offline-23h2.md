@@ -1,8 +1,8 @@
 ---
 title: Import and Discover Update Packages For Azure Local With Limited Connectivity
 description: This article describes how to import and discover update packages for Azure Local with limited connectivity.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.reviewer: arduppal
 ms.date: 11/20/2026

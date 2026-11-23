@@ -1,8 +1,8 @@
 ---
 title:  Use Azure Update Manager to update your Azure Local
 description: This article describes the Azure Update Manager, its benefits, and ways to use it to update your Azure Local system in the Azure portal.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.reviewer: mindydiep
 ms.date: 08/29/2026

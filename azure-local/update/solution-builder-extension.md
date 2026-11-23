@@ -1,8 +1,8 @@
 ---
 title: Solution Builder Extension updates on Azure Local, version 23H2
 description: This article describes the Solution Builder Extension updates and how to apply them on your Azure Local machines.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: overview
 ms.reviewer: dandefolo
 ms.date: 07/12/2026
