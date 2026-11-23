@@ -1,10 +1,10 @@
 ---
 title: Overview of Azure Local Deployment Using Local Identity with Azure Key Vault
 description: Learn about local identity with Azure Key Vault for Azure Local deployments, including benefits, supported tools, compatibility considerations, and supported services.
-author: ronmiab
+author: scompton1045
 ms.topic: overview
 ms.date: 07/21/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged

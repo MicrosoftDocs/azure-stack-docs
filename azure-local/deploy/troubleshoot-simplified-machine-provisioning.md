@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot Simplified Machine Provisioning for Azure Local (preview)
 description: Learn how to troubleshoot simplified machine provisioning for Azure Local (preview).
-ms.author: robess
-author: ronmiab
+ms.author: scompton
+author: scompton1045
 ms.topic: how-to
 ms.date: 04/01/2026
 ms.subservice: hyperconverged

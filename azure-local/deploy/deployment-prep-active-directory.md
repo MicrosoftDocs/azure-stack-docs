@@ -1,10 +1,10 @@
 --- 
 title: Prepare Active Directory for Azure Local deployment
 description: Learn how to prepare Active Directory for an Azure Local deployment by creating required OU and permissions to ensure a smooth deployment.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 06/16/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

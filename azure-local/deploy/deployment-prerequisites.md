@@ -1,10 +1,10 @@
 ---
 title: Prerequisites to Deploy Azure Local Version
 description: Review prerequisites to deploy Azure Local, including security, hardware, networking, and checklist requirements. Prepare your environment now.
-author: ronmiab
+author: scompton1045
 ms.topic: install-set-up-deploy
 ms.date: 11/13/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.subservice: hyperconverged
 ---

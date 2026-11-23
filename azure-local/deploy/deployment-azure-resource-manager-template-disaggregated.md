@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Local Using an Azure Resource Manager Template for Disaggregated Deployments
 description: Learn how to prepare and deploy an Azure Local instance using an Azure Resource Manager template for disaggregated deployments.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/21/2026
-ms.author: robess
+ms.author: scompton
 ms.reviewer: alkohli
 ms.service: azure-local
 ms.custom:

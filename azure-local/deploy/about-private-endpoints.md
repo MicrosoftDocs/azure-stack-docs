@@ -1,8 +1,8 @@
 ---
 title: About using Private Endpoints to Connect with Azure Local
 description: Review how Azure Private Endpoints can be used when deploying Azure Local, with and without Arc gateway, and with and without Proxy.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.date: 09/29/2026
 ms.topic: concept-article
 ---

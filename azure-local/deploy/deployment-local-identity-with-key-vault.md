@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Local Using Local Identity with Azure Key Vault
 description: Learn how to use local identity with Azure Key Vault for Azure Local deployment.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/01/2026
-ms.author: robess
+ms.author: scompton
 ms.service: azure-local
 ms.custom: sfi-image-nochange
 ms.subservice: hyperconverged

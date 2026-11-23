@@ -1,10 +1,10 @@
 ---
 title: Deploy Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
 description: Learn how to deploy infrastructure for Software Defined Networking managed by on-premises tools with Windows Admin Center for Azure Local
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 10/16/2025
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

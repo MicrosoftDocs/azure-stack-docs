@@ -1,8 +1,8 @@
 ---
 title: Install and Register Azure Local Machines using Simplified Machine Provisioning (preview)
 description: Install and register Azure Local machines using simplified machine provisioning (preview).
-author: sipastak
-ms.author: sipastak
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 05/04/2026
 ms.subservice: hyperconverged

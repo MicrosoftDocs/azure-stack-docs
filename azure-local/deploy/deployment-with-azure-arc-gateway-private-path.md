@@ -1,10 +1,10 @@
 ---
 title: Register Azure Local with Arc gateway and private path
 description: Learn how to register Azure Local with Azure Arc gateway and private path with proxy configured.
-author: ronmiab
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/25/2026
-ms.author: robess 
+ms.author: scompton 
 ms.reviewer: cedward
 ---
 

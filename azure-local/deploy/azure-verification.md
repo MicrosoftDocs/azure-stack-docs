@@ -1,8 +1,8 @@
 ---
 title: Azure verification for VMs on Azure Local
 description: Learn about the Azure verification for VMs feature on Azure Local.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell

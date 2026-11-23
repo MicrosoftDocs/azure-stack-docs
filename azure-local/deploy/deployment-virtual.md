@@ -1,8 +1,8 @@
 ---
 title: Deploy a virtual Azure Local, version 23H2 and 24H2 system
 description: Describes how to perform an Azure Local, version 23H2 virtualized deployment.
-author: ronmiab
-ms.author: robess
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 04/27/2026
 ms.subservice: hyperconverged
