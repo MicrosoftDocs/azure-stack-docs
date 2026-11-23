@@ -1,11 +1,11 @@
 ---
 title: Develop apps for Azure Stack Hub 
 description: Development considerations for prototyping apps on Azure Stack Hub using Azure services.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: get-started
 ms.date: 06/12/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
 

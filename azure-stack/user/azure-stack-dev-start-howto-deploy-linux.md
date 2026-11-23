@@ -1,11 +1,11 @@
 ---
 title: Deploy a Linux VM to Azure Stack Hub 
 description: Learn how to deploy a Linux virtual machine with an Ubuntu image to host a web app in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: overview
 ms.custom: linux-related-content
 ms.date: 01/28/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 

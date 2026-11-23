@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub VPN Fast Path 
 description: Learn about Azure Stack Hub VPN Fast Path for users
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/23/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: iacarago
 ms.lastreviewed: 03/09/2022
 ms.custom: sfi-image-nochange

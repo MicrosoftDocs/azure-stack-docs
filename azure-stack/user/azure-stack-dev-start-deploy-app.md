@@ -1,11 +1,11 @@
 ---
 title: Deploy an app to Azure Stack Hub 
 description: Deploy an app to Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: overview
 ms.date: 12/2/2020
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 

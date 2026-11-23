@@ -1,10 +1,10 @@
 ---
 title: Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 description: Set up the Azure Account extension in Visual Studio Code to connect to Azure Stack Hub. Follow step-by-step instructions for authentication and Cloud Shell access.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 8/27/2021
 ms.custom: vscode-azure-extension-update-completed

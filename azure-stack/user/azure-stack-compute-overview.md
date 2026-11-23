@@ -1,11 +1,11 @@
 ---
 title: Introduction to Azure Stack Hub VMs 
 description: Learn about Azure Stack Hub VMs.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: concept-article
 ms.date: 12/05/2022
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: unknown
 ms.lastreviewed: 01/05/2020
 

@@ -1,11 +1,11 @@
 ---
 title: Use Azure Monitor for containers on Azure Stack Hub 
 description: Learn how to use Azure Monitor for containers on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 9/2/2020
 

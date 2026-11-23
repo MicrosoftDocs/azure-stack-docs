@@ -1,10 +1,10 @@
 ---
 title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
 description: Explore known issues and FAQs for Azure Kubernetes Service on Azure Stack Hub. Get answers about preview support, node limits, and cluster management best practices.
-author: sethmanheim
+author: scompton1045
 ms.topic: troubleshooting-known-issue
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 12/8/2021
 

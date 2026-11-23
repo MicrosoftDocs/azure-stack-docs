@@ -1,11 +1,11 @@
 ---
 title: Deploy Kubernetes to use Azure Stack Hub containers 
 description: Learn how to deploy Kubernetes to use containers with Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: install-set-up-deploy
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
 

@@ -1,11 +1,11 @@
 ---
 title: Use Azure Monitor on Azure Stack Hub 
 description: Learn how to use Azure Monitor on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 2/1/2021
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 12/01/2019
 
 # Intent: As an Azure Stack user, I want to use Azure Monitor with Azure Stack so I can monitor Azure resources.

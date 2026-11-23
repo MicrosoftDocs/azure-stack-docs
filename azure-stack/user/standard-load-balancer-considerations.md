@@ -1,10 +1,10 @@
 ---
 title: Standard Load Balancer considerations in Azure Stack Hub and Azure
 description: Learn about differences in the Standard Load Balancer between Azure Stack Hub and Azure.
-author: sethmanheim
+author: scompton1045
 ms.topic: get-started
 ms.date: 09/03/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/29/2024
 

@@ -1,10 +1,10 @@
 ---
 title: Deploy a storage account to Azure Stack Hub in Visual Studio Code
 description: As a developer, deploy a storage account to Azure Stack Hub in Visual Studio Code
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 08/19/2022
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 7/23/2021
 ms.custom: vscode-azure-extension-update-completed

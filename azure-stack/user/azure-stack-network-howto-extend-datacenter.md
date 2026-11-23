@@ -1,11 +1,11 @@
 ---
 title: How to extend the datacenter on Azure Stack Hub
 description: Learn how to extend storage to Azure Stack Hub using Windows Server iSCSI Targets. Follow step-by-step guidance to connect on-premises storage to your workloads.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 ms.custom: sfi-image-nochange

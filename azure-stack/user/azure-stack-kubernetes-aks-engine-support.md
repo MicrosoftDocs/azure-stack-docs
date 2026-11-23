@@ -1,10 +1,10 @@
 ---
 title: Support policies for AKS engine on Azure Stack Hub  
 description: This topic contains the support policies for AKS engine on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: feature-availability
 ms.date: 02/04/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: sumsmith
 ms.lastreviewed: 02/04/2026
 

@@ -1,11 +1,11 @@
 ---
 title: Replicate resources across multiple Azure Stack Hub subscriptions
 description: Learn how to replicate Azure Stack Hub resources across subscriptions and stamps using the subscription replicator PowerShell script. Start automating today.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
 ms.custom: sfi-image-nochange

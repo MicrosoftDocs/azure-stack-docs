@@ -1,11 +1,11 @@
 ---
 title: Protect VMs deployed on Azure Stack Hub 
 description: Learn how to build a recovery plan to protect VMs deployed on Azure Stack Hub against data loss and unplanned downtime.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: concept-article
 ms.date: 6/10/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: hectorl
 ms.lastreviewed: 6/10/2021
 

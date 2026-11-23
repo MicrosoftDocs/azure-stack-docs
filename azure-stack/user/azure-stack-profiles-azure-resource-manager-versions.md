@@ -1,12 +1,12 @@
 ---
 title: Resource provider API versions supported by profiles in Azure Stack Hub
 description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.custom:
   - devx-track-arm-template
 ms.topic: concept-article
 ms.date: 12/6/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 12/6/2021
 

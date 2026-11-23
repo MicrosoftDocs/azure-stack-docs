@@ -1,11 +1,11 @@
 ---
 title: Create VPN Gateways for Azure Stack Hub
 description: Set up VPN gateways for Azure Stack Hub to establish site-to-site or site-to-multi-site connections. Explore deployment tools, gateway SKUs, and best practices.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: concept-article
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: cedward
 ms.lastreviewed: 03/02/2022
 ms.custom: sfi-image-nochange

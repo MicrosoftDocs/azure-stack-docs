@@ -1,12 +1,12 @@
 ---
 title: Run a Linux virtual machine on Azure Stack Hub
 description: Learn how to run a Linux VM on Azure Stack Hub with best practices for networking, storage, security, and disk management.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 07/09/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 

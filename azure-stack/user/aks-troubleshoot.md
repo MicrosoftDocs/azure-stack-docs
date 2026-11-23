@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to troubleshoot AKS clusters on Azure Stack Hub. Collect diagnostic logs, use scripts, and resolve common Kubernetes issues with our step-by-step guide.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 

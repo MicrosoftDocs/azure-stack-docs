@@ -1,11 +1,11 @@
 ---
 title: Run N-tier application in multiple Azure Stack Hub regions for high availability
 description: Learn how to architect N-tier applications across Azure Stack Hub regions for maximum uptime. Get step-by-step guidance on failover, routing, and SQL configuration.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 07/09/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 

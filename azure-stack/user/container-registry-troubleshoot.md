@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot issues in Azure Container Registry on Azure Stack Hub 
 description: Find answers to common issues with Azure Container Registry on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: troubleshooting
 ms.date: 07/25/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
 ms.custom: sfi-image-nochange

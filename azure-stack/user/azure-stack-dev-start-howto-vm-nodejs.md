@@ -1,10 +1,10 @@
 ---
 title: Deploy Node.js app to VM in Azure Stack Hub
 description: Deploy an Node.js app to Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/24/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: thoroet
 ms.lastreviewed: 8/20/2021
 

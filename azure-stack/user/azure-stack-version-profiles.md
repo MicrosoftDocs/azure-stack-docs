@@ -1,12 +1,12 @@
 ---
 title: Manage API version profiles in Azure Stack Hub 
 description: Learn about API version profiles in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.custom:
   - devx-track-arm-template
 ms.date: 10/03/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: weshi1
 ms.lastreviewed: 12/6/2021
 

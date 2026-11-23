@@ -1,10 +1,10 @@
 ---
 title: Store service principal credentials in Azure Stack Hub Key Vault 
 description: Learn how Key Vault stores service principal credentials on Azure Stack Hub
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 01/16/2020
 
 # Intent: As an Azure Stack user, I want to store my service principal credentials in Key Vault so I can later retrieve them. 

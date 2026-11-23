@@ -1,12 +1,12 @@
 ---
 title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
-author: ronmiab
+author: scompton1045
 ms.topic: install-set-up-deploy
 ms.custom:
   - devx-track-azurecli
 ms.date: 12/30/2025
-ms.author: robess
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 10/06/2022
 
