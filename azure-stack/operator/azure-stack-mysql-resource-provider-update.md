@@ -1,10 +1,10 @@
 ---
 title: Update the MySQL resource provider in Azure Stack Hub
 description: Learn how to update the Azure Stack Hub MySQL resource provider, including major version upgrades from V1 to V2. Follow our detailed instructions to get started.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/08/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: jiadu
 ms.lastreviewed: 09/26/2021
 

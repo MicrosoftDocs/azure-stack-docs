@@ -1,10 +1,10 @@
 ---
 title: Manage capacity and quotas 
 description: Learn how to Manage capacity and quotas with Azure Container Registry on Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 07/27/2024
-ms.author: sethm
+ms.author: scompton
 ---
 
 # Manage capacity and quotas for Azure Container Registry on Azure Stack Hub

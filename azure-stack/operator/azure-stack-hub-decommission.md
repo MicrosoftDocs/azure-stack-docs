@@ -1,8 +1,8 @@
 ---
 title: Decommission an Azure Stack Hub system
 description: Learn how to properly decommission an Azure Stack Hub system. 
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 03/23/2023
 ms.custom: template-how-to

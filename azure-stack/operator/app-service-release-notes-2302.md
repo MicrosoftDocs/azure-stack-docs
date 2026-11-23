@@ -1,10 +1,10 @@
 ---
 title: App Service on Azure Stack Hub 2302 release notes
 description: Learn about whats new in the 2302 release for App Service on Azure Stack Hub and where to download the update.
-author: sethmanheim
+author: scompton1045
 ms.topic: release-notes
 ms.date: 10/24/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: anwestg
 
 ---

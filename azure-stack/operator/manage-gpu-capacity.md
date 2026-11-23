@@ -1,8 +1,8 @@
 ---
 title: Manage GPU capacity in Azure Stack Hub
 description: Learn how to add GPUs to an existing Azure Stack Hub system. 
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 04/21/2025
 ms.custom: template-how-to

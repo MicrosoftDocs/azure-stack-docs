@@ -1,10 +1,10 @@
 ---
 title: Migrate SQL server  
 description: Learn how to migrate the Azure App Service on the Azure Stack Hub Resource Provider to SQL server.
-author: sethmanheim
+author: scompton1045
 ms.topic: upgrade-and-migration-article
 ms.date: 10/24/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: anwestg
 ms.custom: sfi-image-nochange
 

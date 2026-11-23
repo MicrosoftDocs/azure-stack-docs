@@ -1,11 +1,11 @@
 ---
 title: Add workers and infrastructure in App Service on Azure Stack Hub 
 description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
-author: sethmanheim
+author: scompton1045
 
 ms.topic: install-set-up-deploy
 ms.date: 10/24/2026
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: anwestg
 ms.lastreviewed: 1/29/2020
 ms.custom: sfi-image-nochange

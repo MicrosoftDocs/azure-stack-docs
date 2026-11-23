@@ -2,10 +2,10 @@
 title: Azure Stack Hub servicing policy
 titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 06/23/2026
-ms.author: sethm
+ms.author: scompton
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
 # Keyword: servicing policy azure stack

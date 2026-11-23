@@ -1,10 +1,10 @@
 ---
 title: Enable backup for Azure Stack Hub with PowerShell 
 description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack Hub can be restored if there's a failure. 
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/15/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 03/14/2019
 
 # Intent: As an Azure Stack operator, I want to enable backups with Powershell so Azure Stack can generate infrastructure backups.

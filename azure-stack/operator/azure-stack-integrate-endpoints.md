@@ -1,10 +1,10 @@
 ---
 title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 02/07/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 09/30/2021
 
 # Intent: As an Azure Stack operator, I want to publish Azure Stack services to my datacenter so they can be available to external networks.

@@ -1,11 +1,11 @@
 ---
 title: Usage connectivity issues and errors in Azure Stack Hub 
 description: Troubleshooting Azure Stack Hub usage issues and errors.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: troubleshooting-general
 ms.date: 07/21/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
 

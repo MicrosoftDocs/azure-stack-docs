@@ -1,11 +1,11 @@
 ---
 title: Delegating offers in Azure Stack Hub 
 description: Learn how to delegate tasks like creating offers and signing up users.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
 ms.custom: sfi-image-nochange

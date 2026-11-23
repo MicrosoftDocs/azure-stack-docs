@@ -1,11 +1,11 @@
 ---
 title: Register tenants for usage tracking in Azure Stack Hub 
 description: Learn how to register tenants and how tenant usage is tracked in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
 

@@ -1,10 +1,10 @@
 ---
 title: Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub
 description: How to manage subscriptions, plans, and offers with PowerShell in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 12/18/2020
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 12/18/2020
 ms.reviewer: bganapa
 

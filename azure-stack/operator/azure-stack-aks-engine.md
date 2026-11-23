@@ -1,10 +1,10 @@
 ---
 title: Add Azure Kubernetes Services (AKS) engine prerequisites to Azure Stack Hub Marketplace 
 description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Marketplace.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 09/12/2024
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: waltero
 ms.lastreviewed: 04/22/2022
 ms.custom: curate

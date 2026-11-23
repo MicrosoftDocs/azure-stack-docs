@@ -1,10 +1,10 @@
 ---
 title: Apply an OEM update to Azure Stack Hub
 description: Learn how to apply an original equipment manufacturer (OEM) update to Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 01/28/2025
-ms.author: sethm
+ms.author: scompton
 ms.lastreviewed: 03/04/2020
 
 # Intent: As an Azure Stack Hub operator, I want to apply an OEM update to Azure Stack Hub so I can get driver updates and security patches.

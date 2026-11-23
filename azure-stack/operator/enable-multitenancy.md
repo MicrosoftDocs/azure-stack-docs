@@ -1,10 +1,10 @@
 ---
 title: Configure multi-tenancy in Azure Stack Hub 
 description: Learn how to configure multi-tenancy for guest Microsoft Entra tenants in Azure Stack Hub.
-author: sethmanheim
+author: scompton1045
 ms.topic: how-to
 ms.date: 05/08/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: bryanr
 ms.lastreviewed: 11/05/2021
 zone_pivot_groups: management-tool-portal-powershell

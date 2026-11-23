@@ -1,10 +1,10 @@
 ---
 title: Recover from catastrophic data loss in Azure Stack Hub 
 description: Learn how to recover and restore your infrastructure data in Azure Stack Hub after catastrophic data loss.
-author: sethmanheim
+author: scompton1045
 ms.topic: concept-article
 ms.date: 03/06/2025
-ms.author: sethm
+ms.author: scompton
 ms.reviewer: hectorl
 ms.lastreviewed: 10/23/2020
 

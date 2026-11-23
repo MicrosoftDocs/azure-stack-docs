@@ -1,8 +1,8 @@
 ---
 title: Deploy virtual machines to target environments in Azure Site Recovery on Azure Stack Hub
 description: Learn how to deploy virtual machines to targets in Azure Site Recovery on Azure Stack Hub. 
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.topic: how-to
 ms.date: 04/15/2024
 ms.reviewer: rtiberiu

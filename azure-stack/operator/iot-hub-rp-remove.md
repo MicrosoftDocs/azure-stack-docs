@@ -1,8 +1,8 @@
 ---
 title: How to remove IoT Hub on Azure Stack Hub
 description: Uninstalling IoT Hub on Azure Stack Hub deletes all devices and data permanently. Follow these step-by-step instructions to safely remove the resource provider.
-author: sethmanheim
-ms.author: sethm
+author: scompton1045
+ms.author: scompton
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 07/08/2026
