@@ -1,10 +1,10 @@
 ---
 title:  Silicon assisted security for the Azure Local security book 
 description: Learn about silicon assisted security for the Azure Local security book.
-author: ronmiab
+author: scompton1045
 ms.topic: concept-article
 ms.date: 06/10/2026
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 

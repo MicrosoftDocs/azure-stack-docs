@@ -1,10 +1,10 @@
 ---
 title: Workload security for Azure Local security book
 description: Learn about workload security for the Azure Local security book.
-author: ronmiab
+author: scompton1045
 ms.topic: concept-article
 ms.date: 08/11/2025
-ms.author: robess
+ms.author: scompton
 ms.subservice: hyperconverged
 ---
 
