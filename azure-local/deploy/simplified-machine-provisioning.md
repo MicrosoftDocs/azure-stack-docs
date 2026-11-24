@@ -34,9 +34,6 @@ At a high level, the process has three key stages:
 
     1. Provision the machines: Once the site configurations are done, claim machine ownership by using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
 
-    > [!NOTE]
-    > Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
-
 1. **Deploy the cluster by using the provisioned machines**: You can now create an Azure Local instance using the provisioned machines.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
