@@ -4,7 +4,7 @@ description: Install and register Azure Local machines using simplified machine 
 author: scompton1045
 ms.author: scompton
 ms.topic: how-to
-ms.date: 05/04/2026
+ms.date: 11/24/2026
 ms.subservice: hyperconverged
 ---
 
@@ -33,9 +33,6 @@ At a high level, the process has three key stages:
     1. Set up site-level configuration: This configuration applies to all new machines under a site. This configuration includes settings like time zone, time server, proxy server, Key vault for administrator credentials, and more. Site-level configuration eliminates the need for manual configuration for each machine.
 
     1. Provision the machines: Once the site configurations are done, claim machine ownership by using the ownership voucher generated while preparing the machine. Select the operating system profile for each machine.
-
-    > [!NOTE]
-    > Azure Arc gateway isn't supported with simplified machine provisioning in this preview release.
 
 1. **Deploy the cluster by using the provisioned machines**: You can now create an Azure Local instance using the provisioned machines.
 
