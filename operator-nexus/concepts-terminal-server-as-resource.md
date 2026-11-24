@@ -69,7 +69,7 @@ The `NetworkBootstrapInterface` resource captures interface-level details for ea
 | `administrativeState` | string | The administrative state of the interface. |
 | `operationalState` | string | The operational state of the interface. |
 | `physicalIdentifier` | string | The physical port identifier on the Terminal Server device. |
-| `connectedTo` | string | The network device to which this interface is connected. |
+| `connectedTo` | flat string | The network device type to which this interface is connected. |
 | `ipv4Address` | string | The IPv4 address assigned to the interface. |
 | `ipv6Address` | string | The IPv6 address assigned to the interface. |
 | `description` | string | An optional description of the interface. |
