@@ -5,7 +5,7 @@ author: scompton1045
 ms.author: scompton
 ms.topic: release-notes
 ms.service: azure-local
-ms.date: 11/20/2026
+ms.date: 11/25/2026
 ms.subservice: hyperconverged
 ---
 
@@ -42,6 +42,8 @@ The following diagram illustrates the feature builds, cumulative updates, securi
 - Azure Arc resource bridge requires solution updates to be applied within one year. This requirement is critical to keep certificates valid and the Azure Local VM functionality working.
 
 - If the `AzureEdgeAlerts` extension is installed, update it to version 12.2607.5.0 or later before updating Azure Local to version 2610.
+
+[!INCLUDE [azure-local-update-2609-prerequisite](./includes/azure-local-update-2609-prerequisite.md)]
 
 ## End of support for Azure Local versions
 

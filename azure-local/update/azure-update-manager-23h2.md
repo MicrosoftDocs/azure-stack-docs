@@ -5,7 +5,7 @@ author: scompton1045
 ms.author: scompton
 ms.topic: how-to
 ms.reviewer: mindydiep
-ms.date: 08/29/2026
+ms.date: 11/25/2026
 ms.subservice: hyperconverged
 ---
 
@@ -55,6 +55,8 @@ The pre-update readiness checks that run during the [prepare updates](#optional-
 
 > [!NOTE]
 > Microsoft doesn't support using non-Microsoft tools to install updates.
+
+[!INCLUDE [azure-local-update-2609-prerequisite](../includes/azure-local-update-2609-prerequisite.md)]
 
 ## (Optional) Check for updates
 
