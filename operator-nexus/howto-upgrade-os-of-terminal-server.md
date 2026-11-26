@@ -259,7 +259,7 @@ rtt min/avg/max/mdev = 0.305/0.328/0.344/0.015 ms
 
 ### Step 1. Pre-validation
 
-From a fresh SSH login:
+From a fresh SSH sign in:
 
 ```bash
 sudo -k -n true && echo "PASS: passwordless sudo"
