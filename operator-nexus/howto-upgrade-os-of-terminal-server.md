@@ -26,7 +26,7 @@ This document provides a step-by-step guide to upgrade the operating system (OS)
 - After downloading the firmware, verify the **SHA1 checksum** to ensure integrity before proceeding with the installation.
 
 
->[!Important]
+> [!Important]
 > If the update fails, restoring from the backup may not be possible if the firmware version has changed.
 > In such cases, you may need to rebuild the configuration as if performing a Day 1 deployment of the device.
 
