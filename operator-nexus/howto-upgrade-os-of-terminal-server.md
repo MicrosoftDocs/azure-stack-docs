@@ -3,7 +3,7 @@ title: "Azure Operator Nexus: How to upgrade the operating system of a Terminal 
 description: Learn the process for upgrading the operating system of a Terminal Server
 author: RaghvendraMandawale
 ms.author: rmandawale
-ms.date: 10/28/2026
+ms.date: 11/26/2026
 ms.topic: how-to
 ms.service: azure-operator-nexus
 ms.custom: template-how-to, devx-track-azurecli
@@ -21,12 +21,12 @@ This document provides a step-by-step guide to upgrade the operating system (OS)
 
 - An **Opengear Customer Portal** account. Opengear firmware isn't publicly downloadable. To register, see the [Opengear Customer Portal user manual](https://portal.opengear.com/customerservice/s/article/OpengearsCustomerPortalUserManual661d1989da648). For help with portal access, contact Opengear support at support@opengear.com.
 
-- Download **25.11.9 firmware**: sign in to the [Opengear Customer Portal](https://portal.opengear.com/) and go to **Software Updates**.
+- Download **26.08.2 firmware**: sign in to the [Opengear Customer Portal](https://portal.opengear.com/) and go to **Software Updates**.
 
 - After downloading the firmware, verify the **SHA1 checksum** to ensure integrity before proceeding with the installation.
 
 
->[Important]
+> [!Important]
 > If the update fails, restoring from the backup may not be possible if the firmware version has changed.
 > In such cases, you may need to rebuild the configuration as if performing a Day 1 deployment of the device.
 
@@ -51,7 +51,7 @@ tmpfs                            3.9G  299M  3.6G   8% /tmp
 /dev/mapper/nvram-crypt           44G  7.0G   35G  17% /mnt/nvram
 /dev/mapper/config-active-crypt  1.5G  244M  1.2G  18% /mnt/config_overlay_active_upper
 /dev/sda1                        222M   49M  158M  24% /boot
-/dev/sda2                        274M  274M     0 100% / 
+/dev/sda2                        274M  274M     0 100% / 
 ```
 
 
@@ -63,7 +63,7 @@ After downloading the OS image on the on-premises machine, verify its integrity 
 
 ### Step 1: Download the SHA checksum file  
 
-Download the `SHASUMS` checksum file for OS version 25.11.9 from the **Software Updates** page in the Opengear Customer Portal, the same location as the firmware image.
+Download the `SHASUMS` checksum file for OS version 26.08.2 from the **Software Updates** page in the Opengear Customer Portal. This page is the same location as the firmware image.
 
 ### Step 2: Compute and compare the SHA1 checksum 
 
@@ -77,7 +77,7 @@ cat SHASUMS | sha1sum -c
 
 ```bash
 $ cat SHASUMS | sha1sum -c
-operations_manager-25.11.9-production-signed.raucb: OK
+operations_manager-26.08.2-production-signed.raucb: OK
 ```
 
 Ensure that the output returns **"OK"** to confirm the file integrity before proceeding with installation.  
@@ -91,7 +91,7 @@ sudo cat /etc/version
 ```
 
 ```Example output
-22.06.0
+25.11.5
 ```
 > [!Note]
 > Ensure the current OS version is lower than the version you are upgrading to.
@@ -197,19 +197,19 @@ scp -r -o MACs=umac-128-etm@openssh.com root@<ts_ip>:/mnt/nvram/opengear_provisi
 Upload the latest downloaded firmware from on premise machine to the Terminal Server.
 
 ```bash
-scp -r -o MACs=umac-128-etm@openssh.com ./operations_manager-25.11.9-production-signed.raucb root@<ts_ip>:/tmp/
+scp -r -o MACs=umac-128-etm@openssh.com ./operations_manager-26.08.2-production-signed.raucb root@<ts_ip>:/tmp/
 ```
 
 >[!Note]
 > Replace <ts_ip> with the Terminal Server IP.<br>
-> Ensure the file name corresponds to the specific firmware version being used. For example, `operations_manager-25.11.9-production-signed.raucb` is the file name for Opengear OS version 25.11.9. Adjust the file name accordingly for your firmware version.
+> Ensure the file name corresponds to the specific firmware version you're using. For example, `operations_manager-26.08.2-production-signed.raucb` is the file name for Opengear OS version 26.08.2. Adjust the file name accordingly for your firmware version.
 
 ### Initiate installation of firmware
 
 Run the following command on the Terminal Server.
 
 ```bash
-sudo puginstall --reboot-after /tmp/operations_manager-25.11.9-production-signed.raucb
+sudo puginstall --reboot-after /tmp/operations_manager-26.08.2-production-signed.raucb
 ```
 > [!Note]
 > The upgrade process takes 5–10 minutes, during which the Terminal Server will reboot automatically
@@ -255,7 +255,78 @@ PING 10.103.0.6 (10.103.0.6) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.305/0.328/0.344/0.015 ms
 ```
 
-## **Stage 4: Cleanup (On-premises machine)**
+## **Stage 4: Post-upgrade sudo and file-size (640 MiB) mitigation (Terminal Server)**
+
+### Step 1. Pre-validation
+
+From a fresh SSH sign in:
+
+```bash
+sudo -k -n true && echo "PASS: passwordless sudo"
+ulimit -Sf
+ulimit -Hf
+```
+
+Expected: Sudo succeeds without a password prompt, and both limits show unlimited. Skip the corresponding change if it already passes and the expected configuration is present.
+
+> [!NOTE]
+> If step 1 is working as expected, skip the following steps. Otherwise, perform steps 2 and 3.
+
+### Step 2. Apply the two mitigations
+
+#### A. Passwordless sudo
+
+```bash
+sudo vi /etc/sudoers.d/zz-automation-admin
+```
+
+Ensure this line exists:
+
+```bash
+%admin ALL=(ALL) NOPASSWD: ALL
+```
+
+Set ownership and permissions, and check syntax for the change:
+
+```bash
+sudo chown root:root /etc/sudoers.d/zz-automation-admin
+sudo chmod 0440 /etc/sudoers.d/zz-automation-admin
+sudo visudo -cf /etc/sudoers.d/zz-automation-admin
+```
+
+The file must report `parsed OK`. Keep the original session open until validation succeeds.
+
+#### B. Unlimited file size
+
+```bash
+sudo vi /etc/security/limits.conf
+```
+
+Ensure this line exists once:
+
+```bash
+@admin - fsize unlimited
+```
+
+> [!IMPORTANT]
+> Don't modify vendor files `/etc/sudoers.d/opengear` or `/etc/security/limits.d/ngcs.conf`.
+
+### Step 3. Post-validation
+
+Open a new SSH session as the same automation account:
+
+```bash
+sudo -k -n true && echo "PASS: passwordless sudo"
+ulimit -Sf
+ulimit -Hf
+```
+
+Pass: Passwordless sudo succeeds, and both limits show unlimited.
+
+> [!NOTE]
+> These checks validate the mitigation settings. End-to-end SCP validation separately requires a successful transfer larger than 640 MiB with matching source/destination hashes.
+
+## **Stage 5: Cleanup (On-premises machine)**
 
 ### Remove backup and firmware
 
@@ -263,7 +334,7 @@ After confirming the successful upgrade, delete temporary files from the on-prem
 
 ```bash
 rm -rf ~/ts_backup
-rm -rf ./operations_manager-25.11.9-production-signed.raucb
+rm -rf ./operations_manager-26.08.2-production-signed.raucb
 ```
 
 >[!Note]
