@@ -309,7 +309,7 @@ Ensure this line exists once:
 ```
 
 > [!IMPORTANT]
-> Do not modify vendor files `/etc/sudoers.d/opengear` or `/etc/security/limits.d/ngcs.conf`.
+> Don't modify vendor files `/etc/sudoers.d/opengear` or `/etc/security/limits.d/ngcs.conf`.
 
 ### Step 3. Post-validation
 
