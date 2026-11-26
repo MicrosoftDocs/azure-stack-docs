@@ -286,7 +286,7 @@ Ensure this line exists:
 %admin ALL=(ALL) NOPASSWD: ALL
 ```
 
-Set ownership/permissions and check syntax for the above change applied:
+Set ownership and permissions, and check syntax for the change:
 
 ```bash
 sudo chown root:root /etc/sudoers.d/zz-automation-admin
