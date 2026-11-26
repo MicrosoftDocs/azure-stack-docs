@@ -63,7 +63,7 @@ After downloading the OS image on the on-premises machine, verify its integrity 
 
 ### Step 1: Download the SHA checksum file  
 
-Download the `SHASUMS` checksum file for OS version 26.08.2 from the **Software Updates** page in the Opengear Customer Portal, the same location as the firmware image.
+Download the `SHASUMS` checksum file for OS version 26.08.2 from the **Software Updates** page in the Opengear Customer Portal. This page is the same location as the firmware image.
 
 ### Step 2: Compute and compare the SHA1 checksum 
 
