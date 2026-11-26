@@ -294,7 +294,7 @@ sudo chmod 0440 /etc/sudoers.d/zz-automation-admin
 sudo visudo -cf /etc/sudoers.d/zz-automation-admin
 ```
 
-The file must report parsed OK. Keep the original session open until validation succeeds.
+The file must report `parsed OK`. Keep the original session open until validation succeeds.
 
 #### B. Unlimited file size
 
